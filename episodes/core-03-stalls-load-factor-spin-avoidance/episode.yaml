@@ -1,0 +1,76 @@
+id: core-03
+series: ppl-study-podcast
+title: "Stalls, Load Factor, and Spin Avoidance"
+slug: stalls-load-factor-spin-avoidance
+track: core
+status: rendered_candidate
+record_classification: historical_bootstrap_record
+workflow_contract: "Not current. This preserved bootstrap/test record retains contemporaneous release gates and is not a template for new episodes."
+version: 0.4.0
+published_at: null
+runtime_target_minutes: 31
+runtime_actual_seconds: 1852.21
+word_count: 4901
+speakers:
+  - instructor
+  - learner
+audience: "Private-pilot airplane learners"
+aircraft_scope: "General single-engine airplane education. Aircraft-specific procedures and limitations are intentionally excluded."
+acs_references:
+  - PA.VII.A.K1
+  - PA.VII.A.R1
+  - PA.VII.A.R3
+  - PA.VII.B.K1
+  - PA.VII.B.K2
+  - PA.VII.B.K3
+  - PA.VII.B.K4
+  - PA.VII.B.R1
+  - PA.VII.B.R5
+  - PA.VII.C.K1
+  - PA.VII.C.K2
+  - PA.VII.C.K3
+  - PA.VII.C.K4
+  - PA.VII.C.R1
+  - PA.VII.C.R5
+  - PA.VII.D.K1
+  - PA.VII.D.K2
+  - PA.VII.D.K3
+  - PA.VII.D.R1
+phak_references:
+  - "FAA-H-8083-25C, Chapter 5: Aerodynamics of Flight"
+afh_references:
+  - "FAA-H-8083-3C, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
+advisory_circular_references:
+  - "AC 61-67C, Stall and Spin Awareness Training, with Changes 1 and 2"
+cfr_references:
+  - "14 CFR 91.9"
+learning_objectives:
+  - "Explain why a stall is an angle-of-attack event rather than a single airspeed."
+  - "Describe how load factor, coordination, configuration, weight, center of gravity, power, and yaw affect the airspeed at which a stall occurs."
+  - "Recognize common stall cues and identify the aerodynamic priority in recovery."
+  - "Explain why a stalled, yawed airplane can enter a spin and how to avoid the conditions that lead there."
+trouble_spots:
+  - "Treating published stall speed as a universal safe-speed boundary"
+  - "Trying to recover by adding power or leveling the wings before reducing angle of attack"
+  - "Using inside rudder to tighten an overshooting base-to-final turn"
+  - "Assuming an airplane is approved for intentional spins"
+source_verification:
+  status: completed_for_candidate
+  verified_at_utc: "2026-08-11T17:12:40Z"
+  verifier: "AI-assisted research; not a certificated flight instructor review"
+review:
+  qualified_aviation_review: historical_candidate_requirement
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - "Independent review by a certificated flight instructor or equivalent qualified aviation reviewer"
+  - "Publication-day source and link re-verification"
+  - "Complete human listening QA, including the front-matter check"
+  - "Select and validate the external audio-store and hosting workflow"
+audio:
+  manifest: audio-manifest.yaml
+  status: rendered_candidate
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

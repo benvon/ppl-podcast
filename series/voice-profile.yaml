@@ -1,0 +1,71 @@
+version: 3
+status: approved-for-candidate-renders
+provider: openai-realtime
+model: gpt-realtime-2.1
+transport: websocket
+model_selection_note: >-
+  Approved after a native-speed listener comparison on 2026-08-11. This is the
+  default production profile for new candidate renders. The previous
+  gpt-4o-mini-tts profile remains documented only in existing episode manifests
+  so earlier candidates can be reproduced and compared.
+
+audio_output:
+  format: audio/pcm
+  sample_rate_hz: 24000
+  channels: 1
+  output_speed: native_default_unset
+  output_speed_rule: >-
+    Do not send audio.output.speed. Natural measured pace belongs in the voice
+    instructions; the Realtime speed field is post-generation processing and
+    previously introduced audible artifacts in this project.
+
+voices:
+  instructor:
+    id: marin
+    style: >-
+      Calm, engaged, and practical flight instructor; use natural, purposeful
+      intonation and modest emphasis on safety-critical words and contrasts;
+      sound alert and conversational, never theatrical.
+  learner:
+    id: cedar
+    style: >-
+      Prepared adult learner; attentive and naturally curious, with restrained
+      conversational inflection; sound thoughtful rather than performative.
+
+delivery:
+  pace: >-
+    Steady, conversational study pace: unhurried but not slow. Ask for this
+    naturally in the role instructions; do not use post-generation speed.
+  continuity_context_characters: 240
+  technical-term-rule: >-
+    Treat recurring technical terms as ideas, not catchphrases. Preserve exact
+    terminology while varying stress and cadence naturally with the sentence.
+  abbreviation-rule: >-
+    Keep the approved written script unchanged, but expand AI to artificial
+    intelligence only in the render input so the disclosure is naturally
+    intelligible.
+  prohibited:
+    - announcer delivery
+    - exaggerated emotion
+    - comedy or gimmicky banter
+
+segmentation:
+  max_words_per_segment: 240
+  rule: Render complete speaker turns; do not split individual sentences unless required by the limit.
+  resume_rule: >-
+    A persistent render work directory is valid only when its render-settings.json
+    matches the script, model, voices, native-speed policy, styles, context
+    length, and spacing.
+
+spacing_ms:
+  lead_in: 250
+  continued_turn: 120
+  speaker_change: 220
+  section_change: 550
+
+editorial_rules:
+  cold_open_seconds: "10-20"
+  required_notice: Follow the cold open immediately.
+  repeated_terms: Use varied surrounding explanation where that preserves technical accuracy.
+  approval: Require a representative preview before a new voice-profile version is used for a full render.
+  transcript_fidelity: Compare a representative rendered clip against the master script before a full candidate render.

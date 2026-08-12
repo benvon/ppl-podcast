@@ -1,0 +1,9 @@
+episode_id: "{{EPISODE_ID}}"
+claims:
+  - id: replace-with-stable-claim-id
+    type: faa_guidance
+    statement: "A concise, testable material claim in the planned episode."
+    sources: [replace-with-stable-source-id]
+    risk: safety_critical
+    script_sections: []
+    status: draft

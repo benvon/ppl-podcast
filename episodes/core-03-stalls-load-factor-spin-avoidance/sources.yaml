@@ -1,0 +1,54 @@
+episode_id: core-03
+verification_date: 2026-08-11
+verified_at_utc: "2026-08-11T17:12:40Z"
+sources:
+  - id: acs-area-vii
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area of Operation VII, Tasks A-D, pp. 42-46 of PDF"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf"
+    revision: "November 2023; effective May 31, 2024"
+    verified_at_utc: "2026-08-11T17:12:40Z"
+    link_status: 200
+    supports_claims: [acs_scope, stall_relationships, cues, prevention, recovery_priority, spin_awareness]
+  - id: phak-ch5
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5; check current addendum at release"
+    url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight"
+    revision: "FAA-H-8083-25C; FAA handbook index lists an October 2025 addendum"
+    verified_at_utc: "2026-08-11T17:12:40Z"
+    link_status: 200
+    supports_claims: [angle_of_attack, load_factor, accelerated_stall, coordination, spin_avoidance]
+  - id: afh-ch5
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
+    document_id: "FAA-H-8083-3C"
+    locator: "Stall recognition, characteristics, recovery, stall training, and spin awareness"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf"
+    revision: "FAA-H-8083-3C; FAA handbook index lists an October 2025 addendum"
+    verified_at_utc: "2026-08-11T17:12:40Z"
+    link_status: 200
+    supports_claims: [published_stall_speed_context, cues, recovery_priority, secondary_stall, aircraft_specific_procedures, spin_avoidance]
+  - id: ac-61-67c
+    authority: faa_guidance
+    title: "Stall and Spin Awareness Training, with Changes 1 and 2"
+    document_id: "AC 61-67C"
+    locator: "Active AC; ground-training definitions and spin-awareness guidance"
+    url: "https://www.faa.gov/regulations_policies/advisory_circulars/index.cfm/go/document.information/documentid/1028760"
+    revision: "Issued September 25, 2000; active with Changes 1 and 2"
+    verified_at_utc: "2026-08-11T17:12:40Z"
+    link_status: 200
+    supports_claims: [stall_definition, stall_spin_relationship, intentional_spin_boundaries]
+  - id: cfr-91-9
+    authority: regulation
+    title: "14 CFR 91.9 - Civil aircraft flight manual, marking, and placard requirements"
+    document_id: "14 CFR 91.9"
+    locator: "Section 91.9"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9"
+    revision: "Current eCFR at verification"
+    verified_at_utc: "2026-08-11T17:12:40Z"
+    link_status: 200
+    supports_claims: [aircraft_specific_procedures, limitations]

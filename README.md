@@ -91,6 +91,11 @@ direnv exec . npm run sources:validate -- \
 The command writes `link-validation.yaml` beside the source ledger. Resolve
 every failed or inconclusive finding before release.
 
+The release gate also requires a complete two-way mapping between every claim
+and its ledger source, and a separate LLM assessment for every mapped claim.
+An overall source verdict cannot pass an unsupported or unassessed individual
+claim.
+
 Every listener-facing attribution must be a deep citation: it must name the
 smallest relevant section, task, paragraph, or page and link to it directly.
 For PDFs, use a `#page=N` link and give the relevant section and page in the

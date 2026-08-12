@@ -115,6 +115,22 @@ function citationTargetErrors(source) {
   return errors;
 }
 
+function validationTargetErrors(source) {
+  if (!source.validation_url) return [];
+  const errors = [];
+  let citationUrl; let validationUrl;
+  try { citationUrl = assertSafeUrl(source.url); validationUrl = assertSafeUrl(source.validation_url); }
+  catch (error) { return [error.message]; }
+  if (canonicalHostname(citationUrl) !== "ecfr.gov" || canonicalHostname(validationUrl) !== "ecfr.gov") {
+    errors.push("validation_url is permitted only for an eCFR citation and must remain on ecfr.gov");
+    return errors;
+  }
+  if (!/^\/api\/versioner\/v1\/full\/\d{4}-\d{2}-\d{2}\/title-\d+\.xml$/i.test(validationUrl.pathname) || !/^\d+$/.test(validationUrl.searchParams.get("part") || "")) {
+    errors.push("eCFR validation_url must use the official versioner full-title XML endpoint with a numeric part query");
+  }
+  return errors;
+}
+
 async function readBoundedBody(response) {
   const contentLength = Number(response.headers.get("content-length"));
   if (Number.isFinite(contentLength) && contentLength > MAX_BYTES) return { text: "", truncated: true };
@@ -304,10 +320,12 @@ async function main() {
     const missingClaims = source.supports_claims.filter((id) => !claimsById.has(id));
     const entry = { source_id: source.id, title: source.title, checked_at_utc: new Date().toISOString(), linked_claim_ids: source.supports_claims, missing_claim_ids: missingClaims, citation_target: { valid: true, errors: [] } };
     try {
-      entry.citation_target.errors = citationTargetErrors(source);
+      entry.citation_target.errors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
       entry.citation_target.valid = entry.citation_target.errors.length === 0;
       if (!entry.citation_target.valid) throw new Error(`Deep-citation validation failed: ${entry.citation_target.errors.join("; ")}`);
-      entry.link = await fetchSource(source.url);
+      entry.link = await fetchSource(source.validation_url || source.url);
+      entry.link.citation_url = source.url;
+      entry.link.validation_url = source.validation_url || source.url;
       entry.link.valid = entry.link.status >= 200 && entry.link.status < 400;
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results.push(entry);
@@ -342,4 +360,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { fetchSource, validateClaimMappings, validateClaimAssessments };
+module.exports = { fetchSource, validateClaimMappings, validateClaimAssessments, validationTargetErrors };

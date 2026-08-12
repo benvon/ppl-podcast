@@ -1,19 +1,115 @@
 episode_id: "core-01"
-verification_date: null
-verified_at_utc: null
+verification_date: "2026-08-12"
+verified_at_utc: "2026-08-12T14:00:00Z"
 sources:
-  - id: replace-with-stable-source-id
+  - id: cfr-61-105
+    authority: regulation
+    title: "14 CFR 61.105 — Aeronautical knowledge"
+    document_id: "14 CFR 61.105"
+    locator: "61.105(b)(12)-(13), Aeronautical decision making and judgment; preflight alternatives"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61"
+    revision: "eCFR current at 2026-08-12; Title 14 up to date 2026-08-10, last amended 2026-07-31"
+    relevance_excerpt: "Section 61.105(b)(12) lists aeronautical decision making and judgment among the required private-pilot aeronautical knowledge areas. Section 61.105(b)(13)(ii) requires knowledge of how to plan for alternatives when the planned flight cannot be completed or delays are encountered."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [private-pilot-adm-knowledge, planning-alternatives]
+  - id: acs-human-factors
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area I, Task H, PA.I.H.K4; PA.I.H.R1-R4; PA.I.H.S2, p. 8"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16"
+    revision: "November 2023; effective May 31, 2024"
+    relevance_excerpt: "Task H requires ADM, including CRM or SRM as appropriate. Its risk-management elements include hazardous attitudes, distractions, loss of situational awareness, confirmation bias, and expectation bias. The applicant must perform self-assessment, including fitness for flight and personal minimums."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [acs-adm-human-factors, acs-bias-and-distractions, acs-self-assessment]
+  - id: acs-preflight-assessment
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area II, Task A, PA.II.A.K1/K4; PA.II.A.R1-R4; PA.II.A.S3-S4, p. 11"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19"
+    revision: "November 2023; effective May 31, 2024"
+    relevance_excerpt: "Task A covers pilot self-assessment and environmental factors. Its risk-management elements require identifying, assessing, and mitigating risk associated with the pilot, aircraft, environment, and external pressures. The skill elements include self-assessment and continuing to assess the environment for safe flight."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [acs-pave-categories, acs-continuous-assessment]
+  - id: acs-adm-throughout
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Appendix 2, Aeronautical Decision-Making, Risk Management, CRM, and SRM, p. 76"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=84"
+    revision: "November 2023; effective May 31, 2024"
+    relevance_excerpt: "Throughout the practical test, the evaluator must assess the applicant's use of sound ADM to identify hazards and mitigate risk, using Task risk-management elements and scenarios that combine Tasks. The ACS says a failure to use ADM, including SRM or CRM as applicable, in any Task results in that Task being noted as failed."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [acs-scenario-application, acs-adm-consequence]
+  - id: phak-adm-definition
     authority: faa_guidance
-    title: "Replace with authoritative source title"
-    document_id: null
-    # Name the smallest relevant unit, for example: "Ch. 5, Stalls, p. 5-12"
-    # or "PA.VII.B.K1, p. VII-8". A chapter or document title alone is not enough.
-    locator: "Specific section/task/paragraph and page, where applicable"
-    # Reader-facing deep link. PDFs require #page=N; FAA HTML requires a specific
-    # anchor or section endpoint; eCFR requires the exact section URL.
-    url: "https://www.faa.gov/path/to/document.pdf#page=1"
-    revision: "Record document revision, effective date, or currentness statement"
-    relevance_excerpt: null # Required for LLM review when the linked source is a PDF or another non-text resource. It must come from the locator identified above.
-    verified_at_utc: null
-    link_status: null
-    supports_claims: [replace-with-stable-claim-id]
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical Decision-Making"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 2, Introduction, p. 2-1"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=1"
+    revision: "FAA-H-8083-25C, 2023; FAA publication page last updated 2023-11-03"
+    relevance_excerpt: "The PHAK defines aeronautical decision-making as decision-making in aviation and as a systematic approach to the mental process pilots use to determine the best course of action for the circumstances and latest available information."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [adm-definition]
+  - id: phak-risk-srm
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical Decision-Making"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 2, Risk Management; CRM and Single-Pilot Resource Management; Hazard and Risk, pp. 2-3-2-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=3"
+    revision: "FAA-H-8083-25C, 2023; FAA publication page last updated 2023-11-03"
+    relevance_excerpt: "The PHAK describes risk management as proactively identifying safety-related hazards and mitigating associated risks. It defines SRM as managing all available on-board and outside resources before and during flight for a successful outcome. It distinguishes a hazard, a condition/event/circumstance, from risk, the pilot's assessment of its potential impact."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [risk-management-purpose, hazard-risk-distinction, srm-resources]
+  - id: phak-hazardous-attitudes
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical Decision-Making"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 2, Hazardous Attitudes and Antidotes, p. 2-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=5"
+    revision: "FAA-H-8083-25C, 2023; FAA publication page last updated 2023-11-03"
+    relevance_excerpt: "The PHAK identifies anti-authority, impulsivity, invulnerability, macho, and resignation as hazardous attitudes. It explains that recognizing a hazardous thought, labeling it, and using the corresponding antidote helps redirect the thought toward correct action."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [hazardous-attitudes, hazardous-attitude-antidotes]
+  - id: phak-pave-personal-minimums
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical Decision-Making"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 2, Mitigating Risk; The PAVE Checklist, p. 2-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=8"
+    revision: "FAA-H-8083-25C, 2023; FAA publication page last updated 2023-11-03"
+    relevance_excerpt: "The PHAK presents PAVE: Pilot in Command, Aircraft, enVironment, and External pressures. It says personal minimums are limits unique to the pilot's current experience and proficiency, and distinguishes what is legal from what is smart or safe for that pilot."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [pave-categories, personal-minimums-not-regulatory, personal-minimums-evolve-with-proficiency]
+  - id: phak-3p-care-team
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical Decision-Making"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 2, Perceive, Process, Perform (3P) Model; PAVE and CARE, pp. 2-15-2-16"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=15"
+    revision: "FAA-H-8083-25C, 2023; FAA publication page last updated 2023-11-03"
+    relevance_excerpt: "The 3P model is a practical, systematic approach for all phases of flight: perceive the circumstances, process their safety impact, and perform the best course of action. The PHAK connects 3P with PAVE for hazards, CARE for consequences, alternatives, reality, and external factors, and TEAM for risk controls."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [three-p-model, care-team-controls]
+  - id: phak-personal-minimums-followthrough
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical Decision-Making"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 2, 3P follow-through and personal minimums, p. 2-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17"
+    revision: "FAA-H-8083-25C, 2023; FAA publication page last updated 2023-11-03"
+    relevance_excerpt: "The PHAK describes the 3P decision process as a continuous loop. It recommends developing personal minimums in a non-flying environment, without pressure to make a particular trip, so they can guide go/no-go and continue/discontinue decisions."
+    verified_at_utc: "2026-08-12T14:00:00Z"
+    link_status: 200
+    supports_claims: [personal-minimums-ahead-of-time, continuous-reassessment, delay-divert-as-decision]

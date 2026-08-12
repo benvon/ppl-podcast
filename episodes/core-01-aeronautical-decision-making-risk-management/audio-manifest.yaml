@@ -1,8 +1,73 @@
 episode_id: "core-01"
-status: not_rendered
-current_candidate_render: null
-superseded_candidates: []
+status: approved_for_hosting_stage
+reason: >-
+  Script version 0.2.0 has a technically validated Realtime render using the
+  approved voice profile. At 30:57, it meets the series runtime target. The
+  full script-aligned listen and publication-day source validation are complete;
+  it is approved for hosting stage and public-deployment verification.
+current_candidate_render:
+  script_version: 0.2.0
+  rendered_at_utc: "2026-08-12T15:55:09Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 3
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+  mp3: "audio-artifacts/core-01-20260812T154500Z.mp3"
+  lossless_master: "audio-artifacts/core-01-20260812T154500Z.master.wav"
+  render_manifest: "audio-artifacts/core-01-20260812T154500Z.render-manifest.json"
+  segment_work_dir: "audio-artifacts/core-01-realtime-20260812T154500Z.segments"
+  duration_seconds: 1857.49
+  duration_display: "30:57"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  observed_bitrate_bps: 160000
+  sha256: "8891067ce38000ce11e2a64fd4257c6a2a5db337c954efc388b1ca958f2ef159"
+  front_matter_check: "audio-artifacts/core-01-20260812T151200Z.preview-001-005.mp3"
+  front_matter_duration_seconds: 130.54
+  front_matter_sha256: "1e9a12f7e53306bb8ae51d9cb845c89164a2c5612bff6f688469b00072656de3"
+  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by required production-notice segment 2; the assembled preview includes both. Opening-preview listener review is approved. Full human listening review remains required."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
+  usage_estimate_usd: 2.678194
+  validation: "ffmpeg decode check passed; ffprobe duration/codec/sample-rate/channel/bitrate and SHA-256 verified locally; artifact is Git-ignored."
+superseded_candidates:
+  - script_version: 0.1.0
+    rendered_at_utc: "2026-08-12T15:27:36Z"
+    provider: openai-realtime
+    model: gpt-realtime-2.1
+    mp3: "audio-artifacts/core-01-20260812T151200Z.mp3"
+    duration_seconds: 1411.97
+    duration_display: "23:32"
+    sha256: "315aa49db597d2712266ed08412553cc7ffd54a7f3af3ff143fdd33bf0501902"
+    reason: "Below the series 30-minute minimum; superseded by the approved v0.2 expansion."
+opening_preview:
+  script_version: 0.1.0
+  rendered_at_utc: "2026-08-12T15:11:43Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 3
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+  mp3: "audio-artifacts/core-01-20260812T151200Z.preview-001-005.mp3"
+  lossless_master: "audio-artifacts/core-01-20260812T151200Z.preview-001-005.master.wav"
+  render_manifest: "audio-artifacts/core-01-20260812T151200Z.preview-001-005.render-manifest.json"
+  segment_work_dir: "audio-artifacts/core-01-realtime-20260812T151200Z.segments"
+  duration_seconds: 130.54
+  duration_display: "2:11"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  observed_bitrate_bps: 160000
+  sha256: "1e9a12f7e53306bb8ae51d9cb845c89164a2c5612bff6f688469b00072656de3"
+  included_segments: "1-5: cold open, required production notice, and first exchange"
+  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by the required production notice in segment 2. Human listening review remains required."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
+  usage_estimate_usd: 0.187416
+  validation: "ffmpeg decode check passed; ffprobe duration/codec/sample-rate/channel/bitrate and SHA-256 verified locally; artifact is Git-ignored."
 required_before_release:
-  - "Complete human listening QA against master-script.md."
-  - "Re-verify all cited public links on publication day."
-  - "Validate hosting metadata and external audio-store workflow."
+  - "Stage the immutable audio through the hosting workflow and verify the public deployment."

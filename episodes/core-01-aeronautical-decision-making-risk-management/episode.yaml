@@ -3,7 +3,7 @@ series: ppl-study-podcast
 title: "Aeronautical Decision-Making and Risk Management"
 slug: "aeronautical-decision-making-risk-management"
 track: "core"
-status: ready_for_hosting_stage
+status: published
 version: 0.2.0
 published_at: "2026-08-12T16:06:18Z"
 runtime_target_minutes: 35
@@ -48,13 +48,15 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - "Stage the local release package through the hosting workflow and verify the public deployment."
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
-  status: approved_for_hosting_stage
+  status: published
 hosting:
   metadata: hosting-metadata.yaml
+  publisher_repository: "https://github.com/benvon/ppl-postcast-hosting"
+  release_commit: "96fddd566fca7e9434139c68a2e207cfaea37cef"
+  enclosure_url: "https://media.pplstudyguide.com/audio/core-01-8891067ce38000ce.mp3"
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null

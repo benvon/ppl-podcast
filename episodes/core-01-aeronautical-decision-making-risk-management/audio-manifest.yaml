@@ -1,10 +1,11 @@
 episode_id: "core-01"
-status: approved_for_hosting_stage
+status: published
 reason: >-
   Script version 0.2.0 has a technically validated Realtime render using the
   approved voice profile. At 30:57, it meets the series runtime target. The
   full script-aligned listen and publication-day source validation are complete;
-  it is approved for hosting stage and public-deployment verification.
+  it was approved for hosting stage and subsequently verified after public
+  deployment.
 current_candidate_render:
   script_version: 0.2.0
   rendered_at_utc: "2026-08-12T15:55:09Z"
@@ -29,7 +30,7 @@ current_candidate_render:
   front_matter_check: "audio-artifacts/core-01-20260812T151200Z.preview-001-005.mp3"
   front_matter_duration_seconds: 130.54
   front_matter_sha256: "1e9a12f7e53306bb8ae51d9cb845c89164a2c5612bff6f688469b00072656de3"
-  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by required production-notice segment 2; the assembled preview includes both. Opening-preview listener review is approved. Full human listening review remains required."
+  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by required production-notice segment 2; the assembled preview includes both. Opening-preview and complete script-aligned human listening reviews are approved."
   spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
   usage_estimate_usd: 2.678194
   validation: "ffmpeg decode check passed; ffprobe duration/codec/sample-rate/channel/bitrate and SHA-256 verified locally; artifact is Git-ignored."
@@ -65,9 +66,8 @@ opening_preview:
   observed_bitrate_bps: 160000
   sha256: "1e9a12f7e53306bb8ae51d9cb845c89164a2c5612bff6f688469b00072656de3"
   included_segments: "1-5: cold open, required production notice, and first exchange"
-  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by the required production notice in segment 2. Human listening review remains required."
+  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by the required production notice in segment 2. The opening preview and complete script-aligned human listening reviews are approved."
   spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
   usage_estimate_usd: 0.187416
   validation: "ffmpeg decode check passed; ffprobe duration/codec/sample-rate/channel/bitrate and SHA-256 verified locally; artifact is Git-ignored."
-required_before_release:
-  - "Stage the immutable audio through the hosting workflow and verify the public deployment."
+required_before_release: []

@@ -57,3 +57,9 @@
 - The listener completed and approved a start-to-finish, script-aligned listen of the v0.2 candidate, including its technical terms, numbers, acronyms, and required front matter.
 - Re-ran the publication-day live source-link and LLM claim-relevance gate at `2026-08-12T16:06:15Z`. All 10 source citations and all 23 mapped claims passed; the retained result is `link-validation.yaml`.
 - Set the approved public-release timestamp to `2026-08-12T16:06:18Z`. The episode is now ready for private audio staging and public-deployment verification through `ppl-postcast-hosting`.
+
+## 2026-08-12 — published and independently verified
+
+- Private staging uploaded the immutable approved MP3 with `audio/mpeg`, 37,151,565 bytes, and SHA-256 `8891067ce38000ce11e2a64fd4257c6a2a5db337c954efc388b1ca958f2ef159`.
+- The hosting release merged to `ppl-postcast-hosting` main as `96fddd566fca7e9434139c68a2e207cfaea37cef`. Its publication workflow completed successfully, including release-contract validation, audio promotion, public-enclosure verification, RSS/site build, and Cloudflare Pages deployment.
+- Independently confirmed the live RSS item, episode page, MP3 `HEAD` response (`audio/mpeg`, expected 37,151,565-byte length, immutable cache policy, byte-range support), and a `206` response for `Range: bytes=0-1`.

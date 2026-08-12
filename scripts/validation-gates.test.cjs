@@ -29,6 +29,27 @@ test("claim mapping rejects source references that do not exist in the claim inv
   assert.match(result.errors.join("\n"), /maps unknown claim missing-claim/);
 });
 
+test("claim mapping rejects duplicate inventory claim identifiers", () => {
+  const result = validateClaimMappings(
+    { sources: [source("aim", ["claim-a"])] },
+    { claims: [
+      { id: "claim-a", statement: "First statement.", sources: ["aim"] },
+      { id: "claim-a", statement: "Different statement.", sources: ["aim"] },
+    ] },
+  );
+  assert.equal(result.valid, false);
+  assert.match(result.errors.join("\n"), /duplicate claim id claim-a/);
+});
+
+test("claim mapping rejects source-side claims that do not declare the source", () => {
+  const result = validateClaimMappings(
+    { sources: [source("aim-a", ["claim-a"]), source("aim-b", [])] },
+    { claims: [{ id: "claim-a", sources: ["aim-b"] }] },
+  );
+  assert.equal(result.valid, false);
+  assert.match(result.errors.join("\n"), /source aim-a supports claim claim-a, but that claim does not declare the source/);
+});
+
 test("per-claim relevance requires an assessment for every expected claim", () => {
   const result = validateClaimAssessments(
     { status: "assessed", assessment: { claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } },

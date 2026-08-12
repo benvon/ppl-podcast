@@ -226,15 +226,23 @@ function publicLinkRecord(link) {
 
 function validateClaimMappings(ledger, claimInventory) {
   const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
-  const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const errors = [];
+  const claimIds = new Set();
+  for (const claim of claimInventory.claims) {
+    if (!claim.id) { errors.push("claim inventory contains a claim without an id"); continue; }
+    if (claimIds.has(claim.id)) errors.push(`claim inventory contains duplicate claim id ${claim.id}`);
+    claimIds.add(claim.id);
+  }
+  const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   for (const source of ledger.sources) {
     for (const claimId of source.supports_claims) {
-      if (!claimsById.has(claimId)) errors.push(`source ${source.id} maps unknown claim ${claimId}`);
+      const claim = claimsById.get(claimId);
+      if (!claim) errors.push(`source ${source.id} maps unknown claim ${claimId}`);
+      else if (!Array.isArray(claim.sources) || !claim.sources.includes(source.id)) errors.push(`source ${source.id} supports claim ${claimId}, but that claim does not declare the source`);
     }
   }
   for (const claim of claimInventory.claims) {
-    if (!claim.id) { errors.push("claim inventory contains a claim without an id"); continue; }
+    if (!claim.id) continue;
     if (!Array.isArray(claim.sources) || !claim.sources.length) {
       errors.push(`claim ${claim.id} has no declared sources`);
       continue;

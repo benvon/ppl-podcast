@@ -1,5 +1,5 @@
 schema_version: 1
-handoff_status: ready_for_private_staging
+handoff_status: published
 publisher_release:
   id: "core-01"
   guid: "pplstudyguide.com:core-01"
@@ -14,8 +14,21 @@ publisher_release:
 release_readiness:
   audio_candidate_approved_for_publication_preparation: true
   publication_schedule_required: true
-  remaining_release_gates:
-    - "Create the local release package and stage it through ppl-postcast-hosting."
+  remaining_release_gates: []
+published_release:
+  publisher_repository: "https://github.com/benvon/ppl-postcast-hosting"
+  release_commit: "96fddd566fca7e9434139c68a2e207cfaea37cef"
+  deployed_at_utc: "2026-08-12T16:13:02Z"
+  episode_page: "https://pplstudyguide.com/episodes/core-01/"
+  enclosure_url: "https://media.pplstudyguide.com/audio/core-01-8891067ce38000ce.mp3"
+  bytes: 37151565
+  sha256: "8891067ce38000ce11e2a64fd4257c6a2a5db337c954efc388b1ca958f2ef159"
+  content_type: "audio/mpeg"
+  public_verification:
+    feed_item: verified
+    episode_page: verified
+    enclosure_head: verified
+    enclosure_byte_range: verified
 provenance:
   publisher_release_input: hosting-release.yaml
   master_script: master-script.md

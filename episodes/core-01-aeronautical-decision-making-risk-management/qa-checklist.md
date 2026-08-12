@@ -21,4 +21,5 @@
 
 - [x] FAA/eCFR links and revisions were re-verified on publication day.
 - [x] Hosting metadata agrees with the current script, show notes, runtime, and audio manifest; the hosting publisher will add the immutable audio checksum during private staging.
+- [x] Public RSS item, episode page, MP3 `HEAD`, and MP3 byte-range response were independently verified after deployment.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

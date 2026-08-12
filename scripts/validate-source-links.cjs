@@ -225,8 +225,14 @@ function publicLinkRecord(link) {
 }
 
 function validateClaimMappings(ledger, claimInventory) {
-  const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
   const errors = [];
+  const sourceIds = new Set();
+  for (const source of ledger.sources) {
+    if (!source.id) { errors.push("source ledger contains a source without an id"); continue; }
+    if (sourceIds.has(source.id)) errors.push(`source ledger contains duplicate source id ${source.id}`);
+    sourceIds.add(source.id);
+  }
+  const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
   const claimIds = new Set();
   for (const claim of claimInventory.claims) {
     if (!claim.id) { errors.push("claim inventory contains a claim without an id"); continue; }
@@ -280,9 +286,16 @@ async function main() {
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
   const claimMapping = validateClaimMappings(ledger, claimInventory);
+  if (!claimMapping.valid) {
+    for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`);
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, results: [] };
+    writeYaml(outputPath, report);
+    console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
+    process.exitCode = 1;
+    return;
+  }
   if (options.dryRun) {
     console.log(`Validated input shape and claim mappings for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
-    if (!claimMapping.valid) { for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`); process.exitCode = 1; }
     return;
   }
   const results = [];
@@ -296,12 +309,27 @@ async function main() {
       if (!entry.citation_target.valid) throw new Error(`Deep-citation validation failed: ${entry.citation_target.errors.join("; ")}`);
       entry.link = await fetchSource(source.url);
       entry.link.valid = entry.link.status >= 200 && entry.link.status < 400;
-      if (options.llm && entry.link.valid && linkedClaims.length) entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, fetched: entry.link });
-      else if (options.llm && !linkedClaims.length) entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
-      else entry.relevance = { status: "not_requested" };
-      entry.claim_assessments = options.llm ? validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id)) : { valid: null, status: "not_requested" };
-    } catch (error) { entry.link = { valid: false, error: error.message }; entry.relevance = { status: "not_assessed", reason: "Link validation failed." }; entry.claim_assessments = options.llm ? validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id)) : { valid: null, status: "not_requested" }; }
+    } catch (error) { entry.link = { valid: false, error: error.message }; }
     results.push(entry);
+  }
+  const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && !entry.missing_claim_ids.length);
+  for (let index = 0; index < results.length; index += 1) {
+    const source = ledger.sources[index]; const entry = results[index];
+    const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
+    if (!options.llm) {
+      entry.relevance = { status: "not_requested" };
+      entry.claim_assessments = { valid: null, status: "not_requested" };
+    } else if (!deterministicValid) {
+      entry.relevance = { status: "not_assessed", reason: "LLM relevance was not requested because deterministic source validation failed." };
+      entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
+    } else if (!linkedClaims.length) {
+      entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
+      entry.claim_assessments = validateClaimAssessments(entry.relevance, []);
+    } else {
+      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, fetched: entry.link }); }
+      catch (error) { entry.relevance = { status: "not_assessed", reason: `LLM relevance failed: ${error.message}` }; }
+      entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
+    }
     console.log(`${source.id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
   }
   const reportResults = results.map((result) => ({ ...result, link: publicLinkRecord(result.link) }));

@@ -140,41 +140,40 @@ function htmlTitle(html) {
   return match ? htmlToText(match[1]).slice(0, 300) : null;
 }
 
-async function fetchSource(sourceUrl) {
+async function fetchSource(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS } = {}) {
   let current = assertSafeUrl(sourceUrl);
   const citedAuthorityHost = canonicalHostname(current);
   const redirects = [];
   for (let count = 0; count <= MAX_REDIRECTS; count += 1) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-    let response;
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
-      response = await fetch(current, { redirect: "manual", signal: controller.signal, headers: { "User-Agent": "ppl-study-podcast-source-validator/1.0" } });
-    } finally { clearTimeout(timer); }
-    if ([301, 302, 303, 307, 308].includes(response.status)) {
-      const location = response.headers.get("location");
-      if (!location) throw new Error(`redirect status ${response.status} without Location header`);
-      const next = new URL(location, current);
-      assertSafeUrl(next.toString());
-      if (canonicalHostname(next) !== citedAuthorityHost) {
-        throw new Error(`redirect left the cited authority domain (${citedAuthorityHost} to ${canonicalHostname(next)})`);
+      const response = await fetchImpl(current, { redirect: "manual", signal: controller.signal, headers: { "User-Agent": "ppl-study-podcast-source-validator/1.0" } });
+      if ([301, 302, 303, 307, 308].includes(response.status)) {
+        const location = response.headers.get("location");
+        if (!location) throw new Error(`redirect status ${response.status} without Location header`);
+        const next = new URL(location, current);
+        assertSafeUrl(next.toString());
+        if (canonicalHostname(next) !== citedAuthorityHost) {
+          throw new Error(`redirect left the cited authority domain (${citedAuthorityHost} to ${canonicalHostname(next)})`);
+        }
+        redirects.push(next.toString()); current = next; continue;
       }
-      redirects.push(next.toString()); current = next; continue;
-    }
-    const { text, truncated } = await readBoundedBody(response);
-    const contentType = (response.headers.get("content-type") || "").split(";")[0].toLowerCase();
-    const isHtml = contentType === "text/html" || contentType === "application/xhtml+xml";
-    const isText = isHtml || contentType.startsWith("text/") || contentType === "application/json";
-    return {
-      requested_url: sourceUrl,
-      final_url: current.toString(),
-      status: response.status,
-      content_type: contentType || null,
-      redirects,
-      title: isHtml ? htmlTitle(text) : null,
-      excerpt: isText ? (isHtml ? htmlToText(text) : text.replace(/\s+/g, " ").trim()).slice(0, 12000) : null,
-      truncated,
-    };
+      const { text, truncated } = await readBoundedBody(response);
+      const contentType = (response.headers.get("content-type") || "").split(";")[0].toLowerCase();
+      const isHtml = contentType === "text/html" || contentType === "application/xhtml+xml";
+      const isText = isHtml || contentType.startsWith("text/") || contentType === "application/json";
+      return {
+        requested_url: sourceUrl,
+        final_url: current.toString(),
+        status: response.status,
+        content_type: contentType || null,
+        redirects,
+        title: isHtml ? htmlTitle(text) : null,
+        excerpt: isText ? (isHtml ? htmlToText(text) : text.replace(/\s+/g, " ").trim()).slice(0, 12000) : null,
+        truncated,
+      };
+    } finally { clearTimeout(timer); }
   }
   throw new Error(`redirect limit (${MAX_REDIRECTS}) exceeded`);
 }
@@ -225,6 +224,45 @@ function publicLinkRecord(link) {
   };
 }
 
+function validateClaimMappings(ledger, claimInventory) {
+  const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
+  const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
+  const errors = [];
+  for (const source of ledger.sources) {
+    for (const claimId of source.supports_claims) {
+      if (!claimsById.has(claimId)) errors.push(`source ${source.id} maps unknown claim ${claimId}`);
+    }
+  }
+  for (const claim of claimInventory.claims) {
+    if (!claim.id) { errors.push("claim inventory contains a claim without an id"); continue; }
+    if (!Array.isArray(claim.sources) || !claim.sources.length) {
+      errors.push(`claim ${claim.id} has no declared sources`);
+      continue;
+    }
+    for (const sourceId of claim.sources) {
+      const source = sourcesById.get(sourceId);
+      if (!source) errors.push(`claim ${claim.id} declares unknown source ${sourceId}`);
+      else if (!source.supports_claims.includes(claim.id)) errors.push(`claim ${claim.id} declares source ${sourceId}, but that source does not support the claim`);
+    }
+    const supportingSources = ledger.sources.filter((source) => source.supports_claims.includes(claim.id));
+    if (!supportingSources.length) errors.push(`claim ${claim.id} is not supported by any source ledger entry`);
+  }
+  return { valid: errors.length === 0, errors };
+}
+
+function validateClaimAssessments(relevance, expectedClaimIds) {
+  if (!relevance || relevance.status !== "assessed") return { valid: false, reason: "LLM relevance was not assessed", missing_assessment_ids: expectedClaimIds, unexpected_assessment_ids: [], duplicate_assessment_ids: [], unsupported_assessment_ids: [] };
+  const assessments = relevance.assessment.claim_assessments || [];
+  const counts = new Map();
+  for (const assessment of assessments) counts.set(assessment.claim_id, (counts.get(assessment.claim_id) || 0) + 1);
+  const expected = new Set(expectedClaimIds);
+  const missing = expectedClaimIds.filter((claimId) => !counts.has(claimId));
+  const unexpected = assessments.map((assessment) => assessment.claim_id).filter((claimId) => !expected.has(claimId));
+  const duplicate = [...counts].filter(([, count]) => count > 1).map(([claimId]) => claimId);
+  const unsupported = assessments.filter((assessment) => expected.has(assessment.claim_id) && ["does_not_support", "insufficient_evidence"].includes(assessment.verdict)).map((assessment) => assessment.claim_id);
+  return { valid: !missing.length && !unexpected.length && !duplicate.length && !unsupported.length, missing_assessment_ids: missing, unexpected_assessment_ids: unexpected, duplicate_assessment_ids: duplicate, unsupported_assessment_ids: unsupported };
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   const sourcesPath = path.resolve(options.sources); const claimsPath = path.resolve(options.claims);
@@ -233,7 +271,12 @@ async function main() {
   const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
-  if (options.dryRun) { console.log(`Validated input shape for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`); return; }
+  const claimMapping = validateClaimMappings(ledger, claimInventory);
+  if (options.dryRun) {
+    console.log(`Validated input shape and claim mappings for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    if (!claimMapping.valid) { for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`); process.exitCode = 1; }
+    return;
+  }
   const results = [];
   for (const source of ledger.sources) {
     const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
@@ -248,16 +291,19 @@ async function main() {
       if (options.llm && entry.link.valid && linkedClaims.length) entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, fetched: entry.link });
       else if (options.llm && !linkedClaims.length) entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
       else entry.relevance = { status: "not_requested" };
-    } catch (error) { entry.link = { valid: false, error: error.message }; entry.relevance = { status: "not_assessed", reason: "Link validation failed." }; }
+      entry.claim_assessments = options.llm ? validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id)) : { valid: null, status: "not_requested" };
+    } catch (error) { entry.link = { valid: false, error: error.message }; entry.relevance = { status: "not_assessed", reason: "Link validation failed." }; entry.claim_assessments = options.llm ? validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id)) : { valid: null, status: "not_requested" }; }
     results.push(entry);
     console.log(`${source.id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
   }
   const reportResults = results.map((result) => ({ ...result, link: publicLinkRecord(result.link) }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), llm_requested: options.llm, llm_model: options.llm ? options.model : null, results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, results: reportResults };
   writeYaml(outputPath, report);
-  const unresolved = results.some((entry) => !entry.citation_target.valid || !entry.link.valid || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)));
+  const unresolved = !claimMapping.valid || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
   if (unresolved) process.exitCode = 1;
 }
 
-main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
+if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
+
+module.exports = { fetchSource, validateClaimMappings, validateClaimAssessments };

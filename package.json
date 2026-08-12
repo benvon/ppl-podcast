@@ -5,7 +5,8 @@
     "precommit:check": "node scripts/precommit-check.cjs",
     "hooks:install": "sh scripts/install-git-hooks.sh",
     "episode:create": "node scripts/create-episode.cjs",
-    "sources:validate": "node scripts/validate-source-links.cjs"
+    "sources:validate": "node scripts/validate-source-links.cjs",
+    "test": "node --test scripts/*.test.cjs"
   },
   "dependencies": {
     "ws": "8.21.3",

@@ -121,7 +121,7 @@ function validateFrontMatter(segments) {
   const opening = segments.filter((segment) => segment.section === "opening").map((segment) => segment.index);
   const notice = segments.filter((segment) => segment.section === "required production notice");
   if (!opening.length || opening[0] !== 1) throw new RenderError("The first spoken segment must be in an 'Opening' section.");
-  if (!notice.length || notice[0].index <= opening[0]) throw new RenderError("A 'Required production notice' section must immediately follow the opening.");
+  if (!notice.length || notice[0].index !== opening.at(-1) + 1) throw new RenderError("A 'Required production notice' section must immediately follow the final opening segment.");
   if (!notice.map((segment) => segment.text).join(" ").includes(REQUIRED_NOTICE)) throw new RenderError("The required production notice is missing or does not match the approved public-distribution text.");
 }
 
@@ -263,4 +263,6 @@ async function main() {
   if (raw["assemble-only"]) assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange);
 }
 
-main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
+if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
+
+module.exports = { REQUIRED_NOTICE, RenderError, validateFrontMatter };

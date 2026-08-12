@@ -1,0 +1,6 @@
+# Rendered audio is stored separately from the versioned production record.
+audio-artifacts/
+node_modules/
+.envrc
+__pycache__/
+*.py[cod]

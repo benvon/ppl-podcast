@@ -1,0 +1,266 @@
+#!/usr/bin/env node
+/**
+ * Render a speaker-labeled PPL podcast script with OpenAI Realtime.
+ *
+ * This renderer deliberately uses one bounded WebSocket session per segment.
+ * That makes long work resumable and permits the Instructor and Learner to use
+ * different voices. It never reads, logs, or writes the API key.
+ */
+
+"use strict";
+
+const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
+const { spawnSync } = require("child_process");
+const WebSocket = require("ws");
+
+const SAMPLE_RATE = 24000;
+const CHANNELS = 1;
+const BITS_PER_SAMPLE = 16;
+const SPEAKER_RE = /^\*\*(INSTRUCTOR|LEARNER):\*\*$/;
+const SECTION_RE = /^#+\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/;
+const IGNORED_PREFIXES = ["#", "[Source:", "[Claim type:", "**Version:", "**Target runtime:", "**Speakers:", "**Production status:"];
+const SAFE_ID_RE = /^[a-z0-9][a-z0-9-]*$/;
+const SAFE_MODEL_RE = /^[a-z0-9][a-z0-9.-]*$/;
+const SAFE_VOICE_RE = /^[a-z][a-z-]*$/;
+const REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
+const DEFAULTS = {
+  model: "gpt-realtime-2.1",
+  instructorVoice: "marin",
+  learnerVoice: "cedar",
+  maxWords: 240,
+  continuityCharacters: 240,
+  timeoutSeconds: 120,
+  leadInMs: 250,
+  continuedTurnMs: 120,
+  speakerChangeMs: 220,
+  sectionChangeMs: 550,
+};
+const STYLE = {
+  INSTRUCTOR: "Calm, engaged, and practical flight instructor. Use natural, purposeful intonation and modest emphasis on safety-critical words and contrasts. Sound alert and conversational, never theatrical. Speak at a steady, unhurried study pace without drawn-out words or post-processing speed changes.",
+  LEARNER: "Prepared adult learner: attentive and naturally curious, with restrained conversational inflection. Sound thoughtful rather than performative. Speak at a steady, unhurried study pace without drawn-out words or post-processing speed changes.",
+};
+
+class RenderError extends Error {}
+
+function usage() {
+  console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n\nRun both modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
+}
+
+function parseArgs(argv) {
+  const values = {};
+  const flags = new Set(["render-only", "assemble-only", "dry-run"]);
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = argv[index];
+    if (!token.startsWith("--")) throw new RenderError(`Unexpected argument: ${token}`);
+    const name = token.slice(2);
+    if (flags.has(name)) { values[name] = true; continue; }
+    const value = argv[index + 1];
+    if (!value || value.startsWith("--")) throw new RenderError(`Missing value for --${name}`);
+    values[name] = value;
+    index += 1;
+  }
+  if (!values.script || !values["audio-dir"] || !values["episode-id"]) throw new RenderError("--script, --audio-dir, and --episode-id are required.");
+  if (Boolean(values["render-only"]) === Boolean(values["assemble-only"]) && !values["dry-run"]) throw new RenderError("Choose exactly one of --render-only or --assemble-only.");
+  if (values.format && !["mp3", "wav"].includes(values.format)) throw new RenderError("--format must be mp3 or wav.");
+  return values;
+}
+
+function positiveInteger(value, label, fallback) {
+  if (value === undefined) return fallback;
+  if (!/^\d+$/.test(value) || Number(value) < 1) throw new RenderError(`${label} must be a positive integer.`);
+  return Number(value);
+}
+
+function sha256(value) { return crypto.createHash("sha256").update(value).digest("hex"); }
+function utcTimestamp() { return new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z"); }
+function ensureDir(directory) { fs.mkdirSync(directory, { recursive: true }); }
+function writeAtomic(target, body) { const temporary = `${target}.${process.pid}.tmp`; fs.writeFileSync(temporary, body); fs.renameSync(temporary, target); }
+function cleanText(value) { return value.replace(/\*\*/g, "").replace(/\s+/g, " ").trim(); }
+function spokenText(value) { return value.replace(/\bAI\b/g, "artificial intelligence"); }
+
+function splitText(text, maxWords) {
+  const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+  const pieces = []; let current = []; let currentWords = 0;
+  for (const sentence of sentences) {
+    const words = sentence.trim().split(/\s+/).filter(Boolean);
+    if (words.length > maxWords) {
+      if (current.length) { pieces.push(current.join(" ")); current = []; currentWords = 0; }
+      for (let start = 0; start < words.length; start += maxWords) pieces.push(words.slice(start, start + maxWords).join(" "));
+    } else if (current.length && currentWords + words.length > maxWords) {
+      pieces.push(current.join(" ")); current = [sentence.trim()]; currentWords = words.length;
+    } else { current.push(sentence.trim()); currentWords += words.length; }
+  }
+  if (current.length) pieces.push(current.join(" "));
+  return pieces;
+}
+
+function parseScript(scriptPath, maxWords) {
+  const lines = fs.readFileSync(scriptPath, "utf8").split(/\r?\n/);
+  const turns = []; let speaker = null; let section = ""; let paragraphs = [];
+  const flush = () => { if (speaker && paragraphs.length) { const text = cleanText(paragraphs.join(" ")); if (text) turns.push({ speaker, text, section }); } paragraphs = []; };
+  for (const raw of lines) {
+    const line = raw.trim();
+    const heading = line.match(SECTION_RE);
+    if (heading) { flush(); section = heading[1].trim().toLowerCase(); continue; }
+    const speakerMatch = line.match(SPEAKER_RE);
+    if (speakerMatch) { flush(); speaker = speakerMatch[1]; continue; }
+    if (!speaker || !line || IGNORED_PREFIXES.some((prefix) => line.startsWith(prefix))) continue;
+    paragraphs.push(line);
+  }
+  flush();
+  if (!turns.length) throw new RenderError("No dialogue found. Use exact **INSTRUCTOR:** and **LEARNER:** labels.");
+  const segments = [];
+  for (const turn of turns) for (const text of splitText(turn.text, maxWords)) segments.push({ index: segments.length + 1, ...turn, text });
+  validateFrontMatter(segments);
+  return segments;
+}
+
+function validateFrontMatter(segments) {
+  const opening = segments.filter((segment) => segment.section === "opening").map((segment) => segment.index);
+  const notice = segments.filter((segment) => segment.section === "required production notice");
+  if (!opening.length || opening[0] !== 1) throw new RenderError("The first spoken segment must be in an 'Opening' section.");
+  if (!notice.length || notice[0].index <= opening[0]) throw new RenderError("A 'Required production notice' section must immediately follow the opening.");
+  if (!notice.map((segment) => segment.text).join(" ").includes(REQUIRED_NOTICE)) throw new RenderError("The required production notice is missing or does not match the approved public-distribution text.");
+}
+
+function contextFor(segments, position, characters) {
+  const context = [];
+  if (position > 0) context.push(`Previous ${segments[position - 1].speaker.toLowerCase()} line (context only; do not speak it): ${segments[position - 1].text.slice(-characters)}`);
+  if (position + 1 < segments.length) context.push(`Next ${segments[position + 1].speaker.toLowerCase()} line (context only; do not speak it): ${segments[position + 1].text.slice(0, characters)}`);
+  return context.join("\n") || "No adjacent dialogue.";
+}
+
+function makeWav(pcm) {
+  const header = Buffer.alloc(44); const byteRate = SAMPLE_RATE * CHANNELS * BITS_PER_SAMPLE / 8; const blockAlign = CHANNELS * BITS_PER_SAMPLE / 8;
+  header.write("RIFF", 0); header.writeUInt32LE(36 + pcm.length, 4); header.write("WAVE", 8); header.write("fmt ", 12); header.writeUInt32LE(16, 16); header.writeUInt16LE(1, 20); header.writeUInt16LE(CHANNELS, 22); header.writeUInt32LE(SAMPLE_RATE, 24); header.writeUInt32LE(byteRate, 28); header.writeUInt16LE(blockAlign, 32); header.writeUInt16LE(BITS_PER_SAMPLE, 34); header.write("data", 36); header.writeUInt32LE(pcm.length, 40);
+  return Buffer.concat([header, pcm]);
+}
+
+function readOwnWav(wavPath) {
+  const buffer = fs.readFileSync(wavPath);
+  if (buffer.length < 44 || buffer.toString("ascii", 0, 4) !== "RIFF" || buffer.toString("ascii", 8, 12) !== "WAVE" || buffer.readUInt16LE(20) !== 1 || buffer.readUInt16LE(22) !== CHANNELS || buffer.readUInt32LE(24) !== SAMPLE_RATE || buffer.readUInt16LE(34) !== BITS_PER_SAMPLE || buffer.toString("ascii", 36, 40) !== "data") throw new RenderError(`Unexpected WAV format: ${wavPath}`);
+  const length = buffer.readUInt32LE(40); if (length !== buffer.length - 44) throw new RenderError(`Invalid WAV data length: ${wavPath}`);
+  return buffer.subarray(44);
+}
+
+function silence(milliseconds) { return Buffer.alloc(Math.round(SAMPLE_RATE * CHANNELS * BITS_PER_SAMPLE / 8 * milliseconds / 1000)); }
+function durationSeconds(pcmBytes) { return pcmBytes / (SAMPLE_RATE * CHANNELS * BITS_PER_SAMPLE / 8); }
+
+function wsRender({ model, voice, instructions, text, timeoutMs }) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) throw new RenderError("OPENAI_API_KEY is required in the environment. Load it with direnv or another secret manager; do not place it in a command argument or project file.");
+  const url = `wss://api.openai.com/v1/realtime?model=${encodeURIComponent(model)}`;
+  return new Promise((resolve, reject) => {
+    let settled = false; let updated = false; const chunks = []; let responseUsage = null;
+    const finish = (error, value) => { if (settled) return; settled = true; clearTimeout(timer); try { socket.close(); } catch (_) {} if (error) reject(error); else resolve(value); };
+    const timer = setTimeout(() => finish(new RenderError(`Realtime segment exceeded ${Math.round(timeoutMs / 1000)} seconds.`)), timeoutMs);
+    const socket = new WebSocket(url, { headers: { Authorization: `Bearer ${apiKey}` } });
+    socket.on("error", () => finish(new RenderError("Realtime WebSocket connection failed.")));
+    socket.on("message", (raw) => {
+      let event;
+      try { event = JSON.parse(raw.toString()); } catch (_) { finish(new RenderError("Realtime service returned an unreadable event.")); return; }
+      if (event.type === "error") { finish(new RenderError(`Realtime request failed: ${event.error && event.error.message ? event.error.message : "unknown service error"}`)); return; }
+      if (event.type === "session.updated" && !updated) {
+        updated = true;
+        socket.send(JSON.stringify({ type: "response.create", response: { conversation: "none", output_modalities: ["audio"], instructions: `${instructions}\n\n${text}`, audio: { output: { format: { type: "audio/pcm", rate: SAMPLE_RATE }, voice } } } }));
+      } else if (event.type === "response.output_audio.delta" && event.delta) {
+        chunks.push(Buffer.from(event.delta, "base64"));
+      } else if (event.type === "response.done") {
+        responseUsage = event.response && event.response.usage ? event.response.usage : null;
+        const pcm = Buffer.concat(chunks);
+        if (!pcm.length) { finish(new RenderError("Realtime response completed without audio.")); return; }
+        finish(null, { pcm, usage: responseUsage });
+      }
+    });
+    socket.on("open", () => socket.send(JSON.stringify({ type: "session.update", session: { type: "realtime", instructions, audio: { output: { format: { type: "audio/pcm", rate: SAMPLE_RATE }, voice } } } })));
+  });
+}
+
+function numeric(object, key) { return object && Number.isFinite(object[key]) ? object[key] : 0; }
+function estimateUsageCost(usages) {
+  const total = { input_text_tokens: 0, input_audio_tokens: 0, cached_input_tokens: 0, output_text_tokens: 0, output_audio_tokens: 0 };
+  for (const usage of usages.filter(Boolean)) {
+    const input = usage.input_token_details || {}; const output = usage.output_token_details || {};
+    total.input_text_tokens += numeric(input, "text_tokens"); total.input_audio_tokens += numeric(input, "audio_tokens"); total.cached_input_tokens += numeric(input, "cached_tokens"); total.output_text_tokens += numeric(output, "text_tokens"); total.output_audio_tokens += numeric(output, "audio_tokens");
+  }
+  const estimated_usd = (total.input_text_tokens * 4 + total.input_audio_tokens * 32 + total.cached_input_tokens * 0.4 + total.output_text_tokens * 24 + total.output_audio_tokens * 64) / 1_000_000;
+  return { rates_usd_per_million_tokens: { input_text: 4, input_audio: 32, cached_input: 0.4, output_text: 24, output_audio: 64 }, tokens: total, estimated_usd: Number(estimated_usd.toFixed(6)), note: "Estimate calculated from the API response usage fields available to this renderer. It excludes token categories not reported in those fields and is not an invoice." };
+}
+
+function settingsFor(options, scriptHash) {
+  return { renderer: "openai-realtime", renderer_version: 3, model: options.model, voices: { instructor: options.instructorVoice, learner: options.learnerVoice }, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset" }, pronunciation_transforms: { "AI": "artificial intelligence" }, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
+}
+
+function establishSettings(workDir, settings) {
+  ensureDir(workDir); const target = path.join(workDir, "render-settings.json"); const next = `${JSON.stringify(settings, null, 2)}\n`;
+  if (fs.existsSync(target) && fs.readFileSync(target, "utf8") !== next) throw new RenderError(`Render settings differ from ${target}. Choose a new --work-dir to avoid mixing incompatible segments.`);
+  if (!fs.existsSync(target)) writeAtomic(target, next);
+}
+
+function partBase(workDir, segment) { return path.join(workDir, `${String(segment.index).padStart(3, "0")}-${segment.speaker.toLowerCase()}`); }
+function segmentInstruction(segment, context) { return `${STYLE[segment.speaker]}\nYou are the ${segment.speaker === "INSTRUCTOR" ? "Instructor" : "Learner"} in a public educational private-pilot study podcast. Read only the line following the marker READ EXACTLY. Do not add a greeting, label, preface, explanation, or closing. Keep technical terminology exact. Vary stress and cadence naturally when recurring technical terms appear; do not turn them into catchphrases.\n\n${context}\n\nREAD EXACTLY:`; }
+
+async function renderSegments(segments, selected, options, workDir) {
+  const allUsage = [];
+  for (const segment of selected) {
+    const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
+    if (fs.existsSync(wavPath) && fs.existsSync(usagePath)) { console.log(`Reusing segment ${segment.index}/${segments.length}: ${segment.speaker}`); allUsage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); continue; }
+    if (fs.existsSync(wavPath) || fs.existsSync(usagePath)) throw new RenderError(`Incomplete existing segment ${segment.index}; remove only its matching files or choose a new work directory.`);
+    const position = segments.findIndex((candidate) => candidate.index === segment.index);
+    console.log(`Rendering segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
+    const result = await wsRender({ model: options.model, voice: segment.speaker === "INSTRUCTOR" ? options.instructorVoice : options.learnerVoice, instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text), timeoutMs: options.timeoutSeconds * 1000 });
+    writeAtomic(wavPath, makeWav(result.pcm));
+    const record = { segment_index: segment.index, speaker: segment.speaker, section: segment.section, source_text_sha256: sha256(segment.text), generated_at_utc: new Date().toISOString(), pcm_bytes: result.pcm.length, duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)), response_usage: result.usage };
+    writeAtomic(usagePath, `${JSON.stringify(record, null, 2)}\n`); allUsage.push(result.usage);
+  }
+  return allUsage;
+}
+
+function pauseBefore(previous, current, spacing) {
+  if (!previous) return spacing.leadInMs;
+  if (previous.section !== current.section) return spacing.sectionChangeMs;
+  if (previous.speaker !== current.speaker) return spacing.speakerChangeMs;
+  return spacing.continuedTurnMs;
+}
+
+function assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange) {
+  const chunks = []; const usage = []; let previous = null;
+  for (const segment of selected) {
+    const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
+    if (!fs.existsSync(wavPath) || !fs.existsSync(usagePath)) throw new RenderError(`Missing rendered segment ${segment.index}. Run --render-only for the selected range first.`);
+    chunks.push(silence(pauseBefore(previous, segment, options.spacing))); chunks.push(readOwnWav(wavPath)); usage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); previous = segment;
+  }
+  const masterPcm = Buffer.concat(chunks); const suffix = explicitRange ? `.preview-${String(selected[0].index).padStart(3, "0")}-${String(selected[selected.length - 1].index).padStart(3, "0")}` : ""; const stem = `${options.episodeId}-${timestamp}${suffix}`; const masterPath = path.join(audioDir, `${stem}.master.wav`); const wavPath = path.join(audioDir, `${stem}.wav`); const mp3Path = path.join(audioDir, `${stem}.mp3`); const manifestPath = path.join(audioDir, `${stem}.render-manifest.json`);
+  ensureDir(audioDir); writeAtomic(masterPath, makeWav(masterPcm));
+  let publishedPath = masterPath;
+  if (options.format === "mp3") {
+    const completed = spawnSync("ffmpeg", ["-y", "-v", "error", "-i", masterPath, "-ar", String(SAMPLE_RATE), "-ac", "1", "-b:a", "160k", mp3Path], { encoding: "utf8" });
+    if (completed.status !== 0) throw new RenderError(`ffmpeg MP3 export failed: ${(completed.stderr || "unknown error").trim()}`);
+    publishedPath = mp3Path;
+  } else { writeAtomic(wavPath, makeWav(masterPcm)); publishedPath = wavPath; }
+  const frontMatter = selected[0].index === 1 && selected.some((segment) => segment.section === "required production notice") ? "included" : "not_in_selected_range";
+  const manifest = { renderer: "openai-realtime", renderer_version: 3, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: { instructor: options.instructorVoice, learner: options.learnerVoice }, pronunciation_transforms: { "AI": "artificial intelligence" }, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: Number(durationSeconds(masterPcm.length).toFixed(3)), sha256: sha256(fs.readFileSync(publishedPath)) }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
+  writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  console.log(`Wrote ${publishedPath}`); console.log(`Wrote ${masterPath}`); console.log(`Wrote ${manifestPath}`); console.log(`Duration: ${manifest.audio.duration_seconds.toFixed(3)} seconds; usage-derived estimate: $${manifest.usage.estimated_usd.toFixed(6)}`);
+}
+
+async function main() {
+  const raw = parseArgs(process.argv.slice(2));
+  const timestamp = raw.timestamp || utcTimestamp(); if (!/^\d{8}T\d{6}Z$/.test(timestamp)) throw new RenderError("--timestamp must use YYYYMMDDTHHMMSSZ.");
+  if (!SAFE_ID_RE.test(raw["episode-id"])) throw new RenderError("--episode-id must be lowercase kebab-case.");
+  const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice;
+  if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
+  const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
+  const options = { scriptPath, episodeId: raw["episode-id"], model, instructorVoice, learnerVoice, maxWords: positiveInteger(raw["max-words-per-segment"], "--max-words-per-segment", DEFAULTS.maxWords), continuityCharacters: DEFAULTS.continuityCharacters, timeoutSeconds: positiveInteger(raw["segment-timeout"], "--segment-timeout", DEFAULTS.timeoutSeconds), format: raw.format || "mp3", spacing: { leadInMs: DEFAULTS.leadInMs, continuedTurnMs: DEFAULTS.continuedTurnMs, speakerChangeMs: DEFAULTS.speakerChangeMs, sectionChangeMs: DEFAULTS.sectionChangeMs } };
+  const segments = parseScript(scriptPath, options.maxWords); const start = positiveInteger(raw["segment-start"], "--segment-start", 1); const end = positiveInteger(raw["segment-end"], "--segment-end", segments.length); if (start > end || end > segments.length) throw new RenderError(`Selected range must fall between 1 and ${segments.length}.`);
+  const selected = segments.slice(start - 1, end); const explicitRange = start !== 1 || end !== segments.length; const workDir = path.resolve(raw["work-dir"] || path.join(audioDir, `${options.episodeId}-realtime-${timestamp}.segments`));
+  console.log(`Validated ${segments.length} segments; selected ${start}-${end}.`); console.log(`Model: ${options.model}; Instructor: ${options.instructorVoice}; Learner: ${options.learnerVoice}; native output speed (unset).`);
+  if (raw["dry-run"]) return;
+  establishSettings(workDir, settingsFor(options, sha256(fs.readFileSync(scriptPath))));
+  if (raw["render-only"]) await renderSegments(segments, selected, options, workDir);
+  if (raw["assemble-only"]) assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange);
+}
+
+main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });

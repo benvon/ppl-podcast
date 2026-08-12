@@ -1,0 +1,60 @@
+name: Source correction
+description: Report a factual, source, or citation issue in an episode.
+title: "[Source correction]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve this study resource. This form is for factual, citation, regulatory, numerical, and aircraft-specific corrections. Do not use it for flight instruction requests, personal flight data, credentials, or private documents.
+  - type: input
+    id: episode
+    attributes:
+      label: Episode
+      description: Give the episode ID and title, if known (for example, `core-01`).
+      placeholder: core-01 — Aeronautical Decision-Making and Risk Management
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Location of the issue
+      description: Provide a claim ID, script heading/timestamp, show-notes row, or other precise location.
+      placeholder: master-script.md, "Preflight decision-making" section
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Correction category
+      options:
+        - Factual explanation
+        - Regulation or legal requirement
+        - FAA guidance or procedure
+        - Numerical value or calculation
+        - Aircraft-specific scope or limitation
+        - Broken, stale, or imprecise citation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: State what is inaccurate, incomplete, or misleading and the correction you recommend.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Authoritative source and precise locator
+      description: Link directly to the relevant section, paragraph, task, or PDF page. Include document number/revision and the exact locator; do not provide a document landing page alone.
+      placeholder: "FAA-S-ACS-6C, Area VII, Task B, Knowledge K1, p. VII-8 — https://example.gov/document.pdf#page=52"
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have not included credentials, personal flight information, or private documents.
+          required: true

@@ -1,0 +1,8 @@
+series: ppl-study-podcast
+title: "PPL Study Podcast"
+audience: "U.S. private-pilot airplane learners"
+artifact_root: "."
+audio_store: null
+voice_profile: "voice-profile.yaml"
+source_verification_policy: "Publication-day verification required before release"
+required_production_notice: "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents."

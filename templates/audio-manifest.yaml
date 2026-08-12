@@ -1,0 +1,8 @@
+episode_id: "{{EPISODE_ID}}"
+status: not_rendered
+current_candidate_render: null
+superseded_candidates: []
+required_before_release:
+  - "Complete human listening QA against master-script.md."
+  - "Re-verify all cited public links on publication day."
+  - "Validate hosting metadata and external audio-store workflow."

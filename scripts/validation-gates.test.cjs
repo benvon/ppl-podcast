@@ -7,7 +7,7 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { fetchSource, validateClaimAssessments, validateClaimMappings } = require("./validate-source-links.cjs");
+const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors } = require("./validate-source-links.cjs");
 const { REQUIRED_NOTICE, validateFrontMatter } = require("./render_episode_realtime.cjs");
 
 function source(id, supportsClaims) {
@@ -91,6 +91,19 @@ test("source fetch timeout remains active while the response body is read", asyn
     return Promise.resolve(new Response(stream, { status: 200, headers: { "content-type": "text/html" } }));
   };
   await assert.rejects(fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl, timeoutMs: 10 }), /AbortError|aborted/);
+});
+
+test("eCFR validation fallback must stay on the official versioner endpoint", () => {
+  const valid = validationTargetErrors({
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105",
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61",
+  });
+  assert.deepEqual(valid, []);
+  const invalid = validationTargetErrors({
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105",
+    validation_url: "https://example.com/current.xml?part=61",
+  });
+  assert.match(invalid.join("\n"), /ecfr\.gov/);
 });
 
 test("production notice must begin immediately after the final opening segment", () => {

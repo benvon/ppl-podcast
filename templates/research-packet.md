@@ -19,6 +19,14 @@
   - Correction:
   - Source:
 
+## Editorial risks to avoid
+
+- Dense opening that explains the whole lesson before the Learner has a reason to ask.
+- Long lists of similar outcomes, conditions, or controls that obscure the decision point.
+- Using an undefined term as a later decision rule or safety backstop.
+- Repeating disclaimer-like regulatory hedges after the required production notice.
+- Repeating generic references to approved aircraft documents instead of defining the relevant POH/AFM boundary once.
+
 ## Open technical questions
 
 - `OPEN TECHNICAL QUESTION:`

@@ -125,6 +125,15 @@ INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode
 - Budget words by section and record the actual word count and rendered duration.
 - Avoid invented radio calls, airport instructions, weather, or aircraft checklist steps unless the scenario clearly labels them as hypothetical and no operational action depends on the fictional detail.
 
+### Editorial voice and pacing
+
+- Teach one idea per sentence whenever a distinction, decision point, or safety consequence matters. Prefer two or three short sentences to a coverage-driven list of parallel nouns or outcomes.
+- Do not front-load a dense overview. Let the Learner’s first plausible question open the explanation, then introduce the regulatory and ACS context where it helps the listener understand why the concept matters.
+- Define a term before using it as a decision backstop. If a term needs fuller treatment later, introduce it briefly and explicitly say that the episode will return to it.
+- State well-supported teaching conclusions directly. The production notice and source tags already establish the episode boundary; do not repeatedly restate that FAA guidance is not a regulation unless the distinction itself is the lesson.
+- Define aircraft-document terminology once at first material use. Use `POH/AFM` thereafter when relevant; do not repeat generic references to “approved documents” unless the boundary is central to the point.
+- When teaching personal minimums, present them as deliberate, individual guardrails. They are reviewed as training and demonstrated proficiency change, outside the pressure of a particular flight; they are not negotiated upward to preserve a trip in progress.
+
 ## 5. Fact-check and research workflow
 
 ### Research packet

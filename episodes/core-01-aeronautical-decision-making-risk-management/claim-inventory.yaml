@@ -1,9 +1,163 @@
 episode_id: "core-01"
 claims:
-  - id: replace-with-stable-claim-id
-    type: faa_guidance
-    statement: "A concise, testable material claim in the planned episode."
-    sources: [replace-with-stable-source-id]
+  - id: private-pilot-adm-knowledge
+    type: regulation
+    statement: "Aeronautical decision making and judgment is an aeronautical knowledge area for a private pilot certificate."
+    sources: [cfr-61-105]
+    risk: regulatory
+    script_sections: ["Why this belongs in private-pilot study"]
+    status: fact_checked_draft
+  - id: planning-alternatives
+    type: regulation
+    statement: "Private-pilot aeronautical knowledge includes planning alternatives when a planned flight cannot be completed or is delayed."
+    sources: [cfr-61-105]
+    risk: regulatory
+    script_sections: ["A decision is more than go or no-go"]
+    status: fact_checked_draft
+  - id: acs-adm-human-factors
+    type: faa_standard
+    statement: "The private-airplane ACS includes ADM, with CRM or SRM as appropriate, in Human Factors."
+    sources: [acs-human-factors]
+    risk: checkride
+    script_sections: ["Why this belongs in private-pilot study"]
+    status: fact_checked_draft
+  - id: acs-bias-and-distractions
+    type: faa_standard
+    statement: "The ACS risk-management items include hazardous attitudes, distractions and task prioritization, loss of situational awareness, confirmation bias, and expectation bias."
+    sources: [acs-human-factors]
     risk: safety_critical
-    script_sections: []
-    status: draft
+    script_sections: ["The decision-maker is part of the weather"]
+    status: fact_checked_draft
+  - id: acs-self-assessment
+    type: faa_standard
+    statement: "The ACS requires self-assessment including fitness for flight and personal minimums in a flight or evaluator scenario."
+    sources: [acs-human-factors]
+    risk: safety_critical
+    script_sections: ["Personal minimums are not a substitute for regulations"]
+    status: fact_checked_draft
+  - id: acs-pave-categories
+    type: faa_standard
+    statement: "The ACS Preflight Assessment risk elements cover pilot, aircraft, environment, and external pressures."
+    sources: [acs-preflight-assessment]
+    risk: checkride
+    script_sections: ["A practical scan: PAVE"]
+    status: fact_checked_draft
+  - id: acs-continuous-assessment
+    type: faa_standard
+    statement: "The ACS calls for pilot self-assessment and continuing assessment of the environment for safe flight."
+    sources: [acs-preflight-assessment]
+    risk: safety_critical
+    script_sections: ["ADM continues after the engine starts"]
+    status: fact_checked_draft
+  - id: acs-scenario-application
+    type: faa_standard
+    statement: "The ACS directs evaluators to assess ADM with task risk-management elements and scenarios that combine tasks."
+    sources: [acs-adm-throughout]
+    risk: checkride
+    script_sections: ["What application sounds like on a practical test"]
+    status: fact_checked_draft
+  - id: acs-adm-consequence
+    type: faa_standard
+    statement: "The ACS says failure to use ADM, including SRM or CRM as applicable, in any task results in that task being noted as failed."
+    sources: [acs-adm-throughout]
+    risk: checkride
+    script_sections: ["What application sounds like on a practical test"]
+    status: fact_checked_draft
+  - id: adm-definition
+    type: faa_guidance
+    statement: "The PHAK describes ADM as a systematic approach pilots use to determine the best course of action from the circumstances and latest available information."
+    sources: [phak-adm-definition]
+    risk: foundational
+    script_sections: ["What ADM is"]
+    status: fact_checked_draft
+  - id: risk-management-purpose
+    type: faa_guidance
+    statement: "The goal of risk management is to proactively identify safety-related hazards and mitigate associated risks."
+    sources: [phak-risk-srm]
+    risk: foundational
+    script_sections: ["Hazard, risk, and control are different things"]
+    status: fact_checked_draft
+  - id: hazard-risk-distinction
+    type: faa_guidance
+    statement: "A hazard is a condition, event, or circumstance; risk is the pilot's assessment of its potential impact."
+    sources: [phak-risk-srm]
+    risk: foundational
+    script_sections: ["Hazard, risk, and control are different things"]
+    status: fact_checked_draft
+  - id: srm-resources
+    type: faa_guidance
+    statement: "SRM includes managing all available onboard and outside resources before and during flight."
+    sources: [phak-risk-srm]
+    risk: safety_critical
+    script_sections: ["Use resources without outsourcing command"]
+    status: fact_checked_draft
+  - id: hazardous-attitudes
+    type: faa_guidance
+    statement: "The PHAK identifies five hazardous attitudes: anti-authority, impulsivity, invulnerability, macho, and resignation."
+    sources: [phak-hazardous-attitudes]
+    risk: safety_critical
+    script_sections: ["The decision-maker is part of the weather"]
+    status: fact_checked_draft
+  - id: hazardous-attitude-antidotes
+    type: faa_guidance
+    statement: "Recognizing and labeling a hazardous thought, then applying its antidote, is an FAA-described way to redirect it toward correct action."
+    sources: [phak-hazardous-attitudes]
+    risk: safety_critical
+    script_sections: ["The decision-maker is part of the weather"]
+    status: fact_checked_draft
+  - id: pave-categories
+    type: faa_guidance
+    statement: "PAVE organizes preflight hazards as Pilot, Aircraft, enVironment, and External pressures."
+    sources: [phak-pave-personal-minimums]
+    risk: foundational
+    script_sections: ["A practical scan: PAVE"]
+    status: fact_checked_draft
+  - id: personal-minimums-not-regulatory
+    type: faa_guidance
+    statement: "Personal minimums are individual limits based on current experience and proficiency, not a substitute for regulatory or aircraft limitations."
+    sources: [phak-pave-personal-minimums]
+    risk: safety_critical
+    script_sections: ["Personal minimums are not a substitute for regulations"]
+    status: fact_checked_draft
+  - id: three-p-model
+    type: faa_guidance
+    statement: "The 3P model is Perceive the circumstances, Process their safety impact, and Perform the best course of action."
+    sources: [phak-3p-care-team]
+    risk: foundational
+    script_sections: ["A practical loop: 3P"]
+    status: fact_checked_draft
+  - id: care-team-controls
+    type: faa_guidance
+    statement: "The PHAK connects 3P with CARE for processing hazards and TEAM for choosing risk controls."
+    sources: [phak-3p-care-team]
+    risk: foundational
+    script_sections: ["A practical loop: 3P"]
+    status: fact_checked_draft
+  - id: continuous-reassessment
+    type: faa_guidance
+    statement: "The PHAK describes 3P as a continuous decision loop, not a one-time preflight exercise."
+    sources: [phak-personal-minimums-followthrough]
+    risk: safety_critical
+    script_sections: ["ADM continues after the engine starts"]
+    status: fact_checked_draft
+  - id: personal-minimums-ahead-of-time
+    type: faa_guidance
+    statement: "The PHAK recommends developing personal minimums away from the pressure of a particular trip."
+    sources: [phak-personal-minimums-followthrough]
+    risk: safety_critical
+    script_sections: ["Personal minimums are not a substitute for regulations"]
+    status: fact_checked_draft
+  - id: personal-minimums-evolve-with-proficiency
+    type: teaching_explanation
+    statement: "Because personal minimums are tied to current experience and proficiency, they should be reviewed deliberately as training and demonstrated proficiency change, rather than expanded under pressure during a particular flight."
+    sources: [phak-pave-personal-minimums]
+    risk: safety_critical
+    script_sections: ["Personal minimums are not a substitute for regulations", "Recap"]
+    status: fact_checked_draft
+  - id: delay-divert-as-decision
+    type: faa_guidance
+    statement: "Personal minimums can support go/no-go and continue/discontinue decisions, including delay or diversion."
+    sources: [phak-personal-minimums-followthrough]
+    risk: safety_critical
+    script_sections: ["A decision is more than go or no-go"]
+    status: fact_checked_draft

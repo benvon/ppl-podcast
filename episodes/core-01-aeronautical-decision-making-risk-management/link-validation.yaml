@@ -1,0 +1,676 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-12T16:06:15.498Z
+sources_file: episodes/core-01-aeronautical-decision-making-risk-management/sources.yaml
+claims_file: episodes/core-01-aeronautical-decision-making-risk-management/claim-inventory.yaml
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+results:
+  - source_id: cfr-61-105
+    title: 14 CFR 61.105 — Aeronautical knowledge
+    checked_at_utc: 2026-08-12T16:05:37.210Z
+    linked_claim_ids:
+      - private-pilot-adm-knowledge
+      - planning-alternatives
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61
+      status: 200
+      content_type: application/xml
+      redirects: []
+      title: null
+      truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly addresses both cited provisions: §61.105(b)(12)
+          on aeronautical decision making and judgment, and §61.105(b)(13)(ii)
+          on planning alternatives for an uncompleted or delayed flight. The
+          locator is substantively matched, not merely the broader document."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt explicitly identifies and summarizes §61.105(b)(12) and
+            §61.105(b)(13)(ii), which are the cited locator provisions.
+        claim_assessments:
+          - claim_id: private-pilot-adm-knowledge
+            verdict: supports
+            rationale: The excerpt states that §61.105(b)(12) lists aeronautical decision
+              making and judgment as a required private-pilot aeronautical
+              knowledge area.
+          - claim_id: planning-alternatives
+            verdict: supports
+            rationale: The excerpt states that §61.105(b)(13)(ii) requires knowledge of
+              planning alternatives when a planned flight cannot be completed or
+              delays occur.
+      usage:
+        input_tokens: 499
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 233
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 732
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-human-factors
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-12T16:05:38.660Z
+    linked_claim_ids:
+      - acs-adm-human-factors
+      - acs-bias-and-distractions
+      - acs-self-assessment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly describes the substantive content attributed to
+          Area I, Task H: ADM; CRM or SRM as appropriate; specified
+          human-factor/risk-management topics; and self-assessment covering
+          fitness for flight and personal minimums. It therefore matches the
+          cited locator at the task-content level, not merely at the document
+          level."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt explicitly identifies 'Task H' and summarizes the ADM,
+            risk-management, and skill elements that correspond to the cited
+            PA.I.H knowledge, risk-management, and skill references.
+        claim_assessments:
+          - claim_id: acs-adm-human-factors
+            verdict: supports
+            rationale: The excerpt states that Task H requires ADM, including CRM or SRM as
+              appropriate.
+          - claim_id: acs-bias-and-distractions
+            verdict: partially_supports
+            rationale: The excerpt expressly lists hazardous attitudes, distractions, loss
+              of situational awareness, confirmation bias, and expectation bias.
+              It does not mention task prioritization.
+          - claim_id: acs-self-assessment
+            verdict: partially_supports
+            rationale: The excerpt states that the applicant must perform self-assessment,
+              including fitness for flight and personal minimums. It does not
+              establish that this is specifically 'in a flight or evaluator
+              scenario.'
+      usage:
+        input_tokens: 540
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 287
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 827
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-preflight-assessment
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-12T16:05:39.016Z
+    linked_claim_ids:
+      - acs-pave-categories
+      - acs-continuous-assessment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly describes the cited ACS Task A content and
+          explicitly states both the PAVE-style risk categories and the required
+          self/environmental assessment skills. The locator is substantively
+          matched because the excerpt identifies Task A and the cited knowledge,
+          risk-management, and skill subject matter.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt specifically addresses Area II, Task A Preflight
+            Assessment and covers the subject matter attributed to
+            PA.II.A.K1/K4, PA.II.A.R1-R4, and PA.II.A.S3-S4.
+        claim_assessments:
+          - claim_id: acs-pave-categories
+            verdict: supports
+            rationale: The excerpt expressly says risk-management elements require
+              identifying, assessing, and mitigating risk associated with the
+              pilot, aircraft, environment, and external pressures.
+          - claim_id: acs-continuous-assessment
+            verdict: supports
+            rationale: The excerpt expressly states that the skill elements include
+              self-assessment and continuing to assess the environment for safe
+              flight.
+      usage:
+        input_tokens: 500
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 230
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 730
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-adm-throughout
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-12T16:05:39.211Z
+    linked_claim_ids:
+      - acs-scenario-application
+      - acs-adm-consequence
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=84
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=84
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=84
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=84
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt substantively matches the cited Appendix 2 subject matter
+          and directly states both the evaluator ADM-assessment requirement and
+          the consequence for failure to use ADM. It is not merely a
+          document-level match.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt addresses Appendix 2 material on ADM, risk management,
+            CRM, and SRM and contains the specific practical-test evaluation
+            language attributed to the locator.
+        claim_assessments:
+          - claim_id: acs-scenario-application
+            verdict: supports
+            rationale: The excerpt states that the evaluator must assess sound ADM using
+              'Task risk-management elements and scenarios that combine Tasks.'
+          - claim_id: acs-adm-consequence
+            verdict: supports
+            rationale: The excerpt expressly says that failure to use ADM, including SRM or
+              CRM as applicable, in any Task results in that Task being noted as
+              failed.
+      usage:
+        input_tokens: 508
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 201
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 709
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-adm-definition
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical
+      Decision-Making"
+    checked_at_utc: 2026-08-12T16:05:39.469Z
+    linked_claim_ids:
+      - adm-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=1
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=1
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that the PHAK defines aeronautical
+          decision-making as a systematic approach to the mental process pilots
+          use to determine the best course of action based on the circumstances
+          and latest available information.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is presented as coming from the cited PHAK Chapter 2
+            introduction on page 2-1 and contains the relevant ADM definition,
+            substantively matching the locator.
+        claim_assessments:
+          - claim_id: adm-definition
+            verdict: supports
+            rationale: "The claim accurately paraphrases the excerpt’s definition: ADM is a
+              systematic approach pilots use to determine the best course of
+              action using the circumstances and latest available information."
+      usage:
+        input_tokens: 444
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 165
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 609
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-risk-srm
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical
+      Decision-Making"
+    checked_at_utc: 2026-08-12T16:05:39.540Z
+    linked_claim_ids:
+      - risk-management-purpose
+      - hazard-risk-distinction
+      - srm-resources
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=3
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=3
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly addresses the cited Chapter 2 Risk Management
+          and SRM material and contains the stated definitions and distinctions.
+          The locator is substantively matched by the excerpt, not merely by
+          document title or chapter.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt specifically covers risk management, SRM, and the
+            hazard-versus-risk distinction identified in the locator.
+        claim_assessments:
+          - claim_id: risk-management-purpose
+            verdict: supports
+            rationale: The excerpt states that risk management is proactively identifying
+              safety-related hazards and mitigating associated risks.
+          - claim_id: hazard-risk-distinction
+            verdict: supports
+            rationale: The excerpt defines a hazard as a condition, event, or circumstance
+              and risk as the pilot's assessment of its potential impact.
+          - claim_id: srm-resources
+            verdict: supports
+            rationale: The excerpt defines SRM as managing all available on-board and
+              outside resources before and during flight for a successful
+              outcome.
+      usage:
+        input_tokens: 544
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 221
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 765
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-hazardous-attitudes
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical
+      Decision-Making"
+    checked_at_utc: 2026-08-12T16:05:39.602Z
+    linked_claim_ids:
+      - hazardous-attitudes
+      - hazardous-attitude-antidotes
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=5
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=5
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly addresses the cited topic, "Hazardous Attitudes
+          and Antidotes," and states both the five identified hazardous
+          attitudes and the process of recognizing, labeling, and using an
+          antidote to redirect thought toward correct action.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt substantively matches the cited locator because it
+            specifically covers hazardous attitudes and their antidotes, rather
+            than merely being from the same handbook or chapter.
+        claim_assessments:
+          - claim_id: hazardous-attitudes
+            verdict: supports
+            rationale: The excerpt explicitly lists anti-authority, impulsivity,
+              invulnerability, macho, and resignation as the hazardous attitudes
+              identified by the PHAK.
+          - claim_id: hazardous-attitude-antidotes
+            verdict: supports
+            rationale: The excerpt explicitly says that recognizing and labeling a hazardous
+              thought and using the corresponding antidote helps redirect it
+              toward correct action.
+      usage:
+        input_tokens: 505
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 211
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 716
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-pave-personal-minimums
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical
+      Decision-Making"
+    checked_at_utc: 2026-08-12T16:05:39.669Z
+    linked_claim_ids:
+      - pave-categories
+      - personal-minimums-not-regulatory
+      - personal-minimums-evolve-with-proficiency
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=8
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt substantively matches the cited locator: it explicitly
+          discusses the PAVE checklist and personal minimums within the cited
+          PHAK Chapter 2 section. It directly states the four PAVE categories
+          and describes personal minimums as pilot-specific limits based on
+          current experience and proficiency, while distinguishing legal
+          compliance from what is smart or safe."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt addresses both subjects named by the locator—“The PAVE
+            Checklist” and personal minimums—in the cited Chapter 2
+            risk-mitigation context.
+        claim_assessments:
+          - claim_id: pave-categories
+            verdict: supports
+            rationale: The excerpt expressly defines PAVE as Pilot in Command, Aircraft,
+              enVironment, and External pressures.
+          - claim_id: personal-minimums-not-regulatory
+            verdict: partially_supports
+            rationale: The excerpt supports that personal minimums are individual limits
+              tied to current experience and proficiency and distinguishes legal
+              from smart or safe. However, it does not expressly state that
+              personal minimums are not a substitute for regulatory or aircraft
+              limitations.
+          - claim_id: personal-minimums-evolve-with-proficiency
+            verdict: partially_supports
+            rationale: The excerpt supports the premise that personal minimums depend on
+              current experience and proficiency. It does not state that they
+              should be deliberately reviewed as training changes or that they
+              should not be expanded under pressure during a particular flight.
+      usage:
+        input_tokens: 560
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 315
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 875
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-3p-care-team
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical
+      Decision-Making"
+    checked_at_utc: 2026-08-12T16:05:39.762Z
+    linked_claim_ids:
+      - three-p-model
+      - care-team-controls
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=15
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt substantively addresses the cited 3P model and its
+          connection to PAVE, CARE, and TEAM, matching the locator’s stated
+          subject matter rather than merely matching the document or chapter.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator identifies the 3P model and the PAVE/CARE/TEAM
+            framework, and the excerpt directly discusses those same elements.
+        claim_assessments:
+          - claim_id: three-p-model
+            verdict: supports
+            rationale: The excerpt explicitly defines the 3P model as perceiving the
+              circumstances, processing their safety impact, and performing the
+              best course of action.
+          - claim_id: care-team-controls
+            verdict: partially_supports
+            rationale: The excerpt explicitly links 3P with CARE and TEAM and describes TEAM
+              as risk controls. However, it describes CARE as consequences,
+              alternatives, reality, and external factors; it does not
+              explicitly state that CARE is used specifically 'for processing
+              hazards.'
+      usage:
+        input_tokens: 524
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 437
+        output_tokens_details:
+          reasoning_tokens: 214
+        total_tokens: 961
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-personal-minimums-followthrough
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical
+      Decision-Making"
+    checked_at_utc: 2026-08-12T16:05:39.901Z
+    linked_claim_ids:
+      - personal-minimums-ahead-of-time
+      - continuous-reassessment
+      - delay-divert-as-decision
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly addresses both elements named in the locator:
+          3P follow-through as a continuous loop and personal minimums developed
+          outside the pressure of a specific trip. It also explicitly states
+          their role in go/no-go and continue/discontinue decisions."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt substantively matches the cited Chapter 2 locator on 3P
+            follow-through and personal minimums.
+        claim_assessments:
+          - claim_id: personal-minimums-ahead-of-time
+            verdict: supports
+            rationale: The excerpt explicitly recommends developing personal minimums in a
+              non-flying environment, without pressure to make a particular
+              trip.
+          - claim_id: continuous-reassessment
+            verdict: supports
+            rationale: The excerpt explicitly characterizes the 3P decision process as a
+              continuous loop, supporting that it is not merely a one-time
+              preflight exercise.
+          - claim_id: delay-divert-as-decision
+            verdict: partially_supports
+            rationale: The excerpt explicitly supports use of personal minimums for go/no-go
+              and continue/discontinue decisions. It does not specifically
+              mention delay or diversion, though those may be related concepts.
+      usage:
+        input_tokens: 534
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 259
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 793
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

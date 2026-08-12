@@ -29,7 +29,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 **INSTRUCTOR:**
 
-[Clarify the distinction among regulation, FAA guidance, aircraft-specific information, and teaching explanation when relevant.]
+[Clarify the distinction among regulation, FAA guidance, aircraft-specific information, and teaching explanation only when it advances the lesson. Use short, varied sentences rather than coverage-driven lists. Define terms before relying on them later.]
 
 [Source: sources.yaml#replace-with-stable-source-id]
 [Claim type: FAA guidance]

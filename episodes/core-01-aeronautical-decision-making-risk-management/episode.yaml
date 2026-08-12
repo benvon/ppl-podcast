@@ -3,42 +3,56 @@ series: ppl-study-podcast
 title: "Aeronautical Decision-Making and Risk Management"
 slug: "aeronautical-decision-making-risk-management"
 track: "core"
-status: planned
-version: 0.1.0
-published_at: null
-runtime_target_minutes: null
-runtime_actual_seconds: null
-word_count: null
+status: ready_for_hosting_stage
+version: 0.2.0
+published_at: "2026-08-12T16:06:18Z"
+runtime_target_minutes: 35
+runtime_actual_seconds: 1857.49
+word_count: 4901
 speakers: [instructor, learner]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
-acs_references: []
-phak_references: []
+acs_references:
+  - PA.I.H.K4
+  - PA.I.H.R1-R4
+  - PA.I.H.S2
+  - PA.II.A.K1
+  - PA.II.A.R1-R4
+  - PA.II.A.S3-S4
+  - "Appendix 2: Aeronautical Decision-Making, Risk Management, CRM, and SRM"
+phak_references:
+  - "FAA-H-8083-25C, Chapter 2: Aeronautical Decision-Making"
 aim_references: []
 advisory_circular_references: []
-cfr_references: []
-learning_objectives: []
-trouble_spots: []
+cfr_references:
+  - "14 CFR 61.105(b)(12)-(13)"
+learning_objectives:
+  - "Distinguish a hazard from the risk the pilot assigns to it."
+  - "Use PAVE and 3P as structured ways to identify, assess, control, and reassess risk."
+  - "Explain why personal minimums are individual planning guardrails, not regulations or aircraft limitations."
+  - "Recognize external pressure, hazardous attitudes, and bias before they drive a decision."
+  - "Describe how SRM helps a single pilot use resources while retaining command responsibility."
+trouble_spots:
+  - "Treating legal as synonymous with safe or appropriate for the pilot's present proficiency"
+  - "Using a checklist or numerical score as a substitute for judgment"
+  - "Making a one-time preflight decision and then failing to reassess"
+  - "Ignoring external pressure because it is not a weather or aircraft fact"
 source_verification:
-  status: not_started
-  verified_at_utc: null
+  status: publication_day_live_validated
+  verified_at_utc: "2026-08-12T16:06:15Z"
   link_validation: link-validation.yaml
   relevance_review: required_before_public_release
 review:
-  editorial_status: not_started
+  editorial_status: script_approved_v0_2_full_script_aligned_listen_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Draft and fact-check all material claims against the source ledger"
-  - "Run source-link validation with LLM relevance review and resolve failures"
-  - "Complete human listening QA, including the front-matter check"
-  - "Re-verify every public source and link on publication day"
-  - "Validate hosting metadata and external audio-store workflow"
+  - "Stage the local release package through the hosting workflow and verify the public deployment."
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: approved_for_hosting_stage
 hosting:
   metadata: hosting-metadata.yaml
 public_notes: show-notes.md

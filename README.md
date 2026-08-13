@@ -10,7 +10,8 @@ each episode.
 The project teaches the private-pilot knowledge standard with the FAA Pilot's
 Handbook of Aeronautical Knowledge as its teaching spine, the Airman
 Certification Standards as its coverage map, and current regulations and FAA
-guidance where they apply. Episodes use an Instructor and Learner dialogue to
+guidance where they apply. Episodes use Instructor and Learner dialogue, with
+an Announcer for the podcast introduction, section transitions, and outro, to
 explain material in original language.
 
 It is a study resource, not flight instruction, a substitute for a CFI, legal
@@ -107,11 +108,20 @@ acceptable attribution for a material claim.
 The retained validation record contains URLs, HTTP metadata, an excerpt digest,
 and the structured relevance result—not a copy of the fetched source text.
 
+For an FAA PDF that is occasionally blocked by an access interstitial, a source
+ledger may declare an alternate FAA-hosted `programmatic_url`. The validator
+only accepts that fallback when the ledger also supplies an FAA page that
+explicitly links to it, the exact link text, and a reviewed SHA-256 digest.
+When the listener-facing link is available, its bytes must match the alternate;
+when it is blocked, the alternate remains usable only if its digest still
+matches the reviewed value. A changed digest is a source-review failure, not a
+silent substitution.
+
 ## Render audio
 
 See [scripts/README.md](scripts/README.md). Audio stays in the ignored
 `audio-artifacts/` directory. The default renderer uses OpenAI Realtime with
-the documented two-voice profile; it does not publish or distribute audio.
+the documented three-voice profile; it does not publish or distribute audio.
 
 ## Contributing corrections
 

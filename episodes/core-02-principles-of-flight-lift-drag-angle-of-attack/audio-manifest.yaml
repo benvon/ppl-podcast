@@ -1,0 +1,43 @@
+episode_id: "core-02"
+status: candidate_rendered_not_release_ready
+reason: >-
+  Script version 0.2.0 has a technically validated Realtime candidate render
+  using the approved three-voice profile. It remains blocked from public
+  release pending publication-day source verification and the remaining hosting
+  release gates.
+current_candidate_render:
+  script_version: 0.2.0
+  rendered_at_utc: "2026-08-13T18:35:13Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 5
+  model: gpt-realtime-2.1
+  voice_profile: "../../series/voice-profile.yaml"
+  voice_profile_version: 5
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: "audio-artifacts/core-02-20260813T182631Z.mp3"
+  lossless_master: "audio-artifacts/core-02-20260813T182631Z.master.wav"
+  render_manifest: "audio-artifacts/core-02-20260813T182631Z.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-02-20260813T182631Z.audio-quality.json"
+  segment_work_dir: "audio-artifacts/core-02-realtime-20260813T182631Z.segments"
+  duration_seconds: 2008.97
+  duration_display: "33:28"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  observed_bitrate_bps: 160000
+  sha256: "411a92b54515d1f6348cfec8036007ae01b7153f6bee2abe8836ed69f09cd06b"
+  front_matter_check: "audio-artifacts/core-02-20260813T160000Z.preview-001-006.mp3"
+  front_matter_duration_seconds: 123.19
+  front_matter_sha256: "e3afae44eb427b76d061f86a3484f53cdaeaa2328f71cc54345556336d4a6b70"
+  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by required production-notice segment 2; the assembled preview contains the cold open, notice, podcast introduction, and first lesson section. Script-aligned human listening QA was accepted and is recorded in production-log.md."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
+  usage_estimate_usd: 2.908905
+  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 103 stitch boundaries with no discontinuity warnings, and no clipped samples. Artifact is Git-ignored; script-aligned human listening QA was accepted and is recorded in production-log.md."
+superseded_candidates: []
+required_before_release:
+  - "Re-verify all cited public links on publication day."
+  - "Validate hosting metadata and external audio-store workflow."

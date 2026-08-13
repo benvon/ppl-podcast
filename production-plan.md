@@ -7,7 +7,7 @@
 
 ## 1. Product definition and boundaries
 
-This is a two-voice study series organized around private-pilot knowledge domains and the Private Pilot Airplane ACS. The Pilot's Handbook of Aeronautical Knowledge (PHAK) is the main teaching spine; the ACS determines coverage and emphasis; current regulations and FAA operational guidance control when they apply.
+This is a three-voice study series organized around private-pilot knowledge domains and the Private Pilot Airplane ACS. The Instructor and Learner carry the lesson; an Announcer provides the podcast introduction, section transitions, and outro. The Pilot's Handbook of Aeronautical Knowledge (PHAK) is the main teaching spine; the ACS determines coverage and emphasis; current regulations and FAA operational guidance control when they apply.
 
 **Artifact home:** Repository root. Keep production materials here. Rendered masters and release derivatives go in `audio-artifacts/`, which is deliberately Git-ignored; their checksums, duration, and repository-relative paths are recorded in each episode's metadata.
 
@@ -80,6 +80,8 @@ Never use mnemonic shorthand (for example, ARROW or AV1ATE) as if it were regula
 
 **Learner** represents a prepared student: asks the next reasonable question, paraphrases a concept, surfaces a common misconception, or connects it to a scenario. The learner is never artificially helpless and never used for jokes, personality bits, or recurring gimmicks.
 
+**Announcer** delivers the standard series introduction, concise section transitions, and the outro. The delivery is upbeat, clear, and warm—never clownish, theatrical, or promotional.
+
 Dialogue must earn its place. Remove an exchange if the same information would be clearer as a single Instructor sentence. When the Learner voices an incorrect belief, correct it in the next line and restate the correct rule before moving on.
 
 ### Standard 30-45 minute template
@@ -124,6 +126,7 @@ INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode
 - Maintain a clean `narration.md` derivative with source tags removed only after the tagged master is approved.
 - Budget words by section and record the actual word count and rendered duration.
 - Avoid invented radio calls, airport instructions, weather, or aircraft checklist steps unless the scenario clearly labels them as hypothetical and no operational action depends on the fictional detail.
+- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue, then complete its listener pass before approving a script draft.
 
 ### Editorial voice and pacing
 
@@ -171,6 +174,8 @@ On the planned publication day, independently re-open every external link, confi
 
 Run `scripts/validate-source-links.cjs` against each episode's `sources.yaml` and `claim-inventory.yaml`. The deterministic pass enforces HTTPS, a specific locator, and a deep citation target; follows a bounded redirect chain; records the final URL/status/content type/title; and fails closed for unreachable or malformed links. It also requires every claim to name valid ledger sources and every named source to reciprocally list that claim in `supports_claims`. PDFs require `#page=N` and a locator that names the relevant page and section/task. FAA HTML sources require a specific section endpoint or anchor, and eCFR sources require the precise section URL. Run it with `--llm --require-llm` before a public candidate release to obtain a structured advisory assessment of whether each fetched source excerpt supports both the cited locator and every individual claim mapped to it.
 
+If an FAA PDF is known to encounter an access interstitial, the ledger may add a distinct FAA-hosted `programmatic_url` and a `programmatic_attestation` record. That record must name an FAA human-facing page that explicitly links to the alternate, the exact link text, and a reviewed SHA-256 digest. The validator verifies the FAA page link and digest on every run; when the listener-facing PDF is reachable, it also requires the two copies to have identical bytes. If the listener-facing endpoint is blocked, the alternate can pass only through that FAA-page-and-digest attestation. Any digest change fails closed for release review.
+
 The LLM relevance check is not an aviation authority and cannot cure a bad source, a stale revision, or an unsupported claim. Resolve every `does_not_support`, `insufficient_evidence`, missing-claim, missing per-claim assessment, mismatched claim/source mapping, and non-text-source finding. For a PDF or another source from which no safe text is extracted, add a short, reviewed `relevance_excerpt` to the source ledger or perform a documented manual review.
 
 ### Source ledger schema
@@ -191,6 +196,21 @@ sources:
     verified_at_utc: "2026-08-11T18:00:00Z"
     link_status: 200
     supports_claims: ["stall-relations", "scenario-bank-turn"]
+  - id: phak-chapter-example
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 4, Air Is a Fluid, p. 4-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight"
+      link_text: "06_phak_ch4_0.pdf"
+      sha256: "reviewed SHA-256 digest"
+    revision: "FAA-H-8083-25C, 2023"
+    verified_at_utc: "2026-08-11T18:00:00Z"
+    link_status: 200
+    supports_claims: ["air-is-fluid"]
   - id: cfr-91-103
     authority: regulation
     title: "14 CFR 91.103 - Preflight action"
@@ -253,7 +273,7 @@ Rules:
 
 The approved `master-script.md` is the source of truth. TTS inputs are derived from `narration.md`; never edit words directly in the audio tool without applying the same change to the script and incrementing the version.
 
-The default reusable renderer is `scripts/render_episode_realtime.cjs`. It uses `gpt-realtime-2.1` over an authenticated WebSocket session, with `marin` for Instructor and `cedar` for Learner, as approved in `series/voice-profile.yaml`. It writes 24 kHz mono PCM WAV segments, retains a lossless master, creates a timestamped MP3 derivative, and records the API response-usage fields in the ignored render manifest so the cost estimate can be checked later. It deliberately leaves Realtime `audio.output.speed` unset: natural pace and inflection belong in the role instructions, while post-generation speed processing produced audible artifacts in testing. The renderer preserves written scripts but expands standalone `AI` to `artificial intelligence` only in the model input; this avoids ambiguous disclosure pronunciation without changing the approved public text. The renderer uses the pinned `ws` Node dependency plus `ffmpeg`; install dependencies with `npm ci`. It requires `OPENAI_API_KEY` only in the environment and never accepts a key through a file, command argument, or committed configuration. `scripts/render_episode_audio.py` is a legacy renderer retained solely to reproduce pre-migration candidates; `macos-say` remains an offline fallback, not the preferred public-release voice path.
+The default reusable renderer is `scripts/render_episode_realtime.cjs`. It uses `gpt-realtime-2.1` over an authenticated WebSocket session, with `marin` for Instructor and `cedar` for Learner, as approved in `series/voice-profile.yaml`. It writes 24 kHz mono PCM WAV segments, applies a short fade at each rendered-segment edge before stitching, retains a lossless master, creates a timestamped MP3 derivative, and records the API response-usage fields in the ignored render manifest so the cost estimate can be checked later. After every assembly, it writes an audio-quality report that verifies the WAV structure, final-file decode, 24 kHz mono format, duration agreement, clipping statistics, and discontinuities at known stitches. This is a technical gate, not a substitute for full human listening QA: a listener must still review the entire candidate for garbled synthesis, pronunciation, pacing, and content alignment. It deliberately leaves Realtime `audio.output.speed` unset: natural pace and inflection belong in the role instructions, while post-generation speed processing produced audible artifacts in testing. The renderer preserves written scripts but expands standalone `AI` to `artificial intelligence` only in the model input; this avoids ambiguous disclosure pronunciation without changing the approved public text. The renderer uses the pinned `ws` Node dependency plus `ffmpeg` and `ffprobe`; install dependencies with `npm ci`. It requires `OPENAI_API_KEY` only in the environment and never accepts a key through a file, command argument, or committed configuration. `scripts/render_episode_audio.py` is a legacy renderer retained solely to reproduce pre-migration candidates; `macos-say` remains an offline fallback, not the preferred public-release voice path.
 
 For long scripts in a time-bounded runner, use `--work-dir`, `--render-only`, and a small `--segment-start`/`--segment-end` range. The Realtime renderer makes a separate bounded WebSocket request for each speaker segment, skips completed segments only when its settings lock matches, and writes a usage sidecar with each finished segment. Once every segment is present, use `--assemble-only` with the same timestamp and working directory. This makes interrupted renders resumable without regenerating already billed segments. A selected subrange assembles to a clearly named `preview-###-###` artifact and must not be mistaken for a full candidate.
 
@@ -282,7 +302,7 @@ npm run render:realtime -- \
 
 The resulting `core-03-YYYYMMDDTHHMMSSZ.mp3`, its `.master.wav`, and render manifest are candidate artifacts until the complete human listen and release QA are recorded.
 
-- Assign two clearly different but natural voices. Maintain the approved `series/voice-profile.yaml` with provider, model, voice ID, pace, continuity context, spacing, pronunciation/delivery instructions, and date or version tested. The delivery profile must ask for consistent vocal identity across all segments, alert but restrained inflection, and no announcer, theatrical, or gimmicky delivery. Change it only after approving a representative preview, then render a new candidate rather than mixing settings into an existing one.
+- Assign three clearly different but natural voices. Maintain the approved `series/voice-profile.yaml` with provider, model, voice ID, pace, continuity context, spacing, pronunciation/delivery instructions, and date or version tested. The delivery profile must ask for consistent vocal identity across all segments, alert but restrained inflection, and no exaggerated emotion, comedy, or gimmicky delivery. Change it only after approving a representative preview, then render a new candidate rather than mixing settings into an existing one.
 - Render one scene/section at a time so mispronunciations or factual corrections can be regenerated without replacing the entire episode.
 - Add a short lead-in before the first spoken word and deliberate silence at turn, speaker, and section boundaries. These pauses should signal a new thought without music, sound effects, or theatrical transitions.
 - Render complete speaker turns, not isolated sentences. Supply bounded adjacent dialogue as unspoken continuity context where the TTS provider supports instructions. Technical terms must remain accurate, but surrounding prose and delivery should prevent them from becoming repeated catchphrases.

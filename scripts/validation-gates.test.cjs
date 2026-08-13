@@ -7,11 +7,18 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors } = require("./validate-source-links.cjs");
-const { REQUIRED_NOTICE, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { REQUIRED_NOTICE, parseScript, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
+}
+
+function wavForTest(pcm) {
+  const header = Buffer.alloc(44);
+  header.write("RIFF", 0); header.writeUInt32LE(36 + pcm.length, 4); header.write("WAVE", 8); header.write("fmt ", 12); header.writeUInt32LE(16, 16); header.writeUInt16LE(1, 20); header.writeUInt16LE(1, 22); header.writeUInt32LE(24_000, 24); header.writeUInt32LE(48_000, 28); header.writeUInt16LE(2, 32); header.writeUInt16LE(16, 34); header.write("data", 36); header.writeUInt32LE(pcm.length, 40);
+  return Buffer.concat([header, pcm]);
 }
 
 test("claim mapping rejects claims omitted from a source ledger entry", () => {
@@ -106,6 +113,44 @@ test("eCFR validation fallback must stay on the official versioner endpoint", ()
   assert.match(invalid.join("\n"), /ecfr\.gov/);
 });
 
+test("programmatic FAA fallback requires an FAA-page attestation and reviewed digest", () => {
+  const errors = validationTargetErrors({
+    url: "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=2",
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf",
+    programmatic_attestation: {
+      url: "https://example.com/chapter",
+      link_text: "chapter_0.pdf",
+      sha256: "not-a-digest",
+    },
+  });
+  assert.match(errors.join("\n"), /FAA-hosted/);
+  assert.match(errors.join("\n"), /SHA-256/);
+});
+
+test("attested programmatic FAA copy is used when a PDF citation receives an interstitial", async () => {
+  const citedUrl = "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=2";
+  const programmaticUrl = "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf";
+  const attestationUrl = "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight";
+  const bytes = Buffer.from("identical FAA chapter bytes");
+  const sha256 = require("node:crypto").createHash("sha256").update(bytes).digest("hex");
+  const fetchImpl = (url) => {
+    const requested = new URL(url).toString();
+    if (requested === citedUrl) return Promise.resolve(new Response("Pardon our interruption", { status: 200, headers: { "content-type": "text/html" } }));
+    if (requested === programmaticUrl) return Promise.resolve(new Response(bytes, { status: 200, headers: { "content-type": "application/pdf" } }));
+    if (requested === attestationUrl) return Promise.resolve(new Response(`<a href="${programmaticUrl}">chapter_0.pdf</a>`, { status: 200, headers: { "content-type": "text/html" } }));
+    throw new Error(`unexpected URL ${requested}`);
+  };
+  const result = await verifyProgrammaticFallback({
+    url: citedUrl,
+    programmatic_url: programmaticUrl,
+    programmatic_attestation: { url: attestationUrl, link_text: "chapter_0.pdf", sha256 },
+  }, { fetchImpl });
+  assert.equal(result.content_attestation.valid, true);
+  assert.equal(result.content_attestation.citation_hash_matches_programmatic, null);
+  assert.equal(result.link.valid, true);
+  assert.equal(result.link.resolved_via, "attested_programmatic_fallback");
+});
+
 test("production notice must begin immediately after the final opening segment", () => {
   const delayed = [
     { index: 1, section: "opening", text: "First opening sentence." },
@@ -124,6 +169,72 @@ test("production notice must be the first spoken text after the opening", () => 
     { index: 3, section: "required production notice", text: REQUIRED_NOTICE },
   ];
   assert.throws(() => validateFrontMatter(interveningCopy), /must begin immediately after the opening/);
+});
+
+test("realtime renderer accepts an Announcer turn", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-renderer-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Required production notice\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
+  try {
+    assert.equal(parseScript(scriptPath, 240).at(-1).speaker, "ANNOUNCER");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("stitch fade tapers complete PCM segments to silence", () => {
+  const pcm = Buffer.alloc(960);
+  for (let offset = 0; offset < pcm.length; offset += 2) pcm.writeInt16LE(20_000, offset);
+  const faded = fadeSegmentPcm(pcm, 8);
+  assert.equal(faded.readInt16LE(0), 0);
+  assert.equal(faded.readInt16LE(faded.length - 2), 0);
+  assert.equal(pcm.readInt16LE(0), 20_000);
+});
+
+test("stitch analysis reports an abrupt un-faded PCM cut", () => {
+  const pcm = Buffer.alloc(960);
+  pcm.writeInt16LE(32_000, 480);
+  const result = analyzeStitchBoundaries(pcm, [{ segment_index: 1, start_frame: 240, end_frame: 480 }], 1);
+  assert.equal(result.warnings.length > 0, true);
+});
+
+test("post-assembly audio analysis accepts a valid stitched WAV", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-audio-quality-test-"));
+  const masterPath = path.join(temporary, "candidate.master.wav");
+  const outputPath = path.join(temporary, "candidate.mp3");
+  const manifestPath = path.join(temporary, "candidate.render-manifest.json");
+  const reportPath = path.join(temporary, "candidate.audio-quality.json");
+  const pcm = fadeSegmentPcm(Buffer.alloc(960), 8);
+  fs.writeFileSync(masterPath, wavForTest(pcm));
+  try {
+    const encoded = childProcess.spawnSync("ffmpeg", ["-v", "error", "-y", "-i", masterPath, "-ar", "24000", "-ac", "1", "-b:a", "160k", outputPath], { encoding: "utf8" });
+    assert.equal(encoded.status, 0, encoded.stderr);
+    const report = analyzeRenderedAudio({ manifestPath, masterPath, outputPath, stitchBoundaries: [{ segment_index: 1, start_frame: 120, end_frame: 480 }], reportPath });
+    assert.equal(report.result, "passed");
+    assert.equal(JSON.parse(fs.readFileSync(reportPath, "utf8")).result, "passed");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("post-assembly audio analysis rejects a clipped master WAV", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-audio-quality-test-"));
+  const masterPath = path.join(temporary, "candidate.master.wav");
+  const outputPath = path.join(temporary, "candidate.mp3");
+  const manifestPath = path.join(temporary, "candidate.render-manifest.json");
+  const reportPath = path.join(temporary, "candidate.audio-quality.json");
+  const pcm = fadeSegmentPcm(Buffer.alloc(960), 8);
+  pcm.writeInt16LE(32_767, 480);
+  fs.writeFileSync(masterPath, wavForTest(pcm));
+  try {
+    const encoded = childProcess.spawnSync("ffmpeg", ["-v", "error", "-y", "-i", masterPath, "-ar", "24000", "-ac", "1", "-b:a", "160k", outputPath], { encoding: "utf8" });
+    assert.equal(encoded.status, 0, encoded.stderr);
+    const report = analyzeRenderedAudio({ manifestPath, masterPath, outputPath, stitchBoundaries: [{ segment_index: 1, start_frame: 120, end_frame: 480 }], reportPath });
+    assert.equal(report.result, "failed");
+    assert.match(report.errors.join("\n"), /clipped PCM sample/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("invalid claim mappings stop before source fetch and LLM assessment", () => {

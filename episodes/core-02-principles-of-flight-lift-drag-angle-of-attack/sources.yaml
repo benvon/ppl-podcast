@@ -1,0 +1,106 @@
+episode_id: "core-02"
+verification_date: "2026-08-13"
+verified_at_utc: "2026-08-13T06:17:56Z"
+sources:
+  - id: acs-aerodynamics
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area I, Task F, PA.I.F.K3, p. 6"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14"
+    revision: "November 2023; effective May 31, 2024"
+    relevance_excerpt: "PA.I.F.K3 lists aerodynamics among the knowledge items for preflight assessment and performance planning."
+    verified_at_utc: "2026-08-13T06:17:56Z"
+    link_status: 200
+    supports_claims: [acs-aerodynamics]
+  - id: acs-slow-flight-relationships
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area VII, Task A, PA.VII.A.K1, p. 42"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50"
+    revision: "November 2023; effective May 31, 2024"
+    relevance_excerpt: "PA.VII.A.K1 identifies the relationship among angle of attack, airspeed, load factor, power setting, airplane weight and center of gravity, airplane attitude, and yaw effects."
+    verified_at_utc: "2026-08-13T06:17:56Z"
+    link_status: 200
+    supports_claims: [acs-slow-flight-relationships]
+  - id: phak-air-fluid
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 4, Air Is a Fluid, pp. 4-2–4-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight"
+      link_text: "06_phak_ch4_0.pdf"
+      sha256: "ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK describes air as a fluid and explains that air has viscosity, friction, and pressure, which are foundational to understanding aerodynamic forces."
+    verified_at_utc: "2026-08-13T06:17:56Z"
+    link_status: 200
+    supports_claims: [air-is-fluid]
+  - id: phak-lift-and-airfoil-behavior
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 4, Theories in the Production of Lift; Airfoil Design; Airfoil Behavior, pp. 4-5–4-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight"
+      link_text: "06_phak_ch4_0.pdf"
+      sha256: "ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK defines an airfoil as a structure designed to obtain reaction from air through which it moves. In its lift and airfoil-behavior discussion, it explains that lift is more complex than differential pressure alone: both Bernoulli’s principle and Newton’s laws operate, and an airfoil deflects airflow downward so the equal-and-opposite reaction contributes to lift. It presents lift as varying with air density, velocity through the air, wing area, and coefficient of lift, which changes with airfoil shape and angle of attack. It also defines lift and drag as aerodynamic-force components referenced respectively perpendicular to, and opposite, the relative wind."
+    verified_at_utc: "2026-08-13T06:17:56Z"
+    link_status: 200
+    supports_claims: [airfoil-definition, lift-multiple-principles, airfoil-deflects-air, lift-factors, aerodynamic-force-reference]
+  - id: phak-aoa-and-relative-wind
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 4, Airfoil Design and Angle of Attack, pp. 4-6–4-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight"
+      link_text: "06_phak_ch4_0.pdf"
+      sha256: "ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK defines angle of attack as the acute angle between the chord line of an airfoil and the direction of the relative wind. Its airfoil discussion uses the chord line and relative wind as the aerodynamic reference lines; pitch attitude instead describes the airplane’s orientation to the horizon. Because those are different reference systems, a pitch picture alone does not establish angle of attack. Relative wind is the reference direction for angle of attack and for the lift-and-drag force components, and is distinct from the movement of an air mass over the ground."
+    verified_at_utc: "2026-08-13T06:17:56Z"
+    link_status: 200
+    supports_claims: [angle-of-attack-definition, pitch-not-aoa, relative-wind-reference]
+  - id: phak-stall-flow
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Stalls and Angle of Attack Indicators, pp. 5-25–5-27"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight"
+      link_text: "07_phak_ch5_0.pdf"
+      sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains that a stall occurs when the critical angle of attack is exceeded, regardless of airspeed, attitude, or power setting, and discusses the effect of changing flight conditions on the airspeed at which this occurs."
+    verified_at_utc: "2026-08-13T06:17:56Z"
+    link_status: 200
+    supports_claims: [airflow-protection, published-airspeed-context]
+  - id: phak-drag-tradeoff
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 4, Drag; Induced Drag; Parasite Drag; Lift/Drag Ratio, pp. 4-9–4-12"
+    url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight"
+      link_text: "06_phak_ch4_0.pdf"
+      sha256: "ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK divides drag into parasite and induced drag. Parasite drag increases with speed; induced drag is created as a byproduct of lift and is greatest at high angle of attack and low airspeed. Its total-drag discussion combines those opposing trends into a curve with a lowest-total-drag region rather than a speed at which drag disappears. The PHAK defines lift-to-drag ratio as the relationship of lift produced to drag incurred and uses it as a measure of aerodynamic efficiency."
+    verified_at_utc: "2026-08-13T06:17:56Z"
+    link_status: 200
+    supports_claims: [drag-categories, drag-tradeoff, induced-drag-consequence, lift-drag-efficiency]

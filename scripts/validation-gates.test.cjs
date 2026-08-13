@@ -217,6 +217,26 @@ test("post-assembly audio analysis accepts a valid stitched WAV", () => {
   }
 });
 
+test("post-assembly audio analysis rejects a clipped master WAV", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-audio-quality-test-"));
+  const masterPath = path.join(temporary, "candidate.master.wav");
+  const outputPath = path.join(temporary, "candidate.mp3");
+  const manifestPath = path.join(temporary, "candidate.render-manifest.json");
+  const reportPath = path.join(temporary, "candidate.audio-quality.json");
+  const pcm = fadeSegmentPcm(Buffer.alloc(960), 8);
+  pcm.writeInt16LE(32_767, 480);
+  fs.writeFileSync(masterPath, wavForTest(pcm));
+  try {
+    const encoded = childProcess.spawnSync("ffmpeg", ["-v", "error", "-y", "-i", masterPath, "-ar", "24000", "-ac", "1", "-b:a", "160k", outputPath], { encoding: "utf8" });
+    assert.equal(encoded.status, 0, encoded.stderr);
+    const report = analyzeRenderedAudio({ manifestPath, masterPath, outputPath, stitchBoundaries: [{ segment_index: 1, start_frame: 120, end_frame: 480 }], reportPath });
+    assert.equal(report.result, "failed");
+    assert.match(report.errors.join("\n"), /clipped PCM sample/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("invalid claim mappings stop before source fetch and LLM assessment", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
   const sourcesPath = path.join(temporary, "sources.yaml");

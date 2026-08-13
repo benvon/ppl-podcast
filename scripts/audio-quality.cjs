@@ -115,6 +115,7 @@ function analyzeRenderedAudio({ manifestPath, masterPath, outputPath, stitchBoun
   if (Number(masterStream.sample_rate) !== SAMPLE_RATE || Number(masterStream.channels) !== CHANNELS) errors.push("Master WAV does not have the required 24 kHz mono format.");
   if (Number(outputStream.sample_rate) !== SAMPLE_RATE || Number(outputStream.channels) !== CHANNELS) errors.push("Published output does not have the required 24 kHz mono format.");
   if (durationDifference > 0.1) errors.push(`Published output duration differs from the master by ${durationDifference} seconds.`);
+  if (masterStats.clipped_samples) errors.push(`Master WAV contains ${masterStats.clipped_samples} clipped PCM sample(s).`);
   if (stitches.warnings.length) errors.push(`${stitches.warnings.length} stitch edge(s) exceeded the sample-jump warning threshold.`);
   let masterDecode; let outputDecode;
   try { masterDecode = decodeCheck(masterPath); } catch (error) { errors.push(`Master decode failed: ${error.message}`); masterDecode = { valid: false, error: error.message }; }

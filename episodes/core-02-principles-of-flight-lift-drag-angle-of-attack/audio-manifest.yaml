@@ -33,12 +33,11 @@ current_candidate_render:
   front_matter_check: "audio-artifacts/core-02-20260813T160000Z.preview-001-006.mp3"
   front_matter_duration_seconds: 123.19
   front_matter_sha256: "e3afae44eb427b76d061f86a3484f53cdaeaa2328f71cc54345556336d4a6b70"
-  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by required production-notice segment 2; the assembled preview contains the cold open, notice, podcast introduction, and first lesson section. Human listening confirmation remains required."
+  front_matter_validation: "Renderer preflight confirmed opening segment 1 followed immediately by required production-notice segment 2; the assembled preview contains the cold open, notice, podcast introduction, and first lesson section. Script-aligned human listening QA was accepted and is recorded in production-log.md."
   spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
   usage_estimate_usd: 2.908905
-  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 103 stitch boundaries with no discontinuity warnings, and no clipped samples. Artifact is Git-ignored; complete human listening QA remains required."
+  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 103 stitch boundaries with no discontinuity warnings, and no clipped samples. Artifact is Git-ignored; script-aligned human listening QA was accepted and is recorded in production-log.md."
 superseded_candidates: []
 required_before_release:
-  - "Complete human listening QA against master-script.md."
   - "Re-verify all cited public links on publication day."
   - "Validate hosting metadata and external audio-store workflow."

@@ -3,8 +3,8 @@
  * Render a speaker-labeled PPL podcast script with OpenAI Realtime.
  *
  * This renderer deliberately uses one bounded WebSocket session per segment.
- * That makes long work resumable and permits the Instructor and Learner to use
- * different voices. It never reads, logs, or writes the API key.
+ * That makes long work resumable and permits the Instructor, Learner, and
+ * Announcer to use different voices. It never reads, logs, or writes the API key.
  */
 
 "use strict";
@@ -14,11 +14,12 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 const WebSocket = require("ws");
+const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
 const BITS_PER_SAMPLE = 16;
-const SPEAKER_RE = /^\*\*(INSTRUCTOR|LEARNER):\*\*$/;
+const SPEAKER_RE = /^\*\*(INSTRUCTOR|LEARNER|ANNOUNCER):\*\*$/;
 const SECTION_RE = /^#+\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/;
 const IGNORED_PREFIXES = ["#", "[Source:", "[Claim type:", "**Version:", "**Target runtime:", "**Speakers:", "**Production status:"];
 const SAFE_ID_RE = /^[a-z0-9][a-z0-9-]*$/;
@@ -29,6 +30,7 @@ const DEFAULTS = {
   model: "gpt-realtime-2.1",
   instructorVoice: "marin",
   learnerVoice: "cedar",
+  announcerVoice: "ballad",
   maxWords: 240,
   continuityCharacters: 240,
   timeoutSeconds: 120,
@@ -36,16 +38,18 @@ const DEFAULTS = {
   continuedTurnMs: 120,
   speakerChangeMs: 220,
   sectionChangeMs: 550,
+  stitchFadeMs: 8,
 };
 const STYLE = {
   INSTRUCTOR: "Calm, engaged, and practical flight instructor. Use natural, purposeful intonation and modest emphasis on safety-critical words and contrasts. Sound alert and conversational, never theatrical. Speak at a steady, unhurried study pace without drawn-out words or post-processing speed changes.",
   LEARNER: "Prepared adult learner: attentive and naturally curious, with restrained conversational inflection. Sound thoughtful rather than performative. Speak at a steady, unhurried study pace without drawn-out words or post-processing speed changes.",
+  ANNOUNCER: "Upbeat, clear, and welcoming podcast announcer. Sound confident and warm, with light forward energy. Never clownish, theatrical, or promotional. Keep transitions brief and let the lesson remain the focus. Speak at a steady, natural pace without drawn-out words or post-processing speed changes.",
 };
 
 class RenderError extends Error {}
 
 function usage() {
-  console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n\nRun both modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
+  console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --speaker instructor|learner|announcer  Render and assemble only one speaker's turns; cannot be combined with a segment range.\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --announcer-voice NAME        Default: ${DEFAULTS.announcerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n\nRun both modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
 }
 
 function parseArgs(argv) {
@@ -64,6 +68,8 @@ function parseArgs(argv) {
   if (!values.script || !values["audio-dir"] || !values["episode-id"]) throw new RenderError("--script, --audio-dir, and --episode-id are required.");
   if (Boolean(values["render-only"]) === Boolean(values["assemble-only"]) && !values["dry-run"]) throw new RenderError("Choose exactly one of --render-only or --assemble-only.");
   if (values.format && !["mp3", "wav"].includes(values.format)) throw new RenderError("--format must be mp3 or wav.");
+  if (values.speaker && !["instructor", "learner", "announcer"].includes(values.speaker)) throw new RenderError("--speaker must be instructor, learner, or announcer.");
+  if (values.speaker && (values["segment-start"] || values["segment-end"])) throw new RenderError("--speaker cannot be combined with --segment-start or --segment-end.");
   return values;
 }
 
@@ -110,7 +116,7 @@ function parseScript(scriptPath, maxWords) {
     paragraphs.push(line);
   }
   flush();
-  if (!turns.length) throw new RenderError("No dialogue found. Use exact **INSTRUCTOR:** and **LEARNER:** labels.");
+  if (!turns.length) throw new RenderError("No dialogue found. Use exact **INSTRUCTOR:**, **LEARNER:**, or **ANNOUNCER:** labels.");
   const segments = [];
   for (const turn of turns) for (const text of splitText(turn.text, maxWords)) segments.push({ index: segments.length + 1, ...turn, text });
   validateFrontMatter(segments);
@@ -190,7 +196,7 @@ function estimateUsageCost(usages) {
 }
 
 function settingsFor(options, scriptHash) {
-  return { renderer: "openai-realtime", renderer_version: 3, model: options.model, voices: { instructor: options.instructorVoice, learner: options.learnerVoice }, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset" }, pronunciation_transforms: { "AI": "artificial intelligence" }, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
+  return { renderer: "openai-realtime", renderer_version: 5, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, pronunciation_transforms: { "AI": "artificial intelligence" }, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
 }
 
 function establishSettings(workDir, settings) {
@@ -200,7 +206,7 @@ function establishSettings(workDir, settings) {
 }
 
 function partBase(workDir, segment) { return path.join(workDir, `${String(segment.index).padStart(3, "0")}-${segment.speaker.toLowerCase()}`); }
-function segmentInstruction(segment, context) { return `${STYLE[segment.speaker]}\nYou are the ${segment.speaker === "INSTRUCTOR" ? "Instructor" : "Learner"} in a public educational private-pilot study podcast. Read only the line following the marker READ EXACTLY. Do not add a greeting, label, preface, explanation, or closing. Keep technical terminology exact. Vary stress and cadence naturally when recurring technical terms appear; do not turn them into catchphrases.\n\n${context}\n\nREAD EXACTLY:`; }
+function segmentInstruction(segment, context) { return `${STYLE[segment.speaker]}\nYou are the ${segment.speaker[0] + segment.speaker.slice(1).toLowerCase()} in a public educational private-pilot study podcast. Read only the line following the marker READ EXACTLY. Do not add a greeting, label, preface, explanation, or closing. Keep technical terminology exact. Vary stress and cadence naturally when recurring technical terms appear; do not turn them into catchphrases.\n\n${context}\n\nREAD EXACTLY:`; }
 
 async function renderSegments(segments, selected, options, workDir) {
   const allUsage = [];
@@ -210,7 +216,7 @@ async function renderSegments(segments, selected, options, workDir) {
     if (fs.existsSync(wavPath) || fs.existsSync(usagePath)) throw new RenderError(`Incomplete existing segment ${segment.index}; remove only its matching files or choose a new work directory.`);
     const position = segments.findIndex((candidate) => candidate.index === segment.index);
     console.log(`Rendering segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
-    const result = await wsRender({ model: options.model, voice: segment.speaker === "INSTRUCTOR" ? options.instructorVoice : options.learnerVoice, instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text), timeoutMs: options.timeoutSeconds * 1000 });
+    const result = await wsRender({ model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text), timeoutMs: options.timeoutSeconds * 1000 });
     writeAtomic(wavPath, makeWav(result.pcm));
     const record = { segment_index: segment.index, speaker: segment.speaker, section: segment.section, source_text_sha256: sha256(segment.text), generated_at_utc: new Date().toISOString(), pcm_bytes: result.pcm.length, duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)), response_usage: result.usage };
     writeAtomic(usagePath, `${JSON.stringify(record, null, 2)}\n`); allUsage.push(result.usage);
@@ -225,14 +231,20 @@ function pauseBefore(previous, current, spacing) {
   return spacing.continuedTurnMs;
 }
 
-function assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange) {
-  const chunks = []; const usage = []; let previous = null;
+function assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange, selectionLabel) {
+  const chunks = []; const usage = []; const stitchBoundaries = []; let previous = null; let masterFrames = 0;
   for (const segment of selected) {
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
     if (!fs.existsSync(wavPath) || !fs.existsSync(usagePath)) throw new RenderError(`Missing rendered segment ${segment.index}. Run --render-only for the selected range first.`);
-    chunks.push(silence(pauseBefore(previous, segment, options.spacing))); chunks.push(readOwnWav(wavPath)); usage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); previous = segment;
+    const pause = silence(pauseBefore(previous, segment, options.spacing));
+    chunks.push(pause); masterFrames += pause.length / 2;
+    const pcm = fadeSegmentPcm(readOwnWav(wavPath), options.stitchFadeMs);
+    const segmentStartFrame = masterFrames;
+    chunks.push(pcm); masterFrames += pcm.length / 2;
+    stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, start_frame: segmentStartFrame, end_frame: masterFrames });
+    usage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); previous = segment;
   }
-  const masterPcm = Buffer.concat(chunks); const suffix = explicitRange ? `.preview-${String(selected[0].index).padStart(3, "0")}-${String(selected[selected.length - 1].index).padStart(3, "0")}` : ""; const stem = `${options.episodeId}-${timestamp}${suffix}`; const masterPath = path.join(audioDir, `${stem}.master.wav`); const wavPath = path.join(audioDir, `${stem}.wav`); const mp3Path = path.join(audioDir, `${stem}.mp3`); const manifestPath = path.join(audioDir, `${stem}.render-manifest.json`);
+  const masterPcm = Buffer.concat(chunks); const suffix = explicitRange ? `.preview-${selectionLabel}` : ""; const stem = `${options.episodeId}-${timestamp}${suffix}`; const masterPath = path.join(audioDir, `${stem}.master.wav`); const wavPath = path.join(audioDir, `${stem}.wav`); const mp3Path = path.join(audioDir, `${stem}.mp3`); const manifestPath = path.join(audioDir, `${stem}.render-manifest.json`); const qualityReportPath = path.join(audioDir, `${stem}.audio-quality.json`);
   ensureDir(audioDir); writeAtomic(masterPath, makeWav(masterPcm));
   let publishedPath = masterPath;
   if (options.format === "mp3") {
@@ -241,8 +253,12 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     publishedPath = mp3Path;
   } else { writeAtomic(wavPath, makeWav(masterPcm)); publishedPath = wavPath; }
   const frontMatter = selected[0].index === 1 && selected.some((segment) => segment.section === "required production notice") ? "included" : "not_in_selected_range";
-  const manifest = { renderer: "openai-realtime", renderer_version: 3, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: { instructor: options.instructorVoice, learner: options.learnerVoice }, pronunciation_transforms: { "AI": "artificial intelligence" }, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: Number(durationSeconds(masterPcm.length).toFixed(3)), sha256: sha256(fs.readFileSync(publishedPath)) }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
+  const manifest = { renderer: "openai-realtime", renderer_version: 5, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: { "AI": "artificial intelligence" }, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: Number(durationSeconds(masterPcm.length).toFixed(3)), sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  const audioQuality = analyzeRenderedAudio({ manifestPath, masterPath, outputPath: publishedPath, stitchBoundaries, reportPath: qualityReportPath });
+  manifest.audio.quality = { result: audioQuality.result, report: qualityReportPath, stitch_warnings: audioQuality.master.stitches.warnings.length, clipped_samples: audioQuality.master.pcm.clipped_samples };
+  writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  if (audioQuality.result !== "passed") throw new RenderError(`Post-assembly audio quality checks failed. See ${qualityReportPath}.`);
   console.log(`Wrote ${publishedPath}`); console.log(`Wrote ${masterPath}`); console.log(`Wrote ${manifestPath}`); console.log(`Duration: ${manifest.audio.duration_seconds.toFixed(3)} seconds; usage-derived estimate: $${manifest.usage.estimated_usd.toFixed(6)}`);
 }
 
@@ -250,19 +266,20 @@ async function main() {
   const raw = parseArgs(process.argv.slice(2));
   const timestamp = raw.timestamp || utcTimestamp(); if (!/^\d{8}T\d{6}Z$/.test(timestamp)) throw new RenderError("--timestamp must use YYYYMMDDTHHMMSSZ.");
   if (!SAFE_ID_RE.test(raw["episode-id"])) throw new RenderError("--episode-id must be lowercase kebab-case.");
-  const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice;
-  if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
+  const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice; const announcerVoice = raw["announcer-voice"] || DEFAULTS.announcerVoice;
+  if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
   const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
-  const options = { scriptPath, episodeId: raw["episode-id"], model, instructorVoice, learnerVoice, maxWords: positiveInteger(raw["max-words-per-segment"], "--max-words-per-segment", DEFAULTS.maxWords), continuityCharacters: DEFAULTS.continuityCharacters, timeoutSeconds: positiveInteger(raw["segment-timeout"], "--segment-timeout", DEFAULTS.timeoutSeconds), format: raw.format || "mp3", spacing: { leadInMs: DEFAULTS.leadInMs, continuedTurnMs: DEFAULTS.continuedTurnMs, speakerChangeMs: DEFAULTS.speakerChangeMs, sectionChangeMs: DEFAULTS.sectionChangeMs } };
+  const options = { scriptPath, episodeId: raw["episode-id"], model, voices: { instructor: instructorVoice, learner: learnerVoice, announcer: announcerVoice }, maxWords: positiveInteger(raw["max-words-per-segment"], "--max-words-per-segment", DEFAULTS.maxWords), continuityCharacters: DEFAULTS.continuityCharacters, timeoutSeconds: positiveInteger(raw["segment-timeout"], "--segment-timeout", DEFAULTS.timeoutSeconds), format: raw.format || "mp3", stitchFadeMs: DEFAULTS.stitchFadeMs, spacing: { leadInMs: DEFAULTS.leadInMs, continuedTurnMs: DEFAULTS.continuedTurnMs, speakerChangeMs: DEFAULTS.speakerChangeMs, sectionChangeMs: DEFAULTS.sectionChangeMs } };
   const segments = parseScript(scriptPath, options.maxWords); const start = positiveInteger(raw["segment-start"], "--segment-start", 1); const end = positiveInteger(raw["segment-end"], "--segment-end", segments.length); if (start > end || end > segments.length) throw new RenderError(`Selected range must fall between 1 and ${segments.length}.`);
-  const selected = segments.slice(start - 1, end); const explicitRange = start !== 1 || end !== segments.length; const workDir = path.resolve(raw["work-dir"] || path.join(audioDir, `${options.episodeId}-realtime-${timestamp}.segments`));
-  console.log(`Validated ${segments.length} segments; selected ${start}-${end}.`); console.log(`Model: ${options.model}; Instructor: ${options.instructorVoice}; Learner: ${options.learnerVoice}; native output speed (unset).`);
+  const speaker = raw.speaker ? raw.speaker.toUpperCase() : null; const selected = speaker ? segments.filter((segment) => segment.speaker === speaker) : segments.slice(start - 1, end); if (!selected.length) throw new RenderError(`No ${raw.speaker} segments found.`);
+  const explicitRange = Boolean(speaker) || start !== 1 || end !== segments.length; const selectionLabel = speaker ? `${raw.speaker}-only` : `${String(start).padStart(3, "0")}-${String(end).padStart(3, "0")}`; const workDir = path.resolve(raw["work-dir"] || path.join(audioDir, `${options.episodeId}-realtime-${timestamp}.segments`));
+  console.log(`Validated ${segments.length} segments; selected ${speaker ? `${raw.speaker} (${selected.length} segments)` : `${start}-${end}`}.`); console.log(`Model: ${options.model}; Instructor: ${options.voices.instructor}; Learner: ${options.voices.learner}; Announcer: ${options.voices.announcer}; native output speed (unset).`);
   if (raw["dry-run"]) return;
   establishSettings(workDir, settingsFor(options, sha256(fs.readFileSync(scriptPath))));
   if (raw["render-only"]) await renderSegments(segments, selected, options, workDir);
-  if (raw["assemble-only"]) assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange);
+  if (raw["assemble-only"]) assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange, selectionLabel);
 }
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, validateFrontMatter };
+module.exports = { REQUIRED_NOTICE, RenderError, parseScript, validateFrontMatter };

@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "render:realtime": "node scripts/render_episode_realtime.cjs",
+    "audio:analyze": "node scripts/audio-quality.cjs",
     "precommit:check": "node scripts/precommit-check.cjs",
     "hooks:install": "sh scripts/install-git-hooks.sh",
     "episode:create": "node scripts/create-episode.cjs",

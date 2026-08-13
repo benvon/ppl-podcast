@@ -8,10 +8,17 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors } = require("./validate-source-links.cjs");
-const { REQUIRED_NOTICE, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, parseScript, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
+}
+
+function wavForTest(pcm) {
+  const header = Buffer.alloc(44);
+  header.write("RIFF", 0); header.writeUInt32LE(36 + pcm.length, 4); header.write("WAVE", 8); header.write("fmt ", 12); header.writeUInt32LE(16, 16); header.writeUInt16LE(1, 20); header.writeUInt16LE(1, 22); header.writeUInt32LE(24_000, 24); header.writeUInt32LE(48_000, 28); header.writeUInt16LE(2, 32); header.writeUInt16LE(16, 34); header.write("data", 36); header.writeUInt32LE(pcm.length, 40);
+  return Buffer.concat([header, pcm]);
 }
 
 test("claim mapping rejects claims omitted from a source ledger entry", () => {
@@ -124,6 +131,52 @@ test("production notice must be the first spoken text after the opening", () => 
     { index: 3, section: "required production notice", text: REQUIRED_NOTICE },
   ];
   assert.throws(() => validateFrontMatter(interveningCopy), /must begin immediately after the opening/);
+});
+
+test("realtime renderer accepts an Announcer turn", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-renderer-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Required production notice\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
+  try {
+    assert.equal(parseScript(scriptPath, 240).at(-1).speaker, "ANNOUNCER");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("stitch fade tapers complete PCM segments to silence", () => {
+  const pcm = Buffer.alloc(960);
+  for (let offset = 0; offset < pcm.length; offset += 2) pcm.writeInt16LE(20_000, offset);
+  const faded = fadeSegmentPcm(pcm, 8);
+  assert.equal(faded.readInt16LE(0), 0);
+  assert.equal(faded.readInt16LE(faded.length - 2), 0);
+  assert.equal(pcm.readInt16LE(0), 20_000);
+});
+
+test("stitch analysis reports an abrupt un-faded PCM cut", () => {
+  const pcm = Buffer.alloc(960);
+  pcm.writeInt16LE(32_000, 480);
+  const result = analyzeStitchBoundaries(pcm, [{ segment_index: 1, start_frame: 240, end_frame: 480 }], 1);
+  assert.equal(result.warnings.length > 0, true);
+});
+
+test("post-assembly audio analysis accepts a valid stitched WAV", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-audio-quality-test-"));
+  const masterPath = path.join(temporary, "candidate.master.wav");
+  const outputPath = path.join(temporary, "candidate.mp3");
+  const manifestPath = path.join(temporary, "candidate.render-manifest.json");
+  const reportPath = path.join(temporary, "candidate.audio-quality.json");
+  const pcm = fadeSegmentPcm(Buffer.alloc(960), 8);
+  fs.writeFileSync(masterPath, wavForTest(pcm));
+  try {
+    const encoded = childProcess.spawnSync("ffmpeg", ["-v", "error", "-y", "-i", masterPath, "-ar", "24000", "-ac", "1", "-b:a", "160k", outputPath], { encoding: "utf8" });
+    assert.equal(encoded.status, 0, encoded.stderr);
+    const report = analyzeRenderedAudio({ manifestPath, masterPath, outputPath, stitchBoundaries: [{ segment_index: 1, start_frame: 120, end_frame: 480 }], reportPath });
+    assert.equal(report.result, "passed");
+    assert.equal(JSON.parse(fs.readFileSync(reportPath, "utf8")).result, "passed");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("invalid claim mappings stop before source fetch and LLM assessment", () => {

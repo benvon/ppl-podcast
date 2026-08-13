@@ -1,4 +1,4 @@
-version: 3
+version: 5
 status: approved-for-candidate-renders
 provider: openai-realtime
 model: gpt-realtime-2.1
@@ -31,6 +31,12 @@ voices:
     style: >-
       Prepared adult learner; attentive and naturally curious, with restrained
       conversational inflection; sound thoughtful rather than performative.
+  announcer:
+    id: ballad
+    style: >-
+      Upbeat, clear, and welcoming podcast announcer. Sound confident and
+      warm, with light forward energy; never clownish, theatrical, or
+      promotional. Keep transitions brief and let the lesson remain the focus.
 
 delivery:
   pace: >-
@@ -45,7 +51,6 @@ delivery:
     intelligence only in the render input so the disclosure is naturally
     intelligible.
   prohibited:
-    - announcer delivery
     - exaggerated emotion
     - comedy or gimmicky banter
 
@@ -66,6 +71,9 @@ spacing_ms:
 editorial_rules:
   cold_open_seconds: "10-20"
   required_notice: Follow the cold open immediately.
+  podcast_intro: The Announcer delivers the standard series introduction and names the episode topic immediately after the required notice.
+  section_transitions: The Announcer briefly orients the listener between substantial lesson sections.
+  outro: The Announcer thanks the listener, directs them to pplstudyguide.com and feedback@pplstudyguide.com, and notes the open-source GitHub work.
   repeated_terms: Use varied surrounding explanation where that preserves technical accuracy.
   approval: Require a representative preview before a new voice-profile version is used for a full render.
   transcript_fidelity: Compare a representative rendered clip against the master script before a full candidate render.

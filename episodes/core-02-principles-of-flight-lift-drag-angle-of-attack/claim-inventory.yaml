@@ -1,0 +1,121 @@
+episode_id: "core-02"
+claims:
+  - id: acs-aerodynamics
+    type: faa_standard
+    statement: "The private-airplane ACS includes aerodynamics as a knowledge item for preflight assessment and performance planning."
+    sources: [acs-aerodynamics]
+    risk: checkride
+    script_sections: ["Why these words matter"]
+    status: fact_checked_draft
+  - id: acs-slow-flight-relationships
+    type: faa_standard
+    statement: "The ACS identifies a relationship among angle of attack, airspeed, load factor, power, weight and center of gravity, attitude, and yaw in slow flight."
+    sources: [acs-slow-flight-relationships]
+    risk: safety_critical
+    script_sections: ["A relationship, not a single gauge"]
+    status: fact_checked_draft
+  - id: air-is-fluid
+    type: faa_guidance
+    statement: "Air behaves as a fluid and has viscosity, friction, and pressure."
+    sources: [phak-air-fluid]
+    risk: foundational
+    script_sections: ["Start with the air"]
+    status: fact_checked_draft
+  - id: lift-multiple-principles
+    type: faa_guidance
+    statement: "Both Bernoulli’s principle and Newton’s laws operate when an airfoil generates lift; simple pressure difference alone is not the complete explanation."
+    sources: [phak-lift-and-airfoil-behavior]
+    risk: foundational
+    script_sections: ["What the wing changes"]
+    status: fact_checked_draft
+  - id: airfoil-deflects-air
+    type: faa_guidance
+    statement: "Airflow leaving an airfoil is deflected downward and backward; Newton’s third law describes an upward and forward reaction on the airfoil."
+    sources: [phak-lift-and-airfoil-behavior]
+    risk: foundational
+    script_sections: ["What the wing changes"]
+    status: fact_checked_draft
+  - id: angle-of-attack-definition
+    type: faa_guidance
+    statement: "Angle of attack is the acute angle between an airfoil’s chord line and the relative wind."
+    sources: [phak-aoa-and-relative-wind]
+    risk: foundational
+    script_sections: ["The angle that matters"]
+    status: fact_checked_draft
+  - id: pitch-not-aoa
+    type: teaching_explanation
+    statement: "Pitch attitude is measured against the horizon, while angle of attack is measured against relative wind; a pitch picture alone does not establish angle of attack."
+    sources: [phak-aoa-and-relative-wind]
+    risk: safety_critical
+    script_sections: ["The angle that matters"]
+    status: fact_checked_draft
+  - id: drag-categories
+    type: faa_guidance
+    statement: "Parasite drag increases with speed, while induced drag is a byproduct of lift and is greatest at high angle of attack and low airspeed."
+    sources: [phak-drag-tradeoff]
+    risk: foundational
+    script_sections: ["Two kinds of drag"]
+    status: fact_checked_draft
+  - id: drag-tradeoff
+    type: faa_guidance
+    statement: "The opposing trends of parasite and induced drag create a lowest-total-drag region rather than a speed at which drag disappears."
+    sources: [phak-drag-tradeoff]
+    risk: foundational
+    script_sections: ["Two kinds of drag"]
+    status: fact_checked_draft
+  - id: relative-wind-reference
+    type: teaching_explanation
+    statement: "Relative wind is the reference direction used to define angle of attack and aerodynamic force; it is distinct from the movement of an air mass over the ground."
+    sources: [phak-aoa-and-relative-wind]
+    risk: foundational
+    script_sections: ["Start with the air", "Relative wind is a moving reference"]
+    status: fact_checked_draft
+  - id: airfoil-definition
+    type: teaching_explanation
+    statement: "An airfoil is a shaped surface designed to interact with airflow; this episode uses a wing as its primary example."
+    sources: [phak-lift-and-airfoil-behavior]
+    risk: foundational
+    script_sections: ["Start with the air"]
+    status: fact_checked_draft
+  - id: airflow-protection
+    type: teaching_explanation
+    statement: "Managing angle of attack and the related flight condition protects the useful airflow an airfoil needs for normal lift production."
+    sources: [phak-stall-flow]
+    risk: safety_critical
+    script_sections: ["Changing angle of attack changes the conversation", "Retrieval review"]
+    status: fact_checked_draft
+  - id: published-airspeed-context
+    type: faa_guidance
+    statement: "A published one-G stall speed is associated with stated test conditions and does not establish a universal angle-of-attack margin in every flight condition."
+    sources: [phak-stall-flow]
+    risk: safety_critical
+    script_sections: ["The angle that matters"]
+    status: fact_checked_draft
+  - id: lift-factors
+    type: faa_guidance
+    statement: "Lift varies with air density, velocity through the air, wing area, and the lift coefficient associated with an airfoil and its angle of attack."
+    sources: [phak-lift-and-airfoil-behavior]
+    risk: foundational
+    script_sections: ["Changing angle of attack changes the conversation", "What the wing changes"]
+    status: fact_checked_draft
+  - id: aerodynamic-force-reference
+    type: teaching_explanation
+    statement: "Lift and drag are the components of aerodynamic force described respectively perpendicular to, and opposite, the relative wind."
+    sources: [phak-lift-and-airfoil-behavior]
+    risk: foundational
+    script_sections: ["The total aerodynamic force"]
+    status: fact_checked_draft
+  - id: induced-drag-consequence
+    type: faa_guidance
+    statement: "Induced drag is associated with lift production and is greatest at high angle of attack and low airspeed."
+    sources: [phak-drag-tradeoff]
+    risk: foundational
+    script_sections: ["Induced drag: the cost that comes with lift"]
+    status: fact_checked_draft
+  - id: lift-drag-efficiency
+    type: faa_guidance
+    statement: "Lift-to-drag ratio expresses aerodynamic efficiency by relating lift produced to drag incurred."
+    sources: [phak-drag-tradeoff]
+    risk: foundational
+    script_sections: ["Lowest total drag is a balance point, not a magic number"]
+    status: fact_checked_draft

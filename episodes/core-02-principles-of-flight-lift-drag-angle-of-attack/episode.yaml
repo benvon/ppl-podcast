@@ -1,0 +1,54 @@
+id: "core-02"
+series: ppl-study-podcast
+title: "Principles of Flight: Lift, Drag, and Angle of Attack"
+slug: "principles-of-flight-lift-drag-angle-of-attack"
+track: "core"
+status: draft
+version: 0.2.0
+published_at: null
+runtime_target_minutes: 33
+runtime_actual_seconds: 2008.97
+word_count: 5326
+speakers: [instructor, learner, announcer]
+audience: "U.S. private-pilot airplane learners"
+aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
+acs_references:
+  - PA.I.F.K3
+  - PA.VII.A.K1
+phak_references:
+  - "FAA-H-8083-25C, Chapter 4: Principles of Flight"
+  - "FAA-H-8083-25C, Chapter 5: Aerodynamics of Flight (stall-flow context)"
+aim_references: []
+advisory_circular_references: []
+cfr_references: []
+learning_objectives:
+  - "Define relative wind, chord line, and angle of attack."
+  - "Explain lift as the aerodynamic force perpendicular to the relative wind."
+  - "Distinguish parasite drag from induced drag and describe the basic tradeoff."
+  - "Explain why pitch attitude is not the same thing as angle of attack."
+trouble_spots:
+  - "Equating a wing's shape or Bernoulli's principle alone with the whole explanation of lift"
+  - "Treating airspeed, pitch attitude, and angle of attack as interchangeable"
+  - "Thinking a stall is defined by a particular indicated airspeed"
+source_verification:
+  status: draft_verification_complete_publication_day_recheck_required
+  verified_at_utc: null
+  link_validation: link-validation.yaml
+  relevance_review: required_before_public_release
+review:
+  editorial_status: script_and_listening_qa_approved
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - "Re-verify every public source and link on publication day"
+  - "Validate hosting metadata and external audio-store workflow"
+audio:
+  manifest: audio-manifest.yaml
+  status: candidate_rendered_not_release_ready
+hosting:
+  metadata: hosting-metadata.yaml
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

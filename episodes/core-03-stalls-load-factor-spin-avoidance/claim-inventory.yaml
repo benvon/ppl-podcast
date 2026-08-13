@@ -1,26 +1,100 @@
-episode_id: core-03
+episode_id: "core-03"
 claims:
+  - id: acs-relationship-anchor
+    type: faa_standard
+    statement: "The private-airplane ACS treats angle of attack, airspeed, load factor, power, weight and center of gravity, attitude, and yaw as related variables in slow flight."
+    sources: [acs-slow-flight-relationships]
+    risk: safety_critical
+    script_sections: ["One system, several variables"]
+    status: fact_checked_initial_draft
+  - id: acs-stall-and-recovery-anchor
+    type: faa_standard
+    statement: "The ACS covers stall aerodynamics, recognition, prevention, recovery fundamentals, and risks including secondary, accelerated, and cross-control stalls."
+    sources: [acs-stall-knowledge-and-recovery]
+    risk: checkride
+    script_sections: ["What the ACS is asking you to connect"]
+    status: fact_checked_initial_draft
+  - id: acs-spin-anchor
+    type: faa_standard
+    statement: "The ACS covers spin causes, entry through developed phases, recovery procedure, and inadvertent-spin risk."
+    sources: [acs-spin-awareness]
+    risk: checkride
+    script_sections: ["Spin avoidance starts earlier"]
+    status: fact_checked_initial_draft
   - id: stall-angle-of-attack
     type: faa_guidance
-    statement: "A stall occurs when the wing exceeds its critical angle of attack; it is not caused by reaching one universal indicated airspeed."
-    sources: [phak-ch5, afh-ch5, ac-61-67c]
+    statement: "A stall occurs when angle of attack exceeds critical angle of attack and can occur at any airspeed, attitude, or power setting."
+    sources: [afh-stall-definition-and-cues, phak-stalls-and-load-factor]
+    risk: safety_critical
+    script_sections: ["Stall: name the condition first", "Airspeed is useful, but it is not the definition"]
+    status: fact_checked_initial_draft
+  - id: stall-cues
+    type: faa_guidance
+    statement: "Impending and full stalls can be recognized through airplane-specific cues such as buffet, warning devices, sight, sound, or feel."
+    sources: [afh-stall-definition-and-cues, acs-stall-knowledge-and-recovery]
+    risk: safety_critical
+    script_sections: ["Recognize the approach to the limit"]
+    status: fact_checked_initial_draft
   - id: published-stall-speed-context
     type: faa_guidance
-    statement: "A published 1G stall speed applies only to the stated test conditions and is not a universal margin above a stall."
-    sources: [afh-ch5]
-  - id: load-factor
+    statement: "A published one-G stall speed applies to stated conditions including unaccelerated coordinated one-G flight, one weight, and a particular center of gravity."
+    sources: [afh-published-stall-speed, phak-stalls-and-load-factor]
+    risk: safety_critical
+    script_sections: ["Airspeed is useful, but it is not the definition"]
+    status: fact_checked_initial_draft
+  - id: load-factor-relationship
     type: faa_guidance
-    statement: "Increasing load factor in a coordinated turn increases the angle of attack required to maintain flight and can make a stall occur at a higher airspeed."
-    sources: [phak-ch5, acs-area-vii]
+    statement: "Increasing load factor increases the angle of attack required to support the airplane and can raise the airspeed at which critical angle of attack is reached."
+    sources: [phak-stalls-and-load-factor, ac-stall-spin-awareness]
+    risk: safety_critical
+    script_sections: ["Load factor: asking the wing for more"]
+    status: fact_checked_initial_draft
+  - id: uncoordinated-risk
+    type: faa_guidance
+    statement: "Uncoordinated flight is a stall/spin risk factor identified by the ACS and AC 61-67C."
+    sources: [acs-slow-flight-relationships, ac-stall-spin-awareness]
+    risk: safety_critical
+    script_sections: ["Coordination changes the risk picture", "Spin avoidance starts earlier"]
+    status: fact_checked_initial_draft
   - id: recovery-priority
     type: faa_guidance
-    statement: "The first aerodynamic priority in an impending or full-stall recovery is to reduce angle of attack; the aircraft-specific POH/AFM procedure controls."
-    sources: [afh-ch5, acs-area-vii]
-  - id: spin-avoidance
+    statement: "The AFH describes reducing angle of attack to eliminate stall warning before leveling wings, maintaining coordination, and applying power as needed."
+    sources: [afh-recovery-and-turning-stalls]
+    risk: safety_critical
+    script_sections: ["The aerodynamic priority in recovery"]
+    status: fact_checked_initial_draft
+  - id: recovery-aircraft-specific
+    type: faa_standard
+    statement: "The ACS requires stall recovery according to the POH or AFM, and FAA guidance directs pilots to know the manufacturer-recommended procedure for the airplane being flown."
+    sources: [acs-stall-knowledge-and-recovery, afh-recovery-and-turning-stalls]
+    risk: safety_critical
+    script_sections: ["The aerodynamic priority in recovery", "Airspeed is useful, but it is not the definition"]
+    status: fact_checked_initial_draft
+  - id: base-to-final-risk
     type: faa_guidance
-    statement: "A spin requires a stalled condition with yaw; coordination and prompt reduction of angle of attack are central to avoidance."
-    sources: [afh-ch5, ac-61-67c, acs-area-vii]
-  - id: aircraft-documents-control
-    type: regulation
-    statement: "Aircraft operating limitations and the approved flight manual/placards control for the aircraft being flown."
-    sources: [cfr-91-9]
+    statement: "FAA guidance identifies a skidding attempt to avoid overshooting from base to final as a classic stall/spin accident scenario."
+    sources: [ac-stall-spin-awareness, afh-recovery-and-turning-stalls]
+    risk: safety_critical
+    script_sections: ["A pattern decision, not a trick turn"]
+    status: fact_checked_initial_draft
+  - id: spin-entry-and-phases
+    type: faa_guidance
+    statement: "An inadvertent spin is associated with a stalled condition and uncoordinated yaw; the ACS requires knowledge of entry, incipient, and developed phases."
+    sources: [ac-stall-spin-awareness, acs-spin-awareness]
+    risk: safety_critical
+    script_sections: ["Spin avoidance starts earlier"]
+    status: fact_checked_initial_draft
+  - id: secondary-stall-context
+    type: faa_standard
+    statement: "Secondary stalls are an ACS risk item; recovery must address the stalled condition before trying to resume the desired flightpath."
+    sources: [acs-stall-knowledge-and-recovery, afh-recovery-and-turning-stalls]
+    risk: safety_critical
+    script_sections: ["The aerodynamic priority in recovery"]
+    status: fact_checked_initial_draft
+  - id: practical-poha-afm-bridge
+    type: teaching_explanation
+    statement: "The POH/AFM connects the general aerodynamic relationships to the particular airplane's published speeds, configurations, limitations, and procedures."
+    sources: [afh-published-stall-speed, ac-stall-spin-awareness]
+    risk: safety_critical
+    script_sections: ["Airspeed is useful, but it is not the definition", "The aerodynamic priority in recovery"]
+    status: fact_checked_initial_draft

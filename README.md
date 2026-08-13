@@ -135,10 +135,11 @@ documents through either channel.
 
 ## Historical bootstrap record
 
-[Core 03](episodes/core-03-stalls-load-factor-spin-avoidance/) is a preserved
-bootstrap/test record. It shows how the process developed, including
+[The prior Core 03 bootstrap record](episodes/archive/core-03-bootstrap-test/)
+is preserved for posterity. It shows how the process developed, including
 superseded release gates and audio experiments; it is not a current episode
-template or a release-ready episode. New work starts from `templates/`.
+template or a release-ready episode. The current Core 03 episode starts fresh
+from `templates/`.
 
 ## License
 

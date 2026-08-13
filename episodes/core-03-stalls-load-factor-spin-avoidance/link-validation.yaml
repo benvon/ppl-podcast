@@ -1,0 +1,326 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-13T21:36:04.713Z
+sources_file: episodes/core-03-stalls-load-factor-spin-avoidance/sources.yaml
+claims_file: episodes/core-03-stalls-load-factor-spin-avoidance/claim-inventory.yaml
+llm_requested: false
+llm_model: null
+claim_mapping:
+  valid: true
+  errors: []
+results:
+  - source_id: acs-slow-flight-relationships
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-13T21:35:46.825Z
+    linked_claim_ids:
+      - acs-relationship-anchor
+      - uncoordinated-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-stall-knowledge-and-recovery
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-13T21:35:47.439Z
+    linked_claim_ids:
+      - acs-stall-and-recovery-anchor
+      - stall-cues
+      - recovery-aircraft-specific
+      - secondary-stall-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-spin-awareness
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-13T21:35:47.745Z
+    linked_claim_ids:
+      - acs-spin-anchor
+      - spin-entry-and-phases
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-stall-definition-and-cues
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-13T21:35:47.939Z
+    linked_claim_ids:
+      - stall-angle-of-attack
+      - stall-cues
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-published-stall-speed
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-13T21:35:48.067Z
+    linked_claim_ids:
+      - published-stall-speed-context
+      - practical-poha-afm-bridge
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-recovery-and-turning-stalls
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-13T21:35:48.126Z
+    linked_claim_ids:
+      - recovery-priority
+      - recovery-aircraft-specific
+      - base-to-final-risk
+      - secondary-stall-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ac-stall-spin-awareness
+    title: Stall and Spin Awareness Training, with Changes 1 and 2
+    checked_at_utc: 2026-08-13T21:35:48.185Z
+    linked_claim_ids:
+      - load-factor-relationship
+      - uncoordinated-risk
+      - base-to-final-risk
+      - spin-entry-and-phases
+      - practical-poha-afm-bridge
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-stalls-and-load-factor
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-13T21:35:48.453Z
+    linked_claim_ids:
+      - stall-angle-of-attack
+      - load-factor-relationship
+      - published-stall-speed-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      errors: &a2 []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      errors: *a2
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

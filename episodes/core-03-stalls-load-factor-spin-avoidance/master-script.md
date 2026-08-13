@@ -29,7 +29,7 @@ In this episode: stalls, load factor, and spin avoidance—how the airflow pictu
 
 **ANNOUNCER:**
 
-Start with the whole relationship.
+What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
@@ -58,7 +58,7 @@ We are not going to turn that list into a maneuver recipe. We are going to make 
 
 **ANNOUNCER:**
 
-Name the condition before the number.
+Stall: name the condition first.
 
 **INSTRUCTOR:**
 
@@ -92,7 +92,7 @@ That is the earned conclusion. Say it in plain language: a stall is about angle 
 
 **ANNOUNCER:**
 
-Now connect the model to what you can notice.
+Recognize the approach to the limit.
 
 **INSTRUCTOR:**
 
@@ -120,7 +120,7 @@ Yes. The general takeaway is to preserve useful airflow over the airfoil by reco
 
 **ANNOUNCER:**
 
-Put the published number in context.
+Airspeed is useful, but it is not the definition.
 
 **INSTRUCTOR:**
 
@@ -150,7 +150,7 @@ Exactly. That bridge keeps the theory from becoming vague and keeps the number f
 
 **ANNOUNCER:**
 
-Name the extra work first.
+Load factor: a way to name wing demand.
 
 **INSTRUCTOR:**
 
@@ -177,7 +177,7 @@ Here is the practical takeaway before we look at a turn: load factor is the brid
 
 **ANNOUNCER:**
 
-Now tilt the force picture.
+How a level turn makes the demand visible.
 
 **INSTRUCTOR:**
 
@@ -210,7 +210,7 @@ And this is why the FAA warns that the relationship gets more demanding quickly 
 
 **ANNOUNCER:**
 
-Connect the extra demand to angle of attack.
+Why G changes the stall-speed picture.
 
 **INSTRUCTOR:**
 
@@ -240,7 +240,7 @@ Yes. That is the useful three-part connection: **a changed flightpath can add wi
 
 **ANNOUNCER:**
 
-Keep the conditions attached.
+Bank angle is a clue, not the whole answer.
 
 **INSTRUCTOR:**
 
@@ -267,7 +267,7 @@ Yes. The most useful version is a relationship, not a flash card: bank changes t
 
 **ANNOUNCER:**
 
-Test the mental model.
+Compare the pictures before you calculate anything.
 
 **INSTRUCTOR:**
 
@@ -297,7 +297,7 @@ Yes. Once you can ask that question, load factor becomes more than a steep-turn 
 
 **ANNOUNCER:**
 
-Use the number to understand scale.
+Make the square-root relationship useful.
 
 **INSTRUCTOR:**
 
@@ -325,7 +325,7 @@ Right. Use the relationship to understand why the margin changes. Do not use a m
 
 **ANNOUNCER:**
 
-Use cues without mistaking them for proof.
+Feel, instruments, and limits.
 
 **INSTRUCTOR:**
 
@@ -352,7 +352,7 @@ Exactly. It is a cue to think, not a substitute for the approved information or 
 
 **ANNOUNCER:**
 
-Keep the model practical.
+Using the idea without turning it into a rule of thumb.
 
 **INSTRUCTOR:**
 
@@ -381,7 +381,7 @@ Exactly. That is also why load factor belongs in this stall-and-spin episode rat
 
 **ANNOUNCER:**
 
-Add yaw to the airflow picture.
+Coordination changes the risk picture.
 
 **INSTRUCTOR:**
 
@@ -411,7 +411,7 @@ Yes. That is the causal connection. A high angle of attack is one part of the pr
 
 **ANNOUNCER:**
 
-Break the stall before rebuilding the flightpath.
+The aerodynamic priority in recovery.
 
 **INSTRUCTOR:**
 
@@ -437,7 +437,7 @@ Well put. The control movement, configuration, power, and other details depend o
 
 **ANNOUNCER:**
 
-Avoid forcing the runway alignment.
+A pattern decision, not a trick turn.
 
 **INSTRUCTOR:**
 
@@ -465,7 +465,7 @@ Exactly. Naming the chain helps prevent the chain.
 
 **ANNOUNCER:**
 
-Avoid the stalled-and-yawed combination.
+Spin avoidance starts earlier.
 
 **INSTRUCTOR:**
 
@@ -493,7 +493,7 @@ Yes. Protect useful airflow, stay coordinated, and do not keep demanding a fligh
 
 **ANNOUNCER:**
 
-Put the chain together.
+Retrieval review.
 
 **INSTRUCTOR:**
 

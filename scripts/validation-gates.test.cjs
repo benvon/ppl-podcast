@@ -7,7 +7,7 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors } = require("./validate-source-links.cjs");
+const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { REQUIRED_NOTICE, parseScript, validateFrontMatter } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
@@ -111,6 +111,44 @@ test("eCFR validation fallback must stay on the official versioner endpoint", ()
     validation_url: "https://example.com/current.xml?part=61",
   });
   assert.match(invalid.join("\n"), /ecfr\.gov/);
+});
+
+test("programmatic FAA fallback requires an FAA-page attestation and reviewed digest", () => {
+  const errors = validationTargetErrors({
+    url: "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=2",
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf",
+    programmatic_attestation: {
+      url: "https://example.com/chapter",
+      link_text: "chapter_0.pdf",
+      sha256: "not-a-digest",
+    },
+  });
+  assert.match(errors.join("\n"), /FAA-hosted/);
+  assert.match(errors.join("\n"), /SHA-256/);
+});
+
+test("attested programmatic FAA copy is used when a PDF citation receives an interstitial", async () => {
+  const citedUrl = "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=2";
+  const programmaticUrl = "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf";
+  const attestationUrl = "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight";
+  const bytes = Buffer.from("identical FAA chapter bytes");
+  const sha256 = require("node:crypto").createHash("sha256").update(bytes).digest("hex");
+  const fetchImpl = (url) => {
+    const requested = new URL(url).toString();
+    if (requested === citedUrl) return Promise.resolve(new Response("Pardon our interruption", { status: 200, headers: { "content-type": "text/html" } }));
+    if (requested === programmaticUrl) return Promise.resolve(new Response(bytes, { status: 200, headers: { "content-type": "application/pdf" } }));
+    if (requested === attestationUrl) return Promise.resolve(new Response(`<a href="${programmaticUrl}">chapter_0.pdf</a>`, { status: 200, headers: { "content-type": "text/html" } }));
+    throw new Error(`unexpected URL ${requested}`);
+  };
+  const result = await verifyProgrammaticFallback({
+    url: citedUrl,
+    programmatic_url: programmaticUrl,
+    programmatic_attestation: { url: attestationUrl, link_text: "chapter_0.pdf", sha256 },
+  }, { fetchImpl });
+  assert.equal(result.content_attestation.valid, true);
+  assert.equal(result.content_attestation.citation_hash_matches_programmatic, null);
+  assert.equal(result.link.valid, true);
+  assert.equal(result.link.resolved_via, "attested_programmatic_fallback");
 });
 
 test("production notice must begin immediately after the final opening segment", () => {

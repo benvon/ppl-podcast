@@ -10,6 +10,7 @@ const YAML = require("yaml");
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const MAX_REDIRECTS = 5;
 const MAX_BYTES = 1_000_000;
+const MAX_HASH_BYTES = 32_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
 const RELEVANCE_SCHEMA = {
   type: "object",
@@ -116,35 +117,69 @@ function citationTargetErrors(source) {
 }
 
 function validationTargetErrors(source) {
-  if (!source.validation_url) return [];
   const errors = [];
-  let citationUrl; let validationUrl;
-  try { citationUrl = assertSafeUrl(source.url); validationUrl = assertSafeUrl(source.validation_url); }
-  catch (error) { return [error.message]; }
-  if (canonicalHostname(citationUrl) !== "ecfr.gov" || canonicalHostname(validationUrl) !== "ecfr.gov") {
-    errors.push("validation_url is permitted only for an eCFR citation and must remain on ecfr.gov");
-    return errors;
+  if (source.validation_url) {
+    let citationUrl; let validationUrl;
+    try { citationUrl = assertSafeUrl(source.url); validationUrl = assertSafeUrl(source.validation_url); }
+    catch (error) { return [error.message]; }
+    if (canonicalHostname(citationUrl) !== "ecfr.gov" || canonicalHostname(validationUrl) !== "ecfr.gov") {
+      errors.push("validation_url is permitted only for an eCFR citation and must remain on ecfr.gov");
+    } else if (!/^\/api\/versioner\/v1\/full\/\d{4}-\d{2}-\d{2}\/title-\d+\.xml$/i.test(validationUrl.pathname) || !/^\d+$/.test(validationUrl.searchParams.get("part") || "")) {
+      errors.push("eCFR validation_url must use the official versioner full-title XML endpoint with a numeric part query");
+    }
   }
-  if (!/^\/api\/versioner\/v1\/full\/\d{4}-\d{2}-\d{2}\/title-\d+\.xml$/i.test(validationUrl.pathname) || !/^\d+$/.test(validationUrl.searchParams.get("part") || "")) {
-    errors.push("eCFR validation_url must use the official versioner full-title XML endpoint with a numeric part query");
+  if (source.programmatic_url || source.programmatic_attestation) {
+    if (!source.programmatic_url || !source.programmatic_attestation || typeof source.programmatic_attestation !== "object") {
+      errors.push("programmatic_url requires a programmatic_attestation record");
+      return errors;
+    }
+    const { url: attestationUrl, link_text: linkText, sha256 } = source.programmatic_attestation;
+    let citationUrl; let programmaticUrl; let attestation;
+    try {
+      citationUrl = assertSafeUrl(source.url);
+      programmaticUrl = assertSafeUrl(source.programmatic_url);
+      attestation = assertSafeUrl(attestationUrl);
+    } catch (error) { errors.push(error.message); return errors; }
+    const isFaa = (url) => canonicalHostname(url) === "faa.gov" || canonicalHostname(url).endsWith(".faa.gov");
+    if (!isFaa(citationUrl) || !isFaa(programmaticUrl) || !isFaa(attestation)) errors.push("programmatic FAA fallbacks must use FAA-hosted citation, copy, and attestation URLs");
+    if (sameUrlIgnoringFragment(citationUrl, programmaticUrl)) errors.push("programmatic_url must be a distinct alternate endpoint");
+    if (typeof linkText !== "string" || !linkText.trim()) errors.push("programmatic_attestation.link_text must identify the FAA page link to the programmatic copy");
+    if (typeof sha256 !== "string" || !/^[a-f0-9]{64}$/i.test(sha256)) errors.push("programmatic_attestation.sha256 must be a SHA-256 hexadecimal digest");
   }
   return errors;
 }
 
-async function readBoundedBody(response) {
+function sameUrlIgnoringFragment(left, right) {
+  const normalized = (url) => {
+    const copy = new URL(url);
+    copy.hash = "";
+    return copy.toString();
+  };
+  return normalized(left) === normalized(right);
+}
+
+async function readBoundedBody(response, { includeContentHash = false } = {}) {
   const contentLength = Number(response.headers.get("content-length"));
-  if (Number.isFinite(contentLength) && contentLength > MAX_BYTES) return { text: "", truncated: true };
+  const readLimit = includeContentHash ? MAX_HASH_BYTES : MAX_BYTES;
+  if (Number.isFinite(contentLength) && contentLength > readLimit) return { text: "", truncated: true, content_sha256: null, hash_truncated: includeContentHash };
+  if (!includeContentHash && Number.isFinite(contentLength) && contentLength > MAX_BYTES) return { text: "", truncated: true, content_sha256: null, hash_truncated: false };
   const reader = response.body && response.body.getReader();
-  if (!reader) return { text: "", truncated: false };
-  const chunks = []; let total = 0;
+  if (!reader) return { text: "", truncated: false, content_sha256: null, hash_truncated: false };
+  const chunks = []; let total = 0; let textTruncated = false;
+  const hash = includeContentHash ? crypto.createHash("sha256") : null;
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
     total += value.length;
-    if (total > MAX_BYTES) { await reader.cancel(); return { text: Buffer.concat(chunks).toString("utf8"), truncated: true }; }
-    chunks.push(Buffer.from(value));
+    if (total > readLimit) {
+      await reader.cancel();
+      return { text: Buffer.concat(chunks).toString("utf8"), truncated: true, content_sha256: null, hash_truncated: includeContentHash };
+    }
+    if (hash) hash.update(value);
+    if (total <= MAX_BYTES) chunks.push(Buffer.from(value));
+    else textTruncated = true;
   }
-  return { text: Buffer.concat(chunks).toString("utf8"), truncated: false };
+  return { text: Buffer.concat(chunks).toString("utf8"), truncated: textTruncated, content_sha256: hash ? hash.digest("hex") : null, hash_truncated: false };
 }
 
 function htmlToText(html) {
@@ -156,7 +191,26 @@ function htmlTitle(html) {
   return match ? htmlToText(match[1]).slice(0, 300) : null;
 }
 
-async function fetchSource(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS } = {}) {
+function htmlLinks(html, baseUrl) {
+  const links = [];
+  const matches = html.matchAll(/<a\b[^>]*\bhref\s*=\s*(["'])(.*?)\1[^>]*>([\s\S]*?)<\/a>/gi);
+  for (const match of matches) {
+    try { links.push({ url: new URL(match[2], baseUrl).toString(), text: htmlToText(match[3]) }); }
+    catch (_) { /* Ignore malformed links in an otherwise valid FAA landing page. */ }
+  }
+  return links;
+}
+
+function linkResponseErrors(sourceUrl, link) {
+  const errors = [];
+  if (!(link.status >= 200 && link.status < 400)) errors.push(`HTTP ${link.status}`);
+  const sourcePath = new URL(sourceUrl).pathname.toLowerCase();
+  if (sourcePath.endsWith(".pdf") && link.content_type !== "application/pdf") errors.push(`expected application/pdf, received ${link.content_type || "no content type"}`);
+  if (link.content_type === "text/html" && /(?:pardon our interruption|access denied|unusual traffic|verify you are human|captcha|security check)/i.test(`${link.title || ""} ${link.excerpt || ""}`)) errors.push("received an access interstitial instead of the cited resource");
+  return errors;
+}
+
+async function fetchSource(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false } = {}) {
   let current = assertSafeUrl(sourceUrl);
   const citedAuthorityHost = canonicalHostname(current);
   const redirects = [];
@@ -175,7 +229,7 @@ async function fetchSource(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIM
         }
         redirects.push(next.toString()); current = next; continue;
       }
-      const { text, truncated } = await readBoundedBody(response);
+      const { text, truncated, content_sha256, hash_truncated } = await readBoundedBody(response, { includeContentHash });
       const contentType = (response.headers.get("content-type") || "").split(";")[0].toLowerCase();
       const isHtml = contentType === "text/html" || contentType === "application/xhtml+xml";
       const isText = isHtml || contentType.startsWith("text/") || contentType === "application/json";
@@ -188,10 +242,53 @@ async function fetchSource(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIM
         title: isHtml ? htmlTitle(text) : null,
         excerpt: isText ? (isHtml ? htmlToText(text) : text.replace(/\s+/g, " ").trim()).slice(0, 12000) : null,
         truncated,
+        content_sha256,
+        hash_truncated,
+        links: includeLinks && isHtml ? htmlLinks(text, current) : undefined,
       };
     } finally { clearTimeout(timer); }
   }
   throw new Error(`redirect limit (${MAX_REDIRECTS}) exceeded`);
+}
+
+async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS } = {}) {
+  const citation = await fetchSource(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: Boolean(source.programmatic_url) });
+  citation.citation_url = source.url;
+  citation.validation_url = source.validation_url || source.url;
+  citation.errors = linkResponseErrors(source.validation_url || source.url, citation);
+  citation.valid = citation.errors.length === 0;
+  if (!source.programmatic_url) return { link: citation, citation_link: citation, content_attestation: { valid: true, status: "not_configured" } };
+
+  const programmatic = await fetchSource(source.programmatic_url, { fetchImpl, timeoutMs, includeContentHash: true });
+  programmatic.errors = linkResponseErrors(source.programmatic_url, programmatic);
+  programmatic.valid = programmatic.errors.length === 0;
+  const attestationConfig = source.programmatic_attestation;
+  const attestationLink = await fetchSource(attestationConfig.url, { fetchImpl, timeoutMs, includeLinks: true });
+  attestationLink.errors = linkResponseErrors(attestationConfig.url, attestationLink);
+  attestationLink.valid = attestationLink.errors.length === 0;
+  const expectedLink = (attestationLink.links || []).some((link) => sameUrlIgnoringFragment(link.url, source.programmatic_url) && link.text === attestationConfig.link_text);
+  const hashMatchesLedger = programmatic.content_sha256 === attestationConfig.sha256;
+  const citationHashMatches = citation.valid ? citation.content_sha256 === programmatic.content_sha256 : null;
+  const errors = [];
+  if (!programmatic.valid) errors.push(...programmatic.errors);
+  if (!attestationLink.valid) errors.push(...attestationLink.errors);
+  if (!expectedLink) errors.push("FAA attestation page does not link to the configured programmatic copy with the expected link text");
+  if (!hashMatchesLedger) errors.push("programmatic copy SHA-256 does not match the reviewed ledger digest");
+  if (citationHashMatches === false) errors.push("citation and programmatic copies do not have matching SHA-256 digests");
+  const contentAttestation = {
+    valid: errors.length === 0,
+    status: errors.length === 0 ? "attested" : "failed",
+    attestation_url: attestationConfig.url,
+    expected_link_text: attestationConfig.link_text,
+    expected_sha256: attestationConfig.sha256,
+    citation_sha256: citation.content_sha256,
+    programmatic_sha256: programmatic.content_sha256,
+    citation_hash_matches_programmatic: citationHashMatches,
+    errors,
+  };
+  const fallbackAvailable = !citation.valid && programmatic.valid && contentAttestation.valid;
+  const link = fallbackAvailable ? { ...programmatic, citation_url: source.url, validation_url: source.programmatic_url, resolved_via: "attested_programmatic_fallback" } : citation;
+  return { link, citation_link: citation, programmatic_link: programmatic, attestation_link: attestationLink, content_attestation: contentAttestation };
 }
 
 function responseText(response) {
@@ -232,11 +329,12 @@ function writeYaml(file, value) {
 
 function publicLinkRecord(link) {
   if (!link || !Object.hasOwn(link, "excerpt")) return link;
-  const { excerpt, ...rest } = link;
+  const { excerpt, links, ...rest } = link;
   return {
     ...rest,
     excerpt_characters: excerpt ? excerpt.length : 0,
     excerpt_sha256: excerpt ? crypto.createHash("sha256").update(excerpt).digest("hex") : null,
+    discovered_link_count: links ? links.length : undefined,
   };
 }
 
@@ -323,14 +421,18 @@ async function main() {
       entry.citation_target.errors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
       entry.citation_target.valid = entry.citation_target.errors.length === 0;
       if (!entry.citation_target.valid) throw new Error(`Deep-citation validation failed: ${entry.citation_target.errors.join("; ")}`);
-      entry.link = await fetchSource(source.validation_url || source.url);
-      entry.link.citation_url = source.url;
-      entry.link.validation_url = source.validation_url || source.url;
-      entry.link.valid = entry.link.status >= 200 && entry.link.status < 400;
+      const verification = await verifyProgrammaticFallback(source);
+      entry.link = verification.link;
+      if (source.programmatic_url) {
+        entry.citation_link = verification.citation_link;
+        entry.programmatic_link = verification.programmatic_link;
+        entry.attestation_link = verification.attestation_link;
+        entry.content_attestation = verification.content_attestation;
+      }
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results.push(entry);
   }
-  const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && !entry.missing_claim_ids.length);
+  const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids.length);
   for (let index = 0; index < results.length; index += 1) {
     const source = ledger.sources[index]; const entry = results[index];
     const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
@@ -350,14 +452,20 @@ async function main() {
     }
     console.log(`${source.id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
   }
-  const reportResults = results.map((result) => ({ ...result, link: publicLinkRecord(result.link) }));
+  const reportResults = results.map((result) => ({
+    ...result,
+    link: publicLinkRecord(result.link),
+    citation_link: publicLinkRecord(result.citation_link),
+    programmatic_link: publicLinkRecord(result.programmatic_link),
+    attestation_link: publicLinkRecord(result.attestation_link),
+  }));
   const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, results: reportResults };
   writeYaml(outputPath, report);
-  const unresolved = !claimMapping.valid || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
+  const unresolved = !claimMapping.valid || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
   if (unresolved) process.exitCode = 1;
 }
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { fetchSource, validateClaimMappings, validateClaimAssessments, validationTargetErrors };
+module.exports = { fetchSource, validateClaimMappings, validateClaimAssessments, validationTargetErrors, verifyProgrammaticFallback };

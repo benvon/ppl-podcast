@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-13T20:24:17.847Z
+checked_at_utc: 2026-08-13T20:39:06.215Z
 sources_file: episodes/core-02-principles-of-flight-lift-drag-angle-of-attack/sources.yaml
 claims_file: episodes/core-02-principles-of-flight-lift-drag-angle-of-attack/claim-inventory.yaml
 llm_requested: true
@@ -11,7 +11,7 @@ claim_mapping:
 results:
   - source_id: acs-aerodynamics
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-13T20:23:54.648Z
+    checked_at_utc: 2026-08-13T20:37:55.134Z
     linked_claim_ids:
       - acs-aerodynamics
     missing_claim_ids: []
@@ -26,8 +26,11 @@ results:
       redirects: []
       title: null
       truncated: false
+      content_sha256: null
+      hash_truncated: false
       citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
       validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -42,13 +45,13 @@ results:
           which matches the claim.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator identifies Area I, Task F, PA.I.F.K3, and the
+          rationale: The supplied locator identifies Area I, Task F, PA.I.F.K3, and the
             excerpt specifically attributes the aerodynamics knowledge item to
             PA.I.F.K3.
         claim_assessments:
           - claim_id: acs-aerodynamics
             verdict: supports
-            rationale: The claim is a direct restatement of the excerpt.
+            rationale: The claim restates the excerpt without adding unsupported detail.
       usage:
         input_tokens: 412
         input_tokens_details:
@@ -66,7 +69,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: acs-slow-flight-relationships
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-13T20:23:55.359Z
+    checked_at_utc: 2026-08-13T20:37:55.717Z
     linked_claim_ids:
       - acs-slow-flight-relationships
     missing_claim_ids: []
@@ -81,8 +84,11 @@ results:
       redirects: []
       title: null
       truncated: false
+      content_sha256: null
+      hash_truncated: false
       citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
       validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      errors: []
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -95,28 +101,29 @@ results:
         rationale: The excerpt directly states that PA.VII.A.K1 identifies the
           relationship among angle of attack, airspeed, load factor, power
           setting, airplane weight and center of gravity, airplane attitude, and
-          yaw effects. This substantively matches the claim.
+          yaw effects. This substantively matches the claim’s slow-flight
+          subject matter and listed factors.
         locator_assessment:
           verdict: supports
           rationale: The excerpt explicitly identifies the cited ACS element, PA.VII.A.K1,
-            under Area VII, Task A. The supplied excerpt does not independently
-            show the page number, but it substantively matches the cited
-            locator.
+            and its content. Although the supplied excerpt does not
+            independently display the page number or Area/Task heading, it
+            substantively matches the cited locator’s knowledge element.
         claim_assessments:
           - claim_id: acs-slow-flight-relationships
             verdict: supports
-            rationale: The claim is a faithful paraphrase of the excerpt. “Power”
-              corresponds to “power setting,” and the listed relationship
-              factors match.
+            rationale: The claim accurately paraphrases the excerpt. “Power” corresponds to
+              “power setting,” and “attitude” and “yaw” correspond to “airplane
+              attitude” and “yaw effects.”
       usage:
         input_tokens: 446
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 180
+        output_tokens: 204
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 626
+        total_tokens: 650
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -126,7 +133,7 @@ results:
   - source_id: phak-air-fluid
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of
       Flight"
-    checked_at_utc: 2026-08-13T20:23:55.602Z
+    checked_at_utc: 2026-08-13T20:37:55.931Z
     linked_claim_ids:
       - air-is-fluid
     missing_claim_ids: []
@@ -138,14 +145,72 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a1 []
       title: null
       truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2
       validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2
+      errors: &a2 []
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2
+      errors: *a2
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 4: Principles of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7647
+      excerpt_sha256: d4735feec67bc4425687e1092558b6bdc64bc075f000b7e7c72b601166469a5d
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      expected_link_text: 06_phak_ch4_0.pdf
+      expected_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      programmatic_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_hash_matches_programmatic: true
+      errors: []
     relevance:
       status: assessed
       model: gpt-5.6-terra
@@ -153,27 +218,27 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states that the PHAK describes air as a fluid
-          and explains that it has viscosity, friction, and pressure. This
-          substantively matches the cited topic and fully supports the claim.
+          and explains that it has viscosity, friction, and pressure, exactly
+          matching the claim.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator is specifically Chapter 4, “Air Is a Fluid,” and
-            the excerpt addresses that exact section topic rather than merely
-            matching the document generally.
+          rationale: The cited locator is specifically Chapter 4’s “Air Is a Fluid”
+            material, and the excerpt addresses that same subject matter rather
+            than merely matching the document generally.
         claim_assessments:
           - claim_id: air-is-fluid
             verdict: supports
-            rationale: "The claim restates the excerpt: air behaves as a fluid and has
-              viscosity, friction, and pressure."
+            rationale: "The claim is explicitly stated in the excerpt: air is described as a
+              fluid with viscosity, friction, and pressure."
       usage:
         input_tokens: 423
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 149
+        output_tokens: 145
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 572
+        total_tokens: 568
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -183,7 +248,7 @@ results:
   - source_id: phak-lift-and-airfoil-behavior
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of
       Flight"
-    checked_at_utc: 2026-08-13T20:23:55.673Z
+    checked_at_utc: 2026-08-13T20:38:01.723Z
     linked_claim_ids:
       - airfoil-definition
       - lift-multiple-principles
@@ -199,67 +264,128 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a3 []
       title: null
       truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5
       validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5
+      errors: &a4 []
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5
+      status: 200
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=5
+      errors: *a4
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 4: Principles of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7647
+      excerpt_sha256: d4735feec67bc4425687e1092558b6bdc64bc075f000b7e7c72b601166469a5d
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      expected_link_text: 06_phak_ch4_0.pdf
+      expected_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      programmatic_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_hash_matches_programmatic: true
+      errors: []
     relevance:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: supports
+        verdict: partially_supports
         confidence: high
-        rationale: The excerpt substantively addresses the cited Chapter 4
-          topics—production of lift, airfoil design/behavior, lift factors, and
-          aerodynamic-force directions—and matches the locator’s stated subject
-          matter rather than merely the document as a whole.
+        rationale: "The excerpt substantively matches the cited Chapter 4 topics and
+          locator: it addresses lift theories, airfoil definition and behavior,
+          lift factors, and lift/drag relative to the relative wind. It supports
+          most claims directly, but does not include every directional detail
+          stated in the airflow-deflection claim or the statement that a wing is
+          the primary example."
         locator_assessment:
           verdict: supports
-          rationale: The excerpt directly corresponds to the locator’s sections, “Theories
+          rationale: The excerpt directly concerns the locator’s listed subjects—“Theories
             in the Production of Lift,” “Airfoil Design,” and “Airfoil
-            Behavior,” on the specified Chapter 4 page range.
+            Behavior”—rather than merely matching the handbook or chapter at a
+            document level.
         claim_assessments:
           - claim_id: airfoil-definition
             verdict: partially_supports
-            rationale: The excerpt supports that an airfoil is a structure designed to
-              obtain reaction from the air through which it moves. It does not
-              state that it is a “shaped surface,” nor does it say that a wing
-              is the primary example used by the episode.
+            rationale: The excerpt defines an airfoil as a structure designed to obtain
+              reaction from air through which it moves, supporting the general
+              idea of a surface designed to interact with airflow. It does not
+              state that the episode uses a wing as its primary example.
           - claim_id: lift-multiple-principles
             verdict: supports
-            rationale: The excerpt expressly says that lift is more complex than
+            rationale: The excerpt expressly states that lift is more complex than
               differential pressure alone and that both Bernoulli’s principle
               and Newton’s laws operate.
           - claim_id: airfoil-deflects-air
             verdict: partially_supports
             rationale: The excerpt states that an airfoil deflects airflow downward and that
               the equal-and-opposite reaction contributes to lift. It does not
-              support the added assertions that the airflow is deflected
-              backward or that the reaction on the airfoil is forward.
+              state that the airflow is deflected backward or that the reaction
+              on the airfoil is forward.
           - claim_id: lift-factors
             verdict: supports
-            rationale: The excerpt states that lift varies with air density, velocity
-              through the air, wing area, and coefficient of lift, and that
-              coefficient of lift changes with airfoil shape and angle of
+            rationale: The excerpt explicitly presents lift as varying with air density,
+              velocity through the air, wing area, and coefficient of lift, and
+              says the coefficient changes with airfoil shape and angle of
               attack.
           - claim_id: aerodynamic-force-reference
             verdict: supports
-            rationale: The excerpt explicitly defines lift as the aerodynamic-force
-              component perpendicular to the relative wind and drag as the
-              component opposite the relative wind.
+            rationale: The excerpt explicitly defines lift and drag as aerodynamic-force
+              components referenced perpendicular to and opposite the relative
+              wind, respectively.
       usage:
         input_tokens: 724
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 411
+        output_tokens: 508
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1135
+          reasoning_tokens: 74
+        total_tokens: 1232
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -269,7 +395,7 @@ results:
   - source_id: phak-aoa-and-relative-wind
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of
       Flight"
-    checked_at_utc: 2026-08-13T20:23:55.721Z
+    checked_at_utc: 2026-08-13T20:38:07.635Z
     linked_claim_ids:
       - angle-of-attack-definition
       - pitch-not-aoa
@@ -283,29 +409,88 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a5 []
       title: null
       truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
       validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      errors: &a6 []
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      status: 200
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      errors: *a6
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 4: Principles of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7647
+      excerpt_sha256: d4735feec67bc4425687e1092558b6bdc64bc075f000b7e7c72b601166469a5d
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      expected_link_text: 06_phak_ch4_0.pdf
+      expected_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      programmatic_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_hash_matches_programmatic: true
+      errors: []
     relevance:
       status: assessed
       model: gpt-5.6-terra
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt substantively addresses the cited locator’s stated
-          subjects—airfoil design, angle of attack, chord line, relative wind,
-          pitch attitude, and aerodynamic force references—and directly contains
-          the information asserted in all three claims.
+        rationale: "The excerpt substantively matches the cited Chapter 4 topic and
+          locator: it directly addresses airfoil design, angle of attack, chord
+          line, relative wind, pitch attitude, and aerodynamic force
+          references—the specific subject matter identified in the citation."
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is specifically about the Chapter 4 section identified by
-            the locator, addressing angle of attack and relative wind rather
-            than merely matching the broader PHAK document.
+          rationale: The supplied excerpt is on the cited locator’s stated subject,
+            “Airfoil Design and Angle of Attack,” and contains material directly
+            relevant to pages 4-6–4-8 rather than merely matching the handbook
+            at a document level.
         claim_assessments:
           - claim_id: angle-of-attack-definition
             verdict: supports
@@ -314,24 +499,24 @@ results:
               relative wind.”
           - claim_id: pitch-not-aoa
             verdict: supports
-            rationale: The excerpt states that pitch attitude describes the airplane’s
-              orientation to the horizon, while angle of attack uses chord line
-              and relative wind, and explicitly says that a pitch picture alone
-              does not establish angle of attack.
+            rationale: The excerpt states that pitch attitude describes orientation to the
+              horizon, while angle of attack uses chord line and relative wind,
+              and explicitly concludes that a pitch picture alone does not
+              establish angle of attack.
           - claim_id: relative-wind-reference
             verdict: supports
-            rationale: The excerpt explicitly identifies relative wind as the reference
-              direction for angle of attack and lift-and-drag force components,
-              and distinguishes it from movement of an air mass over the ground.
+            rationale: The excerpt expressly says relative wind is the reference direction
+              for angle of attack and lift-and-drag force components, and that
+              it is distinct from movement of an air mass over the ground.
       usage:
         input_tokens: 610
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 276
+        output_tokens: 292
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 886
+        total_tokens: 902
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -341,7 +526,7 @@ results:
   - source_id: phak-stall-flow
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
       Flight"
-    checked_at_utc: 2026-08-13T20:23:55.768Z
+    checked_at_utc: 2026-08-13T20:38:13.985Z
     linked_claim_ids:
       - airflow-protection
       - published-airspeed-context
@@ -354,69 +539,123 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a7 []
       title: null
       truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25
+      errors: &a8 []
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25
+      status: 200
+      content_type: application/pdf
+      redirects: *a7
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=25
+      errors: *a8
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
     relevance:
       status: assessed
       model: gpt-5.6-terra
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt substantively matches the cited locator’s
-          stall/angle-of-attack topic and directly states the core principle
-          that a stall results from exceeding critical angle of attack
-          regardless of airspeed, attitude, or power. It also says the material
-          discusses how flight conditions change the airspeed at which a stall
-          occurs. However, the excerpt does not contain the more specific
-          explanations about preserving airflow for normal lift or about
-          published one-G stall-speed test conditions and universal
-          angle-of-attack margins.
+        rationale: "The excerpt substantively addresses stalls and angle of attack at
+          the cited topic: it states that a stall follows exceeding the critical
+          angle of attack regardless of airspeed, attitude, or power setting,
+          and that changing conditions affect the airspeed at which it occurs.
+          However, it does not provide the more specific
+          published-one-G-stall-speed or test-condition details used in one
+          claim."
         locator_assessment:
           verdict: supports
-          rationale: "The locator identifies the Chapter 5 discussion of stalls and
-            angle-of-attack indicators, and the excerpt addresses exactly that
-            subject: critical angle of attack and variation in stall airspeed
-            with flight conditions."
+          rationale: The excerpt directly concerns the cited locator’s subject matter of
+            stalls and angle of attack indicators, rather than merely matching
+            the handbook or chapter generally.
         claim_assessments:
           - claim_id: airflow-protection
-            verdict: partially_supports
-            rationale: The excerpt supports the relevance of angle of attack to avoiding a
-              stall, but it does not state that managing angle of attack or
-              flight condition protects ‘useful airflow’ needed for normal lift
-              production.
+            verdict: does_not_support
+            rationale: The excerpt discusses critical angle of attack and stalls, but does
+              not state that managing angle of attack protects useful airflow or
+              describe airflow as necessary for normal lift production.
           - claim_id: published-airspeed-context
             verdict: partially_supports
-            rationale: The excerpt supports the general idea that stall airspeed changes
-              with flight conditions and that stall is governed by critical
-              angle of attack rather than airspeed alone. It does not
-              specifically discuss published one-G stall speeds, stated test
-              conditions, or characterize them as not establishing a universal
-              angle-of-attack margin.
+            rationale: The excerpt supports the idea that stall airspeed changes with flight
+              conditions and that stall is fundamentally
+              angle-of-attack-dependent rather than governed by a single
+              airspeed. It does not mention published one-G stall speeds, stated
+              test conditions, or an angle-of-attack margin.
       usage:
         input_tokens: 513
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 318
+        output_tokens: 404
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 831
+          reasoning_tokens: 128
+        total_tokens: 917
     claim_assessments:
-      valid: true
+      valid: false
       missing_assessment_ids: []
       unexpected_assessment_ids: []
       duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
+      unsupported_assessment_ids:
+        - airflow-protection
   - source_id: phak-drag-tradeoff
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of
       Flight"
-    checked_at_utc: 2026-08-13T20:23:55.816Z
+    checked_at_utc: 2026-08-13T20:38:34.222Z
     linked_claim_ids:
       - drag-categories
       - drag-tradeoff
@@ -431,31 +670,88 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a9 []
       title: null
       truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9
       validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9
+      errors: &a10 []
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: *a9
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=9
+      errors: *a10
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 4: Principles of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7647
+      excerpt_sha256: d4735feec67bc4425687e1092558b6bdc64bc075f000b7e7c72b601166469a5d
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight
+      expected_link_text: 06_phak_ch4_0.pdf
+      expected_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      programmatic_sha256: ec455bdbf28ef33f70dc8e0a339aa482c35b09137b13b43b8a96d62f41bfcbce
+      citation_hash_matches_programmatic: true
+      errors: []
     relevance:
       status: assessed
       model: gpt-5.6-terra
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The excerpt substantively addresses the cited Chapter 4 drag and
-          lift/drag-ratio material: it describes parasite and induced drag,
-          their opposing speed-related trends, the lowest-total-drag region, and
-          lift-to-drag ratio as aerodynamic efficiency. These topics directly
-          match the supplied locator rather than merely matching the handbook
-          generally."
+        rationale: The excerpt substantively matches the cited Chapter 4 drag and
+          lift-to-drag-ratio material. It directly addresses parasite drag,
+          induced drag, their opposing speed relationships and total-drag curve,
+          and lift-to-drag ratio as aerodynamic efficiency.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt specifically covers the listed locator subjects—Drag,
-            Induced Drag, Parasite Drag, and Lift/Drag Ratio—and is consistent
-            with the cited Chapter 4 page range.
+          rationale: The cited locator identifies the Drag, Induced Drag, Parasite Drag,
+            and Lift/Drag Ratio material, and the excerpt directly covers each
+            of those topics rather than merely matching the handbook or chapter
+            generally.
         claim_assessments:
           - claim_id: drag-categories
             verdict: supports
@@ -464,28 +760,28 @@ results:
               angle of attack and low airspeed.
           - claim_id: drag-tradeoff
             verdict: supports
-            rationale: The excerpt expressly says the opposing trends are combined into a
-              total-drag curve with a lowest-total-drag region, not a speed at
-              which drag disappears.
+            rationale: The excerpt explicitly says the opposing trends are combined into a
+              total-drag curve with a lowest-total-drag region, rather than a
+              speed where drag disappears.
           - claim_id: induced-drag-consequence
             verdict: supports
-            rationale: The excerpt expressly associates induced drag with lift production
-              and states that it is greatest at high angle of attack and low
+            rationale: The excerpt directly states that induced drag is created as a
+              byproduct of lift and is greatest at high angle of attack and low
               airspeed.
           - claim_id: lift-drag-efficiency
             verdict: supports
-            rationale: The excerpt defines lift-to-drag ratio as the relationship of lift
-              produced to drag incurred and says it is used as a measure of
+            rationale: The excerpt defines lift-to-drag ratio as the relationship between
+              lift produced and drag incurred and identifies it as a measure of
               aerodynamic efficiency.
       usage:
         input_tokens: 630
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 329
+        output_tokens: 320
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 959
+        total_tokens: 950
     claim_assessments:
       valid: true
       missing_assessment_ids: []

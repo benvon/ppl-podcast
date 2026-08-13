@@ -174,6 +174,8 @@ On the planned publication day, independently re-open every external link, confi
 
 Run `scripts/validate-source-links.cjs` against each episode's `sources.yaml` and `claim-inventory.yaml`. The deterministic pass enforces HTTPS, a specific locator, and a deep citation target; follows a bounded redirect chain; records the final URL/status/content type/title; and fails closed for unreachable or malformed links. It also requires every claim to name valid ledger sources and every named source to reciprocally list that claim in `supports_claims`. PDFs require `#page=N` and a locator that names the relevant page and section/task. FAA HTML sources require a specific section endpoint or anchor, and eCFR sources require the precise section URL. Run it with `--llm --require-llm` before a public candidate release to obtain a structured advisory assessment of whether each fetched source excerpt supports both the cited locator and every individual claim mapped to it.
 
+If an FAA PDF is known to encounter an access interstitial, the ledger may add a distinct FAA-hosted `programmatic_url` and a `programmatic_attestation` record. That record must name an FAA human-facing page that explicitly links to the alternate, the exact link text, and a reviewed SHA-256 digest. The validator verifies the FAA page link and digest on every run; when the listener-facing PDF is reachable, it also requires the two copies to have identical bytes. If the listener-facing endpoint is blocked, the alternate can pass only through that FAA-page-and-digest attestation. Any digest change fails closed for release review.
+
 The LLM relevance check is not an aviation authority and cannot cure a bad source, a stale revision, or an unsupported claim. Resolve every `does_not_support`, `insufficient_evidence`, missing-claim, missing per-claim assessment, mismatched claim/source mapping, and non-text-source finding. For a PDF or another source from which no safe text is extracted, add a short, reviewed `relevance_excerpt` to the source ledger or perform a documented manual review.
 
 ### Source ledger schema
@@ -194,6 +196,21 @@ sources:
     verified_at_utc: "2026-08-11T18:00:00Z"
     link_status: 200
     supports_claims: ["stall-relations", "scenario-bank-turn"]
+  - id: phak-chapter-example
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 4: Principles of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 4, Air Is a Fluid, p. 4-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=2"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight"
+      link_text: "06_phak_ch4_0.pdf"
+      sha256: "reviewed SHA-256 digest"
+    revision: "FAA-H-8083-25C, 2023"
+    verified_at_utc: "2026-08-11T18:00:00Z"
+    link_status: 200
+    supports_claims: ["air-is-fluid"]
   - id: cfr-91-103
     authority: regulation
     title: "14 CFR 91.103 - Preflight action"

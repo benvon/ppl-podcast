@@ -108,6 +108,15 @@ acceptable attribution for a material claim.
 The retained validation record contains URLs, HTTP metadata, an excerpt digest,
 and the structured relevance result—not a copy of the fetched source text.
 
+For an FAA PDF that is occasionally blocked by an access interstitial, a source
+ledger may declare an alternate FAA-hosted `programmatic_url`. The validator
+only accepts that fallback when the ledger also supplies an FAA page that
+explicitly links to it, the exact link text, and a reviewed SHA-256 digest.
+When the listener-facing link is available, its bytes must match the alternate;
+when it is blocked, the alternate remains usable only if its digest still
+matches the reviewed value. A changed digest is a source-review failure, not a
+silent substitution.
+
 ## Render audio
 
 See [scripts/README.md](scripts/README.md). Audio stays in the ignored

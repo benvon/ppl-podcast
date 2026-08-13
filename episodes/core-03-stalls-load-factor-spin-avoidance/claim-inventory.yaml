@@ -47,7 +47,42 @@ claims:
     statement: "Increasing load factor increases the angle of attack required to support the airplane and can raise the airspeed at which critical angle of attack is reached."
     sources: [phak-stalls-and-load-factor, ac-stall-spin-awareness]
     risk: safety_critical
-    script_sections: ["Load factor: asking the wing for more"]
+    script_sections: ["Load factor: a way to name wing demand", "How a level turn makes the demand visible", "Why G changes the stall-speed picture", "Using the idea without turning it into a rule of thumb"]
+    status: fact_checked_initial_draft
+  - id: load-factor-definition
+    type: faa_guidance
+    statement: "Load factor expresses the aerodynamic load the wing supports as a multiple of the airplane's weight; 2 G means the wing is supporting twice the airplane's weight in aerodynamic load."
+    sources: [phak-stalls-and-load-factor]
+    risk: safety_critical
+    script_sections: ["Load factor: a way to name wing demand"]
+    status: fact_checked_initial_draft
+  - id: load-factor-level-turn
+    type: faa_guidance
+    statement: "In a coordinated, constant-altitude turn, the wing must supply both vertical support and the inward force that curves the flightpath; at 60 degrees of bank, the PHAK identifies the resulting load factor as 2 G."
+    sources: [phak-stalls-and-load-factor]
+    risk: safety_critical
+    script_sections: ["How a level turn makes the demand visible"]
+    status: fact_checked_initial_draft
+  - id: accelerated-stall-speed
+    type: faa_guidance
+    statement: "The PHAK explains that stall speed rises in proportion to the square root of load factor, so a 2-G illustration uses about 1.41 times the relevant one-G stall speed under comparable conditions."
+    sources: [phak-stalls-and-load-factor]
+    risk: safety_critical
+    script_sections: ["Why G changes the stall-speed picture"]
+    status: fact_checked_initial_draft
+  - id: load-factor-limits-bridge
+    type: teaching_explanation
+    statement: "Load factor connects aerodynamic stall margin with structural loading, but the airplane's POH/AFM supplies the applicable speeds, limitations, and procedures."
+    sources: [phak-stalls-and-load-factor]
+    risk: safety_critical
+    script_sections: ["Using the idea without turning it into a rule of thumb"]
+    status: fact_checked_initial_draft
+  - id: load-factor-cues
+    type: faa_guidance
+    statement: "Seat pressure can help a pilot sense increasing load factor, but it is not a precision measurement or a stall warning; an accelerometer measures load factor when installed."
+    sources: [phak-stalls-and-load-factor]
+    risk: safety_critical
+    script_sections: ["Feel, instruments, and limits"]
     status: fact_checked_initial_draft
   - id: uncoordinated-risk
     type: faa_guidance

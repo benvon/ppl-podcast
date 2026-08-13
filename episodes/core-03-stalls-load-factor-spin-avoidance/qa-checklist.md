@@ -9,7 +9,7 @@
 
 ## Audio and release
 
-- [ ] Opening, notice, Ballad introduction, transitions, and outro are structurally checked.
+- [x] Opening, notice, Ballad introduction, transitions, and outro are structurally checked by the realtime renderer dry run (73 segments, Ballad announcer).
 - [ ] Opening preview and complete script-aligned listening QA are accepted.
 - [ ] Publication-day FAA links and revisions are re-verified.
 - [ ] Hosting metadata and staged audio agree with the approved script.

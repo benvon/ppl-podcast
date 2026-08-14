@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Stalls, Load Factor, and Spin Avoidance"
 slug: stalls-load-factor-spin-avoidance
 track: core
-status: draft
+status: ready_for_hosting_pr
 version: 0.1.0
-published_at: null
+published_at: "2026-08-14T19:17:58Z"
 runtime_target_minutes: 34
-runtime_actual_seconds: null
+runtime_actual_seconds: 1974.91
 word_count: 5186
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -39,33 +39,32 @@ trouble_spots:
   - "Using rudder to tighten an overshooting turn rather than changing the plan"
   - "Assuming a generic spin recovery replaces the POH/AFM procedure"
 source_verification:
-  status: deterministic_validation_complete_llm_relevance_pending
-  verified_at_utc: "2026-08-14T17:35:03Z"
+  status: publication_day_validation_complete
+  verified_at_utc: "2026-08-14T19:30:21Z"
   link_validation: link-validation.yaml
   relevance_review: required_before_public_release
 review:
-  editorial_status: initial_draft
+  editorial_status: script_and_listening_qa_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete source-link validation with LLM relevance review and resolve failures"
-  - "Complete editorial approval and human listening QA"
-  - "Re-verify every public source and link on publication day"
-  - "Validate hosting metadata and external audio-store workflow"
+  - "Stage and validate the immutable audio object in the hosting workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: candidate_rendered_qa_approved
   music_bed:
     source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"
     sha256: "0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f"
-    intro_lead_seconds: 7
-    intro_tail_seconds: 2
+    intro_lead_seconds: 10
+    intro_tail_seconds: 5
     intro_fade_seconds: 0.5
     outro_tail_seconds: 10
     outro_fade_seconds: 5
     base_gain_db: -24
+    voice_gain_db: -30
+    level_transition_seconds: 0.15
 hosting:
   metadata: hosting-metadata.yaml
 public_notes: show-notes.md

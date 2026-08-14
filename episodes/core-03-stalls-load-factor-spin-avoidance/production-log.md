@@ -23,3 +23,11 @@
 - Added an earlier signpost for coordinated flight, expanded the coordination/slip/skid explanation, and made the stalled-plus-yawed spin connection more direct.
 - Added a versioned project-provided intro/outro music asset and a reusable realtime-renderer mix option. It adds a 7-second intro lead, continues for 2 seconds after the intro voice, fades over 0.5 seconds before teaching begins, sidechain-ducks the bed beneath narration, and gives the outro 10 seconds of continuation followed by a 5-second fade.
 - Revalidated nine FAA/ACS sources and the 20-claim map at 2026-08-14T17:35:03Z. The music mixer has an automated ffmpeg coverage test; a voice-rendered listening sample remains pending explicit approval to send the unpublished script to the configured Realtime service.
+
+## 2026-08-14 — approved candidate, publication-day validation, and hosting handoff
+
+- Rendered the full 74-segment script with `gpt-realtime-2.1`: Marin as Instructor, Cedar as Learner, and Ballad as Announcer. The release candidate is `audio-artifacts/core-03-20260814T175835Z.mp3`; its 24 kHz mono WAV master, render manifest, automated quality report, and resumable segment directory remain Git-ignored and are recorded in `audio-manifest.yaml`.
+- The full script-aligned listening QA was completed and approved. The approved music behavior uses a 10-second intro lead, a steady reduced music level beneath the Announcer, a 5-second full-level intro continuation, and a 10-second full-level outro continuation before its fade.
+- Automated post-assembly QA passed: WAV and MP3 decode, 24 kHz mono format, duration agreement, 74 stitch boundaries with no discontinuity warnings, and no clipped samples.
+- Re-ran publication-day source validation at 2026-08-14T19:30:21Z. All nine FAA/ACS links resolved; the required OpenAI relevance review assessed every mapped claim as supported. During the review, the ledger was narrowed from broad compound statements to 22 atomic claims, each mapped only to the source that supports it.
+- The user approved release time `2026-08-14T19:17:58Z`. The source package is ready for a review-ready PR and the separate hosting workflow’s immutable-audio staging gate.

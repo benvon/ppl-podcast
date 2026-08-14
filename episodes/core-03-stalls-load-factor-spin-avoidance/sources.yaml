@@ -12,7 +12,7 @@ sources:
     relevance_excerpt: "PA.VII.A.K1 identifies the relationship among angle of attack, airspeed, load factor, power setting, airplane weight and center of gravity, airplane attitude, and yaw effects. Its risk items include flight with a stall warning and uncoordinated flight."
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [acs-relationship-anchor, uncoordinated-risk]
+    supports_claims: [acs-relationship-anchor, acs-uncoordinated-flight-risk]
   - id: acs-stall-knowledge-and-recovery
     authority: faa_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
@@ -23,7 +23,7 @@ sources:
     relevance_excerpt: "PA.VII.B covers stall aerodynamics, recognition through sight, sound, or feel, factors leading to a power-off stall, and fundamentals of recovery. Its risk items name inadvertent stalls, spins, secondary stalls, accelerated stalls, cross-control stalls, and the airplane's stall-recovery procedure. The skill standard calls for prompt recovery after a full stall and recovery in accordance with the POH or AFM."
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [acs-stall-and-recovery-anchor, stall-cues, recovery-aircraft-specific, secondary-stall-context]
+    supports_claims: [acs-stall-and-recovery-anchor, acs-stall-recovery-procedure, acs-secondary-stall-risk]
   - id: acs-spin-awareness
     authority: faa_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
@@ -34,7 +34,7 @@ sources:
     relevance_excerpt: "PA.VII.D requires understanding spin aerodynamics, the relationship among angle of attack, airspeed, load factor, power, weight and center of gravity, attitude, and yaw, what causes a spin and its entry, incipient, and developed phases, and the spin-recovery procedure. It also identifies inadvertent spin and loss-of-control risk."
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [acs-spin-anchor, spin-entry-and-phases]
+    supports_claims: [acs-spin-anchor, acs-spin-entry-phases]
   - id: afh-stall-definition-and-cues
     authority: faa_guidance
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
@@ -56,7 +56,7 @@ sources:
     relevance_excerpt: "The AFH states that a level-flight, coordinated, one-G published stalling speed is valid only in unaccelerated one-G flight, at one weight—typically maximum gross weight—and at a particular center of gravity—typically maximum forward CG."
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [published-stall-speed-context, practical-poha-afm-bridge]
+    supports_claims: [published-stall-speed-context]
   - id: afh-coordination-and-slip-skid
     authority: faa_guidance
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
@@ -67,7 +67,7 @@ sources:
     relevance_excerpt: "The AFH says coordinated flight occurs when the pilot proactively corrects yaw effects. It defines the condition as the nose yawed directly into the relative wind with the ball centered in the slip/skid indicator, except for certain multiengine engine-failure operations."
     verified_at_utc: "2026-08-14T15:00:00Z"
     link_status: 200
-    supports_claims: [coordination-definition, uncoordinated-risk]
+    supports_claims: [coordination-definition]
   - id: afh-recovery-and-turning-stalls
     authority: faa_guidance
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
@@ -78,7 +78,7 @@ sources:
     relevance_excerpt: "The AFH describes reducing angle of attack until the stall warning is eliminated before leveling wings, maintaining coordination, and applying power as needed. It notes that recovery should follow the manufacturer-recommended procedure and describes why coordinated flight matters in a turning stall: a slip can lead the outer wing to stall first, while a skid can increase bank to a potentially dangerous attitude."
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [recovery-priority, recovery-aircraft-specific, base-to-final-risk, secondary-stall-context]
+    supports_claims: [recovery-priority, afh-manufacturer-recovery-procedure]
   - id: ac-stall-spin-awareness
     authority: faa_guidance
     title: "Stall and Spin Awareness Training, with Changes 1 and 2"
@@ -89,7 +89,7 @@ sources:
     relevance_excerpt: "AC 61-67C explains that load factor, center of gravity, weight, altitude, and temperature affect stall/spin awareness context. It identifies exceeding critical angle of attack with excessive or insufficient rudder as the primary cause of an inadvertent spin, describes base-to-final skidding as a classic accident scenario, and distinguishes incipient and fully developed spins."
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [load-factor-relationship, uncoordinated-risk, base-to-final-risk, spin-entry-and-phases, practical-poha-afm-bridge]
+    supports_claims: [ac-inadvertent-spin-entry, base-to-final-risk]
   - id: phak-stalls-and-load-factor
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
@@ -102,7 +102,7 @@ sources:
       link_text: "07_phak_ch5_0.pdf"
       sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"
     revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
-    relevance_excerpt: "The PHAK explains that a stall occurs when critical angle of attack is exceeded, independent of airspeed, attitude, or power setting. For a coordinated constant-altitude turn, it explains that a 60-degree bank produces 2 G and that the wing must produce lift equal to that load factor to maintain altitude. It also explains that stall speed increases with the square root of load factor, and cautions that a steep turn or abrupt pull-up can inadvertently increase load factor and stall speed."
+    relevance_excerpt: "The PHAK explains that a stall occurs when critical angle of attack is exceeded, independent of airspeed, attitude, or power setting. It describes load factor as a proportion between lift and weight, measured in Gs. In a level turn, banking divides lift into vertical and horizontal components; additional lift is needed to restore the vertical component, and a 60-degree bank produces 2 G. It explains that increasing load factor increases stall speed according to the square-root relationship, and cautions that a steep turn or abrupt pull-up can increase both. It says experienced pilots can judge load factor from seat pressure, that control pressure is not a reliable index across aircraft, and that an accelerometer can measure load factor when installed. For stall speeds, load factors, and other aircraft data, it directs pilots to consult the AFM/POH for specific information."
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [stall-angle-of-attack, load-factor-definition, load-factor-level-turn, load-factor-relationship, accelerated-stall-speed, load-factor-limits-bridge, load-factor-cues, published-stall-speed-context]
+    supports_claims: [stall-angle-of-attack, load-factor-definition, load-factor-level-turn, load-factor-relationship, accelerated-stall-speed, load-factor-limits-bridge, load-factor-cues, practical-poha-afm-bridge]

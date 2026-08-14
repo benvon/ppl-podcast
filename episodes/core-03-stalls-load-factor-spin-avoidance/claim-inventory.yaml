@@ -31,34 +31,34 @@ claims:
   - id: stall-cues
     type: faa_guidance
     statement: "Impending and full stalls can be recognized through airplane-specific cues such as buffet, warning devices, sight, sound, or feel."
-    sources: [afh-stall-definition-and-cues, acs-stall-knowledge-and-recovery]
+    sources: [afh-stall-definition-and-cues]
     risk: safety_critical
     script_sections: ["Recognize the approach to the limit"]
     status: fact_checked_initial_draft
   - id: published-stall-speed-context
     type: faa_guidance
     statement: "A published one-G stall speed applies to stated conditions including unaccelerated coordinated one-G flight, one weight, and a particular center of gravity."
-    sources: [afh-published-stall-speed, phak-stalls-and-load-factor]
+    sources: [afh-published-stall-speed]
     risk: safety_critical
     script_sections: ["Airspeed is useful, but it is not the definition"]
     status: fact_checked_initial_draft
   - id: load-factor-relationship
     type: faa_guidance
-    statement: "Increasing load factor increases the angle of attack required to support the airplane and can raise the airspeed at which critical angle of attack is reached."
-    sources: [phak-stalls-and-load-factor, ac-stall-spin-awareness]
+    statement: "The PHAK explains that increasing load factor increases stall speed and that steep turns or abrupt pull-ups can increase both load factor and stall speed."
+    sources: [phak-stalls-and-load-factor]
     risk: safety_critical
     script_sections: ["Load factor: a way to name wing demand", "How a level turn makes the demand visible", "Why G changes the stall-speed picture", "Using the idea without turning it into a rule of thumb"]
     status: fact_checked_initial_draft
   - id: load-factor-definition
     type: faa_guidance
-    statement: "Load factor expresses the aerodynamic load the wing supports as a multiple of the airplane's weight; 2 G means the wing is supporting twice the airplane's weight in aerodynamic load."
+    statement: "The PHAK describes load factor as a proportion between lift and weight, measured in Gs."
     sources: [phak-stalls-and-load-factor]
     risk: safety_critical
     script_sections: ["Load factor: a way to name wing demand"]
     status: fact_checked_initial_draft
   - id: load-factor-level-turn
     type: faa_guidance
-    statement: "In a coordinated, constant-altitude turn, the wing must supply both vertical support and the inward force that curves the flightpath; at 60 degrees of bank, the PHAK identifies the resulting load factor as 2 G."
+    statement: "In a level turn, banking divides lift into vertical and horizontal components; the PHAK identifies a 60-degree bank as 2 G."
     sources: [phak-stalls-and-load-factor]
     risk: safety_critical
     script_sections: ["How a level turn makes the demand visible"]
@@ -72,22 +72,22 @@ claims:
     status: fact_checked_initial_draft
   - id: load-factor-limits-bridge
     type: teaching_explanation
-    statement: "Load factor connects aerodynamic stall margin with structural loading, but the airplane's POH/AFM supplies the applicable speeds, limitations, and procedures."
+    statement: "The PHAK directs pilots to consult the AFM/POH for specific stall-speed, load-factor, and other aircraft data."
     sources: [phak-stalls-and-load-factor]
     risk: safety_critical
     script_sections: ["Using the idea without turning it into a rule of thumb"]
     status: fact_checked_initial_draft
   - id: load-factor-cues
     type: faa_guidance
-    statement: "Seat pressure can help a pilot sense increasing load factor, but it is not a precision measurement or a stall warning; an accelerometer measures load factor when installed."
+    statement: "The PHAK says experienced pilots can judge load factor from seat pressure, that control pressure is not a reliable index across aircraft, and that an accelerometer can measure load factor when installed."
     sources: [phak-stalls-and-load-factor]
     risk: safety_critical
     script_sections: ["Feel, instruments, and limits"]
     status: fact_checked_initial_draft
-  - id: uncoordinated-risk
-    type: faa_guidance
-    statement: "Uncoordinated flight is a stall/spin risk factor identified by the ACS and AC 61-67C."
-    sources: [acs-slow-flight-relationships, afh-coordination-and-slip-skid, ac-stall-spin-awareness]
+  - id: acs-uncoordinated-flight-risk
+    type: faa_standard
+    statement: "The ACS identifies uncoordinated flight as a slow-flight risk item."
+    sources: [acs-slow-flight-relationships]
     risk: safety_critical
     script_sections: ["Coordination changes the risk picture", "Spin avoidance starts earlier"]
     status: fact_checked_initial_draft
@@ -105,38 +105,52 @@ claims:
     risk: safety_critical
     script_sections: ["The aerodynamic priority in recovery"]
     status: fact_checked_initial_draft
-  - id: recovery-aircraft-specific
+  - id: acs-stall-recovery-procedure
     type: faa_standard
-    statement: "The ACS requires stall recovery according to the POH or AFM, and FAA guidance directs pilots to know the manufacturer-recommended procedure for the airplane being flown."
-    sources: [acs-stall-knowledge-and-recovery, afh-recovery-and-turning-stalls]
+    statement: "The ACS calls for stall recovery in accordance with the POH or AFM."
+    sources: [acs-stall-knowledge-and-recovery]
     risk: safety_critical
     script_sections: ["The aerodynamic priority in recovery", "Airspeed is useful, but it is not the definition"]
     status: fact_checked_initial_draft
-  - id: base-to-final-risk
+  - id: afh-manufacturer-recovery-procedure
     type: faa_guidance
-    statement: "FAA guidance identifies a skidding attempt to avoid overshooting from base to final as a classic stall/spin accident scenario."
-    sources: [ac-stall-spin-awareness, afh-recovery-and-turning-stalls]
+    statement: "The AFH says stall recovery should follow the manufacturer-recommended procedure."
+    sources: [afh-recovery-and-turning-stalls]
     risk: safety_critical
     script_sections: ["A pattern decision, not a trick turn"]
     status: fact_checked_initial_draft
-  - id: spin-entry-and-phases
+  - id: base-to-final-risk
     type: faa_guidance
-    statement: "An inadvertent spin is associated with a stalled condition and uncoordinated yaw; the ACS requires knowledge of entry, incipient, and developed phases."
-    sources: [ac-stall-spin-awareness, acs-spin-awareness]
+    statement: "AC 61-67C identifies a skidding attempt to avoid overshooting from base to final as a classic stall/spin accident scenario."
+    sources: [ac-stall-spin-awareness]
     risk: safety_critical
     script_sections: ["Spin avoidance starts earlier"]
     status: fact_checked_initial_draft
-  - id: secondary-stall-context
+  - id: ac-inadvertent-spin-entry
+    type: faa_guidance
+    statement: "AC 61-67C identifies exceeding critical angle of attack with excessive or insufficient rudder as the primary cause of an inadvertent spin."
+    sources: [ac-stall-spin-awareness]
+    risk: safety_critical
+    script_sections: ["Spin avoidance starts earlier"]
+    status: fact_checked_initial_draft
+  - id: acs-spin-entry-phases
     type: faa_standard
-    statement: "Secondary stalls are an ACS risk item; recovery must address the stalled condition before trying to resume the desired flightpath."
-    sources: [acs-stall-knowledge-and-recovery, afh-recovery-and-turning-stalls]
+    statement: "The ACS requires knowledge of what causes a spin and its entry, incipient, and developed phases."
+    sources: [acs-spin-awareness]
+    risk: safety_critical
+    script_sections: ["Spin avoidance starts earlier"]
+    status: fact_checked_initial_draft
+  - id: acs-secondary-stall-risk
+    type: faa_standard
+    statement: "The ACS identifies secondary stalls as a risk item and calls for prompt recovery after a full stall."
+    sources: [acs-stall-knowledge-and-recovery]
     risk: safety_critical
     script_sections: ["The aerodynamic priority in recovery"]
     status: fact_checked_initial_draft
   - id: practical-poha-afm-bridge
     type: teaching_explanation
-    statement: "The POH/AFM connects the general aerodynamic relationships to the particular airplane's published speeds, configurations, limitations, and procedures."
-    sources: [afh-published-stall-speed, ac-stall-spin-awareness]
+    statement: "The PHAK directs pilots to consult the AFM/POH for specific stall-speed, load-factor, and other aircraft data."
+    sources: [phak-stalls-and-load-factor]
     risk: safety_critical
     script_sections: ["Airspeed is useful, but it is not the definition", "The aerodynamic priority in recovery"]
     status: fact_checked_initial_draft

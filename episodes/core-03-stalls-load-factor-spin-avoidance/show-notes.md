@@ -1,8 +1,8 @@
 # Stalls, Load Factor, and Spin Avoidance
 
 **Episode:** core-03
-**Version:** 0.1.0 — initial draft
-**Source verification:** Research links checked 2026-08-13; required relevance review and publication-day verification remain pending.
+**Version:** 0.1.0
+**Source verification:** All nine cited FAA/ACS sources and 22 mapped claims passed publication-day link and relevance validation on 2026-08-14.
 
 ## Visual aids
 

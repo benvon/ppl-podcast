@@ -216,7 +216,10 @@ function estimateUsageCost(usages) {
 }
 
 function settingsFor(options, scriptHash) {
-  return { renderer: "openai-realtime", renderer_version: 6, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, music: options.music ? { source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, intro_lead_seconds: options.music.introLeadSeconds, intro_tail_seconds: options.music.introTailSeconds, intro_fade_seconds: options.music.introFadeSeconds, outro_tail_seconds: options.music.outroTailSeconds, outro_fade_seconds: options.music.outroFadeSeconds, voice_ducking: "sidechaincompress ratio 12" } : null, pronunciation_transforms: { "AI": "artificial intelligence" }, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
+  // Music is an assembly choice recorded in the output manifest. Keeping it
+  // out of the segment settings lets a previously rendered voice sample be
+  // reused for a dry mix, a music mix, or a revised bed level.
+  return { renderer: "openai-realtime", renderer_version: 6, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, music: null, pronunciation_transforms: { "AI": "artificial intelligence" }, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
 }
 
 function establishSettings(workDir, settings) {
@@ -364,4 +367,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, parseScript, terminalMusicTailMilliseconds, validateFrontMatter };
+module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, parseScript, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter };

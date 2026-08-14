@@ -44,10 +44,20 @@ function fadeSegmentPcm(pcm, fadeMilliseconds = 8) {
 
 function readOwnWav(wavPath) {
   const buffer = fs.readFileSync(wavPath);
-  if (buffer.length < 44 || buffer.toString("ascii", 0, 4) !== "RIFF" || buffer.toString("ascii", 8, 12) !== "WAVE" || buffer.readUInt16LE(20) !== 1 || buffer.readUInt16LE(22) !== CHANNELS || buffer.readUInt32LE(24) !== SAMPLE_RATE || buffer.readUInt16LE(34) !== BITS_PER_SAMPLE || buffer.toString("ascii", 36, 40) !== "data") throw new AudioQualityError(`Unexpected WAV format: ${wavPath}`);
-  const length = buffer.readUInt32LE(40);
-  if (length !== buffer.length - 44) throw new AudioQualityError(`Invalid WAV data length: ${wavPath}`);
-  return buffer.subarray(44);
+  if (buffer.length < 12 || buffer.toString("ascii", 0, 4) !== "RIFF" || buffer.toString("ascii", 8, 12) !== "WAVE") throw new AudioQualityError(`Unexpected WAV format: ${wavPath}`);
+  let offset = 12; let format = null; let data = null;
+  while (offset + 8 <= buffer.length) {
+    const chunkId = buffer.toString("ascii", offset, offset + 4); const length = buffer.readUInt32LE(offset + 4); const start = offset + 8; const end = start + length;
+    if (end > buffer.length) throw new AudioQualityError(`Invalid WAV chunk length: ${wavPath}`);
+    if (chunkId === "fmt ") {
+      if (length < 16) throw new AudioQualityError(`Invalid WAV format chunk: ${wavPath}`);
+      format = { encoding: buffer.readUInt16LE(start), channels: buffer.readUInt16LE(start + 2), sampleRate: buffer.readUInt32LE(start + 4), bitsPerSample: buffer.readUInt16LE(start + 14) };
+    }
+    if (chunkId === "data") data = buffer.subarray(start, end);
+    offset = end + (length % 2);
+  }
+  if (!format || !data || format.encoding !== 1 || format.channels !== CHANNELS || format.sampleRate !== SAMPLE_RATE || format.bitsPerSample !== BITS_PER_SAMPLE || data.length % BYTES_PER_FRAME !== 0) throw new AudioQualityError(`Unexpected WAV format: ${wavPath}`);
+  return data;
 }
 
 function pcmStatistics(pcm) {

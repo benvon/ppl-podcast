@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
-const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, parseScript, terminalMusicTailMilliseconds, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, parseScript, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
@@ -19,6 +19,14 @@ function wavForTest(pcm) {
   const header = Buffer.alloc(44);
   header.write("RIFF", 0); header.writeUInt32LE(36 + pcm.length, 4); header.write("WAVE", 8); header.write("fmt ", 12); header.writeUInt32LE(16, 16); header.writeUInt16LE(1, 20); header.writeUInt16LE(1, 22); header.writeUInt32LE(24_000, 24); header.writeUInt32LE(48_000, 28); header.writeUInt16LE(2, 32); header.writeUInt16LE(16, 34); header.write("data", 36); header.writeUInt32LE(pcm.length, 40);
   return Buffer.concat([header, pcm]);
+}
+
+function wavWithListMetadata(pcm) {
+  const wav = wavForTest(pcm); const payload = Buffer.from("ISFT\u0004\u0000\u0000\u0000test", "ascii"); const list = Buffer.alloc(8 + payload.length);
+  list.write("LIST", 0); list.writeUInt32LE(payload.length, 4); payload.copy(list, 8);
+  const result = Buffer.concat([wav.subarray(0, 36), list, wav.subarray(36)]);
+  result.writeUInt32LE(result.length - 8, 4);
+  return result;
 }
 
 test("claim mapping rejects claims omitted from a source ledger entry", () => {
@@ -200,6 +208,13 @@ test("intro-only preview retains the post-voice music continuation and fade", ()
   assert.equal(terminalMusicTailMilliseconds([{ section: "what the acs is asking you to connect" }], music), 0);
 });
 
+test("music assembly options do not invalidate reusable rendered segments", () => {
+  const base = { model: "gpt-realtime-2.1", voices: { instructor: "marin", learner: "cedar", announcer: "ballad" }, stitchFadeMs: 8, maxWords: 240, continuityCharacters: 240, spacing: { leadInMs: 250, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 } };
+  const noMusic = settingsFor({ ...base, music: null }, "script-hash");
+  const withMusic = settingsFor({ ...base, music: { path: "assets/music/example.mp3", gainDb: -24 } }, "script-hash");
+  assert.deepEqual(withMusic, noMusic);
+});
+
 test("music-bed mix creates a playable mono WAV", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-music-bed-test-"));
   const voicePath = path.join(temporary, "voice.wav");
@@ -235,14 +250,14 @@ test("stitch analysis reports an abrupt un-faded PCM cut", () => {
   assert.equal(result.warnings.length > 0, true);
 });
 
-test("post-assembly audio analysis accepts a valid stitched WAV", () => {
+test("post-assembly audio analysis accepts a valid stitched WAV with metadata chunks", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-audio-quality-test-"));
   const masterPath = path.join(temporary, "candidate.master.wav");
   const outputPath = path.join(temporary, "candidate.mp3");
   const manifestPath = path.join(temporary, "candidate.render-manifest.json");
   const reportPath = path.join(temporary, "candidate.audio-quality.json");
   const pcm = fadeSegmentPcm(Buffer.alloc(960), 8);
-  fs.writeFileSync(masterPath, wavForTest(pcm));
+  fs.writeFileSync(masterPath, wavWithListMetadata(pcm));
   try {
     const encoded = childProcess.spawnSync("ffmpeg", ["-v", "error", "-y", "-i", masterPath, "-ar", "24000", "-ac", "1", "-b:a", "160k", outputPath], { encoding: "utf8" });
     assert.equal(encoded.status, 0, encoded.stderr);

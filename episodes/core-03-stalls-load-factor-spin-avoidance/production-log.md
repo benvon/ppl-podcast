@@ -42,3 +42,9 @@
 
 - Corrected the render runbook to match the approved 10-second intro lead, 5-second post-introduction continuation, steady reduced music level beneath the Announcer, and 10-second outro continuation.
 - Added `narration.md`, derived from the approved master script with production metadata and source tags removed. The derivation tool and regression test keep the clean TTS input synchronized with the master script.
+
+## 2026-08-14 — page-specific citation validation
+
+- Replaced PDF-fragment syntax-only validation with bounded extraction of the exact `#page=N` target. The LLM relevance review now receives that page text rather than a document-level excerpt; retained reports store only page-text length and digest.
+- Corrected the PHAK load-factor, ACS Area VII, AFH Chapter 5, and AC 61-67C links that the page-aware check exposed as stale or off by one. The AC link now targets physical PDF page 12, which is printed page 6 and contains paragraphs 109-110.
+- Re-ran the required publication-day validation at 2026-08-14T20:58:34Z: all 12 FAA/ACS source entries, 22 mapped claims, and 11 show-notes links passed link, page-specific relevance, and claim-support checks.

@@ -99,8 +99,10 @@ claim. For episode packages with a co-located `show-notes-manifest.yaml`, it
 also validates every HTTPS link in `show-notes.md`: the exact link text and URL
 must be declared, identify the declared source document, use a deep locator,
 resolve under the same FAA fallback rules, and map only to claims supported by
-that source. New episode packages include this manifest; existing packages can
-continue source validation without backfilling one.
+that source. For PDF citations, the validator extracts text from the exact
+`#page=N` target and gives that page—not a document-level excerpt—to the
+relevance assessment. New episode packages include this manifest; existing
+packages can continue source validation without backfilling one.
 
 Every listener-facing attribution must be a deep citation: it must name the
 smallest relevant section, task, paragraph, or page and link to it directly.

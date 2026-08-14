@@ -7,7 +7,7 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
@@ -113,10 +113,10 @@ test("show-notes validation covers repeated, reference-style, and autolinked HTT
     { id: "reference", text: "Reference", url, locator: "Paragraph 1-1-1, p. 1-1-1", source_id: "aim", claim_ids: ["claim-a"] },
     { id: "autolink", text: url, url, locator: "Paragraph 1-1-1, p. 1-1-1", source_id: "aim", claim_ids: ["claim-a"] },
   ] };
-  const markdown = `[Inline](${url})\n[Inline](${url})\n[Reference][aim]\n<${url}>\n[aim]: ${url}\n`;
+  const markdown = `[Inline](${url})\n[Inline](${url})\n[Reference][aim]\n<${url}>\nSee ${url}.\n[aim]: ${url}\n`;
   const result = validateShowNotesMappings(ledger, claims, manifest, markdown);
   assert.equal(result.valid, true);
-  assert.equal(result.markdown_link_count, 4);
+  assert.equal(result.markdown_link_count, 5);
 });
 
 test("show-notes validation rejects a link that does not identify its declared source", () => {
@@ -127,6 +127,30 @@ test("show-notes validation rejects a link that does not identify its declared s
   const result = validateShowNotesMappings(ledger, claims, manifest, `[Wrong document](${url})\n`);
   assert.equal(result.valid, false);
   assert.match(result.errors.join("\n"), /does not identify declared source aim/);
+});
+
+test("PDF page extraction reads only the page named by the citation", async () => {
+  const requestedPages = [];
+  const text = await extractPdfPageText(Buffer.from("test PDF"), 34, {
+    pdfjsLoader: async () => ({
+      getDocument: ({ data, disableWorker }) => {
+        assert.deepEqual(Buffer.from(data), Buffer.from("test PDF"));
+        assert.equal(disableWorker, true);
+        return {
+          promise: Promise.resolve({
+            numPages: 40,
+            getPage: async (pageNumber) => {
+              requestedPages.push(pageNumber);
+              return { getTextContent: async () => ({ items: [{ str: "Load Factors in Steep Turns" }] }) };
+            },
+          }),
+          destroy: async () => {},
+        };
+      },
+    }),
+  });
+  assert.deepEqual(requestedPages, [34]);
+  assert.equal(text, "Load Factors in Steep Turns");
 });
 
 test("source validation permits legacy show notes when no manifest is configured", () => {
@@ -234,11 +258,28 @@ test("attested programmatic FAA copy is used when a PDF citation receives an int
     url: citedUrl,
     programmatic_url: programmaticUrl,
     programmatic_attestation: { url: attestationUrl, link_text: "chapter_0.pdf", sha256 },
-  }, { fetchImpl });
+  }, {
+    fetchImpl,
+    includePdfPageText: true,
+    pdfjsLoader: async () => ({
+      getDocument: () => ({
+        promise: Promise.resolve({
+          numPages: 2,
+          getPage: async (pageNumber) => {
+            assert.equal(pageNumber, 2);
+            return { getTextContent: async () => ({ items: [{ str: "Cited page text" }] }) };
+          },
+        }),
+        destroy: async () => {},
+      }),
+    }),
+  });
   assert.equal(result.content_attestation.valid, true);
   assert.equal(result.content_attestation.citation_hash_matches_programmatic, null);
   assert.equal(result.link.valid, true);
   assert.equal(result.link.resolved_via, "attested_programmatic_fallback");
+  assert.equal(result.link.pdf_page_number, 2);
+  assert.equal(result.link.pdf_page_text, "Cited page text");
 });
 
 test("production notice must begin immediately after the final opening segment", () => {

@@ -40,7 +40,7 @@ trouble_spots:
   - "Assuming a generic spin recovery replaces the POH/AFM procedure"
 source_verification:
   status: publication_day_validation_complete
-  verified_at_utc: "2026-08-14T20:00:26Z"
+  verified_at_utc: "2026-08-14T20:58:34Z"
   link_validation: link-validation.yaml
   show_notes_validation: show-notes-manifest.yaml
   relevance_review: required_before_public_release

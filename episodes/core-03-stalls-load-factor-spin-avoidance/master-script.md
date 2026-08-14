@@ -86,8 +86,7 @@ I think I see why “the wing stalls at this speed” is incomplete. The speed c
 
 That is the earned conclusion. Say it in plain language: a stall is about angle of attack. Airspeed often warns us about a changing condition, but it does not redefine the condition.
 
-[Source: sources.yaml#afh-stall-definition-and-cues]
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#afh-stall-definition]
 [Claim type: FAA guidance]
 
 ## [05:22] Recognize the approach to the limit
@@ -114,7 +113,7 @@ So I should learn my airplane’s warning cues instead of expecting every traini
 
 Yes. The general takeaway is to preserve useful airflow over the airfoil by recognizing a developing high-angle-of-attack condition early. The airplane-specific cues and procedures come from the airplane’s approved information and training.
 
-[Source: sources.yaml#afh-stall-definition-and-cues]
+[Source: sources.yaml#afh-stall-recognition-and-published-speed]
 [Source: sources.yaml#acs-stall-knowledge-and-recovery]
 [Claim type: FAA guidance]
 
@@ -146,8 +145,8 @@ So the practical use is not “ignore the published speed because stalls are abo
 
 Exactly. That bridge keeps the theory from becoming vague and keeps the number from becoming magical.
 
-[Source: sources.yaml#afh-published-stall-speed]
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#afh-stall-recognition-and-published-speed]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
 [Claim type: FAA guidance]
 
 ## [09:03] Load factor: a way to name wing demand
@@ -174,7 +173,8 @@ Exactly. And because the wing has a critical angle of attack, extra demand matte
 
 Here is the practical takeaway before we look at a turn: load factor is the bridge between what you feel, what the wing is being asked to do, and why the stall-speed picture can change.
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#phak-load-factor-basics]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
 [Claim type: FAA guidance]
 
 ## [10:48] How a level turn makes the demand visible
@@ -207,7 +207,7 @@ That is the important articulation. Bank changes the direction of the force. Hol
 
 And this is why the FAA warns that the relationship gets more demanding quickly as bank increases. A little more bank at the steep end is not a little more work for the wing. It can be substantially more work.
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#phak-load-factor-turns]
 [Claim type: FAA guidance]
 
 ## [13:05] Why G changes the stall-speed picture
@@ -236,8 +236,8 @@ So I should not memorize “sixty degrees means a particular stall speed.” I s
 
 Yes. That is the useful three-part connection: **a changed flightpath can add wing demand; added wing demand can require more angle of attack; and the same critical angle can then arrive at a higher airspeed.**
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
-[Source: sources.yaml#afh-published-stall-speed]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
+[Source: sources.yaml#afh-stall-recognition-and-published-speed]
 [Claim type: FAA guidance]
 
 ## [15:20] Bank angle is a clue, not the whole answer
@@ -264,7 +264,7 @@ So bank angle is a useful alert because it can be part of a higher-load situatio
 
 Yes. The most useful version is a relationship, not a flash card: bank changes the direction of the supporting force; holding altitude can make the total force grow; the larger total force is load factor.
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#phak-load-factor-turns]
 [Claim type: FAA guidance]
 
 ## [17:19] Compare the pictures before you calculate anything
@@ -293,8 +293,8 @@ That comparison makes the term less slippery. A level turn gives me a clean exam
 
 Yes. Once you can ask that question, load factor becomes more than a steep-turn fact. It becomes a way to notice when the flight condition deserves more margin, more planning, or an earlier lower-demand choice.
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
-[Source: sources.yaml#afh-published-stall-speed]
+[Source: sources.yaml#phak-load-factor-turns]
+[Source: sources.yaml#afh-stall-recognition-and-published-speed]
 [Claim type: FAA guidance]
 
 ## [19:10] Make the square-root relationship useful
@@ -321,8 +321,8 @@ And the square root keeps me from making the wrong kind of simplification. More 
 
 Right. Use the relationship to understand why the margin changes. Do not use a mental multiplication to invent an airspeed for a maneuver or to override the airplane’s approved information.
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
-[Source: sources.yaml#afh-published-stall-speed]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
+[Source: sources.yaml#afh-stall-recognition-and-published-speed]
 [Claim type: FAA guidance]
 
 ## [20:54] Feel, instruments, and limits
@@ -349,7 +349,7 @@ So the feeling in the seat can make the abstract idea more real, but it cannot t
 
 Exactly. It is a cue to think, not a substitute for the approved information or for sound judgment.
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
 [Claim type: FAA guidance]
 
 ## [22:34] Using the idea without turning it into a rule of thumb
@@ -376,7 +376,7 @@ The goal is not to become a human G-meter. It is to notice when I am increasing 
 
 Exactly. That is also why load factor belongs in this stall-and-spin episode rather than in a separate box marked “steep turns.” It is a way to understand the wing’s workload whenever we ask the airplane to turn sharply, recover abruptly, or maintain a demanding flightpath.
 
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
 [Source: sources.yaml#ac-stall-spin-awareness]
 [Source: sources.yaml#acs-slow-flight-relationships]
 [Claim type: FAA guidance]
@@ -520,8 +520,9 @@ The answers are: the wing’s force is tilted and must still provide vertical su
 
 Those are study connections, not substitutes for aircraft-specific training. They should make the next discussion with an instructor, the next review of a POH or AFM, and the next stall-awareness lesson easier to reason through.
 
-[Source: sources.yaml#afh-published-stall-speed]
-[Source: sources.yaml#phak-stalls-and-load-factor]
+[Source: sources.yaml#afh-stall-recognition-and-published-speed]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
+[Source: sources.yaml#phak-load-factor-cues-and-poha]
 [Source: sources.yaml#acs-stall-knowledge-and-recovery]
 [Claim type: FAA guidance]
 

@@ -23,10 +23,6 @@ const CONTENT_RULES = [
   { label: "absolute local path", pattern: /\/(?:Users|home)\// },
 ];
 
-const BINARY_EXTENSIONS = new Set([
-  ".aiff", ".avi", ".bmp", ".flac", ".gif", ".heic", ".jpeg", ".jpg", ".m4a", ".mkv", ".mov", ".mp3", ".mp4", ".ogg", ".opus", ".pdf", ".png", ".wav", ".webm", ".webp",
-]);
-
 function stagedPaths() {
   const raw = execFileSync("git", ["diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z"], { encoding: "buffer" });
   return raw.toString("utf8").split("\0").filter(Boolean);
@@ -36,19 +32,19 @@ function stagedContent(file) {
   return execFileSync("git", ["show", `:${file}`], { encoding: "buffer" });
 }
 
-function isLikelyBinaryPath(file) {
-  const extension = file.slice(file.lastIndexOf(".")).toLowerCase();
-  return BINARY_EXTENSIONS.has(extension);
-}
-
 function isBinary(content) {
-  return content.includes(0);
+  if (content.includes(0)) return true;
+  const sample = content.subarray(0, Math.min(content.length, 8_192));
+  if (!sample.length) return false;
+  let controlBytes = 0;
+  for (const byte of sample) if (byte < 7 || (byte > 14 && byte < 32)) controlBytes += 1;
+  return controlBytes / sample.length > 0.1;
 }
 
 function findingsFor(file, content) {
   const findings = [];
   for (const rule of BANNED_PATHS) if (rule.pattern.test(file)) findings.push(rule.label);
-  if (isLikelyBinaryPath(file) || isBinary(content)) return findings;
+  if (isBinary(content)) return findings;
   const text = content.toString("utf8");
   for (const rule of CONTENT_RULES) if (rule.pattern.test(text)) findings.push(rule.label);
   return findings;
@@ -65,7 +61,8 @@ function selfTest() {
   assert(findingsFor("docs/unsafe.md", Buffer.from(`token: ${sampleKey}`)).includes("OpenAI-style API key"), "API key was not flagged");
   const samplePath = "/" + "Users/example/project";
   assert(findingsFor("docs/path.md", Buffer.from(samplePath)).includes("absolute local path"), "absolute path was not flagged");
-  assert(isLikelyBinaryPath("assets/music/example.mp3"), "MP3 assets must skip the text-content scan");
+  assert(findingsFor("assets/music/example.mp3", Buffer.from([0x49, 0x44, 0x33, 0x00])).length === 0, "binary MP3 content was scanned as text");
+  assert(findingsFor("notes.pdf", Buffer.from(`token: ${sampleKey}`)).includes("OpenAI-style API key"), "text content with a binary-looking suffix was not scanned");
   console.log("precommit-check self-test passed");
 }
 
@@ -73,7 +70,7 @@ function main() {
   if (process.argv.includes("--self-test")) { selfTest(); return; }
   const failures = [];
   for (const file of stagedPaths()) {
-    const content = isLikelyBinaryPath(file) ? Buffer.alloc(0) : stagedContent(file);
+    const content = stagedContent(file);
     const findings = findingsFor(file, content);
     if (findings.length) failures.push({ file, findings });
   }
@@ -89,4 +86,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { findingsFor, isLikelyBinaryPath };
+module.exports = { findingsFor, isBinary };

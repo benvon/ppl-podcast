@@ -1,9 +1,9 @@
 # Stalls, Load Factor, and Spin Avoidance
 
-**Version:** 0.1.0 — initial draft
+**Version:** 0.1.0 — approved hosting candidate
 **Target runtime:** 30-35 minutes; approximately 5,186 spoken words, or about 34 minutes including the intro music lead and outro music tail
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Draft; not flight instruction and not cleared for public release.
+**Production status:** Script and listening QA approved; ready for the private audio-staging and hosting-release workflow. Not flight or maneuver instruction.
 
 ## [00:00] Opening
 

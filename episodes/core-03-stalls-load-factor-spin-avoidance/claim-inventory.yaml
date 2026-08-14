@@ -87,9 +87,16 @@ claims:
   - id: uncoordinated-risk
     type: faa_guidance
     statement: "Uncoordinated flight is a stall/spin risk factor identified by the ACS and AC 61-67C."
-    sources: [acs-slow-flight-relationships, ac-stall-spin-awareness]
+    sources: [acs-slow-flight-relationships, afh-coordination-and-slip-skid, ac-stall-spin-awareness]
     risk: safety_critical
     script_sections: ["Coordination changes the risk picture", "Spin avoidance starts earlier"]
+    status: fact_checked_initial_draft
+  - id: coordination-definition
+    type: faa_guidance
+    statement: "The AFH defines coordinated flight as the nose yawed directly into the relative wind with the slip/skid indicator ball centered, except for certain multiengine engine-failure operations."
+    sources: [afh-coordination-and-slip-skid]
+    risk: safety_critical
+    script_sections: ["Coordination changes the risk picture"]
     status: fact_checked_initial_draft
   - id: recovery-priority
     type: faa_guidance

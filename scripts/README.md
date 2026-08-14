@@ -86,6 +86,32 @@ npm run render:realtime -- \
   --assemble-only --format mp3
 ```
 
+## Optional intro/outro music bed
+
+Use `--music-bed` during assembly to add a source track beneath the **Podcast
+introduction** and **Outro** sections. By default, the renderer adds a 7-second
+music-only lead before the Podcast introduction voice, continues the bed for
+2 seconds after that voice, then fades it over 0.5 seconds before the first
+teaching section. It starts music with the Outro voice, continues it for 10
+seconds after the voice ends, then fades it for 5 seconds. The bed is set to
+-24 dB and sidechain-ducked beneath spoken audio before a final limiter, so
+narration remains foregrounded.
+
+```sh
+npm run render:realtime -- \
+  --script episodes/EPISODE/master-script.md \
+  --audio-dir audio-artifacts \
+  --episode-id core-03 \
+  --timestamp YYYYMMDDTHHMMSSZ \
+  --work-dir audio-artifacts/core-03-realtime-YYYYMMDDTHHMMSSZ.segments \
+  --music-bed assets/music/jonasblakewood-synth-pop_60s-583368.mp3 \
+  --assemble-only --format mp3
+```
+
+The render manifest records the source SHA-256, cue plan, gain, and ducking
+settings. Automated checks still cannot judge music balance or editorial fit;
+listen to the intro and outro before approving the episode.
+
 ## Accepted audio policy
 
 - 24 kHz mono PCM source; retain the lossless WAV master and 160 kbps MP3

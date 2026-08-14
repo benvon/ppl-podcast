@@ -57,6 +57,17 @@ sources:
     verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
     supports_claims: [published-stall-speed-context, practical-poha-afm-bridge]
+  - id: afh-coordination-and-slip-skid
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
+    document_id: "FAA-H-8083-3C"
+    locator: "Chapter 5, Coordinated Flight, Figure 5-5, printed p. 5-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7"
+    revision: "FAA-H-8083-3C, 2021; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The AFH says coordinated flight occurs when the pilot proactively corrects yaw effects. It defines the condition as the nose yawed directly into the relative wind with the ball centered in the slip/skid indicator, except for certain multiengine engine-failure operations."
+    verified_at_utc: "2026-08-14T15:00:00Z"
+    link_status: 200
+    supports_claims: [coordination-definition, uncoordinated-risk]
   - id: afh-recovery-and-turning-stalls
     authority: faa_guidance
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"

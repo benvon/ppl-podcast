@@ -1,7 +1,7 @@
 # Stalls, Load Factor, and Spin Avoidance
 
 **Version:** 0.1.0 — initial draft
-**Target runtime:** 30-35 minutes; approximately 4,990 spoken words, or about 32 minutes at 155 words per minute before rendering adjustments
+**Target runtime:** 30-35 minutes; approximately 5,186 spoken words, or about 34 minutes including the intro music lead and outro music tail
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Draft; not flight instruction and not cleared for public release.
 
@@ -15,9 +15,9 @@ In the last episode, we built the basic picture of an airfoil: a shaped surface,
 
 **INSTRUCTOR:**
 
-This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
 
-## [00:41] Podcast introduction
+## [00:50] Podcast introduction
 
 **ANNOUNCER:**
 
@@ -25,7 +25,7 @@ Welcome to PPL Study Podcast, a source-conscious study companion for U.S. privat
 
 In this episode: stalls, load factor, and spin avoidance—how the airflow picture connects to practical decisions.
 
-## [01:00] What the ACS is asking you to connect
+## [01:11] What the ACS is asking you to connect
 
 **ANNOUNCER:**
 
@@ -47,14 +47,16 @@ So the ACS is not asking me to choose the one instrument or cue that matters mos
 
 Exactly. The ACS gives a learner a map of connected variables. It also identifies risks that belong in the same map: an inadvertent stall warning, uncoordinated flight, secondary stalls, accelerated stalls, cross-control stalls, and inadvertent spin and loss of control.
 
-We are not going to turn that list into a maneuver recipe. We are going to make its logic easier to hear. First, name the condition. Then ask what makes the wing reach it. Then decide how to avoid combining a stalled wing with yaw.
+You will hear *coordinated* several times before we take it apart. For now, hear it as the airplane being aligned with the airflow rather than yawed across it. After the load-factor discussion, we will come back to coordination, slips, skids, and why that alignment becomes especially important near a stall.
+
+Rather than treating that list as disconnected checkride terms, we will make its logic easier to hear. First, name the condition. Then ask what makes the wing reach it. Then decide how to avoid combining a stalled wing with yaw.
 
 [Source: sources.yaml#acs-slow-flight-relationships]
 [Source: sources.yaml#acs-stall-knowledge-and-recovery]
 [Source: sources.yaml#acs-spin-awareness]
 [Claim type: FAA standard]
 
-## [02:31] Stall: name the condition first
+## [03:03] Stall: name the condition first
 
 **ANNOUNCER:**
 
@@ -88,7 +90,7 @@ That is the earned conclusion. Say it in plain language: a stall is about angle 
 [Source: sources.yaml#phak-stalls-and-load-factor]
 [Claim type: FAA guidance]
 
-## [04:51] Recognize the approach to the limit
+## [05:22] Recognize the approach to the limit
 
 **ANNOUNCER:**
 
@@ -116,7 +118,7 @@ Yes. The general takeaway is to preserve useful airflow over the airfoil by reco
 [Source: sources.yaml#acs-stall-knowledge-and-recovery]
 [Claim type: FAA guidance]
 
-## [06:36] Airspeed is useful, but it is not the definition
+## [07:06] Airspeed is useful, but it is not the definition
 
 **ANNOUNCER:**
 
@@ -127,6 +129,8 @@ Airspeed is useful, but it is not the definition.
 Published stall speeds are not dismissed by the angle-of-attack conversation. They become more understandable.
 
 The Airplane Flying Handbook explains that a published level-flight, one-G stall speed is valid only under particular conditions: unaccelerated one-G flight, coordinated flight, one stated weight—typically maximum gross weight—and a particular center of gravity—typically maximum forward CG.
+
+We will define coordinated flight in detail later. For this published-speed statement, the immediate point is that the airplane was not yawed across the relative wind when that reference value was established.
 
 Picture that as a label on a carefully described test condition, not as a floating line that follows the airplane through every possible flight condition. The number is useful because it tells you something specific about that airplane under those stated conditions. It is not a universal statement that the wing is always equally far from critical angle of attack whenever the airspeed indicator shows a particular value.
 
@@ -146,7 +150,7 @@ Exactly. That bridge keeps the theory from becoming vague and keeps the number f
 [Source: sources.yaml#phak-stalls-and-load-factor]
 [Claim type: FAA guidance]
 
-## [08:20] Load factor: a way to name wing demand
+## [09:03] Load factor: a way to name wing demand
 
 **ANNOUNCER:**
 
@@ -173,7 +177,7 @@ Here is the practical takeaway before we look at a turn: load factor is the brid
 [Source: sources.yaml#phak-stalls-and-load-factor]
 [Claim type: FAA guidance]
 
-## [10:03] How a level turn makes the demand visible
+## [10:48] How a level turn makes the demand visible
 
 **ANNOUNCER:**
 
@@ -206,7 +210,7 @@ And this is why the FAA warns that the relationship gets more demanding quickly 
 [Source: sources.yaml#phak-stalls-and-load-factor]
 [Claim type: FAA guidance]
 
-## [12:19] Why G changes the stall-speed picture
+## [13:05] Why G changes the stall-speed picture
 
 **ANNOUNCER:**
 
@@ -236,7 +240,7 @@ Yes. That is the useful three-part connection: **a changed flightpath can add wi
 [Source: sources.yaml#afh-published-stall-speed]
 [Claim type: FAA guidance]
 
-## [14:35] Bank angle is a clue, not the whole answer
+## [15:20] Bank angle is a clue, not the whole answer
 
 **ANNOUNCER:**
 
@@ -244,7 +248,7 @@ Bank angle is a clue, not the whole answer.
 
 **INSTRUCTOR:**
 
-It is tempting to turn the 60-degree, two-G example into a shortcut: see a bank angle, announce a load factor, and move on. But the conditions are part of the idea.
+It is tempting to turn the 60-degree, two-G example into a shortcut: see a bank angle, announce a load factor, and move on. But bank angle alone does not tell the whole story. The two-G number describes a specific picture: a coordinated turn in which the airplane is holding altitude.
 
 In the force-arrow picture, the demand grew because the airplane was both banked **and maintaining altitude**. The vertical part of the tilted force still had to support the airplane, so the whole force had to become larger. If the airplane is not maintaining altitude, that exact level-turn relationship is no longer the picture you are using. And if the airplane is not coordinated, it has a different problem in addition to its load.
 
@@ -263,7 +267,7 @@ Yes. The most useful version is a relationship, not a flash card: bank changes t
 [Source: sources.yaml#phak-stalls-and-load-factor]
 [Claim type: FAA guidance]
 
-## [16:24] Compare the pictures before you calculate anything
+## [17:19] Compare the pictures before you calculate anything
 
 **ANNOUNCER:**
 
@@ -271,7 +275,7 @@ Compare the pictures before you calculate anything.
 
 **INSTRUCTOR:**
 
-Here are three short pictures. They are not maneuver instructions. They are a way to test whether the words “load factor” have become useful.
+Here are three short pictures to test whether the words “load factor” have become useful.
 
 Picture one: the airplane is in straight, unaccelerated flight. The wing is supporting the airplane at one G. The published one-G stall speed is relevant only with the conditions the manufacturer states.
 
@@ -293,7 +297,7 @@ Yes. Once you can ask that question, load factor becomes more than a steep-turn 
 [Source: sources.yaml#afh-published-stall-speed]
 [Claim type: FAA guidance]
 
-## [18:18] Make the square-root relationship useful
+## [19:10] Make the square-root relationship useful
 
 **ANNOUNCER:**
 
@@ -307,7 +311,7 @@ The one-G published stall speed is the baseline for the relevant airplane and st
 
 The numbers matter only as an illustration of scale. They explain why increasing load can move the stall condition to a much higher airspeed, even though the wing still stalls for the same underlying reason: it reached critical angle of attack.
 
-Try saying the idea without the arithmetic: “The harder I ask the wing to support and turn the airplane, the less useful it is to treat the familiar one-G stall speed as the whole picture.” That is the operationally relevant thought. The POH or AFM supplies the actual approved numbers, limitations, and procedures for the airplane.
+Try saying the idea without the arithmetic: “The harder I ask the airfoil to work, the less margin I may have between the angle of attack it needs and its critical angle.” Operationally, that means being more deliberate with control inputs and less willing to add demand abruptly when the wing is already working hard. The POH or AFM supplies the actual approved numbers, limitations, and procedures for the airplane.
 
 **LEARNER:**
 
@@ -321,7 +325,7 @@ Right. Use the relationship to understand why the margin changes. Do not use a m
 [Source: sources.yaml#afh-published-stall-speed]
 [Claim type: FAA guidance]
 
-## [19:57] Feel, instruments, and limits
+## [20:54] Feel, instruments, and limits
 
 **ANNOUNCER:**
 
@@ -348,7 +352,7 @@ Exactly. It is a cue to think, not a substitute for the approved information or 
 [Source: sources.yaml#phak-stalls-and-load-factor]
 [Claim type: FAA guidance]
 
-## [21:38] Using the idea without turning it into a rule of thumb
+## [22:34] Using the idea without turning it into a rule of thumb
 
 **ANNOUNCER:**
 
@@ -377,7 +381,7 @@ Exactly. That is also why load factor belongs in this stall-and-spin episode rat
 [Source: sources.yaml#acs-slow-flight-relationships]
 [Claim type: FAA guidance]
 
-## [23:36] Coordination changes the risk picture
+## [24:35] Coordination changes the risk picture
 
 **ANNOUNCER:**
 
@@ -385,29 +389,30 @@ Coordination changes the risk picture.
 
 **INSTRUCTOR:**
 
-Coordination is not cosmetic. It changes how airflow reaches the wings and how a developing stall can unfold.
+Coordination is not cosmetic. It describes whether the airplane is aligned with the airflow as it moves through the air. The Airplane Flying Handbook says the airplane is coordinated when its nose is yawed directly into the relative wind and the ball is centered in the slip/skid indicator, except in certain multiengine engine-failure situations.
 
-Yaw is rotation around the airplane’s vertical axis: the nose moving left or right relative to the path. A coordinated airplane has the appropriate relationship among bank, turn, and yaw for the condition. An uncoordinated airplane is slipping or skidding, and the relative airflow is no longer arriving symmetrically at the wings.
+Yaw is rotation around the airplane’s vertical axis: the nose moving left or right relative to the path. In a turn, coordination is the relationship among bank, turn, and yaw that keeps the nose aligned with the relative wind. When that relationship is off, the airplane is slipping or skidding, and the two wings do not receive airflow in the same way.
 
-Imagine two wings that are supposed to be sharing the aerodynamic work. If yaw changes the airflow each wing receives, one wing can approach its critical angle differently from the other. That matters especially close to the stall, where small differences can produce a roll or become part of a spin entry.
+A slip and a skid are both uncoordinated, but they are not interchangeable. In a slip, the airplane is moving somewhat toward its low wing rather than tracking exactly in line with its nose. In a skid, the tail follows a path outside the path of the nose through the turn. The words describe the direction of the mismatch; they are not merely labels for a ball on an instrument.
 
-The ACS calls out uncoordinated flight as a risk item. The Airplane Flying Handbook’s turning-stall discussion makes the consequence concrete: in a slip, the outer wing may stall first and move down abruptly; in a skid, the bank can increase to a potentially dangerous attitude.
+Now return to the two wings. In coordinated flight, they are sharing the aerodynamic work in the intended, symmetrical way. With yaw, one wing can approach critical angle of attack differently from the other. Near a stall, that difference can produce a roll and begin the rotation that belongs in the spin conversation.
 
-This is not an invitation to diagnose every slip or skid from a podcast. It is a reason to treat coordination as a primary protection for the airflow over the airfoil, especially when the wing is already being asked to work hard.
+The ACS calls out uncoordinated flight as a risk item. The Airplane Flying Handbook’s turning-stall discussion makes the consequence concrete: in a slip, the outer wing may stall first and move down abruptly; in a skid, the bank can increase to a potentially dangerous attitude. That is why coordination is one of the pilot’s primary protections for the flow of air over the airfoil when the wing is already being asked to work hard.
 
 **LEARNER:**
 
-So coordination matters here because yaw can make the two wings see different airflow when the margin is already small.
+So coordination is not just a tidy-looking turn. It is how I avoid asking two wings to meet a high-demand condition with different airflow.
 
 **INSTRUCTOR:**
 
-Yes. That is the causal connection. A high angle of attack is one part of the problem. Add yaw, and the airplane may no longer be asking both wings to do the same aerodynamic job.
+Yes. That is the causal connection. A high angle of attack is one part of the problem. Add yaw, and the two wings can reach their limits differently. Keep that picture in mind as we turn to recovery, the base-to-final overshoot, and spin avoidance.
 
 [Source: sources.yaml#acs-slow-flight-relationships]
+[Source: sources.yaml#afh-coordination-and-slip-skid]
 [Source: sources.yaml#afh-recovery-and-turning-stalls]
 [Claim type: FAA guidance]
 
-## [25:21] The aerodynamic priority in recovery
+## [27:04] The aerodynamic priority in recovery
 
 **ANNOUNCER:**
 
@@ -419,7 +424,7 @@ The sequence matters because a stall is an angle-of-attack condition. FAA guidan
 
 That order is not just a list to recite. Reducing angle of attack addresses the condition that made the wing stall. Trying first to hold the nose at a preferred horizon picture, regain altitude immediately, or force a turn can leave the wing at too high an angle of attack. That is why the ACS includes secondary stalls as a risk item.
 
-There is an important boundary here. The ACS says the stall recovery is performed in accordance with the POH or AFM. The manufacturer’s procedure and limitations control for the particular airplane. This episode explains the aerodynamic reason that reducing angle of attack comes first; it does not replace the approved procedure or training in that airplane.
+There is an important boundary here. The ACS says the stall recovery is performed in accordance with the POH or AFM. The manufacturer’s procedure and limitations control for the particular airplane.
 
 **LEARNER:**
 
@@ -433,7 +438,7 @@ Well put. The control movement, configuration, power, and other details depend o
 [Source: sources.yaml#acs-stall-knowledge-and-recovery]
 [Claim type: FAA guidance]
 
-## [26:45] A pattern decision, not a trick turn
+## [28:19] A pattern decision, not a trick turn
 
 **ANNOUNCER:**
 
@@ -461,7 +466,7 @@ Exactly. Naming the chain helps prevent the chain.
 [Source: sources.yaml#afh-recovery-and-turning-stalls]
 [Claim type: FAA guidance]
 
-## [28:19] Spin avoidance starts earlier
+## [29:53] Spin avoidance starts earlier
 
 **ANNOUNCER:**
 
@@ -471,9 +476,9 @@ Spin avoidance starts earlier.
 
 A spin is not merely a steep turn or a sudden roll. The ACS asks private-pilot learners to understand what causes a spin, its entry, incipient, and developed phases, and the relevant recovery procedure.
 
-For avoidance, begin earlier. FAA guidance identifies exceeding critical angle of attack while applying excessive or insufficient rudder as the primary cause of an inadvertent spin. In other words, a stalled wing and uncoordinated yaw belong in the same warning sentence.
+For avoidance, begin earlier. FAA guidance identifies exceeding critical angle of attack while applying excessive or insufficient rudder as the primary cause of an inadvertent spin. Put plainly: when an airplane is stalled and yawed, the wings can stop producing lift unevenly and the airplane can begin to rotate.
 
-An incipient spin begins when the airplane stalls and rotation starts. A developed spin is a more stabilized rotating condition. Those terms help describe what is happening; they should not tempt a listener to treat spin entry as something to explore without appropriate aircraft approval, instruction, altitude, and planning.
+An incipient spin begins when the airplane stalls and rotation starts. A developed spin is a more stabilized rotating condition.
 
 The airplane-specific boundary matters here even more strongly. The POH or AFM and the airplane’s limitations determine what is approved and what recovery procedure applies. The general safety lesson is not a generic spin-recovery mnemonic. It is to avoid creating the stalled-and-yawed combination in the first place, and to recognize a developing high-angle-of-attack condition before it becomes a full stall.
 
@@ -489,7 +494,7 @@ Yes. Protect useful airflow, stay coordinated, and do not keep demanding a fligh
 [Source: sources.yaml#acs-spin-awareness]
 [Claim type: FAA guidance]
 
-## [29:51] Retrieval review
+## [31:17] Retrieval review
 
 **ANNOUNCER:**
 
@@ -501,7 +506,7 @@ Here is the whole lesson in five short connections.
 
 First: a stall occurs when angle of attack exceeds the critical angle. A particular airspeed is not the definition.
 
-Second: published one-G stall speeds are useful because they describe stated conditions. Your POH or AFM connects those conditions to the specific airplane’s speeds, configurations, limitations, and procedures.
+Second: published one-G stall speeds give you a valuable point of reference. They describe the airplane at stated conditions; your POH or AFM connects that reference to the specific airplane’s speeds, configurations, limitations, and procedures.
 
 Third: when the wing is asked for more aerodynamic force, as in a level turn, it may need a higher angle of attack. Added load factor can therefore move the associated stall airspeed upward.
 
@@ -520,7 +525,7 @@ Those are study connections, not substitutes for aircraft-specific training. The
 [Source: sources.yaml#acs-stall-knowledge-and-recovery]
 [Claim type: FAA guidance]
 
-## [31:52] Outro
+## [33:20] Outro
 
 **ANNOUNCER:**
 

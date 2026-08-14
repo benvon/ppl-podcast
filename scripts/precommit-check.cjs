@@ -23,6 +23,10 @@ const CONTENT_RULES = [
   { label: "absolute local path", pattern: /\/(?:Users|home)\// },
 ];
 
+const BINARY_EXTENSIONS = new Set([
+  ".aiff", ".avi", ".bmp", ".flac", ".gif", ".heic", ".jpeg", ".jpg", ".m4a", ".mkv", ".mov", ".mp3", ".mp4", ".ogg", ".opus", ".pdf", ".png", ".wav", ".webm", ".webp",
+]);
+
 function stagedPaths() {
   const raw = execFileSync("git", ["diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z"], { encoding: "buffer" });
   return raw.toString("utf8").split("\0").filter(Boolean);
@@ -32,6 +36,11 @@ function stagedContent(file) {
   return execFileSync("git", ["show", `:${file}`], { encoding: "buffer" });
 }
 
+function isLikelyBinaryPath(file) {
+  const extension = file.slice(file.lastIndexOf(".")).toLowerCase();
+  return BINARY_EXTENSIONS.has(extension);
+}
+
 function isBinary(content) {
   return content.includes(0);
 }
@@ -39,7 +48,7 @@ function isBinary(content) {
 function findingsFor(file, content) {
   const findings = [];
   for (const rule of BANNED_PATHS) if (rule.pattern.test(file)) findings.push(rule.label);
-  if (isBinary(content)) return findings;
+  if (isLikelyBinaryPath(file) || isBinary(content)) return findings;
   const text = content.toString("utf8");
   for (const rule of CONTENT_RULES) if (rule.pattern.test(text)) findings.push(rule.label);
   return findings;
@@ -56,25 +65,28 @@ function selfTest() {
   assert(findingsFor("docs/unsafe.md", Buffer.from(`token: ${sampleKey}`)).includes("OpenAI-style API key"), "API key was not flagged");
   const samplePath = "/" + "Users/example/project";
   assert(findingsFor("docs/path.md", Buffer.from(samplePath)).includes("absolute local path"), "absolute path was not flagged");
+  assert(isLikelyBinaryPath("assets/music/example.mp3"), "MP3 assets must skip the text-content scan");
   console.log("precommit-check self-test passed");
 }
 
-if (process.argv.includes("--self-test")) {
-  selfTest();
-  process.exit(0);
+function main() {
+  if (process.argv.includes("--self-test")) { selfTest(); return; }
+  const failures = [];
+  for (const file of stagedPaths()) {
+    const content = isLikelyBinaryPath(file) ? Buffer.alloc(0) : stagedContent(file);
+    const findings = findingsFor(file, content);
+    if (findings.length) failures.push({ file, findings });
+  }
+  if (failures.length) {
+    console.error("Pre-commit check blocked this commit. Remove or unstage the following content:");
+    for (const failure of failures) console.error(`- ${failure.file}: ${failure.findings.join(", ")}`);
+    console.error("The check intentionally prints file paths and rule names, never matched values.");
+    process.exitCode = 1;
+    return;
+  }
+  console.log("pre-commit disclosure and secret check passed");
 }
 
-const failures = [];
-for (const file of stagedPaths()) {
-  const findings = findingsFor(file, stagedContent(file));
-  if (findings.length) failures.push({ file, findings });
-}
+if (require.main === module) main();
 
-if (failures.length) {
-  console.error("Pre-commit check blocked this commit. Remove or unstage the following content:");
-  for (const failure of failures) console.error(`- ${failure.file}: ${failure.findings.join(", ")}`);
-  console.error("The check intentionally prints file paths and rule names, never matched values.");
-  process.exit(1);
-}
-
-console.log("pre-commit disclosure and secret check passed");
+module.exports = { findingsFor, isLikelyBinaryPath };

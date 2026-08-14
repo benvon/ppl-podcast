@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
-const { REQUIRED_NOTICE, parseScript, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, parseScript, validateFrontMatter } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
@@ -177,6 +177,36 @@ test("realtime renderer accepts an Announcer turn", () => {
   fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Required production notice\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
   try {
     assert.equal(parseScript(scriptPath, 240).at(-1).speaker, "ANNOUNCER");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("music cue plan preserves the requested intro lead and outro tail", () => {
+  const plan = musicCuePlan({
+    intro: { startFrame: 24_000, voiceStartFrame: 192_000, endFrame: 264_000 },
+    outro: { startFrame: 2_400_000, endFrame: 2_640_000 },
+  }, { introTailSeconds: 2, introFadeSeconds: 0.5, outroTailSeconds: 10, outroFadeSeconds: 5 });
+  assert.deepEqual(plan, {
+    intro: { start_seconds: 1, voice_start_seconds: 8, lead_seconds: 7, voice_duration_seconds: 3, continuation_seconds: 2, fade_seconds: 0.5, duration_seconds: 12.5 },
+    outro: { start_seconds: 100, voice_duration_seconds: 10, continuation_seconds: 10, fade_seconds: 5, duration_seconds: 25 },
+  });
+});
+
+test("music-bed mix creates a playable mono WAV", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-music-bed-test-"));
+  const voicePath = path.join(temporary, "voice.wav");
+  const musicPath = path.join(temporary, "music.wav");
+  const outputPath = path.join(temporary, "mixed.wav");
+  fs.writeFileSync(voicePath, wavForTest(Buffer.alloc(24_000 * 2 * 2)));
+  try {
+    const generated = childProcess.spawnSync("ffmpeg", ["-v", "error", "-y", "-f", "lavfi", "-i", "sine=frequency=440:sample_rate=24000", "-t", "2", "-ac", "1", musicPath], { encoding: "utf8" });
+    assert.equal(generated.status, 0, generated.stderr);
+    mixMusicBeds({ voiceMasterPath: voicePath, outputPath, music: { path: musicPath, gainDb: -24 }, plan: { intro: { start_seconds: 0, lead_seconds: 0, voice_duration_seconds: 1, continuation_seconds: 0, fade_seconds: 0.5, duration_seconds: 1.5 } } });
+    const probe = childProcess.spawnSync("ffprobe", ["-v", "error", "-show_entries", "stream=sample_rate,channels", "-of", "default=noprint_wrappers=1", outputPath], { encoding: "utf8" });
+    assert.equal(probe.status, 0, probe.stderr);
+    assert.match(probe.stdout, /sample_rate=24000/);
+    assert.match(probe.stdout, /channels=1/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

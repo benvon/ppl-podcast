@@ -17,6 +17,7 @@
 | Spin awareness | ACS PA.VII.D.K1-K3, p. 45 | Define spin awareness as an understanding objective. |
 | Stall definition and cues | AFH Ch. 5, pp. 5-12–5-13 | Define critical angle of attack and make recognition airplane-specific. |
 | One-G published speed context | AFH Ch. 5, p. 5-13 | Bridge the model to useful POH/AFM information. |
+| Coordinated flight | AFH Ch. 5, p. 5-8 | Define alignment with relative wind and the slip/skid indicator before using coordination in the spin chain. |
 | Recovery priority and turning-stall context | AFH Ch. 5, pp. 5-16–5-17 | Explain the causal order without prescribing a universal procedure. |
 | Load factor and spin awareness | PHAK Ch. 5, pp. 5-34–5-35; AC 61-67C ¶¶100, 109-110 | Make load factor the bridge from a wing-force picture to a usable stall-margin and structural-loading conversation, then connect stalled-plus-yawed flight to the spin chain. |
 

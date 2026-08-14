@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-13T21:50:26.168Z
+checked_at_utc: 2026-08-14T17:35:03.048Z
 sources_file: episodes/core-03-stalls-load-factor-spin-avoidance/sources.yaml
 claims_file: episodes/core-03-stalls-load-factor-spin-avoidance/claim-inventory.yaml
 llm_requested: false
@@ -11,7 +11,7 @@ claim_mapping:
 results:
   - source_id: acs-slow-flight-relationships
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-13T21:50:10.011Z
+    checked_at_utc: 2026-08-14T17:34:52.336Z
     linked_claim_ids:
       - acs-relationship-anchor
       - uncoordinated-risk
@@ -42,7 +42,7 @@ results:
       status: not_requested
   - source_id: acs-stall-knowledge-and-recovery
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-13T21:50:10.640Z
+    checked_at_utc: 2026-08-14T17:34:52.727Z
     linked_claim_ids:
       - acs-stall-and-recovery-anchor
       - stall-cues
@@ -75,7 +75,7 @@ results:
       status: not_requested
   - source_id: acs-spin-awareness
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-13T21:50:10.869Z
+    checked_at_utc: 2026-08-14T17:34:52.854Z
     linked_claim_ids:
       - acs-spin-anchor
       - spin-entry-and-phases
@@ -107,7 +107,7 @@ results:
   - source_id: afh-stall-definition-and-cues
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
       Prevention and Recovery Training"
-    checked_at_utc: 2026-08-13T21:50:11.222Z
+    checked_at_utc: 2026-08-14T17:34:52.980Z
     linked_claim_ids:
       - stall-angle-of-attack
       - stall-cues
@@ -139,7 +139,7 @@ results:
   - source_id: afh-published-stall-speed
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
       Prevention and Recovery Training"
-    checked_at_utc: 2026-08-13T21:50:11.314Z
+    checked_at_utc: 2026-08-14T17:34:53.109Z
     linked_claim_ids:
       - published-stall-speed-context
       - practical-poha-afm-bridge
@@ -168,10 +168,42 @@ results:
     claim_assessments:
       valid: null
       status: not_requested
+  - source_id: afh-coordination-and-slip-skid
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T17:34:53.153Z
+    linked_claim_ids:
+      - coordination-definition
+      - uncoordinated-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
   - source_id: afh-recovery-and-turning-stalls
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
       Prevention and Recovery Training"
-    checked_at_utc: 2026-08-13T21:50:11.394Z
+    checked_at_utc: 2026-08-14T17:34:53.189Z
     linked_claim_ids:
       - recovery-priority
       - recovery-aircraft-specific
@@ -204,7 +236,7 @@ results:
       status: not_requested
   - source_id: ac-stall-spin-awareness
     title: Stall and Spin Awareness Training, with Changes 1 and 2
-    checked_at_utc: 2026-08-13T21:50:11.450Z
+    checked_at_utc: 2026-08-14T17:34:53.230Z
     linked_claim_ids:
       - load-factor-relationship
       - uncoordinated-risk
@@ -239,7 +271,7 @@ results:
   - source_id: phak-stalls-and-load-factor
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
       Flight"
-    checked_at_utc: 2026-08-13T21:50:11.605Z
+    checked_at_utc: 2026-08-14T17:34:53.386Z
     linked_claim_ids:
       - stall-angle-of-attack
       - load-factor-definition

@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
-const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
@@ -208,6 +208,13 @@ test("intro-only preview retains the post-voice music continuation and fade", ()
   assert.equal(terminalMusicTailMilliseconds([{ section: "what the acs is asking you to connect" }], music), 0);
 });
 
+test("music intro lead applies only when entering the podcast introduction", () => {
+  const spacing = { leadInMs: 250, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 };
+  const music = { introLeadSeconds: 10, introTailSeconds: 5, introFadeSeconds: 0.5 };
+  assert.equal(pauseBefore({ section: "required production notice", speaker: "INSTRUCTOR" }, { section: "podcast introduction", speaker: "ANNOUNCER" }, spacing, music), 10_000);
+  assert.equal(pauseBefore({ section: "podcast introduction", speaker: "ANNOUNCER" }, { section: "podcast introduction", speaker: "ANNOUNCER" }, spacing, music), 120);
+});
+
 test("music holds a steady reduced level under announcer voice", () => {
   const expression = musicVolumeExpression({ lead_seconds: 10, voice_duration_seconds: 4 }, { gainDb: -24, voiceGainDb: -30, levelTransitionSeconds: 0.15 });
   assert.match(expression, /0\.06309573/);
@@ -236,6 +243,19 @@ test("music-bed mix creates a playable mono WAV", () => {
     assert.equal(probe.status, 0, probe.stderr);
     assert.match(probe.stdout, /sample_rate=24000/);
     assert.match(probe.stdout, /channels=1/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("WAV output copies the mixed master when music is present", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-wav-output-test-"));
+  const masterPath = path.join(temporary, "master.wav"); const wavPath = path.join(temporary, "output.wav");
+  const mixedMaster = Buffer.from("mixed master bytes");
+  fs.writeFileSync(masterPath, mixedMaster);
+  try {
+    writeWavOutput({ masterPath, wavPath, masterPcm: Buffer.alloc(960), mixed: true });
+    assert.deepEqual(fs.readFileSync(wavPath), mixedMaster);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

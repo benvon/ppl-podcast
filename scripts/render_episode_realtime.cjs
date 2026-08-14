@@ -250,7 +250,7 @@ async function renderSegments(segments, selected, options, workDir) {
 }
 
 function pauseBefore(previous, current, spacing, music) {
-  if (music && current.section === "podcast introduction") return Math.round(music.introLeadSeconds * 1000);
+  if (music && current.section === "podcast introduction" && (!previous || previous.section !== current.section)) return Math.round(music.introLeadSeconds * 1000);
   if (music && previous && previous.section === "podcast introduction" && current.section !== "podcast introduction") return Math.round((music.introTailSeconds + music.introFadeSeconds) * 1000);
   if (!previous) return spacing.leadInMs;
   if (previous.section !== current.section) return spacing.sectionChangeMs;
@@ -305,6 +305,12 @@ function mixMusicBeds({ voiceMasterPath, outputPath, music, plan }) {
   if (completed.status !== 0) throw new RenderError(`Music-bed mix failed: ${(completed.stderr || "unknown error").trim()}`);
 }
 
+function writeWavOutput({ masterPath, wavPath, masterPcm, mixed }) {
+  if (mixed) fs.copyFileSync(masterPath, wavPath);
+  else writeAtomic(wavPath, makeWav(masterPcm));
+  return wavPath;
+}
+
 function assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange, selectionLabel) {
   const chunks = []; const usage = []; const stitchBoundaries = []; const musicCues = {}; let previous = null; let masterFrames = 0;
   for (const segment of selected) {
@@ -338,7 +344,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     const completed = spawnSync("ffmpeg", ["-y", "-v", "error", "-i", masterPath, "-ar", String(SAMPLE_RATE), "-ac", "1", "-b:a", "160k", mp3Path], { encoding: "utf8" });
     if (completed.status !== 0) throw new RenderError(`ffmpeg MP3 export failed: ${(completed.stderr || "unknown error").trim()}`);
     publishedPath = mp3Path;
-  } else { writeAtomic(wavPath, makeWav(masterPcm)); publishedPath = wavPath; }
+  } else publishedPath = writeWavOutput({ masterPath, wavPath, masterPcm, mixed: Boolean(options.music && Object.keys(musicPlan).length) });
   const frontMatter = selected[0].index === 1 && selected.some((segment) => segment.section === "required production notice") ? "included" : "not_in_selected_range";
   const manifest = { renderer: "openai-realtime", renderer_version: 6, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: { "AI": "artificial intelligence" }, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: Number(durationSeconds(masterPcm.length).toFixed(3)), sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
@@ -376,4 +382,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter };
+module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput };

@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
-const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, parseScript, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, parseScript, terminalMusicTailMilliseconds, validateFrontMatter } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
@@ -191,6 +191,13 @@ test("music cue plan preserves the requested intro lead and outro tail", () => {
     intro: { start_seconds: 1, voice_start_seconds: 8, lead_seconds: 7, voice_duration_seconds: 3, continuation_seconds: 2, fade_seconds: 0.5, duration_seconds: 12.5 },
     outro: { start_seconds: 100, voice_duration_seconds: 10, continuation_seconds: 10, fade_seconds: 5, duration_seconds: 25 },
   });
+});
+
+test("intro-only preview retains the post-voice music continuation and fade", () => {
+  const music = { introTailSeconds: 2, introFadeSeconds: 0.5, outroTailSeconds: 10, outroFadeSeconds: 5 };
+  assert.equal(terminalMusicTailMilliseconds([{ section: "podcast introduction" }], music), 2_500);
+  assert.equal(terminalMusicTailMilliseconds([{ section: "outro" }], music), 15_000);
+  assert.equal(terminalMusicTailMilliseconds([{ section: "what the acs is asking you to connect" }], music), 0);
 });
 
 test("music-bed mix creates a playable mono WAV", () => {

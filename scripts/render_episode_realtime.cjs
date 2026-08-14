@@ -268,6 +268,13 @@ function musicCuePlan(cues, music) {
   return plan;
 }
 
+function terminalMusicTailMilliseconds(selected, music) {
+  if (!music || !selected.length) return 0;
+  if (selected.at(-1).section === "podcast introduction") return Math.round((music.introTailSeconds + music.introFadeSeconds) * 1000);
+  if (selected.at(-1).section === "outro") return Math.round((music.outroTailSeconds + music.outroFadeSeconds) * 1000);
+  return 0;
+}
+
 function mixMusicBeds({ voiceMasterPath, outputPath, music, plan }) {
   const inputs = ["-y", "-v", "error", "-i", voiceMasterPath]; const filters = ["[0:a]aformat=sample_rates=24000:channel_layouts=mono,asplit=2[voice_mix][voice_sidechain]"]; const beds = []; let inputIndex = 1;
   const addBed = (cue, fadeStartSeconds = null) => {
@@ -308,7 +315,8 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, start_frame: segmentStartFrame, end_frame: masterFrames });
     usage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); previous = segment;
   }
-  if (options.music && musicCues.outro) { const tail = silence(Math.round((options.music.outroTailSeconds + options.music.outroFadeSeconds) * 1000)); chunks.push(tail); masterFrames += tail.length / 2; }
+  const terminalMusicTail = terminalMusicTailMilliseconds(selected, options.music);
+  if (terminalMusicTail) { const tail = silence(terminalMusicTail); chunks.push(tail); masterFrames += tail.length / 2; }
   const masterPcm = Buffer.concat(chunks); const suffix = explicitRange ? `.preview-${selectionLabel}` : ""; const stem = `${options.episodeId}-${timestamp}${suffix}`; const masterPath = path.join(audioDir, `${stem}.master.wav`); const voiceMasterPath = path.join(audioDir, `${stem}.voice.master.wav`); const wavPath = path.join(audioDir, `${stem}.wav`); const mp3Path = path.join(audioDir, `${stem}.mp3`); const manifestPath = path.join(audioDir, `${stem}.render-manifest.json`); const qualityReportPath = path.join(audioDir, `${stem}.audio-quality.json`);
   ensureDir(audioDir);
   const musicPlan = options.music ? musicCuePlan(musicCues, options.music) : null;
@@ -356,4 +364,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, parseScript, validateFrontMatter };
+module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, parseScript, terminalMusicTailMilliseconds, validateFrontMatter };

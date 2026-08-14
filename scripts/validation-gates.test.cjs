@@ -104,6 +104,46 @@ test("show-notes links must be declared and mapped to claims their source suppor
   assert.match(unsupported.errors.join("\n"), /maps unknown claim claim-b/);
 });
 
+test("show-notes validation covers repeated, reference-style, and autolinked HTTPS links", () => {
+  const url = "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html";
+  const ledger = { sources: [source("aim", ["claim-a"])] };
+  const claims = { claims: [{ id: "claim-a", sources: ["aim"] }] };
+  const manifest = { links: [
+    { id: "inline", text: "Inline", url, locator: "Paragraph 1-1-1, p. 1-1-1", source_id: "aim", claim_ids: ["claim-a"] },
+    { id: "reference", text: "Reference", url, locator: "Paragraph 1-1-1, p. 1-1-1", source_id: "aim", claim_ids: ["claim-a"] },
+    { id: "autolink", text: url, url, locator: "Paragraph 1-1-1, p. 1-1-1", source_id: "aim", claim_ids: ["claim-a"] },
+  ] };
+  const markdown = `[Inline](${url})\n[Inline](${url})\n[Reference][aim]\n<${url}>\n[aim]: ${url}\n`;
+  const result = validateShowNotesMappings(ledger, claims, manifest, markdown);
+  assert.equal(result.valid, true);
+  assert.equal(result.markdown_link_count, 4);
+});
+
+test("show-notes validation rejects a link that does not identify its declared source", () => {
+  const ledger = { sources: [source("aim", ["claim-a"])] };
+  const claims = { claims: [{ id: "claim-a", sources: ["aim"] }] };
+  const url = "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_2.html";
+  const manifest = { links: [{ id: "wrong-document", text: "Wrong document", url, locator: "Paragraph 1-1-1, p. 1-1-1", source_id: "aim", claim_ids: ["claim-a"] }] };
+  const result = validateShowNotesMappings(ledger, claims, manifest, `[Wrong document](${url})\n`);
+  assert.equal(result.valid, false);
+  assert.match(result.errors.join("\n"), /does not identify declared source aim/);
+});
+
+test("source validation permits legacy show notes when no manifest is configured", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claims.yaml");
+  fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
+  fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Existing episode notes\n\n[Source](https://example.invalid)\n");
+  try {
+    const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /show notes without a manifest \(not configured\)/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("narration derivative preserves the approved script while removing source tags and metadata", () => {
   const narration = deriveNarration("# Test Episode\n\n**Version:** 0.1.0 — approved\n\n## Opening\n\n**INSTRUCTOR:**\n\nApproved spoken text.\n\n[Source: sources.yaml#test]\n[Claim type: FAA guidance]\n");
   assert.match(narration, /^# Test Episode — narration derivative/m);

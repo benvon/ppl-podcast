@@ -392,7 +392,40 @@ function validateClaimAssessments(relevance, expectedClaimIds) {
 }
 
 function markdownHttpsLinks(markdown) {
-  return [...markdown.matchAll(/\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g)].map((match) => ({ text: match[1], url: match[2] }));
+  const links = []; const occupied = []; const references = new Map();
+  const overlapsOccupied = (start, end) => occupied.some((range) => start < range.end && end > range.start);
+  const add = (text, url) => links.push({ text, url });
+  const definitionPattern = /^\s{0,3}\[([^\]]+)\]:\s*(?:<(https:\/\/[^>\s]+)>|(https:\/\/[^\s]+))(?:\s+(?:"[^"]*"|'[^']*'|\([^)]*\)))?\s*$/gm;
+  for (const match of markdown.matchAll(definitionPattern)) {
+    references.set(match[1].trim().replace(/\s+/g, " ").toLowerCase(), match[2] || match[3]);
+    occupied.push({ start: match.index, end: match.index + match[0].length });
+  }
+  const inlinePattern = /\[([^\]]+)\]\(\s*<?(https:\/\/[^\s)>]+)>?(?:\s+(?:"[^"]*"|'[^']*'|\([^)]*\)))?\s*\)/g;
+  for (const match of markdown.matchAll(inlinePattern)) {
+    add(match[1], match[2]);
+    occupied.push({ start: match.index, end: match.index + match[0].length });
+  }
+  const referencePattern = /\[([^\]]+)\]\s*\[([^\]]*)\]/g;
+  for (const match of markdown.matchAll(referencePattern)) {
+    if (overlapsOccupied(match.index, match.index + match[0].length)) continue;
+    const label = (match[2] || match[1]).trim().replace(/\s+/g, " ").toLowerCase();
+    const url = references.get(label);
+    if (url) add(match[1], url);
+    occupied.push({ start: match.index, end: match.index + match[0].length });
+  }
+  const shortcutReferencePattern = /\[([^\]]+)\]/g;
+  for (const match of markdown.matchAll(shortcutReferencePattern)) {
+    const start = match.index; const end = start + match[0].length;
+    const following = markdown.slice(end, end + 1);
+    if (overlapsOccupied(start, end) || ["(", "[", ":"].includes(following)) continue;
+    const url = references.get(match[1].trim().replace(/\s+/g, " ").toLowerCase());
+    if (url) add(match[1], url);
+  }
+  const autolinkPattern = /<(https:\/\/[^>\s]+)>/g;
+  for (const match of markdown.matchAll(autolinkPattern)) {
+    if (!overlapsOccupied(match.index, match.index + match[0].length)) add(match[1], match[1]);
+  }
+  return links;
 }
 
 function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
@@ -405,6 +438,9 @@ function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
     if (manifestByKey.has(key)) errors.push(`show-notes manifest duplicates link ${entry.url}`); else manifestByKey.set(key, entry);
     const source = sourcesById.get(entry.source_id);
     if (!source) { errors.push(`show-notes link ${entry.id} declares unknown source ${entry.source_id}`); continue; }
+    try {
+      if (!sameUrlIgnoringFragment(source.url, entry.url)) errors.push(`show-notes link ${entry.id} URL does not identify declared source ${source.id}`);
+    } catch (_) { /* citationTargetErrors reports malformed URLs with the relevant detail. */ }
     for (const claimId of entry.claim_ids) {
       const claim = claimsById.get(claimId);
       if (!claim) errors.push(`show-notes link ${entry.id} maps unknown claim ${claimId}`);
@@ -414,9 +450,8 @@ function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
   }
   const markdownKeys = new Map();
   for (const link of links) { const key = `${link.text}\u0000${link.url}`; markdownKeys.set(key, (markdownKeys.get(key) || 0) + 1); }
-  for (const [key, count] of markdownKeys) {
+  for (const key of markdownKeys.keys()) {
     if (!manifestByKey.has(key)) errors.push(`show notes contain an undeclared HTTPS link ${key.split("\u0000")[1]}`);
-    else if (count !== 1) errors.push(`show notes contain ${count} copies of a declared link; declare each occurrence separately`);
   }
   for (const key of manifestByKey.keys()) if (!markdownKeys.has(key)) errors.push(`show-notes manifest declares a link not present in show-notes.md: ${key.split("\u0000")[1]}`);
   return { valid: errors.length === 0, errors, markdown_link_count: links.length, manifest_link_count: manifestLinks.length };
@@ -450,25 +485,26 @@ async function main() {
   const outputPath = path.resolve(options.output || path.join(path.dirname(sourcesPath), "link-validation.yaml"));
   const ledger = loadYaml(sourcesPath, "sources"); const claimInventory = loadYaml(claimsPath, "claims");
   const showNotesPath = path.resolve(options["show-notes"] || path.join(path.dirname(sourcesPath), "show-notes.md")); const showNotesManifestPath = path.resolve(options["show-notes-manifest"] || path.join(path.dirname(sourcesPath), "show-notes-manifest.yaml"));
-  const showNotesPresent = fs.existsSync(showNotesPath) || fs.existsSync(showNotesManifestPath);
-  if (showNotesPresent && (!fs.existsSync(showNotesPath) || !fs.existsSync(showNotesManifestPath))) throw new Error("show-notes.md and show-notes-manifest.yaml must be present together");
-  const showNotesManifest = showNotesPresent ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesPresent ? fs.readFileSync(showNotesPath, "utf8") : null;
+  const showNotesFilePresent = fs.existsSync(showNotesPath); const showNotesValidationConfigured = fs.existsSync(showNotesManifestPath);
+  if (showNotesValidationConfigured && !showNotesFilePresent) throw new Error("show-notes-manifest.yaml requires show-notes.md");
+  const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
   const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
   const claimMapping = validateClaimMappings(ledger, claimInventory);
-  const showNotesMapping = showNotesPresent ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_present", errors: [] };
+  const showNotesMapping = showNotesValidationConfigured ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_configured", errors: [] };
   if (!claimMapping.valid || !showNotesMapping.valid) {
     for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`);
     for (const error of showNotesMapping.errors) console.error(`Show-notes mapping failed: ${error}`);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesPresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesPresent ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
     writeYaml(outputPath, report);
     console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
     process.exitCode = 1;
     return;
   }
   if (options.dryRun) {
-    console.log(`Validated input shape, claim mappings, and ${showNotesPresent ? `${showNotesManifest.links.length} show-notes links` : "no show-notes manifest"} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    const showNotesSummary = showNotesValidationConfigured ? `${showNotesManifest.links.length} show-notes links` : showNotesFilePresent ? "show notes without a manifest (not configured)" : "no show-notes manifest";
+    console.log(`Validated input shape, claim mappings, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
   }
   const results = [];
@@ -491,7 +527,7 @@ async function main() {
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results.push(entry);
   }
-  const showNotesResults = showNotesPresent ? await validateShowNotesLinks(ledger, showNotesManifest) : [];
+  const showNotesResults = showNotesValidationConfigured ? await validateShowNotesLinks(ledger, showNotesManifest) : [];
   const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids.length) && showNotesResults.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid));
   for (let index = 0; index < results.length; index += 1) {
     const source = ledger.sources[index]; const entry = results[index];
@@ -519,7 +555,7 @@ async function main() {
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesPresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesPresent ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   writeYaml(outputPath, report);
   const unresolved = !claimMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);

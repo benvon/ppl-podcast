@@ -1,232 +1,29 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-14T19:30:21.028Z
+checked_at_utc: 2026-08-14T20:00:26.877Z
 sources_file: episodes/core-03-stalls-load-factor-spin-avoidance/sources.yaml
 claims_file: episodes/core-03-stalls-load-factor-spin-avoidance/claim-inventory.yaml
+show_notes_file: episodes/core-03-stalls-load-factor-spin-avoidance/show-notes.md
+show_notes_manifest_file: episodes/core-03-stalls-load-factor-spin-avoidance/show-notes-manifest.yaml
 llm_requested: true
 llm_model: gpt-5.6-terra
 claim_mapping:
   valid: true
   errors: []
-results:
-  - source_id: acs-slow-flight-relationships
-    title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-14T19:29:46.771Z
-    linked_claim_ids:
-      - acs-relationship-anchor
-      - acs-uncoordinated-flight-risk
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
-      status: 200
-      content_type: application/pdf
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: null
-      hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
-      errors: []
-      valid: true
-      excerpt_characters: 0
-      excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: The excerpt directly describes the cited ACS knowledge element for
-          slow flight (PA.VII.A.K1) and its associated risk items. It
-          substantively matches the locator’s subject matter, including the
-          listed variable relationships and uncoordinated flight risk.
-        locator_assessment:
-          verdict: supports
-          rationale: The excerpt explicitly identifies PA.VII.A.K1 and describes its
-            slow-flight risk items, matching the locator’s central cited
-            content. Although the excerpt does not independently confirm the
-            printed page number or enumerate R1–R3 labels, it substantively
-            matches the cited ACS section.
-        claim_assessments:
-          - claim_id: acs-relationship-anchor
-            verdict: supports
-            rationale: The excerpt expressly states that PA.VII.A.K1 identifies the
-              relationship among angle of attack, airspeed, load factor, power
-              setting, airplane weight and center of gravity, airplane attitude,
-              and yaw effects.
-          - claim_id: acs-uncoordinated-flight-risk
-            verdict: supports
-            rationale: The excerpt expressly says that the risk items include uncoordinated
-              flight.
-      usage:
-        input_tokens: 503
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 240
-        output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 743
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: acs-stall-knowledge-and-recovery
-    title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-14T19:29:46.940Z
-    linked_claim_ids:
-      - acs-stall-and-recovery-anchor
-      - acs-stall-recovery-procedure
-      - acs-secondary-stall-risk
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
-      status: 200
-      content_type: application/pdf
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: null
-      hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
-      errors: []
-      valid: true
-      excerpt_characters: 0
-      excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: "The excerpt substantively matches the cited ACS locator: it
-          specifically describes PA.VII.B stall knowledge, risk-management
-          items, and skill standards, including the cited knowledge, risk, and
-          skill content."
-        locator_assessment:
-          verdict: supports
-          rationale: The excerpt directly identifies PA.VII.B and summarizes content
-            corresponding to K1–K4, R1–R5, and S7–S8 at the cited location.
-        claim_assessments:
-          - claim_id: acs-stall-and-recovery-anchor
-            verdict: supports
-            rationale: The excerpt expressly covers stall aerodynamics, recognition,
-              recovery fundamentals, and risk items including secondary,
-              accelerated, and cross-control stalls. Although it does not use
-              the word “prevention,” its risk-management content substantively
-              supports prevention-oriented coverage.
-          - claim_id: acs-stall-recovery-procedure
-            verdict: supports
-            rationale: The excerpt explicitly states that the skill standard requires
-              recovery in accordance with the POH or AFM.
-          - claim_id: acs-secondary-stall-risk
-            verdict: supports
-            rationale: The excerpt explicitly lists secondary stalls as a risk item and
-              states that the skill standard calls for prompt recovery after a
-              full stall.
-      usage:
-        input_tokens: 569
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 268
-        output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 837
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: acs-spin-awareness
-    title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-14T19:29:47.029Z
-    linked_claim_ids:
-      - acs-spin-anchor
-      - acs-spin-entry-phases
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
-      status: 200
-      content_type: application/pdf
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: null
-      hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
-      errors: []
-      valid: true
-      excerpt_characters: 0
-      excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: The excerpt directly describes PA.VII.D knowledge requirements for
-          spin aerodynamics, causes, entry, incipient and developed phases,
-          recovery, and inadvertent-spin/loss-of-control risk. These subjects
-          substantively match the cited ACS task and knowledge-element range.
-        locator_assessment:
-          verdict: supports
-          rationale: The excerpt explicitly identifies PA.VII.D and describes the
-            K1-K3/R1-R3 subject matter attributed to Area VII, Task D. Although
-            the printed-page reference cannot be independently checked from the
-            excerpt, the task-level locator is substantively matched.
-        claim_assessments:
-          - claim_id: acs-spin-anchor
-            verdict: supports
-            rationale: The excerpt expressly states that PA.VII.D includes what causes a
-              spin, entry through incipient and developed phases, the
-              spin-recovery procedure, and inadvertent-spin/loss-of-control
-              risk.
-          - claim_id: acs-spin-entry-phases
-            verdict: supports
-            rationale: The excerpt expressly requires understanding of what causes a spin
-              and its entry, incipient, and developed phases.
-      usage:
-        input_tokens: 504
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 238
-        output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 742
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: afh-stall-definition-and-cues
-    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
-      Prevention and Recovery Training"
-    checked_at_utc: 2026-08-14T19:29:47.128Z
-    linked_claim_ids:
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 10
+  manifest_link_count: 10
+show_notes_results:
+  - id: visual-critical-angle-of-attack
+    text: Critical angle of attack and stall — Airplane Flying Handbook Chapter 5,
+      Figure 5-8, p. 5-12
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+    source_id: afh-stall-definition-and-cues
+    claim_ids:
       - stall-angle-of-attack
       - stall-cues
-    missing_claim_ids: []
     citation_target:
       valid: true
       errors: []
@@ -246,55 +43,13 @@ results:
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: The excerpt substantively matches the cited AFH locator’s stated
-          topic of stall recognition. It directly addresses the stall
-          definition, the critical angle of attack, applicability at any
-          airspeed/attitude/power setting, and impending/full-stall recognition
-          cues.
-        locator_assessment:
-          verdict: supports
-          rationale: The excerpt is specifically about the cited Chapter 5
-            stalls/stall-recognition material rather than merely being from the
-            same handbook or chapter.
-        claim_assessments:
-          - claim_id: stall-angle-of-attack
-            verdict: supports
-            rationale: The excerpt expressly states that a stall occurs when angle of attack
-              exceeds the critical angle of attack and that it may occur at any
-              airspeed, attitude, or power setting.
-          - claim_id: stall-cues
-            verdict: supports
-            rationale: The excerpt expressly distinguishes impending and full-stall
-              indications and identifies recognition through sight, sound, feel,
-              stall-warning devices, and pre-stall buffet where applicable.
-      usage:
-        input_tokens: 544
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 219
-        output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 763
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: afh-published-stall-speed
-    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
-      Prevention and Recovery Training"
-    checked_at_utc: 2026-08-14T19:29:47.144Z
-    linked_claim_ids:
+  - id: visual-published-stall-speed
+    text: Published one-G stall-speed conditions and stall-recognition discussion —
+      Airplane Flying Handbook Chapter 5, p. 5-13
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+    source_id: afh-published-stall-speed
+    claim_ids:
       - published-stall-speed-context
-    missing_claim_ids: []
     citation_target:
       valid: true
       errors: []
@@ -314,50 +69,12 @@ results:
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: The excerpt directly states that a level-flight, coordinated, one-G
-          published stalling speed is valid only in unaccelerated one-G flight,
-          at one weight, and at a particular center of gravity. This
-          substantively matches the cited Stall Recognition locator and fully
-          addresses the claim.
-        locator_assessment:
-          verdict: supports
-          rationale: The excerpt is specifically about the validity conditions of
-            published stalling speed, which is the subject asserted for Chapter
-            5, Stall Recognition, printed p. 5-13.
-        claim_assessments:
-          - claim_id: published-stall-speed-context
-            verdict: supports
-            rationale: "The claim accurately restates the excerpt's conditions:
-              unaccelerated coordinated one-G flight, one specified weight, and
-              a particular CG."
-      usage:
-        input_tokens: 478
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 177
-        output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 655
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: afh-coordination-and-slip-skid
-    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
-      Prevention and Recovery Training"
-    checked_at_utc: 2026-08-14T19:29:47.158Z
-    linked_claim_ids:
+  - id: visual-coordinated-flight
+    text: Coordinated flight — Airplane Flying Handbook Chapter 5, Figure 5-5, p. 5-8
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+    source_id: afh-coordination-and-slip-skid
+    claim_ids:
       - coordination-definition
-    missing_claim_ids: []
     citation_target:
       valid: true
       errors: []
@@ -377,191 +94,14 @@ results:
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: The excerpt directly states the AFH definition asserted in the claim,
-          including both elements of coordinated flight (nose yawed directly
-          into the relative wind and centered slip/skid ball) and the exception
-          for certain multiengine engine-failure operations.
-        locator_assessment:
-          verdict: supports
-          rationale: The cited locator identifies the Coordinated Flight material in
-            Chapter 5, and the excerpt substantively addresses that exact topic
-            and definition. Although the excerpt does not itself verify the
-            figure designation, it matches the cited section and printed-page
-            subject matter.
-        claim_assessments:
-          - claim_id: coordination-definition
-            verdict: supports
-            rationale: The claim is stated essentially verbatim in the excerpt.
-      usage:
-        input_tokens: 496
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 166
-        output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 662
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: afh-recovery-and-turning-stalls
-    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
-      Prevention and Recovery Training"
-    checked_at_utc: 2026-08-14T19:29:47.171Z
-    linked_claim_ids:
-      - recovery-priority
-      - afh-manufacturer-recovery-procedure
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
-      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
-      status: 200
-      content_type: application/pdf
-      redirects: []
-      title: null
-      truncated: true
-      content_sha256: null
-      hash_truncated: false
-      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
-      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
-      errors: []
-      valid: true
-      excerpt_characters: 0
-      excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: The excerpt substantively addresses the cited Chapter 5 material on
-          power-off stall recovery and turning stalls at the specified
-          printed-page range. It directly describes the recovery sequence and
-          manufacturer-procedure guidance reflected in the claims.
-        locator_assessment:
-          verdict: supports
-          rationale: The excerpt matches the locator's stated subject matter—power-off
-            stall recovery and turning stalls—and specifically discusses
-            stall-recovery actions and coordinated flight in turning stalls.
-        claim_assessments:
-          - claim_id: recovery-priority
-            verdict: supports
-            rationale: The excerpt explicitly states that the AFH describes reducing angle
-              of attack until the stall warning is eliminated before leveling
-              the wings, maintaining coordination, and applying power as needed.
-          - claim_id: afh-manufacturer-recovery-procedure
-            verdict: supports
-            rationale: The excerpt explicitly notes that recovery should follow the
-              manufacturer-recommended procedure.
-      usage:
-        input_tokens: 540
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 223
-        output_tokens_details:
-          reasoning_tokens: 21
-        total_tokens: 763
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: ac-stall-spin-awareness
-    title: Stall and Spin Awareness Training, with Changes 1 and 2
-    checked_at_utc: 2026-08-14T19:29:47.184Z
-    linked_claim_ids:
-      - ac-inadvertent-spin-entry
-      - base-to-final-risk
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
-      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
-      status: 200
-      content_type: application/pdf
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: null
-      hash_truncated: false
-      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
-      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
-      errors: []
-      valid: true
-      excerpt_characters: 0
-      excerpt_sha256: null
-    relevance:
-      status: assessed
-      model: gpt-5.6-terra
-      assessment:
-        verdict: supports
-        confidence: high
-        rationale: "The excerpt directly attributes both described points to AC 61-67C:
-          it states that exceeding critical angle of attack with excessive or
-          insufficient rudder is the primary cause of an inadvertent spin, and
-          that base-to-final skidding is a classic accident scenario."
-        locator_assessment:
-          verdict: supports
-          rationale: The cited locator is substantively consistent with the excerpt’s
-            subject matter, including inadvertent-spin entry factors and the
-            base-to-final skidding scenario; this is more than a document-level
-            match.
-        claim_assessments:
-          - claim_id: ac-inadvertent-spin-entry
-            verdict: supports
-            rationale: The excerpt expressly says AC 61-67C identifies exceeding critical
-              angle of attack with excessive or insufficient rudder as the
-              primary cause of an inadvertent spin.
-          - claim_id: base-to-final-risk
-            verdict: supports
-            rationale: The excerpt expressly describes base-to-final skidding as a classic
-              accident scenario, which supports the claim’s characterization of
-              a skidding attempt to avoid overshooting from base to final.
-      usage:
-        input_tokens: 529
-        input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 287
-        output_tokens_details:
-          reasoning_tokens: 50
-        total_tokens: 816
-    claim_assessments:
-      valid: true
-      missing_assessment_ids: []
-      unexpected_assessment_ids: []
-      duplicate_assessment_ids: []
-      unsupported_assessment_ids: []
-  - source_id: phak-stalls-and-load-factor
-    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
-      Flight"
-    checked_at_utc: 2026-08-14T19:29:47.215Z
-    linked_claim_ids:
-      - stall-angle-of-attack
-      - load-factor-definition
+  - id: visual-load-factor
+    text: Load factor in coordinated constant-altitude turns and the resulting
+      stall-speed relationship — PHAK Chapter 5, pp. 5-34–5-35
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+    source_id: phak-stalls-and-load-factor
+    claim_ids:
       - load-factor-level-turn
-      - load-factor-relationship
       - accelerated-stall-speed
-      - load-factor-limits-bridge
-      - load-factor-cues
-      - practical-poha-afm-bridge
-    missing_claim_ids: []
     citation_target:
       valid: true
       errors: []
@@ -636,33 +176,872 @@ results:
       programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       citation_hash_matches_programmatic: true
       errors: []
+  - id: visual-turning-stalls
+    text: Turning-stall discussion — Airplane Flying Handbook Chapter 5, pp.
+      5-16–5-17
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+    source_id: afh-recovery-and-turning-stalls
+    claim_ids:
+      - recovery-priority
+      - afh-manufacturer-recovery-procedure
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+  - id: visual-spin-causes-and-phases
+    text: Spin causes and phases — AC 61-67C with Changes 1 and 2, pp. 5–6
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=10
+    source_id: ac-stall-spin-awareness
+    claim_ids:
+      - ac-inadvertent-spin-entry
+      - base-to-final-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=10
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=10
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=10
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+  - id: source-acs-area-vii
+    text: Private Pilot for Airplane Category ACS, Area VII
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+    source_id: acs-slow-flight-relationships
+    claim_ids:
+      - acs-relationship-anchor
+      - acs-uncoordinated-flight-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+  - id: source-phak-load-factors
+    text: "PHAK Chapter 5: Aerodynamics of Flight — load factors in steep turns and
+      stalling speeds"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+    source_id: phak-stalls-and-load-factor
+    claim_ids:
+      - stall-angle-of-attack
+      - load-factor-definition
+      - load-factor-relationship
+      - accelerated-stall-speed
+      - load-factor-limits-bridge
+      - load-factor-cues
+      - practical-poha-afm-bridge
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      errors: &a4 []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      errors: *a4
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: source-afh-stalls
+    text: Airplane Flying Handbook Chapter 5
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+    source_id: afh-stall-definition-and-cues
+    claim_ids:
+      - stall-angle-of-attack
+      - stall-cues
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+  - id: source-ac-stall-spin-awareness
+    text: "AC 61-67C: Stall and Spin Awareness Training"
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+    source_id: ac-stall-spin-awareness
+    claim_ids:
+      - ac-inadvertent-spin-entry
+      - base-to-final-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+results:
+  - source_id: acs-slow-flight-relationships
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-14T19:59:43.499Z
+    linked_claim_ids:
+      - acs-relationship-anchor
+      - acs-uncoordinated-flight-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
     relevance:
       status: assessed
       model: gpt-5.6-terra
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt substantively addresses the cited Chapter 5 material on
-          stalls and load factors, including critical angle of attack,
-          load-factor definition and measurement, turn-related load factor, the
-          60°/2-G example, the square-root stall-speed relationship, operational
-          cues, and AFM/POH consultation.
+        rationale: The excerpt directly identifies PA.VII.A.K1 and its slow-flight risk
+          items, matching the cited Area VII, Task A subject matter and
+          supporting both claims.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt matches the cited locator’s stated subject matter—“Stalls
-            and Load Factors”—rather than merely matching the PHAK document
-            generally. It contains the specific concepts attributed to the cited
-            printed pages.
+          rationale: "The excerpt substantively matches the cited locator: it names
+            PA.VII.A.K1 and describes its associated risk items for slow
+            flight."
+        claim_assessments:
+          - claim_id: acs-relationship-anchor
+            verdict: supports
+            rationale: The excerpt explicitly states that PA.VII.A.K1 identifies the
+              relationship among angle of attack, airspeed, load factor, power
+              setting, airplane weight and center of gravity, airplane attitude,
+              and yaw effects.
+          - claim_id: acs-uncoordinated-flight-risk
+            verdict: supports
+            rationale: The excerpt explicitly says that the risk items include uncoordinated
+              flight.
+      usage:
+        input_tokens: 503
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 195
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 698
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-stall-knowledge-and-recovery
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-14T19:59:43.600Z
+    linked_claim_ids:
+      - acs-stall-and-recovery-anchor
+      - acs-stall-recovery-procedure
+      - acs-secondary-stall-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly describes PA.VII.B stall knowledge,
+          risk-management items, and skill standards, matching the cited Area
+          VII, Task B locator rather than merely the ACS document generally.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt explicitly identifies PA.VII.B and summarizes the
+            knowledge, risk, and skill elements cited at the locator.
+        claim_assessments:
+          - claim_id: acs-stall-and-recovery-anchor
+            verdict: supports
+            rationale: The excerpt expressly includes stall aerodynamics, recognition,
+              recovery fundamentals, and risk items including secondary,
+              accelerated, and cross-control stalls. It describes factors
+              leading to a power-off stall rather than using the exact word
+              “prevention,” but the overall claim is substantively reflected.
+          - claim_id: acs-stall-recovery-procedure
+            verdict: supports
+            rationale: The excerpt states that the skill standard requires recovery in
+              accordance with the POH or AFM.
+          - claim_id: acs-secondary-stall-risk
+            verdict: supports
+            rationale: The excerpt names secondary stalls as a risk item and states that the
+              skill standard calls for prompt recovery after a full stall.
+      usage:
+        input_tokens: 569
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 256
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 825
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-spin-awareness
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-14T19:59:43.655Z
+    linked_claim_ids:
+      - acs-spin-anchor
+      - acs-spin-entry-phases
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=52
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt substantively matches the cited ACS Task D knowledge
+          elements: it explicitly states that PA.VII.D requires understanding
+          spin causes, entry, incipient and developed phases, recovery
+          procedure, and inadvertent-spin/loss-of-control risk. These are the
+          central subjects of both claims."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt specifically identifies PA.VII.D and describes the
+            K1-K3/R1-R3 subject matter cited in the locator, rather than merely
+            referring generally to the ACS document.
+        claim_assessments:
+          - claim_id: acs-spin-anchor
+            verdict: supports
+            rationale: The excerpt expressly covers spin causes, entry and phases through
+              developed spins, recovery procedure, and inadvertent-spin risk.
+          - claim_id: acs-spin-entry-phases
+            verdict: supports
+            rationale: The excerpt directly says PA.VII.D requires knowledge of what causes
+              a spin and its entry, incipient, and developed phases.
+      usage:
+        input_tokens: 504
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 217
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 721
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-stall-definition-and-cues
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T19:59:43.690Z
+    linked_claim_ids:
+      - stall-angle-of-attack
+      - stall-cues
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt substantively matches the cited Chapter 5
+          stall-recognition locator: it states the AFH definition of a stall,
+          notes that stalls may occur at any airspeed, attitude, or power
+          setting, and summarizes impending/full-stall recognition cues."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the AFH Chapter 5 stall-recognition pages, and
+            the excerpt directly addresses stall definition and recognition
+            material attributed to that section.
         claim_assessments:
           - claim_id: stall-angle-of-attack
             verdict: supports
-            rationale: The excerpt expressly states that a stall occurs when critical angle
-              of attack is exceeded, independent of airspeed, attitude, or power
-              setting.
+            rationale: The excerpt expressly says a stall is disruption of smooth airflow
+              when angle of attack exceeds the critical angle of attack and that
+              it can occur at any airspeed, attitude, or power setting.
+          - claim_id: stall-cues
+            verdict: supports
+            rationale: The excerpt expressly distinguishes impending and full-stall
+              indications and identifies recognition by sight, sound, feel,
+              stall-warning devices, and pre-stall buffet where applicable.
+      usage:
+        input_tokens: 544
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 224
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 768
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-published-stall-speed
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T19:59:43.703Z
+    linked_claim_ids:
+      - published-stall-speed-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that a level-flight, coordinated, one-G
+          published stalling speed is valid only in unaccelerated one-G flight,
+          at one weight, and at a particular center of gravity. This
+          substantively matches the cited Stall Recognition locator and fully
+          supports the claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is specifically about the applicability limits of
+            published stalling speed, which is the subject described by the
+            cited Chapter 5, Stall Recognition, printed p. 5-13 locator.
+        claim_assessments:
+          - claim_id: published-stall-speed-context
+            verdict: supports
+            rationale: "The claim accurately restates the excerpt's listed conditions:
+              unaccelerated coordinated one-G flight, one weight, and a
+              particular center of gravity."
+      usage:
+        input_tokens: 478
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 182
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 660
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-coordination-and-slip-skid
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T19:59:43.713Z
+    linked_claim_ids:
+      - coordination-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly states the cited AFH definition of coordinated
+          flight: the nose is yawed directly into the relative wind and the
+          slip/skid indicator ball is centered, with an exception for certain
+          multiengine engine-failure operations. This substantively matches the
+          claimed content and the cited Coordinated Flight locator."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt concerns coordinated flight and the slip/skid indicator,
+            which substantively aligns with the cited Chapter 5 Coordinated
+            Flight section and Figure 5-5/page 5-8 locator.
+        claim_assessments:
+          - claim_id: coordination-definition
+            verdict: supports
+            rationale: The claim accurately restates the definition and exception given in
+              the excerpt.
+      usage:
+        input_tokens: 496
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 173
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 669
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-recovery-and-turning-stalls
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T19:59:43.726Z
+    linked_claim_ids:
+      - recovery-priority
+      - afh-manufacturer-recovery-procedure
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt substantively matches the cited Chapter 5 locator: it
+          directly addresses power-off stall recovery priorities and coordinated
+          flight considerations in turning stalls. It explicitly states the
+          recovery sequence and the manufacturer-procedure point reflected in
+          the claims."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt’s content is specifically about the cited
+            topics—power-off stall recovery and turning-stall coordination—not
+            merely the Airplane Flying Handbook generally.
+        claim_assessments:
+          - claim_id: recovery-priority
+            verdict: supports
+            rationale: The excerpt expressly says to reduce angle of attack until the stall
+              warning is eliminated before leveling the wings, maintain
+              coordination, and apply power as needed.
+          - claim_id: afh-manufacturer-recovery-procedure
+            verdict: supports
+            rationale: The excerpt explicitly notes that recovery should follow the
+              manufacturer-recommended procedure.
+      usage:
+        input_tokens: 540
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 197
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 737
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-stall-spin-awareness
+    title: Stall and Spin Awareness Training, with Changes 1 and 2
+    checked_at_utc: 2026-08-14T19:59:43.739Z
+    linked_claim_ids:
+      - ac-inadvertent-spin-entry
+      - base-to-final-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly states both asserted points from AC 61-67C:
+          that inadvertent spins primarily involve exceeding the critical angle
+          of attack with excessive or insufficient rudder, and that
+          base-to-final skidding is a classic stall/spin accident scenario."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator identifies specific paragraphs and pages rather
+            than merely the document generally, and the supplied excerpt
+            substantively describes the same spin-entry and base-to-final-skid
+            material. The excerpt does not individually map each sentence to a
+            particular paragraph, but it clearly matches the cited subject
+            matter.
+        claim_assessments:
+          - claim_id: ac-inadvertent-spin-entry
+            verdict: supports
+            rationale: The excerpt expressly says that AC 61-67C identifies exceeding
+              critical angle of attack with excessive or insufficient rudder as
+              the primary cause of an inadvertent spin.
+          - claim_id: base-to-final-risk
+            verdict: supports
+            rationale: The excerpt expressly describes base-to-final skidding as a classic
+              stall/spin accident scenario, which supports the claim's
+              description of a skidding attempt to avoid overshooting.
+      usage:
+        input_tokens: 529
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 432
+        output_tokens_details:
+          reasoning_tokens: 179
+        total_tokens: 961
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-stalls-and-load-factor
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-14T19:59:43.783Z
+    linked_claim_ids:
+      - stall-angle-of-attack
+      - load-factor-definition
+      - load-factor-level-turn
+      - load-factor-relationship
+      - accelerated-stall-speed
+      - load-factor-limits-bridge
+      - load-factor-cues
+      - practical-poha-afm-bridge
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      errors: &a6 []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24
+      errors: *a6
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt substantively covers the cited PHAK material on stalls,
+          load factor, turns, accelerated stall speed, load-factor cues, and
+          consultation of the AFM/POH. These topics directly match the stated
+          locator rather than merely matching the document generally.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt’s content aligns directly with the locator’s identified
+            sections, “Stalls and Load Factors,” including the specific topics
+            attributed to the cited printed pages.
+        claim_assessments:
+          - claim_id: stall-angle-of-attack
+            verdict: supports
+            rationale: The excerpt explicitly states that a stall occurs when the critical
+              angle of attack is exceeded, independent of airspeed, attitude, or
+              power setting.
           - claim_id: load-factor-definition
             verdict: supports
-            rationale: The excerpt states that load factor is a proportion between lift and
-              weight and is measured in Gs.
+            rationale: The excerpt explicitly describes load factor as a proportion between
+              lift and weight measured in Gs.
           - claim_id: load-factor-level-turn
             verdict: supports
             rationale: The excerpt states that banking in a level turn divides lift into
@@ -671,39 +1050,38 @@ results:
               2 G.
           - claim_id: load-factor-relationship
             verdict: supports
-            rationale: The excerpt says increasing load factor increases stall speed
-              according to a square-root relationship and cautions that steep
-              turns or abrupt pull-ups can increase both.
+            rationale: The excerpt explicitly says increased load factor increases stall
+              speed according to a square-root relationship and cautions that
+              steep turns or abrupt pull-ups can increase both.
           - claim_id: accelerated-stall-speed
             verdict: partially_supports
-            rationale: The excerpt supports the underlying statement that stall speed varies
-              with the square root of load factor. However, it does not itself
-              state the numerical 2-G result of approximately 1.41 times the
-              one-G stall speed; that number is a calculation derived from the
-              stated relationship.
+            rationale: The excerpt supports the square-root relationship between load factor
+              and stall speed. However, it does not itself state the numerical
+              2-G example or the approximately 1.41-times result, even though
+              that result follows mathematically from the stated relationship.
           - claim_id: load-factor-limits-bridge
             verdict: supports
-            rationale: The excerpt expressly directs pilots to consult the AFM/POH for
+            rationale: The excerpt explicitly directs pilots to consult the AFM/POH for
               specific stall speeds, load factors, and other aircraft data.
           - claim_id: load-factor-cues
             verdict: supports
-            rationale: The excerpt states that experienced pilots can judge load factor from
-              seat pressure, that control pressure is not a reliable index
-              across aircraft, and that an installed accelerometer can measure
-              load factor.
+            rationale: The excerpt explicitly says experienced pilots can judge load factor
+              from seat pressure, control pressure is not a reliable index
+              across aircraft, and an installed accelerometer can measure load
+              factor.
           - claim_id: practical-poha-afm-bridge
             verdict: supports
-            rationale: The excerpt expressly directs pilots to consult the AFM/POH for
-              specific stall speeds, load factors, and other aircraft data.
+            rationale: The excerpt explicitly directs pilots to consult the AFM/POH for
+              specific stall-speed, load-factor, and other aircraft data.
       usage:
         input_tokens: 931
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 635
+        output_tokens: 655
         output_tokens_details:
-          reasoning_tokens: 86
-        total_tokens: 1566
+          reasoning_tokens: 133
+        total_tokens: 1586
     claim_assessments:
       valid: true
       missing_assessment_ids: []

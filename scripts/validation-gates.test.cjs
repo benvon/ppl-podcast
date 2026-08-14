@@ -7,7 +7,7 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
@@ -76,6 +76,31 @@ test("claim mapping rejects source-side claims that do not declare the source", 
   );
   assert.equal(result.valid, false);
   assert.match(result.errors.join("\n"), /source aim-a supports claim claim-a, but that claim does not declare the source/);
+});
+
+test("show-notes links must be declared and mapped to claims their source supports", () => {
+  const ledger = { sources: [source("aim", ["claim-a"])] };
+  const claims = { claims: [{ id: "claim-a", sources: ["aim"] }] };
+  const manifest = {
+    links: [{
+      id: "aim-reference",
+      text: "AIM paragraph 1-1-1",
+      url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html",
+      locator: "Paragraph 1-1-1, p. 1-1-1",
+      source_id: "aim",
+      claim_ids: ["claim-a"],
+    }],
+  };
+  const valid = validateShowNotesMappings(ledger, claims, manifest, "[AIM paragraph 1-1-1](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html)\n");
+  assert.equal(valid.valid, true);
+
+  const undeclared = validateShowNotesMappings(ledger, claims, manifest, "[AIM paragraph 1-1-1](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html)\n[Unmapped reference](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_2.html)\n");
+  assert.equal(undeclared.valid, false);
+  assert.match(undeclared.errors.join("\n"), /undeclared HTTPS link/);
+
+  const unsupported = validateShowNotesMappings(ledger, claims, { links: [{ ...manifest.links[0], claim_ids: ["claim-b"] }] }, "[AIM paragraph 1-1-1](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html)\n");
+  assert.equal(unsupported.valid, false);
+  assert.match(unsupported.errors.join("\n"), /maps unknown claim claim-b/);
 });
 
 test("per-claim relevance requires an assessment for every expected claim", () => {

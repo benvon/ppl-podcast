@@ -31,3 +31,9 @@
 - Automated post-assembly QA passed: WAV and MP3 decode, 24 kHz mono format, duration agreement, 74 stitch boundaries with no discontinuity warnings, and no clipped samples.
 - Re-ran publication-day source validation at 2026-08-14T19:30:21Z. All nine FAA/ACS links resolved; the required OpenAI relevance review assessed every mapped claim as supported. During the review, the ledger was narrowed from broad compound statements to 22 atomic claims, each mapped only to the source that supports it.
 - The user approved release time `2026-08-14T19:17:58Z`. The source package is ready for a review-ready PR and the separate hosting workflow’s immutable-audio staging gate.
+
+## 2026-08-14 — show-notes source validation
+
+- Added a versioned show-notes link manifest. It binds every listener-facing HTTPS link to its precise locator, ledger source, and supported claims.
+- Extended the source validator to reject undeclared, stale, weakly cited, unresolvable, or claim-unsupported show-notes links. It applies the same official FAA programmatic-fallback attestation rules used for the source ledger.
+- Re-ran publication-day validation at 2026-08-14T20:00:26Z: all nine FAA/ACS source entries, all 22 mapped claims, and all 10 show-notes links passed. The two PHAK show-notes links also passed the FAA-hosted programmatic-copy attestation.

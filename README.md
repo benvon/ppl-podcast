@@ -95,7 +95,10 @@ every failed or inconclusive finding before release.
 The release gate also requires a complete two-way mapping between every claim
 and its ledger source, and a separate LLM assessment for every mapped claim.
 An overall source verdict cannot pass an unsupported or unassessed individual
-claim.
+claim. It also validates every HTTPS link in `show-notes.md` against the
+co-located `show-notes-manifest.yaml`: the exact link text and URL must be
+declared, use a deep locator, resolve under the same FAA fallback rules, and map
+only to claims supported by the declared ledger source.
 
 Every listener-facing attribution must be a deep citation: it must name the
 smallest relevant section, task, paragraph, or page and link to it directly.

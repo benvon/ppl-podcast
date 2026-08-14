@@ -391,25 +391,84 @@ function validateClaimAssessments(relevance, expectedClaimIds) {
   return { valid: !missing.length && !unexpected.length && !duplicate.length && !unsupported.length, missing_assessment_ids: missing, unexpected_assessment_ids: unexpected, duplicate_assessment_ids: duplicate, unsupported_assessment_ids: unsupported };
 }
 
+function markdownHttpsLinks(markdown) {
+  return [...markdown.matchAll(/\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g)].map((match) => ({ text: match[1], url: match[2] }));
+}
+
+function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
+  const errors = []; const sourcesById = new Map(ledger.sources.map((source) => [source.id, source])); const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
+  const links = markdownHttpsLinks(markdown); const manifestLinks = manifest.links || []; const ids = new Set(); const manifestByKey = new Map();
+  for (const entry of manifestLinks) {
+    if (!entry.id || ids.has(entry.id)) errors.push(`show-notes manifest has duplicate or missing link id ${entry.id || "(missing)"}`); else ids.add(entry.id);
+    if (!entry.text || !entry.url || !entry.locator || !entry.source_id || !Array.isArray(entry.claim_ids) || !entry.claim_ids.length) { errors.push(`show-notes link ${entry.id || "(missing)"} must declare text, url, locator, source_id, and claim_ids`); continue; }
+    const key = `${entry.text}\u0000${entry.url}`;
+    if (manifestByKey.has(key)) errors.push(`show-notes manifest duplicates link ${entry.url}`); else manifestByKey.set(key, entry);
+    const source = sourcesById.get(entry.source_id);
+    if (!source) { errors.push(`show-notes link ${entry.id} declares unknown source ${entry.source_id}`); continue; }
+    for (const claimId of entry.claim_ids) {
+      const claim = claimsById.get(claimId);
+      if (!claim) errors.push(`show-notes link ${entry.id} maps unknown claim ${claimId}`);
+      else if (!source.supports_claims.includes(claimId) || !claim.sources.includes(source.id)) errors.push(`show-notes link ${entry.id} maps claim ${claimId}, but source ${source.id} does not support it`);
+    }
+    for (const error of citationTargetErrors({ url: entry.url, locator: entry.locator })) errors.push(`show-notes link ${entry.id}: ${error}`);
+  }
+  const markdownKeys = new Map();
+  for (const link of links) { const key = `${link.text}\u0000${link.url}`; markdownKeys.set(key, (markdownKeys.get(key) || 0) + 1); }
+  for (const [key, count] of markdownKeys) {
+    if (!manifestByKey.has(key)) errors.push(`show notes contain an undeclared HTTPS link ${key.split("\u0000")[1]}`);
+    else if (count !== 1) errors.push(`show notes contain ${count} copies of a declared link; declare each occurrence separately`);
+  }
+  for (const key of manifestByKey.keys()) if (!markdownKeys.has(key)) errors.push(`show-notes manifest declares a link not present in show-notes.md: ${key.split("\u0000")[1]}`);
+  return { valid: errors.length === 0, errors, markdown_link_count: links.length, manifest_link_count: manifestLinks.length };
+}
+
+async function validateShowNotesLinks(ledger, manifest) {
+  const sourcesById = new Map(ledger.sources.map((source) => [source.id, source])); const results = [];
+  for (const entry of manifest.links) {
+    const source = sourcesById.get(entry.source_id); const noteSource = { ...source, url: entry.url, locator: entry.locator };
+    const result = { id: entry.id, text: entry.text, url: entry.url, source_id: entry.source_id, claim_ids: entry.claim_ids, citation_target: { valid: true, errors: [] } };
+    try {
+      result.citation_target.errors = citationTargetErrors(noteSource); result.citation_target.valid = result.citation_target.errors.length === 0;
+      if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
+      const verification = await verifyProgrammaticFallback(noteSource);
+      result.link = verification.link;
+      if (noteSource.programmatic_url) {
+        result.citation_link = verification.citation_link;
+        result.programmatic_link = verification.programmatic_link;
+        result.attestation_link = verification.attestation_link;
+        result.content_attestation = verification.content_attestation;
+      }
+    } catch (error) { result.link = { valid: false, error: error.message }; }
+    results.push(result);
+  }
+  return results;
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   const sourcesPath = path.resolve(options.sources); const claimsPath = path.resolve(options.claims);
   const outputPath = path.resolve(options.output || path.join(path.dirname(sourcesPath), "link-validation.yaml"));
   const ledger = loadYaml(sourcesPath, "sources"); const claimInventory = loadYaml(claimsPath, "claims");
+  const showNotesPath = path.resolve(options["show-notes"] || path.join(path.dirname(sourcesPath), "show-notes.md")); const showNotesManifestPath = path.resolve(options["show-notes-manifest"] || path.join(path.dirname(sourcesPath), "show-notes-manifest.yaml"));
+  const showNotesPresent = fs.existsSync(showNotesPath) || fs.existsSync(showNotesManifestPath);
+  if (showNotesPresent && (!fs.existsSync(showNotesPath) || !fs.existsSync(showNotesManifestPath))) throw new Error("show-notes.md and show-notes-manifest.yaml must be present together");
+  const showNotesManifest = showNotesPresent ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesPresent ? fs.readFileSync(showNotesPath, "utf8") : null;
   const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
   const claimMapping = validateClaimMappings(ledger, claimInventory);
-  if (!claimMapping.valid) {
+  const showNotesMapping = showNotesPresent ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_present", errors: [] };
+  if (!claimMapping.valid || !showNotesMapping.valid) {
     for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, results: [] };
+    for (const error of showNotesMapping.errors) console.error(`Show-notes mapping failed: ${error}`);
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesPresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesPresent ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
     writeYaml(outputPath, report);
     console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
     process.exitCode = 1;
     return;
   }
   if (options.dryRun) {
-    console.log(`Validated input shape and claim mappings for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    console.log(`Validated input shape, claim mappings, and ${showNotesPresent ? `${showNotesManifest.links.length} show-notes links` : "no show-notes manifest"} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
   }
   const results = [];
@@ -432,7 +491,8 @@ async function main() {
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results.push(entry);
   }
-  const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids.length);
+  const showNotesResults = showNotesPresent ? await validateShowNotesLinks(ledger, showNotesManifest) : [];
+  const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids.length) && showNotesResults.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid));
   for (let index = 0; index < results.length; index += 1) {
     const source = ledger.sources[index]; const entry = results[index];
     const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
@@ -459,13 +519,13 @@ async function main() {
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesPresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesPresent ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   writeYaml(outputPath, report);
-  const unresolved = !claimMapping.valid || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
+  const unresolved = !claimMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
   if (unresolved) process.exitCode = 1;
 }
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { fetchSource, validateClaimMappings, validateClaimAssessments, validationTargetErrors, verifyProgrammaticFallback };
+module.exports = { fetchSource, markdownHttpsLinks, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback };

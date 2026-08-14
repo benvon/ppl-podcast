@@ -1,0 +1,62 @@
+episode_id: "core-03"
+links:
+  - id: visual-critical-angle-of-attack
+    text: "Critical angle of attack and stall — Airplane Flying Handbook Chapter 5, Figure 5-8, p. 5-12"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11"
+    locator: "Chapter 5, Figure 5-8 and Stalls, printed p. 5-12"
+    source_id: afh-stall-definition-and-cues
+    claim_ids: [stall-angle-of-attack, stall-cues]
+  - id: visual-published-stall-speed
+    text: "Published one-G stall-speed conditions and stall-recognition discussion — Airplane Flying Handbook Chapter 5, p. 5-13"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=12"
+    locator: "Chapter 5, Stall Recognition, printed p. 5-13"
+    source_id: afh-published-stall-speed
+    claim_ids: [published-stall-speed-context]
+  - id: visual-coordinated-flight
+    text: "Coordinated flight — Airplane Flying Handbook Chapter 5, Figure 5-5, p. 5-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=7"
+    locator: "Chapter 5, Coordinated Flight, Figure 5-5, printed p. 5-8"
+    source_id: afh-coordination-and-slip-skid
+    claim_ids: [coordination-definition]
+  - id: visual-load-factor
+    text: "Load factor in coordinated constant-altitude turns and the resulting stall-speed relationship — PHAK Chapter 5, pp. 5-34–5-35"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24"
+    locator: "Chapter 5, Load Factors, printed pp. 5-34–5-35"
+    source_id: phak-stalls-and-load-factor
+    claim_ids: [load-factor-level-turn, accelerated-stall-speed]
+  - id: visual-turning-stalls
+    text: "Turning-stall discussion — Airplane Flying Handbook Chapter 5, pp. 5-16–5-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15"
+    locator: "Chapter 5, Turning Stalls, printed pp. 5-16–5-17"
+    source_id: afh-recovery-and-turning-stalls
+    claim_ids: [recovery-priority, afh-manufacturer-recovery-procedure]
+  - id: visual-spin-causes-and-phases
+    text: "Spin causes and phases — AC 61-67C with Changes 1 and 2, pp. 5–6"
+    url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=10"
+    locator: "Paragraphs 109-110, printed pp. 5-5–5-6"
+    source_id: ac-stall-spin-awareness
+    claim_ids: [ac-inadvertent-spin-entry, base-to-final-risk]
+  - id: source-acs-area-vii
+    text: "Private Pilot for Airplane Category ACS, Area VII"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49"
+    locator: "Area VII, Task A, PA.VII.A.K1 and risk items R1-R3, printed p. 42"
+    source_id: acs-slow-flight-relationships
+    claim_ids: [acs-relationship-anchor, acs-uncoordinated-flight-risk]
+  - id: source-phak-load-factors
+    text: "PHAK Chapter 5: Aerodynamics of Flight — load factors in steep turns and stalling speeds"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=24"
+    locator: "Chapter 5, Stalls and Load Factors, printed pp. 5-24 and 5-34–5-35"
+    source_id: phak-stalls-and-load-factor
+    claim_ids: [stall-angle-of-attack, load-factor-definition, load-factor-relationship, accelerated-stall-speed, load-factor-limits-bridge, load-factor-cues, practical-poha-afm-bridge]
+  - id: source-afh-stalls
+    text: "Airplane Flying Handbook Chapter 5"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=11"
+    locator: "Chapter 5, Stalls and Stall Recognition, printed pp. 5-12–5-13"
+    source_id: afh-stall-definition-and-cues
+    claim_ids: [stall-angle-of-attack, stall-cues]
+  - id: source-ac-stall-spin-awareness
+    text: "AC 61-67C: Stall and Spin Awareness Training"
+    url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=6"
+    locator: "Paragraphs 100 and 109-110, printed pp. 1-6"
+    source_id: ac-stall-spin-awareness
+    claim_ids: [ac-inadvertent-spin-entry, base-to-final-risk]

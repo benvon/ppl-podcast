@@ -1,0 +1,24 @@
+schema_version: 1
+handoff_status: ready_for_hosting_pr
+publisher_release:
+  id: "core-03"
+  guid: "pplstudyguide.com:core-03"
+  title: "Stalls, Load Factor, and Spin Avoidance"
+  description: "A source-conscious study of stalls, load factor, coordination, and spin avoidance for private-pilot airplane learners, connecting published one-G stall speeds to the changing aerodynamic demand on the wing."
+  published_at: "2026-08-14T19:17:58Z"
+  duration: "00:32:55"
+  season: 1
+  number: 3
+  explicit: false
+  audio: {}
+release_readiness:
+  audio_candidate_approved_for_publication_preparation: true
+  publication_schedule_required: false
+  remaining_release_gates:
+    - "Stage and validate the immutable audio object in the hosting workflow."
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.0

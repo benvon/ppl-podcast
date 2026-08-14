@@ -111,7 +111,7 @@ INSTRUCTOR: ...
 LEARNER: ...
 
 [01:00] REQUIRED PRODUCTION NOTICE
-INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
 
 [Source: ACS FAA-S-ACS-6C, Area VII, Task B, Knowledge K1; PHAK ch. 5, Stall Characteristics]
 [Claim type: FAA standard]
@@ -237,7 +237,7 @@ Publish a `show-notes.md` rendered from the approved source ledger. It must stan
 **Source verification:** YYYY-MM-DD (UTC)
 
 ## Production notice
-This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
 
 ## In this episode
 - ...

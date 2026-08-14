@@ -13,7 +13,7 @@ sources:
     # anchor or section endpoint; eCFR requires the exact section URL.
     url: "https://www.faa.gov/path/to/document.pdf#page=1"
     revision: "Record document revision, effective date, or currentness statement"
-    relevance_excerpt: null # Required for LLM review when the linked source is a PDF or another non-text resource. It must come from the locator identified above.
+    relevance_excerpt: null # Required for LLM review when the linked source is another non-text resource. For a PDF, the validator extracts text from the #page=N target.
     verified_at_utc: null
     link_status: null
     supports_claims: [replace-with-stable-claim-id]

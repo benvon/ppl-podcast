@@ -1,0 +1,70 @@
+episode_id: core-03
+status: candidate_rendered_not_release_ready
+reason: >-
+  Script version 0.4.0 has a technically validated Realtime candidate render
+  using the approved voice profile. It remains blocked from public release
+  pending a complete human listen, qualified aviation review, and
+  publication-day source verification.
+
+current_candidate_render:
+  script_version: 0.4.0
+  rendered_at_utc: "2026-08-11T21:40:00Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 3
+  model: gpt-realtime-2.1
+  voice_profile: "../../series/voice-profile.yaml"
+  voice_profile_version: 3
+  voices:
+    instructor: marin
+    learner: cedar
+  mp3: "audio-artifacts/core-03-20260811T214000Z.mp3"
+  lossless_master: "audio-artifacts/core-03-20260811T214000Z.master.wav"
+  render_manifest: "audio-artifacts/core-03-20260811T214000Z.render-manifest.json"
+  segment_work_dir: "audio-artifacts/core-03-realtime-20260811T214000Z.segments"
+  duration_seconds: 1874.71
+  duration_display: "31:15"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  observed_bitrate_bps: 160000
+  sha256: "45bae8c858788dafc17dbf30662e3cef01571541180e6b0909054de5dcdcf70e"
+  front_matter_check: "audio-artifacts/core-03-20260811T214000Z.preview-001-002.mp3"
+  front_matter_duration_seconds: 40.5
+  front_matter_sha256: "2a0a7c2859ed29a4111b9566d76c5901b625381f5380d489a4e3b8b63af355f4"
+  front_matter_validation: "Renderer preflight identified opening segment 1 and required production-notice segment 2; the assembled check clip includes both. Human semantic listen remains required."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
+  usage_estimate_usd: 2.717554
+  validation: "ffmpeg decode check passed; ffprobe duration/codec/sample-rate/channel/bitrate and SHA-256 verified locally; artifact is Git-ignored."
+
+superseded_candidates:
+  - script_version: 0.4.0
+    rendered_at_utc: "2026-08-11T19:15:00Z"
+    provider: openai-tts
+    model: gpt-4o-mini-tts
+    mp3: "audio-artifacts/core-03-20260811T191500Z.mp3"
+    duration_seconds: 1852.21
+    duration_display: "30:52"
+    sha256: "328059e2edbeebfc456ea8f092fdaa299dd558e56374116df4fef4c9a21bafc4"
+    reason: "Superseded by the approved Realtime production profile; retained for reproducibility."
+  - script_version: 0.3.0
+    rendered_at_utc: "2026-08-11T19:00:00Z"
+    mp3: "audio-artifacts/core-03-20260811T190000Z.mp3"
+    duration_seconds: 1487.18
+    duration_display: "24:47"
+    sha256: "adaf38c5f1132c1586e2302b584f799144bd9fec987ada684044e763cbda59d2"
+    reason: "Technically valid and profile-approved, but below the 30-minute series minimum."
+  - script_version: 0.1.0
+    rendered_at_utc: "2026-08-11T18:06:00Z"
+    mp3: "audio-artifacts/core-03-20260811T180600Z.mp3"
+    duration_seconds: 1511.2
+    duration_display: "25:11"
+    sha256: "c6c8f541717581e8b5f3d24d8a61456786759ff6219c24e3a91f3d4e02d4aa88"
+    reason: "Superseded after opening, pacing, spacing, and continuity revisions."
+
+required_before_release:
+  - "Complete a start-to-finish human audio listen against master-script.md, including technical terms, numbers, and acronyms."
+  - "Listen to the front-matter check and confirm the short cold open and required notice are audible and ordered correctly."
+  - "Obtain independent review by a certificated flight instructor or equivalent qualified aviation reviewer."
+  - "Re-verify every cited FAA/eCFR source and public link on publication day."
+  - "Select and validate external audio-store and hosting metadata before publication."

@@ -25,7 +25,8 @@ const IGNORED_PREFIXES = ["#", "[Source:", "[Claim type:", "**Version:", "**Targ
 const SAFE_ID_RE = /^[a-z0-9][a-z0-9-]*$/;
 const SAFE_MODEL_RE = /^[a-z0-9][a-z0-9.-]*$/;
 const SAFE_VOICE_RE = /^[a-z][a-z-]*$/;
-const REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
+const REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
+const LEGACY_REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
 const DEFAULTS = {
   model: "gpt-realtime-2.1",
   instructorVoice: "marin",
@@ -39,6 +40,14 @@ const DEFAULTS = {
   speakerChangeMs: 220,
   sectionChangeMs: 550,
   stitchFadeMs: 8,
+  musicBedGainDb: -24,
+  musicVoiceGainDb: -30,
+  musicLevelTransitionSeconds: 0.15,
+  musicIntroLeadSeconds: 10,
+  musicIntroTailSeconds: 5,
+  musicIntroFadeSeconds: 0.5,
+  musicOutroTailSeconds: 10,
+  musicOutroFadeSeconds: 5,
 };
 const STYLE = {
   INSTRUCTOR: "Calm, engaged, and practical flight instructor. Use natural, purposeful intonation and modest emphasis on safety-critical words and contrasts. Sound alert and conversational, never theatrical. Speak at a steady, unhurried study pace without drawn-out words or post-processing speed changes.",
@@ -49,7 +58,7 @@ const STYLE = {
 class RenderError extends Error {}
 
 function usage() {
-  console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --speaker instructor|learner|announcer  Render and assemble only one speaker's turns; cannot be combined with a segment range.\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --announcer-voice NAME        Default: ${DEFAULTS.announcerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n\nRun both modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
+  console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --speaker instructor|learner|announcer  Render and assemble only one speaker's turns; cannot be combined with a segment range.\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --announcer-voice NAME        Default: ${DEFAULTS.announcerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --music-bed PATH              Mix this source track under Podcast introduction and Outro.\n  --music-bed-gain-db DB        Full-level music gain; default: ${DEFAULTS.musicBedGainDb} dB.\n  --music-voice-gain-db DB      Steady music gain under announcer voice; default: ${DEFAULTS.musicVoiceGainDb} dB.\n  --music-level-transition-seconds N  Level-change ramp; default: ${DEFAULTS.musicLevelTransitionSeconds}.\n  --music-intro-lead-seconds N  Music-only intro lead; default: ${DEFAULTS.musicIntroLeadSeconds}.\n  --music-intro-tail-seconds N  Full-level continuation after the Podcast introduction voice; default: ${DEFAULTS.musicIntroTailSeconds}.\n  --music-intro-fade-seconds N  Fade after the intro continuation; default: ${DEFAULTS.musicIntroFadeSeconds}.\n  --music-outro-tail-seconds N  Full-level music continuation after the Outro voice; default: ${DEFAULTS.musicOutroTailSeconds}.\n  --music-outro-fade-seconds N  Fade after the outro tail; default: ${DEFAULTS.musicOutroFadeSeconds}.\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n\nMusic holds a steady reduced level under announcer voice, then returns to its full level for the continuation and fade. Run both render modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
 }
 
 function parseArgs(argv) {
@@ -76,6 +85,18 @@ function parseArgs(argv) {
 function positiveInteger(value, label, fallback) {
   if (value === undefined) return fallback;
   if (!/^\d+$/.test(value) || Number(value) < 1) throw new RenderError(`${label} must be a positive integer.`);
+  return Number(value);
+}
+
+function nonNegativeNumber(value, label, fallback) {
+  if (value === undefined) return fallback;
+  if (!/^\d+(?:\.\d+)?$/.test(value)) throw new RenderError(`${label} must be a non-negative number.`);
+  return Number(value);
+}
+
+function boundedNumber(value, label, fallback, minimum, maximum) {
+  if (value === undefined) return fallback;
+  if (!/^-?\d+(?:\.\d+)?$/.test(value) || Number(value) < minimum || Number(value) > maximum) throw new RenderError(`${label} must be between ${minimum} and ${maximum}.`);
   return Number(value);
 }
 
@@ -128,7 +149,8 @@ function validateFrontMatter(segments) {
   const notice = segments.filter((segment) => segment.section === "required production notice");
   if (!opening.length || opening[0] !== 1) throw new RenderError("The first spoken segment must be in an 'Opening' section.");
   if (!notice.length || notice[0].index !== opening.at(-1) + 1) throw new RenderError("A 'Required production notice' section must immediately follow the final opening segment.");
-  if (!notice.map((segment) => segment.text).join(" ").startsWith(REQUIRED_NOTICE)) throw new RenderError("The required production notice must begin immediately after the opening and match the approved public-distribution text.");
+  const noticeText = notice.map((segment) => segment.text).join(" ");
+  if (![REQUIRED_NOTICE, LEGACY_REQUIRED_NOTICE].some((approved) => noticeText.startsWith(approved))) throw new RenderError("The required production notice must begin immediately after the opening and match an approved public-distribution text.");
 }
 
 function contextFor(segments, position, characters) {
@@ -196,7 +218,10 @@ function estimateUsageCost(usages) {
 }
 
 function settingsFor(options, scriptHash) {
-  return { renderer: "openai-realtime", renderer_version: 5, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, pronunciation_transforms: { "AI": "artificial intelligence" }, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
+  // Music is an assembly choice recorded in the output manifest. Keeping it
+  // out of the segment settings lets a previously rendered voice sample be
+  // reused for a dry mix, a music mix, or a revised bed level.
+  return { renderer: "openai-realtime", renderer_version: 6, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, music: null, pronunciation_transforms: { "AI": "artificial intelligence" }, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
 }
 
 function establishSettings(workDir, settings) {
@@ -224,36 +249,104 @@ async function renderSegments(segments, selected, options, workDir) {
   return allUsage;
 }
 
-function pauseBefore(previous, current, spacing) {
+function pauseBefore(previous, current, spacing, music) {
+  if (music && current.section === "podcast introduction" && (!previous || previous.section !== current.section)) return Math.round(music.introLeadSeconds * 1000);
+  if (music && previous && previous.section === "podcast introduction" && current.section !== "podcast introduction") return Math.round((music.introTailSeconds + music.introFadeSeconds) * 1000);
   if (!previous) return spacing.leadInMs;
   if (previous.section !== current.section) return spacing.sectionChangeMs;
   if (previous.speaker !== current.speaker) return spacing.speakerChangeMs;
   return spacing.continuedTurnMs;
 }
 
+function musicCuePlan(cues, music) {
+  const frameToSeconds = (frame) => Number((frame / SAMPLE_RATE).toFixed(3));
+  const plan = {};
+  if (cues.intro) {
+    const leadSeconds = frameToSeconds(cues.intro.voiceStartFrame - cues.intro.startFrame);
+    const voiceDuration = frameToSeconds(cues.intro.endFrame - cues.intro.voiceStartFrame);
+    plan.intro = { start_seconds: frameToSeconds(cues.intro.startFrame), voice_start_seconds: frameToSeconds(cues.intro.voiceStartFrame), lead_seconds: leadSeconds, voice_duration_seconds: voiceDuration, continuation_seconds: music.introTailSeconds, fade_seconds: music.introFadeSeconds, duration_seconds: Number((leadSeconds + voiceDuration + music.introTailSeconds + music.introFadeSeconds).toFixed(3)) };
+  }
+  if (cues.outro) {
+    const voiceDuration = frameToSeconds(cues.outro.endFrame - cues.outro.startFrame);
+    plan.outro = { start_seconds: frameToSeconds(cues.outro.startFrame), voice_duration_seconds: voiceDuration, continuation_seconds: music.outroTailSeconds, fade_seconds: music.outroFadeSeconds, duration_seconds: Number((voiceDuration + music.outroTailSeconds + music.outroFadeSeconds).toFixed(3)) };
+  }
+  return plan;
+}
+
+function terminalMusicTailMilliseconds(selected, music) {
+  if (!music || !selected.length) return 0;
+  if (selected.at(-1).section === "podcast introduction") return Math.round((music.introTailSeconds + music.introFadeSeconds) * 1000);
+  if (selected.at(-1).section === "outro") return Math.round((music.outroTailSeconds + music.outroFadeSeconds) * 1000);
+  return 0;
+}
+
+function musicVolumeExpression(cue, music) {
+  const voiceStart = cue.lead_seconds || 0; const voiceEnd = voiceStart + cue.voice_duration_seconds; const transition = music.levelTransitionSeconds;
+  const full = Number(10 ** (music.gainDb / 20)).toFixed(8); const underVoice = Number(10 ** (music.voiceGainDb / 20)).toFixed(8);
+  if (transition === 0) return `if(between(t,${voiceStart},${voiceEnd}),${underVoice},${full})`;
+  const rampDownEnd = voiceStart + transition; const rampUpEnd = voiceEnd + transition;
+  return `if(lt(t,${voiceStart}),${full},if(lt(t,${rampDownEnd}),${full}+(${underVoice}-${full})*(t-${voiceStart})/${transition},if(lt(t,${voiceEnd}),${underVoice},if(lt(t,${rampUpEnd}),${underVoice}+(${full}-${underVoice})*(t-${voiceEnd})/${transition},${full}))))`;
+}
+
+function mixMusicBeds({ voiceMasterPath, outputPath, music, plan }) {
+  const inputs = ["-y", "-v", "error", "-i", voiceMasterPath]; const filters = ["[0:a]aformat=sample_rates=24000:channel_layouts=mono[voice_mix]"]; const beds = []; let inputIndex = 1;
+  const addBed = (cue, fadeStartSeconds = null) => {
+    inputs.push("-stream_loop", "-1", "-i", music.path);
+    const fade = fadeStartSeconds === null ? "" : `,afade=t=out:st=${fadeStartSeconds}:d=${cue.fade_seconds}`;
+    filters.push(`[${inputIndex}:a]aformat=sample_rates=24000:channel_layouts=mono,volume='${musicVolumeExpression(cue, music)}':eval=frame,atrim=duration=${cue.duration_seconds}${fade},adelay=${Math.round(cue.start_seconds * 1000)}[music_${inputIndex}]`);
+    beds.push(`[music_${inputIndex}]`); inputIndex += 1;
+  };
+  if (plan.intro) addBed(plan.intro, plan.intro.lead_seconds + plan.intro.voice_duration_seconds + plan.intro.continuation_seconds);
+  if (plan.outro) addBed(plan.outro, plan.outro.voice_duration_seconds + plan.outro.continuation_seconds);
+  if (!beds.length) { fs.copyFileSync(voiceMasterPath, outputPath); return; }
+  if (beds.length === 1) filters.push(`${beds[0]}anull[music]`); else filters.push(`${beds.join("")}amix=inputs=${beds.length}:duration=longest:normalize=0[music]`);
+  filters.push("[voice_mix][music]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.89:level=disabled[mixed]");
+  const completed = spawnSync("ffmpeg", [...inputs, "-filter_complex", filters.join(";"), "-map", "[mixed]", "-ar", String(SAMPLE_RATE), "-ac", String(CHANNELS), "-c:a", "pcm_s16le", outputPath], { encoding: "utf8" });
+  if (completed.status !== 0) throw new RenderError(`Music-bed mix failed: ${(completed.stderr || "unknown error").trim()}`);
+}
+
+function writeWavOutput({ masterPath, wavPath, masterPcm, mixed }) {
+  if (mixed) fs.copyFileSync(masterPath, wavPath);
+  else writeAtomic(wavPath, makeWav(masterPcm));
+  return wavPath;
+}
+
 function assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange, selectionLabel) {
-  const chunks = []; const usage = []; const stitchBoundaries = []; let previous = null; let masterFrames = 0;
+  const chunks = []; const usage = []; const stitchBoundaries = []; const musicCues = {}; let previous = null; let masterFrames = 0;
   for (const segment of selected) {
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
     if (!fs.existsSync(wavPath) || !fs.existsSync(usagePath)) throw new RenderError(`Missing rendered segment ${segment.index}. Run --render-only for the selected range first.`);
-    const pause = silence(pauseBefore(previous, segment, options.spacing));
+    const pauseStartFrame = masterFrames;
+    const pause = silence(pauseBefore(previous, segment, options.spacing, options.music));
     chunks.push(pause); masterFrames += pause.length / 2;
     const pcm = fadeSegmentPcm(readOwnWav(wavPath), options.stitchFadeMs);
     const segmentStartFrame = masterFrames;
     chunks.push(pcm); masterFrames += pcm.length / 2;
+    if (options.music && segment.section === "podcast introduction") {
+      if (!musicCues.intro) musicCues.intro = { startFrame: pauseStartFrame, voiceStartFrame: segmentStartFrame, endFrame: masterFrames };
+      else musicCues.intro.endFrame = masterFrames;
+    }
+    if (options.music && segment.section === "outro") {
+      if (!musicCues.outro) musicCues.outro = { startFrame: segmentStartFrame, endFrame: masterFrames };
+      else musicCues.outro.endFrame = masterFrames;
+    }
     stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, start_frame: segmentStartFrame, end_frame: masterFrames });
     usage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); previous = segment;
   }
-  const masterPcm = Buffer.concat(chunks); const suffix = explicitRange ? `.preview-${selectionLabel}` : ""; const stem = `${options.episodeId}-${timestamp}${suffix}`; const masterPath = path.join(audioDir, `${stem}.master.wav`); const wavPath = path.join(audioDir, `${stem}.wav`); const mp3Path = path.join(audioDir, `${stem}.mp3`); const manifestPath = path.join(audioDir, `${stem}.render-manifest.json`); const qualityReportPath = path.join(audioDir, `${stem}.audio-quality.json`);
-  ensureDir(audioDir); writeAtomic(masterPath, makeWav(masterPcm));
+  const terminalMusicTail = terminalMusicTailMilliseconds(selected, options.music);
+  if (terminalMusicTail) { const tail = silence(terminalMusicTail); chunks.push(tail); masterFrames += tail.length / 2; }
+  const masterPcm = Buffer.concat(chunks); const suffix = explicitRange ? `.preview-${selectionLabel}` : ""; const stem = `${options.episodeId}-${timestamp}${suffix}`; const masterPath = path.join(audioDir, `${stem}.master.wav`); const voiceMasterPath = path.join(audioDir, `${stem}.voice.master.wav`); const wavPath = path.join(audioDir, `${stem}.wav`); const mp3Path = path.join(audioDir, `${stem}.mp3`); const manifestPath = path.join(audioDir, `${stem}.render-manifest.json`); const qualityReportPath = path.join(audioDir, `${stem}.audio-quality.json`);
+  ensureDir(audioDir);
+  const musicPlan = options.music ? musicCuePlan(musicCues, options.music) : null;
+  if (options.music && Object.keys(musicPlan).length) { writeAtomic(voiceMasterPath, makeWav(masterPcm)); mixMusicBeds({ voiceMasterPath, outputPath: masterPath, music: options.music, plan: musicPlan }); } else writeAtomic(masterPath, makeWav(masterPcm));
   let publishedPath = masterPath;
   if (options.format === "mp3") {
     const completed = spawnSync("ffmpeg", ["-y", "-v", "error", "-i", masterPath, "-ar", String(SAMPLE_RATE), "-ac", "1", "-b:a", "160k", mp3Path], { encoding: "utf8" });
     if (completed.status !== 0) throw new RenderError(`ffmpeg MP3 export failed: ${(completed.stderr || "unknown error").trim()}`);
     publishedPath = mp3Path;
-  } else { writeAtomic(wavPath, makeWav(masterPcm)); publishedPath = wavPath; }
+  } else publishedPath = writeWavOutput({ masterPath, wavPath, masterPcm, mixed: Boolean(options.music && Object.keys(musicPlan).length) });
   const frontMatter = selected[0].index === 1 && selected.some((segment) => segment.section === "required production notice") ? "included" : "not_in_selected_range";
-  const manifest = { renderer: "openai-realtime", renderer_version: 5, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: { "AI": "artificial intelligence" }, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: Number(durationSeconds(masterPcm.length).toFixed(3)), sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
+  const manifest = { renderer: "openai-realtime", renderer_version: 6, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: { "AI": "artificial intelligence" }, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: Number(durationSeconds(masterPcm.length).toFixed(3)), sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   const audioQuality = analyzeRenderedAudio({ manifestPath, masterPath, outputPath: publishedPath, stitchBoundaries, reportPath: qualityReportPath });
   manifest.audio.quality = { result: audioQuality.result, report: qualityReportPath, stitch_warnings: audioQuality.master.stitches.warnings.length, clipped_samples: audioQuality.master.pcm.clipped_samples };
@@ -269,7 +362,14 @@ async function main() {
   const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice; const announcerVoice = raw["announcer-voice"] || DEFAULTS.announcerVoice;
   if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
   const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
-  const options = { scriptPath, episodeId: raw["episode-id"], model, voices: { instructor: instructorVoice, learner: learnerVoice, announcer: announcerVoice }, maxWords: positiveInteger(raw["max-words-per-segment"], "--max-words-per-segment", DEFAULTS.maxWords), continuityCharacters: DEFAULTS.continuityCharacters, timeoutSeconds: positiveInteger(raw["segment-timeout"], "--segment-timeout", DEFAULTS.timeoutSeconds), format: raw.format || "mp3", stitchFadeMs: DEFAULTS.stitchFadeMs, spacing: { leadInMs: DEFAULTS.leadInMs, continuedTurnMs: DEFAULTS.continuedTurnMs, speakerChangeMs: DEFAULTS.speakerChangeMs, sectionChangeMs: DEFAULTS.sectionChangeMs } };
+  const musicValuesSpecified = ["music-bed-gain-db", "music-voice-gain-db", "music-level-transition-seconds", "music-intro-lead-seconds", "music-intro-tail-seconds", "music-intro-fade-seconds", "music-outro-tail-seconds", "music-outro-fade-seconds"].some((name) => raw[name] !== undefined);
+  if (musicValuesSpecified && !raw["music-bed"]) throw new RenderError("Music timing and gain options require --music-bed.");
+  let music = null;
+  if (raw["music-bed"]) {
+    const musicPath = path.resolve(raw["music-bed"]); if (!fs.existsSync(musicPath) || !fs.statSync(musicPath).isFile()) throw new RenderError(`Music bed not found: ${musicPath}`);
+    music = { path: musicPath, gainDb: boundedNumber(raw["music-bed-gain-db"], "--music-bed-gain-db", DEFAULTS.musicBedGainDb, -60, 0), voiceGainDb: boundedNumber(raw["music-voice-gain-db"], "--music-voice-gain-db", DEFAULTS.musicVoiceGainDb, -60, 0), levelTransitionSeconds: nonNegativeNumber(raw["music-level-transition-seconds"], "--music-level-transition-seconds", DEFAULTS.musicLevelTransitionSeconds), introLeadSeconds: nonNegativeNumber(raw["music-intro-lead-seconds"], "--music-intro-lead-seconds", DEFAULTS.musicIntroLeadSeconds), introTailSeconds: nonNegativeNumber(raw["music-intro-tail-seconds"], "--music-intro-tail-seconds", DEFAULTS.musicIntroTailSeconds), introFadeSeconds: nonNegativeNumber(raw["music-intro-fade-seconds"], "--music-intro-fade-seconds", DEFAULTS.musicIntroFadeSeconds), outroTailSeconds: nonNegativeNumber(raw["music-outro-tail-seconds"], "--music-outro-tail-seconds", DEFAULTS.musicOutroTailSeconds), outroFadeSeconds: nonNegativeNumber(raw["music-outro-fade-seconds"], "--music-outro-fade-seconds", DEFAULTS.musicOutroFadeSeconds) };
+  }
+  const options = { scriptPath, episodeId: raw["episode-id"], model, voices: { instructor: instructorVoice, learner: learnerVoice, announcer: announcerVoice }, maxWords: positiveInteger(raw["max-words-per-segment"], "--max-words-per-segment", DEFAULTS.maxWords), continuityCharacters: DEFAULTS.continuityCharacters, timeoutSeconds: positiveInteger(raw["segment-timeout"], "--segment-timeout", DEFAULTS.timeoutSeconds), format: raw.format || "mp3", stitchFadeMs: DEFAULTS.stitchFadeMs, music, spacing: { leadInMs: DEFAULTS.leadInMs, continuedTurnMs: DEFAULTS.continuedTurnMs, speakerChangeMs: DEFAULTS.speakerChangeMs, sectionChangeMs: DEFAULTS.sectionChangeMs } };
   const segments = parseScript(scriptPath, options.maxWords); const start = positiveInteger(raw["segment-start"], "--segment-start", 1); const end = positiveInteger(raw["segment-end"], "--segment-end", segments.length); if (start > end || end > segments.length) throw new RenderError(`Selected range must fall between 1 and ${segments.length}.`);
   const speaker = raw.speaker ? raw.speaker.toUpperCase() : null; const selected = speaker ? segments.filter((segment) => segment.speaker === speaker) : segments.slice(start - 1, end); if (!selected.length) throw new RenderError(`No ${raw.speaker} segments found.`);
   const explicitRange = Boolean(speaker) || start !== 1 || end !== segments.length; const selectionLabel = speaker ? `${raw.speaker}-only` : `${String(start).padStart(3, "0")}-${String(end).padStart(3, "0")}`; const workDir = path.resolve(raw["work-dir"] || path.join(audioDir, `${options.episodeId}-realtime-${timestamp}.segments`));
@@ -282,4 +382,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, parseScript, validateFrontMatter };
+module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput };

@@ -33,7 +33,12 @@ function stagedContent(file) {
 }
 
 function isBinary(content) {
-  return content.includes(0);
+  if (content.includes(0)) return true;
+  const sample = content.subarray(0, Math.min(content.length, 8_192));
+  if (!sample.length) return false;
+  let controlBytes = 0;
+  for (const byte of sample) if (byte < 7 || (byte > 14 && byte < 32)) controlBytes += 1;
+  return controlBytes / sample.length > 0.1;
 }
 
 function findingsFor(file, content) {
@@ -56,25 +61,29 @@ function selfTest() {
   assert(findingsFor("docs/unsafe.md", Buffer.from(`token: ${sampleKey}`)).includes("OpenAI-style API key"), "API key was not flagged");
   const samplePath = "/" + "Users/example/project";
   assert(findingsFor("docs/path.md", Buffer.from(samplePath)).includes("absolute local path"), "absolute path was not flagged");
+  assert(findingsFor("assets/music/example.mp3", Buffer.from([0x49, 0x44, 0x33, 0x00])).length === 0, "binary MP3 content was scanned as text");
+  assert(findingsFor("notes.pdf", Buffer.from(`token: ${sampleKey}`)).includes("OpenAI-style API key"), "text content with a binary-looking suffix was not scanned");
   console.log("precommit-check self-test passed");
 }
 
-if (process.argv.includes("--self-test")) {
-  selfTest();
-  process.exit(0);
+function main() {
+  if (process.argv.includes("--self-test")) { selfTest(); return; }
+  const failures = [];
+  for (const file of stagedPaths()) {
+    const content = stagedContent(file);
+    const findings = findingsFor(file, content);
+    if (findings.length) failures.push({ file, findings });
+  }
+  if (failures.length) {
+    console.error("Pre-commit check blocked this commit. Remove or unstage the following content:");
+    for (const failure of failures) console.error(`- ${failure.file}: ${failure.findings.join(", ")}`);
+    console.error("The check intentionally prints file paths and rule names, never matched values.");
+    process.exitCode = 1;
+    return;
+  }
+  console.log("pre-commit disclosure and secret check passed");
 }
 
-const failures = [];
-for (const file of stagedPaths()) {
-  const findings = findingsFor(file, stagedContent(file));
-  if (findings.length) failures.push({ file, findings });
-}
+if (require.main === module) main();
 
-if (failures.length) {
-  console.error("Pre-commit check blocked this commit. Remove or unstage the following content:");
-  for (const failure of failures) console.error(`- ${failure.file}: ${failure.findings.join(", ")}`);
-  console.error("The check intentionally prints file paths and rule names, never matched values.");
-  process.exit(1);
-}
-
-console.log("pre-commit disclosure and secret check passed");
+module.exports = { findingsFor, isBinary };

@@ -1,54 +1,151 @@
-episode_id: core-03
-verification_date: 2026-08-11
-verified_at_utc: "2026-08-11T17:12:40Z"
+episode_id: "core-03"
+verification_date: "2026-08-14"
+verified_at_utc: "2026-08-14T20:58:34Z"
 sources:
-  - id: acs-area-vii
+  - id: acs-slow-flight-relationships
     authority: faa_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
     document_id: "FAA-S-ACS-6C"
-    locator: "Area of Operation VII, Tasks A-D, pp. 42-46 of PDF"
-    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf"
+    locator: "Area VII, Task A, PA.VII.A.K1 and risk items R1-R3, printed p. 42"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50"
     revision: "November 2023; effective May 31, 2024"
-    verified_at_utc: "2026-08-11T17:12:40Z"
+    relevance_excerpt: "PA.VII.A.K1 identifies the relationship among angle of attack, airspeed, load factor, power setting, airplane weight and center of gravity, airplane attitude, and yaw effects. Its risk items include flight with a stall warning and uncoordinated flight."
+    verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [acs_scope, stall_relationships, cues, prevention, recovery_priority, spin_awareness]
-  - id: phak-ch5
-    authority: faa_guidance
-    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
-    document_id: "FAA-H-8083-25C"
-    locator: "Chapter 5; check current addendum at release"
-    url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight"
-    revision: "FAA-H-8083-25C; FAA handbook index lists an October 2025 addendum"
-    verified_at_utc: "2026-08-11T17:12:40Z"
+    supports_claims: [acs-relationship-anchor, acs-uncoordinated-flight-risk]
+  - id: acs-stall-knowledge-and-recovery
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area VII, Task B, PA.VII.B.K1-K4, R1-R5, S7-S8, printed p. 43"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51"
+    revision: "November 2023; effective May 31, 2024"
+    relevance_excerpt: "PA.VII.B covers stall aerodynamics, recognition through sight, sound, or feel, factors leading to a power-off stall, and fundamentals of recovery. Its risk items name inadvertent stalls, spins, secondary stalls, accelerated stalls, cross-control stalls, and the airplane's stall-recovery procedure. The skill standard calls for prompt recovery after a full stall and recovery in accordance with the POH or AFM."
+    verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [angle_of_attack, load_factor, accelerated_stall, coordination, spin_avoidance]
-  - id: afh-ch5
+    supports_claims: [acs-stall-and-recovery-anchor, acs-stall-recovery-procedure, acs-secondary-stall-risk]
+  - id: acs-spin-awareness
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area VII, Task D, PA.VII.D.K1-K3 and R1-R3, printed p. 45"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=53"
+    revision: "November 2023; effective May 31, 2024"
+    relevance_excerpt: "PA.VII.D requires understanding spin aerodynamics, the relationship among angle of attack, airspeed, load factor, power, weight and center of gravity, attitude, and yaw, what causes a spin and its entry, incipient, and developed phases, and the spin-recovery procedure. It also identifies inadvertent spin and loss-of-control risk."
+    verified_at_utc: "2026-08-13T21:00:00Z"
+    link_status: 200
+    supports_claims: [acs-spin-anchor, acs-spin-entry-phases]
+  - id: afh-stall-definition
     authority: faa_guidance
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
     document_id: "FAA-H-8083-3C"
-    locator: "Stall recognition, characteristics, recovery, stall training, and spin awareness"
-    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf"
-    revision: "FAA-H-8083-3C; FAA handbook index lists an October 2025 addendum"
-    verified_at_utc: "2026-08-11T17:12:40Z"
+    locator: "Chapter 5, Angle of Attack and Stalls, printed p. 5-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9"
+    revision: "FAA-H-8083-3C, 2021; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The AFH explains that a stall results from exceeding critical angle of attack, rather than insufficient airspeed, and can occur at any airspeed, flight attitude, or power setting."
+    verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [published_stall_speed_context, cues, recovery_priority, secondary_stall, aircraft_specific_procedures, spin_avoidance]
-  - id: ac-61-67c
+    supports_claims: [stall-angle-of-attack]
+  - id: afh-stall-recognition-and-published-speed
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
+    document_id: "FAA-H-8083-3C"
+    locator: "Chapter 5, Stall Recognition, printed p. 5-13"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13"
+    revision: "FAA-H-8083-3C, 2021; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The AFH describes impending-stall recognition through sight, sound, feel, warning devices, and aerodynamic buffet. It also states the conditions for a published level-flight one-G stalling speed, including unaccelerated coordinated one-G flight, one weight, and a particular center of gravity."
+    verified_at_utc: "2026-08-13T21:00:00Z"
+    link_status: 200
+    supports_claims: [stall-cues, published-stall-speed-context]
+  - id: afh-coordination-and-slip-skid
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
+    document_id: "FAA-H-8083-3C"
+    locator: "Chapter 5, Coordinated Flight, Figure 5-5, printed p. 5-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8"
+    revision: "FAA-H-8083-3C, 2021; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The AFH says coordinated flight occurs when the pilot proactively corrects yaw effects. It defines the condition as the nose yawed directly into the relative wind with the ball centered in the slip/skid indicator, except for certain multiengine engine-failure operations."
+    verified_at_utc: "2026-08-14T15:00:00Z"
+    link_status: 200
+    supports_claims: [coordination-definition]
+  - id: afh-recovery-and-turning-stalls
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
+    document_id: "FAA-H-8083-3C"
+    locator: "Chapter 5, Turning Stalls, printed p. 5-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18"
+    revision: "FAA-H-8083-3C, 2021; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The AFH describes a turning-stall recovery: reduce angle of attack until the stall warning is eliminated, level the wings, coordinate with rudder, and add power as needed. It also describes the different effects of a slip and skid in a turning stall."
+    verified_at_utc: "2026-08-13T21:00:00Z"
+    link_status: 200
+    supports_claims: [recovery-priority]
+  - id: afh-manufacturer-recovery-procedure
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset Prevention and Recovery Training"
+    document_id: "FAA-H-8083-3C"
+    locator: "Chapter 5, Stall Characteristics and Fundamentals of Stall Recovery, printed p. 5-15"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15"
+    revision: "FAA-H-8083-3C, 2021; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The AFH says a pilot should always follow the aircraft-specific manufacturer's recommended procedures if they are published and current."
+    verified_at_utc: "2026-08-13T21:00:00Z"
+    link_status: 200
+    supports_claims: [afh-manufacturer-recovery-procedure]
+  - id: ac-stall-spin-awareness
     authority: faa_guidance
     title: "Stall and Spin Awareness Training, with Changes 1 and 2"
     document_id: "AC 61-67C"
-    locator: "Active AC; ground-training definitions and spin-awareness guidance"
-    url: "https://www.faa.gov/regulations_policies/advisory_circulars/index.cfm/go/document.information/documentid/1028760"
-    revision: "Issued September 25, 2000; active with Changes 1 and 2"
-    verified_at_utc: "2026-08-11T17:12:40Z"
+    locator: "Paragraphs 109-110, printed p. 6"
+    url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12"
+    revision: "Issued September 25, 2000; Change 2 dated January 6, 2016; FAA status Active"
+    relevance_excerpt: "AC 61-67C identifies exceeding critical angle of attack with excessive or insufficient rudder as the primary cause of an inadvertent spin, describes base-to-final skidding as a classic accident scenario, and distinguishes incipient and fully developed spins."
+    verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [stall_definition, stall_spin_relationship, intentional_spin_boundaries]
-  - id: cfr-91-9
-    authority: regulation
-    title: "14 CFR 91.9 - Civil aircraft flight manual, marking, and placard requirements"
-    document_id: "14 CFR 91.9"
-    locator: "Section 91.9"
-    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9"
-    revision: "Current eCFR at verification"
-    verified_at_utc: "2026-08-11T17:12:40Z"
+    supports_claims: [ac-inadvertent-spin-entry, base-to-final-risk]
+  - id: phak-load-factor-basics
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Load Factors, printed p. 5-33"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight"
+      link_text: "07_phak_ch5_0.pdf"
+      sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK defines load factor as the ratio of the maximum load an aircraft can sustain to its gross weight, expressed in Gs, and explains that load factors increase whenever the aircraft is subjected to forces such as those of a turn or pull-up."
+    verified_at_utc: "2026-08-13T21:00:00Z"
     link_status: 200
-    supports_claims: [aircraft_specific_procedures, limitations]
+    supports_claims: [load-factor-definition]
+  - id: phak-load-factor-turns
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Load Factors in Steep Turns, printed p. 5-34"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight"
+      link_text: "07_phak_ch5_0.pdf"
+      sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains that, in a coordinated constant-altitude turn, a 60-degree bank creates a 2-G load factor and the wing must produce lift equal to the load factor to maintain altitude."
+    verified_at_utc: "2026-08-13T21:00:00Z"
+    link_status: 200
+    supports_claims: [load-factor-level-turn]
+  - id: phak-load-factor-cues-and-poha
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Load Factors and Stalling Speeds, printed p. 5-35"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation:
+      url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight"
+      link_text: "07_phak_ch5_0.pdf"
+      sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK states that stalling speed increases with the square root of load factor, explains steep turns and abrupt pull-ups can produce higher load factors, identifies manufacturer-provided operating limitations and AFM/POH maneuvering-speed information, and discusses seat-pressure, control-pressure, and accelerometer load-factor cues."
+    verified_at_utc: "2026-08-13T21:00:00Z"
+    link_status: 200
+    supports_claims: [load-factor-relationship, accelerated-stall-speed, load-factor-limits-bridge, load-factor-cues, practical-poha-afm-bridge]

@@ -1,0 +1,26 @@
+episode_id: core-03
+claims:
+  - id: stall-angle-of-attack
+    type: faa_guidance
+    statement: "A stall occurs when the wing exceeds its critical angle of attack; it is not caused by reaching one universal indicated airspeed."
+    sources: [phak-ch5, afh-ch5, ac-61-67c]
+  - id: published-stall-speed-context
+    type: faa_guidance
+    statement: "A published 1G stall speed applies only to the stated test conditions and is not a universal margin above a stall."
+    sources: [afh-ch5]
+  - id: load-factor
+    type: faa_guidance
+    statement: "Increasing load factor in a coordinated turn increases the angle of attack required to maintain flight and can make a stall occur at a higher airspeed."
+    sources: [phak-ch5, acs-area-vii]
+  - id: recovery-priority
+    type: faa_guidance
+    statement: "The first aerodynamic priority in an impending or full-stall recovery is to reduce angle of attack; the aircraft-specific POH/AFM procedure controls."
+    sources: [afh-ch5, acs-area-vii]
+  - id: spin-avoidance
+    type: faa_guidance
+    statement: "A spin requires a stalled condition with yaw; coordination and prompt reduction of angle of attack are central to avoidance."
+    sources: [afh-ch5, ac-61-67c, acs-area-vii]
+  - id: aircraft-documents-control
+    type: regulation
+    statement: "Aircraft operating limitations and the approved flight manual/placards control for the aircraft being flown."
+    sources: [cfr-91-9]

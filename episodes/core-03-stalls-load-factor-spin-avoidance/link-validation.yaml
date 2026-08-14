@@ -1,0 +1,1550 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-14T20:58:34.060Z
+sources_file: episodes/core-03-stalls-load-factor-spin-avoidance/sources.yaml
+claims_file: episodes/core-03-stalls-load-factor-spin-avoidance/claim-inventory.yaml
+show_notes_file: episodes/core-03-stalls-load-factor-spin-avoidance/show-notes.md
+show_notes_manifest_file: episodes/core-03-stalls-load-factor-spin-avoidance/show-notes-manifest.yaml
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 11
+  manifest_link_count: 11
+show_notes_results:
+  - id: visual-critical-angle-of-attack
+    text: Critical angle of attack and stall — Airplane Flying Handbook Chapter 5,
+      p. 5-9
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+    source_id: afh-stall-definition
+    claim_ids:
+      - stall-angle-of-attack
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4872
+      pdf_page_text_sha256: 577fa851061632bc7c70331c620bf6e06fb7ea8a7d2ffdc376231eaaac249289
+  - id: visual-published-stall-speed
+    text: Published one-G stall-speed conditions and stall-recognition discussion —
+      Airplane Flying Handbook Chapter 5, p. 5-13
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+    source_id: afh-stall-recognition-and-published-speed
+    claim_ids:
+      - published-stall-speed-context
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4633
+      pdf_page_text_sha256: a1b75f776f87ae368ed2021c007cea366c8512b7db16f40ef613c7157d1a0c37
+  - id: visual-coordinated-flight
+    text: Coordinated flight — Airplane Flying Handbook Chapter 5, Figure 5-5, p. 5-8
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+    source_id: afh-coordination-and-slip-skid
+    claim_ids:
+      - coordination-definition
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2524
+      pdf_page_text_sha256: 6191ff2ea2a1161b9bbf30fc99ff748684ed932ae8f7c2a0bad56a695564749c
+  - id: visual-load-factor-turn
+    text: Load factor in coordinated constant-altitude turns — PHAK Chapter 5, p.
+      5-34
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+    source_id: phak-load-factor-turns
+    claim_ids:
+      - load-factor-level-turn
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      status: 200
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      errors: &a2 []
+      valid: true
+      pdf_page_number: 34
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3805
+      pdf_page_text_sha256: b0cdb61427e6338255b8dc77fc7fcb09754656115423615d6d7ab13b79bb1640
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      errors: *a2
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: visual-load-factor-stall-speed
+    text: Load factor and the resulting stall-speed relationship — PHAK Chapter 5,
+      p. 5-35
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+    source_id: phak-load-factor-cues-and-poha
+    claim_ids:
+      - load-factor-relationship
+      - accelerated-stall-speed
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      status: 200
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      errors: &a4 []
+      valid: true
+      pdf_page_number: 35
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3543
+      pdf_page_text_sha256: 17abd239939d3e62ccfec26cf1f85d5cce7ef012a14de0ca328946b94d59c5e9
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      status: 200
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      errors: *a4
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: visual-turning-stalls
+    text: Turning-stall discussion — Airplane Flying Handbook Chapter 5, p. 5-18
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+    source_id: afh-recovery-and-turning-stalls
+    claim_ids:
+      - recovery-priority
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4594
+      pdf_page_text_sha256: bacfd1152932c42e0cc18a6345f42b28f33daaced066b7b80ee9483dd55e52de
+  - id: visual-spin-causes-and-phases
+    text: Spin causes and phases — AC 61-67C with Changes 1 and 2, p. 6
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+    source_id: ac-stall-spin-awareness
+    claim_ids:
+      - ac-inadvertent-spin-entry
+      - base-to-final-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3522
+      pdf_page_text_sha256: 348d8186869d6d7e15354651cf4bb3a0561bfad817414272e05ccb77a5ebf193
+  - id: source-acs-area-vii
+    text: Private Pilot for Airplane Category ACS, Area VII
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+    source_id: acs-slow-flight-relationships
+    claim_ids:
+      - acs-relationship-anchor
+      - acs-uncoordinated-flight-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      errors: []
+      valid: true
+      pdf_page_number: 50
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2755
+      pdf_page_text_sha256: 3910cdd14fcf294582d614b7b238308931d6ba7a67be24ef3af522b3b55818d9
+  - id: source-phak-load-factors
+    text: "PHAK Chapter 5: Aerodynamics of Flight — load factors in steep turns and
+      stalling speeds"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+    source_id: phak-load-factor-cues-and-poha
+    claim_ids:
+      - load-factor-relationship
+      - accelerated-stall-speed
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      status: 200
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      errors: &a6 []
+      valid: true
+      pdf_page_number: 35
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3543
+      pdf_page_text_sha256: 17abd239939d3e62ccfec26cf1f85d5cce7ef012a14de0ca328946b94d59c5e9
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      status: 200
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      errors: *a6
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: source-afh-stalls
+    text: Airplane Flying Handbook Chapter 5
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+    source_id: afh-stall-definition
+    claim_ids:
+      - stall-angle-of-attack
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4872
+      pdf_page_text_sha256: 577fa851061632bc7c70331c620bf6e06fb7ea8a7d2ffdc376231eaaac249289
+  - id: source-ac-stall-spin-awareness
+    text: "AC 61-67C: Stall and Spin Awareness Training"
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+    source_id: ac-stall-spin-awareness
+    claim_ids:
+      - ac-inadvertent-spin-entry
+      - base-to-final-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3522
+      pdf_page_text_sha256: 348d8186869d6d7e15354651cf4bb3a0561bfad817414272e05ccb77a5ebf193
+results:
+  - source_id: acs-slow-flight-relationships
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-14T20:57:39.319Z
+    linked_claim_ids:
+      - acs-relationship-anchor
+      - acs-uncoordinated-flight-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=50
+      errors: []
+      valid: true
+      pdf_page_number: 50
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2755
+      pdf_page_text_sha256: 3910cdd14fcf294582d614b7b238308931d6ba7a67be24ef3af522b3b55818d9
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page is the Slow Flight task and explicitly lists both
+          the requested aerodynamic-variable relationship and uncoordinated
+          flight as a risk-management item.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from printed page 42, Area of Operation VII, Task A,
+            and contains PA.VII.A.K1 plus risk item PA.VII.A.R3, matching the
+            supplied locator.
+        claim_assessments:
+          - claim_id: acs-relationship-anchor
+            verdict: supports
+            rationale: PA.VII.A.K1 explicitly identifies the relationship among angle of
+              attack, airspeed, load factor, power setting, airplane weight and
+              center of gravity, airplane attitude, and yaw effects in slow
+              flight.
+          - claim_id: acs-uncoordinated-flight-risk
+            verdict: supports
+            rationale: PA.VII.A.R3 expressly lists “Uncoordinated flight” under slow-flight
+              risk management.
+      usage:
+        input_tokens: 1128
+        input_tokens_details:
+          cache_write_tokens: 1125
+          cached_tokens: 0
+        output_tokens: 211
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1339
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-stall-knowledge-and-recovery
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-14T20:57:39.784Z
+    linked_claim_ids:
+      - acs-stall-and-recovery-anchor
+      - acs-stall-recovery-procedure
+      - acs-secondary-stall-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      errors: []
+      valid: true
+      pdf_page_number: 51
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2781
+      pdf_page_text_sha256: dbab59b2a660062882c2ef59ea0f7e901031d4df6fc7c5465bb767d8e2987647
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page directly lists the relevant stall knowledge,
+          risk-management, and skill elements, including stall aerodynamics,
+          recognition, prevention, recovery fundamentals,
+          secondary/accelerated/cross-control stalls, POH/AFM recovery
+          procedures, and prompt recovery after a full stall.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 51 (printed page 43) and contains
+            Area of Operation VII, Task B requirements matching the locator.
+        claim_assessments:
+          - claim_id: acs-stall-and-recovery-anchor
+            verdict: supports
+            rationale: K1 addresses stall aerodynamics; K2 addresses recognition; K3
+              addresses factors leading to and prevention of power-off stalls;
+              K4 addresses stall-recovery fundamentals. R5 expressly includes
+              secondary, accelerated, and cross-control stalls.
+          - claim_id: acs-stall-recovery-procedure
+            verdict: supports
+            rationale: S8 explicitly requires executing stall recovery in accordance with
+              procedures in the POH or AFM.
+          - claim_id: acs-secondary-stall-risk
+            verdict: supports
+            rationale: R5 lists secondary stalls as a risk-management item, and S7 requires
+              acknowledging impending-stall cues and recovering promptly after a
+              full stall occurs.
+      usage:
+        input_tokens: 1148
+        input_tokens_details:
+          cache_write_tokens: 1145
+          cached_tokens: 0
+        output_tokens: 278
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1426
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-spin-awareness
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-14T20:57:39.833Z
+    linked_claim_ids:
+      - acs-spin-anchor
+      - acs-spin-entry-phases
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=53
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=53
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=53
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=53
+      errors: []
+      valid: true
+      pdf_page_number: 53
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2011
+      pdf_page_text_sha256: c589d47bb249c0963be5bef0f4e84d3627083a2c215c9d2fd254541787478534
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page is the Spin Awareness task and expressly lists
+          knowledge requirements for spin causes, identification of
+          entry/incipient/developed phases, and spin recovery procedures, plus
+          risk-management factors for inadvertent spins and loss of control.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Area VII, Task D (Spin Awareness), and the
+            cited PDF page excerpt is printed page 45 containing PA.VII.D.K1-K3
+            and PA.VII.D.R1-R3 (as well as additional risk-management items).
+        claim_assessments:
+          - claim_id: acs-spin-anchor
+            verdict: supports
+            rationale: K2 requires knowledge of what causes a spin and identifying entry,
+              incipient, and developed phases; K3 addresses spin recovery
+              procedure; R1 addresses factors and situations leading to
+              inadvertent spin and loss of control.
+          - claim_id: acs-spin-entry-phases
+            verdict: supports
+            rationale: 'PA.VII.D.K2 explicitly states: "What causes a spin and how to
+              identify the entry, incipient, and developed phases of a spin."'
+      usage:
+        input_tokens: 919
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 246
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1165
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-stall-definition
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T20:57:39.899Z
+    linked_claim_ids:
+      - stall-angle-of-attack
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4872
+      pdf_page_text_sha256: 577fa851061632bc7c70331c620bf6e06fb7ea8a7d2ffdc376231eaaac249289
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states that a stall results from
+          exceeding the wing’s critical AOA and that it is possible to stall the
+          wing at any airspeed, at any flight attitude, and at any power
+          setting.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the relevant
+            “Angle of Attack” discussion on printed page 5-9.
+        claim_assessments:
+          - claim_id: stall-angle-of-attack
+            verdict: supports
+            rationale: "The excerpt explicitly says: “a stall is the result of exceeding the
+              critical AOA” and “it is possible to stall the wing at any
+              airspeed, at any flight attitude, and at any power setting.”"
+      usage:
+        input_tokens: 1438
+        input_tokens_details:
+          cache_write_tokens: 1435
+          cached_tokens: 0
+        output_tokens: 172
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1610
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-stall-recognition-and-published-speed
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T20:57:40.317Z
+    linked_claim_ids:
+      - stall-cues
+      - published-stall-speed-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4633
+      pdf_page_text_sha256: a1b75f776f87ae368ed2021c007cea366c8512b7db16f40ef613c7157d1a0c37
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly addresses both stall-recognition cues and the
+          limited conditions under which a published level-flight 1G stalling
+          speed is valid.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is Chapter 5, “Stall Recognition,” printed page
+            5-13, and the supplied excerpt is from cited PDF page 13. It
+            contains the relevant text for both claims.
+        claim_assessments:
+          - claim_id: stall-cues
+            verdict: supports
+            rationale: The excerpt says impending stalls should be recognized by sight,
+              sound, and feel; describes stall-warning devices and pre-stall
+              buffeting; and lists sensory cues including feel, vision, hearing,
+              and kinesthesia. It specifically discusses recognition of an
+              impending stall. Although the claim also says “full stalls,” the
+              cited cues and warning discussion substantively support the
+              broader recognition statement without distinguishing a separate
+              full-stall cue list.
+          - claim_id: published-stall-speed-context
+            verdict: supports
+            rationale: The excerpt explicitly states that a level-flight 1G published
+              stalling speed is valid only in unaccelerated 1G flight,
+              coordinated flight, at one weight (typically maximum gross
+              weight), and at a particular CG (typically maximum forward CG).
+      usage:
+        input_tokens: 1374
+        input_tokens_details:
+          cache_write_tokens: 1371
+          cached_tokens: 0
+        output_tokens: 278
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1652
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-coordination-and-slip-skid
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T20:57:40.756Z
+    linked_claim_ids:
+      - coordination-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2524
+      pdf_page_text_sha256: 6191ff2ea2a1161b9bbf30fc99ff748684ed932ae8f7c2a0bad56a695564749c
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that coordinated flight occurs
+          when the pilot proactively corrects for yaw effects and that the
+          airplane is in coordinated flight when its nose is yawed directly into
+          the relative wind and the slip/skid-indicator ball is centered, except
+          for certain multiengine airplane operations with an engine failure.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 8 and includes the “Coordinated
+            Flight” section, Figure 5-5 reference, and printed page number 5-8,
+            matching the supplied locator.
+        claim_assessments:
+          - claim_id: coordination-definition
+            verdict: supports
+            rationale: The claim accurately reflects the excerpt’s stated definition and its
+              exception for certain multiengine operations involving an engine
+              failure.
+      usage:
+        input_tokens: 948
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 186
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1134
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-recovery-and-turning-stalls
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T20:57:41.074Z
+    linked_claim_ids:
+      - recovery-priority
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4594
+      pdf_page_text_sha256: bacfd1152932c42e0cc18a6345f42b28f33daaced066b7b80ee9483dd55e52de
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page explicitly states for turning-stall recovery that the
+          pilot should apply nose-down control input as necessary to eliminate
+          the stall warning, then level the wings with ailerons, coordinate with
+          rudder, and add power as needed. It gives materially the same sequence
+          for power-on stall recovery.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page (printed p. 5-18) and directly
+            contains the relevant turning-stall and power-on-stall recovery
+            procedures.
+        claim_assessments:
+          - claim_id: recovery-priority
+            verdict: supports
+            rationale: "The excerpt directly supports the stated order: reduce AOA/eliminate
+              the stall warning, level the wings, coordinate with rudder, and
+              apply/advance power as needed."
+      usage:
+        input_tokens: 1327
+        input_tokens_details:
+          cache_write_tokens: 1324
+          cached_tokens: 0
+        output_tokens: 185
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1512
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-manufacturer-recovery-procedure
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control: Upset
+      Prevention and Recovery Training"
+    checked_at_utc: 2026-08-14T20:57:41.345Z
+    linked_claim_ids:
+      - afh-manufacturer-recovery-procedure
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4263
+      pdf_page_text_sha256: 74db5319b4d90f51011821acfbf1281c87d45c72f4ebb28451d9d69a3e890d8b
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that a pilot should know the
+          manufacturer’s recommended recovery procedures and that the pilot
+          should always follow the aircraft-specific manufacturer’s recommended
+          procedures if they are published and current.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page/excerpt contains the relevant language in the
+            'Stall Characteristics' and 'Fundamentals of Stall Recovery'
+            sections.
+        claim_assessments:
+          - claim_id: afh-manufacturer-recovery-procedure
+            verdict: supports
+            rationale: "The excerpt directly says: 'a pilot should always follow the
+              aircraft-specific manufacturer’s recommended procedures if
+              published and current.'"
+      usage:
+        input_tokens: 1253
+        input_tokens_details:
+          cache_write_tokens: 1250
+          cached_tokens: 0
+        output_tokens: 150
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1403
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-stall-spin-awareness
+    title: Stall and Spin Awareness Training, with Changes 1 and 2
+    checked_at_utc: 2026-08-14T20:57:41.698Z
+    linked_claim_ids:
+      - ac-inadvertent-spin-entry
+      - base-to-final-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-67C_Chg_2.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3522
+      pdf_page_text_sha256: 348d8186869d6d7e15354651cf4bb3a0561bfad817414272e05ccb77a5ebf193
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly contains paragraph 109, which expressly
+          addresses the primary cause of inadvertent spins and gives the
+          base-to-final skidding example described in the claims.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies paragraphs 109-110 and printed page 6. The
+            excerpt includes paragraphs 109 and 110 and displays “Page 6”; both
+            claims are supported specifically by paragraph 109 on this cited
+            page.
+        claim_assessments:
+          - claim_id: ac-inadvertent-spin-entry
+            verdict: supports
+            rationale: "Paragraph 109 states: “The primary cause of an inadvertent spin is
+              exceeding the critical AOA while applying excessive or
+              insufficient rudder,” with a lesser role for aileron."
+          - claim_id: base-to-final-risk
+            verdict: supports
+            rationale: Paragraph 109 states that stall/spin accidents have occurred in a
+              turn from base to final when a pilot attempted to rudder the
+              airplane around—skid—to avoid overshooting the runway or using
+              excessive bank angle.
+      usage:
+        input_tokens: 1209
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1206
+        output_tokens: 236
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1445
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-load-factor-basics
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-14T20:57:41.741Z
+    linked_claim_ids:
+      - load-factor-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      status: 200
+      content_type: application/pdf
+      redirects: &a7 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      errors: &a8 []
+      valid: true
+      pdf_page_number: 33
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4853
+      pdf_page_text_sha256: db4e5af9dda0b889133a5c8c3c2e773922de9be9af1d4493b8ae0aa5b5b9034e
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      status: 200
+      content_type: application/pdf
+      redirects: *a7
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=33
+      errors: *a8
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that maximum load factor is a
+          proportion between lift and weight and that load factor is measured in
+          Gs.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 33 (printed page 5-33) and
+            contains the “Load Factors” discussion directly supporting the
+            claim.
+        claim_assessments:
+          - claim_id: load-factor-definition
+            verdict: supports
+            rationale: "The excerpt states: “the maximum load factor ... is a proportion
+              between lift and weight” and “The load factor is measured in Gs.”"
+      usage:
+        input_tokens: 1374
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1371
+        output_tokens: 144
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1518
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-load-factor-turns
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-14T20:57:43.748Z
+    linked_claim_ids:
+      - load-factor-level-turn
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      status: 200
+      content_type: application/pdf
+      redirects: &a9 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      errors: &a10 []
+      valid: true
+      pdf_page_number: 34
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3805
+      pdf_page_text_sha256: b0cdb61427e6338255b8dc77fc7fcb09754656115423615d6d7ab13b79bb1640
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      status: 200
+      content_type: application/pdf
+      redirects: *a9
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=34
+      errors: *a10
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that in a coordinated level turn at 60°
+          of bank, the load factor is 2 Gs, and that the wing must produce lift
+          equal to the load factors if altitude is to be maintained. This
+          directly supports the claim's coordinated, constant-altitude-turn
+          framing and both stated points.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page/excerpt is printed page 5-34 and contains the
+            section “Load Factors in Steep Turns,” including the cited 60°/2-G
+            and lift-to-maintain-altitude statements.
+        claim_assessments:
+          - claim_id: load-factor-level-turn
+            verdict: supports
+            rationale: "The excerpt says: “The load factor for any aircraft in a coordinated
+              level turn at 60° bank is 2 Gs” and “The wing must produce lift
+              equal to these load factors if altitude is to be maintained.”"
+      usage:
+        input_tokens: 1355
+        input_tokens_details:
+          cache_write_tokens: 1352
+          cached_tokens: 0
+        output_tokens: 211
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1566
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-load-factor-cues-and-poha
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-14T20:57:45.781Z
+    linked_claim_ids:
+      - load-factor-relationship
+      - accelerated-stall-speed
+      - load-factor-limits-bridge
+      - load-factor-cues
+      - practical-poha-afm-bridge
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      status: 200
+      content_type: application/pdf
+      redirects: &a11 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      errors: &a12 []
+      valid: true
+      pdf_page_number: 35
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3543
+      pdf_page_text_sha256: 17abd239939d3e62ccfec26cf1f85d5cce7ef012a14de0ca328946b94d59c5e9
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      status: 200
+      content_type: application/pdf
+      redirects: *a11
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=35
+      errors: *a12
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited excerpt on PDF page 5-35 directly discusses the
+          relationship between load factor and accelerated stall speed, hazards
+          of steep turns and abrupt pull-ups, design maneuvering speed and
+          AFM/POH limitations, and pilot/instrument cues for load factor.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited printed page 5-35 and contains the
+            material relevant to all listed claims.
+        claim_assessments:
+          - claim_id: load-factor-relationship
+            verdict: supports
+            rationale: The excerpt states that increased load factor can cause an aircraft
+              to stall at higher speeds and specifically identifies steep turns,
+              spirals, quick pull-ups, and abrupt back-elevator application as
+              maneuvers producing increased load factors and stall risk.
+          - claim_id: accelerated-stall-speed
+            verdict: supports
+            rationale: "The excerpt explains the squared relationship in equivalent terms:
+              when stall speed doubles, load factor is squared. It gives
+              examples of a 50-knot unaccelerated stall becoming a 100-knot
+              stall at 4 G and a 150-knot stall at 9 G, demonstrating that
+              higher load factors permit stalls at higher airspeeds."
+          - claim_id: load-factor-limits-bridge
+            verdict: supports
+            rationale: The excerpt identifies design maneuvering speed (VA), says it must be
+              entered in the FAA-approved AFM/POH for recently designed
+              airplanes, and says the design maneuvering speed should be
+              determined from the particular airplane's manufacturer-provided
+              operating limitations.
+          - claim_id: load-factor-cues
+            verdict: supports
+            rationale: The excerpt says control pressure cannot be accepted as an index of
+              load factor across different aircraft, that experienced pilots can
+              often judge load factor from seat-pressure feel, and that an
+              accelerometer can measure load factors. It also notes that the
+              instrument is not common in general aviation.
+          - claim_id: practical-poha-afm-bridge
+            verdict: supports
+            rationale: The excerpt explicitly ties the general discussion of design
+              maneuvering speed and load factors to the particular airplane's
+              AFM/POH and manufacturer-provided operating limitations.
+      usage:
+        input_tokens: 1470
+        input_tokens_details:
+          cache_write_tokens: 1467
+          cached_tokens: 0
+        output_tokens: 552
+        output_tokens_details:
+          reasoning_tokens: 90
+        total_tokens: 2022
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

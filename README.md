@@ -95,7 +95,14 @@ every failed or inconclusive finding before release.
 The release gate also requires a complete two-way mapping between every claim
 and its ledger source, and a separate LLM assessment for every mapped claim.
 An overall source verdict cannot pass an unsupported or unassessed individual
-claim.
+claim. For episode packages with a co-located `show-notes-manifest.yaml`, it
+also validates every HTTPS link in `show-notes.md`: the exact link text and URL
+must be declared, identify the declared source document, use a deep locator,
+resolve under the same FAA fallback rules, and map only to claims supported by
+that source. For PDF citations, the validator extracts text from the exact
+`#page=N` target and gives that page—not a document-level excerpt—to the
+relevance assessment. New episode packages include this manifest; existing
+packages can continue source validation without backfilling one.
 
 Every listener-facing attribution must be a deep citation: it must name the
 smallest relevant section, task, paragraph, or page and link to it directly.
@@ -135,10 +142,11 @@ documents through either channel.
 
 ## Historical bootstrap record
 
-[Core 03](episodes/core-03-stalls-load-factor-spin-avoidance/) is a preserved
-bootstrap/test record. It shows how the process developed, including
+[The prior Core 03 bootstrap record](episodes/archive/core-03-bootstrap-test/)
+is preserved for posterity. It shows how the process developed, including
 superseded release gates and audio experiments; it is not a current episode
-template or a release-ready episode. New work starts from `templates/`.
+template or a release-ready episode. The current Core 03 episode starts fresh
+from `templates/`.
 
 ## License
 

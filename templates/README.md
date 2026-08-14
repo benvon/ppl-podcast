@@ -21,3 +21,8 @@ a deep citation: name the smallest relevant section, task, paragraph, or page;
 use `#page=N` for PDFs; use a specific FAA HTML anchor or section endpoint; and
 use the exact eCFR section URL. A document or regulation landing page is only a
 research-discovery link, never an attribution.
+
+`show-notes-manifest.yaml` declares every HTTPS link in `show-notes.md`. It
+binds the exact displayed text and URL to a deep locator, a source-ledger entry,
+and the material claims that entry supports. The source validator checks this
+manifest alongside the claims inventory before release.

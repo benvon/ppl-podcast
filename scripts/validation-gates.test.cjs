@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { fetchSource, validateClaimAssessments, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
-const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, parseScript, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
@@ -194,18 +194,25 @@ test("music cue plan preserves the requested intro lead and outro tail", () => {
   const plan = musicCuePlan({
     intro: { startFrame: 24_000, voiceStartFrame: 192_000, endFrame: 264_000 },
     outro: { startFrame: 2_400_000, endFrame: 2_640_000 },
-  }, { introTailSeconds: 2, introFadeSeconds: 0.5, outroTailSeconds: 10, outroFadeSeconds: 5 });
+  }, { introTailSeconds: 5, introFadeSeconds: 0.5, outroTailSeconds: 10, outroFadeSeconds: 5 });
   assert.deepEqual(plan, {
-    intro: { start_seconds: 1, voice_start_seconds: 8, lead_seconds: 7, voice_duration_seconds: 3, continuation_seconds: 2, fade_seconds: 0.5, duration_seconds: 12.5 },
+    intro: { start_seconds: 1, voice_start_seconds: 8, lead_seconds: 7, voice_duration_seconds: 3, continuation_seconds: 5, fade_seconds: 0.5, duration_seconds: 15.5 },
     outro: { start_seconds: 100, voice_duration_seconds: 10, continuation_seconds: 10, fade_seconds: 5, duration_seconds: 25 },
   });
 });
 
 test("intro-only preview retains the post-voice music continuation and fade", () => {
-  const music = { introTailSeconds: 2, introFadeSeconds: 0.5, outroTailSeconds: 10, outroFadeSeconds: 5 };
-  assert.equal(terminalMusicTailMilliseconds([{ section: "podcast introduction" }], music), 2_500);
+  const music = { introTailSeconds: 5, introFadeSeconds: 0.5, outroTailSeconds: 10, outroFadeSeconds: 5 };
+  assert.equal(terminalMusicTailMilliseconds([{ section: "podcast introduction" }], music), 5_500);
   assert.equal(terminalMusicTailMilliseconds([{ section: "outro" }], music), 15_000);
   assert.equal(terminalMusicTailMilliseconds([{ section: "what the acs is asking you to connect" }], music), 0);
+});
+
+test("music holds a steady reduced level under announcer voice", () => {
+  const expression = musicVolumeExpression({ lead_seconds: 10, voice_duration_seconds: 4 }, { gainDb: -24, voiceGainDb: -30, levelTransitionSeconds: 0.15 });
+  assert.match(expression, /0\.06309573/);
+  assert.match(expression, /0\.03162278/);
+  assert.doesNotMatch(expression, /sidechain/);
 });
 
 test("music assembly options do not invalidate reusable rendered segments", () => {
@@ -224,7 +231,7 @@ test("music-bed mix creates a playable mono WAV", () => {
   try {
     const generated = childProcess.spawnSync("ffmpeg", ["-v", "error", "-y", "-f", "lavfi", "-i", "sine=frequency=440:sample_rate=24000", "-t", "2", "-ac", "1", musicPath], { encoding: "utf8" });
     assert.equal(generated.status, 0, generated.stderr);
-    mixMusicBeds({ voiceMasterPath: voicePath, outputPath, music: { path: musicPath, gainDb: -24 }, plan: { intro: { start_seconds: 0, lead_seconds: 0, voice_duration_seconds: 1, continuation_seconds: 0, fade_seconds: 0.5, duration_seconds: 1.5 } } });
+    mixMusicBeds({ voiceMasterPath: voicePath, outputPath, music: { path: musicPath, gainDb: -24, voiceGainDb: -30, levelTransitionSeconds: 0.15 }, plan: { intro: { start_seconds: 0, lead_seconds: 0, voice_duration_seconds: 1, continuation_seconds: 0, fade_seconds: 0.5, duration_seconds: 1.5 } } });
     const probe = childProcess.spawnSync("ffprobe", ["-v", "error", "-show_entries", "stream=sample_rate,channels", "-of", "default=noprint_wrappers=1", outputPath], { encoding: "utf8" });
     assert.equal(probe.status, 0, probe.stderr);
     assert.match(probe.stdout, /sample_rate=24000/);

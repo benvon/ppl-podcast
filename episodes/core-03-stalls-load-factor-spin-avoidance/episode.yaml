@@ -54,6 +54,7 @@ release_gates_remaining:
   - "Stage and validate the immutable audio object in the hosting workflow"
 audio:
   manifest: audio-manifest.yaml
+  transcript: narration.md
   status: candidate_rendered_qa_approved
   music_bed:
     source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"

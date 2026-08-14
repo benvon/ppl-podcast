@@ -29,18 +29,27 @@ npm run precommit:check
 ## Candidate workflow
 
 1. Confirm the master script passes fact and editorial review.
-2. Render the opening preview (segments 1-5) and listen before spending on the
+2. Derive the clean TTS input from that approved script; do not edit the
+   narration copy independently.
+
+   ```sh
+   node scripts/derive-narration.cjs \
+     --script episodes/EPISODE/master-script.md \
+     --output episodes/EPISODE/narration.md
+   ```
+
+3. Render the opening preview (segments 1-5) and listen before spending on the
    complete episode.
-3. Render the full episode in bounded ranges if necessary. The work directory
+4. Render the full episode in bounded ranges if necessary. The work directory
    is safe to resume only if `render-settings.json` matches exactly.
-4. Assemble the complete range. The renderer adds an 8 ms fade at each rendered-segment edge and writes an automatic post-assembly report beside the manifest. It verifies WAV structure, 24 kHz mono format, MP3/WAV decode, output duration, clipping statistics, and abrupt sample jumps at every known stitch.
-5. Perform the required full listening QA. The automated report catches technical corruption and hard joins; it cannot judge synthesis artifacts, garbled words, pronunciation, or pacing.
+5. Assemble the complete range. The renderer adds an 8 ms fade at each rendered-segment edge and writes an automatic post-assembly report beside the manifest. It verifies WAV structure, 24 kHz mono format, MP3/WAV decode, output duration, clipping statistics, and abrupt sample jumps at every known stitch.
+6. Perform the required full listening QA. The automated report catches technical corruption and hard joins; it cannot judge synthesis artifacts, garbled words, pronunciation, or pacing.
 
 Use the same timestamp and work directory for the render and assembly commands.
 
 ```sh
 direnv exec . npm run render:realtime -- \
-  --script episodes/EPISODE/master-script.md \
+  --script episodes/EPISODE/narration.md \
   --audio-dir audio-artifacts \
   --episode-id core-03 \
   --timestamp YYYYMMDDTHHMMSSZ \
@@ -49,7 +58,7 @@ direnv exec . npm run render:realtime -- \
   --render-only
 
 npm run render:realtime -- \
-  --script episodes/EPISODE/master-script.md \
+  --script episodes/EPISODE/narration.md \
   --audio-dir audio-artifacts \
   --episode-id core-03 \
   --timestamp YYYYMMDDTHHMMSSZ \
@@ -68,7 +77,7 @@ To review one voice independently—for example, every Announcer line before a f
 
 ```sh
 direnv exec . npm run render:realtime -- \
-  --script episodes/EPISODE/master-script.md \
+  --script episodes/EPISODE/narration.md \
   --audio-dir audio-artifacts \
   --episode-id core-03 \
   --timestamp YYYYMMDDTHHMMSSZ \
@@ -77,7 +86,7 @@ direnv exec . npm run render:realtime -- \
   --render-only
 
 npm run render:realtime -- \
-  --script episodes/EPISODE/master-script.md \
+  --script episodes/EPISODE/narration.md \
   --audio-dir audio-artifacts \
   --episode-id core-03 \
   --timestamp YYYYMMDDTHHMMSSZ \
@@ -89,17 +98,17 @@ npm run render:realtime -- \
 ## Optional intro/outro music bed
 
 Use `--music-bed` during assembly to add a source track beneath the **Podcast
-introduction** and **Outro** sections. By default, the renderer adds a 7-second
-music-only lead before the Podcast introduction voice, continues the bed for
-2 seconds after that voice, then fades it over 0.5 seconds before the first
-teaching section. It starts music with the Outro voice, continues it for 10
-seconds after the voice ends, then fades it for 5 seconds. The bed is set to
--24 dB and sidechain-ducked beneath spoken audio before a final limiter, so
-narration remains foregrounded.
+introduction** and **Outro** sections. By default, the renderer adds a 10-second
+music-only lead before the Podcast introduction voice, holds the bed at a
+reduced level beneath that voice, continues it at full level for 5 seconds
+afterward, then fades it over 0.5 seconds before the first teaching section.
+It starts music with the Outro voice, continues it at full level for 10 seconds
+after the voice ends, then fades it for 5 seconds. The bed is set to -24 dB at
+full level and -30 dB beneath the Announcer, so narration remains foregrounded.
 
 ```sh
 npm run render:realtime -- \
-  --script episodes/EPISODE/master-script.md \
+  --script episodes/EPISODE/narration.md \
   --audio-dir audio-artifacts \
   --episode-id core-03 \
   --timestamp YYYYMMDDTHHMMSSZ \
@@ -108,7 +117,7 @@ npm run render:realtime -- \
   --assemble-only --format mp3
 ```
 
-The render manifest records the source SHA-256, cue plan, gain, and ducking
+The render manifest records the source SHA-256, cue plan, and music-level
 settings. Automated checks still cannot judge music balance or editorial fit;
 listen to the intro and outro before approving the episode.
 

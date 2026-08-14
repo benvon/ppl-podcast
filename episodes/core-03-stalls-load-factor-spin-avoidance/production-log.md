@@ -37,3 +37,8 @@
 - Added a versioned show-notes link manifest. It binds every listener-facing HTTPS link to its precise locator, ledger source, and supported claims.
 - Extended the source validator to reject undeclared, stale, weakly cited, unresolvable, or claim-unsupported show-notes links. It applies the same official FAA programmatic-fallback attestation rules used for the source ledger.
 - Re-ran publication-day validation at 2026-08-14T20:00:26Z: all nine FAA/ACS source entries, all 22 mapped claims, and all 10 show-notes links passed. The two PHAK show-notes links also passed the FAA-hosted programmatic-copy attestation.
+
+## 2026-08-14 — review follow-up
+
+- Corrected the render runbook to match the approved 10-second intro lead, 5-second post-introduction continuation, steady reduced music level beneath the Announcer, and 10-second outro continuation.
+- Added `narration.md`, derived from the approved master script with production metadata and source tags removed. The derivation tool and regression test keep the clean TTS input synchronized with the master script.

@@ -8,6 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { deriveNarration } = require("./derive-narration.cjs");
 const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
@@ -101,6 +102,22 @@ test("show-notes links must be declared and mapped to claims their source suppor
   const unsupported = validateShowNotesMappings(ledger, claims, { links: [{ ...manifest.links[0], claim_ids: ["claim-b"] }] }, "[AIM paragraph 1-1-1](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html)\n");
   assert.equal(unsupported.valid, false);
   assert.match(unsupported.errors.join("\n"), /maps unknown claim claim-b/);
+});
+
+test("narration derivative preserves the approved script while removing source tags and metadata", () => {
+  const narration = deriveNarration("# Test Episode\n\n**Version:** 0.1.0 — approved\n\n## Opening\n\n**INSTRUCTOR:**\n\nApproved spoken text.\n\n[Source: sources.yaml#test]\n[Claim type: FAA guidance]\n");
+  assert.match(narration, /^# Test Episode — narration derivative/m);
+  assert.match(narration, /## Opening[\s\S]*Approved spoken text\./);
+  assert.doesNotMatch(narration, /\*\*Version:/);
+  assert.doesNotMatch(narration, /\[Source:|\[Claim type:/);
+});
+
+test("Core 03 narration derivative matches the approved master script", () => {
+  const episodePath = path.join(__dirname, "..", "episodes", "core-03-stalls-load-factor-spin-avoidance");
+  assert.equal(
+    fs.readFileSync(path.join(episodePath, "narration.md"), "utf8"),
+    deriveNarration(fs.readFileSync(path.join(episodePath, "master-script.md"), "utf8")),
+  );
 });
 
 test("per-claim relevance requires an assessment for every expected claim", () => {

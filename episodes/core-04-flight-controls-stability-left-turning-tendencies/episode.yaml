@@ -1,0 +1,57 @@
+id: "core-04"
+series: ppl-study-podcast
+title: "Flight Controls, Stability, and Left-Turning Tendencies"
+slug: "flight-controls-stability-left-turning-tendencies"
+track: "core"
+status: draft
+version: 0.1.0
+published_at: null
+runtime_target_minutes: 32
+runtime_actual_seconds: null
+word_count: 2611
+speakers: [instructor, learner, announcer]
+audience: "U.S. private-pilot airplane learners"
+aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
+acs_references:
+  - PA.IV.C.K6
+phak_references:
+  - "FAA-H-8083-25C, Chapter 5: Aerodynamics of Flight"
+  - "FAA-H-8083-25C, Chapter 6: Flight Controls"
+aim_references: []
+advisory_circular_references: []
+cfr_references: []
+learning_objectives:
+  - "Connect aileron, elevator, and rudder inputs to roll, pitch, and yaw about the three axes."
+  - "Explain adverse yaw, coordinated-control roles, and trim without turning the explanation into a generic procedure."
+  - "Distinguish static from dynamic stability and explain why stability does not replace active control."
+  - "Connect the four propeller effects to changing directional-control demand in the particular airplane."
+trouble_spots:
+  - "Treating rudder as a takeoff-only control rather than a control of yaw and coordination."
+  - "Treating trim as a command input instead of relief of sustained control pressure."
+  - "Treating stability as a guarantee that the airplane will hold an intended flightpath."
+  - "Reciting left-turning tendencies without tying them to propeller rotation, airplane design, and flight condition."
+source_verification:
+  status: initial_draft_sources_researched
+  verified_at_utc: "2026-08-15T23:54:13Z"
+  link_validation: link-validation.yaml
+  relevance_review: required_before_public_release
+review:
+  editorial_status: initial_draft_complete
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - "Draft and fact-check all material claims against the source ledger"
+  - "Run source-link validation with LLM relevance review and resolve failures"
+  - "Complete human listening QA, including the front-matter check"
+  - "Re-verify every public source and link on publication day"
+  - "Validate hosting metadata and external audio-store workflow"
+audio:
+  manifest: audio-manifest.yaml
+  status: not_rendered
+hosting:
+  metadata: hosting-metadata.yaml
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

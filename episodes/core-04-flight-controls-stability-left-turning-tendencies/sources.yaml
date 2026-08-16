@@ -1,0 +1,132 @@
+episode_id: "core-04"
+verification_date: "2026-08-15"
+verified_at_utc: "2026-08-15T23:54:13Z"
+sources:
+  - id: acs-left-turning-tendencies
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area IV, Task C, PA.IV.C.K6, printed p. 21"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "PA.IV.C.K6 identifies left-turning tendencies as knowledge for the soft-field takeoff and climb task."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [acs-left-turning-anchor]
+  - id: phak-primary-secondary-controls
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 6, Flight Control Systems, printed p. 6-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=2"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls", link_text: "08_phak_ch6.pdf", sha256: "0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK identifies ailerons, elevator or stabilator, and rudder as primary controls. Flaps, leading-edge devices, spoilers, and trim systems are secondary controls that improve performance or relieve excessive control forces."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [primary-secondary-controls]
+  - id: phak-axes-ailerons-adverse-yaw
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 6, Primary Flight Controls, Ailerons and Adverse Yaw, printed p. 6-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=3"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls", link_text: "08_phak_ch6.pdf", sha256: "0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK maps aileron to roll about the longitudinal axis and explains that differential aileron drag yaws the airplane opposite the direction of bank; it also notes adverse yaw is more pronounced at low airspeeds."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [axes-and-primary-controls, adverse-yaw]
+  - id: phak-coordinated-turn-controls
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 6, Adverse Yaw and Aileron Design, printed p. 6-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls", link_text: "08_phak_ch6.pdf", sha256: "0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK says ailerons, rudder, and elevator are used to coordinate turns: aileron establishes bank, rudder counters adverse yaw, and increased lift for the turn requires increased angle of attack through elevator back pressure. Differential and Frise-type ailerons reduce adverse yaw but do not eliminate it."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [coordinated-control-roles, design-mitigation-not-elimination]
+  - id: phak-elevator-rudder
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 6, Elevator and Rudder, printed pp. 6-5 and 6-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=8"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls", link_text: "08_phak_ch6.pdf", sha256: "0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains elevator control of pitch about the lateral axis and rudder control of yaw about the vertical axis. Rudder effectiveness increases with speed, while propeller slipstream can increase its effectiveness in propeller-driven airplanes."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [elevator-and-rudder-roles]
+  - id: phak-trim
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 6, Trim Systems and Trim Tabs, printed pp. 6-10–6-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls", link_text: "08_phak_ch6.pdf", sha256: "0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK says trim systems relieve constant flight-control pressure and that retrimming is necessary as power, pitch attitude, or configuration changes."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [trim-purpose]
+  - id: phak-static-dynamic-stability
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Stability, Static Stability, and Dynamic Stability, printed pp. 5-14–5-15"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight", link_text: "07_phak_ch5_0.pdf", sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK defines stability as an inherent design quality and distinguishes static stability, the initial tendency after a disturbance, from dynamic stability, the response over time."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [stability-static-dynamic]
+  - id: phak-axis-stability
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Longitudinal, Lateral, and Directional Stability, printed pp. 5-15–5-19"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight", link_text: "07_phak_ch5_0.pdf", sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK describes longitudinal, lateral, and directional stability as pitch, roll, and yaw stability about the lateral, longitudinal, and vertical axes. The vertical fin and fuselage area aft of the CG tend to point the nose into the relative wind."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [stability-by-axis, directional-weather-vane]
+  - id: phak-torque-slipstream
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Torque Reaction and Corkscrew Effect, printed p. 5-31"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight", link_text: "07_phak_ch5_0.pdf", sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK identifies torque reaction and the corkscrew effect of the slipstream as two elements of left-turning tendency in the usual U.S.-built clockwise-from-the-pilot propeller example. The magnitude varies with airplane, propeller, engine power, RPM, airspeed, and ground conditions."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [torque-reaction, spiraling-slipstream, aircraft-specific-variation]
+  - id: phak-gyroscopic-p-factor
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Gyroscopic Action and Asymmetric Loading (P-Factor), printed p. 5-32"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight", link_text: "07_phak_ch5_0.pdf", sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains gyroscopic precession and states that, at high angle of attack, the downward-moving propeller blade can have greater resultant velocity and thrust than the upward-moving blade, creating left yaw in the usual propeller-rotation example. It emphasizes that the four effects vary with flight situation and aircraft design."
+    verified_at_utc: "2026-08-15T23:54:13Z"
+    link_status: 200
+    supports_claims: [gyroscopic-precession, p-factor, aircraft-specific-variation]

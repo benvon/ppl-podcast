@@ -39,6 +39,18 @@ If the Learner makes a leap, move the missing explanation into the preceding Ins
 
 The Announcer only orients the listener. Keep an intercession to a short phrase or one plain sentence; do not use it to carry a definition, caveat, or new technical claim.
 
+Use the written section heading as the Announcer's text whenever it reads naturally aloud. If it needs shortening, retain its subject and point; do not replace it with a clever or generic transition that makes the listener guess what comes next.
+
+When a later section will define a term that must be mentioned earlier, give a one-phrase provisional orientation and a specific signpost: name the term, give only the minimum meaning needed now, and say when the fuller explanation is coming. Do not repeatedly rely on an undefined term before teaching it.
+
+## Make the practical takeaway concrete
+
+An operational takeaway must identify both the changing aerodynamic or system demand and the pilot response it supports. A statement such as “this changes the picture” or “be more mindful” is not enough. Say what is changing, why it matters, and the bounded habit it should prompt—such as avoiding abrupt added demand, preserving coordination, checking the approved aircraft information, or choosing a lower-demand option early.
+
+Keep that habit distinct from an aircraft-specific procedure. General teaching explains the decision or aerodynamic priority; the POH/AFM and training provide the airplane-specific speeds, limitations, and control sequence.
+
+Avoid generic placeholders such as “conditions,” “it,” “this relationship,” or “the picture” when the listener needs the variables. Name them: for example, a coordinated turn, maintained altitude, added wing demand, or yaw across the relative wind. A published value is useful because it is a point of reference established for stated conditions, not merely because those conditions exist.
+
 ## Connect theory to a particular airplane
 
 Move from an aerodynamic model to practical aircraft information in three steps:

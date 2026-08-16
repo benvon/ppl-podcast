@@ -1,5 +1,20 @@
 # Flight Controls, Stability, and Left-Turning Tendencies — production log
 
+## 2026-08-16 — Publication-day source validation complete
+
+- Corrected the ACS citation from PDF page 28 to page 29, the page that
+  actually contains PA.IV.C.K6, *Left turning tendencies*.
+- Split composite ledger entries into 37 page-level claims across 20 FAA
+  citations. This separates trim setup from retrimming, the individual
+  leading-edge-device functions, the three stability axes, and the PHAK's
+  condition-dependent directional-control facts from the episode's teaching
+  explanation of “more right rudder.”
+- Ran `sources:validate --require-llm` on publication day. All 20 FAA links,
+  all show-notes mappings, locators, and 37 claim-level relevance assessments
+  passed at `2026-08-16T23:43:05Z` using `gpt-5.6-terra`.
+- No spoken script or rendered audio changed. Core 04 is ready for the
+  separate immutable-audio hosting workflow.
+
 ## 2026-08-16 — Script-aligned listening QA accepted
 
 - The user completed and accepted full script-aligned listening QA for the

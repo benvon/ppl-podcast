@@ -2,11 +2,11 @@
 
 ## Content and sources
 
-- [ ] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
-- [ ] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
-- [ ] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
-- [ ] Source-link validator was run with `--require-llm` and reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure.
-- [ ] Human editorial pass completed; unresolved technical questions were removed or resolved.
+- [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
+- [x] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
+- [x] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
+- [x] Source-link validator was run with `--require-llm` and reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure.
+- [x] Human editorial pass completed; unresolved technical questions were removed or resolved.
 
 ## Audio
 
@@ -18,6 +18,6 @@
 
 ## Release
 
-- [ ] FAA/eCFR links and revisions were re-verified on publication day.
+- [x] FAA/eCFR links and revisions were re-verified on publication day.
 - [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

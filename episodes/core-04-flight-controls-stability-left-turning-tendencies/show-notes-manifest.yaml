@@ -4,7 +4,7 @@ episode_id: "core-04"
 links:
   - id: acs-left-turning-tendencies
     text: "Private Pilot ACS: left-turning tendencies"
-    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=29"
     locator: "PA.IV.C.K6, printed p. 21"
     source_id: acs-left-turning-tendencies
     claim_ids: [acs-left-turning-anchor]
@@ -25,7 +25,7 @@ links:
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4"
     locator: "Ch. 6, printed p. 6-4"
     source_id: phak-coordinated-turn-controls
-    claim_ids: [coordinated-control-roles, rudder-demand-conditions, coordination-harmonizes-effects, design-mitigation-not-elimination]
+    claim_ids: [coordinated-control-roles, rudder-demand-conditions, design-mitigation-not-elimination]
   - id: phak-elevator
     text: "PHAK: elevator"
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=5"
@@ -43,19 +43,31 @@ links:
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9"
     locator: "Ch. 6, printed p. 6-9"
     source_id: phak-flaps-leading-edge-devices
-    claim_ids: [flaps-change-aerodynamic-condition, leading-edge-devices-delay-separation]
+    claim_ids: [flaps-change-aerodynamic-condition, leading-edge-device-types-fixed-slots]
   - id: phak-spoilers
     text: "PHAK: spoilers"
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10"
     locator: "Ch. 6, printed p. 6-10"
     source_id: phak-spoilers
     claim_ids: [spoilers-change-lift-drag]
-  - id: phak-trim
+  - id: phak-leading-edge-device-functions
+    text: "PHAK: slats, leading-edge flaps, and cuffs"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10"
+    locator: "Ch. 6, printed p. 6-10"
+    source_id: phak-leading-edge-device-functions
+    claim_ids: [movable-slats-delay-separation, leading-edge-flaps-increase-lift, leading-edge-cuffs-improve-attachment]
+  - id: phak-trim-purpose
     text: "PHAK: trim systems and trim tabs"
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10"
     locator: "Ch. 6, printed pp. 6-10–6-11"
-    source_id: phak-trim
-    claim_ids: [trim-purpose, trim-desired-airspeed-context]
+    source_id: phak-trim-purpose
+    claim_ids: [trim-purpose, trim-establish-condition]
+  - id: phak-trim-retrim
+    text: "PHAK: retrimming for a new condition"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=11"
+    locator: "Ch. 6, printed p. 6-11"
+    source_id: phak-trim-retrim
+    claim_ids: [trim-retrim]
   - id: phak-static-stability
     text: "PHAK: stability and static stability"
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14"
@@ -86,21 +98,27 @@ links:
     locator: "Ch. 5, printed p. 5-18"
     source_id: phak-lateral-stability
     claim_ids: [lateral-stability-dihedral, lateral-stability-design-factors]
+  - id: phak-lateral-stability-axis
+    text: "PHAK: lateral stability and rolling"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17"
+    locator: "Ch. 5, printed p. 5-17"
+    source_id: phak-lateral-stability-axis
+    claim_ids: [lateral-stability-axis]
   - id: phak-axis-stability
-    text: "PHAK: longitudinal, lateral, and directional stability"
+    text: "PHAK: directional stability and the vertical axis"
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19"
-    locator: "Ch. 5, printed pp. 5-15–5-19"
+    locator: "Ch. 5, printed p. 5-19"
     source_id: phak-axis-stability
-    claim_ids: [stability-by-axis, directional-weather-vane]
+    claim_ids: [directional-stability-axis, directional-weather-vane]
   - id: phak-torque-slipstream
     text: "PHAK: torque reaction and corkscrew effect"
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31"
     locator: "Ch. 5, printed p. 5-31"
     source_id: phak-torque-slipstream
-    claim_ids: [torque-reaction, spiraling-slipstream, aircraft-specific-variation, right-rudder-context]
+    claim_ids: [torque-reaction, spiraling-slipstream, directional-control-feedback]
   - id: phak-gyroscopic-p-factor
     text: "PHAK: gyroscopic action and asymmetric loading"
     url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32"
     locator: "Ch. 5, printed p. 5-32"
     source_id: phak-gyroscopic-p-factor
-    claim_ids: [gyroscopic-precession, p-factor, aircraft-specific-variation, right-rudder-context]
+    claim_ids: [gyroscopic-precession, p-factor, aircraft-specific-variation]

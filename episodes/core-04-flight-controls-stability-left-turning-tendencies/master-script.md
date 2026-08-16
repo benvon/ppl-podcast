@@ -192,7 +192,7 @@ When the desired airspeed is established, trim is how I reduce the sustained for
 
 Exactly. It reduces workload and makes it easier to sense meaningful changes in control force. The exact trim system—trim tab, adjustable stabilizer, or something else—is aircraft-specific, so use the POH/AFM to understand what is installed and how it is operated.
 
-[Source: sources.yaml#phak-trim, #phak-primary-secondary-controls]
+[Source: sources.yaml#phak-trim-purpose, #phak-trim-retrim, #phak-primary-secondary-controls]
 [Claim type: FAA guidance]
 
 ## [13:56] Secondary controls reshape the airflow
@@ -221,7 +221,7 @@ So primary controls point and rotate the airplane, while secondary controls resh
 
 Exactly. That is why “configuration” belongs in the same mental sentence as power, pitch, airspeed, and trim. They describe one changing aerodynamic condition.
 
-[Source: sources.yaml#phak-flaps-leading-edge-devices, #phak-spoilers, #phak-trim]
+[Source: sources.yaml#phak-flaps-leading-edge-devices, #phak-leading-edge-device-functions, #phak-spoilers, #phak-trim-purpose]
 [Claim type: FAA guidance]
 
 ## [16:27] Stability is not self-flying
@@ -250,7 +250,7 @@ So static stability tells me the first direction of the response, dynamic stabil
 
 Exactly. A disturbance may still require a pilot correction, and the airplane’s response varies with design and condition. The useful study question is: which motion was disturbed, what does the airplane initially tend to do, and then does its response damp out, persist, or grow?
 
-[Source: sources.yaml#phak-static-stability, #phak-dynamic-stability-longitudinal-cg, #phak-axis-stability]
+[Source: sources.yaml#phak-static-stability, #phak-dynamic-stability-longitudinal-cg, #phak-lateral-stability-axis, #phak-axis-stability]
 [Claim type: FAA guidance]
 
 ## [18:43] How design stabilizes pitch and roll
@@ -380,7 +380,7 @@ So I use the aerodynamic model to anticipate the changing demand, identify wheth
 
 Yes. The general model tells you why you may feel a changing demand. The approved aircraft information and training tell you how that airplane is meant to be operated.
 
-[Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor, #phak-trim]
+[Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor, #phak-trim-purpose]
 [Claim type: FAA guidance]
 
 ## [30:30] Retrieval review

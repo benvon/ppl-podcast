@@ -3,7 +3,8 @@ status: candidate_rendered_qa_approved
 reason: >-
   Script version 0.1.3 has a technically validated OpenAI Realtime render and
   accepted full script-aligned human listening QA. Publication-day source
-  validation and hosting preparation remain required before release.
+  validation is complete; it is ready for the separate immutable-audio hosting
+  workflow.
 current_candidate_render:
   script_version: 0.1.3
   rendered_at_utc: "2026-08-16T16:47:23Z"
@@ -42,5 +43,4 @@ current_candidate_render:
   validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 67 stitch boundaries with no discontinuity warnings, and no clipped samples. Full script-aligned human listening QA was accepted. Artifact is Git-ignored."
 superseded_candidates: []
 required_before_release:
-  - "Re-verify all cited public links on publication day."
-  - "Validate hosting metadata and external audio-store workflow."
+  - "Stage and validate the immutable audio object in the hosting workflow."

@@ -24,6 +24,7 @@
 - **“Stable means hands-off forever.”** Distinguish initial tendency from response over time; stability aids control but does not replace it.
 - **“All propeller airplanes pull left in the same way.”** Keep the common clockwise-from-the-pilot example, aircraft design, and flight condition attached to every effect.
 - **“The four effects are a cockpit diagnosis.”** Use them to anticipate directional-control demand, not to prescribe generic inputs.
+- **“More right rudder” is a setting.** Explain it as a response to increased left yaw in the common propeller example; the actual reference is directional alignment and the particular airplane, not pedal travel.
 
 ## Drafting choices from the playbook
 

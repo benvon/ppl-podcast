@@ -214,6 +214,28 @@ Gyroscopic precession is a property of a spinning propeller. A deflecting force 
 
 P-factor—more formally asymmetric loading—is different. At a high airplane angle of attack, the downward-moving blade in the usual example takes a larger aerodynamic bite of air. It produces more thrust than the upward-moving blade, moving the center of thrust and yawing the nose left.
 
+Those four explanations become useful when you attach them to recognizable conditions.
+
+On the takeoff roll, the airplane is moving slowly but the engine and propeller may be producing substantial power and RPM. In the usual example, torque reaction can put more load on the left main wheel. More load means more tire friction on that side, which adds a left-yaw tendency on the ground. The runway, crosswind, and landing-gear geometry also matter, so this is not an explanation for every directional-control demand. It is one reason the takeoff roll deserves active directional attention rather than a passive expectation that the airplane will track straight by itself.
+
+Just after liftoff and early in a climb, forward speed may still be relatively low while power is high. The spiraling slipstream is then compact, so its effect on the vertical tail can be more noticeable. At the same time, the airplane may be at a higher angle of attack than it is in cruise, which makes P-factor more relevant. In the clockwise-from-the-pilot example, both of those effects can contribute to left yaw. That is the setting behind the phrase students often hear: “more right rudder.”
+
+Here is what that phrase should mean. It does **not** mean press the right pedal to a memorized position, and it does not mean every airplane will always require a particular amount of right rudder. It means: if the airplane is developing left yaw, use the rudder—the control of yaw—to keep the nose aligned with the relative wind and the intended path. In the common propeller-rotation example, higher power, lower airspeed, and a higher angle of attack may create more left-yaw tendency than the same airplane has in cruise. The pilot may therefore need more right-rudder pressure than was needed before the power change.
+
+The word *more* is comparative. More than what you needed in the previous condition. It is not a fixed instruction detached from the airplane, wind, runway, or outside picture. The practical feedback is the airplane’s directional alignment and the applicable coordination indication, not the amount your foot happened to move.
+
+**LEARNER:**
+
+So “more right rudder” is really shorthand for “the left-yaw forces increased, so I need enough rudder to keep the airplane from yawing left.” The phrase names the expected correction in a common airplane, but the yaw is the thing I am actually watching.
+
+**INSTRUCTOR:**
+
+Exactly. That distinction prevents two opposite mistakes. One is waiting for the nose to wander because you are trying to remember which effect is dominant. The other is pressing a remembered amount of right rudder even when the airplane’s actual yaw, wind correction, or aircraft design calls for something different. Learn the anticipated trend from the aerodynamic model; use the airplane’s response and its approved guidance to manage the real condition.
+
+There are useful contrasts. In cruise, forward speed is higher, angle of attack is usually lower, and the compact spiral behind the propeller has stretched out. The left-yaw demand that was noticeable at high power and low speed may be smaller. In a lower-power descent, the balance can change again. The point is not to predict a single pedal position for each phase. It is to expect that a changed power setting, airspeed, or angle of attack can change the yawing forces you need to manage.
+
+Gyroscopic precession deserves its own boundary. It is most often emphasized in tailwheel instruction because raising the tail changes the propeller disc’s orientation in a way that can create a pronounced yawing effect in the PHAK’s example. That does not make it the main explanation for every ordinary tricycle-gear takeoff. The airplane’s configuration and the motion being made determine whether it is a meaningful part of the picture.
+
 **LEARNER:**
 
 The shared lesson is not that I should diagnose which of the four is winning in real time. It is that high power, low forward speed, and high angle of attack can make directional control a more demanding job.
@@ -225,7 +247,7 @@ Exactly. That is the operationally useful conclusion. Do not let an acronym repl
 [Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor]
 [Claim type: FAA guidance]
 
-## [28:00] Bring the model back to the airplane
+## [32:30] Bring the model back to the airplane
 
 **ANNOUNCER:**
 
@@ -250,7 +272,7 @@ Yes. The general model tells you why you may feel a changing demand. The approve
 [Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor, #phak-trim]
 [Claim type: FAA guidance]
 
-## [31:00] Retrieval review
+## [35:30] Retrieval review
 
 **ANNOUNCER:**
 
@@ -266,7 +288,7 @@ Second: ailerons create roll, but they also create unequal drag. Rudder counters
 
 Third: trim relieves sustained control pressure after the desired power, pitch, and configuration are established. A new condition calls for a new trim setting.
 
-Fourth: stability is a design tendency, not self-flying. The four propeller effects are not four equal forces to recite; their strength varies with the airplane and condition. Their shared practical message is to anticipate directional-control demand when power is high, airspeed is low, or angle of attack is high.
+Fourth: stability is a design tendency, not self-flying. The four propeller effects are not four equal forces to recite; their strength varies with the airplane and condition. In the common clockwise-from-the-pilot propeller example, the “more right rudder” phrase means use enough right-rudder input to counter a developing left yaw—not a fixed amount of pedal travel.
 
 **LEARNER:**
 
@@ -279,7 +301,7 @@ That is a strong study question. It turns the controls from a collection of moti
 [Source: sources.yaml#phak-primary-secondary-controls, #phak-coordinated-turn-controls, #phak-static-dynamic-stability, #phak-gyroscopic-p-factor]
 [Claim type: FAA guidance]
 
-## [33:00] Outro
+## [37:30] Outro
 
 **ANNOUNCER:**
 

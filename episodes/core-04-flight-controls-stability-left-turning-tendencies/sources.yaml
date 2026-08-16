@@ -116,7 +116,7 @@ sources:
     relevance_excerpt: "The PHAK identifies torque reaction and the corkscrew effect of the slipstream as two elements of left-turning tendency in the usual U.S.-built clockwise-from-the-pilot propeller example. The magnitude varies with airplane, propeller, engine power, RPM, airspeed, and ground conditions."
     verified_at_utc: "2026-08-15T23:54:13Z"
     link_status: 200
-    supports_claims: [torque-reaction, spiraling-slipstream, aircraft-specific-variation]
+    supports_claims: [torque-reaction, spiraling-slipstream, aircraft-specific-variation, right-rudder-context]
   - id: phak-gyroscopic-p-factor
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
@@ -129,4 +129,4 @@ sources:
     relevance_excerpt: "The PHAK explains gyroscopic precession and states that, at high angle of attack, the downward-moving propeller blade can have greater resultant velocity and thrust than the upward-moving blade, creating left yaw in the usual propeller-rotation example. It emphasizes that the four effects vary with flight situation and aircraft design."
     verified_at_utc: "2026-08-15T23:54:13Z"
     link_status: 200
-    supports_claims: [gyroscopic-precession, p-factor, aircraft-specific-variation]
+    supports_claims: [gyroscopic-precession, p-factor, aircraft-specific-variation, right-rudder-context]

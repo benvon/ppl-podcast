@@ -32,3 +32,10 @@
 - Added an explicit opening bridge: the control-surface and airflow model is taught before the detailed left-turning-tendencies section so the listener can connect each effect to the roll or yaw demand it creates and the controls used to manage the flightpath.
 - Removed repetitive production-style hedges and rewrote the affected passages as direct explanations. Aircraft-specific documents and instructor technique remain named where they are the appropriate source for operation of a particular airplane.
 - Reworked the Learner turns to retrieve the new control/axis map, coupled effects, changing rudder demand, trim-for-airspeed relationship, static-versus-dynamic stability distinction, CG connection, and the final application model.
+
+## 2026-08-16 — secondary controls and stability expansion
+
+- Added a focused secondary-controls section: flaps, leading-edge devices, spoilers, configuration pitch effects, and the trim connection. The section teaches their shared airflow consequences without becoming a catalog of systems or a generic operating procedure.
+- Added two stability mechanisms that were previously only named: conventional-airplane longitudinal stability through CG, wing, horizontal-tail force, downwash, and power-change moments; and lateral stability through dihedral, sideslip, sweepback, keel effect, and weight distribution.
+- Added seven atomic claims and five exact FAA-page ledger sources, then extended show notes with the corresponding deep links and claim mappings.
+- Recalculated script section timestamps at the Core 02–03 measured narration pace. The draft now contains 5,043 spoken words, projecting to approximately 32 minutes before audio-specific timing adjustments.

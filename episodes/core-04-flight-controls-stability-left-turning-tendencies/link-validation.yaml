@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-16T13:35:39.498Z
+checked_at_utc: 2026-08-16T15:06:48.583Z
 sources_file: episodes/core-04-flight-controls-stability-left-turning-tendencies/sources.yaml
 claims_file: episodes/core-04-flight-controls-stability-left-turning-tendencies/claim-inventory.yaml
 show_notes_file: episodes/core-04-flight-controls-stability-left-turning-tendencies/show-notes.md
@@ -13,8 +13,8 @@ claim_mapping:
 show_notes_mapping:
   valid: true
   errors: []
-  markdown_link_count: 12
-  manifest_link_count: 12
+  markdown_link_count: 17
+  manifest_link_count: 17
 show_notes_results:
   - id: acs-left-turning-tendencies
     text: "Private Pilot ACS: left-turning tendencies"
@@ -494,6 +494,185 @@ show_notes_results:
       programmatic_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       citation_hash_matches_programmatic: true
       errors: []
+  - id: phak-flaps-leading-edge-devices
+    text: "PHAK: flaps and leading-edge devices"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+    source_id: phak-flaps-leading-edge-devices
+    claim_ids:
+      - flaps-change-aerodynamic-condition
+      - leading-edge-devices-delay-separation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: &a11 []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      errors: &a12 []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1984
+      pdf_page_text_sha256: 846730cebbd2fb6a8e970603a74da407705c927462bc2a3bdb722f170c97f044
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: *a11
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      errors: *a12
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 6: Flight Controls | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7636
+      excerpt_sha256: 6bb1255408d55d6044ff355bbb0690c7f842dd8fcc033ffd336a374b7ad8a0ea
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      expected_link_text: 08_phak_ch6.pdf
+      expected_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      programmatic_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: phak-spoilers
+    text: "PHAK: spoilers"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+    source_id: phak-spoilers
+    claim_ids:
+      - spoilers-change-lift-drag
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: &a13 []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      errors: &a14 []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4907
+      pdf_page_text_sha256: a3cea4132067ecc763c62f91062889fc17e49497466e9fdccf380515d61aa08c
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a13
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      errors: *a14
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 6: Flight Controls | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7636
+      excerpt_sha256: 6bb1255408d55d6044ff355bbb0690c7f842dd8fcc033ffd336a374b7ad8a0ea
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      expected_link_text: 08_phak_ch6.pdf
+      expected_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      programmatic_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_hash_matches_programmatic: true
+      errors: []
   - id: phak-trim
     text: "PHAK: trim systems and trim tabs"
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
@@ -509,14 +688,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       status: 200
       content_type: application/pdf
-      redirects: &a11 []
+      redirects: &a15 []
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
-      errors: &a12 []
+      errors: &a16 []
       valid: true
       pdf_page_number: 10
       excerpt_characters: 0
@@ -528,14 +707,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       status: 200
       content_type: application/pdf
-      redirects: *a11
+      redirects: *a15
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
-      errors: *a12
+      errors: *a16
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -599,14 +778,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       status: 200
       content_type: application/pdf
-      redirects: &a13 []
+      redirects: &a17 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
-      errors: &a14 []
+      errors: &a18 []
       valid: true
       pdf_page_number: 14
       excerpt_characters: 0
@@ -618,14 +797,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       status: 200
       content_type: application/pdf
-      redirects: *a13
+      redirects: *a17
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
-      errors: *a14
+      errors: *a18
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -689,14 +868,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       status: 200
       content_type: application/pdf
-      redirects: &a15 []
+      redirects: &a19 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
-      errors: &a16 []
+      errors: &a20 []
       valid: true
       pdf_page_number: 15
       excerpt_characters: 0
@@ -708,14 +887,282 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       status: 200
       content_type: application/pdf
-      redirects: *a15
+      redirects: *a19
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
-      errors: *a16
+      errors: *a20
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: phak-longitudinal-stability-tail-force
+    text: "PHAK: longitudinal stability and tail force"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+    source_id: phak-longitudinal-stability-tail-force
+    claim_ids:
+      - longitudinal-stability-tail-force
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: &a21 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      errors: &a22 []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3060
+      pdf_page_text_sha256: aa75ce312c3a40d55a35c76467479598bd405d7fcb40a443b494fb29f0bceb76
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: *a21
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      errors: *a22
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: phak-longitudinal-stability-power
+    text: "PHAK: longitudinal stability and power changes"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+    source_id: phak-longitudinal-stability-power
+    claim_ids:
+      - longitudinal-stability-power-change
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: &a23 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      errors: &a24 []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3209
+      pdf_page_text_sha256: 47d8336e63574ae89b31869fd3805c351bbe75a2030d55da5098bd03c77c4966
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a23
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      errors: *a24
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: phak-lateral-stability
+    text: "PHAK: dihedral and lateral stability"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+    source_id: phak-lateral-stability
+    claim_ids:
+      - lateral-stability-dihedral
+      - lateral-stability-design-factors
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: &a25 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      errors: &a26 []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2761
+      pdf_page_text_sha256: e1e7e67019b011d1b20ec682bc59ec1515008bce8a9353ef1f0adb32f95c4187
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a25
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      errors: *a26
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -779,14 +1226,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       status: 200
       content_type: application/pdf
-      redirects: &a17 []
+      redirects: &a27 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
-      errors: &a18 []
+      errors: &a28 []
       valid: true
       pdf_page_number: 19
       excerpt_characters: 0
@@ -798,14 +1245,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       status: 200
       content_type: application/pdf
-      redirects: *a17
+      redirects: *a27
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
-      errors: *a18
+      errors: *a28
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -871,14 +1318,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: &a19 []
+      redirects: &a29 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
-      errors: &a20 []
+      errors: &a30 []
       valid: true
       pdf_page_number: 31
       excerpt_characters: 0
@@ -890,14 +1337,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: *a19
+      redirects: *a29
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
-      errors: *a20
+      errors: *a30
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -963,14 +1410,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       status: 200
       content_type: application/pdf
-      redirects: &a21 []
+      redirects: &a31 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
-      errors: &a22 []
+      errors: &a32 []
       valid: true
       pdf_page_number: 32
       excerpt_characters: 0
@@ -982,14 +1429,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       status: 200
       content_type: application/pdf
-      redirects: *a21
+      redirects: *a31
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
-      errors: *a22
+      errors: *a32
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1041,7 +1488,7 @@ show_notes_results:
 results:
   - source_id: acs-left-turning-tendencies
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-16T13:31:32.649Z
+    checked_at_utc: 2026-08-16T15:05:45.485Z
     linked_claim_ids:
       - acs-left-turning-anchor
     missing_claim_ids: []
@@ -1074,7 +1521,7 @@ results:
       status: not_requested
   - source_id: phak-primary-secondary-controls
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
-    checked_at_utc: 2026-08-16T13:31:33.751Z
+    checked_at_utc: 2026-08-16T15:05:46.282Z
     linked_claim_ids:
       - primary-secondary-controls
     missing_claim_ids: []
@@ -1086,14 +1533,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=2
       status: 200
       content_type: application/pdf
-      redirects: &a23 []
+      redirects: &a33 []
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=2
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=2
-      errors: &a24 []
+      errors: &a34 []
       valid: true
       pdf_page_number: 2
       excerpt_characters: 0
@@ -1105,14 +1552,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=2
       status: 200
       content_type: application/pdf
-      redirects: *a23
+      redirects: *a33
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=2
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=2
-      errors: *a24
+      errors: *a34
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1168,7 +1615,7 @@ results:
       status: not_requested
   - source_id: phak-axes-ailerons-adverse-yaw
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
-    checked_at_utc: 2026-08-16T13:31:41.666Z
+    checked_at_utc: 2026-08-16T15:05:48.350Z
     linked_claim_ids:
       - aileron-axis-role
       - adverse-yaw
@@ -1181,14 +1628,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=3
       status: 200
       content_type: application/pdf
-      redirects: &a25 []
+      redirects: &a35 []
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=3
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=3
-      errors: &a26 []
+      errors: &a36 []
       valid: true
       pdf_page_number: 3
       excerpt_characters: 0
@@ -1200,14 +1647,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=3
       status: 200
       content_type: application/pdf
-      redirects: *a25
+      redirects: *a35
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=3
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=3
-      errors: *a26
+      errors: *a36
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1263,7 +1710,7 @@ results:
       status: not_requested
   - source_id: phak-coordinated-turn-controls
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
-    checked_at_utc: 2026-08-16T13:31:49.314Z
+    checked_at_utc: 2026-08-16T15:05:49.281Z
     linked_claim_ids:
       - coordinated-control-roles
       - coordination-harmonizes-effects
@@ -1278,14 +1725,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4
       status: 200
       content_type: application/pdf
-      redirects: &a27 []
+      redirects: &a37 []
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4
-      errors: &a28 []
+      errors: &a38 []
       valid: true
       pdf_page_number: 4
       excerpt_characters: 0
@@ -1297,14 +1744,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4
       status: 200
       content_type: application/pdf
-      redirects: *a27
+      redirects: *a37
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=4
-      errors: *a28
+      errors: *a38
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1360,7 +1807,7 @@ results:
       status: not_requested
   - source_id: phak-elevator
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
-    checked_at_utc: 2026-08-16T13:31:58.213Z
+    checked_at_utc: 2026-08-16T15:05:50.330Z
     linked_claim_ids:
       - elevator-role
     missing_claim_ids: []
@@ -1372,14 +1819,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=5
       status: 200
       content_type: application/pdf
-      redirects: &a29 []
+      redirects: &a39 []
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=5
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=5
-      errors: &a30 []
+      errors: &a40 []
       valid: true
       pdf_page_number: 5
       excerpt_characters: 0
@@ -1391,14 +1838,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=5
       status: 200
       content_type: application/pdf
-      redirects: *a29
+      redirects: *a39
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=5
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=5
-      errors: *a30
+      errors: *a40
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1454,7 +1901,7 @@ results:
       status: not_requested
   - source_id: phak-rudder-effectiveness
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
-    checked_at_utc: 2026-08-16T13:32:03.824Z
+    checked_at_utc: 2026-08-16T15:05:52.583Z
     linked_claim_ids:
       - rudder-role
       - rudder-effectiveness
@@ -1467,14 +1914,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=8
       status: 200
       content_type: application/pdf
-      redirects: &a31 []
+      redirects: &a41 []
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=8
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=8
-      errors: &a32 []
+      errors: &a42 []
       valid: true
       pdf_page_number: 8
       excerpt_characters: 0
@@ -1486,14 +1933,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=8
       status: 200
       content_type: application/pdf
-      redirects: *a31
+      redirects: *a41
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=8
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=8
-      errors: *a32
+      errors: *a42
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1549,7 +1996,7 @@ results:
       status: not_requested
   - source_id: phak-trim
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
-    checked_at_utc: 2026-08-16T13:32:14.372Z
+    checked_at_utc: 2026-08-16T15:05:54.455Z
     linked_claim_ids:
       - trim-purpose
       - trim-desired-airspeed-context
@@ -1562,14 +2009,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       status: 200
       content_type: application/pdf
-      redirects: &a33 []
+      redirects: &a43 []
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
-      errors: &a34 []
+      errors: &a44 []
       valid: true
       pdf_page_number: 10
       excerpt_characters: 0
@@ -1581,14 +2028,203 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       status: 200
       content_type: application/pdf
-      redirects: *a33
+      redirects: *a43
       title: null
       truncated: true
       content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
-      errors: *a34
+      errors: *a44
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 6: Flight Controls | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7636
+      excerpt_sha256: 6bb1255408d55d6044ff355bbb0690c7f842dd8fcc033ffd336a374b7ad8a0ea
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      expected_link_text: 08_phak_ch6.pdf
+      expected_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      programmatic_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-flaps-leading-edge-devices
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    checked_at_utc: 2026-08-16T15:05:56.317Z
+    linked_claim_ids:
+      - flaps-change-aerodynamic-condition
+      - leading-edge-devices-delay-separation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: &a45 []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      errors: &a46 []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1984
+      pdf_page_text_sha256: 846730cebbd2fb6a8e970603a74da407705c927462bc2a3bdb722f170c97f044
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: *a45
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9
+      errors: *a46
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 6: Flight Controls | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7636
+      excerpt_sha256: 6bb1255408d55d6044ff355bbb0690c7f842dd8fcc033ffd336a374b7ad8a0ea
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls
+      expected_link_text: 08_phak_ch6.pdf
+      expected_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      programmatic_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-spoilers
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    checked_at_utc: 2026-08-16T15:05:58.130Z
+    linked_claim_ids:
+      - spoilers-change-lift-drag
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: &a47 []
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      errors: &a48 []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4907
+      pdf_page_text_sha256: a3cea4132067ecc763c62f91062889fc17e49497466e9fdccf380515d61aa08c
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a47
+      title: null
+      truncated: true
+      content_sha256: 0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10
+      errors: *a48
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1645,7 +2281,7 @@ results:
   - source_id: phak-static-stability
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
       Flight"
-    checked_at_utc: 2026-08-16T13:32:21.699Z
+    checked_at_utc: 2026-08-16T15:05:59.096Z
     linked_claim_ids:
       - stability-definition
       - static-stability
@@ -1658,14 +2294,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       status: 200
       content_type: application/pdf
-      redirects: &a35 []
+      redirects: &a49 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
-      errors: &a36 []
+      errors: &a50 []
       valid: true
       pdf_page_number: 14
       excerpt_characters: 0
@@ -1677,14 +2313,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       status: 200
       content_type: application/pdf
-      redirects: *a35
+      redirects: *a49
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=14
-      errors: *a36
+      errors: *a50
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1741,7 +2377,7 @@ results:
   - source_id: phak-dynamic-stability-longitudinal-cg
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
       Flight"
-    checked_at_utc: 2026-08-16T13:32:37.329Z
+    checked_at_utc: 2026-08-16T15:06:00.694Z
     linked_claim_ids:
       - dynamic-stability-oscillation
       - longitudinal-stability-cg
@@ -1754,14 +2390,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       status: 200
       content_type: application/pdf
-      redirects: &a37 []
+      redirects: &a51 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
-      errors: &a38 []
+      errors: &a52 []
       valid: true
       pdf_page_number: 15
       excerpt_characters: 0
@@ -1773,14 +2409,300 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       status: 200
       content_type: application/pdf
-      redirects: *a37
+      redirects: *a51
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=15
-      errors: *a38
+      errors: *a52
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-longitudinal-stability-tail-force
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-16T15:06:03.827Z
+    linked_claim_ids:
+      - longitudinal-stability-tail-force
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: &a53 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      errors: &a54 []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3060
+      pdf_page_text_sha256: aa75ce312c3a40d55a35c76467479598bd405d7fcb40a443b494fb29f0bceb76
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: *a53
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16
+      errors: *a54
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-longitudinal-stability-power
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-16T15:06:06.006Z
+    linked_claim_ids:
+      - longitudinal-stability-power-change
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: &a55 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      errors: &a56 []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3209
+      pdf_page_text_sha256: 47d8336e63574ae89b31869fd3805c351bbe75a2030d55da5098bd03c77c4966
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a55
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17
+      errors: *a56
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      status: 200
+      content_type: text/html
+      redirects: []
+      title: "Chapter 5: Aerodynamics of Flight | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7652
+      excerpt_sha256: c222c4d71a4d801bfc80f0785a3364852f807f9be56973e6626d74af43eb067c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight
+      expected_link_text: 07_phak_ch5_0.pdf
+      expected_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      programmatic_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-lateral-stability
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
+      Flight"
+    checked_at_utc: 2026-08-16T15:06:08.409Z
+    linked_claim_ids:
+      - lateral-stability-dihedral
+      - lateral-stability-design-factors
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: &a57 []
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      errors: &a58 []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2761
+      pdf_page_text_sha256: e1e7e67019b011d1b20ec682bc59ec1515008bce8a9353ef1f0adb32f95c4187
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a57
+      title: null
+      truncated: true
+      content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18
+      errors: *a58
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1837,7 +2759,7 @@ results:
   - source_id: phak-axis-stability
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
       Flight"
-    checked_at_utc: 2026-08-16T13:32:53.740Z
+    checked_at_utc: 2026-08-16T15:06:10.925Z
     linked_claim_ids:
       - stability-by-axis
       - directional-weather-vane
@@ -1850,14 +2772,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       status: 200
       content_type: application/pdf
-      redirects: &a39 []
+      redirects: &a59 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
-      errors: &a40 []
+      errors: &a60 []
       valid: true
       pdf_page_number: 19
       excerpt_characters: 0
@@ -1869,14 +2791,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       status: 200
       content_type: application/pdf
-      redirects: *a39
+      redirects: *a59
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=19
-      errors: *a40
+      errors: *a60
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1933,7 +2855,7 @@ results:
   - source_id: phak-torque-slipstream
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
       Flight"
-    checked_at_utc: 2026-08-16T13:33:11.327Z
+    checked_at_utc: 2026-08-16T15:06:13.151Z
     linked_claim_ids:
       - torque-reaction
       - spiraling-slipstream
@@ -1948,14 +2870,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: &a41 []
+      redirects: &a61 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
-      errors: &a42 []
+      errors: &a62 []
       valid: true
       pdf_page_number: 31
       excerpt_characters: 0
@@ -1967,14 +2889,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: *a41
+      redirects: *a61
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=31
-      errors: *a42
+      errors: *a62
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2031,7 +2953,7 @@ results:
   - source_id: phak-gyroscopic-p-factor
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of
       Flight"
-    checked_at_utc: 2026-08-16T13:33:28.096Z
+    checked_at_utc: 2026-08-16T15:06:15.844Z
     linked_claim_ids:
       - gyroscopic-precession
       - p-factor
@@ -2046,14 +2968,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       status: 200
       content_type: application/pdf
-      redirects: &a43 []
+      redirects: &a63 []
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
-      errors: &a44 []
+      errors: &a64 []
       valid: true
       pdf_page_number: 32
       excerpt_characters: 0
@@ -2065,14 +2987,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       status: 200
       content_type: application/pdf
-      redirects: *a43
+      redirects: *a63
       title: null
       truncated: true
       content_sha256: 672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=32
-      errors: *a44
+      errors: *a64
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null

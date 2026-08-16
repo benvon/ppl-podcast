@@ -11,13 +11,13 @@
 
 Every control input changes the airflow around part of the airplane. This episode builds the picture behind that simple fact: what the primary controls change, what stability does and does not do for you, and why a propeller airplane may ask for especially deliberate directional control when power is high and airspeed is low.
 
-## [00:20] Required production notice
+## [00:21] Required production notice
 
 **INSTRUCTOR:**
 
 This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
 
-## [00:50] Podcast introduction
+## [00:43] Podcast introduction
 
 **ANNOUNCER:**
 
@@ -25,7 +25,7 @@ Welcome to PPL Study Podcast, a source-conscious study companion for U.S. privat
 
 In this episode: flight controls, stability, and left-turning tendencies—how control inputs, airflow, and propeller effects fit together.
 
-## [01:10] What the ACS is asking you to connect
+## [01:01] What the ACS is asking you to connect
 
 **ANNOUNCER:**
 
@@ -54,7 +54,7 @@ Exactly. The FAA’s explanation uses the common U.S.-built example: a propeller
 [Source: sources.yaml#acs-left-turning-tendencies, #phak-torque-slipstream, #phak-gyroscopic-p-factor]
 [Claim type: FAA standard and FAA guidance]
 
-## [03:20] Controls change the airflow
+## [03:16] Controls change the airflow
 
 **ANNOUNCER:**
 
@@ -81,7 +81,7 @@ Right. “Turn” is a result that involves several things. Start by naming the 
 [Source: sources.yaml#phak-primary-secondary-controls, #phak-axes-ailerons-adverse-yaw]
 [Claim type: FAA guidance]
 
-## [06:00] Three controls, three rotations
+## [05:14] Three controls, three rotations
 
 **ANNOUNCER:**
 
@@ -108,7 +108,7 @@ Yes. In a moment, we will apply that to ailerons and rudder. First, keep the bas
 [Source: sources.yaml#phak-axes-ailerons-adverse-yaw, #phak-elevator, #phak-rudder-effectiveness]
 [Claim type: FAA guidance]
 
-## [10:00] Rudder manages yaw, not just takeoff
+## [07:17] Rudder manages yaw, not just takeoff
 
 **ANNOUNCER:**
 
@@ -137,7 +137,7 @@ Exactly. That is why the controls must be coordinated rather than operated as se
 [Source: sources.yaml#phak-coordinated-turn-controls, #phak-rudder-effectiveness]
 [Claim type: FAA guidance and teaching explanation]
 
-## [14:00] Why aileron alone is incomplete
+## [09:32] Why aileron alone is incomplete
 
 **ANNOUNCER:**
 
@@ -168,7 +168,7 @@ Some designs reduce adverse yaw. Differential ailerons raise farther than they l
 [Source: sources.yaml#phak-axes-ailerons-adverse-yaw, #phak-coordinated-turn-controls]
 [Claim type: FAA guidance]
 
-## [16:00] Trim changes the workload
+## [12:16] Trim changes the workload
 
 **ANNOUNCER:**
 
@@ -195,7 +195,36 @@ Exactly. It reduces workload and makes it easier to sense meaningful changes in 
 [Source: sources.yaml#phak-trim, #phak-primary-secondary-controls]
 [Claim type: FAA guidance]
 
-## [20:00] Stability is not self-flying
+## [13:56] Secondary controls reshape the airflow
+
+**ANNOUNCER:**
+
+Secondary controls reshape the airflow.
+
+**INSTRUCTOR:**
+
+The word *secondary* describes the control’s role; it does not mean the effect is minor. Primary controls directly command roll, pitch, and yaw. Secondary controls change the aerodynamic condition in which those primary controls work. They can reshape the wing, alter the lift-and-drag relationship, or reduce the pilot’s sustained workload.
+
+Flaps are the clearest example. Lowering a trailing-edge flap changes the wing’s camber. Some flap designs, including Fowler flaps, also increase wing area. In the first part of extension, the changed wing can gain a great deal of lift with relatively little added drag. With further extension, drag increases more rapidly while the added lift becomes smaller. That is why a configuration change is an aerodynamic change, not merely a checklist item.
+
+The PHAK also describes leading-edge devices: fixed slots, movable slats, leading-edge flaps, and cuffs. Their shared idea is useful even if a learner’s present airplane has none of them. They help the airflow remain attached at a higher angle of attack, increasing the wing’s maximum lift capability or delaying separation. That is another connection to the larger theme of this series: protecting useful airflow over the airfoil gives the pilot more margin.
+
+Flap extension can also create a pitch change. The direction and size of that pitch change depend on the airplane’s design, but the consequence is familiar: a changed configuration can change the pressure you need to hold and therefore the trim setting that relieves it. The same chain appears throughout this lesson: change the airflow, observe the new aerodynamic effect, then coordinate the controls for the new condition.
+
+Spoilers take the opposite approach to flaps. On airplanes equipped with them, they rise into the airflow and deliberately reduce lift while increasing drag. They can help control descent, aid roll control, or transfer more weight to the wheels after landing. The important study connection is that secondary controls can change the wing’s lift and drag substantially; their specific systems and procedures belong in the particular airplane’s POH/AFM.
+
+**LEARNER:**
+
+So primary controls point and rotate the airplane, while secondary controls reshape the airflow and force balance around those controls. Flaps and leading-edge devices can change lift, drag, and pitch demand; trim then helps relieve the new sustained pressure.
+
+**INSTRUCTOR:**
+
+Exactly. That is why “configuration” belongs in the same mental sentence as power, pitch, airspeed, and trim. They describe one changing aerodynamic condition.
+
+[Source: sources.yaml#phak-flaps-leading-edge-devices, #phak-spoilers, #phak-trim]
+[Claim type: FAA guidance]
+
+## [16:27] Stability is not self-flying
 
 **ANNOUNCER:**
 
@@ -224,7 +253,44 @@ Exactly. A disturbance may still require a pilot correction, and the airplane’
 [Source: sources.yaml#phak-static-stability, #phak-dynamic-stability-longitudinal-cg, #phak-axis-stability]
 [Claim type: FAA guidance]
 
-## [28:00] Stability helps, but it does not replace control
+## [18:43] How design stabilizes pitch and roll
+
+**ANNOUNCER:**
+
+How design stabilizes pitch and roll.
+
+**INSTRUCTOR:**
+
+Start with longitudinal stability—the pitch axis. In the conventional-airplane picture used by the PHAK, the wing’s center of lift is behind the center of gravity. That gives the airplane a nose-heavy tendency. A small downward aerodynamic force at the horizontal tail balances that tendency in normal flight.
+
+That tail force changes when the airflow changes. If airspeed decreases, the wing’s downwash and the force on the tail decrease. The nose-heavy tendency then becomes more apparent, so the nose tends downward. The resulting lower angle of attack and reduced drag allow airspeed to recover. As speed returns, the tail force grows again and the nose rises. In a dynamically stable airplane, the pitch motion overshoots less and less until it settles.
+
+This is a design explanation, not a reason to wait passively for the airplane to sort out an unwanted pitch change. It explains why pitch, airspeed, trim, and center of gravity remain connected. It also explains why a power change can bring a pitch effect: the thrust line’s location relative to the center of gravity and the changed airflow alter the moments acting on the airplane. The airplane’s POH/AFM and training show how those relationships feel in the aircraft you fly.
+
+**LEARNER:**
+
+So longitudinal stability is the airplane’s pitch-restoring tendency built from the CG, the wing, and the horizontal tail. A speed or power change can alter that force picture, which is why trim is part of returning to a stable new condition.
+
+**INSTRUCTOR:**
+
+Yes. You are connecting the control pressure you feel with the aerodynamic moments that created it.
+
+Now consider lateral stability—the tendency to resist or restore a roll disturbance. Dihedral is the upward angle of the wings from root to tip. If a gust rolls the airplane and produces a sideslip, the wing moving into the relative wind sees a higher angle of attack and more lift. The other wing sees a lower angle of attack and less lift. The resulting difference in lift tends to raise the lower, windward wing and restore the airplane toward wings level.
+
+Wing sweepback, wing position, keel effect, and weight distribution can add to that lateral stability. A high-wing airplane, for example, has geometry and weight distribution that contribute to a restoring tendency. The useful lesson is not to memorize a design ranking. It is to recognize the mechanism: a sideslip changes the relative wind each wing sees, and the design can turn that changed airflow into a restoring roll moment.
+
+**LEARNER:**
+
+That connects lateral stability back to coordination. A sideslip is not only a ball indication; it changes how the two wings meet the airflow. Dihedral and the airplane’s design can use that changed airflow to resist the roll disturbance.
+
+**INSTRUCTOR:**
+
+Exactly. The pilot still manages the flightpath with the controls, while the airplane’s stability supplies helpful tendencies in the background.
+
+[Source: sources.yaml#phak-longitudinal-stability-tail-force, #phak-longitudinal-stability-power, #phak-lateral-stability]
+[Claim type: FAA guidance]
+
+## [21:43] Stability helps, but it does not replace control
 
 **ANNOUNCER:**
 
@@ -241,7 +307,7 @@ Here is the practical takeaway: treat stability as helpful background, not an ex
 [Source: sources.yaml#phak-axis-stability, #phak-rudder-effectiveness]
 [Claim type: FAA guidance]
 
-## [31:00] The four propeller effects: start with the situation
+## [22:51] The four propeller effects: start with the situation
 
 **ANNOUNCER:**
 
@@ -292,7 +358,7 @@ Exactly. That is the operationally useful conclusion. Do not let an acronym repl
 [Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor]
 [Claim type: FAA guidance]
 
-## [40:00] Bring the model back to the airplane
+## [29:00] Bring the model back to the airplane
 
 **ANNOUNCER:**
 
@@ -317,7 +383,7 @@ Yes. The general model tells you why you may feel a changing demand. The approve
 [Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor, #phak-trim]
 [Claim type: FAA guidance]
 
-## [44:00] Retrieval review
+## [30:30] Retrieval review
 
 **ANNOUNCER:**
 
@@ -346,7 +412,7 @@ That is a strong study question. It turns the controls from a collection of moti
 [Source: sources.yaml#phak-primary-secondary-controls, #phak-coordinated-turn-controls, #phak-static-stability, #phak-dynamic-stability-longitudinal-cg, #phak-gyroscopic-p-factor]
 [Claim type: FAA guidance]
 
-## [46:00] Outro
+## [31:43] Outro
 
 **ANNOUNCER:**
 

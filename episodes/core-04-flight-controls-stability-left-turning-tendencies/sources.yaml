@@ -91,6 +91,32 @@ sources:
     verified_at_utc: "2026-08-15T23:54:13Z"
     link_status: 200
     supports_claims: [trim-purpose, trim-desired-airspeed-context]
+  - id: phak-flaps-leading-edge-devices
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 6, Flaps and Leading Edge Devices, printed p. 6-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=9"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls", link_text: "08_phak_ch6.pdf", sha256: "0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains that flaps change wing camber and, in some designs, wing area; extension can change lift, drag, and pitch moment. It describes leading-edge devices as mechanisms that delay airflow separation or increase maximum lift capability."
+    verified_at_utc: "2026-08-16T14:58:00Z"
+    link_status: 200
+    supports_claims: [flaps-change-aerodynamic-condition, leading-edge-devices-delay-separation]
+  - id: phak-spoilers
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 6: Flight Controls"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 6, Spoilers, printed p. 6-10"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/08_phak_ch6.pdf#page=10"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/08_phak_ch6.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-6-flight-controls", link_text: "08_phak_ch6.pdf", sha256: "0a96b7ea01fe975dceef40f0bab184030a886eb3373db810ce8f8da3506c0d5b"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK says spoilers spoil smooth airflow, reducing lift and increasing drag. Depending on the airplane, they can control descent, aid roll control, and improve braking effectiveness by transferring weight to the wheels after landing."
+    verified_at_utc: "2026-08-16T14:58:00Z"
+    link_status: 200
+    supports_claims: [spoilers-change-lift-drag]
   - id: phak-static-stability
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
@@ -117,6 +143,45 @@ sources:
     verified_at_utc: "2026-08-15T23:54:13Z"
     link_status: 200
     supports_claims: [dynamic-stability-oscillation, longitudinal-stability-cg]
+  - id: phak-longitudinal-stability-tail-force
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Longitudinal Stability, printed p. 5-16"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=16"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight", link_text: "07_phak_ch5_0.pdf", sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "For the conventional-airplane example, the PHAK explains the relationship among center of gravity, center of lift, horizontal-tail downforce, downwash, airspeed, and the pitch-restoring tendency."
+    verified_at_utc: "2026-08-16T14:58:00Z"
+    link_status: 200
+    supports_claims: [longitudinal-stability-tail-force]
+  - id: phak-longitudinal-stability-power
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Longitudinal Stability and Power Changes, printed p. 5-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=17"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight", link_text: "07_phak_ch5_0.pdf", sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK describes diminishing pitch oscillations in a dynamically stable aircraft and explains that the thrust line’s relationship to the center of gravity can make power changes create pitching moments."
+    verified_at_utc: "2026-08-16T14:58:00Z"
+    link_status: 200
+    supports_claims: [longitudinal-stability-power-change]
+  - id: phak-lateral-stability
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 5, Lateral Stability, printed p. 5-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/07_phak_ch5.pdf#page=18"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/07_phak_ch5_0.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-5-aerodynamics-flight", link_text: "07_phak_ch5_0.pdf", sha256: "672c1a05653b628c20eef81cc42afaafbde98bf54c7e09f9c7ad1349292c1a37"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains that dihedral, sweepback, keel effect, and weight distribution contribute to lateral stability. In a sideslip, dihedral changes each wing’s angle of attack and creates a restoring rolling moment."
+    verified_at_utc: "2026-08-16T14:58:00Z"
+    link_status: 200
+    supports_claims: [lateral-stability-dihedral, lateral-stability-design-factors]
   - id: phak-axis-stability
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 5: Aerodynamics of Flight"

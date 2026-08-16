@@ -130,8 +130,9 @@ listen to the intro and outro before approving the episode.
 - Render complete speaker turns, with a 240-word maximum segment size and
   bounded adjacent-dialogue context.
 - Keep the approved script and show notes unchanged. Only for the voice-model
-  input, expand standalone `AI` to `artificial intelligence`; the listener
-  should hear “artificial intelligence-assisted production.”
+  input, expand standalone `AI` to `artificial intelligence` and `PHAK` to
+  `pea hack`; the listener should hear “artificial intelligence-assisted
+  production” and “pea hack.”
 - Use the versioned, ignored render manifest for duration, checksums, response
   usage, usage-derived cost estimates, stitch positions, and the audio-quality
   report. It is not an invoice.

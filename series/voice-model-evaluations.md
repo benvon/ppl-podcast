@@ -46,7 +46,7 @@ The listener approved the corrected native-speed comparison for future work on 2
 
 ### Pronunciation correction
 
-The first durable-renderer sample made the initial `AI-assisted` phrase sound like a word. Renderer version 2's `A.I.` attempt produced an extra letter. Renderer version 3 preserves the approved written disclosure, but expands standalone `AI` to `artificial intelligence` only in the render input. This pronunciation transform is settings-locked so partially rendered work directories cannot mix it with earlier output.
+The first durable-renderer sample made the initial `AI-assisted` phrase sound like a word. Renderer version 2's `A.I.` attempt produced an extra letter. Renderer version 3 preserves the approved written disclosure, but expands standalone `AI` to `artificial intelligence` only in the render input. Renderer version 7 also expands standalone `PHAK` to `pea hack`. These pronunciation transforms are settings-locked so partially rendered work directories cannot mix them with earlier output.
 
 - Corrected sample: `audio-artifacts/core-03-20260811T211000Z.preview-001-005.mp3`
 - Corrected lossless master: `audio-artifacts/core-03-20260811T211000Z.preview-001-005.master.wav`

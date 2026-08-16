@@ -1,7 +1,7 @@
 # Flight Controls, Stability, and Left-Turning Tendencies
 
 **Version:** 0.1.0 — initial draft
-**Target runtime:** 30–35 minutes; expand only with source-supported examples and retrieval practice.
+**Target runtime:** 30–35 minutes.
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Draft; not flight instruction and not cleared for public release.
 
@@ -33,11 +33,13 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-The private-airplane ACS lists left-turning tendencies as knowledge for the soft-field takeoff and climb task. That can make the subject sound like a short oral-exam answer: torque, P-factor, spiraling slipstream, gyroscopic precession. Four names, then move on.
+Left-turning tendencies affect directional control in more than one setting. They can become especially noticeable on the takeoff roll, in a high-power climb, or whenever a change in power, airspeed, or angle of attack changes the airflow around the airplane. The private-airplane ACS lists the topic as knowledge for the soft-field takeoff and climb task. That is a useful certification anchor, not the boundary of the subject.
+
+That placement can make the subject sound like a short oral-exam answer: torque, P-factor, spiraling slipstream, gyroscopic precession. Four names, then move on.
 
 But names without a situation are brittle. The useful question is not, “Can I recite four effects?” It is, “What force is acting on this airplane now, what motion can it create, and what control surface can I use to keep the airplane tracking and coordinated?”
 
-This is also a continuation of Episode 3, *Stalls, Load Factor, and Spin Avoidance*. There, coordination mattered because yaw can make the two wings meet a high-demand condition differently. Here we begin farther upstream: how the controls create roll, pitch, and yaw in the first place, and why the rudder is not an optional accessory to the yoke or stick.
+This is also a continuation of Episode 3, *Stalls, Load Factor, and Spin Avoidance*. In that lesson, we discussed how coordination mattered because yaw can make the two wings meet a high-demand condition differently. In this episode, we examine the control inputs and surfaces that change airflow around the moving airplane—how they create roll, pitch, and yaw, and why the rudder is not an optional accessory to the yoke or stick.
 
 **LEARNER:**
 
@@ -63,6 +65,8 @@ The PHAK divides flight controls into primary and secondary systems. The primary
 That classification is useful, but it is only a label. The working model is airflow. When a primary control surface moves, it changes the shape presented to the air and changes the pressure distribution around that surface. The changed aerodynamic force rotates the airplane about an axis.
 
 Picture the airplane as having three invisible rods through its center. One runs from nose to tail: the longitudinal axis. One runs wingtip to wingtip: the lateral axis. One runs vertically through the cabin: the vertical axis. Those are reference lines fixed to the airplane. Roll happens about the nose-to-tail line. Pitch happens about the wingtip-to-wingtip line. Yaw happens about the vertical line.
+
+Here is a deliberately simple memory aid, not a substitute for the real model. *Longitudinal means long:* the long way through the airplane, nose to tail, so ailerons make it roll around that axis. *Lateral is like a latitude line on a map:* it goes side to side, wingtip to wingtip, so elevator makes the airplane pitch around that axis. *Vertical stands upright* through the cabin, so rudder makes the nose yaw around it. The word tells you the direction of the invisible rod; the control tells you the rotation around that rod.
 
 **LEARNER:**
 
@@ -99,10 +103,39 @@ That makes the word “coordinate” more concrete. It means I am not leaving on
 
 Yes. In a moment, we will apply that to ailerons and rudder. First, keep the basic map: aileron—roll—longitudinal axis; elevator—pitch—lateral axis; rudder—yaw—vertical axis.
 
-[Source: sources.yaml#phak-axes-ailerons-adverse-yaw, #phak-elevator-rudder]
+[Source: sources.yaml#phak-axes-ailerons-adverse-yaw, #phak-elevator, #phak-rudder-effectiveness]
 [Claim type: FAA guidance]
 
-## [10:00] Why aileron alone is incomplete
+## [10:00] Rudder manages yaw, not just takeoff
+
+**ANNOUNCER:**
+
+Rudder manages yaw, not just takeoff.
+
+**INSTRUCTOR:**
+
+It is easy to associate rudder with the takeoff roll, because that is where many pilots first feel a strong directional-control demand. But the rudder's primary job is to control yaw about the vertical axis. That job matters whenever the airplane's nose is not aligned with the airflow or the intended path—not only when the wheels are on the runway.
+
+The PHAK gives an important reason not to treat rudder pressure as a fixed setting: rudder effectiveness increases with airspeed, and in a propeller airplane the propeller slipstream can make the rudder more effective. The same foot pressure can therefore produce a different result as the airplane accelerates, slows, changes power, or moves into a different airflow.
+
+The demand changes, too. The PHAK explains that the need for rudder to counter adverse yaw is greatest when airspeed is low, angle of attack is high, or aileron application is large. Later, the propeller-effects discussion will add another source of yaw demand: high power and low forward speed can change the airflow reaching the vertical tail.
+
+Here is a useful training cue: pressure, observe, adjust, release. Apply enough pedal pressure to answer the yaw demand; observe the outside picture and the applicable slip/skid indication; adjust smoothly as the airplane responds; then ease toward the pressure needed for the new condition. That is not a takeoff or landing procedure. Your POH/AFM and instructor govern the procedure for the particular airplane. It is a way to avoid treating the rudder as either an on-off switch or a pedal position to memorize.
+
+Over-controlling often comes from carrying one condition's pedal pressure into a new condition after the rudder's effectiveness or the yawing force has changed. The better mental model is not “hold more right rudder.” It is “keep reassessing the yaw demand as the airplane and airflow change.”
+
+**LEARNER:**
+
+So the rudder is not something I set once and forget. Its job is to manage yaw, and both the needed input and the result of that input can change as the flight condition changes.
+
+**INSTRUCTOR:**
+
+Exactly. That is why the controls must be coordinated rather than operated as separate, one-time actions.
+
+[Source: sources.yaml#phak-coordinated-turn-controls, #phak-rudder-effectiveness]
+[Claim type: FAA guidance and teaching explanation]
+
+## [14:00] Why aileron alone is incomplete
 
 **ANNOUNCER:**
 
@@ -124,12 +157,16 @@ So rudder is not there to make the bank steeper. It keeps the nose aligned with 
 
 That is the connection. In a coordinated turn, aileron establishes the desired bank. Rudder counters adverse yaw. Elevator increases angle of attack as needed because a banked, altitude-maintaining airplane needs more lift than it did in straight-and-level flight. Episode 3 developed that load-factor part of the picture; here the addition is that the controls have different, simultaneous jobs.
 
+You could call this keeping the airplane's forces in balance, but *coordination* is the more precise word. It does not mean each control carries an equal share, and it does not mean moving every control every time. It means recognizing that a change in one control can create another aerodynamic effect that needs attention. Aileron creates roll but can also create yaw through drag. Elevator changes pitch and angle of attack. Rudder manages yaw. In a coordinated response, those effects are harmonized so the airplane moves through the air as intended rather than with an unwanted yaw or sideslip layered on top.
+
+When you make a change, then, the question is not “Which control is the only one that matters?” It is “What other effect did this change create, and do I need to coordinate for it?” That is the fuller idea behind coordinated flight.
+
 Some designs reduce adverse yaw. Differential ailerons raise farther than they lower. Frise-type ailerons add drag on the wing with the raised aileron. Some airplanes connect aileron and rudder with springs. Those are design aids, not a reason to stop understanding coordination. Your airplane’s POH/AFM explains its specific system and handling characteristics.
 
 [Source: sources.yaml#phak-axes-ailerons-adverse-yaw, #phak-coordinated-turn-controls]
 [Claim type: FAA guidance]
 
-## [14:00] Trim changes the workload
+## [16:00] Trim changes the workload
 
 **ANNOUNCER:**
 
@@ -143,9 +180,11 @@ Imagine that you have established a desired power, pitch attitude, and configura
 
 The PHAK’s practical sequence is simple: establish the desired power, pitch attitude, and configuration, then trim to relieve the pressure. When power, pitch, or configuration changes, the force balance changes too. Retrimming is therefore normal, not a sign you have done something wrong.
 
+That also explains a useful CFI phrase: “trim for the desired airspeed.” It needs one careful qualification. Trim is not the primary command that selects airspeed. You establish the desired flight condition with the appropriate power, pitch attitude, and configuration for the airplane. Once the desired airspeed is established and you are holding the pressure needed to maintain it, trim relieves that sustained pressure. In that sense, the trim setting helps the airplane remain in the condition associated with the desired airspeed instead of requiring you to hold a constant force.
+
 **LEARNER:**
 
-Trim is not a command to make the airplane pitch. It is how I reduce the sustained force after I have established the condition I want.
+Trim is not a command to make the airplane pitch or speed up. It is how I reduce the sustained force after I have established the condition I want, including a desired airspeed.
 
 **INSTRUCTOR:**
 
@@ -154,7 +193,7 @@ Exactly. It reduces workload and makes it easier to sense meaningful changes in 
 [Source: sources.yaml#phak-trim, #phak-primary-secondary-controls]
 [Claim type: FAA guidance]
 
-## [17:00] Stability is not self-flying
+## [20:00] Stability is not self-flying
 
 **ANNOUNCER:**
 
@@ -164,9 +203,13 @@ Stability is not self-flying.
 
 Stability is an airplane design quality, not a substitute pilot. The PHAK defines it as the inherent quality that helps an airplane correct for a disturbance and return to, or continue on, its original flightpath.
 
-Two words make the idea much clearer. Static stability is the airplane’s initial response after it is disturbed. Imagine a gust lifts one wing. Does the airplane initially tend to return, stay in the new bank, or keep rolling farther away? Dynamic stability is what happens over time. Does the motion settle out, continue with the same size, or grow larger?
+Two words make the idea much clearer. Static stability asks only about the first direction of the response after a disturbance. Imagine a gust lifts one wing. Does the airplane initially tend to return, stay in the new bank, or keep rolling farther away? Dynamic stability asks what happens after that initial response, over time.
+
+This is where oscillation matters. An airplane can move back and forth around its original condition after a disturbance. With positive dynamic stability, the oscillations become smaller and eventually damp out. With neutral dynamic stability, they continue at about the same size. With negative dynamic stability, they grow. Static stability tells you the first tendency; dynamic stability tells you the shape of the response that follows. They answer different questions.
 
 The same three axes return here. Longitudinal stability is pitch stability about the lateral axis. Lateral stability is roll stability about the longitudinal axis. Directional stability is yaw stability about the vertical axis.
+
+Center of gravity is part of this picture, especially in the longitudinal axis. The PHAK identifies the wing's location relative to the center of gravity, the horizontal tail's location relative to the center of gravity, and the tail's size as factors affecting longitudinal stability. So CG is not merely a number calculated before a flight; it changes the airplane's pitch-stability relationship. We will return to the loading and calculation side of that subject in Episode 9, *Weight, Balance, and Center of Gravity*.
 
 **LEARNER:**
 
@@ -176,10 +219,10 @@ Does that mean a stable airplane always returns exactly to the old heading and a
 
 No. Stability describes a tendency, not a guarantee of an unchanged flightpath. A disturbance may require a pilot correction, and the airplane’s response varies with design and condition. The useful study question is: which motion was disturbed, and what design feature tends to resist or restore that motion?
 
-[Source: sources.yaml#phak-static-dynamic-stability, #phak-axis-stability]
+[Source: sources.yaml#phak-static-stability, #phak-dynamic-stability-longitudinal-cg, #phak-axis-stability]
 [Claim type: FAA guidance]
 
-## [20:00] Stability helps, but it does not replace control
+## [28:00] Stability helps, but it does not replace control
 
 **ANNOUNCER:**
 
@@ -193,10 +236,10 @@ That tendency helps explain why the vertical tail matters. It does not mean you 
 
 Here is the practical takeaway: treat stability as helpful background, not an excuse to become passive. If you add power, alter pitch, or bank the airplane, expect the force balance to change. Keep scanning attitude, airspeed trend, ball or slip/skid indication as applicable, and the outside picture; then use the appropriate controls smoothly for the airplane and condition.
 
-[Source: sources.yaml#phak-axis-stability, #phak-elevator-rudder]
+[Source: sources.yaml#phak-axis-stability, #phak-rudder-effectiveness]
 [Claim type: FAA guidance]
 
-## [23:00] The four propeller effects: start with the situation
+## [31:00] The four propeller effects: start with the situation
 
 **ANNOUNCER:**
 
@@ -247,7 +290,7 @@ Exactly. That is the operationally useful conclusion. Do not let an acronym repl
 [Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor]
 [Claim type: FAA guidance]
 
-## [32:30] Bring the model back to the airplane
+## [40:00] Bring the model back to the airplane
 
 **ANNOUNCER:**
 
@@ -272,7 +315,7 @@ Yes. The general model tells you why you may feel a changing demand. The approve
 [Source: sources.yaml#phak-torque-slipstream, #phak-gyroscopic-p-factor, #phak-trim]
 [Claim type: FAA guidance]
 
-## [35:30] Retrieval review
+## [44:00] Retrieval review
 
 **ANNOUNCER:**
 
@@ -298,10 +341,10 @@ So the question I carry into training is: “What rotation am I trying to contro
 
 That is a strong study question. It turns the controls from a collection of motions into an aerodynamic conversation.
 
-[Source: sources.yaml#phak-primary-secondary-controls, #phak-coordinated-turn-controls, #phak-static-dynamic-stability, #phak-gyroscopic-p-factor]
+[Source: sources.yaml#phak-primary-secondary-controls, #phak-coordinated-turn-controls, #phak-static-stability, #phak-dynamic-stability-longitudinal-cg, #phak-gyroscopic-p-factor]
 [Claim type: FAA guidance]
 
-## [37:30] Outro
+## [46:00] Outro
 
 **ANNOUNCER:**
 

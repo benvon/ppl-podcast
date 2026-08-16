@@ -26,3 +26,9 @@
 - Split the stability source/claim into atomic static-stability and dynamic-stability/longitudinal-CG references. The script now distinguishes initial response from oscillation over time and introduces CG as a longitudinal-stability factor to be developed in Episode 9, *Weight, Balance, and Center of Gravity*.
 - Narration is now 4,145 spoken words, within the 30–35 minute target at a measured study-podcast pace. More editorial revisions are expected before production.
 - Replaced the placeholder show notes and manifest with 12 exact FAA deep links, mapped every link to the ledger source and its supported claims, and ran deterministic validation. All 12 FAA links and all claim/show-notes mappings passed at `2026-08-16T13:35:39Z`; the release-stage LLM relevance review remains pending.
+
+## 2026-08-16 — narrative flow and dialogue refinement
+
+- Added an explicit opening bridge: the control-surface and airflow model is taught before the detailed left-turning-tendencies section so the listener can connect each effect to the roll or yaw demand it creates and the controls used to manage the flightpath.
+- Removed repetitive production-style hedges and rewrote the affected passages as direct explanations. Aircraft-specific documents and instructor technique remain named where they are the appropriate source for operation of a particular airplane.
+- Reworked the Learner turns to retrieve the new control/axis map, coupled effects, changing rudder demand, trim-for-airspeed relationship, static-versus-dynamic stability distinction, CG connection, and the final application model.

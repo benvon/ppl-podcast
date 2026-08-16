@@ -1,7 +1,7 @@
 # Flight Controls, Stability, and Left-Turning Tendencies
 
 **Episode:** 4
-**Version:** 0.1.1
+**Version:** 0.1.2
 **Source verification:** FAA links and claimed-page mappings checked 2026-08-16; LLM relevance review remains required before public release.
 
 ## Production notice

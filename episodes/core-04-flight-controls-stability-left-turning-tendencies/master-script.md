@@ -1,9 +1,9 @@
 # Flight Controls, Stability, and Left-Turning Tendencies
 
-**Version:** 0.1.0 — initial draft
+**Version:** 0.1.3 — approved production script
 **Target runtime:** 30–35 minutes.
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Draft; not flight instruction and not cleared for public release.
+**Production status:** Script, listening QA, and publication-day source validation complete; ready for the separate hosting workflow. Not flight instruction.
 
 ## [00:00] Opening
 

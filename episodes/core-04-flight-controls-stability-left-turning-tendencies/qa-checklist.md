@@ -19,5 +19,5 @@
 ## Release
 
 - [x] FAA/eCFR links and revisions were re-verified on publication day.
-- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
+- [x] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

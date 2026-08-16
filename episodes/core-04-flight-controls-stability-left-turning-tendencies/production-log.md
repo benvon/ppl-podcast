@@ -1,5 +1,15 @@
 # Flight Controls, Stability, and Left-Turning Tendencies — production log
 
+## 2026-08-16 — Hosting-metadata cross-check complete
+
+- Verified that the approved master-script header, `episode.yaml`, and show
+  notes all identify Core 04 version `0.1.3`.
+- Verified the listener-facing title, release timestamp (`2026-08-16T22:28:12Z`),
+  Episode 4 number, and `00:32:57` runtime against `hosting-metadata.yaml`.
+- Verified the local candidate MP3 and the private R2 staging manifest agree on
+  the `13a906…f211` SHA-256, 39,533,805-byte `audio/mpeg` object. The hosting
+  release manifest is on `feature/core-04-hosting`.
+
 ## 2026-08-16 — Publication-day source validation complete
 
 - Corrected the ACS citation from PDF page 28 to page 29, the page that

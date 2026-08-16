@@ -1,16 +1,21 @@
 schema_version: 1
-handoff_status: draft
+handoff_status: ready_for_hosting_pr
 publisher_release:
   id: "core-04"
   guid: "pplstudyguide.com:core-04"
   title: "Flight Controls, Stability, and Left-Turning Tendencies"
-  description: null
-  published_at: null # RFC3339 UTC timestamp, set only when release is approved.
-  duration: null # HH:MM:SS, derived from approved audio.
+  description: "A source-conscious study of flight controls, stability, and left-turning tendencies for private-pilot airplane learners, connecting control-surface airflow to coordination and condition-dependent directional control."
+  published_at: "2026-08-16T22:28:12Z"
+  duration: "00:32:57"
   season: 1
-  number: null
+  number: 4
   explicit: false
   audio: {} # Filled by the hosting publisher after private staging.
+release_readiness:
+  audio_candidate_approved_for_publication_preparation: true
+  publication_schedule_required: false
+  remaining_release_gates:
+    - "Stage and validate the immutable audio object in the hosting workflow."
 provenance:
   master_script: master-script.md
   show_notes: show-notes.md

@@ -1,5 +1,14 @@
 # Flight Controls, Stability, and Left-Turning Tendencies — production log
 
+## 2026-08-16 — Script-aligned listening QA accepted
+
+- The user completed and accepted full script-aligned listening QA for the
+  current Core 04 audio candidate, rendered at `2026-08-16T16:47:23Z`.
+- The candidate is now recorded as `candidate_rendered_qa_approved`.
+- The release timestamp is set to `2026-08-16T22:28:12Z`.
+- Remaining release gates are the LLM source-relevance review, publication-day
+  source verification, and hosting/audio-store preparation.
+
 ## 2026-08-15 — research and initial draft
 
 - Created the Core 04 package from the current templates on `feature/core-04`.

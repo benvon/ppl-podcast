@@ -10,11 +10,11 @@
 
 ## Audio
 
-- [ ] Opening is 10-20 seconds and the required notice follows immediately.
-- [ ] Notice is clearly heard as “artificial intelligence-assisted production.”
+- [x] Opening is 10-20 seconds and the required notice follows immediately.
+- [x] Notice is clearly heard as “artificial intelligence-assisted production.”
 - [ ] Five-segment opening preview has been listened to before full rendering.
-- [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
-- [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains.
+- [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains.
 
 ## Release
 

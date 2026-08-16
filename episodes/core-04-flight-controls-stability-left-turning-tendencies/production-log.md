@@ -43,3 +43,11 @@
 ## 2026-08-16 — script approval
 
 - The user approved the Core 04 master script. Editorial status is now `script_approved`; narration derivation, rendering, and listening QA remain separate pending steps.
+
+## 2026-08-16 — candidate render and automated QA
+
+- Derived `narration.md` mechanically from the approved master script, preserving the master script as the sole editable narration source.
+- With explicit user authorization, rendered all 67 narration segments through `gpt-realtime-2.1`: Marin as Instructor, Cedar as Learner, and Ballad as Announcer.
+- Assembled the candidate with the approved music mix: a 10-second intro lead, steady reduced level beneath Ballad, a 5-second full-level intro continuation and 0.5-second fade, then a 10-second full-level outro continuation and 5-second fade.
+- Candidate: `audio-artifacts/core-04-20260816T164723Z.mp3`; 32:57, 24 kHz mono, 160 kbps MP3, SHA-256 `13a90655815c2d26a483a26624da8ea940f38a7b3b2f3b0374d51f04c0c0f211`. The lossless master, render manifest, quality report, and resumable segment directory are Git-ignored and tracked in `audio-manifest.yaml`.
+- Automated QA passed: WAV and MP3 decode, matching duration, 67 checked stitch boundaries without discontinuity warnings, and zero clipped samples. Full script-aligned listening QA remains required.

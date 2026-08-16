@@ -37,7 +37,7 @@ The private-airplane ACS lists left-turning tendencies as knowledge for the soft
 
 But names without a situation are brittle. The useful question is not, “Can I recite four effects?” It is, “What force is acting on this airplane now, what motion can it create, and what control surface can I use to keep the airplane tracking and coordinated?”
 
-This is also a continuation of Core 03. There, coordination mattered because yaw can make the two wings meet a high-demand condition differently. Here we begin farther upstream: how the controls create roll, pitch, and yaw in the first place, and why the rudder is not an optional accessory to the yoke or stick.
+This is also a continuation of Episode 3, *Stalls, Load Factor, and Spin Avoidance*. There, coordination mattered because yaw can make the two wings meet a high-demand condition differently. Here we begin farther upstream: how the controls create roll, pitch, and yaw in the first place, and why the rudder is not an optional accessory to the yoke or stick.
 
 **LEARNER:**
 
@@ -122,7 +122,7 @@ So rudder is not there to make the bank steeper. It keeps the nose aligned with 
 
 **INSTRUCTOR:**
 
-That is the connection. In a coordinated turn, aileron establishes the desired bank. Rudder counters adverse yaw. Elevator increases angle of attack as needed because a banked, altitude-maintaining airplane needs more lift than it did in straight-and-level flight. Core 03 developed that load-factor part of the picture; here the addition is that the controls have different, simultaneous jobs.
+That is the connection. In a coordinated turn, aileron establishes the desired bank. Rudder counters adverse yaw. Elevator increases angle of attack as needed because a banked, altitude-maintaining airplane needs more lift than it did in straight-and-level flight. Episode 3 developed that load-factor part of the picture; here the addition is that the controls have different, simultaneous jobs.
 
 Some designs reduce adverse yaw. Differential ailerons raise farther than they lower. Frise-type ailerons add drag on the wing with the raised aileron. Some airplanes connect aileron and rudder with springs. Those are design aids, not a reason to stop understanding coordination. Your airplane’s POH/AFM explains its specific system and handling characteristics.
 

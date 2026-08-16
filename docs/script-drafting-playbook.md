@@ -43,6 +43,8 @@ Use the written section heading as the Announcer's text whenever it reads natura
 
 When a later section will define a term that must be mentioned earlier, give a one-phrase provisional orientation and a specific signpost: name the term, give only the minimum meaning needed now, and say when the fuller explanation is coming. Do not repeatedly rely on an undefined term before teaching it.
 
+Refer to another episode by its listener-facing episode number and RSS title—for example, “Episode 3, *Stalls, Load Factor, and Spin Avoidance*”—not by an internal production ID such as `core-03`.
+
 ## Make the practical takeaway concrete
 
 An operational takeaway must identify both the changing aerodynamic or system demand and the pilot response it supports. A statement such as “this changes the picture” or “be more mindful” is not enough. Say what is changing, why it matters, and the bounded habit it should prompt—such as avoiding abrupt added demand, preserving coordination, checking the approved aircraft information, or choosing a lower-demand option early.

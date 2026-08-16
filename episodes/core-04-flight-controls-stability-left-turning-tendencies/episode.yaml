@@ -36,7 +36,7 @@ source_verification:
   link_validation: link-validation.yaml
   relevance_review: required_before_public_release
 review:
-  editorial_status: revision_in_progress
+  editorial_status: script_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml

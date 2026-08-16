@@ -39,3 +39,7 @@
 - Added two stability mechanisms that were previously only named: conventional-airplane longitudinal stability through CG, wing, horizontal-tail force, downwash, and power-change moments; and lateral stability through dihedral, sideslip, sweepback, keel effect, and weight distribution.
 - Added seven atomic claims and five exact FAA-page ledger sources, then extended show notes with the corresponding deep links and claim mappings.
 - Recalculated script section timestamps at the Core 02–03 measured narration pace. The draft now contains 5,043 spoken words, projecting to approximately 32 minutes before audio-specific timing adjustments.
+
+## 2026-08-16 — script approval
+
+- The user approved the Core 04 master script. Editorial status is now `script_approved`; narration derivation, rendering, and listening QA remain separate pending steps.

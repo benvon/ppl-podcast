@@ -1,5 +1,22 @@
 # Piston Engines, Propellers, and Combustion — production log
 
+## 2026-08-17 — publication-day validation and hosting handoff
+
+- Re-ran LLM-assisted source and show-notes validation through `direnv` at
+  `2026-08-17T23:03:23Z`. All 15 FAA sources, 35 mapped claims, and 19
+  show-notes links passed deep-link, locator, mapping, and relevance checks.
+- The user set the release timestamp to `2026-08-17T23:03:28Z`. Core 05 is
+  ready for the hosting PR; staging and validating the immutable audio object
+  is the remaining release gate.
+
+## 2026-08-17 — script-aligned listening QA accepted
+
+- The user confirmed the complete candidate matches the approved script, is
+  free of audible rendering or stitching defects, and has validated embedded
+  chapter markers.
+- Core 05 is now `candidate_rendered_qa_approved`; publication-day source
+  validation and the separate hosting handoff remain.
+
 ## 2026-08-17 — combustion transition revision
 
 - Replaced “Return inside the cylinder” with “Let's return to what's

@@ -5,6 +5,8 @@
 - The user approved the Core 05 master script. Editorial status is now
   `script_approved`; narration derivation, rendering, and listening QA remain
   separate pending steps.
+- Updated the approved-script, episode, show-notes, and hosting provenance
+  metadata to version `0.1.2`.
 
 ## 2026-08-17 — research and initial draft
 

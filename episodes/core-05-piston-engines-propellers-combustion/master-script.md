@@ -1,9 +1,9 @@
 # Piston Engines, Propellers, and Combustion
 
-**Version:** 0.1.3 — source-reviewed revision pending editorial confirmation
+**Version:** 0.1.3 — approved script
 **Target runtime:** 30–40 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Source-relevance review complete; the source-review revisions await editorial confirmation before rendering. Narration derivation and listening QA remain pending.
+**Production status:** Editorial and source-relevance review complete. Narration derivation and listening QA remain pending.
 
 ## [00:00] Opening
 

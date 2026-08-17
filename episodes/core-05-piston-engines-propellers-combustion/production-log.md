@@ -1,5 +1,15 @@
 # Piston Engines, Propellers, and Combustion — production log
 
+## 2026-08-17 — pre-render QA audit
+
+- Confirmed that all 35 material claims map to the 15-source ledger, that
+  claim types are labeled, and that all listener-facing source links name a
+  specific FAA task or handbook page. The source-relevance review also
+  confirms the corresponding 19 show-notes links.
+- The current opening is labeled 34 seconds, outside the 10–20-second
+  pre-render target. Trim and approve that opening before rendering the
+  five-segment preview.
+
 ## 2026-08-17 — revised draft approval and source QA
 
 - The user approved the revised Core 05 draft after the intake-pressure and

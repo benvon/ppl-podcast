@@ -26,7 +26,7 @@
   for the blade-twist visual aid, and tightened the mixture-control, magneto,
   and ignition-check claim wording to the source-supported scope. The
   corresponding script changes require final editorial confirmation before
-  rendering. The source-reviewed revision is version `0.1.3` and 6,391
+  rendering. The source-reviewed revision is version `0.1.3` and 6,407
   spoken words.
 
 ## 2026-08-17 — research and initial draft

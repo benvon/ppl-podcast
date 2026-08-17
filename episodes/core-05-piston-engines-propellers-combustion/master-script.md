@@ -107,7 +107,11 @@ A *stroke* is one full trip of the piston from one end of the cylinder to the ot
 
 The names are easiest to retain if you attach a valve position, a piston direction, and a purpose to each one. See the show notes for **“Four-stroke cycle diagram — PHAK Figure 7-5.”**
 
-Start with intake. The intake valve opens, the piston travels away from the cylinder head, and the increasing cylinder volume draws in the fuel-air charge. Picture pulling back the plunger on a syringe while its tip is open. More interior volume creates the pressure difference that brings material inside. In the engine, the induction system supplies the charge, but the moving piston provides the drawing action.
+Start with intake. The intake valve opens, the piston travels away from the cylinder head, and the increasing cylinder volume draws in the fuel-air charge. Picture pulling back the plunger on a syringe while its tip is open. More interior volume creates the pressure difference that brings material inside.
+
+More precisely, as the piston descends, pressure in the cylinder falls below the pressure upstream in the induction path. Air then moves into the cylinder because upstream pressure is higher. The piston does not pull air in with a separate force called suction; its motion creates the lower-pressure space that establishes the pressure difference.
+
+The throttle regulates how freely air can move through that induction path. In a normally aspirated engine, a partly closed throttle restricts the path, so manifold pressure is below ambient. Opening the throttle reduces the restriction and raises manifold pressure toward ambient, allowing more charge to enter on each intake stroke. The fuel-metering system supplies fuel with that airflow, while the mixture control adjusts the fuel-air ratio. Episode 6, *Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems*, will build that induction and mixture picture in depth.
 
 Second is compression. The intake valve closes. Both valves are now closed, and the piston travels back toward the cylinder head. The same charge is squeezed into a smaller space. Pressure and temperature rise. Compressing the charge prepares it to release substantially more useful force when it burns.
 
@@ -117,7 +121,7 @@ Fourth is exhaust. The exhaust valve opens. The piston travels toward the cylind
 
 **LEARNER:**
 
-Intake brings a charge in. Compression prepares it. Power is the timed pressure event that turns the crankshaft. Exhaust clears the cylinder for the next charge.
+During intake, the descending piston creates the lower cylinder pressure, while the throttle determines how freely charge can flow in from the induction path. Compression prepares that charge. Power is the timed pressure event that turns the crankshaft. Exhaust clears the cylinder for the next charge.
 
 **INSTRUCTOR:**
 
@@ -137,7 +141,7 @@ Exactly. Roughness is evidence that the events are not contributing as evenly as
 
 The engine depends on induction, fuel metering, ignition, lubrication, cooling, and exhaust to sustain the cycle. Episode 6 develops those supporting relationships. For now, keep the timing chain clear: admit, compress, burn at the intended time, clear, repeat.
 
-[Source: sources.yaml#phak-four-stroke-components, #phak-four-stroke-cycle]
+[Source: sources.yaml#phak-four-stroke-components, #phak-four-stroke-cycle, #amtp-intake-pressure-and-throttle, #phak-mixture-control-boundary]
 [Claim type: FAA guidance and teaching explanation]
 
 ## [10:05] The propeller is a rotating wing
@@ -275,17 +279,15 @@ So a steady tachometer no longer proves that power is steady. The governor may b
 
 Exactly. That is the key conceptual shift.
 
-In the typical arrangement described by the PHAK, the airplane has a throttle and a propeller control. The throttle changes engine power by changing the intake restriction. The propeller control selects the governor’s rpm target. The manifold-pressure gauge supplies the other major indication. It measures absolute pressure in the intake manifold—the passage carrying air and fuel toward the cylinders.
+In the typical arrangement described by the PHAK, the airplane has a throttle and a propeller control. The throttle changes engine power. The propeller control selects the governor’s rpm target. The manifold-pressure gauge supplies the other major indication. It measures absolute pressure in the intake manifold.
 
 At constant rpm and altitude, higher manifold pressure corresponds to more fuel-air charge delivered to the cylinders and more power. But manifold pressure is not a percentage-power gauge by itself. Altitude, temperature, rpm, mixture, induction design, and engine limitations affect the power relationship. The airplane’s published power-setting tables combine the variables for the installed engine and propeller.
 
-With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. During an intake stroke, the descending piston creates a low-pressure area in the cylinder. Higher-pressure air then flows through the induction path to fill that area. That is the pressure difference doing the work: the piston creates the lower-pressure space; it does not pull air in with a separate force called suction.
-
-The throttle regulates how freely air can move through that induction path. As it closes, it restricts airflow more; as it opens, it admits more air. In the normally aspirated engine model, the PHAK says manifold pressure is below ambient at idle and rises as throttle setting, fuel-and-air flow, and power increase. Opening the throttle therefore raises manifold pressure toward ambient and allows more charge to enter on each intake stroke. The fuel-metering system adds fuel with the airflow, while the mixture control adjusts the fuel-air ratio. Episode 6, *Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems*, will build that induction and mixture picture in depth.
+With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. In a normally aspirated engine, a partly closed throttle produces a lower manifold-pressure indication. Opening the throttle reduces that restriction, raises manifold pressure toward ambient, and permits more charge to enter. The intake-stroke pressure picture behind that indication belongs with the four-stroke cycle we covered earlier.
 
 **LEARNER:**
 
-That makes “manifold pressure” less abstract. The piston creates the low-pressure space in the cylinder; the throttle regulates how freely air reaches it. A partly closed throttle lowers manifold pressure. Opening it raises manifold pressure and lets more charge enter.
+That makes “manifold pressure” less abstract. The gauge shows the intake-manifold pressure associated with the current throttle setting and engine condition. With rpm held at the selected value, it helps show the power side of the engine-and-propeller relationship.
 
 **INSTRUCTOR:**
 
@@ -303,7 +305,7 @@ So “constant speed” means the system regulates toward selected rpm within a 
 
 Correct. Whenever a system name sounds absolute, look for its operating range and limits.
 
-[Source: sources.yaml#amtp-intake-pressure-and-throttle, #phak-constant-speed-propeller, #phak-mixture-control-boundary, #phak-constant-speed-power-relationship]
+[Source: sources.yaml#phak-constant-speed-propeller, #phak-constant-speed-power-relationship]
 [Claim type: FAA guidance]
 
 ## [23:02] Combustion is a timed pressure event

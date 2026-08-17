@@ -1,0 +1,19 @@
+episode_id: "core-05"
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: replace-with-stable-source-id
+    authority: faa_guidance
+    title: "Replace with authoritative source title"
+    document_id: null
+    # Name the smallest relevant unit, for example: "Ch. 5, Stalls, p. 5-12"
+    # or "PA.VII.B.K1, p. VII-8". A chapter or document title alone is not enough.
+    locator: "Specific section/task/paragraph and page, where applicable"
+    # Reader-facing deep link. PDFs require #page=N; FAA HTML requires a specific
+    # anchor or section endpoint; eCFR requires the exact section URL.
+    url: "https://www.faa.gov/path/to/document.pdf#page=1"
+    revision: "Record document revision, effective date, or currentness statement"
+    relevance_excerpt: null # Required for LLM review when the linked source is another non-text resource. For a PDF, the validator extracts text from the #page=N target.
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [replace-with-stable-claim-id]

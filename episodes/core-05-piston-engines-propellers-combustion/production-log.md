@@ -1,5 +1,11 @@
 # Piston Engines, Propellers, and Combustion — production log
 
+## 2026-08-17 — script approval
+
+- The user approved the Core 05 master script. Editorial status is now
+  `script_approved`; narration derivation, rendering, and listening QA remain
+  separate pending steps.
+
 ## 2026-08-17 — research and initial draft
 
 - Researched current FAA-H-8083-25C Chapter 7 and FAA-S-ACS-6C using the FAA's current handbook and ACS indexes.

@@ -1,5 +1,17 @@
 # Piston Engines, Propellers, and Combustion — production log
 
+## 2026-08-17 — revised draft approval and source QA
+
+- The user approved the revised Core 05 draft after the intake-pressure and
+  manifold-pressure material was separated into its respective teaching
+  sections.
+- Re-ran `sources:validate --require-llm` from the repository root through
+  `direnv`. All 15 FAA sources, 35 mapped claims, and 19 show-notes links
+  passed deep-link, locator, mapping, and claim-level relevance validation at
+  `2026-08-17T20:56:23Z`.
+- Editorial status is `script_approved`. Audio rendering and listening QA are
+  now the remaining production gates.
+
 ## 2026-08-17 — script approval
 
 - The user approved the Core 05 master script. Editorial status is now

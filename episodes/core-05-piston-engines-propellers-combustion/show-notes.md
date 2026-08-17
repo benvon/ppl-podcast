@@ -12,6 +12,10 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 -
 
+## Study materials and visual aids
+
+- [Brief, listener-facing label for a diagram, FAA figure, or study resource](https://example.invalid/visual-aid)
+
 ## Fact-check and source material
 
 | Topic | Source type | Authoritative source | Locator | Verified |

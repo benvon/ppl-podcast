@@ -124,6 +124,22 @@ The render manifest records the source SHA-256, cue plan, and music-level
 settings. Automated checks still cannot judge music balance or editorial fit;
 listen to the intro and outro before approving the episode.
 
+## Local chapter review
+
+After assembling an MP3, create a local clickable review page from the
+chapters embedded in that MP3—not from the script or render manifest's planned
+list. Open the resulting HTML file in a browser, click each chapter, and listen
+across the marker. This makes title and placement review possible before the
+episode reaches a podcast player.
+
+```sh
+npm run audio:chapter-review -- \
+  --manifest audio-artifacts/EPISODE-TIMESTAMP.render-manifest.json
+```
+
+The page is written next to the MP3 by default, is ignored with the audio
+artifacts, and does not change the audio file.
+
 ## Chapter markers
 
 Every `##` heading in the approved master script becomes an embedded MP3

@@ -8,6 +8,8 @@
   report passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 88
   stitch-boundary checks with no discontinuity warnings, clipping checks, and
   ffprobe validation of 18 embedded MP3 chapters.
+- Generated a local clickable chapter-review page from those embedded MP3
+  markers for listener-facing placement and title review.
 - The full candidate is ready for human script-aligned listening QA. The
   ignored local artifact is `audio-artifacts/core-05-20260817T210244Z.mp3`.
 

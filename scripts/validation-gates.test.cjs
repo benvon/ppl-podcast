@@ -11,6 +11,7 @@ const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaim
 const { deriveNarration } = require("./derive-narration.cjs");
 const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
+const { formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -29,6 +30,22 @@ function wavWithListMetadata(pcm) {
   result.writeUInt32LE(result.length - 8, 4);
   return result;
 }
+
+test("chapter review renders readable, escaped embedded-marker controls", () => {
+  const html = renderReviewHtml({
+    audioUrl: "core-05.mp3",
+    episodeTitle: "core-05 chapter review",
+    chapters: [{ index: 1, title: "Lift < Drag", start: 74, end: 120 }],
+  });
+  assert.equal(formatTimestamp(74), "1:14");
+  assert.match(html, /data-start="74"/);
+  assert.match(html, /Lift &lt; Drag/);
+  assert.match(html, /This page reads the chapters embedded in the MP3 itself/);
+});
+
+test("chapter review accepts its manifest argument", () => {
+  assert.deepEqual(parseChapterReviewArgs(["--manifest", "audio-artifacts/example.render-manifest.json"]), { manifest: "audio-artifacts/example.render-manifest.json" });
+});
 
 test("claim mapping rejects claims omitted from a source ledger entry", () => {
   const result = validateClaimMappings(

@@ -19,6 +19,7 @@ current_candidate_render:
   lossless_master: "audio-artifacts/core-05-20260817T210244Z.master.wav"
   render_manifest: "audio-artifacts/core-05-20260817T210244Z.render-manifest.json"
   audio_quality_report: "audio-artifacts/core-05-20260817T210244Z.audio-quality.json"
+  chapter_review: "audio-artifacts/core-05-20260817T210244Z.mp3.chapters.html"
   segment_work_dir: "audio-artifacts/core-05-realtime-20260817T210244Z.segments"
   duration_seconds: 2580.9
   duration_display: "43:01"
@@ -81,6 +82,7 @@ chapter_markers:
   status: embedded_and_ffprobe_validated
   source: "master-script.md section headings"
   required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
+  review_page: "audio-artifacts/core-05-20260817T210244Z.mp3.chapters.html"
 required_before_release:
   - "Complete human listening QA against master-script.md."
   - "Confirm chapter titles and starts are useful and correctly aligned during listening QA."

@@ -28,7 +28,10 @@ npm run precommit:check
 
 ## Candidate workflow
 
-1. Confirm the master script passes fact and editorial review.
+1. Confirm the master script has passed fact and editorial review, then run
+   `sources:validate --require-llm`, resolve every finding, and record
+   `source_verification.relevance_review: complete` in `episode.yaml`. The
+   renderer verifies that evidence before it sends any audio request.
 2. Derive the clean TTS input from that approved script; do not edit the
    narration copy independently.
 

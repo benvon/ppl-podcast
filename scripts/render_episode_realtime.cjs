@@ -14,6 +14,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 const WebSocket = require("ws");
+const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 const SAMPLE_RATE = 24000;
@@ -57,6 +58,38 @@ const STYLE = {
 };
 
 class RenderError extends Error {}
+
+function assertSourceRelevanceApproved(scriptPath) {
+  const episodePath = path.join(path.dirname(scriptPath), "episode.yaml");
+  const validationPath = path.join(path.dirname(scriptPath), "link-validation.yaml");
+  if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
+  if (!fs.existsSync(validationPath)) throw new RenderError("Source-relevance review must pass before rendering. Run sources:validate --require-llm and record its completion in episode.yaml.");
+
+  let episode; let validation;
+  try {
+    episode = YAML.parse(fs.readFileSync(episodePath, "utf8"));
+    validation = YAML.parse(fs.readFileSync(validationPath, "utf8"));
+  } catch (error) {
+    throw new RenderError(`Could not read source-review records: ${error.message}`);
+  }
+
+  if (episode?.source_verification?.relevance_review !== "complete") {
+    throw new RenderError("Source-relevance review must be marked complete in episode.yaml before rendering.");
+  }
+  if (validation?.llm_requested !== true || validation?.claim_mapping?.valid !== true || validation?.show_notes_mapping?.valid !== true) {
+    throw new RenderError("link-validation.yaml does not record a passing LLM source-relevance review.");
+  }
+
+  const sourceResults = Array.isArray(validation.results) ? validation.results : [];
+  if (!sourceResults.length || sourceResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true) || result?.relevance?.status !== "assessed" || ["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.verdict) || ["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.locator_assessment?.verdict) || result?.claim_assessments?.valid !== true)) {
+    throw new RenderError("link-validation.yaml contains unresolved source-relevance findings; resolve them before rendering.");
+  }
+
+  const showNotesResults = Array.isArray(validation.show_notes_results) ? validation.show_notes_results : [];
+  if (showNotesResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true))) {
+    throw new RenderError("link-validation.yaml contains unresolved show-notes findings; resolve them before rendering.");
+  }
+}
 
 function usage() {
   console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --speaker instructor|learner|announcer  Render and assemble only one speaker's turns; cannot be combined with a segment range.\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --announcer-voice NAME        Default: ${DEFAULTS.announcerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --music-bed PATH              Mix this source track under Podcast introduction and Outro.\n  --music-bed-gain-db DB        Full-level music gain; default: ${DEFAULTS.musicBedGainDb} dB.\n  --music-voice-gain-db DB      Steady music gain under announcer voice; default: ${DEFAULTS.musicVoiceGainDb} dB.\n  --music-level-transition-seconds N  Level-change ramp; default: ${DEFAULTS.musicLevelTransitionSeconds}.\n  --music-intro-lead-seconds N  Music-only intro lead; default: ${DEFAULTS.musicIntroLeadSeconds}.\n  --music-intro-tail-seconds N  Full-level continuation after the Podcast introduction voice; default: ${DEFAULTS.musicIntroTailSeconds}.\n  --music-intro-fade-seconds N  Fade after the intro continuation; default: ${DEFAULTS.musicIntroFadeSeconds}.\n  --music-outro-tail-seconds N  Full-level music continuation after the Outro voice; default: ${DEFAULTS.musicOutroTailSeconds}.\n  --music-outro-fade-seconds N  Fade after the outro tail; default: ${DEFAULTS.musicOutroFadeSeconds}.\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n\nMusic holds a steady reduced level under announcer voice, then returns to its full level for the continuation and fade. Run both render modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
@@ -415,6 +448,7 @@ async function main() {
   const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice; const announcerVoice = raw["announcer-voice"] || DEFAULTS.announcerVoice;
   if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
   const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
+  assertSourceRelevanceApproved(scriptPath);
   const musicValuesSpecified = ["music-bed-gain-db", "music-voice-gain-db", "music-level-transition-seconds", "music-intro-lead-seconds", "music-intro-tail-seconds", "music-intro-fade-seconds", "music-outro-tail-seconds", "music-outro-fade-seconds"].some((name) => raw[name] !== undefined);
   if (musicValuesSpecified && !raw["music-bed"]) throw new RenderError("Music timing and gain options require --music-bed.");
   let music = null;
@@ -435,4 +469,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

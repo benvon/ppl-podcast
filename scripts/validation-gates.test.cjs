@@ -9,7 +9,7 @@ const test = require("node:test");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { REQUIRED_NOTICE, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
@@ -308,6 +308,23 @@ test("realtime renderer accepts an Announcer turn", () => {
   fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Required production notice\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
   try {
     assert.equal(parseScript(scriptPath, 240).at(-1).speaker, "ANNOUNCER");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("realtime renderer requires completed source-relevance review before rendering", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-render-gate-test-"));
+  const scriptPath = path.join(temporary, "narration.md");
+  fs.writeFileSync(scriptPath, "# Test narration\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: complete\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults: []\n", "utf8");
+  try {
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /unresolved source-relevance findings/);
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults:\n  - citation_target: { valid: true }\n    link: { valid: true }\n    relevance:\n      status: assessed\n      assessment:\n        verdict: supports\n        locator_assessment: { verdict: supports }\n    claim_assessments: { valid: true }\nshow_notes_results: []\n", "utf8");
+    assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /marked complete/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

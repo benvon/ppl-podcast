@@ -3,7 +3,7 @@
 **Version:** 0.1.2 — approved production script
 **Target runtime:** 30–40 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Script approved; narration derivation, rendering, listening QA, and source-relevance review remain pending.
+**Production status:** Script approved; source-relevance review must pass before rendering. Narration derivation and listening QA remain pending.
 
 ## [00:00] Opening
 

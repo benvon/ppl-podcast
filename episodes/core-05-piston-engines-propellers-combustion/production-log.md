@@ -7,6 +7,9 @@
   separate pending steps.
 - Updated the approved-script, episode, show-notes, and hosting provenance
   metadata to version `0.1.2`.
+- Source-relevance review now precedes all audio rendering. The renderer will
+  require a passing LLM review record and `episode.yaml` completion status
+  before it can send audio to the rendering service.
 
 ## 2026-08-17 — research and initial draft
 

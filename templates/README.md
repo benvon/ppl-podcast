@@ -11,8 +11,10 @@ npm run episode:create -- \
   --track core
 ```
 
-The package moves through research, script, source validation, render, and
-release QA in the order described in `production-plan.md`. Do not use a
+The package moves through research, script, editorial approval, source
+validation, render, and release QA in the order described in
+`production-plan.md`. Source relevance must pass before any audio is rendered.
+Do not use a
 previous episode as a template: its history is evidence, not a workflow
 contract.
 

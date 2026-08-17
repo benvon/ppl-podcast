@@ -38,7 +38,7 @@ source_verification:
   status: not_started
   verified_at_utc: null
   link_validation: link-validation.yaml
-  relevance_review: required_before_public_release
+  relevance_review: required_before_render
 review:
   editorial_status: script_approved
   qualified_aviation_review: optional_and_welcome
@@ -47,7 +47,7 @@ review:
     email: feedback@pplstudyguide.com
 release_gates_remaining:
   - "Draft and fact-check all material claims against the source ledger"
-  - "Run source-link validation with LLM relevance review and resolve failures"
+  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"

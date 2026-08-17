@@ -1,6 +1,6 @@
 episode_id: "core-05"
 verification_date: "2026-08-17"
-verified_at_utc: "2026-08-17T20:06:29Z"
+verified_at_utc: "2026-08-17T20:17:41Z"
 sources:
   - id: acs-powerplant-propeller-systems
     authority: faa_standard
@@ -86,7 +86,18 @@ sources:
     relevance_excerpt: "The blade tip travels farther and faster than a section near the hub, so blade angle changes from hub to tip. Fixed-pitch propellers trade climb and cruise efficiency; rpm serves as the power indication, but altitude and air density change the power associated with a given rpm."
     verified_at_utc: null
     link_status: null
-    supports_claims: [propeller-blade-twist, fixed-pitch-compromise, climb-cruise-propeller-tradeoff, fixed-pitch-rpm-indication, density-changes-power-at-rpm]
+    supports_claims: [fixed-pitch-compromise, climb-cruise-propeller-tradeoff, fixed-pitch-rpm-indication, density-changes-power-at-rpm]
+  - id: amtp-propeller-pitch-distribution
+    authority: faa_guidance
+    title: "Aviation Maintenance Technician Handbook—Powerplant, Chapter 7: Propellers"
+    document_id: "FAA-H-8083-32B"
+    locator: "Chapter 7, Pitch Distribution, printed p. 7-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/09_amtp_ch7.pdf#page=5"
+    revision: "FAA-H-8083-32B, 2023"
+    relevance_excerpt: "Pitch distribution is blade twist from the shank to the tip because each blade section travels at a different speed. The tip travels much faster than the inner blade."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [propeller-blade-twist]
   - id: phak-constant-speed-propeller
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"

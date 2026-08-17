@@ -189,7 +189,7 @@ Look closely at a propeller blade and its angle changes from the hub to the tip.
 
 Picture two dots painted on the blade. Put one close to the hub and one close to the tip. In one propeller revolution, both dots go around exactly once in exactly the same time. But they do not travel the same distance. The dot near the hub traces a small circle. The dot near the tip traces a much larger circle. Because speed is distance divided by time, the tip dot must move much faster through the air.
 
-The show notes link **“Propeller blade twist and local blade speed — PHAK Figures 7-6 and 7-7”** places those ideas side by side: blade angle changes along the span, and travel distance increases toward the tip.
+The show notes link **“Propeller blade twist and local blade speed — FAA AMT Powerplant, p. 7-5”** places those ideas side by side: blade angle changes along the span, and travel distance increases toward the tip.
 
 Now add the airplane’s forward motion. Every blade section shares the same forward speed, but each has a different rotational speed. Near the hub, the rotational component is relatively slow compared with the forward component. Near the tip, the rotational component is much faster. Those different combinations mean that an untwisted blade would not meet the relative wind at the same useful angle of attack along its length.
 
@@ -213,7 +213,7 @@ So the twist is not decorative and not mainly about how the propeller looks when
 
 Exactly. And it leads naturally to the next question: if blade angle matters, can the pilot or the propeller system change it?
 
-[Source: sources.yaml#phak-propeller-twist-fixed-pitch]
+[Source: sources.yaml#amtp-propeller-pitch-distribution]
 [Claim type: FAA guidance and teaching explanation]
 
 ## [16:03] Fixed pitch means a designed compromise

@@ -20,7 +20,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 ## Study materials and visual aids
 
 - [Four-stroke cycle diagram — PHAK Figure 7-5](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=4)
-- [Propeller blade twist and local blade speed — PHAK Figures 7-6 and 7-7](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=5)
+- [Propeller blade twist and local blade speed — FAA AMT Powerplant, p. 7-5](https://www.faa.gov/sites/faa.gov/files/09_amtp_ch7.pdf#page=5)
 - [Dual-magneto ignition layout — PHAK Figure 7-16](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=15)
 - [Normal versus explosive combustion — PHAK Figure 7-21](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=19)
 
@@ -35,6 +35,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 | Intake pressure and throttle airflow | FAA guidance | [AMT Powerplant: intake pressure and throttle airflow](https://www.faa.gov/sites/faa.gov/files/04_amtp_ch2.pdf#page=6) | Ch. 2, Figure 2-7, printed p. 2-6 | 2026-08-17 |
 | Four-stroke cycle and propeller | FAA guidance | [PHAK: four-stroke cycle and rotating-airfoil propeller](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=4) | Ch. 7, printed p. 7-4 | 2026-08-17 |
 | Blade twist and fixed pitch | FAA guidance | [PHAK: propeller twist, fixed pitch, and rpm](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=5) | Ch. 7, printed p. 7-5 | 2026-08-17 |
+| Propeller pitch distribution | FAA guidance | [AMT Powerplant: blade twist and local blade speed](https://www.faa.gov/sites/faa.gov/files/09_amtp_ch7.pdf#page=5) | Ch. 7, printed p. 7-5 | 2026-08-17 |
 | Constant-speed propeller | FAA guidance | [PHAK: governor, blade angle, manifold pressure, and rpm](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=6) | Ch. 7, printed p. 7-6 | 2026-08-17 |
 | Mixture-control boundary | FAA guidance | [PHAK: mixture control and aircraft-specific procedures](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9) | Ch. 7, printed p. 7-9 | 2026-08-17 |
 | Published power relationships | FAA guidance | [PHAK: manifold pressure and rpm relationship](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7) | Ch. 7, printed p. 7-7 | 2026-08-17 |

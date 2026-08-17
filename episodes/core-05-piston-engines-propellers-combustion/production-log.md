@@ -16,16 +16,18 @@
 - Ran `sources:validate --require-llm` from the repository root through
   `direnv`, using the current FAA sources and `gpt-5.6-terra` for the
   claim-level relevance assessments.
-- All 14 sources, 35 mapped claims, and 18 show-notes links passed deep-link,
-  locator, mapping, and relevance validation at `2026-08-17T20:06:29Z`.
+- All 15 sources, 35 mapped claims, and 19 show-notes links passed deep-link,
+  locator, mapping, and relevance validation at `2026-08-17T20:17:41Z`.
 - Corrected two ACS PDF locators to their actual Task G and Task F pages.
   Replaced an inferred intake-pressure claim with the current FAA Powerplant
   handbook's direct explanation of the low-pressure area created by the
   descending piston, higher-pressure incoming air, and throttle airflow.
-- Tightened the blade-twist, mixture-control, magneto, and ignition-check
-  claim wording to the source-supported scope. The corresponding script
-  changes require final editorial confirmation before rendering. The
-  source-reviewed revision is version `0.1.3` and 6,391 spoken words.
+- Added the FAA Powerplant handbook's direct pitch-distribution explanation
+  for the blade-twist visual aid, and tightened the mixture-control, magneto,
+  and ignition-check claim wording to the source-supported scope. The
+  corresponding script changes require final editorial confirmation before
+  rendering. The source-reviewed revision is version `0.1.3` and 6,391
+  spoken words.
 
 ## 2026-08-17 — research and initial draft
 

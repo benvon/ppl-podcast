@@ -36,7 +36,7 @@ trouble_spots:
   - "Assuming an aircraft electrical-system shutdown makes a magneto ignition system unable to fire."
 source_verification:
   status: source_relevance_review_complete
-  verified_at_utc: "2026-08-17T20:06:29Z"
+  verified_at_utc: "2026-08-17T20:17:41Z"
   link_validation: link-validation.yaml
   relevance_review: complete
 review:

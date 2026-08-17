@@ -49,7 +49,7 @@
 ## Visual-aid plan
 
 - Four-stroke cycle: PHAK Figure 7-5, printed p. 7-4.
-- Propeller blade twist and changing local speed: PHAK Figures 7-6 and 7-7, printed p. 7-5.
+- Propeller blade twist and changing local speed: FAA-H-8083-32B Chapter 7, Pitch Distribution, printed p. 7-5.
 - Dual-magneto ignition layout: PHAK Figure 7-16, printed p. 7-15.
 - Normal versus explosive combustion: PHAK Figure 7-21, printed p. 7-19.
 

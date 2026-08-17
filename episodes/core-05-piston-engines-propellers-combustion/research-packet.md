@@ -41,7 +41,7 @@
 2. Build the mechanical chain: cylinder pressure → piston → connecting rod → crankshaft → propeller.
 3. Slow the four-stroke cycle down into one event at a time, then speed it back up across multiple cylinders.
 4. Treat the propeller as an airfoil with two simultaneous motions: rotation and forward travel.
-5. Compare fixed-pitch and constant-speed installations through the load each places on the engine and the indications the pilot reads.
+5. Compare fixed-pitch and constant-speed installations through the load each places on the engine and the indications the pilot reads; reserve governor-system depth for planned Supplement-01, *Constant-Speed Propellers*.
 6. Return inside the cylinder to distinguish useful, timed pressure from detonation and preignition.
 7. Add the independent dual-ignition model and the permanent propeller-safety implication.
 8. Finish with a relationship-based instrument and POH/AFM review rather than a list of memorized numbers.

@@ -85,10 +85,23 @@ sources:
     programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
     programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
     revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
-    relevance_excerpt: "A constant-speed propeller governor varies blade angle to maintain selected rpm within its governing range. The throttle controls power output, the propeller control selects rpm, and manifold pressure indicates power at a constant rpm and altitude."
+    relevance_excerpt: "A constant-speed propeller governor varies blade angle to maintain selected rpm within its governing range. The throttle controls power output, the propeller control selects rpm, and manifold pressure indicates power at a constant rpm and altitude. The PHAK explains that increasing throttle admits more fuel and air, raising manifold pressure."
     verified_at_utc: null
     link_status: null
-    supports_claims: [constant-speed-governor, constant-speed-controls, constant-speed-range, manifold-pressure-meaning]
+    supports_claims: [constant-speed-governor, constant-speed-controls, constant-speed-range, manifold-pressure-meaning, throttle-intake-restriction]
+  - id: phak-mixture-control-boundary
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Mixture Control, printed p. 7-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains that mixture control adjusts fuel flow to maintain the correct fuel-air mixture as air density changes, and that detailed procedures vary by aircraft and belong in the AFM or POH."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [mixture-ratio-boundary]
   - id: phak-constant-speed-power-relationship
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"

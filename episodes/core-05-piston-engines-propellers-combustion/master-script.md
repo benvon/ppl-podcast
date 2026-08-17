@@ -66,7 +66,7 @@ Pressure becomes rotation.
 
 The word *reciprocating* means moving back and forth. In a reciprocating engine, the pistons travel back and forth—or, with the cylinders arranged horizontally, side to side—from one end of each cylinder to the other.
 
-Picture one cylinder as a sturdy metal tube closed at the outer end by the cylinder head. A piston fits inside and can slide along the tube. Near the closed end are an intake valve, an exhaust valve, and, in a common spark-ignition engine, spark plugs. The intake valve admits a fresh charge. The exhaust valve provides a path for burned gases to leave. The spark plugs begin combustion at the intended time.
+Picture one cylinder as a sturdy metal tube closed at the outer end by the cylinder head. A piston fits inside and can slide along the tube. Near the closed end are an intake valve, an exhaust valve, and, in a common spark-ignition engine, spark plugs. The intake valve admits a fresh charge. Here, *charge* simply means the air-and-fuel mixture that enters the cylinder to be compressed and burned. The exhaust valve provides a path for burned gases to leave. The spark plugs begin combustion at the intended time.
 
 The piston is connected by a connecting rod to a crankshaft. The crankshaft is the part that makes back-and-forth motion useful as continuous rotation. A bicycle crank gives a rough mental picture. Your foot moves through a repeating path, but the offset crank turns that movement into rotation at the sprocket. In the engine, combustion pressure supplies the push, the piston and connecting rod transmit it, and the offset portion of the crankshaft turns.
 
@@ -133,7 +133,7 @@ That helps me understand roughness. If the cylinders are supposed to contribute 
 
 **INSTRUCTOR:**
 
-Exactly. Roughness is evidence that the events are not contributing as evenly as expected. It does not identify the cause by itself. Ignition, fuel-air distribution, a mechanical problem, or another condition can disturb the sequence. The right response comes from the airplane’s checklist and approved information, but the four-stroke model explains why an uneven event can reach the pilot as vibration, sound, or lost power.
+Exactly. Roughness is evidence that the events are not contributing as evenly as expected. It does not identify the cause by itself. Ignition, fuel-air distribution, a mechanical problem, or another condition can disturb the sequence. The right response comes from the airplane’s checklist and POH, but the four-stroke model explains why an uneven event can reach the pilot as vibration, sound, or lost power.
 
 The engine depends on induction, fuel metering, ignition, lubrication, cooling, and exhaust to sustain the cycle. Episode 6 develops those supporting relationships. For now, keep the timing chain clear: admit, compress, burn at the intended time, clear, repeat.
 
@@ -224,7 +224,7 @@ Fixed pitch means a designed compromise.
 
 **INSTRUCTOR:**
 
-On a fixed-pitch propeller, the manufacturer sets the blade angle and it cannot change in flight. That makes the installation light, simple, and relatively inexpensive. It also means one blade setting has to serve takeoff, climb, cruise, and descent even though rpm and airspeed change substantially across those conditions.
+On a fixed-pitch propeller, the manufacturer sets the blade angle and it cannot change in flight. One unchanging angle cannot be ideal both for slow takeoff and climb and for faster cruise. The designer therefore chooses a tradeoff that favors the conditions the airplane is meant to serve, while accepting some loss of efficiency in the others. That makes the installation light, simple, and relatively inexpensive.
 
 The PHAK describes climb and cruise fixed-pitch propellers. A climb propeller uses lower pitch. It presents less aerodynamic resistance, so the engine can turn a higher rpm and develop more of its available power for takeoff and climb. A cruise propeller uses higher pitch. It places more aerodynamic load on the engine, produces lower rpm for a comparable condition, and favors cruise efficiency while giving up some takeoff and climb performance.
 
@@ -263,9 +263,9 @@ Constant speed separates power from rpm.
 
 **INSTRUCTOR:**
 
-A constant-speed propeller can change blade angle in flight. The pilot selects an rpm with the propeller control, and a governor varies blade angle to hold that selected rpm as airspeed or propeller load changes—so long as the propeller remains within its governing range.
+A constant-speed propeller can change blade angle in flight. The propeller control selects the governor’s target rpm. The governor senses a tendency for rpm to change and adjusts blade angle to hold the selected rpm as airspeed or propeller load changes—so long as the propeller remains within its governing range. More blade angle adds aerodynamic load; less blade angle reduces it.
 
-Think about cruise control holding road speed as terrain changes. A propeller governor instead holds rotational speed by changing blade angle. If propeller load decreases or airspeed increases, it increases blade angle to prevent an rpm rise. If load increases or airspeed decreases, it decreases blade angle to prevent an rpm fall.
+Think about cruise control holding road speed as terrain changes. A propeller governor instead holds rotational speed by changing blade angle. If rpm tends to rise because propeller load decreases or airspeed increases, it increases blade angle. If rpm tends to fall because load increases or airspeed decreases, it decreases blade angle.
 
 **LEARNER:**
 
@@ -275,15 +275,15 @@ So a steady tachometer no longer proves that power is steady. The governor may b
 
 Exactly. That is the key conceptual shift.
 
-In the typical arrangement described by the PHAK, the airplane has a throttle and a propeller control. The throttle controls engine power output. The propeller control selects engine and propeller rpm. The manifold-pressure gauge supplies the other major indication. It measures absolute pressure in the intake manifold—the passage carrying the charge toward the cylinders.
+In the typical arrangement described by the PHAK, the airplane has a throttle and a propeller control. The throttle changes engine power by changing the intake restriction. The propeller control selects the governor’s rpm target. The manifold-pressure gauge supplies the other major indication. It measures absolute pressure in the intake manifold—the passage carrying air and fuel toward the cylinders.
 
 At constant rpm and altitude, higher manifold pressure corresponds to more fuel-air charge delivered to the cylinders and more power. But manifold pressure is not a percentage-power gauge by itself. Altitude, temperature, rpm, mixture, induction design, and engine limitations affect the power relationship. The airplane’s published power-setting tables combine the variables for the installed engine and propeller.
 
-With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. With a normally aspirated engine running and the throttle partly closed, the pistons draw air against that restriction and manifold pressure falls. Opening the throttle reduces the restriction and increases manifold pressure.
+With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. With a normally aspirated engine running and the throttle partly closed, the pistons draw air past that restriction and manifold pressure falls below ambient. That lower pressure is the result of the intake restriction and piston suction; it is not the mechanism that moves fuel and air toward the cylinders. Opening the throttle reduces the restriction, raises manifold pressure, and allows more air into the cylinders. The fuel-metering system adds fuel with that airflow, while the mixture control determines the fuel-to-air ratio. Episode 6, *Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems*, will build that induction and mixture picture in depth.
 
 **LEARNER:**
 
-That makes “manifold pressure” less abstract. It is measuring how much absolute pressure is available in the intake passage feeding the cylinders. The throttle changes that pressure by changing the restriction.
+That makes “manifold pressure” less abstract. It is measuring the pressure in the intake passage feeding the cylinders. A partly closed throttle lowers that pressure; opening the throttle reduces the restriction, raises the pressure, and allows more air through.
 
 **INSTRUCTOR:**
 
@@ -301,7 +301,7 @@ So “constant speed” means the system regulates toward selected rpm within a 
 
 Correct. Whenever a system name sounds absolute, look for its operating range and limits.
 
-[Source: sources.yaml#phak-constant-speed-propeller, #phak-constant-speed-power-relationship]
+[Source: sources.yaml#phak-constant-speed-propeller, #phak-mixture-control-boundary, #phak-constant-speed-power-relationship]
 [Claim type: FAA guidance]
 
 ## [23:02] Combustion is a timed pressure event
@@ -445,7 +445,7 @@ That explains why some rpm drop is expected when selecting one magneto. Combusti
 
 Correct. The before-takeoff ignition check compares operation on BOTH with operation on each magneto separately. The ACS asks learners to understand why checklist items are performed and how they help detect malfunctions. This check asks whether each independent ignition side can carry the engine and whether its effect falls within the airplane’s published limit.
 
-An engine that stops when one side is selected has revealed that the other selected side is not sustaining ignition. An excessive rpm drop or roughness also indicates a problem. No rpm drop can be abnormal too, because it may indicate that the switch did not actually ground the deselected magneto. The permissible drops, maximum difference, engine speed, control setup, and required action come from the POH or AFM and checklist for the airplane.
+If the engine stops when RIGHT is selected, the engine is not sustaining operation on the right magneto—the magneto selected to operate. The same logic applies to LEFT. A stop, excessive rpm drop, or roughness identifies an unacceptable ignition-check result; it does not by itself identify the failed component. The PHAK directs the pilot not to fly until the problem is corrected. No rpm drop can also be abnormal because it may indicate that the switch did not ground the deselected magneto. The permissible drops, maximum difference, engine speed, control setup, and required action come from the POH or AFM and checklist for the airplane.
 
 **LEARNER:**
 

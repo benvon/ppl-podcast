@@ -492,6 +492,8 @@ The roadmap is sequenced for learning, not by PHAK chapter. It remains adjustabl
 | core-24 | Night Operations | Vision, lighting, planning, weather, illusions, equipment, currency | PHAK, AIM, CFR/ACS |
 | core-25 | The Checkride Oral: Connecting Knowledge, Risk, and Skill | Scenario-based integration rather than last-minute memorization | Whole ACS |
 
+| supplement-01 | Constant-Speed Propellers | Governor, blade angle, rpm, manifold pressure, and practical system interpretation | PHAK Ch. 7, ACS systems knowledge |
+
 ### Open-ended Rough Spots track
 
 Do not pre-commit a final count. Add targeted episodes from actual learner questions, mock-oral misses, CFI feedback, recurring written-test errors, or post-release listener questions. First candidates:

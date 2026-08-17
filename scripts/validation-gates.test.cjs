@@ -304,7 +304,7 @@ test("production notice must begin immediately after the final opening segment",
     { index: 1, section: "opening", text: "First opening sentence." },
     { index: 2, section: "opening", text: "Second opening sentence." },
     { index: 3, section: "objectives", text: "An intervening spoken section." },
-    { index: 4, section: "required production notice", text: REQUIRED_NOTICE },
+    { index: 4, section: "disclaimer", text: REQUIRED_NOTICE },
   ];
   assert.throws(() => validateFrontMatter(delayed), /immediately follow the final opening segment/);
   assert.doesNotThrow(() => validateFrontMatter([...delayed.slice(0, 2), { ...delayed[3], index: 3 }]));
@@ -313,16 +313,23 @@ test("production notice must begin immediately after the final opening segment",
 test("production notice must be the first spoken text after the opening", () => {
   const interveningCopy = [
     { index: 1, section: "opening", text: "Today's topic." },
-    { index: 2, section: "required production notice", text: "Before the notice, an unrelated message." },
-    { index: 3, section: "required production notice", text: REQUIRED_NOTICE },
+    { index: 2, section: "disclaimer", text: "Before the notice, an unrelated message." },
+    { index: 3, section: "disclaimer", text: REQUIRED_NOTICE },
   ];
   assert.throws(() => validateFrontMatter(interveningCopy), /must begin immediately after the opening/);
+});
+
+test("legacy production-notice headings remain valid", () => {
+  assert.doesNotThrow(() => validateFrontMatter([
+    { index: 1, section: "opening", text: "Today's topic." },
+    { index: 2, section: "required production notice", text: REQUIRED_NOTICE },
+  ]));
 });
 
 test("realtime renderer accepts an Announcer turn", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-renderer-test-"));
   const scriptPath = path.join(temporary, "master-script.md");
-  fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Required production notice\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
+  fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Disclaimer\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
   try {
     assert.equal(parseScript(scriptPath, 240).at(-1).speaker, "ANNOUNCER");
   } finally {

@@ -11,7 +11,7 @@
 
 [One 10-45 second scope statement.]
 
-## [00:15] Required production notice
+## [00:15] Disclaimer
 
 **INSTRUCTOR:**
 

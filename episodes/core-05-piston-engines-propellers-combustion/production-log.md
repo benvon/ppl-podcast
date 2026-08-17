@@ -1,5 +1,23 @@
 # Piston Engines, Propellers, and Combustion — production log
 
+## 2026-08-17 — combustion transition revision
+
+- Replaced “Return inside the cylinder” with “Let's return to what's
+  happening inside the cylinder” in the combustion section.
+- Re-rendered only segment 49, then reassembled the existing candidate from
+  that replacement and the unchanged reusable segments. The 43:02 candidate
+  passed its automated audio-quality report and retained the embedded
+  “Disclaimer” chapter title.
+
+## 2026-08-17 — disclaimer chapter title
+
+- Renamed the listener-facing front-matter chapter from “Required production
+  notice” to “Disclaimer” in Core 05 and the reusable script template.
+- Reassembled the candidate and accepted preview from their existing WAV
+  segments without a new voice-model call. `ffprobe` confirms the embedded
+  chapter title is “Disclaimer”; duration, audio-quality, and stitch results
+  remain unchanged.
+
 ## 2026-08-17 — full candidate rendered
 
 - Reused the accepted opening-preview segments and rendered segments 6–88 in

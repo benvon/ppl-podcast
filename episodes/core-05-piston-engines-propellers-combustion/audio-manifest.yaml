@@ -6,7 +6,7 @@ reason: >-
   Full script-aligned human listening QA remains required before release.
 current_candidate_render:
   script_version: 0.1.3
-  rendered_at_utc: "2026-08-17T21:23:50Z"
+  rendered_at_utc: "2026-08-17T21:46:41Z"
   provider: openai-realtime
   renderer: scripts/render_episode_realtime.cjs
   renderer_version: 8
@@ -21,17 +21,17 @@ current_candidate_render:
   audio_quality_report: "audio-artifacts/core-05-20260817T210244Z.audio-quality.json"
   chapter_review: "audio-artifacts/core-05-20260817T210244Z.mp3.chapters.html"
   segment_work_dir: "audio-artifacts/core-05-realtime-20260817T210244Z.segments"
-  duration_seconds: 2580.9
-  duration_display: "43:01"
+  duration_seconds: 2581.95
+  duration_display: "43:02"
   codec: mp3
   sample_rate_hz: 24000
   channels: 1
   observed_bitrate_bps: 160000
-  sha256: "1f1dc19b4d826c8e25e4f7b1f0c80f29a3aa8003ca67ffcaa45ace06ad158ca9"
+  sha256: "8a78c22efe359d87e0e5a310cb3aa2fb2326c19e75df48e5e2331439738a815f"
   front_matter_check: "audio-artifacts/core-05-20260817T210244Z.preview-001-005.mp3"
   front_matter_duration_seconds: 179.47
-  front_matter_sha256: "b2f7ae77226c92a9197400561d7304ad1bc7e35852ae81d3d5b02b9180335f00"
-  front_matter_validation: "Renderer preflight confirmed the opening is immediately followed by the required production-notice segment; the accepted preview includes the Ballad podcast introduction and music cue."
+  front_matter_sha256: "7933cbb98abb9ae9053b0276860863869c598f80d65530316ac0eac804836d23"
+  front_matter_validation: "Renderer preflight confirmed the opening is immediately followed by the Disclaimer segment; the accepted preview includes the Ballad podcast introduction and music cue."
   spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
   music_bed:
     source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"
@@ -41,12 +41,12 @@ current_candidate_render:
     level_transition_seconds: 0.15
     intro: "10-second lead, 5-second full-level continuation, 0.5-second fade"
     outro: "10-second full-level continuation, 5-second fade"
-  usage_estimate_usd: 3.652143
+  usage_estimate_usd: 3.654343
   validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 88 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Artifact is Git-ignored; human listening QA remains pending."
 superseded_candidates: []
 opening_preview:
   script_version: 0.1.3
-  rendered_at_utc: "2026-08-17T21:05:24Z"
+  rendered_at_utc: "2026-08-17T21:44:49Z"
   provider: openai-realtime
   renderer: scripts/render_episode_realtime.cjs
   renderer_version: 8
@@ -65,9 +65,9 @@ opening_preview:
   codec: mp3
   sample_rate_hz: 24000
   channels: 1
-  sha256: "b2f7ae77226c92a9197400561d7304ad1bc7e35852ae81d3d5b02b9180335f00"
-  included_segments: "1-5: opening, required production notice, podcast introduction, and first teaching exchange"
-  front_matter_validation: "Renderer preflight confirmed the opening is immediately followed by the required production-notice segment; the accepted preview includes the Ballad podcast introduction and music cue."
+  sha256: "7933cbb98abb9ae9053b0276860863869c598f80d65530316ac0eac804836d23"
+  included_segments: "1-5: opening, disclaimer, podcast introduction, and first teaching exchange"
+  front_matter_validation: "Renderer preflight confirmed the opening is immediately followed by the Disclaimer segment; the accepted preview includes the Ballad podcast introduction and music cue."
   spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
   music_bed:
     source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"

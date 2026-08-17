@@ -15,7 +15,7 @@ Inside the cowling, though, the chain is remarkably physical. A small quantity o
 
 This episode slows that chain down far enough to see every link, then puts it back together so the engine instruments, propeller behavior, and combustion warnings tell one connected story.
 
-## [00:34] Required production notice
+## [00:34] Disclaimer
 
 **INSTRUCTOR:**
 
@@ -316,7 +316,7 @@ Combustion is a timed pressure event.
 
 **INSTRUCTOR:**
 
-Return inside the cylinder. Saying “the mixture burns” is accurate but incomplete. The engine needs the charge to burn in a controlled way and at the correct time so cylinder pressure rises when it can do useful work without opposing the piston or overstressing engine parts.
+Let's return to what's happening inside the cylinder. Saying “the mixture burns” is accurate but incomplete. The engine needs the charge to burn in a controlled way and at the correct time so cylinder pressure rises when it can do useful work without opposing the piston or overstressing engine parts.
 
 In normal spark-ignition combustion, the spark plugs start small flame fronts. Those flame fronts spread across the compressed charge. The pressure rise is rapid, but it is progressive and predictable rather than one instantaneous explosion of the entire charge. The expanding gases deliver their strongest useful push as the piston begins the power stroke.
 

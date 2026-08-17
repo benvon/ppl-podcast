@@ -28,6 +28,8 @@ const SAFE_MODEL_RE = /^[a-z0-9][a-z0-9.-]*$/;
 const SAFE_VOICE_RE = /^[a-z][a-z-]*$/;
 const REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
 const LEGACY_REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
+const DISCLAIMER_SECTION = "disclaimer";
+const LEGACY_DISCLAIMER_SECTION = "required production notice";
 const PRONUNCIATION_TRANSFORMS = Object.freeze({ AI: "artificial intelligence", PHAK: "pea hack" });
 const DEFAULTS = {
   model: "gpt-realtime-2.1",
@@ -182,9 +184,9 @@ function parseScript(scriptPath, maxWords) {
 
 function validateFrontMatter(segments) {
   const opening = segments.filter((segment) => segment.section === "opening").map((segment) => segment.index);
-  const notice = segments.filter((segment) => segment.section === "required production notice");
+  const notice = segments.filter((segment) => [DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION].includes(segment.section));
   if (!opening.length || opening[0] !== 1) throw new RenderError("The first spoken segment must be in an 'Opening' section.");
-  if (!notice.length || notice[0].index !== opening.at(-1) + 1) throw new RenderError("A 'Required production notice' section must immediately follow the final opening segment.");
+  if (!notice.length || notice[0].index !== opening.at(-1) + 1) throw new RenderError("A 'Disclaimer' section must immediately follow the final opening segment.");
   const noticeText = notice.map((segment) => segment.text).join(" ");
   if (![REQUIRED_NOTICE, LEGACY_REQUIRED_NOTICE].some((approved) => noticeText.startsWith(approved))) throw new RenderError("The required production notice must begin immediately after the opening and match an approved public-distribution text.");
 }
@@ -431,7 +433,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     verifyMp3Chapters(mp3Path, chapters);
     publishedPath = mp3Path;
   } else publishedPath = writeWavOutput({ masterPath, wavPath, masterPcm, mixed: Boolean(options.music && Object.keys(musicPlan).length) });
-  const frontMatter = selected[0].index === 1 && selected.some((segment) => segment.section === "required production notice") ? "included" : "not_in_selected_range";
+  const frontMatter = selected[0].index === 1 && selected.some((segment) => [DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION].includes(segment.section)) ? "included" : "not_in_selected_range";
   const manifest = { renderer: "openai-realtime", renderer_version: 8, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   const audioQuality = analyzeRenderedAudio({ manifestPath, masterPath, outputPath: publishedPath, stitchBoundaries, reportPath: qualityReportPath });
@@ -469,4 +471,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

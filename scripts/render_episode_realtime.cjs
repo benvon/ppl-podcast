@@ -128,12 +128,12 @@ function splitText(text, maxWords) {
 
 function parseScript(scriptPath, maxWords) {
   const lines = fs.readFileSync(scriptPath, "utf8").split(/\r?\n/);
-  const turns = []; let speaker = null; let section = ""; let paragraphs = [];
-  const flush = () => { if (speaker && paragraphs.length) { const text = cleanText(paragraphs.join(" ")); if (text) turns.push({ speaker, text, section }); } paragraphs = []; };
+  const turns = []; let speaker = null; let section = ""; let sectionTitle = ""; let paragraphs = [];
+  const flush = () => { if (speaker && paragraphs.length) { const text = cleanText(paragraphs.join(" ")); if (text) turns.push({ speaker, text, section, sectionTitle }); } paragraphs = []; };
   for (const raw of lines) {
     const line = raw.trim();
     const heading = line.match(SECTION_RE);
-    if (heading) { flush(); section = heading[1].trim().toLowerCase(); continue; }
+    if (heading) { flush(); sectionTitle = heading[1].trim(); section = sectionTitle.toLowerCase(); continue; }
     const speakerMatch = line.match(SPEAKER_RE);
     if (speakerMatch) { flush(); speaker = speakerMatch[1]; continue; }
     if (!speaker || !line || IGNORED_PREFIXES.some((prefix) => line.startsWith(prefix))) continue;
@@ -314,6 +314,54 @@ function writeWavOutput({ masterPath, wavPath, masterPcm, mixed }) {
   return wavPath;
 }
 
+function ffmetadataValue(value) { return value.replace(/[\\=;#\r\n]/g, "\\\\$&"); }
+
+function chapterMarkersFor(stitchBoundaries, duration) {
+  const chapters = [];
+  let previousSection = null;
+  for (const boundary of stitchBoundaries) {
+    if (boundary.section === previousSection) continue;
+    previousSection = boundary.section;
+    chapters.push({
+      id: `chapter-${String(chapters.length + 1).padStart(3, "0")}`,
+      start_ms: chapters.length === 0 ? 0 : Math.round(boundary.start_frame / SAMPLE_RATE * 1000),
+      title: boundary.section_title || boundary.section,
+    });
+  }
+  const durationMs = Math.round(duration * 1000);
+  for (let index = 0; index < chapters.length; index += 1) chapters[index].end_ms = index + 1 < chapters.length ? chapters[index + 1].start_ms : durationMs;
+  return chapters;
+}
+
+function chapterFfmetadata(chapters) {
+  return `;FFMETADATA1\n${chapters.map((chapter) => `[CHAPTER]\nTIMEBASE=1/1000\nSTART=${chapter.start_ms}\nEND=${chapter.end_ms}\ntitle=${ffmetadataValue(chapter.title)}\n`).join("")}`;
+}
+
+function writeMp3WithChapters({ masterPath, mp3Path, chapters }) {
+  const temporary = fs.mkdtempSync(path.join(require("os").tmpdir(), "ppl-chapters-"));
+  const metadataPath = path.join(temporary, "chapters.ffmeta");
+  try {
+    writeAtomic(metadataPath, chapterFfmetadata(chapters));
+    const completed = spawnSync("ffmpeg", ["-y", "-v", "error", "-i", masterPath, "-i", metadataPath, "-map", "0:a", "-map_metadata", "1", "-ar", String(SAMPLE_RATE), "-ac", "1", "-b:a", "160k", "-id3v2_version", "3", mp3Path], { encoding: "utf8" });
+    if (completed.status !== 0) throw new RenderError(`ffmpeg MP3 export with chapters failed: ${(completed.stderr || "unknown error").trim()}`);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+}
+
+function verifyMp3Chapters(mp3Path, chapters) {
+  const completed = spawnSync("ffprobe", ["-v", "error", "-show_chapters", "-of", "json", mp3Path], { encoding: "utf8" });
+  if (completed.status !== 0) throw new RenderError(`ffprobe chapter validation failed: ${(completed.stderr || "unknown error").trim()}`);
+  let parsed;
+  try { parsed = JSON.parse(completed.stdout); } catch (_) { throw new RenderError("ffprobe chapter validation returned invalid JSON."); }
+  const actual = Array.isArray(parsed.chapters) ? parsed.chapters : [];
+  if (actual.length !== chapters.length) throw new RenderError(`MP3 chapter validation expected ${chapters.length} markers but found ${actual.length}.`);
+  for (let index = 0; index < chapters.length; index += 1) {
+    const actualStartMs = Math.round(Number(actual[index].start_time) * 1000);
+    if (actual[index].tags?.title !== chapters[index].title || Math.abs(actualStartMs - chapters[index].start_ms) > 1) throw new RenderError(`MP3 chapter validation failed at marker ${index + 1}.`);
+  }
+}
+
 function assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange, selectionLabel) {
   const chunks = []; const usage = []; const stitchBoundaries = []; const musicCues = {}; let previous = null; let masterFrames = 0;
   for (const segment of selected) {
@@ -333,7 +381,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
       if (!musicCues.outro) musicCues.outro = { startFrame: segmentStartFrame, endFrame: masterFrames };
       else musicCues.outro.endFrame = masterFrames;
     }
-    stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, start_frame: segmentStartFrame, end_frame: masterFrames });
+    stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle, start_frame: segmentStartFrame, end_frame: masterFrames });
     usage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); previous = segment;
   }
   const terminalMusicTail = terminalMusicTailMilliseconds(selected, options.music);
@@ -342,14 +390,16 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
   ensureDir(audioDir);
   const musicPlan = options.music ? musicCuePlan(musicCues, options.music) : null;
   if (options.music && Object.keys(musicPlan).length) { writeAtomic(voiceMasterPath, makeWav(masterPcm)); mixMusicBeds({ voiceMasterPath, outputPath: masterPath, music: options.music, plan: musicPlan }); } else writeAtomic(masterPath, makeWav(masterPcm));
+  const duration = Number(durationSeconds(masterPcm.length).toFixed(3));
+  const chapters = chapterMarkersFor(stitchBoundaries, duration);
   let publishedPath = masterPath;
   if (options.format === "mp3") {
-    const completed = spawnSync("ffmpeg", ["-y", "-v", "error", "-i", masterPath, "-ar", String(SAMPLE_RATE), "-ac", "1", "-b:a", "160k", mp3Path], { encoding: "utf8" });
-    if (completed.status !== 0) throw new RenderError(`ffmpeg MP3 export failed: ${(completed.stderr || "unknown error").trim()}`);
+    writeMp3WithChapters({ masterPath, mp3Path, chapters });
+    verifyMp3Chapters(mp3Path, chapters);
     publishedPath = mp3Path;
   } else publishedPath = writeWavOutput({ masterPath, wavPath, masterPcm, mixed: Boolean(options.music && Object.keys(musicPlan).length) });
   const frontMatter = selected[0].index === 1 && selected.some((segment) => segment.section === "required production notice") ? "included" : "not_in_selected_range";
-  const manifest = { renderer: "openai-realtime", renderer_version: 7, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: Number(durationSeconds(masterPcm.length).toFixed(3)), sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
+  const manifest = { renderer: "openai-realtime", renderer_version: 8, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   const audioQuality = analyzeRenderedAudio({ manifestPath, masterPath, outputPath: publishedPath, stitchBoundaries, reportPath: qualityReportPath });
   manifest.audio.quality = { result: audioQuality.result, report: qualityReportPath, stitch_warnings: audioQuality.master.stitches.warnings.length, clipped_samples: audioQuality.master.pcm.clipped_samples };
@@ -385,4 +435,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { REQUIRED_NOTICE, RenderError, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput };
+module.exports = { REQUIRED_NOTICE, RenderError, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

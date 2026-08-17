@@ -9,7 +9,7 @@ const test = require("node:test");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 
 function source(id, supportsClaims) {
@@ -316,6 +316,34 @@ test("realtime renderer accepts an Announcer turn", () => {
 test("realtime renderer expands approved abbreviations only in spoken input", () => {
   assert.equal(spokenText("The PHAK says AI-assisted production is reviewed."), "The pea hack says artificial intelligence-assisted production is reviewed.");
   assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pea hack-like examples differ from PHAKS.");
+});
+
+test("MP3 chapters use the rendered section boundaries and preserve readable headings", () => {
+  const chapters = chapterMarkersFor([
+    { section: "opening", section_title: "Opening", start_frame: 6_000 },
+    { section: "opening", section_title: "Opening", start_frame: 24_000 },
+    { section: "podcast introduction", section_title: "Podcast introduction", start_frame: 48_000 },
+    { section: "lift & drag", section_title: "Lift & Drag", start_frame: 96_000 },
+  ], 6);
+  assert.deepEqual(chapters, [
+    { id: "chapter-001", start_ms: 0, end_ms: 2000, title: "Opening" },
+    { id: "chapter-002", start_ms: 2000, end_ms: 4000, title: "Podcast introduction" },
+    { id: "chapter-003", start_ms: 4000, end_ms: 6000, title: "Lift & Drag" },
+  ]);
+  assert.match(chapterFfmetadata(chapters), /title=Lift & Drag/);
+});
+
+test("MP3 chapter export embeds markers that ffprobe can read", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-chapters-test-"));
+  const masterPath = path.join(temporary, "master.wav"); const mp3Path = path.join(temporary, "episode.mp3");
+  const chapters = [{ id: "chapter-001", start_ms: 0, end_ms: 1_000, title: "Opening" }, { id: "chapter-002", start_ms: 1_000, end_ms: 2_000, title: "Lesson" }];
+  fs.writeFileSync(masterPath, wavForTest(Buffer.alloc(24_000 * 2 * 2)));
+  try {
+    writeMp3WithChapters({ masterPath, mp3Path, chapters });
+    verifyMp3Chapters(mp3Path, chapters);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("music cue plan preserves the requested intro lead and outro tail", () => {

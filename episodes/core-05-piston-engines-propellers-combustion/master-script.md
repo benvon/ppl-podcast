@@ -1,9 +1,9 @@
 # Piston Engines, Propellers, and Combustion
 
-**Version:** 0.1.2 — approved production script
+**Version:** 0.1.3 — source-reviewed revision pending editorial confirmation
 **Target runtime:** 30–40 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Script approved; source-relevance review must pass before rendering. Narration derivation and listening QA remain pending.
+**Production status:** Source-relevance review complete; the source-review revisions await editorial confirmation before rendering. Narration derivation and listening QA remain pending.
 
 ## [00:00] Opening
 
@@ -201,7 +201,7 @@ That distinction is important. Twist gives each blade section a different built-
 
 **INSTRUCTOR:**
 
-Correct. Twist helps the different parts of the blade share the aerodynamic work more uniformly. It does not freeze one angle of attack into the propeller for all conditions.
+Correct. Twist helps keep the different parts of the blade from being forced into the same angle-of-attack problem. It does not freeze one angle of attack into the propeller for all conditions.
 
 The same geometry gives meaning to an rpm limit: rpm governs not only how often the engine cycles, but how fast every part of the propeller moves, with the tip moving fastest.
 
@@ -279,13 +279,13 @@ In the typical arrangement described by the PHAK, the airplane has a throttle an
 
 At constant rpm and altitude, higher manifold pressure corresponds to more fuel-air charge delivered to the cylinders and more power. But manifold pressure is not a percentage-power gauge by itself. Altitude, temperature, rpm, mixture, induction design, and engine limitations affect the power relationship. The airplane’s published power-setting tables combine the variables for the installed engine and propeller.
 
-With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. During an intake stroke, the descending piston increases cylinder volume, so pressure inside that cylinder falls below the pressure in the intake manifold. Air then moves into the cylinder because the pressure upstream is higher than the pressure in the expanding cylinder. The piston does not pull air in with a separate force called suction; it creates the lower cylinder pressure that establishes the pressure difference.
+With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. During an intake stroke, the descending piston creates a low-pressure area in the cylinder. Higher-pressure air then flows through the induction path to fill that area. That is the pressure difference doing the work: the piston creates the lower-pressure space; it does not pull air in with a separate force called suction.
 
-In a normally aspirated engine with the throttle partly closed, the throttle restricts the intake path, so manifold pressure is itself lower than ambient pressure. It is still higher than the pressure in the expanding cylinder during intake, so charge can flow into the cylinder. Opening the throttle reduces that restriction and raises manifold pressure toward ambient. That increases the pressure available upstream of the cylinder, allowing more charge to enter on each intake stroke. The fuel-metering system adds fuel with the airflow, while the mixture control determines the fuel-to-air ratio. Episode 6, *Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems*, will build that induction and mixture picture in depth.
+The throttle regulates how freely air can move through that induction path. As it closes, it restricts airflow more; as it opens, it admits more air. In the normally aspirated engine model, the PHAK says manifold pressure is below ambient at idle and rises as throttle setting, fuel-and-air flow, and power increase. Opening the throttle therefore raises manifold pressure toward ambient and allows more charge to enter on each intake stroke. The fuel-metering system adds fuel with the airflow, while the mixture control adjusts the fuel-air ratio. Episode 6, *Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems*, will build that induction and mixture picture in depth.
 
 **LEARNER:**
 
-That makes “manifold pressure” less abstract. The piston creates the lower pressure in the cylinder; the throttle establishes how much pressure is available in the manifold upstream. A partly closed throttle lowers manifold pressure. Opening it raises manifold pressure and lets more charge enter.
+That makes “manifold pressure” less abstract. The piston creates the low-pressure space in the cylinder; the throttle regulates how freely air reaches it. A partly closed throttle lowers manifold pressure. Opening it raises manifold pressure and lets more charge enter.
 
 **INSTRUCTOR:**
 
@@ -303,7 +303,7 @@ So “constant speed” means the system regulates toward selected rpm within a 
 
 Correct. Whenever a system name sounds absolute, look for its operating range and limits.
 
-[Source: sources.yaml#phak-four-stroke-components, #phak-constant-speed-propeller, #phak-mixture-control-boundary, #phak-constant-speed-power-relationship]
+[Source: sources.yaml#amtp-intake-pressure-and-throttle, #phak-constant-speed-propeller, #phak-mixture-control-boundary, #phak-constant-speed-power-relationship]
 [Claim type: FAA guidance]
 
 ## [23:02] Combustion is a timed pressure event

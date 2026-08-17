@@ -11,6 +11,22 @@
   require a passing LLM review record and `episode.yaml` completion status
   before it can send audio to the rendering service.
 
+## 2026-08-17 — source-relevance review complete
+
+- Ran `sources:validate --require-llm` from the repository root through
+  `direnv`, using the current FAA sources and `gpt-5.6-terra` for the
+  claim-level relevance assessments.
+- All 14 sources, 35 mapped claims, and 18 show-notes links passed deep-link,
+  locator, mapping, and relevance validation at `2026-08-17T20:06:29Z`.
+- Corrected two ACS PDF locators to their actual Task G and Task F pages.
+  Replaced an inferred intake-pressure claim with the current FAA Powerplant
+  handbook's direct explanation of the low-pressure area created by the
+  descending piston, higher-pressure incoming air, and throttle airflow.
+- Tightened the blade-twist, mixture-control, magneto, and ignition-check
+  claim wording to the source-supported scope. The corresponding script
+  changes require final editorial confirmation before rendering. The
+  source-reviewed revision is version `0.1.3` and 6,391 spoken words.
+
 ## 2026-08-17 — research and initial draft
 
 - Researched current FAA-H-8083-25C Chapter 7 and FAA-S-ACS-6C using the FAA's current handbook and ACS indexes.

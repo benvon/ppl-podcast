@@ -1,13 +1,13 @@
 episode_id: "core-05"
-verification_date: null
-verified_at_utc: null
+verification_date: "2026-08-17"
+verified_at_utc: "2026-08-17T20:06:29Z"
 sources:
   - id: acs-powerplant-propeller-systems
     authority: faa_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
     document_id: "FAA-S-ACS-6C"
-    locator: "Area I, Task G, PA.I.G.K1c, PA.I.G.K2, and PA.I.G.R1, printed p. 8"
-    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14"
+    locator: "Area I, Task G, PA.I.G.K1c, PA.I.G.K2, and PA.I.G.R1, printed p. 7"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15"
     revision: "April 2024; effective May 31, 2024"
     relevance_excerpt: "Task G identifies powerplant and propeller knowledge, indications and procedures for abnormalities or failures, and detection of system malfunctions or failures."
     verified_at_utc: null
@@ -17,8 +17,8 @@ sources:
     authority: faa_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
     document_id: "FAA-S-ACS-6C"
-    locator: "Area II, Task F, PA.II.F.K1 and PA.II.F.S5, printed p. 16"
-    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=22"
+    locator: "Area II, Task F, PA.II.F.K1 and PA.II.F.S5, printed p. 15"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=23"
     revision: "April 2024; effective May 31, 2024"
     relevance_excerpt: "Task F requires understanding the purpose of before-takeoff checklist items, including detecting malfunctions, and verifying suitable engine parameters."
     verified_at_utc: null
@@ -49,7 +49,18 @@ sources:
     relevance_excerpt: "The principal components include cylinders, pistons, intake and exhaust valves, spark plugs, connecting rods, crankshaft, crankcase, and magnetos. During the intake stroke, the descending piston and open intake valve draw the fuel-air mixture into the cylinder."
     verified_at_utc: null
     link_status: null
-    supports_claims: [four-stroke-components, intake-compression-power-strokes, intake-pressure-difference]
+    supports_claims: [four-stroke-components, intake-compression-power-strokes]
+  - id: amtp-intake-pressure-and-throttle
+    authority: faa_guidance
+    title: "Aviation Maintenance Technician Handbook—Powerplant, Chapter 2: Engine Fuel and Fuel Metering Systems"
+    document_id: "FAA-H-8083-32B"
+    locator: "Chapter 2, Airflow and Fuel Discharge, Figure 2-7, printed p. 2-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_amtp_ch2.pdf#page=6"
+    revision: "FAA-H-8083-32B, 2023"
+    relevance_excerpt: "The handbook explains that the descending piston creates a low-pressure area during intake and higher-pressure atmospheric air flows through the carburetor and intake manifold to fill it. It also explains that the throttle regulates airflow to the cylinders, restricting airflow more as it closes and admitting more air as it opens."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [intake-pressure-difference, throttle-intake-restriction]
   - id: phak-four-stroke-cycle
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
@@ -88,7 +99,7 @@ sources:
     relevance_excerpt: "A constant-speed propeller governor varies blade angle to maintain selected rpm within its governing range. The throttle controls power output, the propeller control selects rpm, and manifold pressure indicates power at a constant rpm and altitude. The PHAK explains that increasing throttle admits more fuel and air, raising manifold pressure."
     verified_at_utc: null
     link_status: null
-    supports_claims: [constant-speed-governor, constant-speed-controls, constant-speed-range, manifold-pressure-meaning, throttle-intake-restriction]
+    supports_claims: [constant-speed-governor, constant-speed-controls, constant-speed-range, manifold-pressure-meaning]
   - id: phak-mixture-control-boundary
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"

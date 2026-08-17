@@ -47,9 +47,8 @@ delivery:
     Treat recurring technical terms as ideas, not catchphrases. Preserve exact
     terminology while varying stress and cadence naturally with the sentence.
   abbreviation-rule: >-
-    Keep the approved written script unchanged, but expand AI to artificial
-    intelligence only in the render input so the disclosure is naturally
-    intelligible.
+    Keep the approved written script unchanged. In render input only, expand
+    AI to artificial intelligence and pronounce PHAK as pea hack.
   prohibited:
     - exaggerated emotion
     - comedy or gimmicky banter

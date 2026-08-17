@@ -1,0 +1,46 @@
+episode_id: "core-04"
+status: candidate_rendered_qa_approved
+reason: >-
+  Script version 0.1.3 has a technically validated OpenAI Realtime render and
+  accepted full script-aligned human listening QA. Publication-day source
+  validation is complete; it is ready for the separate immutable-audio hosting
+  workflow.
+current_candidate_render:
+  script_version: 0.1.3
+  rendered_at_utc: "2026-08-16T16:47:23Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 6
+  model: gpt-realtime-2.1
+  voice_profile: "../../series/voice-profile.yaml"
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: "audio-artifacts/core-04-20260816T164723Z.mp3"
+  lossless_master: "audio-artifacts/core-04-20260816T164723Z.master.wav"
+  render_manifest: "audio-artifacts/core-04-20260816T164723Z.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-04-20260816T164723Z.audio-quality.json"
+  segment_work_dir: "audio-artifacts/core-04-realtime-20260816T164723Z.segments"
+  duration_seconds: 1976.6
+  duration_display: "32:57"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  observed_bitrate_bps: 160000
+  sha256: "13a90655815c2d26a483a26624da8ea940f38a7b3b2f3b0374d51f04c0c0f211"
+  front_matter_validation: "The renderer included the opening, required production notice, and Ballad podcast introduction in the assembled candidate."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
+  music_bed:
+    source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"
+    sha256: "0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f"
+    full_level_gain_db: -24
+    announcer_voice_gain_db: -30
+    level_transition_seconds: 0.15
+    intro: "10-second lead, 5-second full-level continuation, 0.5-second fade"
+    outro: "10-second full-level continuation, 5-second fade"
+  usage_estimate_usd: 2.795286
+  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 67 stitch boundaries with no discontinuity warnings, and no clipped samples. Full script-aligned human listening QA was accepted. Artifact is Git-ignored."
+superseded_candidates: []
+required_before_release:
+  - "Stage and validate the immutable audio object in the hosting workflow."

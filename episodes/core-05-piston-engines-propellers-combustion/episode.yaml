@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Piston Engines, Propellers, and Combustion"
 slug: "piston-engines-propellers-combustion"
 track: "core"
-status: source_reviewed
+status: candidate_rendered
 version: 0.1.3
 published_at: null
 runtime_target_minutes: 40
-runtime_actual_seconds: null
+runtime_actual_seconds: 2580.9
 word_count: 6407
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -46,12 +46,12 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human listening QA, including the front-matter check"
+  - "Complete human listening QA against the full candidate"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: preview_rendered
+  status: candidate_rendered
 hosting:
   metadata: hosting-metadata.yaml
 public_notes: show-notes.md

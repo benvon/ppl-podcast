@@ -1,5 +1,22 @@
 # Piston Engines, Propellers, and Combustion — production log
 
+## 2026-08-17 — full candidate rendered
+
+- Reused the accepted opening-preview segments and rendered segments 6–88 in
+  the same Realtime work directory, then assembled the complete 43:01 MP3.
+- The candidate uses the approved Ballad music mix. Its automated quality
+  report passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 88
+  stitch-boundary checks with no discontinuity warnings, clipping checks, and
+  ffprobe validation of 18 embedded MP3 chapters.
+- The full candidate is ready for human script-aligned listening QA. The
+  ignored local artifact is `audio-artifacts/core-05-20260817T210244Z.mp3`.
+
+## 2026-08-17 — opening preview accepted
+
+- The user accepted the rendered opening preview and confirmed the required
+  production notice is clearly heard. The retained segments 1–5 are approved
+  for reuse in the full candidate render.
+
 ## 2026-08-17 — opening preview rendered
 
 - Derived `narration.md` from the approved master script and rendered reusable

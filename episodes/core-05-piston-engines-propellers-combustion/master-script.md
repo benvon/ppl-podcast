@@ -279,11 +279,13 @@ In the typical arrangement described by the PHAK, the airplane has a throttle an
 
 At constant rpm and altitude, higher manifold pressure corresponds to more fuel-air charge delivered to the cylinders and more power. But manifold pressure is not a percentage-power gauge by itself. Altitude, temperature, rpm, mixture, induction design, and engine limitations affect the power relationship. The airplane’s published power-setting tables combine the variables for the installed engine and propeller.
 
-With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. With a normally aspirated engine running and the throttle partly closed, the pistons draw air past that restriction and manifold pressure falls below ambient. That lower pressure is the result of the intake restriction and piston suction; it is not the mechanism that moves fuel and air toward the cylinders. Opening the throttle reduces the restriction, raises manifold pressure, and allows more air into the cylinders. The fuel-metering system adds fuel with that airflow, while the mixture control determines the fuel-to-air ratio. Episode 6, *Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems*, will build that induction and mixture picture in depth.
+With the engine stopped, the manifold-pressure gauge reads approximately ambient pressure. During an intake stroke, the descending piston increases cylinder volume, so pressure inside that cylinder falls below the pressure in the intake manifold. Air then moves into the cylinder because the pressure upstream is higher than the pressure in the expanding cylinder. The piston does not pull air in with a separate force called suction; it creates the lower cylinder pressure that establishes the pressure difference.
+
+In a normally aspirated engine with the throttle partly closed, the throttle restricts the intake path, so manifold pressure is itself lower than ambient pressure. It is still higher than the pressure in the expanding cylinder during intake, so charge can flow into the cylinder. Opening the throttle reduces that restriction and raises manifold pressure toward ambient. That increases the pressure available upstream of the cylinder, allowing more charge to enter on each intake stroke. The fuel-metering system adds fuel with the airflow, while the mixture control determines the fuel-to-air ratio. Episode 6, *Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems*, will build that induction and mixture picture in depth.
 
 **LEARNER:**
 
-That makes “manifold pressure” less abstract. It is measuring the pressure in the intake passage feeding the cylinders. A partly closed throttle lowers that pressure; opening the throttle reduces the restriction, raises the pressure, and allows more air through.
+That makes “manifold pressure” less abstract. The piston creates the lower pressure in the cylinder; the throttle establishes how much pressure is available in the manifold upstream. A partly closed throttle lowers manifold pressure. Opening it raises manifold pressure and lets more charge enter.
 
 **INSTRUCTOR:**
 
@@ -301,7 +303,7 @@ So “constant speed” means the system regulates toward selected rpm within a 
 
 Correct. Whenever a system name sounds absolute, look for its operating range and limits.
 
-[Source: sources.yaml#phak-constant-speed-propeller, #phak-mixture-control-boundary, #phak-constant-speed-power-relationship]
+[Source: sources.yaml#phak-four-stroke-components, #phak-constant-speed-propeller, #phak-mixture-control-boundary, #phak-constant-speed-power-relationship]
 [Claim type: FAA guidance]
 
 ## [23:02] Combustion is a timed pressure event

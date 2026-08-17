@@ -46,10 +46,10 @@ sources:
     programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
     programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
     revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
-    relevance_excerpt: "The principal components include cylinders, pistons, intake and exhaust valves, spark plugs, connecting rods, crankshaft, crankcase, and magnetos. The first three strokes are intake, compression, and power."
+    relevance_excerpt: "The principal components include cylinders, pistons, intake and exhaust valves, spark plugs, connecting rods, crankshaft, crankcase, and magnetos. During the intake stroke, the descending piston and open intake valve draw the fuel-air mixture into the cylinder."
     verified_at_utc: null
     link_status: null
-    supports_claims: [four-stroke-components, intake-compression-power-strokes]
+    supports_claims: [four-stroke-components, intake-compression-power-strokes, intake-pressure-difference]
   - id: phak-four-stroke-cycle
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"

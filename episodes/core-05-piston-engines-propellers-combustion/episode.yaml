@@ -3,22 +3,37 @@ series: ppl-study-podcast
 title: "Piston Engines, Propellers, and Combustion"
 slug: "piston-engines-propellers-combustion"
 track: "core"
-status: planned
+status: drafting
 version: 0.1.0
 published_at: null
-runtime_target_minutes: null
+runtime_target_minutes: 40
 runtime_actual_seconds: null
-word_count: null
+word_count: 6168
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
-acs_references: []
-phak_references: []
+acs_references:
+  - PA.I.G.K1c
+  - PA.I.G.K2
+  - PA.I.G.R1
+  - PA.II.F.K1
+phak_references:
+  - "FAA-H-8083-25C, Chapter 7: Aircraft Systems"
 aim_references: []
 advisory_circular_references: []
 cfr_references: []
-learning_objectives: []
-trouble_spots: []
+learning_objectives:
+  - "Trace how a four-stroke reciprocating engine converts combustion pressure into crankshaft rotation."
+  - "Explain how a propeller acts as a rotating airfoil and why blade twist, pitch, rpm, and airspeed affect thrust."
+  - "Distinguish fixed-pitch from constant-speed propeller behavior and interpret the basic engine-power indications associated with each."
+  - "Separate normal combustion, detonation, and preignition by timing, pressure development, indications, and operating awareness."
+  - "Explain why dual magnetos improve ignition reliability and why a propeller must always be treated as capable of moving the engine."
+trouble_spots:
+  - "Treating the piston as directly producing thrust instead of following the chain from pressure to crankshaft rotation to propeller thrust."
+  - "Confusing propeller blade angle with propeller angle of attack or assuming every part of an untwisted blade would meet the air the same way."
+  - "Treating rpm as a universal, standalone measure of power without accounting for propeller type, altitude, and the airplane's published power-setting information."
+  - "Using detonation and preignition as synonyms instead of distinguishing an explosive end-gas event from ignition before the intended spark event."
+  - "Assuming an aircraft electrical-system shutdown makes a magneto ignition system unable to fire."
 source_verification:
   status: not_started
   verified_at_utc: null

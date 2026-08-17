@@ -1,5 +1,16 @@
 # Piston Engines, Propellers, and Combustion — production log
 
+## 2026-08-17 — opening preview rendered
+
+- Derived `narration.md` from the approved master script and rendered reusable
+  Realtime segments 1–5 into
+  `audio-artifacts/core-05-realtime-20260817T210244Z.segments`.
+- Assembled the 2:59 preview with the approved Ballad intro music cue. The
+  automated audio-quality report passed WAV/MP3 decode, 24 kHz mono format,
+  duration agreement, five stitch-boundary checks, and clipping checks.
+- The preview awaits human listening approval before the full render; the
+  retained segment work directory will be reused if it is accepted.
+
 ## 2026-08-17 — pre-render QA audit
 
 - Confirmed that all 35 material claims map to the 15-source ledger, that

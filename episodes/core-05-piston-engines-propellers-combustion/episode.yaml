@@ -51,7 +51,7 @@ release_gates_remaining:
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: preview_rendered
 hosting:
   metadata: hosting-metadata.yaml
 public_notes: show-notes.md

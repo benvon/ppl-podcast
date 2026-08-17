@@ -1,7 +1,44 @@
 episode_id: "core-05"
-status: not_rendered
+status: preview_rendered
+reason: >-
+  Script version 0.1.3 has a technically validated reusable opening preview.
+  Human listening approval of that preview remains required before a full render.
 current_candidate_render: null
 superseded_candidates: []
+opening_preview:
+  script_version: 0.1.3
+  rendered_at_utc: "2026-08-17T21:05:24Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 8
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: "audio-artifacts/core-05-20260817T210244Z.preview-001-005.mp3"
+  lossless_master: "audio-artifacts/core-05-20260817T210244Z.preview-001-005.master.wav"
+  render_manifest: "audio-artifacts/core-05-20260817T210244Z.preview-001-005.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-05-20260817T210244Z.preview-001-005.audio-quality.json"
+  segment_work_dir: "audio-artifacts/core-05-realtime-20260817T210244Z.segments"
+  duration_seconds: 179.47
+  duration_display: "2:59"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: "b2f7ae77226c92a9197400561d7304ad1bc7e35852ae81d3d5b02b9180335f00"
+  included_segments: "1-5: opening, required production notice, podcast introduction, and first teaching exchange"
+  front_matter_validation: "Renderer preflight confirmed the opening is immediately followed by the required production-notice segment; the preview includes the Ballad podcast introduction and music cue. Human listening approval is pending."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; written script remains unchanged."
+  music_bed:
+    source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"
+    sha256: "0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f"
+    full_level_gain_db: -24
+    announcer_voice_gain_db: -30
+    level_transition_seconds: 0.15
+    intro: "10-second lead, 5-second full-level continuation, 0.5-second fade"
+  usage_estimate_usd: 0.233636
+  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, five stitch boundaries with no discontinuity warnings, and no clipped samples. Artifact is Git-ignored."
 chapter_markers:
   status: pending_render
   source: "master-script.md section headings"

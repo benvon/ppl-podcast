@@ -3,29 +3,35 @@ series: ppl-study-podcast
 title: "Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems"
 slug: "fuel-mixture-carburetion-oil-cooling-electrical-systems"
 track: "core"
-status: planned
-version: 0.1.0
+status: drafted
+version: 0.1.1
 published_at: null
-runtime_target_minutes: null
+runtime_target_minutes: 40
 runtime_actual_seconds: null
-word_count: null
+word_count: 4940
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
-acs_references: []
-phak_references: []
+acs_references: ["PA.I.G.K1c", "PA.I.G.K1e", "PA.I.G.K1f", "PA.I.G.K2", "PA.I.G.R1", "PA.II.A.K3", "PA.II.C.K1-R1"]
+phak_references: ["Chapter 7: Induction, fuel, oil, cooling, and electrical systems"]
 aim_references: []
 advisory_circular_references: []
 cfr_references: []
-learning_objectives: []
-trouble_spots: []
+learning_objectives:
+  - "Explain how induction, fuel metering, and mixture control work together to supply a usable charge to a piston engine."
+  - "Compare float-type carburetion and fuel injection without transferring aircraft-specific procedures between them."
+  - "Connect fuel, oil, cooling, and electrical indications to the system behavior they report."
+trouble_spots:
+  - "Treating throttle and mixture as interchangeable power controls"
+  - "Assuming carburetor ice requires cold outside temperatures"
+  - "Treating fuel gauges or one engine indication as a complete system picture"
 source_verification:
-  status: not_started
+  status: source_mapped_pending_relevance_review
   verified_at_utc: null
   link_validation: link-validation.yaml
   relevance_review: required_before_public_release
 review:
-  editorial_status: not_started
+  editorial_status: initial_draft_complete
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml

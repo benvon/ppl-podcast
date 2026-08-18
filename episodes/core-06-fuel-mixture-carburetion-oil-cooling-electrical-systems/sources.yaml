@@ -2,18 +2,142 @@ episode_id: "core-06"
 verification_date: null
 verified_at_utc: null
 sources:
-  - id: replace-with-stable-source-id
-    authority: faa_guidance
-    title: "Replace with authoritative source title"
-    document_id: null
-    # Name the smallest relevant unit, for example: "Ch. 5, Stalls, p. 5-12"
-    # or "PA.VII.B.K1, p. VII-8". A chapter or document title alone is not enough.
-    locator: "Specific section/task/paragraph and page, where applicable"
-    # Reader-facing deep link. PDFs require #page=N; FAA HTML requires a specific
-    # anchor or section endpoint; eCFR requires the exact section URL.
-    url: "https://www.faa.gov/path/to/document.pdf#page=1"
-    revision: "Record document revision, effective date, or currentness statement"
-    relevance_excerpt: null # Required for LLM review when the linked source is another non-text resource. For a PDF, the validator extracts text from the #page=N target.
+  - id: acs-airplane-systems
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area I, Task G, PA.I.G.K1c, K1e, K1f, K2, and R1, printed p. 7"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task G names powerplant and propeller; fuel, oil, and hydraulic; and electrical systems. It also requires knowledge of managing abnormalities or failures and risk management for detecting malfunctions or failures."
     verified_at_utc: null
     link_status: null
-    supports_claims: [replace-with-stable-claim-id]
+    supports_claims: [acs-systems-anchor, acs-system-malfunction-anchor]
+  - id: acs-preflight-and-engine-start
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area II, Tasks A and C, PA.II.A.K3 and PA.II.C.K1 through R1, printed pp. 11-13"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "The ACS includes inspecting items, reasons for checking them, detecting possible defects, starting limitations, aborted-start conditions, and propeller safety."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-preflight-system-awareness]
+  - id: phak-induction-carburetor
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Induction Systems, Carburetor Systems, and Figure 7-10, printed pp. 7-7 through 7-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The induction system brings outside air in, mixes it with fuel, and delivers the mixture to the cylinders. A carburetor mixes fuel and air before the intake manifold; in a float-type carburetor, airflow through a venturi creates low pressure that draws fuel through a discharge nozzle."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [induction-system-purpose, induction-alternate-air, carburetor-mixes-before-manifold, venturi-pressure-and-fuel-metering, throttle-airflow-boundary]
+  - id: phak-mixture-and-carburetor-ice
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Mixture Control, Carburetor Icing, and Carburetor Heat, printed pp. 7-9 through 7-10"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "As altitude increases, less-dense air with unchanged fuel flow makes the mixture richer; mixture control reduces fuel flow, and descent requires enrichment. Fuel vaporization and the venturi pressure drop can lower carburetor temperature enough for ice, restricting mixture flow. Fixed-pitch airplanes usually show rpm loss; constant-speed airplanes usually show manifold-pressure loss while rpm remains constant."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [mixture-is-fuel-to-air-ratio, density-changes-mixture, aircraft-specific-mixture-procedures, carburetor-ice-physics, carburetor-ice-restricts-power, propeller-type-changes-ice-indication]
+  - id: phak-fuel-injection
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Fuel Injection Systems and Figure 7-13, printed pp. 7-10 through 7-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Fuel injection injects fuel directly into the cylinders or just ahead of the intake valve. Typical components include engine-driven and auxiliary pumps, a fuel-air control unit, fuel manifold, discharge nozzles, and fuel-pressure or flow indications. It is less susceptible to evaporative icing but has distinct hot-start and vapor-lock considerations."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [fuel-injection-location-and-components, fuel-injection-different-system-logic, fuel-injection-icing-boundary]
+  - id: phak-fuel-system-layout
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Fuel Systems, Gravity-Feed System, Fuel-Pump System, and Figure 7-30, printed pp. 7-25 through 7-26"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The fuel system must provide uninterrupted clean fuel under all approved conditions. Small aircraft commonly use gravity-feed or fuel-pump systems; pump systems commonly have an engine-driven main pump and electrically driven auxiliary pump."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [fuel-system-purpose, gravity-versus-pump-system, auxiliary-pump-system-role]
+  - id: phak-fuel-gauges-and-contamination
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Fuel Gauges, Fuel Selectors, Fuel Strainers, Sumps, and Drains, printed pp. 7-26 through 7-27"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Fuel quantity gauges are required to be accurate only when they read empty. Selector positions vary by airplane. Water and sediment settle in system low points, so fuel samples are drained and visually checked; water can freeze and block fuel lines or reach the carburetor and stop the engine."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [fuel-gauge-empty-reference, selector-is-aircraft-specific, fuel-sumps-remove-contaminants, fuel-contamination-can-stop-engine]
+  - id: phak-oil-system
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Oil Systems and Figure 7-17, printed pp. 7-16 through 7-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Oil lubricates moving parts, cools by reducing friction and removing cylinder heat, seals between cylinders and pistons, and carries contaminants away. Oil pressure directly indicates oil-system operation; oil-temperature changes occur more slowly."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [oil-system-functions, oil-pressure-versus-temperature, oil-quantity-is-aircraft-specific]
+  - id: phak-engine-cooling
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Engine Cooling Systems and Figure 7-19, printed pp. 7-17 through 7-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Most small aircraft use air cooling: baffles route air over cylinder fins. Cooling is less effective in high-power, low-airspeed operation. CHT responds directly to cylinder temperature; oil temperature is indirect and delayed."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [air-cooling-path, cooling-demand-relationship, cht-versus-oil-temperature, manufacturer-temperature-limits]
+  - id: phak-electrical-system
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Electrical System and Figure 7-34, printed pp. 7-30 through 7-31"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "A basic electrical system includes an alternator or generator, battery, switches, bus bar, circuit protection, voltage regulator, monitoring, and wiring. The engine-driven source supplies current and maintains battery charge; the battery starts the engine and supplies limited backup power. The master-controlled electrical system does not power magneto ignition."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [electrical-system-parts, alternator-and-battery-roles, master-does-not-power-magnetos, circuit-protection-role]
+  - id: phak-electrical-indications
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Ammeter, Loadmeter, and Voltage Regulator, printed p. 7-31"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "An ammeter indicates whether the alternator or generator is supplying power and whether the battery is charging. A negative indication means battery demand exceeds replacement. A loadmeter shows the percentage of generating capacity in use."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ammeter-shows-battery-balance, loadmeter-measures-generator-load, electrical-indications-need-aircraft-context]

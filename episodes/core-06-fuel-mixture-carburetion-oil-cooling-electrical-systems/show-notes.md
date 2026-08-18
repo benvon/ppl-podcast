@@ -2,7 +2,7 @@
 
 **Episode:** 6
 
-**Version:** 0.1.1
+**Version:** 0.1.2
 **Source verification:** Initial source mapping complete; current-link and source-relevance review are required before release.
 
 ## Production notice
@@ -12,7 +12,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 ## In this episode
 
 - Follow the air-and-fuel path from the induction intake to the cylinders.
-- Compare float-type carburetion with fuel injection, including why their approved procedures differ.
+- Explain float-type carburetion and distinguish it briefly from fuel injection, whose procedures may differ.
 - Understand mixture as a fuel-to-air ratio that changes with air density.
 - Explain carburetor ice as an internal temperature and airflow restriction problem.
 - Connect fuel, oil, cooling, and electrical indications to the systems they report.
@@ -22,8 +22,8 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 - [Float-type carburetor airflow and metering — PHAK Figure 7-10](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8)
 - [Carburetor ice formation — PHAK Figure 7-11](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9)
-- [Fuel-injection layout — PHAK Figure 7-13](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10)
 - [Gravity-feed and fuel-pump layouts — PHAK Figure 7-30](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25)
+- [Aviation-fuel grades and colors — PHAK Figure 7-32](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27)
 - [Wet-sump oil-system flow — PHAK Figure 7-17](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16)
 - [Air cooling through baffles and cylinder fins — PHAK Figure 7-19](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17)
 - [Electrical-system schematic and electrical gauges — PHAK Figures 7-34 and 7-35](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30)
@@ -34,11 +34,14 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 | --- | --- | --- | --- | --- |
 | Systems and malfunction-recognition anchor | FAA standard | [Private Pilot ACS: airplane systems](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14) | PA.I.G.K1c, K1e, K1f, K2, and R1; printed p. 7 | Pending release review |
 | Preflight and engine-start context | FAA standard | [Private Pilot ACS: inspection and engine start](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18) | PA.II.A.K3 and PA.II.C.K1 through R1; printed pp. 11–13 | Pending release review |
+| Intake stroke | FAA guidance | [PHAK: intake stroke](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2) | Ch. 7, printed p. 7-2 | Pending release review |
 | Induction and carburetor model | FAA guidance | [PHAK: induction and carburetor systems](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7) | Ch. 7, printed pp. 7-7–7-8 | Pending release review |
-| Mixture and carburetor ice | FAA guidance | [PHAK: mixture control and carburetor icing](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9) | Ch. 7, printed pp. 7-9–7-10 | Pending release review |
+| Mixture, carburetor ice, and carburetor heat | FAA guidance | [PHAK: mixture control, carburetor icing, and carburetor heat](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9) | Ch. 7, printed pp. 7-9–7-10 | Pending release review |
 | Fuel injection | FAA guidance | [PHAK: fuel-injection systems](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10) | Ch. 7, printed pp. 7-10–7-11 | Pending release review |
 | Fuel-system layout | FAA guidance | [PHAK: gravity-feed and fuel-pump systems](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25) | Ch. 7, printed pp. 7-25–7-26 | Pending release review |
 | Fuel quantity and contamination | FAA guidance | [PHAK: gauges, selectors, strainers, sumps, and drains](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26) | Ch. 7, printed pp. 7-26–7-27 | Pending release review |
+| Fuel-quantity indication | FAA guidance | [AC 23-17C: fuel-quantity indicators](https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188) | Fuel Quantity Indicator and Fuel Flowmeter, PDF pp. 187–188 | Pending release review |
+| Correct fuel grade | FAA guidance | [PHAK: fuel grades](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27) | Ch. 7, printed p. 7-27 | Pending release review |
 | Oil system | FAA guidance | [PHAK: oil systems](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16) | Ch. 7, printed pp. 7-16–7-17 | Pending release review |
 | Cooling system | FAA guidance | [PHAK: engine cooling systems](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17) | Ch. 7, printed pp. 7-17–7-18 | Pending release review |
 | Electrical system and indications | FAA guidance | [PHAK: electrical system](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30) | Ch. 7, printed pp. 7-30–7-31 | Pending release review |

@@ -1,7 +1,7 @@
 # Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems
 
-**Version:** 0.1.1 — initial source-mapped draft
-**Target runtime:** 38–42 minutes / 4,940 spoken words
+**Version:** 0.1.2 — revised initial source-mapped draft
+**Target runtime:** 40–43 minutes / 4,678 spoken words
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Initial draft; source-relevance review and editorial approval required before rendering.
 
@@ -11,7 +11,7 @@
 
 In a piston airplane, a change on one gauge can be the visible edge of a much larger system: air moving through an intake, fuel being metered, heat being carried away, or electricity coming from the engine instead of the battery. This episode connects those systems so their controls and indications have a story behind them.
 
-## [00:25] Disclaimer
+## [00:30] Disclaimer
 
 **INSTRUCTOR:**
 
@@ -25,7 +25,7 @@ Welcome to PPL Study Podcast, a source-conscious study companion for U.S. privat
 
 In this episode: Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems.
 
-## [01:20] What this episode connects
+## [01:25] What this episode connects
 
 **ANNOUNCER:**
 
@@ -52,7 +52,7 @@ Exactly. Air, fuel, oil, heat, and electrical current all have paths. The contro
 [Source: sources.yaml#acs-airplane-systems]
 [Claim type: FAA standard]
 
-## [04:00] Air and fuel need a path
+## [04:15] Air and fuel need a path
 
 **ANNOUNCER:**
 
@@ -62,9 +62,7 @@ Air and fuel need a path.
 
 Begin with induction. The induction system is the path that brings outside air into the engine, combines it with fuel, and delivers that fuel-air mixture to the cylinders. Picture the path in order: outside air enters an intake opening, passes through an air filter, travels through the fuel-metering part of the system, then moves through the intake manifold toward the cylinders.
 
-The filter is there to keep dust and other foreign material out of the engine. But a filter can become restricted. That is why the PHAK explains that an alternate source of induction air is available. In some airplanes it opens automatically; in others it is selected manually. The important mental model is simple: the engine still needs an airflow path when its normal filtered path is not available.
-
-That does not mean alternate air is a generic cockpit technique to memorize from a podcast. The location, control, indications, and approved use belong to the airplane’s POH or AFM. But it does tell you what that system is protecting: the engine’s ability to breathe.
+The filter is there to keep dust and other foreign material out of the engine. But a filter can become restricted. That is why the PHAK explains that an alternate source of induction air is available. In some airplanes it opens automatically; in others it is selected manually. Alternate air preserves an airflow path when the normal filtered path is not available. The airplane’s POH or AFM identifies how that path is controlled and how its use affects engine indications.
 
 **LEARNER:**
 
@@ -74,7 +72,7 @@ When we say the engine “breathes,” are we just using a metaphor?
 
 It is a metaphor, but a helpful one. On the intake stroke, a descending piston creates lower pressure in its cylinder. Air moves from the higher-pressure induction path toward that lower-pressure space. The engine cannot make normal power without admitting enough air. The metering system then supplies fuel in the right proportion to that air.
 
-Do not picture the throttle as a fuel lever. In a normally aspirated engine, it primarily changes how freely the induction path admits air. Opening it reduces the restriction and allows more air into the cylinders on each intake stroke. More air makes room for more fuel, more charge, and more potential cylinder pressure. The exact hardware differs among engines, but that relationship is the useful starting point.
+The throttle is best pictured as an induction-path control. In a normally aspirated engine, opening it reduces the restriction and allows more air into the cylinders on each intake stroke. More air allows a larger charge and more potential cylinder pressure. The fuel-metering system supplies fuel in relation to that airflow.
 
 **LEARNER:**
 
@@ -82,12 +80,12 @@ And the intake manifold is the shared route between the metering system and the 
 
 **INSTRUCTOR:**
 
-Yes. Think of it as the branching passage that carries the metered charge toward the individual cylinders. In a carbureted engine, the fuel and air have already been mixed before that manifold. In a fuel-injected engine, fuel is metered closer to the cylinders. We will separate those two layouts next.
+Yes. Think of it as the branching passage that carries the charge toward the individual cylinders. In a carbureted engine, the fuel and air have already been mixed before that manifold. Some engines instead use fuel injection, which meters fuel closer to the cylinders. We will make that distinction next.
 
-[Source: sources.yaml#phak-induction-carburetor]
+[Source: sources.yaml#phak-intake-stroke; sources.yaml#phak-induction-carburetor]
 [Claim type: FAA guidance]
 
-## [07:30] Carburetors and fuel injection
+## [07:10] Carburetors and fuel injection
 
 **ANNOUNCER:**
 
@@ -95,9 +93,9 @@ Carburetors and fuel injection.
 
 **INSTRUCTOR:**
 
-A carburetor is one way to meter fuel into the induction air. In the familiar float-type carburetor, incoming air passes through a venturi. A venturi is a narrowed part of a passage. As air speeds through that narrowed throat, pressure in the throat drops. The pressure difference helps move fuel through a discharge nozzle and into the airstream. The fuel and air mix there, then travel through the intake manifold toward the cylinders.
+A carburetor is one way to meter fuel into the induction air. In the familiar float-type carburetor, incoming air passes through a venturi. A venturi is a narrowed part of a passage. As air speeds through that narrowed throat, pressure in the throat drops. Pressure in the float chamber is higher, so that pressure difference forces fuel through a discharge nozzle into the airstream. The fuel and air mix there, then travel through the intake manifold toward the cylinders.
 
-The PHAK’s float-type carburetor diagram is especially useful here. See the show notes for the visual aid labeled “Float-type carburetor airflow and metering.” Follow the air from the inlet through the venturi. Then find the fuel discharge nozzle at the venturi. The key idea is not the name of every small part. It is that moving air creates the lower-pressure region that meters fuel into that air.
+The PHAK’s float-type carburetor diagram is especially useful here. See the show notes for the visual aid labeled “Float-type carburetor airflow and metering.” Follow the air from the inlet through the venturi. Then find the fuel discharge nozzle at the narrow throat. The pressure is lower at that nozzle than it is in the float chamber, so fuel moves toward the airstream.
 
 The throttle valve is downstream of that discharge point in this model. Moving the throttle changes how much fuel-air mixture can continue toward the engine. That is why throttle changes and airflow belong in the same sentence.
 
@@ -107,24 +105,12 @@ So a carburetor prepares one mixed stream before the intake manifold divides it 
 
 **INSTRUCTOR:**
 
-That is the right picture for a carbureted engine. But not every piston airplane is carbureted. Some engines use fuel injection. A fuel-injection system can inject fuel directly into the cylinders or just ahead of each intake valve. It commonly uses an engine-driven fuel pump, an auxiliary fuel pump, a fuel-air control unit, a fuel manifold, discharge nozzles, and fuel-pressure or fuel-flow indications.
-
-In a fuel-injected system, the fuel-air control unit fills the fuel-metering role that the carburetor filled in the earlier picture. Fuel is distributed to individual discharge nozzles rather than being drawn through one carburetor venturi. The engine still needs air, fuel, an appropriate ratio, and a route to the cylinder. The layout and the system behavior are different.
-
-That difference matters operationally. Fuel injection is less susceptible to evaporative icing than a float-type carburetor. But it has its own system characteristics, including hot-start and vapor-lock considerations. A vapor lock is fuel vapor in a fuel line where liquid fuel needs to flow. The details matter because they change the airplane’s approved starting, priming, auxiliary-pump, and abnormal procedures. Use the POH or AFM for the fuel-injected airplane you plan to fly; do not borrow a carbureted-airplane technique and assume it transfers.
-
-**LEARNER:**
-
-So “fuel injected” is not a footnote. It changes where the fuel is metered, what can go wrong, and which procedures I need to study.
-
-**INSTRUCTOR:**
-
-Exactly. For this lesson, retain the common chain and the key distinction. Both systems meter fuel for combustion. A carburetor uses a venturi to mix fuel into air before the manifold. Fuel injection sends metered fuel closer to each cylinder. The system in your airplane determines the detailed operating method.
+That is the right picture for a carbureted engine. Some piston engines instead use fuel injection. In the PHAK’s general model, fuel is metered just ahead of each intake valve or directly into the cylinder rather than being drawn into one carburetor venturi. The engine still needs air and fuel in an appropriate ratio, but the hardware and approved procedures can be different. Identify which system the airplane has, then use its POH or AFM for starting, mixture, auxiliary-pump, and abnormal procedures.
 
 [Source: sources.yaml#phak-induction-carburetor; sources.yaml#phak-fuel-injection]
 [Claim type: FAA guidance]
 
-## [12:30] Mixture is ratio, not power
+## [09:40] Mixture is ratio, not power
 
 **ANNOUNCER:**
 
@@ -134,7 +120,7 @@ Mixture is ratio, not power.
 
 The throttle and mixture controls are easy to blur together because both influence how the engine runs. They have different jobs.
 
-The throttle changes the amount of air the engine can admit. The mixture control changes fuel flow, which changes the fuel portion of the fuel-air ratio. A rich mixture has more fuel relative to the available air. A lean mixture has less fuel relative to that air. Neither word is praise or blame by itself. The useful question is whether the ratio is appropriate for the engine’s operating condition.
+The throttle changes how much charge the engine can admit. The mixture control changes fuel flow, which changes the fuel portion of the fuel-air ratio. A rich mixture has more fuel relative to the available air. A lean mixture has less fuel relative to that air. The useful question is whether the ratio is appropriate for the engine’s operating condition.
 
 Why does that ratio need attention? Air density changes with altitude. At a higher altitude, the same cylinder volume contains less air. If fuel flow stayed at the sea-level-calibrated amount while the air became less dense, the mixture would become progressively richer. The PHAK explains that this can lead to roughness and power loss. Reducing fuel flow with the mixture control compensates for the lower air density.
 
@@ -146,7 +132,7 @@ So the mixture control is not asking, “How much power do I want?” It is aski
 
 **INSTRUCTOR:**
 
-Yes. Power is affected because combustion depends on the charge, but mixture control is fundamentally about the ratio. That is also why a one-size-fits-all leaning rule is a poor substitute for understanding. Different engines have different fuel systems, instruments, operating limitations, and published procedures. Some aircraft provide an exhaust-gas-temperature indication; some have different instrumentation and manufacturer guidance. The POH or AFM connects the general density-and-ratio principle to that engine’s approved method and limits.
+Yes. Power is affected because combustion depends on the charge, but mixture control is fundamentally about the ratio. Different engines have different fuel systems, instruments, operating limitations, and published mixture procedures. Some aircraft provide an exhaust-gas-temperature indication; others provide different instrumentation and manufacturer guidance. The POH or AFM connects the general density-and-ratio principle to that engine’s method and limits.
 
 Here is the practical takeaway. When the flight condition changes the density of the induction air, the fuel-air ratio can change even if you have not moved the mixture control. That is why mixture management belongs in the airplane’s published operating information, not in a rote memory trick.
 
@@ -161,7 +147,7 @@ Right. The labels describe a relationship. The air changed; the fuel setting mus
 [Source: sources.yaml#phak-mixture-and-carburetor-ice]
 [Claim type: FAA guidance]
 
-## [16:30] Carburetor ice is a temperature problem
+## [12:55] Carburetor ice is a temperature problem
 
 **ANNOUNCER:**
 
@@ -183,11 +169,11 @@ That makes “carburetor ice can happen on a mild day” easier to understand. T
 
 Exactly. The PHAK notes that carburetor ice is most likely in certain temperature-and-humidity ranges but can occur outside the most familiar range. The physics is the important part: vaporization plus reduced pressure lowers the temperature in the carburetor.
 
-The propeller installation can change what you notice first. In an airplane with a fixed-pitch propeller, a loss of engine power usually shows up first as a decrease in rpm, possibly followed by roughness. In an airplane with a constant-speed propeller, the governor can hold selected rpm for a time by changing blade angle. A developing loss of power can therefore show up as a decrease in manifold pressure while rpm remains steady.
+The propeller installation can change what you notice first. In an airplane with a fixed-pitch propeller, carburetor ice usually shows up first as a decrease in rpm, possibly followed by roughness. In an airplane with a constant-speed propeller, the governor can hold selected rpm for a time by changing blade angle. Developing carburetor ice usually shows up as a decrease in manifold pressure while rpm remains steady.
 
 That is not two different kinds of ice. It is the same airflow restriction seen through two different propeller-and-indication systems. Episode 5 introduced why a constant-speed propeller can hold rpm as power changes. Here, use that knowledge to avoid treating a steady tachometer as proof that every part of the engine is healthy.
 
-Fuel injection changes this particular conversation. Because a fuel-injection system does not depend on the same low-pressure fuel discharge in a carburetor venturi, it is less susceptible to evaporative icing. But its intake can still be blocked by impact ice. Different system, different vulnerability; not no vulnerability.
+Carburetor heat gives the system a warmer alternate air path. Warm air is less dense, so applying carburetor heat normally reduces power and enriches the mixture. Those effects explain why the first indication after applying heat may move in the direction that looks worse: fixed-pitch rpm or constant-speed manifold pressure can fall. When ice is present and begins to melt, the indication then recovers gradually and the engine runs more smoothly.
 
 **LEARNER:**
 
@@ -195,12 +181,12 @@ So I should identify the induction system first, then learn its specific indicat
 
 **INSTRUCTOR:**
 
-Yes. System identification comes before procedure. Carburetor heat, alternate air, gauge markings, and the expected indication sequence are all installation-specific. The general knowledge is what lets those published details make sense.
+Yes. System identification comes before procedure. The POH or AFM gives the carburetor-heat or alternate-air method and the expected indication sequence for that installation. The system model explains why the indication can dip before it improves.
 
-[Source: sources.yaml#phak-mixture-and-carburetor-ice; sources.yaml#phak-fuel-injection]
+[Source: sources.yaml#phak-mixture-and-carburetor-ice]
 [Claim type: FAA guidance]
 
-## [21:00] Fuel system is more than a tank
+## [17:00] Fuel system is more than a tank
 
 **ANNOUNCER:**
 
@@ -224,15 +210,19 @@ Correct. The system design decides the components. The POH or AFM tells you what
 
 Fuel selectors are another example. Some airplanes have left, right, both, and off positions. Others have a different arrangement. Do not transfer a selector habit from one airplane to another. Know which tank or feed path each position represents in the airplane you are flying, and learn its required fuel-management method from its published information.
 
-Fuel quantity indications need their own careful wording. The PHAK explains that fuel quantity gauges are required to be accurate only when they read empty. That does not make every other indication useless. It means a gauge is one piece of the fuel picture, not the whole picture. A sound fuel picture starts with the required visual preflight inspection, known fuel added or used, the airplane’s indications, and the planned fuel use. Episode 19, *Cross-Country Planning, Fuel, and Diversions*, will develop the planning part of that picture.
+The engine also needs the correct fuel grade. The POH or AFM, flight-deck placards, and markings near the filler caps identify the approved grade for that airplane. Fuel color provides a supporting identification check. See the show notes for “Aviation-fuel grades and colors.” Begin with the airplane’s published requirement, then confirm that the fuel presented to the airplane is consistent with it.
+
+Fuel quantity indications need careful wording. The important certification reference is zero: the gauge is calibrated to read zero in level flight when the fuel remaining equals the unusable fuel supply. Unusable fuel is the portion that is not counted on to reach the engine through the approved operating range. A zero indication therefore means no usable fuel remains, not that every drop of liquid has vanished from the tank.
+
+That calibration point does not make the rest of the gauge disposable. Active FAA guidance says the installed fuel-quantity indicators should be used as the primary fuel-remaining instruments. Before flight, the PHAK also directs a visual check of each tank and comparison with its indication. In flight, track the indications and expected fuel use together. Episode 19, *Cross-Country Planning, Fuel, and Diversions*, will develop the planning part of that picture.
 
 **LEARNER:**
 
-“Accurate at empty” is a point of reference, then. It is not an excuse to ignore the gauges, and it is not a promise that a displayed number is exact.
+So zero is a defined reference point, and the rest of the gauge still carries useful information that I should monitor.
 
 **INSTRUCTOR:**
 
-Exactly. It keeps you from assigning more certainty to one indication than it can carry.
+Exactly. Compare the gauge with what you know about the fuel onboard and the fuel used. If those pieces do not agree, the disagreement itself matters.
 
 Clean fuel matters as much as enough fuel. Water and sediment are heavier than aviation fuel, so they collect at low points such as sumps, strainers, and drains. That is why a fuel sample can reveal contamination before the engine needs the fuel. Water can freeze and block fuel lines in cold weather, or it can reach the carburetor and stop the engine.
 
@@ -240,16 +230,16 @@ The preflight check is not a ritual performed because someone wrote it down. It 
 
 **LEARNER:**
 
-So the fuel system has at least three questions: Is there enough fuel, is it clean, and can it get to the engine through this airplane’s particular feed path?
+So the fuel system has four questions: Is there enough fuel, is it the correct fuel, is it clean, and can it get to the engine through this airplane’s particular feed path?
 
 **INSTRUCTOR:**
 
 That is a durable summary. Add a fourth question when the engine is running: is the system’s pressure or flow indication, if installed, consistent with that expected path? The answer is never a generic number from another airplane. It is the relationship and the published range for this one.
 
-[Source: sources.yaml#phak-fuel-system-layout; sources.yaml#phak-fuel-gauges-and-contamination]
+[Source: sources.yaml#phak-fuel-system-layout; sources.yaml#phak-fuel-gauges-and-contamination; sources.yaml#ac-23-17c-fuel-quantity; sources.yaml#phak-fuel-grade]
 [Claim type: FAA guidance]
 
-## [27:30] Oil is a working fluid
+## [23:20] Oil is a working fluid
 
 **ANNOUNCER:**
 
@@ -261,7 +251,7 @@ It is easy to think of engine oil as a slippery coating. Lubrication is one of i
 
 That makes oil a working fluid: a liquid moving through the engine to do several jobs at once.
 
-Most small reciprocating engines use a wet-sump system, meaning the oil supply is stored in a sump that is part of the engine. Some larger engines use a dry-sump system with a separate tank. You do not need to diagnose the layout by looking at a gauge. The useful point is that the airplane’s engine has a designed oil supply, flow path, pressure range, temperature range, and quantity limits.
+Most small reciprocating engines use a wet-sump system, meaning the oil supply is stored in a sump that is part of the engine. Some larger engines use a dry-sump system with a separate tank. Either layout has a designed oil supply, flow path, pressure range, temperature range, and quantity limits.
 
 See the show notes for “Wet-sump oil-system flow.” You can trace the route from the sump, through the pump and filter or screen, to the engine, then back to the sump. The engine is not merely holding oil; it is circulating oil.
 
@@ -273,14 +263,14 @@ If oil carries heat and lubricates moving parts, then oil pressure and oil tempe
 
 Right. Oil pressure is a direct indication of oil-system operation. It tells you about the pressure of the oil being supplied to the engine. Oil temperature reports how hot the oil has become, and it normally changes more slowly. That difference in response time is important. A temperature trend may lag the condition causing it. A pressure indication can change more directly with the system supplying oil.
 
-Neither statement names a failure by itself. High oil temperature can have several possible causes, and a pressure indication must be compared with the normal range for the airplane. But understanding the different jobs keeps you from asking the wrong gauge to answer the wrong question.
+High oil temperature can have several possible causes, and an oil-pressure indication must be compared with the normal range for the airplane. Understanding the different response times keeps you from asking one gauge to answer the other gauge’s question.
 
 Before flight, quantity and oil type matter too. The correct oil grade, minimum and maximum quantity, and any particular checking method are the engine manufacturer’s and airplane manufacturer’s information. Use the placards and the POH or AFM for that airplane. The general lesson is that oil quantity is not only a maintenance detail; it is part of the engine’s ability to lubricate and manage heat.
 
 [Source: sources.yaml#phak-oil-system]
 [Claim type: FAA guidance]
 
-## [31:30] Cooling is an airflow job
+## [26:30] Cooling is an airflow job
 
 **ANNOUNCER:**
 
@@ -310,14 +300,14 @@ That also explains why “the engine is hot” is too vague. It matters whether 
 
 **INSTRUCTOR:**
 
-Precisely. You do not need to diagnose every possible cause from a single indication. You need to recognize that high temperature is a relationship among heat production, cooling airflow, mixture, power, and the engine’s designed limits. The POH or AFM gives the green ranges, red lines, normal methods, and abnormal procedures for the intended engine installation.
+Precisely. One indication rarely identifies the cause by itself. Read it as part of a relationship among heat production, cooling airflow, mixture, power, and the engine’s designed limits. The POH or AFM gives the green ranges, red lines, normal methods, and abnormal procedures for the intended engine installation.
 
 Here is the practical mental habit: when power demand is high and airspeed is low, expect the cooling margin to be different than it is in lower-power, higher-airspeed flight. Use the airplane’s published indications and procedures to manage that relationship rather than treating a temperature gauge as background decoration.
 
 [Source: sources.yaml#phak-engine-cooling]
 [Claim type: FAA guidance]
 
-## [36:00] Electricity makes and stores
+## [30:10] Electricity makes and stores
 
 **ANNOUNCER:**
 
@@ -349,7 +339,7 @@ An ammeter is about battery balance. A loadmeter is about how much of the genera
 
 Well said. The two instruments can both belong to the electrical system without answering the same question.
 
-Circuit breakers and fuses are another place to think in terms of function before procedure. They protect wiring and equipment from electrical overload. A circuit breaker may be reset in some circumstances; a fuse must be replaced. But the correct handling of a tripped breaker is not a general reflex to teach without the specific checklist, equipment context, and airplane guidance. The important systems picture is that circuit protection interrupts a path when the path is carrying more current than it is designed to carry.
+Circuit breakers and fuses protect wiring and equipment from electrical overload. They interrupt a circuit when the path is carrying more current than it is designed to carry. A circuit breaker can be manually reset; a fuse must be replaced. The airplane’s checklist and POH or AFM provide the response to an opened circuit.
 
 One boundary from Episode 5 is worth carrying forward. The master switch controls the aircraft’s electrical equipment circuits, but it does not power magneto ignition. The magnetos create ignition energy independently as the engine turns. That is why a battery or alternator problem and an ignition problem are not automatically the same thing, and why the propeller must still be treated with respect even when the master is off.
 
@@ -364,7 +354,7 @@ Exactly. Keep the systems distinct, then notice where they connect. The battery 
 [Source: sources.yaml#phak-electrical-system; sources.yaml#phak-electrical-indications]
 [Claim type: FAA guidance]
 
-## [42:00] Read relationships, not isolated gauges
+## [34:50] Read relationships, not isolated gauges
 
 **ANNOUNCER:**
 
@@ -392,18 +382,10 @@ Exactly. That is why “watch the gauges” is incomplete advice. Watch for a ch
 
 The POH or AFM is where general theory becomes a specific airplane. It names the installed system, its controls, normal ranges, limitations, performance effects, and the approved procedures. The PHAK gives you the model. The POH or AFM tells you how that model is implemented in the airplane you intend to fly.
 
-**LEARNER:**
-
-And fuel injection belongs in that same approach. I should first recognize that it is a different metering system, then study the specific fuel-system and starting information for that airplane instead of assuming a carburetor model.
-
-**INSTRUCTOR:**
-
-Yes. Knowing the category prevents a dangerous shortcut. Knowing the POH or AFM supplies the exact operating information.
-
 [Source: sources.yaml#phak-mixture-and-carburetor-ice; sources.yaml#phak-oil-system; sources.yaml#phak-engine-cooling; sources.yaml#phak-electrical-system; sources.yaml#phak-electrical-indications]
 [Claim type: FAA guidance]
 
-## [46:30] What the ACS is really asking
+## [38:40] What the ACS is really asking
 
 **ANNOUNCER:**
 
@@ -411,11 +393,9 @@ What the ACS is really asking.
 
 **INSTRUCTOR:**
 
-The ACS systems task names powerplant, fuel and oil, and electrical systems. It also includes abnormalities and detecting malfunctions. That does not mean an oral-exam answer should be a forty-part component list.
+The ACS systems task names powerplant, fuel and oil, and electrical systems. It also includes abnormalities and detecting malfunctions. The standard calls for more than a component list: describe a system’s purpose, follow its normal path, identify the controls and indications associated with it, and explain why an abnormal indication deserves attention. Then distinguish the general system principle from the procedure for the airplane being tested.
 
-It means you should be able to describe a system’s purpose, follow its normal path, identify the controls and indications associated with it, and explain why an abnormal indication deserves attention. You should also be able to distinguish a general system principle from an aircraft-specific procedure.
-
-For fuel and induction, retain these ideas: air needs a clear path, fuel needs a dependable path, and mixture is the ratio between them. Carburetors and fuel-injection systems accomplish fuel metering differently. Carburetor ice is a cooling-and-restriction problem inside the carburetor, not merely an outside-temperature problem.
+For fuel and induction, retain these ideas: air needs a clear path, the correct clean fuel needs a dependable path, and mixture is the ratio between them. Carburetor ice is a cooling-and-restriction problem inside the carburetor, not merely an outside-temperature problem.
 
 For oil and cooling, retain this: oil does several jobs, including lubrication and heat transfer. Cooling requires airflow over the engine’s hot surfaces. Oil temperature and CHT can show different pieces of the heat picture.
 
@@ -432,7 +412,7 @@ Yes. Ask: what is changing, what system flow could explain it, what other indica
 [Source: sources.yaml#acs-airplane-systems; sources.yaml#acs-preflight-and-engine-start]
 [Claim type: FAA standard]
 
-## [49:30] Outro
+## [41:00] Outro
 
 **ANNOUNCER:**
 

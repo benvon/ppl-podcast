@@ -1,0 +1,24 @@
+schema_version: 1
+handoff_status: ready_for_hosting_pr
+publisher_release:
+  id: "core-05"
+  guid: "pplstudyguide.com:core-05"
+  title: "Piston Engines, Propellers, and Combustion"
+  description: "A source-conscious study of piston engines, propellers, and combustion for private-pilot airplane learners, connecting controlled cylinder pressure to thrust, power indications, and ignition safety."
+  published_at: "2026-08-17T23:03:28Z"
+  duration: "00:43:02"
+  season: 1
+  number: 5
+  explicit: false
+  audio: {} # Filled by the hosting publisher after private staging.
+release_readiness:
+  audio_candidate_approved_for_publication_preparation: true
+  publication_schedule_required: false
+  remaining_release_gates:
+    - "Stage and validate the immutable audio object in the hosting workflow."
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.3

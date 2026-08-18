@@ -41,8 +41,8 @@ so. We welcome technically grounded corrections and source updates.
 ## Episode lifecycle
 
 ```text
-scope → research + claims → tagged script → link/relevance validation
-      → editorial review → opening preview → full render → human audio QA
+scope → research + claims → tagged script → editorial review
+      → link/relevance validation → opening preview → full render → human audio QA
       → publication-day source check → hosting handoff
 ```
 
@@ -77,7 +77,8 @@ npm run sources:validate -- \
   --claims episodes/core-01-aeronautical-decision-making-risk-management/claim-inventory.yaml
 ```
 
-Then run the LLM relevance pass before a public candidate release. It fetches
+After editorial approval, run the LLM relevance pass before generating any
+audio. It fetches
 the public source excerpts and has the model assess whether the excerpt matches
 the cited locator and supports the claims mapped to it; it is an advisory
 review, not an aviation authority.
@@ -90,7 +91,7 @@ direnv exec . npm run sources:validate -- \
 ```
 
 The command writes `link-validation.yaml` beside the source ledger. Resolve
-every failed or inconclusive finding before release.
+every failed or inconclusive finding before rendering.
 
 The release gate also requires a complete two-way mapping between every claim
 and its ledger source, and a separate LLM assessment for every mapped claim.

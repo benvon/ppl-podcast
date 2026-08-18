@@ -9,8 +9,9 @@ const test = require("node:test");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { REQUIRED_NOTICE, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
+const { formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -29,6 +30,22 @@ function wavWithListMetadata(pcm) {
   result.writeUInt32LE(result.length - 8, 4);
   return result;
 }
+
+test("chapter review renders readable, escaped embedded-marker controls", () => {
+  const html = renderReviewHtml({
+    audioUrl: "core-05.mp3",
+    episodeTitle: "core-05 chapter review",
+    chapters: [{ index: 1, title: "Lift < Drag", start: 74, end: 120 }],
+  });
+  assert.equal(formatTimestamp(74), "1:14");
+  assert.match(html, /data-start="74"/);
+  assert.match(html, /Lift &lt; Drag/);
+  assert.match(html, /This page reads the chapters embedded in the MP3 itself/);
+});
+
+test("chapter review accepts its manifest argument", () => {
+  assert.deepEqual(parseChapterReviewArgs(["--manifest", "audio-artifacts/example.render-manifest.json"]), { manifest: "audio-artifacts/example.render-manifest.json" });
+});
 
 test("claim mapping rejects claims omitted from a source ledger entry", () => {
   const result = validateClaimMappings(
@@ -287,7 +304,7 @@ test("production notice must begin immediately after the final opening segment",
     { index: 1, section: "opening", text: "First opening sentence." },
     { index: 2, section: "opening", text: "Second opening sentence." },
     { index: 3, section: "objectives", text: "An intervening spoken section." },
-    { index: 4, section: "required production notice", text: REQUIRED_NOTICE },
+    { index: 4, section: "disclaimer", text: REQUIRED_NOTICE },
   ];
   assert.throws(() => validateFrontMatter(delayed), /immediately follow the final opening segment/);
   assert.doesNotThrow(() => validateFrontMatter([...delayed.slice(0, 2), { ...delayed[3], index: 3 }]));
@@ -296,18 +313,42 @@ test("production notice must begin immediately after the final opening segment",
 test("production notice must be the first spoken text after the opening", () => {
   const interveningCopy = [
     { index: 1, section: "opening", text: "Today's topic." },
-    { index: 2, section: "required production notice", text: "Before the notice, an unrelated message." },
-    { index: 3, section: "required production notice", text: REQUIRED_NOTICE },
+    { index: 2, section: "disclaimer", text: "Before the notice, an unrelated message." },
+    { index: 3, section: "disclaimer", text: REQUIRED_NOTICE },
   ];
   assert.throws(() => validateFrontMatter(interveningCopy), /must begin immediately after the opening/);
+});
+
+test("legacy production-notice headings remain valid", () => {
+  assert.doesNotThrow(() => validateFrontMatter([
+    { index: 1, section: "opening", text: "Today's topic." },
+    { index: 2, section: "required production notice", text: REQUIRED_NOTICE },
+  ]));
 });
 
 test("realtime renderer accepts an Announcer turn", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-renderer-test-"));
   const scriptPath = path.join(temporary, "master-script.md");
-  fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Required production notice\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
+  fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Disclaimer\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
   try {
     assert.equal(parseScript(scriptPath, 240).at(-1).speaker, "ANNOUNCER");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("realtime renderer requires completed source-relevance review before rendering", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-render-gate-test-"));
+  const scriptPath = path.join(temporary, "narration.md");
+  fs.writeFileSync(scriptPath, "# Test narration\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: complete\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults: []\n", "utf8");
+  try {
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /unresolved source-relevance findings/);
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults:\n  - citation_target: { valid: true }\n    link: { valid: true }\n    relevance:\n      status: assessed\n      assessment:\n        verdict: supports\n        locator_assessment: { verdict: supports }\n    claim_assessments: { valid: true }\nshow_notes_results: []\n", "utf8");
+    assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /marked complete/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -316,6 +357,34 @@ test("realtime renderer accepts an Announcer turn", () => {
 test("realtime renderer expands approved abbreviations only in spoken input", () => {
   assert.equal(spokenText("The PHAK says AI-assisted production is reviewed."), "The pea hack says artificial intelligence-assisted production is reviewed.");
   assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pea hack-like examples differ from PHAKS.");
+});
+
+test("MP3 chapters use the rendered section boundaries and preserve readable headings", () => {
+  const chapters = chapterMarkersFor([
+    { section: "opening", section_title: "Opening", start_frame: 6_000 },
+    { section: "opening", section_title: "Opening", start_frame: 24_000 },
+    { section: "podcast introduction", section_title: "Podcast introduction", start_frame: 48_000 },
+    { section: "lift & drag", section_title: "Lift & Drag", start_frame: 96_000 },
+  ], 6);
+  assert.deepEqual(chapters, [
+    { id: "chapter-001", start_ms: 0, end_ms: 2000, title: "Opening" },
+    { id: "chapter-002", start_ms: 2000, end_ms: 4000, title: "Podcast introduction" },
+    { id: "chapter-003", start_ms: 4000, end_ms: 6000, title: "Lift & Drag" },
+  ]);
+  assert.match(chapterFfmetadata(chapters), /title=Lift & Drag/);
+});
+
+test("MP3 chapter export embeds markers that ffprobe can read", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-chapters-test-"));
+  const masterPath = path.join(temporary, "master.wav"); const mp3Path = path.join(temporary, "episode.mp3");
+  const chapters = [{ id: "chapter-001", start_ms: 0, end_ms: 1_000, title: "Opening" }, { id: "chapter-002", start_ms: 1_000, end_ms: 2_000, title: "Lesson" }];
+  fs.writeFileSync(masterPath, wavForTest(Buffer.alloc(24_000 * 2 * 2)));
+  try {
+    writeMp3WithChapters({ masterPath, mp3Path, chapters });
+    verifyMp3Chapters(mp3Path, chapters);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("music cue plan preserves the requested intro lead and outro tail", () => {

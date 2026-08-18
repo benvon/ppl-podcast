@@ -1,0 +1,191 @@
+episode_id: "core-05"
+verification_date: "2026-08-17"
+verified_at_utc: "2026-08-17T23:03:23Z"
+sources:
+  - id: acs-powerplant-propeller-systems
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area I, Task G, PA.I.G.K1c, PA.I.G.K2, and PA.I.G.R1, printed p. 7"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task G identifies powerplant and propeller knowledge, indications and procedures for abnormalities or failures, and detection of system malfunctions or failures."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-powerplant-propeller-anchor, acs-abnormal-indications-anchor]
+  - id: acs-before-takeoff-malfunction-check
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area II, Task F, PA.II.F.K1 and PA.II.F.S5, printed p. 15"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=23"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task F requires understanding the purpose of before-takeoff checklist items, including detecting malfunctions, and verifying suitable engine parameters."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-before-takeoff-check-anchor]
+  - id: phak-reciprocating-engine-principle
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Reciprocating Engines, printed p. 7-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Reciprocating engines convert chemical energy into mechanical energy through combustion; pistons move linearly and the crankshaft rotates. Spark-ignition and compression-ignition engines differ primarily in how the charge is ignited."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [reciprocating-energy-conversion, spark-compression-ignition-distinction, opposed-engine-context]
+  - id: phak-four-stroke-components
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Spark-Ignition Four-Stroke Engines, printed p. 7-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The principal components include cylinders, pistons, intake and exhaust valves, spark plugs, connecting rods, crankshaft, crankcase, and magnetos. During the intake stroke, the descending piston and open intake valve draw the fuel-air mixture into the cylinder."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [four-stroke-components, intake-compression-power-strokes]
+  - id: amtp-intake-pressure-and-throttle
+    authority: faa_guidance
+    title: "Aviation Maintenance Technician Handbook—Powerplant, Chapter 2: Engine Fuel and Fuel Metering Systems"
+    document_id: "FAA-H-8083-32B"
+    locator: "Chapter 2, Airflow and Fuel Discharge, Figure 2-7, printed p. 2-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_amtp_ch2.pdf#page=6"
+    revision: "FAA-H-8083-32B, 2023"
+    relevance_excerpt: "The handbook explains that the descending piston creates a low-pressure area during intake and higher-pressure atmospheric air flows through the carburetor and intake manifold to fill it. It also explains that the throttle regulates airflow to the cylinders, restricting airflow more as it closes and admitting more air as it opens."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [intake-pressure-difference, throttle-intake-restriction]
+  - id: phak-four-stroke-cycle
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Four-Stroke Cycle and Figure 7-5, printed p. 7-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=4"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The exhaust stroke purges burned gases. Multiple cylinders are on different strokes, and precisely timed power strokes maintain crankshaft rotation. The page also introduces the propeller as a rotating airfoil whose thrust depends on blade shape, angle of attack, and rpm."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [exhaust-stroke, staggered-cylinder-power, propeller-rotating-airfoil, propeller-thrust-variables]
+  - id: phak-propeller-twist-fixed-pitch
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Propeller Blade Twist and Fixed-Pitch Propeller, printed p. 7-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=5"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The blade tip travels farther and faster than a section near the hub, so blade angle changes from hub to tip. Fixed-pitch propellers trade climb and cruise efficiency; rpm serves as the power indication, but altitude and air density change the power associated with a given rpm."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [fixed-pitch-compromise, climb-cruise-propeller-tradeoff, fixed-pitch-rpm-indication, density-changes-power-at-rpm]
+  - id: amtp-propeller-pitch-distribution
+    authority: faa_guidance
+    title: "Aviation Maintenance Technician Handbook—Powerplant, Chapter 7: Propellers"
+    document_id: "FAA-H-8083-32B"
+    locator: "Chapter 7, Pitch Distribution, printed p. 7-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/09_amtp_ch7.pdf#page=5"
+    revision: "FAA-H-8083-32B, 2023"
+    relevance_excerpt: "Pitch distribution is blade twist from the shank to the tip because each blade section travels at a different speed. The tip travels much faster than the inner blade."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [propeller-blade-twist]
+  - id: phak-constant-speed-propeller
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Adjustable-Pitch and Constant-Speed Propellers, printed p. 7-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=6"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "A constant-speed propeller governor varies blade angle to maintain selected rpm within its governing range. The throttle controls power output, the propeller control selects rpm, and manifold pressure indicates power at a constant rpm and altitude. The PHAK explains that increasing throttle admits more fuel and air, raising manifold pressure."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [constant-speed-governor, constant-speed-controls, constant-speed-range, manifold-pressure-meaning]
+  - id: phak-mixture-control-boundary
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Mixture Control, printed p. 7-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK explains that mixture control adjusts fuel flow to maintain the correct fuel-air mixture as air density changes, and that detailed procedures vary by aircraft and belong in the AFM or POH."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [mixture-ratio-boundary]
+  - id: phak-constant-speed-power-relationship
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Manifold Pressure and RPM Relationship, printed p. 7-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "The PHAK warns that excessive manifold pressure for a given rpm can overstress cylinders and directs pilots to the manufacturer’s recommended power settings and adjustment sequence."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [manufacturer-power-relationship]
+  - id: phak-dual-ignition
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Ignition System and Figure 7-16, printed p. 7-15"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=15"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "A magneto generates ignition current independently of the aircraft electrical system. Standard certificated aircraft commonly use two independent magnetos and two spark plugs per cylinder for reliability and improved combustion. Ignition-check rpm limits come from the AFM or POH."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [magneto-independent-power, dual-ignition-reliability, ignition-check-meaning]
+  - id: phak-magneto-propeller-hazard
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Ignition-System Shutdown Hazard, printed p. 7-16"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Because magnetos need no outside electrical power, moving the propeller can fire the engine if ignition is on. A broken magneto ground wire can leave the engine capable of firing even when the switch is OFF."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [propeller-always-live-hazard]
+  - id: phak-combustion-abnormalities
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Combustion and Figure 7-21, printed p. 7-19"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=19"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Normal combustion produces a smooth buildup of pressure timed to the power stroke. Detonation is uncontrolled explosive ignition that can cause high temperature, pressure, roughness, power loss, and engine damage. Preignition begins before the normal ignition event at a hot spot and also creates high temperature and damaging pressure."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [normal-combustion-pressure, detonation-definition-effects, detonation-operating-factors, preignition-definition-effects]
+  - id: phak-detonation-preignition-relationship
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 7, Detonation and Preignition Relationship, printed p. 7-20"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=20"
+    programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
+    programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
+    revision: "FAA-H-8083-25C, 2023; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "Detonation and preignition can occur together and one can cause the other. Both can present as high engine temperature with reduced performance, making cockpit distinction difficult; proper fuel and published temperature, pressure, and rpm ranges reduce their likelihood."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [abnormal-combustion-overlap, published-ranges-reduce-risk]

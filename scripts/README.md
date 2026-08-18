@@ -28,7 +28,10 @@ npm run precommit:check
 
 ## Candidate workflow
 
-1. Confirm the master script passes fact and editorial review.
+1. Confirm the master script has passed fact and editorial review, then run
+   `sources:validate --require-llm`, resolve every finding, and record
+   `source_verification.relevance_review: complete` in `episode.yaml`. The
+   renderer verifies that evidence before it sends any audio request.
 2. Derive the clean TTS input from that approved script; do not edit the
    narration copy independently.
 
@@ -42,8 +45,8 @@ npm run precommit:check
    complete episode.
 4. Render the full episode in bounded ranges if necessary. The work directory
    is safe to resume only if `render-settings.json` matches exactly.
-5. Assemble the complete range. The renderer adds an 8 ms fade at each rendered-segment edge and writes an automatic post-assembly report beside the manifest. It verifies WAV structure, 24 kHz mono format, MP3/WAV decode, output duration, clipping statistics, and abrupt sample jumps at every known stitch.
-6. Perform the required full listening QA. The automated report catches technical corruption and hard joins; it cannot judge synthesis artifacts, garbled words, pronunciation, or pacing.
+5. Assemble the complete range. The renderer adds an 8 ms fade at each rendered-segment edge and writes an automatic post-assembly report beside the manifest. For MP3 output, it also embeds ID3 chapter markers using the master script’s section headings and verifies them with `ffprobe`. It verifies WAV structure, 24 kHz mono format, MP3/WAV decode, output duration, clipping statistics, and abrupt sample jumps at every known stitch.
+6. Perform the required full listening QA. The automated report catches technical corruption and hard joins; it cannot judge synthesis artifacts, garbled words, pronunciation, pacing, or whether a chapter title is useful to a listener.
 
 Use the same timestamp and work directory for the render and assembly commands.
 
@@ -121,6 +124,38 @@ The render manifest records the source SHA-256, cue plan, and music-level
 settings. Automated checks still cannot judge music balance or editorial fit;
 listen to the intro and outro before approving the episode.
 
+## Local chapter review
+
+After assembling an MP3, create a local clickable review page from the
+chapters embedded in that MP3—not from the script or render manifest's planned
+list. Open the resulting HTML file in a browser, click each chapter, and listen
+across the marker. This makes title and placement review possible before the
+episode reaches a podcast player.
+
+```sh
+npm run audio:chapter-review -- \
+  --manifest audio-artifacts/EPISODE-TIMESTAMP.render-manifest.json
+```
+
+The page is written next to the MP3 by default, is ignored with the audio
+artifacts, and does not change the audio file.
+
+## Chapter markers
+
+Every `##` heading in the approved master script becomes an embedded MP3
+chapter marker. The renderer calculates each start from the stitched audio, not
+from the draft timestamp printed in the heading. This format is supported by
+[Apple Podcasts](https://podcasters.apple.com/support/5482-using-chapters-on-apple-podcasts)
+and [Overcast](https://overcast.fm/podcasterinfo). Keep headings short,
+specific, and listener-facing; they are navigation labels, not internal notes.
+
+During script-aligned listening QA, verify that the chapter list begins with
+the opening at `00:00`, each title describes the material that follows, and
+each marker lands before that material starts. The render manifest records the
+final titles and millisecond timings. Do not add or revise chapter data after
+the final MP3 has been staged: a changed MP3 requires the normal new immutable
+audio object and release review.
+
 ## Accepted audio policy
 
 - 24 kHz mono PCM source; retain the lossless WAV master and 160 kbps MP3
@@ -134,5 +169,5 @@ listen to the intro and outro before approving the episode.
   `pea hack`; the listener should hear “artificial intelligence-assisted
   production” and “pea hack.”
 - Use the versioned, ignored render manifest for duration, checksums, response
-  usage, usage-derived cost estimates, stitch positions, and the audio-quality
-  report. It is not an invoice.
+  usage, usage-derived cost estimates, stitch positions, chapter markers, and
+  the audio-quality report. It is not an invoice.

@@ -30,3 +30,9 @@
 - Expanded the carburetor-heat explanation to connect warmer, less-dense air with a richer fuel-to-air ratio when the mixture setting is unchanged.
 - Clarified unusable fuel in terms of reliable delivery to the engine, renamed the electrical section, and reduced repeated references to Episode 5.
 - Updated the two-way claim mapping for the throttle and carburetor-heat explanations and recorded 4,815 spoken words. The deterministic source pass revalidated all 14 FAA sources, 41 claims, and 21 show-notes links; source-relevance review remains pending before rendering.
+
+## 2026-08-19 — script approval and pre-render QA started
+
+- Script approved for source-relevance review and pre-render QA.
+- Recorded completed QA checks for reciprocal claim mapping, claim classification, deep listener-facing citations, editorial review, and opening/disclaimer structure.
+- Remaining pre-render gates: LLM source-relevance review, then the opening-preview listening check before a full candidate render.

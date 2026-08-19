@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-18T20:58:24.724Z
+checked_at_utc: 2026-08-19T12:26:36.749Z
 sources_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/sources.yaml
 claims_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/claim-inventory.yaml
 show_notes_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/show-notes.md
@@ -1741,7 +1741,7 @@ show_notes_results:
 results:
   - source_id: acs-airplane-systems
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-18T20:55:37.812Z
+    checked_at_utc: 2026-08-19T12:21:31.945Z
     linked_claim_ids:
       - acs-systems-anchor
       - acs-system-malfunction-anchor
@@ -1775,7 +1775,7 @@ results:
       status: not_requested
   - source_id: acs-preflight-and-engine-start
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-18T20:55:39.937Z
+    checked_at_utc: 2026-08-19T12:21:33.113Z
     linked_claim_ids:
       - acs-preflight-system-awareness
     missing_claim_ids: []
@@ -1808,7 +1808,7 @@ results:
       status: not_requested
   - source_id: phak-intake-stroke
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:55:40.058Z
+    checked_at_utc: 2026-08-19T12:21:33.465Z
     linked_claim_ids:
       - intake-stroke-draws-charge
     missing_claim_ids: []
@@ -1902,7 +1902,7 @@ results:
       status: not_requested
   - source_id: phak-induction-carburetor
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:55:47.174Z
+    checked_at_utc: 2026-08-19T12:22:01.707Z
     linked_claim_ids:
       - induction-system-purpose
       - induction-alternate-air
@@ -2000,7 +2000,7 @@ results:
       status: not_requested
   - source_id: phak-mixture-and-carburetor-ice
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:55:54.374Z
+    checked_at_utc: 2026-08-19T12:22:30.979Z
     linked_claim_ids:
       - mixture-is-fuel-to-air-ratio
       - density-changes-mixture
@@ -2101,7 +2101,7 @@ results:
       status: not_requested
   - source_id: phak-fuel-injection
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:01.440Z
+    checked_at_utc: 2026-08-19T12:22:55.368Z
     linked_claim_ids:
       - fuel-injection-distinction
     missing_claim_ids: []
@@ -2195,7 +2195,7 @@ results:
       status: not_requested
   - source_id: phak-fuel-system-layout
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:07.767Z
+    checked_at_utc: 2026-08-19T12:23:16.967Z
     linked_claim_ids:
       - fuel-system-purpose
       - gravity-versus-pump-system
@@ -2291,7 +2291,7 @@ results:
       status: not_requested
   - source_id: phak-fuel-gauges-and-contamination
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:12.940Z
+    checked_at_utc: 2026-08-19T12:23:24.454Z
     linked_claim_ids:
       - fuel-gauge-empty-reference
       - selector-is-aircraft-specific
@@ -2389,7 +2389,7 @@ results:
   - source_id: ac-23-17c-fuel-quantity
     title: AC 23-17C, Systems and Equipment Guide for Certification of Part 23
       Airplanes and Airships
-    checked_at_utc: 2026-08-18T20:56:17.547Z
+    checked_at_utc: 2026-08-19T12:23:31.945Z
     linked_claim_ids:
       - fuel-gauge-empty-reference
     missing_claim_ids: []
@@ -2422,7 +2422,7 @@ results:
       status: not_requested
   - source_id: phak-fuel-grade
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:17.939Z
+    checked_at_utc: 2026-08-19T12:23:32.452Z
     linked_claim_ids:
       - correct-fuel-grade
     missing_claim_ids: []
@@ -2516,7 +2516,7 @@ results:
       status: not_requested
   - source_id: phak-oil-system
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:23.041Z
+    checked_at_utc: 2026-08-19T12:23:42.403Z
     linked_claim_ids:
       - oil-system-functions
       - wet-and-dry-sump-layouts
@@ -2613,7 +2613,7 @@ results:
       status: not_requested
   - source_id: phak-engine-cooling
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:28.789Z
+    checked_at_utc: 2026-08-19T12:23:49.293Z
     linked_claim_ids:
       - air-cooling-path
       - cooling-demand-relationship
@@ -2710,7 +2710,7 @@ results:
       status: not_requested
   - source_id: phak-electrical-system
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:33.747Z
+    checked_at_utc: 2026-08-19T12:23:58.781Z
     linked_claim_ids:
       - electrical-system-parts
       - alternator-and-battery-roles
@@ -2807,7 +2807,7 @@ results:
       status: not_requested
   - source_id: phak-electrical-indications
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-18T20:56:40.713Z
+    checked_at_utc: 2026-08-19T12:24:06.973Z
     linked_claim_ids:
       - ammeter-shows-battery-balance
       - loadmeter-measures-generator-load

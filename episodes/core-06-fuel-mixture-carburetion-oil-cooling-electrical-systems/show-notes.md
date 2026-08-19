@@ -2,7 +2,7 @@
 
 **Episode:** 6
 
-**Version:** 0.1.2
+**Version:** 0.1.3
 **Source verification:** Initial source mapping complete; current-link and source-relevance review are required before release.
 
 ## Production notice

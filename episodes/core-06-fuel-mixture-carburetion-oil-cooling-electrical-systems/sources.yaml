@@ -46,7 +46,7 @@ sources:
     programmatic_url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf"
     programmatic_attestation: {url: "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems", link_text: "09_phak_ch7.pdf", sha256: "a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759"}
     revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 7"
-    relevance_excerpt: "The induction system brings outside air in, mixes it with fuel, and delivers the mixture to the cylinders. A carburetor mixes fuel and air before the intake manifold; in a float-type carburetor, airflow through a venturi creates low pressure that draws fuel through a discharge nozzle."
+    relevance_excerpt: "The induction system brings outside air in, mixes it with fuel, and delivers the mixture to the cylinders. A carburetor mixes fuel and air before the intake manifold; in a float-type carburetor, airflow through a venturi creates low pressure that draws fuel through a discharge nozzle. The throttle valve regulates the flow of fuel-air mixture from the carburetor to the combustion chambers."
     verified_at_utc: null
     link_status: null
     supports_claims: [induction-system-purpose, induction-alternate-air, carburetor-mixes-before-manifold, venturi-pressure-and-fuel-metering, throttle-airflow-boundary]

@@ -1,7 +1,7 @@
 # Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems
 
-**Version:** 0.1.2 — revised initial source-mapped draft
-**Target runtime:** 40–43 minutes / 4,678 spoken words
+**Version:** 0.1.3 — refined initial source-mapped draft
+**Target runtime:** 40–43 minutes / 4,815 spoken words
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Initial draft; source-relevance review and editorial approval required before rendering.
 
@@ -9,7 +9,7 @@
 
 **INSTRUCTOR:**
 
-In a piston airplane, a change on one gauge can be the visible edge of a much larger system: air moving through an intake, fuel being metered, heat being carried away, or electricity coming from the engine instead of the battery. This episode connects those systems so their controls and indications have a story behind them.
+In a piston airplane, a gauge change is often one indication of a larger system changing: air moving through the intake, fuel being metered, heat being carried away, or electrical power shifting from the engine-driven source to the battery. This episode connects those systems so their controls and indications have a story behind them.
 
 ## [00:30] Disclaimer
 
@@ -21,15 +21,15 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 **ANNOUNCER:**
 
-Welcome to PPL Study Podcast, a source-conscious study companion for U.S. private-pilot airplane learners. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
+Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
 
 In this episode: Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems.
 
-## [01:25] What this episode connects
+## [01:25] What the ACS is asking you to connect
 
 **ANNOUNCER:**
 
-What this episode connects.
+What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
@@ -39,7 +39,7 @@ This episode begins around that chain. For combustion to keep happening, the eng
 
 Those are not separate trivia categories. They affect one another. If air density changes, the fuel-air ratio changes unless the system is adjusted appropriately. If power demand is high while cooling airflow is low, heat management becomes more important. If the alternator stops supplying electrical power, the battery becomes a limited reserve for equipment that needs electricity—even though magneto ignition can continue independently.
 
-The Private Pilot Airplane ACS puts powerplant and propeller, fuel and oil, and electrical systems in the same systems task. It also asks an applicant to recognize abnormalities and detect system malfunctions. That is a useful clue about the point of this lesson. The goal is not to memorize a box of components. The goal is to see a system’s normal flow, notice when an indication no longer fits that flow, and know which source tells you what to do in the airplane you are flying.
+The Private Pilot Airplane ACS puts powerplant and propeller, fuel and oil, and electrical systems in the same systems task. It also asks an applicant to recognize abnormalities and detect system malfunctions. That tells you what the ACS is asking you to connect: each system’s normal path, the control that changes that path, and the indications that show the result. The goal is to see when an indication no longer fits the flow and then use the airplane’s information to understand it.
 
 **LEARNER:**
 
@@ -72,7 +72,9 @@ When we say the engine “breathes,” are we just using a metaphor?
 
 It is a metaphor, but a helpful one. On the intake stroke, a descending piston creates lower pressure in its cylinder. Air moves from the higher-pressure induction path toward that lower-pressure space. The engine cannot make normal power without admitting enough air. The metering system then supplies fuel in the right proportion to that air.
 
-The throttle is best pictured as an induction-path control. In a normally aspirated engine, opening it reduces the restriction and allows more air into the cylinders on each intake stroke. More air allows a larger charge and more potential cylinder pressure. The fuel-metering system supplies fuel in relation to that airflow.
+The throttle is a movable valve in that induction path. Think of it as a door in a passage. At a small throttle opening, it leaves a narrow opening. On each intake stroke, the descending piston still creates a lower-pressure space in the cylinder, but that narrow opening limits how freely higher-pressure air upstream can flow in. Less air reaches the cylinder, so the charge is smaller.
+
+Opening the throttle moves the valve farther out of the way. It reduces the restriction; it does not make air appear. The piston still creates the lower-pressure space, while the wider opening lets more air flow through the induction system to fill it. More air mass reaches the cylinder on each intake stroke, making a larger charge and more potential cylinder pressure. The fuel-metering system supplies fuel in relation to that airflow.
 
 **LEARNER:**
 
@@ -171,17 +173,17 @@ Exactly. The PHAK notes that carburetor ice is most likely in certain temperatur
 
 The propeller installation can change what you notice first. In an airplane with a fixed-pitch propeller, carburetor ice usually shows up first as a decrease in rpm, possibly followed by roughness. In an airplane with a constant-speed propeller, the governor can hold selected rpm for a time by changing blade angle. Developing carburetor ice usually shows up as a decrease in manifold pressure while rpm remains steady.
 
-That is not two different kinds of ice. It is the same airflow restriction seen through two different propeller-and-indication systems. Episode 5 introduced why a constant-speed propeller can hold rpm as power changes. Here, use that knowledge to avoid treating a steady tachometer as proof that every part of the engine is healthy.
+That is not two different kinds of ice. It is the same airflow restriction seen through two different propeller-and-indication systems. A constant-speed governor can hold rpm as power changes, so a steady tachometer is not proof that every part of the engine is healthy.
 
-Carburetor heat gives the system a warmer alternate air path. Warm air is less dense, so applying carburetor heat normally reduces power and enriches the mixture. Those effects explain why the first indication after applying heat may move in the direction that looks worse: fixed-pitch rpm or constant-speed manifold pressure can fall. When ice is present and begins to melt, the indication then recovers gradually and the engine runs more smoothly.
+Carburetor heat gives the system a warmer alternate air path. Warm air is less dense, so it carries fewer air molecules in a given volume. The cylinder has the same physical volume, but that volume holds less air. With the mixture control left at the same setting, fuel flow does not decrease by the same amount, so the fuel-to-air ratio becomes richer. The less-dense air also reduces power.
 
 **LEARNER:**
 
-So I should identify the induction system first, then learn its specific indications and response from the POH or AFM.
+Why would carburetor heat deliberately use warmer, less-dense air? If I have not moved the mixture control, is the same fuel now mixed with less air, making the mixture richer?
 
 **INSTRUCTOR:**
 
-Yes. System identification comes before procedure. The POH or AFM gives the carburetor-heat or alternate-air method and the expected indication sequence for that installation. The system model explains why the indication can dip before it improves.
+Yes. Density means how much air is packed into a given volume. Carburetor heat changes the density of the air entering, not the cylinder’s size. With the mixture control unchanged, less air shares the charge with roughly the same fuel flow, so the ratio shifts richer. That explains the normal power decrease. It also explains why the first indication after carburetor heat may move in a direction that looks worse: fixed-pitch rpm or constant-speed manifold pressure can fall. When ice is present and begins to melt, the indication then recovers gradually and the engine runs more smoothly.
 
 [Source: sources.yaml#phak-mixture-and-carburetor-ice]
 [Claim type: FAA guidance]
@@ -194,7 +196,7 @@ Fuel system is more than a tank.
 
 **INSTRUCTOR:**
 
-The fuel system has a demanding job: it must provide uninterrupted, clean fuel from the tanks to the engine under every approved power setting, altitude, attitude, and maneuver condition. That sentence explains why fuel-system knowledge is not simply about remembering how many gallons a tank holds.
+The fuel system has a demanding job: it must provide uninterrupted, clean fuel from the tanks to the engine under every power setting, altitude, attitude, and maneuver condition. That sentence explains why fuel-system knowledge is not simply about remembering how many gallons a tank holds.
 
 The layout can differ. In many high-wing airplanes, fuel tanks sit above the engine’s fuel-metering system, so gravity can provide the basic feed. In many low-wing airplanes, the tanks sit lower relative to the engine and pumps are needed. A typical fuel-pump system uses an engine-driven main pump and an electrically driven auxiliary pump. The auxiliary pump adds reliability and may be used for starting or when the engine-driven pump is not doing its job, according to the airplane’s approved procedures.
 
@@ -212,7 +214,7 @@ Fuel selectors are another example. Some airplanes have left, right, both, and o
 
 The engine also needs the correct fuel grade. The POH or AFM, flight-deck placards, and markings near the filler caps identify the approved grade for that airplane. Fuel color provides a supporting identification check. See the show notes for “Aviation-fuel grades and colors.” Begin with the airplane’s published requirement, then confirm that the fuel presented to the airplane is consistent with it.
 
-Fuel quantity indications need careful wording. The important certification reference is zero: the gauge is calibrated to read zero in level flight when the fuel remaining equals the unusable fuel supply. Unusable fuel is the portion that is not counted on to reach the engine through the approved operating range. A zero indication therefore means no usable fuel remains, not that every drop of liquid has vanished from the tank.
+Fuel quantity indications need careful wording. The important certification reference is zero: the gauge is calibrated to read zero in level flight when the fuel remaining equals the unusable fuel supply. Unusable fuel is the amount that can remain after the system can no longer reliably supply it to the engine. A zero indication therefore means no usable fuel remains, not that every drop of liquid has vanished from the tank.
 
 That calibration point does not make the rest of the gauge disposable. Active FAA guidance says the installed fuel-quantity indicators should be used as the primary fuel-remaining instruments. Before flight, the PHAK also directs a visual check of each tank and comparison with its indication. In flight, track the indications and expected fuel use together. Episode 19, *Cross-Country Planning, Fuel, and Diversions*, will develop the planning part of that picture.
 
@@ -307,11 +309,11 @@ Here is the practical mental habit: when power demand is high and airspeed is lo
 [Source: sources.yaml#phak-engine-cooling]
 [Claim type: FAA guidance]
 
-## [30:10] Electricity makes and stores
+## [30:10] Electrical power has a path
 
 **ANNOUNCER:**
 
-Electricity makes and stores.
+Electrical power has a path.
 
 **INSTRUCTOR:**
 
@@ -341,7 +343,7 @@ Well said. The two instruments can both belong to the electrical system without 
 
 Circuit breakers and fuses protect wiring and equipment from electrical overload. They interrupt a circuit when the path is carrying more current than it is designed to carry. A circuit breaker can be manually reset; a fuse must be replaced. The airplane’s checklist and POH or AFM provide the response to an opened circuit.
 
-One boundary from Episode 5 is worth carrying forward. The master switch controls the aircraft’s electrical equipment circuits, but it does not power magneto ignition. The magnetos create ignition energy independently as the engine turns. That is why a battery or alternator problem and an ignition problem are not automatically the same thing, and why the propeller must still be treated with respect even when the master is off.
+Keep ignition distinct from the electrical equipment system. The master switch controls the aircraft’s electrical equipment circuits, but it does not power magneto ignition. The magnetos create ignition energy independently as the engine turns. That is why a battery or alternator problem and an ignition problem are not automatically the same thing, and why the propeller must still be treated with respect even when the master is off.
 
 **LEARNER:**
 
@@ -385,15 +387,15 @@ The POH or AFM is where general theory becomes a specific airplane. It names the
 [Source: sources.yaml#phak-mixture-and-carburetor-ice; sources.yaml#phak-oil-system; sources.yaml#phak-engine-cooling; sources.yaml#phak-electrical-system; sources.yaml#phak-electrical-indications]
 [Claim type: FAA guidance]
 
-## [38:40] What the ACS is really asking
+## [38:40] Retrieval review
 
 **ANNOUNCER:**
 
-What the ACS is really asking.
+Retrieval review.
 
 **INSTRUCTOR:**
 
-The ACS systems task names powerplant, fuel and oil, and electrical systems. It also includes abnormalities and detecting malfunctions. The standard calls for more than a component list: describe a system’s purpose, follow its normal path, identify the controls and indications associated with it, and explain why an abnormal indication deserves attention. Then distinguish the general system principle from the procedure for the airplane being tested.
+The ACS systems task names powerplant, fuel and oil, and electrical systems. It also includes abnormalities and detecting malfunctions. Retrieve the connecting habit: follow a system’s normal path, identify the control that changes it, and connect an abnormal indication to the flow that could explain it. Then use the airplane’s information for the specific limit and response.
 
 For fuel and induction, retain these ideas: air needs a clear path, the correct clean fuel needs a dependable path, and mixture is the ratio between them. Carburetor ice is a cooling-and-restriction problem inside the carburetor, not merely an outside-temperature problem.
 

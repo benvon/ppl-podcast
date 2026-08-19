@@ -22,3 +22,11 @@
 - Reduced fuel injection to the requested brief distinction: some engines use it, and their approved procedures may differ.
 - The deterministic source pass validated all 14 current FAA links, all 41 reciprocal claim mappings, and all 21 show-notes links; the LLM relevance review remains pending and must run before audio rendering.
 - Tightened repeated caveats, retimed the draft, and recorded 4,678 spoken words. Status remains drafted pending source-relevance review and editorial approval.
+
+## 2026-08-19 — systems-flow refinement
+
+- Reframed the opening and ACS section around a gauge as evidence of an interconnected system, then renamed the close as a retrieval review.
+- Expanded the throttle explanation as an adjustable induction-path restriction and clarified the pressure-and-airflow chain during an intake stroke.
+- Expanded the carburetor-heat explanation to connect warmer, less-dense air with a richer fuel-to-air ratio when the mixture setting is unchanged.
+- Clarified unusable fuel in terms of reliable delivery to the engine, renamed the electrical section, and reduced repeated references to Episode 5.
+- Updated the two-way claim mapping for the throttle and carburetor-heat explanations and recorded 4,815 spoken words. The deterministic source pass revalidated all 14 FAA sources, 41 claims, and 21 show-notes links; source-relevance review remains pending before rendering.

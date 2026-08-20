@@ -508,6 +508,14 @@ test("stitch fade tapers complete PCM segments to silence", () => {
   assert.equal(pcm.readInt16LE(0), 20_000);
 });
 
+test("opening segment keeps its first rendered sample after the playback lead-in", () => {
+  const pcm = Buffer.alloc(960);
+  for (let offset = 0; offset < pcm.length; offset += 2) pcm.writeInt16LE(20_000, offset);
+  const faded = fadeSegmentPcm(pcm, 8, { fadeIn: false, fadeOut: true });
+  assert.equal(faded.readInt16LE(0), 20_000);
+  assert.equal(faded.readInt16LE(faded.length - 2), 0);
+});
+
 test("stitch analysis reports an abrupt un-faded PCM cut", () => {
   const pcm = Buffer.alloc(960);
   pcm.writeInt16LE(32_000, 480);

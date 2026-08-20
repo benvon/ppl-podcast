@@ -1,8 +1,89 @@
 episode_id: "core-06"
-status: not_rendered
-current_candidate_render: null
+status: candidate_rendered_pending_listening_qa
+reason: >-
+  Script version 0.1.3 has a technically validated Realtime candidate built
+  from the accepted opening-preview segments and the remaining full render.
+  Full script-aligned human listening QA and chapter review remain required.
+current_candidate_render:
+  script_version: 0.1.3
+  rendered_at_utc: "2026-08-20T13:50:12.241Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 8
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: "audio-artifacts/core-06-20260820T123756Z.mp3"
+  lossless_master: "audio-artifacts/core-06-20260820T123756Z.master.wav"
+  render_manifest: "audio-artifacts/core-06-20260820T123756Z.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-06-20260820T123756Z.audio-quality.json"
+  chapter_review: "audio-artifacts/core-06-20260820T123756Z.mp3.chapters.html"
+  segment_work_dir: "audio-artifacts/core-06-realtime-20260820T123756Z.segments"
+  duration_seconds: 1860.19
+  duration_display: "31:00"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  observed_bitrate_bps: 160000
+  sha256: "913bc64f17d1c95f3c20a0c882718a1b7e9ca567d480996c584aaa3249e63334"
+  front_matter_check: "audio-artifacts/core-06-20260820T123756Z.preview-001-005.mp3"
+  front_matter_duration_seconds: 179.72
+  front_matter_sha256: "6815f33f68e265a1f8d0cf2e3e4c3f7c0f6858a3fe4edc55ad0f89e4ccf09f02"
+  front_matter_validation: "The accepted opening preview includes the opening, Disclaimer, Ballad podcast introduction, and music cue. Renderer preflight confirms that the opening is immediately followed by the Disclaimer segment."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; PHAK expands to pea hack; written script remains unchanged."
+  music_bed:
+    source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"
+    sha256: "0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f"
+    full_level_gain_db: -24
+    announcer_voice_gain_db: -30
+    level_transition_seconds: 0.15
+    intro: "10-second lead, 5-second full-level continuation, 0.5-second fade"
+    outro: "10-second full-level continuation, 5-second fade"
+  usage_estimate_usd: 2.623238
+  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 67 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Artifact is Git-ignored; full script-aligned human listening QA and chapter review remain required."
 superseded_candidates: []
+opening_preview:
+  script_version: 0.1.3
+  rendered_at_utc: "2026-08-20T13:32:27.707Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 8
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: "audio-artifacts/core-06-20260820T123756Z.preview-001-005.mp3"
+  lossless_master: "audio-artifacts/core-06-20260820T123756Z.preview-001-005.master.wav"
+  render_manifest: "audio-artifacts/core-06-20260820T123756Z.preview-001-005.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-06-20260820T123756Z.preview-001-005.audio-quality.json"
+  segment_work_dir: "audio-artifacts/core-06-realtime-20260820T123756Z.segments"
+  duration_seconds: 179.72
+  duration_display: "3:00"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: "6815f33f68e265a1f8d0cf2e3e4c3f7c0f6858a3fe4edc55ad0f89e4ccf09f02"
+  included_segments: "1-5: opening, Disclaimer, podcast introduction, and the first ACS teaching segment"
+  front_matter_validation: "The opening preview was accepted after the required Disclaimer was heard. Renderer preflight confirms that the opening is immediately followed by the Disclaimer segment."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; PHAK expands to pea hack; written script remains unchanged."
+  music_bed:
+    source: "assets/music/jonasblakewood-synth-pop_60s-583368.mp3"
+    sha256: "0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f"
+    full_level_gain_db: -24
+    announcer_voice_gain_db: -30
+    level_transition_seconds: 0.15
+    intro: "10-second lead, 5-second full-level continuation, 0.5-second fade"
+  usage_estimate_usd: 0.232764
+  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, four stitch boundaries with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Artifact is Git-ignored."
+chapter_markers:
+  status: embedded_and_ffprobe_validated
+  source: "master-script.md section headings"
+  required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
+  review_page: "audio-artifacts/core-06-20260820T123756Z.mp3.chapters.html"
 required_before_release:
-  - "Complete human listening QA against master-script.md."
+  - "Complete full script-aligned human listening QA and chapter review."
   - "Re-verify all cited public links on publication day."
   - "Validate hosting metadata and external audio-store workflow."

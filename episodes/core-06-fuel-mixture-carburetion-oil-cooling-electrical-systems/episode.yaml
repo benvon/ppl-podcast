@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems"
 slug: "fuel-mixture-carburetion-oil-cooling-electrical-systems"
 track: "core"
-status: drafted
+status: candidate_rendered
 version: 0.1.3
 published_at: null
 runtime_target_minutes: 41
-runtime_actual_seconds: null
+runtime_actual_seconds: 1860.19
 word_count: 4815
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -37,13 +37,12 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Draft and fact-check all material claims against the source ledger"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: candidate_rendered_pending_listening_qa
 hosting:
   metadata: hosting-metadata.yaml
 public_notes: show-notes.md

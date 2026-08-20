@@ -44,3 +44,23 @@
 - Ran `sources:validate --require-llm` with the repository environment. All deep citations, FAA programmatic-copy attestations, claim mappings, show-notes mappings, page-locator assessments, and per-claim relevance assessments passed.
 - Updated the shared validator to cache identical FAA document and attestation requests within a validation run, preventing intermittent FAA attestation failures caused by repeated identical requests. Added regression coverage.
 - Remaining pre-render gate: render and listen to the opening preview.
+
+## 2026-08-20 — candidate render and automated QA
+
+- Reused the accepted opening-preview segments and rendered the remaining 62
+  narration segments through `gpt-realtime-2.1`: Marin as Instructor, Cedar as
+  Learner, and Ballad as Announcer.
+- Assembled the candidate with the approved music mix: a 10-second intro lead,
+  steady reduced level beneath Ballad, a 5-second full-level intro continuation
+  and 0.5-second fade, then a 10-second full-level outro continuation and
+  5-second fade.
+- Candidate: `audio-artifacts/core-06-20260820T123756Z.mp3`; 31:00, 24 kHz
+  mono, 160 kbps MP3, SHA-256
+  `913bc64f17d1c95f3c20a0c882718a1b7e9ca567d480996c584aaa3249e63334`.
+  The lossless master, render manifest, audio-quality report, clickable chapter
+  review, and resumable segment directory are Git-ignored and recorded in
+  `audio-manifest.yaml`.
+- Automated QA passed: WAV and MP3 decode, matching duration, 67 checked
+  stitch boundaries without discontinuity warnings, zero clipped samples, and
+  ffprobe validation of 15 embedded MP3 chapters. Full script-aligned listening
+  QA and chapter review remain required.

@@ -9,7 +9,7 @@ const test = require("node:test");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 
@@ -449,11 +449,22 @@ test("music holds a steady reduced level under announcer voice", () => {
   assert.doesNotMatch(expression, /sidechain/);
 });
 
+test("the first assembled segment has a one-second playback lead-in", () => {
+  const spacing = { leadInMs: 1000, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 };
+  assert.equal(pauseBefore(null, { section: "opening", speaker: "INSTRUCTOR" }, spacing, null), 1000);
+});
+
 test("music assembly options do not invalidate reusable rendered segments", () => {
   const base = { model: "gpt-realtime-2.1", voices: { instructor: "marin", learner: "cedar", announcer: "ballad" }, stitchFadeMs: 8, maxWords: 240, continuityCharacters: 240, spacing: { leadInMs: 250, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 } };
   const noMusic = settingsFor({ ...base, music: null }, "script-hash");
   const withMusic = settingsFor({ ...base, music: { path: "assets/music/example.mp3", gainDb: -24 } }, "script-hash");
   assert.deepEqual(withMusic, noMusic);
+});
+
+test("changed narration only reuses a segment when its exact render input still matches", () => {
+  assert.equal(reusableSegment({ render_input_sha256: "same", source_text_sha256: "old" }, "same", "new"), true);
+  assert.equal(reusableSegment({ render_input_sha256: "old", source_text_sha256: "same" }, "same", "same"), false);
+  assert.equal(reusableSegment({ source_text_sha256: "same" }, "new", "same"), true);
 });
 
 test("music-bed mix creates a playable mono WAV", () => {

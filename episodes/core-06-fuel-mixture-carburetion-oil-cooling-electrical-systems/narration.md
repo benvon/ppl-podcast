@@ -31,7 +31,7 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-Episode 5, *Piston Engines, Propellers, and Combustion*, followed the power chain inside a piston engine: controlled combustion creates cylinder pressure, pressure moves the piston, the crankshaft turns, and the propeller turns that rotation into thrust.
+In episode 5, we followed the power chain inside a piston engine: controlled combustion creates cylinder pressure, pressure moves the piston, the crankshaft turns, and the propeller turns that rotation into thrust.
 
 This episode begins around that chain. For combustion to keep happening, the engine needs a usable charge in each cylinder. A charge is the amount of air and fuel admitted for one combustion event. It also needs oil to let moving parts work and carry heat away. It needs cooling air to keep cylinder temperatures in range. And it uses electrical power for starting and for much of the equipment around the engine.
 

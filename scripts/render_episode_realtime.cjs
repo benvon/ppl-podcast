@@ -39,7 +39,7 @@ const DEFAULTS = {
   maxWords: 240,
   continuityCharacters: 240,
   timeoutSeconds: 120,
-  leadInMs: 250,
+  leadInMs: 1000,
   continuedTurnMs: 120,
   speakerChangeMs: 220,
   sectionChangeMs: 550,
@@ -264,24 +264,46 @@ function settingsFor(options, scriptHash) {
 
 function establishSettings(workDir, settings) {
   ensureDir(workDir); const target = path.join(workDir, "render-settings.json"); const next = `${JSON.stringify(settings, null, 2)}\n`;
-  if (fs.existsSync(target) && fs.readFileSync(target, "utf8") !== next) throw new RenderError(`Render settings differ from ${target}. Choose a new --work-dir to avoid mixing incompatible segments.`);
-  if (!fs.existsSync(target)) writeAtomic(target, next);
+  if (fs.existsSync(target)) {
+    const existing = JSON.parse(fs.readFileSync(target, "utf8"));
+    const { script_sha256: existingScriptHash, spacing_ms: existingSpacing, ...existingRenderSettings } = existing;
+    const { script_sha256: nextScriptHash, spacing_ms: nextSpacing, ...nextRenderSettings } = settings;
+    if (JSON.stringify(existingRenderSettings) !== JSON.stringify(nextRenderSettings)) throw new RenderError(`Render settings differ from ${target}. Choose a new --work-dir to avoid mixing incompatible segments.`);
+    if (existingScriptHash !== nextScriptHash) writeAtomic(target, next);
+    return;
+  }
+  writeAtomic(target, next);
 }
 
 function partBase(workDir, segment) { return path.join(workDir, `${String(segment.index).padStart(3, "0")}-${segment.speaker.toLowerCase()}`); }
 function segmentInstruction(segment, context) { return `${STYLE[segment.speaker]}\nYou are the ${segment.speaker[0] + segment.speaker.slice(1).toLowerCase()} in a public educational private-pilot study podcast. Read only the line following the marker READ EXACTLY. Do not add a greeting, label, preface, explanation, or closing. Keep technical terminology exact. Vary stress and cadence naturally when recurring technical terms appear; do not turn them into catchphrases.\n\n${context}\n\nREAD EXACTLY:`; }
+function renderInputHash(segments, segment, options) {
+  const position = segments.findIndex((candidate) => candidate.index === segment.index);
+  const input = { model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text) };
+  return sha256(JSON.stringify(input));
+}
+function reusableSegment(record, expectedRenderInputHash, expectedSourceTextHash) {
+  if (record.render_input_sha256) return record.render_input_sha256 === expectedRenderInputHash;
+  return record.source_text_sha256 === expectedSourceTextHash;
+}
 
 async function renderSegments(segments, selected, options, workDir) {
   const allUsage = [];
   for (const segment of selected) {
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
-    if (fs.existsSync(wavPath) && fs.existsSync(usagePath)) { console.log(`Reusing segment ${segment.index}/${segments.length}: ${segment.speaker}`); allUsage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); continue; }
-    if (fs.existsSync(wavPath) || fs.existsSync(usagePath)) throw new RenderError(`Incomplete existing segment ${segment.index}; remove only its matching files or choose a new work directory.`);
+    const sourceTextHash = sha256(segment.text); const inputHash = renderInputHash(segments, segment, options);
+    const hasWav = fs.existsSync(wavPath); const hasUsage = fs.existsSync(usagePath);
+    if (hasWav && hasUsage) {
+      const record = JSON.parse(fs.readFileSync(usagePath, "utf8"));
+      if (reusableSegment(record, inputHash, sourceTextHash)) { console.log(`Reusing segment ${segment.index}/${segments.length}: ${segment.speaker}`); allUsage.push(record.response_usage); continue; }
+      console.log(`Re-rendering changed segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
+    }
+    if (hasWav !== hasUsage) throw new RenderError(`Incomplete existing segment ${segment.index}; remove only its matching files or choose a new work directory.`);
     const position = segments.findIndex((candidate) => candidate.index === segment.index);
     console.log(`Rendering segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
     const result = await wsRender({ model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text), timeoutMs: options.timeoutSeconds * 1000 });
     writeAtomic(wavPath, makeWav(result.pcm));
-    const record = { segment_index: segment.index, speaker: segment.speaker, section: segment.section, source_text_sha256: sha256(segment.text), generated_at_utc: new Date().toISOString(), pcm_bytes: result.pcm.length, duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)), response_usage: result.usage };
+    const record = { segment_index: segment.index, speaker: segment.speaker, section: segment.section, source_text_sha256: sourceTextHash, render_input_sha256: inputHash, generated_at_utc: new Date().toISOString(), pcm_bytes: result.pcm.length, duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)), response_usage: result.usage };
     writeAtomic(usagePath, `${JSON.stringify(record, null, 2)}\n`); allUsage.push(result.usage);
   }
   return allUsage;
@@ -471,4 +493,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

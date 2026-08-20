@@ -296,9 +296,30 @@ async function attachCitedPdfPageText(link, citationUrl, { pdfjsLoader } = {}) {
   }
 }
 
-async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includePdfPageText = false, pdfjsLoader } = {}) {
+function fetchCacheKey(sourceUrl, options) {
+  const url = new URL(sourceUrl);
+  url.hash = "";
+  return JSON.stringify([url.toString(), Boolean(options.includeContentHash), Boolean(options.includeLinks), Boolean(options.includePdfBytes)]);
+}
+
+async function fetchSourceCached(sourceUrl, options, fetchCache) {
+  if (!fetchCache) return fetchSource(sourceUrl, options);
+  const key = fetchCacheKey(sourceUrl, options);
+  if (!fetchCache.has(key)) {
+    const request = fetchSource(sourceUrl, options);
+    fetchCache.set(key, request);
+    try { await request; }
+    catch (error) { fetchCache.delete(key); throw error; }
+  }
+  const cached = await fetchCache.get(key);
+  const finalUrl = new URL(cached.final_url);
+  finalUrl.hash = new URL(sourceUrl).hash;
+  return { ...cached, requested_url: sourceUrl, final_url: finalUrl.toString() };
+}
+
+async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includePdfPageText = false, pdfjsLoader, fetchCache } = {}) {
   const citationPage = includePdfPageText ? citedPdfPageNumber(source.url) : null;
-  const citation = await fetchSource(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: Boolean(source.programmatic_url), includePdfBytes: Boolean(citationPage) });
+  const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: Boolean(source.programmatic_url), includePdfBytes: Boolean(citationPage) }, fetchCache);
   citation.citation_url = source.url;
   citation.validation_url = source.validation_url || source.url;
   citation.errors = linkResponseErrors(source.validation_url || source.url, citation);
@@ -308,11 +329,11 @@ async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs
     return { link, citation_link: link, content_attestation: { valid: true, status: "not_configured" } };
   }
 
-  const programmatic = await fetchSource(source.programmatic_url, { fetchImpl, timeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage) });
+  const programmatic = await fetchSourceCached(source.programmatic_url, { fetchImpl, timeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage) }, fetchCache);
   programmatic.errors = linkResponseErrors(source.programmatic_url, programmatic);
   programmatic.valid = programmatic.errors.length === 0;
   const attestationConfig = source.programmatic_attestation;
-  const attestationLink = await fetchSource(attestationConfig.url, { fetchImpl, timeoutMs, includeLinks: true });
+  const attestationLink = await fetchSourceCached(attestationConfig.url, { fetchImpl, timeoutMs, includeLinks: true }, fetchCache);
   attestationLink.errors = linkResponseErrors(attestationConfig.url, attestationLink);
   attestationLink.valid = attestationLink.errors.length === 0;
   const expectedLink = (attestationLink.links || []).some((link) => sameUrlIgnoringFragment(link.url, source.programmatic_url) && link.text === attestationConfig.link_text);
@@ -523,7 +544,7 @@ function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
   return { valid: errors.length === 0, errors, markdown_link_count: links.length, manifest_link_count: manifestLinks.length };
 }
 
-async function validateShowNotesLinks(ledger, manifest) {
+async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
   const sourcesById = new Map(ledger.sources.map((source) => [source.id, source])); const results = [];
   for (const entry of manifest.links) {
     const source = sourcesById.get(entry.source_id); const noteSource = { ...source, url: entry.url, locator: entry.locator };
@@ -531,7 +552,7 @@ async function validateShowNotesLinks(ledger, manifest) {
     try {
       result.citation_target.errors = citationTargetErrors(noteSource); result.citation_target.valid = result.citation_target.errors.length === 0;
       if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
-      const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)) });
+      const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache });
       result.link = verification.link;
       if (noteSource.programmatic_url) {
         result.citation_link = verification.citation_link;
@@ -574,6 +595,7 @@ async function main() {
     return;
   }
   const results = [];
+  const fetchCache = new Map();
   for (const source of ledger.sources) {
     const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
     const missingClaims = source.supports_claims.filter((id) => !claimsById.has(id));
@@ -582,7 +604,7 @@ async function main() {
       entry.citation_target.errors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
       entry.citation_target.valid = entry.citation_target.errors.length === 0;
       if (!entry.citation_target.valid) throw new Error(`Deep-citation validation failed: ${entry.citation_target.errors.join("; ")}`);
-      const verification = await verifyProgrammaticFallback(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)) });
+      const verification = await verifyProgrammaticFallback(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache });
       entry.link = verification.link;
       if (source.programmatic_url) {
         entry.citation_link = verification.citation_link;
@@ -593,7 +615,7 @@ async function main() {
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results.push(entry);
   }
-  const showNotesResults = showNotesValidationConfigured ? await validateShowNotesLinks(ledger, showNotesManifest) : [];
+  const showNotesResults = showNotesValidationConfigured ? await validateShowNotesLinks(ledger, showNotesManifest, { fetchCache }) : [];
   const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids.length) && showNotesResults.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid));
   for (let index = 0; index < results.length; index += 1) {
     const source = ledger.sources[index]; const entry = results[index];

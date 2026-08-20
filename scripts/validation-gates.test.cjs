@@ -299,6 +299,36 @@ test("attested programmatic FAA copy is used when a PDF citation receives an int
   assert.equal(result.link.pdf_page_text, "Cited page text");
 });
 
+test("programmatic FAA validation reuses a shared fetch cache for repeated chapter attestations", async () => {
+  const citedUrl = "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=2";
+  const laterPageUrl = "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=3";
+  const programmaticUrl = "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf";
+  const attestationUrl = "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight";
+  const bytes = Buffer.from("identical FAA chapter bytes");
+  const sha256 = require("node:crypto").createHash("sha256").update(bytes).digest("hex");
+  let fetchCount = 0;
+  const fetchImpl = (url) => {
+    fetchCount += 1;
+    const requested = new URL(url).toString();
+    if (requested === citedUrl) return Promise.resolve(new Response(bytes, { status: 200, headers: { "content-type": "application/pdf" } }));
+    if (requested === programmaticUrl) return Promise.resolve(new Response(bytes, { status: 200, headers: { "content-type": "application/pdf" } }));
+    if (requested === attestationUrl) return Promise.resolve(new Response(`<a href="${programmaticUrl}">chapter_0.pdf</a>`, { status: 200, headers: { "content-type": "text/html" } }));
+    throw new Error(`unexpected URL ${requested}`);
+  };
+  const source = {
+    url: citedUrl,
+    programmatic_url: programmaticUrl,
+    programmatic_attestation: { url: attestationUrl, link_text: "chapter_0.pdf", sha256 },
+  };
+  const fetchCache = new Map();
+  const first = await verifyProgrammaticFallback(source, { fetchImpl, fetchCache });
+  const second = await verifyProgrammaticFallback({ ...source, url: laterPageUrl }, { fetchImpl, fetchCache });
+  assert.equal(first.content_attestation.valid, true);
+  assert.equal(second.content_attestation.valid, true);
+  assert.equal(second.link.requested_url, laterPageUrl);
+  assert.equal(fetchCount, 3);
+});
+
 test("production notice must begin immediately after the final opening segment", () => {
   const delayed = [
     { index: 1, section: "opening", text: "First opening sentence." },

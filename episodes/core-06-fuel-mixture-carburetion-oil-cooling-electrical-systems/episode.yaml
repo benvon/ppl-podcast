@@ -26,19 +26,18 @@ trouble_spots:
   - "Assuming carburetor ice requires cold outside temperatures"
   - "Treating fuel gauges or one engine indication as a complete system picture"
 source_verification:
-  status: source_mapped_pending_relevance_review
-  verified_at_utc: null
+  status: source_relevance_review_complete
+  verified_at_utc: "2026-08-20T00:20:48.711Z"
   link_validation: link-validation.yaml
-  relevance_review: required_before_public_release
+  relevance_review: complete
 review:
-  editorial_status: script_approved_pending_source_relevance_review
+  editorial_status: script_approved_source_relevance_review_complete
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
   - "Draft and fact-check all material claims against the source ledger"
-  - "Run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"

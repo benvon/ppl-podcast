@@ -1,28 +1,29 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-19T12:26:36.749Z
+checked_at_utc: 2026-08-20T00:20:48.711Z
 sources_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/sources.yaml
 claims_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/claim-inventory.yaml
 show_notes_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/show-notes.md
 show_notes_manifest_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/show-notes-manifest.yaml
-llm_requested: false
-llm_model: null
+llm_requested: true
+llm_model: gpt-5.6-terra
 claim_mapping:
   valid: true
   errors: []
 show_notes_mapping:
   valid: true
   errors: []
-  markdown_link_count: 21
-  manifest_link_count: 21
+  markdown_link_count: 26
+  manifest_link_count: 26
 show_notes_results:
   - id: carburetor-visual
     text: Float-type carburetor airflow and metering — PHAK Figure 7-10
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
-    source_id: phak-induction-carburetor
+    source_id: phak-carburetor-and-throttle
     claim_ids:
       - carburetor-mixes-before-manifold
       - venturi-pressure-and-fuel-metering
+      - throttle-airflow-boundary
     citation_target:
       valid: true
       errors: []
@@ -68,7 +69,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a4 []
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -84,7 +85,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: &a5 []
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -121,14 +122,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       status: 200
       content_type: application/pdf
-      redirects: &a3 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
-      errors: &a4 []
+      errors: &a3 []
       valid: true
       pdf_page_number: 9
       excerpt_characters: 0
@@ -140,14 +141,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       status: 200
       content_type: application/pdf
-      redirects: *a3
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
-      errors: *a4
+      errors: *a3
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -158,7 +159,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -174,7 +175,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -212,7 +213,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       status: 200
       content_type: application/pdf
-      redirects: &a5 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -231,7 +232,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       status: 200
       content_type: application/pdf
-      redirects: *a5
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -249,7 +250,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -265,7 +266,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -301,14 +302,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       status: 200
       content_type: application/pdf
-      redirects: &a7 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
-      errors: &a8 []
+      errors: &a7 []
       valid: true
       pdf_page_number: 27
       excerpt_characters: 0
@@ -320,14 +321,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       status: 200
       content_type: application/pdf
-      redirects: *a7
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
-      errors: *a8
+      errors: *a7
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -338,7 +339,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -354,7 +355,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -382,7 +383,7 @@ show_notes_results:
     source_id: phak-oil-system
     claim_ids:
       - oil-system-functions
-      - oil-pressure-versus-temperature
+      - wet-and-dry-sump-layouts
     citation_target:
       valid: true
       errors: []
@@ -391,14 +392,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       status: 200
       content_type: application/pdf
-      redirects: &a9 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
-      errors: &a10 []
+      errors: &a8 []
       valid: true
       pdf_page_number: 16
       excerpt_characters: 0
@@ -410,14 +411,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       status: 200
       content_type: application/pdf
-      redirects: *a9
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
-      errors: *a10
+      errors: *a8
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -428,7 +429,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -444,7 +445,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -481,14 +482,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       status: 200
       content_type: application/pdf
-      redirects: &a11 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
-      errors: &a12 []
+      errors: &a9 []
       valid: true
       pdf_page_number: 17
       excerpt_characters: 0
@@ -500,14 +501,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       status: 200
       content_type: application/pdf
-      redirects: *a11
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
-      errors: *a12
+      errors: *a9
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -518,7 +519,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -534,7 +535,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -557,13 +558,13 @@ show_notes_results:
       citation_hash_matches_programmatic: true
       errors: []
   - id: electrical-visual
-    text: Electrical-system schematic and electrical gauges — PHAK Figures 7-34 and
-      7-35
+    text: Electrical-system components — PHAK electrical-system section
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
     source_id: phak-electrical-system
     claim_ids:
       - electrical-system-parts
       - alternator-and-battery-roles
+      - master-does-not-power-magnetos
     citation_target:
       valid: true
       errors: []
@@ -572,14 +573,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       status: 200
       content_type: application/pdf
-      redirects: &a13 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
-      errors: &a14 []
+      errors: &a10 []
       valid: true
       pdf_page_number: 30
       excerpt_characters: 0
@@ -591,14 +592,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       status: 200
       content_type: application/pdf
-      redirects: *a13
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
-      errors: *a14
+      errors: *a10
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -609,7 +610,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -625,7 +626,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -649,7 +650,7 @@ show_notes_results:
       errors: []
   - id: acs-systems
     text: "Private Pilot ACS: airplane systems"
-    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
     source_id: acs-airplane-systems
     claim_ids:
       - acs-systems-anchor
@@ -658,27 +659,27 @@ show_notes_results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a11 []
       title: null
       truncated: false
       content_sha256: null
       hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
       errors: []
       valid: true
-      pdf_page_number: 14
+      pdf_page_number: 15
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 2086
-      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
   - id: acs-preflight
     text: "Private Pilot ACS: inspection and engine start"
-    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
     source_id: acs-preflight-and-engine-start
     claim_ids:
       - acs-preflight-system-awareness
@@ -686,27 +687,27 @@ show_notes_results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a11
       title: null
       truncated: false
       content_sha256: null
       hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
       errors: []
       valid: true
-      pdf_page_number: 18
+      pdf_page_number: 19
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 364
-      pdf_page_text_sha256: 5ac864174b0b4845fd286f4d506c7cb5395a15c6caa0f52811a402899a41ddec
+      pdf_page_text_characters: 1887
+      pdf_page_text_sha256: 6905e50e8ad4397065ead08d94df1874ce3246974f8ad32a35deff6b95f97924
   - id: intake-stroke
     text: "PHAK: intake stroke"
-    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
     source_id: phak-intake-stroke
     claim_ids:
       - intake-stroke-draws-charge
@@ -714,37 +715,37 @@ show_notes_results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
       status: 200
       content_type: application/pdf
-      redirects: &a15 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
-      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      errors: &a16 []
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      errors: &a12 []
       valid: true
-      pdf_page_number: 2
+      pdf_page_number: 3
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 3756
-      pdf_page_text_sha256: 861ae38daead2bce028d7e42a80082c2db84b93d2d32fa394ede8120d99fcb93
+      pdf_page_text_characters: 2852
+      pdf_page_text_sha256: c5034a9f2646fa7925a2050c676d53b1a033800ff2e16ad92d2bd34f9b6baf02
     citation_link:
-      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
       status: 200
       content_type: application/pdf
-      redirects: *a15
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
-      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      errors: *a16
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      errors: *a12
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -755,7 +756,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -771,7 +772,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -794,15 +795,12 @@ show_notes_results:
       citation_hash_matches_programmatic: true
       errors: []
   - id: induction-carburetor
-    text: "PHAK: induction and carburetor systems"
+    text: "PHAK: induction systems and alternate air"
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
     source_id: phak-induction-carburetor
     claim_ids:
       - induction-system-purpose
       - induction-alternate-air
-      - carburetor-mixes-before-manifold
-      - venturi-pressure-and-fuel-metering
-      - throttle-airflow-boundary
     citation_target:
       valid: true
       errors: []
@@ -811,14 +809,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       status: 200
       content_type: application/pdf
-      redirects: &a17 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
-      errors: &a18 []
+      errors: &a13 []
       valid: true
       pdf_page_number: 7
       excerpt_characters: 0
@@ -830,14 +828,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       status: 200
       content_type: application/pdf
-      redirects: *a17
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
-      errors: *a18
+      errors: *a13
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -848,7 +846,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -864,7 +862,98 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: carburetor-throttle
+    text: "PHAK: carburetor metering and throttle valve"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+    source_id: phak-carburetor-and-throttle
+    claim_ids:
+      - carburetor-mixes-before-manifold
+      - venturi-pressure-and-fuel-metering
+      - throttle-airflow-boundary
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      errors: &a14 []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3622
+      pdf_page_text_sha256: 36063308f1077afa1290fcbcd5ccbbcfd3865574e32e316f42a365c1b1aef78a
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      errors: *a14
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -887,7 +976,7 @@ show_notes_results:
       citation_hash_matches_programmatic: true
       errors: []
   - id: mixture-carb-ice
-    text: "PHAK: mixture control, carburetor icing, and carburetor heat"
+    text: "PHAK: mixture control and carburetor icing"
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
     source_id: phak-mixture-and-carburetor-ice
     claim_ids:
@@ -896,9 +985,6 @@ show_notes_results:
       - aircraft-specific-mixture-procedures
       - carburetor-ice-physics
       - carburetor-ice-restricts-power
-      - propeller-type-changes-ice-indication
-      - carburetor-heat-system-effect
-      - carburetor-heat-indication
     citation_target:
       valid: true
       errors: []
@@ -907,14 +993,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       status: 200
       content_type: application/pdf
-      redirects: &a19 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
-      errors: &a20 []
+      errors: &a15 []
       valid: true
       pdf_page_number: 9
       excerpt_characters: 0
@@ -926,14 +1012,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       status: 200
       content_type: application/pdf
-      redirects: *a19
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
-      errors: *a20
+      errors: *a15
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -944,7 +1030,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -960,7 +1046,98 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: carburetor-heat
+    text: "PHAK: carburetor heat and its indications"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+    source_id: phak-carburetor-heat
+    claim_ids:
+      - propeller-type-changes-ice-indication
+      - carburetor-heat-system-effect
+      - carburetor-heat-indication
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      errors: &a16 []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5128
+      pdf_page_text_sha256: 305bd39f12cb710faadc3a818216fb242174f5e513ec1ca51795771f68e96d74
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      errors: *a16
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -984,7 +1161,7 @@ show_notes_results:
       errors: []
   - id: injection
     text: "PHAK: fuel-injection systems"
-    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
     source_id: phak-fuel-injection
     claim_ids:
       - fuel-injection-distinction
@@ -992,37 +1169,37 @@ show_notes_results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
       status: 200
       content_type: application/pdf
-      redirects: &a21 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
-      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      errors: &a22 []
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      errors: &a17 []
       valid: true
-      pdf_page_number: 10
+      pdf_page_number: 11
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 5128
-      pdf_page_text_sha256: 305bd39f12cb710faadc3a818216fb242174f5e513ec1ca51795771f68e96d74
+      pdf_page_text_characters: 2882
+      pdf_page_text_sha256: 92e9355bfada7960c7697ab5726b2c7c41cf2d0d771e54a8d6530189ec8a81d7
     citation_link:
-      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
       status: 200
       content_type: application/pdf
-      redirects: *a21
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
-      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      errors: *a22
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      errors: *a17
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1033,7 +1210,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1049,7 +1226,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1087,14 +1264,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       status: 200
       content_type: application/pdf
-      redirects: &a23 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
-      errors: &a24 []
+      errors: &a18 []
       valid: true
       pdf_page_number: 25
       excerpt_characters: 0
@@ -1106,14 +1283,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       status: 200
       content_type: application/pdf
-      redirects: *a23
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
-      errors: *a24
+      errors: *a18
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1124,7 +1301,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1140,7 +1317,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1163,14 +1340,12 @@ show_notes_results:
       citation_hash_matches_programmatic: true
       errors: []
   - id: fuel-gauges
-    text: "PHAK: gauges, selectors, strainers, sumps, and drains"
+    text: "PHAK: fuel gauges and selectors"
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
     source_id: phak-fuel-gauges-and-contamination
     claim_ids:
       - fuel-gauge-empty-reference
       - selector-is-aircraft-specific
-      - fuel-sumps-remove-contaminants
-      - fuel-contamination-can-stop-engine
     citation_target:
       valid: true
       errors: []
@@ -1179,14 +1354,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       status: 200
       content_type: application/pdf
-      redirects: &a25 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
-      errors: &a26 []
+      errors: &a19 []
       valid: true
       pdf_page_number: 26
       excerpt_characters: 0
@@ -1198,14 +1373,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       status: 200
       content_type: application/pdf
-      redirects: *a25
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
-      errors: *a26
+      errors: *a19
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1216,7 +1391,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1232,7 +1407,97 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: fuel-contamination
+    text: "PHAK: fuel strainers, sumps, and drains"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+    source_id: phak-fuel-contamination
+    claim_ids:
+      - fuel-sumps-remove-contaminants
+      - fuel-contamination-can-stop-engine
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      errors: &a20 []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4836
+      pdf_page_text_sha256: 8bda1a77fa68475266013bf9a3a8b3af4a5580f5677845e9abe9df215d1bb244
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      errors: *a20
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1256,7 +1521,7 @@ show_notes_results:
       errors: []
   - id: fuel-quantity-guidance
     text: "AC 23-17C: fuel-quantity indicators"
-    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
     source_id: ac-23-17c-fuel-quantity
     claim_ids:
       - fuel-gauge-empty-reference
@@ -1264,24 +1529,24 @@ show_notes_results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
-      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: &a37 []
       title: null
       truncated: true
       content_sha256: null
       hash_truncated: false
-      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
-      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
       errors: []
       valid: true
-      pdf_page_number: 188
+      pdf_page_number: 196
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 2527
-      pdf_page_text_sha256: 65d3126ebcbbe840ece3d75dc9ab86bbec203f624ff79c04d4995d9e70cdd42e
+      pdf_page_text_characters: 2954
+      pdf_page_text_sha256: 509822369f39ddc11fb7e65bd7eb01c8fc9a661e1c4c9214c7f987a3a780d609
   - id: fuel-grade
     text: "PHAK: fuel grades"
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
@@ -1296,14 +1561,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       status: 200
       content_type: application/pdf
-      redirects: &a27 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
-      errors: &a28 []
+      errors: &a21 []
       valid: true
       pdf_page_number: 27
       excerpt_characters: 0
@@ -1315,14 +1580,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       status: 200
       content_type: application/pdf
-      redirects: *a27
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
-      errors: *a28
+      errors: *a21
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1333,7 +1598,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1349,7 +1614,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1378,8 +1643,6 @@ show_notes_results:
     claim_ids:
       - oil-system-functions
       - wet-and-dry-sump-layouts
-      - oil-pressure-versus-temperature
-      - oil-quantity-is-aircraft-specific
     citation_target:
       valid: true
       errors: []
@@ -1388,14 +1651,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       status: 200
       content_type: application/pdf
-      redirects: &a29 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
-      errors: &a30 []
+      errors: &a22 []
       valid: true
       pdf_page_number: 16
       excerpt_characters: 0
@@ -1407,14 +1670,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       status: 200
       content_type: application/pdf
-      redirects: *a29
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
-      errors: *a30
+      errors: *a22
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1425,7 +1688,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1441,7 +1704,97 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: oil-indications
+    text: "PHAK: oil indications and quantity"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+    source_id: phak-oil-indications-and-quantity
+    claim_ids:
+      - oil-pressure-versus-temperature
+      - oil-quantity-is-aircraft-specific
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      errors: &a23 []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3346
+      pdf_page_text_sha256: 87ce5bed07a21ce37ec2e34f723dd4b172a6a0e80c8f276bcc5e68835ea5ef10
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      errors: *a23
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1470,8 +1823,6 @@ show_notes_results:
     claim_ids:
       - air-cooling-path
       - cooling-demand-relationship
-      - cht-versus-oil-temperature
-      - manufacturer-temperature-limits
     citation_target:
       valid: true
       errors: []
@@ -1480,14 +1831,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       status: 200
       content_type: application/pdf
-      redirects: &a31 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
-      errors: &a32 []
+      errors: &a24 []
       valid: true
       pdf_page_number: 17
       excerpt_characters: 0
@@ -1499,14 +1850,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       status: 200
       content_type: application/pdf
-      redirects: *a31
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
-      errors: *a32
+      errors: *a24
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1517,7 +1868,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1533,7 +1884,97 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+  - id: cooling-indications
+    text: "PHAK: cylinder-head and oil-temperature indications"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+    source_id: phak-engine-temperature-indications
+    claim_ids:
+      - cht-versus-oil-temperature
+      - manufacturer-temperature-limits
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      errors: &a25 []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5032
+      pdf_page_text_sha256: 2880201f70545ca3b0bfb63441c76c38df195a5bada7560414ba6c689f2e452a
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      errors: *a25
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1563,7 +2004,6 @@ show_notes_results:
       - electrical-system-parts
       - alternator-and-battery-roles
       - master-does-not-power-magnetos
-      - circuit-protection-role
     citation_target:
       valid: true
       errors: []
@@ -1572,14 +2012,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       status: 200
       content_type: application/pdf
-      redirects: &a33 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
-      errors: &a34 []
+      errors: &a26 []
       valid: true
       pdf_page_number: 30
       excerpt_characters: 0
@@ -1591,14 +2031,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       status: 200
       content_type: application/pdf
-      redirects: *a33
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
-      errors: *a34
+      errors: *a26
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1609,7 +2049,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1625,7 +2065,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1648,10 +2088,11 @@ show_notes_results:
       citation_hash_matches_programmatic: true
       errors: []
   - id: electrical-indications
-    text: "PHAK: electrical monitoring"
+    text: "PHAK: circuit protection and electrical monitoring"
     url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
     source_id: phak-electrical-indications
     claim_ids:
+      - circuit-protection-role
       - ammeter-shows-battery-balance
       - loadmeter-measures-generator-load
       - electrical-indications-need-aircraft-context
@@ -1663,14 +2104,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: &a35 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
-      errors: &a36 []
+      errors: &a27 []
       valid: true
       pdf_page_number: 31
       excerpt_characters: 0
@@ -1682,14 +2123,14 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: *a35
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
-      errors: *a36
+      errors: *a27
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1700,7 +2141,7 @@ show_notes_results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1716,7 +2157,7 @@ show_notes_results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1741,7 +2182,7 @@ show_notes_results:
 results:
   - source_id: acs-airplane-systems
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-19T12:21:31.945Z
+    checked_at_utc: 2026-08-20T00:19:37.866Z
     linked_claim_ids:
       - acs-systems-anchor
       - acs-system-malfunction-anchor
@@ -1750,32 +2191,69 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a11
       title: null
       truncated: false
       content_sha256: null
       hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
       errors: []
       valid: true
-      pdf_page_number: 14
+      pdf_page_number: 15
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 2086
-      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page explicitly lists powerplant and propeller,
+          fuel/oil/hydraulic, and electrical systems under PA.I.G.K1, and it
+          explicitly addresses system abnormalities, failures, detection, and
+          management under PA.I.G.K2 and PA.I.G.R1–R2.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 15 (printed page 7) and contains
+            Task G, Operation of Systems, including the cited K1c, K1e, K1f, K2,
+            and R1 elements.
+        claim_assessments:
+          - claim_id: acs-systems-anchor
+            verdict: supports
+            rationale: PA.I.G.K1c lists powerplant and propeller; PA.I.G.K1e lists fuel,
+              oil, and hydraulic; and PA.I.G.K1f lists electrical as
+              airplane-system knowledge elements.
+          - claim_id: acs-system-malfunction-anchor
+            verdict: supports
+            rationale: PA.I.G.K2 addresses indications of and procedures for managing system
+              abnormalities or failures, while PA.I.G.R1 addresses detection of
+              system malfunctions or failures. PA.I.G.R2 additionally addresses
+              management of a system failure.
+      usage:
+        input_tokens: 938
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 269
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1207
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: acs-preflight-and-engine-start
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-19T12:21:33.113Z
+    checked_at_utc: 2026-08-20T00:19:38.247Z
     linked_claim_ids:
       - acs-preflight-system-awareness
     missing_claim_ids: []
@@ -1783,32 +2261,65 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a11
       title: null
       truncated: false
       content_sha256: null
       hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=18
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
       errors: []
       valid: true
-      pdf_page_number: 18
+      pdf_page_number: 19
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 364
-      pdf_page_text_sha256: 5ac864174b0b4845fd286f4d506c7cb5395a15c6caa0f52811a402899a41ddec
+      pdf_page_text_characters: 1887
+      pdf_page_text_sha256: 6905e50e8ad4397065ead08d94df1874ce3246974f8ad32a35deff6b95f97924
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The excerpt directly supports that the ACS addresses preflight
+          inspection knowledge, including the reasons for checking each item and
+          how to detect possible defects (PA.II.A.K3b-c). It does not include
+          engine-start knowledge, starting limitations, or propeller safety on
+          the cited PDF page.
+        locator_assessment:
+          verdict: partially_supports
+          rationale: The cited PDF page contains Area II, Task A and PA.II.A.K3 on printed
+            page 11. It does not contain Task C or PA.II.C.K1 through R1,
+            despite those being included in the locator.
+        claim_assessments:
+          - claim_id: acs-preflight-system-awareness
+            verdict: partially_supports
+            rationale: The page supports the portions concerning preflight inspection,
+              reasons for checks, and detecting defects. It does not support the
+              stated connections to engine-start knowledge, starting
+              limitations, or propeller safety.
+      usage:
+        input_tokens: 924
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 297
+        output_tokens_details:
+          reasoning_tokens: 83
+        total_tokens: 1221
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-intake-stroke
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:21:33.465Z
+    checked_at_utc: 2026-08-20T00:19:38.263Z
     linked_claim_ids:
       - intake-stroke-draws-charge
     missing_claim_ids: []
@@ -1816,37 +2327,37 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
       status: 200
       content_type: application/pdf
-      redirects: &a37 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
-      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      errors: &a38 []
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      errors: &a28 []
       valid: true
-      pdf_page_number: 2
+      pdf_page_number: 3
       excerpt_characters: 0
       excerpt_sha256: null
-      pdf_page_text_characters: 3756
-      pdf_page_text_sha256: 861ae38daead2bce028d7e42a80082c2db84b93d2d32fa394ede8120d99fcb93
+      pdf_page_text_characters: 2852
+      pdf_page_text_sha256: c5034a9f2646fa7925a2050c676d53b1a033800ff2e16ad92d2bd34f9b6baf02
     citation_link:
-      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
       status: 200
       content_type: application/pdf
-      redirects: *a37
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
-      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=2
-      errors: *a38
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=3
+      errors: *a28
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1857,7 +2368,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1873,7 +2384,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1896,19 +2407,47 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The excerpt states that the intake stroke begins as the piston starts
+          downward, the intake valve opens, and the fuel-air mixture is drawn
+          into the cylinder. It does not state that the descending piston
+          creates a low-pressure area or specify movement through the valve in
+          those terms.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains the four-stroke cycle description,
+            including the intake-stroke passage directly relevant to the claim.
+        claim_assessments:
+          - claim_id: intake-stroke-draws-charge
+            verdict: partially_supports
+            rationale: "Supported: piston downward travel, intake valve opening, and
+              fuel-air mixture being drawn into the cylinder. Not supported on
+              this page: the explicit low-pressure-area mechanism."
+      usage:
+        input_tokens: 1014
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 179
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1193
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-induction-carburetor
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:22:01.707Z
+    checked_at_utc: 2026-08-20T00:19:40.076Z
     linked_claim_ids:
       - induction-system-purpose
       - induction-alternate-air
-      - carburetor-mixes-before-manifold
-      - venturi-pressure-and-fuel-metering
-      - throttle-airflow-boundary
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -1918,14 +2457,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       status: 200
       content_type: application/pdf
-      redirects: &a39 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
-      errors: &a40 []
+      errors: &a29 []
       valid: true
       pdf_page_number: 7
       excerpt_characters: 0
@@ -1937,14 +2476,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       status: 200
       content_type: application/pdf
-      redirects: *a39
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=7
-      errors: *a40
+      errors: *a29
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -1955,7 +2494,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -1971,7 +2510,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -1994,22 +2533,196 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains an "Induction Systems" section that
+          directly describes the induction system’s function, the normal intake
+          air filter, and the need for alternate air when the filter is clogged.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and includes the "Induction
+            Systems" material corresponding to the stated Chapter 7, printed
+            page 7-7 locator.
+        claim_assessments:
+          - claim_id: induction-system-purpose
+            verdict: supports
+            rationale: The excerpt explicitly states that the induction system brings in
+              outside air, mixes it with fuel, and delivers the fuel-air mixture
+              to the cylinder where combustion occurs.
+          - claim_id: induction-alternate-air
+            verdict: supports
+            rationale: The excerpt states that the intake port normally contains an air
+              filter that inhibits dust and foreign objects, that the filter may
+              become clogged, and that an alternate air source must therefore be
+              available.
+      usage:
+        input_tokens: 1368
+        input_tokens_details:
+          cache_write_tokens: 1365
+          cached_tokens: 0
+        output_tokens: 217
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1585
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-carburetor-and-throttle
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    checked_at_utc: 2026-08-20T00:19:40.091Z
+    linked_claim_ids:
+      - carburetor-mixes-before-manifold
+      - venturi-pressure-and-fuel-metering
+      - throttle-airflow-boundary
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      errors: &a30 []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3622
+      pdf_page_text_sha256: 36063308f1077afa1290fcbcd5ccbbcfd3865574e32e316f42a365c1b1aef78a
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=8
+      errors: *a30
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited PDF page directly supports the carburetor-mixing and
+          venturi low-pressure concepts. It also states that the throttle valve
+          regulates fuel-air-mixture flow and is controlled by the flight-deck
+          throttle, but it does not expressly describe the throttle valve as an
+          adjustable restriction or state that opening it permits more mixture
+          to reach the combustion chambers.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and includes Figure 7-10 and
+            the surrounding Carburetor Systems text referenced by the locator.
+        claim_assessments:
+          - claim_id: carburetor-mixes-before-manifold
+            verdict: supports
+            rationale: The excerpt states that the carburetor system mixes fuel and air in
+              the carburetor before the mixture enters the intake manifold.
+          - claim_id: venturi-pressure-and-fuel-metering
+            verdict: supports
+            rationale: The text states that airflow through the venturi creates a
+              low-pressure area that causes fuel to flow through a main fuel jet
+              into the airstream. Figure 7-10 further identifies the discharge
+              nozzle and says fuel is forced through it into the venturi by
+              greater atmospheric pressure in the float chamber.
+          - claim_id: throttle-airflow-boundary
+            verdict: partially_supports
+            rationale: The excerpt says the throttle valve controls/regulates the flow of
+              the fuel-air mixture to the combustion chambers and is adjusted by
+              the flight-deck throttle. It does not explicitly characterize the
+              valve as a restriction or explicitly state that opening it reduces
+              restriction and permits more mixture flow.
+      usage:
+        input_tokens: 1279
+        input_tokens_details:
+          cache_write_tokens: 1276
+          cached_tokens: 0
+        output_tokens: 456
+        output_tokens_details:
+          reasoning_tokens: 107
+        total_tokens: 1735
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-mixture-and-carburetor-ice
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:22:30.979Z
+    checked_at_utc: 2026-08-20T00:19:40.109Z
     linked_claim_ids:
       - mixture-is-fuel-to-air-ratio
       - density-changes-mixture
       - aircraft-specific-mixture-procedures
       - carburetor-ice-physics
       - carburetor-ice-restricts-power
-      - propeller-type-changes-ice-indication
-      - carburetor-heat-system-effect
-      - carburetor-heat-indication
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2019,14 +2732,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       status: 200
       content_type: application/pdf
-      redirects: &a41 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
-      errors: &a42 []
+      errors: &a31 []
       valid: true
       pdf_page_number: 9
       excerpt_characters: 0
@@ -2038,14 +2751,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       status: 200
       content_type: application/pdf
-      redirects: *a41
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=9
-      errors: *a42
+      errors: *a31
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2056,7 +2769,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2072,7 +2785,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2095,15 +2808,70 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page directly discusses both mixture control and carburetor
+          icing, including altitude-related mixture changes, AFM/POH-specific
+          procedures, the physical causes of carburetor ice, and its effects on
+          engine power and operation.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the relevant
+            sections, “Carburetor Icing” and “Mixture Control,” that directly
+            address all listed claims.
+        claim_assessments:
+          - claim_id: mixture-is-fuel-to-air-ratio
+            verdict: supports
+            rationale: The excerpt states that leaning decreases fuel flow to compensate for
+              decreased air density at altitude and maintain the correct
+              fuel-air mixture.
+          - claim_id: density-changes-mixture
+            verdict: supports
+            rationale: The excerpt explicitly states that increasing altitude decreases
+              incoming air density while fuel density remains the same, creating
+              a progressively richer mixture. It also states that, during
+              descent, the mixture must be enriched to avoid becoming too lean.
+          - claim_id: aircraft-specific-mixture-procedures
+            verdict: supports
+            rationale: The excerpt states that mixture-adjustment processes can vary by
+              aircraft and that the AFM or POH should be consulted for specific
+              procedures.
+          - claim_id: carburetor-ice-physics
+            verdict: supports
+            rationale: The excerpt explicitly attributes carburetor ice to fuel vaporization
+              and decreased venturi air pressure, which cause a sharp
+              temperature drop in the carburetor.
+          - claim_id: carburetor-ice-restricts-power
+            verdict: supports
+            rationale: The excerpt states that ice can form on internal carburetor surfaces,
+              including the throttle valve; restrict fuel-air-mixture flow;
+              reduce power; and, if sufficient ice accumulates, cause the engine
+              to cease operating.
+      usage:
+        input_tokens: 1480
+        input_tokens_details:
+          cache_write_tokens: 1477
+          cached_tokens: 0
+        output_tokens: 448
+        output_tokens_details:
+          reasoning_tokens: 49
+        total_tokens: 1928
     claim_assessments:
-      valid: null
-      status: not_requested
-  - source_id: phak-fuel-injection
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-carburetor-heat
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:22:55.368Z
+    checked_at_utc: 2026-08-20T00:19:40.128Z
     linked_claim_ids:
-      - fuel-injection-distinction
+      - propeller-type-changes-ice-indication
+      - carburetor-heat-system-effect
+      - carburetor-heat-indication
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2113,14 +2881,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
       status: 200
       content_type: application/pdf
-      redirects: &a43 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      errors: &a44 []
+      errors: &a32 []
       valid: true
       pdf_page_number: 10
       excerpt_characters: 0
@@ -2132,14 +2900,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
       status: 200
       content_type: application/pdf
-      redirects: *a43
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=10
-      errors: *a44
+      errors: *a32
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2150,7 +2918,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2166,7 +2934,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2189,13 +2957,188 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses carburetor-ice indications by
+          propeller type, the power and mixture effects of carburetor heat, and
+          the initial-decrease/gradual-recovery indications after carburetor
+          heat is applied to an iced carburetor.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is identified as extracted from cited PDF page 10, and
+            all relevant passages appear on that page.
+        claim_assessments:
+          - claim_id: propeller-type-changes-ice-indication
+            verdict: supports
+            rationale: The excerpt states that the first indication in a fixed-pitch
+              aircraft is a decrease in engine rpm, possibly followed by
+              roughness. For a constant-speed propeller, it states that
+              carburetor icing is usually indicated by decreased manifold
+              pressure with no rpm reduction because propeller pitch adjusts to
+              maintain constant rpm.
+          - claim_id: carburetor-heat-system-effect
+            verdict: partially_supports
+            rationale: The excerpt directly says carburetor heat preheats induction air,
+              that heated air is less dense, that this decreases power
+              (sometimes up to 15 percent), and that it enriches the mixture.
+              However, it does not expressly state the claim's additional
+              mechanism that, with the mixture control unchanged, there is less
+              air in the cylinder volume.
+          - claim_id: carburetor-heat-indication
+            verdict: supports
+            rationale: The excerpt states that, when ice is present and carburetor heat is
+              used, fixed-pitch rpm decreases and then gradually increases as
+              ice melts; with a constant-speed propeller, manifold pressure
+              decreases and then gradually increases.
+      usage:
+        input_tokens: 1658
+        input_tokens_details:
+          cache_write_tokens: 1655
+          cached_tokens: 0
+        output_tokens: 464
+        output_tokens_details:
+          reasoning_tokens: 102
+        total_tokens: 2122
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-fuel-injection
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    checked_at_utc: 2026-08-20T00:19:40.144Z
+    linked_claim_ids:
+      - fuel-injection-distinction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      errors: &a33 []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2882
+      pdf_page_text_sha256: 92e9355bfada7960c7697ab5726b2c7c41cf2d0d771e54a8d6530189ec8a81d7
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=11
+      errors: *a33
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The excerpt directly describes fuel injection as a system in which
+          fuel is injected directly into the cylinders or just ahead of the
+          intake valve, and states that the fuel-air control unit essentially
+          replaces the carburetor and meters fuel based on mixture setting. It
+          does not support the statement that fuel-injected engines may require
+          different approved procedures.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 7-11, and the excerpt on that page
+            contains the “Fuel Injection Systems” section and Figure 7-13 as
+            identified by the locator.
+        claim_assessments:
+          - claim_id: fuel-injection-distinction
+            verdict: partially_supports
+            rationale: Supports that fuel injection is used in place of a carburetor and
+              that fuel is delivered directly into cylinders or just ahead of
+              intake valves. The excerpt does not address differing approved
+              operating procedures.
+      usage:
+        input_tokens: 1008
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 206
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1214
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-fuel-system-layout
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:23:16.967Z
+    checked_at_utc: 2026-08-20T00:19:40.170Z
     linked_claim_ids:
       - fuel-system-purpose
       - gravity-versus-pump-system
@@ -2209,14 +3152,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       status: 200
       content_type: application/pdf
-      redirects: &a45 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
-      errors: &a46 []
+      errors: &a34 []
       valid: true
       pdf_page_number: 25
       excerpt_characters: 0
@@ -2228,14 +3171,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       status: 200
       content_type: application/pdf
-      redirects: *a45
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=25
-      errors: *a46
+      errors: *a34
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2246,7 +3189,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2262,7 +3205,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2285,18 +3228,62 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses aircraft fuel-system purpose,
+          the two common small-aircraft fuel-system classifications, the design
+          relationship between tank/carburetor position and use of pumps, and
+          the roles of engine-driven and electrically driven auxiliary pumps.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 7-25 and contains the Fuel
+            Systems, Gravity-Feed System, and Fuel-Pump System text relevant to
+            all claims. Although the locator also references Figure 7-30 and
+            printed page 7-26, the supplied page itself fully supports the
+            stated claims.
+        claim_assessments:
+          - claim_id: fuel-system-purpose
+            verdict: supports
+            rationale: The excerpt states that the fuel system is designed to provide an
+              uninterrupted flow of clean fuel from tanks to engine, available
+              under all conditions of engine power, altitude, attitude, and
+              approved flight maneuvers.
+          - claim_id: gravity-versus-pump-system
+            verdict: supports
+            rationale: The excerpt identifies gravity-feed and fuel-pump systems as two
+              common classifications in small aircraft and explains that fuel
+              pumps are installed when aircraft design does not allow gravity to
+              transfer fuel.
+          - claim_id: auxiliary-pump-system-role
+            verdict: supports
+            rationale: The excerpt states that fuel-pump systems have an engine-driven main
+              pump and an electrically driven auxiliary/boost pump for engine
+              starting and when the engine pump fails, providing added
+              reliability.
+      usage:
+        input_tokens: 1405
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1402
+        output_tokens: 317
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1722
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-fuel-gauges-and-contamination
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:23:24.454Z
+    checked_at_utc: 2026-08-20T00:19:40.188Z
     linked_claim_ids:
       - fuel-gauge-empty-reference
       - selector-is-aircraft-specific
-      - fuel-sumps-remove-contaminants
-      - fuel-contamination-can-stop-engine
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2306,14 +3293,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       status: 200
       content_type: application/pdf
-      redirects: &a47 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
-      errors: &a48 []
+      errors: &a35 []
       valid: true
       pdf_page_number: 26
       excerpt_characters: 0
@@ -2325,14 +3312,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       status: 200
       content_type: application/pdf
-      redirects: *a47
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=26
-      errors: *a48
+      errors: *a35
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2343,7 +3330,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2359,7 +3346,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2382,49 +3369,61 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The excerpt directly addresses fuel-gauge accuracy at “empty,” visual
+          preflight verification, and fuel-selector operation/limitations.
+          However, it does not establish that zero corresponds specifically to
+          unusable fuel, that installed gauges are the primary in-flight
+          fuel-remaining instruments, or that selector operating requirements
+          belong in the AFM/POH.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is the supplied excerpted page, and it contains
+            the relevant sections, “Fuel Gauges” and “Fuel Selectors.”
+        claim_assessments:
+          - claim_id: fuel-gauge-empty-reference
+            verdict: partially_supports
+            rationale: The excerpt states that certification rules require fuel-gauge
+              accuracy only when the gauge reads “empty,” advises that other
+              readings be verified, and directs pilots to visually check each
+              tank during preflight and compare the result with the gauge
+              indication. It does not say that a zero indication is calibrated
+              to unusable fuel, nor does it characterize the installed
+              indicators as the primary in-flight fuel-remaining instruments.
+          - claim_id: selector-is-aircraft-specific
+            verdict: partially_supports
+            rationale: The excerpt explains that selector valves may have different
+              configurations and says fuel placards show limitations on tank
+              usage, supporting that selector use and limitations vary with the
+              installation. It does not state that fuel-selector positions and
+              operating requirements belong in the AFM/POH; the only AFM/POH
+              reference on this page concerns normal fuel-pressure operating
+              ranges.
+      usage:
+        input_tokens: 1111
+        input_tokens_details:
+          cache_write_tokens: 1108
+          cached_tokens: 0
+        output_tokens: 448
+        output_tokens_details:
+          reasoning_tokens: 115
+        total_tokens: 1559
     claim_assessments:
-      valid: null
-      status: not_requested
-  - source_id: ac-23-17c-fuel-quantity
-    title: AC 23-17C, Systems and Equipment Guide for Certification of Part 23
-      Airplanes and Airships
-    checked_at_utc: 2026-08-19T12:23:31.945Z
-    linked_claim_ids:
-      - fuel-gauge-empty-reference
-    missing_claim_ids: []
-    citation_target:
       valid: true
-      errors: []
-    link:
-      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
-      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
-      status: 200
-      content_type: application/pdf
-      redirects: []
-      title: null
-      truncated: true
-      content_sha256: null
-      hash_truncated: false
-      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
-      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=188
-      errors: []
-      valid: true
-      pdf_page_number: 188
-      excerpt_characters: 0
-      excerpt_sha256: null
-      pdf_page_text_characters: 2527
-      pdf_page_text_sha256: 65d3126ebcbbe840ece3d75dc9ab86bbec203f624ff79c04d4995d9e70cdd42e
-    relevance:
-      status: not_requested
-    claim_assessments:
-      valid: null
-      status: not_requested
-  - source_id: phak-fuel-grade
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-fuel-contamination
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:23:32.452Z
+    checked_at_utc: 2026-08-20T00:19:40.209Z
     linked_claim_ids:
-      - correct-fuel-grade
+      - fuel-sumps-remove-contaminants
+      - fuel-contamination-can-stop-engine
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2434,14 +3433,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       status: 200
       content_type: application/pdf
-      redirects: &a49 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
-      errors: &a50 []
+      errors: &a36 []
       valid: true
       pdf_page_number: 27
       excerpt_characters: 0
@@ -2453,14 +3452,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       status: 200
       content_type: application/pdf
-      redirects: *a49
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
-      errors: *a50
+      errors: *a36
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2471,7 +3470,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2487,7 +3486,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2510,18 +3509,248 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses fuel strainers, sumps, drains,
+          contaminant settling, preflight draining and visual inspection, and
+          the hazards posed by water contamination.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the specified printed page 7-27 and contains the
+            relevant “Fuel Strainers, Sumps, and Drains” and “Fuel
+            Contamination” material.
+        claim_assessments:
+          - claim_id: fuel-sumps-remove-contaminants
+            verdict: supports
+            rationale: The excerpt states that moisture and sediment are heavier than
+              aviation fuel and settle in a sump, a low point in the system. It
+              also says fuel samples should be drained and checked visually for
+              water and contaminants before flight.
+          - claim_id: fuel-contamination-can-stop-engine
+            verdict: supports
+            rationale: The excerpt explicitly states that, in cold weather, water can freeze
+              and block fuel lines and, in warm weather, it can flow into the
+              carburetor and stop the engine.
+      usage:
+        input_tokens: 1510
+        input_tokens_details:
+          cache_write_tokens: 1507
+          cached_tokens: 0
+        output_tokens: 270
+        output_tokens_details:
+          reasoning_tokens: 38
+        total_tokens: 1780
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-23-17c-fuel-quantity
+    title: AC 23-17C, Systems and Equipment Guide for Certification of Part 23
+      Airplanes and Airships
+    checked_at_utc: 2026-08-20T00:19:40.222Z
+    linked_claim_ids:
+      - fuel-gauge-empty-reference
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
+      status: 200
+      content_type: application/pdf
+      redirects: *a37
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_23-17C.pdf#page=196
+      errors: []
+      valid: true
+      pdf_page_number: 196
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2954
+      pdf_page_text_sha256: 509822369f39ddc11fb7e65bd7eb01c8fc9a661e1c4c9214c7f987a3a780d609
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The excerpt directly states that § 23.1337(b)(1) requires fuel
+          quantity indicators to be calibrated to read zero in level flight when
+          remaining fuel equals the unusable fuel supply, and it says these
+          indicators should be used as the primary fuel-remaining instruments.
+          However, it does not call for a visual preflight comparison with the
+          indications; it instead says total fuel remaining from a fuel computer
+          should be verified with the fuel quantity indicator.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains the discussed fuel-flow computer and
+            fuel-quantity-indicator guidance, including the
+            zero-at-unusable-fuel statement and primary-instrument
+            recommendation.
+        claim_assessments:
+          - claim_id: fuel-gauge-empty-reference
+            verdict: partially_supports
+            rationale: "Supported: zero is calibrated, during level flight, when the
+              remaining tank fuel equals unusable fuel; quantity indicators
+              should be the primary fuel-remaining instruments. Not supported by
+              this excerpt: a visual preflight comparison with the indications."
+      usage:
+        input_tokens: 1031
+        input_tokens_details:
+          cache_write_tokens: 1028
+          cached_tokens: 0
+        output_tokens: 234
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1265
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-fuel-grade
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    checked_at_utc: 2026-08-20T00:19:40.400Z
+    linked_claim_ids:
+      - correct-fuel-grade
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      errors: &a38 []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4836
+      pdf_page_text_sha256: 8bda1a77fa68475266013bf9a3a8b3af4a5580f5677845e9abe9df215d1bb244
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=27
+      errors: *a38
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states that the proper fuel grade is listed in
+          the AFM/POH, on flight-deck placards, and next to filler caps. It also
+          explains that dyes and the color-coding system help identify fuel type
+          and grade, supporting the characterization of fuel color as an
+          identification check.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is printed page 7-27 and contains both the Fuel
+            Grades discussion and Figure 7-32 on aviation-fuel color coding.
+        claim_assessments:
+          - claim_id: correct-fuel-grade
+            verdict: supports
+            rationale: "The page directly supports every material part of the claim:
+              AFM/POH, placards, and filler-cap locations identify the proper
+              grade; dyes/color coding are used to help identify fuel type and
+              grade."
+      usage:
+        input_tokens: 1481
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1478
+        output_tokens: 193
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1674
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-oil-system
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:23:42.403Z
+    checked_at_utc: 2026-08-20T00:19:40.418Z
     linked_claim_ids:
       - oil-system-functions
       - wet-and-dry-sump-layouts
-      - oil-pressure-versus-temperature
-      - oil-quantity-is-aircraft-specific
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2531,14 +3760,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       status: 200
       content_type: application/pdf
-      redirects: &a51 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
-      errors: &a52 []
+      errors: &a39 []
       valid: true
       pdf_page_number: 16
       excerpt_characters: 0
@@ -2550,14 +3779,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       status: 200
       content_type: application/pdf
-      redirects: *a51
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=16
-      errors: *a52
+      errors: *a39
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2568,7 +3797,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2584,7 +3813,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2607,18 +3836,51 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly describes the functions of the engine
+          oil system and distinguishes wet-sump from dry-sump oil storage
+          arrangements.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 16 and contains the Oil Systems
+            section and Figure 7-17 referenced by the locator.
+        claim_assessments:
+          - claim_id: oil-system-functions
+            verdict: supports
+            rationale: The excerpt lists lubrication of moving parts; cooling by reducing
+              friction; removing heat from cylinders; sealing between cylinder
+              walls and pistons; and carrying away contaminants.
+          - claim_id: wet-and-dry-sump-layouts
+            verdict: supports
+            rationale: The excerpt states that wet-sump oil is located in a sump integral to
+              the engine, while dry-sump oil is contained in a separate tank; it
+              further describes the dry-sump oil source as external to the
+              engine.
+      usage:
+        input_tokens: 1127
+        input_tokens_details:
+          cache_write_tokens: 1124
+          cached_tokens: 0
+        output_tokens: 207
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1334
     claim_assessments:
-      valid: null
-      status: not_requested
-  - source_id: phak-engine-cooling
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-oil-indications-and-quantity
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:23:49.293Z
+    checked_at_utc: 2026-08-20T00:19:40.435Z
     linked_claim_ids:
-      - air-cooling-path
-      - cooling-demand-relationship
-      - cht-versus-oil-temperature
-      - manufacturer-temperature-limits
+      - oil-pressure-versus-temperature
+      - oil-quantity-is-aircraft-specific
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2628,14 +3890,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       status: 200
       content_type: application/pdf
-      redirects: &a53 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
-      errors: &a54 []
+      errors: &a40 []
       valid: true
       pdf_page_number: 17
       excerpt_characters: 0
@@ -2647,14 +3909,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       status: 200
       content_type: application/pdf
-      redirects: *a53
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
-      errors: *a54
+      errors: *a40
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2665,7 +3927,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2681,7 +3943,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2704,18 +3966,325 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited page directly supports the AFM/POH/placard oil-information
+          claim and supports the slower oil-temperature-response portion of the
+          oil-pressure-versus-temperature claim. However, it does not state that
+          oil pressure is a direct indication of oil-system operation.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the relevant “Oil
+            System Indications and Oil Quantity” discussion, including both
+            oil-temperature behavior and AFM/POH/placard oil information.
+        claim_assessments:
+          - claim_id: oil-pressure-versus-temperature
+            verdict: partially_supports
+            rationale: The excerpt explicitly says, “Unlike oil pressure, changes in oil
+              temperature occur more slowly.” It does not explicitly
+              characterize oil pressure as a direct indication of oil-system
+              operation.
+          - claim_id: oil-quantity-is-aircraft-specific
+            verdict: supports
+            rationale: The excerpt states that the AFM/POH or placards near the access panel
+              provide the correct oil type and weight and the minimum and
+              maximum oil quantity.
+      usage:
+        input_tokens: 1126
+        input_tokens_details:
+          cache_write_tokens: 1123
+          cached_tokens: 0
+        output_tokens: 308
+        output_tokens_details:
+          reasoning_tokens: 62
+        total_tokens: 1434
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-engine-cooling
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    checked_at_utc: 2026-08-20T00:19:40.449Z
+    linked_claim_ids:
+      - air-cooling-path
+      - cooling-demand-relationship
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      errors: &a41 []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3346
+      pdf_page_text_sha256: 87ce5bed07a21ce37ec2e34f723dd4b172a6a0e80c8f276bcc5e68835ea5ef10
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=17
+      errors: *a41
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly describes the airflow path in an
+          air-cooled engine and explicitly states that air cooling is less
+          effective during high-power, low-airspeed operations.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 17 and contains the Engine Cooling
+            Systems text and Figure 7-19 identified by the locator.
+        claim_assessments:
+          - claim_id: air-cooling-path
+            verdict: supports
+            rationale: The excerpt states that outside air enters through engine-cowling
+              openings, baffles route it over fins on the cylinders and other
+              engine parts, and hot air is expelled through lower, aft cowling
+              openings.
+          - claim_id: cooling-demand-relationship
+            verdict: partially_supports
+            rationale: The excerpt explicitly says cooling is less effective during ground
+              operations, takeoffs, go-arounds, and other high-power,
+              low-airspeed operation. It does not explicitly state that engine
+              heat demand is high or that the reduced effectiveness is caused by
+              reduced cooling airflow, though those elements are consistent with
+              the described operating condition.
+      usage:
+        input_tokens: 1131
+        input_tokens_details:
+          cache_write_tokens: 1128
+          cached_tokens: 0
+        output_tokens: 246
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1377
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-engine-temperature-indications
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
+    checked_at_utc: 2026-08-20T00:19:40.463Z
+    linked_claim_ids:
+      - cht-versus-oil-temperature
+      - manufacturer-temperature-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      errors: &a42 []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5032
+      pdf_page_text_sha256: 2880201f70545ca3b0bfb63441c76c38df195a5bada7560414ba6c689f2e452a
+    citation_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=18
+      errors: *a42
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    programmatic_link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    attestation_link:
+      requested_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      status: 200
+      content_type: text/html
+      redirects: *a5
+      title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 7638
+      excerpt_sha256: 1507998d82929f64fa7981a830196299640e8c0f0e1b74340f7d1d327a7760ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      discovered_link_count: 275
+    content_attestation:
+      valid: true
+      status: attested
+      attestation_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
+      expected_link_text: 09_phak_ch7.pdf
+      expected_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      programmatic_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      citation_hash_matches_programmatic: true
+      errors: []
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The excerpt directly addresses both oil-temperature versus CHT
+          response characteristics and the CHT instrument’s normal
+          range/max-allowable indication. It does not state that the airplane’s
+          published information supplies specific CHT operating limits and
+          procedures, although it does direct readers to manufacturer
+          recommendations for specific fuel-air-mixture leaning procedures.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page 7-18 contains the quoted Engine Temperature
+            Indications material, including the oil-temperature and
+            cylinder-head-temperature discussion relevant to both claims.
+        claim_assessments:
+          - claim_id: cht-versus-oil-temperature
+            verdict: supports
+            rationale: The excerpt states that the oil-temperature gauge provides an
+              "indirect and delayed indication" of rising engine temperature,
+              while a cylinder-head-temperature gauge indicates a "direct and
+              immediate cylinder temperature change."
+          - claim_id: manufacturer-temperature-limits
+            verdict: partially_supports
+            rationale: The excerpt says the CHT gauge is usually color coded with a green
+              arc for the normal operating range and that a red line indicates
+              maximum allowable cylinder-head temperature. However, it does not
+              say that the airplane’s published information supplies its
+              specific operating limits and procedures. Its
+              manufacturer-reference statement is limited to specific procedures
+              for leaning the fuel-air mixture.
+      usage:
+        input_tokens: 1458
+        input_tokens_details:
+          cache_write_tokens: 1455
+          cached_tokens: 0
+        output_tokens: 283
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1741
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-electrical-system
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:23:58.781Z
+    checked_at_utc: 2026-08-20T00:19:40.470Z
     linked_claim_ids:
       - electrical-system-parts
       - alternator-and-battery-roles
       - master-does-not-power-magnetos
-      - circuit-protection-role
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2725,14 +4294,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       status: 200
       content_type: application/pdf
-      redirects: &a55 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
-      errors: &a56 []
+      errors: &a43 []
       valid: true
       pdf_page_number: 30
       excerpt_characters: 0
@@ -2744,14 +4313,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       status: 200
       content_type: application/pdf
-      redirects: *a55
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=30
-      errors: *a56
+      errors: *a43
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2762,7 +4331,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2778,7 +4347,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2801,14 +4370,57 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited page directly covers the basic electrical-system
+          components, alternator/generator and battery functions, and the master
+          switch’s exclusion of the ignition system. However, it does not state
+          that the ignition system is powered by magnetos.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited printed page 7-30 and contains the
+            Electrical System section relevant to all three claims.
+        claim_assessments:
+          - claim_id: electrical-system-parts
+            verdict: supports
+            rationale: The excerpt lists a basic system’s alternator/generator, battery,
+              master/battery switch, alternator/generator switch, bus bar, fuses
+              and circuit breakers, voltage regulator, ammeter/loadmeter, and
+              associated wiring.
+          - claim_id: alternator-and-battery-roles
+            verdict: supports
+            rationale: The excerpt states that engine-driven alternators or generators
+              supply electrical current and maintain battery charge, while
+              battery energy starts the engine and provides limited power if the
+              alternator or generator fails.
+          - claim_id: master-does-not-power-magnetos
+            verdict: partially_supports
+            rationale: The excerpt states that the master switch provides energy to
+              electrical-equipment circuits except the ignition system. It does
+              not state that magnetos power the ignition system.
+      usage:
+        input_tokens: 1355
+        input_tokens_details:
+          cache_write_tokens: 1352
+          cached_tokens: 0
+        output_tokens: 290
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1645
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
   - source_id: phak-electrical-indications
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-19T12:24:06.973Z
+    checked_at_utc: 2026-08-20T00:19:40.476Z
     linked_claim_ids:
+      - circuit-protection-role
       - ammeter-shows-battery-balance
       - loadmeter-measures-generator-load
       - electrical-indications-need-aircraft-context
@@ -2821,14 +4433,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: &a57 []
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
-      errors: &a58 []
+      errors: &a44 []
       valid: true
       pdf_page_number: 31
       excerpt_characters: 0
@@ -2840,14 +4452,14 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       status: 200
       content_type: application/pdf
-      redirects: *a57
+      redirects: *a1
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
       hash_truncated: false
       citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
       validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/phak/09_phak_ch7.pdf#page=31
-      errors: *a58
+      errors: *a44
       valid: true
       excerpt_characters: 0
       excerpt_sha256: null
@@ -2858,7 +4470,7 @@ results:
       final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf
       status: 200
       content_type: application/pdf
-      redirects: []
+      redirects: *a4
       title: null
       truncated: true
       content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
@@ -2874,7 +4486,7 @@ results:
       final_url: https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-7-aircraft-systems
       status: 200
       content_type: text/html
-      redirects: []
+      redirects: *a5
       title: "Chapter 7: Aircraft Systems | Federal Aviation Administration"
       truncated: false
       content_sha256: null
@@ -2897,7 +4509,62 @@ results:
       citation_hash_matches_programmatic: true
       errors: []
     relevance:
-      status: not_requested
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses circuit protection, ammeters,
+          loadmeters, and the need to consult the AFM/POH for actions following
+          certain electrical indications. It provides direct support for all
+          four claims, with only limited support for the airplane-specific
+          handling portion of the circuit-protection claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies printed page 7-31 and the relevant
+            electrical-system topics. The supplied excerpt is from page 7-31 and
+            contains the cited material.
+        claim_assessments:
+          - claim_id: circuit-protection-role
+            verdict: partially_supports
+            rationale: The excerpt directly states that fuses and circuit breakers protect
+              circuits and equipment from electrical overload; that
+              circuit-breaker/fuse-panel placards identify circuit names and
+              amperage limits; and that breakers can be manually reset while
+              fuses are replaced. It does not expressly state that their
+              physical location or all handling procedures are
+              airplane-specific.
+          - claim_id: ammeter-shows-battery-balance
+            verdict: supports
+            rationale: The excerpt states that an ammeter monitors electrical-system
+              performance, shows whether the alternator/generator is producing
+              an adequate electrical supply, indicates whether the battery is
+              receiving a charge, and that a minus indication means more current
+              is being drawn from the battery than is being replaced.
+          - claim_id: loadmeter-measures-generator-load
+            verdict: supports
+            rationale: The excerpt states that a loadmeter shows the load placed on the
+              alternator/generator and reflects the total percentage of
+              generating capacity used by electrical accessories and battery
+              demand/charging current.
+          - claim_id: electrical-indications-need-aircraft-context
+            verdict: supports
+            rationale: The excerpt says not all aircraft have an ammeter, some instead have
+              a warning light, and directs the reader to consult the AFM/POH for
+              appropriate action for full-scale ammeter deflections and
+              warning-light indications.
+      usage:
+        input_tokens: 1383
+        input_tokens_details:
+          cache_write_tokens: 1380
+          cached_tokens: 0
+        output_tokens: 416
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1799
     claim_assessments:
-      valid: null
-      status: not_requested
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

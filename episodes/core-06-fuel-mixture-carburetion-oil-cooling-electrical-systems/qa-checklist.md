@@ -2,10 +2,10 @@
 
 ## Content and sources
 
-- [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`. Verified by deterministic source validation on 2026-08-19: 41 reciprocal claims across 14 FAA sources.
+- [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`. Verified by deterministic source validation on 2026-08-20: 41 reciprocal claims across 19 FAA sources.
 - [x] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly. This draft contains FAA-standard and FAA-guidance claims; no regulatory or aircraft-example claim is presented as universal instruction.
-- [x] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim. Verified by deterministic source validation on 2026-08-19: 21 show-notes links passed.
-- [ ] Source-link validator was run with `--require-llm` and reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure.
+- [x] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim. Verified by deterministic source validation on 2026-08-20: 26 show-notes links passed.
+- [x] Source-link validator was run with `--require-llm` and reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure. Completed 2026-08-20 against 19 FAA sources and 41 claims; the LLM review is recorded in `link-validation.yaml`.
 - [x] Human editorial pass completed; unresolved technical questions were removed or resolved. Script approved 2026-08-19.
 
 ## Audio

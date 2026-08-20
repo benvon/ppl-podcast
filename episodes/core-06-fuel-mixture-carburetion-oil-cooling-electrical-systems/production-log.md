@@ -36,3 +36,11 @@
 - Script approved for source-relevance review and pre-render QA.
 - Recorded completed QA checks for reciprocal claim mapping, claim classification, deep listener-facing citations, editorial review, and opening/disclaimer structure.
 - Remaining pre-render gates: LLM source-relevance review, then the opening-preview listening check before a full candidate render.
+
+## 2026-08-20 — source-relevance review completed
+
+- Corrected the ACS PDF page offsets, the advisory-circular fuel-quantity page, and every multi-page Chapter 7 citation so each source record points to the exact page that supports its mapped claim.
+- Expanded the source ledger to 19 page-specific FAA records while retaining 41 reciprocal claims; the show-notes manifest now has 26 matching deep links.
+- Ran `sources:validate --require-llm` with the repository environment. All deep citations, FAA programmatic-copy attestations, claim mappings, show-notes mappings, page-locator assessments, and per-claim relevance assessments passed.
+- Updated the shared validator to cache identical FAA document and attestation requests within a validation run, preventing intermittent FAA attestation failures caused by repeated identical requests. Added regression coverage.
+- Remaining pre-render gate: render and listen to the opening preview.

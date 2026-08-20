@@ -6,7 +6,7 @@ reason: >-
   Full script-aligned human listening QA and chapter review remain required.
 current_candidate_render:
   script_version: 0.1.3
-  rendered_at_utc: "2026-08-20T13:50:12.241Z"
+  rendered_at_utc: "2026-08-20T14:23:19.165Z"
   provider: openai-realtime
   renderer: scripts/render_episode_realtime.cjs
   renderer_version: 8
@@ -21,13 +21,13 @@ current_candidate_render:
   audio_quality_report: "audio-artifacts/core-06-20260820T123756Z.audio-quality.json"
   chapter_review: "audio-artifacts/core-06-20260820T123756Z.mp3.chapters.html"
   segment_work_dir: "audio-artifacts/core-06-realtime-20260820T123756Z.segments"
-  duration_seconds: 1860.19
+  duration_seconds: 1860.49
   duration_display: "31:00"
   codec: mp3
   sample_rate_hz: 24000
   channels: 1
   observed_bitrate_bps: 160000
-  sha256: "913bc64f17d1c95f3c20a0c882718a1b7e9ca567d480996c584aaa3249e63334"
+  sha256: "1234ab9c541362cfefb59e7ac6b43836d67c211a3f39f5cba724aa6ec75dd41d"
   front_matter_check: "audio-artifacts/core-06-20260820T123756Z.preview-001-005.mp3"
   front_matter_duration_seconds: 179.72
   front_matter_sha256: "6815f33f68e265a1f8d0cf2e3e4c3f7c0f6858a3fe4edc55ad0f89e4ccf09f02"
@@ -41,7 +41,7 @@ current_candidate_render:
     level_transition_seconds: 0.15
     intro: "10-second lead, 5-second full-level continuation, 0.5-second fade"
     outro: "10-second full-level continuation, 5-second fade"
-  usage_estimate_usd: 2.623238
+  usage_estimate_usd: 2.623762
   validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 67 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Artifact is Git-ignored; full script-aligned human listening QA and chapter review remain required."
 superseded_candidates: []
 opening_preview:

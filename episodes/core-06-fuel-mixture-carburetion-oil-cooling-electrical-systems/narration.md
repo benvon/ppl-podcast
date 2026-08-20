@@ -69,7 +69,7 @@ It is a metaphor, but a helpful one. On the intake stroke, a descending piston c
 
 The throttle is a movable valve in that induction path. Think of it as a door in a passage. At a small throttle opening, it leaves a narrow opening. On each intake stroke, the descending piston still creates a lower-pressure space in the cylinder, but that narrow opening limits how freely higher-pressure air upstream can flow in. Less air reaches the cylinder, so the charge is smaller.
 
-Opening the throttle moves the valve farther out of the way. It reduces the restriction; it does not make air appear. The piston still creates the lower-pressure space, while the wider opening lets more air flow through the induction system to fill it. More air mass reaches the cylinder on each intake stroke, making a larger charge and more potential cylinder pressure. The fuel-metering system supplies fuel in relation to that airflow.
+Opening the throttle moves the valve farther out of the way. It reduces the restriction allowing more air to pass through. The piston still creates the lower-pressure space, while the wider opening lets more air flow through the induction system to fill it. More air mass reaches the cylinder on each intake stroke, making a larger charge and more potential cylinder pressure. The fuel-metering system supplies fuel in relation to that airflow.
 
 **LEARNER:**
 

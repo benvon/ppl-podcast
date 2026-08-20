@@ -7,7 +7,7 @@ status: candidate_rendered
 version: 0.1.3
 published_at: null
 runtime_target_minutes: 41
-runtime_actual_seconds: 1860.19
+runtime_actual_seconds: 1860.49
 word_count: 4815
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"

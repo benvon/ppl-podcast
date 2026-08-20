@@ -56,7 +56,7 @@
   5-second fade.
 - Candidate: `audio-artifacts/core-06-20260820T123756Z.mp3`; 31:00, 24 kHz
   mono, 160 kbps MP3, SHA-256
-  `913bc64f17d1c95f3c20a0c882718a1b7e9ca567d480996c584aaa3249e63334`.
+  `1234ab9c541362cfefb59e7ac6b43836d67c211a3f39f5cba724aa6ec75dd41d`.
   The lossless master, render manifest, audio-quality report, clickable chapter
   review, and resumable segment directory are Git-ignored and recorded in
   `audio-manifest.yaml`.
@@ -64,3 +64,12 @@
   stitch boundaries without discontinuity warnings, zero clipped samples, and
   ffprobe validation of 15 embedded MP3 chapters. Full script-aligned listening
   QA and chapter review remain required.
+
+## 2026-08-20 — candidate refresh after throttle wording edit
+
+- Updated the approved throttle sentence in `master-script.md`, regenerated its
+  narration derivative, and re-rendered only Instructor segment 12.
+- Reassembled the full candidate from that replacement and all other reusable
+  segments. The refreshed candidate is 31:00.49 with the SHA-256 recorded in
+  `audio-manifest.yaml`; automated audio quality and the 15 embedded chapter
+  markers passed again.

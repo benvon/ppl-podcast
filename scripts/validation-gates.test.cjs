@@ -9,7 +9,7 @@ const test = require("node:test");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 
@@ -462,9 +462,67 @@ test("music assembly options do not invalidate reusable rendered segments", () =
 });
 
 test("changed narration only reuses a segment when its exact render input still matches", () => {
-  assert.equal(reusableSegment({ render_input_sha256: "same", source_text_sha256: "old" }, "same", "new"), true);
-  assert.equal(reusableSegment({ render_input_sha256: "old", source_text_sha256: "same" }, "same", "same"), false);
-  assert.equal(reusableSegment({ source_text_sha256: "same" }, "new", "same"), true);
+  assert.equal(reusableSegment({ render_input_sha256: "same", source_text_sha256: "old" }, "same"), true);
+  assert.equal(reusableSegment({ render_input_sha256: "old", source_text_sha256: "same" }, "same"), false);
+  assert.equal(reusableSegment({ source_text_sha256: "same" }, "new"), false);
+});
+
+test("new rendered sidecars retain both source and render-input identities", () => {
+  const segment = { index: 1, speaker: "INSTRUCTOR", section: "opening" };
+  const record = usageRecordFor(segment, "source-hash", "render-input-hash", { pcm: Buffer.alloc(960), usage: { input_tokens: 1 } });
+  assert.equal(record.source_text_sha256, "source-hash");
+  assert.equal(record.render_input_sha256, "render-input-hash");
+  assert.deepEqual(record.response_usage, { input_tokens: 1 });
+});
+
+test("rendering rejects unverified legacy sidecars with an explicit recovery path", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-segment-test-"));
+  const workDir = path.join(temporary, "segments");
+  const segment = { index: 1, speaker: "INSTRUCTOR", section: "opening", sectionTitle: "Opening", text: "Current narration." };
+  const options = { model: "gpt-realtime-2.1", voices: { instructor: "marin", learner: "cedar", announcer: "ballad" }, continuityCharacters: 240 };
+  fs.mkdirSync(workDir);
+  fs.writeFileSync(path.join(workDir, "001-instructor.wav"), wavForTest(Buffer.alloc(960)));
+  fs.writeFileSync(path.join(workDir, "001-instructor.usage.json"), JSON.stringify({ source_text_sha256: "legacy", response_usage: {} }));
+  try {
+    await assert.rejects(
+      () => renderSegments([segment], [segment], options, workDir),
+      /Rendered segment 1 has an unverified legacy sidecar\. Remove .*001-instructor\.wav and .*001-instructor\.usage\.json, then run --render-only/,
+    );
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("assembly rejects a stale segment before it writes a candidate", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-stale-segment-test-"));
+  const workDir = path.join(temporary, "segments");
+  const audioDir = path.join(temporary, "audio");
+  const scriptPath = path.join(temporary, "narration.md");
+  const segment = { index: 1, speaker: "INSTRUCTOR", section: "opening", sectionTitle: "Opening", text: "Current narration." };
+  const options = {
+    model: "gpt-realtime-2.1",
+    voices: { instructor: "marin", learner: "cedar", announcer: "ballad" },
+    continuityCharacters: 240,
+    spacing: { leadInMs: 1000, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 },
+    stitchFadeMs: 8,
+    music: null,
+    episodeId: "test",
+    format: "wav",
+    scriptPath,
+  };
+  fs.mkdirSync(workDir);
+  fs.writeFileSync(scriptPath, "# Test\n");
+  fs.writeFileSync(path.join(workDir, "001-instructor.wav"), wavForTest(Buffer.alloc(960)));
+  fs.writeFileSync(path.join(workDir, "001-instructor.usage.json"), JSON.stringify({ render_input_sha256: "stale", response_usage: {} }));
+  try {
+    assert.throws(
+      () => assemble([segment], [segment], options, workDir, audioDir, "20260821T000000Z", false, "001-001"),
+      /Rendered segment 1 does not match the current narration input/,
+    );
+    assert.equal(fs.existsSync(path.join(audioDir, "test-20260821T000000Z.master.wav")), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("music-bed mix creates a playable mono WAV", () => {

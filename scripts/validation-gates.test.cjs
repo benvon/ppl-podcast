@@ -9,7 +9,7 @@ const test = require("node:test");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 
@@ -465,6 +465,14 @@ test("changed narration only reuses a segment when its exact render input still 
   assert.equal(reusableSegment({ render_input_sha256: "same", source_text_sha256: "old" }, "same"), true);
   assert.equal(reusableSegment({ render_input_sha256: "old", source_text_sha256: "same" }, "same"), false);
   assert.equal(reusableSegment({ source_text_sha256: "same" }, "new"), false);
+});
+
+test("new rendered sidecars retain both source and render-input identities", () => {
+  const segment = { index: 1, speaker: "INSTRUCTOR", section: "opening" };
+  const record = usageRecordFor(segment, "source-hash", "render-input-hash", { pcm: Buffer.alloc(960), usage: { input_tokens: 1 } });
+  assert.equal(record.source_text_sha256, "source-hash");
+  assert.equal(record.render_input_sha256, "render-input-hash");
+  assert.deepEqual(record.response_usage, { input_tokens: 1 });
 });
 
 test("rendering rejects unverified legacy sidecars with an explicit recovery path", async () => {

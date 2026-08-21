@@ -300,11 +300,25 @@ function assertCurrentRenderInput(record, segments, segment, options, workDir) {
   }
 }
 
+function usageRecordFor(segment, sourceTextHash, inputHash, result) {
+  return {
+    segment_index: segment.index,
+    speaker: segment.speaker,
+    section: segment.section,
+    source_text_sha256: sourceTextHash,
+    render_input_sha256: inputHash,
+    generated_at_utc: new Date().toISOString(),
+    pcm_bytes: result.pcm.length,
+    duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)),
+    response_usage: result.usage,
+  };
+}
+
 async function renderSegments(segments, selected, options, workDir) {
   const allUsage = [];
   for (const segment of selected) {
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
-    const inputHash = renderInputHash(segments, segment, options);
+    const sourceTextHash = sha256(segment.text); const inputHash = renderInputHash(segments, segment, options);
     const hasWav = fs.existsSync(wavPath); const hasUsage = fs.existsSync(usagePath);
     if (hasWav && hasUsage) {
       const record = JSON.parse(fs.readFileSync(usagePath, "utf8"));
@@ -317,7 +331,7 @@ async function renderSegments(segments, selected, options, workDir) {
     console.log(`Rendering segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
     const result = await wsRender({ model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text), timeoutMs: options.timeoutSeconds * 1000 });
     writeAtomic(wavPath, makeWav(result.pcm));
-    const record = { segment_index: segment.index, speaker: segment.speaker, section: segment.section, source_text_sha256: sourceTextHash, render_input_sha256: inputHash, generated_at_utc: new Date().toISOString(), pcm_bytes: result.pcm.length, duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)), response_usage: result.usage };
+    const record = usageRecordFor(segment, sourceTextHash, inputHash, result);
     writeAtomic(usagePath, `${JSON.stringify(record, null, 2)}\n`); allUsage.push(result.usage);
   }
   return allUsage;
@@ -512,4 +526,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

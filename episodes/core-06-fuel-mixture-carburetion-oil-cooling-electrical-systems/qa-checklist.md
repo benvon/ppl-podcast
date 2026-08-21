@@ -19,6 +19,6 @@
 
 ## Release
 
-- [ ] FAA/eCFR links and revisions were re-verified on publication day.
+- [x] FAA/eCFR links and revisions were re-verified on publication day. Completed 2026-08-21 at 14:34:40Z: 19 FAA sources, 41 claims, and 26 show-notes links passed deep-link, locator, mapping, and claim-level relevance validation.
 - [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

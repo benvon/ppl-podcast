@@ -3,9 +3,9 @@ series: ppl-study-podcast
 title: "Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems"
 slug: "fuel-mixture-carburetion-oil-cooling-electrical-systems"
 track: "core"
-status: candidate_rendered_qa_approved
+status: ready_for_hosting_pr
 version: 0.1.3
-published_at: null
+published_at: "2026-08-21T14:32:30Z"
 runtime_target_minutes: 41
 runtime_actual_seconds: 1860.49
 word_count: 4815
@@ -26,8 +26,8 @@ trouble_spots:
   - "Assuming carburetor ice requires cold outside temperatures"
   - "Treating fuel gauges or one engine indication as a complete system picture"
 source_verification:
-  status: source_relevance_review_complete
-  verified_at_utc: "2026-08-20T00:20:48.711Z"
+  status: publication_day_validation_complete
+  verified_at_utc: "2026-08-21T14:34:40.468Z"
   link_validation: link-validation.yaml
   relevance_review: complete
 review:
@@ -37,7 +37,6 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml

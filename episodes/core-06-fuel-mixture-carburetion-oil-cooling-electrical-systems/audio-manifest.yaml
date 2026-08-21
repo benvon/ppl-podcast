@@ -85,5 +85,4 @@ chapter_markers:
   required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
   review_page: "audio-artifacts/core-06-20260820T123756Z.mp3.chapters.html"
 required_before_release:
-  - "Re-verify all cited public links on publication day."
   - "Validate hosting metadata and external audio-store workflow."

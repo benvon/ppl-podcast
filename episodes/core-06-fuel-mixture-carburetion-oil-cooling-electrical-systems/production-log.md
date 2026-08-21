@@ -1,5 +1,14 @@
 # Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems — production log
 
+## 2026-08-21 — publication-day validation and hosting handoff
+
+- Re-ran LLM-assisted source and show-notes validation through `direnv` at
+  `2026-08-21T14:34:40.468Z`. All 19 FAA sources, 41 mapped claims, and 26
+  show-notes links passed deep-link, locator, mapping, and relevance checks.
+- The user set the release timestamp to `2026-08-21T14:32:30Z`. Core 06 is
+  ready for the hosting PR; staging and validating the immutable audio object
+  is the remaining release gate.
+
 ## 2026-08-16 — package created
 
 - Created from the standard episode template.

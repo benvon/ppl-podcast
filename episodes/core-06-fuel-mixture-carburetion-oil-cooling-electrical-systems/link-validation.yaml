@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-20T00:20:48.711Z
+checked_at_utc: 2026-08-21T14:34:40.468Z
 sources_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/sources.yaml
 claims_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/claim-inventory.yaml
 show_notes_file: episodes/core-06-fuel-mixture-carburetion-oil-cooling-electrical-systems/show-notes.md
@@ -2182,7 +2182,7 @@ show_notes_results:
 results:
   - source_id: acs-airplane-systems
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-20T00:19:37.866Z
+    checked_at_utc: 2026-08-21T14:33:08.978Z
     linked_claim_ids:
       - acs-systems-anchor
       - acs-system-malfunction-anchor
@@ -2217,8 +2217,8 @@ results:
         confidence: high
         rationale: The cited ACS page explicitly lists powerplant and propeller,
           fuel/oil/hydraulic, and electrical systems under PA.I.G.K1, and it
-          explicitly addresses system abnormalities, failures, detection, and
-          management under PA.I.G.K2 and PA.I.G.R1–R2.
+          explicitly addresses system abnormalities, failures, and detection of
+          malfunctions under PA.I.G.K2 and PA.I.G.R1.
         locator_assessment:
           verdict: supports
           rationale: The excerpt is from cited PDF page 15 (printed page 7) and contains
@@ -2227,24 +2227,22 @@ results:
         claim_assessments:
           - claim_id: acs-systems-anchor
             verdict: supports
-            rationale: PA.I.G.K1c lists powerplant and propeller; PA.I.G.K1e lists fuel,
-              oil, and hydraulic; and PA.I.G.K1f lists electrical as
-              airplane-system knowledge elements.
+            rationale: PA.I.G.K1 includes K1c, “Powerplant and propeller”; K1e, “Fuel, oil,
+              and hydraulic”; and K1f, “Electrical.”
           - claim_id: acs-system-malfunction-anchor
             verdict: supports
-            rationale: PA.I.G.K2 addresses indications of and procedures for managing system
-              abnormalities or failures, while PA.I.G.R1 addresses detection of
-              system malfunctions or failures. PA.I.G.R2 additionally addresses
-              management of a system failure.
+            rationale: PA.I.G.K2 covers “Indications of and procedures for managing system
+              abnormalities or failures,” and PA.I.G.R1 addresses “Detection of
+              system malfunctions or failures.”
       usage:
         input_tokens: 938
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 269
+        output_tokens: 252
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1207
+        total_tokens: 1190
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2253,7 +2251,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: acs-preflight-and-engine-start
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-20T00:19:38.247Z
+    checked_at_utc: 2026-08-21T14:33:10.511Z
     linked_claim_ids:
       - acs-preflight-system-awareness
     missing_claim_ids: []
@@ -2285,32 +2283,33 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt directly supports that the ACS addresses preflight
-          inspection knowledge, including the reasons for checking each item and
-          how to detect possible defects (PA.II.A.K3b-c). It does not include
+        rationale: The excerpt directly supports that the ACS preflight-inspection
+          knowledge includes the reasons for checking each item and how to
+          detect possible defects (PA.II.A.K3b-c). It does not include
           engine-start knowledge, starting limitations, or propeller safety on
           the cited PDF page.
         locator_assessment:
           verdict: partially_supports
-          rationale: The cited PDF page contains Area II, Task A and PA.II.A.K3 on printed
-            page 11. It does not contain Task C or PA.II.C.K1 through R1,
-            despite those being included in the locator.
+          rationale: The cited PDF page contains Area II, Task A, PA.II.A.K3 on printed
+            page 11. It does not contain Task C or the claimed
+            engine-start-related material, despite the locator referencing Tasks
+            A and C and printed pages 11-13.
         claim_assessments:
           - claim_id: acs-preflight-system-awareness
             verdict: partially_supports
-            rationale: The page supports the portions concerning preflight inspection,
-              reasons for checks, and detecting defects. It does not support the
-              stated connections to engine-start knowledge, starting
-              limitations, or propeller safety.
+            rationale: PA.II.A.K3 expressly covers preflight inspection, including reasons
+              for checking items and detecting possible defects. The excerpt
+              does not show starting limitations or propeller safety, so it
+              cannot support the full claim.
       usage:
         input_tokens: 924
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 297
+        output_tokens: 314
         output_tokens_details:
-          reasoning_tokens: 83
-        total_tokens: 1221
+          reasoning_tokens: 92
+        total_tokens: 1238
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2319,7 +2318,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-intake-stroke
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:38.263Z
+    checked_at_utc: 2026-08-21T14:33:10.527Z
     linked_claim_ids:
       - intake-stroke-draws-charge
     missing_claim_ids: []
@@ -2412,30 +2411,30 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt states that the intake stroke begins as the piston starts
-          downward, the intake valve opens, and the fuel-air mixture is drawn
-          into the cylinder. It does not state that the descending piston
-          creates a low-pressure area or specify movement through the valve in
-          those terms.
+        rationale: The excerpt explicitly states that the intake stroke begins as the
+          piston starts downward travel, the intake valve opens, and the
+          fuel-air mixture is drawn into the cylinder. It does not state that
+          the descending piston creates a low-pressure area or that the charge
+          enters specifically because of that pressure difference.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page contains the four-stroke cycle description,
-            including the intake-stroke passage directly relevant to the claim.
+          rationale: The cited PDF page is printed page 7-3 and contains the four-stroke
+            operating-cycle description, including item 1 for the intake stroke.
         claim_assessments:
           - claim_id: intake-stroke-draws-charge
             verdict: partially_supports
             rationale: "Supported: piston downward travel, intake valve opening, and
-              fuel-air mixture being drawn into the cylinder. Not supported on
-              this page: the explicit low-pressure-area mechanism."
+              fuel-air mixture drawn into the cylinder. Not supported by this
+              excerpt: the stated low-pressure-area mechanism."
       usage:
         input_tokens: 1014
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 179
+        output_tokens: 188
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1193
+        total_tokens: 1202
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2444,7 +2443,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-induction-carburetor
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.076Z
+    checked_at_utc: 2026-08-21T14:33:12.666Z
     linked_claim_ids:
       - induction-system-purpose
       - induction-alternate-air
@@ -2538,35 +2537,37 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page contains an "Induction Systems" section that
-          directly describes the induction system’s function, the normal intake
-          air filter, and the need for alternate air when the filter is clogged.
+        rationale: The cited PDF page contains the "Induction Systems" section and
+          directly states both the induction system’s function and the reason
+          for, and typical source of, alternate air.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page and includes the "Induction
-            Systems" material corresponding to the stated Chapter 7, printed
-            page 7-7 locator.
+          rationale: The excerpt is from cited PDF page 7 and includes the printed page
+            number 7-7, specifically under the "Induction Systems" heading,
+            matching the supplied locator.
         claim_assessments:
           - claim_id: induction-system-purpose
             verdict: supports
-            rationale: The excerpt explicitly states that the induction system brings in
-              outside air, mixes it with fuel, and delivers the fuel-air mixture
-              to the cylinder where combustion occurs.
+            rationale: 'The excerpt states: "The induction system brings in air from the
+              outside, mixes it with fuel, and delivers the fuel-air mixture to
+              the cylinder where combustion occurs." This directly supports the
+              claim.'
           - claim_id: induction-alternate-air
             verdict: supports
-            rationale: The excerpt states that the intake port normally contains an air
-              filter that inhibits dust and foreign objects, that the filter may
-              become clogged, and that an alternate air source must therefore be
-              available.
+            rationale: The excerpt says the intake port normally contains an air filter and
+              that, because the filter may become clogged, an alternate air
+              source must be available. It also explains that alternate air
+              usually comes from inside the engine cowling and bypasses the
+              clogged filter.
       usage:
         input_tokens: 1368
         input_tokens_details:
           cache_write_tokens: 1365
           cached_tokens: 0
-        output_tokens: 217
+        output_tokens: 235
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1585
+        total_tokens: 1603
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2575,7 +2576,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-carburetor-and-throttle
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.091Z
+    checked_at_utc: 2026-08-21T14:33:12.683Z
     linked_claim_ids:
       - carburetor-mixes-before-manifold
       - venturi-pressure-and-fuel-metering
@@ -2671,43 +2672,47 @@ results:
         verdict: partially_supports
         confidence: high
         rationale: The cited PDF page directly supports the carburetor-mixing and
-          venturi low-pressure concepts. It also states that the throttle valve
-          regulates fuel-air-mixture flow and is controlled by the flight-deck
-          throttle, but it does not expressly describe the throttle valve as an
-          adjustable restriction or state that opening it permits more mixture
-          to reach the combustion chambers.
+          venturi/low-pressure fuel-flow claims. It identifies the throttle
+          valve as controlling fuel-air-mixture flow and being operated by the
+          flight-deck throttle, but it does not expressly describe the valve as
+          an adjustable restriction or state that opening it reduces restriction
+          and permits more mixture to reach the combustion chambers.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page and includes Figure 7-10 and
-            the surrounding Carburetor Systems text referenced by the locator.
+          rationale: PDF page 8 (printed page 7-8) contains Figure 7-10 and the
+            accompanying float-type carburetor discussion, including the cited
+            statements about mixture formation, venturi low pressure, fuel
+            discharge, and throttle-valve control.
         claim_assessments:
           - claim_id: carburetor-mixes-before-manifold
             verdict: supports
-            rationale: The excerpt states that the carburetor system mixes fuel and air in
-              the carburetor before the mixture enters the intake manifold.
+            rationale: The excerpt explicitly states that the carburetor system mixes fuel
+              and air in the carburetor before the mixture enters the intake
+              manifold.
           - claim_id: venturi-pressure-and-fuel-metering
             verdict: supports
-            rationale: The text states that airflow through the venturi creates a
-              low-pressure area that causes fuel to flow through a main fuel jet
-              into the airstream. Figure 7-10 further identifies the discharge
-              nozzle and says fuel is forced through it into the venturi by
-              greater atmospheric pressure in the float chamber.
+            rationale: The excerpt states that airflow through the venturi creates a
+              low-pressure area that causes fuel to flow through the main fuel
+              jet into the airstream. Figure 7-10 specifically identifies the
+              discharge nozzle and states that fuel is forced through it into
+              the venturi by pressure conditions.
           - claim_id: throttle-airflow-boundary
             verdict: partially_supports
-            rationale: The excerpt says the throttle valve controls/regulates the flow of
-              the fuel-air mixture to the combustion chambers and is adjusted by
-              the flight-deck throttle. It does not explicitly characterize the
-              valve as a restriction or explicitly state that opening it reduces
-              restriction and permits more mixture flow.
+            rationale: The excerpt states that the throttle valve controls the flow of the
+              fuel-air mixture to the combustion chambers and is adjusted by the
+              flight-deck throttle. It does not explicitly say that the valve is
+              an adjustable restriction, that opening reduces restriction, or
+              that opening permits more mixture to reach the combustion
+              chambers.
       usage:
         input_tokens: 1279
         input_tokens_details:
           cache_write_tokens: 1276
           cached_tokens: 0
-        output_tokens: 456
+        output_tokens: 479
         output_tokens_details:
-          reasoning_tokens: 107
-        total_tokens: 1735
+          reasoning_tokens: 102
+        total_tokens: 1758
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2716,7 +2721,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-mixture-and-carburetor-ice
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.109Z
+    checked_at_utc: 2026-08-21T14:33:12.702Z
     linked_claim_ids:
       - mixture-is-fuel-to-air-ratio
       - density-changes-mixture
@@ -2813,52 +2818,52 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited page directly discusses both mixture control and carburetor
-          icing, including altitude-related mixture changes, AFM/POH-specific
-          procedures, the physical causes of carburetor ice, and its effects on
-          engine power and operation.
+        rationale: The cited PDF page directly addresses both carburetor icing and
+          mixture control, and it explicitly states the mechanisms, effects,
+          altitude-related mixture changes, and the need to use the AFM/POH for
+          aircraft-specific procedures described in the claims.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page and contains the relevant
-            sections, “Carburetor Icing” and “Mixture Control,” that directly
-            address all listed claims.
+          rationale: The excerpt is from cited PDF page 9 and displays printed page 7-9.
+            Its content includes the “Carburetor Icing” and “Mixture Control”
+            sections identified by the locator.
         claim_assessments:
           - claim_id: mixture-is-fuel-to-air-ratio
             verdict: supports
-            rationale: The excerpt states that leaning decreases fuel flow to compensate for
-              decreased air density at altitude and maintain the correct
-              fuel-air mixture.
+            rationale: The excerpt states that leaning the mixture decreases fuel flow to
+              compensate for decreased air density at high altitude, in order to
+              maintain the correct fuel-air mixture.
           - claim_id: density-changes-mixture
             verdict: supports
-            rationale: The excerpt explicitly states that increasing altitude decreases
-              incoming air density while fuel density remains the same, creating
-              a progressively richer mixture. It also states that, during
-              descent, the mixture must be enriched to avoid becoming too lean.
+            rationale: The excerpt explicitly says that, as altitude increases, air density
+              decreases while fuel density remains the same, producing a
+              progressively richer mixture. It also states that during descent
+              the mixture must be enriched or it may become too lean.
           - claim_id: aircraft-specific-mixture-procedures
             verdict: supports
             rationale: The excerpt states that mixture-adjustment processes can vary by
               aircraft and that the AFM or POH should be consulted for specific
-              procedures.
+              procedures for a given aircraft.
           - claim_id: carburetor-ice-physics
             verdict: supports
             rationale: The excerpt explicitly attributes carburetor ice to fuel vaporization
-              and decreased venturi air pressure, which cause a sharp
-              temperature drop in the carburetor.
+              and decreased air pressure in the venturi, which cause a sharp
+              carburetor temperature drop.
           - claim_id: carburetor-ice-restricts-power
             verdict: supports
-            rationale: The excerpt states that ice can form on internal carburetor surfaces,
-              including the throttle valve; restrict fuel-air-mixture flow;
-              reduce power; and, if sufficient ice accumulates, cause the engine
-              to cease operating.
+            rationale: The excerpt says ice may form on internal carburetor surfaces,
+              including the throttle valve; it restricts fuel-air-mixture flow
+              and reduces power, and sufficient accumulation may cause the
+              engine to cease operating.
       usage:
         input_tokens: 1480
         input_tokens_details:
           cache_write_tokens: 1477
           cached_tokens: 0
-        output_tokens: 448
+        output_tokens: 415
         output_tokens_details:
-          reasoning_tokens: 49
-        total_tokens: 1928
+          reasoning_tokens: 0
+        total_tokens: 1895
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2867,7 +2872,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-carburetor-heat
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.128Z
+    checked_at_utc: 2026-08-21T14:33:12.723Z
     linked_claim_ids:
       - propeller-type-changes-ice-indication
       - carburetor-heat-system-effect
@@ -2962,46 +2967,45 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly discusses carburetor-ice indications by
-          propeller type, the power and mixture effects of carburetor heat, and
-          the initial-decrease/gradual-recovery indications after carburetor
-          heat is applied to an iced carburetor.
+        rationale: The cited PDF page directly discusses carburetor-ice indications for
+          fixed-pitch and constant-speed propellers, the power and mixture
+          effects of carburetor heat, and the expected indication changes as ice
+          melts after carburetor heat is applied.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is identified as extracted from cited PDF page 10, and
-            all relevant passages appear on that page.
+          rationale: The excerpt is from the cited printed page 7-10 and contains the
+            relevant carburetor-heat and carburetor-ice discussion.
         claim_assessments:
           - claim_id: propeller-type-changes-ice-indication
             verdict: supports
-            rationale: The excerpt states that the first indication in a fixed-pitch
-              aircraft is a decrease in engine rpm, possibly followed by
-              roughness. For a constant-speed propeller, it states that
-              carburetor icing is usually indicated by decreased manifold
-              pressure with no rpm reduction because propeller pitch adjusts to
-              maintain constant rpm.
+            rationale: The excerpt states that the first indication in a
+              fixed-pitch-propeller aircraft is a decrease in engine rpm,
+              possibly followed by roughness. For a constant-speed propeller, it
+              states that icing is usually indicated by decreased manifold
+              pressure with no rpm reduction because propeller pitch
+              automatically maintains constant rpm.
           - claim_id: carburetor-heat-system-effect
-            verdict: partially_supports
-            rationale: The excerpt directly says carburetor heat preheats induction air,
-              that heated air is less dense, that this decreases power
-              (sometimes up to 15 percent), and that it enriches the mixture.
-              However, it does not expressly state the claim's additional
-              mechanism that, with the mixture control unchanged, there is less
-              air in the cylinder volume.
+            verdict: supports
+            rationale: The excerpt states that carburetor heat can decrease power, sometimes
+              by up to 15 percent, because heated air is less dense than outside
+              air, and that this enriches the mixture. It directly supports the
+              stated richer-mixture and reduced-power effects.
           - claim_id: carburetor-heat-indication
             verdict: supports
-            rationale: The excerpt states that, when ice is present and carburetor heat is
-              used, fixed-pitch rpm decreases and then gradually increases as
-              ice melts; with a constant-speed propeller, manifold pressure
-              decreases and then gradually increases.
+            rationale: The excerpt states that, with ice present, use of carburetor heat
+              produces a decrease followed by a gradual rpm increase in
+              fixed-pitch installations, and a decrease followed by gradual
+              manifold-pressure increase in constant-speed installations, as the
+              ice melts.
       usage:
         input_tokens: 1658
         input_tokens_details:
           cache_write_tokens: 1655
           cached_tokens: 0
-        output_tokens: 464
+        output_tokens: 476
         output_tokens_details:
-          reasoning_tokens: 102
-        total_tokens: 2122
+          reasoning_tokens: 130
+        total_tokens: 2134
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3010,7 +3014,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-fuel-injection
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.144Z
+    checked_at_utc: 2026-08-21T14:33:12.739Z
     linked_claim_ids:
       - fuel-injection-distinction
     missing_claim_ids: []
@@ -3103,33 +3107,35 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt directly describes fuel injection as a system in which
+        rationale: The excerpt directly describes fuel injection systems, stating that
           fuel is injected directly into the cylinders or just ahead of the
-          intake valve, and states that the fuel-air control unit essentially
-          replaces the carburetor and meters fuel based on mixture setting. It
-          does not support the statement that fuel-injected engines may require
-          different approved procedures.
+          intake valve, and that the fuel-air control unit replaces the
+          carburetor and meters fuel based on mixture setting and throttle.
+          However, it does not state that only “some piston engines” use fuel
+          injection, nor does it address different approved procedures.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 7-11, and the excerpt on that page
-            contains the “Fuel Injection Systems” section and Figure 7-13 as
-            identified by the locator.
+          rationale: The cited PDF page is page 7-11, and the excerpt from that exact page
+            contains the “Fuel Injection Systems” section and Figure 7-13
+            referenced by the locator.
         claim_assessments:
           - claim_id: fuel-injection-distinction
             verdict: partially_supports
-            rationale: Supports that fuel injection is used in place of a carburetor and
-              that fuel is delivered directly into cylinders or just ahead of
-              intake valves. The excerpt does not address differing approved
-              operating procedures.
+            rationale: "Supported: fuel injection is presented as a system in which fuel is
+              injected into cylinders or ahead of intake valves, with a fuel-air
+              control unit replacing the carburetor and metering fuel. Not
+              supported on this page: that some piston engines use it instead of
+              carburetors, and that it may require different approved
+              procedures."
       usage:
         input_tokens: 1008
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 206
+        output_tokens: 240
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1214
+        total_tokens: 1248
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3138,7 +3144,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-fuel-system-layout
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.170Z
+    checked_at_utc: 2026-08-21T14:33:12.767Z
     linked_claim_ids:
       - fuel-system-purpose
       - gravity-versus-pump-system
@@ -3233,45 +3239,46 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly discusses aircraft fuel-system purpose,
-          the two common small-aircraft fuel-system classifications, the design
-          relationship between tank/carburetor position and use of pumps, and
-          the roles of engine-driven and electrically driven auxiliary pumps.
+        rationale: The cited PDF page directly contains the Fuel Systems, Gravity-Feed
+          System, and Fuel-Pump System text needed to substantiate all three
+          claims. Although the supplied locator also references printed page
+          7-26 and Figure 7-30, the relevant claim language appears on the cited
+          PDF page/printed page 7-25 itself.
         locator_assessment:
-          verdict: supports
-          rationale: The excerpt is from cited PDF page 7-25 and contains the Fuel
-            Systems, Gravity-Feed System, and Fuel-Pump System text relevant to
-            all claims. Although the locator also references Figure 7-30 and
-            printed page 7-26, the supplied page itself fully supports the
-            stated claims.
+          verdict: partially_supports
+          rationale: The locator accurately identifies the chapter and relevant system
+            subsections, but it includes printed pages 7-25 through 7-26 and
+            Figure 7-30 while the cited PDF page/excerpt is only printed page
+            7-25 and does not include the figure or page 7-26. The page does
+            contain the text supporting the claims.
         claim_assessments:
           - claim_id: fuel-system-purpose
             verdict: supports
-            rationale: The excerpt states that the fuel system is designed to provide an
-              uninterrupted flow of clean fuel from tanks to engine, available
-              under all conditions of engine power, altitude, attitude, and
-              approved flight maneuvers.
+            rationale: The excerpt states that the fuel system provides an uninterrupted
+              flow of clean fuel from tanks to engine and that fuel must be
+              available under all conditions of engine power, altitude,
+              attitude, and during all approved flight maneuvers.
           - claim_id: gravity-versus-pump-system
             verdict: supports
             rationale: The excerpt identifies gravity-feed and fuel-pump systems as two
-              common classifications in small aircraft and explains that fuel
-              pumps are installed when aircraft design does not allow gravity to
-              transfer fuel.
+              common classifications for small-aircraft fuel systems and
+              explains that pumps are installed when the aircraft design does
+              not allow gravity to transfer fuel.
           - claim_id: auxiliary-pump-system-role
             verdict: supports
             rationale: The excerpt states that fuel-pump systems have an engine-driven main
-              pump and an electrically driven auxiliary/boost pump for engine
-              starting and when the engine pump fails, providing added
-              reliability.
+              pump and an electrically driven auxiliary/boost pump used for
+              engine starting and if the engine pump fails, and says the
+              auxiliary pump adds reliability.
       usage:
         input_tokens: 1405
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1402
-        output_tokens: 317
+          cache_write_tokens: 1402
+          cached_tokens: 0
+        output_tokens: 359
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1722
+        total_tokens: 1764
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3280,7 +3287,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-fuel-gauges-and-contamination
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.188Z
+    checked_at_utc: 2026-08-21T14:33:12.786Z
     linked_claim_ids:
       - fuel-gauge-empty-reference
       - selector-is-aircraft-specific
@@ -3374,44 +3381,45 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt directly addresses fuel-gauge accuracy at “empty,” visual
-          preflight verification, and fuel-selector operation/limitations.
-          However, it does not establish that zero corresponds specifically to
-          unusable fuel, that installed gauges are the primary in-flight
+        rationale: The cited page directly discusses fuel-quantity gauges, required
+          accuracy at “empty,” visual preflight fuel checks and comparison with
+          gauge indications, plus fuel-selector positions and placarded tank-use
+          limitations. However, it does not state that zero is calibrated to
+          unusable fuel, that installed indicators are the primary in-flight
           fuel-remaining instruments, or that selector operating requirements
           belong in the AFM/POH.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is the supplied excerpted page, and it contains
-            the relevant sections, “Fuel Gauges” and “Fuel Selectors.”
+          rationale: The excerpt is from the cited printed page 7-26 and contains the
+            sections “Fuel Gauges” and “Fuel Selectors,” matching the locator.
         claim_assessments:
           - claim_id: fuel-gauge-empty-reference
             verdict: partially_supports
-            rationale: The excerpt states that certification rules require fuel-gauge
-              accuracy only when the gauge reads “empty,” advises that other
-              readings be verified, and directs pilots to visually check each
-              tank during preflight and compare the result with the gauge
-              indication. It does not say that a zero indication is calibrated
-              to unusable fuel, nor does it characterize the installed
-              indicators as the primary in-flight fuel-remaining instruments.
+            rationale: The page states that certification rules require gauge accuracy only
+              when the gauge reads “empty,” and it directs pilots to visually
+              check each tank during preflight and compare the result with the
+              quantity indication. It does not say that a zero indication
+              corresponds specifically to only unusable fuel remaining, nor does
+              it characterize the installed gauges as the primary in-flight
+              fuel-remaining instruments.
           - claim_id: selector-is-aircraft-specific
             verdict: partially_supports
-            rationale: The excerpt explains that selector valves may have different
-              configurations and says fuel placards show limitations on tank
-              usage, supporting that selector use and limitations vary with the
-              installation. It does not state that fuel-selector positions and
-              operating requirements belong in the AFM/POH; the only AFM/POH
-              reference on this page concerns normal fuel-pressure operating
-              ranges.
+            rationale: The page explains that selector valves may have differing tank
+              selections and that fuel placards show limitations such as
+              level-flight-only or required BOTH selection for takeoff and
+              landing. This supports that selector use depends on the installed
+              fuel system and its limitations. But the excerpt does not state
+              that those positions and operating requirements belong in the
+              airplane’s AFM/POH.
       usage:
         input_tokens: 1111
         input_tokens_details:
           cache_write_tokens: 1108
           cached_tokens: 0
-        output_tokens: 448
+        output_tokens: 464
         output_tokens_details:
-          reasoning_tokens: 115
-        total_tokens: 1559
+          reasoning_tokens: 121
+        total_tokens: 1575
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3420,7 +3428,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-fuel-contamination
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.209Z
+    checked_at_utc: 2026-08-21T14:33:12.806Z
     linked_claim_ids:
       - fuel-sumps-remove-contaminants
       - fuel-contamination-can-stop-engine
@@ -3516,33 +3524,36 @@ results:
         confidence: high
         rationale: The cited PDF page directly discusses fuel strainers, sumps, drains,
           contaminant settling, preflight draining and visual inspection, and
-          the hazards posed by water contamination.
+          the hazards of water contamination. Both claims are explicitly
+          addressed in the excerpt.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the specified printed page 7-27 and contains the
-            relevant “Fuel Strainers, Sumps, and Drains” and “Fuel
-            Contamination” material.
+          rationale: The cited locator is Chapter 7, “Fuel Strainers, Sumps, and Drains,”
+            printed page 7-27, and the provided excerpt is from PDF page
+            27/printed page 7-27 with that exact section heading.
         claim_assessments:
           - claim_id: fuel-sumps-remove-contaminants
             verdict: supports
-            rationale: The excerpt states that moisture and sediment are heavier than
-              aviation fuel and settle in a sump, a low point in the system. It
-              also says fuel samples should be drained and checked visually for
-              water and contaminants before flight.
+            rationale: The excerpt states that moisture and sediments are heavier than
+              aviation fuel and settle in a sump at the bottom of the strainer
+              assembly; it defines a sump as a low point in the fuel system
+              and/or tank. It also states that fuel samples should be drained
+              and checked visually for water and contaminants, and that the fuel
+              strainer should be drained before each flight.
           - claim_id: fuel-contamination-can-stop-engine
             verdict: supports
             rationale: The excerpt explicitly states that, in cold weather, water can freeze
-              and block fuel lines and, in warm weather, it can flow into the
+              and block fuel lines, and in warm weather it can flow into the
               carburetor and stop the engine.
       usage:
         input_tokens: 1510
         input_tokens_details:
           cache_write_tokens: 1507
           cached_tokens: 0
-        output_tokens: 270
+        output_tokens: 280
         output_tokens_details:
-          reasoning_tokens: 38
-        total_tokens: 1780
+          reasoning_tokens: 0
+        total_tokens: 1790
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3552,7 +3563,7 @@ results:
   - source_id: ac-23-17c-fuel-quantity
     title: AC 23-17C, Systems and Equipment Guide for Certification of Part 23
       Airplanes and Airships
-    checked_at_utc: 2026-08-20T00:19:40.222Z
+    checked_at_utc: 2026-08-21T14:33:12.822Z
     linked_claim_ids:
       - fuel-gauge-empty-reference
     missing_claim_ids: []
@@ -3584,35 +3595,35 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt directly states that § 23.1337(b)(1) requires fuel
-          quantity indicators to be calibrated to read zero in level flight when
-          remaining fuel equals the unusable fuel supply, and it says these
-          indicators should be used as the primary fuel-remaining instruments.
-          However, it does not call for a visual preflight comparison with the
-          indications; it instead says total fuel remaining from a fuel computer
-          should be verified with the fuel quantity indicator.
+        rationale: The cited page expressly states that, under § 23.1337(b)(1), fuel
+          quantity indicators must be calibrated to read zero in level flight
+          when the remaining tank fuel equals the unusable supply. It also
+          states that fuel quantity indicators should be the primary
+          fuel-remaining instruments. However, this excerpt does not call for a
+          visual preflight comparison of fuel quantity with the indications.
         locator_assessment:
-          verdict: supports
-          rationale: The cited PDF page contains the discussed fuel-flow computer and
-            fuel-quantity-indicator guidance, including the
-            zero-at-unusable-fuel statement and primary-instrument
-            recommendation.
+          verdict: partially_supports
+          rationale: PDF page 196 (printed page 188) contains the zero-at-unusable-fuel
+            calibration statement and the recommendation to use fuel quantity
+            indicators as primary fuel-remaining instruments. It does not
+            contain the stated visual-preflight-comparison guidance.
         claim_assessments:
           - claim_id: fuel-gauge-empty-reference
             verdict: partially_supports
-            rationale: "Supported: zero is calibrated, during level flight, when the
-              remaining tank fuel equals unusable fuel; quantity indicators
-              should be the primary fuel-remaining instruments. Not supported by
-              this excerpt: a visual preflight comparison with the indications."
+            rationale: The excerpt supports the zero indication/unusable fuel reference and
+              the treatment of quantity indicators as primary fuel-remaining
+              instruments. It does not support the additional assertion that FAA
+              guidance calls for a visual preflight comparison with the
+              indications.
       usage:
         input_tokens: 1031
         input_tokens_details:
           cache_write_tokens: 1028
           cached_tokens: 0
-        output_tokens: 234
+        output_tokens: 297
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1265
+          reasoning_tokens: 57
+        total_tokens: 1328
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3621,7 +3632,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-fuel-grade
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.400Z
+    checked_at_utc: 2026-08-21T14:33:12.969Z
     linked_claim_ids:
       - correct-fuel-grade
     missing_claim_ids: []
@@ -3714,27 +3725,27 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt expressly states that the proper fuel grade is listed in
+        rationale: The excerpt explicitly states that the proper fuel grade is stated in
           the AFM/POH, on flight-deck placards, and next to filler caps. It also
-          explains that dyes and the color-coding system help identify fuel type
-          and grade, supporting the characterization of fuel color as an
-          identification check.
+          states that dyes are added to help identify fuel type and grade and
+          describes the color-coding system, supporting fuel color as an
+          identification aid.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is printed page 7-27 and contains both the Fuel
-            Grades discussion and Figure 7-32 on aviation-fuel color coding.
+          rationale: The cited PDF page is printed page 7-27 and contains both Figure
+            7-32, the aviation-fuel color-coding system, and the relevant Fuel
+            Grades text.
         claim_assessments:
           - claim_id: correct-fuel-grade
             verdict: supports
-            rationale: "The page directly supports every material part of the claim:
-              AFM/POH, placards, and filler-cap locations identify the proper
-              grade; dyes/color coding are used to help identify fuel type and
-              grade."
+            rationale: "The page directly supports each element: AFM/POH, placards, and
+              filler-cap markings identify the proper fuel grade; dyes/color
+              coding help identify fuel type and grade."
       usage:
         input_tokens: 1481
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1478
+          cache_write_tokens: 1478
+          cached_tokens: 0
         output_tokens: 193
         output_tokens_details:
           reasoning_tokens: 0
@@ -3747,7 +3758,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-oil-system
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.418Z
+    checked_at_utc: 2026-08-21T14:33:12.985Z
     linked_claim_ids:
       - oil-system-functions
       - wet-and-dry-sump-layouts
@@ -3841,34 +3852,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly describes the functions of the engine
-          oil system and distinguishes wet-sump from dry-sump oil storage
-          arrangements.
+        rationale: The cited PDF page contains an Oil Systems section that directly
+          describes the listed functions of engine oil and distinguishes
+          wet-sump from dry-sump oil storage arrangements.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 16 and contains the Oil Systems
-            section and Figure 7-17 referenced by the locator.
+          rationale: The excerpt is from cited PDF page 16 and includes printed page 7-16,
+            the Oil Systems heading, and Figure 7-17, matching the supplied
+            locator.
         claim_assessments:
           - claim_id: oil-system-functions
             verdict: supports
-            rationale: The excerpt lists lubrication of moving parts; cooling by reducing
-              friction; removing heat from cylinders; sealing between cylinder
-              walls and pistons; and carrying away contaminants.
+            rationale: The excerpt expressly lists lubrication of moving parts; cooling by
+              reducing friction; removing heat from cylinders; sealing between
+              cylinder walls and pistons; and carrying away contaminants.
           - claim_id: wet-and-dry-sump-layouts
             verdict: supports
             rationale: The excerpt states that wet-sump oil is located in a sump integral to
-              the engine, while dry-sump oil is contained in a separate tank; it
-              further describes the dry-sump oil source as external to the
-              engine.
+              the engine, while dry-sump oil is contained in a separate tank
+              external to the engine.
       usage:
         input_tokens: 1127
         input_tokens_details:
           cache_write_tokens: 1124
           cached_tokens: 0
-        output_tokens: 207
+        output_tokens: 211
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1334
+        total_tokens: 1338
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3877,7 +3888,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-oil-indications-and-quantity
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.435Z
+    checked_at_utc: 2026-08-21T14:33:13.003Z
     linked_claim_ids:
       - oil-pressure-versus-temperature
       - oil-quantity-is-aircraft-specific
@@ -3971,22 +3982,22 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited page directly supports the AFM/POH/placard oil-information
-          claim and supports the slower oil-temperature-response portion of the
-          oil-pressure-versus-temperature claim. However, it does not state that
-          oil pressure is a direct indication of oil-system operation.
+        rationale: The excerpt directly supports the AFM/POH/placard oil-information
+          claim and supports only the oil-temperature portion of the
+          oil-pressure-versus-temperature claim. It states that oil-temperature
+          changes occur more slowly “unlike oil pressure,” but it does not state
+          on this page that oil pressure is a direct indication of oil-system
+          operation.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page and contains the relevant “Oil
-            System Indications and Oil Quantity” discussion, including both
-            oil-temperature behavior and AFM/POH/placard oil information.
+          rationale: The cited PDF page is the stated printed page 7-17 and contains the
+            relevant sections on oil-temperature indications and oil quantity.
         claim_assessments:
           - claim_id: oil-pressure-versus-temperature
             verdict: partially_supports
-            rationale: The excerpt explicitly says, “Unlike oil pressure, changes in oil
-              temperature occur more slowly.” It does not explicitly
-              characterize oil pressure as a direct indication of oil-system
-              operation.
+            rationale: The excerpt explicitly says that, unlike oil pressure, changes in oil
+              temperature occur more slowly. However, it does not state that oil
+              pressure is a direct indication of oil-system operation.
           - claim_id: oil-quantity-is-aircraft-specific
             verdict: supports
             rationale: The excerpt states that the AFM/POH or placards near the access panel
@@ -3997,10 +4008,10 @@ results:
         input_tokens_details:
           cache_write_tokens: 1123
           cached_tokens: 0
-        output_tokens: 308
+        output_tokens: 312
         output_tokens_details:
-          reasoning_tokens: 62
-        total_tokens: 1434
+          reasoning_tokens: 63
+        total_tokens: 1438
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -4009,7 +4020,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-engine-cooling
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.449Z
+    checked_at_utc: 2026-08-21T14:33:13.020Z
     linked_claim_ids:
       - air-cooling-path
       - cooling-demand-relationship
@@ -4101,39 +4112,42 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: supports
+        verdict: partially_supports
         confidence: high
-        rationale: The cited PDF page directly describes the airflow path in an
-          air-cooled engine and explicitly states that air cooling is less
-          effective during high-power, low-airspeed operations.
+        rationale: The cited PDF page directly describes the air-cooling path and states
+          that air cooling is less effective during high-power, low-airspeed
+          operation. However, the excerpt does not explicitly state the full
+          causal phrasing in the second claim that engine heat demand is high
+          and cooling airflow is reduced during those conditions.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 17 and contains the Engine Cooling
-            Systems text and Figure 7-19 identified by the locator.
+          rationale: The excerpt is from the cited PDF page and contains the Engine
+            Cooling Systems discussion and Figure 7-19 referenced by the
+            locator.
         claim_assessments:
           - claim_id: air-cooling-path
             verdict: supports
             rationale: The excerpt states that outside air enters through engine-cowling
               openings, baffles route it over fins on the cylinders and other
-              engine parts, and hot air is expelled through lower, aft cowling
+              engine parts, and hot air is expelled through lower aft cowling
               openings.
           - claim_id: cooling-demand-relationship
             verdict: partially_supports
-            rationale: The excerpt explicitly says cooling is less effective during ground
-              operations, takeoffs, go-arounds, and other high-power,
-              low-airspeed operation. It does not explicitly state that engine
-              heat demand is high or that the reduced effectiveness is caused by
-              reduced cooling airflow, though those elements are consistent with
-              the described operating condition.
+            rationale: The excerpt explicitly says the air-cooling system is less effective
+              during ground operations, takeoffs, go-arounds, and other
+              high-power, low-airspeed operation. It explains that cooling
+              depends on airflow over engine fins, but it does not explicitly
+              state in this passage that engine heat demand is high and cooling
+              airflow is reduced in those conditions.
       usage:
         input_tokens: 1131
         input_tokens_details:
           cache_write_tokens: 1128
           cached_tokens: 0
-        output_tokens: 246
+        output_tokens: 350
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1377
+          reasoning_tokens: 69
+        total_tokens: 1481
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -4142,7 +4156,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-engine-temperature-indications
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.463Z
+    checked_at_utc: 2026-08-21T14:33:13.032Z
     linked_claim_ids:
       - cht-versus-oil-temperature
       - manufacturer-temperature-limits
@@ -4236,42 +4250,41 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt directly addresses both oil-temperature versus CHT
-          response characteristics and the CHT instrument’s normal
-          range/max-allowable indication. It does not state that the airplane’s
-          published information supplies specific CHT operating limits and
-          procedures, although it does direct readers to manufacturer
-          recommendations for specific fuel-air-mixture leaning procedures.
+        rationale: The excerpt directly addresses oil-temperature versus
+          cylinder-head-temperature indications and describes generic CHT gauge
+          markings and temperature-control actions. It does not state that the
+          airplane’s published information supplies the specific CHT operating
+          limits; it only refers to manufacturer recommendations for leaning
+          procedures using EGT.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page 7-18 contains the quoted Engine Temperature
-            Indications material, including the oil-temperature and
-            cylinder-head-temperature discussion relevant to both claims.
+          rationale: The cited PDF page is printed page 7-18, and the excerpt contains the
+            relevant Engine Temperature Indications discussion, including oil
+            temperature and cylinder-head temperature information.
         claim_assessments:
           - claim_id: cht-versus-oil-temperature
             verdict: supports
-            rationale: The excerpt states that the oil-temperature gauge provides an
+            rationale: The excerpt expressly says that the oil-temperature gauge provides an
               "indirect and delayed indication" of rising engine temperature,
-              while a cylinder-head-temperature gauge indicates a "direct and
+              while most aircraft have a CHT gauge indicating a "direct and
               immediate cylinder temperature change."
           - claim_id: manufacturer-temperature-limits
             verdict: partially_supports
-            rationale: The excerpt says the CHT gauge is usually color coded with a green
-              arc for the normal operating range and that a red line indicates
-              maximum allowable cylinder-head temperature. However, it does not
-              say that the airplane’s published information supplies its
-              specific operating limits and procedures. Its
-              manufacturer-reference statement is limited to specific procedures
-              for leaning the fuel-air mixture.
+            rationale: The excerpt supports that the CHT instrument usually has a green arc
+              for the normal operating range and a red line for maximum
+              allowable cylinder-head temperature. However, it does not say that
+              the airplane’s published information supplies the specific
+              operating limits and procedures. Its manufacturer-reference
+              language is limited to specific EGT-based leaning procedures.
       usage:
         input_tokens: 1458
         input_tokens_details:
           cache_write_tokens: 1455
           cached_tokens: 0
-        output_tokens: 283
+        output_tokens: 275
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1741
+        total_tokens: 1733
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -4280,7 +4293,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-electrical-system
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.470Z
+    checked_at_utc: 2026-08-21T14:33:13.039Z
     linked_claim_ids:
       - electrical-system-parts
       - alternator-and-battery-roles
@@ -4375,41 +4388,42 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited page directly covers the basic electrical-system
-          components, alternator/generator and battery functions, and the master
-          switch’s exclusion of the ignition system. However, it does not state
-          that the ignition system is powered by magnetos.
+        rationale: The cited page directly covers the basic aircraft electrical-system
+          components, the respective roles of the alternator/generator and
+          battery, and the master switch’s exclusion of the ignition system. It
+          does not state that the ignition system is powered by magnetos.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited printed page 7-30 and contains the
-            Electrical System section relevant to all three claims.
+          rationale: The cited PDF page is printed page 7-30 and contains the “Electrical
+            System” section with the material relevant to all three claims.
         claim_assessments:
           - claim_id: electrical-system-parts
             verdict: supports
-            rationale: The excerpt lists a basic system’s alternator/generator, battery,
-              master/battery switch, alternator/generator switch, bus bar, fuses
-              and circuit breakers, voltage regulator, ammeter/loadmeter, and
-              associated wiring.
+            rationale: "The excerpt lists a basic electrical system’s components:
+              alternator/generator, battery, master/battery switch,
+              alternator/generator switch, bus bar, fuses and circuit breakers,
+              voltage regulator, ammeter/loadmeter, and associated wiring."
           - claim_id: alternator-and-battery-roles
             verdict: supports
             rationale: The excerpt states that engine-driven alternators or generators
-              supply electrical current and maintain battery charge, while
-              battery energy starts the engine and provides limited power if the
-              alternator or generator fails.
+              supply current and maintain battery charge, while battery-stored
+              energy provides power for engine starting and a limited supply if
+              the alternator or generator fails.
           - claim_id: master-does-not-power-magnetos
             verdict: partially_supports
-            rationale: The excerpt states that the master switch provides energy to
-              electrical-equipment circuits except the ignition system. It does
-              not state that magnetos power the ignition system.
+            rationale: The excerpt states that the master switch energizes all
+              electrical-equipment circuits except the ignition system. However,
+              this page does not state that the ignition system is powered by
+              magnetos.
       usage:
         input_tokens: 1355
         input_tokens_details:
           cache_write_tokens: 1352
           cached_tokens: 0
-        output_tokens: 290
+        output_tokens: 384
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1645
+          reasoning_tokens: 74
+        total_tokens: 1739
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -4418,7 +4432,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-electrical-indications
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 7: Aircraft Systems"
-    checked_at_utc: 2026-08-20T00:19:40.476Z
+    checked_at_utc: 2026-08-21T14:33:13.047Z
     linked_claim_ids:
       - circuit-protection-role
       - ammeter-shows-battery-balance
@@ -4515,30 +4529,28 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page directly discusses circuit protection, ammeters,
-          loadmeters, and the need to consult the AFM/POH for actions following
-          certain electrical indications. It provides direct support for all
-          four claims, with only limited support for the airplane-specific
-          handling portion of the circuit-protection claim.
+          loadmeters, voltage regulation, and the need to consult the AFM/POH
+          for appropriate action following specified electrical-system
+          indications.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies printed page 7-31 and the relevant
-            electrical-system topics. The supplied excerpt is from page 7-31 and
-            contains the cited material.
+          rationale: The excerpt is from the cited printed page 7-31 and contains the
+            relevant sections on circuit protection, ammeter indications,
+            loadmeter indications, and AFM/POH consultation.
         claim_assessments:
           - claim_id: circuit-protection-role
             verdict: partially_supports
             rationale: The excerpt directly states that fuses and circuit breakers protect
-              circuits and equipment from electrical overload; that
-              circuit-breaker/fuse-panel placards identify circuit names and
-              amperage limits; and that breakers can be manually reset while
-              fuses are replaced. It does not expressly state that their
-              physical location or all handling procedures are
-              airplane-specific.
+              circuits and equipment from electrical overload, identifies panel
+              placards showing circuit names and amperage limits, and
+              distinguishes replacing fuses from manually resetting circuit
+              breakers. However, it does not expressly state that their
+              location, limits, and handling are airplane-specific.
           - claim_id: ammeter-shows-battery-balance
             verdict: supports
             rationale: The excerpt states that an ammeter monitors electrical-system
               performance, shows whether the alternator/generator is producing
-              an adequate electrical supply, indicates whether the battery is
+              an adequate supply of power, indicates whether the battery is
               receiving a charge, and that a minus indication means more current
               is being drawn from the battery than is being replaced.
           - claim_id: loadmeter-measures-generator-load
@@ -4546,22 +4558,23 @@ results:
             rationale: The excerpt states that a loadmeter shows the load placed on the
               alternator/generator and reflects the total percentage of
               generating capacity used by electrical accessories and battery
-              demand/charging current.
+              demand.
           - claim_id: electrical-indications-need-aircraft-context
             verdict: supports
-            rationale: The excerpt says not all aircraft have an ammeter, some instead have
-              a warning light, and directs the reader to consult the AFM/POH for
-              appropriate action for full-scale ammeter deflections and
+            rationale: The excerpt notes that not all aircraft use the same electrical
+              indication equipment—for example, some have a warning light rather
+              than an ammeter—and directs the pilot to consult the AFM/POH for
+              appropriate action for full-scale ammeter indications and
               warning-light indications.
       usage:
         input_tokens: 1383
         input_tokens_details:
           cache_write_tokens: 1380
           cached_tokens: 0
-        output_tokens: 416
+        output_tokens: 462
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1799
+          reasoning_tokens: 60
+        total_tokens: 1845
     claim_assessments:
       valid: true
       missing_assessment_ids: []

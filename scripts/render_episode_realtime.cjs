@@ -424,6 +424,10 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
   for (const segment of selected) {
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
     if (!fs.existsSync(wavPath) || !fs.existsSync(usagePath)) throw new RenderError(`Missing rendered segment ${segment.index}. Run --render-only for the selected range first.`);
+    const usageRecord = JSON.parse(fs.readFileSync(usagePath, "utf8"));
+    if (usageRecord.render_input_sha256 !== renderInputHash(segments, segment, options)) {
+      throw new RenderError(`Rendered segment ${segment.index} does not match the current narration input. Run --render-only for the selected range before assembly.`);
+    }
     const pauseStartFrame = masterFrames;
     const pause = silence(pauseBefore(previous, segment, options.spacing, options.music));
     chunks.push(pause); masterFrames += pause.length / 2;
@@ -442,7 +446,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
       else musicCues.outro.endFrame = masterFrames;
     }
     stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle, start_frame: segmentStartFrame, end_frame: masterFrames });
-    usage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); previous = segment;
+    usage.push(usageRecord.response_usage); previous = segment;
   }
   const terminalMusicTail = terminalMusicTailMilliseconds(selected, options.music);
   if (terminalMusicTail) { const tail = silence(terminalMusicTail); chunks.push(tail); masterFrames += tail.length / 2; }
@@ -496,4 +500,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

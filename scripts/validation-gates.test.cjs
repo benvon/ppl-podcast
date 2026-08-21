@@ -9,7 +9,7 @@ const test = require("node:test");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 
@@ -299,6 +299,36 @@ test("attested programmatic FAA copy is used when a PDF citation receives an int
   assert.equal(result.link.pdf_page_text, "Cited page text");
 });
 
+test("programmatic FAA validation reuses a shared fetch cache for repeated chapter attestations", async () => {
+  const citedUrl = "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=2";
+  const laterPageUrl = "https://www.faa.gov/sites/faa.gov/files/chapter.pdf#page=3";
+  const programmaticUrl = "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf";
+  const attestationUrl = "https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/phak/chapter-4-principles-flight";
+  const bytes = Buffer.from("identical FAA chapter bytes");
+  const sha256 = require("node:crypto").createHash("sha256").update(bytes).digest("hex");
+  let fetchCount = 0;
+  const fetchImpl = (url) => {
+    fetchCount += 1;
+    const requested = new URL(url).toString();
+    if (requested === citedUrl) return Promise.resolve(new Response(bytes, { status: 200, headers: { "content-type": "application/pdf" } }));
+    if (requested === programmaticUrl) return Promise.resolve(new Response(bytes, { status: 200, headers: { "content-type": "application/pdf" } }));
+    if (requested === attestationUrl) return Promise.resolve(new Response(`<a href="${programmaticUrl}">chapter_0.pdf</a>`, { status: 200, headers: { "content-type": "text/html" } }));
+    throw new Error(`unexpected URL ${requested}`);
+  };
+  const source = {
+    url: citedUrl,
+    programmatic_url: programmaticUrl,
+    programmatic_attestation: { url: attestationUrl, link_text: "chapter_0.pdf", sha256 },
+  };
+  const fetchCache = new Map();
+  const first = await verifyProgrammaticFallback(source, { fetchImpl, fetchCache });
+  const second = await verifyProgrammaticFallback({ ...source, url: laterPageUrl }, { fetchImpl, fetchCache });
+  assert.equal(first.content_attestation.valid, true);
+  assert.equal(second.content_attestation.valid, true);
+  assert.equal(second.link.requested_url, laterPageUrl);
+  assert.equal(fetchCount, 3);
+});
+
 test("production notice must begin immediately after the final opening segment", () => {
   const delayed = [
     { index: 1, section: "opening", text: "First opening sentence." },
@@ -419,11 +449,22 @@ test("music holds a steady reduced level under announcer voice", () => {
   assert.doesNotMatch(expression, /sidechain/);
 });
 
+test("the first assembled segment has a one-second playback lead-in", () => {
+  const spacing = { leadInMs: 1000, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 };
+  assert.equal(pauseBefore(null, { section: "opening", speaker: "INSTRUCTOR" }, spacing, null), 1000);
+});
+
 test("music assembly options do not invalidate reusable rendered segments", () => {
   const base = { model: "gpt-realtime-2.1", voices: { instructor: "marin", learner: "cedar", announcer: "ballad" }, stitchFadeMs: 8, maxWords: 240, continuityCharacters: 240, spacing: { leadInMs: 250, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 } };
   const noMusic = settingsFor({ ...base, music: null }, "script-hash");
   const withMusic = settingsFor({ ...base, music: { path: "assets/music/example.mp3", gainDb: -24 } }, "script-hash");
   assert.deepEqual(withMusic, noMusic);
+});
+
+test("changed narration only reuses a segment when its exact render input still matches", () => {
+  assert.equal(reusableSegment({ render_input_sha256: "same", source_text_sha256: "old" }, "same", "new"), true);
+  assert.equal(reusableSegment({ render_input_sha256: "old", source_text_sha256: "same" }, "same", "same"), false);
+  assert.equal(reusableSegment({ source_text_sha256: "same" }, "new", "same"), true);
 });
 
 test("music-bed mix creates a playable mono WAV", () => {
@@ -465,6 +506,14 @@ test("stitch fade tapers complete PCM segments to silence", () => {
   assert.equal(faded.readInt16LE(0), 0);
   assert.equal(faded.readInt16LE(faded.length - 2), 0);
   assert.equal(pcm.readInt16LE(0), 20_000);
+});
+
+test("opening segment keeps its first rendered sample after the playback lead-in", () => {
+  const pcm = Buffer.alloc(960);
+  for (let offset = 0; offset < pcm.length; offset += 2) pcm.writeInt16LE(20_000, offset);
+  const faded = fadeSegmentPcm(pcm, 8, { fadeIn: false, fadeOut: true });
+  assert.equal(faded.readInt16LE(0), 20_000);
+  assert.equal(faded.readInt16LE(faded.length - 2), 0);
 });
 
 test("stitch analysis reports an abrupt un-faded PCM cut", () => {

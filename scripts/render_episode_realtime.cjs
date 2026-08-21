@@ -39,7 +39,7 @@ const DEFAULTS = {
   maxWords: 240,
   continuityCharacters: 240,
   timeoutSeconds: 120,
-  leadInMs: 250,
+  leadInMs: 1000,
   continuedTurnMs: 120,
   speakerChangeMs: 220,
   sectionChangeMs: 550,
@@ -264,24 +264,46 @@ function settingsFor(options, scriptHash) {
 
 function establishSettings(workDir, settings) {
   ensureDir(workDir); const target = path.join(workDir, "render-settings.json"); const next = `${JSON.stringify(settings, null, 2)}\n`;
-  if (fs.existsSync(target) && fs.readFileSync(target, "utf8") !== next) throw new RenderError(`Render settings differ from ${target}. Choose a new --work-dir to avoid mixing incompatible segments.`);
-  if (!fs.existsSync(target)) writeAtomic(target, next);
+  if (fs.existsSync(target)) {
+    const existing = JSON.parse(fs.readFileSync(target, "utf8"));
+    const { script_sha256: existingScriptHash, spacing_ms: existingSpacing, ...existingRenderSettings } = existing;
+    const { script_sha256: nextScriptHash, spacing_ms: nextSpacing, ...nextRenderSettings } = settings;
+    if (JSON.stringify(existingRenderSettings) !== JSON.stringify(nextRenderSettings)) throw new RenderError(`Render settings differ from ${target}. Choose a new --work-dir to avoid mixing incompatible segments.`);
+    if (existingScriptHash !== nextScriptHash) writeAtomic(target, next);
+    return;
+  }
+  writeAtomic(target, next);
 }
 
 function partBase(workDir, segment) { return path.join(workDir, `${String(segment.index).padStart(3, "0")}-${segment.speaker.toLowerCase()}`); }
 function segmentInstruction(segment, context) { return `${STYLE[segment.speaker]}\nYou are the ${segment.speaker[0] + segment.speaker.slice(1).toLowerCase()} in a public educational private-pilot study podcast. Read only the line following the marker READ EXACTLY. Do not add a greeting, label, preface, explanation, or closing. Keep technical terminology exact. Vary stress and cadence naturally when recurring technical terms appear; do not turn them into catchphrases.\n\n${context}\n\nREAD EXACTLY:`; }
+function renderInputHash(segments, segment, options) {
+  const position = segments.findIndex((candidate) => candidate.index === segment.index);
+  const input = { model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text) };
+  return sha256(JSON.stringify(input));
+}
+function reusableSegment(record, expectedRenderInputHash, expectedSourceTextHash) {
+  if (record.render_input_sha256) return record.render_input_sha256 === expectedRenderInputHash;
+  return record.source_text_sha256 === expectedSourceTextHash;
+}
 
 async function renderSegments(segments, selected, options, workDir) {
   const allUsage = [];
   for (const segment of selected) {
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
-    if (fs.existsSync(wavPath) && fs.existsSync(usagePath)) { console.log(`Reusing segment ${segment.index}/${segments.length}: ${segment.speaker}`); allUsage.push(JSON.parse(fs.readFileSync(usagePath, "utf8")).response_usage); continue; }
-    if (fs.existsSync(wavPath) || fs.existsSync(usagePath)) throw new RenderError(`Incomplete existing segment ${segment.index}; remove only its matching files or choose a new work directory.`);
+    const sourceTextHash = sha256(segment.text); const inputHash = renderInputHash(segments, segment, options);
+    const hasWav = fs.existsSync(wavPath); const hasUsage = fs.existsSync(usagePath);
+    if (hasWav && hasUsage) {
+      const record = JSON.parse(fs.readFileSync(usagePath, "utf8"));
+      if (reusableSegment(record, inputHash, sourceTextHash)) { console.log(`Reusing segment ${segment.index}/${segments.length}: ${segment.speaker}`); allUsage.push(record.response_usage); continue; }
+      console.log(`Re-rendering changed segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
+    }
+    if (hasWav !== hasUsage) throw new RenderError(`Incomplete existing segment ${segment.index}; remove only its matching files or choose a new work directory.`);
     const position = segments.findIndex((candidate) => candidate.index === segment.index);
     console.log(`Rendering segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
     const result = await wsRender({ model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text), timeoutMs: options.timeoutSeconds * 1000 });
     writeAtomic(wavPath, makeWav(result.pcm));
-    const record = { segment_index: segment.index, speaker: segment.speaker, section: segment.section, source_text_sha256: sha256(segment.text), generated_at_utc: new Date().toISOString(), pcm_bytes: result.pcm.length, duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)), response_usage: result.usage };
+    const record = { segment_index: segment.index, speaker: segment.speaker, section: segment.section, source_text_sha256: sourceTextHash, render_input_sha256: inputHash, generated_at_utc: new Date().toISOString(), pcm_bytes: result.pcm.length, duration_seconds: Number(durationSeconds(result.pcm.length).toFixed(3)), response_usage: result.usage };
     writeAtomic(usagePath, `${JSON.stringify(record, null, 2)}\n`); allUsage.push(result.usage);
   }
   return allUsage;
@@ -405,7 +427,10 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     const pauseStartFrame = masterFrames;
     const pause = silence(pauseBefore(previous, segment, options.spacing, options.music));
     chunks.push(pause); masterFrames += pause.length / 2;
-    const pcm = fadeSegmentPcm(readOwnWav(wavPath), options.stitchFadeMs);
+    // The assembled program begins with intentional silence. Do not fade in
+    // the first rendered phoneme after that silence: Realtime audio can begin
+    // immediately, and a stitch fade is only needed where audio segments meet.
+    const pcm = fadeSegmentPcm(readOwnWav(wavPath), options.stitchFadeMs, { fadeIn: Boolean(previous), fadeOut: true });
     const segmentStartFrame = masterFrames;
     chunks.push(pcm); masterFrames += pcm.length / 2;
     if (options.music && segment.section === "podcast introduction") {
@@ -434,7 +459,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     publishedPath = mp3Path;
   } else publishedPath = writeWavOutput({ masterPath, wavPath, masterPcm, mixed: Boolean(options.music && Object.keys(musicPlan).length) });
   const frontMatter = selected[0].index === 1 && selected.some((segment) => [DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION].includes(segment.section)) ? "included" : "not_in_selected_range";
-  const manifest = { renderer: "openai-realtime", renderer_version: 8, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
+  const manifest = { renderer: "openai-realtime", renderer_version: 8, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, first_segment_fade_in: false, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: sha256(fs.readFileSync(publishedPath)), quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   writeAtomic(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   const audioQuality = analyzeRenderedAudio({ manifestPath, masterPath, outputPath: publishedPath, stitchBoundaries, reportPath: qualityReportPath });
   manifest.audio.quality = { result: audioQuality.result, report: qualityReportPath, stitch_warnings: audioQuality.master.stitches.warnings.length, clipped_samples: audioQuality.master.pcm.clipped_samples };
@@ -471,4 +496,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

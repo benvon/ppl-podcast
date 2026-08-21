@@ -21,7 +21,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 **ANNOUNCER:**
 
-Welcome to PPL Study Podcast, a source-conscious study companion for U.S. private-pilot airplane learners. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
+Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
 
 In this episode: [announce the specific episode topic in one upbeat, plain-language sentence.]
 

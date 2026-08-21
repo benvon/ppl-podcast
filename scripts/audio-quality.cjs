@@ -27,17 +27,21 @@ function writeAtomic(target, body) {
   fs.renameSync(temporary, target);
 }
 
-function fadeSegmentPcm(pcm, fadeMilliseconds = 8) {
+function fadeSegmentPcm(pcm, fadeMilliseconds = 8, { fadeIn = true, fadeOut = true } = {}) {
   if (pcm.length % BYTES_PER_FRAME !== 0) throw new AudioQualityError("PCM data is not aligned to complete samples.");
   const result = Buffer.from(pcm);
   const frames = result.length / BYTES_PER_FRAME;
   const fadeFrames = Math.min(Math.round(SAMPLE_RATE * fadeMilliseconds / 1000), Math.floor(frames / 2));
   if (!fadeFrames) return result;
   for (let index = 0; index < fadeFrames; index += 1) {
-    const inOffset = index * BYTES_PER_FRAME;
-    const outOffset = (frames - fadeFrames + index) * BYTES_PER_FRAME;
-    result.writeInt16LE(Math.round(result.readInt16LE(inOffset) * index / fadeFrames), inOffset);
-    result.writeInt16LE(Math.round(result.readInt16LE(outOffset) * (fadeFrames - 1 - index) / fadeFrames), outOffset);
+    if (fadeIn) {
+      const inOffset = index * BYTES_PER_FRAME;
+      result.writeInt16LE(Math.round(result.readInt16LE(inOffset) * index / fadeFrames), inOffset);
+    }
+    if (fadeOut) {
+      const outOffset = (frames - fadeFrames + index) * BYTES_PER_FRAME;
+      result.writeInt16LE(Math.round(result.readInt16LE(outOffset) * (fadeFrames - 1 - index) / fadeFrames), outOffset);
+    }
   }
   return result;
 }

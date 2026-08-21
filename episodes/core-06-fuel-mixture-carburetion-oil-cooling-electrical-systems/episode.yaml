@@ -37,7 +37,6 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete manual review of the embedded MP3 chapter markers"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:

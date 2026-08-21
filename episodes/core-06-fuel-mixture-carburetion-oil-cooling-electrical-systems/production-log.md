@@ -83,3 +83,10 @@
 - Candidate status is now `candidate_rendered_qa_approved`. Manual review of
   the embedded chapter markers, publication-day source validation, and hosting
   preparation remain before release.
+
+## 2026-08-21 — chapter review accepted
+
+- The user manually reviewed the 15 embedded MP3 chapter markers with the
+  chapter-review page and confirmed they are correct.
+- Audio production QA is complete. Publication-day source validation and
+  hosting preparation remain before release.

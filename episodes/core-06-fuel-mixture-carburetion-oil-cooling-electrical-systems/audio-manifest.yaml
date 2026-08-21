@@ -3,8 +3,8 @@ status: candidate_rendered_listening_qa_approved
 reason: >-
   Script version 0.1.3 has a technically validated Realtime candidate built
   from the accepted opening-preview segments and the remaining full render.
-  Full script-aligned human listening QA is accepted; manual chapter review
-  remains required.
+  Full script-aligned human listening QA and manual chapter review are
+  accepted.
 current_candidate_render:
   script_version: 0.1.3
   rendered_at_utc: "2026-08-20T14:23:19.165Z"
@@ -43,7 +43,7 @@ current_candidate_render:
     intro: "10-second lead, 5-second full-level continuation, 0.5-second fade"
     outro: "10-second full-level continuation, 5-second fade"
   usage_estimate_usd: 2.623762
-  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 67 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA is accepted; manual chapter review remains required. Artifact is Git-ignored."
+  validation: "Automated audio-quality report passed: WAV/MP3 decode, 24 kHz mono format, duration agreement, 67 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA and manual chapter review are accepted. Artifact is Git-ignored."
 superseded_candidates: []
 opening_preview:
   script_version: 0.1.3
@@ -85,6 +85,5 @@ chapter_markers:
   required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
   review_page: "audio-artifacts/core-06-20260820T123756Z.mp3.chapters.html"
 required_before_release:
-  - "Complete manual review of the embedded MP3 chapter markers."
   - "Re-verify all cited public links on publication day."
   - "Validate hosting metadata and external audio-store workflow."

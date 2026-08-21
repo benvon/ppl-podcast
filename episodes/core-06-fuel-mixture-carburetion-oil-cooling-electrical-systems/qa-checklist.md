@@ -15,7 +15,7 @@
 - [x] Five-segment opening preview was listened to and accepted before full rendering on 2026-08-20.
 - [x] Full candidate was listened to against the master script, with numbers, units, acronyms, and warnings checked. Accepted on 2026-08-21.
 - [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. Accepted on 2026-08-21.
-- [ ] Embedded MP3 chapter markers have been manually reviewed with the chapter-review page.
+- [x] Embedded MP3 chapter markers were manually reviewed with the chapter-review page and accepted on 2026-08-21.
 
 ## Release
 

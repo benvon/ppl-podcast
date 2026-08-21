@@ -11,10 +11,11 @@
 ## Audio
 
 - [x] Opening is 10-45 seconds and the disclaimer follows immediately. Script structure verified; opening is budgeted at 30 seconds and the next spoken section is `Disclaimer`.
-- [ ] Notice is clearly heard as “artificial intelligence-assisted production.”
-- [ ] Five-segment opening preview has been listened to before full rendering.
-- [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
-- [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains.
+- [x] Notice is clearly heard as “artificial intelligence-assisted production.” Accepted in the opening preview on 2026-08-20.
+- [x] Five-segment opening preview was listened to and accepted before full rendering on 2026-08-20.
+- [x] Full candidate was listened to against the master script, with numbers, units, acronyms, and warnings checked. Accepted on 2026-08-21.
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. Accepted on 2026-08-21.
+- [ ] Embedded MP3 chapter markers have been manually reviewed with the chapter-review page.
 
 ## Release
 

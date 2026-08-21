@@ -3,7 +3,7 @@ series: ppl-study-podcast
 title: "Fuel, Mixture, Carburetion, Oil, Cooling, and Electrical Systems"
 slug: "fuel-mixture-carburetion-oil-cooling-electrical-systems"
 track: "core"
-status: candidate_rendered
+status: candidate_rendered_qa_approved
 version: 0.1.3
 published_at: null
 runtime_target_minutes: 41
@@ -31,18 +31,18 @@ source_verification:
   link_validation: link-validation.yaml
   relevance_review: complete
 review:
-  editorial_status: script_approved_source_relevance_review_complete
+  editorial_status: script_and_listening_qa_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human listening QA, including the front-matter check"
+  - "Complete manual review of the embedded MP3 chapter markers"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: candidate_rendered_pending_listening_qa
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
 public_notes: show-notes.md

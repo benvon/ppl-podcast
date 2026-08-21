@@ -73,3 +73,13 @@
   segments. The refreshed candidate is 31:00.49 with the SHA-256 recorded in
   `audio-manifest.yaml`; automated audio quality and the 15 embedded chapter
   markers passed again.
+
+## 2026-08-21 — script-aligned listening QA accepted
+
+- The user confirmed that the refreshed full candidate passes audio QA and
+  matches the approved script.
+- The required Disclaimer was heard and accepted in the opening preview; the
+  final candidate has no remaining audible rendering or stitch issues.
+- Candidate status is now `candidate_rendered_qa_approved`. Manual review of
+  the embedded chapter markers, publication-day source validation, and hosting
+  preparation remain before release.

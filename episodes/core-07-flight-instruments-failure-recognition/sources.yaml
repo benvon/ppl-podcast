@@ -1,0 +1,351 @@
+episode_id: "core-07"
+verification_date: "2026-08-21"
+verified_at_utc: "2026-08-21T16:16:56Z"
+sources:
+  - id: acs-operation-of-systems
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area I, Task G, PA.I.G.K1h, K2, R1, and R2, printed pp. 7–8"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task G includes pitot-static, vacuum/pressure, and associated flight instruments; indications and management of abnormalities or failures; detection of malfunctions or failures; and management of a system failure."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [acs-instrument-systems-anchor, acs-failure-recognition-anchor]
+
+  - id: acs-basic-instrument-cross-check
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area VIII, Tasks A–B, instrument limitations, function, cross-check, and instrument-flight hazards, printed pp. 46–47"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "The basic instrument maneuver tasks require understanding instrument limitations and potential errors, attitude indications, function and operation, and proper cross-check techniques. Risk items include spatial disorientation, loss of control, and when to seek assistance or declare an emergency in a deteriorating situation."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [acs-cross-check-anchor, acs-instrument-risk-anchor, source-grouping-cross-check, control-before-diagnosis]
+
+  - id: acs-unusual-attitude-failure-factor
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "Area VIII, Task E, PA.VIII.E.K1, unusual-attitude prevention factors including system and equipment failures, printed p. 49"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "The unusual-attitude task includes system and equipment failures among the flight, physiological, and environmental factors associated with preventing unusual attitudes."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [acs-equipment-failure-factor]
+
+  - id: phak-pitot-static-overview
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Impact Pressure Chamber and Lines, printed p. 8-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The pitot-static system uses static pressure and pressure due to motion. The ASI uses pitot total pressure and static pressure, while the altimeter and VSI use static pressure."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [pitot-static-pressure-model, pitot-static-instrument-source-map, pitot-block-leaves-static-instruments, shared-static-can-fail-together]
+
+  - id: phak-alternate-static
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Static Pressure Chamber and Lines, printed pp. 8-2–8-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Some aircraft provide an alternate static source inside the flight deck. Its lower pressure generally causes a slightly higher altimeter indication, a higher ASI indication, and a momentary VSI climb; the AFM or POH supplies the installation-specific error."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [alternate-static-general-effects, aircraft-specific-static-corrections]
+
+  - id: phak-altimeter-operation-and-errors
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Altimeter and Principle of Operation, printed p. 8-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "An altimeter is an aneroid barometer: sealed wafers expand as surrounding static pressure decreases and contract as it increases, and linkage translates that motion into an altitude indication."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [altimeter-senses-static-pressure]
+
+  - id: phak-altimeter-temperature-error
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Effect of Nonstandard Pressure and Temperature, printed p. 8-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "An altimeter setting compensates for nonstandard pressure but not nonstandard temperature. In colder-than-standard air, true altitude is lower than indicated altitude."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [cold-temperature-altimeter-error]
+
+  - id: phak-vsi-operation
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Vertical Speed Indicator, Principle of Operation and trend/rate information, printed pp. 8-7–8-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The VSI compares direct static pressure in a diaphragm with static pressure entering the case through a calibrated leak. It first provides trend information and then a stabilized rate after normal lag."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [vsi-differential-pressure, vsi-trend-rate-lag]
+
+  - id: phak-asi-operation
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Airspeed Indicator, printed p. 8-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The ASI is a differential pressure gauge. Pitot pressure enters its diaphragm and static pressure enters the surrounding case, so the pointer reports their difference as indicated airspeed."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [asi-is-pressure-comparison]
+
+  - id: phak-blocked-pitot
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Blockage of the Pitot-Static System and Blocked Pitot System, printed pp. 8-10–8-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "With the pitot opening blocked and drain open, pressure equalizes and the ASI rapidly decreases toward zero. With both openings blocked, pitot pressure is trapped; the ASI can then indicate higher in a climb and lower in a descent as live static pressure changes."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [pitot-block-drain-open, pitot-block-pressure-trapped, pitot-block-leaves-static-instruments]
+
+  - id: phak-trapped-pitot-altitude-effect
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Blocked Pitot System with clear static system, printed p. 8-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "When pitot pressure is trapped but the static source remains clear, decreasing static pressure in a climb makes the ASI indicate higher and increasing static pressure in a descent makes it indicate lower."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [trapped-pitot-asi-follows-altitude]
+
+  - id: phak-blocked-static
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Blocked Static System, printed p. 8-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "A static blockage freezes the altimeter and produces a continuous zero VSI indication. The ASI under-reads above the blockage altitude and over-reads below it because its static reference is trapped."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [static-block-altimeter-vsi, static-block-asi-error, shared-static-can-fail-together]
+
+  - id: phak-glass-sensor-paths
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Electronic Flight Display and Primary Flight Display, printed p. 8-12"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "A PFD can combine traditional flight indications on one screen, including airspeed, altitude, vertical speed, attitude, turn, and heading information."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [pfd-combines-indications, display-does-not-create-independent-sources]
+
+  - id: phak-air-data-computer
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Air Data Computer, printed p. 8-14"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The air data computer receives pitot and static inputs, computes their difference for airspeed, processes static pressure for altitude, and sends the resulting data to the PFD."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [adc-uses-pitot-static-inputs, display-does-not-create-independent-sources]
+
+  - id: phak-gyro-principles
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Gyroscopic Flight Instruments and Gyroscopic Principles, printed p. 8-15"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Rigidity in space is a gyro's tendency to remain in its plane of rotation. Precession is its response to a deflecting force, appearing 90 degrees later in the direction of rotation; unwanted precession can introduce instrument error."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [gyro-rigidity, gyro-precession]
+
+  - id: phak-gyro-power-and-low-vacuum
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Sources of Power and vacuum-system operation, printed p. 8-16"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Many aircraft use vacuum for heading and attitude indicators and electricity for the turn coordinator, preserving another source of bank information after one power-source failure. Low suction can make vacuum-driven attitude and heading indications unstable and inaccurate."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [common-gyro-power-split, gyro-source-diversity, low-vacuum-unreliable-gyros]
+
+  - id: phak-turn-indicator-backup
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Turn Indicators, printed p. 8-16"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Turn indicators show turn direction and quality and can provide backup bank information if the attitude indicator fails."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [turn-indicator-backup-bank]
+
+  - id: phak-turn-coordinator
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Turn Coordinator, printed p. 8-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The canted turn-coordinator gyro senses roll rate while rolling and rate of turn after roll stabilizes. It shows rate and direction of turn, not a specific bank angle, and its face states that it provides no pitch information."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [turn-coordinator-information, turn-coordinator-limitations]
+
+  - id: phak-inclinometer
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Inclinometer, printed p. 8-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The inclinometer ball depicts yaw and turn coordination: centered in coordinated flight, inside a slipping turn, and outside a skidding turn."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [inclinometer-coordination]
+
+  - id: phak-attitude-indicator
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Attitude Indicator, printed pp. 8-18–8-19"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The attitude indicator uses gyro rigidity to show pitch and bank through the relationship between the miniature airplane and horizon bar. Conventional instruments have design-specific pitch and bank limits and may peg, tumble, or give erroneous indications when exceeded."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [attitude-indicator-purpose]
+
+  - id: phak-attitude-indicator-limits
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Attitude Indicator limits, printed p. 8-19"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Conventional attitude-indicator pitch and bank limits vary by make and model; some instruments can peg, tumble, or show erroneous pitch and bank when their limits are exceeded, while many modern designs avoid this problem."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [attitude-indicator-limits]
+
+  - id: phak-heading-indicator-drift
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Heading Indicator, printed p. 8-20"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "A free-gyro heading indicator provides a stable display but drifts because of frictional precession and Earth rotation, so it requires comparison with and adjustment to the magnetic compass."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [heading-indicator-drift]
+
+  - id: phak-ahrs-heading-path
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Attitude and Heading Reference System, printed p. 8-20"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "An AHRS supplies pitch and bank information to the PFD, while its heading information is derived from a magnetometer sensing the Earth's magnetic field."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [ahrs-and-magnetometer-paths, display-does-not-create-independent-sources]
+
+  - id: phak-heading-low-vacuum
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Heading Indicator limitations, low-vacuum precession, and Instrument Check, printed p. 8-22"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Free heading gyros need frequent comparison with the magnetic compass while straight and level at constant speed. When inadequate suction slows attitude and heading gyros, they become more susceptible to deflection and unreliable indications."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [heading-alignment-conditions, low-suction-increases-gyro-error]
+
+  - id: phak-magnetic-compass-basics
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Compass Systems and Magnetic Compass, printed p. 8-23"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "The magnetic compass uses magnets attached to a fluid-damped float and card assembly that aligns with Earth's magnetic field. Its mounting permits limited tilt; at steeper bank angles indications become erratic and unpredictable."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [magnetic-compass-principle, compass-bank-limitation]
+
+  - id: phak-variation-and-deviation
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Magnetic Compass Induced Errors, Variation and Deviation, printed pp. 8-24–8-25"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Variation is the location-dependent difference between true and magnetic directions. Deviation is caused by aircraft magnetic fields, changes with heading, is minimized by an AMT, and leaves corrections recorded on the aircraft's compass correction card."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [variation-definition, deviation-definition]
+
+  - id: phak-compass-correction-card
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Deviation compensation and compass correction card, printed p. 8-25"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "An aviation maintenance technician adjusts the compass to minimize deviation and records remaining heading-dependent error on a compass correction card near the compass."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [deviation-correction-card]
+
+  - id: phak-compass-dip-errors
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Northerly and Southerly Turning Errors and Acceleration Error, printed p. 8-26"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Magnetic dip creates turning errors around northerly and southerly headings and acceleration errors on easterly and westerly headings. In the Northern Hemisphere, acceleration indicates north and deceleration indicates south; turns to north are undershot and turns to south are overshot."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [compass-acceleration-error, compass-turning-error, compass-errors-condition-dependent]
+
+  - id: phak-compass-oscillation
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Oscillation Error, printed p. 8-27"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Oscillation combines compass errors and makes the card fluctuate around actual heading; the PHAK directs the pilot to use the average indication between swings when setting the heading indicator."
+    verified_at_utc: "2026-08-21T16:16:56Z"
+    link_status: 200
+    supports_claims: [compass-turning-error, compass-oscillation-average]

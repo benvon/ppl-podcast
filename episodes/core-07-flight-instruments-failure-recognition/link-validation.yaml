@@ -1,0 +1,1001 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-21T16:32:04.838Z
+sources_file: episodes/core-07-flight-instruments-failure-recognition/sources.yaml
+claims_file: episodes/core-07-flight-instruments-failure-recognition/claim-inventory.yaml
+show_notes_file: null
+show_notes_manifest_file: null
+llm_requested: false
+llm_model: null
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  status: not_configured
+  errors: []
+show_notes_results: []
+results:
+  - source_id: acs-operation-of-systems
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-21T16:32:03.355Z
+    linked_claim_ids:
+      - acs-instrument-systems-anchor
+      - acs-failure-recognition-anchor
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-basic-instrument-cross-check
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-21T16:32:03.794Z
+    linked_claim_ids:
+      - acs-cross-check-anchor
+      - acs-instrument-risk-anchor
+      - source-grouping-cross-check
+      - control-before-diagnosis
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      errors: []
+      valid: true
+      pdf_page_number: 54
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2210
+      pdf_page_text_sha256: cf9260d8366be59105ce8c0d79245e0b51e1fda82b31f27bb4b3fbc5465713dd
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-unusual-attitude-failure-factor
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-21T16:32:03.811Z
+    linked_claim_ids:
+      - acs-equipment-failure-factor
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      errors: []
+      valid: true
+      pdf_page_number: 57
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2191
+      pdf_page_text_sha256: f15dc0afa6d0679e7d459a8827d31e0924a74937b5efdc39215c4863ba339c37
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-pitot-static-overview
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:03.825Z
+    linked_claim_ids:
+      - pitot-static-pressure-model
+      - pitot-static-instrument-source-map
+      - pitot-block-leaves-static-instruments
+      - shared-static-can-fail-together
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      status: 200
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3096
+      pdf_page_text_sha256: 87dfac3b2eeb9c970cbf4fc2063a113e3d636b9db0581e0ec2d6ba49d2457cfc
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-alternate-static
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.283Z
+    linked_claim_ids:
+      - alternate-static-general-effects
+      - aircraft-specific-static-corrections
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3096
+      pdf_page_text_sha256: 87dfac3b2eeb9c970cbf4fc2063a113e3d636b9db0581e0ec2d6ba49d2457cfc
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-altimeter-operation-and-errors
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.303Z
+    linked_claim_ids:
+      - altimeter-senses-static-pressure
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4252
+      pdf_page_text_sha256: c98a4087ee28a2a2469a030014ac77388a45f2172a50d795228bf27a3d6b9510
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-altimeter-temperature-error
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.332Z
+    linked_claim_ids:
+      - cold-temperature-altimeter-error
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3693
+      pdf_page_text_sha256: a2096096cb2bc6015ea0fb91b4c67fe72c54f197a759f331b9732f45fbd8d970
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-vsi-operation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.356Z
+    linked_claim_ids:
+      - vsi-differential-pressure
+      - vsi-trend-rate-lag
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4403
+      pdf_page_text_sha256: 1fec902182a0a9c0b45f158e3e4784ffb89f71a300e46c3d75f593614795b5d3
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-asi-operation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.373Z
+    linked_claim_ids:
+      - asi-is-pressure-comparison
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3485
+      pdf_page_text_sha256: 36a7f06547e97fc5d465977b796f7119b46d5c04c98c9ba573c04170eb723cce
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-blocked-pitot
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.395Z
+    linked_claim_ids:
+      - pitot-block-drain-open
+      - pitot-block-pressure-trapped
+      - pitot-block-leaves-static-instruments
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4482
+      pdf_page_text_sha256: ddba93944d13636b8ca6c3edeb2e937ca8c6cb85fd8ef05b70c872fb4e69a12c
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-trapped-pitot-altitude-effect
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.409Z
+    linked_claim_ids:
+      - trapped-pitot-asi-follows-altitude
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3535
+      pdf_page_text_sha256: 960e00178d0b1613c7ef56f697adbd8ca7cd76c74d10167b54072cdd42043870
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-blocked-static
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.435Z
+    linked_claim_ids:
+      - static-block-altimeter-vsi
+      - static-block-asi-error
+      - shared-static-can-fail-together
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3535
+      pdf_page_text_sha256: 960e00178d0b1613c7ef56f697adbd8ca7cd76c74d10167b54072cdd42043870
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-glass-sensor-paths
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.456Z
+    linked_claim_ids:
+      - pfd-combines-indications
+      - display-does-not-create-independent-sources
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2695
+      pdf_page_text_sha256: ca0d75f5757bacb6526a9c3567e2cca8ebd9697eaadd4c298af9331b9b98272e
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-air-data-computer
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.481Z
+    linked_claim_ids:
+      - adc-uses-pitot-static-inputs
+      - display-does-not-create-independent-sources
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2444
+      pdf_page_text_sha256: 0744f8c5df765ab6ce23654b98ffe93369c6139a7f5474e86f8b87e0da494daa
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-gyro-principles
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.498Z
+    linked_claim_ids:
+      - gyro-rigidity
+      - gyro-precession
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3778
+      pdf_page_text_sha256: aadec0333effe801885cd93f464514ff2363969d936d6e3777a83dfd431f346c
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-gyro-power-and-low-vacuum
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.530Z
+    linked_claim_ids:
+      - common-gyro-power-split
+      - gyro-source-diversity
+      - low-vacuum-unreliable-gyros
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4431
+      pdf_page_text_sha256: 37cfd061bc3120b9d52eb8b5da5adb4b99357c417ba52b3f76c986d0d265a861
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-turn-indicator-backup
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.541Z
+    linked_claim_ids:
+      - turn-indicator-backup-bank
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4431
+      pdf_page_text_sha256: 37cfd061bc3120b9d52eb8b5da5adb4b99357c417ba52b3f76c986d0d265a861
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-turn-coordinator
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.553Z
+    linked_claim_ids:
+      - turn-coordinator-information
+      - turn-coordinator-limitations
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1622
+      pdf_page_text_sha256: 068b988378b4fe0f6335978fda9229025742bb56f6796e10d68cc339d6fdcf9b
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-inclinometer
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.575Z
+    linked_claim_ids:
+      - inclinometer-coordination
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3596
+      pdf_page_text_sha256: 0f7cc019d5105c099d6d35183558650251252d839e078eecbaa0ba7085da1765
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-attitude-indicator
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.595Z
+    linked_claim_ids:
+      - attitude-indicator-purpose
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3596
+      pdf_page_text_sha256: 0f7cc019d5105c099d6d35183558650251252d839e078eecbaa0ba7085da1765
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-attitude-indicator-limits
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.612Z
+    linked_claim_ids:
+      - attitude-indicator-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      errors: []
+      valid: true
+      pdf_page_number: 19
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2762
+      pdf_page_text_sha256: 8b63eee737d9a5b9ec977733001a49087faf7e501e6adeed585b201b508b5425
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-heading-indicator-drift
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.649Z
+    linked_claim_ids:
+      - heading-indicator-drift
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3571
+      pdf_page_text_sha256: e81960a4d67a8457108a3e09af41c65b147a8e5e36a2a140a677ea80fc25d17e
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-ahrs-heading-path
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.662Z
+    linked_claim_ids:
+      - ahrs-and-magnetometer-paths
+      - display-does-not-create-independent-sources
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3571
+      pdf_page_text_sha256: e81960a4d67a8457108a3e09af41c65b147a8e5e36a2a140a677ea80fc25d17e
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-heading-low-vacuum
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.675Z
+    linked_claim_ids:
+      - heading-alignment-conditions
+      - low-suction-increases-gyro-error
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4298
+      pdf_page_text_sha256: 4006c7639293c991e31814698eb3f72f9bcd70112c70d7fc04369970c389cd34
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-magnetic-compass-basics
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.684Z
+    linked_claim_ids:
+      - magnetic-compass-principle
+      - compass-bank-limitation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2906
+      pdf_page_text_sha256: 6eff28b1ac317ba52600a9d1fdea3dd2559ffa6d021909bf6d4a5199d9637dd8
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-variation-and-deviation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.700Z
+    linked_claim_ids:
+      - variation-definition
+      - deviation-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3691
+      pdf_page_text_sha256: a73bf8ea177ffcf7497b124c0d1abec1ece7aa5c4e050f7ab83f9922fc6076e6
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-compass-correction-card
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.777Z
+    linked_claim_ids:
+      - deviation-correction-card
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3577
+      pdf_page_text_sha256: 19144839184bd3fd7d54aee5354bdb2e9e0d8e2289d88dc5195ab853cd714990
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-compass-dip-errors
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.790Z
+    linked_claim_ids:
+      - compass-acceleration-error
+      - compass-turning-error
+      - compass-errors-condition-dependent
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3493
+      pdf_page_text_sha256: 81d4a3f771151563dca4597e7cad24582162fc0b3fd7c20813042326869a53df
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-compass-oscillation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-21T16:32:04.810Z
+    linked_claim_ids:
+      - compass-turning-error
+      - compass-oscillation-average
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1685
+      pdf_page_text_sha256: 706eb1eecc03d6cbd3da7e02eb140fe8fa9ab2730c9d3aa825e13dcf169eefb9
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

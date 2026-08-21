@@ -282,20 +282,34 @@ function renderInputHash(segments, segment, options) {
   const input = { model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text) };
   return sha256(JSON.stringify(input));
 }
-function reusableSegment(record, expectedRenderInputHash, expectedSourceTextHash) {
-  if (record.render_input_sha256) return record.render_input_sha256 === expectedRenderInputHash;
-  return record.source_text_sha256 === expectedSourceTextHash;
+function reusableSegment(record, expectedRenderInputHash) {
+  return Boolean(record.render_input_sha256) && record.render_input_sha256 === expectedRenderInputHash;
+}
+
+function assertVerifiedSidecar(record, segment, workDir) {
+  if (!record.render_input_sha256) {
+    const base = partBase(workDir, segment);
+    throw new RenderError(`Rendered segment ${segment.index} has an unverified legacy sidecar. Remove ${base}.wav and ${base}.usage.json, then run --render-only for the selected range.`);
+  }
+}
+
+function assertCurrentRenderInput(record, segments, segment, options, workDir) {
+  assertVerifiedSidecar(record, segment, workDir);
+  if (record.render_input_sha256 !== renderInputHash(segments, segment, options)) {
+    throw new RenderError(`Rendered segment ${segment.index} does not match the current narration input. Run --render-only for the selected range before assembly.`);
+  }
 }
 
 async function renderSegments(segments, selected, options, workDir) {
   const allUsage = [];
   for (const segment of selected) {
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
-    const sourceTextHash = sha256(segment.text); const inputHash = renderInputHash(segments, segment, options);
+    const inputHash = renderInputHash(segments, segment, options);
     const hasWav = fs.existsSync(wavPath); const hasUsage = fs.existsSync(usagePath);
     if (hasWav && hasUsage) {
       const record = JSON.parse(fs.readFileSync(usagePath, "utf8"));
-      if (reusableSegment(record, inputHash, sourceTextHash)) { console.log(`Reusing segment ${segment.index}/${segments.length}: ${segment.speaker}`); allUsage.push(record.response_usage); continue; }
+      assertVerifiedSidecar(record, segment, workDir);
+      if (reusableSegment(record, inputHash)) { console.log(`Reusing segment ${segment.index}/${segments.length}: ${segment.speaker}`); allUsage.push(record.response_usage); continue; }
       console.log(`Re-rendering changed segment ${segment.index}/${segments.length}: ${segment.speaker} (${segment.text.split(/\s+/).length} words)`);
     }
     if (hasWav !== hasUsage) throw new RenderError(`Incomplete existing segment ${segment.index}; remove only its matching files or choose a new work directory.`);
@@ -425,9 +439,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     const wavPath = `${partBase(workDir, segment)}.wav`; const usagePath = `${partBase(workDir, segment)}.usage.json`;
     if (!fs.existsSync(wavPath) || !fs.existsSync(usagePath)) throw new RenderError(`Missing rendered segment ${segment.index}. Run --render-only for the selected range first.`);
     const usageRecord = JSON.parse(fs.readFileSync(usagePath, "utf8"));
-    if (usageRecord.render_input_sha256 !== renderInputHash(segments, segment, options)) {
-      throw new RenderError(`Rendered segment ${segment.index} does not match the current narration input. Run --render-only for the selected range before assembly.`);
-    }
+    assertCurrentRenderInput(usageRecord, segments, segment, options, workDir);
     const pauseStartFrame = masterFrames;
     const pause = silence(pauseBefore(previous, segment, options.spacing, options.music));
     chunks.push(pause); masterFrames += pause.length / 2;
@@ -500,4 +512,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderInputHash, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

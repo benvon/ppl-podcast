@@ -24,3 +24,8 @@
 - Updated the research packet’s compass source map, misconception treatment, lesson architecture, editorial risks, and runtime record. The revised script contains 5,533 spoken words, a net increase of 344 from the 5,189-word initial draft, with a target runtime of approximately 46–48 minutes.
 - Validation: the downloaded official Chapter 8 PDF matched the recorded SHA-256 `9117a43d144ea04eec44fc456a6a8d00934fba5e7b4a34431150f82e62deef9b`; deterministic source validation reported all 30 links `OK` and accepted all reciprocal source/claim mappings; `npm test` passed all 50 tests; the pre-commit disclosure and secret check passed; and `git diff --check` passed.
 - Per editorial direction, no OpenAI source-relevance review or audio render was run. Status remains an editorial draft requiring source-relevance review before rendering.
+
+## 2026-08-23 — script approval and pre-render QA started
+
+- Editorial approval received for version 0.1.2 of the source-mapped script. Updated the episode record to `script_approved_pre_render`, aligned the word count (5,565) and target runtime (47 minutes), and generated the narration derivative from the approved master script.
+- Created `qa-checklist.md`. Deterministic source mapping/link validation and script structure are complete; LLM source-relevance review, audio rendering, listening QA, chapter review, publication-day link validation, and hosting handoff remain open.

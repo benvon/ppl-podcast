@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-23T14:26:54.373Z
+checked_at_utc: 2026-08-23T21:23:54.469Z
 sources_file: episodes/core-07-flight-instruments-failure-recognition/sources.yaml
 claims_file: episodes/core-07-flight-instruments-failure-recognition/claim-inventory.yaml
 show_notes_file: null
@@ -18,7 +18,7 @@ show_notes_results: []
 results:
   - source_id: acs-operation-of-systems
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-23T14:24:59.695Z
+    checked_at_utc: 2026-08-23T21:22:01.584Z
     linked_claim_ids:
       - acs-instrument-systems-anchor
       - acs-failure-recognition-anchor
@@ -51,36 +51,37 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly lists the relevant instrument-system
-          topic under Area I, Task G, and explicitly includes knowledge,
-          risk-management, and failure-related elements matching both claims.
+        rationale: The cited PDF page excerpt directly contains the relevant Area I,
+          Task G (Operation of Systems) knowledge and risk-management elements
+          for both claims.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is printed page 7 and contains Area I, Task G,
-            including PA.I.G.K1h, K2, R1, and R2. The supplied locator’s
-            printed-pages range 7–8 includes this page, and the specified
-            elements appear on the cited page.
+          rationale: The cited PDF page is printed page 7 and contains Task G, including
+            PA.I.G.K1h, K2, R1, and R2. Although the broader locator says
+            printed pp. 7–8, the specified cited PDF page and excerpt support
+            the claims on printed page 7.
         claim_assessments:
           - claim_id: acs-instrument-systems-anchor
             verdict: supports
             rationale: PA.I.G.K1h explicitly lists “Pitot-static, vacuum/pressure, and
-              associated flight instruments” under the Operation of Systems
-              task.
+              associated flight instruments” under airplane systems in the
+              Operation of Systems task.
           - claim_id: acs-failure-recognition-anchor
             verdict: supports
-            rationale: The excerpt includes PA.I.G.K2, “Indications of and procedures for
-              managing system abnormalities or failures,” along with PA.I.G.R1,
-              “Detection of system malfunctions or failures,” and PA.I.G.R2,
-              “Management of a system failure.”
+            rationale: The excerpt pairs system knowledge in PA.I.G.K1 with PA.I.G.K2,
+              covering indications of and procedures for system abnormalities or
+              failures, and risk-management elements PA.I.G.R1 (detection of
+              system malfunctions or failures) and PA.I.G.R2 (management of a
+              system failure).
       usage:
         input_tokens: 947
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 256
+        output_tokens: 262
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1203
+        total_tokens: 1209
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -89,7 +90,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: acs-basic-instrument-cross-check
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-23T14:25:00.148Z
+    checked_at_utc: 2026-08-23T21:22:01.963Z
     linked_claim_ids:
       - acs-cross-check-anchor
       - acs-instrument-risk-anchor
@@ -124,48 +125,48 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page excerpt directly contains ACS Area of Operation
-          VIII, Task A requirements for basic instrument maneuvers, including
-          the specified knowledge elements and risk-management items. It also
-          begins Task B, but the relevant claims are fully supported by Task A
-          on this exact cited page.
+        rationale: The cited PDF page directly lists the Task A knowledge and
+          risk-management elements for Basic Instrument Maneuvers, including
+          instrument limitations/errors, attitude indication,
+          function/operation, cross-check techniques, spatial disorientation,
+          loss of control, seeking assistance or declaring an emergency, and
+          fixation and omission.
         locator_assessment:
-          verdict: supports
-          rationale: The locator identifies Area VIII, Tasks A–B and printed pages 46–47.
-            The cited PDF page excerpt is printed page 46 and contains Area VIII
-            Task A in full plus the beginning of Task B, including the claimed
-            cross-check and risk-management content.
+          verdict: partially_supports
+          rationale: The cited PDF page is printed page 46 and contains Area VIII, Task A
+            in full plus the beginning of Task B. It supports the locator’s
+            subject description, but the locator says printed pages 46–47 while
+            the supplied excerpt is only from cited PDF page 54/printed page 46.
         claim_assessments:
           - claim_id: acs-cross-check-anchor
             verdict: supports
-            rationale: Task A Knowledge item PA.VIII.A.K1 explicitly lists instrument
-              limitations and potential errors, indication of aircraft attitude,
+            rationale: Task A knowledge element PA.VIII.A.K1 expressly includes instrument
+              limitations and potential errors, aircraft-attitude indication,
               function and operation, and proper instrument cross-check
               techniques.
           - claim_id: acs-instrument-risk-anchor
             verdict: supports
-            rationale: Task A Risk Management item PA.VIII.A.R1 explicitly includes spatial
-              disorientation and loss of control, while PA.VIII.A.R2 explicitly
-              addresses when to seek assistance or declare an emergency in a
-              deteriorating situation.
+            rationale: Task A risk-management items expressly list spatial disorientation,
+              loss of control, and when to seek assistance or declare an
+              emergency in a deteriorating situation.
           - claim_id: source-grouping-cross-check
             verdict: supports
-            rationale: PA.VIII.A.K1d expressly lists proper instrument cross-check
-              techniques as a Knowledge element for the basic instrument
-              maneuver Task A.
+            rationale: The excerpt explicitly identifies “Proper instrument cross-check
+              techniques” as PA.VIII.A.K1d under the required Knowledge section
+              for the basic instrument straight-and-level-flight task.
           - claim_id: avoid-instrument-fixation
             verdict: supports
-            rationale: Task A Risk Management item PA.VIII.A.R5 explicitly lists fixation
-              and omission.
+            rationale: Task A risk-management item PA.VIII.A.R5 explicitly lists “Fixation
+              and omission.”
       usage:
         input_tokens: 1053
         input_tokens_details:
           cache_write_tokens: 1050
           cached_tokens: 0
-        output_tokens: 343
+        output_tokens: 575
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1396
+          reasoning_tokens: 221
+        total_tokens: 1628
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -174,7 +175,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: acs-unusual-attitude-failure-factor
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-23T14:25:00.163Z
+    checked_at_utc: 2026-08-23T21:22:01.980Z
     linked_claim_ids:
       - acs-equipment-failure-factor
     missing_claim_ids: []
@@ -206,29 +207,29 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The excerpt from cited PDF page 57 (printed page 49) explicitly
-          lists under PA.VIII.E.K1: “Prevention of unusual attitudes, including
-          flight causal, physiological, and environmental factors, and system
-          and equipment failures.” This directly supports the claim."
+        rationale: The cited ACS page explicitly lists, under PA.VIII.E.K1, prevention
+          of unusual attitudes "including flight causal, physiological, and
+          environmental factors, and system and equipment failures." This
+          directly supports the claim.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Area VIII, Task E, PA.VIII.E.K1, and printed
-            page 49. The excerpt contains exactly that task, knowledge element,
-            and printed page number.
+          rationale: The excerpt is from printed page 49 and contains Area VIII, Task E,
+            PA.VIII.E.K1 exactly as identified by the locator. The PDF-page
+            reference is consistent with the supplied cited page.
         claim_assessments:
           - claim_id: acs-equipment-failure-factor
             verdict: supports
-            rationale: PA.VIII.E.K1 expressly includes “system and equipment failures” in
-              prevention of unusual attitudes.
+            rationale: PA.VIII.E.K1 expressly includes "system and equipment failures" among
+              factors in the prevention of unusual attitudes.
       usage:
         input_tokens: 937
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 171
+        output_tokens: 167
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1108
+        total_tokens: 1104
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -237,7 +238,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-pitot-static-overview
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:00.180Z
+    checked_at_utc: 2026-08-23T21:22:01.995Z
     linked_claim_ids:
       - pitot-static-pressure-model
       - pitot-static-instrument-source-map
@@ -272,53 +273,50 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited page directly explains the pitot/static pressure model and
-          identifies which instruments use pitot and/or static pressure. It
-          provides limited structural support for the pitot-only blockage
-          teaching point, but does not describe instrument indications or
-          failure patterns following pitot or static blockages.
+        rationale: The cited page directly explains pitot, static, dynamic, and total
+          pressure and identifies which instruments use pitot and/or static
+          pressure. It supports the foundational instrument-source
+          relationships, but it does not describe the operational effects or
+          indication patterns of pitot-only or static-system blockages.
         locator_assessment:
           verdict: supports
           rationale: The excerpt is from the cited PDF page and contains the stated
-            “Impact Pressure Chamber and Lines” and “Static Pressure Chamber and
-            Lines” material relevant to these claims.
+            “Impact Pressure Chamber and Lines” material, including the pressure
+            definitions and instrument-source relationships relevant to the
+            claims.
         claim_assessments:
           - claim_id: pitot-static-pressure-model
             verdict: supports
-            rationale: The excerpt defines static pressure as ambient/barometric pressure,
-              dynamic pressure as pressure due to motion, and states that total
-              pressure entering the pitot tube consists of dynamic pressure plus
-              static pressure.
+            rationale: The excerpt states that static pressure is ambient/barometric
+              pressure, dynamic pressure is due to motion, and total pressure
+              entering the pitot tube is dynamic pressure plus static pressure.
           - claim_id: pitot-static-instrument-source-map
             verdict: supports
             rationale: The excerpt states that the ASI receives total pressure from the
-              pitot tube and static pressure on the opposite side, while the
+              pitot tube and static pressure on its opposite side, while the
               altimeter and VSI use only static pressure from the static port.
           - claim_id: pitot-block-leaves-static-instruments
             verdict: partially_supports
-            rationale: The source establishes that the altimeter and VSI use only static
-              pressure and that the ASI uses pitot total pressure plus static
-              pressure, which supports the system-source distinction. However,
-              it does not explicitly state the consequences of a pitot-only
-              blockage, that the ASI is affected, or that the other instruments
-              remain available as independent evidence.
+            rationale: The excerpt supports that the altimeter and VSI use static pressure
+              only and that the ASI uses pitot-derived total pressure. However,
+              it does not state the effects of a pitot-only blockage, nor does
+              it characterize the altimeter and VSI as independent evidence in
+              that scenario.
           - claim_id: shared-static-can-fail-together
             verdict: partially_supports
-            rationale: The source states that the ASI receives static pressure and that the
-              altimeter and VSI use static pressure from the static system,
-              supporting the premise that all three depend on static pressure.
-              It does not state that a single static blockage makes all three
-              indications wrong or that their errors occur in a coordinated
-              pattern.
+            rationale: The excerpt establishes that the ASI, altimeter, and VSI all receive
+              static pressure from the static system. However, it does not state
+              that a static blockage makes all three indications wrong or that
+              their errors follow a coordinated pattern.
       usage:
         input_tokens: 1201
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1198
-        output_tokens: 520
+          cache_write_tokens: 1198
+          cached_tokens: 0
+        output_tokens: 501
         output_tokens_details:
-          reasoning_tokens: 98
-        total_tokens: 1721
+          reasoning_tokens: 105
+        total_tokens: 1702
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -327,7 +325,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-alternate-static
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.342Z
+    checked_at_utc: 2026-08-23T21:22:02.520Z
     linked_claim_ids:
       - alternate-static-general-effects
       - aircraft-specific-static-corrections
@@ -360,38 +358,39 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited page directly supports the general indicated effects of
-          using a flight-deck alternate static source and directs pilots to
-          consult the AFM/POH for the amount of error introduced. It does not
-          state that the AFM/POH identifies the approved response for the
-          particular installation.
+        rationale: The cited page directly describes the general instrument-indication
+          effects of using an alternate static source when flight-deck pressure
+          is lower than exterior pressure, and it directs pilots to consult the
+          AFM/POH for the amount of introduced error. However, it does not state
+          that the AFM/POH identifies an approved response for a particular
+          installation.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited printed page 8-3 and contains the
-            relevant alternate-static discussion.
+          rationale: The excerpt is from the cited PDF page and contains the
+            alternate-static-source discussion relevant to both claims.
         claim_assessments:
           - claim_id: alternate-static-general-effects
             verdict: supports
-            rationale: The excerpt states that, because flight-deck pressure is lower than
-              exterior pressure, use of alternate static causes the altimeter to
-              indicate slightly higher than actual, the ASI to indicate greater
-              than actual, and the VSI to show a momentary climb before
-              stabilizing when altitude is held constant.
+            rationale: The excerpt states that, due to venturi effect, flight-deck pressure
+              is lower than exterior pressure and, when that alternate static
+              pressure is used, the altimeter indicates slightly higher than
+              actual, the ASI indicates greater than actual, and the VSI shows a
+              momentary climb before stabilizing when altitude is held constant.
           - claim_id: aircraft-specific-static-corrections
             verdict: partially_supports
             rationale: The excerpt says each pilot is responsible for consulting the AFM or
-              POH to determine the amount of error introduced when using
-              alternate static. It does not say that the AFM/POH identifies an
-              approved response for that installation.
+              POH to determine the amount of error introduced when using the
+              alternate static source. It does not say that the AFM/POH
+              identifies the approved response for that installation.
       usage:
         input_tokens: 1341
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1338
-        output_tokens: 333
+          cache_write_tokens: 1338
+          cached_tokens: 0
+        output_tokens: 286
         output_tokens_details:
-          reasoning_tokens: 66
-        total_tokens: 1674
+          reasoning_tokens: 0
+        total_tokens: 1627
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -400,7 +399,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-altimeter-operation-and-errors
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.364Z
+    checked_at_utc: 2026-08-23T21:22:02.543Z
     linked_claim_ids:
       - altimeter-senses-static-pressure
     missing_claim_ids: []
@@ -433,32 +432,31 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly explains that the altimeter uses static
-          pressure, with static pressure surrounding sealed aneroid wafers. It
-          states that lower static pressure allows the wafers to expand and that
-          this expansion is translated into an increase in altitude, while
-          higher static pressure compresses the wafers and is translated into a
-          decrease in altitude.
+          pressure, that static pressure surrounds sealed aneroid wafers, and
+          that lower pressure allows the wafers to expand while higher pressure
+          compresses them. It further states that expansion is translated into
+          an increase in altitude and compression into a decrease in altitude.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 8-3 and contains the Altimeter and
-            Principle of Operation discussion quoted in the claim.
+          rationale: The cited PDF page is the stated printed page 8-3 and contains the
+            Altimeter and Principle of Operation text supporting the claim.
         claim_assessments:
           - claim_id: altimeter-senses-static-pressure
             verdict: supports
-            rationale: The page explicitly states that the pressure altimeter uses static
-              pressure, that its aneroid wafers are sealed, and that lower
-              pressure expands the wafers and increases indicated altitude
-              whereas higher pressure compresses them and decreases indicated
+            rationale: The page states that the altimeter uses static pressure; its aneroid
+              wafers are sealed and surrounded by static pressure; lower static
+              pressure expands the wafers and increases indicated altitude;
+              higher static pressure compresses them and decreases indicated
               altitude.
       usage:
         input_tokens: 1299
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1296
-        output_tokens: 195
+          cache_write_tokens: 1296
+          cached_tokens: 0
+        output_tokens: 194
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1494
+        total_tokens: 1493
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -467,7 +465,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-altimeter-temperature-error
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.383Z
+    checked_at_utc: 2026-08-23T21:22:02.562Z
     linked_claim_ids:
       - cold-temperature-altimeter-error
     missing_claim_ids: []
@@ -500,33 +498,33 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that adjustments for nonstandard
-          pressure are made by setting the corrected pressure on the altimeter,
-          but that such adjustments do not compensate for nonstandard
-          temperature. It further states that in colder-than-standard
-          temperatures, altitude is lower than the altimeter indication and
-          that, at a constant indicated altitude, true altitude is lower when
-          flying into cooler air.
+          pressure are made by setting the corrected pressure in the altimeter’s
+          barometric scale, but that those adjustments do not compensate for
+          nonstandard temperature. It further states that in
+          colder-than-standard temperatures, altitude is lower than the
+          altimeter indication and that true altitude is lower while maintaining
+          a constant indicated altitude in cooler air.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page (printed p. 8-4) and contains
-            the section “Effect of Nonstandard Pressure and Temperature,”
-            directly addressing the claim.
+          rationale: The excerpt is from the specified cited PDF page (printed p. 8-4) and
+            contains the relevant discussion under “Effect of Nonstandard
+            Pressure and Temperature.”
         claim_assessments:
           - claim_id: cold-temperature-altimeter-error
             verdict: supports
-            rationale: "The page explicitly supports both components: altimeter-setting
-              adjustments compensate for nonstandard pressure rather than
-              temperature, and colder-than-standard air results in true/actual
-              altitude being lower than indicated altitude."
+            rationale: "The excerpt directly supports both components: pressure-setting
+              adjustments address nonstandard pressure rather than temperature,
+              and colder-than-standard air results in true/actual altitude being
+              lower than indicated altitude."
       usage:
         input_tokens: 1165
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1162
-        output_tokens: 205
+          cache_write_tokens: 1162
+          cached_tokens: 0
+        output_tokens: 203
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1370
+        total_tokens: 1368
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -535,7 +533,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-vsi-operation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.402Z
+    checked_at_utc: 2026-08-23T21:22:02.580Z
     linked_claim_ids:
       - vsi-differential-pressure
       - vsi-trend-rate-lag
@@ -568,38 +566,41 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly describes the VSI’s differential-pressure
-          construction and explains how the pressure difference develops and
-          stabilizes to indicate climb or descent rate.
+        rationale: The cited PDF page explicitly describes the VSI’s
+          differential-pressure construction and explains that the instrument
+          indicates climb/descent from the temporary pressure difference created
+          by the calibrated leak, with the needle ultimately stabilizing at a
+          rate of altitude change.
         locator_assessment:
-          verdict: partially_supports
-          rationale: The cited page is printed page 8-7 and contains the VSI heading and
-            its principle of operation. However, the locator cites printed pages
-            8-7–8-8 and mentions trend/rate information beyond what is shown on
-            the supplied page; assessment is limited to cited PDF page 7.
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 7 and contains the “Vertical Speed
+            Indicator (VSI)” and “Principle of Operation” sections named by the
+            locator. It directly addresses operation and stabilized rate
+            information; it does not use the word “trend,” but it describes the
+            initial response to a climb or descent before stabilization.
         claim_assessments:
           - claim_id: vsi-differential-pressure
             verdict: supports
             rationale: The excerpt states that the diaphragm is connected directly to the
               static line, while the instrument case is connected to the static
-              line through a restricted orifice (calibrated leak).
+              line through a restricted orifice/calibrated leak. It explicitly
+              calls the VSI a differential-pressure instrument.
           - claim_id: vsi-trend-rate-lag
-            verdict: partially_supports
-            rationale: The excerpt explains that diaphragm pressure changes immediately
-              while case pressure changes more slowly through the metered leak,
-              creating a temporary differential, and that once this differential
-              stabilizes the needle indicates rate of altitude change. It does
-              not explicitly state that the VSI first displays a vertical trend
-              or use the phrase “normal lag.”
+            verdict: supports
+            rationale: The excerpt explains that during a climb or descent, diaphragm
+              pressure changes immediately while case pressure changes more
+              slowly due to the metered leak, producing an indication of climb
+              or descent. It then states that, once the pressure differential
+              stabilizes, the needle indicates the rate of altitude change.
       usage:
         input_tokens: 1365
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1362
-        output_tokens: 389
+          cache_write_tokens: 1362
+          cached_tokens: 0
+        output_tokens: 291
         output_tokens_details:
-          reasoning_tokens: 114
-        total_tokens: 1754
+          reasoning_tokens: 0
+        total_tokens: 1656
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -608,7 +609,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-asi-operation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.415Z
+    checked_at_utc: 2026-08-23T21:22:02.594Z
     linked_claim_ids:
       - asi-is-pressure-comparison
     missing_claim_ids: []
@@ -640,31 +641,30 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that the ASI is a sensitive
+        rationale: The excerpt directly states that the ASI is a sensitive
           differential-pressure gauge measuring the difference between pitot
           (dynamic) and static pressure. It further states that static pressure
           enters the airspeed case and pitot pressure enters the diaphragm.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is the extracted page and contains the “Airspeed
-            Indicator (ASI)” section, including the exact operational
-            description relevant to the claim.
+          rationale: The cited PDF page is the exact printed page 8-8 and contains the ASI
+            discussion and Figure 8-7 referenced by the claim.
         claim_assessments:
           - claim_id: asi-is-pressure-comparison
             verdict: supports
-            rationale: "The excerpt directly supports both components: the ASI is a
-              differential-pressure instrument, and it places static pressure in
-              the case while pitot/dynamic pressure is applied to the
-              diaphragm."
+            rationale: "The page expressly says: “The ASI is a sensitive, differential
+              pressure gauge” and explains that “static pressure [is introduced]
+              into the airspeed case while the pitot pressure (dynamic) is
+              introduced into the diaphragm.”"
       usage:
         input_tokens: 1152
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1149
-        output_tokens: 173
+          cache_write_tokens: 1149
+          cached_tokens: 0
+        output_tokens: 182
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1325
+        total_tokens: 1334
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -673,7 +673,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-blocked-pitot
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.432Z
+    checked_at_utc: 2026-08-23T21:22:02.609Z
     linked_claim_ids:
       - pitot-block-drain-open
       - pitot-block-pressure-trapped
@@ -705,48 +705,49 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: supports
+        verdict: partially_supports
         confidence: high
-        rationale: The cited PDF page directly discusses pitot-system blockages with the
-          drain hole open and closed, including the resulting ASI behavior. It
-          also distinguishes pitot blockage effects on the ASI from static-port
-          blockage effects on the ASI, altimeter, and VSI.
+        rationale: The cited PDF page directly explains the ASI effects of a blocked
+          pitot opening with the drain open and with both the pitot opening and
+          drain blocked. It also distinguishes pitot-blockage effects on the ASI
+          from static-port blockage effects on the ASI, altimeter, and VSI.
+          However, it does not explicitly characterize the altimeter and VSI as
+          remaining available "independent static-pressure evidence."
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 8-10 and contains the stated “Blockage of
-            the Pitot-Static System” and “Blocked Pitot System” material.
+          rationale: The cited PDF page is the exact page excerpted and contains the
+            section "Blocked Pitot System," including the descriptions needed
+            for the first two claims and relevant context for the third.
         claim_assessments:
           - claim_id: pitot-block-drain-open
             verdict: supports
-            rationale: The excerpt states that with the pitot tube blocked and drain hole
-              clear, air in the system vents through the drain, remaining
-              pressure drops to ambient pressure, and the ASI decreases to zero
-              very quickly because it senses no pressure difference.
+            rationale: The excerpt states that when the pitot tube is blocked but its drain
+              hole remains clear, ram air cannot enter, air in the system vents
+              through the drain, remaining pressure drops to ambient pressure,
+              and the ASI decreases to zero very quickly.
           - claim_id: pitot-block-pressure-trapped
             verdict: supports
-            rationale: The excerpt states that if both the pitot opening and drain hole are
-              clogged, pitot pressure is trapped and no ASI change is noted when
-              airspeed increases or decreases. It further explains that an
-              altitude change can affect the indication through changed static
-              pressure.
+            rationale: The excerpt states that when both the pitot opening and drain hole
+              are clogged, pitot pressure is trapped and the ASI indication does
+              not change when airspeed increases or decreases. This supports the
+              stated constant-altitude qualification.
           - claim_id: pitot-block-leaves-static-instruments
             verdict: partially_supports
-            rationale: The excerpt says a blocked pitot tube affects ASI accuracy, while a
+            rationale: The excerpt says a blocked pitot tube affects ASI accuracy, while
               static-port blockage affects the ASI, altimeter, and VSI. This
               supports the distinction that a pitot-only blockage affects the
-              ASI rather than the static instruments. However, it does not
-              expressly characterize the altimeter and VSI as “independent
-              static-pressure evidence” or explicitly state that they remain
-              fully available.
+              ASI rather than directly identifying altimeter/VSI errors. But it
+              does not explicitly state that the altimeter and VSI remain
+              available or frame them as independent evidence.
       usage:
         input_tokens: 1520
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1517
-        output_tokens: 478
+          cache_write_tokens: 1517
+          cached_tokens: 0
+        output_tokens: 493
         output_tokens_details:
-          reasoning_tokens: 109
-        total_tokens: 1998
+          reasoning_tokens: 99
+        total_tokens: 2013
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -755,7 +756,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-trapped-pitot-altitude-effect
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.443Z
+    checked_at_utc: 2026-08-23T21:22:02.620Z
     linked_claim_ids:
       - trapped-pitot-asi-follows-altitude
     missing_claim_ids: []
@@ -787,33 +788,101 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt expressly states that, with the pitot tube obstructed and
-          the static system clear, descending increases static pressure against
-          the diaphragm and produces an indication of decreased airspeed;
-          climbing decreases static pressure, permits diaphragm expansion, and
-          produces an indication of greater airspeed. This matches the claim's
-          stated relationship and mechanism.
+        rationale: The excerpt directly states that, with the pitot tube obstructed and
+          the static system clear, a descent increases static pressure against
+          the diaphragm and produces decreased indicated airspeed; a climb
+          decreases static pressure, allows the diaphragm to expand, and
+          produces greater indicated airspeed. This matches the claim’s stated
+          conditions and mechanism.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is printed page 8-11 and contains Figure 8-10,
-            “Blocked pitot system with clear static system,” plus the
-            explanatory text directly supporting the claim.
+          rationale: The cited PDF page is printed page 8-11 and contains Figure 8-10 plus
+            the directly relevant explanatory text for a blocked pitot system
+            with a clear static system.
         claim_assessments:
           - claim_id: trapped-pitot-asi-follows-altitude
             verdict: supports
-            rationale: "The excerpt directly supports both portions: higher indicated
-              airspeed in a climb and lower indicated airspeed in a descent,
-              caused by changing clear-system static pressure acting around the
-              diaphragm while pitot-system pressure remains constant."
+            rationale: The page explicitly says that if the pitot tube is obstructed, the
+              pressure in the pitot system remains constant; during descent,
+              rising static pressure causes a decreased airspeed indication, and
+              during climb, falling static pressure causes a greater airspeed
+              indication.
       usage:
         input_tokens: 1145
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1142
-        output_tokens: 231
+          cache_write_tokens: 1142
+          cached_tokens: 0
+        output_tokens: 216
         output_tokens_details:
-          reasoning_tokens: 20
-        total_tokens: 1376
+          reasoning_tokens: 0
+        total_tokens: 1361
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-pitch-trades-altitude-for-speed
+    title: "Airplane Flying Handbook, Chapter 4: Energy Management: Mastering
+      Altitude and Airspeed Control"
+    checked_at_utc: 2026-08-23T21:22:02.635Z
+    linked_claim_ids:
+      - pitch-down-trades-altitude-for-speed
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4052
+      pdf_page_text_sha256: 140f561d5217aac02be1a4392bb2b717e412e5fc65c4ab7660382109ef046183
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states that trading altitude for speed requires
+          down elevator without initially changing the throttle setting, and
+          that trading speed for altitude requires up elevator without initially
+          changing the throttle setting. Rule 3 repeats both relationships.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is identified as printed page 4-10, and the
+            supplied excerpt from that exact page contains Rule 3 and the
+            relevant Figure 4-8 discussion described by the locator.
+        claim_assessments:
+          - claim_id: pitch-down-trades-altitude-for-speed
+            verdict: supports
+            rationale: 'The excerpt directly says: "transitioning to a faster airspeed by
+              trading altitude for speed ... requires down-elevator without
+              initially changing throttle setting," and contrasts it with
+              trading speed for altitude using up elevator without initially
+              changing throttle.'
+      usage:
+        input_tokens: 1293
+        input_tokens_details:
+          cache_write_tokens: 1290
+          cached_tokens: 0
+        output_tokens: 190
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1483
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -822,7 +891,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-blocked-static
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.455Z
+    checked_at_utc: 2026-08-23T21:22:02.852Z
     linked_claim_ids:
       - static-block-altimeter-vsi
       - static-block-asi-error
@@ -856,15 +925,16 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited page directly explains the effects of a blocked static
-          system on the ASI, altimeter, and VSI. It fully supports the specific
-          ASI-error and altimeter/VSI claims. The broader teaching explanation
-          about all three instruments sharing static pressure and failing in a
-          “coordinated pattern” is only partly explicit in the excerpt.
+        rationale: The excerpt directly supports the blocked-static effects stated for
+          the altimeter, VSI, and ASI. It supports that a static-system blockage
+          affects all three instruments, but it does not explicitly state that
+          they “share static pressure” or characterize their errors as a
+          “coordinated pattern.”
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from printed page 8-11 and contains the “Blocked
-            Static System” section cited by the locator.
+          rationale: The cited PDF page is printed page 8-11 and contains the “Blocked
+            Static System” discussion quoted in the excerpt, including the
+            stated ASI, altimeter, and VSI effects.
         claim_assessments:
           - claim_id: static-block-altimeter-vsi
             verdict: supports
@@ -873,25 +943,25 @@ results:
               blocked static system produces a continuous zero VSI indication.
           - claim_id: static-block-asi-error
             verdict: supports
-            rationale: The excerpt states that, with a blocked static system and clear pitot
-              tube, indicated airspeed is lower than actual above the blockage
-              altitude and faster than actual below it.
+            rationale: The excerpt states that, with the static system blocked and pitot
+              tube clear, indicated airspeed is lower than actual above the
+              blockage altitude and faster than actual below it.
           - claim_id: shared-static-can-fail-together
             verdict: partially_supports
-            rationale: The excerpt explains that the ASI uses static pressure and states
-              that a static-system blockage also affects the altimeter and VSI,
-              with specified effects for each. However, it does not expressly
-              characterize the instruments as sharing static pressure or
-              describe their errors as a coordinated pattern.
+            rationale: The excerpt says a static-system blockage affects the ASI, altimeter,
+              and VSI, and describes distinct erroneous indications for each.
+              However, it does not expressly say the three instruments share
+              static pressure or use the phrase/concept of a coordinated
+              pattern.
       usage:
         input_tokens: 1213
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1210
-        output_tokens: 459
+          cache_write_tokens: 1210
+          cached_tokens: 0
+        output_tokens: 449
         output_tokens_details:
-          reasoning_tokens: 141
-        total_tokens: 1672
+          reasoning_tokens: 129
+        total_tokens: 1662
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -900,7 +970,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-glass-sensor-paths
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.478Z
+    checked_at_utc: 2026-08-23T21:22:02.868Z
     linked_claim_ids:
       - pfd-combines-indications
     missing_claim_ids: []
@@ -933,31 +1003,31 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt states that multi-panel digital flight displays combine
-          all flight instruments onto a single screen called a primary flight
-          display and that the traditional “six pack” is displayed on one LCD
-          screen. The labeled PFD figure includes airspeed, attitude, altitude,
-          vertical speed, turn, and horizontal situation/heading information.
+          all flight instruments onto a single PFD screen and that the
+          traditional “six pack” is displayed on one LCD screen. Figure 8-12
+          specifically labels airspeed, attitude, altimeter, vertical speed,
+          turn, and horizontal situation/heading-related indications on the PFD.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page contains both the PFD figure with the relevant
-            labeled indications and the accompanying explanation that the
-            traditional six-pack instruments are combined on one PFD screen.
+          rationale: The cited PDF page is the extracted page and contains both the PFD
+            figure and the accompanying text describing a PFD as a single-screen
+            display of the traditional flight instruments.
         claim_assessments:
           - claim_id: pfd-combines-indications
             verdict: supports
-            rationale: The figure labels airspeed indicator, attitude indicator, altimeter,
-              vertical speed indicator, turn indicator, and horizontal situation
-              indicator, while the text says the traditional six-pack is
-              displayed on one LCD PFD screen.
+            rationale: Figure 8-12 shows labeled airspeed, attitude, altitude, VSI, turn,
+              and horizontal situation indicator indications on one PFD, while
+              the text says the traditional six-pack instruments are combined
+              onto a single LCD screen.
       usage:
         input_tokens: 1086
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1083
-        output_tokens: 238
+          cache_write_tokens: 1083
+          cached_tokens: 0
+        output_tokens: 207
         output_tokens_details:
-          reasoning_tokens: 37
-        total_tokens: 1324
+          reasoning_tokens: 0
+        total_tokens: 1293
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -966,7 +1036,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-air-data-computer
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.505Z
+    checked_at_utc: 2026-08-23T21:22:02.888Z
     linked_claim_ids:
       - adc-uses-pitot-static-inputs
       - display-does-not-create-independent-sources
@@ -999,39 +1069,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly describes the Air Data Computer (ADC)
-          receiving pitot-static inputs, computing pressure-derived airspeed and
-          altitude information, and sending digital data to the primary flight
-          display (PFD). Both claims are substantially stated in the excerpt.
+        rationale: The cited PDF page explicitly explains that EFD pitot-static inputs
+          are received by an ADC, which computes pressure information for PFD
+          airspeed display and computes barometric pressure for a digital
+          altitude signal sent to the PFD.
         locator_assessment:
           verdict: supports
-          rationale: "The cited locator is accurate for the supplied excerpt: printed page
-            8-14 contains the “Air Data Computer (ADC)” section and the relevant
-            statements about ADC pitot-static inputs, airspeed, altitude, and
-            PFD display."
+          rationale: The excerpt is from cited PDF page 14 and contains the heading and
+            substantive discussion of “Air Data Computer (ADC)” on printed page
+            8-14, matching the locator.
         claim_assessments:
           - claim_id: adc-uses-pitot-static-inputs
             verdict: supports
             rationale: The excerpt states that pitot-static inputs are received by an ADC;
-              it computes total-versus-static pressure information needed to
-              display airspeed on the PFD; and it computes received barometric
-              pressure and sends a digital signal to the PFD for altitude
-              display.
+              it computes the total-versus-static pressure difference for PFD
+              airspeed display, and computes received barometric pressure to
+              send a digital altitude signal to the PFD.
           - claim_id: display-does-not-create-independent-sources
             verdict: supports
-            rationale: The excerpt expressly says EFDs use instrument inputs, with
-              pitot-static inputs received and processed by an ADC, which
-              provides the information/signals displayed as airspeed and
-              altitude on the PFD.
+            rationale: The excerpt states that an EFD receives pitot-static inputs through
+              an ADC and that the ADC sends information necessary for airspeed
+              and altitude display on the PFD.
       usage:
         input_tokens: 1056
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1053
-        output_tokens: 274
+          cache_write_tokens: 1053
+          cached_tokens: 0
+        output_tokens: 246
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1330
+        total_tokens: 1302
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1040,7 +1107,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-gyro-principles
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.519Z
+    checked_at_utc: 2026-08-23T21:22:02.903Z
     linked_claim_ids:
       - gyro-rigidity
       - gyro-precession
@@ -1073,37 +1140,38 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited PDF page directly defines and explains both rigidity in
-          space and precession, including precession’s 90-degree-later response
-          and its use in determining rate of turn. However, it does not state
-          that precession can contribute unwanted error.
+        rationale: The cited PDF page directly explains both gyroscopic rigidity in
+          space and precession, including the 90-degree-later response and use
+          in sensing rate of turn. It does not state that precession can
+          contribute unwanted error.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from printed page 8-15 and contains the “Gyroscopic
-            Principles,” “Rigidity in Space,” and “Precession” sections
-            identified by the locator.
+          rationale: The excerpt is from the cited PDF page (printed page 8-15) and
+            contains the sections “Rigidity in Space” and “Precession,” which
+            directly address the claims.
         claim_assessments:
           - claim_id: gyro-rigidity
             verdict: supports
-            rationale: The excerpt states that rigidity in space is the principle that a
+            rationale: The excerpt defines rigidity in space as the principle that “a
               gyroscope remains in a fixed position in the plane in which it is
-              spinning.
+              spinning,” which supports the stated tendency to remain aligned in
+              its plane of rotation.
           - claim_id: gyro-precession
             verdict: partially_supports
-            rationale: The excerpt states that precession is the tilting or turning of a
-              gyro in response to a deflective force, with the reaction
-              occurring 90° later in the direction of rotation, and says this
-              allows the gyro to determine a rate of turn. It does not address
-              unwanted error caused by precession.
+            rationale: The excerpt defines precession as gyro tilting or turning in response
+              to a deflective force, with the reaction occurring 90 degrees
+              later in the direction of rotation. It also says this principle
+              allows a gyro to determine rate of turn. However, it does not
+              address precession contributing unwanted error.
       usage:
         input_tokens: 1360
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1357
-        output_tokens: 315
+          cache_write_tokens: 1357
+          cached_tokens: 0
+        output_tokens: 320
         output_tokens_details:
-          reasoning_tokens: 58
-        total_tokens: 1675
+          reasoning_tokens: 54
+        total_tokens: 1680
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1112,7 +1180,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-gyro-power-and-low-vacuum
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.548Z
+    checked_at_utc: 2026-08-23T21:22:02.927Z
     linked_claim_ids:
       - common-gyro-power-split
       - gyro-source-diversity
@@ -1144,46 +1212,46 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: partially_supports
+        verdict: supports
         confidence: high
-        rationale: The cited PDF page directly supports the conventional gyro-power
-          arrangement and the use of multiple power sources for bank-information
-          redundancy. It also states that low suction can make attitude and
-          heading indications unreliable, unstable, and inaccurate, but it does
-          not state that low suction slows the gyros.
+        rationale: The cited PDF page directly discusses gyro power-source arrangements,
+          redundant power sources for bank information, and the effects of low
+          vacuum/suction on attitude and heading indicator reliability. Two
+          claims are directly supported or nearly so; the remaining wording adds
+          a detail not explicitly stated.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from printed page 8-16 and contains the cited “Sources
-            of Power” and vacuum-system discussion, including the relevant
-            statements about gyro power arrangements, redundancy, and low vacuum
-            pressure.
+          rationale: The cited locator is PDF page 16 / printed page 8-16, and the excerpt
+            from that exact page contains the relevant “Sources of Power”
+            discussion and low-vacuum warning language.
         claim_assessments:
           - claim_id: common-gyro-power-split
-            verdict: supports
+            verdict: partially_supports
             rationale: The excerpt states that, in some aircraft, vacuum or pressure systems
               power the heading and attitude indicators while the electrical
-              system powers the turn coordinator.
+              system powers the turn coordinator. It does not establish that
+              this is a “common” arrangement.
           - claim_id: gyro-source-diversity
             verdict: supports
-            rationale: The excerpt states that most aircraft have at least two power sources
-              to ensure at least one source of bank information is available if
-              one power source fails.
+            rationale: The excerpt expressly states that most aircraft have at least two
+              power sources to ensure at least one source of bank information is
+              available if one power source fails.
           - claim_id: low-vacuum-unreliable-gyros
             verdict: partially_supports
-            rationale: The excerpt says attitude and heading indicators may not provide
-              reliable information when suction is low and that gyroscopic
-              instruments may become unstable and inaccurate below the normal
-              operating range. It does not specifically say that low suction
-              slows vacuum-driven gyros.
+            rationale: The excerpt expressly says that when suction pressure is low or below
+              the normal operating range, attitude and heading indicators may be
+              unreliable and gyroscopic instruments may become unstable and
+              inaccurate. It explains that airflow spins the gyro, but does not
+              explicitly state that low suction slows the gyros.
       usage:
         input_tokens: 1381
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1378
-        output_tokens: 347
+          cache_write_tokens: 1378
+          cached_tokens: 0
+        output_tokens: 421
         output_tokens_details:
-          reasoning_tokens: 39
-        total_tokens: 1728
+          reasoning_tokens: 93
+        total_tokens: 1802
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1192,7 +1260,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-turn-indicator-backup
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.559Z
+    checked_at_utc: 2026-08-23T21:22:02.937Z
     linked_claim_ids:
       - turn-indicator-backup-bank
     missing_claim_ids: []
@@ -1229,20 +1297,20 @@ results:
           event an attitude indicator fails.” This directly supports the claim.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is the stated printed page 8-16 and includes the
-            “Turn Indicators” section containing the explicit
+          rationale: The cited PDF page is the displayed printed page 8-16 and contains
+            the “Turn Indicators” section with the quoted
             backup-bank-information statement.
         claim_assessments:
           - claim_id: turn-indicator-backup-bank
             verdict: supports
             rationale: "Directly supported: the excerpt says both types of turn indicators
-              serve as a backup source of bank information when the attitude
+              serve as a backup source of bank information if the attitude
               indicator fails."
       usage:
         input_tokens: 1286
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1283
+          cache_write_tokens: 1283
+          cached_tokens: 0
         output_tokens: 153
         output_tokens_details:
           reasoning_tokens: 0
@@ -1255,7 +1323,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-turn-coordinator
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.570Z
+    checked_at_utc: 2026-08-23T21:22:02.947Z
     linked_claim_ids:
       - turn-coordinator-information
       - turn-coordinator-limitations
@@ -1288,39 +1356,39 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited PDF page directly discusses the turn coordinator’s canted
-          gimbal/gyro, its sensing of roll rate and rate of turn, and its
-          indication of turn rate/direction rather than bank angle. However, it
-          does not state that the gyro senses roll rate only initially or that
-          turn indication occurs specifically after roll stabilizes, and it does
-          not mention pitch information.
+        rationale: The cited page directly explains that the turn coordinator has a
+          canted gimbal, allowing it to sense both rate of roll and rate of
+          turn, and that it indicates only rate and direction of turn rather
+          than a specific bank angle. It does not state that the indication
+          changes specifically "after roll stabilizes," nor does it address
+          pitch information.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page 8-17 and contains the “Turn
-            Coordinator” discussion relevant to both claims.
+          rationale: The excerpt is explicitly from printed page 8-17 and contains the
+            "Turn Coordinator" section cited by the locator.
         claim_assessments:
           - claim_id: turn-coordinator-information
             verdict: partially_supports
             rationale: The excerpt states that the canted gyro can sense both rate of roll
-              and rate of turn, that the miniature aircraft banks during
-              roll-in/roll-out, and that the instrument indicates rate and
-              direction of turn. It does not state the claimed timing sequence
-              that roll rate is sensed initially and that turn rate is indicated
-              after roll stabilizes.
+              and rate of turn, and that the instrument indicates rate and
+              direction of turn. It describes behavior while rolling, but does
+              not state the claimed sequence that it initially senses roll rate
+              and then, after roll stabilizes, indicates turn rate and
+              direction.
           - claim_id: turn-coordinator-limitations
             verdict: partially_supports
-            rationale: The excerpt explicitly states that the turn coordinator does not
-              display a specific angle of bank. It provides no statement about
-              whether the instrument provides pitch information.
+            rationale: The excerpt expressly says that the turn coordinator does not display
+              a specific angle of bank. However, it does not state that it
+              provides no pitch information.
       usage:
         input_tokens: 819
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 280
+        output_tokens: 271
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1099
+        total_tokens: 1090
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1329,7 +1397,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-inclinometer
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.587Z
+    checked_at_utc: 2026-08-23T21:22:02.965Z
     linked_claim_ids:
       - inclinometer-coordination
     missing_claim_ids: []
@@ -1361,35 +1429,33 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The excerpt clearly states that the inclinometer depicts yaw and that
-          coordinated flight is maintained by keeping the ball centered. It
-          separately identifies the attitude indicator as the instrument that
-          displays aircraft attitude. However, it does not explicitly state that
-          the inclinometer ball does not show aircraft attitude, so the claim’s
-          contrastive wording is only partially supported.
+        rationale: The excerpt directly explains that the inclinometer depicts yaw and
+          that keeping the ball centered indicates coordinated flight; it also
+          describes slips and skids. However, it does not explicitly state that
+          the inclinometer does not show aircraft attitude, so the contrast
+          phrased as “rather than aircraft attitude” is not fully established by
+          this excerpt alone.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page contains the “Inclinometer” section and directly
-            discusses the ball’s indication of yaw, coordination, slips, and
-            skids.
+          rationale: The cited PDF page is printed page 8-18 and contains the
+            “Inclinometer” section, including the discussion of ball centering,
+            coordination, slips, skids, and yaw.
         claim_assessments:
           - claim_id: inclinometer-coordination
             verdict: partially_supports
-            rationale: "The source supports that the ball indicates coordination/yaw
-              conditions: a centered ball indicates coordinated flight, while
-              off-center indications reflect slips or skids. It does not
-              expressly say the ball shows coordination ‘rather than’ aircraft
-              attitude, although the adjacent attitude-indicator section assigns
-              aircraft-attitude display to that separate instrument."
+            rationale: The page supports that the ball is used to assess and maintain turn
+              coordination and depicts yaw. It does not expressly characterize
+              the inclinometer as not showing aircraft attitude, although the
+              adjacent attitude-indicator discussion is distinct.
       usage:
         input_tokens: 1214
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1211
-        output_tokens: 287
+          cache_write_tokens: 1211
+          cached_tokens: 0
+        output_tokens: 284
         output_tokens_details:
-          reasoning_tokens: 61
-        total_tokens: 1501
+          reasoning_tokens: 69
+        total_tokens: 1498
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1398,7 +1464,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-attitude-indicator
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.605Z
+    checked_at_utc: 2026-08-23T21:22:02.981Z
     linked_claim_ids:
       - attitude-indicator-purpose
     missing_claim_ids: []
@@ -1431,32 +1497,31 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states that the attitude indicator displays
-          aircraft attitude using a miniature aircraft and horizon bar, and that
-          its gyro is mounted horizontally and relies on rigidity in space. It
-          explains that the horizon bar remains horizontal as the aircraft
-          pitches or banks, thereby indicating attitude relative to the true
-          horizon.
+          aircraft attitude using a miniature aircraft and horizon bar, with
+          their relationship corresponding to the real aircraft and actual
+          horizon. It also states that its gyro is mounted horizontally and
+          depends on rigidity in space, and that the horizon bar indicates
+          attitude as the aircraft pitches or banks.
         locator_assessment:
           verdict: supports
           rationale: The cited PDF page is page 8-18 and contains the “Attitude Indicator”
-            section and Figure 8-23, directly matching the locator’s subject and
-            printed-page range.
+            section and Figure 8-23, directly matching the locator and
+            supporting the claim from that exact page.
         claim_assessments:
           - claim_id: attitude-indicator-purpose
             verdict: supports
-            rationale: "The source explicitly supports all elements: gyro rigidity in space,
+            rationale: "The page expressly supports all elements: gyro rigidity in space,
               the miniature-aircraft/horizon-bar relationship, and indication of
-              pitch and bank (aircraft movement about its lateral and
-              longitudinal axes)."
+              pitch and bank (attitude relative to the true horizon)."
       usage:
         input_tokens: 1231
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1228
-        output_tokens: 192
+          cache_write_tokens: 1228
+          cached_tokens: 0
+        output_tokens: 196
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1423
+        total_tokens: 1427
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1465,7 +1530,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-attitude-indicator-limits
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.621Z
+    checked_at_utc: 2026-08-23T21:22:02.996Z
     linked_claim_ids:
       - attitude-indicator-limits
     missing_claim_ids: []
@@ -1497,32 +1562,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly states that attitude-indicator pitch and
-          bank limits depend on make and model; gives example ranges of
-          100°–110° bank and 60°–70° pitch; explains that certain ±25°
-          pitch-display instruments can peg or tumble and provide erroneous
-          pitch and bank indications when limits are exceeded; and states that a
-          number of modern attitude indicators do not have this problem.
+        rationale: The cited PDF page expressly states that attitude-indicator pitch and
+          bank limits depend on make and model; gives example bank limits of
+          100°–110° and pitch limits of 60°–70°; explains that certain ±25°
+          pitch-display instruments may peg or tumble and give erroneous pitch
+          and bank indications when limits are exceeded; and says that a number
+          of modern attitude indicators do not have this problem.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is explicitly from printed page 8-19 and contains the
-            cited discussion of attitude-indicator pitch and bank limits.
+          rationale: The excerpt is from cited PDF page 19 (printed page 8-19) and
+            directly contains the attitude-indicator limit discussion relevant
+            to the claim.
         claim_assessments:
           - claim_id: attitude-indicator-limits
             verdict: supports
-            rationale: The claim accurately summarizes the page’s statements about
-              model-dependent limits, pegging/tumbling and erroneous indications
-              beyond limits for some instruments, and modern indicators that do
-              not have this problem.
+            rationale: The claim accurately summarizes the excerpt's statements about
+              model-dependent limits, pegging/tumbling or erroneous indications
+              beyond limits for some instruments, and modern attitude indicators
+              that do not have this issue.
       usage:
         input_tokens: 1094
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1091
-        output_tokens: 202
+          cache_write_tokens: 1091
+          cached_tokens: 0
+        output_tokens: 211
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1296
+        total_tokens: 1305
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1531,7 +1597,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-heading-indicator-drift
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.652Z
+    checked_at_utc: 2026-08-23T21:22:03.028Z
     linked_claim_ids:
       - heading-indicator-drift
     missing_claim_ids: []
@@ -1561,37 +1627,39 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: partially_supports
+        verdict: supports
         confidence: high
-        rationale: The cited page explains that the heading indicator operates by gyro
-          rigidity in space and provides clear heading information, and it
-          explicitly identifies drift from frictional precession and error from
-          Earth rotation. It also states that the adjustment knob aligns the
-          indicator with the magnetic compass. However, it does not expressly
-          state that a free-gyro heading indicator therefore requires periodic
-          comparison with the magnetic compass.
+        rationale: The excerpt directly explains that the heading indicator is stable
+          and not affected by the forces that complicate magnetic-compass
+          interpretation; that it drifts/creeps because of frictional
+          precession; and that Earth rotation can produce up to 15° of error per
+          hour. It also states that the adjustment knob aligns the indicator
+          with the magnetic compass, supporting the need for compass
+          comparison/alignment for a non-slaved heading indicator.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited printed page 8-20 and directly contains
-            the Heading Indicator discussion, including drift, Earth-rotation
-            error, and compass alignment.
+          rationale: The cited PDF page is printed page 8-20, and the supplied excerpt
+            from that exact page contains the relevant heading-indicator
+            operation, drift, Earth-rotation error, and compass-alignment
+            discussion.
         claim_assessments:
           - claim_id: heading-indicator-drift
-            verdict: partially_supports
-            rationale: The excerpt supports the frictional-precession and Earth-rotation
-              portions of the claim and says the instrument can be aligned to
-              the magnetic compass. It does not explicitly establish the stated
-              requirement to compare it with the magnetic compass, nor does it
-              use the term “free-gyro.”
+            verdict: supports
+            rationale: "The page supports each substantive element: stable/useful heading
+              display, frictional-precession drift, Earth-rotation error, and
+              alignment with the magnetic compass. The source notes that slaved
+              HSI systems are an exception that generally need no adjustment,
+              which is consistent with the claim’s limitation to a free-gyro
+              indicator."
       usage:
         input_tokens: 1162
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1159
-        output_tokens: 288
+          cache_write_tokens: 1159
+          cached_tokens: 0
+        output_tokens: 250
         output_tokens_details:
-          reasoning_tokens: 59
-        total_tokens: 1450
+          reasoning_tokens: 0
+        total_tokens: 1412
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1600,7 +1668,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-ahrs-heading-path
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.666Z
+    checked_at_utc: 2026-08-23T21:22:03.038Z
     linked_claim_ids:
       - ahrs-and-magnetometer-paths
     missing_claim_ids: []
@@ -1633,30 +1701,28 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt explicitly states that the AHRS sends attitude
-          information to the PFD to generate pitch and bank information, and
-          that heading information is derived from a magnetometer sensing the
-          Earth's lines of magnetic flux and is processed for the PFD heading
-          display.
+          information to the PFD for pitch and bank display, and that heading
+          information is derived from a magnetometer sensing the Earth's lines
+          of magnetic flux and is processed for the PFD heading display.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is identified as page 8-20, and the excerpt on
-            that page contains the AHRS discussion directly supporting the
-            claim.
+          rationale: The cited PDF page is the exact extracted page and contains the AHRS
+            section directly supporting the claim.
         claim_assessments:
           - claim_id: ahrs-and-magnetometer-paths
             verdict: supports
-            rationale: "Directly supported: “The AHRS sends attitude information to the PFD”
-              and “The heading information is derived from a magnetometer that
-              senses the earth’s lines of magnetic flux.”"
+            rationale: "The claim closely restates the excerpt: AHRS sends attitude
+              information to the PFD, and heading comes from a magnetometer that
+              senses Earth's magnetic flux."
       usage:
         input_tokens: 1162
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1159
-        output_tokens: 178
+          cache_write_tokens: 1159
+          cached_tokens: 0
+        output_tokens: 162
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1340
+        total_tokens: 1324
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1665,7 +1731,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-heading-low-vacuum
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.678Z
+    checked_at_utc: 2026-08-23T21:22:03.049Z
     linked_claim_ids:
       - heading-alignment-conditions
       - low-suction-increases-gyro-error
@@ -1698,37 +1764,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly addresses free heading-indicator adjustment
-          practices and the effect of inadequate vacuum suction on attitude and
-          heading gyro susceptibility to deflection.
+        rationale: The cited PDF page explicitly discusses free heading gyro adjustment
+          procedures and the increased susceptibility to precession/deflection
+          when inadequate vacuum slows the attitude and heading gyros.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is printed page 8-22, and the supplied excerpt
-            from that page contains both the heading-indicator guidance and the
-            low-vacuum precession discussion.
+          rationale: The excerpt is from printed page 8-22 and contains the cited
+            heading-indicator limitations, low-vacuum precession discussion, and
+            Instrument Check material.
         claim_assessments:
           - claim_id: heading-alignment-conditions
             verdict: supports
-            rationale: The excerpt states that free gyros require periodic adjustment;
-              indications should be checked frequently, approximately every 15
-              minutes, and reset to align with the magnetic compass when
-              required. It further says to adjust the heading indicator to the
-              magnetic compass heading when straight and level at a constant
+            rationale: The excerpt states that free gyros require periodic adjustment, that
+              indications should be checked frequently (approximately every 15
+              minutes), and that the heading indicator should be adjusted to the
+              magnetic compass heading while straight and level at constant
               speed to avoid compass errors.
           - claim_id: low-suction-increases-gyro-error
             verdict: supports
-            rationale: The excerpt states that when the vacuum system produces inadequate
-              suction, heading and attitude indicator gyros slow down and become
-              more susceptible to deflection from the plane of rotation.
+            rationale: The excerpt states that when the vacuum system does not provide
+              adequate suction, the heading and attitude gyros slow down and
+              become more susceptible to deflection from the plane of rotation.
       usage:
         input_tokens: 1325
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1322
-        output_tokens: 237
+          cache_write_tokens: 1322
+          cached_tokens: 0
+        output_tokens: 229
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1562
+        total_tokens: 1554
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1737,7 +1802,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-magnetic-compass-basics
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.685Z
+    checked_at_utc: 2026-08-23T21:22:03.056Z
     linked_claim_ids:
       - magnetic-compass-principle
       - compass-bank-limitation
@@ -1771,35 +1836,33 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page directly describes the aircraft magnetic compass
-          construction, its alignment with Earth’s magnetic field, and its
-          bank-angle limitation.
+          construction, its alignment with Earth’s magnetic field, fluid
+          damping, allowable tilt, and degraded behavior at steeper bank angles.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the specified printed page 8-23 and contains the
-            Compass Systems and Magnetic Compass material identified by the
-            locator.
+          rationale: The excerpt is from the cited printed page 8-23 and contains the
+            relevant “Compass Systems” and “Magnetic Compass” material.
         claim_assessments:
           - claim_id: magnetic-compass-principle
             verdict: supports
             rationale: The excerpt states that an aircraft magnetic compass has two small
-              magnets attached to a metal float, with a graduated card wrapped
-              around the float; it states that the fluid damps float/card
-              oscillation and that the magnets align with Earth’s magnetic
-              field.
+              magnets attached to a metal float, a graduated card wrapped around
+              the float, compass fluid that damps float/card oscillation, and
+              magnets that align with Earth’s magnetic field.
           - claim_id: compass-bank-limitation
             verdict: supports
             rationale: The excerpt states that the mounting permits the float to rotate and
-              tilt to approximately 18° angle of bank, and that at steeper bank
-              angles compass indications are erratic and unpredictable.
+              tilt up to approximately 18° angle of bank and that at steeper
+              bank angles compass indications are erratic and unpredictable.
       usage:
         input_tokens: 1080
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1077
-        output_tokens: 219
+          cache_write_tokens: 1077
+          cached_tokens: 0
+        output_tokens: 227
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1299
+        total_tokens: 1307
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1808,7 +1871,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-variation-and-deviation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.693Z
+    checked_at_utc: 2026-08-23T21:22:03.068Z
     linked_claim_ids:
       - variation-definition
       - deviation-definition
@@ -1841,37 +1904,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The cited PDF page directly defines both variation and deviation and
-          states their relevant dependencies: variation is the difference
-          between true and magnetic directions and is tied to geographic
-          area/isogonic lines, while deviation results from aircraft magnetic
-          fields and depends on heading."
+        rationale: The cited PDF page directly defines both variation and deviation and
+          states their respective dependence on geographic location and aircraft
+          heading.
         locator_assessment:
           verdict: supports
           rationale: The excerpt is from cited PDF page 24 (printed page 8-24) and
-            contains the “Variation” and “Deviation” sections explicitly
-            referenced by the locator.
+            contains the “Variation” and “Deviation” sections identified by the
+            locator.
         claim_assessments:
           - claim_id: variation-definition
             verdict: supports
-            rationale: The excerpt states that “the difference between true and magnetic
-              directions is called variation,” and explains that its value is
-              associated with geographic area/isogonic lines and does not change
+            rationale: The excerpt states that variation is “the difference between true and
+              magnetic directions” and explains that its value is associated
+              with isogonic-line area/geographic location; it does not change
               with aircraft heading.
           - claim_id: deviation-definition
             verdict: supports
             rationale: The excerpt states that aircraft magnetic fields create compass error
-              called deviation and that deviation “depends on the aircraft
-              heading.”
+              called deviation, and that deviation depends on aircraft heading
+              rather than geographic location.
       usage:
         input_tokens: 1522
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1519
-        output_tokens: 215
+          cache_write_tokens: 1519
+          cached_tokens: 0
+        output_tokens: 193
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1737
+        total_tokens: 1715
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1880,7 +1941,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-compass-correction-card
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.757Z
+    checked_at_utc: 2026-08-23T21:22:03.129Z
     linked_claim_ids:
       - deviation-correction-card
     missing_claim_ids: []
@@ -1912,32 +1973,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states that, after compensating magnets are
-          adjusted to minimize the difference between compass indication and
+        rationale: The excerpt directly states that, after adjusting the compensator
+          assembly to minimize the difference between compass indication and
           actual magnetic heading, the AMT records any remaining error on a
           compass correction card and places it in a holder near the compass. It
           also identifies the card as showing deviation correction for headings.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is explicitly labeled 8-25 and contains the
-            described discussion and Figure 8-35 on deviation compensation and
-            the compass correction card.
+          rationale: The cited PDF page is the extracted page and contains both Figure
+            8-35 on the compass correction card and the accompanying text
+            describing its completion and placement.
         claim_assessments:
           - claim_id: deviation-correction-card
             verdict: supports
-            rationale: The page states that the AMT adjusts the compass compensator to
-              minimize heading error, then records any remaining error on a
-              compass correction card placed near the compass. The card’s
-              heading-specific deviation corrections are also described.
+            rationale: "The page expressly supports each element: an AMT minimizes deviation
+              through adjustment, records remaining error on the correction
+              card, and places the card near the compass. The figure caption
+              establishes that the card gives deviation correction by heading."
       usage:
         input_tokens: 1169
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1166
-        output_tokens: 192
+          cache_write_tokens: 1166
+          cached_tokens: 0
+        output_tokens: 193
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1361
+        total_tokens: 1362
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1946,7 +2007,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-compass-dip-model
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.766Z
+    checked_at_utc: 2026-08-23T21:22:03.137Z
     linked_claim_ids:
       - compass-dip-physical-model
     missing_claim_ids: []
@@ -1978,35 +2039,37 @@ results:
       assessment:
         verdict: partially_supports
         confidence: high
-        rationale: The cited page supports the pendulous compass design and explains
-          that lowering the center of gravity below the pivot helps keep the
-          compass assembly horizontal. It also states that when the card is
-          tilted out of the horizontal plane, the vertical component of Earth’s
-          magnetic field affects it. However, the excerpt does not state that,
-          in the Northern Hemisphere, Earth’s magnetic field slopes downward
-          toward magnetic north.
+        rationale: "The excerpt directly supports the pendulous compass model: it states
+          that the center of gravity is below the pivot point, that this
+          arrangement keeps the compass assembly nearly horizontal, and that
+          tilting out of the horizontal plane exposes it to the vertical
+          component of Earth’s magnetic field. It also describes magnetic dip as
+          causing the float assembly to swing during turns. However, this page
+          does not explicitly state that, in the Northern Hemisphere, Earth’s
+          magnetic field slopes downward toward magnetic north."
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from printed page 8-26 and directly contains the
-            discussion of magnetic dip, the pendulous mounting/center-of-gravity
-            arrangement, and effects when the compass card tilts.
+          rationale: The cited PDF page is printed page 8-26 and contains the discussion
+            of dip effects, pendulous mounting, and northerly/southerly turning
+            errors described by the locator.
         claim_assessments:
           - claim_id: compass-dip-physical-model
             verdict: partially_supports
-            rationale: "Supported: the center of gravity is below the pivot, the arrangement
-              is intended to keep the assembly horizontal, and tilting exposes
-              it to the vertical magnetic-field component. Not supported on this
-              page: the specific Northern Hemisphere characterization that the
-              field slopes downward toward magnetic north."
+            rationale: "Supported: conventional compass construction uses a center of
+              gravity below the pivot; the assembly is intended to rotate
+              horizontally; and tilting allows the vertical component of Earth’s
+              field to affect it. Not explicitly supported on this page: the
+              stated Northern Hemisphere direction of the field—downward toward
+              magnetic north."
       usage:
         input_tokens: 1263
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1260
-        output_tokens: 282
+          cache_write_tokens: 1260
+          cached_tokens: 0
+        output_tokens: 259
         output_tokens_details:
-          reasoning_tokens: 43
-        total_tokens: 1545
+          reasoning_tokens: 0
+        total_tokens: 1522
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2015,7 +2078,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-compass-dip-errors
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.778Z
+    checked_at_utc: 2026-08-23T21:22:03.150Z
     linked_claim_ids:
       - compass-acceleration-error
       - compass-turning-error
@@ -2047,52 +2110,57 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: supports
+        verdict: partially_supports
         confidence: high
-        rationale: The cited PDF page directly discusses magnetic-compass northerly and
-          southerly turning errors and acceleration/deceleration errors,
-          including the pendulous mounting, magnetic dip, heading-dependent
-          indications, rollout corrections, and increased turning-error effect
-          near magnetic poles.
+        rationale: The cited page directly discusses northerly and southerly turning
+          errors and acceleration error in a magnetic compass. It supports the
+          core operational descriptions in all three claims, but it does not
+          state that the effects are specifically limited to, or described in
+          terms of, the Northern Hemisphere. It also only explicitly says
+          proximity to the magnetic poles amplifies the turning errors, not
+          acceleration error.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is explicitly from printed page 8-26 and contains the
-            stated sections on northerly and southerly turning errors and
+          rationale: The excerpt is from printed page 8-26 and contains the cited sections
+            on northerly turning errors, southerly turning errors, and
             acceleration error.
         claim_assessments:
           - claim_id: compass-acceleration-error
             verdict: partially_supports
-            rationale: The excerpt states that magnetic dip and inertia cause compass errors
-              during acceleration and deceleration on easterly or westerly
-              headings; acceleration indicates toward north and deceleration
-              toward south. It does not explicitly limit these statements to the
-              Northern Hemisphere.
+            rationale: The excerpt states that magnetic dip and inertia cause errors during
+              acceleration and deceleration on easterly and westerly headings;
+              acceleration indicates a turn toward north and deceleration a turn
+              toward south. It also describes the pendulous mounting tilting
+              during airspeed changes. However, the excerpt does not specify
+              that this description is limited to the Northern Hemisphere.
           - claim_id: compass-turning-error
             verdict: partially_supports
-            rationale: The excerpt states that during a northerly turn the compass leads and
-              the turn should be stopped before the desired heading, while
-              during a southerly turn it lags and should be allowed to pass the
-              desired heading. It does not explicitly frame these effects as
-              Northern Hemisphere-specific or use the term conventional compass
-              card.
+            rationale: The excerpt states that on northerly turns the compass card/float
+              leads, requiring the turn to be stopped before the desired
+              heading, and that on southerly turns it lags, requiring passage of
+              the desired heading before stopping. However, it does not
+              expressly frame these effects as Northern Hemisphere-specific or
+              use the term “conventional compass card.”
           - claim_id: compass-errors-condition-dependent
             verdict: partially_supports
-            rationale: The excerpt explains that tilting the compass assembly in Earth’s
-              magnetic field produces turning errors, and that pendulous
-              mounting tilts the card during acceleration or deceleration. It
-              also shows heading-dependent error directions and says turning
-              errors are amplified near the magnetic poles. However, it does not
-              explicitly state that the size of acceleration errors varies with
-              proximity to the magnetic poles.
+            rationale: The excerpt explains that a tilted compass is affected by the
+              vertical component of Earth’s magnetic field, describes
+              turning-error effects from magnetic dip, and describes
+              acceleration-error effects from dip and inertia acting on the
+              pendulous mounting. It also states that turning errors are
+              amplified near the magnetic poles and that acceleration-error
+              direction depends on easterly or westerly headings. But it does
+              not explicitly establish that proximity to the magnetic poles
+              changes the size of both acceleration and turning errors.
       usage:
         input_tokens: 1376
         input_tokens_details:
-          cache_write_tokens: 0
-          cached_tokens: 1373
-        output_tokens: 637
+          cache_write_tokens: 1373
+          cached_tokens: 0
+        output_tokens: 614
         output_tokens_details:
-          reasoning_tokens: 266
-        total_tokens: 2013
+          reasoning_tokens: 162
+        total_tokens: 1990
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2101,7 +2169,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-compass-oscillation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-23T14:25:01.793Z
+    checked_at_utc: 2026-08-23T21:22:03.175Z
     linked_claim_ids:
       - compass-oscillation-average
     missing_claim_ids: []
@@ -2133,31 +2201,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that oscillation causes fluctuation of
-          the compass card relative to the aircraft’s actual heading and directs
-          the pilot to use the average indication between swings when setting
-          the gyroscopic heading indicator to agree with the magnetic compass.
+        rationale: The excerpt explicitly defines oscillation error as fluctuation of
+          the compass card relative to the aircraft’s actual heading direction
+          and instructs the pilot to use the average indication between swings
+          when setting the gyroscopic heading indicator to agree with the
+          magnetic compass.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is the supplied excerpt’s page 8-27 and contains
-            the headed section “Oscillation Error,” including the relevant
-            statements.
+          rationale: The cited PDF page is printed page 8-27, and the excerpt on that page
+            contains the “Oscillation Error” heading and the relevant guidance.
         claim_assessments:
           - claim_id: compass-oscillation-average
             verdict: supports
-            rationale: "The claim closely paraphrases the excerpt: compass oscillation
-              produces card fluctuation relative to actual heading, and the
-              average between swings is used when setting the gyroscopic heading
-              indicator."
+            rationale: "The excerpt states: “Oscillation is a combination of all of the
+              errors previously mentioned and results in fluctuation of the
+              compass card in relation to the actual heading direction of the
+              aircraft.” It further states: “When setting the gyroscopic heading
+              indicator to agree with the magnetic compass, use the average
+              indication between the swings.”"
       usage:
         input_tokens: 793
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 171
+        output_tokens: 204
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 964
+        total_tokens: 997
     claim_assessments:
       valid: true
       missing_assessment_ids: []

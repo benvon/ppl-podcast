@@ -41,3 +41,19 @@
 
 - Updated the two ACS claim records that still referenced the retired `cross-check-the-story-not-the-loudest-gauge` section identifier. Both now map to the current `cross-check-by-source-and-failure-path` section.
 - Removed the completed LLM source-relevance review from `release_gates_remaining` and aligned the approved master script’s production-status line with the completed review record. The remaining gates are now limited to the work that is actually outstanding.
+
+## 2026-08-23 — version 0.1.3 low-airspeed control-response correction
+
+- Corrected the blocked-pitot recognition example after listener QA identified a reversed control response. The learner now describes the temptation to lower the nose to regain a genuinely low airspeed, not to increase pitch. The preceding instructor sentence was aligned with the same correction.
+- Added the page-specific Airplane Flying Handbook energy-management source that explains the underlying trade: with no initial throttle change, down elevator trades altitude for airspeed and up elevator trades airspeed for altitude. This is an explanation of why the indication could tempt a pilot toward a real change, not a substitute for the aircraft-specific failure procedure.
+- Bumped the approved script to version 0.1.3. The new source and claim require deterministic and LLM source-relevance validation before the corrected segments can be rendered; the prior full candidate must not be treated as script-aligned until those segments are replaced.
+
+## 2026-08-23 — version 0.1.3 source-relevance review completed
+
+- Deterministic and `--require-llm` validation passed for all 31 FAA sources and 51 reciprocal claims. The final claim-level review recorded 22 source-level `supports` findings and 9 `partially_supports` findings; no source, locator, or individual claim was unsupported or lacked evidence.
+- Restored the `source_relevance_review_complete` pre-render status. Segments 18–21 require refresh because the renderer’s silent continuity context includes the two corrected spoken turns in segments 19–20.
+
+## 2026-08-23 — version 0.1.3 targeted audio refresh
+
+- Reused the accepted, unchanged opening-preview segments and all unaffected full-render segments. The renderer refreshed only segments 19–21: the corrected instructor explanation, the learner’s corrected low-airspeed response, and the next instructor turn whose silent continuity context changed. Segment 18 was verified reusable because the relevant next-line context was unchanged.
+- Reassembled the complete 64-segment candidate and a focused segments 18–21 listening excerpt. Automated WAV/MP3 decode, format, clipping, and stitch-boundary checks passed; the full candidate retains 15 embedded MP3 chapters. Full script-aligned listening QA remains required before release.

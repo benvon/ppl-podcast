@@ -1,7 +1,7 @@
 # Flight Instruments and Failure Recognition
 
-**Version:** 0.1.2 — approved source-mapped script
-**Target runtime:** 46–48 minutes / 5,565 spoken words
+**Version:** 0.1.3 — approved source-mapped script
+**Target runtime:** 46–48 minutes / 5,569 spoken words
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Script approved; source-relevance review complete. Audio rendering and listening QA remain.
 
@@ -128,11 +128,11 @@ There are two different blocked-pitot cases because a typical pitot tube has a f
 
 First case: the forward pitot opening is blocked, but the drain hole remains open. Ram air can no longer enter. Air already in the pitot line vents through the drain, so pressure on the pitot side falls toward ambient static pressure. The ASI then has nearly the same static pressure on both sides of its diaphragm and loses the difference that represents dynamic pressure. Its indication falls rapidly toward zero. The altimeter and VSI can continue to behave normally because their static source was not part of the blockage.
 
-That is a powerful recognition pattern. If the ASI falls toward zero while altitude and vertical trend still respond coherently—and the airplane’s attitude, power, sound, and outside visual picture do not support a sudden loss of all motion through the air—the pressure map points toward the pitot side, not toward an instruction to pull up and chase the airspeed needle.
+That is a powerful recognition pattern. If the ASI falls toward zero while altitude and vertical trend still respond coherently—and the airplane’s attitude, power, sound, and outside visual picture do not support a sudden loss of all motion through the air—the pressure map points toward the pitot side, not toward lowering the nose just to make the airspeed indication rise.
 
 **LEARNER:**
 
-The temptation would be to treat the low airspeed as true and increase pitch. But the other evidence may say that the airplane did not suddenly slow.
+The temptation would be to treat the low airspeed as true and lower the nose to regain airspeed. But the other evidence may say that the airplane did not suddenly slow.
 
 **INSTRUCTOR:**
 
@@ -154,7 +154,7 @@ That is the useful causal picture. Do not stop at “acts like an altimeter.” 
 
 Visible moisture can block a pitot tube with ice. Some airplanes have pitot heat, but the equipment, limitations, indications, and use are installation-specific. The airplane’s published information defines how its system is checked and operated.
 
-[Source: sources.yaml#phak-blocked-pitot; sources.yaml#phak-trapped-pitot-altitude-effect]
+[Source: sources.yaml#phak-blocked-pitot; sources.yaml#phak-trapped-pitot-altitude-effect; sources.yaml#afh-pitch-trades-altitude-for-speed]
 [Claim type: FAA guidance]
 
 ## [16:35] A blocked static source changes the family

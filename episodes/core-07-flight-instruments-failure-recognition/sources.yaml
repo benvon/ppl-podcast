@@ -134,6 +134,18 @@ sources:
     link_status: 200
     supports_claims: [trapped-pitot-asi-follows-altitude]
 
+  - id: afh-pitch-trades-altitude-for-speed
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 4: Energy Management: Mastering Altitude and Airspeed Control"
+    document_id: "FAA-H-8083-3C"
+    locator: "Chapter 4, Figure 4-8 and Rule 3, printed p. 4-10"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10"
+    revision: "FAA-H-8083-3C, 2021; FAA handbook index lists an October 2025 addendum"
+    relevance_excerpt: "With no initial throttle change, the Airplane Flying Handbook says up elevator trades speed for altitude and down elevator trades altitude for speed. It also describes gradually pitching down to accelerate at constant altitude while increasing throttle."
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [pitch-down-trades-altitude-for-speed]
+
   - id: phak-blocked-static
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"

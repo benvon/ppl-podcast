@@ -51,7 +51,6 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Create and validate listener-facing show notes with deep source links"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"

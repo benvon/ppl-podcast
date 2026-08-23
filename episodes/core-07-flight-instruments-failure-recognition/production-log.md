@@ -36,3 +36,8 @@
 - Corrected two FAA PDF locators discovered during the review: alternate-static effects now cite Chapter 8 PDF page 3 (printed p. 8-3), and the dip/pendulous-compass explanation now cites PDF page 26 (printed p. 8-26). Those are the pages containing the cited effects rather than preceding-page introductions.
 - Narrowed several manifest-only claim descriptions so each cited page supports exactly what the ledger attributes to it. The teaching sections retain their explanatory context, while the formal claims now track the FAA page-specific evidence without asking one excerpt to prove a broader inference.
 - Status is now `source_relevance_review_complete`. The remaining pre-render gates are audio production and listening QA.
+
+## 2026-08-23 — PR process-finding corrections
+
+- Updated the two ACS claim records that still referenced the retired `cross-check-the-story-not-the-loudest-gauge` section identifier. Both now map to the current `cross-check-by-source-and-failure-path` section.
+- Removed the completed LLM source-relevance review from `release_gates_remaining` and aligned the approved master script’s production-status line with the completed review record. The remaining gates are now limited to the work that is actually outstanding.

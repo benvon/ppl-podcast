@@ -3,7 +3,7 @@
 **Version:** 0.1.2 — approved source-mapped script
 **Target runtime:** 46–48 minutes / 5,565 spoken words
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Script approved; source-relevance review required before rendering.
+**Production status:** Script approved; source-relevance review complete. Audio rendering and listening QA remain.
 
 ## [00:00] Opening
 

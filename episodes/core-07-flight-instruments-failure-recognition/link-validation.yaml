@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-21T16:32:04.838Z
+checked_at_utc: 2026-08-23T13:24:27.065Z
 sources_file: episodes/core-07-flight-instruments-failure-recognition/sources.yaml
 claims_file: episodes/core-07-flight-instruments-failure-recognition/claim-inventory.yaml
 show_notes_file: null
@@ -18,7 +18,7 @@ show_notes_results: []
 results:
   - source_id: acs-operation-of-systems
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-21T16:32:03.355Z
+    checked_at_utc: 2026-08-23T13:24:23.675Z
     linked_claim_ids:
       - acs-instrument-systems-anchor
       - acs-failure-recognition-anchor
@@ -52,7 +52,7 @@ results:
       status: not_requested
   - source_id: acs-basic-instrument-cross-check
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-21T16:32:03.794Z
+    checked_at_utc: 2026-08-23T13:24:24.251Z
     linked_claim_ids:
       - acs-cross-check-anchor
       - acs-instrument-risk-anchor
@@ -88,7 +88,7 @@ results:
       status: not_requested
   - source_id: acs-unusual-attitude-failure-factor
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-21T16:32:03.811Z
+    checked_at_utc: 2026-08-23T13:24:24.267Z
     linked_claim_ids:
       - acs-equipment-failure-factor
     missing_claim_ids: []
@@ -121,7 +121,7 @@ results:
       status: not_requested
   - source_id: phak-pitot-static-overview
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:03.825Z
+    checked_at_utc: 2026-08-23T13:24:24.285Z
     linked_claim_ids:
       - pitot-static-pressure-model
       - pitot-static-instrument-source-map
@@ -157,7 +157,7 @@ results:
       status: not_requested
   - source_id: phak-alternate-static
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.283Z
+    checked_at_utc: 2026-08-23T13:24:26.564Z
     linked_claim_ids:
       - alternate-static-general-effects
       - aircraft-specific-static-corrections
@@ -191,7 +191,7 @@ results:
       status: not_requested
   - source_id: phak-altimeter-operation-and-errors
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.303Z
+    checked_at_utc: 2026-08-23T13:24:26.584Z
     linked_claim_ids:
       - altimeter-senses-static-pressure
     missing_claim_ids: []
@@ -224,7 +224,7 @@ results:
       status: not_requested
   - source_id: phak-altimeter-temperature-error
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.332Z
+    checked_at_utc: 2026-08-23T13:24:26.604Z
     linked_claim_ids:
       - cold-temperature-altimeter-error
     missing_claim_ids: []
@@ -257,7 +257,7 @@ results:
       status: not_requested
   - source_id: phak-vsi-operation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.356Z
+    checked_at_utc: 2026-08-23T13:24:26.624Z
     linked_claim_ids:
       - vsi-differential-pressure
       - vsi-trend-rate-lag
@@ -291,7 +291,7 @@ results:
       status: not_requested
   - source_id: phak-asi-operation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.373Z
+    checked_at_utc: 2026-08-23T13:24:26.637Z
     linked_claim_ids:
       - asi-is-pressure-comparison
     missing_claim_ids: []
@@ -324,7 +324,7 @@ results:
       status: not_requested
   - source_id: phak-blocked-pitot
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.395Z
+    checked_at_utc: 2026-08-23T13:24:26.656Z
     linked_claim_ids:
       - pitot-block-drain-open
       - pitot-block-pressure-trapped
@@ -359,7 +359,7 @@ results:
       status: not_requested
   - source_id: phak-trapped-pitot-altitude-effect
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.409Z
+    checked_at_utc: 2026-08-23T13:24:26.668Z
     linked_claim_ids:
       - trapped-pitot-asi-follows-altitude
     missing_claim_ids: []
@@ -392,7 +392,7 @@ results:
       status: not_requested
   - source_id: phak-blocked-static
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.435Z
+    checked_at_utc: 2026-08-23T13:24:26.681Z
     linked_claim_ids:
       - static-block-altimeter-vsi
       - static-block-asi-error
@@ -427,7 +427,7 @@ results:
       status: not_requested
   - source_id: phak-glass-sensor-paths
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.456Z
+    checked_at_utc: 2026-08-23T13:24:26.697Z
     linked_claim_ids:
       - pfd-combines-indications
       - display-does-not-create-independent-sources
@@ -461,7 +461,7 @@ results:
       status: not_requested
   - source_id: phak-air-data-computer
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.481Z
+    checked_at_utc: 2026-08-23T13:24:26.719Z
     linked_claim_ids:
       - adc-uses-pitot-static-inputs
       - display-does-not-create-independent-sources
@@ -495,7 +495,7 @@ results:
       status: not_requested
   - source_id: phak-gyro-principles
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.498Z
+    checked_at_utc: 2026-08-23T13:24:26.731Z
     linked_claim_ids:
       - gyro-rigidity
       - gyro-precession
@@ -529,7 +529,7 @@ results:
       status: not_requested
   - source_id: phak-gyro-power-and-low-vacuum
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.530Z
+    checked_at_utc: 2026-08-23T13:24:26.759Z
     linked_claim_ids:
       - common-gyro-power-split
       - gyro-source-diversity
@@ -564,7 +564,7 @@ results:
       status: not_requested
   - source_id: phak-turn-indicator-backup
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.541Z
+    checked_at_utc: 2026-08-23T13:24:26.772Z
     linked_claim_ids:
       - turn-indicator-backup-bank
     missing_claim_ids: []
@@ -597,7 +597,7 @@ results:
       status: not_requested
   - source_id: phak-turn-coordinator
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.553Z
+    checked_at_utc: 2026-08-23T13:24:26.782Z
     linked_claim_ids:
       - turn-coordinator-information
       - turn-coordinator-limitations
@@ -631,7 +631,7 @@ results:
       status: not_requested
   - source_id: phak-inclinometer
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.575Z
+    checked_at_utc: 2026-08-23T13:24:26.800Z
     linked_claim_ids:
       - inclinometer-coordination
     missing_claim_ids: []
@@ -664,7 +664,7 @@ results:
       status: not_requested
   - source_id: phak-attitude-indicator
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.595Z
+    checked_at_utc: 2026-08-23T13:24:26.816Z
     linked_claim_ids:
       - attitude-indicator-purpose
     missing_claim_ids: []
@@ -697,7 +697,7 @@ results:
       status: not_requested
   - source_id: phak-attitude-indicator-limits
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.612Z
+    checked_at_utc: 2026-08-23T13:24:26.846Z
     linked_claim_ids:
       - attitude-indicator-limits
     missing_claim_ids: []
@@ -730,7 +730,7 @@ results:
       status: not_requested
   - source_id: phak-heading-indicator-drift
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.649Z
+    checked_at_utc: 2026-08-23T13:24:26.885Z
     linked_claim_ids:
       - heading-indicator-drift
     missing_claim_ids: []
@@ -763,7 +763,7 @@ results:
       status: not_requested
   - source_id: phak-ahrs-heading-path
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.662Z
+    checked_at_utc: 2026-08-23T13:24:26.901Z
     linked_claim_ids:
       - ahrs-and-magnetometer-paths
       - display-does-not-create-independent-sources
@@ -797,7 +797,7 @@ results:
       status: not_requested
   - source_id: phak-heading-low-vacuum
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.675Z
+    checked_at_utc: 2026-08-23T13:24:26.918Z
     linked_claim_ids:
       - heading-alignment-conditions
       - low-suction-increases-gyro-error
@@ -831,10 +831,11 @@ results:
       status: not_requested
   - source_id: phak-magnetic-compass-basics
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.684Z
+    checked_at_utc: 2026-08-23T13:24:26.928Z
     linked_claim_ids:
       - magnetic-compass-principle
       - compass-bank-limitation
+      - compass-dip-physical-model
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -865,7 +866,7 @@ results:
       status: not_requested
   - source_id: phak-variation-and-deviation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.700Z
+    checked_at_utc: 2026-08-23T13:24:26.939Z
     linked_claim_ids:
       - variation-definition
       - deviation-definition
@@ -899,7 +900,7 @@ results:
       status: not_requested
   - source_id: phak-compass-correction-card
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.777Z
+    checked_at_utc: 2026-08-23T13:24:27.005Z
     linked_claim_ids:
       - deviation-correction-card
     missing_claim_ids: []
@@ -930,9 +931,43 @@ results:
     claim_assessments:
       valid: null
       status: not_requested
+  - source_id: phak-compass-dip-model
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-23T13:24:27.019Z
+    linked_claim_ids:
+      - compass-dip-physical-model
+      - compass-errors-condition-dependent
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3577
+      pdf_page_text_sha256: 19144839184bd3fd7d54aee5354bdb2e9e0d8e2289d88dc5195ab853cd714990
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
   - source_id: phak-compass-dip-errors
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.790Z
+    checked_at_utc: 2026-08-23T13:24:27.028Z
     linked_claim_ids:
       - compass-acceleration-error
       - compass-turning-error
@@ -967,9 +1002,8 @@ results:
       status: not_requested
   - source_id: phak-compass-oscillation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-21T16:32:04.810Z
+    checked_at_utc: 2026-08-23T13:24:27.042Z
     linked_claim_ids:
-      - compass-turning-error
       - compass-oscillation-average
     missing_claim_ids: []
     citation_target:

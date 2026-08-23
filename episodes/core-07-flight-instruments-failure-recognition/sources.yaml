@@ -1,6 +1,6 @@
 episode_id: "core-07"
-verification_date: "2026-08-21"
-verified_at_utc: "2026-08-21T16:16:56Z"
+verification_date: "2026-08-23"
+verified_at_utc: "2026-08-23T13:20:56Z"
 sources:
   - id: acs-operation-of-systems
     authority: faa_standard
@@ -300,7 +300,7 @@ sources:
     relevance_excerpt: "The magnetic compass uses magnets attached to a fluid-damped float and card assembly that aligns with Earth's magnetic field. Its mounting permits limited tilt; at steeper bank angles indications become erratic and unpredictable."
     verified_at_utc: "2026-08-21T16:16:56Z"
     link_status: 200
-    supports_claims: [magnetic-compass-principle, compass-bank-limitation]
+    supports_claims: [magnetic-compass-principle, compass-bank-limitation, compass-dip-physical-model]
 
   - id: phak-variation-and-deviation
     authority: faa_guidance
@@ -326,6 +326,18 @@ sources:
     link_status: 200
     supports_claims: [deviation-correction-card]
 
+  - id: phak-compass-dip-model
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Chapter 8, Dip Errors and pendulous compass mounting, printed pp. 8-25–8-26"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
+    relevance_excerpt: "Earth's magnetic field is horizontal only at the magnetic equator and slopes downward toward magnetic north in the Northern Hemisphere. A conventional compass places the assembly's center of gravity below its pivot to keep the card nearly horizontal, but tilt exposes it to the field's vertical component."
+    verified_at_utc: "2026-08-23T13:19:59Z"
+    link_status: 200
+    supports_claims: [compass-dip-physical-model, compass-errors-condition-dependent]
+
   - id: phak-compass-dip-errors
     authority: faa_guidance
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
@@ -333,7 +345,7 @@ sources:
     locator: "Chapter 8, Northerly and Southerly Turning Errors and Acceleration Error, printed p. 8-26"
     url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26"
     revision: "FAA-H-8083-25C, 2023; October 2025 addendum reviewed and does not amend Chapter 8"
-    relevance_excerpt: "Magnetic dip creates turning errors around northerly and southerly headings and acceleration errors on easterly and westerly headings. In the Northern Hemisphere, acceleration indicates north and deceleration indicates south; turns to north are undershot and turns to south are overshot."
+    relevance_excerpt: "Magnetic dip creates turning errors around northerly and southerly headings, while magnetic dip and inertia create acceleration errors on easterly and westerly headings. In the Northern Hemisphere, acceleration indicates north and deceleration indicates south; turns toward north require an early rollout and turns toward south require a late rollout."
     verified_at_utc: "2026-08-21T16:16:56Z"
     link_status: 200
     supports_claims: [compass-acceleration-error, compass-turning-error, compass-errors-condition-dependent]
@@ -348,4 +360,4 @@ sources:
     relevance_excerpt: "Oscillation combines compass errors and makes the card fluctuate around actual heading; the PHAK directs the pilot to use the average indication between swings when setting the heading indicator."
     verified_at_utc: "2026-08-21T16:16:56Z"
     link_status: 200
-    supports_claims: [compass-turning-error, compass-oscillation-average]
+    supports_claims: [compass-oscillation-average]

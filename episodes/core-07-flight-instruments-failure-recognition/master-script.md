@@ -1,7 +1,7 @@
 # Flight Instruments and Failure Recognition
 
 **Version:** 0.1.0 — initial source-mapped draft
-**Target runtime:** 40–45 minutes / 5,189 spoken words
+**Target runtime:** 46–48 minutes / 5,533 spoken words
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Initial draft for editorial review; source-relevance review required before rendering.
 
@@ -138,7 +138,7 @@ The temptation would be to treat the low airspeed as true and increase pitch. Bu
 
 Correct. Failure recognition protects against turning a bad indication into a real loss of control.
 
-Notice what made that conclusion possible. The altimeter and VSI share static pressure, but they do not use pitot pressure. The outside horizon in visual conditions does not use either pneumatic line. Power setting and the airplane’s sound come from still other information. None of those clues alone measures indicated airspeed, yet together they can show that the ASI’s story is incompatible with the rest of the airplane. That is a cross-check doing its real job.
+Notice what made that conclusion possible. The altimeter and VSI share static pressure, but they do not use pitot pressure. The outside horizon in visual conditions does not use either pneumatic line. Power setting and the airplane’s sound come from still other information. None of those clues alone measures indicated airspeed, yet together they can show that the ASI’s story is incompatible with the rest of the airplane. That is a cross-check doing its job.
 
 Second case: both the forward pitot opening and the drain hole are blocked. Now total pressure is trapped in the pitot line and ASI diaphragm. If altitude stays unchanged, the ASI may remain near the value present when the blockage occurred even if actual airspeed changes. It has stopped receiving new pitot information.
 
@@ -181,16 +181,14 @@ That answers the cold open. A frozen altimeter, zero VSI, and misleading ASI can
 
 **INSTRUCTOR:**
 
-Yes. Correlation is not independence. Instruments connected to one blocked line can move together or fail together.
+Several instruments can agree because they all depend on the same static line. If that line is blocked, the same bad pressure reaches all three, so their agreement only shows that they are receiving the same input. An indication from a different pressure, power, or sensor path is needed to test whether the airplane’s actual state matches them.
 
-Some airplanes provide an alternate static source, often inside the flight deck. The PHAK explains the general conventional result of selecting a lower-pressure cabin source: the altimeter indicates slightly higher, the ASI indicates higher, and the VSI shows a momentary climb before stabilizing if altitude is held. The exact error and the approved use belong to the airplane’s POH or AFM.
-
-Notice the distinction between recognizing the source and applying the checklist. The pressure model helps you recognize why several indications changed. The aircraft documents identify the actual alternate source, its corrections, and the response for that installation.
+Some airplanes provide an alternate static source, often inside the flight deck. The PHAK explains the general conventional result of selecting a lower-pressure cabin source: the altimeter indicates slightly higher, the ASI indicates higher, and the VSI shows a momentary climb before stabilizing if altitude is held. The airplane’s POH or AFM identifies the actual alternate source, its corrections, and the checklist response for that installation.
 
 [Source: sources.yaml#phak-blocked-static; sources.yaml#phak-alternate-static]
 [Claim type: FAA guidance]
 
-## [20:25] Electronic displays still have source paths
+## [20:30] Electronic displays still have source paths
 
 **ANNOUNCER:**
 
@@ -202,7 +200,7 @@ A primary flight display changes the presentation, but it does not repeal the se
 
 That means a glass panel can place airspeed, altitude, vertical speed, attitude, and heading on one screen while those values still come from different sensors and processors. It can also place several indications derived from one source beside one another. A large, clean display is not evidence that every number is independent.
 
-Distinguish a display failure from a data-source failure. If one screen goes dark but the same valid data appears on a remaining display through an approved reversion mode, the sensor may still be working. If the air data source becomes invalid, airspeed, altitude, and vertical-speed presentations may all be affected even while the screen remains bright. If an attitude source fails, pitch and bank can be wrong while air-data values remain available. The exact flags and reversion behavior differ, but the reasoning is stable: identify whether the lost layer is sensing, processing, power, or presentation.
+Distinguish a display failure from a data-source failure. If one screen goes dark while live indications continue responding on a remaining display, the sensors and computers supplying them may still be working; the failure may be limited to the dark display or its power path. If the air data source becomes invalid, airspeed, altitude, and vertical-speed presentations may all be affected even while the screen remains bright. If an attitude source fails, pitch and bank can be wrong while air-data values remain available. The exact flags and reversion behavior differ, but the reasoning is stable: identify whether the lost layer is sensing, processing, power, or presentation.
 
 **LEARNER:**
 
@@ -217,7 +215,7 @@ The general cross-check remains the same. Ask whether the indication fits the ai
 [Source: sources.yaml#phak-glass-sensor-paths; sources.yaml#phak-air-data-computer; sources.yaml#phak-ahrs-heading-path]
 [Claim type: FAA guidance and teaching explanation]
 
-## [22:50] Gyroscopes: stability needs power
+## [23:00] Gyroscopes: stability needs power
 
 **ANNOUNCER:**
 
@@ -250,7 +248,7 @@ A vacuum failure may not announce itself with two needles snapping to obviously 
 [Source: sources.yaml#phak-gyro-principles; sources.yaml#phak-gyro-power-and-low-vacuum]
 [Claim type: FAA guidance]
 
-## [26:35] What each gyro can and cannot tell you
+## [26:45] What each gyro can and cannot tell you
 
 **ANNOUNCER:**
 
@@ -281,15 +279,19 @@ That example is a teaching model, not a substitute for partial-panel training. T
 [Source: sources.yaml#phak-attitude-indicator; sources.yaml#phak-attitude-indicator-limits; sources.yaml#phak-heading-indicator-drift; sources.yaml#phak-heading-low-vacuum; sources.yaml#phak-turn-indicator-backup; sources.yaml#phak-turn-coordinator; sources.yaml#phak-inclinometer; sources.yaml#acs-basic-instrument-cross-check; sources.yaml#acs-unusual-attitude-failure-factor]
 [Claim type: FAA guidance and teaching explanation]
 
-## [31:20] The magnetic compass is simple, not perfect
+## [31:30] Magnetic-compass design and errors
 
 **ANNOUNCER:**
 
-The magnetic compass is simple, not perfect.
+Magnetic-compass design and errors.
 
 **INSTRUCTOR:**
 
-The magnetic compass provides an important independent heading reference because its magnets align with the Earth’s magnetic field. Its compass card floats in fluid beneath a lubber line. But “magnetic” does not mean error-free. The compass is affected by where magnetic north lies, magnetic fields in the airplane, magnetic dip, acceleration, turning, and oscillation. Its float also has limited freedom to tilt; at steeper bank angles, conventional compass indications can become erratic and unpredictable.
+Begin with the physical system. Two small magnets are attached to a float, and a numbered compass card is wrapped around that float. The assembly pivots in fluid, which supports its weight and damps some of its swinging. The magnets and card rotate together, and the pilot reads the card at the fixed lubber line on the compass case.
+
+Earth’s magnetic field does not stay parallel to the ground except near the magnetic equator. In the Northern Hemisphere, the field slopes downward toward magnetic north. A magnetic system free to move in all three dimensions would try to point along that descending field. The conventional compass instead hangs its center of gravity below the pivot so the card remains nearly horizontal and can show heading. The mounting still allows limited tilt, however. Acceleration, deceleration, and banking in a turn can displace or tilt the assembly before the magnets and fluid settle it again. Once the card tilts, the downward part of Earth’s field can pull on the magnetic system and produce a temporary heading error. At steeper bank angles, the indication can become erratic and unpredictable.
+
+That model explains why a magnetic compass can provide heading information in steady flight yet move in a misleading way while the airplane changes speed or direction.
 
 Start with variation and deviation because they are different categories.
 
@@ -299,38 +301,44 @@ Deviation is error caused by magnetic fields in the airplane. Electrical current
 
 **LEARNER:**
 
-Variation belongs to the Earth and the location. Deviation belongs to the airplane and can be different on different headings.
+The compass therefore has errors from three different places: the location of magnetic north, magnetic fields in the airplane, and motion of the hanging card and float in Earth’s tilted field.
 
 **INSTRUCTOR:**
 
-Exactly.
+Correct. Variation belongs to the Earth and the location. Deviation belongs to the airplane and can change with heading. The remaining two motion errors require more precise conditions.
 
-Magnetic dip produces the errors that appear during acceleration and turns. Away from the magnetic equator, Earth’s magnetic field has a vertical component. The compass is designed to stay mostly horizontal, but acceleration and bank can tilt its pendulous assembly enough for that vertical component to create a false indication.
+Acceleration error does not require a turn. The PHAK attributes it to magnetic dip and inertia acting on the pendulous mounting during a change in airspeed. On an easterly or westerly heading, acceleration tilts the aft end of the compass card upward; deceleration tilts it downward. That tilt lets the downward component of Earth’s field rotate the card away from the actual heading while the airplane may still be flying straight.
 
-In the Northern Hemisphere, acceleration on an easterly or westerly heading makes the compass indicate a turn toward north. Deceleration makes it indicate a turn toward south. The mnemonic A-N-D-S preserves that limited relationship: accelerate north, decelerate south. It is most useful on east or west headings and should not be stretched into a rule for every heading or every maneuver.
+For a conventional compass in the Northern Hemisphere on an easterly or westerly heading, acceleration produces a false indication toward north and deceleration produces a false indication toward south. Those heading and hemisphere limits matter. This is not a general rule for every heading, and it should not be transferred unchanged to Southern Hemisphere operations.
 
-Turning error is most noticeable around north and south. When beginning a turn from a northerly heading, the conventional compass initially lags and may indicate a turn in the opposite direction. When beginning from a southerly heading, it leads. When rolling out toward a northerly heading in the Northern Hemisphere, the compass reaches the desired indication before the airplane reaches the actual heading, so the rollout begins early—undershoot north. Toward a southerly heading, the indication lags the airplane, so the rollout occurs after the compass passes the desired heading—overshoot south.
+**LEARNER:**
 
-Those memory words are only a retrieval aid. The causal explanation is dip acting on a tilted compass assembly, and the size of the error changes with latitude and heading. The POH or training guidance for the installed compass matters more than a slogan detached from those conditions.
+So acceleration error is a false turn indication during a straight change of airspeed. How is turning error different?
+
+**INSTRUCTOR:**
+
+Turning error begins with an actual bank and turn. The bank tilts the card and float away from horizontal, and magnetic dip then makes the card lead or lag the airplane near northerly and southerly headings. In the Northern Hemisphere, when turning toward a northerly heading, the card leads: it reaches the desired indication before the airplane reaches that heading. The turn therefore has to be stopped before the compass shows the target heading. When turning toward a southerly heading, the card lags: the airplane passes the desired heading before the card catches up, so the turn is stopped after the compass passes the target indication. The error grows nearer the magnetic poles and is smallest around east and west.
+
+Now the memory aids have a physical explanation behind them. For Northern Hemisphere acceleration error on east or west headings, A-N-D-S means accelerate north, decelerate south. For Northern Hemisphere turning error, undershoot a northerly heading and overshoot a southerly heading. The first aid describes a false indication caused by changing airspeed; the second describes compass lead or lag during an actual turn.
 
 Oscillation combines several errors and makes the card swing around the actual heading. When aligning a free-gyro heading indicator, the PHAK advises using the average compass indication between the swings. It also calls for alignment while straight and level at a constant speed, where turning and acceleration errors are reduced.
 
 **LEARNER:**
 
-So the magnetic compass can be the independent reference for gyro drift without being a perfectly steady reference during every maneuver.
+So the compass can check a drifting heading gyro, but the useful comparison is made while straight and level at a constant speed, after the card has had time to settle.
 
 **INSTRUCTOR:**
 
-That is the right conclusion. Independence does not mean perfection. It means the errors come from a different mechanism. Cross-checking works when you understand both mechanisms.
+Yes. The magnetic compass follows Earth’s magnetic field and has variation, deviation, dip, and motion-related limits. A free heading gyro has a different failure path: friction, Earth rotation, or inadequate gyro power can make it drift. Comparing them is useful because they do not depend on the same sensing mechanism, but the compass comparison must be made under conditions that reduce its known errors.
 
-[Source: sources.yaml#phak-magnetic-compass-basics; sources.yaml#phak-variation-and-deviation; sources.yaml#phak-compass-correction-card; sources.yaml#phak-compass-dip-errors; sources.yaml#phak-compass-oscillation]
+[Source: sources.yaml#phak-magnetic-compass-basics; sources.yaml#phak-variation-and-deviation; sources.yaml#phak-compass-correction-card; sources.yaml#phak-compass-dip-model; sources.yaml#phak-compass-dip-errors; sources.yaml#phak-compass-oscillation]
 [Claim type: FAA guidance]
 
-## [36:45] Cross-check the story, not the loudest gauge
+## [39:25] Cross-check by source and failure path
 
 **ANNOUNCER:**
 
-Cross-check the story, not the loudest gauge.
+Cross-check by source and failure path.
 
 **INSTRUCTOR:**
 
@@ -342,7 +350,7 @@ Compare the indication with information that does not depend on the same source.
 
 Group the disagreement by shared cause. One ASI abnormal while altimeter and VSI remain alive suggests a different source pattern than all three pitot-static instruments becoming abnormal. Two conventional gyro instruments drifting with low suction suggests a different pattern than a single heading indicator slowly precessing while suction and attitude remain normal. An entire electronic display failing is different from one air-data value being flagged invalid.
 
-Then control the airplane with reliable information and use the installed checklist. This is not an invitation to improvise a diagnosis until every component is named. The immediate discipline is to avoid following a suspect indication into a real unwanted attitude. Use the sources that remain credible, keep control inputs measured, reduce unnecessary workload, and apply the aircraft-specific response and training.
+Then control the airplane with reliable information and use the aircraft's checklist. This is not an invitation to improvise a diagnosis until every component is named. The immediate discipline is to avoid following a suspect indication into a real unwanted attitude. Use the sources that remain credible, keep control inputs measured, reduce unnecessary workload, and apply the aircraft-specific response and training.
 
 Try the four moves on a static-blockage pattern. Predict: a real climb should reduce static pressure, increase altimeter indication, and create an upward VSI trend. Compare: the outside picture or a reliable attitude source suggests a climb, but the altimeter stays fixed and the VSI stays at zero. Group: those two instruments share static pressure, and the ASI is also behaving abnormally as altitude changes. Control: reject the frozen-pressure story, use the information that remains reliable, and follow the installed checklist rather than forcing the airplane to make the bad indications look normal.
 
@@ -373,7 +381,7 @@ Exactly. A good cross-check is both diagnostic and protective. It helps identify
 [Source: sources.yaml#acs-basic-instrument-cross-check; sources.yaml#phak-blocked-pitot; sources.yaml#phak-blocked-static; sources.yaml#phak-gyro-power-and-low-vacuum; sources.yaml#phak-heading-low-vacuum]
 [Claim type: FAA standard, FAA guidance, and teaching explanation]
 
-## [42:00] Retrieval review
+## [44:40] Retrieval review
 
 **ANNOUNCER:**
 
@@ -387,7 +395,7 @@ For the pitot-static system, remember the source map. The ASI compares pitot tot
 
 For conventional gyros, remember that rigidity provides a stable reference and precession can provide a rate indication or introduce error. Power source matters. In a common arrangement, vacuum powers attitude and heading while electricity powers the turn coordinator. Low suction can make the shared vacuum instruments unreliable. The turn coordinator shows turn information and coordination, but no pitch information. The heading indicator is steady and convenient, but a free gyro drifts and needs comparison with the magnetic compass.
 
-For the magnetic compass, separate variation from deviation. Variation is the location-dependent difference between true and magnetic direction. Deviation comes from the airplane’s magnetic fields and is recorded on its correction card. In the Northern Hemisphere, acceleration on east or west indicates north; deceleration indicates south. Turning errors around north and south come from magnetic dip, and oscillation calls for reading an average rather than chasing each swing.
+For the magnetic compass, separate variation from deviation. Variation is the location-dependent difference between true and magnetic direction. Deviation comes from the airplane’s magnetic fields and is recorded on its correction card. In the Northern Hemisphere, acceleration error applies on east or west headings: acceleration indicates north and deceleration indicates south. Turning error applies around northerly and southerly headings: the card leads toward north and lags toward south. Both motion errors arise when the card and float tilt in Earth’s dipping magnetic field. Oscillation calls for reading an average rather than chasing each swing.
 
 **LEARNER:**
 
@@ -397,10 +405,10 @@ And for the whole panel: agreement is strongest when the sources are independent
 
 Exactly. Build the source map before you need it. Predict what a real airplane change should do. Compare independent evidence. Group failures by their shared source. Then control the airplane with reliable information and use the checklist and training for the installed system.
 
-[Source: sources.yaml#acs-operation-of-systems; sources.yaml#acs-basic-instrument-cross-check; sources.yaml#phak-blocked-pitot; sources.yaml#phak-blocked-static; sources.yaml#phak-gyro-power-and-low-vacuum; sources.yaml#phak-heading-indicator-drift; sources.yaml#phak-compass-dip-errors]
+[Source: sources.yaml#acs-operation-of-systems; sources.yaml#acs-basic-instrument-cross-check; sources.yaml#phak-blocked-pitot; sources.yaml#phak-blocked-static; sources.yaml#phak-gyro-power-and-low-vacuum; sources.yaml#phak-heading-indicator-drift; sources.yaml#phak-compass-dip-model; sources.yaml#phak-compass-dip-errors]
 [Claim type: FAA standard and FAA guidance]
 
-## [44:40] Outro
+## [47:35] Outro
 
 **ANNOUNCER:**
 

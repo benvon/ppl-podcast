@@ -3,7 +3,7 @@
 ## Scope
 
 - Audience: U.S. private-pilot airplane learners studying conventional and electronic flight instruments.
-- Target duration: 30–45 minutes; approximately 5,000–6,000 spoken words.
+- Target duration after the focused compass expansion: approximately 46–48 minutes; 5,533 spoken words.
 - Core question: How can a learner connect what an instrument senses, the source or power path behind it, and independent indications well enough to recognize a failure without chasing one gauge?
 - In scope: pitot and static pressure paths; ASI, altimeter, and VSI operation and failure patterns; conventional gyro principles, power sources, instrument limitations, and low-vacuum recognition; a concise electronic-display source map; magnetic-compass variation, deviation, dip-related acceleration and turning errors, and oscillation; disciplined cross-checking through shared-source grouping.
 - Out of scope: aircraft-specific abnormal or emergency checklist steps; partial-panel control instruction; instrument approaches; detailed avionics reversion procedures; GPS integrity and navigation failures; regulations for required instruments. Those belong to the intended airplane’s POH/AFM and avionics guides, flight training, and later lessons where applicable.
@@ -34,7 +34,7 @@
 | Vertical-speed indicator | Direct static pressure compared with delayed static pressure through a calibrated restriction | Static plumbing | Normal lag separates trend from stabilized rate; a static blockage drives the indication toward zero. |
 | Conventional attitude and heading indicators | Gyro rigidity, commonly maintained by vacuum or pressure power | Vacuum/pressure source in a common training-airplane arrangement | Low suction can make both indications unstable or inaccurate together. |
 | Turn coordinator | Canted gyro, commonly electrically powered | Electrical source in a common training-airplane arrangement | Can provide independent turn and limited bank evidence after a vacuum failure, but not pitch information. |
-| Magnetic compass | Alignment with Earth’s magnetic field | Aircraft magnetic environment and compass mechanics | Provides an independent heading reference when its variation, deviation, dip, turning, acceleration, and oscillation errors are respected. |
+| Magnetic compass | Magnets on a fluid-damped float and card align with Earth’s field | Aircraft magnetic environment, pendulous mounting, magnetic dip, and motion | Provides a heading reference with a different sensing path from a free gyro; speed changes and turns can tilt the assembly and create condition-specific errors before it settles. |
 | Primary flight display | Air data, AHRS, magnetometer, processing, power, and display paths | Architecture varies by installation | A single screen can combine values from shared and independent sources; brightness and precision do not prove data validity. |
 
 ## Likely trouble spots
@@ -57,6 +57,9 @@
 - Misconception: “Variation and deviation are two words for the same compass error.”
   - Correction: Variation is the location-dependent difference between true and magnetic direction. Deviation comes from aircraft magnetic fields and changes with heading; remaining error is recorded on the airplane’s compass correction card.
   - Source: PHAK Chapter 8, Magnetic Compass Induced Errors, printed pp. 8-24–8-25.
+- Misconception: “Acceleration and turning errors are two names for the same compass swing.”
+  - Correction: In the Northern Hemisphere, acceleration error is a false turn indication caused by magnetic dip and inertia during an airspeed change on an easterly or westerly heading. Turning error occurs during an actual bank and turn; the tilted card leads toward northerly headings and lags toward southerly headings.
+  - Source: PHAK Chapter 8, Dip Errors, Northerly and Southerly Turning Errors, and Acceleration Error, printed pp. 8-25–8-27.
 - Misconception: “Several values on a PFD are automatically independent because they look separate.”
   - Correction: The display combines data. Airspeed and altitude can share air-data and pitot-static dependencies, while attitude and heading follow AHRS and magnetometer paths.
   - Source: PHAK Chapter 8, Electronic Flight Display, Air Data Computer, and AHRS, printed pp. 8-12, 8-14, and 8-20.
@@ -70,7 +73,7 @@
 5. Briefly transfer the source-path model to electronic displays without attempting installation-specific reversion instruction.
 6. Build gyro behavior from rigidity and precession, then connect low rotor speed to instability and shared vacuum failures.
 7. Bound the attitude indicator, heading indicator, turn coordinator, and inclinometer by what each can and cannot show.
-8. Build compass errors from magnetic source and physical mounting: variation, deviation, dip, acceleration, turning, and oscillation.
+8. Build compass errors from the physical instrument first: magnets on the card and float, the pendulous mounting, and Earth’s dipping field. Then separate location and aircraft errors from acceleration, turning, and oscillation errors, naming the heading and hemisphere conditions before introducing memory aids.
 9. Close with a four-move cross-check: predict, compare, group, and control with reliable information before using the installed checklist.
 
 ## Visual-aid plan
@@ -84,6 +87,7 @@
 - Presenting a clean partial-panel scenario as a substitute for flight training or an aircraft-specific checklist.
 - Describing the turn coordinator as an attitude indicator or treating the inclinometer as a bank instrument.
 - Applying Northern Hemisphere compass mnemonics without naming the relevant heading, acceleration or turn condition, and mechanism.
+- Attributing compass turning error to Coriolis force or extending the PHAK’s inertia explanation beyond acceleration and deceleration.
 - Treating an electronic display, sensor, computer, and power source as one undifferentiated component.
 - Describing the POH/AFM as permission; it connects the general source model to the installed equipment, corrections, limitations, and procedures.
 

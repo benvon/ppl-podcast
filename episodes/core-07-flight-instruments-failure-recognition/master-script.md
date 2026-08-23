@@ -1,7 +1,7 @@
 # Flight Instruments and Failure Recognition
 
-**Version:** 0.1.0 — initial source-mapped draft
-**Target runtime:** 46–48 minutes / 5,533 spoken words
+**Version:** 0.1.1 — initial source-mapped draft
+**Target runtime:** 46–48 minutes / 5,565 spoken words
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Initial draft for editorial review; source-relevance review required before rendering.
 
@@ -317,7 +317,7 @@ So acceleration error is a false turn indication during a straight change of air
 
 **INSTRUCTOR:**
 
-Turning error begins with an actual bank and turn. The bank tilts the card and float away from horizontal, and magnetic dip then makes the card lead or lag the airplane near northerly and southerly headings. In the Northern Hemisphere, when turning toward a northerly heading, the card leads: it reaches the desired indication before the airplane reaches that heading. The turn therefore has to be stopped before the compass shows the target heading. When turning toward a southerly heading, the card lags: the airplane passes the desired heading before the card catches up, so the turn is stopped after the compass passes the target indication. The error grows nearer the magnetic poles and is smallest around east and west.
+Turning error begins with an actual bank and turn. The bank tilts the card and float away from horizontal, and magnetic dip then makes the card lead or lag the airplane near northerly and southerly headings. In the Northern Hemisphere, when turning toward a northerly heading, the card leads: it reaches the desired indication before the airplane reaches that heading. The turn therefore has to be stopped before the compass shows the target heading. When turning toward a southerly heading, the card lags: the airplane passes the desired heading before the card catches up, so the turn is stopped after the compass passes the target indication. At higher magnetic latitudes, magnetic dip is stronger, so this turning error is stronger as well. For the turning error just described, the card’s lead or lag is strongest when turning toward north or south and is reduced when turning toward headings nearer east or west.
 
 Now the memory aids have a physical explanation behind them. For Northern Hemisphere acceleration error on east or west headings, A-N-D-S means accelerate north, decelerate south. For Northern Hemisphere turning error, undershoot a northerly heading and overshoot a southerly heading. The first aid describes a false indication caused by changing airspeed; the second describes compass lead or lag during an actual turn.
 

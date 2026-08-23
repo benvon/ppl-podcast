@@ -5,7 +5,7 @@
 - [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`. Verified by deterministic source validation on 2026-08-23: 50 reciprocal claims across 30 FAA sources.
 - [x] FAA standards, FAA guidance, and teaching explanations are labeled correctly. This episode contains no regulatory or aircraft-example claim presented as universal instruction.
 - [x] Every material source citation identifies a specific ACS task or PHAK PDF page. Deterministic source validation on 2026-08-23 passed all 30 deep links and locators.
-- [ ] Source-link validation has been run with `--require-llm`; resolve every relevance finding before rendering.
+- [x] Source-link validation with `--require-llm` completed on 2026-08-23. All 30 FAA sources and 50 reciprocal claims were assessed; 21 source-level findings support and 9 partially support their scoped claims, with no unsupported or insufficient-evidence claim finding. The recorded review is in `link-validation.yaml`.
 - [x] Human editorial and listener-flow review completed. Script approved 2026-08-23.
 
 ## Audio

@@ -40,10 +40,10 @@ trouble_spots:
   - "Confusing magnetic variation with aircraft-specific deviation or applying compass mnemonics without their heading and hemisphere conditions."
   - "Assuming a clean electronic display makes its underlying sensor and power paths independent."
 source_verification:
-  status: deterministic_validation_complete
-  verified_at_utc: "2026-08-23T13:20:56Z"
+  status: source_relevance_review_complete
+  verified_at_utc: "2026-08-23T14:26:54Z"
   link_validation: link-validation.yaml
-  relevance_review: required_before_render
+  relevance_review: complete
 review:
   editorial_status: script_approved_pre_render
   qualified_aviation_review: optional_and_welcome

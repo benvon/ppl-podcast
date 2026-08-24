@@ -9,6 +9,7 @@ const YAML = require("yaml");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const MAX_REDIRECTS = 5;
+const MAX_FETCH_ATTEMPTS = 3;
 const MAX_BYTES = 1_000_000;
 const MAX_HASH_BYTES = 32_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
@@ -224,7 +225,15 @@ function linkResponseErrors(sourceUrl, link) {
   return errors;
 }
 
-async function fetchSource(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false, includePdfBytes = false } = {}) {
+function retryableFetchError(error) {
+  return error?.name === "AbortError" || /\b(aborted|fetch failed|network error)\b/i.test(error?.message || "");
+}
+
+function retryDelay(attempt) {
+  return new Promise((resolve) => setTimeout(resolve, attempt * 250));
+}
+
+async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false, includePdfBytes = false } = {}) {
   let current = assertSafeUrl(sourceUrl);
   const citedAuthorityHost = canonicalHostname(current);
   const redirects = [];
@@ -264,6 +273,20 @@ async function fetchSource(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIM
     } finally { clearTimeout(timer); }
   }
   throw new Error(`redirect limit (${MAX_REDIRECTS}) exceeded`);
+}
+
+async function fetchSource(sourceUrl, options = {}) {
+  let lastError;
+  for (let attempt = 1; attempt <= MAX_FETCH_ATTEMPTS; attempt += 1) {
+    try {
+      return await fetchSourceOnce(sourceUrl, options);
+    } catch (error) {
+      lastError = error;
+      if (!retryableFetchError(error) || attempt === MAX_FETCH_ATTEMPTS) throw error;
+      await retryDelay(attempt);
+    }
+  }
+  throw lastError;
 }
 
 function citedPdfPageNumber(citationUrl) {

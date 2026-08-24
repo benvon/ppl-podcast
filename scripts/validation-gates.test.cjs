@@ -360,6 +360,19 @@ test("source fetch timeout remains active while the response body is read", asyn
   await assert.rejects(fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl, timeoutMs: 10 }), /AbortError|aborted/);
 });
 
+test("source fetch retries a transient aborted request", async () => {
+  let calls = 0;
+  const fetchImpl = () => {
+    calls += 1;
+    if (calls === 1) return Promise.reject(new DOMException("aborted", "AbortError"));
+    return Promise.resolve(new Response("current FAA source", { status: 200, headers: { "content-type": "text/plain" } }));
+  };
+  const result = await fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl });
+  assert.equal(calls, 2);
+  assert.equal(result.status, 200);
+  assert.equal(result.excerpt, "current FAA source");
+});
+
 test("eCFR validation fallback must stay on the official versioner endpoint", () => {
   const valid = validationTargetErrors({
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105",

@@ -53,6 +53,16 @@ function durationDisplay(seconds) {
   return `${hours}:${minutes}:${remainder}`;
 }
 
+function durationsMatch(left, right, toleranceSeconds = 0.01) {
+  const leftSeconds = Number(left);
+  const rightSeconds = Number(right);
+  return Number.isFinite(leftSeconds)
+    && Number.isFinite(rightSeconds)
+    && leftSeconds > 0
+    && rightSeconds > 0
+    && Math.abs(leftSeconds - rightSeconds) < toleranceSeconds;
+}
+
 function sameUtcDate(left, right) {
   return typeof left === "string" && typeof right === "string" && left.slice(0, 10) === right.slice(0, 10) && /^\d{4}-\d{2}-\d{2}$/.test(left.slice(0, 10));
 }
@@ -116,9 +126,9 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, candidate.script_version === episode.version, "audio manifest script version must match episode.yaml.");
   expect(errors, audioManifest.chapter_markers?.status === "embedded_and_ffprobe_validated", "audio manifest must record embedded, ffprobe-validated chapters.");
   expect(errors, audioManifest.chapter_markers?.audio_sha256 === candidateSha256, "chapter-marker checksum must match the candidate MP3 checksum.");
-  expect(errors, typeof candidate.duration_seconds === "number" && candidate.duration_seconds > 0, "audio manifest must record a positive candidate duration.");
+  expect(errors, Number.isFinite(candidate.duration_seconds) && candidate.duration_seconds > 0, "audio manifest must record a positive candidate duration.");
   expect(errors, release.duration === durationDisplay(candidate.duration_seconds), "hosting duration must match the approved audio duration rounded to the nearest second.");
-  expect(errors, Math.abs(Number(episode.runtime_actual_seconds) - Number(candidate.duration_seconds)) < 0.01, "episode runtime_actual_seconds must match the audio manifest duration.");
+  expect(errors, durationsMatch(episode.runtime_actual_seconds, candidate.duration_seconds), "episode runtime_actual_seconds must match the audio manifest duration.");
 
   const mp3Path = typeof candidate.mp3 === "string" ? path.resolve(cwd, candidate.mp3) : null;
   const renderManifestPath = typeof candidate.render_manifest === "string" ? path.resolve(cwd, candidate.render_manifest) : null;
@@ -145,7 +155,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
         errors.push(`embedded MP3 chapters must match the approved render manifest: ${error.message}`);
       }
     }
-    expect(errors, Math.abs(Number(render.audio?.duration_seconds) - Number(candidate.duration_seconds)) < 0.01, "render manifest duration must match the audio manifest.");
+    expect(errors, durationsMatch(render.audio?.duration_seconds, candidate.duration_seconds), "render manifest duration must match the audio manifest.");
     expect(errors, render.audio?.quality?.result === "passed", "render manifest must record a passing audio-quality result.");
     expect(errors, path.resolve(cwd, render.audio?.quality?.report || "") === qualityReportPath, "render manifest quality-report reference must match the approved candidate.");
   }
@@ -155,6 +165,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
     expect(errors, path.resolve(cwd, report.manifest || "") === renderManifestPath, "audio-quality report must identify the approved render manifest.");
     expect(errors, path.resolve(cwd, report.output?.path || "") === mp3Path, "audio-quality report must identify the approved MP3.");
     expect(errors, validSha256(report.output?.sha256) === candidateSha256, "audio-quality report checksum must match the approved MP3 bytes.");
+    expect(errors, durationsMatch(report.output?.probe?.format?.duration, candidate.duration_seconds), "audio manifest duration must match the audio-quality report's probed MP3 duration.");
   }
   if (chapterReviewPath && fs.existsSync(chapterReviewPath) && candidateSha256) {
     const review = fs.readFileSync(chapterReviewPath, "utf8");

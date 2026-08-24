@@ -1,7 +1,7 @@
 # Flight Instruments and Failure Recognition
 
-**Version:** 0.1.3 — approved source-mapped script
-**Target runtime:** 46–48 minutes / 5,569 spoken words
+**Version:** 0.1.4 — approved source-mapped script
+**Target runtime:** 46–48 minutes / 5,551 spoken words
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Script approved; source-relevance review complete. Audio rendering and listening QA remain.
 
@@ -274,7 +274,7 @@ Correct. It is backup bank information in a limited sense. It can tell you turn 
 
 This is where chasing one gauge becomes especially dangerous. Imagine the attitude indicator slowly tilts right because its gyro is losing speed. If the pilot follows it alone, the pilot may apply left aileron even though the airplane was wings level. A turn coordinator that remains centered, a stable magnetic heading, unchanged altitude and vertical trend, and the outside horizon in visual conditions all challenge the false bank story. The disciplined response begins by recognizing the disagreement and testing which indications share the suspect source.
 
-That example is a teaching model, not a substitute for partial-panel training. The ACS expects basic instrument cross-check and recognizes system and equipment failures as contributors to unusual attitudes. The actual control technique belongs in flight training and the airplane’s procedures.
+The ACS expects you to recognize the disagreement and cross-check reliable instruments. Practice the partial-panel control technique with your CFI during flight instruction.
 
 [Source: sources.yaml#phak-attitude-indicator; sources.yaml#phak-attitude-indicator-limits; sources.yaml#phak-heading-indicator-drift; sources.yaml#phak-heading-low-vacuum; sources.yaml#phak-turn-indicator-backup; sources.yaml#phak-turn-coordinator; sources.yaml#phak-inclinometer; sources.yaml#acs-basic-instrument-cross-check; sources.yaml#acs-unusual-attitude-failure-factor]
 [Claim type: FAA guidance and teaching explanation]

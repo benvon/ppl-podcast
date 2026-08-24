@@ -2,11 +2,11 @@
 
 ## Content and sources
 
-- [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`. Version 0.1.3 validation on 2026-08-23 confirms 51 reciprocal claims across 31 FAA sources.
+- [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`. Version 0.1.4 validation on 2026-08-24 confirms 51 reciprocal claims across 31 FAA sources; the practical-training wording does not alter a claim or mapping.
 - [x] FAA standards, FAA guidance, and teaching explanations are labeled correctly. This episode contains no regulatory or aircraft-example claim presented as universal instruction.
-- [x] Every material source citation identifies a specific ACS task or FAA handbook PDF page. Version 0.1.3 deterministic validation on 2026-08-23 passed all 31 deep links and locators.
-- [x] Source-link validation with `--require-llm` completed for version 0.1.3 on 2026-08-23. All 31 FAA sources and 51 reciprocal claims were assessed; 22 source-level findings support and 9 partially support their scoped claims, with no unsupported or insufficient-evidence claim finding. The recorded review is in `link-validation.yaml`.
-- [x] Human editorial and listener-flow review completed. Script approved 2026-08-23.
+- [x] Every material source citation identifies a specific ACS task or FAA handbook PDF page. Version 0.1.4 deterministic validation on 2026-08-24 passed all 31 deep links and locators.
+- [x] Source-link validation with `--require-llm` completed for version 0.1.4 on 2026-08-24. All 31 FAA sources and 51 reciprocal claims were assessed; 25 source-level findings support and 6 partially support their scoped claims, with no unsupported or insufficient-evidence claim finding. The recorded review is in `link-validation.yaml`.
+- [x] Human editorial and listener-flow review completed. Version 0.1.4 wording approved 2026-08-24.
 
 ## Audio
 

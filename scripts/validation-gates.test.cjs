@@ -34,6 +34,7 @@ function wavWithListMetadata(pcm) {
 test("chapter review renders readable, escaped embedded-marker controls", () => {
   const html = renderReviewHtml({
     audioUrl: "core-05.mp3",
+    audioSha256: "a".repeat(64),
     episodeTitle: "core-05 chapter review",
     chapters: [{ index: 1, title: "Lift < Drag", start: 74, end: 120 }],
   });
@@ -41,6 +42,9 @@ test("chapter review renders readable, escaped embedded-marker controls", () => 
   assert.match(html, /data-start="74"/);
   assert.match(html, /Lift &lt; Drag/);
   assert.match(html, /This page reads the chapters embedded in the MP3 itself/);
+  assert.match(html, /src="core-05\.mp3\?v=a{64}"/);
+  assert.match(html, /href="core-05\.mp3"/);
+  assert.match(html, /name="ppl-audio-sha256" content="a{64}"/);
 });
 
 test("chapter review accepts its manifest argument", () => {

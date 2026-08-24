@@ -71,6 +71,8 @@ Before saying that an ACS relationship matters, state the variables in the relat
 
 Keep the required production notice and source tags intact. After that, state an episode boundary once when it is helpful, then teach directly. Do not repeatedly say that the episode is not a maneuver lesson or that it cannot replace flight instruction.
 
+Do not use liability-style hedges such as “not a substitute,” “not a procedure,” or “not permission” as a habitual way to narrow an explanation. When a practical skill needs hands-on development, say plainly what the listener can explore with a CFI during flight instruction. That points the listener toward the right next learning environment without burying the lesson in defensive language.
+
 When a connected topic needs later treatment, use one short forward reference that names it—for example, “We will discuss load factor in more depth in a later podcast.” Do not use a vague “later” if a specific term would orient the listener better.
 
 ## Run a listener pass before approval

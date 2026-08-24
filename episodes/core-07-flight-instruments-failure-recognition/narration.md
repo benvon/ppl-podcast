@@ -251,7 +251,7 @@ Correct. It is backup bank information in a limited sense. It can tell you turn 
 
 This is where chasing one gauge becomes especially dangerous. Imagine the attitude indicator slowly tilts right because its gyro is losing speed. If the pilot follows it alone, the pilot may apply left aileron even though the airplane was wings level. A turn coordinator that remains centered, a stable magnetic heading, unchanged altitude and vertical trend, and the outside horizon in visual conditions all challenge the false bank story. The disciplined response begins by recognizing the disagreement and testing which indications share the suspect source.
 
-That example is a teaching model, not a substitute for partial-panel training. The ACS expects basic instrument cross-check and recognizes system and equipment failures as contributors to unusual attitudes. The actual control technique belongs in flight training and the airplane’s procedures.
+The ACS expects you to recognize the disagreement and cross-check reliable instruments. Practice the partial-panel control technique with your CFI during flight instruction.
 
 ## [31:30] Magnetic-compass design and errors
 

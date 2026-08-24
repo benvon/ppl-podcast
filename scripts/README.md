@@ -48,7 +48,7 @@ npm run precommit:check
 5. Assemble the complete range. The renderer adds an 8 ms fade at each rendered-segment edge and writes an automatic post-assembly report beside the manifest. For MP3 output, it also embeds ID3 chapter markers using the master script’s section headings and verifies them with `ffprobe`. It verifies WAV structure, 24 kHz mono format, MP3/WAV decode, output duration, clipping statistics, and abrupt sample jumps at every known stitch.
 6. Perform the required full listening QA. The automated report catches technical corruption and hard joins; it cannot judge synthesis artifacts, garbled words, pronunciation, pacing, or whether a chapter title is useful to a listener.
 
-Use the same timestamp and work directory for the render and assembly commands.
+Use the same timestamp and work directory for the render and assembly commands that create one candidate. When a revised segment changes duration, reassemble the complete range: the renderer recalculates every later chapter marker from the new stitched audio. You may keep the earlier work directory so unchanged rendered segments can be reused safely.
 
 ```sh
 direnv exec . npm run render:realtime -- \
@@ -138,7 +138,9 @@ npm run audio:chapter-review -- \
 ```
 
 The page is written next to the MP3 by default, is ignored with the audio
-artifacts, and does not change the audio file.
+artifacts, and does not change the audio file. Its filename and playback URL
+include the final MP3 SHA-256, so its chapter list is tied to that exact audio
+object rather than a same-named earlier render.
 
 ## Chapter markers
 
@@ -152,9 +154,10 @@ specific, and listener-facing; they are navigation labels, not internal notes.
 During script-aligned listening QA, verify that the chapter list begins with
 the opening at `00:00`, each title describes the material that follows, and
 each marker lands before that material starts. The render manifest records the
-final titles and millisecond timings. Do not add or revise chapter data after
-the final MP3 has been staged: a changed MP3 requires the normal new immutable
-audio object and release review.
+final titles, millisecond timings, and the MP3 SHA-256 that contains that
+embedded marker set. A revised audio segment may change later marker times;
+reassemble and review the complete MP3 so the marker data follows the updated
+audio.
 
 ## Accepted audio policy
 

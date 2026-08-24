@@ -500,6 +500,7 @@ The roadmap is sequenced for learning, not by PHAK chapter. It remains adjustabl
 | core-25 | The Checkride Oral: Connecting Knowledge, Risk, and Skill | Scenario-based integration rather than last-minute memorization | Whole ACS |
 
 | supplement-01 | Constant-Speed Propellers | Governor, blade angle, rpm, manifold pressure, and practical system interpretation | PHAK Ch. 7, ACS systems knowledge |
+| supplement-03 | MOSAIC, Light-Sport Certification, and Sport-Pilot Maintenance Privileges | What MOSAIC changes, light-sport certification context, and the boundaries of sport-pilot maintenance privileges | PHAK Ch. 9 MOSAIC addendum, Parts 1/21/43/61/91 as applicable |
 
 ### Open-ended Rough Spots track
 

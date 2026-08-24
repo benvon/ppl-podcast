@@ -35,3 +35,6 @@
 6. Do not render, stage, publish, or open a PR until the relevant source and
    editorial gates are complete. Commit the reviewable package with a signed,
    conventional commit.
+7. Draft as speech for a first-time listener. Avoid slogans, quips, snark,
+   clever reversals, and compressed regulatory labels. For every rule, explain
+   the practical question first, then the evidence and terms that answer it.

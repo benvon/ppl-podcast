@@ -49,7 +49,7 @@ source_verification:
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: required_before_render
 review:
-  editorial_status: complete_rewrite_pending_review
+  editorial_status: script_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml

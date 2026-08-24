@@ -2,15 +2,15 @@
 
 ## Content and sources
 
-- [ ] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
+- [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
 - [ ] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
 - [ ] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
 - [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
-- [ ] Human editorial pass completed; unresolved technical questions were removed or resolved.
+- [x] Human editorial pass completed; unresolved technical questions were removed or resolved.
 
 ## Audio
 
-- [ ] Opening is 10-45 seconds and the required notice follows immediately.
+- [x] Opening is 10-45 seconds and the required notice follows immediately.
 - [ ] Notice is clearly heard as “artificial intelligence-assisted production.”
 - [ ] Five-segment opening preview has been listened to before full rendering.
 - [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.

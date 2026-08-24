@@ -1,5 +1,14 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance — production log
 
+## 2026-08-24 — script approval and pre-render QA started
+
+- The revised script received editorial approval. The approved source-tagged
+  master script remains the source of the derived narration.
+- Pre-render QA confirmed the reciprocal 45-claim mapping across 30 sources
+  and 14 show-note links. The opening is 35 seconds and the Disclaimer follows
+  it immediately, within the 10-to-45-second front-matter target.
+- LLM source-relevance validation remains required before any audio rendering.
+
 ## 2026-08-24 — complete spoken-lesson rewrite after editorial rejection
 
 - Replaced `master-script.md` throughout instead of revising the rejected draft

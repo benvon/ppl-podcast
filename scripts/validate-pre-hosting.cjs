@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 
 class PreHostingValidationError extends Error {}
 
@@ -125,6 +126,16 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
     expect(errors, validSha256(render.audio?.sha256) === candidateSha256, "render manifest MP3 checksum must match the audio manifest.");
     expect(errors, validSha256(render.chapters?.audio_sha256) === candidateSha256, "render manifest chapter checksum must match the audio manifest.");
     expect(errors, Array.isArray(render.chapters?.markers) && render.chapters.markers.length > 0, "render manifest must record embedded chapter markers.");
+    if (mp3Path && fs.existsSync(mp3Path) && Array.isArray(render.chapters?.markers) && render.chapters.markers.length > 0) {
+      try {
+        // The render manifest is a Git-ignored local artifact, but it remains
+        // the candidate's required record. Re-probe the sealed MP3 instead of
+        // trusting a manually changed marker list at the same manifest path.
+        verifyMp3Chapters(mp3Path, render.chapters.markers);
+      } catch (error) {
+        errors.push(`embedded MP3 chapters must match the approved render manifest: ${error.message}`);
+      }
+    }
     expect(errors, Math.abs(Number(render.audio?.duration_seconds) - Number(candidate.duration_seconds)) < 0.01, "render manifest duration must match the audio manifest.");
     expect(errors, render.audio?.quality?.result === "passed", "render manifest must record a passing audio-quality result.");
     expect(errors, path.resolve(cwd, render.audio?.quality?.report || "") === qualityReportPath, "render manifest quality-report reference must match the approved candidate.");

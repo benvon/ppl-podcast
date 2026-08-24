@@ -10,6 +10,8 @@ const YAML = require("yaml");
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const MAX_REDIRECTS = 5;
 const MAX_FETCH_ATTEMPTS = 3;
+const RETRYABLE_HTTP_STATUSES = new Set([408, 429, 502, 503, 504]);
+const RETRY_DELAY_MS = 1_000;
 const MAX_BYTES = 1_000_000;
 const MAX_HASH_BYTES = 32_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
@@ -230,7 +232,7 @@ function retryableFetchError(error) {
 }
 
 function retryDelay(attempt) {
-  return new Promise((resolve) => setTimeout(resolve, attempt * 250));
+  return new Promise((resolve) => setTimeout(resolve, attempt * RETRY_DELAY_MS));
 }
 
 async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false, includePdfBytes = false } = {}) {
@@ -279,7 +281,9 @@ async function fetchSource(sourceUrl, options = {}) {
   let lastError;
   for (let attempt = 1; attempt <= MAX_FETCH_ATTEMPTS; attempt += 1) {
     try {
-      return await fetchSourceOnce(sourceUrl, options);
+      const result = await fetchSourceOnce(sourceUrl, options);
+      if (!RETRYABLE_HTTP_STATUSES.has(result.status) || attempt === MAX_FETCH_ATTEMPTS) return result;
+      await retryDelay(attempt);
     } catch (error) {
       lastError = error;
       if (!retryableFetchError(error) || attempt === MAX_FETCH_ATTEMPTS) throw error;

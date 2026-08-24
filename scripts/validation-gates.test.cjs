@@ -373,6 +373,19 @@ test("source fetch retries a transient aborted request", async () => {
   assert.equal(result.excerpt, "current FAA source");
 });
 
+test("source fetch retries a transient service-unavailable response", async () => {
+  let calls = 0;
+  const fetchImpl = () => {
+    calls += 1;
+    if (calls === 1) return Promise.resolve(new Response("temporarily unavailable", { status: 503, headers: { "content-type": "text/plain" } }));
+    return Promise.resolve(new Response("current FAA source", { status: 200, headers: { "content-type": "text/plain" } }));
+  };
+  const result = await fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl });
+  assert.equal(calls, 2);
+  assert.equal(result.status, 200);
+  assert.equal(result.excerpt, "current FAA source");
+});
+
 test("eCFR validation fallback must stay on the official versioner endpoint", () => {
   const valid = validationTargetErrors({
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105",

@@ -1,0 +1,2649 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-24T14:24:18.436Z
+sources_file: episodes/core-07-flight-instruments-failure-recognition/sources.yaml
+claims_file: episodes/core-07-flight-instruments-failure-recognition/claim-inventory.yaml
+show_notes_file: episodes/core-07-flight-instruments-failure-recognition/show-notes.md
+show_notes_manifest_file: episodes/core-07-flight-instruments-failure-recognition/show-notes-manifest.yaml
+input_sha256:
+  sources: 58444123a4fecd2be0771009e2c46e7f6dbef03b3d356a2f80eced82ac5e5c00
+  claims: bd732301bf0cc46ad2f59d45a7b0835b42d5ac2719178fbc7bd9b9c2c2d0a3ae
+  show_notes: cb37f9e9b4c4a8b12833c0f82941a82ab187c539f85e02c998ded0b38dfc401c
+  show_notes_manifest: 9fb9222d31862a02f8f54035b0ee903981f2b21d2501e1825f0c67010d3def34
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 14
+  manifest_link_count: 14
+show_notes_results:
+  - id: acs-systems
+    text: "Private Pilot ACS: instrument systems and failures"
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    source_id: acs-operation-of-systems
+    claim_ids:
+      - acs-instrument-systems-anchor
+      - acs-failure-recognition-anchor
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+  - id: acs-cross-check
+    text: "Private Pilot ACS: basic instrument cross-check"
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+    source_id: acs-basic-instrument-cross-check
+    claim_ids:
+      - acs-cross-check-anchor
+      - avoid-instrument-fixation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      errors: []
+      valid: true
+      pdf_page_number: 54
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2210
+      pdf_page_text_sha256: cf9260d8366be59105ce8c0d79245e0b51e1fda82b31f27bb4b3fbc5465713dd
+  - id: pitot-static-overview
+    text: Pitot-static pressure sources — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+    source_id: phak-pitot-static-overview
+    claim_ids:
+      - pitot-static-pressure-model
+      - pitot-static-instrument-source-map
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      status: 200
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3096
+      pdf_page_text_sha256: 87dfac3b2eeb9c970cbf4fc2063a113e3d636b9db0581e0ec2d6ba49d2457cfc
+  - id: pitot-static-blockages
+    text: Pitot and static blockage indication patterns — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+    source_id: phak-blocked-pitot
+    claim_ids:
+      - pitot-block-drain-open
+      - pitot-block-pressure-trapped
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4482
+      pdf_page_text_sha256: ddba93944d13636b8ca6c3edeb2e937ca8c6cb85fd8ef05b70c872fb4e69a12c
+  - id: energy-management
+    text: Pitch, airspeed, and altitude trade — Airplane Flying Handbook Chapter 4
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+    source_id: afh-pitch-trades-altitude-for-speed
+    claim_ids:
+      - pitch-down-trades-altitude-for-speed
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4052
+      pdf_page_text_sha256: 140f561d5217aac02be1a4392bb2b717e412e5fc65c4ab7660382109ef046183
+  - id: electronic-displays
+    text: Electronic flight displays and air-data inputs — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+    source_id: phak-glass-sensor-paths
+    claim_ids:
+      - pfd-combines-indications
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2695
+      pdf_page_text_sha256: ca0d75f5757bacb6526a9c3567e2cca8ebd9697eaadd4c298af9331b9b98272e
+  - id: gyro-principles
+    text: Gyroscopic principles — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+    source_id: phak-gyro-principles
+    claim_ids:
+      - gyro-rigidity
+      - gyro-precession
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3778
+      pdf_page_text_sha256: aadec0333effe801885cd93f464514ff2363969d936d6e3777a83dfd431f346c
+  - id: gyro-power
+    text: Gyro power sources and turn indicators — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+    source_id: phak-gyro-power-and-low-vacuum
+    claim_ids:
+      - common-gyro-power-split
+      - low-vacuum-unreliable-gyros
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4431
+      pdf_page_text_sha256: 37cfd061bc3120b9d52eb8b5da5adb4b99357c417ba52b3f76c986d0d265a861
+  - id: turn-coordinator
+    text: Turn coordinator and inclinometer — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+    source_id: phak-turn-coordinator
+    claim_ids:
+      - turn-coordinator-information
+      - turn-coordinator-limitations
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1622
+      pdf_page_text_sha256: 068b988378b4fe0f6335978fda9229025742bb56f6796e10d68cc339d6fdcf9b
+  - id: heading-ahrs
+    text: Heading instruments and AHRS — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+    source_id: phak-ahrs-heading-path
+    claim_ids:
+      - ahrs-and-magnetometer-paths
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3571
+      pdf_page_text_sha256: e81960a4d67a8457108a3e09af41c65b147a8e5e36a2a140a677ea80fc25d17e
+  - id: compass-variation-deviation
+    text: Magnetic compass, variation, and deviation — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+    source_id: phak-variation-and-deviation
+    claim_ids:
+      - variation-definition
+      - deviation-definition
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3691
+      pdf_page_text_sha256: a73bf8ea177ffcf7497b124c0d1abec1ece7aa5c4e050f7ab83f9922fc6076e6
+  - id: compass-correction-card
+    text: Compass correction card — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+    source_id: phak-compass-correction-card
+    claim_ids:
+      - deviation-correction-card
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3577
+      pdf_page_text_sha256: 19144839184bd3fd7d54aee5354bdb2e9e0d8e2289d88dc5195ab853cd714990
+  - id: compass-dip
+    text: Compass dip, acceleration, and turning errors — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+    source_id: phak-compass-dip-errors
+    claim_ids:
+      - compass-acceleration-error
+      - compass-turning-error
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3493
+      pdf_page_text_sha256: 81d4a3f771151563dca4597e7cad24582162fc0b3fd7c20813042326869a53df
+  - id: compass-oscillation
+    text: Compass oscillation — PHAK Chapter 8
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+    source_id: phak-compass-oscillation
+    claim_ids:
+      - compass-oscillation-average
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1685
+      pdf_page_text_sha256: 706eb1eecc03d6cbd3da7e02eb140fe8fa9ab2730c9d3aa825e13dcf169eefb9
+results:
+  - source_id: acs-operation-of-systems
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-24T14:22:14.052Z
+    linked_claim_ids:
+      - acs-instrument-systems-anchor
+      - acs-failure-recognition-anchor
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly contains Area of Operation I, Task G,
+          Operation of Systems, including the listed instrument-system knowledge
+          element and system-abnormality/failure knowledge and risk-management
+          elements.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 15 and shows printed page 7. It
+            contains Task G and the specific PA.I.G.K1h, K2, R1, and R2 elements
+            identified by the locator. The locator’s printed-page range of 7–8
+            is broader than necessary, but page 7 fully supports these cited
+            elements.
+        claim_assessments:
+          - claim_id: acs-instrument-systems-anchor
+            verdict: supports
+            rationale: PA.I.G.K1h expressly lists “Pitot-static, vacuum/pressure, and
+              associated flight instruments” under the Operation of Systems
+              task.
+          - claim_id: acs-failure-recognition-anchor
+            verdict: supports
+            rationale: The excerpt states PA.I.G.K2, “Indications of and procedures for
+              managing system abnormalities or failures”; PA.I.G.R1, “Detection
+              of system malfunctions or failures”; and PA.I.G.R2, “Management of
+              a system failure.”
+      usage:
+        input_tokens: 947
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 269
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1216
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-basic-instrument-cross-check
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-24T14:22:14.768Z
+    linked_claim_ids:
+      - acs-cross-check-anchor
+      - acs-instrument-risk-anchor
+      - source-grouping-cross-check
+      - avoid-instrument-fixation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=54
+      errors: []
+      valid: true
+      pdf_page_number: 54
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2210
+      pdf_page_text_sha256: cf9260d8366be59105ce8c0d79245e0b51e1fda82b31f27bb4b3fbc5465713dd
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page excerpt explicitly lists the relevant knowledge
+          and risk-management elements for Area of Operation VIII, Task A
+          (Straight-and-Level Flight). It directly supports all four claims.
+          Although the excerpt begins Task B, the specific detailed elements
+          quoted are shown under Task A on this cited page.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Area VIII, Tasks A–B, printed pages 46–47, and
+            the cited PDF page excerpt contains printed page 46 with Area VIII
+            Task A in full and the beginning of Task B. The asserted material is
+            present on the cited page.
+        claim_assessments:
+          - claim_id: acs-cross-check-anchor
+            verdict: supports
+            rationale: Task A knowledge item PA.VIII.A.K1 explicitly includes instrument
+              limitations and potential errors, indication of aircraft attitude,
+              function and operation, and proper instrument cross-check
+              techniques.
+          - claim_id: acs-instrument-risk-anchor
+            verdict: supports
+            rationale: Task A risk-management items PA.VIII.A.R1 and R2 explicitly identify
+              spatial disorientation, loss of control, and when to seek
+              assistance or declare an emergency in a deteriorating situation.
+          - claim_id: source-grouping-cross-check
+            verdict: supports
+            rationale: The excerpt explicitly lists “Proper instrument cross-check
+              techniques” as PA.VIII.A.K1d, a knowledge element for the Area
+              VIII basic instrument maneuver Task A.
+          - claim_id: avoid-instrument-fixation
+            verdict: supports
+            rationale: Task A risk-management item PA.VIII.A.R5 explicitly lists “Fixation
+              and omission.”
+      usage:
+        input_tokens: 1053
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1050
+        output_tokens: 349
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1402
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-unusual-attitude-failure-factor
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-24T14:22:14.783Z
+    linked_claim_ids:
+      - acs-equipment-failure-factor
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      status: 200
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=57
+      errors: []
+      valid: true
+      pdf_page_number: 57
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2191
+      pdf_page_text_sha256: f15dc0afa6d0679e7d459a8827d31e0924a74937b5efdc39215c4863ba339c37
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited ACS excerpt explicitly lists under PA.VIII.E.K1:
+          “Prevention of unusual attitudes, including flight causal,
+          physiological, and environmental factors, and system and equipment
+          failures.” This directly supports the claim."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Area VIII, Task E, PA.VIII.E.K1, and printed
+            page 49. The supplied excerpt from cited PDF page 57 contains
+            exactly that section and text.
+        claim_assessments:
+          - claim_id: acs-equipment-failure-factor
+            verdict: supports
+            rationale: PA.VIII.E.K1 expressly includes “system and equipment failures” in
+              prevention of unusual attitudes.
+      usage:
+        input_tokens: 937
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 162
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1099
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-pitot-static-overview
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:14.800Z
+    linked_claim_ids:
+      - pitot-static-pressure-model
+      - pitot-static-instrument-source-map
+      - pitot-block-leaves-static-instruments
+      - shared-static-can-fail-together
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3096
+      pdf_page_text_sha256: 87dfac3b2eeb9c970cbf4fc2063a113e3d636b9db0581e0ec2d6ba49d2457cfc
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited page directly explains pitot/static pressure concepts and
+          identifies which instruments use pitot and/or static pressure. It
+          supports the foundational system-description claims, but it does not
+          fully describe the stated failure-mode outcomes for pitot-only or
+          static-system blockages.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the “Impact
+            Pressure Chamber and Lines” discussion, the static-system
+            discussion, and Figure 8-1 relevant to the claims.
+        claim_assessments:
+          - claim_id: pitot-static-pressure-model
+            verdict: supports
+            rationale: The excerpt states that static pressure is ambient/barometric
+              pressure, dynamic pressure is present when the aircraft is in
+              motion, and total pressure in the pitot tube consists of dynamic
+              pressure plus static pressure.
+          - claim_id: pitot-static-instrument-source-map
+            verdict: supports
+            rationale: The excerpt states that the ASI receives total pressure from the
+              pitot tube and static pressure on its opposite side, and that the
+              altimeter and VSI use only static pressure from the static port.
+          - claim_id: pitot-block-leaves-static-instruments
+            verdict: partially_supports
+            rationale: The source establishes that the ASI is the only instrument using the
+              pitot tube and that the altimeter and VSI use static pressure
+              only. However, it does not expressly state the effects of a
+              pitot-only blockage, that the static system remains open in that
+              scenario, or characterize the altimeter and VSI as “independent
+              static-pressure evidence.”
+          - claim_id: shared-static-can-fail-together
+            verdict: partially_supports
+            rationale: "The source supports the underlying shared-static relationship: the
+              ASI receives static pressure and the altimeter and VSI use static
+              pressure. It also notes that an alternate static source may be
+              used if the primary source is blocked. However, it does not state
+              that a single static blockage makes all three indications wrong or
+              that their errors occur in a coordinated pattern."
+      usage:
+        input_tokens: 1201
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1198
+        output_tokens: 548
+        output_tokens_details:
+          reasoning_tokens: 113
+        total_tokens: 1749
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-alternate-static
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:17.659Z
+    linked_claim_ids:
+      - alternate-static-general-effects
+      - aircraft-specific-static-corrections
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4252
+      pdf_page_text_sha256: c98a4087ee28a2a2469a030014ac77388a45f2172a50d795228bf27a3d6b9510
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited page directly supports the general alternate-static
+          indication effects and directs pilots to consult the AFM or POH for
+          the amount of alternate-static error. It does not state that the AFM
+          or POH identifies an approved response for a particular installation.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the
+            alternate-static discussion, including the instrument effects and
+            AFM/POH consultation language.
+        claim_assessments:
+          - claim_id: alternate-static-general-effects
+            verdict: supports
+            rationale: The excerpt states that lower flight-deck pressure, when used as an
+              alternate static source, causes the altimeter to indicate slightly
+              higher than actual, the ASI to indicate greater than actual, and
+              the VSI to show a momentary climb before stabilizing when altitude
+              is held constant.
+          - claim_id: aircraft-specific-static-corrections
+            verdict: partially_supports
+            rationale: The excerpt says each pilot is responsible for consulting the AFM or
+              POH to determine the amount of error introduced when using the
+              alternate static source. It does not say the AFM or POH identifies
+              the approved response for that airplane's installation.
+      usage:
+        input_tokens: 1341
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1338
+        output_tokens: 342
+        output_tokens_details:
+          reasoning_tokens: 72
+        total_tokens: 1683
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-altimeter-operation-and-errors
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:17.683Z
+    linked_claim_ids:
+      - altimeter-senses-static-pressure
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4252
+      pdf_page_text_sha256: c98a4087ee28a2a2469a030014ac77388a45f2172a50d795228bf27a3d6b9510
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly explains that the altimeter uses static
+          pressure, with static pressure surrounding sealed aneroid wafers. It
+          states that lower static pressure allows the wafers to expand and
+          translates to an increase in indicated altitude, while higher static
+          pressure compresses/collapses the wafers and translates to a decrease
+          in indicated altitude.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator identifies printed page 8-3, and the supplied
+            excerpt from PDF page 3 contains the Altimeter and Principle of
+            Operation discussion supporting the claim.
+        claim_assessments:
+          - claim_id: altimeter-senses-static-pressure
+            verdict: supports
+            rationale: The excerpt explicitly states that the altimeter uses static
+              pressure; its sealed outer chamber allows static pressure to
+              surround the aneroid wafers. It further states that lower pressure
+              expands the wafers and increases altitude indication, whereas
+              higher pressure compresses them and decreases altitude indication.
+      usage:
+        input_tokens: 1299
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1296
+        output_tokens: 213
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1512
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-altimeter-temperature-error
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:17.703Z
+    linked_claim_ids:
+      - cold-temperature-altimeter-error
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3693
+      pdf_page_text_sha256: a2096096cb2bc6015ea0fb91b4c67fe72c54f197a759f331b9732f45fbd8d970
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that adjustments for nonstandard
+          pressure are made by setting the corrected pressure in the altimeter’s
+          barometric scale, but that such adjustments do not compensate for
+          nonstandard temperature. It further states that in
+          colder-than-standard temperatures, altitude is lower than the
+          altimeter indication and that true altitude is lower when maintaining
+          a constant indicated altitude in cooler air.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the specified printed page 8-4 and contains the
+            section “Effect of Nonstandard Pressure and Temperature,” directly
+            addressing the claim.
+        claim_assessments:
+          - claim_id: cold-temperature-altimeter-error
+            verdict: supports
+            rationale: "The page directly supports both parts: pressure-setting adjustments
+              address nonstandard pressure, not temperature; and
+              colder-than-standard air results in true/actual altitude lower
+              than indicated altitude."
+      usage:
+        input_tokens: 1165
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1162
+        output_tokens: 198
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1363
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-vsi-operation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:17.724Z
+    linked_claim_ids:
+      - vsi-differential-pressure
+      - vsi-trend-rate-lag
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4403
+      pdf_page_text_sha256: 1fec902182a0a9c0b45f158e3e4784ffb89f71a300e46c3d75f593614795b5d3
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains the VSI “Principle of Operation” text
+          describing the diaphragm’s direct static-pressure connection, the case
+          connection through a restricted orifice/calibrated leak, and how the
+          resulting temporary pressure differential indicates climb/descent
+          before stabilizing at a rate of altitude change.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is printed page 8-7 and includes the “Vertical
+            Speed Indicator (VSI)” and “Principle of Operation” sections. It
+            directly supports the cited locator’s operation content, though the
+            supplied excerpt does not include printed page 8-8.
+        claim_assessments:
+          - claim_id: vsi-differential-pressure
+            verdict: supports
+            rationale: The excerpt explicitly states that the diaphragm is connected
+              directly to the static line, while the instrument case is
+              connected to the static line through a restricted orifice
+              (calibrated leak), and identifies the VSI as a
+              differential-pressure instrument.
+          - claim_id: vsi-trend-rate-lag
+            verdict: supports
+            rationale: The excerpt states that during a climb or descent the diaphragm
+              pressure changes immediately while case pressure changes more
+              slowly because of the metered restriction, producing an indicated
+              climb or descent; when the pressure differential stabilizes, the
+              needle indicates the rate of altitude change. This supports the
+              described trend indication followed by a stabilized rate after
+              lag.
+      usage:
+        input_tokens: 1365
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1362
+        output_tokens: 303
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1668
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-asi-operation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:17.738Z
+    linked_claim_ids:
+      - asi-is-pressure-comparison
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3485
+      pdf_page_text_sha256: 36a7f06547e97fc5d465977b796f7119b46d5c04c98c9ba573c04170eb723cce
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that the ASI is a sensitive
+          differential-pressure gauge measuring the difference between pitot
+          (dynamic/impact) and static pressure. It further states that static
+          pressure is introduced into the airspeed case and pitot pressure is
+          introduced into the diaphragm.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 8-8, and the excerpt from that exact page
+            contains the ASI description and Figure 8-7 explaining the pitot
+            connection, static air line, case, and diaphragm.
+        claim_assessments:
+          - claim_id: asi-is-pressure-comparison
+            verdict: supports
+            rationale: "The page directly supports both parts of the claim: it identifies
+              the ASI as a differential-pressure gauge and specifies static
+              pressure in the case and pitot/dynamic pressure in the diaphragm."
+      usage:
+        input_tokens: 1152
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1149
+        output_tokens: 193
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1345
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-blocked-pitot
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:17.755Z
+    linked_claim_ids:
+      - pitot-block-drain-open
+      - pitot-block-pressure-trapped
+      - pitot-block-leaves-static-instruments
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4482
+      pdf_page_text_sha256: ddba93944d13636b8ca6c3edeb2e937ca8c6cb85fd8ef05b70c872fb4e69a12c
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses blocked-pitot scenarios with
+          the drain hole open and with both the pitot opening and drain hole
+          blocked, including the resulting ASI behavior. It also states that
+          pitot blockage affects ASI accuracy, whereas static-port blockage
+          affects the ASI, altimeter, and VSI.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 10 (printed page 8-10) and
+            contains the headed sections “Blockage of the Pitot-Static System”
+            and “Blocked Pitot System,” matching the cited locator. Although the
+            locator spans printed pages 8-10–8-11, the supplied page itself
+            contains the relevant material.
+        claim_assessments:
+          - claim_id: pitot-block-drain-open
+            verdict: supports
+            rationale: The excerpt states that when the pitot tube is blocked but the drain
+              hole remains clear, air in the system vents through the drain
+              hole, pressure drops to ambient pressure, and the ASI decreases to
+              zero very quickly because no pressure difference remains.
+          - claim_id: pitot-block-pressure-trapped
+            verdict: supports
+            rationale: The excerpt states that if both the pitot opening and drain hole are
+              clogged, pitot-tube pressure is trapped and no change is noted on
+              the ASI when airspeed increases or decreases. It further notes
+              that altitude changes can affect the indication through
+              static-pressure changes.
+          - claim_id: pitot-block-leaves-static-instruments
+            verdict: partially_supports
+            rationale: The excerpt explicitly says a blocked pitot tube affects ASI
+              accuracy, while static-port blockage causes errors in the ASI,
+              altimeter, and VSI. This supports the distinction that a
+              pitot-only blockage does not itself create the stated static-port
+              errors. However, it does not explicitly say that the altimeter and
+              VSI “remain available as independent static-pressure evidence,” so
+              that instructional framing goes beyond the page’s express wording.
+      usage:
+        input_tokens: 1520
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1517
+        output_tokens: 423
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1943
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-trapped-pitot-altitude-effect
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:17.777Z
+    linked_claim_ids:
+      - trapped-pitot-asi-follows-altitude
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3535
+      pdf_page_text_sha256: 960e00178d0b1613c7ef56f697adbd8ca7cd76c74d10167b54072cdd42043870
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly describes the blocked/trapped pitot condition
+          with a clear static system: during descent, increasing static pressure
+          compresses the diaphragm and produces decreased indicated airspeed;
+          during climb, decreasing static pressure allows expansion and produces
+          increased indicated airspeed."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is printed page 8-11 and contains Figure 8-10 plus
+            the exact explanatory text for a blocked pitot system with a clear
+            static system.
+        claim_assessments:
+          - claim_id: trapped-pitot-asi-follows-altitude
+            verdict: supports
+            rationale: The source expressly states that with the pitot tube obstructed,
+              pitot-system pressure remains constant; a descent increases static
+              pressure and decreases the ASI indication, while a climb decreases
+              static pressure and increases the indication.
+      usage:
+        input_tokens: 1145
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1142
+        output_tokens: 193
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1338
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-pitch-trades-altitude-for-speed
+    title: "Airplane Flying Handbook, Chapter 4: Energy Management: Mastering
+      Altitude and Airspeed Control"
+    checked_at_utc: 2026-08-24T14:22:17.796Z
+    linked_claim_ids:
+      - pitch-down-trades-altitude-for-speed
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/05_afh_ch4.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4052
+      pdf_page_text_sha256: 140f561d5217aac02be1a4392bb2b717e412e5fc65c4ab7660382109ef046183
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page expressly states that, for no change in total
+          energy, throttle is not changed initially and elevator is used to
+          exchange altitude and airspeed: pitching up trades speed for altitude,
+          and pitching down trades altitude for speed. The excerpt also
+          specifically says that transitioning to faster airspeed by trading
+          altitude for speed requires down elevator without initially changing
+          throttle, while transitioning to higher altitude by trading speed for
+          altitude requires up elevator without initially changing throttle."
+        locator_assessment:
+          verdict: supports
+          rationale: "The supplied excerpt is from cited PDF page 10 (printed page 4-10)
+            and contains Rule #3, exactly the cited material. Figure 4-8 itself
+            is referenced in the text but is not necessary to support the
+            claim."
+        claim_assessments:
+          - claim_id: pitch-down-trades-altitude-for-speed
+            verdict: supports
+            rationale: "Rule #3 states: initially do not change throttle; to trade speed for
+              altitude, pitch up; and to trade altitude for speed, pitch down.
+              This directly matches the claim."
+      usage:
+        input_tokens: 1293
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1290
+        output_tokens: 236
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1529
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-blocked-static
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.494Z
+    linked_claim_ids:
+      - static-block-altimeter-vsi
+      - static-block-asi-error
+      - shared-static-can-fail-together
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3535
+      pdf_page_text_sha256: 960e00178d0b1613c7ef56f697adbd8ca7cd76c74d10167b54072cdd42043870
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited page directly supports the blocked-static effects on the
+          ASI, altimeter, and VSI. It fully supports the first two claims. The
+          third claim is supported insofar as one blocked static system affects
+          all three instruments, but the wording about the instruments sharing
+          static pressure and producing a “coordinated pattern” is more
+          interpretive than the excerpt expressly states.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from printed page 8-11 and contains the “Blocked
+            Static System” section directly addressing the cited subject.
+        claim_assessments:
+          - claim_id: static-block-altimeter-vsi
+            verdict: supports
+            rationale: The excerpt states that trapped static pressure causes the altimeter
+              to freeze at the altitude where the blockage occurred and that a
+              blocked static system produces a continuous zero VSI indication.
+          - claim_id: static-block-asi-error
+            verdict: supports
+            rationale: The excerpt explicitly states that, with a blocked static system and
+              clear pitot tube, indicated airspeed is lower than actual above
+              the blockage altitude and faster than actual below it.
+          - claim_id: shared-static-can-fail-together
+            verdict: partially_supports
+            rationale: The excerpt states that a static-system blockage affects the ASI,
+              altimeter, and VSI, and describes their resulting indications.
+              However, it does not expressly frame this as the instruments
+              “sharing static pressure” or characterize the errors as a
+              coordinated pattern.
+      usage:
+        input_tokens: 1213
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1210
+        output_tokens: 401
+        output_tokens_details:
+          reasoning_tokens: 78
+        total_tokens: 1614
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-glass-sensor-paths
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.514Z
+    linked_claim_ids:
+      - pfd-combines-indications
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2695
+      pdf_page_text_sha256: ca0d75f5757bacb6526a9c3567e2cca8ebd9697eaadd4c298af9331b9b98272e
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that multi-panel digital flight displays combine
+          all flight instruments onto a single primary flight display (PFD)
+          screen and that the traditional “six pack” is displayed on one LCD
+          screen. Figure 8-12 specifically labels airspeed, attitude, altimeter,
+          vertical speed, turn, and horizontal situation/heading-related
+          indications on the PFD.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is the extracted page and contains both the PFD
+            figure and the accompanying text describing consolidation of the
+            traditional flight instruments onto a single PFD screen.
+        claim_assessments:
+          - claim_id: pfd-combines-indications
+            verdict: supports
+            rationale: Figure 8-12 depicts and labels the airspeed indicator, attitude
+              indicator, altimeter, VSI, turn indicator, and horizontal
+              situation indicator on a single PFD. The adjacent text confirms
+              that the traditional six-pack instruments are displayed on one LCD
+              PFD screen.
+      usage:
+        input_tokens: 1086
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1083
+        output_tokens: 219
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1305
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-air-data-computer
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.540Z
+    linked_claim_ids:
+      - adc-uses-pitot-static-inputs
+      - display-does-not-create-independent-sources
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2444
+      pdf_page_text_sha256: 0744f8c5df765ab6ce23654b98ffe93369c6139a7f5474e86f8b87e0da494daa
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly explains that EFD pitot-static inputs are
+          received by an ADC, which computes pressure information for PFD
+          airspeed display and computes barometric pressure for a digital
+          altitude signal to the PFD.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is explicitly from printed page 8-14 and contains the
+            “Air Data Computer (ADC)” discussion identified by the locator.
+        claim_assessments:
+          - claim_id: adc-uses-pitot-static-inputs
+            verdict: supports
+            rationale: The excerpt states that pitot-static inputs are received by an ADC;
+              it computes the difference between total and static pressure for
+              airspeed display, and computes received barometric/static pressure
+              to send a digital altitude signal to the PFD.
+          - claim_id: display-does-not-create-independent-sources
+            verdict: supports
+            rationale: The excerpt states that EFD pitot-static inputs are received by an
+              ADC and that the ADC sends information necessary for airspeed and
+              altitude display to the PFD. This supports the stated data path,
+              though the wording about not creating independent sources is an
+              interpretive framing rather than quoted language.
+      usage:
+        input_tokens: 1056
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1053
+        output_tokens: 260
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1316
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-gyro-principles
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.554Z
+    linked_claim_ids:
+      - gyro-rigidity
+      - gyro-precession
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3778
+      pdf_page_text_sha256: aadec0333effe801885cd93f464514ff2363969d936d6e3777a83dfd431f346c
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines both rigidity in space and
+          precession and explains their relevant instrument-use implications.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page 15 (printed page 8-15) and
+            contains the section headings and text for both “Rigidity in Space”
+            and “Precession.”
+        claim_assessments:
+          - claim_id: gyro-rigidity
+            verdict: supports
+            rationale: The excerpt states that rigidity in space is the principle that a
+              gyroscope remains in a fixed position in the plane in which it is
+              spinning.
+          - claim_id: gyro-precession
+            verdict: partially_supports
+            rationale: The excerpt states that precession is a gyro’s tilting or turning
+              response to a deflective force, occurring 90° later in the
+              direction of rotation, and that this permits determination of rate
+              of turn. However, this page does not state that precession can
+              contribute unwanted error.
+      usage:
+        input_tokens: 1360
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1357
+        output_tokens: 224
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1584
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-gyro-power-and-low-vacuum
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.581Z
+    linked_claim_ids:
+      - common-gyro-power-split
+      - gyro-source-diversity
+      - low-vacuum-unreliable-gyros
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4431
+      pdf_page_text_sha256: 37cfd061bc3120b9d52eb8b5da5adb4b99357c417ba52b3f76c986d0d265a861
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses gyro power-source arrangements,
+          redundancy of bank-information sources, and the effect of low
+          vacuum/suction on attitude and heading indicator reliability.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from printed page 8-16 and contains the cited 'Sources
+            of Power' and vacuum-system-operation material.
+        claim_assessments:
+          - claim_id: common-gyro-power-split
+            verdict: supports
+            rationale: The excerpt states that, in some aircraft, vacuum or pressure systems
+              power the heading and attitude indicators while the electrical
+              system powers the turn coordinator.
+          - claim_id: gyro-source-diversity
+            verdict: supports
+            rationale: The excerpt states that most aircraft have at least two sources of
+              power to ensure that at least one source of bank information is
+              available if one power source fails.
+          - claim_id: low-vacuum-unreliable-gyros
+            verdict: partially_supports
+            rationale: The excerpt directly says low suction can cause attitude and heading
+              indicators to provide unreliable information and that, below the
+              normal operating range, gyroscopic instruments may become unstable
+              and inaccurate. It does not expressly state that low suction
+              'slows' the gyros.
+      usage:
+        input_tokens: 1381
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1378
+        output_tokens: 271
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1652
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-turn-indicator-backup
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.592Z
+    linked_claim_ids:
+      - turn-indicator-backup-bank
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4431
+      pdf_page_text_sha256: 37cfd061bc3120b9d52eb8b5da5adb4b99357c417ba52b3f76c986d0d265a861
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that both turn-and-slip indicators and
+          turn coordinators “serve as a backup source of bank information in the
+          event an attitude indicator fails.” This directly supports the claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is the supplied excerpt’s exact page and includes
+            the relevant statement under the “Turn Indicators” heading.
+        claim_assessments:
+          - claim_id: turn-indicator-backup-bank
+            verdict: supports
+            rationale: "Directly supported: the excerpt says both types of turn indicators
+              serve as a backup source of bank information if the attitude
+              indicator fails."
+      usage:
+        input_tokens: 1286
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1283
+        output_tokens: 148
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1434
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-turn-coordinator
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.605Z
+    linked_claim_ids:
+      - turn-coordinator-information
+      - turn-coordinator-limitations
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1622
+      pdf_page_text_sha256: 068b988378b4fe0f6335978fda9229025742bb56f6796e10d68cc339d6fdcf9b
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited page directly discusses the turn coordinator, including its
+          canted gyro, roll-rate sensing during roll-in/roll-out, standard-rate
+          turn indication, and the limitation that it does not show a specific
+          bank angle. It does not state that the instrument provides no pitch
+          information, and it does not explicitly frame its turn indication as
+          occurring only “after roll stabilizes.”
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page, printed page 8-17, and
+            contains the “Turn Coordinator” section relevant to both claims.
+        claim_assessments:
+          - claim_id: turn-coordinator-information
+            verdict: partially_supports
+            rationale: The excerpt states that the canted gyro senses both rate of roll and
+              rate of turn, that the miniature aircraft banks during roll-in or
+              roll-out, and that the instrument indicates rate and direction of
+              turn. However, it does not explicitly say that
+              rate-and-direction-of-turn indication occurs specifically after
+              roll stabilizes.
+          - claim_id: turn-coordinator-limitations
+            verdict: partially_supports
+            rationale: The excerpt explicitly says the turn coordinator “does not display a
+              specific angle of bank.” It does not address whether the
+              instrument provides pitch information.
+      usage:
+        input_tokens: 819
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 342
+        output_tokens_details:
+          reasoning_tokens: 61
+        total_tokens: 1161
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-inclinometer
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.624Z
+    linked_claim_ids:
+      - inclinometer-coordination
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3596
+      pdf_page_text_sha256: 0f7cc019d5105c099d6d35183558650251252d839e078eecbaa0ba7085da1765
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that the inclinometer depicts aircraft yaw and
+          that coordinated flight is maintained by keeping the ball centered. It
+          separately explains that the attitude indicator displays aircraft
+          attitude. This supports the distinction that the inclinometer ball
+          indicates turn coordination/yaw rather than aircraft attitude.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains the “Inclinometer” section and explicitly
+            discusses ball centering, slips, skids, and coordinated flight,
+            along with a separate description of the attitude indicator.
+        claim_assessments:
+          - claim_id: inclinometer-coordination
+            verdict: supports
+            rationale: The page says the inclinometer depicts yaw and that keeping the ball
+              centered maintains coordinated flight. Aircraft attitude is
+              described separately as the function of the attitude indicator.
+      usage:
+        input_tokens: 1214
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1211
+        output_tokens: 238
+        output_tokens_details:
+          reasoning_tokens: 55
+        total_tokens: 1452
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-attitude-indicator
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.646Z
+    linked_claim_ids:
+      - attitude-indicator-purpose
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3596
+      pdf_page_text_sha256: 0f7cc019d5105c099d6d35183558650251252d839e078eecbaa0ba7085da1765
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly explains that the attitude indicator uses a gyro
+          mounted in a horizontal plane that relies on rigidity in space, and
+          that its miniature aircraft and horizon bar depict the aircraft’s
+          attitude relative to the true horizon. This supports its use to show
+          pitch and bank.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 8-18 and contains the “Attitude Indicator”
+            section and Figure 8-23, directly addressing the claim.
+        claim_assessments:
+          - claim_id: attitude-indicator-purpose
+            verdict: supports
+            rationale: The excerpt states that the instrument’s miniature aircraft and
+              horizon bar show aircraft attitude, that the gyro relies on
+              rigidity in space, and that the horizon bar remains horizontal as
+              the aircraft is pitched or banked.
+      usage:
+        input_tokens: 1231
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1228
+        output_tokens: 184
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1415
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-attitude-indicator-limits
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.662Z
+    linked_claim_ids:
+      - attitude-indicator-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=19
+      errors: []
+      valid: true
+      pdf_page_number: 19
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2762
+      pdf_page_text_sha256: 8b63eee737d9a5b9ec977733001a49087faf7e501e6adeed585b201b508b5425
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states that attitude-indicator pitch and
+          bank limits depend on make and model; gives example bank limits of
+          100°–110° and pitch limits of 60°–70°; explains that some instruments
+          with only ±25° pitch display can peg or tumble and provide erroneous
+          pitch and bank indications when limits are exceeded; and says that a
+          number of modern attitude indicators do not have this problem.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is explicitly from printed page 8-19 and contains the
+            attitude-indicator-limits discussion identified by the locator.
+        claim_assessments:
+          - claim_id: attitude-indicator-limits
+            verdict: supports
+            rationale: All material components of the claim are stated on the cited page,
+              including variation by instrument, peg/tumble/erroneous
+              indications beyond limits, and the statement that many modern
+              indicators avoid the problem.
+      usage:
+        input_tokens: 1094
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1091
+        output_tokens: 210
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1304
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-heading-indicator-drift
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.697Z
+    linked_claim_ids:
+      - heading-indicator-drift
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3571
+      pdf_page_text_sha256: e81960a4d67a8457108a3e09af41c65b147a8e5e36a2a140a677ea80fc25d17e
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The excerpt supports that a conventional free-gyro heading indicator
+          operates by rigidity in space and provides clear heading information,
+          but drifts because of frictional precession and Earth rotation. It
+          also states that its adjustment knob is used to align it with the
+          magnetic compass. However, it does not explicitly state that the
+          instrument therefore requires periodic comparison with the magnetic
+          compass, so that operational conclusion is only indirectly supported.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is the stated printed page 8-20 and contains the
+            Heading Indicator discussion, including drift, Earth-rotation error,
+            and magnetic-compass alignment.
+        claim_assessments:
+          - claim_id: heading-indicator-drift
+            verdict: partially_supports
+            rationale: The page states that the gyro remains rigid in space, that frictional
+              precession causes drift, and that Earth rotation can cause up to
+              15° of error per hour. It also says the adjustment knob aligns the
+              indicator with the magnetic compass. It does not explicitly say
+              that comparison with the compass is required.
+      usage:
+        input_tokens: 1162
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1159
+        output_tokens: 301
+        output_tokens_details:
+          reasoning_tokens: 57
+        total_tokens: 1463
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-ahrs-heading-path
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.712Z
+    linked_claim_ids:
+      - ahrs-and-magnetometer-paths
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3571
+      pdf_page_text_sha256: e81960a4d67a8457108a3e09af41c65b147a8e5e36a2a140a677ea80fc25d17e
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that the AHRS sends attitude
+          information to the PFD to generate pitch and bank information, and
+          that heading information is derived from a magnetometer sensing the
+          Earth's lines of magnetic flux and is processed for the PFD heading
+          display.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is the exact page containing the AHRS section and
+            the statements supporting the claim.
+        claim_assessments:
+          - claim_id: ahrs-and-magnetometer-paths
+            verdict: supports
+            rationale: "The claim accurately paraphrases the excerpt: AHRS supplies attitude
+              information to the PFD, and a magnetometer sensing Earth's
+              magnetic flux provides the source for heading information."
+      usage:
+        input_tokens: 1162
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1159
+        output_tokens: 165
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1327
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-heading-low-vacuum
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.724Z
+    linked_claim_ids:
+      - heading-alignment-conditions
+      - low-suction-increases-gyro-error
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4298
+      pdf_page_text_sha256: 4006c7639293c991e31814698eb3f72f9bcd70112c70d7fc04369970c389cd34
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses free heading indicators, their
+          periodic comparison and alignment with the magnetic compass, the
+          recommended straight-and-level constant-speed condition for
+          adjustment, and increased susceptibility to gyro deflection when
+          inadequate vacuum slows the gyros.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from printed page 8-22 and contains the cited Heading
+            Indicator limitations, low-vacuum precession, and Instrument Check
+            material.
+        claim_assessments:
+          - claim_id: heading-alignment-conditions
+            verdict: supports
+            rationale: The excerpt states that free gyros require periodic adjustment, that
+              indications should be checked frequently (approximately every 15
+              minutes) and reset to align with the magnetic compass when
+              required, and that adjustment should be made while straight and
+              level at a constant speed to avoid compass errors.
+          - claim_id: low-suction-increases-gyro-error
+            verdict: supports
+            rationale: The excerpt states that when the vacuum system provides inadequate
+              suction, heading and attitude gyros slow down and become more
+              susceptible to deflection from the plane of rotation.
+      usage:
+        input_tokens: 1325
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1322
+        output_tokens: 243
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1568
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-magnetic-compass-basics
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.733Z
+    linked_claim_ids:
+      - magnetic-compass-principle
+      - compass-bank-limitation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2906
+      pdf_page_text_sha256: 6eff28b1ac317ba52600a9d1fdea3dd2559ffa6d021909bf6d4a5199d9637dd8
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly describes the construction and operating
+          principle of an aircraft magnetic compass, including magnets on a
+          float and card assembly in compass fluid, alignment with Earth’s
+          magnetic field, damping by the fluid, and its bank-angle limitation.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited printed page 8-23 and contains the
+            relevant 'Compass Systems' and 'Magnetic Compass' discussion for
+            both claims.
+        claim_assessments:
+          - claim_id: magnetic-compass-principle
+            verdict: supports
+            rationale: The excerpt states that the compass has two small magnets attached to
+              a metal float, a graduated card wrapped around the float, compass
+              fluid that damps float/card oscillation, and that the magnets
+              align with Earth’s magnetic field.
+          - claim_id: compass-bank-limitation
+            verdict: supports
+            rationale: The excerpt states that the mounting permits the float to rotate and
+              tilt up to approximately 18° of bank and that at steeper bank
+              angles the compass indications are erratic and unpredictable.
+      usage:
+        input_tokens: 1080
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1077
+        output_tokens: 241
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1321
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-variation-and-deviation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.743Z
+    linked_claim_ids:
+      - variation-definition
+      - deviation-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3691
+      pdf_page_text_sha256: a73bf8ea177ffcf7497b124c0d1abec1ece7aa5c4e050f7ab83f9922fc6076e6
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines both variation and deviation and
+          states their respective dependence on location and aircraft heading.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 24 (printed page 8-24) and
+            contains the “Variation” and “Deviation” subsections identified by
+            the locator.
+        claim_assessments:
+          - claim_id: variation-definition
+            verdict: supports
+            rationale: The excerpt states that variation is “the difference between true and
+              magnetic directions” in aerial navigation. It also explains that
+              variation is identified by area/isogonic line, gives different
+              values for Washington, D.C. and Los Angeles, and says it does not
+              change with aircraft heading, supporting its location-dependent
+              character.
+          - claim_id: deviation-definition
+            verdict: supports
+            rationale: The excerpt says aircraft magnetic fields create compass error called
+              deviation and explicitly states that deviation depends on aircraft
+              heading. It identifies flowing electrical current, magnetized
+              parts, and conflict with the Earth’s magnetic field as causes of
+              magnetic fields in the aircraft.
+      usage:
+        input_tokens: 1522
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1519
+        output_tokens: 238
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1760
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-compass-correction-card
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.818Z
+    linked_claim_ids:
+      - deviation-correction-card
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3577
+      pdf_page_text_sha256: 19144839184bd3fd7d54aee5354bdb2e9e0d8e2289d88dc5195ab853cd714990
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that, after compensator adjustments
+          minimize the difference between compass indication and actual magnetic
+          heading, the AMT records any remaining error on a compass correction
+          card and places it in a holder near the compass. Figure 8-35 also
+          identifies the card as showing deviation correction for headings.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is printed page 8-25, and the supplied excerpt
+            from that exact page contains the relevant discussion and Figure
+            8-35.
+        claim_assessments:
+          - claim_id: deviation-correction-card
+            verdict: supports
+            rationale: "The excerpt explicitly supports every material element: an AMT
+              adjusts the compass to minimize deviation, records remaining error
+              on a correction card, and places the card near the compass. The
+              figure caption confirms the card provides deviation correction by
+              heading."
+      usage:
+        input_tokens: 1169
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1166
+        output_tokens: 196
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1365
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-compass-dip-model
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.828Z
+    linked_claim_ids:
+      - compass-dip-physical-model
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3493
+      pdf_page_text_sha256: 81d4a3f771151563dca4597e7cad24582162fc0b3fd7c20813042326869a53df
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: "The excerpt supports the pendulous-compass portion of the claim: it
+          states that the center of gravity is lowered below the pivot point to
+          keep the compass assembly rotating in the horizontal plane, and that
+          once tilted, the vertical component of Earth’s magnetic field affects
+          it. It also discusses magnetic dip as the cause of turning errors.
+          However, this page does not explicitly state that, in the Northern
+          Hemisphere, Earth’s magnetic field slopes downward toward magnetic
+          north."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is printed page 8-26 and contains the described
+            discussion of dip effects, pendulous mounting, and the consequences
+            of tilting the compass assembly.
+        claim_assessments:
+          - claim_id: compass-dip-physical-model
+            verdict: partially_supports
+            rationale: "Supported: the compass center of gravity is below the pivot,
+              intended to keep the assembly horizontal; tilting allows the
+              vertical component of Earth’s field to affect it. Not explicitly
+              supported on this page: the directional characterization that the
+              Northern Hemisphere field slopes downward toward magnetic north."
+      usage:
+        input_tokens: 1263
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1260
+        output_tokens: 246
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1509
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-compass-dip-errors
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.843Z
+    linked_claim_ids:
+      - compass-acceleration-error
+      - compass-turning-error
+      - compass-errors-condition-dependent
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3493
+      pdf_page_text_sha256: 81d4a3f771151563dca4597e7cad24582162fc0b3fd7c20813042326869a53df
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited PDF page directly discusses northerly and southerly turning
+          errors and acceleration error, including the relevant lead/lag,
+          rollout, heading, and acceleration/deceleration effects. However, the
+          excerpt does not expressly limit these descriptions to the Northern
+          Hemisphere, and the broader combined statement about how the size of
+          both types of error varies is only partly stated.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from printed page 8-26 and contains the cited
+            sections, Figure 8-36, and the beginning of the acceleration-error
+            discussion.
+        claim_assessments:
+          - claim_id: compass-acceleration-error
+            verdict: partially_supports
+            rationale: The excerpt states that magnetic dip and inertia cause errors during
+              acceleration and deceleration on easterly or westerly headings;
+              acceleration indicates toward north and deceleration toward south.
+              It also describes the pendulous mounting tilting during airspeed
+              changes. It does not expressly state that this applies
+              specifically in the Northern Hemisphere.
+          - claim_id: compass-turning-error
+            verdict: partially_supports
+            rationale: The excerpt states that on turns in a northerly direction the compass
+              leads and the turn should be stopped before the desired heading,
+              while on southerly turns it lags and should be allowed to pass the
+              desired heading. It does not expressly frame these effects as
+              Northern Hemisphere-specific.
+          - claim_id: compass-errors-condition-dependent
+            verdict: partially_supports
+            rationale: The excerpt explains that a tilted compass is affected by Earth’s
+              vertical magnetic-field component, describes turning-related dip
+              effects, and shows that acceleration errors depend on
+              easterly/westerly headings. It explicitly says turning errors are
+              amplified near magnetic poles. But it does not clearly establish
+              that the direction and magnitude of both acceleration and turning
+              errors vary with heading and proximity to the poles as a single
+              general proposition.
+      usage:
+        input_tokens: 1376
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1373
+        output_tokens: 549
+        output_tokens_details:
+          reasoning_tokens: 135
+        total_tokens: 1925
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-compass-oscillation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-24T14:22:18.856Z
+    linked_claim_ids:
+      - compass-oscillation-average
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      status: 200
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1685
+      pdf_page_text_sha256: 706eb1eecc03d6cbd3da7e02eb140fe8fa9ab2730c9d3aa825e13dcf169eefb9
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly defines oscillation error as fluctuation of
+          the compass card relative to the aircraft’s actual heading direction
+          and instructs pilots, when setting the gyroscopic heading indicator to
+          agree with the magnetic compass, to use the average indication between
+          swings.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is printed page 8-27, and the supplied excerpt
+            from that page contains the “Oscillation Error” heading and the
+            exact relevant guidance.
+        claim_assessments:
+          - claim_id: compass-oscillation-average
+            verdict: supports
+            rationale: "The excerpt states: “Oscillation is a combination of all of the
+              errors previously mentioned and results in fluctuation of the
+              compass card in relation to the actual heading direction of the
+              aircraft. When setting the gyroscopic heading indicator to agree
+              with the magnetic compass, use the average indication between the
+              swings.”"
+      usage:
+        input_tokens: 793
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 202
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 995
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

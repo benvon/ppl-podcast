@@ -47,8 +47,9 @@ npm run precommit:check
    is safe to resume only if `render-settings.json` matches exactly.
 5. Assemble the complete range. The renderer adds an 8 ms fade at each rendered-segment edge and writes an automatic post-assembly report beside the manifest. For MP3 output, it also embeds ID3 chapter markers using the master script’s section headings and verifies them with `ffprobe`. It verifies WAV structure, 24 kHz mono format, MP3/WAV decode, output duration, clipping statistics, and abrupt sample jumps at every known stitch.
 6. Perform the required full listening QA. The automated report catches technical corruption and hard joins; it cannot judge synthesis artifacts, garbled words, pronunciation, pacing, or whether a chapter title is useful to a listener.
+7. Before handing off to hosting, run `npm run release:prehost -- --episode episodes/<episode-id-and-slug>`. It checks the approved MP3 against its final render, chapter, and audio-quality records—including re-reading the embedded MP3 chapters and comparing them to the candidate render record. It also derives the current narration from `master-script.md` and requires its checksum to equal the script checksum recorded by the renderer. It checks the release metadata and source-validation record, confirms that every show-note link maps to a validated research citation, and rejects duplicate public production notices.
 
-Use the same timestamp and work directory for the render and assembly commands.
+Use the same timestamp and work directory for the render and assembly commands that create one candidate. When a revised segment changes duration, reassemble the complete range: the renderer recalculates every later chapter marker from the new stitched audio. You may keep the earlier work directory so unchanged rendered segments can be reused safely.
 
 ```sh
 direnv exec . npm run render:realtime -- \
@@ -138,7 +139,9 @@ npm run audio:chapter-review -- \
 ```
 
 The page is written next to the MP3 by default, is ignored with the audio
-artifacts, and does not change the audio file.
+artifacts, and does not change the audio file. Its filename and playback URL
+include the final MP3 SHA-256, so its chapter list is tied to that exact audio
+object rather than a same-named earlier render.
 
 ## Chapter markers
 
@@ -152,9 +155,10 @@ specific, and listener-facing; they are navigation labels, not internal notes.
 During script-aligned listening QA, verify that the chapter list begins with
 the opening at `00:00`, each title describes the material that follows, and
 each marker lands before that material starts. The render manifest records the
-final titles and millisecond timings. Do not add or revise chapter data after
-the final MP3 has been staged: a changed MP3 requires the normal new immutable
-audio object and release review.
+final titles, millisecond timings, and the MP3 SHA-256 that contains that
+embedded marker set. A revised audio segment may change later marker times;
+reassemble and review the complete MP3 so the marker data follows the updated
+audio.
 
 ## Accepted audio policy
 
@@ -168,6 +172,6 @@ audio object and release review.
   input, expand standalone `AI` to `artificial intelligence` and `PHAK` to
   `pea hack`; the listener should hear “artificial intelligence-assisted
   production” and “pea hack.”
-- Use the versioned, ignored render manifest for duration, checksums, response
+- Use the versioned, Git-ignored render manifest for duration, checksums, response
   usage, usage-derived cost estimates, stitch positions, chapter markers, and
   the audio-quality report. It is not an invoice.

@@ -275,6 +275,8 @@ The approved `master-script.md` is the source of truth. TTS inputs are derived f
 
 The default reusable renderer is `scripts/render_episode_realtime.cjs`. It uses `gpt-realtime-2.1` over an authenticated WebSocket session, with `marin` for Instructor and `cedar` for Learner, as approved in `series/voice-profile.yaml`. It writes 24 kHz mono PCM WAV segments, applies a short fade at each rendered-segment edge before stitching, retains a lossless master, creates a timestamped MP3 derivative, and records the API response-usage fields in the ignored render manifest so the cost estimate can be checked later. Every master-script section heading becomes an embedded MP3 ID3 chapter marker; the renderer derives each marker from the actual stitched-audio boundary, validates the exported markers with `ffprobe`, and records their final timestamps in the render manifest. That provides the required delivery format for Apple Podcasts and Overcast. After every assembly, it writes an audio-quality report that verifies the WAV structure, final-file decode, 24 kHz mono format, duration agreement, clipping statistics, and discontinuities at known stitches. This is a technical gate, not a substitute for full human listening QA: a listener must still review the entire candidate for garbled synthesis, pronunciation, pacing, content alignment, and useful chapter titles. It deliberately leaves Realtime `audio.output.speed` unset: natural pace and inflection belong in the role instructions, while post-generation speed processing produced audible artifacts in testing. The renderer preserves written scripts but expands standalone `AI` to `artificial intelligence` only in the model input; this avoids ambiguous disclosure pronunciation without changing the approved public text. The renderer uses the pinned `ws` Node dependency plus `ffmpeg` and `ffprobe`; install dependencies with `npm ci`. It requires `OPENAI_API_KEY` only in the environment and never accepts a key through a file, command argument, or committed configuration. `scripts/render_episode_audio.py` is a legacy renderer retained solely to reproduce pre-migration candidates; `macos-say` remains an offline fallback, not the preferred public-release voice path.
 
+The render manifest binds its embedded chapter list to the SHA-256 of the MP3 that contains it. If a revised segment changes timing, reassemble the complete episode so later marker positions are recalculated from that revised audio. The chapter-review page carries the same audio hash in its filename, page metadata, and playback URL. Hosting handoff must preserve that hash alongside the published audio checksum so the site’s rendered list and the MP3 always identify the same marker set.
+
 For long scripts in a time-bounded runner, use `--work-dir`, `--render-only`, and a small `--segment-start`/`--segment-end` range. The Realtime renderer makes a separate bounded WebSocket request for each speaker segment, skips completed segments only when its settings lock matches, and writes a usage sidecar with each finished segment. Once every segment is present, use `--assemble-only` with the same timestamp and working directory. This makes interrupted renders resumable without regenerating already billed segments. A selected subrange assembles to a clearly named `preview-###-###` artifact and must not be mistaken for a full candidate.
 
 The renderer itself has no whole-episode wall-clock limit: `--segment-timeout` bounds only an individual provider request. Run a normal full render from a local terminal when the process may take several minutes. If a calling environment imposes a shorter foreground-command lifetime, use the resumable range workflow instead; do not rely on detached child processes surviving that environment.
@@ -355,6 +357,10 @@ ppl-podcast/
     show-notes.md
     qa-checklist.md
 ```
+
+`source-release-seal.yaml` is generated beside the handoff's `episode.yaml`,
+`show-notes.md`, and `audio.mp3`; it is not edited in the source episode
+directory.
 
 - Use lowercase kebab-case filenames and `core-NN` / `rough-NNN` episode IDs.
 - Keep raw renders, production sessions, lossless masters, and published audio in the Git-ignored `audio-artifacts/` directory; `audio-manifest.yaml` records their paths/URLs, checksums, duration, and version.
@@ -458,6 +464,7 @@ Complete `qa-checklist.md` before release.
 - [ ] `hosting-metadata.yaml` contains the approved stable ID/GUID, title, description, UTC publication time, duration, season/episode number, explicit flag, current version, and script/show-notes/source-validation references.
 - [ ] Its `publisher_release` object matches the listener-facing episode contract used by `ppl-postcast-hosting`; that publisher writes immutable audio keys, byte count, and checksum after private staging.
 - [ ] The hosting handoff contains no credential, local filesystem path, or unpublished audio artifact.
+- [ ] The hosting handoff was generated after `release:prehost` passed; its `source-release-seal.yaml` binds the staged MP3, listener-facing metadata, and show notes to the reviewed source package.
 
 ## 12. Initial core roadmap
 

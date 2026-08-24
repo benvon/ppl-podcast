@@ -1,0 +1,65 @@
+id: "core-07"
+series: ppl-study-podcast
+title: "Flight Instruments and Failure Recognition"
+slug: "flight-instruments-failure-recognition"
+track: "core"
+status: ready_for_hosting_pr
+version: 0.1.4
+published_at: "2026-08-24T13:31:04Z"
+runtime_target_minutes: 47
+runtime_actual_seconds: 2231.08
+word_count: 5551
+speakers: [instructor, learner, announcer]
+audience: "U.S. private-pilot airplane learners"
+aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
+acs_references:
+  - PA.I.G.K1h
+  - PA.I.G.K2
+  - PA.I.G.R1
+  - PA.I.G.R2
+  - PA.VIII.A.K1a-K1d
+  - PA.VIII.B.K1a-K1d
+  - PA.VIII.C.K1a-K1d
+  - PA.VIII.D.K1a-K1d
+  - PA.VIII.E.K1
+phak_references:
+  - "FAA-H-8083-25C, Chapter 8: Flight Instruments"
+afh_references:
+  - "FAA-H-8083-3C, Chapter 4: Energy Management: Mastering Altitude and Airspeed Control"
+aim_references: []
+advisory_circular_references: []
+cfr_references: []
+learning_objectives:
+  - "Explain which pressure inputs drive the airspeed indicator, altimeter, and vertical-speed indicator."
+  - "Predict the distinct indication patterns produced by a blocked pitot opening, trapped pitot pressure, and a blocked static source."
+  - "Connect conventional gyro behavior and failure recognition to rigidity, precession, and the installed vacuum or electrical power source."
+  - "Distinguish magnetic-compass variation, deviation, dip-related acceleration and turning errors, and oscillation."
+  - "Use shared-source grouping and independent indications to cross-check an abnormal instrument story without chasing one gauge."
+trouble_spots:
+  - "Treating three indications that share one static source as independent confirmation."
+  - "Memorizing blocked-pitot symptoms without distinguishing an open drain from trapped pitot pressure."
+  - "Treating a turn coordinator as a complete substitute for attitude information."
+  - "Confusing magnetic variation with aircraft-specific deviation or applying compass mnemonics without their heading and hemisphere conditions."
+  - "Assuming a clean electronic display makes its underlying sensor and power paths independent."
+source_verification:
+  status: source_relevance_review_complete
+  verified_at_utc: "2026-08-24T14:24:18.436Z"
+  link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: complete
+review:
+  editorial_status: script_and_listening_qa_approved
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - "Stage and validate the immutable audio object in the hosting workflow"
+audio:
+  manifest: audio-manifest.yaml
+  status: candidate_rendered_listening_qa_approved
+hosting:
+  metadata: hosting-metadata.yaml
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

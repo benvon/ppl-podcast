@@ -6,12 +6,15 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
+const YAML = require("yaml");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
-const { formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
+const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
+const { durationDisplay, validatePreHosting } = require("./validate-pre-hosting.cjs");
+const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -34,6 +37,7 @@ function wavWithListMetadata(pcm) {
 test("chapter review renders readable, escaped embedded-marker controls", () => {
   const html = renderReviewHtml({
     audioUrl: "core-05.mp3",
+    audioSha256: "a".repeat(64),
     episodeTitle: "core-05 chapter review",
     chapters: [{ index: 1, title: "Lift < Drag", start: 74, end: 120 }],
   });
@@ -41,10 +45,114 @@ test("chapter review renders readable, escaped embedded-marker controls", () => 
   assert.match(html, /data-start="74"/);
   assert.match(html, /Lift &lt; Drag/);
   assert.match(html, /This page reads the chapters embedded in the MP3 itself/);
+  assert.match(html, /src="core-05\.mp3\?v=a{64}"/);
+  assert.match(html, /href="core-05\.mp3"/);
+  assert.match(html, /name="ppl-audio-sha256" content="a{64}"/);
 });
 
 test("chapter review accepts its manifest argument", () => {
   assert.deepEqual(parseChapterReviewArgs(["--manifest", "audio-artifacts/example.render-manifest.json"]), { manifest: "audio-artifacts/example.render-manifest.json" });
+});
+
+test("chapter review rejects a manifest checksum that does not match its MP3", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-chapter-review-test-"));
+  const audioPath = path.join(temporary, "candidate.mp3");
+  const manifestPath = path.join(temporary, "candidate.render-manifest.json");
+  fs.writeFileSync(audioPath, "not-an-mp3-but-hashable");
+  fs.writeFileSync(manifestPath, JSON.stringify({ audio: { output: audioPath, sha256: "a".repeat(64) }, chapters: { audio_sha256: "a".repeat(64) } }));
+  try {
+    assert.throws(() => createChapterReview({ manifestPath }), (error) => error instanceof ChapterReviewError && /does not match the current audio file/.test(error.message));
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("pre-hosting validation requires consistent release records", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-pre-hosting-test-"));
+  const episodePath = path.join(temporary, "episode"); const masterPath = path.join(temporary, "candidate.master.wav"); const audioPath = path.join(temporary, "candidate.mp3"); const renderPath = path.join(temporary, "candidate.render-manifest.json"); const qualityPath = path.join(temporary, "candidate.audio-quality.json"); const reviewPath = path.join(temporary, "candidate.chapters.hash.html"); const masterScriptPath = path.join(episodePath, "master-script.md"); const narrationPath = path.join(episodePath, "narration.md");
+  const markers = [{ id: "chapter-001", start_ms: 0, end_ms: 2_000, title: "Opening" }];
+  fs.mkdirSync(episodePath); fs.writeFileSync(masterPath, wavForTest(Buffer.alloc(24_000 * 2 * 2))); writeMp3WithChapters({ masterPath, mp3Path: audioPath, chapters: markers });
+  const sha256 = require("crypto").createHash("sha256").update(fs.readFileSync(audioPath)).digest("hex");
+  const masterScript = "# Test\n\n**Version:** 0.1.0\n**Production status:** Ready for hosting handoff.\n\n**INSTRUCTOR:**\n\nA test lesson.\n";
+  const narration = deriveNarration(masterScript);
+  const narrationSha256 = require("crypto").createHash("sha256").update(narration).digest("hex");
+  fs.writeFileSync(masterScriptPath, masterScript); fs.writeFileSync(narrationPath, narration);
+  fs.writeFileSync(path.join(episodePath, "sources.yaml"), "sources: []\n"); fs.writeFileSync(path.join(episodePath, "claim-inventory.yaml"), "claims: []\n");
+  const renderRecord = (chapterMarkers = markers) => ({ script: narrationPath, script_sha256: narrationSha256, audio: { output: audioPath, sha256, duration_seconds: 2, quality: { result: "passed", report: qualityPath } }, chapters: { audio_sha256: sha256, markers: chapterMarkers } });
+  fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
+  const qualityRecord = (overrides = {}) => ({ result: "passed", manifest: renderPath, output: { path: audioPath, sha256, probe: { format: { duration: "2.000000" } } }, ...overrides });
+  fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord())); fs.writeFileSync(reviewPath, `<meta name="ppl-audio-sha256" content="${sha256}">`);
+  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml" }, hosting: { metadata: "hosting-metadata.yaml" }, public_notes: "show-notes.md", source_verification: { verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" } }));
+  fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: sha256 } }));
+  fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ handoff_status: "ready_for_hosting_pr", publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
+  fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Test\n"); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n");
+  const inputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(fs.readFileSync(path.join(episodePath, file))).digest("hex")]));
+  const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, show_notes_mapping: { valid: true }, show_notes_results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
+  fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
+  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened", "No clipped", "chapter markers have been manually reviewed", "FAA/", "Hosting metadata agrees"].map((line) => `- [x] ${line}`).join("\n"));
+  try {
+    assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
+    assert.equal(durationDisplay(5_400), "01:30:00");
+    const audioManifestPath = path.join(episodePath, "audio-manifest.yaml");
+    const episodeMetadataPath = path.join(episodePath, "episode.yaml");
+    const hostingMetadataPath = path.join(episodePath, "hosting-metadata.yaml");
+    const audioManifest = YAML.parse(fs.readFileSync(audioManifestPath, "utf8"));
+    const episodeMetadata = YAML.parse(fs.readFileSync(episodeMetadataPath, "utf8"));
+    const hostingMetadata = YAML.parse(fs.readFileSync(hostingMetadataPath, "utf8"));
+    fs.writeFileSync(audioManifestPath, YAML.stringify({ ...audioManifest, current_candidate_render: { ...audioManifest.current_candidate_render, duration_seconds: 3 } }));
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...episodeMetadata, runtime_actual_seconds: 3 }));
+    fs.writeFileSync(hostingMetadataPath, YAML.stringify({ ...hostingMetadata, publisher_release: { ...hostingMetadata.publisher_release, duration: "00:00:03" } }));
+    fs.writeFileSync(renderPath, JSON.stringify({ ...renderRecord(), audio: { ...renderRecord().audio, duration_seconds: 3 } }));
+    const inventedDuration = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(inventedDuration.valid, false); assert.match(inventedDuration.errors.join("\n"), /audio-quality report's probed MP3 duration/);
+    fs.writeFileSync(audioManifestPath, YAML.stringify(audioManifest));
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(episodeMetadata));
+    fs.writeFileSync(hostingMetadataPath, YAML.stringify(hostingMetadata));
+    fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
+    fs.writeFileSync(masterScriptPath, masterScript.replace("A test lesson.", "Changed wording with the same version."));
+    const changedScript = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(changedScript.valid, false); assert.match(changedScript.errors.join("\n"), /narration\.md must be the current derivative/);
+    fs.writeFileSync(masterScriptPath, masterScript);
+    const handoffPath = path.join(temporary, "hosting-handoff");
+    const handoff = createHostingHandoff({ episodePath, outputDir: handoffPath, cwd: temporary });
+    assert.equal(verifyHostingHandoff({ outputDir: handoff.outputDir }).valid, true);
+    assert.equal(YAML.parse(fs.readFileSync(path.join(handoffPath, "episode.yaml"), "utf8")).chapters[0].title, "Opening");
+    fs.writeFileSync(path.join(handoffPath, ".env"), "UNEXPECTED=value\n");
+    assert.throws(() => verifyHostingHandoff({ outputDir: handoffPath }), (error) => error instanceof HostingHandoffError && /unexpected entry: \.env/.test(error.message));
+    fs.rmSync(path.join(handoffPath, ".env"));
+    fs.writeFileSync(path.join(handoffPath, "show-notes.md"), "# Mutated after sealing\n");
+    assert.throws(() => verifyHostingHandoff({ outputDir: handoffPath }), (error) => error instanceof HostingHandoffError && /show-notes\.md does not match the sealed bytes/.test(error.message));
+    fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Changed after validation\n");
+    const staleSourceInputs = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(staleSourceInputs.valid, false); assert.match(staleSourceInputs.errors.join("\n"), /bound to the current sources, claims, and show-notes inputs/);
+    fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Test\n");
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({ ...linkValidation(), show_notes_results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: false } }] }));
+    const invalidShowNotes = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(invalidShowNotes.valid, false); assert.match(invalidShowNotes.errors.join("\n"), /show-notes links must be valid/);
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
+    const unresolvedValidation = linkValidation();
+    unresolvedValidation.results[0].relevance = { status: "assessed", assessment: { verdict: "does_not_support", locator_assessment: { verdict: "supports" } } };
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(unresolvedValidation));
+    const unresolvedSourceReview = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(unresolvedSourceReview.valid, false); assert.match(unresolvedSourceReview.errors.join("\n"), /source- and claim-level relevance assessments/);
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
+    fs.writeFileSync(renderPath, JSON.stringify(renderRecord([{ id: "chapter-001", start_ms: 0, end_ms: 2_000, title: "Changed title" }])));
+    const mismatchedChapters = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(mismatchedChapters.valid, false); assert.match(mismatchedChapters.errors.join("\n"), /embedded MP3 chapters must match/);
+    fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
+    fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord({ manifest: path.join(temporary, "different.render-manifest.json") })));
+    const mismatchedQuality = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(mismatchedQuality.valid, false); assert.match(mismatchedQuality.errors.join("\n"), /quality report must identify the approved render manifest/);
+    fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord({ output: { ...qualityRecord().output, sha256: "b".repeat(64) } })));
+    const mismatchedQualityBytes = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(mismatchedQualityBytes.valid, false); assert.match(mismatchedQualityBytes.errors.join("\n"), /quality report checksum must match/);
+    fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord()));
+    fs.writeFileSync(audioPath, "different bytes");
+    const stale = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(stale.valid, false); assert.match(stale.errors.join("\n"), /approved MP3 bytes do not match/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("claim mapping rejects claims omitted from a source ledger entry", () => {

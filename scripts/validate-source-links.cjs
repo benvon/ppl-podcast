@@ -71,6 +71,19 @@ function loadYaml(file, expectedKey) {
   return value;
 }
 
+function fileSha256(file) {
+  return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+}
+
+function validationInputHashes({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, showNotesFilePresent, showNotesValidationConfigured }) {
+  return {
+    sources: fileSha256(sourcesPath),
+    claims: fileSha256(claimsPath),
+    show_notes: showNotesFilePresent ? fileSha256(showNotesPath) : null,
+    show_notes_manifest: showNotesValidationConfigured ? fileSha256(showNotesManifestPath) : null,
+  };
+}
+
 function assertSafeUrl(value) {
   let url;
   try { url = new URL(value); } catch (_) { throw new Error("invalid URL"); }
@@ -575,6 +588,7 @@ async function main() {
   const showNotesFilePresent = fs.existsSync(showNotesPath); const showNotesValidationConfigured = fs.existsSync(showNotesManifestPath);
   if (showNotesValidationConfigured && !showNotesFilePresent) throw new Error("show-notes-manifest.yaml requires show-notes.md");
   const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
+  const inputSha256 = validationInputHashes({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, showNotesFilePresent, showNotesValidationConfigured });
   const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
@@ -583,7 +597,7 @@ async function main() {
   if (!claimMapping.valid || !showNotesMapping.valid) {
     for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`);
     for (const error of showNotesMapping.errors) console.error(`Show-notes mapping failed: ${error}`);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
     writeYaml(outputPath, report);
     console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
     process.exitCode = 1;
@@ -643,7 +657,7 @@ async function main() {
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   writeYaml(outputPath, report);
   const unresolved = !claimMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);

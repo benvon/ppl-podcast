@@ -43,7 +43,7 @@ trouble_spots:
   - "Assuming a clean electronic display makes its underlying sensor and power paths independent."
 source_verification:
   status: source_relevance_review_complete
-  verified_at_utc: "2026-08-24T13:33:04Z"
+  verified_at_utc: "2026-08-24T13:37:21.315Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete

@@ -2,6 +2,7 @@
 "use strict";
 
 const childProcess = require("child_process");
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
@@ -48,6 +49,10 @@ function cacheBustedUrl(audioUrl, audioSha256) {
 
 function validAudioSha256(value) {
   return typeof value === "string" && /^[a-f0-9]{64}$/i.test(value) ? value.toLowerCase() : null;
+}
+
+function sha256File(filePath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
 }
 
 function readEmbeddedChapters(audioPath) {
@@ -121,6 +126,11 @@ function createChapterReview({ manifestPath, outputPath }) {
   const audioPath = manifest?.audio?.output;
   if (typeof audioPath !== "string" || path.extname(audioPath).toLowerCase() !== ".mp3" || !fs.statSync(audioPath).isFile()) throw new ChapterReviewError("Render manifest must point to an existing MP3 output.");
   const audioSha256 = validAudioSha256(manifest?.audio?.sha256);
+  if (!audioSha256) throw new ChapterReviewError("Render manifest must record a valid MP3 SHA-256.");
+  const actualAudioSha256 = sha256File(audioPath);
+  if (actualAudioSha256 !== audioSha256) throw new ChapterReviewError("Render manifest MP3 SHA-256 does not match the current audio file.");
+  const chapterAudioSha256 = validAudioSha256(manifest?.chapters?.audio_sha256);
+  if (chapterAudioSha256 !== audioSha256) throw new ChapterReviewError("Render manifest chapter markers are not bound to the current MP3 SHA-256.");
   const resolvedOutput = path.resolve(outputPath || `${audioPath}.chapters${audioSha256 ? `.${audioSha256}` : ""}.html`);
   const chapters = readEmbeddedChapters(audioPath);
   const title = manifest.episode_id ? `${manifest.episode_id} chapter review` : "Podcast chapter review";
@@ -140,4 +150,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { ChapterReviewError, cacheBustedUrl, createChapterReview, escapeHtml, formatTimestamp, parseArgs, readEmbeddedChapters, renderReviewHtml, validAudioSha256 };
+module.exports = { ChapterReviewError, cacheBustedUrl, createChapterReview, escapeHtml, formatTimestamp, parseArgs, readEmbeddedChapters, renderReviewHtml, sha256File, validAudioSha256 };

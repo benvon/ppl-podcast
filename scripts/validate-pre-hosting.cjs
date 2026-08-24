@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { deriveNarration } = require("./derive-narration.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 
 class PreHostingValidationError extends Error {}
@@ -70,7 +71,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   const resolvedEpisode = path.resolve(episodePath);
   const errors = [];
   if (!fs.existsSync(resolvedEpisode) || !fs.statSync(resolvedEpisode).isDirectory()) throw new PreHostingValidationError(`Episode directory does not exist: ${resolvedEpisode}`);
-  const files = ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "sources.yaml", "claim-inventory.yaml", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md"];
+  const files = ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "narration.md", "sources.yaml", "claim-inventory.yaml", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md"];
   const paths = Object.fromEntries(files.map((fileName) => [fileName, requireFile(resolvedEpisode, fileName, errors)]));
   if (errors.length) return { valid: false, errors };
 
@@ -79,6 +80,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   const hosting = readYaml(paths["hosting-metadata.yaml"]);
   const sourceValidation = readYaml(paths["link-validation.yaml"]);
   const masterScript = fs.readFileSync(paths["master-script.md"], "utf8");
+  const narration = fs.readFileSync(paths["narration.md"], "utf8");
   const showNotes = fs.readFileSync(paths["show-notes.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
   const candidate = audioManifest.current_candidate_render || {};
@@ -94,6 +96,11 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
   expect(errors, masterScript.includes(`**Version:** ${episode.version}`), "master-script.md version must match episode.yaml.");
   expect(errors, /\*\*Production status:\*\*.*hosting/i.test(masterScript), "master-script.md production status must reflect the ready-for-hosting handoff.");
+  try {
+    expect(errors, deriveNarration(masterScript) === narration, "narration.md must be the current derivative of master-script.md.");
+  } catch (error) {
+    errors.push(`master-script.md cannot produce a narration derivative: ${error.message}`);
+  }
 
   const release = hosting.publisher_release || {};
   expect(errors, release.id === episode.id, "hosting-metadata publisher_release.id must match episode.yaml id.");
@@ -106,6 +113,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
 
   const candidateSha256 = validSha256(candidate.sha256);
   expect(errors, Boolean(candidateSha256), "audio manifest must record a valid candidate MP3 SHA-256.");
+  expect(errors, candidate.script_version === episode.version, "audio manifest script version must match episode.yaml.");
   expect(errors, audioManifest.chapter_markers?.status === "embedded_and_ffprobe_validated", "audio manifest must record embedded, ffprobe-validated chapters.");
   expect(errors, audioManifest.chapter_markers?.audio_sha256 === candidateSha256, "chapter-marker checksum must match the candidate MP3 checksum.");
   expect(errors, typeof candidate.duration_seconds === "number" && candidate.duration_seconds > 0, "audio manifest must record a positive candidate duration.");
@@ -123,6 +131,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   if (mp3Path && fs.existsSync(mp3Path) && candidateSha256) expect(errors, sha256File(mp3Path) === candidateSha256, "approved MP3 bytes do not match the audio-manifest checksum.");
   if (renderManifestPath && fs.existsSync(renderManifestPath)) {
     const render = readJson(renderManifestPath);
+    expect(errors, validSha256(render.script_sha256) === sha256File(paths["narration.md"]), "render manifest script checksum must match the current narration derivative.");
     expect(errors, validSha256(render.audio?.sha256) === candidateSha256, "render manifest MP3 checksum must match the audio manifest.");
     expect(errors, validSha256(render.chapters?.audio_sha256) === candidateSha256, "render manifest chapter checksum must match the audio manifest.");
     expect(errors, Array.isArray(render.chapters?.markers) && render.chapters.markers.length > 0, "render manifest must record embedded chapter markers.");

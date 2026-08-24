@@ -64,3 +64,10 @@
 - Revised audio remains authoritative: when a segment changes duration, the complete assembly recalculates every later chapter start from the new stitched audio. The chapter-review page adds the rendered audio checksum to its playback URL so a browser cannot pair a newly generated marker list with stale cached audio from an earlier assembly of the same filename.
 - Re-ran deterministic and LLM source-relevance validation after the revision. All 31 FAA sources and 51 reciprocal claims passed link, locator, mapping, and claim-level review; 25 source findings support and 6 partially support their scoped claims, with no unsupported or insufficient-evidence finding.
 - The current complete candidate is `core-07-20260824T125233Z.mp3`, SHA-256 `f8eaf36292963b07307c66629bad291e10c0186c6a3243629ac4216e30e689c7`. Its 15 embedded marker records carry the same checksum in the render manifest. In particular, `What each gyro can and cannot tell you` starts at 1,221,570 ms, the start of its Ballad announcer segment (segment 37), not the following instructor explanation.
+
+## 2026-08-24 — release preparation and publication-day validation
+
+- Full script-aligned listening QA and manual chapter-marker review are accepted for the version 0.1.4 candidate. The 15 chapter markers begin at the corresponding Ballad introductions.
+- Added listener-facing show notes with 14 deep links to the ACS, PHAK, and AFH study materials. The hosted page supplies the single production disclosure, so the show notes do not duplicate it.
+- Publication-day deterministic validation passed all 31 source citations and all 14 show-notes links. The show-notes manifest ties every public link to the exact source and claim it supports. The existing version 0.1.4 claim-level source-relevance review remains complete; no claims changed during release preparation.
+- Recorded release timestamp `2026-08-24T13:31:04Z`, actual runtime 37:11, current audio SHA-256, and the matching chapter-marker SHA-256 in the audio and hosting handoff metadata. Status: ready for the hosting workflow, whose staging check will verify that the chapter markers and MP3 remain bound to the same bytes.

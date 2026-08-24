@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Flight Instruments and Failure Recognition"
 slug: "flight-instruments-failure-recognition"
 track: "core"
-status: script_approved_pre_render
+status: ready_for_hosting_pr
 version: 0.1.4
-published_at: null
+published_at: "2026-08-24T13:31:04Z"
 runtime_target_minutes: 47
-runtime_actual_seconds: null
+runtime_actual_seconds: 2231.08
 word_count: 5551
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -43,23 +43,21 @@ trouble_spots:
   - "Assuming a clean electronic display makes its underlying sensor and power paths independent."
 source_verification:
   status: source_relevance_review_complete
-  verified_at_utc: "2026-08-23T21:23:54Z"
+  verified_at_utc: "2026-08-24T13:33:04Z"
   link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
 review:
-  editorial_status: script_approved_pre_render
+  editorial_status: script_and_listening_qa_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Create and validate listener-facing show notes with deep source links"
-  - "Complete human listening QA, including the front-matter check"
-  - "Re-verify every public source and link on publication day"
-  - "Validate hosting metadata and external audio-store workflow"
+  - "Stage and validate the immutable audio object in the hosting workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: candidate_rendered_pending_listening_qa
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
 public_notes: show-notes.md

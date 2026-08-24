@@ -13,12 +13,12 @@
 - [x] Opening is 10–45 seconds and the disclaimer follows immediately. Script structure places the disclaimer at 00:25 after the opening.
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.” The accepted opening preview uses unchanged, verified-reusable segments in version 0.1.3.
 - [x] Reusable opening preview has been listened to and accepted before full rendering. The version 0.1.3 revision does not change the opening-preview segments.
-- [ ] Full candidate has been listened to against the master script, including numbers, units, acronyms, and warnings.
-- [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains.
-- [ ] Embedded MP3 chapter markers have been manually reviewed with the chapter-review page.
+- [x] Full candidate has been listened to against the master script, including numbers, units, acronyms, and warnings. Version 0.1.4 candidate accepted 2026-08-24.
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. Listening QA and the automated report passed.
+- [x] Embedded MP3 chapter markers have been manually reviewed with the chapter-review page. The final markers begin at their Ballad section introductions.
 
 ## Release
 
-- [ ] FAA/eCFR links and revisions have been re-verified on publication day.
-- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
+- [x] FAA/ACS/AFH links and revisions have been re-verified on publication day. Deterministic validation passed 31 source citations and 14 show-notes links on 2026-08-24.
+- [x] Hosting metadata agrees with the current script, show notes, runtime, chapter markers, and audio checksum. External staging remains the final release gate.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

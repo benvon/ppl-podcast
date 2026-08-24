@@ -45,9 +45,10 @@ function validSha256(value) {
 
 function durationDisplay(seconds) {
   const rounded = Math.round(Number(seconds));
-  const minutes = String(Math.floor(rounded / 60)).padStart(2, "0");
+  const hours = String(Math.floor(rounded / 3600)).padStart(2, "0");
+  const minutes = String(Math.floor((rounded % 3600) / 60)).padStart(2, "0");
   const remainder = String(rounded % 60).padStart(2, "0");
-  return `00:${minutes}:${remainder}`;
+  return `${hours}:${minutes}:${remainder}`;
 }
 
 function sameUtcDate(left, right) {
@@ -68,7 +69,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   const resolvedEpisode = path.resolve(episodePath);
   const errors = [];
   if (!fs.existsSync(resolvedEpisode) || !fs.statSync(resolvedEpisode).isDirectory()) throw new PreHostingValidationError(`Episode directory does not exist: ${resolvedEpisode}`);
-  const files = ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md"];
+  const files = ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "sources.yaml", "claim-inventory.yaml", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md"];
   const paths = Object.fromEntries(files.map((fileName) => [fileName, requireFile(resolvedEpisode, fileName, errors)]));
   if (errors.length) return { valid: false, errors };
 
@@ -133,6 +134,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
     expect(errors, report.result === "passed", "audio-quality report must pass.");
     expect(errors, path.resolve(cwd, report.manifest || "") === renderManifestPath, "audio-quality report must identify the approved render manifest.");
     expect(errors, path.resolve(cwd, report.output?.path || "") === mp3Path, "audio-quality report must identify the approved MP3.");
+    expect(errors, validSha256(report.output?.sha256) === candidateSha256, "audio-quality report checksum must match the approved MP3 bytes.");
   }
   if (chapterReviewPath && fs.existsSync(chapterReviewPath) && candidateSha256) {
     const review = fs.readFileSync(chapterReviewPath, "utf8");
@@ -147,6 +149,8 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, sourceValidation.show_notes_results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded show-notes links must be valid deep citations.");
   expect(errors, sourceValidation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
   expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && result.claim_assessments?.valid === true), "link validation must retain successful claim-level relevance assessments.");
+  const currentValidationInputHashes = { sources: sha256File(paths["sources.yaml"]), claims: sha256File(paths["claim-inventory.yaml"]), show_notes: sha256File(paths["show-notes.md"]), show_notes_manifest: sha256File(paths["show-notes-manifest.yaml"]) };
+  expect(errors, Object.entries(currentValidationInputHashes).every(([name, digest]) => sourceValidation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs.");
   expect(errors, episode.source_verification?.verified_at_utc === sourceValidation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
   expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");
   expect(errors, !/^## Production notice\b/im.test(showNotes), "show notes must not duplicate the hosting production disclosure.");

@@ -41,6 +41,7 @@ audio:
   status: not_rendered
 hosting:
   metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null

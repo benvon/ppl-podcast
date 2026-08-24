@@ -9,6 +9,7 @@
 
 "use strict";
 
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
@@ -107,6 +108,10 @@ function decodeCheck(audioPath) {
   return { valid: true };
 }
 
+function sha256File(audioPath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(audioPath)).digest("hex");
+}
+
 function probe(audioPath) {
   return JSON.parse(run("ffprobe", ["-v", "error", "-show_entries", "stream=codec_name,sample_rate,channels,duration:format=duration,format_name", "-of", "json", audioPath]));
 }
@@ -134,7 +139,7 @@ function analyzeRenderedAudio({ manifestPath, masterPath, outputPath, stitchBoun
   let masterDecode; let outputDecode;
   try { masterDecode = decodeCheck(masterPath); } catch (error) { errors.push(`Master decode failed: ${error.message}`); masterDecode = { valid: false, error: error.message }; }
   try { outputDecode = decodeCheck(outputPath); } catch (error) { errors.push(`Published output decode failed: ${error.message}`); outputDecode = { valid: false, error: error.message }; }
-  const report = { schema_version: 1, analyzed_at_utc: new Date().toISOString(), manifest: manifestPath, result: errors.length ? "failed" : "passed", limitations: ["Automated checks can detect malformed files, format drift, clipping, and abrupt PCM discontinuities at known stitches. They cannot reliably judge synthesis artifacts, garbled speech, pronunciation, or editorial pacing; complete human listening QA remains required."], master: { path: masterPath, decode: masterDecode, probe: masterProbe, pcm: masterStats, stitches }, output: { path: outputPath, decode: outputDecode, probe: outputProbe, duration_difference_from_master_seconds: durationDifference }, errors };
+  const report = { schema_version: 1, analyzed_at_utc: new Date().toISOString(), manifest: manifestPath, result: errors.length ? "failed" : "passed", limitations: ["Automated checks can detect malformed files, format drift, clipping, and abrupt PCM discontinuities at known stitches. They cannot reliably judge synthesis artifacts, garbled speech, pronunciation, or editorial pacing; complete human listening QA remains required."], master: { path: masterPath, sha256: sha256File(masterPath), decode: masterDecode, probe: masterProbe, pcm: masterStats, stitches }, output: { path: outputPath, sha256: sha256File(outputPath), decode: outputDecode, probe: outputProbe, duration_difference_from_master_seconds: durationDifference }, errors };
   writeAtomic(reportPath, `${JSON.stringify(report, null, 2)}\n`);
   return report;
 }
@@ -158,4 +163,4 @@ if (require.main === module) {
   try { main(); } catch (error) { console.error(`Audio analysis failed: ${error.message}`); process.exitCode = 1; }
 }
 
-module.exports = { AudioQualityError, analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm, pcmStatistics };
+module.exports = { AudioQualityError, analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm, pcmStatistics, sha256File };

@@ -358,6 +358,10 @@ ppl-podcast/
     qa-checklist.md
 ```
 
+`source-release-seal.yaml` is generated beside the handoff's `episode.yaml`,
+`show-notes.md`, and `audio.mp3`; it is not edited in the source episode
+directory.
+
 - Use lowercase kebab-case filenames and `core-NN` / `rough-NNN` episode IDs.
 - Keep raw renders, production sessions, lossless masters, and published audio in the Git-ignored `audio-artifacts/` directory; `audio-manifest.yaml` records their paths/URLs, checksums, duration, and version.
 - Publish only the approved audio derivative. This workspace contains the durable script, source, QA, metadata, and audio-manifest artifacts needed to reproduce it.
@@ -460,6 +464,7 @@ Complete `qa-checklist.md` before release.
 - [ ] `hosting-metadata.yaml` contains the approved stable ID/GUID, title, description, UTC publication time, duration, season/episode number, explicit flag, current version, and script/show-notes/source-validation references.
 - [ ] Its `publisher_release` object matches the listener-facing episode contract used by `ppl-postcast-hosting`; that publisher writes immutable audio keys, byte count, and checksum after private staging.
 - [ ] The hosting handoff contains no credential, local filesystem path, or unpublished audio artifact.
+- [ ] The hosting handoff was generated after `release:prehost` passed; its `source-release-seal.yaml` binds the staged MP3, listener-facing metadata, and show notes to the reviewed source package.
 
 ## 12. Initial core roadmap
 

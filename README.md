@@ -113,6 +113,25 @@ eCFR citations must use the exact section URL. A handbook landing page,
 document cover, statute/part landing page, or a bare document title is not an
 acceptable attribution for a material claim.
 
+## Prepare a sealed hosting handoff
+
+After the publication-day source check, approved listening QA, and pre-hosting
+validation have all passed, create the hosting input directory with this
+command. It copies the exact MP3, listener-facing metadata, and show notes,
+then writes `source-release-seal.yaml`. The seal records SHA-256 values for the
+whole source episode package and for every file in the handoff. The hosting
+stager verifies those handoff hashes before it stages audio.
+
+```sh
+npm run release:prepare-handoff -- \
+  --episode episodes/core-08-example \
+  --out /absolute/path/to/core-08-hosting-handoff
+```
+
+The command refuses to overwrite an existing directory. Treat the resulting
+directory as an immutable release input: if any source record or audio bytes
+change, rerun the gates and create a new handoff directory.
+
 The retained validation record contains URLs, HTTP metadata, an excerpt digest,
 and the structured relevance result—not a copy of the fetched source text.
 

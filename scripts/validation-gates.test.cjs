@@ -80,7 +80,7 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ handoff_status: "ready_for_hosting_pr", publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:01:00", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "master-script.md"), "# Test\n\n**Version:** 0.1.0\n**Production status:** Ready for hosting handoff.\n"); fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Test\n"); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n");
   const inputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(fs.readFileSync(path.join(episodePath, file))).digest("hex")]));
-  const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, show_notes_mapping: { valid: true }, show_notes_results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "test-source", link: { valid: true }, relevance: { status: "assessed" }, claim_assessments: { valid: true } }] });
+  const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, show_notes_mapping: { valid: true }, show_notes_results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened", "No clipped", "chapter markers have been manually reviewed", "FAA/", "Hosting metadata agrees"].map((line) => `- [x] ${line}`).join("\n"));
   try {
@@ -99,6 +99,12 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({ ...linkValidation(), show_notes_results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: false } }] }));
     const invalidShowNotes = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(invalidShowNotes.valid, false); assert.match(invalidShowNotes.errors.join("\n"), /show-notes links must be valid/);
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
+    const unresolvedValidation = linkValidation();
+    unresolvedValidation.results[0].relevance = { status: "assessed", assessment: { verdict: "does_not_support", locator_assessment: { verdict: "supports" } } };
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(unresolvedValidation));
+    const unresolvedSourceReview = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(unresolvedSourceReview.valid, false); assert.match(unresolvedSourceReview.errors.join("\n"), /source- and claim-level relevance assessments/);
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
     fs.writeFileSync(qualityPath, JSON.stringify({ result: "passed", manifest: path.join(temporary, "different.render-manifest.json"), output: { path: audioPath, sha256 } }));
     const mismatchedQuality = validatePreHosting({ episodePath, cwd: temporary });

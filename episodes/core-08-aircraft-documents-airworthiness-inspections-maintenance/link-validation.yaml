@@ -1,14 +1,14 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-24T17:53:50.634Z
+checked_at_utc: 2026-08-24T19:22:46.426Z
 sources_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/sources.yaml
 claims_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/claim-inventory.yaml
 show_notes_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes.md
 show_notes_manifest_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes-manifest.yaml
 input_sha256:
   sources: 3bad928849b2d54dda5f98822f931e3090e4b6892acc4a8c8762611683c21f8d
-  claims: 987a2df9e5902888533f33773b78e622939f565e301cdc69fb3cd6068b46b2ef
-  show_notes: f3dadef3117d5acfa0eeb41cca5ab421ad262595981157549415a2351d3c9fe5
+  claims: d0e4457a9064bea0b8524083edc237a5cf393343dcf6f78e0988e66afa6e5874
+  show_notes: 8a3c6323f6243a6511a3db3edb06cd9c1578695658e6608e79dd14a0bdab159c
   show_notes_manifest: d88d0c2aa3d3a445c7c910e18985ff2c2c2106a96e8abac0272a66d25f7ec2ea
 llm_requested: false
 llm_model: null
@@ -420,7 +420,7 @@ show_notes_results:
 results:
   - source_id: acs-airworthiness-requirements
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-24T17:53:35.280Z
+    checked_at_utc: 2026-08-24T19:22:34.646Z
     linked_claim_ids:
       - acs-airworthiness-scope
       - acs-scenario-skills
@@ -455,7 +455,7 @@ results:
   - source_id: phak-manual-types
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:36.052Z
+    checked_at_utc: 2026-08-24T19:22:35.023Z
     linked_claim_ids:
       - owner-manual-not-afm
       - afm-poh-aircraft-specific
@@ -490,7 +490,7 @@ results:
   - source_id: phak-poh-contents
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:38.753Z
+    checked_at_utc: 2026-08-24T19:22:35.586Z
     linked_claim_ids:
       - afm-poh-aircraft-specific
       - supplements-part-of-picture
@@ -525,7 +525,7 @@ results:
   - source_id: phak-documents-airworthiness
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:38.771Z
+    checked_at_utc: 2026-08-24T19:22:35.603Z
     linked_claim_ids:
       - airworthiness-two-part-model
     missing_claim_ids: []
@@ -559,7 +559,7 @@ results:
   - source_id: phak-inspections-records
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:38.792Z
+    checked_at_utc: 2026-08-24T19:22:35.625Z
     linked_claim_ids:
       - inspection-system-not-mnemonic
     missing_claim_ids: []
@@ -593,7 +593,7 @@ results:
   - source_id: phak-preflight-inspection
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:38.804Z
+    checked_at_utc: 2026-08-24T19:22:35.636Z
     linked_claim_ids:
       - preflight-condition-check
     missing_claim_ids: []
@@ -627,7 +627,7 @@ results:
   - source_id: phak-inoperative-preventive
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:38.813Z
+    checked_at_utc: 2026-08-24T19:22:35.644Z
     linked_claim_ids:
       - mel-aircraft-operator-specific
       - inoperative-decision-not-one-question
@@ -662,7 +662,7 @@ results:
   - source_id: phak-preventive-maintenance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:38.821Z
+    checked_at_utc: 2026-08-24T19:22:35.654Z
     linked_claim_ids:
       - preventive-list-controls
       - preventive-examples-bounded
@@ -697,7 +697,7 @@ results:
   - source_id: phak-ads-owner-responsibility
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-24T17:53:38.829Z
+    checked_at_utc: 2026-08-24T19:22:35.659Z
     linked_claim_ids:
       - ad-regulatory-status
     missing_claim_ids: []
@@ -730,7 +730,7 @@ results:
       status: not_requested
   - source_id: phak-mosaic-addendum
     title: Pilot's Handbook of Aeronautical Knowledge Addendum (MOSAIC)
-    checked_at_utc: 2026-08-24T17:53:38.839Z
+    checked_at_utc: 2026-08-24T19:22:35.666Z
     linked_claim_ids:
       - mosaic-scope-boundary
     missing_claim_ids: []
@@ -763,7 +763,7 @@ results:
       status: not_requested
   - source_id: cfr-91-203-certificates
     title: "14 CFR § 91.203 — Civil aircraft: Certifications required"
-    checked_at_utc: 2026-08-24T17:53:38.937Z
+    checked_at_utc: 2026-08-24T19:22:35.738Z
     linked_claim_ids:
       - aircraft-certificates-aboard
       - airworthiness-certificate-display
@@ -796,7 +796,7 @@ results:
       status: not_requested
   - source_id: cfr-47-40-registration-duration
     title: 14 CFR § 47.40 — Registration expiration and renewal
-    checked_at_utc: 2026-08-24T17:53:40.860Z
+    checked_at_utc: 2026-08-24T19:22:37.045Z
     linked_claim_ids:
       - registration-seven-years
     missing_claim_ids: []
@@ -829,7 +829,7 @@ results:
   - source_id: cfr-91-9-flight-manual
     title: 14 CFR § 91.9 — Civil aircraft flight manual, marking, and placard
       requirements
-    checked_at_utc: 2026-08-24T17:53:41.663Z
+    checked_at_utc: 2026-08-24T19:22:41.467Z
     linked_claim_ids:
       - operating-limitations-control
       - current-manual-material-available
@@ -862,7 +862,7 @@ results:
       status: not_requested
   - source_id: cfr-21-181-airworthiness-duration
     title: 14 CFR § 21.181 — Duration
-    checked_at_utc: 2026-08-24T17:53:41.663Z
+    checked_at_utc: 2026-08-24T19:22:41.467Z
     linked_claim_ids:
       - airworthiness-certificate-continuing-effect
     missing_claim_ids: []
@@ -894,7 +894,7 @@ results:
       status: not_requested
   - source_id: cfr-91-7-pic-airworthiness
     title: 14 CFR § 91.7 — Civil aircraft airworthiness
-    checked_at_utc: 2026-08-24T17:53:45.814Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - pic-safe-flight-determination
       - discontinue-unairworthy-flight
@@ -927,7 +927,7 @@ results:
       status: not_requested
   - source_id: cfr-91-403-owner-responsibility
     title: 14 CFR § 91.403 — General
-    checked_at_utc: 2026-08-24T17:53:45.814Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - owner-primary-responsibility
       - maintenance-authority-limited
@@ -960,7 +960,7 @@ results:
       status: not_requested
   - source_id: cfr-91-405-required-maintenance
     title: 14 CFR § 91.405 — Maintenance required
-    checked_at_utc: 2026-08-24T17:53:45.814Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - owner-discrepancy-record-duty
     missing_claim_ids: []
@@ -992,7 +992,7 @@ results:
       status: not_requested
   - source_id: cfr-91-409-inspections
     title: 14 CFR § 91.409 — Inspections
-    checked_at_utc: 2026-08-24T17:53:45.814Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - annual-inspection-clock
       - hundred-hour-trigger
@@ -1026,7 +1026,7 @@ results:
       status: not_requested
   - source_id: cfr-91-207-elt
     title: 14 CFR § 91.207 — Emergency locator transmitters
-    checked_at_utc: 2026-08-24T17:53:45.814Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - elt-inspection-and-battery
     missing_claim_ids: []
@@ -1059,7 +1059,7 @@ results:
   - source_id: cfr-91-411-altimeter
     title: 14 CFR § 91.411 — Altimeter system and altitude reporting equipment tests
       and inspections
-    checked_at_utc: 2026-08-24T17:53:45.814Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - altimeter-ifr-inspection
     missing_claim_ids: []
@@ -1091,7 +1091,7 @@ results:
       status: not_requested
   - source_id: cfr-91-413-transponder
     title: 14 CFR § 91.413 — ATC transponder tests and inspections
-    checked_at_utc: 2026-08-24T17:53:45.815Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - transponder-inspection
     missing_claim_ids: []
@@ -1123,7 +1123,7 @@ results:
       status: not_requested
   - source_id: cfr-91-417-records
     title: 14 CFR § 91.417 — Maintenance records
-    checked_at_utc: 2026-08-24T17:53:45.815Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - records-work-history
       - records-continuing-status
@@ -1157,7 +1157,7 @@ results:
       status: not_requested
   - source_id: cfr-91-213-inoperative
     title: 14 CFR § 91.213 — Inoperative instruments and equipment
-    checked_at_utc: 2026-08-24T17:53:45.815Z
+    checked_at_utc: 2026-08-24T19:22:42.224Z
     linked_claim_ids:
       - mel-aircraft-operator-specific
       - inoperative-required-item-checks
@@ -1193,7 +1193,7 @@ results:
   - source_id: ac-91-67a-non-mel
     title: AC 91-67A — Minimum Equipment Requirements for General Aviation
       Operations Under 14 CFR Part 91
-    checked_at_utc: 2026-08-24T17:53:45.815Z
+    checked_at_utc: 2026-08-24T19:22:42.225Z
     linked_claim_ids:
       - inoperative-decision-not-one-question
       - deactivation-may-be-maintenance
@@ -1228,7 +1228,7 @@ results:
   - source_id: ac-91-67a-risk
     title: AC 91-67A — Minimum Equipment Requirements for General Aviation
       Operations Under 14 CFR Part 91
-    checked_at_utc: 2026-08-24T17:53:46.506Z
+    checked_at_utc: 2026-08-24T19:22:42.523Z
     linked_claim_ids:
       - inoperative-risk-context
     missing_claim_ids: []
@@ -1261,7 +1261,7 @@ results:
       status: not_requested
   - source_id: cfr-43-3-pilot-maintenance
     title: 14 CFR § 43.3 — Persons authorized to perform maintenance
-    checked_at_utc: 2026-08-24T17:53:46.521Z
+    checked_at_utc: 2026-08-24T19:22:42.537Z
     linked_claim_ids:
       - pilot-preventive-eligibility
     missing_claim_ids: []
@@ -1294,7 +1294,7 @@ results:
   - source_id: cfr-43-7-return-to-service
     title: 14 CFR § 43.7 — Persons authorized to approve aircraft for return to
       service
-    checked_at_utc: 2026-08-24T17:53:50.574Z
+    checked_at_utc: 2026-08-24T19:22:46.364Z
     linked_claim_ids:
       - pilot-preventive-return-to-service
     missing_claim_ids: []
@@ -1326,7 +1326,7 @@ results:
       status: not_requested
   - source_id: cfr-43-9-maintenance-entry
     title: 14 CFR § 43.9 — Content, form, and disposition of maintenance records
-    checked_at_utc: 2026-08-24T17:53:50.575Z
+    checked_at_utc: 2026-08-24T19:22:46.364Z
     linked_claim_ids:
       - preventive-maintenance-record-entry
     missing_claim_ids: []
@@ -1359,7 +1359,7 @@ results:
   - source_id: cfr-91-407-after-maintenance
     title: 14 CFR § 91.407 — Operation after maintenance, preventive maintenance,
       rebuilding, or alteration
-    checked_at_utc: 2026-08-24T17:53:50.575Z
+    checked_at_utc: 2026-08-24T19:22:46.364Z
     linked_claim_ids:
       - after-maintenance-return-entry
       - after-maintenance-operational-check
@@ -1392,7 +1392,7 @@ results:
       status: not_requested
   - source_id: cfr-21-197-special-flight-permit
     title: 14 CFR § 21.197 — Special flight permits
-    checked_at_utc: 2026-08-24T17:53:50.575Z
+    checked_at_utc: 2026-08-24T19:22:46.365Z
     linked_claim_ids:
       - special-flight-permit-purpose
     missing_claim_ids: []

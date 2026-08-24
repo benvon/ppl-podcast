@@ -4,11 +4,11 @@
 
 - Audience: U.S. private-pilot airplane learners preparing for ground study,
   airplane checkout conversations, and the practical test.
-- Target duration: approximately 36 minutes, driven by the decision chain
-  rather than by exhaustive regulatory recital.
+- Target duration: approximately 39 minutes, supported by a complete spoken
+  explanation and one applied scenario.
 - Core question: How does a pilot use aircraft documents, maintenance records,
   an inspection status, and the actual condition of the airplane to decide
-  whether a proposed flight may and should begin?
+  whether the airplane is airworthy for a proposed flight?
 - Aircraft boundary: ordinary part 91 operations in common standard-category
   airplanes. Exact equipment, limitations, supplements, inspection programs,
   and maintenance procedures remain aircraft- and operation-specific.
@@ -21,15 +21,15 @@
 
 | Objective or risk-management item | Source locator | Episode treatment |
 | --- | --- | --- |
-| Required certificates, location, and duration | ACS PA.I.B.K1a; 14 CFR §§ 91.203, 47.40 | Open the aircraft and identify the actual registration and displayed airworthiness certificate; separate “aboard” from “current.” |
-| Inspection and maintenance record requirements | ACS PA.I.B.K1b; 14 CFR §§ 91.409, 91.417 | Build an inspection-status picture from records instead of trusting a mnemonic or dashboard alone. |
+| Required certificates, location, and duration | ACS PA.I.B.K1a; 14 CFR §§ 91.203, 47.40 | Identify the registration and airworthiness certificate, explain which must be aboard and which must also be displayed, and read their actual identifying and effectiveness information. |
+| Inspection and maintenance record requirements | ACS PA.I.B.K1b; 14 CFR §§ 91.409, 91.417 | Use the records or a traceable status system to identify applicable inspections and due dates. |
 | ADs and related records | ACS PA.I.B.K1c; FAA AD overview; 14 CFR §§ 91.403, 91.417 | Explain why applicability, method of compliance, and recurring next-due information matter. |
-| Special flight permits | ACS PA.I.B.K1d; 14 CFR § 21.197 | Present the permit as an authorization path, not permission to improvise a ferry flight. |
+| Special flight permits | ACS PA.I.B.K1d; 14 CFR § 21.197 | Explain when an owner or operator may seek FAA authorization to move an airplane for repair or maintenance. |
 | Owner/operator and PIC responsibilities | ACS PA.I.B.K1e; 14 CFR §§ 91.7, 91.403 | Distinguish primary maintenance responsibility from the PIC's flight-specific safe-flight determination. |
-| Pilot preventive maintenance | ACS PA.I.B.K2; 14 CFR §§ 43.3, 43.7, 43.9; part 43 appendix A(c) | Use a three-gate model: listed task, eligible person/aircraft, correct performance and entry. |
-| Inoperative equipment | ACS PA.I.B.K3/R1; 14 CFR § 91.213; AC 91-67A Ch. 4 | Teach a no-MEL decision sequence plus a separate operational-risk decision. |
+| Pilot preventive maintenance | ACS PA.I.B.K2; 14 CFR §§ 43.3, 43.7, 43.9; part 43 appendix A(c) | Define the limited task list, pilot and aircraft eligibility, applicable instructions, return-to-service approval, and record entry. |
+| Inoperative equipment | ACS PA.I.B.K3/R1; 14 CFR § 91.213; AC 91-67A Ch. 4 | Teach the no-MEL sequence in regulatory order, then evaluate the capability remaining for the planned flight. |
 | Standard and special airworthiness certificates | ACS PA.I.B.K4; 14 CFR § 21.181 | Keep detailed instruction in standard-category scope and flag special-category operating limitations as a different system. |
-| Locate certificates and determine airworthiness | ACS PA.I.B.S1–S3 | Apply the full sequence to a borrowed-airplane scenario and an inoperative-light scenario. |
+| Locate certificates and determine airworthiness | ACS PA.I.B.S1–S3 | Apply the full sequence to one borrowed-airplane scenario that includes an inoperative light. |
 
 ## Likely trouble spots
 
@@ -51,8 +51,9 @@
   - Source: PHAK Ch. 9 pp. 9-1–9-5; 14 CFR § 91.9.
 - Misconception: “Every training airplane needs a 100-hour inspection.”
   - Correction: The regulatory trigger is operation-specific. Flight
-    instruction for hire triggers it when the instructor provides the aircraft;
-    do not infer the answer from paint, rental use, or a school logo.
+    instruction for hire triggers it when the instructor provides the aircraft.
+    A private owner flying their own airplane for personal use does not trigger
+    the rule merely by accumulating another 100 hours.
   - Source: 14 CFR § 91.409(b).
 - Misconception: “A dead item is legal if it is not named in § 91.205.”
   - Correction: Without an MEL, the pilot must also check the VFR-day
@@ -82,6 +83,8 @@
 - Using an undefined term as a later decision rule or safety backstop.
 - Repeating disclaimer-like regulatory hedges after the required production notice.
 - Repeating generic references to approved aircraft documents instead of defining the relevant POH/AFM boundary once.
+- Bumper-sticker contrasts, quips, and compressed phrases that sound polished on
+  the page but make the lesson harder to understand on one hearing.
 
 ## Open technical questions
 
@@ -100,6 +103,6 @@
   but the lesson does not teach those special cases.
 - Regulatory claims come from current eCFR section pages. PHAK and AC 91-67A
   explain the decision model; they do not replace the regulations.
-- “Legal” and “wise” are separate gates in the inoperative-equipment segment.
-  The script gives a practical stop-and-ask workflow rather than inviting a new
-  pilot to improvise maintenance or a dispatch decision.
+- The inoperative-equipment segment first establishes whether § 91.213 provides
+  a path for the planned operation, then asks the PIC to evaluate the capability
+  remaining for that flight.

@@ -7,7 +7,7 @@
 
 **INSTRUCTOR:**
 
-You arrive early for a flight in an airplane you have not flown in six months. The keys are waiting. The fuel looks good. Then three small things appear: the registration has an expiration date, one panel light does not work, and the maintenance status sheet has a number you do not recognize. None of those facts, by itself, answers the real question: is this airplane ready for this flight? Today we will build the answer in the order a pilot can actually use it.
+You are preparing a borrowed airplane for a daytime flight. The registration has an expiration date. The maintenance summary lists several inspections. A panel light does not work. Before you accept the airplane, you need to answer one question: is it airworthy for the flight you plan to make? Today we will build the tools to answer that question.
 
 ## [00:35] Disclaimer
 
@@ -21,7 +21,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
 
-In this episode: turn documents, logbooks, inspection dates, and discrepancies into one practical airworthiness decision.
+In this episode, we will use aircraft documents, maintenance records, inspection dates, and the airplane's present condition to make an airworthiness decision.
 
 ## [01:25] What the ACS is asking you to connect
 
@@ -31,191 +31,217 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-The private-pilot ACS calls this Airworthiness Requirements. Its knowledge list looks broad: certificates, inspections, maintenance records, Airworthiness Directives, special flight permits, owner and pilot responsibilities, preventive maintenance, inoperative equipment, and types of airworthiness certificates. The skills are much more concrete. Locate the certificates. Determine whether the aircraft is airworthy. Apply the right procedure.
+The Private Pilot for Airplane Category Airman Certification Standards includes Task PA.I.B, Airworthiness Requirements. The knowledge elements cover aircraft certificates, inspections and maintenance records, Airworthiness Directives, usually called ADs, special flight permits, owner and pilot responsibilities, preventive maintenance, inoperative equipment, and airworthiness certificates. The skill elements ask you to locate the required certificates, determine whether the aircraft is airworthy, and apply the appropriate procedures.
 
-That is our organizing idea. We are not studying disconnected acronyms. We are assembling evidence for a decision about one airplane, one proposed operation, and its condition now.
+Those skill elements tell us how to organize the lesson. We will start with what airworthy means. Then we will identify the documents that belong to the airplane, use the maintenance records to establish its continuing status, look at its physical condition, and work through an inoperative item. We will finish with a borrowed-airplane example that brings the pieces together.
 
 **LEARNER:**
 
-So there is no single document that says, “airworthy today”?
+When I walk up to the airplane, am I trying to find one document that says it is airworthy today?
 
 **INSTRUCTOR:**
 
-Correct. The airworthiness certificate matters, but the answer also depends on records, aircraft-specific requirements, the planned operation, and what you observe. Think of the process as four passes.
+No single document answers the whole question. The airworthiness certificate is required, but you also need the approved operating information, current inspection and AD status, and evidence that the airplane is in condition for safe flight. Each source answers a different part of the decision.
 
-First, identity and authority: are the required certificates and operating documents present and applicable to this airplane? Second, continuing status: are inspections, ADs, and other time-controlled requirements current? Third, configuration and condition: does the airplane conform, and is it in condition for safe operation? Fourth, the flight-specific decision: is the equipment and condition acceptable for what you intend to do today?
+This lesson uses common standard-category airplanes in ordinary part 91 operations. Light-sport certification and sport-pilot maintenance privileges follow separate provisions, which we will cover in a supplemental episode.
 
-This lesson stays with common standard-category airplanes in ordinary part 91 operations. Special-category aircraft can have a different operating-limitations system. The FAA also revised PHAK Chapter 9 in a 2025 MOSAIC addendum for light-sport certification and sport-pilot maintenance privileges. Those details are outside this lesson. When the category or privilege changes, stop and use the current rule and that aircraft's documents.
-
-## [04:00] Airworthy is a status
+## [03:35] What airworthy means
 
 **ANNOUNCER:**
 
-Airworthy is a status.
+What airworthy means.
 
 **INSTRUCTOR:**
 
-The PHAK gives us a durable two-part model: an aircraft is airworthy when it conforms to its type design and is in condition for safe operation.
+The Pilot's Handbook of Aeronautical Knowledge explains airworthiness with two questions. Does the airplane conform to its approved type design? And is it in condition for safe operation?
 
-Conformity is the approved configuration side. Are required parts installed? Are alterations properly approved and recorded? Are applicable AD actions complete? Do installed equipment and supplements agree with the records? A student pilot is not expected to conduct a conformity inspection, but should understand what the maintenance records and aircraft documents are meant to establish.
+Conformity means that the airplane is built, equipped, and altered in an approved way. Picture an airplane that was approved with a particular engine, propeller, fuel system, and set of required instruments. It may later receive approved avionics or another approved alteration. The installed equipment, alteration records, required placards, flight-manual supplements, and applicable AD work should agree with the approved configuration.
 
-Condition for safe operation is the physical-condition side. A perfectly filed record cannot make a cracked tire, fuel leak, jammed control, or other unsafe condition acceptable. Conversely, an airplane that looks polished does not prove its inspection or AD status.
+A pilot usually does not establish conformity by inspecting every part or reconstructing the airplane's engineering history. The pilot uses the aircraft documents and maintenance records, checks that the airplane in front of them agrees with those records in the areas they can observe, and asks a certified mechanic or inspector who holds the applicable approval privilege to resolve technical questions.
 
-The standard airworthiness certificate has continuing conditions. Under section 21.181, unless it is sooner surrendered, suspended, revoked, or otherwise given a termination date by the FAA, it remains effective while the aircraft is registered in the United States and its maintenance, preventive maintenance, and alterations are performed under parts 43 and 91. That continuing certificate does not replace the separate airworthiness decision we just defined: conformity plus condition for safe operation.
+Condition for safe operation concerns the airplane's physical state now. A damaged tire, a fuel leak, a binding control, or a loose inspection panel can make an airplane unsafe even when its records are complete. The preflight inspection and any reported discrepancies help the pilot judge present condition.
 
 **LEARNER:**
 
-Who owns that decision—the owner, the mechanic, or the pilot?
+So conformity asks whether the airplane matches its approved configuration, and condition asks whether the actual airplane is safe to operate now.
 
 **INSTRUCTOR:**
 
-They have different responsibilities. Section 91.403 says the owner or operator is primarily responsible for maintaining the aircraft in an airworthy condition, including compliance with part 39, where AD requirements live. Section 91.7 makes the pilot in command responsible for determining that the aircraft is in condition for safe flight. It also requires the PIC to discontinue the flight when an unairworthy mechanical, electrical, or structural condition occurs.
+Yes. You need satisfactory answers to both questions.
 
-The practical result is not a contest over who is “more responsible.” The owner or operator provides a maintained airplane and reliable records. Authorized maintenance people perform, inspect, and record work within their privileges. The PIC reviews the evidence and the airplane for the proposed flight. A signed annual entry does not require the PIC to ignore a flat tire. A good preflight does not erase an overdue inspection.
+The standard airworthiness certificate normally stays with the airplane for a long time. Section 21.181 says that it generally remains effective while the airplane is registered in the United States and its maintenance, preventive maintenance, and alterations are performed under parts 43 and 91. It can end sooner if it is surrendered, suspended, revoked, or the FAA sets a termination date. This is why a standard airworthiness certificate does not receive a new expiration date at each annual inspection. You still have to establish the airplane's current maintenance status and physical condition before flight.
 
-When the evidence conflicts, pause. Ask the owner or operator to produce the records. Ask a mechanic to interpret a maintenance question. Ask your CFI to walk the airworthiness determination with you. A delay is a normal outcome of an incomplete airworthiness picture.
+Responsibility is divided among people with different roles. Section 91.403 makes the owner or operator primarily responsible for maintaining the airplane in an airworthy condition, including compliance with applicable ADs. Certified mechanics and inspectors perform or approve maintenance and inspections within their privileges. Section 91.7 makes the pilot in command responsible for deciding whether the airplane is in condition for safe flight.
 
-## [07:35] Documents for this airplane
+**LEARNER:**
+
+If the annual inspection was signed off last month, can the pilot rely on that entry?
+
+**INSTRUCTOR:**
+
+The entry establishes that the inspection was completed and the airplane was approved for return to service at that time. The pilot still checks the airplane before today's flight and considers any discrepancies reported since the inspection. If an unairworthy mechanical, electrical, or structural condition develops during flight, section 91.7 requires the pilot in command to discontinue the flight.
+
+When something is unclear, ask the person who can answer it. The owner or operator can provide records and explain the status system. A certified mechanic or inspector can interpret maintenance work, inspection approvals, and technical discrepancies. A CFI can help a learner practice the pilot's airworthiness review using the airplane they fly.
+
+## [07:20] Documents in the airplane
 
 **ANNOUNCER:**
 
-Documents for this airplane.
+Documents in the airplane.
 
 **INSTRUCTOR:**
 
-For the common U.S.-registered airplane in this lesson, section 91.203 requires an appropriate and current airworthiness certificate and an effective U.S. registration certificate aboard. The airworthiness certificate also has a display requirement: at the cabin or cockpit entrance, legible to passengers or crew. “Aboard” and “displayed” are not interchangeable.
+For the ordinary U.S.-registered airplane in this lesson, section 91.203 requires an appropriate, current airworthiness certificate and an effective U.S. registration certificate to be aboard. It also says the airworthiness certificate must be displayed at the cabin or cockpit entrance where passengers or crew can read it.
 
-Read the documents. Match the registration number and serial number to the airplane. Check the airworthiness category. Inspect the registration's issue and expiration information. Under the current section 47.40 framework, an initial registration certificate generally expires seven years after the last day of its issue month, and renewal can be requested in the prior six months. Do not carry forward an old three-year answer from a memory card.
+In a small airplane, you may find the registration in a document pouch and the airworthiness certificate in a clear holder near the entrance. Both are aboard. The airworthiness certificate is the one that must also be displayed and legible. Read the registration number, manufacturer, model, and serial number, and compare them with the airplane.
+
+The registration certificate has its own period of effectiveness. Under the current section 47.40 framework, an initial certificate generally expires seven years after the last day of its issue month. An owner may apply for renewal during the six months before expiration. Before flight, read the actual certificate and confirm that it is effective rather than relying on a memorized interval.
 
 **LEARNER:**
 
-And then I check for a POH?
+How do I identify the right operating manual? Several books online may have the same model name.
 
 **INSTRUCTOR:**
 
-Check for the required approved operating material for that airplane, not just a book with the right model name on its cover. PHAK Chapter 9 distinguishes a generic owner or information manual from an FAA-approved Aircraft Flight Manual. A generic manual may not be approved, current, or specific to one aircraft. A POH may incorporate the approved AFM material and organize airplane-specific limitations, procedures, performance, weight-and-balance, systems, handling, and maintenance information.
+Begin with the airplane itself and the documents supplied for it. Match the manufacturer, model, and serial-number applicability. Look for the FAA approval information in an Aircraft Flight Manual, or the approved AFM material incorporated into a Pilot's Operating Handbook. Check the revision system used for that manual. Then identify supplements that apply to installed equipment or alterations, such as avionics, an autopilot, or an engine or propeller change.
 
-Section 91.9 is the operational backbone. Do not operate contrary to the approved flight manual, markings and placards, or other prescribed operating limitations. Required current approved manual material must be available in the aircraft as the rule specifies.
+PHAK Chapter 9 explains the reason for these checks. An Aircraft Flight Manual is FAA approved and specific to an aircraft or aircraft type. A Pilot's Operating Handbook may contain the approved AFM information in a format prepared by the manufacturer. A generic owner or information manual can be useful for study, but it may not be approved, current, or specific to the airplane you intend to fly.
 
-For a practical checkout, verify the manual belongs to this model and, where applicable, this serial-number range. Check its revision status using the aircraft's established system. Find the current weight-and-balance and equipment data. Identify supplements for installed avionics, autopilot, engine or propeller changes, fuel systems, or other equipment. A supplement can modify limitations, normal procedures, emergencies, or performance assumptions. A downloaded base POH may be useful for study, but it does not prove the approved, current configuration of the airplane in front of you.
+The applicable manual package should lead you to the airplane's limitations, procedures, performance information, current weight-and-balance data, equipment information, markings, placards, and supplements. A supplement can change a limitation or procedure for equipment installed in that airplane. Confirming applicability is how you avoid using correct information for a different configuration.
 
-Also separate flight documents from maintenance records. The airworthiness and registration certificates have aboard requirements. The logbooks are normally reviewed where the owner or operator maintains them; carrying irreplaceable logs on every flight is not the point. Before a checkout or a trip, arrange access to the records or a reliable status summary backed by them.
+Section 91.9 requires the pilot to follow the approved flight manual, markings and placards, and other prescribed operating limitations. It also requires the current approved manual material specified by the rule to be available in the aircraft.
 
-## [11:25] Inspection clocks
+The maintenance logbooks serve a different purpose. They contain the history and continuing-status information required by section 91.417. They generally do not need to ride in the airplane on each flight. Carrying original, irreplaceable records adds a risk of loss, theft, or damage. The pilot still needs access to reliable information from those records, either by reviewing them directly or by using a current status summary that can be traced back to them.
+
+## [11:25] Inspection due dates
 
 **ANNOUNCER:**
 
-Inspection clocks.
+Inspection due dates.
 
 **INSTRUCTOR:**
 
-Pilots often learn an inspection mnemonic. Use one if it helps you remember where to look, but never let it become the rule. Inspection requirements depend on the aircraft, installed equipment, and operation. The records establish the actual status.
+Inspection requirements depend on the airplane, its equipment, and the way it is operated. A memory aid can remind you what to investigate, but the regulation and the airplane's records establish which requirements apply and when they are due.
 
-Begin with the annual. Section 91.409 generally prohibits operation unless the aircraft has had an annual inspection within the preceding 12 calendar months and has been approved for return to service, unless an authorized inspection program or other provision applies. “Calendar month” matters. An annual signed on June 8 is ordinarily current through the last day of June the following year, not merely until June 8.
+Start with the annual inspection. Section 91.409 generally requires the airplane to have received an annual inspection within the preceding 12 calendar months and to have been approved for return to service. Calendar months make the end date easier to determine. If the annual was completed on March 8, it remains within the 12-calendar-month period through the last day of March the following year, assuming no other restriction changes the result.
 
-Then ask whether the proposed operation triggers a 100-hour inspection. The rule includes carrying a person other than a crewmember for hire. It also includes giving flight instruction for hire in an aircraft that the instructor provides. That wording is why “all training airplanes need a 100-hour” is too broad. Who provides the aircraft and how it is operated matter.
-
-The limited 10-hour overage is not a courtesy extension for scheduled flying. It is allowed only while en route to the place where the inspection will be performed, and the extra time counts toward the next 100 hours.
-
-Next, installed equipment and intended operation create their own clocks. An ELT covered by section 91.207 has an inspection within 12 calendar months. Its battery has separate replacement or recharge triggers, so an ELT inspection date does not answer the battery question.
-
-For IFR in controlled airspace, section 91.411 generally calls for the required altimeter, static-pressure, and altitude-reporting systems to have been tested and inspected within the preceding 24 calendar months. Certain work creates an additional test requirement. Section 91.413 sets a 24-calendar-month interval for a transponder required by section 91.215(a), again with testing after certain maintenance that could introduce errors.
+The 100-hour inspection has a specific operating context. Section 91.409 applies it when an airplane carries a person other than a crewmember for hire, and when a person gives flight instruction for hire in an airplane that the instructor provides. A private owner flying their own airplane for personal use does not need a 100-hour inspection merely because 100 hours have passed. A flight instructor giving paid instruction in an airplane supplied by the instructor is a common example where the rule does apply.
 
 **LEARNER:**
 
-If I am flying VFR, can I ignore the altimeter and transponder entries?
+What if I receive instruction in my own airplane?
 
 **INSTRUCTOR:**
 
-Do not turn that into a blanket rule. The 91.411 interval is tied to the IFR operation described by the section. Transponder use and inspection depend on whether a transponder is required for the operation and airspace. The airplane may also be maintained under a program or have equipment with other continuing requirements. Define the proposed flight first, then verify each applicable clock.
+The instruction clause in section 91.409(b) addresses flight instruction for hire in an airplane provided by the person giving the instruction. If you provide your own airplane, that clause does not by itself create the 100-hour requirement. Other facts can matter, so confirm the operation with the owner, operator, or a knowledgeable mechanic when the arrangement is unusual.
 
-The preflight inspection is a different kind of check. It asks about condition for this departure: leaks, damage, contamination, control movement, tires, fluids, security, and the items in the aircraft checklist. It does not renew an annual, substitute for a required equipment test, or close a maintenance discrepancy.
+When a 100-hour inspection is required, the rule allows the limit to be exceeded by no more than 10 hours only while the airplane is being flown to a place where the inspection will be performed. Those extra hours count toward the next 100-hour period.
 
-## [16:00] Records tell the story
+Other equipment has separate inspection or service requirements. An ELT covered by section 91.207 must be inspected within the preceding 12 calendar months. Its battery has separate replacement or recharge triggers based on use and useful life.
+
+For IFR operations in controlled airspace, section 91.411 generally requires the altimeter, static-pressure system, and automatic pressure-altitude reporting system to have been tested and inspected within the preceding 24 calendar months. Section 91.413 generally requires a transponder that must be used under section 91.215(a) to have been tested and inspected within the preceding 24 calendar months. Both sections also address testing after specified maintenance or installation work.
+
+**LEARNER:**
+
+Where does the preflight inspection fit among those dates?
+
+**INSTRUCTOR:**
+
+The scheduled inspections establish maintenance status at defined intervals. The preflight inspection examines the airplane's condition for the flight you are about to make. A current annual does not tell you whether a tire was damaged yesterday, and a careful preflight does not establish that the annual is current. You review both kinds of information.
+
+## [15:40] What the maintenance records show
 
 **ANNOUNCER:**
 
-Records tell the story.
+What the maintenance records show.
 
 **INSTRUCTOR:**
 
-Section 91.417 separates records of work performed from records that preserve continuing status. Work records describe maintenance, preventive maintenance, alterations, and required inspections. Continuing records include items such as the status of life-limited parts, time since required overhaul, current inspection status, and current AD status. The rule gives those categories different retention treatment.
+Maintenance records answer two useful questions. What work and inspections were completed? And what continuing requirements are current or next due?
 
-For a pilot, the useful skill is retrieval. Locate the latest annual approval for return to service. If a 100-hour applies, locate that entry and compare its recorded time with the current tach or other controlling time. Verify the ELT, transponder, and—when relevant—altimeter/static status. Find the current weight-and-balance and equipment information after alterations. If a status sheet summarizes the logbooks, know who maintains it and how it is reconciled.
+Section 91.417 requires records of maintenance, preventive maintenance, alterations, and required inspections. It also identifies continuing records for items such as life-limited parts, time since overhaul when a time limit applies, current inspection status, and current AD status. Some work-history records have a shorter retention period. Continuing-status records are kept longer and transfer with the airplane as the rule specifies.
 
-An Airworthiness Directive is not a manufacturer's suggestion. The FAA describes ADs as legally enforceable regulations issued to correct unsafe conditions in aviation products. Applicability may turn on aircraft model, serial number, engine, propeller, or installed appliance. Compliance may be one-time or recurring.
+For an annual inspection, locate the dated entry and the approval for return to service. If the operation requires a 100-hour inspection, find that entry and compare the recorded aircraft time with the current controlling time. For an ELT, transponder, or altimeter and static system, identify the test or inspection date and confirm that the requirement applies to the planned operation.
 
-Section 91.417 requires the current status of applicable ADs, including the method of compliance and, for a recurring AD, the time and date when the next action is required. That is why “AD complied with” is incomplete when the AD calls for repeat inspections.
+Airworthiness Directives address unsafe conditions in aircraft, engines, propellers, or appliances. They are legally enforceable. Applicability can depend on model, serial number, or installed equipment, so a statement that an AD was checked is incomplete unless you can tell whether it applies and what action was taken.
+
+Section 91.417 requires the current status of applicable ADs. The record includes the method of compliance. If the AD requires recurring action, the record also includes the time and date when the next action is due.
 
 **LEARNER:**
 
-What if a logbook entry is hard to understand?
+Many clubs use a one-page status sheet. How much can I rely on it?
 
 **INSTRUCTOR:**
 
-Do not reverse-engineer maintenance approval from a vague line. Ask the owner, operator, or inspecting mechanic to identify the controlling entry and explain the status. If an AD list cites a superseded AD or a recurring action without a next-due point, resolve it. If an alteration appears in the airplane but the flight-manual supplement or weight-and-balance change is missing, resolve it. You are looking for a traceable chain, not performing a mechanic's inspection.
+A current status sheet can make the records easier to use. Learn how the operator builds it. Ask the operator to show you how the annual date, one equipment inspection, and one recurring AD on the sheet connect to the underlying entries. Compare the aircraft time on the sheet with the source used to control time-based requirements.
 
-Section 91.405 makes the owner or operator responsible for having required inspections performed, repairing discrepancies between required inspections except where operation is allowed, ensuring the proper entries are made, and properly placarding equipment permitted to remain inoperative. A squawk list is useful only when every open item has a defensible status.
+You do not have to carry the original logbooks to use that information before every departure. You do need a reliable way to know the airplane's current status. If the summary is out of date, a due date is missing, or an entry is unclear, ask the owner or operator for the records. A certified mechanic or inspector can explain the technical meaning of an inspection or maintenance entry within that person's privileges.
 
-## [20:00] Inoperative equipment
+Section 91.405 requires the owner or operator to have required inspections performed, address discrepancies except when operation is allowed under an applicable rule, make sure the proper entries are made, and properly placard equipment allowed to remain inoperative. That is why an open discrepancy needs an identified resolution before the airplane is released for flight.
+
+## [19:55] An inoperative item
 
 **ANNOUNCER:**
 
-Inoperative equipment.
+An inoperative item.
 
 **INSTRUCTOR:**
 
-Imagine the landing light does not illuminate. “Can we go?” is not answered by one line in section 91.205, and a piece of tape does not make the answer yes.
+Suppose the landing light does not illuminate. Before deciding whether the airplane can be flown, identify the failed item and the operation you plan to conduct.
 
-First ask whether the aircraft operates with an approved Minimum Equipment List. Under section 91.213, an approved MEL and its letter of authorization are specific to the aircraft and operator; together they provide the authorized path. An airline-style list found online is not a substitute.
+First determine whether the airplane is operated under an approved Minimum Equipment List, usually called an MEL. An approved MEL and its letter of authorization are specific to the aircraft and operator. They provide the conditions and procedures for operating with listed equipment inoperative. A list from another operator or another airplane does not provide that authority.
 
-Many small training airplanes do not have an MEL and use the section 91.213(d) path. Work the sequence.
-
-Gate one: is the item part of the VFR-day instruments and equipment prescribed by the aircraft's type-certification rules, or shown as required on the aircraft equipment list or Kinds of Operations Equipment List for this kind of flight? Gate two: is it required by section 91.205 or another rule for the specific day or night, VFR or IFR operation? Gate three: is it required to be operational by an applicable AD? If the answer is yes at any required-item gate, the simple no-MEL deferral path is not available.
-
-If the item passes those screens, it still must be properly removed or deactivated and placarded INOPERATIVE. If removal or deactivation involves maintenance, the maintenance must be performed and recorded under part 43. Deactivation can be more than moving a switch. Pulling a breaker, disconnecting wiring, or altering a system may have maintenance and system consequences. Do not improvise. Use an authorized mechanic when the action exceeds pilot authority or you are unsure.
-
-Finally, a pilot or appropriately rated maintenance person must determine that the inoperative item does not constitute a hazard. That is a separate decision from “not required.” AC 91-67A recommends considering environmental, operational, human, and equipment factors. A landing light may have different operational value for a daytime local flight from an uncrowded airport than for a night arrival where wildlife, poor ramp lighting, and reduced conspicuity matter. Those facts do not rewrite the required-equipment rules; they inform the hazard and go/no-go decision after the legal screens.
+Many small airplanes operate without an MEL and use section 91.213(d). Begin by checking whether the failed item is part of the VFR-day equipment prescribed by the airplane's type-certification rules. Then check the aircraft equipment list or Kinds of Operations Equipment List for an indication that the item is required for the planned kind of operation. Check section 91.205 and every other operating rule that applies to the flight. Finally, determine whether an AD requires the item to be operational.
 
 **LEARNER:**
 
-So if it is legal to defer, it is safe to fly?
+Why is checking section 91.205 alone incomplete?
 
 **INSTRUCTOR:**
 
-No. It means the regulation offers a path only if every condition is satisfied. You still decide whether the remaining capability and the conditions support this flight. Ask: What function did we lose? Could it mask or combine with another failure? Does it increase workload? What changes after sunset, in weather, over terrain, or at the destination? What does the aircraft's manual say? A conservative decision can be no even when operation might be permitted.
+Because the item may be required by the airplane's certification rules, its equipment list or KOEL, another operating rule, or an AD. Section 91.205 is one part of the review.
 
-Write down a compact flow for your next lesson: MEL or no MEL; required by type design or KOEL; required by operating rule; required by AD; properly removed or deactivated and placarded; required maintenance entry complete; no hazard; then operational risk. Have your CFI apply it to two real squawks in the airplane you fly.
+If the airplane's certification requirements, equipment list or KOEL, or an AD requires the item, repair it before flight. If an operating rule requires the item only for the kind of operation you planned, you can repair it or select a different operation and repeat the complete review. A change from night to day, for example, does not change a certification requirement or an AD.
 
-## [25:25] Maintenance boundaries
+If the item is not required, section 91.213(d) still requires the item to be removed or deactivated and placarded INOPERATIVE. Removal must be performed and recorded as maintenance under part 43 by a person with the applicable privileges. For typical installed equipment, that means a certified mechanic with the appropriate rating. Deactivation can also involve maintenance; when it does, the same part 43 performance and record rules apply. Deactivation should be based on the airplane's system and approved maintenance information; it may involve more than placing a switch in the off position.
+
+A pilot who is certificated and appropriately rated for the airplane, or an appropriately rated certified mechanic, must also determine that the inoperative item does not create a hazard to the airplane. AC 91-67A recommends considering the environment, the planned operation, the pilot and passengers, and the relationship between the failed item and other equipment.
+
+For the landing light, ask what capability is lost during this flight. Consider daylight or darkness, ramp and runway lighting, wildlife, visibility to other traffic, and whether the failure could indicate a problem shared with another circuit or component. Review the aircraft manual and talk with a mechanic if the cause or system effect is uncertain. The pilot in command uses that information to decide whether the remaining capability is adequate for the planned flight.
+
+**LEARNER:**
+
+If the item passes all of those checks, what should I be able to point to?
+
+**INSTRUCTOR:**
+
+You should be able to identify why the item is not required for this operation, how it was properly removed or deactivated, the INOPERATIVE placard, any maintenance entry that was required, and the basis for deciding that the condition does not create a hazard. If one of those answers is missing, resolve it before flight.
+
+## [25:15] Preventive maintenance by a pilot
 
 **ANNOUNCER:**
 
-Maintenance boundaries.
+Preventive maintenance by a pilot.
 
 **INSTRUCTOR:**
 
-Private pilots may perform some preventive maintenance. That is not a general permission for work that seems simple. Use three gates.
+Preventive maintenance is a limited category of simple or minor preservation work identified in part 43 appendix A(c). The list includes specific tasks, and the work may not involve complex assembly operations. Replacing spark plugs and replacing or cleaning certain oil or fuel strainers or filter elements are examples. Before treating any task as preventive maintenance, find the exact task in the list and confirm that it does not involve complex assembly.
 
-Gate one is the task. PHAK Chapter 9 explains that preventive maintenance is limited to specified operations that do not involve complex assembly. It gives bounded examples such as replacing spark plugs and replacing or cleaning certain oil or fuel strainers or filter elements. The controlling list is part 43 appendix A(c). The exact item, installation, and method matter. Similar-sounding work is not automatically on the list.
-
-Gate two is the person and aircraft. Subject to the exceptions in section 43.3(g), a pilot certificate holder may perform preventive maintenance on an aircraft the pilot owns or operates when it is not used under parts 121, 129, or 135. This lesson is about an ordinary private pilot, not the separate sport-pilot/light-sport provisions. Verify your certificate privileges and the aircraft's operation before beginning.
-
-Gate three is performance and return to service. Use the current maintenance manual or instructions applicable to the aircraft and product, the proper tools, parts, consumables, torque values, safetying method, and inspection steps. If the task, instructions, tools, or result are outside your competence, hand it to a mechanic. Section 43.7 allows a person holding at least a private pilot certificate to approve the aircraft for return to service after preventive maintenance that person performed under 43.3(g).
-
-Then make the record entry. Section 43.9 requires a description of the work or an acceptable reference, the completion date, the name of the person performing the work if someone else did it, and the signature, certificate number, and certificate type of the person approving the work. The signature is the approval for return to service only for the work performed.
+Section 43.3(g), subject to its exceptions, allows the holder of a pilot certificate to perform preventive maintenance on an aircraft that pilot owns or operates when the aircraft is not used under parts 121, 129, or 135. Before beginning, identify the exact appendix A(c) task, confirm that you and the aircraft fit the rule, and obtain the current maintenance instructions for the installed equipment.
 
 **LEARNER:**
 
-If my CFI has changed oil for years, can I just copy that process?
+If the task is on the list, how do I know whether I should do it myself?
 
 **INSTRUCTOR:**
 
-Use the applicable maintenance instructions, not memory or a generic video. Confirm that the exact task is preventive maintenance for this installation, that you are eligible, and that you can perform and inspect it correctly. Work with an experienced mechanic the first time. That is practical risk control, not a transfer of your record responsibility.
+Read the applicable maintenance instructions and consider the tools, parts, torque values, safetying, inspection, and troubleshooting the task requires. If you cannot perform and inspect the work correctly, ask a certified mechanic to do it or work with one while you learn. Perform the task only when you can follow the instructions and inspect the result correctly.
 
-Maintenance authorization is deliberately limited. Section 91.403 requires maintenance, preventive maintenance, and alterations to be performed only as authorized. When a repair, adjustment, troubleshooting step, or deactivation is not clearly within your privilege, stop before touching the airplane.
+After preventive maintenance performed under section 43.3(g), section 43.7 allows a person holding at least a private pilot certificate to approve the airplane for return to service for that work. Section 43.9 requires a maintenance-record entry. The entry includes a description of the work or an acceptable reference, the completion date, the name of the person who performed the work if someone else did it, and the signature, certificate number, and certificate type of the person approving the work.
 
-## [29:25] After maintenance
+Maintenance, preventive maintenance, and alterations may only be performed by people authorized under the applicable rules. When a repair, troubleshooting step, adjustment, or equipment deactivation is outside your privileges, stop work and involve a certified mechanic with the appropriate rating.
+
+## [29:10] After maintenance
 
 **ANNOUNCER:**
 
@@ -223,103 +249,79 @@ After maintenance.
 
 **INSTRUCTOR:**
 
-After maintenance, section 91.407 has two important layers. First, no person may operate the aircraft until an authorized person has approved it for return to service and the required maintenance-record entry has been made. Read the entry. Confirm the described work matches what you expected, the date and aircraft are correct, discrepancies are accounted for, and the approval is present.
+Section 91.407 says an airplane may not be operated after maintenance or alteration until a person with the applicable approval privilege under section 43.7 has approved it for return to service and the required maintenance-record entry has been made. For ordinary maintenance, that person is commonly a certified mechanic with the appropriate rating. A private pilot can make that approval for qualifying preventive maintenance the pilot performed. Read the entry. Confirm that it identifies the airplane, describes the work you expected, includes the completion date, and contains the appropriate approval.
 
-Second, if maintenance or alteration may have appreciably changed flight characteristics or substantially affected operation in flight, the aircraft may not carry anyone other than crewmembers until an appropriately rated pilot with at least a private pilot certificate conducts an operational check and logs the flight. That flight is not required when ground tests, inspection, or both conclusively show that the work did not create the stated effect. Do not casually turn a maintenance test into a normal passenger flight.
+Before departure, use the airplane checklist and give extra attention to the area that was disturbed. Ask the mechanic what was removed, opened, disconnected, adjusted, or tested. Depending on the work, that may direct you to panels and fasteners, fluid quantities and leaks, control movement, access doors, circuit protection, or cockpit settings. The specific checks come from the airplane and the work performed.
 
-Before any post-maintenance departure, perform an especially deliberate inspection of affected areas using the aircraft checklist and the maintenance handoff. Look for panels and fasteners secure, tools and protective materials removed, caps and access doors secure, fluid quantity and leaks, correct control movement, circuit protection in the expected configuration, and cockpit settings restored. Which checks apply is aircraft- and work-specific. Ask the mechanic what changed, what was disturbed, and what should receive extra attention.
-
-If a maintenance test flight is required or prudent, plan it with the mechanic and a qualified CFI: correct crew, suitable conditions, a nearby suitable airport, an explicit test card, abort points, and no unrelated mission pressure. The regulation identifies when an operational check is required; the aircraft's documents and qualified people shape how to conduct it.
+Some work may appreciably change flight characteristics or substantially affect operation in flight. In that situation, section 91.407 generally prohibits carrying anyone other than crewmembers until an appropriately rated pilot with at least a private pilot certificate performs an operational check and logs the flight. The flight check is not required when ground tests, inspection, or both conclusively show that the work did not have that effect.
 
 **LEARNER:**
 
-What if the airplane is not currently airworthy but needs to reach a shop?
+Who decides how to conduct that operational check?
 
 **INSTRUCTOR:**
 
-Do not label it a ferry flight and launch. Section 21.197 provides for a special flight permit when an aircraft may not currently meet applicable airworthiness requirements but is capable of safe flight, for listed purposes that include flying to a base where repair, alteration, or maintenance will be performed. The FAA authorization and its limitations come first. Coordinate with the FAA and an appropriately rated mechanic; determine what inspections, limitations, and operating conditions apply before flight.
+Coordinate with the certified mechanic or inspector who knows the work, review the aircraft's approved information, and involve a qualified CFI when the flight calls for training or unfamiliar test techniques. Define what must be checked, choose suitable conditions and a suitable airport, and keep people who are not required crewmembers off the airplane until the check is complete.
 
-## [33:00] Scenario: the borrowed airplane
+If an airplane does not currently meet its applicable airworthiness requirements but can be flown safely to a place where repair or maintenance will be performed, section 21.197 provides a process for a special flight permit. The FAA issues the authorization and any operating limitations. The owner or operator works with the FAA and qualified maintenance personnel before the flight.
+
+## [32:35] The borrowed-airplane decision
 
 **ANNOUNCER:**
 
-Scenario: the borrowed airplane.
+The borrowed-airplane decision.
 
 **INSTRUCTOR:**
 
-You plan a daytime VFR flight in a borrowed, standard-category airplane. Start with identity. Match the registration and serial number. Verify the current registration and displayed airworthiness certificate. Find the approved operating material, current weight-and-balance and equipment information, and applicable supplements. Read limitations relevant to the flight.
+Return to the airplane from the opening. You plan a daytime personal flight. The registration has an expiration date, the maintenance sheet contains unfamiliar dates, and one panel light does not work.
 
-Next, continuing status. Ask for the current records or a status report that is traceable to them. Find the annual entry. Decide whether this operation invokes a 100-hour requirement rather than assuming. Check ELT, transponder, and any other applicable inspection status. Review the current AD status, especially recurring actions. Compare controlling aircraft time with due times.
+Start by identifying the airplane. Compare the registration number, manufacturer, model, and serial number on the certificates with the airplane. Confirm that the registration is effective and that the airworthiness certificate is aboard, displayed, and legible.
 
-Then configuration and condition. Walk around with the aircraft checklist. Compare installed equipment and cockpit placards with the documents. Investigate damage, leaks, abnormal wear, loose or missing items, and every open discrepancy. Do not treat a clean status board as a preflight.
+Next, identify the approved operating information. Confirm that the AFM or POH material applies to the model and serial number. Check its revision system, current weight-and-balance and equipment information, required placards, and supplements for installed equipment. Review the limitations and procedures relevant to the planned flight.
 
-Finally, flight-specific suitability. Is the airplane equipped for the route, airspace, weather, light, and foreseeable alternatives? Can you operate within its limitations and your own capabilities? If a piece of evidence is missing, name it. “I need the latest annual return-to-service entry” is an answerable request. “The paperwork feels weird” is not.
+Now use the maintenance status sheet. Locate the annual inspection date and the underlying approval for return to service. Because this is a private owner making a personal flight, the passage of 100 aircraft hours alone does not create a 100-hour inspection requirement. Check the requirements that do apply to the airplane and operation, including the ELT and, when their use is required, the transponder and altimeter-static inspections. Review the current status of applicable ADs and the next due action for any recurring AD.
 
 **LEARNER:**
 
-What would make you stop the checkout?
+The dates are current. Can I move to the preflight now?
 
 **INSTRUCTOR:**
 
-An expired or mismatched certificate. Missing required approved operating material. An inspection or recurring AD status that cannot be established. An unresolved discrepancy without a section 91.213 path. A condition that calls safe operation into question. Or pressure to accept a verbal assurance when the required evidence should exist. Stop, identify the missing link, and bring in the owner, mechanic, or CFI who can resolve it.
+First review any open discrepancies. The failed panel light needs a section 91.213 determination. Identify the exact light and its function. Determine whether the airplane has an MEL. If it does not, check the certification and equipment-list requirements, the operating rules for this daytime flight, and applicable ADs. Confirm proper removal or deactivation and placarding, any required maintenance entry, and the no-hazard determination.
+
+Then inspect the airplane with its checklist. Look closely at the actual condition of the tires, controls, fuel and oil systems, structure, access panels, and installed equipment. If the records say one thing and the airplane shows another, ask the owner and a certified mechanic to resolve the difference.
 
 **LEARNER:**
 
-Suppose the owner hands me a one-page status sheet with green boxes. Is that enough?
+What should I do if the owner says the airplane flew yesterday and all of this paperwork is routine?
 
 **INSTRUCTOR:**
 
-It can be a useful retrieval tool, but test it against the records before you depend on it. Pick one clock, such as the annual. The sheet should lead you to the dated inspection entry and approval for return to service. Pick one equipment item, such as the transponder. The sheet should identify the test status that applies to the airplane. Pick one recurring AD. The records should show applicability, method of compliance, and the next action due. Then compare the sheet's aircraft time with the instrument or record used to control the interval.
+State the specific information you still need. Ask for the annual return-to-service entry, the source of an unfamiliar due date, the current recurring-AD status, or the maintenance disposition of the failed light. A specific request lets the owner, operator, mechanic, or inspector provide an answer you can evaluate.
 
-This small sample does two things. It teaches you how the operator's system works, and it can expose a transcription or update gap. You are not auditing every line before every flight. You are deciding whether the summary is a credible, current pointer to maintained records. At a new club or flight school, ask a CFI to demonstrate that path before the first flight.
+After the documents, records, discrepancy review, and preflight are complete, the pilot in command decides whether the airplane is in condition for safe flight. If a required document is missing, a due status cannot be established, or a discrepancy remains unresolved, wait until the appropriate person corrects or explains it.
 
-## [36:05] Scenario: the inoperative light
+## [36:40] Review
 
 **ANNOUNCER:**
 
-Scenario: the inoperative light.
+Review.
 
 **INSTRUCTOR:**
 
-Return to the failed landing light. Suppose the airplane has no approved MEL. Do not begin with your desired answer. Identify the exact item and planned operation. Check the VFR-day type-certification requirements, the aircraft equipment list, and KOEL material. Check section 91.205 and every other operating rule applicable to the flight. Check AD status. Review the AFM, POH, supplements, markings, and placards.
+Begin with the two parts of airworthiness. Confirm that the airplane's configuration agrees with its approved design and records. Then examine whether its physical condition supports safe operation now.
 
-If the light is required by any of those, repair it or change the operation in a way that actually removes the requirement. If it is not required, arrange proper removal or deactivation and an INOPERATIVE placard. If that action is maintenance, an authorized person performs it and makes the entry. Then make the required no-hazard determination.
+Identify the documents that belong to the airplane. The effective registration and appropriate current airworthiness certificate must be aboard, and the airworthiness certificate must be displayed. Use the approved AFM or POH material, revisions, supplements, placards, and current weight-and-balance and equipment information that apply to that airplane.
 
-Now conduct the separate operational-risk review. Day or night? Busy ramp or quiet field? Wildlife? Visibility? Recognition by other aircraft? Does the failure share wiring or a breaker with anything else? Is the pilot familiar with the airplane? If uncertainty remains, repair before flight.
+Use the maintenance records or a reliable status system to establish the annual inspection, any operation-dependent 100-hour requirement, equipment inspection dates, and current AD status. Remember the operating context: a private owner flying their own airplane for personal use does not need a 100-hour inspection simply because the airplane has flown another 100 hours.
 
-Notice what did not happen. We never said, “It isn't in 91.205, so go.” We never used a placard as maintenance. And we never confused regulatory permission with good risk management.
+For an inoperative item, identify the item and planned operation. Use the airplane's MEL if it has one. Without an MEL, check the certification requirements, aircraft equipment list or KOEL, operating rules, and ADs. Then confirm proper removal or deactivation, the INOPERATIVE placard, required maintenance records, and the no-hazard determination.
 
-**LEARNER:**
+Know the maintenance roles. The owner or operator is primarily responsible for maintaining the airplane. Certified mechanics and inspectors perform and approve work within their privileges. A private pilot may perform only qualifying preventive maintenance and must complete the required approval and record entry. The pilot in command makes the final determination that the airplane is in condition for safe flight.
 
-Could I avoid all of this by changing the flight from night to day?
+For your next ground lesson, use the airplane you normally fly. Ask your CFI or the operator to show you the certificates, the applicable AFM or POH and supplements, the latest annual entry, one equipment inspection, and one recurring AD record. Then choose an actual or hypothetical inoperative item and work through section 91.213 in order. That exercise practices the ACS skills with information tied to a real airplane.
 
-**INSTRUCTOR:**
-
-Changing the operation can change which operating-rule equipment requirements apply, but it cannot erase a requirement from the aircraft's certification basis, KOEL, an AD, or another applicable rule. It also does not perform the required removal or deactivation, create a placard, produce a maintenance entry, or make a hazardous condition safe. Re-run the complete sequence for the new operation. Do not change the label on the flight and keep the old assumptions.
-
-## [38:05] Retrieval review
-
-**ANNOUNCER:**
-
-Retrieval review.
-
-**INSTRUCTOR:**
-
-Pass one: identity and authority. Correct and current certificates. Required approved operating material. Limitations, markings, placards, weight and balance, equipment data, and applicable supplements for this airplane.
-
-Pass two: continuing status. Annual and operation-dependent inspections. Installed-equipment clocks. Current AD status, including recurring next-due actions. Trace the summary to the records.
-
-Pass three: configuration and condition. Conformity evidence, open discrepancies, maintenance release, and a careful preflight. Paper and airplane must tell the same story.
-
-Pass four: the proposed flight. Required equipment, proper treatment of anything inoperative, and a separate risk decision for the route and conditions. The PIC decides whether the aircraft is in condition for safe flight.
-
-One more distinction makes all four passes stronger. “Current” is not the same as “suitable.” A transponder inspection can be current while the transponder is malfunctioning today. An annual can be current while new damage makes the airplane unsafe. The approved manual can be aboard while the pilot has not checked the supplement for installed equipment. The document and record pass establishes authority and continuing status; the condition and proposed-flight pass establishes whether this airplane can support this departure.
-
-If you maintain the airplane yourself, add three gates: the task must be on the preventive-maintenance list and not involve complex assembly; you and the aircraft must qualify; and the work, inspection, approval, and record entry must be correct.
-
-For your next CFI session, bring one airplane's documents and maintenance status. Point to the evidence for each pass. Then choose one real or hypothetical inoperative item and work the no-MEL sequence without skipping a gate. That is the ACS skill: not reciting a stack of acronyms, but retrieving the information and making a defensible airworthiness decision.
-
-## [40:00] Outro
+## [39:15] Outro
 
 **ANNOUNCER:**
 

@@ -1,7 +1,7 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance
 
 **Episode:** core-08
-**Version:** 0.1.0
+**Version:** 0.2.0
 **Source verification:** Initial research verified August 24, 2026; publication-day recheck required
 
 ## Production notice
@@ -10,16 +10,19 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 ## In this episode
 
-- A four-pass airworthiness decision: documents, continuing status, condition,
-  and the proposed flight.
-- Why an airworthiness certificate is necessary but does not prove today's
-  condition or inspection status.
-- How annual, 100-hour, ELT, altimeter/static, and transponder clocks differ.
-- What maintenance records and AD status should let a pilot retrieve.
-- A complete no-MEL inoperative-equipment sequence under § 91.213(d).
-- The task, eligibility, performance, approval, and entry boundaries for pilot
-  preventive maintenance.
-- Practical checks after maintenance and the purpose of a special flight permit.
+- How approved configuration and present physical condition combine in an
+  airworthiness determination.
+- How to identify the certificates and approved operating information that
+  apply to a particular airplane.
+- The operating context for annual, 100-hour, ELT, altimeter/static, and
+  transponder requirements.
+- How maintenance records establish inspection and recurring-AD status without
+  carrying original logbooks on every flight.
+- The no-MEL inoperative-equipment sequence under § 91.213(d).
+- The roles of owners, certified mechanics and inspectors, and the pilot in
+  command before and after maintenance.
+- Pilot preventive-maintenance privileges, required approval and records, and
+  the purpose of a special flight permit.
 
 ## Study materials
 

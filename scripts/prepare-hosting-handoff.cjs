@@ -124,13 +124,23 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
 function verifyHostingHandoff({ outputDir }) {
   const resolvedOutput = path.resolve(outputDir);
   const sealPath = path.join(resolvedOutput, SEAL_FILE);
-  if (!fs.existsSync(sealPath)) throw new HostingHandoffError(`Missing ${SEAL_FILE}.`);
+  if (!fs.existsSync(sealPath) || !fs.statSync(sealPath).isFile()) throw new HostingHandoffError(`Missing ${SEAL_FILE}.`);
   const seal = readYaml(sealPath);
   const payload = seal.payload || {};
   if (seal.schema_version !== 1 || payload.schema_version !== 1) throw new HostingHandoffError("Unsupported hosting-handoff seal schema.");
   if (seal.payload_sha256 !== sha256Value(payload)) throw new HostingHandoffError("Hosting-handoff seal digest does not match its payload.");
+  const sealedFiles = payload.handoff_files;
+  const sealedNames = sealedFiles && typeof sealedFiles === "object" && !Array.isArray(sealedFiles) ? Object.keys(sealedFiles).sort() : [];
+  const requiredNames = [...HANDOFF_FILES].sort();
+  if (sealedNames.length !== requiredNames.length || sealedNames.some((name, index) => name !== requiredNames[index])) throw new HostingHandoffError("Hosting-handoff seal must list exactly the required payload files.");
+  const expectedEntries = new Set([...sealedNames, SEAL_FILE]);
+  const entries = fs.readdirSync(resolvedOutput, { withFileTypes: true });
+  for (const entry of entries) {
+    if (!expectedEntries.has(entry.name) || !entry.isFile()) throw new HostingHandoffError(`Hosting-handoff contains an unexpected entry: ${entry.name}.`);
+  }
+  if (entries.length !== expectedEntries.size) throw new HostingHandoffError("Hosting-handoff is missing a sealed payload file.");
   for (const file of HANDOFF_FILES) {
-    const expected = payload.handoff_files?.[file];
+    const expected = sealedFiles[file];
     const filePath = path.join(resolvedOutput, file);
     if (!/^[a-f0-9]{64}$/i.test(expected || "") || !fs.existsSync(filePath) || sha256File(filePath) !== expected) throw new HostingHandoffError(`Hosting-handoff ${file} does not match the sealed bytes.`);
   }

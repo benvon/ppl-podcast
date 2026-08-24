@@ -119,8 +119,10 @@ After the publication-day source check, approved listening QA, and pre-hosting
 validation have all passed, create the hosting input directory with this
 command. It copies the exact MP3, listener-facing metadata, and show notes,
 then writes `source-release-seal.yaml`. The seal records SHA-256 values for the
-whole source episode package and for every file in the handoff. The hosting
-stager verifies those handoff hashes before it stages audio.
+whole source episode package and for every file in the handoff. The handoff
+root contains only the three sealed payload files plus that seal; verification
+rejects extra files, directories, and symlinks. The hosting stager verifies
+this exact package before it stages audio.
 
 ```sh
 npm run release:prepare-handoff -- \

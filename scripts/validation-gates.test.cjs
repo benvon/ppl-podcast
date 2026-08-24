@@ -100,6 +100,9 @@ test("pre-hosting validation requires consistent release records", () => {
     const handoff = createHostingHandoff({ episodePath, outputDir: handoffPath, cwd: temporary });
     assert.equal(verifyHostingHandoff({ outputDir: handoff.outputDir }).valid, true);
     assert.equal(YAML.parse(fs.readFileSync(path.join(handoffPath, "episode.yaml"), "utf8")).chapters[0].title, "Opening");
+    fs.writeFileSync(path.join(handoffPath, ".env"), "UNEXPECTED=value\n");
+    assert.throws(() => verifyHostingHandoff({ outputDir: handoffPath }), (error) => error instanceof HostingHandoffError && /unexpected entry: \.env/.test(error.message));
+    fs.rmSync(path.join(handoffPath, ".env"));
     fs.writeFileSync(path.join(handoffPath, "show-notes.md"), "# Mutated after sealing\n");
     assert.throws(() => verifyHostingHandoff({ outputDir: handoffPath }), (error) => error instanceof HostingHandoffError && /show-notes\.md does not match the sealed bytes/.test(error.message));
     fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Changed after validation\n");

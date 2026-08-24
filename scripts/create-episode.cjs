@@ -3,10 +3,9 @@
 
 const fs = require("fs");
 const path = require("path");
+const { TRACKS, releaseIdentity } = require("./release-identity.cjs");
 
-const SAFE_ID = /^(?:core-\d{2}|rough-\d{3})$/;
 const SAFE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const TRACKS = new Set(["core", "rough-spots"]);
 
 function parseArgs(argv) {
   const values = {};
@@ -19,9 +18,10 @@ function parseArgs(argv) {
     index += 1;
   }
   for (const key of ["id", "slug", "title", "track"]) if (!values[key]) throw new Error(`--${key} is required.`);
-  if (!SAFE_ID.test(values.id)) throw new Error("--id must be core-NN or rough-NNN.");
   if (!SAFE_SLUG.test(values.slug)) throw new Error("--slug must be lowercase kebab-case.");
-  if (!TRACKS.has(values.track)) throw new Error("--track must be core or rough-spots.");
+  if (!TRACKS[values.track]) throw new Error("--track must be core, supplemental, or rough-spots.");
+  try { releaseIdentity({ track: values.track, id: values.id, version: "0.1.0" }); }
+  catch (error) { throw new Error(`Invalid --id for ${values.track}: ${error.message}`); }
   return values;
 }
 

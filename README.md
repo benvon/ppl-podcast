@@ -134,6 +134,12 @@ The command refuses to overwrite an existing directory. Treat the resulting
 directory as an immutable release input: if any source record or audio bytes
 change, rerun the gates and create a new handoff directory.
 
+Each sealed handoff also carries a public release key and its content version.
+GitHub releases use those values as immutable tags: core lessons use
+`episode-07/v0.1.4`, supplemental lessons use `supplement-01/v0.1.0`, and
+rough-spots lessons use `rough-spot-001/v0.1.0`. The source IDs such as
+`core-07` remain internal production identifiers rather than public tag names.
+
 The retained validation record contains URLs, HTTP metadata, an excerpt digest,
 and the structured relevance result—not a copy of the fetched source text.
 

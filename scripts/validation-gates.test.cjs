@@ -10,6 +10,7 @@ const YAML = require("yaml");
 
 const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
+const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
@@ -54,6 +55,16 @@ test("chapter review accepts its manifest argument", () => {
   assert.deepEqual(parseChapterReviewArgs(["--manifest", "audio-artifacts/example.render-manifest.json"]), { manifest: "audio-artifacts/example.render-manifest.json" });
 });
 
+test("public release identities keep core, supplemental, and rough-spots tags distinct", () => {
+  assert.deepEqual(releaseIdentity({ track: "core", id: "core-07", version: "0.1.4" }), { releaseKey: "episode-07", contentVersion: "0.1.4", tag: "episode-07/v0.1.4", recordAsset: "episode-07-v0.1.4.json" });
+  assert.equal(releaseIdentity({ track: "supplemental", id: "supplement-01", version: "0.1.0" }).tag, "supplement-01/v0.1.0");
+  assert.equal(releaseIdentity({ track: "rough-spots", id: "rough-001", version: "1.2.3" }).tag, "rough-spot-001/v1.2.3");
+  assert.throws(() => releaseIdentity({ track: "core", id: "supplement-01", version: "0.1.0" }), /does not match/);
+  assert.throws(() => releaseIdentity({ track: "core", id: "core-001", version: "0.1.0" }), /does not match/);
+  assert.throws(() => releaseIdentity({ track: "rough-spots", id: "rough-01", version: "0.1.0" }), /does not match/);
+  assert.throws(() => releaseIdentity({ track: "core", id: "core-01", version: "1.0.0-01" }), /semantic versioning/);
+});
+
 test("chapter review rejects a manifest checksum that does not match its MP3", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-chapter-review-test-"));
   const audioPath = path.join(temporary, "candidate.mp3");
@@ -82,7 +93,7 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
   const qualityRecord = (overrides = {}) => ({ result: "passed", manifest: renderPath, output: { path: audioPath, sha256, probe: { format: { duration: "2.000000" } } }, ...overrides });
   fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord())); fs.writeFileSync(reviewPath, `<meta name="ppl-audio-sha256" content="${sha256}">`);
-  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml" }, hosting: { metadata: "hosting-metadata.yaml" }, public_notes: "show-notes.md", source_verification: { verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" } }));
+  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml" }, hosting: { metadata: "hosting-metadata.yaml" }, public_notes: "show-notes.md", source_verification: { verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" } }));
   fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: sha256 } }));
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ handoff_status: "ready_for_hosting_pr", publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Test\n"); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n");
@@ -116,7 +127,10 @@ test("pre-hosting validation requires consistent release records", () => {
     const handoffPath = path.join(temporary, "hosting-handoff");
     const handoff = createHostingHandoff({ episodePath, outputDir: handoffPath, cwd: temporary });
     assert.equal(verifyHostingHandoff({ outputDir: handoff.outputDir }).valid, true);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(handoffPath, "episode.yaml"), "utf8")).chapters[0].title, "Opening");
+    const handoffEpisode = YAML.parse(fs.readFileSync(path.join(handoffPath, "episode.yaml"), "utf8"));
+    assert.equal(handoffEpisode.chapters[0].title, "Opening");
+    assert.equal(handoffEpisode.release_key, "episode-01");
+    assert.equal(handoffEpisode.content_version, "0.1.0");
     fs.writeFileSync(path.join(handoffPath, ".env"), "UNEXPECTED=value\n");
     assert.throws(() => verifyHostingHandoff({ outputDir: handoffPath }), (error) => error instanceof HostingHandoffError && /unexpected entry: \.env/.test(error.message));
     fs.rmSync(path.join(handoffPath, ".env"));

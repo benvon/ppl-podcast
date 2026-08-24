@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
+const { releaseIdentity } = require("./release-identity.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 
 class PreHostingValidationError extends Error {}
@@ -94,6 +95,9 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   const showNotes = fs.readFileSync(paths["show-notes.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
   const candidate = audioManifest.current_candidate_render || {};
+  let releaseIdentityRecord;
+  try { releaseIdentityRecord = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
+  catch (error) { errors.push(`episode release identity is invalid: ${error.message}`); }
 
   expect(errors, episode.status === "ready_for_hosting_pr", "episode.yaml status must be ready_for_hosting_pr.");
   expect(errors, audioManifest.status === "candidate_rendered_listening_qa_approved", "audio-manifest.yaml status must record approved listening QA.");
@@ -118,6 +122,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, release.published_at === episode.published_at, "hosting-metadata publication timestamp must match episode.yaml.");
   expect(errors, release.number === Number(String(episode.id || "").split("-").at(-1)), "hosting-metadata episode number must match the episode id.");
   expect(errors, hosting.provenance?.content_version === episode.version, "hosting-metadata content version must match episode.yaml.");
+  expect(errors, Boolean(releaseIdentityRecord), "episode must define a supported public release identity.");
   expect(errors, hosting.provenance?.show_notes === "show-notes.md" && hosting.provenance?.audio_manifest === "audio-manifest.yaml", "hosting metadata provenance must name the local show notes and audio manifest.");
   expect(errors, release.audio && Object.keys(release.audio).length === 0, "podcast handoff metadata must leave audio object fields for the hosting stager.");
 

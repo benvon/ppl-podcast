@@ -11,6 +11,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { PreHostingValidationError, sha256File, validatePreHosting } = require("./validate-pre-hosting.cjs");
+const { releaseIdentity } = require("./release-identity.cjs");
 
 const SEAL_FILE = "source-release-seal.yaml";
 const HANDOFF_FILES = ["episode.yaml", "show-notes.md", "audio.mp3"];
@@ -68,6 +69,7 @@ function sourcePackageFiles(episodePath) {
 }
 
 function releaseEpisode({ episodePath, cwd }) {
+  const episode = readYaml(path.join(episodePath, "episode.yaml"));
   const audioManifest = readYaml(path.join(episodePath, "audio-manifest.yaml"));
   const hosting = readYaml(path.join(episodePath, "hosting-metadata.yaml"));
   const candidate = audioManifest.current_candidate_render || {};
@@ -78,7 +80,10 @@ function releaseEpisode({ episodePath, cwd }) {
   const render = readJson(renderPath);
   const markers = render.chapters?.markers;
   if (!Array.isArray(markers) || markers.length === 0) throw new HostingHandoffError("Approved render manifest has no embedded chapter markers.");
-  const release = { ...hosting.publisher_release, chapters: markers.map(({ title, start_ms }) => ({ title, start_ms })), chapters_audio_sha256: candidate.sha256 };
+  let identity;
+  try { identity = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
+  catch (error) { throw new HostingHandoffError(`Invalid release identity: ${error.message}`); }
+  const release = { ...hosting.publisher_release, release_key: identity.releaseKey, content_version: identity.contentVersion, chapters: markers.map(({ title, start_ms }) => ({ title, start_ms })), chapters_audio_sha256: candidate.sha256 };
   return { candidatePath, release };
 }
 

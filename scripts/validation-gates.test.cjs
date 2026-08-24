@@ -60,6 +60,9 @@ test("public release identities keep core, supplemental, and rough-spots tags di
   assert.equal(releaseIdentity({ track: "supplemental", id: "supplement-01", version: "0.1.0" }).tag, "supplement-01/v0.1.0");
   assert.equal(releaseIdentity({ track: "rough-spots", id: "rough-001", version: "1.2.3" }).tag, "rough-spot-001/v1.2.3");
   assert.throws(() => releaseIdentity({ track: "core", id: "supplement-01", version: "0.1.0" }), /does not match/);
+  assert.throws(() => releaseIdentity({ track: "core", id: "core-001", version: "0.1.0" }), /does not match/);
+  assert.throws(() => releaseIdentity({ track: "rough-spots", id: "rough-01", version: "0.1.0" }), /does not match/);
+  assert.throws(() => releaseIdentity({ track: "core", id: "core-01", version: "1.0.0-01" }), /semantic versioning/);
 });
 
 test("chapter review rejects a manifest checksum that does not match its MP3", () => {

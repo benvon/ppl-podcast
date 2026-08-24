@@ -12,7 +12,7 @@
 ## 2026-08-24 — complete spoken-lesson rewrite after editorial rejection
 
 - Replaced `master-script.md` throughout instead of revising the rejected draft
-  line by line. The new version contains 4,349 spoken words in 50 render
+  line by line. The new version contains 4,352 renderer-derived spoken words in 50 render
   segments and targets approximately 39 minutes.
 - Rewrote the opening and ACS section to state the lesson's purpose plainly,
   name Task PA.I.B, Airworthiness Requirements, before referring to its
@@ -56,7 +56,7 @@
   citations resolved through the official dated versioner endpoints.
 - `npm test`: passed all 54 tests.
 - Listener-structure audit: passed current narration derivation, the recorded
-  4,349-word count, every claim section reference, heading-matched Announcer
+  4,352-word count, every claim section reference, heading-matched Announcer
   transitions, no hard wraps, and absence of the specifically rejected phrases.
 - `git diff --check`: passed. Full LLM relevance review remains a pre-render
   gate; this revision did not render audio.

@@ -499,6 +499,12 @@ The roadmap is sequenced for learning, not by PHAK chapter. It remains adjustabl
 | core-24 | Night Operations | Vision, lighting, planning, weather, illusions, equipment, currency | PHAK, AIM, CFR/ACS |
 | core-25 | The Checkride Oral: Connecting Knowledge, Risk, and Skill | Scenario-based integration rather than last-minute memorization | Whole ACS |
 
+## 12.1 Planned supplemental episodes
+
+Planned deep-dives into topics of interest that weren't covered in depth in the intial set of episodes.
+
+| ID | Working title | Primary focus | Core anchors |
+| --- | --- | --- | ---
 | supplement-01 | Constant-Speed Propellers | Governor, blade angle, rpm, manifold pressure, and practical system interpretation | PHAK Ch. 7, ACS systems knowledge |
 | supplement-02 | Compass Navigation and Modern Navigation Cross-Checks | Compass-only orientation, pilotage and dead reckoning, then integration with VOR and GPS information | PHAK Chs. 8 and 16, AIM Ch. 1 |
 | supplement-03 | MOSAIC, Light-Sport Certification, and Sport-Pilot Maintenance Privileges | What MOSAIC changes, light-sport certification context, and the boundaries of sport-pilot maintenance privileges | PHAK Ch. 9 MOSAIC addendum, Parts 1/21/43/61/91 as applicable |

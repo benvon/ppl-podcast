@@ -1,0 +1,1424 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-24T17:53:50.634Z
+sources_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/sources.yaml
+claims_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/claim-inventory.yaml
+show_notes_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes.md
+show_notes_manifest_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes-manifest.yaml
+input_sha256:
+  sources: 3bad928849b2d54dda5f98822f931e3090e4b6892acc4a8c8762611683c21f8d
+  claims: 987a2df9e5902888533f33773b78e622939f565e301cdc69fb3cd6068b46b2ef
+  show_notes: f3dadef3117d5acfa0eeb41cca5ab421ad262595981157549415a2351d3c9fe5
+  show_notes_manifest: d88d0c2aa3d3a445c7c910e18985ff2c2c2106a96e8abac0272a66d25f7ec2ea
+llm_requested: false
+llm_model: null
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 14
+  manifest_link_count: 14
+show_notes_results:
+  - id: acs-airworthiness
+    text: Private Pilot for Airplane Category ACS — Airworthiness Requirements
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    source_id: acs-airworthiness-requirements
+    claim_ids:
+      - acs-airworthiness-scope
+      - acs-scenario-skills
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+  - id: phak-chapter-9
+    text: PHAK Chapter 9 — Flight Manuals and Other Documents
+    url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+    source_id: phak-manual-types
+    claim_ids:
+      - owner-manual-not-afm
+      - afm-poh-aircraft-specific
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      status: 200
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5271
+      pdf_page_text_sha256: 1778bd642ad494fb19e7e9df3fa63867b7cd572a8f41d8f3e909ed559077da6d
+  - id: ac-91-67a
+    text: AC 91-67A — Operations Without an MEL
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+    source_id: ac-91-67a-non-mel
+    claim_ids:
+      - inoperative-decision-not-one-question
+      - deactivation-may-be-maintenance
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      status: 200
+      content_type: application/pdf
+      redirects: &a6 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2106
+      pdf_page_text_sha256: ff0d4af0550bacb7d502c03f787dbe16a88d3e61d603226e7ba220d33f51f4b1
+  - id: cfr-91-203
+    text: 14 CFR § 91.203
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
+    source_id: cfr-91-203-certificates
+    claim_ids:
+      - aircraft-certificates-aboard
+      - airworthiness-certificate-display
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-91-9
+    text: 14 CFR § 91.9
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+    source_id: cfr-91-9-flight-manual
+    claim_ids:
+      - operating-limitations-control
+      - current-manual-material-available
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-91-7
+    text: 14 CFR § 91.7
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
+    source_id: cfr-91-7-pic-airworthiness
+    claim_ids:
+      - pic-safe-flight-determination
+      - discontinue-unairworthy-flight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-91-403
+    text: 14 CFR § 91.403
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403
+    source_id: cfr-91-403-owner-responsibility
+    claim_ids:
+      - owner-primary-responsibility
+      - maintenance-authority-limited
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-91-409
+    text: 14 CFR § 91.409
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
+    source_id: cfr-91-409-inspections
+    claim_ids:
+      - annual-inspection-clock
+      - hundred-hour-trigger
+      - hundred-hour-ferry-overage
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-91-417
+    text: 14 CFR § 91.417
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
+    source_id: cfr-91-417-records
+    claim_ids:
+      - records-work-history
+      - records-continuing-status
+      - ad-status-record
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-91-213
+    text: 14 CFR § 91.213
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+    source_id: cfr-91-213-inoperative
+    claim_ids:
+      - mel-aircraft-operator-specific
+      - inoperative-required-item-checks
+      - inoperative-removal-deactivation
+      - inoperative-no-hazard
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-43-3
+    text: 14 CFR § 43.3
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3
+    source_id: cfr-43-3-pilot-maintenance
+    claim_ids:
+      - pilot-preventive-eligibility
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      status: 200
+      content_type: application/xml
+      redirects: &a2 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-43-9
+    text: 14 CFR § 43.9
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9
+    source_id: cfr-43-9-maintenance-entry
+    claim_ids:
+      - preventive-maintenance-record-entry
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      status: 200
+      content_type: application/xml
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-91-407
+    text: 14 CFR § 91.407
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407
+    source_id: cfr-91-407-after-maintenance
+    claim_ids:
+      - after-maintenance-return-entry
+      - after-maintenance-operational-check
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+  - id: cfr-21-197
+    text: 14 CFR § 21.197
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197
+    source_id: cfr-21-197-special-flight-permit
+    claim_ids:
+      - special-flight-permit-purpose
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      status: 200
+      content_type: application/xml
+      redirects: &a5 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+results:
+  - source_id: acs-airworthiness-requirements
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-24T17:53:35.280Z
+    linked_claim_ids:
+      - acs-airworthiness-scope
+      - acs-scenario-skills
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-manual-types
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:36.052Z
+    linked_claim_ids:
+      - owner-manual-not-afm
+      - afm-poh-aircraft-specific
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5271
+      pdf_page_text_sha256: 1778bd642ad494fb19e7e9df3fa63867b7cd572a8f41d8f3e909ed559077da6d
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-poh-contents
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:38.753Z
+    linked_claim_ids:
+      - afm-poh-aircraft-specific
+      - supplements-part-of-picture
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3874
+      pdf_page_text_sha256: 593f7f338a2f981055b56a36489238a2d3b709118f749fbd4dd967a82bf84259
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-documents-airworthiness
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:38.771Z
+    linked_claim_ids:
+      - airworthiness-two-part-model
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4366
+      pdf_page_text_sha256: 31b149f259d358e94400479470d0287705e3d7342c1ce6379f3e9029d64df0fd
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-inspections-records
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:38.792Z
+    linked_claim_ids:
+      - inspection-system-not-mnemonic
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5203
+      pdf_page_text_sha256: 9282755bbd54677e52de06693c811f47a4abcb504117d9433a1674d408154e4c
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-preflight-inspection
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:38.804Z
+    linked_claim_ids:
+      - preflight-condition-check
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4647
+      pdf_page_text_sha256: f1a05cd26fc3ea986c400fe525637c624c1dcd2c1b47d66a86881f8aa467bb84
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-inoperative-preventive
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:38.813Z
+    linked_claim_ids:
+      - mel-aircraft-operator-specific
+      - inoperative-decision-not-one-question
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4976
+      pdf_page_text_sha256: 6b2f579b5c9e2f47e0891b3281649a36e585e1ef8aac66b916d22d1af15ccf6a
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-preventive-maintenance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:38.821Z
+    linked_claim_ids:
+      - preventive-list-controls
+      - preventive-examples-bounded
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4901
+      pdf_page_text_sha256: 507a94b4c84bd82cbf3183bf5c01733dca83407bd136d8ea3da6daea72a70e1b
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-ads-owner-responsibility
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-24T17:53:38.829Z
+    linked_claim_ids:
+      - ad-regulatory-status
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      status: 200
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5260
+      pdf_page_text_sha256: 6c06eaac47ef5e2edc8290b8e5454bd75d2c4a706acaab7a2551dbb64515f905
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-mosaic-addendum
+    title: Pilot's Handbook of Aeronautical Knowledge Addendum (MOSAIC)
+    checked_at_utc: 2026-08-24T17:53:38.839Z
+    linked_claim_ids:
+      - mosaic-scope-boundary
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      final_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      status: 200
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      validation_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3016
+      pdf_page_text_sha256: e10819fc69a96f859b3b1a657df747692c9fef545183a946ab4af1c2d003d071
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-203-certificates
+    title: "14 CFR § 91.203 — Civil aircraft: Certifications required"
+    checked_at_utc: 2026-08-24T17:53:38.937Z
+    linked_claim_ids:
+      - aircraft-certificates-aboard
+      - airworthiness-certificate-display
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-47-40-registration-duration
+    title: 14 CFR § 47.40 — Registration expiration and renewal
+    checked_at_utc: 2026-08-24T17:53:40.860Z
+    linked_claim_ids:
+      - registration-seven-years
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=47
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=47
+      status: 200
+      content_type: application/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-47/subpart-B/section-47.40
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=47
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-9-flight-manual
+    title: 14 CFR § 91.9 — Civil aircraft flight manual, marking, and placard
+      requirements
+    checked_at_utc: 2026-08-24T17:53:41.663Z
+    linked_claim_ids:
+      - operating-limitations-control
+      - current-manual-material-available
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-21-181-airworthiness-duration
+    title: 14 CFR § 21.181 — Duration
+    checked_at_utc: 2026-08-24T17:53:41.663Z
+    linked_claim_ids:
+      - airworthiness-certificate-continuing-effect
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      status: 200
+      content_type: application/xml
+      redirects: *a5
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.181
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-7-pic-airworthiness
+    title: 14 CFR § 91.7 — Civil aircraft airworthiness
+    checked_at_utc: 2026-08-24T17:53:45.814Z
+    linked_claim_ids:
+      - pic-safe-flight-determination
+      - discontinue-unairworthy-flight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-403-owner-responsibility
+    title: 14 CFR § 91.403 — General
+    checked_at_utc: 2026-08-24T17:53:45.814Z
+    linked_claim_ids:
+      - owner-primary-responsibility
+      - maintenance-authority-limited
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-405-required-maintenance
+    title: 14 CFR § 91.405 — Maintenance required
+    checked_at_utc: 2026-08-24T17:53:45.814Z
+    linked_claim_ids:
+      - owner-discrepancy-record-duty
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.405
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-409-inspections
+    title: 14 CFR § 91.409 — Inspections
+    checked_at_utc: 2026-08-24T17:53:45.814Z
+    linked_claim_ids:
+      - annual-inspection-clock
+      - hundred-hour-trigger
+      - hundred-hour-ferry-overage
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-207-elt
+    title: 14 CFR § 91.207 — Emergency locator transmitters
+    checked_at_utc: 2026-08-24T17:53:45.814Z
+    linked_claim_ids:
+      - elt-inspection-and-battery
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.207
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-411-altimeter
+    title: 14 CFR § 91.411 — Altimeter system and altitude reporting equipment tests
+      and inspections
+    checked_at_utc: 2026-08-24T17:53:45.814Z
+    linked_claim_ids:
+      - altimeter-ifr-inspection
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.411
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-413-transponder
+    title: 14 CFR § 91.413 — ATC transponder tests and inspections
+    checked_at_utc: 2026-08-24T17:53:45.815Z
+    linked_claim_ids:
+      - transponder-inspection
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.413
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-417-records
+    title: 14 CFR § 91.417 — Maintenance records
+    checked_at_utc: 2026-08-24T17:53:45.815Z
+    linked_claim_ids:
+      - records-work-history
+      - records-continuing-status
+      - ad-status-record
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-213-inoperative
+    title: 14 CFR § 91.213 — Inoperative instruments and equipment
+    checked_at_utc: 2026-08-24T17:53:45.815Z
+    linked_claim_ids:
+      - mel-aircraft-operator-specific
+      - inoperative-required-item-checks
+      - inoperative-removal-deactivation
+      - inoperative-no-hazard
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ac-91-67a-non-mel
+    title: AC 91-67A — Minimum Equipment Requirements for General Aviation
+      Operations Under 14 CFR Part 91
+    checked_at_utc: 2026-08-24T17:53:45.815Z
+    linked_claim_ids:
+      - inoperative-decision-not-one-question
+      - deactivation-may-be-maintenance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      status: 200
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2106
+      pdf_page_text_sha256: ff0d4af0550bacb7d502c03f787dbe16a88d3e61d603226e7ba220d33f51f4b1
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ac-91-67a-risk
+    title: AC 91-67A — Minimum Equipment Requirements for General Aviation
+      Operations Under 14 CFR Part 91
+    checked_at_utc: 2026-08-24T17:53:46.506Z
+    linked_claim_ids:
+      - inoperative-risk-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      status: 200
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1373
+      pdf_page_text_sha256: 41ae864b1657b518566906cc06005a1fefb290ff4fbc3cfe1ebde2c3843486ad
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-43-3-pilot-maintenance
+    title: 14 CFR § 43.3 — Persons authorized to perform maintenance
+    checked_at_utc: 2026-08-24T17:53:46.521Z
+    linked_claim_ids:
+      - pilot-preventive-eligibility
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      status: 200
+      content_type: application/xml
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-43-7-return-to-service
+    title: 14 CFR § 43.7 — Persons authorized to approve aircraft for return to
+      service
+    checked_at_utc: 2026-08-24T17:53:50.574Z
+    linked_claim_ids:
+      - pilot-preventive-return-to-service
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      status: 200
+      content_type: application/xml
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.7
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-43-9-maintenance-entry
+    title: 14 CFR § 43.9 — Content, form, and disposition of maintenance records
+    checked_at_utc: 2026-08-24T17:53:50.575Z
+    linked_claim_ids:
+      - preventive-maintenance-record-entry
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      status: 200
+      content_type: application/xml
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=43
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-91-407-after-maintenance
+    title: 14 CFR § 91.407 — Operation after maintenance, preventive maintenance,
+      rebuilding, or alteration
+    checked_at_utc: 2026-08-24T17:53:50.575Z
+    linked_claim_ids:
+      - after-maintenance-return-entry
+      - after-maintenance-operational-check
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      status: 200
+      content_type: application/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=91
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: cfr-21-197-special-flight-permit
+    title: 14 CFR § 21.197 — Special flight permits
+    checked_at_utc: 2026-08-24T17:53:50.575Z
+    linked_claim_ids:
+      - special-flight-permit-purpose
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      status: 200
+      content_type: application/xml
+      redirects: *a5
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-20/title-14.xml?part=21
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

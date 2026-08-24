@@ -5,6 +5,8 @@
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Draft; not flight instruction and not cleared for public release.
 
+<!-- Write each spoken paragraph as one normal Markdown line. Do not hard-wrap prose. -->
+
 ## [00:00] Opening
 
 **INSTRUCTOR:**
@@ -25,15 +27,15 @@ Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane 
 
 In this episode: [announce the specific episode topic in one upbeat, plain-language sentence.]
 
-## [01:05] Lesson section
+## [01:05] What the ACS is asking you to connect
 
 **ANNOUNCER:**
 
-[Briefly announce the next part of the conversation. Use the Announcer between substantial lesson sections to orient the listener; be upbeat, clear, and restrained rather than theatrical.]
+What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-[Teach one bounded idea in original language.]
+[Open by naming the ACS task, its connected variables or evidence, and the practical question the episode will answer. Use the Announcer between substantial lesson sections to orient the listener; keep it upbeat, clear, and restrained rather than theatrical.]
 
 **LEARNER:**
 

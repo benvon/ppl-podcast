@@ -65,6 +65,13 @@ test("public release identities keep core, supplemental, and rough-spots tags di
   assert.throws(() => releaseIdentity({ track: "core", id: "core-01", version: "1.0.0-01" }), /semantic versioning/);
 });
 
+test("the master-script template preserves the standard ACS opening and paragraph style", () => {
+  const template = fs.readFileSync(path.join(__dirname, "..", "templates", "master-script.md"), "utf8");
+  assert.match(template, /## \[01:05\] What the ACS is asking you to connect/);
+  assert.match(template, /\*\*ANNOUNCER:\*\*\n\nWhat the ACS is asking you to connect\./);
+  assert.match(template, /Write each spoken paragraph as one normal Markdown line\. Do not hard-wrap prose\./);
+});
+
 test("chapter review rejects a manifest checksum that does not match its MP3", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-chapter-review-test-"));
   const audioPath = path.join(temporary, "candidate.mp3");

@@ -109,7 +109,6 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, typeof candidate.duration_seconds === "number" && candidate.duration_seconds > 0, "audio manifest must record a positive candidate duration.");
   expect(errors, release.duration === durationDisplay(candidate.duration_seconds), "hosting duration must match the approved audio duration rounded to the nearest second.");
   expect(errors, Math.abs(Number(episode.runtime_actual_seconds) - Number(candidate.duration_seconds)) < 0.01, "episode runtime_actual_seconds must match the audio manifest duration.");
-  expect(errors, candidate.validation?.includes("passed"), "audio manifest must record a passing automated audio-quality result.");
 
   const mp3Path = typeof candidate.mp3 === "string" ? path.resolve(cwd, candidate.mp3) : null;
   const renderManifestPath = typeof candidate.render_manifest === "string" ? path.resolve(cwd, candidate.render_manifest) : null;
@@ -126,8 +125,15 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
     expect(errors, validSha256(render.chapters?.audio_sha256) === candidateSha256, "render manifest chapter checksum must match the audio manifest.");
     expect(errors, Array.isArray(render.chapters?.markers) && render.chapters.markers.length > 0, "render manifest must record embedded chapter markers.");
     expect(errors, Math.abs(Number(render.audio?.duration_seconds) - Number(candidate.duration_seconds)) < 0.01, "render manifest duration must match the audio manifest.");
+    expect(errors, render.audio?.quality?.result === "passed", "render manifest must record a passing audio-quality result.");
+    expect(errors, path.resolve(cwd, render.audio?.quality?.report || "") === qualityReportPath, "render manifest quality-report reference must match the approved candidate.");
   }
-  if (qualityReportPath && fs.existsSync(qualityReportPath)) expect(errors, readJson(qualityReportPath).result === "passed", "audio-quality report must pass.");
+  if (qualityReportPath && fs.existsSync(qualityReportPath)) {
+    const report = readJson(qualityReportPath);
+    expect(errors, report.result === "passed", "audio-quality report must pass.");
+    expect(errors, path.resolve(cwd, report.manifest || "") === renderManifestPath, "audio-quality report must identify the approved render manifest.");
+    expect(errors, path.resolve(cwd, report.output?.path || "") === mp3Path, "audio-quality report must identify the approved MP3.");
+  }
   if (chapterReviewPath && fs.existsSync(chapterReviewPath) && candidateSha256) {
     const review = fs.readFileSync(chapterReviewPath, "utf8");
     expect(errors, review.includes(`name="ppl-audio-sha256" content="${candidateSha256}"`), "chapter-review page must identify the approved MP3 checksum.");
@@ -137,6 +143,9 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
   expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");
   expect(errors, sourceValidation.results?.every((result) => result.link?.valid === true), "all recorded source links must be valid.");
+  const sourceResultsByID = new Map((sourceValidation.results || []).map((result) => [result.source_id, result]));
+  expect(errors, sourceValidation.show_notes_results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded show-notes links must be valid deep citations.");
+  expect(errors, sourceValidation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
   expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && result.claim_assessments?.valid === true), "link validation must retain successful claim-level relevance assessments.");
   expect(errors, episode.source_verification?.verified_at_utc === sourceValidation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
   expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");

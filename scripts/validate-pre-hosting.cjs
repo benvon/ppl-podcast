@@ -79,6 +79,16 @@ function requireFile(episodePath, fileName, errors) {
   return filePath;
 }
 
+function pathWithin(root, candidate) {
+  try {
+    const resolvedRoot = fs.realpathSync(root);
+    const resolvedCandidate = fs.realpathSync(candidate);
+    return resolvedCandidate === resolvedRoot || resolvedCandidate.startsWith(`${resolvedRoot}${path.sep}`);
+  } catch (_) {
+    return false;
+  }
+}
+
 function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   const resolvedEpisode = path.resolve(episodePath);
   const errors = [];
@@ -144,9 +154,15 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, Boolean(renderManifestPath && fs.existsSync(renderManifestPath)), "render manifest is missing from the audio manifest path.");
   expect(errors, Boolean(qualityReportPath && fs.existsSync(qualityReportPath)), "audio-quality report is missing from the audio manifest path.");
   expect(errors, Boolean(chapterReviewPath && fs.existsSync(chapterReviewPath)), "chapter-review page is missing from the audio manifest path.");
+  for (const [label, artifactPath] of [["approved MP3", mp3Path], ["render manifest", renderManifestPath], ["audio-quality report", qualityReportPath], ["chapter-review page", chapterReviewPath]]) {
+    expect(errors, Boolean(artifactPath && pathWithin(cwd, artifactPath)), `${label} must be stored within the repository workspace.`);
+  }
   if (mp3Path && fs.existsSync(mp3Path) && candidateSha256) expect(errors, sha256File(mp3Path) === candidateSha256, "approved MP3 bytes do not match the audio-manifest checksum.");
   if (renderManifestPath && fs.existsSync(renderManifestPath)) {
     const render = readJson(renderManifestPath);
+    const renderScriptPath = typeof render.script === "string" ? path.resolve(cwd, render.script) : null;
+    expect(errors, renderScriptPath === paths["narration.md"], "render manifest script path must identify the current narration derivative.");
+    if (renderScriptPath && fs.existsSync(renderScriptPath)) expect(errors, validSha256(render.script_sha256) === sha256File(renderScriptPath), "render manifest script checksum must match its declared script file.");
     expect(errors, validSha256(render.script_sha256) === sha256File(paths["narration.md"]), "render manifest script checksum must match the current narration derivative.");
     expect(errors, validSha256(render.audio?.sha256) === candidateSha256, "render manifest MP3 checksum must match the audio manifest.");
     expect(errors, validSha256(render.chapters?.audio_sha256) === candidateSha256, "render manifest chapter checksum must match the audio manifest.");
@@ -211,4 +227,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { PreHostingValidationError, durationDisplay, parseArgs, sha256File, validatePreHosting };
+module.exports = { PreHostingValidationError, durationDisplay, parseArgs, pathWithin, sha256File, validatePreHosting };

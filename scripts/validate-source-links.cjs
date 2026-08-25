@@ -17,7 +17,9 @@ const RETRYABLE_HTTP_STATUSES = new Set([408, 429, 502, 503, 504]);
 const RETRY_DELAY_MS = 1_000;
 const MAX_BYTES = 1_000_000;
 const MAX_HASH_BYTES = 32_000_000;
+const MAX_ECFR_BYTES = 2_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
+const PDF_EXTRACTION_TIMEOUT_MS = 20_000;
 const ECFR_TITLES_URL = "https://www.ecfr.gov/api/versioner/v1/titles.json";
 const RELEVANCE_SCHEMA = {
   type: "object",
@@ -182,11 +184,14 @@ function sameUrlIgnoringFragment(left, right) {
   return normalized(left) === normalized(right);
 }
 
-async function readBoundedBody(response, { includeContentHash = false, includeBytes = false } = {}) {
+async function readBoundedBody(response, { includeContentHash = false, includeBytes = false, maxBytes } = {}) {
   const contentLength = Number(response.headers.get("content-length"));
-  const readLimit = includeContentHash || includeBytes ? MAX_HASH_BYTES : MAX_BYTES;
+  const defaultLimit = includeContentHash || includeBytes ? MAX_HASH_BYTES : MAX_BYTES;
+  const readLimit = maxBytes === undefined ? defaultLimit : maxBytes;
+  if (!Number.isSafeInteger(readLimit) || readLimit < 1 || readLimit > defaultLimit) throw new Error("invalid bounded-response limit");
+  const textLimit = Math.min(MAX_BYTES, readLimit);
   if (Number.isFinite(contentLength) && contentLength > readLimit) return { text: "", body: null, truncated: true, content_sha256: null, hash_truncated: includeContentHash };
-  if (!includeContentHash && !includeBytes && Number.isFinite(contentLength) && contentLength > MAX_BYTES) return { text: "", body: null, truncated: true, content_sha256: null, hash_truncated: false };
+  if (!includeContentHash && !includeBytes && Number.isFinite(contentLength) && contentLength > readLimit) return { text: "", body: null, truncated: true, content_sha256: null, hash_truncated: false };
   const reader = response.body && response.body.getReader();
   if (!reader) return { text: "", body: null, truncated: false, content_sha256: null, hash_truncated: false };
   const textChunks = []; const bodyChunks = []; let total = 0; let textTruncated = false;
@@ -201,7 +206,7 @@ async function readBoundedBody(response, { includeContentHash = false, includeBy
     }
     if (hash) hash.update(value);
     if (includeBytes) bodyChunks.push(Buffer.from(value));
-    if (total <= MAX_BYTES) textChunks.push(Buffer.from(value));
+    if (total <= textLimit) textChunks.push(Buffer.from(value));
     else textTruncated = true;
   }
   return { text: Buffer.concat(textChunks).toString("utf8"), body: includeBytes ? Buffer.concat(bodyChunks) : null, truncated: textTruncated, content_sha256: hash ? hash.digest("hex") : null, hash_truncated: false };
@@ -258,7 +263,7 @@ function retryDelay(attempt, retryAfter, signal) {
   });
 }
 
-async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false, includePdfBytes = false, includeBytes = false, signal } = {}) {
+async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false, includePdfBytes = false, includeBytes = false, maxBytes, signal } = {}) {
   let current = assertSafeUrl(sourceUrl);
   const citedAuthorityHost = canonicalHostname(current);
   const redirects = [];
@@ -279,7 +284,7 @@ async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH
         }
         redirects.push(next.toString()); current = next; continue;
       }
-      const { text, body, truncated, content_sha256, hash_truncated } = await readBoundedBody(response, { includeContentHash, includeBytes: includePdfBytes || includeBytes });
+      const { text, body, truncated, content_sha256, hash_truncated } = await readBoundedBody(response, { includeContentHash, includeBytes: includePdfBytes || includeBytes, maxBytes });
       const contentType = (response.headers.get("content-type") || "").split(";")[0].toLowerCase();
       const isHtml = contentType === "text/html" || contentType === "application/xhtml+xml";
       const isText = isHtml || contentType.startsWith("text/") || contentType === "application/json";
@@ -336,30 +341,40 @@ async function loadPdfjs() {
   return pdfjsModule;
 }
 
-async function extractPdfPageText(bytes, pageNumber, { pdfjsLoader = loadPdfjs } = {}) {
+async function extractPdfPageText(bytes, pageNumber, { pdfjsLoader = loadPdfjs, timeoutMs = PDF_EXTRACTION_TIMEOUT_MS, signal } = {}) {
   if (!Buffer.isBuffer(bytes) || !bytes.length) throw new Error("no PDF bytes were available for page extraction");
   if (!Number.isInteger(pageNumber) || pageNumber < 1) throw new Error("PDF page number must be a positive integer");
+  if (!Number.isSafeInteger(timeoutMs) || timeoutMs < 1) throw new Error("PDF extraction timeout must be a positive integer");
+  if (signal?.aborted) throw new Error("cancelled");
   const pdfjs = await pdfjsLoader();
+  if (signal?.aborted) throw new Error("cancelled");
   const standardFontDataUrl = `${path.resolve(path.dirname(require.resolve("pdfjs-dist/legacy/build/pdf.mjs")), "../../standard_fonts")}${path.sep}`;
   const loadingTask = pdfjs.getDocument({ data: new Uint8Array(bytes), disableWorker: true, standardFontDataUrl });
+  let timer; let abort;
+  const interrupted = new Promise((_, reject) => {
+    abort = () => reject(new Error("cancelled"));
+    signal?.addEventListener("abort", abort, { once: true });
+    timer = setTimeout(() => reject(new Error("PDF page extraction timed out")), timeoutMs);
+  });
   try {
-    const document = await loadingTask.promise;
+    const document = await Promise.race([loadingTask.promise, interrupted]);
     if (pageNumber > document.numPages) throw new Error(`PDF has ${document.numPages} pages; cited page ${pageNumber} is unavailable`);
-    const page = await document.getPage(pageNumber);
-    const content = await page.getTextContent();
+    const page = await Promise.race([document.getPage(pageNumber), interrupted]);
+    const content = await Promise.race([page.getTextContent(), interrupted]);
     const text = content.items.map((item) => item.str).join(" ").replace(/\s+/g, " ").trim();
     if (!text) throw new Error(`cited PDF page ${pageNumber} has no extractable text`);
     return text;
   } finally {
-    if (typeof loadingTask.destroy === "function") await loadingTask.destroy();
+    clearTimeout(timer); signal?.removeEventListener("abort", abort);
+    if (typeof loadingTask.destroy === "function") void Promise.resolve(loadingTask.destroy()).catch(() => {});
   }
 }
 
-async function attachCitedPdfPageText(link, citationUrl, { pdfjsLoader } = {}) {
+async function attachCitedPdfPageText(link, citationUrl, { pdfjsLoader, signal } = {}) {
   const pageNumber = citedPdfPageNumber(citationUrl);
   if (!pageNumber || !link.valid) return link;
   try {
-    return { ...link, pdf_page_number: pageNumber, pdf_page_text: await extractPdfPageText(link.pdf_bytes, pageNumber, { pdfjsLoader }) };
+    return { ...link, pdf_page_number: pageNumber, pdf_page_text: await extractPdfPageText(link.pdf_bytes, pageNumber, { pdfjsLoader, signal }) };
   } catch (error) {
     return { ...link, valid: false, errors: [...(link.errors || []), `PDF page extraction failed: ${error.message}`] };
   }
@@ -368,7 +383,7 @@ async function attachCitedPdfPageText(link, citationUrl, { pdfjsLoader } = {}) {
 function fetchCacheKey(sourceUrl, options) {
   const url = new URL(sourceUrl);
   url.hash = "";
-  return JSON.stringify([url.toString(), Boolean(options.includeContentHash), Boolean(options.includeLinks), Boolean(options.includePdfBytes), Boolean(options.includeBytes)]);
+  return JSON.stringify([url.toString(), Boolean(options.includeContentHash), Boolean(options.includeLinks), Boolean(options.includePdfBytes), Boolean(options.includeBytes), options.maxBytes || null]);
 }
 
 async function fetchSourceCached(sourceUrl, options, fetchCache) {
@@ -391,8 +406,9 @@ function isEcfrSource(source) {
 }
 
 async function fetchEcfrTitleStatus(title, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal } = {}) {
-  const raw = await fetchSourceCached(ECFR_TITLES_URL, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, signal }, fetchCache);
+  const raw = await fetchSourceCached(ECFR_TITLES_URL, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, maxBytes: MAX_ECFR_BYTES, signal }, fetchCache);
   const errors = linkResponseErrors(ECFR_TITLES_URL, raw);
+  if (raw.final_url !== ECFR_TITLES_URL || raw.redirects.length) errors.push("eCFR title-status response did not remain at the official metadata endpoint");
   if (raw.content_type !== "application/json") errors.push(`expected JSON content type, received ${raw.content_type || "no content type"}`);
   if (raw.truncated || raw.hash_truncated) errors.push("eCFR title-status response was truncated");
   if (errors.length) throw new Error(`eCFR title-status validation failed: ${errors.join("; ")}`);
@@ -413,8 +429,9 @@ async function verifyEcfrSection(source, { fetchImpl = fetch, timeoutMs = FETCH_
   if (titleStatus.up_to_date_as_of !== target.date) {
     return { link: { valid: false, errors: [`eCFR validation date ${target.date} does not match current title ${target.title} date ${titleStatus.up_to_date_as_of}`], citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", ecfr_title_status: titleStatus } };
   }
-  const raw = await fetchSourceCached(target.validation_url, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, signal }, fetchCache);
+  const raw = await fetchSourceCached(target.validation_url, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, maxBytes: MAX_ECFR_BYTES, signal }, fetchCache);
   const errors = linkResponseErrors(target.validation_url, raw);
+  if (raw.final_url !== target.validation_url || raw.redirects.length) errors.push("eCFR section response did not remain at the requested exact-section endpoint");
   if (raw.content_type !== "application/xml" && raw.content_type !== "text/xml") errors.push(`expected XML content type, received ${raw.content_type || "no content type"}`);
   if (raw.truncated || raw.hash_truncated) errors.push("eCFR XML response was truncated");
   if (errors.length) return { link: { ...raw, valid: false, errors, citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", ecfr_title_status: titleStatus } };
@@ -435,7 +452,7 @@ async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs
   citation.errors = linkResponseErrors(source.validation_url || source.url, citation);
   citation.valid = citation.errors.length === 0;
   if (!source.programmatic_url) {
-    const link = await attachCitedPdfPageText(citation, source.url, { pdfjsLoader });
+    const link = await attachCitedPdfPageText(citation, source.url, { pdfjsLoader, signal });
     return { link, citation_link: link, content_attestation: { valid: true, status: "not_configured" } };
   }
 
@@ -468,7 +485,7 @@ async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs
   };
   const fallbackAvailable = !citation.valid && programmatic.valid && contentAttestation.valid;
   const selected = fallbackAvailable ? { ...programmatic, citation_url: source.url, validation_url: source.programmatic_url, resolved_via: "attested_programmatic_fallback" } : citation;
-  const link = await attachCitedPdfPageText(selected, source.url, { pdfjsLoader });
+  const link = await attachCitedPdfPageText(selected, source.url, { pdfjsLoader, signal });
   return { link, citation_link: citation, programmatic_link: programmatic, attestation_link: attestationLink, content_attestation: contentAttestation };
 }
 
@@ -477,13 +494,14 @@ function responseText(response) {
   throw new Error("Responses API returned no output text.");
 }
 
-async function assessRelevance({ model, source, claims, fetched, signal }) {
+async function assessRelevance({ model, source, claims, fetched, fetchImpl = fetch, signal }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is required for --llm. Load it from your environment; do not place it in a command argument or repository file.");
-  // Exact eCFR XML extraction is authoritative for regulatory citations; a
-  // ledger excerpt is a human review aid, never a replacement for it.
-  const excerpt = fetched.section_text || fetched.pdf_page_text || source.relevance_excerpt || fetched.excerpt;
-  if (!excerpt) return { status: "not_assessed", reason: "The fetched resource has no safely extracted text. Add a concise relevance_excerpt to sources.yaml after reviewing the source." };
+  // The relevance review must assess text extracted from this validation run.
+  // Ledger excerpts are useful research notes, but cannot substitute for the
+  // current cited page, PDF page, or exact eCFR section.
+  const excerpt = fetched.section_text || fetched.pdf_page_text || fetched.excerpt;
+  if (!excerpt) return { status: "not_assessed", reason: "The fetched resource has no safely extracted current text for relevance review." };
   const input = {
     source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt: excerpt.slice(0, 12000) },
     claims: claims.map((claim) => ({ id: claim.id, statement: claim.statement, type: claim.type })),
@@ -500,7 +518,7 @@ async function assessRelevance({ model, source, claims, fetched, signal }) {
   signal?.addEventListener("abort", abort, { once: true });
   const timer = setTimeout(() => controller.abort(), 45_000);
   try {
-    const response = await fetch("https://api.openai.com/v1/responses", { method: "POST", signal: controller.signal, headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    const response = await fetchImpl("https://api.openai.com/v1/responses", { method: "POST", signal: controller.signal, headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" }, body: JSON.stringify(body) });
     if (!response.ok) throw new Error(`Responses API returned HTTP ${response.status}.`);
     const parsed = JSON.parse(await response.text());
     const assessment = JSON.parse(responseText(parsed));

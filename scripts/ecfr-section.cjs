@@ -60,12 +60,23 @@ function sectionNodes(value, results = []) {
   return results;
 }
 
+function assertEcfrMetadata(section, target) {
+  let metadata;
+  try { metadata = JSON.parse(section.hierarchy_metadata); }
+  catch (_) { fail("requested section is missing valid hierarchy metadata"); }
+  const titleAndSection = new RegExp(`/title-${target.title}/section-${target.section.replace(".", "\\.")}$`);
+  if (metadata?.citation !== `${target.title} CFR ${target.section}` || !titleAndSection.test(metadata.path || "")) {
+    fail(`requested section metadata does not identify ${target.title} CFR ${target.section}`);
+  }
+}
+
 function extractEcfrSection(xml, target) {
   if (typeof xml !== "string" || !xml.trim()) fail("XML body is empty");
   if (XMLValidator.validate(xml) !== true) fail("XML body is malformed");
   const document = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "", trimValues: true }).parse(xml);
   const sections = sectionNodes(document).filter((section) => normalizedSection(section.N) === target.section);
   if (sections.length !== 1) fail(sections.length ? `ambiguous requested section ${target.section}` : `requested section ${target.section} is missing`);
+  assertEcfrMetadata(sections[0], target);
   const text = textContent(sections[0]).replace(/\s+/g, " ").trim();
   if (!text) fail("requested section has no extractable text");
   return { text, identity: { title: target.title, part: target.part, section: target.section, date: target.date, section_number: String(sections[0].N).trim() } };

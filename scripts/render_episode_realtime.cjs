@@ -16,6 +16,7 @@ const { spawnSync } = require("child_process");
 const WebSocket = require("ws");
 const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
+const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -61,22 +62,12 @@ const STYLE = {
 
 class RenderError extends Error {}
 
-function sourceValidationInputHashes(episodePath) {
-  const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
-  return {
-    sources: digest(path.join(episodePath, "sources.yaml")),
-    claims: digest(path.join(episodePath, "claim-inventory.yaml")),
-    show_notes: digest(path.join(episodePath, "show-notes.md")),
-    show_notes_manifest: digest(path.join(episodePath, "show-notes-manifest.yaml")),
-  };
-}
-
 function assertSourceRelevanceApproved(scriptPath) {
   const episodePath = path.join(path.dirname(scriptPath), "episode.yaml");
   const validationPath = path.join(path.dirname(scriptPath), "link-validation.yaml");
   if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
   if (!fs.existsSync(validationPath)) throw new RenderError("Source-relevance review must pass before rendering. Run sources:validate --require-llm and record its completion in episode.yaml.");
-  if (fs.existsSync(`${validationPath}.in-progress`)) throw new RenderError("Source-relevance validation is in progress or was interrupted. Complete a fresh validation run before rendering.");
+  if (fs.existsSync(`${validationPath}.in-progress`) || fs.existsSync(`${validationPath}.in-progress.recovering`)) throw new RenderError("Source-relevance validation is in progress, recovering, or was interrupted. Complete a fresh validation run before rendering.");
 
   let episode; let validation;
   try {
@@ -96,9 +87,11 @@ function assertSourceRelevanceApproved(scriptPath) {
   if (!Object.entries(currentInputs).every(([name, digest]) => validation?.input_sha256?.[name] === digest)) {
     throw new RenderError("link-validation.yaml is not bound to the current sources, claims, and show-notes inputs. Run a fresh source-relevance review before rendering.");
   }
+  const coverageErrors = validationCoverageErrors(path.dirname(scriptPath), validation);
+  if (coverageErrors.length) throw new RenderError(coverageErrors[0]);
 
   const sourceResults = Array.isArray(validation.results) ? validation.results : [];
-  if (!sourceResults.length || sourceResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true) || result?.relevance?.status !== "assessed" || ["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.verdict) || ["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.locator_assessment?.verdict) || result?.claim_assessments?.valid !== true)) {
+  if (!sourceResults.length || sourceResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true) || result?.relevance?.status !== "assessed" || result.relevance?.assessment?.verdict !== "supports" || result.relevance?.assessment?.locator_assessment?.verdict !== "supports" || result?.claim_assessments?.valid !== true)) {
     throw new RenderError("link-validation.yaml contains unresolved source-relevance findings; resolve them before rendering.");
   }
 

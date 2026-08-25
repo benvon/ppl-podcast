@@ -8,6 +8,7 @@ const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
+const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
 class PreHostingValidationError extends Error {}
 
@@ -178,15 +179,17 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   }
 
   expect(errors, sourceValidation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
+  expect(errors, !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress`) && !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress.recovering`), "source validation must not be in progress, recovering, or interrupted.");
   expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
   expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");
   expect(errors, sourceValidation.results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded source citations and links must be valid.");
   const sourceResultsByID = new Map((sourceValidation.results || []).map((result) => [result.source_id, result]));
   expect(errors, sourceValidation.show_notes_results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded show-notes links must be valid deep citations.");
   expect(errors, sourceValidation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
-  expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && !["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.verdict) && !["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.locator_assessment?.verdict) && result.claim_assessments?.valid === true), "link validation must retain successful source- and claim-level relevance assessments.");
-  const currentValidationInputHashes = { sources: sha256File(paths["sources.yaml"]), claims: sha256File(paths["claim-inventory.yaml"]), show_notes: sha256File(paths["show-notes.md"]), show_notes_manifest: sha256File(paths["show-notes-manifest.yaml"]) };
+  expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && result.relevance?.assessment?.verdict === "supports" && result.relevance?.assessment?.locator_assessment?.verdict === "supports" && result.claim_assessments?.valid === true), "link validation must retain successful source- and claim-level relevance assessments.");
+  const currentValidationInputHashes = sourceValidationInputHashes(resolvedEpisode);
   expect(errors, Object.entries(currentValidationInputHashes).every(([name, digest]) => sourceValidation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs.");
+  errors.push(...validationCoverageErrors(resolvedEpisode, sourceValidation));
   expect(errors, episode.source_verification?.verified_at_utc === sourceValidation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
   expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");
   expect(errors, !/^## Production notice\b/im.test(showNotes), "show notes must not duplicate the hosting production disclosure.");

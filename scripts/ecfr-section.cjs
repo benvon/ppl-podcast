@@ -4,6 +4,7 @@
 // the versioner XML API.  Keeping this parser separate makes that boundary
 // explicit and keeps HTML/whole-part fallbacks from slipping into validation.
 const { URL } = require("node:url");
+const { XMLParser, XMLValidator } = require("fast-xml-parser");
 
 function fail(message) { throw new Error(`eCFR section validation failed: ${message}`); }
 
@@ -37,26 +38,37 @@ function exactEcfrTarget(source) {
   return { title, part, section, date, validation_url: endpoint.toString() };
 }
 
-function decodeXml(value) {
-  return value.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&(?:amp|lt|gt|quot|apos);/g, (entity) => ({ "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": "\"", "&apos;": "'" }[entity])).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+function normalizedSection(value) { return String(value || "").replace(/[§\s]/g, "").replace(/^section/i, "").trim(); }
+
+function textContent(value) {
+  if (typeof value === "string" || typeof value === "number") return String(value);
+  if (Array.isArray(value)) return value.map(textContent).join(" ");
+  if (!value || typeof value !== "object") return "";
+  return Object.entries(value).filter(([key]) => key !== "N" && key !== "TYPE").map(([, child]) => textContent(child)).join(" ");
 }
 
-function normalizedSection(value) { return String(value || "").replace(/[§\s]/g, "").replace(/^section/i, "").trim(); }
+function sectionNodes(value, results = []) {
+  if (Array.isArray(value)) for (const child of value) sectionNodes(child, results);
+  else if (value && typeof value === "object") {
+    for (const [name, child] of Object.entries(value)) {
+      for (const node of Array.isArray(child) ? child : [child]) {
+        if (name.toUpperCase() === "DIV8" && node && typeof node === "object" && String(node.TYPE || "").toUpperCase() === "SECTION") results.push(node);
+        sectionNodes(node, results);
+      }
+    }
+  }
+  return results;
+}
 
 function extractEcfrSection(xml, target) {
   if (typeof xml !== "string" || !xml.trim()) fail("XML body is empty");
-  const sections = [];
-  const blocks = xml.matchAll(/<SECTION\b[^>]*>([\s\S]*?)<\/SECTION>/gi);
-  for (const block of blocks) {
-    const raw = block[0];
-    const sectionAttributes = raw.match(/^<SECTION\b([^>]*)>/i)?.[1] || "";
-    const number = raw.match(/<(?:SECTNO|SECTIONNO)\b[^>]*>([\s\S]*?)<\/(?:SECTNO|SECTIONNO)>/i)?.[1] || sectionAttributes.match(/\bN\s*=\s*["']([^"']+)["']/i)?.[1];
-    if (normalizedSection(number) === target.section) sections.push({ raw, number: decodeXml(number || "") });
-  }
+  if (XMLValidator.validate(xml) !== true) fail("XML body is malformed");
+  const document = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "", trimValues: true }).parse(xml);
+  const sections = sectionNodes(document).filter((section) => normalizedSection(section.N) === target.section);
   if (sections.length !== 1) fail(sections.length ? `ambiguous requested section ${target.section}` : `requested section ${target.section} is missing`);
-  const text = decodeXml(sections[0].raw);
+  const text = textContent(sections[0]).replace(/\s+/g, " ").trim();
   if (!text) fail("requested section has no extractable text");
-  return { text, identity: { title: target.title, part: target.part, section: target.section, date: target.date, section_number: sections[0].number } };
+  return { text, identity: { title: target.title, part: target.part, section: target.section, date: target.date, section_number: String(sections[0].N).trim() } };
 }
 
 module.exports = { exactEcfrTarget, extractEcfrSection };

@@ -107,6 +107,11 @@ tuned for a constrained environment with `--http-concurrency` (1–8),
 `--http-per-origin` (1–4), and `--llm-concurrency` (1–4). Progress is emitted
 as safe NDJSON lifecycle records on stderr while stdout remains human-readable;
 use `--heartbeat-seconds` (1–60) to adjust its default ten-second heartbeat.
+Only one validation process may own an episode report at a time. If a process
+crashes, its lock deliberately blocks rendering and a new run. After confirming
+that the recorded same-host process is no longer running, recover it explicitly
+with `--recover-stale-lock`; the command will not replace a lock owned by a
+live or different-host process.
 
 The release gate also requires a complete two-way mapping between every claim
 and its ledger source, and a separate LLM assessment for every mapped claim.

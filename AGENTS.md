@@ -26,7 +26,11 @@
    source-led research pass and complete first draft. It must produce the
    source ledger, claim inventory, research packet, source-tagged
    `master-script.md`, derived `narration.md`, show notes, metadata, and
-   production log before review.
+   production log before review. Before script approval, have a separate agent
+   that did not draft the lesson review the `master-script.md` for complete and
+   correct grammar, complete thoughts, coherent within-episode callbacks and
+   call-forwards, and first-listen comprehension. Record its material findings
+   and resolutions in `production-log.md`.
 5. In `master-script.md`, preserve the standard opening order: `Opening`,
    `Disclaimer`, `Podcast introduction`, then `What the ACS is asking you to
    connect`. The first Announcer line repeats that heading. Write spoken prose

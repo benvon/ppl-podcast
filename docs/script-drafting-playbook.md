@@ -83,6 +83,19 @@ Teach the decision first, then the small set of terms and conditions needed to r
 
 When useful, acknowledge the boundary once in plain language: the lesson gives the private-pilot study framework, while the full regulation includes additional cases and exceptions. Do not repeat that caveat section by section.
 
+## Run an independent spoken-script review
+
+After the source-led drafting agent completes a proposed script, assign a second agent that did not write that draft to review the source-tagged `master-script.md` in order. This is an editorial review, separate from source relevance and factual-claim validation.
+
+The reviewing agent must check that:
+
+- grammar is complete and correct;
+- every thought is complete, with no missing subject, referent, transition, or conclusion;
+- each callback and call-forward within the episode points to an idea that has already been taught or is specifically introduced later; and
+- the lesson can be understood on a first listen, rather than relying on the listener to reread a dense sentence or infer an unstated connection.
+
+The reviewer should return findings tied to a section and passage, distinguishing required fixes from optional wording suggestions. The drafting agent or lead editor resolves the required findings before script approval. Record the review, material changes, and any consciously deferred suggestion in the episode `production-log.md`.
+
 ## Make the practical takeaway concrete
 
 An operational takeaway must identify both the changing aerodynamic or system demand and the pilot response it supports. A statement such as “this changes the picture” or “be more mindful” is not enough. Say what is changing, why it matters, and the bounded habit it should prompt—such as avoiding abrupt added demand, preserving coordination, checking the approved aircraft information, or choosing a lower-demand option early.
@@ -121,6 +134,7 @@ Read the draft aloud or listen to a short render and check each section for:
 - **Referents:** Does every “it,” “this,” “that relationship,” or “those conditions” have a clear noun nearby?
 - **Causal chain:** Does the passage explain why one fact follows from the previous one?
 - **Learner readiness:** Has the Instructor supplied the facts needed for the Learner’s question or summary?
+- **Independent review:** Has a second, non-drafting agent checked grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension?
 - **Practical bridge:** Does the passage connect the general model to the POH/AFM or other specific source without turning into a procedure?
 - **ACS scope:** Does every regulatory detail support a named ACS outcome or change the typical private-pilot decision? If not, should it become a show-notes link instead?
 - **Scope:** Are caveats concise and non-repetitive?

@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -397,6 +397,34 @@ test("eCFR validation fallback must stay on the official versioner endpoint", ()
     validation_url: "https://example.com/current.xml?part=61",
   });
   assert.match(invalid.join("\n"), /ecfr\.gov/);
+});
+
+test("eCFR derives an exact-section XML endpoint from legacy ledgers", async () => {
+  const source = { url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61" };
+  let requested;
+  const result = await verifyEcfrSection(source, { fetchImpl: (url) => {
+    requested = String(url);
+    return Promise.resolve(new Response("<ROOT><SECTION><SECTNO>§ 61.105</SECTNO><P>Knowledge areas.</P></SECTION></ROOT>", { status: 200, headers: { "content-type": "application/xml" } }));
+  } });
+  assert.equal(requested, "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61&section=61.105");
+  assert.equal(result.link.valid, true);
+  assert.equal(result.link.resolved_via, "ecfr_exact_section_xml");
+  assert.deepEqual(result.link.section_identity, { title: "14", part: "61", section: "61.105", date: "2026-08-10", section_number: "§ 61.105" });
+  assert.match(result.link.section_text, /Knowledge areas/);
+});
+
+test("eCFR fails closed on unsafe target mismatch, wrong media type, and missing or ambiguous XML sections", async () => {
+  const source = { url: "https://www.ecfr.gov/current/title-14/part-61/section-61.105", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=99&section=61.105&unsafe=yes" };
+  assert.match(validationTargetErrors(source).join("\n"), /does not match|unsupported/);
+  const validSource = { ...source, validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61" };
+  for (const response of [
+    new Response("<SECTION><SECTNO>§ 61.105</SECTNO></SECTION>", { status: 200, headers: { "content-type": "text/html" } }),
+    new Response("<SECTION><SECTNO>§ 61.104</SECTNO></SECTION>", { status: 200, headers: { "content-type": "application/xml" } }),
+    new Response("<SECTION><SECTNO>§ 61.105</SECTNO></SECTION><SECTION><SECTNO>§ 61.105</SECTNO></SECTION>", { status: 200, headers: { "content-type": "application/xml" } }),
+  ]) {
+    const result = await verifyEcfrSection(validSource, { fetchImpl: () => Promise.resolve(response.clone()) });
+    assert.equal(result.link.valid, false);
+  }
 });
 
 test("programmatic FAA fallback requires an FAA-page attestation and reviewed digest", () => {

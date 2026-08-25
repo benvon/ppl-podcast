@@ -31,7 +31,7 @@ const REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in
 const LEGACY_REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
 const DISCLAIMER_SECTION = "disclaimer";
 const LEGACY_DISCLAIMER_SECTION = "required production notice";
-const PRONUNCIATION_TRANSFORMS = Object.freeze({ AI: "artificial intelligence", PHAK: "pea hack" });
+const PRONUNCIATION_TRANSFORMS = Object.freeze({ AI: "artificial intelligence", PHAK: "pea hack", MEL: "M. E. L" });
 const DEFAULTS = {
   model: "gpt-realtime-2.1",
   instructorVoice: "marin",
@@ -150,7 +150,7 @@ function ensureDir(directory) { fs.mkdirSync(directory, { recursive: true }); }
 function writeAtomic(target, body) { const temporary = `${target}.${process.pid}.tmp`; fs.writeFileSync(temporary, body); fs.renameSync(temporary, target); }
 function cleanText(value) { return value.replace(/\*\*/g, "").replace(/\s+/g, " ").trim(); }
 function spokenText(value) {
-  return value.replace(/\bAI\b/g, PRONUNCIATION_TRANSFORMS.AI).replace(/\bPHAK\b/g, PRONUNCIATION_TRANSFORMS.PHAK);
+  return value.replace(/\bAI\b/g, PRONUNCIATION_TRANSFORMS.AI).replace(/\bPHAK\b/g, PRONUNCIATION_TRANSFORMS.PHAK).replace(/\bMEL\b/g, PRONUNCIATION_TRANSFORMS.MEL);
 }
 
 function splitText(text, maxWords) {

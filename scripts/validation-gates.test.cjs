@@ -739,7 +739,8 @@ test("realtime renderer requires completed source-relevance review before render
 });
 
 test("realtime renderer expands approved abbreviations only in spoken input", () => {
-  assert.equal(spokenText("The PHAK says AI-assisted production is reviewed."), "The pea hack says artificial intelligence-assisted production is reviewed.");
+  assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pea hack says artificial intelligence-assisted production is reviewed by an M. E. L.");
+  assert.equal(spokenText("The no-MEL path differs from MMEL guidance."), "The no-M. E. L path differs from MMEL guidance.");
   assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pea hack-like examples differ from PHAKS.");
 });
 

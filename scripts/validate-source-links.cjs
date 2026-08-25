@@ -184,7 +184,7 @@ function sameUrlIgnoringFragment(left, right) {
   return normalized(left) === normalized(right);
 }
 
-async function readBoundedBody(response, { includeContentHash = false, includeBytes = false, maxBytes } = {}) {
+async function readBoundedBody(response, { includeContentHash = false, includeBytes = false, maxBytes, signal } = {}) {
   const contentLength = Number(response.headers.get("content-length"));
   const defaultLimit = includeContentHash || includeBytes ? MAX_HASH_BYTES : MAX_BYTES;
   const readLimit = maxBytes === undefined ? defaultLimit : maxBytes;
@@ -196,18 +196,29 @@ async function readBoundedBody(response, { includeContentHash = false, includeBy
   if (!reader) return { text: "", body: null, truncated: false, content_sha256: null, hash_truncated: false };
   const textChunks = []; const bodyChunks = []; let total = 0; let textTruncated = false;
   const hash = includeContentHash ? crypto.createHash("sha256") : null;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    total += value.length;
-    if (total > readLimit) {
-      await reader.cancel();
-      return { text: Buffer.concat(textChunks).toString("utf8"), body: null, truncated: true, content_sha256: null, hash_truncated: includeContentHash };
+  if (signal?.aborted) throw new DOMException("aborted", "AbortError");
+  let rejectWhenAborted;
+  const aborted = new Promise((_, reject) => { rejectWhenAborted = () => reject(new DOMException("aborted", "AbortError")); });
+  signal?.addEventListener("abort", rejectWhenAborted, { once: true });
+  try {
+    while (true) {
+      const { done, value } = await Promise.race([reader.read(), aborted]);
+      if (done) break;
+      total += value.length;
+      if (total > readLimit) {
+        await reader.cancel();
+        return { text: Buffer.concat(textChunks).toString("utf8"), body: null, truncated: true, content_sha256: null, hash_truncated: includeContentHash };
+      }
+      if (hash) hash.update(value);
+      if (includeBytes) bodyChunks.push(Buffer.from(value));
+      if (total <= textLimit) textChunks.push(Buffer.from(value));
+      else textTruncated = true;
     }
-    if (hash) hash.update(value);
-    if (includeBytes) bodyChunks.push(Buffer.from(value));
-    if (total <= textLimit) textChunks.push(Buffer.from(value));
-    else textTruncated = true;
+  } catch (error) {
+    if (signal?.aborted) void reader.cancel().catch(() => {});
+    throw error;
+  } finally {
+    signal?.removeEventListener("abort", rejectWhenAborted);
   }
   return { text: Buffer.concat(textChunks).toString("utf8"), body: includeBytes ? Buffer.concat(bodyChunks) : null, truncated: textTruncated, content_sha256: hash ? hash.digest("hex") : null, hash_truncated: false };
 }
@@ -284,7 +295,7 @@ async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH
         }
         redirects.push(next.toString()); current = next; continue;
       }
-      const { text, body, truncated, content_sha256, hash_truncated } = await readBoundedBody(response, { includeContentHash, includeBytes: includePdfBytes || includeBytes, maxBytes });
+      const { text, body, truncated, content_sha256, hash_truncated } = await readBoundedBody(response, { includeContentHash, includeBytes: includePdfBytes || includeBytes, maxBytes, signal: controller.signal });
       const contentType = (response.headers.get("content-type") || "").split(";")[0].toLowerCase();
       const isHtml = contentType === "text/html" || contentType === "application/xhtml+xml";
       const isText = isHtml || contentType.startsWith("text/") || contentType === "application/json";

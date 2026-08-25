@@ -415,6 +415,14 @@ test("source fetch timeout remains active while the response body is read", asyn
   await assert.rejects(fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl, timeoutMs: 10 }), /AbortError|aborted/);
 });
 
+test("source fetch timeout terminates a response body that ignores the abort signal", async () => {
+  const fetchImpl = () => {
+    const stream = new ReadableStream({ start() {} });
+    return Promise.resolve(new Response(stream, { status: 200, headers: { "content-type": "text/html" } }));
+  };
+  await assert.rejects(fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl, timeoutMs: 10 }), /AbortError|aborted/);
+});
+
 test("source fetch retries a transient aborted request", async () => {
   let calls = 0;
   const fetchImpl = () => {

@@ -1,13 +1,13 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-25T15:52:03.307Z
+checked_at_utc: 2026-08-25T17:27:24.178Z
 sources_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/sources.yaml
 claims_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/claim-inventory.yaml
 show_notes_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes.md
 show_notes_manifest_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes-manifest.yaml
 input_sha256:
-  sources: 61c458df14fdaed44d839ec64b650a855fe9c4707155934042faea2a9161202c
-  claims: 1b4a864eee032131e59dbaf724f72c8123618ebe5d62be7951955c8efdf17692
+  sources: d8c251c3d2f17d48c4c58ffb80b83b56f94dec2104ef6430c6c4369550a121d9
+  claims: 9f9f315ad8fd28bb66bf2a0c5e563c3e3b94f8286b4e7d540cf0cc96c39c3590
   show_notes: 9046604a3004f3ed0ed46a7647ce99898435cab7d320ff5ac337ee45612c38d6
   show_notes_manifest: 39f3ff77121c81476c0cf4ccf86d6a487f088ceade16d25c97dee4bbafe1e9bd
 llm_requested: true
@@ -636,7 +636,7 @@ show_notes_results:
 results:
   - source_id: acs-airworthiness-requirements
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-25T15:49:53.091Z
+    checked_at_utc: 2026-08-25T17:25:10.720Z
     linked_claim_ids:
       - acs-airworthiness-scope
     missing_claim_ids: []
@@ -671,32 +671,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page contains Task B, Airworthiness Requirements, and
-          explicitly lists all subjects in the claim under PA.I.B.K1 through
-          PA.I.B.K3a.
+        rationale: "The cited ACS page contains Task B, Airworthiness Requirements, and
+          explicitly lists each topic in the claim under PA.I.B.K1 through K3:
+          certificate locations and expiration dates; inspections and logbook
+          documentation; ADs and SAIBs; special flight permits; owner/operator
+          and PIC responsibilities; pilot-performed preventive maintenance; and
+          equipment requirements including operation with inoperative
+          equipment."
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 10 and includes the referenced
-            Airworthiness Requirements material. Although the locator says “p.
-            2,” that corresponds to the ACS’s printed page number shown in the
-            excerpt; the supplied PDF page is page 10.
+          rationale: The locator identifies PA.I.B.K1–K3 on page 2, and the supplied
+            excerpt from cited PDF page 10 is labeled page 2 and includes those
+            exact standards.
         claim_assessments:
           - claim_id: acs-airworthiness-scope
             verdict: supports
-            rationale: PA.I.B.K1a–e cover certificate location/expiration, inspections and
-              logbooks, ADs/SAIBs, special flight permits, and
-              owner/operator/PIC responsibilities. PA.I.B.K2 covers
-              pilot-performed preventive maintenance, and PA.I.B.K3a covers
-              flying with inoperative equipment.
+            rationale: The excerpt expressly enumerates all of the claimed
+              airworthiness-task subject areas in PA.I.B.K1a–e, PA.I.B.K2, and
+              PA.I.B.K3a.
       usage:
         input_tokens: 957
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 208
+        output_tokens: 252
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1165
+          reasoning_tokens: 40
+        total_tokens: 1209
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -705,7 +706,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: acs-airworthiness-skills
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-25T15:49:53.110Z
+    checked_at_utc: 2026-08-25T17:25:10.742Z
     linked_claim_ids:
       - acs-scenario-skills
     missing_claim_ids: []
@@ -740,35 +741,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited ACS page explicitly lists PA.I.B.K4 on standard and special
+        rationale: The excerpt directly lists PA.I.B.K4 on standard and special
           airworthiness certificates and associated operational limitations, and
-          PA.I.B.S1–S3 on locating/describing airworthiness and registration
-          information, determining airworthiness in an evaluator scenario, and
-          applying procedures for inoperative equipment in an evaluator
-          scenario.
+          PA.I.B.S1–S3 covering location/description of airworthiness and
+          registration information, determining airworthiness in an evaluator
+          scenario, and applying procedures for inoperative equipment in an
+          evaluator scenario.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 11 and contains the referenced ACS
-            elements PA.I.B.K4, PA.I.B.R1, and PA.I.B.S1–S3 under Area of
-            Operation I, Task B, Airworthiness Requirements.
+          rationale: The cited PDF page excerpt contains PA.I.B.K4, PA.I.B.S1, PA.I.B.S2,
+            and PA.I.B.S3 exactly as identified by the locator.
         claim_assessments:
           - claim_id: acs-scenario-skills
             verdict: supports
-            rationale: PA.I.B.K4 explicitly covers standard and special airworthiness
-              certificates. PA.I.B.S1 requires locating and describing airplane
-              airworthiness and registration information; S2 requires
-              determining that the airplane is airworthy in the evaluator's
-              scenario; and S3 requires applying appropriate procedures for
-              operating with inoperative equipment in the evaluator's scenario.
+            rationale: The claim accurately summarizes the listed knowledge and skill
+              elements. The excerpt explicitly states the scenario context for
+              S2 and S3.
       usage:
         input_tokens: 1075
         input_tokens_details:
-          cache_write_tokens: 1072
-          cached_tokens: 0
-        output_tokens: 236
+          cache_write_tokens: 0
+          cached_tokens: 1072
+        output_tokens: 183
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1311
+        total_tokens: 1258
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -778,7 +775,7 @@ results:
   - source_id: phak-manual-types
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:53.779Z
+    checked_at_utc: 2026-08-25T17:25:11.265Z
     linked_claim_ids:
       - owner-manual-not-afm
       - afm-poh-aircraft-specific
@@ -814,40 +811,37 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly distinguishes the owner/information
-          manual from the AFM and POH, including FAA approval status, currency,
-          aircraft specificity, and the relationship between POH and
-          FAA-approved AFM information. It also states that each AFM/POH is
-          unique to a particular aircraft and includes aircraft-specific
-          information.
+        rationale: The cited PDF page directly distinguishes the generic aircraft
+          owner/information manual from the FAA-approved AFM and explains the
+          POH’s relationship to FAA-approved AFM information and
+          aircraft-specific manual content.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator is PDF page 2 (printed page 9-2), and the excerpt
-            on that exact page contains the relevant discussion under the
-            AFM/POH material and preliminary pages.
+          rationale: The cited PDF page is page 9-2, and the excerpt from that exact page
+            contains the relevant discussion under “Aircraft Owner/Information
+            Manual, AFM, and POH” and “Preliminary Pages.”
         claim_assessments:
           - claim_id: owner-manual-not-afm
             verdict: supports
-            rationale: The excerpt expressly says the aircraft owner/information manual is
-              not FAA approved, is not specific to an individual aircraft, and
-              is not kept current.
+            rationale: The excerpt states that the aircraft owner/information manual is not
+              FAA approved, is not specific to an individual aircraft, is not
+              kept current, and cannot substitute for the AFM/POH.
           - claim_id: afm-poh-aircraft-specific
             verdict: supports
-            rationale: The excerpt expressly states that an AFM is developed by the
-              manufacturer and approved by the FAA, and that a POH contains
-              FAA-approved AFM information. It further states that each AFM/POH
-              is unique and contains specific information about a particular
-              aircraft, including installed equipment and weight-and-balance
-              information.
+            rationale: The excerpt states that an AFM is developed by the manufacturer and
+              approved by the FAA. It also states that a POH contains
+              FAA-approved AFM information, and that each AFM/POH is unique and
+              contains information specific to a particular aircraft, including
+              installed equipment and weight-and-balance information.
       usage:
         input_tokens: 1513
         input_tokens_details:
-          cache_write_tokens: 1510
-          cached_tokens: 0
-        output_tokens: 275
+          cache_write_tokens: 0
+          cached_tokens: 1510
+        output_tokens: 263
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1788
+        total_tokens: 1776
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -857,7 +851,7 @@ results:
   - source_id: phak-poh-contents
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:53.783Z
+    checked_at_utc: 2026-08-25T17:25:11.268Z
     linked_claim_ids:
       - poh-operating-sections
     missing_claim_ids: []
@@ -892,32 +886,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly describes POH Section 3 (Emergency
-          Procedures), Section 4 (Normal Procedures), Section 5 (Performance),
-          Section 6 (Weight and Balance/Equipment List), and Section 7 (Systems
-          Description). It also states that placards depict aircraft limitations
-          and contain information directly bearing on safe aircraft operation.
+        rationale: "The cited PDF page directly describes POH Sections 3 through 7:
+          Emergency Procedures, Normal Procedures, Performance, Weight and
+          Balance/Equipment List, and Systems Description. It also states that
+          placards contain information directly bearing on safe operation and
+          are used to depict aircraft limitations; the page additionally
+          discusses flight limits."
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 9, POH Sections 3–7, page 9-4, and the
-            excerpt is from cited PDF page 4 (printed page 9-4). That page
-            contains the specified sections and the discussion of placards.
+          rationale: The locator specifies Chapter 9, POH Sections 3–7, page 9-4. The
+            excerpt is from PDF page 4 and contains the relevant Section 3–7
+            descriptions, plus the discussion of flight limits and placards.
         claim_assessments:
           - claim_id: poh-operating-sections
             verdict: supports
-            rationale: "The excerpt expressly supports every listed category: emergency
-              procedures, normal procedures, performance,
-              weight-and-balance/equipment-list information, systems
-              descriptions, and placards conveying limitations."
+            rationale: The excerpt explicitly identifies the content of Sections 3–7 and
+              states that placards depict aircraft limitations and contain
+              safety-relevant operating information.
       usage:
         input_tokens: 1138
         input_tokens_details:
-          cache_write_tokens: 1135
-          cached_tokens: 0
-        output_tokens: 213
+          cache_write_tokens: 0
+          cached_tokens: 1135
+        output_tokens: 201
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1351
+        total_tokens: 1339
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -927,7 +921,7 @@ results:
   - source_id: phak-poh-supplements
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:55.181Z
+    checked_at_utc: 2026-08-25T17:25:11.965Z
     linked_claim_ids:
       - supplements-part-of-picture
     missing_claim_ids: []
@@ -962,32 +956,30 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that Section 9, Supplements, contains
+        rationale: The excerpt explicitly states that Supplements (Section 9) contains
           information necessary to safely and efficiently operate the aircraft
           when equipped with optional systems and equipment, and that the
           appropriate information is inserted into the flight manual when the
           equipment is installed.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 9-5 and contains the heading “Supplements
-            (Section 9)” along with the statements asserted in the claim.
+          rationale: The cited PDF page is page 9-5 and includes the heading “Supplements
+            (Section 9)” and the exact supporting text.
         claim_assessments:
           - claim_id: supplements-part-of-picture
             verdict: supports
-            rationale: The claim accurately reflects the excerpt. The only minor wording
-              difference is that the excerpt says information is necessary to
-              operate the aircraft safely and efficiently when equipped with
-              optional systems/equipment; it also explicitly says appropriate
-              information is inserted into the flight manual at installation.
+            rationale: The claim accurately reflects the excerpt’s statements about optional
+              systems/equipment and insertion of applicable information into the
+              flight manual at installation.
       usage:
         input_tokens: 798
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 187
+        output_tokens: 159
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 985
+        total_tokens: 957
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -997,7 +989,7 @@ results:
   - source_id: phak-documents-airworthiness
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:55.187Z
+    checked_at_utc: 2026-08-25T17:25:11.972Z
     linked_claim_ids:
       - airworthiness-two-part-model
     missing_claim_ids: []
@@ -1032,34 +1024,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt states that an Airworthiness Certificate is issued after
-          the aircraft is inspected, found to meet 14 CFR part 21 requirements,
-          and found to be in condition for safe operation. It further explains
-          under “Authority and Basis for Issuance” that the certificate
-          indicates the aircraft conforms to its type certificate and is
-          considered in condition for safe operation at the time of inspection
-          and issuance. This directly supports the claimed two-part model, with
-          “approved type design” represented by conformity to the type
-          certificate.
+        rationale: The excerpt expressly states that an Airworthiness Certificate is
+          issued after inspection when the aircraft meets 14 CFR part 21
+          requirements and is in condition for safe operation. Its explanation
+          of Item 5 further states that the certificate indicates the aircraft
+          conforms to its type certificate and is considered in condition for
+          safe operation at the time of inspection and issuance.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page contains the Airworthiness Certificate discussion
-            and Figure 9-9, including the specific language on conformity to the
-            type certificate and condition for safe operation.
+          rationale: The cited PDF page is page 9-7, and the excerpt from that page
+            contains the Airworthiness Certificate discussion and Item 5
+            explanation directly supporting the claim.
         claim_assessments:
           - claim_id: airworthiness-two-part-model
             verdict: supports
-            rationale: "The source explicitly identifies both elements: conformity to the
-              aircraft’s type certificate and condition for safe operation."
+            rationale: The excerpt directly identifies both conformity to the type
+              certificate and condition for safe operation as findings reflected
+              at inspection and certificate issuance.
       usage:
-        input_tokens: 1312
+        input_tokens: 1321
         input_tokens_details:
-          cache_write_tokens: 1309
+          cache_write_tokens: 1318
           cached_tokens: 0
-        output_tokens: 213
+        output_tokens: 184
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1525
+        total_tokens: 1505
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1069,7 +1059,7 @@ results:
   - source_id: phak-inspections-records
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:55.212Z
+    checked_at_utc: 2026-08-25T17:25:11.998Z
     linked_claim_ids:
       - inspection-system-not-mnemonic
     missing_claim_ids: []
@@ -1104,30 +1094,30 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that inspection intervals depend on the
+        rationale: The excerpt expressly states that inspection intervals depend on the
           type of operations and that some aircraft use an inspection system
           based on calendar time, time in service, number of system operations,
           or any combination of these measures.
         locator_assessment:
           verdict: supports
           rationale: The cited PDF page is page 9-8, and the supplied excerpt from that
-            page contains the relevant 'Aircraft Inspections' passage.
+            page contains the relevant 'Aircraft Inspections' discussion.
         claim_assessments:
           - claim_id: inspection-system-not-mnemonic
             verdict: supports
-            rationale: "The passage directly supports both portions of the claim: intervals
-              depend on the type of operation, and inspection systems can be
-              based on calendar time, time in service, system-operation counts,
-              or combinations."
+            rationale: "The claim accurately restates the excerpt: 'The interval depends
+              upon the type of operations' and inspection systems may be based
+              on 'calendar time, time in service, number of system operations,
+              or any combination of these.'"
       usage:
         input_tokens: 1398
         input_tokens_details:
-          cache_write_tokens: 1395
-          cached_tokens: 0
-        output_tokens: 170
+          cache_write_tokens: 0
+          cached_tokens: 1395
+        output_tokens: 175
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1568
+        total_tokens: 1573
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1137,7 +1127,7 @@ results:
   - source_id: phak-preflight-inspection
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:55.224Z
+    checked_at_utc: 2026-08-25T17:25:12.012Z
     linked_claim_ids:
       - preflight-condition-check
     missing_claim_ids: []
@@ -1172,24 +1162,25 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The excerpt explicitly states: “The preflight inspection is a
-          thorough and systematic means by which a pilot determines if an
-          aircraft is airworthy and in condition for safe operation.” This
-          directly matches the claim."
+        rationale: The excerpt explicitly defines a preflight inspection as “a thorough
+          and systematic means by which a pilot determines if an aircraft is
+          airworthy and in condition for safe operation,” which directly matches
+          the claim.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 9-9, and the excerpt from that exact page
-            contains the “Preflight Inspections” heading and the quoted
-            definition.
+          rationale: The cited PDF page is page 9-9, and the supplied excerpt from that
+            exact page contains the “Preflight Inspections” heading and the
+            quoted definition.
         claim_assessments:
           - claim_id: preflight-condition-check
             verdict: supports
-            rationale: The claim is directly and nearly verbatim supported by the excerpt.
+            rationale: The claim is directly stated in the excerpt with no material
+              differences.
       usage:
         input_tokens: 1395
         input_tokens_details:
-          cache_write_tokens: 1392
-          cached_tokens: 0
+          cache_write_tokens: 0
+          cached_tokens: 1392
         output_tokens: 144
         output_tokens_details:
           reasoning_tokens: 0
@@ -1203,7 +1194,7 @@ results:
   - source_id: phak-inoperative-preventive
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:55.228Z
+    checked_at_utc: 2026-08-25T17:25:12.016Z
     linked_claim_ids:
       - mel-aircraft-specific-guidance
     missing_claim_ids: []
@@ -1238,31 +1229,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt states that, after an LOA is issued, the operator
-          develops procedures and the resulting MEL is for the specific operator
-          and N-numbered aircraft. It further states that the FAA considers an
-          approved MEL to be an STC issued to an aircraft by serial number and
-          registration number.
+        rationale: The excerpt explicitly states that an approved MEL is considered an
+          STC issued to an aircraft by serial number and registration number. It
+          also explains that, upon an operator's written request, the local FSDO
+          may issue an MMEL along with an LOA, after which the operator develops
+          procedures and the resulting documents become the operator's MEL.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 9-10, and the supplied excerpt from that
-            exact page contains the relevant MEL, LOA, serial-number, and
-            registration-number statements.
+          rationale: The cited PDF page is page 9-10, and the excerpt from that exact page
+            contains the relevant MEL, LOA, serial-number, and
+            registration-number language.
         claim_assessments:
           - claim_id: mel-aircraft-specific-guidance
             verdict: supports
-            rationale: The excerpt directly says an approved MEL is issued to an aircraft by
-              serial number and registration number, and describes issuance of
-              an FAA LOA in connection with the MEL process.
+            rationale: "The page states: 'The FAA considers an approved MEL to be a
+              supplemental type certificate (STC) issued to an aircraft by
+              serial number and registration number.' It also states that the
+              local FSDO may issue an MMEL 'along with an LOA' and that the MEL,
+              LOA, preamble, and operator-developed procedures document must be
+              carried aboard."
       usage:
         input_tokens: 1421
         input_tokens_details:
-          cache_write_tokens: 1418
-          cached_tokens: 0
-        output_tokens: 187
+          cache_write_tokens: 0
+          cached_tokens: 1418
+        output_tokens: 237
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1608
+        total_tokens: 1658
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1272,7 +1266,7 @@ results:
   - source_id: phak-preventive-maintenance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:55.240Z
+    checked_at_utc: 2026-08-25T17:25:12.030Z
     linked_claim_ids:
       - preventive-list-controls
       - preventive-examples-bounded
@@ -1308,35 +1302,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page lists preventive-maintenance work and states that
-          it is limited to work not involving complex assembly operations. It
-          also expressly includes spark-plug replacement/cleaning and cleaning
-          or replacing fuel and oil strainers or filter elements.
+        rationale: The cited PDF page states that the covered work is limited to
+          operations that do not involve complex assembly operations and
+          provides specific examples, including spark-plug work and fuel/oil
+          strainer or filter cleaning or replacement.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator includes pp. 9-10–9-11, and the supplied excerpt is
-            from cited PDF page 11. That page directly contains the relevant
-            limitation and examples.
+          rationale: The excerpt was extracted from cited PDF page 11, which is within the
+            stated pp. 9-10–9-11 locator and contains the relevant
+            preventive-maintenance limitations and examples.
         claim_assessments:
           - claim_id: preventive-list-controls
             verdict: supports
-            rationale: The excerpt states that the work is 'limited to work that does not
-              involve complex assembly operations' and then supplies the listed
-              operations.
+            rationale: The excerpt says the work is limited to operations that do not
+              involve complex assembly operations and then enumerates the
+              permitted types of work.
           - claim_id: preventive-examples-bounded
             verdict: supports
-            rationale: The excerpt specifically lists 'replacing or cleaning spark plugs and
-              setting of spark plug gap clearance' and 'cleaning or replacing
-              fuel and oil strainers or filter elements.'
+            rationale: The excerpt specifically lists replacing or cleaning spark plugs and
+              setting spark-plug gap clearance, plus cleaning or replacing fuel
+              and oil strainers or filter elements.
       usage:
         input_tokens: 1337
         input_tokens_details:
-          cache_write_tokens: 1334
-          cached_tokens: 0
-        output_tokens: 222
+          cache_write_tokens: 0
+          cached_tokens: 1334
+        output_tokens: 335
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1559
+          reasoning_tokens: 119
+        total_tokens: 1672
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1346,7 +1340,7 @@ results:
   - source_id: phak-ads-owner-responsibility
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-25T15:49:55.243Z
+    checked_at_utc: 2026-08-25T17:25:12.034Z
     linked_claim_ids:
       - ad-regulatory-status
     missing_claim_ids: []
@@ -1381,30 +1375,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt states that ADs are used to notify owners and others of
-          unsafe conditions and specify operating conditions, and explicitly
-          says, “ADs are regulatory and shall be complied with unless a specific
-          exemption is granted.” This supports their legally enforceable status
-          and safety purpose.
+        rationale: The excerpt states that ADs are used to notify owners and other
+          interested persons of unsafe conditions in aircraft, engines,
+          propellers, or appliances and to specify operating conditions. It
+          explicitly says, “ADs are regulatory and shall be complied with unless
+          a specific exemption is granted,” which supports their legally
+          enforceable status.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 9-12 and contains the “Airworthiness
-            Directives (ADs)” section directly addressing the claim.
+          rationale: The cited PDF page 9-12 contains the “Airworthiness Directives (ADs)”
+            section and directly includes the relevant statements.
         claim_assessments:
           - claim_id: ad-regulatory-status
             verdict: supports
-            rationale: The excerpt explains that ADs require correction of unsafe conditions
-              and explicitly identifies them as regulatory requirements that
-              must be complied with absent a specific exemption.
+            rationale: The excerpt explains that FAA ADs require corrective action for
+              unsafe conditions and expressly states that ADs are regulatory and
+              must be complied with unless specifically exempted.
       usage:
         input_tokens: 1428
         input_tokens_details:
-          cache_write_tokens: 1425
-          cached_tokens: 0
-        output_tokens: 215
+          cache_write_tokens: 0
+          cached_tokens: 1425
+        output_tokens: 180
         output_tokens_details:
-          reasoning_tokens: 45
-        total_tokens: 1643
+          reasoning_tokens: 0
+        total_tokens: 1608
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1413,7 +1408,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-mosaic-addendum
     title: Pilot's Handbook of Aeronautical Knowledge Addendum (MOSAIC)
-    checked_at_utc: 2026-08-25T15:49:55.249Z
+    checked_at_utc: 2026-08-25T17:25:12.040Z
     linked_claim_ids:
       - mosaic-scope-boundary
     missing_claim_ids: []
@@ -1448,33 +1443,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited page expressly states that, in Chapter 9, the addendum
-          revises the paragraph on page 9-8 regarding Special Airworthiness
-          Certificates, including that light-sport category aircraft receive a
-          pink special airworthiness certificate. It also expressly revises the
-          paragraph on page 9-12 regarding preventive maintenance, including
-          privileges for a pilot holding a sport pilot certificate.
+        rationale: "The cited excerpt is from page 5 of the October 20, 2025 PHAK
+          addendum and expressly identifies two Chapter 9 revisions: one
+          revising the Aircraft Documents: Airworthiness Certificate section
+          regarding Special Airworthiness Certificates, including light-sport
+          category aircraft, and another revising the Preventive Maintenance
+          section regarding preventive-maintenance authority for sport pilots."
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 5 and specifically identifies the
-            Chapter 9 revisions on pages 9-8 and 9-12, matching the locator’s
-            description of Chapter 9 revisions.
+          rationale: The locator identifies Chapter 9 revisions on page 5 of the addendum,
+            and the supplied excerpt from cited PDF page 5 contains both
+            specified Chapter 9 revision paragraphs.
         claim_assessments:
           - claim_id: mosaic-scope-boundary
             verdict: supports
-            rationale: "The excerpt directly supports both components: a Chapter 9 revision
-              addressing special airworthiness certificates for light-sport
-              category aircraft, and a Chapter 9 revision addressing sport-pilot
-              preventive-maintenance privileges."
+            rationale: The excerpt explicitly states that Chapter 9's Airworthiness
+              Certificate section is revised to say light-sport category
+              aircraft receive a pink special airworthiness certificate, and
+              that Chapter 9's Preventive Maintenance section is revised to
+              address when a sport pilot may perform preventive maintenance.
       usage:
         input_tokens: 1061
         input_tokens_details:
-          cache_write_tokens: 1058
-          cached_tokens: 0
-        output_tokens: 214
+          cache_write_tokens: 0
+          cached_tokens: 1058
+        output_tokens: 222
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1275
+        total_tokens: 1283
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1483,7 +1479,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-203-certificates
     title: "14 CFR § 91.203 — Civil aircraft: Certifications required"
-    checked_at_utc: 2026-08-25T15:49:53.110Z
+    checked_at_utc: 2026-08-25T17:25:10.742Z
     linked_claim_ids:
       - aircraft-certificates-aboard
       - airworthiness-certificate-display
@@ -1531,28 +1527,28 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states the required onboard airworthiness and
-          registration documentation in § 91.203(a) and the display requirement
+          registration documentation in § 91.203(a), and the display requirement
           for the airworthiness certificate in § 91.203(b).
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.203(a)–(b), exactly covers both claims.
+          rationale: The cited locator, § 91.203(a)–(b), precisely covers both claims.
         claim_assessments:
           - claim_id: aircraft-certificates-aboard
             verdict: supports
             rationale: Section 91.203(a)(1) requires an appropriate and current
               airworthiness certificate within the aircraft, and § 91.203(a)(2)
-              requires an effective U.S. registration certificate issued to its
+              requires an effective U.S. registration certificate issued to the
               owner, subject to listed alternatives and exceptions.
           - claim_id: airworthiness-certificate-display
             verdict: supports
-            rationale: Section 91.203(b) states that the required airworthiness certificate
-              must be displayed at the cabin or cockpit entrance where it is
+            rationale: Section 91.203(b) expressly requires the airworthiness certificate to
+              be displayed at the cabin or cockpit entrance so that it is
               legible to passengers or crew.
       usage:
         input_tokens: 1125
         input_tokens_details:
-          cache_write_tokens: 1122
-          cached_tokens: 0
+          cache_write_tokens: 0
+          cached_tokens: 1122
         output_tokens: 222
         output_tokens_details:
           reasoning_tokens: 0
@@ -1565,7 +1561,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-47-40-registration-duration
     title: 14 CFR § 47.40 — Registration expiration and renewal
-    checked_at_utc: 2026-08-25T15:49:53.111Z
+    checked_at_utc: 2026-08-25T17:25:10.743Z
     linked_claim_ids:
       - registration-seven-years
     missing_claim_ids: []
@@ -1612,29 +1608,29 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states that an initial Certificate of Aircraft
-          Registration expires seven years after the last day of the month in
-          which it is issued, and that a holder may apply for renewal during the
-          six months preceding its expiration date.
+          Registration expires seven years after the last day of its issue month
+          and that a holder may apply for renewal during the six months
+          preceding expiration.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 47.40(a)–(b), precisely covers the
-            initial-registration expiration rule in paragraph (a) and the
-            renewal timing rule in paragraph (b).
+          rationale: The cited locator, § 47.40(a)–(b), precisely contains the expiration
+            rule in subsection (a) and renewal-window rule in subsection (b).
         claim_assessments:
           - claim_id: registration-seven-years
             verdict: supports
-            rationale: Paragraph (a) provides the seven-year expiration period measured from
-              the last day of the issue month; paragraph (b) permits renewal
-              application during the six months before expiration.
+            rationale: Section 47.40(a) states the certificate expires seven years after the
+              last day of the month in which it is issued. Section 47.40(b)
+              permits renewal application during the six months preceding its
+              expiration date.
       usage:
         input_tokens: 708
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 174
+        output_tokens: 175
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 882
+        total_tokens: 883
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1644,7 +1640,7 @@ results:
   - source_id: cfr-91-9-flight-manual
     title: 14 CFR § 91.9 — Civil aircraft flight manual, marking, and placard
       requirements
-    checked_at_utc: 2026-08-25T15:49:53.259Z
+    checked_at_utc: 2026-08-25T17:25:10.913Z
     linked_claim_ids:
       - operating-limitations-control
       - current-manual-material-available
@@ -1691,37 +1687,37 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states the operating-limitations compliance
-          requirement in § 91.9(a) and the availability requirements for current
-          approved flight manuals, approved manual material, markings, and
-          placards in § 91.9(b).
+        rationale: The excerpt directly contains the operative language of 14 CFR §
+          91.9(a) and (b), which addresses compliance with approved operating
+          limitations and the required availability of current approved
+          flight-manual material, markings, and placards.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.9(a) and (b), precisely contains the language
-            relevant to both claims.
+          rationale: The cited locator, § 91.9(a) and (b), exactly matches the excerpted
+            paragraphs that support both claims.
         claim_assessments:
           - claim_id: operating-limitations-control
             verdict: supports
-            rationale: Section 91.9(a) provides that, except as specified in paragraph (d),
-              no person may operate a civil aircraft without complying with
-              operating limitations in the approved AFM or Rotorcraft Flight
-              Manual, markings, placards, or limitations otherwise prescribed by
+            rationale: Section 91.9(a) states that, except as provided in paragraph (d), no
+              person may operate a civil aircraft without complying with
+              operating limitations in the approved Airplane or Rotorcraft
+              Flight Manual, markings, placards, or as otherwise prescribed by
               the country-of-registry certificating authority.
           - claim_id: current-manual-material-available
             verdict: supports
             rationale: Section 91.9(b) specifies that a U.S.-registered civil aircraft may
-              not be operated unless the applicable current approved AFM/RFM,
-              approved manual material, markings, placards, or a permitted
-              combination is available in the aircraft.
+              not be operated unless the applicable current approved flight
+              manual, approved manual material, markings, placards, or the
+              specified combination is available in the aircraft.
       usage:
         input_tokens: 918
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 258
+        output_tokens: 259
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1176
+        total_tokens: 1177
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1730,7 +1726,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-21-181-airworthiness-duration
     title: 14 CFR § 21.181 — Duration
-    checked_at_utc: 2026-08-25T15:49:53.261Z
+    checked_at_utc: 2026-08-25T17:25:15.911Z
     linked_claim_ids:
       - airworthiness-certificate-continuing-effect
     missing_claim_ids: []
@@ -1776,34 +1772,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states that, unless sooner surrendered,
-          suspended, revoked, or assigned another FAA termination date,
-          airworthiness certificates remain effective while the aircraft is
-          registered in the United States. It further states that standard
-          airworthiness certificates remain effective as long as maintenance,
-          preventive maintenance, and alterations are performed in accordance
-          with parts 43 and 91.
+        rationale: The excerpt directly states in § 21.181(a) that, unless sooner
+          surrendered, suspended, revoked, or assigned another FAA-established
+          termination date, airworthiness certificates remain effective while
+          the aircraft is registered in the United States. Section 21.181(a)(1)
+          specifically provides that standard airworthiness certificates remain
+          effective as long as maintenance, preventive maintenance, and
+          alterations are performed in accordance with parts 43 and 91.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 21.181(a)–(a)(1), precisely contains both the
-            general duration conditions and the specific continuing-effect
-            condition for standard airworthiness certificates.
+          rationale: The cited locator, § 21.181(a)–(a)(1), precisely contains the
+            governing duration rule and the specific condition applicable to
+            standard airworthiness certificates.
         claim_assessments:
           - claim_id: airworthiness-certificate-continuing-effect
             verdict: supports
-            rationale: Section 21.181(a) establishes the registration and FAA-action
-              conditions, and § 21.181(a)(1) expressly applies the parts 43 and
-              91 maintenance, preventive-maintenance, and alteration condition
-              to standard airworthiness certificates.
+            rationale: The claim accurately combines the conditions stated in § 21.181(a)
+              and (a)(1) for the continuing effectiveness of a standard
+              airworthiness certificate.
       usage:
         input_tokens: 1412
         input_tokens_details:
-          cache_write_tokens: 1409
-          cached_tokens: 0
-        output_tokens: 216
+          cache_write_tokens: 0
+          cached_tokens: 1409
+        output_tokens: 214
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1628
+        total_tokens: 1626
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1812,7 +1807,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-7-pic-airworthiness
     title: 14 CFR § 91.7 — Civil aircraft airworthiness
-    checked_at_utc: 2026-08-25T15:49:58.260Z
+    checked_at_utc: 2026-08-25T17:25:20.906Z
     linked_claim_ids:
       - pic-safe-flight-determination
       - discontinue-unairworthy-flight
@@ -1859,34 +1854,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt from 14 CFR § 91.7(b) expressly states both that the
-          pilot in command is responsible for determining whether the aircraft
-          is in condition for safe flight and that the PIC shall discontinue the
-          flight when specified unairworthy conditions occur.
+        rationale: The excerpt from 14 CFR § 91.7(a)–(b) expressly states both the PIC's
+          responsibility to determine whether the aircraft is in condition for
+          safe flight and the PIC's duty to discontinue the flight when
+          specified unairworthy conditions occur.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.7(a)–(b), encompasses the quoted regulatory
-            text. Both claims specifically appear in § 91.7(b).
+          rationale: The cited locator, § 91.7(a)–(b), exactly encompasses the quoted
+            provisions.
         claim_assessments:
           - claim_id: pic-safe-flight-determination
             verdict: supports
-            rationale: "Section 91.7(b) states: “The pilot in command of a civil aircraft is
-              responsible for determining whether that aircraft is in condition
-              for safe flight.”"
+            rationale: "Section 91.7(b) explicitly states: “The pilot in command of a civil
+              aircraft is responsible for determining whether that aircraft is
+              in condition for safe flight.”"
           - claim_id: discontinue-unairworthy-flight
             verdict: supports
-            rationale: Section 91.7(b) states that the PIC “shall discontinue the flight
-              when unairworthy mechanical, electrical, or structural conditions
-              occur.”
+            rationale: Section 91.7(b) explicitly states that the PIC “shall discontinue the
+              flight when unairworthy mechanical, electrical, or structural
+              conditions occur.”
       usage:
         input_tokens: 573
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 225
+        output_tokens: 216
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 798
+        total_tokens: 789
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1895,7 +1890,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-403-owner-responsibility
     title: 14 CFR § 91.403 — General
-    checked_at_utc: 2026-08-25T15:50:03.506Z
+    checked_at_utc: 2026-08-25T17:25:25.911Z
     linked_claim_ids:
       - owner-primary-responsibility
       - maintenance-authority-limited
@@ -1942,35 +1937,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states both the owner/operator’s primary
-          responsibility for maintaining airworthiness and the regulatory
-          limitation on who may perform maintenance, preventive maintenance, or
-          alterations.
+        rationale: The excerpt directly states both the owner/operator's primary
+          responsibility for airworthy maintenance and the restriction that
+          maintenance, preventive maintenance, and alterations be performed only
+          as prescribed by the applicable regulations, including part 43.
         locator_assessment:
           verdict: supports
-          rationale: "The locator § 91.403(a)–(b) precisely covers the two cited
-            provisions: paragraph (a) supports the first claim and paragraph (b)
-            supports the second."
+          rationale: The cited locator, § 91.403(a)–(b), exactly covers the two relevant
+            provisions in the excerpt.
         claim_assessments:
           - claim_id: owner-primary-responsibility
             verdict: supports
-            rationale: Section 91.403(a) states that the owner or operator is primarily
-              responsible for maintaining the aircraft in an airworthy
+            rationale: Section 91.403(a) states verbatim that the owner or operator is
+              primarily responsible for maintaining the aircraft in an airworthy
               condition, including compliance with part 39.
           - claim_id: maintenance-authority-limited
             verdict: supports
             rationale: Section 91.403(b) provides that no person may perform maintenance,
-              preventive maintenance, or alterations except as prescribed by
-              that subpart and other applicable regulations, including part 43.
+              preventive maintenance, or alterations except as prescribed in the
+              subpart and other applicable regulations, including part 43. This
+              supports the claim's authorization limitation.
       usage:
         input_tokens: 790
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 216
+        output_tokens: 224
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1006
+        total_tokens: 1014
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1979,7 +1974,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-405-required-maintenance
     title: 14 CFR § 91.405 — Maintenance required
-    checked_at_utc: 2026-08-25T15:50:03.551Z
+    checked_at_utc: 2026-08-25T17:25:30.909Z
     linked_claim_ids:
       - owner-discrepancy-record-duty
     missing_claim_ids: []
@@ -2026,31 +2021,32 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states each owner or operator must have the
-          aircraft inspected, repair discrepancies between required inspections
-          except as provided in § 91.405(c), ensure appropriate
-          maintenance-record entries indicating approval for return to service,
-          and ensure placards are installed for listed discrepancies involving
-          inoperative instruments or equipment.
+          aircraft inspected as prescribed; repair discrepancies between
+          required inspections except as provided in § 91.405(c); ensure
+          appropriate maintenance-record entries showing approval for return to
+          service; and ensure a required placard is installed when listed
+          discrepancies include inoperative instruments or equipment.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.405(a)–(d), exactly covers all elements of
-            the claim.
+          rationale: The cited locator, § 91.405(a)–(d), exactly covers all four duties
+            summarized in the claim.
         claim_assessments:
           - claim_id: owner-discrepancy-record-duty
             verdict: supports
-            rationale: Paragraphs (a), (b), and (d) expressly support the stated inspection,
-              discrepancy-repair, maintenance-entry, and placarding duties. The
-              exception concerning permitted inoperative equipment is accurately
-              qualified by the claim's wording.
+            rationale: Paragraphs (a), (b), and (d) expressly support the inspection,
+              repair, maintenance-entry, and placarding portions of the claim.
+              The claim's qualification that items may be permitted to remain
+              inoperative is consistent with the exceptions and
+              inoperative-equipment provisions in paragraphs (a) and (c).
       usage:
         input_tokens: 651
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 189
+        output_tokens: 212
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 840
+        total_tokens: 863
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2059,7 +2055,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-409-inspections
     title: 14 CFR § 91.409 — Inspections
-    checked_at_utc: 2026-08-25T15:50:08.662Z
+    checked_at_utc: 2026-08-25T17:25:30.954Z
     linked_claim_ids:
       - annual-inspection-clock
       - hundred-hour-trigger
@@ -2108,45 +2104,43 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states the annual-inspection requirement in §
-          91.409(a), the conditions that trigger the 100-hour inspection
-          requirement in § 91.409(b), and the limited 10-hour en-route overage
-          provision in § 91.409(b).
+          91.409(a) and the 100-hour inspection applicability and limited
+          en-route overage in § 91.409(b).
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.409(a)–(b), contains the operative language
-            for all three claims.
+          rationale: The locator § 91.409(a)–(b) precisely contains the provisions
+            relevant to all three claims.
         claim_assessments:
           - claim_id: annual-inspection-clock
             verdict: supports
-            rationale: Section 91.409(a) states that, except as provided in paragraph (c),
-              an aircraft may not be operated unless within the preceding 12
-              calendar months it has had an annual inspection and approval for
-              return to service, or an inspection for issuance of an
-              airworthiness certificate. The claim's qualification for an
-              authorized alternative accommodates those exceptions and
-              alternatives.
+            rationale: Section 91.409(a) generally prohibits operation unless, within the
+              preceding 12 calendar months, the aircraft has had an annual
+              inspection and return-to-service approval. It also expressly
+              recognizes exceptions and an alternative inspection for issuance
+              of an airworthiness certificate, consistent with the claim's
+              qualifier.
           - claim_id: hundred-hour-trigger
             verdict: supports
-            rationale: Section 91.409(b) applies the 100-hour requirement to aircraft
-              carrying a non-crewmember for hire and to flight instruction for
-              hire in an aircraft provided by that instructor. It does not
-              impose a 100-hour inspection merely because a privately used
-              aircraft accumulates 100 hours outside those stated conditions.
+            rationale: Section 91.409(b) limits the 100-hour requirement to aircraft
+              carrying non-crewmembers for hire and to flight instruction for
+              hire in an aircraft provided by the instructor. It does not
+              establish a general 100-hour inspection trigger based solely on
+              personal-use time accumulation.
           - claim_id: hundred-hour-ferry-overage
             verdict: supports
             rationale: Section 91.409(b) expressly permits exceeding the 100-hour limit by
               no more than 10 hours while en route to a place where the
-              inspection can be done, and requires that excess time be included
-              when computing the next 100 hours.
+              inspection can be done, and requires the excess time to be
+              included in calculating the next 100 hours.
       usage:
         input_tokens: 2496
         input_tokens_details:
-          cache_write_tokens: 2493
-          cached_tokens: 0
-        output_tokens: 503
+          cache_write_tokens: 0
+          cached_tokens: 2493
+        output_tokens: 422
         output_tokens_details:
-          reasoning_tokens: 144
-        total_tokens: 2999
+          reasoning_tokens: 99
+        total_tokens: 2918
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2155,7 +2149,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-207-elt
     title: 14 CFR § 91.207 — Emergency locator transmitters
-    checked_at_utc: 2026-08-25T15:50:13.254Z
+    checked_at_utc: 2026-08-25T17:25:35.919Z
     linked_claim_ids:
       - elt-inspection-and-battery
     missing_claim_ids: []
@@ -2201,30 +2195,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt expressly states in § 91.207(d) that each required ELT
-          must be inspected within 12 calendar months after the last inspection.
-          Separately, § 91.207(c) requires battery replacement or recharge after
-          more than 1 cumulative hour of transmitter use or when 50 percent of
-          the manufacturer-established useful life or charge life has expired.
+        rationale: "The excerpt directly states that required ELTs must be inspected
+          within 12 calendar months after the last inspection and separately
+          lists battery replacement/recharge triggers: more than 1 cumulative
+          hour of use or expiration of 50 percent of useful life (or useful
+          charge life for rechargeable batteries)."
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.207(c) and (d), directly contains the battery
-            and inspection provisions asserted in the claim.
+          rationale: The cited locator, § 91.207(c) and (d), precisely contains the
+            battery requirements in paragraph (c) and the inspection requirement
+            in paragraph (d).
         claim_assessments:
           - claim_id: elt-inspection-and-battery
             verdict: supports
-            rationale: Section 91.207(d) provides the 12-calendar-month inspection interval,
-              and § 91.207(c) provides distinct battery replacement/recharge
-              triggers.
+            rationale: Section 91.207(d) requires inspection within 12 calendar months after
+              the last inspection, and § 91.207(c) establishes separate battery
+              replacement or recharge triggers.
       usage:
         input_tokens: 1553
         input_tokens_details:
-          cache_write_tokens: 1550
-          cached_tokens: 0
-        output_tokens: 192
+          cache_write_tokens: 0
+          cached_tokens: 1550
+        output_tokens: 209
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1745
+          reasoning_tokens: 20
+        total_tokens: 1762
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2234,7 +2229,7 @@ results:
   - source_id: cfr-91-411-altimeter
     title: 14 CFR § 91.411 — Altimeter system and altitude reporting equipment tests
       and inspections
-    checked_at_utc: 2026-08-25T15:50:18.257Z
+    checked_at_utc: 2026-08-25T17:25:35.971Z
     linked_claim_ids:
       - altimeter-ifr-inspection
     missing_claim_ids: []
@@ -2280,36 +2275,37 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt from § 91.411(a) directly states that no person may
-          operate an airplane or helicopter in controlled airspace under IFR
-          unless, within the preceding 24 calendar months, the static pressure
-          system, altimeter instrument, and automatic pressure altitude
-          reporting system have been tested and inspected. It also specifies
-          additional testing requirements after opening/closing the static
-          system and after certain installation or maintenance affecting the
-          altitude-reporting/transponder system.
+        rationale: The excerpt directly states that no person may operate an airplane or
+          helicopter in controlled airspace under IFR unless, within the
+          preceding 24 calendar months, each static pressure system, altimeter
+          instrument, and automatic pressure altitude reporting system has been
+          tested, inspected, and found compliant with the applicable Part 43
+          appendices. It also states additional testing and inspection
+          requirements after opening and closing the static system (other than
+          specified valve use) and after certain installation or maintenance
+          affecting the automatic pressure altitude reporting system or
+          transponder.
         locator_assessment:
           verdict: supports
-          rationale: The locator, § 91.411(a), precisely identifies the subsection
-            containing the 24-calendar-month requirement and the additional
-            post-work testing requirements.
+          rationale: The cited locator, § 91.411(a), is the exact subsection containing
+            the 24-calendar-month requirement and the additional post-work
+            requirements.
         claim_assessments:
           - claim_id: altimeter-ifr-inspection
             verdict: supports
-            rationale: Section 91.411(a)(1) supports the 24-calendar-month
-              test-and-inspection requirement for all three listed systems for
-              IFR in controlled airspace. Sections 91.411(a)(2) and (a)(3)
-              support the statement that additional rules apply following
-              specified work.
+            rationale: Section 91.411(a)(1) supports the 24-calendar-month requirement for
+              the listed systems for IFR operation in controlled airspace; §
+              91.411(a)(2) and (a)(3) support the stated additional requirements
+              following specified work.
       usage:
         input_tokens: 975
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 234
+        output_tokens: 243
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1209
+        total_tokens: 1218
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2318,7 +2314,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-413-transponder
     title: 14 CFR § 91.413 — ATC transponder tests and inspections
-    checked_at_utc: 2026-08-25T15:50:23.256Z
+    checked_at_utc: 2026-08-25T17:25:40.926Z
     linked_claim_ids:
       - transponder-inspection
     missing_claim_ids: []
@@ -2365,33 +2361,32 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states that an ATC transponder specified in §
-          91.215(a) may not be used unless it has been tested, inspected, and
-          found compliant within the preceding 24 calendar months. It also
-          states that, after installation or maintenance that could introduce
-          data-correspondence error, the integrated system must be tested and
-          inspected under part 43 appendix E(c).
+          91.215(a) may not be used unless it has, within the preceding 24
+          calendar months, been tested, inspected, and found compliant with Part
+          43 appendix F. It also directly requires testing and inspection
+          following installation or maintenance where data-correspondence error
+          could be introduced.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.413(a)–(b), precisely contains both the
+          rationale: The cited locator, § 91.413(a)–(b), precisely covers the
             24-calendar-month requirement in paragraph (a) and the
             post-installation/maintenance testing requirement in paragraph (b).
         claim_assessments:
           - claim_id: transponder-inspection
             verdict: supports
-            rationale: Paragraph (a) expressly applies the 24-calendar-month
-              test-and-inspection requirement to transponders specified in §
-              91.215(a). Paragraph (b) expressly requires further testing and
-              inspection following installation or maintenance where data
-              correspondence error could be introduced.
+            rationale: Paragraph (a) supports the 24-calendar-month inspection requirement
+              for transponders specified in § 91.215(a), and paragraph (b)
+              supports the additional testing requirement after installation or
+              maintenance that could introduce data-correspondence error.
       usage:
         input_tokens: 832
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 231
+        output_tokens: 221
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1063
+        total_tokens: 1053
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2400,7 +2395,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-417-records
     title: 14 CFR § 91.417 — Maintenance records
-    checked_at_utc: 2026-08-25T15:50:28.254Z
+    checked_at_utc: 2026-08-25T17:25:45.911Z
     linked_claim_ids:
       - records-work-history
       - records-continuing-status
@@ -2448,43 +2443,44 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly sets out the maintenance-record content required
-          by 14 CFR § 91.417(a), including work-history entries,
-          continuing-status records, and applicable AD-status details.
+        rationale: The excerpt directly states the maintenance-record content and
+          retention requirements in 14 CFR § 91.417(a)–(b), including
+          work-history entries, continuing-status records, and AD-status
+          details.
         locator_assessment:
           verdict: supports
-          rationale: The locator § 91.417(a)–(b) covers the cited requirements. All three
-            claims are supported by § 91.417(a); paragraph (b) additionally
-            addresses retention periods.
+          rationale: The locator identifies § 91.417(a)–(b), and the excerpt contains
+            those exact subsections. All three claims are supported within §
+            91.417(a), principally paragraphs (a)(1) and (a)(2).
         claim_assessments:
           - claim_id: records-work-history
             verdict: supports
-            rationale: Section 91.417(a)(1) requires records of maintenance, preventive
-              maintenance, alterations, and specified inspections. It requires a
-              description or acceptable-data reference, completion date, and the
-              signature and certificate number of the person approving return to
-              service.
+            rationale: "Section 91.417(a)(1) requires records of maintenance, preventive
+              maintenance, alterations, and specified inspections. It also
+              specifies required content: a description or acceptable-data
+              reference, completion date, and the signature and certificate
+              number of the person approving return to service."
           - claim_id: records-continuing-status
             verdict: supports
-            rationale: Section 91.417(a)(2) specifically requires records of total time in
-              service, life-limited-part status, time since required overhauls,
-              current inspection status, current AD status, and certain
-              major-alteration forms.
+            rationale: Section 91.417(a)(2) expressly requires records of total time in
+              service, life-limited-part status, time since specified-time
+              overhaul, current inspection status, applicable AD status, and
+              certain major-alteration forms.
           - claim_id: ad-status-record
             verdict: supports
-            rationale: Section 91.417(a)(2)(v) expressly requires current status of
+            rationale: Section 91.417(a)(2)(v) expressly requires the current status of
               applicable ADs, the method of compliance, AD number and revision
-              date, and, for recurring actions, the time and date the next
+              date, and, for recurring action, the time and date when the next
               action is required.
       usage:
         input_tokens: 1300
         input_tokens_details:
-          cache_write_tokens: 1297
-          cached_tokens: 0
-        output_tokens: 311
+          cache_write_tokens: 0
+          cached_tokens: 1297
+        output_tokens: 330
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1611
+        total_tokens: 1630
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2494,7 +2490,7 @@ results:
   - source_id: cfr-91-205-vfr-equipment
     title: 14 CFR § 91.205 — Powered civil aircraft instrument and equipment
       requirements
-    checked_at_utc: 2026-08-25T15:50:28.296Z
+    checked_at_utc: 2026-08-25T17:25:50.912Z
     linked_claim_ids:
       - vfr-day-night-required-equipment
     missing_claim_ids: []
@@ -2540,41 +2536,40 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states the applicability to powered civil
-          aircraft with standard U.S. airworthiness certificates and lists the
-          day-VFR requirements in § 91.205(b), including the
-          retractable-landing-gear position indicator and the conditional
-          flotation gear and pyrotechnic signaling device requirement for
-          specified for-hire overwater operations. It also states in § 91.205(c)
-          that night VFR requires the paragraph (b) equipment plus position
-          lights, an anticollision light system, electrical energy, spare fuses,
-          and an electric landing light when operated for hire.
+        rationale: The excerpt directly contains § 91.205(a) through (c). It states the
+          applicability to powered civil aircraft with standard U.S.
+          airworthiness certificates, enumerates the day-VFR requirements in
+          paragraph (b), including the conditional retractable-landing-gear
+          indicator and specified for-hire overwater
+          flotation/pyrotechnic-signaling requirements, and states in paragraph
+          (c) that night VFR requires the paragraph (b) items plus position
+          lights, an anticollision light system, specified electrical capacity
+          and fuses, and an electric landing light when operated for hire.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator specifically identifies § 91.205(b) for day VFR and
-            § 91.205(c) for night VFR, and both provisions appear in the
-            supplied excerpt.
+          rationale: The locator identifies § 91.205(b) (VFR day) and § 91.205(c) (VFR
+            night), and the excerpt includes both exact provisions.
         claim_assessments:
           - claim_id: vfr-day-night-required-equipment
             verdict: supports
-            rationale: § 91.205(b)(10) requires a landing-gear position indicator if the
-              aircraft has retractable landing gear; § 91.205(b)(12) specifies
-              readily available approved flotation gear and, except for part 121
-              operations, a pyrotechnic signaling device for for-hire overwater
-              operations beyond power-off gliding distance from shore. Section
-              91.205(c)(1) incorporates the day-VFR items for night VFR, while §
-              91.205(c)(2)-(6) adds lighting and electrical requirements,
-              including one electric landing light for aircraft operated for
+            rationale: Paragraph (b) lists the required day-VFR instruments and equipment
+              and expressly includes a landing-gear position indicator for
+              retractable gear and, for for-hire operations over water beyond
+              power-off gliding distance from shore, approved flotation gear and
+              a pyrotechnic signaling device (subject to the stated part 121
+              exception). Paragraph (c) requires the paragraph (b) equipment for
+              night VFR, plus specified lighting and electrical equipment,
+              including an electric landing light for aircraft operated for
               hire.
       usage:
         input_tokens: 2433
         input_tokens_details:
-          cache_write_tokens: 2430
-          cached_tokens: 0
-        output_tokens: 333
+          cache_write_tokens: 0
+          cached_tokens: 2430
+        output_tokens: 311
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 2766
+        total_tokens: 2744
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2583,7 +2578,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-91-213-inoperative
     title: 14 CFR § 91.213 — Inoperative instruments and equipment
-    checked_at_utc: 2026-08-25T15:50:33.261Z
+    checked_at_utc: 2026-08-25T17:25:55.915Z
     linked_claim_ids:
       - mel-aircraft-loa-pathway
       - inoperative-no-mel-eligibility
@@ -2634,60 +2629,54 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt reproduces § 91.213(a) and (d), including the MEL/LOA
-          requirements and each stated condition for operating with inoperative
-          instruments or equipment without an approved MEL.
+        rationale: The excerpt reproduces § 91.213(a) and (d) and expressly contains
+          each cited requirement in the claims.
         locator_assessment:
           verdict: supports
-          rationale: The locator, § 91.213(a) and (d), directly contains all of the cited
-            requirements. Paragraph (d)(1)–(4) supports the no-MEL claims, while
-            paragraph (a)(1), (a)(2), and (a)(5) supports the MEL/LOA claim.
+          rationale: The locator identifies § 91.213(a) and (d), and the excerpt includes
+            the relevant text from both paragraphs.
         claim_assessments:
           - claim_id: mel-aircraft-loa-pathway
             verdict: supports
             rationale: Paragraph (a)(1) requires an approved MEL for the aircraft; (a)(2)
-              requires a letter of authorization issued by the responsible
-              Flight Standards office and carried within the aircraft; and
-              (a)(5) requires operation under all applicable conditions and
-              limitations in the MEL and authorizing letter.
+              requires the aircraft to have the Flight Standards office letter
+              of authorization; and (a)(5) requires operation under all
+              applicable conditions and limitations in the MEL and authorization
+              letter.
           - claim_id: inoperative-no-mel-eligibility
             verdict: supports
-            rationale: Paragraph (d)(1) limits the no-approved-MEL provision to the listed
-              aircraft categories and expressly distinguishes certain categories
-              based on whether a Master Minimum Equipment List has or has not
-              been developed.
+            rationale: Paragraph (d)(1) limits this pathway to the listed aircraft
+              categories and distinguishes eligibility based on whether an MMEL
+              has or has not been developed.
           - claim_id: inoperative-required-item-checks
             verdict: supports
-            rationale: Paragraph (d)(2) states that the inoperative equipment must not be
-              VFR-day type-certification-required equipment, equipment required
-              by the aircraft equipment list or KOEL, equipment required by §
-              91.205 or another Part 91 rule for the operation, or equipment
-              required operable by an AD.
+            rationale: "Paragraph (d)(2)(i)–(iv) lists all four stated exclusions: VFR-day
+              type-certification requirements, equipment-list/KOEL requirements,
+              § 91.205 or other Part 91 requirements for the operation, and AD
+              operational requirements."
           - claim_id: inoperative-removal
             verdict: supports
-            rationale: Paragraph (d)(3)(i) requires that a removed item have its cockpit
-              control placarded and that the maintenance be recorded in
-              accordance with § 43.9.
+            rationale: Paragraph (d)(3)(i) states that the item may be removed, the cockpit
+              control placarded, and maintenance recorded under § 43.9.
           - claim_id: inoperative-deactivation
             verdict: supports
-            rationale: Paragraph (d)(3)(ii) requires deactivated equipment to be placarded
-              “Inoperative” and states that, when deactivation involves
-              maintenance, it must be performed and recorded under part 43.
+            rationale: Paragraph (d)(3)(ii) requires deactivation and an “Inoperative”
+              placard, and requires maintenance involved in deactivation to be
+              accomplished and recorded under Part 43.
           - claim_id: inoperative-no-hazard
             verdict: supports
-            rationale: Paragraph (d)(4) requires a determination by a certificated and
-              appropriately rated pilot or appropriately rated maintenance
-              person that the inoperative instrument or equipment does not
-              constitute a hazard to the aircraft.
+            rationale: Paragraph (d)(4) requires a determination by a properly certificated
+              and appropriately rated pilot or maintenance person that the
+              inoperative item does not constitute a hazard to the aircraft.
       usage:
-        input_tokens: 1771
+        input_tokens: 1776
         input_tokens_details:
-          cache_write_tokens: 1768
-          cached_tokens: 0
-        output_tokens: 530
+          cache_write_tokens: 0
+          cached_tokens: 1773
+        output_tokens: 444
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 2301
+        total_tokens: 2220
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2697,7 +2686,7 @@ results:
   - source_id: ac-91-67a-non-mel
     title: AC 91-67A — Minimum Equipment Requirements for General Aviation
       Operations Under 14 CFR Part 91
-    checked_at_utc: 2026-08-25T15:49:55.254Z
+    checked_at_utc: 2026-08-25T17:25:12.047Z
     linked_claim_ids:
       - inoperative-decision-not-one-question
     missing_claim_ids: []
@@ -2732,31 +2721,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly summarizes § 91.213(d) operations without
-          an MEL. It states that required instruments/equipment must be
-          operative, the required maintenance action must occur, and a no-hazard
+        rationale: The cited page expressly states that, for operators without an MEL
+          using § 91.213(d), required instruments/equipment must be operative,
+          the required maintenance action must have occurred, and a no-hazard
           determination must be made. It also states that inoperative items must
           be repaired, removed, deactivated, or inspected and then placarded.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 4, §§ 4.1–4.2, page 4-1, and the
-            supplied excerpt is exactly that page (PDF page 23).
+          rationale: The locator identifies Chapter 4, §§ 4.1–4.2, page 4-1, which is the
+            exact cited PDF page and contains each element of the claim.
         claim_assessments:
           - claim_id: inoperative-decision-not-one-question
             verdict: supports
-            rationale: Section 4.1.2.3 expressly lists the operative-required-equipment,
-              maintenance-action, and no-hazard conditions; § 4.2 expressly
-              requires repair, removal, deactivation, or inspection followed by
-              placarding when operating without an MEL.
+            rationale: Section 4.1.2.3 lists the operative-required-equipment,
+              maintenance-action, and no-hazard requirements; § 4.2 states the
+              repair/removal/deactivation/inspection-and-placarding requirement.
+              The claim appropriately limits the statement to eligible aircraft
+              operated without an MEL.
       usage:
         input_tokens: 982
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 221
+        output_tokens: 228
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1203
+        total_tokens: 1210
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2766,7 +2756,7 @@ results:
   - source_id: ac-91-67a-deactivation
     title: AC 91-67A — Minimum Equipment Requirements for General Aviation
       Operations Under 14 CFR Part 91
-    checked_at_utc: 2026-08-25T15:49:55.290Z
+    checked_at_utc: 2026-08-25T17:25:12.079Z
     linked_claim_ids:
       - deactivation-may-be-maintenance
     missing_claim_ids: []
@@ -2801,32 +2791,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited excerpt directly states that deactivation of an inoperative
-          system is not preventive maintenance; that an appropriately authorized
-          person must accomplish the deactivation; and that a person authorized
-          under § 43.7 must make the § 43.9 maintenance-record entry before
-          operation. It also frames the record-entry requirement in terms of a
-          person authorized to approve the aircraft for return to service.
+        rationale: The cited excerpt from AC 91-67A § 4.2.2 expressly states that
+          deactivation of an inoperative system is not preventive maintenance,
+          that an appropriately authorized person must accomplish the
+          deactivation, and that a person authorized under § 43.7 must make the
+          § 43.9 maintenance-record entry.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 4-2 and contains § 4.2.2, “Deactivation,”
-            exactly as identified by the locator.
+          rationale: The supplied excerpt is from the cited PDF page and contains § 4.2.2,
+            “Deactivation,” exactly as identified by the locator.
         claim_assessments:
           - claim_id: deactivation-may-be-maintenance
             verdict: supports
-            rationale: Section 4.2.2 expressly says deactivation is not preventive
-              maintenance, requires an appropriately authorized person, and
-              requires the § 43.9 maintenance-record entry by a person
-              authorized to approve the aircraft for return to service.
+            rationale: "The excerpt directly supports every element of the claim: it says
+              deactivation is not preventive maintenance, requires an
+              appropriately authorized person, and requires the § 43.9
+              maintenance-record entry."
       usage:
-        input_tokens: 1026
+        input_tokens: 1020
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 215
+        output_tokens: 195
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1241
+        total_tokens: 1215
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2836,7 +2825,7 @@ results:
   - source_id: ac-91-67a-risk
     title: AC 91-67A — Minimum Equipment Requirements for General Aviation
       Operations Under 14 CFR Part 91
-    checked_at_utc: 2026-08-25T15:49:55.689Z
+    checked_at_utc: 2026-08-25T17:25:12.222Z
     linked_claim_ids:
       - inoperative-risk-context
     missing_claim_ids: []
@@ -2871,37 +2860,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited page explicitly says that before operating under §
-          91.213(d) with permitted inoperative items, the operator should
+        rationale: The cited page explicitly advises that, before operating with
+          inoperative items permitted under § 91.213(d), the operator should
           evaluate whether the aircraft and crew can safely conduct the proposed
-          operation. It lists equipment/failure interactions, weather and
-          airport/en route/diversion factors, crew workload, fatigue, and other
-          human factors.
+          operation. It lists equipment/failure interactions, weather, night,
+          airport and en route conditions, diversion options, workload, fatigue,
+          and other human-factor considerations.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 4-3 and contains section 4.4, “Safety Risk
-            Analysis of Proposed Operation with Inoperative Equipment Items,”
-            including the listed risk factors. Although the locator also
-            references Figure 4-1 and pages 4-3–4-4, this exact cited page
-            supports the claim.
+          rationale: The excerpt is from cited PDF page 25 (printed page 4-3) and contains
+            section 4.4, “Safety Risk Analysis of Proposed Operation with
+            Inoperative Equipment Items,” directly addressing the claimed
+            risk-context guidance.
         claim_assessments:
           - claim_id: inoperative-risk-context
             verdict: supports
             rationale: The excerpt supports considering environmental factors (weather,
-              airport and en route environments, diversion options), operational
-              factors (planned-operation requirements, night operations), human
-              factors (workload and fatigue), and equipment factors (hazards,
-              failure conditions, and interactions among multiple failures)
-              before operating with permitted inoperative equipment.
+              night, airports, en route and diversion environment), operational
+              factors (planned-operation requirements and crew workload), human
+              factors (fatigue and other human factors), and equipment factors
+              (hazards, failure conditions, and multiple-item
+              interrelationships) before operating with an inoperative item.
       usage:
         input_tokens: 693
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 249
+        output_tokens: 236
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 942
+        total_tokens: 929
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2910,7 +2898,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-43-3-pilot-maintenance
     title: 14 CFR § 43.3 — Persons authorized to perform maintenance
-    checked_at_utc: 2026-08-25T15:50:38.262Z
+    checked_at_utc: 2026-08-25T17:26:00.919Z
     linked_claim_ids:
       - pilot-preventive-eligibility
     missing_claim_ids: []
@@ -2956,31 +2944,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt expressly states in § 43.3(g) that, except for
-          sport-pilot certificate holders, a part 61 pilot-certificate holder
-          may perform preventive maintenance on an aircraft owned or operated by
-          that pilot, provided the aircraft is not used under parts 121, 129, or
-          135. The claim accurately characterizes this as subject to exceptions.
+        rationale: The excerpt expressly includes § 43.3(g), which states that, except
+          for sport-pilot certificate holders, a Part 61 pilot-certificate
+          holder may perform preventive maintenance on an aircraft owned or
+          operated by that pilot, provided the aircraft is not used under Parts
+          121, 129, or 135. The claim accurately characterizes this rule as
+          subject to exceptions.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 43.3(g), is present in the excerpt and contains
-            the relevant authorization, ownership/operation condition, and parts
-            121, 129, and 135 exclusion.
+          rationale: The cited locator, § 43.3(g), is present verbatim in the supplied
+            excerpt and contains the relevant authorization and limitations.
         claim_assessments:
           - claim_id: pilot-preventive-eligibility
             verdict: supports
-            rationale: Section 43.3(g) directly supports the stated general eligibility rule
-              and its specified operational exclusions; the claim appropriately
-              notes that exceptions apply.
+            rationale: Section 43.3(g) directly supports the stated ownership-or-operation
+              condition and the exclusions for aircraft used under Parts 121,
+              129, or 135, while the claim's phrase 'subject to its exceptions'
+              appropriately accommodates the separate sport-pilot provision.
       usage:
         input_tokens: 1731
         input_tokens_details:
-          cache_write_tokens: 1728
-          cached_tokens: 0
-        output_tokens: 203
+          cache_write_tokens: 0
+          cached_tokens: 1728
+        output_tokens: 217
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1934
+        total_tokens: 1948
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2990,7 +2979,7 @@ results:
   - source_id: cfr-43-7-return-to-service
     title: 14 CFR § 43.7 — Persons authorized to approve aircraft for return to
       service
-    checked_at_utc: 2026-08-25T15:50:43.262Z
+    checked_at_utc: 2026-08-25T17:26:05.924Z
     linked_claim_ids:
       - pilot-preventive-return-to-service
     missing_claim_ids: []
@@ -3041,20 +3030,24 @@ results:
           to service after performing preventive maintenance under § 43.3(g).
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 43.7(f), exactly contains the stated rule.
+          rationale: The cited locator, § 43.7(f), exactly contains the rule asserted in
+            the claim.
         claim_assessments:
           - claim_id: pilot-preventive-return-to-service
             verdict: supports
-            rationale: § 43.7(f) expressly supports every element of the claim.
+            rationale: "§ 43.7(f) expressly supports every material element of the claim: at
+              least a private pilot certificate, approval of an aircraft for
+              return to service, and preventive maintenance performed under §
+              43.3(g)."
       usage:
         input_tokens: 1036
         input_tokens_details:
-          cache_write_tokens: 1033
-          cached_tokens: 0
-        output_tokens: 137
+          cache_write_tokens: 0
+          cached_tokens: 1033
+        output_tokens: 169
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1173
+        total_tokens: 1205
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3063,7 +3056,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-43-9-maintenance-entry
     title: 14 CFR § 43.9 — Content, form, and disposition of maintenance records
-    checked_at_utc: 2026-08-25T15:50:43.303Z
+    checked_at_utc: 2026-08-25T17:26:05.971Z
     linked_claim_ids:
       - preventive-maintenance-record-entry
     missing_claim_ids: []
@@ -3109,32 +3102,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The excerpt from § 43.9(a) expressly applies to persons performing
-          preventive maintenance and lists the required maintenance-record entry
-          elements: a description or acceptable data reference, completion date,
-          performer name when different from the approving person, and the
-          approving person's signature, certificate number, and certificate
-          type."
+        rationale: "The excerpt directly reproduces § 43.9(a) and states the general
+          rule is subject to paragraphs (b) and (c). It enumerates the required
+          maintenance-record-entry items: a description or acceptable-data
+          reference, completion date, performer name when different, and—if the
+          work was satisfactorily performed—the approving person's signature,
+          certificate number, and kind of certificate held."
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 43.9(a), is the exact paragraph containing both
-            the applicability to preventive maintenance and the enumerated
-            record-entry requirements.
+          rationale: The cited locator, § 43.9(a), precisely contains the provisions
+            relied upon by the claim.
         claim_assessments:
           - claim_id: preventive-maintenance-record-entry
             verdict: supports
-            rationale: Section 43.9(a)(1)–(4) directly provides every element stated in the
-              claim, including the conditional requirement to identify the
-              performer if that person differs from the approving person.
+            rationale: Section 43.9(a)(1)–(4) expressly supports every listed record-entry
+              element and the stated condition for the approval/signature
+              information.
       usage:
-        input_tokens: 1003
+        input_tokens: 1025
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 188
+        output_tokens: 189
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1191
+        total_tokens: 1214
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3144,7 +3136,7 @@ results:
   - source_id: cfr-91-407-after-maintenance
     title: 14 CFR § 91.407 — Operation after maintenance, preventive maintenance,
       rebuilding, or alteration
-    checked_at_utc: 2026-08-25T15:50:48.259Z
+    checked_at_utc: 2026-08-25T17:26:10.930Z
     linked_claim_ids:
       - after-maintenance-return-entry
       - after-maintenance-operational-check
@@ -3191,44 +3183,44 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt reproduces § 91.407(a)–(c) and directly addresses both
-          the return-to-service/record-entry condition after maintenance and the
-          required operational check before carrying non-crewmembers when
-          specified maintenance or alteration may affect flight characteristics
-          or operation.
+        rationale: The excerpt directly states both the
+          return-to-service/maintenance-record prerequisites for operation in §
+          91.407(a) and the post-maintenance operational-check,
+          passenger-carrying restriction, logging requirement, and
+          ground-test/inspection exception in § 91.407(b)–(c).
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 91.407(a)–(b), directly contains the
-            requirements described in both claims. The exception referenced in
-            the second claim appears in § 91.407(c), which is included in the
-            supplied excerpt but falls outside the stated locator range.
+          rationale: The cited locator, § 91.407(a)–(b), directly contains the core
+            requirements for both claims. The exception stated in the second
+            claim appears in § 91.407(c), which is included in the supplied
+            excerpt but falls just outside the stated locator range.
         claim_assessments:
           - claim_id: after-maintenance-return-entry
             verdict: supports
-            rationale: Section 91.407(a) states that no person may operate an aircraft
-              following maintenance, preventive maintenance, rebuilding, or
-              alteration unless it has been approved for return to service by an
-              authorized person and the applicable maintenance-record entry has
+            rationale: Section 91.407(a) says no person may operate an aircraft after
+              maintenance, preventive maintenance, rebuilding, or alteration
+              unless it has been approved for return to service by an authorized
+              person and the applicable required maintenance-record entry has
               been made.
           - claim_id: after-maintenance-operational-check
             verdict: supports
             rationale: Section 91.407(b) prohibits carrying persons other than crewmembers
-              after maintenance, rebuilding, or alteration that may appreciably
-              change flight characteristics or substantially affect flight
-              operation until an appropriately rated pilot holding at least a
-              private pilot certificate performs and logs the operational check.
-              Section 91.407(c) provides the stated exception when ground tests,
-              inspection, or both conclusively show the work did not have those
-              effects.
+              following maintenance, rebuilding, or alteration that may
+              appreciably change flight characteristics or substantially affect
+              in-flight operation until an appropriately rated pilot holding at
+              least a private pilot certificate performs and logs an operational
+              check. Section 91.407(c) provides the stated exception where
+              ground tests, inspection, or both conclusively show no such
+              effect.
       usage:
         input_tokens: 823
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 317
+        output_tokens: 322
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1140
+        total_tokens: 1145
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3237,7 +3229,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-21-197-special-flight-permit
     title: 14 CFR § 21.197 — Special flight permits
-    checked_at_utc: 2026-08-25T15:50:48.299Z
+    checked_at_utc: 2026-08-25T17:26:10.968Z
     linked_claim_ids:
       - special-flight-permit-purpose
     missing_claim_ids: []
@@ -3283,32 +3275,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states in § 21.197(a) that a special flight
-          permit may be issued for an aircraft that may not currently meet
-          applicable airworthiness requirements but is capable of safe flight.
-          Section 21.197(a)(1) expressly includes flying it to a base where
-          repairs, alterations, or maintenance are to be performed.
+        rationale: The excerpt directly states that a special flight permit may be
+          issued for an aircraft that may not currently meet applicable
+          airworthiness requirements but is capable of safe flight. It expressly
+          includes flying the aircraft to a base where repairs, alterations, or
+          maintenance are to be performed.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, § 21.197(a), is the exact subsection containing
-            both the safe-flight/airworthiness condition and the listed
-            repair-or-maintenance purpose.
+          rationale: The cited locator, § 21.197(a), contains the general eligibility
+            language and the listed purpose for flight to a repair, alteration,
+            or maintenance base.
         claim_assessments:
           - claim_id: special-flight-permit-purpose
             verdict: supports
-            rationale: § 21.197(a) expressly supports every material element of the claim,
-              including the aircraft's possible noncompliance with current
-              airworthiness requirements, capability of safe flight, and flight
-              to a repair or maintenance location.
+            rationale: Section 21.197(a) expressly supports both the aircraft
+              condition/capability criteria and the stated repair-or-maintenance
+              flight purpose.
       usage:
         input_tokens: 1076
         input_tokens_details:
-          cache_write_tokens: 1073
-          cached_tokens: 0
-        output_tokens: 204
+          cache_write_tokens: 0
+          cached_tokens: 1073
+        output_tokens: 171
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1280
+        total_tokens: 1247
     claim_assessments:
       valid: true
       missing_assessment_ids: []

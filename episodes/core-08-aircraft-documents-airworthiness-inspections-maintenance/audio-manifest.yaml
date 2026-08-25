@@ -1,30 +1,10 @@
 episode_id: "core-08"
-status: candidate_rendered_listening_qa_approved
-current_candidate_render:
-  script_version: 0.2.0
-  rendered_at_utc: "2026-08-25T16:58:37.369Z"
-  provider: openai-realtime
-  renderer: scripts/render_episode_realtime.cjs
-  renderer_version: 8
-  model: gpt-realtime-2.1
-  voices: {instructor: marin, learner: cedar, announcer: ballad}
-  mp3: "audio-artifacts/core-08-20260825T155623Z.mp3"
-  lossless_master: "audio-artifacts/core-08-20260825T155623Z.master.wav"
-  render_manifest: "audio-artifacts/core-08-20260825T155623Z.render-manifest.json"
-  audio_quality_report: "audio-artifacts/core-08-20260825T155623Z.audio-quality.json"
-  chapter_review: "audio-artifacts/core-08-20260825T155623Z.mp3.chapters.732187ece502aa947be1acdc6ab6f62f1eb59ea56db43d13a41832abe772159b.html"
-  duration_seconds: 2008.34
-  duration_display: "33:28"
-  codec: mp3
-  sample_rate_hz: 24000
-  channels: 1
-  sha256: "732187ece502aa947be1acdc6ab6f62f1eb59ea56db43d13a41832abe772159b"
-  front_matter_validation: "The accepted opening preview contains the Opening and Disclaimer; the final render retains those unchanged segments."
-  spoken_input_transform: "Standalone AI expands to artificial intelligence, PHAK expands to pea hack, and MEL is rendered as separately spoken letters; the written script remains unchanged."
-  music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade."
-  usage_estimate_usd: 2.806855
-  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 56 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA and manual chapter review are accepted. Audio artifacts are Git-ignored."
-superseded_candidates: []
+status: script_revised_audio_qa_pending
+current_candidate_render: null
+superseded_candidates:
+  - script_version: 0.2.0
+    sha256: "732187ece502aa947be1acdc6ab6f62f1eb59ea56db43d13a41832abe772159b"
+    reason: "Version 0.2.1 narrows the AC 91-67A deactivation statement to the source's direct support."
 opening_preview:
   script_version: 0.2.0
   rendered_at_utc: "2026-08-25T15:57:55.348Z"
@@ -49,11 +29,12 @@ opening_preview:
   spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; PHAK expands to pea hack; written script remains unchanged."
   music_bed: "10-second lead, steady reduced level under Ballad, 5-second full-level continuation, 0.5-second fade"
 chapter_markers:
-  status: embedded_and_ffprobe_validated
+  status: pending_updated_audio
   source: "master-script.md section headings"
-  audio_sha256: "732187ece502aa947be1acdc6ab6f62f1eb59ea56db43d13a41832abe772159b"
+  audio_sha256: null
   required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
-  review_page: "audio-artifacts/core-08-20260825T155623Z.mp3.chapters.732187ece502aa947be1acdc6ab6f62f1eb59ea56db43d13a41832abe772159b.html"
 required_before_release:
+  - "Complete script-aligned listening QA for version 0.2.1."
+  - "Confirm chapter titles and starts are useful and correctly aligned for version 0.2.1."
   - "Re-verify all cited public links on publication day."
   - "Validate hosting metadata and external audio-store workflow."

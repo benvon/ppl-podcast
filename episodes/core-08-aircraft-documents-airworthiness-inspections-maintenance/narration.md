@@ -57,7 +57,7 @@ What airworthy means.
 
 **INSTRUCTOR:**
 
-The Pilot's Handbook of Aeronautical Knowledge explains airworthiness with two questions. Does the airplane conform to its approved type design? And is it in condition for safe operation?
+The Pilot's Handbook of Aeronautical Knowledge identifies two parts of the airworthiness finding: the airplane conforms to its type certificate, and it is in condition for safe operation.
 
 Conformity means that the airplane is built, equipped, and altered in an approved way. Picture an airplane that was approved with a particular engine, propeller, fuel system, and set of required instruments. It may later receive approved avionics or another approved alteration. The installed equipment, alteration records, required placards, flight-manual supplements, and applicable AD work should agree with the approved configuration.
 
@@ -221,7 +221,7 @@ Because section 91.205 is a general operating rule. The airplane's certification
 
 If none of those sources requires the item, you still do not simply ignore it or cover it with tape. Section 91.213(d) provides two ways to place the item in an inoperative status. If it is removed, its cockpit control must be placarded and the maintenance must be recorded under section 43.9. If it is deactivated, the item must be placarded INOPERATIVE. When deactivation involves maintenance, that work must be performed and recorded under part 43.
 
-Deactivation may involve more than placing a switch in the off position. AC 91-67A explains that deactivating an inoperative system is not preventive maintenance. An appropriately authorized person must accomplish the deactivation, approve the airplane for return to service, and make the required maintenance-record entry.
+Deactivation may involve more than placing a switch in the off position. AC 91-67A explains that deactivating an inoperative system is not preventive maintenance. An appropriately authorized person must accomplish the deactivation and make the required maintenance-record entry.
 
 A pilot who is certificated and appropriately rated for the airplane, or an appropriately rated certified mechanic, must also determine that the inoperative item does not create a hazard to the airplane. AC 91-67A recommends considering the environment, the planned operation, the pilot and passengers, and the relationship between the failed item and other equipment.
 
@@ -255,7 +255,7 @@ If the task is on the list, how do I know whether I should do it myself?
 
 Read the applicable maintenance instructions and consider the tools, parts, torque values, safetying, inspection, and troubleshooting the task requires. If you cannot perform and inspect the work correctly, ask a certified mechanic to do it or work with one while you learn. Perform the task only when you can follow the instructions and inspect the result correctly.
 
-After preventive maintenance performed under section 43.3(g), section 43.7 allows a person holding at least a private pilot certificate to approve the airplane for return to service for that work. Section 43.9 requires a maintenance-record entry. The entry includes a description of the work or an acceptable reference, the completion date, the name of the person who performed the work if someone else did it, and the signature, certificate number, and certificate type of the person approving the work.
+After preventive maintenance performed under section 43.3(g), section 43.7 allows a person holding at least a private pilot certificate to approve the airplane for return to service for that work. Section 43.9's general entry rule includes a description of the work or an acceptable reference, the completion date, and the name of the person who performed the work if someone else did it. When the work has been performed satisfactorily, it also includes the approving person's signature, certificate number, and certificate type. Section 43.9 has specific exceptions in paragraphs (b) and (c).
 
 Maintenance, preventive maintenance, and alterations may only be performed by people authorized under the applicable rules. When a repair, troubleshooting step, adjustment, or equipment deactivation is outside your privileges, stop work and involve a certified mechanic with the appropriate rating.
 

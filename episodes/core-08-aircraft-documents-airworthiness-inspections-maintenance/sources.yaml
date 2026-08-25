@@ -69,7 +69,7 @@ sources:
     locator: "Ch. 9, Airworthiness Certificate, p. 9-7"
     url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7"
     revision: "2023 edition"
-    relevance_excerpt: "The chapter's standard airworthiness certificate discussion identifies conformity to the type certificate and condition for safe operation as the two sides of the airworthiness finding at inspection and issuance."
+    relevance_excerpt: "The standard airworthiness certificate discussion states that the aircraft conforms to its type certificate and is in condition for safe operation at inspection and issuance."
     verified_at_utc: "2026-08-24T16:58:27Z"
     link_status: 200
     supports_claims: [airworthiness-two-part-model]
@@ -347,7 +347,7 @@ sources:
     locator: "Ch. 4, § 4.2.2, Deactivation, p. 4-2"
     url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=24"
     revision: "October 16, 2023"
-    relevance_excerpt: "Deactivation may involve more than turning off a switch; deactivation of an inoperative system is not preventive maintenance, must be accomplished by an appropriately authorized person, and requires approval for return to service and the § 43.9 maintenance record entry."
+    relevance_excerpt: "Deactivation may involve more than turning off a switch; deactivation of an inoperative system is not preventive maintenance, must be accomplished by an appropriately authorized person, and requires the § 43.9 maintenance record entry."
     verified_at_utc: "2026-08-24T16:58:27Z"
     link_status: 200
     supports_claims: [deactivation-may-be-maintenance]
@@ -398,7 +398,7 @@ sources:
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9"
     validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43"
     revision: "eCFR current through August 21, 2026"
-    relevance_excerpt: "A maintenance or preventive-maintenance entry must include a description or acceptable reference, completion date, name of the person performing the work if different, and the approving person's signature, certificate number, and certificate type."
+    relevance_excerpt: "Subject to paragraphs (b) and (c), the general maintenance-record rule requires a description or acceptable reference, completion date, and the name of the person performing the work if different; when the work has been performed satisfactorily, it also requires the approving person's signature, certificate number, and certificate type."
     verified_at_utc: "2026-08-24T16:58:27Z"
     link_status: 200
     supports_claims: [preventive-maintenance-record-entry]

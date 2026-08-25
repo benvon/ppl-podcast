@@ -1,5 +1,23 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance — production log
 
+## 2026-08-25 — publication-day source validation and targeted candidate
+
+- Re-ran deterministic and source-relevance validation against the current FAA
+  and eCFR sources. The review exposed three statements whose wording was
+  broader than their exact citations. The version 0.2.1 refinements now state
+  the AC 91-67A deactivation requirement, the § 91.213(a) Flight Standards
+  letter of authorization, the § 43.9 record-entry qualification, and the
+  PHAK type-certificate wording at the source's level of specificity.
+- The final publication-day check at `2026-08-25T17:27:24.178Z` passed all 34
+  sources, 50 reciprocal claims, and 15 show-note links, including
+  source-level, locator-level, and claim-level relevance assessment.
+- Re-rendered only the changed speaker turns and their applicable dialogue
+  context, then reassembled the full candidate. The resulting MP3 is 33:16,
+  SHA-256 `b9d48ca766f271f7adeb41c3c35d45931a58638bac35f4fa822fa2e6e4f01333`,
+  with 14 embedded chapters and a passing automated audio-quality report.
+  Targeted human listening QA and chapter review remain required before a
+  sealed hosting handoff can be created.
+
 ## 2026-08-25 — final candidate listening and chapter QA accepted
 
 - Corrected the isolated synthesized pronunciation of “annual” in segment 20,

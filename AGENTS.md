@@ -38,3 +38,7 @@
 7. Draft as speech for a first-time listener. Avoid slogans, quips, snark,
    clever reversals, and compressed regulatory labels. For every rule, explain
    the practical question first, then the evidence and terms that answer it.
+   For regulatory episodes, use ACS knowledge and risk-management outcomes as
+   the outline; teach only the regulatory detail needed for the typical
+   private-pilot decision, and link broader exceptions or specialized cases in
+   the show notes.

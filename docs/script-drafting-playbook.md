@@ -68,6 +68,21 @@ not for a reader who can scan backward through a dense paragraph.
   replace compressed labels with their meaning, or use a Learner question to
   create the missing transition.
 
+## Teach regulations through ACS decisions
+
+For a regulatory topic, the ACS is the lesson outline. Regulations, FAA guidance, maintenance records, and aircraft documents are the evidence that supports the learner's decision; they are not a spoken table of contents for the episode.
+
+Before drafting a regulatory passage, identify:
+
+1. The practical question the relevant ACS knowledge or risk-management element expects a private-pilot applicant to answer.
+2. What the learner needs to recognize, find, or decide for a typical training airplane and operation.
+3. The regulation, record, or aircraft document that supplies the answer.
+4. Any broader regulatory complexity worth acknowledging without reciting its exceptions or subparagraphs.
+
+Teach the decision first, then the small set of terms and conditions needed to reason through it, then name the authoritative source. Include a regulatory detail only when omitting it would leave the learner unable to meet the ACS outcome or would change the typical private-pilot decision. Link the full source material in the show notes rather than narrating every endpoint, exception, or specialized operating case.
+
+When useful, acknowledge the boundary once in plain language: the lesson gives the private-pilot study framework, while the full regulation includes additional cases and exceptions. Do not repeat that caveat section by section.
+
 ## Make the practical takeaway concrete
 
 An operational takeaway must identify both the changing aerodynamic or system demand and the pilot response it supports. A statement such as “this changes the picture” or “be more mindful” is not enough. Say what is changing, why it matters, and the bounded habit it should prompt—such as avoiding abrupt added demand, preserving coordination, checking the approved aircraft information, or choosing a lower-demand option early.
@@ -107,6 +122,7 @@ Read the draft aloud or listen to a short render and check each section for:
 - **Causal chain:** Does the passage explain why one fact follows from the previous one?
 - **Learner readiness:** Has the Instructor supplied the facts needed for the Learner’s question or summary?
 - **Practical bridge:** Does the passage connect the general model to the POH/AFM or other specific source without turning into a procedure?
+- **ACS scope:** Does every regulatory detail support a named ACS outcome or change the typical private-pilot decision? If not, should it become a show-notes link instead?
 - **Scope:** Are caveats concise and non-repetitive?
 - **Visual support:** Do spoken diagram references exactly match labeled show-note links?
 - **Pacing:** Does the Announcer orient without interrupting the lesson?

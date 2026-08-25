@@ -1,7 +1,30 @@
 episode_id: "core-08"
-status: not_rendered
+status: opening_preview_approved
 current_candidate_render: null
 superseded_candidates: []
+opening_preview:
+  script_version: 0.2.0
+  rendered_at_utc: "2026-08-25T15:58:29.458Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 8
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: "audio-artifacts/core-08-20260825T155623Z.preview-001-005.mp3"
+  lossless_master: "audio-artifacts/core-08-20260825T155623Z.preview-001-005.master.wav"
+  render_manifest: "audio-artifacts/core-08-20260825T155623Z.preview-001-005.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-08-20260825T155623Z.preview-001-005.audio-quality.json"
+  segment_work_dir: "audio-artifacts/core-08-realtime-20260825T155623Z.segments"
+  duration_seconds: 162.92
+  duration_display: "2:43"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: "e1a4ff0dd08f525bf2a00b969f4896b51a7922df8ccd65055bedfd4bb9b56bf5"
+  included_segments: "1-5: opening, Disclaimer, podcast introduction, and the first ACS teaching segment"
+  front_matter_validation: "The opening preview was accepted after the required Disclaimer was heard. Renderer preflight confirms that the opening is immediately followed by the Disclaimer segment."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input; PHAK expands to pea hack; written script remains unchanged."
+  music_bed: "10-second lead, steady reduced level under Ballad, 5-second full-level continuation, 0.5-second fade"
 chapter_markers:
   status: pending_render
   source: "master-script.md section headings"

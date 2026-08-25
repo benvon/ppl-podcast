@@ -1,5 +1,18 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance — production log
 
+## 2026-08-25 — opening preview accepted
+
+- Rendered and assembled reusable Realtime segments 1–5 with Marin, Cedar, and
+  Ballad. The preview includes the opening, Disclaimer, podcast introduction,
+  first ACS teaching turn, and the established intro music behavior.
+- Automated audio analysis passed MP3/WAV decode, 24 kHz mono format, duration
+  agreement, five stitch boundaries with no discontinuity warning, and no
+  clipped samples. Human listening accepted the opening and confirmed the
+  required Disclaimer is audible.
+- The preview work directory remains available for the complete render. A minor
+  synthesis artifact within segment 5 was understandable and not a stitch; it
+  was accepted without re-rendering.
+
 ## 2026-08-25 — source-relevance review completed
 
 - Ran the required deterministic and `--require-llm` review against the approved

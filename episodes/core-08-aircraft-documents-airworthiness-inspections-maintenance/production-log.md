@@ -1,5 +1,12 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance — production log
 
+## 2026-08-25 — version 0.2.1 candidate accepted for hosting handoff
+
+- Targeted listening QA and manual review of all 14 checksum-bound chapter
+  markers are accepted for the 33:16 version 0.2.1 candidate.
+- Set the publication timestamp to `2026-08-25T17:53:14Z` and prepared the
+  release metadata for the sealed hosting-handoff validation gate.
+
 ## 2026-08-25 — publication-day source validation and targeted candidate
 
 - Re-ran deterministic and source-relevance validation against the current FAA

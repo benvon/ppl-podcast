@@ -1,12 +1,8 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance
 
 **Episode:** core-08
-**Version:** 0.2.0
-**Source verification:** Initial research and source revisions verified through August 25, 2026; publication-day recheck required
-
-## Production notice
-
-This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+**Version:** 0.2.1
+**Source verification:** Publication-day FAA and eCFR links plus claim-level relevance rechecked August 25, 2026
 
 ## In this episode
 
@@ -35,18 +31,18 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 | Topic | Source type | Authoritative source | Locator | Verified |
 | --- | --- | --- | --- | --- |
-| Required certificates | Regulation | [14 CFR § 91.203](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203) | § 91.203(a)–(b) | 2026-08-24 |
-| Operating limitations and approved manual material | Regulation | [14 CFR § 91.9](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9) | § 91.9(a)–(b) | 2026-08-24 |
-| PIC responsibility | Regulation | [14 CFR § 91.7](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7) | § 91.7(a)–(b) | 2026-08-24 |
-| Owner/operator responsibility | Regulation | [14 CFR § 91.403](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403) | § 91.403(a)–(b) | 2026-08-24 |
-| Annual and 100-hour inspections | Regulation | [14 CFR § 91.409](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409) | § 91.409(a)–(b) | 2026-08-24 |
-| Maintenance records and AD status | Regulation | [14 CFR § 91.417](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417) | § 91.417(a)–(b) | 2026-08-24 |
+| Required certificates | Regulation | [14 CFR § 91.203](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203) | § 91.203(a)–(b) | 2026-08-25 |
+| Operating limitations and approved manual material | Regulation | [14 CFR § 91.9](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9) | § 91.9(a)–(b) | 2026-08-25 |
+| PIC responsibility | Regulation | [14 CFR § 91.7](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7) | § 91.7(a)–(b) | 2026-08-25 |
+| Owner/operator responsibility | Regulation | [14 CFR § 91.403](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403) | § 91.403(a)–(b) | 2026-08-25 |
+| Annual and 100-hour inspections | Regulation | [14 CFR § 91.409](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409) | § 91.409(a)–(b) | 2026-08-25 |
+| Maintenance records and AD status | Regulation | [14 CFR § 91.417](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417) | § 91.417(a)–(b) | 2026-08-25 |
 | Day- and night-VFR equipment | Regulation | [14 CFR § 91.205 — VFR day and night equipment](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205) | § 91.205(b)–(c) | 2026-08-25 |
-| Inoperative equipment | Regulation | [14 CFR § 91.213](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213) | § 91.213(a) and (d) | 2026-08-24 |
-| Pilot preventive-maintenance eligibility | Regulation | [14 CFR § 43.3](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3) | § 43.3(g) | 2026-08-24 |
-| Maintenance record entry | Regulation | [14 CFR § 43.9](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9) | § 43.9(a) | 2026-08-24 |
-| Operation after maintenance | Regulation | [14 CFR § 91.407](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407) | § 91.407(a)–(b) | 2026-08-24 |
-| Special flight permits | Regulation | [14 CFR § 21.197](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197) | § 21.197(a) | 2026-08-24 |
+| Inoperative equipment | Regulation | [14 CFR § 91.213](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213) | § 91.213(a) and (d) | 2026-08-25 |
+| Pilot preventive-maintenance eligibility | Regulation | [14 CFR § 43.3](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3) | § 43.3(g) | 2026-08-25 |
+| Maintenance record entry | Regulation | [14 CFR § 43.9](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9) | § 43.9(a) | 2026-08-25 |
+| Operation after maintenance | Regulation | [14 CFR § 91.407](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407) | § 91.407(a)–(b) | 2026-08-25 |
+| Special flight permits | Regulation | [14 CFR § 21.197](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197) | § 21.197(a) | 2026-08-25 |
 
 ## Correction status
 

@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Aircraft Documents, Airworthiness, Inspections, and Maintenance"
 slug: "aircraft-documents-airworthiness-inspections-maintenance"
 track: "core"
-status: script_revised_source_review_complete
+status: ready_for_hosting_pr
 version: 0.2.1
-published_at: null
+published_at: "2026-08-25T17:53:14Z"
 runtime_target_minutes: 39
-runtime_actual_seconds: null
+runtime_actual_seconds: 1996.44
 word_count: 4877
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -44,23 +44,21 @@ trouble_spots:
   - "Assuming any simple-looking maintenance task is preventive maintenance or omitting the return-to-service entry."
 source_verification:
   status: source_relevance_review_complete
-  verified_at_utc: "2026-08-25T17:27:24.178Z"
+  verified_at_utc: "2026-08-25T18:05:23.139Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
 review:
-  editorial_status: script_approved_source_evidence_refined
+  editorial_status: script_and_listening_qa_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete publication-day source and relevance validation for version 0.2.1"
-  - "Render and complete targeted listening and chapter QA for version 0.2.1"
-  - "Validate hosting metadata and external audio-store workflow"
+  - "Stage and validate the immutable audio object in the hosting workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: script_revised_audio_qa_pending
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.

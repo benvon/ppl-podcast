@@ -232,7 +232,7 @@ sources:
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.405"
     validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
     revision: "eCFR current through August 21, 2026"
-    relevance_excerpt: "Owners or operators must have the aircraft inspected, repair discrepancies between required inspections, ensure proper maintenance entries, and placard inoperative instruments or equipment permitted to be inoperative by § 91.213(d)(2)."
+    relevance_excerpt: "Owners or operators must have the aircraft inspected, repair discrepancies between required inspections, and ensure proper maintenance entries. When listed discrepancies include inoperative instruments or equipment permitted to be inoperative by § 91.213(d)(2), the owner or operator must ensure they are properly placarded."
     verified_at_utc: "2026-08-24T16:58:27Z"
     link_status: 200
     supports_claims: [owner-discrepancy-record-duty]
@@ -245,7 +245,7 @@ sources:
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409"
     validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
     revision: "eCFR current through August 21, 2026"
-    relevance_excerpt: "The section establishes the 12-calendar-month annual inspection rule and the 100-hour inspection trigger for carrying a person other than a crewmember for hire or giving flight instruction for hire in an aircraft provided by the instructor, with a limited en-route overage counted toward the next 100 hours."
+    relevance_excerpt: "Unless an exception applies, the section requires an aircraft to have received within the preceding 12 calendar months either an annual inspection with return-to-service approval or an inspection for issuance of an airworthiness certificate under part 21. It also establishes the 100-hour inspection trigger for carrying a person other than a crewmember for hire or giving flight instruction for hire in an aircraft provided by the instructor, with a limited en-route overage counted toward the next 100 hours."
     verified_at_utc: "2026-08-24T16:58:27Z"
     link_status: 200
     supports_claims: [annual-inspection-clock, hundred-hour-trigger, hundred-hour-ferry-overage]
@@ -407,11 +407,11 @@ sources:
     authority: regulation
     title: "14 CFR § 91.407 — Operation after maintenance, preventive maintenance, rebuilding, or alteration"
     document_id: "14 CFR 91.407"
-    locator: "§ 91.407(a)–(b)"
+    locator: "§ 91.407(a)–(c)"
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407"
     validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
     revision: "eCFR current through August 21, 2026"
-    relevance_excerpt: "After maintenance, no person may operate the aircraft until it is approved for return to service and the required entry is made. If work may appreciably change flight characteristics or substantially affect operation in flight, the aircraft may not carry anyone other than crewmembers until an appropriately rated pilot with at least a private pilot certificate conducts and logs an operational check, unless ground tests, inspection, or both conclusively show otherwise."
+    relevance_excerpt: "After maintenance, no person may operate the aircraft until it is approved for return to service and the required entry is made. If work may appreciably change flight characteristics or substantially affect operation in flight, the aircraft may not carry anyone other than crewmembers until an appropriately rated pilot with at least a private pilot certificate conducts and logs an operational check, unless ground tests, inspection, or both conclusively show the work did not appreciably change those characteristics or substantially affect operation in flight."
     verified_at_utc: "2026-08-24T16:58:27Z"
     link_status: 200
     supports_claims: [after-maintenance-return-entry, after-maintenance-operational-check]

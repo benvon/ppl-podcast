@@ -14,14 +14,14 @@
 - [x] Opening is 10-45 seconds and the required notice follows immediately.
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.” Accepted in the opening preview on 2026-08-25.
 - [x] Five-segment opening preview has been listened to before full rendering. Accepted on 2026-08-25; segments 1–5 remain reusable for the complete candidate.
-- [ ] Full candidate has been listened to against the version 0.2.1 master script, with numbers, units, acronyms, and warnings checked.
-- [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the version 0.2.1 candidate.
-- [ ] The version 0.2.1 MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material.
-- [ ] The render manifest records a passing `ffprobe` chapter validation for the version 0.2.1 MP3.
+- [x] Full candidate has been listened to against the version 0.2.1 master script, with numbers, units, acronyms, and warnings checked. Accepted on 2026-08-25.
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the version 0.2.1 candidate. Accepted on 2026-08-25.
+- [x] The chapter markers have been manually reviewed: the version 0.2.1 MP3 list starts at `00:00`, its titles are useful listener-facing section labels, and each marker begins before the corresponding material. Accepted on 2026-08-25.
+- [x] The render manifest records a passing `ffprobe` chapter validation for the version 0.2.1 MP3.
 
 ## Release
 
-- [ ] FAA/eCFR links and revisions were re-verified on publication day.
-- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
+- [x] FAA/eCFR links and revisions were re-verified on publication day.
+- [x] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
 - [ ] After publication, Apple Podcasts and Overcast are checked for the final embedded chapter list.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

@@ -3,7 +3,7 @@
 **Version:** 0.2.1 — source-evidence refinement
 **Target runtime:** approximately 39 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Approved script; publication-day source review complete; targeted audio update pending.
+**Production status:** Ready for hosting handoff.
 
 ## [00:00] Opening
 

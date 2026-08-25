@@ -33,13 +33,12 @@
    and resolutions in `production-log.md`.
 5. In `master-script.md`, preserve the standard opening order: `Opening`,
    `Disclaimer`, `Podcast introduction`, then `What the ACS is asking you to
-   connect`. The first Announcer line repeats that heading. Write spoken prose
-   as normal Markdown paragraphs—one physical line per paragraph, with no
-   hard wrapping.
-6. Do not render, stage, publish, or open a PR until the relevant source and
+   connect`. The first Announcer line repeats that heading.
+6.  Write spoken prose as normal Markdown paragraphs—one physical line per paragraph, with no hard wrapping.
+7. Do not render, stage, publish, or open a PR until the relevant source and
    editorial gates are complete. Commit the reviewable package with a signed,
    conventional commit.
-7. Draft as speech for a first-time listener. Avoid slogans, quips, snark,
+8. Draft as speech for a first-time listener. Avoid slogans, quips, snark,
    clever reversals, and compressed regulatory labels. For every rule, explain
    the practical question first, then the evidence and terms that answer it.
    For regulatory episodes, use ACS knowledge and risk-management outcomes as

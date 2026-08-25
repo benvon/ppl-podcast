@@ -4,7 +4,7 @@ current_candidate_render: null
 superseded_candidates: []
 opening_preview:
   script_version: 0.2.0
-  rendered_at_utc: "2026-08-25T15:58:29.458Z"
+  rendered_at_utc: "2026-08-25T15:57:55.348Z"
   provider: openai-realtime
   renderer: scripts/render_episode_realtime.cjs
   renderer_version: 8

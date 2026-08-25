@@ -641,6 +641,26 @@ function publicLinkRecord(link) {
   };
 }
 
+function applyVerificationEvidence(result, source, verification) {
+  result.link = verification.link;
+  if (source.programmatic_url) {
+    result.citation_link = verification.citation_link;
+    result.programmatic_link = verification.programmatic_link;
+    result.attestation_link = verification.attestation_link;
+    result.content_attestation = verification.content_attestation;
+  }
+  return result;
+}
+
+function deterministicEntryValid(entry) {
+  return entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids?.length;
+}
+
+function reportMappingErrors(claimMapping, showNotesMapping) {
+  for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`);
+  for (const error of showNotesMapping.errors) console.error(`Show-notes mapping failed: ${error}`);
+}
+
 function validateClaimMappings(ledger, claimInventory) {
   const errors = [];
   const sourceIds = new Set();
@@ -783,13 +803,7 @@ async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
       result.citation_target.errors = citationTargetErrors(noteSource); result.citation_target.valid = result.citation_target.errors.length === 0;
       if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
       const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache });
-      result.link = verification.link;
-      if (noteSource.programmatic_url) {
-        result.citation_link = verification.citation_link;
-        result.programmatic_link = verification.programmatic_link;
-        result.attestation_link = verification.attestation_link;
-        result.content_attestation = verification.content_attestation;
-      }
+      applyVerificationEvidence(result, noteSource, verification);
     } catch (error) { result.link = { valid: false, error: error.message }; }
     results.push(result);
   }
@@ -817,6 +831,11 @@ async function main() {
   const claimMapping = validateClaimMappings(ledger, claimInventory);
   const showNotesMapping = showNotesValidationConfigured ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_configured", errors: [] };
   if (options.dryRun) {
+    if (!claimMapping.valid || !showNotesMapping.valid) {
+      reportMappingErrors(claimMapping, showNotesMapping);
+      process.exitCode = 1;
+      return;
+    }
     const showNotesSummary = showNotesValidationConfigured ? `${showNotesManifest.links.length} show-notes links` : showNotesFilePresent ? "show notes without a manifest (not configured)" : "no show-notes manifest";
     console.log(`Validated input shape, claim mappings, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
@@ -824,8 +843,7 @@ async function main() {
   const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
   progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest?.links.length || 0, llm_requested: options.llm });
   if (!claimMapping.valid || !showNotesMapping.valid) {
-    for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`);
-    for (const error of showNotesMapping.errors) console.error(`Show-notes mapping failed: ${error}`);
+    reportMappingErrors(claimMapping, showNotesMapping);
     const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
     completeValidationReport(outputPath, report, validationRun);
     progress.emit("report_written", { valid: false });
@@ -848,7 +866,7 @@ async function main() {
         result.citation_target.errors = [...citationTargetErrors(noteSource), ...validationTargetErrors(noteSource)]; result.citation_target.valid = result.citation_target.errors.length === 0;
         if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
         const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache, signal: cancellation.signal });
-        result.link = verification.link;
+        applyVerificationEvidence(result, noteSource, verification);
       } catch (error) { result.link = { valid: false, error: error.message }; }
       showNotesResults[job.index] = result; return result;
     }
@@ -861,19 +879,13 @@ async function main() {
       entry.citation_target.valid = entry.citation_target.errors.length === 0;
       if (!entry.citation_target.valid) throw new Error(`Deep-citation validation failed: ${entry.citation_target.errors.join("; ")}`);
       const verification = await verifyProgrammaticFallback(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, signal: cancellation.signal });
-      entry.link = verification.link;
-      if (source.programmatic_url) {
-        entry.citation_link = verification.citation_link;
-        entry.programmatic_link = verification.programmatic_link;
-        entry.attestation_link = verification.attestation_link;
-        entry.content_attestation = verification.content_attestation;
-      }
+      applyVerificationEvidence(entry, source, verification);
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results[job.index] = entry; return entry;
   }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
   if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
-  const deterministicValid = results.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids.length) && showNotesResults.every((entry) => entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid));
+  const deterministicValid = results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
   if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
   await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
     const source = ledger.sources[index];
@@ -920,4 +932,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { assessRelevance, completeValidationReport, extractPdfPageText, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

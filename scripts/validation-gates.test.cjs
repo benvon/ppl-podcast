@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { assessRelevance, completeValidationReport, extractPdfPageText, fetchSource, markValidationInProgress, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -360,6 +360,21 @@ test("source validation permits legacy show notes when no manifest is configured
   }
 });
 
+test("source validation dry runs fail when claim mappings are invalid", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claims.yaml");
+  fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [missing-claim]\n");
+  fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n");
+  try {
+    const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /Claim mapping failed: source source-a maps unknown claim missing-claim/);
+    assert.doesNotMatch(result.stdout, /Validated input shape/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("narration derivative preserves the approved script while removing source tags and metadata", () => {
   const narration = deriveNarration("# Test Episode\n\n**Version:** 0.1.0 — approved\n\n## Opening\n\n**INSTRUCTOR:**\n\nApproved spoken text.\n\n[Source: sources.yaml#test]\n[Claim type: FAA guidance]\n");
   assert.match(narration, /^# Test Episode — narration derivative/m);
@@ -635,6 +650,22 @@ test("attested programmatic FAA copy is used when a PDF citation receives an int
   assert.equal(result.link.resolved_via, "attested_programmatic_fallback");
   assert.equal(result.link.pdf_page_number, 2);
   assert.equal(result.link.pdf_page_text, "Cited page text");
+});
+
+test("show-notes results preserve failed programmatic fallback attestations", () => {
+  const result = applyVerificationEvidence(
+    { citation_target: { valid: true, errors: [] } },
+    { programmatic_url: "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf" },
+    {
+      link: { valid: true },
+      citation_link: { valid: true },
+      programmatic_link: { valid: true },
+      attestation_link: { valid: true },
+      content_attestation: { valid: false, errors: ["reviewed digest no longer matches"] },
+    },
+  );
+  assert.equal(result.content_attestation.valid, false);
+  assert.equal(deterministicEntryValid(result), false);
 });
 
 test("programmatic FAA validation reuses a shared fetch cache for repeated chapter attestations", async () => {

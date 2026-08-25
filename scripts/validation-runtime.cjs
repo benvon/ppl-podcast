@@ -10,7 +10,11 @@ function boundedInteger(value, fallback, maximum, name) {
 
 async function mapConcurrent(items, limit, worker, { signal, onCompleted, keyFor = () => "default", perKeyLimit = limit } = {}) {
   const results = new Array(items.length); const pending = items.map((_, index) => index); const activeByKey = new Map();
-  let wake;
+  const waiters = new Set();
+  const notifyWaiters = () => {
+    for (const resolve of waiters) resolve();
+    waiters.clear();
+  };
   const acquire = async () => {
     while (!signal?.aborted) {
       const position = pending.findIndex((index) => (activeByKey.get(keyFor(items[index], index)) || 0) < perKeyLimit);
@@ -20,11 +24,11 @@ async function mapConcurrent(items, limit, worker, { signal, onCompleted, keyFor
         return { index, key };
       }
       if (!pending.length) return null;
-      await new Promise((resolve) => { wake = resolve; });
+      await new Promise((resolve) => waiters.add(resolve));
     }
     return null;
   };
-  const release = (key) => { activeByKey.set(key, activeByKey.get(key) - 1); const resolve = wake; wake = null; resolve?.(); };
+  const release = (key) => { activeByKey.set(key, activeByKey.get(key) - 1); notifyWaiters(); };
   const runners = Array.from({ length: Math.min(limit, items.length) }, async () => {
     while (true) {
       const job = await acquire(); if (!job) return;

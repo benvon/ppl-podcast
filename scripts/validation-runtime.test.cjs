@@ -16,6 +16,18 @@ test("validation scheduler preserves result order and global/per-origin ceilings
   assert.ok(greatest <= 3); assert.ok(greatestByOrigin.get("a") <= 2); assert.ok(greatestByOrigin.get("b") <= 2);
 });
 
+test("validation scheduler wakes every worker blocked by a per-origin limit", async () => {
+  const jobs = ["a/1", "a/2", "a/3", "a/4", "a/5"];
+  const results = await Promise.race([
+    mapConcurrent(jobs, 4, async (job) => {
+      await new Promise((resolve) => setTimeout(resolve, 2));
+      return job;
+    }, { keyFor: () => "a", perKeyLimit: 2 }),
+    new Promise((_, reject) => setTimeout(() => reject(new Error("scheduler deadlocked")), 250)),
+  ]);
+  assert.deepEqual(results, jobs);
+});
+
 test("validation progress uses safe NDJSON lifecycle records", () => {
   let output = ""; const stream = { write: (value) => { output += value; } };
   const progress = progressReporter({ stream, heartbeatSeconds: 1, runId: "test-run" });

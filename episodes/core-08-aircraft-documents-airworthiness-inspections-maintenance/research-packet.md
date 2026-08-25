@@ -21,15 +21,15 @@
 
 | Objective or risk-management item | Source locator | Episode treatment |
 | --- | --- | --- |
-| Required certificates, location, and duration | ACS PA.I.B.K1a; 14 CFR §§ 91.203, 47.40 | Identify the registration and airworthiness certificate, explain which must be aboard and which must also be displayed, and read their actual identifying and effectiveness information. |
+| Required certificates, location, and duration | ACS PA.I.B.K1a and K4; 14 CFR §§ 91.203, 47.40 | Identify the registration and airworthiness certificate, explain which must be aboard and which must also be displayed, and read their actual identifying and effectiveness information. |
 | Inspection and maintenance record requirements | ACS PA.I.B.K1b; 14 CFR §§ 91.409, 91.417 | Use the records or a traceable status system to identify applicable inspections and due dates. |
 | ADs and related records | ACS PA.I.B.K1c; FAA AD overview; 14 CFR §§ 91.403, 91.417 | Explain why applicability, method of compliance, and recurring next-due information matter. |
 | Special flight permits | ACS PA.I.B.K1d; 14 CFR § 21.197 | Explain when an owner or operator may seek FAA authorization to move an airplane for repair or maintenance. |
 | Owner/operator and PIC responsibilities | ACS PA.I.B.K1e; 14 CFR §§ 91.7, 91.403 | Distinguish primary maintenance responsibility from the PIC's flight-specific safe-flight determination. |
 | Pilot preventive maintenance | ACS PA.I.B.K2; 14 CFR §§ 43.3, 43.7, 43.9; part 43 appendix A(c) | Define the limited task list, pilot and aircraft eligibility, applicable instructions, return-to-service approval, and record entry. |
-| Inoperative equipment | ACS PA.I.B.K3/R1; 14 CFR § 91.213; AC 91-67A Ch. 4 | Teach the no-MEL sequence in regulatory order, then evaluate the capability remaining for the planned flight. |
+| Inoperative equipment | ACS PA.I.B.K3/R1; 14 CFR §§ 91.205(b)–(c), 91.213; AC 91-67A Ch. 4 | Begin with familiar day- and night-VFR equipment for the planned flight, then apply the aircraft-specific required-item checks, disposition, and operational-risk decision. |
 | Standard and special airworthiness certificates | ACS PA.I.B.K4; 14 CFR § 21.181 | Keep detailed instruction in standard-category scope and flag special-category operating limitations as a different system. |
-| Locate certificates and determine airworthiness | ACS PA.I.B.S1–S3 | Apply the full sequence to one borrowed-airplane scenario that includes an inoperative light. |
+| Locate information, determine airworthiness, and address inoperative equipment | ACS PA.I.B.S1–S3 | Apply the full sequence to one borrowed-airplane scenario that includes an inoperative light. |
 
 ## Likely trouble spots
 
@@ -56,11 +56,12 @@
     the rule merely by accumulating another 100 hours.
   - Source: 14 CFR § 91.409(b).
 - Misconception: “A dead item is legal if it is not named in § 91.205.”
-  - Correction: Without an MEL, the pilot must also check the VFR-day
-    type-certification requirements, the aircraft equipment list and KOEL,
-    other operating rules, ADs, proper disposition and placarding, and whether
-    the item creates a hazard.
-  - Source: 14 CFR § 91.213(d); AC 91-67A Ch. 4.
+  - Correction: Section 91.205 gives a day-VFR baseline and adds equipment for
+    night VFR and certain operations, but it is only one screen. For an
+    eligible airplane using the no-MEL path, also check the type-certification
+    requirements, aircraft equipment list or KOEL, other operating rules, ADs,
+    proper disposition and placarding, and whether the item creates a hazard.
+  - Source: 14 CFR §§ 91.205(b)–(c), 91.213(d); AC 91-67A Ch. 4.
 - Misconception: “INOPERATIVE tape fixes the problem.”
   - Correction: Placarding follows the required-item decision and proper
     removal or deactivation; deactivation can itself be maintenance.

@@ -1,5 +1,45 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance — production log
 
+## 2026-08-25 — source-relevance review completed
+
+- Ran the required deterministic and `--require-llm` review against the approved
+  source-tagged script. All 34 sources, 50 reciprocal claims, and 15 show-note
+  links passed deep-citation, link, locator, and claim-relevance review.
+- The review used the current official eCFR endpoints and the project’s
+  configured relevance model. `narration.md` was regenerated from the approved
+  master script after the final KOEL clarification.
+- Pre-render source QA is complete. Audio preview, listening QA, chapter review,
+  publication-day source validation, and hosting handoff remain open.
+
+## 2026-08-25 — source-relevance remediation
+
+- Revised only the sections implicated by the seven failed source-relevance
+  results. Split ACS Task B across its printed pages 2 and 3; separated POH
+  operating-section content from the page 9-5 supplements guidance; and narrowed
+  the inspection, preflight, and MOSAIC claims to what their cited pages state.
+- Reworked the MEL and no-MEL evidence boundaries. The PHAK page now supports
+  only aircraft-specific MEL development and the operator-procedure content.
+  AC 91-67A page 4-1
+  supports the no-MEL decision sequence, while page 4-2 separately supports
+  deactivation authority, return-to-service approval, and the maintenance entry.
+- Narrowed the § 91.213(a) claim to an approved MEL for the aircraft, the LOA
+  carried aboard, and compliance with both documents. Split § 91.213(d)(3) into
+  the removal path, with its cockpit-control placard and § 43.9 entry, and the
+  deactivation path, with its INOPERATIVE placard and conditional part 43 work
+  and record.
+- Added the current § 91.213(d)(1) aircraft-class and MMEL-development
+  eligibility threshold before the four required-item screens in paragraph
+  (d)(2), including the AD screen.
+- Reframed the inoperative-equipment lesson around the learner's planned VFR
+  flight. Added a direct current citation to § 91.205(b)–(c), explained the
+  day-versus-night and operation-dependent equipment differences first, and
+  reduced MEL eligibility detail to a brief applicability check before the
+  aircraft-specific required-item review.
+- Updated the affected spoken explanations and source tags, aligned the claim
+  inventory and show-note manifest, and regenerated `narration.md`. The revised
+  narration contains 4,877 spoken words in 67 render segments. No audio was
+  rendered and no LLM validation was run.
+
 ## 2026-08-24 — script approval and pre-render QA started
 
 - The revised script received editorial approval. The approved source-tagged

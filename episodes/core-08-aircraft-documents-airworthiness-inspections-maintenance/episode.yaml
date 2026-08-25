@@ -3,12 +3,12 @@ series: ppl-study-podcast
 title: "Aircraft Documents, Airworthiness, Inspections, and Maintenance"
 slug: "aircraft-documents-airworthiness-inspections-maintenance"
 track: "core"
-status: drafted
+status: source_relevance_review_complete
 version: 0.2.0
 published_at: null
 runtime_target_minutes: 39
 runtime_actual_seconds: null
-word_count: 4352
+word_count: 4877
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
@@ -27,7 +27,7 @@ cfr_references:
   - "14 CFR §§ 21.181 and 21.197"
   - "14 CFR §§ 43.3, 43.7, and 43.9; part 43 appendix A(c)"
   - "14 CFR §§ 47.40"
-  - "14 CFR §§ 91.7, 91.9, 91.203, 91.207, and 91.213"
+  - "14 CFR §§ 91.7, 91.9, 91.203, 91.205, 91.207, and 91.213"
   - "14 CFR §§ 91.403, 91.405, 91.407, 91.409, 91.411, 91.413, and 91.417"
 learning_objectives:
   - "Explain conformity to the approved design and condition for safe operation as the two parts of an airworthiness determination."
@@ -43,20 +43,18 @@ trouble_spots:
   - "Checking only § 91.205 for an inoperative item, or treating a placard as a substitute for proper removal or deactivation."
   - "Assuming any simple-looking maintenance task is preventive maintenance or omitting the return-to-service entry."
 source_verification:
-  status: initial_research_verified
-  verified_at_utc: "2026-08-24T19:22:46Z"
+  status: source_relevance_review_complete
+  verified_at_utc: "2026-08-25T15:52:03.307Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: required_before_render
+  relevance_review: complete
 review:
-  editorial_status: script_approved
+  editorial_status: script_approved_source_review_complete
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
-  - "Complete editorial and FAA-source review of the first draft"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"

@@ -3,7 +3,7 @@
 **Version:** 0.2.0 — complete spoken-lesson rewrite after editorial review
 **Target runtime:** approximately 39 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Revised first-review draft; source review required before audio production or public release.
+**Production status:** Approved script; source-relevance review complete; pre-render audio QA pending.
 
 ## [00:00] Opening
 
@@ -33,9 +33,14 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-The Private Pilot for Airplane Category Airman Certification Standards includes Task PA.I.B, Airworthiness Requirements. The knowledge elements cover aircraft certificates, inspections and maintenance records, Airworthiness Directives, usually called ADs, special flight permits, owner and pilot responsibilities, preventive maintenance, inoperative equipment, and airworthiness certificates. The skill elements ask you to locate the required certificates, determine whether the aircraft is airworthy, and apply the appropriate procedures.
+The Private Pilot for Airplane Category Airman Certification Standards includes Task PA.I.B, Airworthiness Requirements. Its knowledge elements cover certificate location and expiration, inspections and maintenance records, Airworthiness Directives, usually called ADs, special flight permits, owner and pilot responsibilities, preventive maintenance, and inoperative equipment.
 
 [Source: sources.yaml#acs-airworthiness-requirements]
+[Claim type: FAA regulatory standard]
+
+Task B also includes standard and special airworthiness certificates. Its skill elements ask you to locate and describe the airplane's airworthiness and registration information, determine whether the airplane is airworthy in the evaluator's scenario, and apply the appropriate procedures for operating with inoperative equipment in that scenario.
+
+[Source: sources.yaml#acs-airworthiness-skills]
 [Claim type: FAA regulatory standard]
 
 Those skill elements tell us how to organize the lesson. We will start with what airworthy means. Then we will identify the documents that belong to the airplane, use the maintenance records to establish its continuing status, look at its physical condition, and work through an inoperative item. We will finish with a borrowed-airplane example that brings the pieces together.
@@ -48,10 +53,12 @@ When I walk up to the airplane, am I trying to find one document that says it is
 
 No single document answers the whole question. The airworthiness certificate is required, but you also need the approved operating information, current inspection and AD status, and evidence that the airplane is in condition for safe flight. Each source answers a different part of the decision.
 
-This lesson uses common standard-category airplanes in ordinary part 91 operations. Light-sport certification and sport-pilot maintenance privileges follow separate provisions, which we will cover in a supplemental episode.
+The FAA's October 20, 2025 PHAK addendum updates Chapter 9 language about special airworthiness certificates for light-sport category aircraft and preventive-maintenance privileges for sport pilots.
 
 [Source: sources.yaml#phak-mosaic-addendum]
-[Claim type: FAA guidance and scope boundary]
+[Claim type: FAA guidance]
+
+This lesson focuses on common standard-category airplanes in ordinary part 91 operations. We will cover the light-sport and sport-pilot provisions in a supplemental episode.
 
 ## [03:35] What airworthy means
 
@@ -135,15 +142,18 @@ Begin with the airplane itself and the documents supplied for it. Match the manu
 PHAK Chapter 9 explains the reason for these checks. An Aircraft Flight Manual is FAA approved and specific to an aircraft or aircraft type. A Pilot's Operating Handbook may contain the approved AFM information in a format prepared by the manufacturer. A generic owner or information manual can be useful for study, but it may not be approved, current, or specific to the airplane you intend to fly.
 
 [Source: sources.yaml#phak-manual-types]
+[Claim type: FAA guidance]
+
+The POH sections organize limitations, procedures, performance information, weight-and-balance and equipment information, and system descriptions. Markings and placards are part of that operating picture.
+
 [Source: sources.yaml#phak-poh-contents]
 [Claim type: FAA guidance]
 
-The applicable manual package should lead you to the airplane's limitations, procedures, performance information, current weight-and-balance data, equipment information, markings, placards, and supplements. A supplement can change a limitation or procedure for equipment installed in that airplane. Confirming applicability is how you avoid using correct information for a different configuration.
+Supplements contain information needed to operate the airplane as it is actually configured. PHAK explains that information for optional systems and equipment is inserted into the flight manual when the equipment is installed. That means the manual package may contain operating information added after the basic manual was published. If approved operating information is later revised, section 91.9 requires the current approved material to be available in the aircraft. The same section requires the pilot to follow the approved flight manual, markings and placards, and other prescribed operating limitations. A supplement for an autopilot or navigation system, for example, provides operating information for that installation. Match the supplements to the equipment in the airplane so you use the correct information for this airplane's actual configuration.
 
-Section 91.9 requires the pilot to follow the approved flight manual, markings and placards, and other prescribed operating limitations. It also requires the current approved manual material specified by the rule to be available in the aircraft.
-
+[Source: sources.yaml#phak-poh-supplements]
 [Source: sources.yaml#cfr-91-9-flight-manual]
-[Claim type: Regulation]
+[Claim type: FAA guidance and Regulation]
 
 The maintenance logbooks serve a different purpose. They contain the history and continuing-status information required by section 91.417. They generally do not need to ride in the airplane on each flight. Carrying original, irreplaceable records adds a risk of loss, theft, or damage. The pilot still needs access to reliable information from those records, either by reviewing them directly or by using a current status summary that can be traced back to them.
 
@@ -158,7 +168,7 @@ Inspection due dates.
 
 **INSTRUCTOR:**
 
-Inspection requirements depend on the airplane, its equipment, and the way it is operated. A memory aid can remind you what to investigate, but the regulation and the airplane's records establish which requirements apply and when they are due.
+Required inspection intervals depend on the type of operation. An aircraft inspection program may use calendar time, time in service, the number of system operations, or a combination of those measures. Start by identifying each requirement that applies to this airplane and operation. Then use the regulation and the airplane's records to determine when it is due.
 
 [Source: sources.yaml#phak-inspections-records]
 [Claim type: FAA guidance]
@@ -203,10 +213,16 @@ Where does the preflight inspection fit among those dates?
 
 **INSTRUCTOR:**
 
-The scheduled inspections establish maintenance status at defined intervals. The preflight inspection examines the airplane's condition for the flight you are about to make. A current annual does not tell you whether a tire was damaged yesterday, and a careful preflight does not establish that the annual is current. You review both kinds of information.
+PHAK Chapter 9 describes the preflight inspection as a thorough, systematic way for the pilot to determine whether the aircraft is airworthy and in condition for safe operation.
 
 [Source: sources.yaml#phak-preflight-inspection]
 [Claim type: FAA guidance]
+
+That physical inspection and the scheduled-inspection records answer different questions. A current annual does not tell you whether a tire was damaged yesterday, and a careful preflight does not establish the date of the last annual. Review both the airplane's present condition and its maintenance status.
+
+[Source: sources.yaml#cfr-91-409-inspections]
+[Source: sources.yaml#cfr-91-417-records]
+[Claim type: Regulation and practical application]
 
 ## [15:40] What the maintenance records show
 
@@ -258,15 +274,36 @@ An inoperative item.
 
 **INSTRUCTOR:**
 
-Suppose the landing light does not illuminate. Before deciding whether the airplane can be flown, identify the failed item and the operation you plan to conduct.
+Suppose the landing light does not illuminate. Start with the VFR flight you actually plan to make. Is it day or night? Personal or for hire? Over land or beyond gliding distance from shore? Those details can change which equipment is required.
 
-First determine whether the airplane is operated under an approved Minimum Equipment List, usually called an MEL. An approved MEL and its letter of authorization are specific to the aircraft and operator. They provide the conditions and procedures for operating with listed equipment inoperative. A list from another operator or another airplane does not provide that authority.
+Picture a standard-category training airplane. For a day VFR flight, section 91.205(b) gives you a familiar baseline. It includes the airspeed indicator, altimeter, magnetic direction indicator, the applicable engine instruments, a fuel gauge for each tank, a landing-gear position indicator when the gear is retractable, required restraints, and an ELT when section 91.207 requires one. Some items on the list depend on the airplane or operation, so the list is not identical for every flight.
+
+[Source: sources.yaml#cfr-91-205-vfr-equipment]
+[Claim type: Regulation]
+
+Night VFR starts with the day-VFR equipment and adds approved position lights, an approved anticollision-light system, adequate electrical energy for the installed electrical and radio equipment, and accessible spare fuses when the airplane uses replaceable fuses. If the aircraft is operated for hire at night, section 91.205(c) also requires an electric landing light. Other conditions matter too. For example, the day-VFR list adds flotation gear and a signaling device for certain for-hire operations over water beyond power-off gliding distance from shore.
+
+[Source: sources.yaml#cfr-91-205-vfr-equipment]
+[Claim type: Regulation]
+
+**LEARNER:**
+
+For our daytime personal flight, section 91.205 does not list the landing light as required. Does that settle it?
+
+**INSTRUCTOR:**
+
+No. Section 91.205 is one part of the answer, not the whole answer. Before deciding how to handle the failed item, determine whether the airplane operates under an approved Minimum Equipment List, usually called an MEL. An approved MEL applies to a specific airplane, identified by serial and registration number, and is used with an FAA letter of authorization carried aboard. When that system governs the operation, follow both documents.
 
 [Source: sources.yaml#cfr-91-213-inoperative]
 [Source: sources.yaml#phak-inoperative-preventive]
 [Claim type: Regulation and FAA guidance]
 
-Many small airplanes operate without an MEL and use section 91.213(d). Begin by checking whether the failed item is part of the VFR-day equipment prescribed by the airplane's type-certification rules. Then check the aircraft equipment list or Kinds of Operations Equipment List for an indication that the item is required for the planned kind of operation. Check section 91.205 and every other operating rule that applies to the flight. Finally, determine whether an AD requires the item to be operational.
+Most common non-turbine training airplanes are handled through the no-MEL path in section 91.213(d). Which airplanes qualify depends in part on whether an MMEL has been developed. For this lesson, the important point is to confirm the path that applies to the airplane, then make the complete equipment decision.
+
+[Source: sources.yaml#cfr-91-213-inoperative]
+[Claim type: Regulation]
+
+For an eligible airplane using that path, ask four required-equipment questions. Is the item part of the VFR-day equipment required by the certification rules under which the airplane was type certificated? Does the aircraft equipment list or Kinds of Operations Equipment List, KOEL, say it is required for this kind of operation? Is it required by section 91.205 or another operating rule for this flight? Does an Airworthiness Directive require it to be operational?
 
 [Source: sources.yaml#cfr-91-213-inoperative]
 [Source: sources.yaml#ac-91-67a-non-mel]
@@ -274,19 +311,21 @@ Many small airplanes operate without an MEL and use section 91.213(d). Begin by 
 
 **LEARNER:**
 
-Why is checking section 91.205 alone incomplete?
+Why do I need the equipment list or KOEL after checking section 91.205?
 
 **INSTRUCTOR:**
 
-Because the item may be required by the airplane's certification rules, its equipment list or KOEL, another operating rule, or an AD. Section 91.205 is one part of the review.
+Because section 91.205 is a general operating rule. The airplane's certification basis and its equipment list or KOEL can make an installed item required for that airplane or for a stated kind of operation. An AD can require the item independently. Changing from night to day may remove a night-only operating requirement, but it does not erase an aircraft-specific requirement or an AD. If any of the four checks says the item is required, stop the no-MEL deferral and resolve that requirement before an ordinary flight.
 
-If the airplane's certification requirements, equipment list or KOEL, or an AD requires the item, repair it before flight. If an operating rule requires the item only for the kind of operation you planned, you can repair it or select a different operation and repeat the complete review. A change from night to day, for example, does not change a certification requirement or an AD.
-
-If the item is not required, section 91.213(d) still requires the item to be removed or deactivated and placarded INOPERATIVE. Removal must be performed and recorded as maintenance under part 43 by a person with the applicable privileges. For typical installed equipment, that means a certified mechanic with the appropriate rating. Deactivation can also involve maintenance; when it does, the same part 43 performance and record rules apply. Deactivation should be based on the airplane's system and approved maintenance information; it may involve more than placing a switch in the off position.
+If none of those sources requires the item, you still do not simply ignore it or cover it with tape. Section 91.213(d) provides two ways to place the item in an inoperative status. If it is removed, its cockpit control must be placarded and the maintenance must be recorded under section 43.9. If it is deactivated, the item must be placarded INOPERATIVE. When deactivation involves maintenance, that work must be performed and recorded under part 43.
 
 [Source: sources.yaml#cfr-91-213-inoperative]
-[Source: sources.yaml#ac-91-67a-non-mel]
-[Claim type: Regulation and FAA guidance]
+[Claim type: Regulation]
+
+Deactivation may involve more than placing a switch in the off position. AC 91-67A explains that deactivating an inoperative system is not preventive maintenance. An appropriately authorized person must accomplish the deactivation, approve the airplane for return to service, and make the required maintenance-record entry.
+
+[Source: sources.yaml#ac-91-67a-deactivation]
+[Claim type: FAA guidance]
 
 A pilot who is certificated and appropriately rated for the airplane, or an appropriately rated certified mechanic, must also determine that the inoperative item does not create a hazard to the airplane. AC 91-67A recommends considering the environment, the planned operation, the pilot and passengers, and the relationship between the failed item and other equipment.
 
@@ -302,7 +341,7 @@ If the item passes all of those checks, what should I be able to point to?
 
 **INSTRUCTOR:**
 
-You should be able to identify why the item is not required for this operation, how it was properly removed or deactivated, the INOPERATIVE placard, any maintenance entry that was required, and the basis for deciding that the condition does not create a hazard. If one of those answers is missing, resolve it before flight.
+You should be able to identify why the item is not required for this operation and which disposition path was used. For removal, identify the cockpit-control placard and section 43.9 maintenance entry. For deactivation, identify the INOPERATIVE placard and any part 43 work and record required because the deactivation involved maintenance. You also need the basis for deciding that the condition does not create a hazard. If one of those answers is missing, resolve it before flight.
 
 ## [25:15] Preventive maintenance by a pilot
 
@@ -390,7 +429,7 @@ Next, identify the approved operating information. Confirm that the AFM or POH m
 
 [Source: sources.yaml#cfr-91-203-certificates]
 [Source: sources.yaml#cfr-91-9-flight-manual]
-[Source: sources.yaml#phak-poh-contents]
+[Source: sources.yaml#phak-poh-supplements]
 [Claim type: Regulation and FAA guidance]
 
 Now use the maintenance status sheet. Locate the annual inspection date and the underlying approval for return to service. Because this is a private owner making a personal flight, the passage of 100 aircraft hours alone does not create a 100-hour inspection requirement. Check the requirements that do apply to the airplane and operation, including the ELT and, when their use is required, the transponder and altimeter-static inspections. Review the current status of applicable ADs and the next due action for any recurring AD.
@@ -405,8 +444,9 @@ The dates are current. Can I move to the preflight now?
 
 **INSTRUCTOR:**
 
-First review any open discrepancies. The failed panel light needs a section 91.213 determination. Identify the exact light and its function. Determine whether the airplane has an MEL. If it does not, check the certification and equipment-list requirements, the operating rules for this daytime flight, and applicable ADs. Confirm proper removal or deactivation and placarding, any required maintenance entry, and the no-hazard determination.
+First review any open discrepancies. Identify the exact panel light and its function, then begin with this daytime personal operation. Check the day-VFR equipment rule, the airplane's certification requirements, its equipment list or KOEL, and applicable ADs. Determine whether the airplane uses an approved MEL or the no-MEL path that is common in training airplanes. If the no-MEL review shows that the light is not required, confirm how it was placed in an inoperative status. Removal calls for the cockpit-control placard and section 43.9 entry. Deactivation calls for the INOPERATIVE placard and any part 43 work and record the deactivation required. Then confirm the no-hazard determination.
 
+[Source: sources.yaml#cfr-91-205-vfr-equipment]
 [Source: sources.yaml#cfr-91-213-inoperative]
 [Claim type: Regulation]
 
@@ -422,7 +462,7 @@ State the specific information you still need. Ask for the annual return-to-serv
 
 After the documents, records, discrepancy review, and preflight are complete, the pilot in command decides whether the airplane is in condition for safe flight. If a required document is missing, a due status cannot be established, or a discrepancy remains unresolved, wait until the appropriate person corrects or explains it.
 
-[Source: sources.yaml#acs-airworthiness-requirements]
+[Source: sources.yaml#acs-airworthiness-skills]
 [Source: sources.yaml#cfr-91-7-pic-airworthiness]
 [Claim type: FAA standard and Regulation]
 
@@ -440,14 +480,24 @@ Identify the documents that belong to the airplane. The effective registration a
 
 Use the maintenance records or a reliable status system to establish the annual inspection, any operation-dependent 100-hour requirement, equipment inspection dates, and current AD status. Remember the operating context: a private owner flying their own airplane for personal use does not need a 100-hour inspection simply because the airplane has flown another 100 hours.
 
-For an inoperative item, identify the item and planned operation. Use the airplane's MEL if it has one. Without an MEL, check the certification requirements, aircraft equipment list or KOEL, operating rules, and ADs. Then confirm proper removal or deactivation, the INOPERATIVE placard, required maintenance records, and the no-hazard determination.
+**LEARNER:**
+
+What sequence should I retrieve when an item does not work?
+
+**INSTRUCTOR:**
+
+Start with the item and the planned operation. Day VFR has a baseline equipment list; night VFR and conditions such as for-hire or overwater operation can add requirements. Identify whether the airplane uses an approved MEL or the no-MEL path. For the common no-MEL case, check the airplane's certification requirements, equipment list or KOEL, section 91.205 and other operating rules, and ADs. If the item is not required, confirm the proper removal or deactivation path, its placard and maintenance record, and the no-hazard determination.
+
+[Source: sources.yaml#cfr-91-205-vfr-equipment]
+[Source: sources.yaml#cfr-91-213-inoperative]
+[Claim type: Regulation]
 
 Know the maintenance roles. The owner or operator is primarily responsible for maintaining the airplane. Certified mechanics and inspectors perform and approve work within their privileges. A private pilot may perform only qualifying preventive maintenance and must complete the required approval and record entry. The pilot in command makes the final determination that the airplane is in condition for safe flight.
 
 For your next ground lesson, use the airplane you normally fly. Ask your CFI or the operator to show you the certificates, the applicable AFM or POH and supplements, the latest annual entry, one equipment inspection, and one recurring AD record. Then choose an actual or hypothetical inoperative item and work through section 91.213 in order. That exercise practices the ACS skills with information tied to a real airplane.
 
 [Source: sources.yaml#phak-documents-airworthiness]
-[Source: sources.yaml#acs-airworthiness-requirements]
+[Source: sources.yaml#acs-airworthiness-skills]
 [Claim type: FAA guidance and regulatory standard]
 
 ## [39:15] Outro

@@ -3,9 +3,9 @@
 ## Content and sources
 
 - [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
-- [ ] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
-- [ ] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
-- [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
+- [x] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
+- [x] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
+- [x] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`. Completed 2026-08-25: 34 sources, 50 reciprocal claims, and 15 show-note links all passed.
 - [x] Human editorial pass completed; unresolved technical questions were removed or resolved.
 
 ## Audio

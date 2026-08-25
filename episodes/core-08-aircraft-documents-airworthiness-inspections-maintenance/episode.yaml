@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Aircraft Documents, Airworthiness, Inspections, and Maintenance"
 slug: "aircraft-documents-airworthiness-inspections-maintenance"
 track: "core"
-status: source_relevance_review_complete
+status: candidate_rendered_listening_qa_approved
 version: 0.2.0
 published_at: null
 runtime_target_minutes: 39
-runtime_actual_seconds: null
+runtime_actual_seconds: 2008.34
 word_count: 4877
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -49,18 +49,17 @@ source_verification:
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
 review:
-  editorial_status: script_approved_source_review_complete
+  editorial_status: script_and_listening_qa_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.

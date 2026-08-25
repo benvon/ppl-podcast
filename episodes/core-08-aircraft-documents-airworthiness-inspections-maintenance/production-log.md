@@ -1,5 +1,20 @@
 # Aircraft Documents, Airworthiness, Inspections, and Maintenance — production log
 
+## 2026-08-25 — final candidate listening and chapter QA accepted
+
+- Corrected the isolated synthesized pronunciation of “annual” in segment 20,
+  then added the durable MEL letter-by-letter pronunciation transform and
+  rerendered only the affected segments. The candidate was reassembled so its
+  chapter timing is derived from the final audio.
+- The accepted candidate is 33:28, with SHA-256
+  `732187ece502aa947be1acdc6ab6f62f1eb59ea56db43d13a41832abe772159b`.
+  Its render manifest records 24 kHz mono output, successful WAV/MP3 decode,
+  duration agreement, 56 clean stitch boundaries, no clipped samples, and a
+  passing `ffprobe` embedded-chapter validation.
+- Full script-aligned listening QA and manual review of all 14 chapter markers
+  are accepted. The required Disclaimer was heard and accepted in the reusable
+  opening preview.
+
 ## 2026-08-25 — opening preview accepted
 
 - Rendered and assembled reusable Realtime segments 1–5 with Marin, Cedar, and

@@ -17,6 +17,7 @@ const RETRY_DELAY_MS = 1_000;
 const MAX_BYTES = 1_000_000;
 const MAX_HASH_BYTES = 32_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
+const ECFR_TITLES_URL = "https://www.ecfr.gov/api/versioner/v1/titles.json";
 const RELEVANCE_SCHEMA = {
   type: "object",
   additionalProperties: false,
@@ -239,9 +240,18 @@ function retryDelay(attempt, retryAfter, signal) {
   const serverDelay = /^\d+$/.test(retryAfter || "") ? Number(retryAfter) * 1_000 : 0;
   const delay = Math.min(30_000, Math.max(serverDelay, RETRY_DELAY_MS * (2 ** (attempt - 1)) + Math.floor(Math.random() * 250)));
   return new Promise((resolve, reject) => {
-    const timer = setTimeout(resolve, delay);
-    const cancel = () => { clearTimeout(timer); reject(new Error("cancelled")); };
-    if (signal) signal.addEventListener("abort", cancel, { once: true });
+    if (signal?.aborted) { reject(new Error("cancelled")); return; }
+    let settled = false;
+    const finish = (callback, value) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      signal?.removeEventListener("abort", cancel);
+      callback(value);
+    };
+    const timer = setTimeout(() => finish(resolve), delay);
+    const cancel = () => finish(reject, new Error("cancelled"));
+    signal?.addEventListener("abort", cancel, { once: true });
   });
 }
 
@@ -377,18 +387,39 @@ function isEcfrSource(source) {
   try { return canonicalHostname(assertSafeUrl(source.url)) === "ecfr.gov"; } catch (_) { return false; }
 }
 
+async function fetchEcfrTitleStatus(title, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal } = {}) {
+  const raw = await fetchSourceCached(ECFR_TITLES_URL, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, signal }, fetchCache);
+  const errors = linkResponseErrors(ECFR_TITLES_URL, raw);
+  if (raw.content_type !== "application/json") errors.push(`expected JSON content type, received ${raw.content_type || "no content type"}`);
+  if (raw.truncated || raw.hash_truncated) errors.push("eCFR title-status response was truncated");
+  if (errors.length) throw new Error(`eCFR title-status validation failed: ${errors.join("; ")}`);
+  let body;
+  try { body = JSON.parse(raw.body?.toString("utf8") || ""); }
+  catch (_) { throw new Error("eCFR title-status response was not valid JSON"); }
+  const matches = Array.isArray(body.titles) ? body.titles.filter((entry) => String(entry?.number) === String(title)) : [];
+  if (matches.length !== 1 || !/^\d{4}-\d{2}-\d{2}$/.test(matches[0].up_to_date_as_of || "")) throw new Error(`eCFR title-status response does not provide one current date for title ${title}`);
+  if (body.meta?.import_in_progress === true) throw new Error("eCFR title-status import is in progress");
+  return { up_to_date_as_of: matches[0].up_to_date_as_of, title_status_sha256: raw.content_sha256, title_status_url: ECFR_TITLES_URL };
+}
+
 async function verifyEcfrSection(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal } = {}) {
   const target = exactEcfrTarget(source);
+  let titleStatus;
+  try { titleStatus = await fetchEcfrTitleStatus(target.title, { fetchImpl, timeoutMs, fetchCache, signal }); }
+  catch (error) { return { link: { valid: false, errors: [error.message], citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml" } }; }
+  if (titleStatus.up_to_date_as_of !== target.date) {
+    return { link: { valid: false, errors: [`eCFR validation date ${target.date} does not match current title ${target.title} date ${titleStatus.up_to_date_as_of}`], citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", ecfr_title_status: titleStatus } };
+  }
   const raw = await fetchSourceCached(target.validation_url, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, signal }, fetchCache);
   const errors = linkResponseErrors(target.validation_url, raw);
   if (raw.content_type !== "application/xml" && raw.content_type !== "text/xml") errors.push(`expected XML content type, received ${raw.content_type || "no content type"}`);
   if (raw.truncated || raw.hash_truncated) errors.push("eCFR XML response was truncated");
-  if (errors.length) return { link: { ...raw, valid: false, errors, citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml" } };
+  if (errors.length) return { link: { ...raw, valid: false, errors, citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", ecfr_title_status: titleStatus } };
   try {
     const extracted = extractEcfrSection(raw.body?.toString("utf8"), target);
-    return { link: { ...raw, valid: true, errors: [], citation_url: source.url, validation_url: target.validation_url, effective_validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", section_identity: extracted.identity, section_text: extracted.text, section_text_sha256: crypto.createHash("sha256").update(extracted.text).digest("hex"), excerpt: extracted.text.slice(0, 12000) } };
+    return { link: { ...raw, valid: true, errors: [], citation_url: source.url, validation_url: target.validation_url, effective_validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", ecfr_title_status: titleStatus, section_identity: extracted.identity, section_text: extracted.text, section_text_sha256: crypto.createHash("sha256").update(extracted.text).digest("hex"), excerpt: extracted.text.slice(0, 12000) } };
   } catch (error) {
-    return { link: { ...raw, valid: false, errors: [error.message], citation_url: source.url, validation_url: target.validation_url, effective_validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml" } };
+    return { link: { ...raw, valid: false, errors: [error.message], citation_url: source.url, validation_url: target.validation_url, effective_validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", ecfr_title_status: titleStatus } };
   }
 }
 
@@ -443,7 +474,7 @@ function responseText(response) {
   throw new Error("Responses API returned no output text.");
 }
 
-async function assessRelevance({ model, source, claims, fetched }) {
+async function assessRelevance({ model, source, claims, fetched, signal }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is required for --llm. Load it from your environment; do not place it in a command argument or repository file.");
   // Exact eCFR XML extraction is authoritative for regulatory citations; a
@@ -461,11 +492,14 @@ async function assessRelevance({ model, source, claims, fetched }) {
     text: { format: { type: "json_schema", name: "source_relevance", strict: true, schema: RELEVANCE_SCHEMA } },
   };
   const controller = new AbortController();
+  const abort = () => controller.abort();
+  if (signal?.aborted) throw new Error("cancelled");
+  signal?.addEventListener("abort", abort, { once: true });
   const timer = setTimeout(() => controller.abort(), 45_000);
   let response;
   try {
     response = await fetch("https://api.openai.com/v1/responses", { method: "POST", signal: controller.signal, headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  } finally { clearTimeout(timer); }
+  } finally { clearTimeout(timer); signal?.removeEventListener("abort", abort); }
   if (!response.ok) throw new Error(`Responses API returned HTTP ${response.status}.`);
   const parsed = JSON.parse(await response.text());
   const assessment = JSON.parse(responseText(parsed));
@@ -476,6 +510,19 @@ function writeYaml(file, value) {
   const temporary = `${file}.${process.pid}.${crypto.randomUUID()}.tmp`;
   try { fs.writeFileSync(temporary, YAML.stringify(value), "utf8"); fs.renameSync(temporary, file); }
   finally { if (fs.existsSync(temporary)) fs.unlinkSync(temporary); }
+}
+
+function validationInProgressPath(outputPath) {
+  return `${outputPath}.in-progress`;
+}
+
+function markValidationInProgress(outputPath, inputSha256) {
+  writeYaml(validationInProgressPath(outputPath), { schema_version: 1, validator: "scripts/validate-source-links.cjs", started_at_utc: new Date().toISOString(), input_sha256: inputSha256 });
+}
+
+function completeValidationReport(outputPath, report) {
+  writeYaml(outputPath, report);
+  fs.unlinkSync(validationInProgressPath(outputPath));
 }
 
 function publicLinkRecord(link) {
@@ -684,6 +731,7 @@ async function main() {
     console.log(`Validated input shape, claim mappings, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
   }
+  markValidationInProgress(outputPath, inputSha256);
   const results = new Array(ledger.sources.length);
   const fetchCache = new Map();
   const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
@@ -739,7 +787,7 @@ async function main() {
       entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
       entry.claim_assessments = validateClaimAssessments(entry.relevance, []);
     } else {
-      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, fetched: entry.link }); }
+      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, fetched: entry.link, signal: cancellation.signal }); }
       catch (error) { entry.relevance = { status: "not_assessed", reason: `LLM relevance failed: ${error.message}` }; }
       entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
     }
@@ -757,7 +805,7 @@ async function main() {
   }));
   const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.verdict)) || (options.requireLlm && entry.relevance.status === "assessed" && ["does_not_support", "insufficient_evidence"].includes(entry.relevance.assessment.locator_assessment.verdict)) || (options.requireLlm && !entry.claim_assessments.valid));
-  writeYaml(outputPath, report);
+  completeValidationReport(outputPath, report);
   progress.emit("report_written", { valid: !unresolved });
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
   if (unresolved) process.exitCode = 1;
@@ -771,4 +819,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { citedPdfPageNumber, extractPdfPageText, fetchSource, fetchSourceCached, markdownHttpsLinks, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { assessRelevance, citedPdfPageNumber, extractPdfPageText, fetchSource, fetchSourceCached, markdownHttpsLinks, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { assessRelevance, extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -386,6 +386,22 @@ test("source fetch retries a transient service-unavailable response", async () =
   assert.equal(result.excerpt, "current FAA source");
 });
 
+test("source-relevance requests stop when the validation run is cancelled", async () => {
+  const originalFetch = global.fetch; const originalKey = process.env.OPENAI_API_KEY;
+  const controller = new AbortController(); let observedAbort = false;
+  process.env.OPENAI_API_KEY = "test-key";
+  global.fetch = (_url, { signal }) => new Promise((_, reject) => signal.addEventListener("abort", () => { observedAbort = true; reject(new DOMException("aborted", "AbortError")); }, { once: true }));
+  try {
+    const pending = assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "Source text" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: {}, signal: controller.signal });
+    controller.abort();
+    await assert.rejects(pending, /AbortError|aborted/);
+    assert.equal(observedAbort, true);
+  } finally {
+    global.fetch = originalFetch;
+    if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
+  }
+});
+
 test("eCFR validation fallback must stay on the official versioner endpoint", () => {
   const valid = validationTargetErrors({
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105",
@@ -403,6 +419,7 @@ test("eCFR derives an exact-section XML endpoint from legacy ledgers", async () 
   const source = { url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61" };
   let requested;
   const result = await verifyEcfrSection(source, { fetchImpl: (url) => {
+    if (String(url).endsWith("/titles.json")) return Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } }));
     requested = String(url);
     return Promise.resolve(new Response("<ROOT><SECTION><SECTNO>§ 61.105</SECTNO><P>Knowledge areas.</P></SECTION></ROOT>", { status: 200, headers: { "content-type": "application/xml" } }));
   } });
@@ -422,9 +439,17 @@ test("eCFR fails closed on unsafe target mismatch, wrong media type, and missing
     new Response("<SECTION><SECTNO>§ 61.104</SECTNO></SECTION>", { status: 200, headers: { "content-type": "application/xml" } }),
     new Response("<SECTION><SECTNO>§ 61.105</SECTNO></SECTION><SECTION><SECTNO>§ 61.105</SECTNO></SECTION>", { status: 200, headers: { "content-type": "application/xml" } }),
   ]) {
-    const result = await verifyEcfrSection(validSource, { fetchImpl: () => Promise.resolve(response.clone()) });
+    const result = await verifyEcfrSection(validSource, { fetchImpl: (url) => String(url).endsWith("/titles.json") ? Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) : Promise.resolve(response.clone()) });
     assert.equal(result.link.valid, false);
   }
+  const stale = await verifyEcfrSection(validSource, { fetchImpl: (url) => {
+    if (String(url).endsWith("/titles.json")) return Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-11" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } }));
+    throw new Error("stale validation must not fetch the section");
+  } });
+  assert.equal(stale.link.valid, false);
+  assert.match(stale.link.errors.join("\n"), /does not match current title/);
+  const descendantIdentity = await verifyEcfrSection(validSource, { fetchImpl: (url) => String(url).endsWith("/titles.json") ? Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) : Promise.resolve(new Response("<SECTION><P N=\"61.105\">not a section identity</P></SECTION>", { status: 200, headers: { "content-type": "application/xml" } })) });
+  assert.equal(descendantIdentity.link.valid, false);
 });
 
 test("programmatic FAA fallback requires an FAA-page attestation and reviewed digest", () => {
@@ -555,11 +580,22 @@ test("realtime renderer requires completed source-relevance review before render
   const scriptPath = path.join(temporary, "narration.md");
   fs.writeFileSync(scriptPath, "# Test narration\n", "utf8");
   fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: complete\n", "utf8");
-  fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults: []\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources: []\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims: []\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+  const inputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(fs.readFileSync(path.join(temporary, file))).digest("hex")]));
+  const validation = (results) => YAML.stringify({ llm_requested: true, claim_mapping: { valid: true }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] });
+  fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
   try {
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /unresolved source-relevance findings/);
-    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults:\n  - citation_target: { valid: true }\n    link: { valid: true }\n    relevance:\n      status: assessed\n      assessment:\n        verdict: supports\n        locator_assessment: { verdict: supports }\n    claim_assessments: { valid: true }\nshow_notes_results: []\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }]), "utf8");
     assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml.in-progress"), "started: true\n", "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /in progress or was interrupted/);
+    fs.unlinkSync(path.join(temporary, "link-validation.yaml.in-progress"));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources: [changed]\n", "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /not bound to the current sources/);
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /marked complete/);
   } finally {

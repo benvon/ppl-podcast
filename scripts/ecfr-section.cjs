@@ -49,7 +49,8 @@ function extractEcfrSection(xml, target) {
   const blocks = xml.matchAll(/<SECTION\b[^>]*>([\s\S]*?)<\/SECTION>/gi);
   for (const block of blocks) {
     const raw = block[0];
-    const number = raw.match(/<(?:SECTNO|SECTIONNO)\b[^>]*>([\s\S]*?)<\/(?:SECTNO|SECTIONNO)>/i)?.[1] || raw.match(/\bN\s*=\s*["']([^"']+)["']/i)?.[1];
+    const sectionAttributes = raw.match(/^<SECTION\b([^>]*)>/i)?.[1] || "";
+    const number = raw.match(/<(?:SECTNO|SECTIONNO)\b[^>]*>([\s\S]*?)<\/(?:SECTNO|SECTIONNO)>/i)?.[1] || sectionAttributes.match(/\bN\s*=\s*["']([^"']+)["']/i)?.[1];
     if (normalizedSection(number) === target.section) sections.push({ raw, number: decodeXml(number || "") });
   }
   if (sections.length !== 1) fail(sections.length ? `ambiguous requested section ${target.section}` : `requested section ${target.section} is missing`);

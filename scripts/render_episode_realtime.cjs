@@ -61,11 +61,22 @@ const STYLE = {
 
 class RenderError extends Error {}
 
+function sourceValidationInputHashes(episodePath) {
+  const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
+  return {
+    sources: digest(path.join(episodePath, "sources.yaml")),
+    claims: digest(path.join(episodePath, "claim-inventory.yaml")),
+    show_notes: digest(path.join(episodePath, "show-notes.md")),
+    show_notes_manifest: digest(path.join(episodePath, "show-notes-manifest.yaml")),
+  };
+}
+
 function assertSourceRelevanceApproved(scriptPath) {
   const episodePath = path.join(path.dirname(scriptPath), "episode.yaml");
   const validationPath = path.join(path.dirname(scriptPath), "link-validation.yaml");
   if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
   if (!fs.existsSync(validationPath)) throw new RenderError("Source-relevance review must pass before rendering. Run sources:validate --require-llm and record its completion in episode.yaml.");
+  if (fs.existsSync(`${validationPath}.in-progress`)) throw new RenderError("Source-relevance validation is in progress or was interrupted. Complete a fresh validation run before rendering.");
 
   let episode; let validation;
   try {
@@ -80,6 +91,10 @@ function assertSourceRelevanceApproved(scriptPath) {
   }
   if (validation?.llm_requested !== true || validation?.claim_mapping?.valid !== true || validation?.show_notes_mapping?.valid !== true) {
     throw new RenderError("link-validation.yaml does not record a passing LLM source-relevance review.");
+  }
+  const currentInputs = sourceValidationInputHashes(path.dirname(scriptPath));
+  if (!Object.entries(currentInputs).every(([name, digest]) => validation?.input_sha256?.[name] === digest)) {
+    throw new RenderError("link-validation.yaml is not bound to the current sources, claims, and show-notes inputs. Run a fresh source-relevance review before rendering.");
   }
 
   const sourceResults = Array.isArray(validation.results) ? validation.results : [];

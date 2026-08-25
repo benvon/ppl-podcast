@@ -1,0 +1,430 @@
+episode_id: "core-08"
+verification_date: "2026-08-24"
+verified_at_utc: "2026-08-24T16:58:27Z"
+sources:
+  - id: acs-airworthiness-requirements
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.I.B.K1–K3, Airworthiness Requirements, p. 2"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task B requires knowledge of certificate location and expiration, inspections and logbook documentation, ADs and SAIBs, special flight permits, owner/operator and PIC responsibilities, pilot preventive maintenance, and inoperative equipment."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [acs-airworthiness-scope]
+
+  - id: acs-airworthiness-skills
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.I.B.K4, R1, and S1–S3, Airworthiness Requirements, p. 3"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task B includes standard and special airworthiness certificates, risk associated with inoperative equipment, and skills to locate and describe airworthiness and registration information, determine airworthiness in a scenario, and apply procedures for operating with inoperative equipment."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [acs-scenario-skills]
+
+  - id: phak-manual-types
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Aircraft Owner/Information Manual, AFM, and POH, pp. 9-1–9-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2"
+    revision: "2023 edition"
+    relevance_excerpt: "The generic owner's manual is not FAA approved or specific to a particular aircraft; an AFM is FAA approved, and a POH may contain the FAA-approved AFM information for a specific airplane."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [owner-manual-not-afm, afm-poh-aircraft-specific]
+
+  - id: phak-poh-contents
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, POH Sections 3–7, p. 9-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4"
+    revision: "2023 edition"
+    relevance_excerpt: "The POH sections organize emergency and normal procedures, performance information, weight-and-balance and equipment information, and aircraft and system descriptions; operating limitations are also conveyed through placards and instrument markings."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [poh-operating-sections]
+
+  - id: phak-poh-supplements
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Supplements (Section 9), p. 9-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=5"
+    revision: "2023 edition"
+    relevance_excerpt: "The Supplements section contains information necessary to safely and efficiently operate optional systems and equipment, and the appropriate information is inserted into the flight manual when that equipment is installed."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [supplements-part-of-picture]
+
+  - id: phak-documents-airworthiness
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Airworthiness Certificate, p. 9-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7"
+    revision: "2023 edition"
+    relevance_excerpt: "The standard airworthiness certificate discussion states that the aircraft conforms to its type certificate and is in condition for safe operation at inspection and issuance."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [airworthiness-two-part-model]
+
+  - id: phak-inspections-records
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Aircraft Inspections, p. 9-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8"
+    revision: "2023 edition"
+    relevance_excerpt: "The chapter explains that required inspection intervals depend on the type of operation and that an inspection program may use calendar time, time in service, system operations, or combinations of those measures."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [inspection-system-not-mnemonic]
+
+  - id: phak-preflight-inspection
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Preflight Inspections, p. 9-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9"
+    revision: "2023 edition"
+    relevance_excerpt: "The preflight inspection is the pilot's thorough, systematic means of determining whether the aircraft is airworthy and in condition for safe operation before the flight."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [preflight-condition-check]
+
+  - id: phak-inoperative-preventive
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Minimum Equipment Lists and Operations With Inoperative Equipment, pp. 9-9–9-10"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10"
+    revision: "2023 edition"
+    relevance_excerpt: "The chapter explains that an MEL is developed from the MMEL for a specific aircraft and an operator's procedures, is approved for a specific aircraft by serial and registration number, and is used with an FAA letter of authorization."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [mel-aircraft-specific-guidance]
+
+  - id: phak-preventive-maintenance
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Preventive Maintenance and examples, pp. 9-10–9-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11"
+    revision: "2023 edition"
+    relevance_excerpt: "Preventive maintenance is limited to listed work that does not involve complex assembly; the examples include replacing or cleaning spark plugs and cleaning or replacing fuel and oil strainers or filter elements."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [preventive-list-controls, preventive-examples-bounded]
+
+  - id: phak-ads-owner-responsibility
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals and Other Documents"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 9, Airworthiness Directives, p. 9-12"
+    url: "https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12"
+    revision: "2023 edition"
+    relevance_excerpt: "The chapter describes ADs as regulatory requirements addressing unsafe conditions and explains that owners or operators must comply with applicable one-time and recurring actions."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [ad-regulatory-status]
+
+  - id: phak-mosaic-addendum
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge Addendum (MOSAIC)"
+    document_id: "FAA-H-8083-25C addendum"
+    locator: "Chapter 9 revisions, p. 5 of addendum"
+    url: "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5"
+    revision: "October 20, 2025"
+    relevance_excerpt: "The addendum revises Chapter 9 material for light-sport aircraft certification and sport-pilot preventive-maintenance privileges."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [mosaic-scope-boundary]
+
+  - id: cfr-91-203-certificates
+    authority: regulation
+    title: "14 CFR § 91.203 — Civil aircraft: Certifications required"
+    document_id: "14 CFR 91.203"
+    locator: "§ 91.203(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "The section requires an appropriate and current airworthiness certificate and effective U.S. registration certificate aboard, and requires the airworthiness certificate to be displayed at the cabin or cockpit entrance so it is legible to passengers or crew."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [aircraft-certificates-aboard, airworthiness-certificate-display]
+
+  - id: cfr-47-40-registration-duration
+    authority: regulation
+    title: "14 CFR § 47.40 — Registration expiration and renewal"
+    document_id: "14 CFR 47.40"
+    locator: "§ 47.40(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-47/subpart-B/section-47.40"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=47"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "An initial registration certificate expires seven years after the last day of its issue month; renewal application may be made during the six months before expiration."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [registration-seven-years]
+
+  - id: cfr-91-9-flight-manual
+    authority: regulation
+    title: "14 CFR § 91.9 — Civil aircraft flight manual, marking, and placard requirements"
+    document_id: "14 CFR 91.9"
+    locator: "§ 91.9(a) and (b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "No person may operate contrary to operating limitations in the approved AFM, markings and placards, or other prescribed limitations; required current approved manual material must be available in the aircraft."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [operating-limitations-control, current-manual-material-available]
+
+  - id: cfr-21-181-airworthiness-duration
+    authority: regulation
+    title: "14 CFR § 21.181 — Duration"
+    document_id: "14 CFR 21.181"
+    locator: "§ 21.181(a)–(a)(1)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.181"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "Unless sooner surrendered, suspended, revoked, or otherwise given an FAA termination date, a standard airworthiness certificate remains effective while the aircraft is registered in the United States and its maintenance, preventive maintenance, and alterations are performed under parts 43 and 91."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [airworthiness-certificate-continuing-effect]
+
+  - id: cfr-91-7-pic-airworthiness
+    authority: regulation
+    title: "14 CFR § 91.7 — Civil aircraft airworthiness"
+    document_id: "14 CFR 91.7"
+    locator: "§ 91.7(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "No person may operate an aircraft unless it is airworthy; the PIC is responsible for determining that it is in condition for safe flight and must discontinue a flight when unairworthy mechanical, electrical, or structural conditions occur."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [pic-safe-flight-determination, discontinue-unairworthy-flight]
+
+  - id: cfr-91-403-owner-responsibility
+    authority: regulation
+    title: "14 CFR § 91.403 — General"
+    document_id: "14 CFR 91.403"
+    locator: "§ 91.403(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "The owner or operator is primarily responsible for maintaining the aircraft in airworthy condition, including part 39 compliance; maintenance and alterations must be performed only as authorized."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [owner-primary-responsibility, maintenance-authority-limited]
+
+  - id: cfr-91-405-required-maintenance
+    authority: regulation
+    title: "14 CFR § 91.405 — Maintenance required"
+    document_id: "14 CFR 91.405"
+    locator: "§ 91.405(a)–(d)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.405"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "Owners or operators must have the aircraft inspected, repair discrepancies between required inspections, and ensure proper maintenance entries. When listed discrepancies include inoperative instruments or equipment permitted to be inoperative by § 91.213(d)(2), the owner or operator must ensure they are properly placarded."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [owner-discrepancy-record-duty]
+
+  - id: cfr-91-409-inspections
+    authority: regulation
+    title: "14 CFR § 91.409 — Inspections"
+    document_id: "14 CFR 91.409"
+    locator: "§ 91.409(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "Unless an exception applies, the section requires an aircraft to have received within the preceding 12 calendar months either an annual inspection with return-to-service approval or an inspection for issuance of an airworthiness certificate under part 21. It also establishes the 100-hour inspection trigger for carrying a person other than a crewmember for hire or giving flight instruction for hire in an aircraft provided by the instructor, with a limited en-route overage counted toward the next 100 hours."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [annual-inspection-clock, hundred-hour-trigger, hundred-hour-ferry-overage]
+
+  - id: cfr-91-207-elt
+    authority: regulation
+    title: "14 CFR § 91.207 — Emergency locator transmitters"
+    document_id: "14 CFR 91.207"
+    locator: "§ 91.207(c) and (d)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.207"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "An ELT covered by the section must be inspected within 12 calendar months; battery replacement or recharge has separate triggers based on use and useful life."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [elt-inspection-and-battery]
+
+  - id: cfr-91-411-altimeter
+    authority: regulation
+    title: "14 CFR § 91.411 — Altimeter system and altitude reporting equipment tests and inspections"
+    document_id: "14 CFR 91.411"
+    locator: "§ 91.411(a)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.411"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "For IFR operations in controlled airspace, required altimeter, static-pressure, and altitude-reporting systems must have been tested and inspected within the preceding 24 calendar months, with additional testing after specified work."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [altimeter-ifr-inspection]
+
+  - id: cfr-91-413-transponder
+    authority: regulation
+    title: "14 CFR § 91.413 — ATC transponder tests and inspections"
+    document_id: "14 CFR 91.413"
+    locator: "§ 91.413(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.413"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "A transponder required by § 91.215(a) must have been tested and inspected within the preceding 24 calendar months and after maintenance that could introduce data correspondence errors."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [transponder-inspection]
+
+  - id: cfr-91-417-records
+    authority: regulation
+    title: "14 CFR § 91.417 — Maintenance records"
+    document_id: "14 CFR 91.417"
+    locator: "§ 91.417(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "The section requires records of maintenance work and specified continuing-status records, including life-limited parts, time since overhaul, inspection status, and current AD status, with different retention periods."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [records-work-history, records-continuing-status, ad-status-record]
+
+  - id: cfr-91-205-vfr-equipment
+    authority: regulation
+    title: "14 CFR § 91.205 — Powered civil aircraft instrument and equipment requirements"
+    document_id: "14 CFR 91.205"
+    locator: "§ 91.205(b), VFR day, and § 91.205(c), VFR night"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "Paragraph (b) lists the instruments and equipment required for day VFR, including basic flight and engine instruments and aircraft- or operation-dependent items. Paragraph (c) requires the paragraph (b) equipment for night VFR and adds approved position and anticollision lights, an electric landing light when operated for hire, adequate electrical energy, and accessible spare fuses."
+    verified_at_utc: "2026-08-25T15:37:02Z"
+    link_status: 200
+    supports_claims: [vfr-day-night-required-equipment]
+
+  - id: cfr-91-213-inoperative
+    authority: regulation
+    title: "14 CFR § 91.213 — Inoperative instruments and equipment"
+    document_id: "14 CFR 91.213"
+    locator: "§ 91.213(a) and (d)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "Paragraph (a) permits operation when an approved MEL exists for the aircraft, the aircraft carries an FAA letter of authorization authorizing operation under that MEL, and the MEL and letter-of-authorization conditions are followed. Outside operations under paragraphs (a) and (c), paragraph (d)(1) limits the no-approved-MEL path to listed aircraft classes based in part on whether an MMEL has been developed. Paragraph (d)(2) then screens the item against type-certification, equipment-list or KOEL, operating-rule, and AD requirements. Paragraph (d)(3)(i) requires a cockpit-control placard and § 43.9 maintenance record for removal; paragraph (d)(3)(ii) requires an INOPERATIVE placard for deactivation and part 43 performance and recording when deactivation involves maintenance. Paragraph (d)(4) requires a qualified determination that the inoperative item is not a hazard."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [mel-aircraft-loa-pathway, inoperative-no-mel-eligibility, inoperative-required-item-checks, inoperative-removal, inoperative-deactivation, inoperative-no-hazard]
+
+  - id: ac-91-67a-non-mel
+    authority: faa_guidance
+    title: "AC 91-67A — Minimum Equipment Requirements for General Aviation Operations Under 14 CFR Part 91"
+    document_id: "AC 91-67A"
+    locator: "Ch. 4, §§ 4.1–4.2, p. 4-1"
+    url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23"
+    revision: "October 16, 2023"
+    relevance_excerpt: "Chapter 4 states that § 91.213(d) requires operative required equipment, the prescribed maintenance action, and a no-hazard determination, and then identifies repair, removal, deactivation, or inspection followed by placarding."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [inoperative-decision-not-one-question]
+
+  - id: ac-91-67a-deactivation
+    authority: faa_guidance
+    title: "AC 91-67A — Minimum Equipment Requirements for General Aviation Operations Under 14 CFR Part 91"
+    document_id: "AC 91-67A"
+    locator: "Ch. 4, § 4.2.2, Deactivation, p. 4-2"
+    url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=24"
+    revision: "October 16, 2023"
+    relevance_excerpt: "Deactivation may involve more than turning off a switch; deactivation of an inoperative system is not preventive maintenance, must be accomplished by an appropriately authorized person, and requires the § 43.9 maintenance record entry."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [deactivation-may-be-maintenance]
+
+  - id: ac-91-67a-risk
+    authority: faa_guidance
+    title: "AC 91-67A — Minimum Equipment Requirements for General Aviation Operations Under 14 CFR Part 91"
+    document_id: "AC 91-67A"
+    locator: "Ch. 4, risk management factors and Figure 4-1, pp. 4-3–4-4"
+    url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25"
+    revision: "October 16, 2023"
+    relevance_excerpt: "The advisory circular recommends considering environmental, operational, human, and equipment factors after determining an item is not legally required."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [inoperative-risk-context]
+
+  - id: cfr-43-3-pilot-maintenance
+    authority: regulation
+    title: "14 CFR § 43.3 — Persons authorized to perform maintenance"
+    document_id: "14 CFR 43.3"
+    locator: "§ 43.3(g)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "Subject to specified exceptions, a holder of a pilot certificate issued under part 61 may perform preventive maintenance on an aircraft owned or operated by that pilot that is not used under parts 121, 129, or 135."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [pilot-preventive-eligibility]
+
+  - id: cfr-43-7-return-to-service
+    authority: regulation
+    title: "14 CFR § 43.7 — Persons authorized to approve aircraft for return to service"
+    document_id: "14 CFR 43.7"
+    locator: "§ 43.7(f)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.7"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "A person holding at least a private pilot certificate may approve an aircraft for return to service after performing preventive maintenance under § 43.3(g)."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [pilot-preventive-return-to-service]
+
+  - id: cfr-43-9-maintenance-entry
+    authority: regulation
+    title: "14 CFR § 43.9 — Content, form, and disposition of maintenance records"
+    document_id: "14 CFR 43.9"
+    locator: "§ 43.9(a)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "Subject to paragraphs (b) and (c), the general maintenance-record rule requires a description or acceptable reference, completion date, and the name of the person performing the work if different; when the work has been performed satisfactorily, it also requires the approving person's signature, certificate number, and certificate type."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [preventive-maintenance-record-entry]
+
+  - id: cfr-91-407-after-maintenance
+    authority: regulation
+    title: "14 CFR § 91.407 — Operation after maintenance, preventive maintenance, rebuilding, or alteration"
+    document_id: "14 CFR 91.407"
+    locator: "§ 91.407(a)–(c)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "After maintenance, no person may operate the aircraft until it is approved for return to service and the required entry is made. If work may appreciably change flight characteristics or substantially affect operation in flight, the aircraft may not carry anyone other than crewmembers until an appropriately rated pilot with at least a private pilot certificate conducts and logs an operational check, unless ground tests, inspection, or both conclusively show the work did not appreciably change those characteristics or substantially affect operation in flight."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [after-maintenance-return-entry, after-maintenance-operational-check]
+
+  - id: cfr-21-197-special-flight-permit
+    authority: regulation
+    title: "14 CFR § 21.197 — Special flight permits"
+    document_id: "14 CFR 21.197"
+    locator: "§ 21.197(a)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21"
+    revision: "eCFR current through August 21, 2026"
+    relevance_excerpt: "A special flight permit may be issued for an aircraft that may not currently meet applicable airworthiness requirements but is capable of safe flight, for listed purposes such as flying to a base where repairs, alterations, or maintenance are to be performed."
+    verified_at_utc: "2026-08-24T16:58:27Z"
+    link_status: 200
+    supports_claims: [special-flight-permit-purpose]

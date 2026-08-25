@@ -8,13 +8,13 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { extractPdfPageText, fetchSource, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
-const { durationDisplay, validatePreHosting } = require("./validate-pre-hosting.cjs");
+const { durationDisplay, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 
 function source(id, supportsClaims) {
@@ -65,6 +65,13 @@ test("public release identities keep core, supplemental, and rough-spots tags di
   assert.throws(() => releaseIdentity({ track: "core", id: "core-01", version: "1.0.0-01" }), /semantic versioning/);
 });
 
+test("the master-script template preserves the standard ACS opening and paragraph style", () => {
+  const template = fs.readFileSync(path.join(__dirname, "..", "templates", "master-script.md"), "utf8");
+  assert.match(template, /## \[01:05\] What the ACS is asking you to connect/);
+  assert.match(template, /\*\*ANNOUNCER:\*\*\n\nWhat the ACS is asking you to connect\./);
+  assert.match(template, /Write each spoken paragraph as one normal Markdown line\. Do not hard-wrap prose\./);
+});
+
 test("chapter review rejects a manifest checksum that does not match its MP3", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-chapter-review-test-"));
   const audioPath = path.join(temporary, "candidate.mp3");
@@ -78,6 +85,19 @@ test("chapter review rejects a manifest checksum that does not match its MP3", (
   }
 });
 
+test("pre-hosting artifact paths cannot escape the workspace through a symlink", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-artifact-path-test-"));
+  const outside = path.join(os.tmpdir(), `ppl-artifact-outside-${process.pid}`);
+  const linked = path.join(temporary, "linked-artifact");
+  fs.writeFileSync(outside, "outside workspace"); fs.symlinkSync(outside, linked);
+  try {
+    assert.equal(pathWithin(temporary, linked), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+    fs.rmSync(outside, { force: true });
+  }
+});
+
 test("pre-hosting validation requires consistent release records", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-pre-hosting-test-"));
   const episodePath = path.join(temporary, "episode"); const masterPath = path.join(temporary, "candidate.master.wav"); const audioPath = path.join(temporary, "candidate.mp3"); const renderPath = path.join(temporary, "candidate.render-manifest.json"); const qualityPath = path.join(temporary, "candidate.audio-quality.json"); const reviewPath = path.join(temporary, "candidate.chapters.hash.html"); const masterScriptPath = path.join(episodePath, "master-script.md"); const narrationPath = path.join(episodePath, "narration.md");
@@ -88,7 +108,8 @@ test("pre-hosting validation requires consistent release records", () => {
   const narration = deriveNarration(masterScript);
   const narrationSha256 = require("crypto").createHash("sha256").update(narration).digest("hex");
   fs.writeFileSync(masterScriptPath, masterScript); fs.writeFileSync(narrationPath, narration);
-  fs.writeFileSync(path.join(episodePath, "sources.yaml"), "sources: []\n"); fs.writeFileSync(path.join(episodePath, "claim-inventory.yaml"), "claims: []\n");
+  const sourceUrl = "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html";
+  fs.writeFileSync(path.join(episodePath, "sources.yaml"), `sources:\n  - id: source-a\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    sources: [source-a]\n");
   const renderRecord = (chapterMarkers = markers) => ({ script: narrationPath, script_sha256: narrationSha256, audio: { output: audioPath, sha256, duration_seconds: 2, quality: { result: "passed", report: qualityPath } }, chapters: { audio_sha256: sha256, markers: chapterMarkers } });
   fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
   const qualityRecord = (overrides = {}) => ({ result: "passed", manifest: renderPath, output: { path: audioPath, sha256, probe: { format: { duration: "2.000000" } } }, ...overrides });
@@ -96,9 +117,9 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml" }, hosting: { metadata: "hosting-metadata.yaml" }, public_notes: "show-notes.md", source_verification: { verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" } }));
   fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: sha256 } }));
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ handoff_status: "ready_for_hosting_pr", publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
-  fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Test\n"); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n");
+  fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`);
   const inputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(fs.readFileSync(path.join(episodePath, file))).digest("hex")]));
-  const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, show_notes_mapping: { valid: true }, show_notes_results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "test-source", citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
+  const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened", "No clipped", "chapter markers have been manually reviewed", "FAA/", "Hosting metadata agrees"].map((line) => `- [x] ${line}`).join("\n"));
   try {
@@ -116,6 +137,9 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(renderPath, JSON.stringify({ ...renderRecord(), audio: { ...renderRecord().audio, duration_seconds: 3 } }));
     const inventedDuration = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(inventedDuration.valid, false); assert.match(inventedDuration.errors.join("\n"), /audio-quality report's probed MP3 duration/);
+    fs.writeFileSync(renderPath, JSON.stringify({ ...renderRecord(), script: masterScriptPath }));
+    const unrelatedScript = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(unrelatedScript.valid, false); assert.match(unrelatedScript.errors.join("\n"), /script path must identify the current narration derivative/);
     fs.writeFileSync(audioManifestPath, YAML.stringify(audioManifest));
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(episodeMetadata));
     fs.writeFileSync(hostingMetadataPath, YAML.stringify(hostingMetadata));
@@ -124,6 +148,17 @@ test("pre-hosting validation requires consistent release records", () => {
     const changedScript = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(changedScript.valid, false); assert.match(changedScript.errors.join("\n"), /narration\.md must be the current derivative/);
     fs.writeFileSync(masterScriptPath, masterScript);
+    const showNotesPath = path.join(episodePath, "show-notes.md"); const originalShowNotes = fs.readFileSync(showNotesPath, "utf8"); const originalCopy = fs.copyFileSync;
+    fs.copyFileSync = (from, to) => {
+      originalCopy(from, to);
+      if (path.basename(to) === "show-notes.md") fs.appendFileSync(showNotesPath, "\nChanged during handoff assembly.\n");
+    };
+    try {
+      assert.throws(() => createHostingHandoff({ episodePath, outputDir: path.join(temporary, "racing-hosting-handoff"), cwd: temporary }), (error) => error instanceof HostingHandoffError && /Source episode package changed/.test(error.message));
+    } finally {
+      fs.copyFileSync = originalCopy;
+      fs.writeFileSync(showNotesPath, originalShowNotes);
+    }
     const handoffPath = path.join(temporary, "hosting-handoff");
     const handoff = createHostingHandoff({ episodePath, outputDir: handoffPath, cwd: temporary });
     assert.equal(verifyHostingHandoff({ outputDir: handoff.outputDir }).valid, true);
@@ -292,6 +327,24 @@ test("PDF page extraction reads only the page named by the citation", async () =
   assert.equal(text, "Load Factors in Steep Turns");
 });
 
+test("PDF page extraction is cancelled and destroys the pending loading task", async () => {
+  const controller = new AbortController(); let destroyed = false; let started;
+  const startedPromise = new Promise((resolve) => { started = resolve; });
+  const pending = extractPdfPageText(Buffer.from("test PDF"), 1, {
+    signal: controller.signal,
+    pdfjsLoader: async () => ({
+      getDocument: () => {
+        started();
+        return { promise: new Promise(() => {}), destroy: () => { destroyed = true; return new Promise(() => {}); } };
+      },
+    }),
+  });
+  await startedPromise;
+  controller.abort();
+  await assert.rejects(pending, /cancelled/);
+  assert.equal(destroyed, true);
+});
+
 test("source validation permits legacy show notes when no manifest is configured", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
   const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claims.yaml");
@@ -302,6 +355,21 @@ test("source validation permits legacy show notes when no manifest is configured
     const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /show notes without a manifest \(not configured\)/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("source validation dry runs fail when claim mappings are invalid", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claims.yaml");
+  fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [missing-claim]\n");
+  fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n");
+  try {
+    const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /Claim mapping failed: source source-a maps unknown claim missing-claim/);
+    assert.doesNotMatch(result.stdout, /Validated input shape/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -341,6 +409,15 @@ test("per-claim relevance rejects an unsupported claim despite a favorable overa
   assert.deepEqual(result.unsupported_assessment_ids, ["claim-a"]);
 });
 
+test("per-claim relevance fails closed on a partially supporting assessment", () => {
+  const result = validateClaimAssessments(
+    { status: "assessed", assessment: { verdict: "supports", claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } },
+    ["claim-a"],
+  );
+  assert.equal(result.valid, false);
+  assert.deepEqual(result.unsupported_assessment_ids, ["claim-a"]);
+});
+
 test("source fetch timeout remains active while the response body is read", async () => {
   const fetchImpl = (_url, { signal }) => {
     const stream = new ReadableStream({
@@ -351,6 +428,118 @@ test("source fetch timeout remains active while the response body is read", asyn
     return Promise.resolve(new Response(stream, { status: 200, headers: { "content-type": "text/html" } }));
   };
   await assert.rejects(fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl, timeoutMs: 10 }), /AbortError|aborted/);
+});
+
+test("source fetch timeout terminates a response body that ignores the abort signal", async () => {
+  const fetchImpl = () => {
+    const stream = new ReadableStream({ start() {} });
+    return Promise.resolve(new Response(stream, { status: 200, headers: { "content-type": "text/html" } }));
+  };
+  await assert.rejects(fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl, timeoutMs: 10 }), /AbortError|aborted/);
+});
+
+test("source fetch retries a transient aborted request", async () => {
+  let calls = 0;
+  const fetchImpl = () => {
+    calls += 1;
+    if (calls === 1) return Promise.reject(new DOMException("aborted", "AbortError"));
+    return Promise.resolve(new Response("current FAA source", { status: 200, headers: { "content-type": "text/plain" } }));
+  };
+  const result = await fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl });
+  assert.equal(calls, 2);
+  assert.equal(result.status, 200);
+  assert.equal(result.excerpt, "current FAA source");
+});
+
+test("source fetch retries a transient service-unavailable response", async () => {
+  let calls = 0;
+  const fetchImpl = () => {
+    calls += 1;
+    if (calls === 1) return Promise.resolve(new Response("temporarily unavailable", { status: 503, headers: { "content-type": "text/plain" } }));
+    return Promise.resolve(new Response("current FAA source", { status: 200, headers: { "content-type": "text/plain" } }));
+  };
+  const result = await fetchSource("https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", { fetchImpl });
+  assert.equal(calls, 2);
+  assert.equal(result.status, 200);
+  assert.equal(result.excerpt, "current FAA source");
+});
+
+test("source-relevance requests stop when the validation run is cancelled", async () => {
+  const originalKey = process.env.OPENAI_API_KEY;
+  const controller = new AbortController(); let observedAbort = false;
+  process.env.OPENAI_API_KEY = "test-key";
+  const fetchImpl = (_url, { signal }) => new Promise((_, reject) => signal.addEventListener("abort", () => { observedAbort = true; reject(new DOMException("aborted", "AbortError")); }, { once: true }));
+  try {
+    const pending = assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "Source text" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: { excerpt: "Current source text" }, fetchImpl, signal: controller.signal });
+    controller.abort();
+    await assert.rejects(pending, /AbortError|aborted/);
+    assert.equal(observedAbort, true);
+  } finally {
+    if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
+  }
+});
+
+test("source-relevance cancellation remains active while the response body is read", async () => {
+  const originalKey = process.env.OPENAI_API_KEY;
+  const controller = new AbortController(); let observedAbort = false;
+  process.env.OPENAI_API_KEY = "test-key";
+  const fetchImpl = (_url, { signal }) => {
+    const stream = new ReadableStream({
+      start(bodyController) {
+        signal.addEventListener("abort", () => {
+          observedAbort = true;
+          bodyController.error(new DOMException("aborted", "AbortError"));
+        }, { once: true });
+      },
+    });
+    return Promise.resolve(new Response(stream, { status: 200, headers: { "content-type": "application/json" } }));
+  };
+  try {
+    const pending = assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "Source text" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: { excerpt: "Current source text" }, fetchImpl, signal: controller.signal });
+    controller.abort();
+    await assert.rejects(pending, /AbortError|aborted/);
+    assert.equal(observedAbort, true);
+  } finally {
+    if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
+  }
+});
+
+test("source relevance assesses freshly fetched text instead of a ledger excerpt", async () => {
+  const originalKey = process.env.OPENAI_API_KEY; let request;
+  process.env.OPENAI_API_KEY = "test-key";
+  const fetchImpl = (_url, options) => {
+    request = JSON.parse(options.body);
+    const assessment = { verdict: "supports", confidence: "high", rationale: "Current text supports the claim.", locator_assessment: { verdict: "supports", rationale: "Locator is present." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Supported." }] };
+    return Promise.resolve(new Response(JSON.stringify({ output: [{ content: [{ type: "output_text", text: JSON.stringify(assessment) }] }] }), { status: 200, headers: { "content-type": "application/json" } }));
+  };
+  try {
+    await assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "STALE LEDGER TEXT" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
+    assert.match(request.input, /CURRENT FETCHED TEXT/);
+    assert.doesNotMatch(request.input, /STALE LEDGER TEXT/);
+  } finally {
+    if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
+  }
+});
+
+test("source validation locks report ownership and refuses unsafe recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-lock-test-"));
+  const outputPath = path.join(temporary, "link-validation.yaml");
+  try {
+    const owner = markValidationInProgress(outputPath, { sources: "a" });
+    assert.throws(() => markValidationInProgress(outputPath, { sources: "a" }), /already in progress or was interrupted/);
+    assert.throws(() => completeValidationReport(outputPath, { result: "wrong owner" }, { ...owner, run_id: "different-run" }), /ownership changed/);
+    assert.equal(fs.existsSync(outputPath), false);
+    completeValidationReport(outputPath, { result: "released" }, owner);
+    assert.equal(fs.existsSync(validationInProgressPath(outputPath)), false);
+
+    fs.writeFileSync(validationInProgressPath(outputPath), YAML.stringify({ run_id: "remote-run", hostname: "other-host.example", pid: 999_999, started_at_utc: "2026-08-25T00:00:00.000Z" }));
+    assert.throws(() => markValidationInProgress(outputPath, { sources: "a" }, { recoverStaleLock: true }), /cannot be safely recovered/);
+    fs.unlinkSync(validationInProgressPath(outputPath));
+    fs.mkdirSync(validationRecoveryPath(outputPath));
+    assert.throws(() => markValidationInProgress(outputPath, { sources: "a" }), /lock recovery is in progress/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("eCFR validation fallback must stay on the official versioner endpoint", () => {
@@ -364,6 +553,48 @@ test("eCFR validation fallback must stay on the official versioner endpoint", ()
     validation_url: "https://example.com/current.xml?part=61",
   });
   assert.match(invalid.join("\n"), /ecfr\.gov/);
+});
+
+test("eCFR derives an exact-section XML endpoint from legacy ledgers", async () => {
+  const source = { url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61" };
+  let requested;
+  const result = await verifyEcfrSection(source, { fetchImpl: (url) => {
+    if (String(url).endsWith("/titles.json")) return Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } }));
+    requested = String(url);
+    return Promise.resolve(new Response("<ROOT><DIV8 N=\"§ 61.105\" TYPE=\"SECTION\" hierarchy_metadata='{\"path\":\"/on/_SUBSTITUTE_DATE_/title-14/section-61.105\",\"citation\":\"14 CFR 61.105\"}'><HEAD>§ 61.105 Knowledge areas.</HEAD><P>Knowledge areas.</P></DIV8></ROOT>", { status: 200, headers: { "content-type": "application/xml" } }));
+  } });
+  assert.equal(requested, "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61&section=61.105");
+  assert.equal(result.link.valid, true);
+  assert.equal(result.link.resolved_via, "ecfr_exact_section_xml");
+  assert.deepEqual(result.link.section_identity, { title: "14", part: "61", section: "61.105", date: "2026-08-10", section_number: "§ 61.105" });
+  assert.match(result.link.section_text, /Knowledge areas/);
+});
+
+test("eCFR fails closed on unsafe target mismatch, wrong media type, and missing or ambiguous XML sections", async () => {
+  const source = { url: "https://www.ecfr.gov/current/title-14/part-61/section-61.105", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=99&section=61.105&unsafe=yes" };
+  assert.match(validationTargetErrors(source).join("\n"), /does not match|unsupported/);
+  const validSource = { ...source, validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-10/title-14.xml?part=61" };
+  for (const response of [
+    new Response("<DIV8 N=\"§ 61.105\" TYPE=\"SECTION\"><P>Text.</P></DIV8>", { status: 200, headers: { "content-type": "text/html" } }),
+    new Response("<DIV8 N=\"§ 61.104\" TYPE=\"SECTION\"><P>Text.</P></DIV8>", { status: 200, headers: { "content-type": "application/xml" } }),
+    new Response("<ROOT><DIV8 N=\"§ 61.105\" TYPE=\"SECTION\"><P>One.</P></DIV8><DIV8 N=\"§ 61.105\" TYPE=\"SECTION\"><P>Two.</P></DIV8></ROOT>", { status: 200, headers: { "content-type": "application/xml" } }),
+  ]) {
+    const result = await verifyEcfrSection(validSource, { fetchImpl: (url) => String(url).endsWith("/titles.json") ? Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) : Promise.resolve(response.clone()) });
+    assert.equal(result.link.valid, false);
+  }
+  const stale = await verifyEcfrSection(validSource, { fetchImpl: (url) => {
+    if (String(url).endsWith("/titles.json")) return Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-11" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } }));
+    throw new Error("stale validation must not fetch the section");
+  } });
+  assert.equal(stale.link.valid, false);
+  assert.match(stale.link.errors.join("\n"), /does not match current title/);
+  const descendantIdentity = await verifyEcfrSection(validSource, { fetchImpl: (url) => String(url).endsWith("/titles.json") ? Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) : Promise.resolve(new Response("<DIV8 TYPE=\"SECTION\"><P N=\"61.105\">not a section identity</P></DIV8>", { status: 200, headers: { "content-type": "application/xml" } })) });
+  assert.equal(descendantIdentity.link.valid, false);
+  const wrongMetadata = await verifyEcfrSection(validSource, { fetchImpl: (url) => String(url).endsWith("/titles.json") ? Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) : Promise.resolve(new Response("<DIV8 N=\"61.105\" TYPE=\"SECTION\" hierarchy_metadata='{\"path\":\"/on/_SUBSTITUTE_DATE_/title-14/section-61.104\",\"citation\":\"14 CFR 61.104\"}'><P>Wrong identity.</P></DIV8>", { status: 200, headers: { "content-type": "application/xml" } })) });
+  assert.equal(wrongMetadata.link.valid, false);
+  const oversized = await verifyEcfrSection(validSource, { fetchImpl: (url) => String(url).endsWith("/titles.json") ? Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-10" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) : Promise.resolve(new Response("<DIV8 N=\"61.105\" TYPE=\"SECTION\"><P>Too large.</P></DIV8>", { status: 200, headers: { "content-type": "application/xml", "content-length": "2000001" } })) });
+  assert.equal(oversized.link.valid, false);
+  assert.match(oversized.link.errors.join("\n"), /truncated/);
 });
 
 test("programmatic FAA fallback requires an FAA-page attestation and reviewed digest", () => {
@@ -419,6 +650,22 @@ test("attested programmatic FAA copy is used when a PDF citation receives an int
   assert.equal(result.link.resolved_via, "attested_programmatic_fallback");
   assert.equal(result.link.pdf_page_number, 2);
   assert.equal(result.link.pdf_page_text, "Cited page text");
+});
+
+test("show-notes results preserve failed programmatic fallback attestations", () => {
+  const result = applyVerificationEvidence(
+    { citation_target: { valid: true, errors: [] } },
+    { programmatic_url: "https://www.faa.gov/sites/faa.gov/files/chapter_0.pdf" },
+    {
+      link: { valid: true },
+      citation_link: { valid: true },
+      programmatic_link: { valid: true },
+      attestation_link: { valid: true },
+      content_attestation: { valid: false, errors: ["reviewed digest no longer matches"] },
+    },
+  );
+  assert.equal(result.content_attestation.valid, false);
+  assert.equal(deterministicEntryValid(result), false);
 });
 
 test("programmatic FAA validation reuses a shared fetch cache for repeated chapter attestations", async () => {
@@ -494,11 +741,27 @@ test("realtime renderer requires completed source-relevance review before render
   const scriptPath = path.join(temporary, "narration.md");
   fs.writeFileSync(scriptPath, "# Test narration\n", "utf8");
   fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: complete\n", "utf8");
-  fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults: []\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    supports_claims: [claim-a]\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    sources: [source-a]\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+  const inputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(fs.readFileSync(path.join(temporary, file))).digest("hex")]));
+  const validation = (results) => YAML.stringify({ llm_requested: true, claim_mapping: { valid: true }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] });
+  fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
   try {
+    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } };
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ ...passingResult, link: { valid: false } }]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /unresolved source-relevance findings/);
-    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), "llm_requested: true\nclaim_mapping: { valid: true }\nshow_notes_mapping: { valid: true }\nresults:\n  - citation_target: { valid: true }\n    link: { valid: true }\n    relevance:\n      status: assessed\n      assessment:\n        verdict: supports\n        locator_assessment: { verdict: supports }\n    claim_assessments: { valid: true }\nshow_notes_results: []\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
     assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /does not cover every current source/);
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml.in-progress"), "started: true\n", "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /in progress, recovering, or was interrupted/);
+    fs.unlinkSync(path.join(temporary, "link-validation.yaml.in-progress"));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources: [changed]\n", "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /not bound to the current sources/);
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /marked complete/);
   } finally {
@@ -507,7 +770,8 @@ test("realtime renderer requires completed source-relevance review before render
 });
 
 test("realtime renderer expands approved abbreviations only in spoken input", () => {
-  assert.equal(spokenText("The PHAK says AI-assisted production is reviewed."), "The pea hack says artificial intelligence-assisted production is reviewed.");
+  assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pea hack says artificial intelligence-assisted production is reviewed by an M. E. L.");
+  assert.equal(spokenText("The no-MEL path differs from MMEL guidance."), "The no-M. E. L path differs from MMEL guidance.");
   assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pea hack-like examples differ from PHAKS.");
 });
 
@@ -754,6 +1018,7 @@ test("invalid claim mappings stop before source fetch and LLM assessment", () =>
     assert.equal(result.status, 1);
     assert.match(result.stderr, /Claim mapping failed/);
     assert.match(fs.readFileSync(reportPath, "utf8"), /results: \[\]/);
+    assert.equal(fs.existsSync(validationInProgressPath(reportPath)), false);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

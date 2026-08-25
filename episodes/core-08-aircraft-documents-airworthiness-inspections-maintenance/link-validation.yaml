@@ -1,0 +1,3319 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-25T18:05:23.139Z
+sources_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/sources.yaml
+claims_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/claim-inventory.yaml
+show_notes_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes.md
+show_notes_manifest_file: episodes/core-08-aircraft-documents-airworthiness-inspections-maintenance/show-notes-manifest.yaml
+input_sha256:
+  sources: 67b56fb7671bb2a115a248cb4364b43a69d01beff3d28ca30433f2eea78e6540
+  claims: aea677766f642845fa0032359e915058e31bf9b97c215ba0b974bd876864fa00
+  show_notes: 8256cb9306082158f612bbf33470f08a7642ae336e8b1a7065844d7375a595f5
+  show_notes_manifest: 39f3ff77121c81476c0cf4ccf86d6a487f088ceade16d25c97dee4bbafe1e9bd
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 15
+  manifest_link_count: 15
+show_notes_results:
+  - id: acs-airworthiness
+    text: Private Pilot for Airplane Category ACS — Airworthiness Requirements
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    source_id: acs-airworthiness-requirements
+    claim_ids:
+      - acs-airworthiness-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-chapter-9
+    text: PHAK Chapter 9 — Flight Manuals and Other Documents
+    url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+    source_id: phak-manual-types
+    claim_ids:
+      - owner-manual-not-afm
+      - afm-poh-aircraft-specific
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5271
+      pdf_page_text_sha256: 1778bd642ad494fb19e7e9df3fa63867b7cd572a8f41d8f3e909ed559077da6d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ac-91-67a
+    text: AC 91-67A — Operations Without an MEL
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+    source_id: ac-91-67a-non-mel
+    claim_ids:
+      - inoperative-decision-not-one-question
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a11 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2106
+      pdf_page_text_sha256: ff0d4af0550bacb7d502c03f787dbe16a88d3e61d603226e7ba220d33f51f4b1
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: cfr-91-203
+    text: 14 CFR § 91.203
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
+    source_id: cfr-91-203-certificates
+    claim_ids:
+      - aircraft-certificates-aboard
+      - airworthiness-certificate-display
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a3 []
+      title: null
+      truncated: false
+      content_sha256: 20432cb06ded64ad1aca8fbeb15329289aa1eee986b44b1c9821455d43007924
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.203"
+        date: 2026-08-21
+        section_number: "91.203"
+      section_text_sha256: 207c6813f8b80f1a14a0ce3ccbd4312cbe2fea45ca8623b3312705e64f2c9d1e
+      excerpt_characters: 2649
+      excerpt_sha256: 207c6813f8b80f1a14a0ce3ccbd4312cbe2fea45ca8623b3312705e64f2c9d1e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2649
+  - id: cfr-91-9
+    text: 14 CFR § 91.9
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+    source_id: cfr-91-9-flight-manual
+    claim_ids:
+      - operating-limitations-control
+      - current-manual-material-available
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a4 []
+      title: null
+      truncated: false
+      content_sha256: 2c7dc879a743eafe5415ccf951333c82c04b6fde53e684cee42f9c33629527d2
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.9"
+        date: 2026-08-21
+        section_number: "91.9"
+      section_text_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      excerpt_characters: 1912
+      excerpt_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1912
+  - id: cfr-91-7
+    text: 14 CFR § 91.7
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
+    source_id: cfr-91-7-pic-airworthiness
+    claim_ids:
+      - pic-safe-flight-determination
+      - discontinue-unairworthy-flight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a5 []
+      title: null
+      truncated: false
+      content_sha256: 29e91ae7a8ffc7fe7163c6235132c3a6714a120acd27f118f054f27bc7ad9cb3
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.7"
+        date: 2026-08-21
+        section_number: "91.7"
+      section_text_sha256: 7e3fa7bb95992c72b3058ffc089000144b956a44bb73ca67550710f45847a473
+      excerpt_characters: 486
+      excerpt_sha256: 7e3fa7bb95992c72b3058ffc089000144b956a44bb73ca67550710f45847a473
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 486
+  - id: cfr-91-403
+    text: 14 CFR § 91.403
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403
+    source_id: cfr-91-403-owner-responsibility
+    claim_ids:
+      - owner-primary-responsibility
+      - maintenance-authority-limited
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a6 []
+      title: null
+      truncated: false
+      content_sha256: 94768b8b39917c3141957bd325c965ae9458da2ab57fdb14ff85cb9303df227e
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.403"
+        date: 2026-08-21
+        section_number: "91.403"
+      section_text_sha256: e9ce91ce386fd9b27b5e0372a0919a6699de90209be51cf30fb4b946147ae85d
+      excerpt_characters: 1446
+      excerpt_sha256: e9ce91ce386fd9b27b5e0372a0919a6699de90209be51cf30fb4b946147ae85d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1446
+  - id: cfr-91-409
+    text: 14 CFR § 91.409
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
+    source_id: cfr-91-409-inspections
+    claim_ids:
+      - annual-inspection-clock
+      - hundred-hour-trigger
+      - hundred-hour-ferry-overage
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a7 []
+      title: null
+      truncated: false
+      content_sha256: e2791c4b16b76d810395f9e3b151391291d8d8eef0fbaffbd57769cea9c952df
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.409"
+        date: 2026-08-21
+        section_number: "91.409"
+      section_text_sha256: 99b37ecb85aa821fe3b6561ef97a7390adfb7aebd7f48213f82da1fb9c8769df
+      excerpt_characters: 9449
+      excerpt_sha256: 99b37ecb85aa821fe3b6561ef97a7390adfb7aebd7f48213f82da1fb9c8769df
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 9449
+  - id: cfr-91-417
+    text: 14 CFR § 91.417
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
+    source_id: cfr-91-417-records
+    claim_ids:
+      - records-work-history
+      - records-continuing-status
+      - ad-status-record
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a8 []
+      title: null
+      truncated: false
+      content_sha256: 94080b83312e7f122d10230a5ee595daaf52064c7bb2af48fec5b535e149d91b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.417"
+        date: 2026-08-21
+        section_number: "91.417"
+      section_text_sha256: e557cc362082f15fe3db02422420d2a704a7102e752381f2d46523adfc6af993
+      excerpt_characters: 3415
+      excerpt_sha256: e557cc362082f15fe3db02422420d2a704a7102e752381f2d46523adfc6af993
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 3415
+  - id: cfr-91-205
+    text: 14 CFR § 91.205 — VFR day and night equipment
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+    source_id: cfr-91-205-vfr-equipment
+    claim_ids:
+      - vfr-day-night-required-equipment
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a9 []
+      title: null
+      truncated: false
+      content_sha256: b7711166a41e9f8756434ec328a77ba6c655ccbb69497d1a25017ba122d882c5
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.205"
+        date: 2026-08-21
+        section_number: "91.205"
+      section_text_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      excerpt_characters: 8044
+      excerpt_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 8044
+  - id: cfr-91-213
+    text: 14 CFR § 91.213
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+    source_id: cfr-91-213-inoperative
+    claim_ids:
+      - mel-aircraft-loa-pathway
+      - inoperative-no-mel-eligibility
+      - inoperative-required-item-checks
+      - inoperative-removal
+      - inoperative-deactivation
+      - inoperative-no-hazard
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a10 []
+      title: null
+      truncated: false
+      content_sha256: 4593d1ab135d481d639b185e0234cae6f08c465281165765f6b76402efc3ad6f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.213"
+        date: 2026-08-21
+        section_number: "91.213"
+      section_text_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      excerpt_characters: 4728
+      excerpt_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4728
+  - id: cfr-43-3
+    text: 14 CFR § 43.3
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3
+    source_id: cfr-43-3-pilot-maintenance
+    claim_ids:
+      - pilot-preventive-eligibility
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a12 []
+      title: null
+      truncated: false
+      content_sha256: 84c5a6d80848167841dfdbab4fb737159fc45c557fa22bfa06f5bfedc3bf1411
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "43"
+        section: "43.3"
+        date: 2026-08-21
+        section_number: "43.3"
+      section_text_sha256: 248021454ed3f8c67b7131cc281e2ca1e6c09a2bb027a37372d0513210c2ae14
+      excerpt_characters: 5759
+      excerpt_sha256: 248021454ed3f8c67b7131cc281e2ca1e6c09a2bb027a37372d0513210c2ae14
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 5759
+  - id: cfr-43-9
+    text: 14 CFR § 43.9
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9
+    source_id: cfr-43-9-maintenance-entry
+    claim_ids:
+      - preventive-maintenance-record-entry
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a13 []
+      title: null
+      truncated: false
+      content_sha256: 6594be1eaeaac8257ebd85aa24606d3d03e8e575a147a072a7d3b11cb615263b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "43"
+        section: "43.9"
+        date: 2026-08-21
+        section_number: "43.9"
+      section_text_sha256: 828138184e50f21c5875df1ca4ff4e990b29a5bce565276c8ad316f4c840ec8b
+      excerpt_characters: 2341
+      excerpt_sha256: 828138184e50f21c5875df1ca4ff4e990b29a5bce565276c8ad316f4c840ec8b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2341
+  - id: cfr-91-407
+    text: 14 CFR § 91.407
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407
+    source_id: cfr-91-407-after-maintenance
+    claim_ids:
+      - after-maintenance-return-entry
+      - after-maintenance-operational-check
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a14 []
+      title: null
+      truncated: false
+      content_sha256: 2861569c5531510cacca80ab5d86548c079a80a0ae25c39f55280a8c0c4dadbc
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.407"
+        date: 2026-08-21
+        section_number: "91.407"
+      section_text_sha256: df78996d7a7702635bec1efe32491376150e95baa065f1aa4bac189d9097c57c
+      excerpt_characters: 1445
+      excerpt_sha256: df78996d7a7702635bec1efe32491376150e95baa065f1aa4bac189d9097c57c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1445
+  - id: cfr-21-197
+    text: 14 CFR § 21.197
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197
+    source_id: cfr-21-197-special-flight-permit
+    claim_ids:
+      - special-flight-permit-purpose
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a15 []
+      title: null
+      truncated: false
+      content_sha256: bbf610f3092c723813ac3b17220bc7e872db431ec85840298008673307c168b8
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "21"
+        section: "21.197"
+        date: 2026-08-21
+        section_number: "21.197"
+      section_text_sha256: 561b86345649d4aa9b2970f363a96ecafcbff6fb33b1d8f718cb624dd0f402af
+      excerpt_characters: 2547
+      excerpt_sha256: 561b86345649d4aa9b2970f363a96ecafcbff6fb33b1d8f718cb624dd0f402af
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2547
+results:
+  - source_id: acs-airworthiness-requirements
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-25T18:03:27.358Z
+    linked_claim_ids:
+      - acs-airworthiness-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains Task B, Airworthiness Requirements, and
+          explicitly lists each topic in the claim under PA.I.B.K1 through
+          PA.I.B.K3a.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies PA.I.B.K1–K3 and Airworthiness Requirements on
+            page 2 of the ACS; the supplied excerpt is from cited PDF page 10
+            and displays ACS page 2, including those exact items.
+        claim_assessments:
+          - claim_id: acs-airworthiness-scope
+            verdict: supports
+            rationale: The excerpt expressly includes certificate location and expiration
+              dates (K1a), inspections and logbook documentation (K1b), ADs and
+              SAIBs (K1c), special flight permits (K1d), owner/operator and PIC
+              responsibilities (K1e), pilot-performed preventive maintenance
+              (K2), and day/night VFR equipment requirements including
+              inoperative equipment (K3/K3a).
+      usage:
+        input_tokens: 957
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 219
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1176
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-airworthiness-skills
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-25T18:03:27.373Z
+    linked_claim_ids:
+      - acs-scenario-skills
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly lists PA.I.B.K4 as “Standard and special
+          airworthiness certificates and their associated operational
+          limitations” and lists the three stated skills under PA.I.B.S1 through
+          S3: locating and describing airworthiness and registration
+          information, determining airworthiness in an evaluator scenario, and
+          applying procedures for inoperative equipment in an evaluator
+          scenario."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page/excerpt contains PA.I.B.K4, PA.I.B.R1, and
+            PA.I.B.S1–S3 under Area of Operation I, Preflight Preparation.
+            Although the locator describes this as “Airworthiness Requirements,”
+            the excerpt itself shows the relevant ACS task content on the cited
+            page.
+        claim_assessments:
+          - claim_id: acs-scenario-skills
+            verdict: supports
+            rationale: All elements of the claim are explicitly present in PA.I.B.K4 and
+              PA.I.B.S1–S3.
+      usage:
+        input_tokens: 1075
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1072
+        output_tokens: 215
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1290
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-manual-types
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:27.837Z
+    linked_claim_ids:
+      - owner-manual-not-afm
+      - afm-poh-aircraft-specific
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5271
+      pdf_page_text_sha256: 1778bd642ad494fb19e7e9df3fa63867b7cd572a8f41d8f3e909ed559077da6d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly explains the status and purpose of
+          aircraft owner/information manuals, AFMs, and POHs, including FAA
+          approval, currency, aircraft specificity, and the relationship between
+          POH and approved AFM information.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 2 (printed page 9-2) and contains
+            the passages directly addressing both claims.
+        claim_assessments:
+          - claim_id: owner-manual-not-afm
+            verdict: supports
+            rationale: The excerpt states that the aircraft owner/information manual is not
+              FAA approved, is not specific to an individual aircraft, is not
+              kept current, and cannot substitute for the AFM/POH.
+          - claim_id: afm-poh-aircraft-specific
+            verdict: supports
+            rationale: The excerpt states that an AFM is developed by the manufacturer and
+              FAA approved. It also states that a POH contains FAA-approved AFM
+              information, that most post-1975 light-aircraft POHs are
+              designated FAA-approved flight manuals, and that each AFM/POH is
+              unique with specific information about a particular aircraft,
+              including installed equipment and weight-and-balance information.
+      usage:
+        input_tokens: 1513
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1510
+        output_tokens: 267
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1780
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-poh-contents
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:27.842Z
+    linked_claim_ids:
+      - poh-operating-sections
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3874
+      pdf_page_text_sha256: 593f7f338a2f981055b56a36489238a2d3b709118f749fbd4dd967a82bf84259
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly describes POH Section 3 (Emergency
+          Procedures), Section 4 (Normal Procedures), Section 5 (Performance),
+          Section 6 (Weight and Balance/Equipment List), and Section 7 (Systems
+          Description). It also states that placards contain information
+          directly bearing on safe aircraft operation and are used to depict
+          aircraft limitations, while flight limits list operational
+          limitations.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 9, POH Sections 3–7, page 9-4, and the
+            supplied excerpt is from PDF page 4/page 9-4 and directly covers
+            those sections plus placards and flight limits.
+        claim_assessments:
+          - claim_id: poh-operating-sections
+            verdict: supports
+            rationale: The excerpt directly supports every listed POH content area and the
+              statement that placards/markings convey operating limitations.
+      usage:
+        input_tokens: 1138
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1135
+        output_tokens: 208
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1346
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-poh-supplements
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:28.715Z
+    linked_claim_ids:
+      - supplements-part-of-picture
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1618
+      pdf_page_text_sha256: 6d1af78105516367583fa075fa54e82cd95805ea7837f7d9a20f8207f03b109a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that Supplements (Section 9) contains
+          information necessary to safely and efficiently operate the aircraft
+          when equipped with optional systems and equipment not provided with
+          the standard aircraft. It also explicitly states that the appropriate
+          information is inserted into the flight manual when the equipment is
+          installed.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 9-5 and includes the “Supplements (Section
+            9)” passage directly supporting the claim.
+        claim_assessments:
+          - claim_id: supplements-part-of-picture
+            verdict: supports
+            rationale: "The claim closely paraphrases the excerpt: supplements address
+              operation of optional systems/equipment, and applicable
+              information is inserted into the flight manual at installation."
+      usage:
+        input_tokens: 798
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 171
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 969
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-documents-airworthiness
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:28.722Z
+    linked_claim_ids:
+      - airworthiness-two-part-model
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4366
+      pdf_page_text_sha256: 31b149f259d358e94400479470d0287705e3d7342c1ce6379f3e9029d64df0fd
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states that an Airworthiness Certificate is
+          issued after inspection when the aircraft meets 14 CFR part 21
+          requirements and is in condition for safe operation. Its explanation
+          of certificate item 5 further states that it indicates the aircraft
+          conforms to its type certificate and is considered in condition for
+          safe operation at the time of inspection and issuance.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 9-7 and contains the “Airworthiness
+            Certificate” discussion and Figure 9-9, including the explanation of
+            item 5 directly supporting the claim.
+        claim_assessments:
+          - claim_id: airworthiness-two-part-model
+            verdict: supports
+            rationale: The page explicitly identifies both conformity to the type
+              certificate and condition for safe operation as the findings
+              reflected at inspection and issuance.
+      usage:
+        input_tokens: 1321
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1318
+        output_tokens: 189
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1510
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-inspections-records
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:28.746Z
+    linked_claim_ids:
+      - inspection-system-not-mnemonic
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5203
+      pdf_page_text_sha256: 9282755bbd54677e52de06693c811f47a4abcb504117d9433a1674d408154e4c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page expressly states that inspection intervals depend
+          on the type of operations and that some aircraft are inspected under a
+          system based on calendar time, time in service, number of system
+          operations, or a combination of those factors.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the relevant
+            discussion under “Aircraft Inspections.”
+        claim_assessments:
+          - claim_id: inspection-system-not-mnemonic
+            verdict: supports
+            rationale: "The excerpt directly supports both elements: intervals depend on the
+              type of operation, and inspection systems may be based on calendar
+              time, time in service, system operations, or combinations
+              thereof."
+      usage:
+        input_tokens: 1398
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1395
+        output_tokens: 162
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1560
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-preflight-inspection
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:28.758Z
+    linked_claim_ids:
+      - preflight-condition-check
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4647
+      pdf_page_text_sha256: f1a05cd26fc3ea986c400fe525637c624c1dcd2c1b47d66a86881f8aa467bb84
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states verbatim that a preflight inspection is "a
+          thorough and systematic means by which a pilot determines if an
+          aircraft is airworthy and in condition for safe operation."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains the "Preflight Inspections" heading and
+            the exact statement supporting the claim.
+        claim_assessments:
+          - claim_id: preflight-condition-check
+            verdict: supports
+            rationale: The claim accurately restates the excerpt's definition of a preflight
+              inspection.
+      usage:
+        input_tokens: 1395
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1392
+        output_tokens: 131
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1526
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-inoperative-preventive
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:28.763Z
+    linked_claim_ids:
+      - mel-aircraft-specific-guidance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4976
+      pdf_page_text_sha256: 6b2f579b5c9e2f47e0891b3281649a36e585e1ef8aac66b916d22d1af15ccf6a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that an operator receives an FAA Letter
+          of Authorization (LOA) with the relevant MMEL and that the resulting
+          MEL is for the specific operator and N-numbered aircraft. It also
+          states that the FAA considers an approved MEL to be an STC issued to
+          an aircraft by serial number and registration number.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 9-10, and the excerpt from that exact page
+            contains the relevant discussion of MELs, LOAs, N-numbered aircraft,
+            and serial/registration-number specificity.
+        claim_assessments:
+          - claim_id: mel-aircraft-specific-guidance
+            verdict: supports
+            rationale: The page says the local FSDO may issue an MMEL 'along with an LOA,'
+              that the MMEL plus operator procedures becomes the operator's MEL,
+              and that an approved MEL is issued to an aircraft by serial number
+              and registration number.
+      usage:
+        input_tokens: 1421
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1418
+        output_tokens: 216
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1637
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-preventive-maintenance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:28.773Z
+    linked_claim_ids:
+      - preventive-list-controls
+      - preventive-examples-bounded
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4901
+      pdf_page_text_sha256: 507a94b4c84bd82cbf3183bf5c01733dca83407bd136d8ea3da6daea72a70e1b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page states that preventive maintenance is limited to
+          work not involving complex assembly operations and lists specific
+          permitted examples, including spark-plug work and cleaning or
+          replacing fuel and oil strainers or filter elements.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 11 (printed page 9-11), which
+            falls within the locator’s stated pp. 9-10–9-11 range and contains
+            the relevant preventive-maintenance examples.
+        claim_assessments:
+          - claim_id: preventive-list-controls
+            verdict: supports
+            rationale: The excerpt says the work is limited to work not involving complex
+              assembly operations and then provides an enumerated list of
+              included operations.
+          - claim_id: preventive-examples-bounded
+            verdict: supports
+            rationale: The excerpt specifically includes replacing or cleaning spark plugs
+              and setting spark-plug gap clearance, as well as cleaning or
+              replacing fuel and oil strainers or filter elements.
+      usage:
+        input_tokens: 1337
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1334
+        output_tokens: 305
+        output_tokens_details:
+          reasoning_tokens: 83
+        total_tokens: 1642
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-ads-owner-responsibility
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-25T18:03:28.778Z
+    linked_claim_ids:
+      - ad-regulatory-status
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5260
+      pdf_page_text_sha256: 6c06eaac47ef5e2edc8290b8e5454bd75d2c4a706acaab7a2551dbb64515f905
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that ADs are used to notify owners and other
+          interested persons of unsafe conditions and specify conditions for
+          continued operation. It also explicitly says that ADs are regulatory
+          and must be complied with unless a specific exemption is granted,
+          supporting their legally enforceable status.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains the “Airworthiness Directives (ADs)”
+            section and directly addresses their purpose, regulatory status, and
+            compliance requirements.
+        claim_assessments:
+          - claim_id: ad-regulatory-status
+            verdict: supports
+            rationale: "The page explains that ADs require corrective action for unsafe
+              conditions in aircraft, engines, propellers, or appliances, and
+              explicitly states: “ADs are regulatory and shall be complied with
+              unless a specific exemption is granted.”"
+      usage:
+        input_tokens: 1428
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1425
+        output_tokens: 185
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1613
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-mosaic-addendum
+    title: Pilot's Handbook of Aeronautical Knowledge Addendum (MOSAIC)
+    checked_at_utc: 2026-08-25T18:03:28.786Z
+    linked_claim_ids:
+      - mosaic-scope-boundary
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      final_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      validation_url: https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/PHAK_Addendum_%28MOSAIC%29.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3016
+      pdf_page_text_sha256: e10819fc69a96f859b3b1a657df747692c9fef545183a946ab4af1c2d003d071
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page is page 5 of the addendum and explicitly
+          identifies the addendum as dated October 20, 2025. It states that
+          Chapter 9 language is revised in two relevant places: the Aircraft
+          Documents: Airworthiness Certificate section, addressing special
+          airworthiness certificates and light-sport category aircraft, and the
+          Preventive Maintenance section, addressing maintenance privileges of
+          sport pilot certificate holders."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator specifies Chapter 9 revisions on page 5 of the addendum.
+            The excerpt is from cited PDF page 5 and contains both identified
+            Chapter 9 revisions.
+        claim_assessments:
+          - claim_id: mosaic-scope-boundary
+            verdict: supports
+            rationale: The excerpt directly states that the Chapter 9
+              airworthiness-certificate paragraph is revised to say that
+              light-sport category aircraft receive a pink special airworthiness
+              certificate. It also directly states revised
+              preventive-maintenance language allowing a sport pilot to perform
+              preventive maintenance on an owned or operated aircraft issued a
+              special airworthiness certificate in the light-sport category.
+      usage:
+        input_tokens: 1061
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1058
+        output_tokens: 242
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1303
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-203-certificates
+    title: "14 CFR § 91.203 — Civil aircraft: Certifications required"
+    checked_at_utc: 2026-08-25T18:03:27.373Z
+    linked_claim_ids:
+      - aircraft-certificates-aboard
+      - airworthiness-certificate-display
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 20432cb06ded64ad1aca8fbeb15329289aa1eee986b44b1c9821455d43007924
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.203
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.203"
+        date: 2026-08-21
+        section_number: "91.203"
+      section_text_sha256: 207c6813f8b80f1a14a0ce3ccbd4312cbe2fea45ca8623b3312705e64f2c9d1e
+      excerpt_characters: 2649
+      excerpt_sha256: 207c6813f8b80f1a14a0ce3ccbd4312cbe2fea45ca8623b3312705e64f2c9d1e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2649
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states the required onboard airworthiness and
+          registration documentation in § 91.203(a) and the display requirement
+          for the airworthiness certificate in § 91.203(b).
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.203(a)–(b), precisely covers both claims.
+        claim_assessments:
+          - claim_id: aircraft-certificates-aboard
+            verdict: supports
+            rationale: Section 91.203(a)(1) requires an appropriate and current
+              airworthiness certificate within the aircraft, and § 91.203(a)(2)
+              requires an effective U.S. registration certificate issued to its
+              owner, subject to listed alternatives and exceptions.
+          - claim_id: airworthiness-certificate-display
+            verdict: supports
+            rationale: Section 91.203(b) expressly requires the airworthiness certificate to
+              be displayed at the cabin or cockpit entrance where it is legible
+              to passengers or crew.
+      usage:
+        input_tokens: 1125
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1122
+        output_tokens: 221
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1346
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-47-40-registration-duration
+    title: 14 CFR § 47.40 — Registration expiration and renewal
+    checked_at_utc: 2026-08-25T18:03:27.374Z
+    linked_claim_ids:
+      - registration-seven-years
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=47&section=47.40
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=47&section=47.40
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: e9b40f6bca7fed4dc1a82638206cf6bee53808dc251977d6df7e63da98135a38
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-47/subpart-B/section-47.40
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=47&section=47.40
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=47&section=47.40
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "47"
+        section: "47.40"
+        date: 2026-08-21
+        section_number: "47.40"
+      section_text_sha256: f915e3d18403a9094a6f71f79ec023e20aecd3722ebc906befd43e96afe57cce
+      excerpt_characters: 1133
+      excerpt_sha256: f915e3d18403a9094a6f71f79ec023e20aecd3722ebc906befd43e96afe57cce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1133
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that an initial Certificate of Aircraft
+          Registration expires seven years after the last day of its issue month
+          and that a holder may apply for renewal during the six months
+          preceding its expiration date.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 47.40(a)–(b), exactly contains the
+            initial-registration expiration rule in paragraph (a) and the
+            renewal application timing in paragraph (b).
+        claim_assessments:
+          - claim_id: registration-seven-years
+            verdict: supports
+            rationale: Paragraph (a) provides the seven-year expiration period measured from
+              the last day of the issuance month; paragraph (b) permits renewal
+              application during the six months before expiration.
+      usage:
+        input_tokens: 708
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 169
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 877
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-9-flight-manual
+    title: 14 CFR § 91.9 — Civil aircraft flight manual, marking, and placard
+      requirements
+    checked_at_utc: 2026-08-25T18:03:27.528Z
+    linked_claim_ids:
+      - operating-limitations-control
+      - current-manual-material-available
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a4
+      title: null
+      truncated: false
+      content_sha256: 2c7dc879a743eafe5415ccf951333c82c04b6fde53e684cee42f9c33629527d2
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.9
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.9"
+        date: 2026-08-21
+        section_number: "91.9"
+      section_text_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      excerpt_characters: 1912
+      excerpt_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1912
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states the operating-limitations compliance
+          requirement in § 91.9(a) and the availability requirements for current
+          approved flight-manual material, markings, and placards in § 91.9(b).
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.9(a) and (b), exactly encompasses the
+            relevant quoted provisions.
+        claim_assessments:
+          - claim_id: operating-limitations-control
+            verdict: supports
+            rationale: Section 91.9(a) states that, except as provided in paragraph (d), no
+              person may operate a civil aircraft without complying with
+              operating limitations in the approved Airplane or Rotorcraft
+              Flight Manual, markings and placards, or as otherwise prescribed
+              by the country-of-registry certificating authority.
+          - claim_id: current-manual-material-available
+            verdict: supports
+            rationale: Section 91.9(b) requires a current approved Airplane or Rotorcraft
+              Flight Manual for applicable U.S.-registered aircraft and, where
+              an AFM/RFM is not required by § 21.5, requires current approved
+              AFM/RFM, approved manual material, markings, placards, or a
+              combination thereof to be available in the aircraft.
+      usage:
+        input_tokens: 918
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 276
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1194
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-21-181-airworthiness-duration
+    title: 14 CFR § 21.181 — Duration
+    checked_at_utc: 2026-08-25T18:03:27.530Z
+    linked_claim_ids:
+      - airworthiness-certificate-continuing-effect
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.181
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.181
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: f09c7bd5d251fb1cd38dcd2c98ae09a8b075320f58b5e6edd5ddd7a72b13c8b2
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.181
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.181
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.181
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "21"
+        section: "21.181"
+        date: 2026-08-21
+        section_number: "21.181"
+      section_text_sha256: e257617bfd024c836450369eeebbf141dc2a4b470295152575ab008c3bd456cb
+      excerpt_characters: 3938
+      excerpt_sha256: e257617bfd024c836450369eeebbf141dc2a4b470295152575ab008c3bd456cb
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 3938
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states in § 21.181(a) that, unless sooner
+          surrendered, suspended, revoked, or assigned another FAA termination
+          date, airworthiness certificates remain effective while the aircraft
+          is registered in the United States. Section 21.181(a)(1) specifically
+          provides that standard airworthiness certificates remain effective as
+          long as maintenance, preventive maintenance, and alterations are
+          performed in accordance with parts 43 and 91.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 21.181(a)–(a)(1), precisely contains the
+            relevant duration, U.S.-registration, and
+            maintenance/preventive-maintenance/alteration conditions for
+            standard airworthiness certificates.
+        claim_assessments:
+          - claim_id: airworthiness-certificate-continuing-effect
+            verdict: supports
+            rationale: The claim accurately combines the conditions stated in § 21.181(a)
+              and (a)(1) for a standard airworthiness certificate.
+      usage:
+        input_tokens: 1412
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1409
+        output_tokens: 220
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1632
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-7-pic-airworthiness
+    title: 14 CFR § 91.7 — Civil aircraft airworthiness
+    checked_at_utc: 2026-08-25T18:03:32.536Z
+    linked_claim_ids:
+      - pic-safe-flight-determination
+      - discontinue-unairworthy-flight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a5
+      title: null
+      truncated: false
+      content_sha256: 29e91ae7a8ffc7fe7163c6235132c3a6714a120acd27f118f054f27bc7ad9cb3
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.7
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.7"
+        date: 2026-08-21
+        section_number: "91.7"
+      section_text_sha256: 7e3fa7bb95992c72b3058ffc089000144b956a44bb73ca67550710f45847a473
+      excerpt_characters: 486
+      excerpt_sha256: 7e3fa7bb95992c72b3058ffc089000144b956a44bb73ca67550710f45847a473
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 486
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt from 14 CFR § 91.7(a)–(b) directly states both the PIC's
+          responsibility to determine whether the aircraft is in condition for
+          safe flight and the duty to discontinue flight when specified
+          unairworthy conditions occur.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.7(a)–(b), exactly encompasses the quoted
+            regulatory language.
+        claim_assessments:
+          - claim_id: pic-safe-flight-determination
+            verdict: supports
+            rationale: Section 91.7(b) expressly states that the pilot in command is
+              responsible for determining whether the aircraft is in condition
+              for safe flight.
+          - claim_id: discontinue-unairworthy-flight
+            verdict: supports
+            rationale: Section 91.7(b) expressly requires the pilot in command to
+              discontinue the flight when unairworthy mechanical, electrical, or
+              structural conditions occur.
+      usage:
+        input_tokens: 573
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 209
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 782
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-403-owner-responsibility
+    title: 14 CFR § 91.403 — General
+    checked_at_utc: 2026-08-25T18:03:37.537Z
+    linked_claim_ids:
+      - owner-primary-responsibility
+      - maintenance-authority-limited
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: 94768b8b39917c3141957bd325c965ae9458da2ab57fdb14ff85cb9303df227e
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.403
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.403
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.403"
+        date: 2026-08-21
+        section_number: "91.403"
+      section_text_sha256: e9ce91ce386fd9b27b5e0372a0919a6699de90209be51cf30fb4b946147ae85d
+      excerpt_characters: 1446
+      excerpt_sha256: e9ce91ce386fd9b27b5e0372a0919a6699de90209be51cf30fb4b946147ae85d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1446
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states both the owner/operator's primary
+          responsibility for airworthiness and the regulatory limitation on who
+          may perform maintenance, preventive maintenance, or alterations.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.403(a)–(b), exactly contains the provisions
+            supporting both claims.
+        claim_assessments:
+          - claim_id: owner-primary-responsibility
+            verdict: supports
+            rationale: Section 91.403(a) states that the owner or operator is primarily
+              responsible for maintaining the aircraft in an airworthy
+              condition, including compliance with part 39.
+          - claim_id: maintenance-authority-limited
+            verdict: supports
+            rationale: Section 91.403(b) provides that no person may perform maintenance,
+              preventive maintenance, or alterations except as prescribed by the
+              subpart and other applicable regulations, including part 43.
+      usage:
+        input_tokens: 790
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 201
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 991
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-405-required-maintenance
+    title: 14 CFR § 91.405 — Maintenance required
+    checked_at_utc: 2026-08-25T18:03:37.579Z
+    linked_claim_ids:
+      - owner-discrepancy-record-duty
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.405
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.405
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: e562e8a6eecb41a48b9cf50005d57a7915073cb7505f37304e0f591e4264fa2a
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.405
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.405
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.405
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.405"
+        date: 2026-08-21
+        section_number: "91.405"
+      section_text_sha256: 12ec7da996be83918e755347aaf5b679bc8ad3ff0fb9f0e7dbb4e666bf77897a
+      excerpt_characters: 966
+      excerpt_sha256: 12ec7da996be83918e755347aaf5b679bc8ad3ff0fb9f0e7dbb4e666bf77897a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 966
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states the owner/operator duties to have
+          required inspections performed, repair discrepancies between
+          inspections except as provided in § 91.405(c), ensure appropriate
+          maintenance-record entries showing approval for return to service, and
+          ensure placards are installed when listed discrepancies include
+          inoperative instruments or equipment.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.405(a)–(d), encompasses each element of the
+            claim.
+        claim_assessments:
+          - claim_id: owner-discrepancy-record-duty
+            verdict: supports
+            rationale: Paragraph (a) covers inspections and repair of discrepancies between
+              required inspections, subject to the stated exception; paragraph
+              (b) covers maintenance-record entries; and paragraph (d) covers
+              placarding listed inoperative instruments or equipment.
+      usage:
+        input_tokens: 661
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 185
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 846
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-409-inspections
+    title: 14 CFR § 91.409 — Inspections
+    checked_at_utc: 2026-08-25T18:03:42.530Z
+    linked_claim_ids:
+      - annual-inspection-clock
+      - hundred-hour-trigger
+      - hundred-hour-ferry-overage
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a7
+      title: null
+      truncated: false
+      content_sha256: e2791c4b16b76d810395f9e3b151391291d8d8eef0fbaffbd57769cea9c952df
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.409
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.409"
+        date: 2026-08-21
+        section_number: "91.409"
+      section_text_sha256: 99b37ecb85aa821fe3b6561ef97a7390adfb7aebd7f48213f82da1fb9c8769df
+      excerpt_characters: 9449
+      excerpt_sha256: 99b37ecb85aa821fe3b6561ef97a7390adfb7aebd7f48213f82da1fb9c8769df
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 9449
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states the annual-inspection requirement in §
+          91.409(a) and the 100-hour inspection triggers and limited en-route
+          overage in § 91.409(b). All three claims closely track that language.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.409(a)–(b), contains the operative text for
+            each claim.
+        claim_assessments:
+          - claim_id: annual-inspection-clock
+            verdict: supports
+            rationale: Section 91.409(a), subject to paragraph (c), prohibits operation
+              unless within the preceding 12 calendar months the aircraft had
+              either an annual inspection under part 43 and approval for return
+              to service, or an inspection for issuance of an airworthiness
+              certificate under part 21.
+          - claim_id: hundred-hour-trigger
+            verdict: supports
+            rationale: Section 91.409(b) applies the 100-hour requirement to aircraft
+              carrying a non-crewmember for hire and to flight instruction for
+              hire in an aircraft provided by the instructor. Its stated
+              triggers do not include personal operation of an owner's aircraft
+              merely because 100 hours have accumulated.
+          - claim_id: hundred-hour-ferry-overage
+            verdict: supports
+            rationale: Section 91.409(b) expressly permits exceeding the 100-hour limitation
+              by no more than 10 hours while en route to a place where the
+              inspection can be performed, and requires that excess time be
+              included when computing the next 100 hours.
+      usage:
+        input_tokens: 2519
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2516
+        output_tokens: 328
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2847
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-207-elt
+    title: 14 CFR § 91.207 — Emergency locator transmitters
+    checked_at_utc: 2026-08-25T18:03:42.584Z
+    linked_claim_ids:
+      - elt-inspection-and-battery
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.207
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.207
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: f4e15a55dd49b13c75073076c02025700c3e64b5bb4c1a9e81935be931217548
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.207
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.207
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.207
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.207"
+        date: 2026-08-21
+        section_number: "91.207"
+      section_text_sha256: 766ede61111bcc4d765eb283e99cfe92a3ceea15c23b7098e6e36e7a5492fe12
+      excerpt_characters: 5043
+      excerpt_sha256: 766ede61111bcc4d765eb283e99cfe92a3ceea15c23b7098e6e36e7a5492fe12
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 5043
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states in § 91.207(d) that each required ELT
+          must be inspected within 12 calendar months after the last inspection.
+          Separately, § 91.207(c) requires battery replacement or recharge after
+          more than one cumulative hour of transmitter use or when 50 percent of
+          the manufacturer-established useful life (or useful charge life for
+          rechargeable batteries) has expired.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.207(c) and (d), precisely contains the
+            battery and inspection provisions relied upon by the claim.
+        claim_assessments:
+          - claim_id: elt-inspection-and-battery
+            verdict: supports
+            rationale: Section 91.207(d) establishes the 12-calendar-month inspection
+              interval, and § 91.207(c)(1)-(2) establishes distinct battery
+              replacement/recharge triggers.
+      usage:
+        input_tokens: 1553
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1550
+        output_tokens: 202
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1755
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-411-altimeter
+    title: 14 CFR § 91.411 — Altimeter system and altitude reporting equipment tests
+      and inspections
+    checked_at_utc: 2026-08-25T18:03:47.595Z
+    linked_claim_ids:
+      - altimeter-ifr-inspection
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.411
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.411
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: dc662680735193f5897981a60c8be4a819931f4c36d5c4eca0cb9faf7574ecef
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.411
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.411
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.411
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.411"
+        date: 2026-08-21
+        section_number: "91.411"
+      section_text_sha256: f2d4d4814387923ea3d63287dc1170ef5a7daad1a0c936eca627dba7af25c68b
+      excerpt_characters: 2322
+      excerpt_sha256: f2d4d4814387923ea3d63287dc1170ef5a7daad1a0c936eca627dba7af25c68b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2322
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that no person may operate an airplane or
+          helicopter in controlled airspace under IFR unless, within the
+          preceding 24 calendar months, each static pressure system, altimeter
+          instrument, and automatic pressure altitude reporting system has been
+          tested, inspected, and found compliant with the specified Part 43
+          appendices. It also specifies additional testing and inspection
+          requirements after opening/closing the static pressure system (with
+          stated exceptions) and after certain installation or maintenance
+          affecting the automatic pressure altitude reporting/transponder
+          system.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.411(a), is the exact subsection containing
+            the 24-calendar-month requirement and the additional post-work
+            testing provisions.
+        claim_assessments:
+          - claim_id: altimeter-ifr-inspection
+            verdict: supports
+            rationale: Section 91.411(a)(1) supports the 24-calendar-month requirement for
+              the static pressure system, altimeter instrument, and automatic
+              pressure altitude reporting system for IFR operation in controlled
+              airspace. Sections 91.411(a)(2) and (a)(3) support the statement
+              that additional rules apply after specified work.
+      usage:
+        input_tokens: 975
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 256
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1231
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-413-transponder
+    title: 14 CFR § 91.413 — ATC transponder tests and inspections
+    checked_at_utc: 2026-08-25T18:03:47.637Z
+    linked_claim_ids:
+      - transponder-inspection
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.413
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.413
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: e505f8285750c9bb32be94ebf9dd00ee4973117af5cbfa44515a084ceccde96e
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.413
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.413
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.413
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.413"
+        date: 2026-08-21
+        section_number: "91.413"
+      section_text_sha256: a1400efc44786b533eb409af95c82bacdada1c994aee5682964737848fd21ba5
+      excerpt_characters: 1465
+      excerpt_sha256: a1400efc44786b533eb409af95c82bacdada1c994aee5682964737848fd21ba5
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1465
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that an ATC transponder specified in §
+          91.215(a) may not be used unless it was tested, inspected, and found
+          compliant within the preceding 24 calendar months. It also requires
+          integrated-system testing and inspection after installation or
+          maintenance where a data-correspondence error could be introduced.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator § 91.413(a)–(b) precisely covers both the
+            24-calendar-month requirement in paragraph (a) and the
+            post-installation/maintenance testing requirement in paragraph (b).
+        claim_assessments:
+          - claim_id: transponder-inspection
+            verdict: supports
+            rationale: The claim accurately summarizes § 91.413(a) and (b). The qualifying
+              word “generally” is consistent with the excerpt’s applicability to
+              transponders specified in § 91.215(a), and the additional-testing
+              statement is supported for maintenance or installation that could
+              introduce data correspondence error.
+      usage:
+        input_tokens: 832
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 225
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1057
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-417-records
+    title: 14 CFR § 91.417 — Maintenance records
+    checked_at_utc: 2026-08-25T18:03:52.589Z
+    linked_claim_ids:
+      - records-work-history
+      - records-continuing-status
+      - ad-status-record
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a8
+      title: null
+      truncated: false
+      content_sha256: 94080b83312e7f122d10230a5ee595daaf52064c7bb2af48fec5b535e149d91b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.417
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.417"
+        date: 2026-08-21
+        section_number: "91.417"
+      section_text_sha256: e557cc362082f15fe3db02422420d2a704a7102e752381f2d46523adfc6af993
+      excerpt_characters: 3415
+      excerpt_sha256: e557cc362082f15fe3db02422420d2a704a7102e752381f2d46523adfc6af993
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 3415
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt from 14 CFR § 91.417(a)–(b) directly specifies required
+          maintenance-record content, including work-history entries and
+          continuing-status records. It expressly addresses AD-status
+          documentation and recurring-AD next-action timing.
+        locator_assessment:
+          verdict: supports
+          rationale: "The locator § 91.417(a)–(b) precisely covers the cited requirements:
+            paragraph (a)(1) addresses maintenance/work and inspection record
+            details, while paragraph (a)(2) lists continuing-status records.
+            Paragraph (b) addresses retention."
+        claim_assessments:
+          - claim_id: records-work-history
+            verdict: supports
+            rationale: Section 91.417(a)(1) requires records of maintenance, preventive
+              maintenance, alterations, and specified inspections. It further
+              requires a description or acceptable-data reference for the work,
+              completion date, and signature and certificate number of the
+              person approving return to service.
+          - claim_id: records-continuing-status
+            verdict: supports
+            rationale: Section 91.417(a)(2) expressly requires records of total time in
+              service, life-limited-parts status, time since required overhauls,
+              current inspection status, applicable AD status, and Form 337
+              copies for applicable major alterations.
+          - claim_id: ad-status-record
+            verdict: supports
+            rationale: Section 91.417(a)(2)(v) expressly requires the current status of
+              applicable ADs, including method of compliance, AD number and
+              revision date, and, for recurring actions, the time and date of
+              the next required action.
+      usage:
+        input_tokens: 1300
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1297
+        output_tokens: 341
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1641
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-205-vfr-equipment
+    title: 14 CFR § 91.205 — Powered civil aircraft instrument and equipment
+      requirements
+    checked_at_utc: 2026-08-25T18:03:52.646Z
+    linked_claim_ids:
+      - vfr-day-night-required-equipment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a9
+      title: null
+      truncated: false
+      content_sha256: b7711166a41e9f8756434ec328a77ba6c655ccbb69497d1a25017ba122d882c5
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.205
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.205"
+        date: 2026-08-21
+        section_number: "91.205"
+      section_text_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      excerpt_characters: 8044
+      excerpt_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 8044
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly contains § 91.205(a), (b), and (c). It
+          establishes the applicability to powered civil aircraft with standard
+          U.S. airworthiness certificates, lists the day-VFR equipment in
+          paragraph (b), including the conditional retractable-landing-gear
+          indicator and specified for-hire overwater flotation/pyrotechnic
+          equipment, and states that night VFR requires the paragraph (b) items
+          plus the lighting and electrical items in paragraph (c), including an
+          electric landing light for aircraft operated for hire.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies § 91.205(b) for day VFR and § 91.205(c) for
+            night VFR, and both complete provisions appear in the supplied
+            excerpt.
+        claim_assessments:
+          - claim_id: vfr-day-night-required-equipment
+            verdict: supports
+            rationale: Paragraph (b) expressly lists the required day-VFR instruments and
+              equipment and includes a landing-gear position indicator when the
+              aircraft has retractable landing gear (§ 91.205(b)(10)), as well
+              as flotation gear and a pyrotechnic signaling device for specified
+              for-hire overwater operations (§ 91.205(b)(12)). Paragraph (c)(1)
+              requires the paragraph (b) items for night VFR, while paragraphs
+              (c)(2) through (c)(6) add position lights, an anticollision light
+              system, a for-hire electric landing light, electrical energy, and
+              spare fuses.
+      usage:
+        input_tokens: 2433
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2430
+        output_tokens: 329
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2762
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-213-inoperative
+    title: 14 CFR § 91.213 — Inoperative instruments and equipment
+    checked_at_utc: 2026-08-25T18:03:57.618Z
+    linked_claim_ids:
+      - mel-aircraft-loa-pathway
+      - inoperative-no-mel-eligibility
+      - inoperative-required-item-checks
+      - inoperative-removal
+      - inoperative-deactivation
+      - inoperative-no-hazard
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a10
+      title: null
+      truncated: false
+      content_sha256: 4593d1ab135d481d639b185e0234cae6f08c465281165765f6b76402efc3ad6f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.213
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.213"
+        date: 2026-08-21
+        section_number: "91.213"
+      section_text_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      excerpt_characters: 4728
+      excerpt_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4728
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt reproduces § 91.213(a) and (d), including the
+          MEL/letter-of-authorization requirements and each cited condition for
+          operating with inoperative instruments or equipment without an
+          approved MEL. All claims are directly addressed by the supplied text.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies § 91.213(a) and (d), and the excerpt contains
+            those paragraphs. Each claim is supported within one of those cited
+            paragraphs.
+        claim_assessments:
+          - claim_id: mel-aircraft-loa-pathway
+            verdict: supports
+            rationale: Paragraph (a)(1) requires an approved MEL for the aircraft; (a)(2)
+              requires the aircraft to have the Flight Standards office letter
+              of authorization; and (a)(5) requires operation under all
+              applicable conditions and limitations in the MEL and authorization
+              letter.
+          - claim_id: inoperative-no-mel-eligibility
+            verdict: supports
+            rationale: Paragraph (d)(1) limits this pathway to the listed aircraft
+              categories and expressly distinguishes specified aircraft for
+              which an MMEL has not been developed from specified small aircraft
+              for which an MMEL has been developed.
+          - claim_id: inoperative-required-item-checks
+            verdict: supports
+            rationale: Paragraph (d)(2)(i)–(iv) excludes items required by VFR-day
+              type-certification requirements, the equipment list or KOEL, §
+              91.205 or another applicable Part 91 rule, and airworthiness
+              directives.
+          - claim_id: inoperative-removal
+            verdict: supports
+            rationale: Paragraph (d)(3)(i) states that removed equipment requires the
+              cockpit control to be placarded and maintenance to be recorded in
+              accordance with § 43.9.
+          - claim_id: inoperative-deactivation
+            verdict: supports
+            rationale: Paragraph (d)(3)(ii) requires deactivated equipment to be placarded
+              “Inoperative” and, where deactivation involves maintenance,
+              requires that maintenance to be accomplished and recorded under
+              part 43.
+          - claim_id: inoperative-no-hazard
+            verdict: supports
+            rationale: Paragraph (d)(4) requires a determination by a certificated and
+              appropriately rated pilot or appropriately rated maintenance
+              person that the inoperative instrument or equipment does not
+              constitute a hazard to the aircraft.
+      usage:
+        input_tokens: 1776
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1773
+        output_tokens: 493
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2269
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-91-67a-non-mel
+    title: AC 91-67A — Minimum Equipment Requirements for General Aviation
+      Operations Under 14 CFR Part 91
+    checked_at_utc: 2026-08-25T18:03:28.791Z
+    linked_claim_ids:
+      - inoperative-decision-not-one-question
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a11
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2106
+      pdf_page_text_sha256: ff0d4af0550bacb7d502c03f787dbe16a88d3e61d603226e7ba220d33f51f4b1
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states that, for operators without an MEL
+          using § 91.213(d), required instruments/equipment must be operative,
+          the required maintenance action must occur, and a no-hazard
+          determination must be made. It also states that inoperative items must
+          be repaired, removed, deactivated, or inspected and then placarded.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 4, §§ 4.1–4.2, page 4-1, and the
+            supplied excerpt is exactly that page. Both the § 91.213(d)
+            conditions and removal/deactivation/placarding discussion appear
+            there.
+        claim_assessments:
+          - claim_id: inoperative-decision-not-one-question
+            verdict: supports
+            rationale: Section 4.1.2.3 lists operative required equipment, completion of the
+              maintenance action, and a no-hazard determination. Section 4.2
+              requires inoperative items to be repaired, removed, deactivated,
+              or inspected and then placarded when operating without an MEL. The
+              claim appropriately limits this to eligible aircraft operated
+              without an MEL.
+      usage:
+        input_tokens: 982
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 254
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1236
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-91-67a-deactivation
+    title: AC 91-67A — Minimum Equipment Requirements for General Aviation
+      Operations Under 14 CFR Part 91
+    checked_at_utc: 2026-08-25T18:03:28.852Z
+    linked_claim_ids:
+      - deactivation-may-be-maintenance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=24
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a11
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=24
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2686
+      pdf_page_text_sha256: d605750467fad0a01296b0741ab8a6b7ed2c9e54b7d456bf4ee38adabeb6b61d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page directly states all elements of the claim in §
+          4.2.2: deactivation of an inoperative system is not preventive
+          maintenance; an appropriately authorized person must accomplish the
+          deactivation; and a person authorized under § 43.7 must make the §
+          43.9-required maintenance-record entry, without which the aircraft may
+          not be operated."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 4, § 4.2.2, “Deactivation,” on PDF
+            page 24 (printed page 4-2), and the excerpt is from that exact
+            section and page.
+        claim_assessments:
+          - claim_id: deactivation-may-be-maintenance
+            verdict: supports
+            rationale: "The excerpt expressly says: “Deactivation of an inoperative system
+              is not preventive maintenance,” “An appropriately authorized
+              person must accomplish the deactivation,” and requires the § 43.9
+              maintenance-record entry by a person authorized to approve return
+              to service under § 43.7."
+      usage:
+        input_tokens: 1020
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 235
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1255
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-91-67a-risk
+    title: AC 91-67A — Minimum Equipment Requirements for General Aviation
+      Operations Under 14 CFR Part 91
+    checked_at_utc: 2026-08-25T18:03:29.167Z
+    linked_claim_ids:
+      - inoperative-risk-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a11
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-67A.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1373
+      pdf_page_text_sha256: 41ae864b1657b518566906cc06005a1fefb290ff4fbc3cfe1ebde2c3843486ad
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly advises that, before operating under §
+          91.213(d) with permitted inoperative items, the operator should
+          evaluate whether the aircraft and crew can safely conduct the proposed
+          operation. It lists equipment-related, environmental/operational, and
+          human-factor considerations, including multiple failures, weather,
+          night operations, airport/en-route/diversion conditions, workload, and
+          fatigue.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 4-3 and contains section 4.4, “Safety Risk
+            Analysis of Proposed Operation with Inoperative Equipment Items,”
+            including the listed risk factors.
+        claim_assessments:
+          - claim_id: inoperative-risk-context
+            verdict: supports
+            rationale: The page supports considering risk factors after determining an
+              inoperative item is permitted under § 91.213(d). It specifically
+              identifies environmental, operational, human-factor, and
+              equipment/failure-interrelationship factors to assess before
+              flight.
+      usage:
+        input_tokens: 693
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 214
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 907
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-43-3-pilot-maintenance
+    title: 14 CFR § 43.3 — Persons authorized to perform maintenance
+    checked_at_utc: 2026-08-25T18:04:02.659Z
+    linked_claim_ids:
+      - pilot-preventive-eligibility
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a12
+      title: null
+      truncated: false
+      content_sha256: 84c5a6d80848167841dfdbab4fb737159fc45c557fa22bfa06f5bfedc3bf1411
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.3
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "43"
+        section: "43.3"
+        date: 2026-08-21
+        section_number: "43.3"
+      section_text_sha256: 248021454ed3f8c67b7131cc281e2ca1e6c09a2bb027a37372d0513210c2ae14
+      excerpt_characters: 5759
+      excerpt_sha256: 248021454ed3f8c67b7131cc281e2ca1e6c09a2bb027a37372d0513210c2ae14
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 5759
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly includes § 43.3(g), which states that, except
+          for sport-pilot certificate holders, a pilot certificate holder under
+          part 61 may perform preventive maintenance on an aircraft owned or
+          operated by that pilot, provided the aircraft is not used under parts
+          121, 129, or 135. The claim accurately characterizes this as subject
+          to exceptions.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 43.3(g), is present verbatim in the supplied
+            excerpt and contains the relevant authorization and limitations.
+        claim_assessments:
+          - claim_id: pilot-preventive-eligibility
+            verdict: supports
+            rationale: Section 43.3(g) expressly authorizes qualifying pilot certificate
+              holders to perform preventive maintenance on aircraft they own or
+              operate, excluding aircraft used under parts 121, 129, or 135,
+              while separately specifying the sport-pilot limitation.
+      usage:
+        input_tokens: 1731
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1728
+        output_tokens: 212
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1943
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-43-7-return-to-service
+    title: 14 CFR § 43.7 — Persons authorized to approve aircraft for return to
+      service
+    checked_at_utc: 2026-08-25T18:04:07.599Z
+    linked_claim_ids:
+      - pilot-preventive-return-to-service
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.7
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.7
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: 73ed875bc0429ff32739474208bc6351fbf35accc292a4cde8c14cb6bdc54570
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.7
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.7
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.7
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "43"
+        section: "43.7"
+        date: 2026-08-21
+        section_number: "43.7"
+      section_text_sha256: 9a568ea8586105b226a4d77018defcfe5b0bcb33d5b0fbe72a5d71226dbefeb6
+      excerpt_characters: 2540
+      excerpt_sha256: 9a568ea8586105b226a4d77018defcfe5b0bcb33d5b0fbe72a5d71226dbefeb6
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2540
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states in § 43.7(f) that a person holding at
+          least a private pilot certificate may approve an aircraft for return
+          to service after performing preventive maintenance under § 43.3(g).
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 43.7(f), exactly identifies the paragraph
+            containing the stated rule.
+        claim_assessments:
+          - claim_id: pilot-preventive-return-to-service
+            verdict: supports
+            rationale: Section 43.7(f) directly matches the claim’s certificate threshold,
+              authority to approve return to service, and condition that the
+              person performed preventive maintenance under § 43.3(g).
+      usage:
+        input_tokens: 1036
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1033
+        output_tokens: 163
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1199
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-43-9-maintenance-entry
+    title: 14 CFR § 43.9 — Content, form, and disposition of maintenance records
+    checked_at_utc: 2026-08-25T18:04:07.653Z
+    linked_claim_ids:
+      - preventive-maintenance-record-entry
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a13
+      title: null
+      truncated: false
+      content_sha256: 6594be1eaeaac8257ebd85aa24606d3d03e8e575a147a072a7d3b11cb615263b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43/section-43.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=43&section=43.9
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "43"
+        section: "43.9"
+        date: 2026-08-21
+        section_number: "43.9"
+      section_text_sha256: 828138184e50f21c5875df1ca4ff4e990b29a5bce565276c8ad316f4c840ec8b
+      excerpt_characters: 2341
+      excerpt_sha256: 828138184e50f21c5875df1ca4ff4e990b29a5bce565276c8ad316f4c840ec8b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2341
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt from § 43.9(a) expressly states the general rule,
+          subject to paragraphs (b) and (c), for persons performing maintenance
+          or preventive maintenance. It lists the required record-entry
+          elements: a description of work or reference to acceptable data,
+          completion date, performer name when different from the approving
+          person, and—when the work is performed satisfactorily—the approving
+          person's signature, certificate number, and kind of certificate held."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 43.9(a), is the exact subsection containing all
+            elements stated in the claim.
+        claim_assessments:
+          - claim_id: preventive-maintenance-record-entry
+            verdict: supports
+            rationale: Section 43.9(a) applies to preventive maintenance and provides each
+              stated entry requirement, including the qualifications on
+              exceptions, differing performer identity, and satisfactory
+              completion.
+      usage:
+        input_tokens: 1025
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 203
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1228
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-407-after-maintenance
+    title: 14 CFR § 91.407 — Operation after maintenance, preventive maintenance,
+      rebuilding, or alteration
+    checked_at_utc: 2026-08-25T18:04:12.607Z
+    linked_claim_ids:
+      - after-maintenance-return-entry
+      - after-maintenance-operational-check
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a14
+      title: null
+      truncated: false
+      content_sha256: 2861569c5531510cacca80ab5d86548c079a80a0ae25c39f55280a8c0c4dadbc
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.407
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=91&section=91.407
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.407"
+        date: 2026-08-21
+        section_number: "91.407"
+      section_text_sha256: df78996d7a7702635bec1efe32491376150e95baa065f1aa4bac189d9097c57c
+      excerpt_characters: 1445
+      excerpt_sha256: df78996d7a7702635bec1efe32491376150e95baa065f1aa4bac189d9097c57c
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1445
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states the return-to-service approval and
+          maintenance-record prerequisites for operation in § 91.407(a), and the
+          post-maintenance operational-check/passenger-carrying restriction and
+          ground-test/inspection exception in § 91.407(b)–(c).
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.407(a)–(c), exactly encompasses all relevant
+            provisions in the excerpt.
+        claim_assessments:
+          - claim_id: after-maintenance-return-entry
+            verdict: supports
+            rationale: Section 91.407(a) provides that no person may operate an aircraft
+              following maintenance, preventive maintenance, rebuilding, or
+              alteration unless it is approved for return to service by an
+              authorized person and the applicable maintenance-record entry has
+              been made.
+          - claim_id: after-maintenance-operational-check
+            verdict: supports
+            rationale: Section 91.407(b) prohibits carrying persons other than crewmembers
+              after work that may appreciably change flight characteristics or
+              substantially affect in-flight operation until an appropriately
+              rated pilot holding at least a private pilot certificate performs
+              and logs an operational check. Section 91.407(c) supplies the
+              stated exception where preflight ground tests, inspection, or both
+              conclusively show the work did not have those effects.
+      usage:
+        input_tokens: 835
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 286
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1121
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-21-197-special-flight-permit
+    title: 14 CFR § 21.197 — Special flight permits
+    checked_at_utc: 2026-08-25T18:04:12.646Z
+    linked_claim_ids:
+      - special-flight-permit-purpose
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a15
+      title: null
+      truncated: false
+      content_sha256: bbf610f3092c723813ac3b17220bc7e872db431ec85840298008673307c168b8
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-21/subpart-H/section-21.197
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-21/title-14.xml?part=21&section=21.197
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-21
+        title_status_sha256: a8cc1db2d4b0383a41cdc6e89be6086f608cd1f5415a45d991f314f6fef74e7e
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "21"
+        section: "21.197"
+        date: 2026-08-21
+        section_number: "21.197"
+      section_text_sha256: 561b86345649d4aa9b2970f363a96ecafcbff6fb33b1d8f718cb624dd0f402af
+      excerpt_characters: 2547
+      excerpt_sha256: 561b86345649d4aa9b2970f363a96ecafcbff6fb33b1d8f718cb624dd0f402af
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2547
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt from § 21.197(a) directly states that a special flight
+          permit may be issued for an aircraft that may not currently meet
+          applicable airworthiness requirements but is capable of safe flight.
+          Section 21.197(a)(1) expressly includes flying it to a base where
+          repairs, alterations, or maintenance are to be performed.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 21.197(a), is the exact subsection containing
+            both the general eligibility condition and the listed
+            repair/maintenance-flight purpose.
+        claim_assessments:
+          - claim_id: special-flight-permit-purpose
+            verdict: supports
+            rationale: § 21.197(a) directly supports the claim, including the conditions
+              that the aircraft may not meet applicable airworthiness
+              requirements but must be capable of safe flight, and the purpose
+              of flying to a base for repair or maintenance.
+      usage:
+        input_tokens: 1076
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1073
+        output_tokens: 203
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1279
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

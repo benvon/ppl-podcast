@@ -1,0 +1,67 @@
+id: "core-08"
+series: ppl-study-podcast
+title: "Aircraft Documents, Airworthiness, Inspections, and Maintenance"
+slug: "aircraft-documents-airworthiness-inspections-maintenance"
+track: "core"
+status: ready_for_hosting_pr
+version: 0.2.1
+published_at: "2026-08-25T17:53:14Z"
+runtime_target_minutes: 39
+runtime_actual_seconds: 1996.44
+word_count: 4877
+speakers: [instructor, learner, announcer]
+audience: "U.S. private-pilot airplane learners"
+aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
+acs_references:
+  - PA.I.B.K1a-K1e
+  - PA.I.B.K2-K4
+  - PA.I.B.R1
+  - PA.I.B.S1-S3
+phak_references:
+  - "FAA-H-8083-25C, Chapter 9: Flight Manuals and Other Documents"
+  - "FAA-H-8083-25C Addendum (MOSAIC), Chapter 9 revisions"
+aim_references: []
+advisory_circular_references:
+  - "AC 91-67A, Chapter 4: Operations Without an MEL"
+cfr_references:
+  - "14 CFR §§ 21.181 and 21.197"
+  - "14 CFR §§ 43.3, 43.7, and 43.9; part 43 appendix A(c)"
+  - "14 CFR §§ 47.40"
+  - "14 CFR §§ 91.7, 91.9, 91.203, 91.205, 91.207, and 91.213"
+  - "14 CFR §§ 91.403, 91.405, 91.407, 91.409, 91.411, 91.413, and 91.417"
+learning_objectives:
+  - "Explain conformity to the approved design and condition for safe operation as the two parts of an airworthiness determination."
+  - "Locate and interpret the registration, airworthiness certificate, approved operating material, supplements, weight-and-balance data, placards, and relevant maintenance records."
+  - "Distinguish owner/operator maintenance responsibility from the PIC's responsibility to determine condition for safe flight."
+  - "Determine which common inspection requirements apply to the airplane and operation, including the for-hire context of the 100-hour rule."
+  - "Apply the § 91.213(d) no-MEL sequence and make a separate operational-risk decision."
+  - "Identify the task, eligibility, performance, return-to-service, and record-entry gates for pilot preventive maintenance."
+trouble_spots:
+  - "Treating an airworthiness certificate or current annual inspection as proof of present condition for safe flight."
+  - "Using a generic POH or online manual without confirming aircraft applicability, revisions, supplements, and installed configuration."
+  - "Assuming every training airplane requires a 100-hour inspection without analyzing the operation described by § 91.409(b)."
+  - "Checking only § 91.205 for an inoperative item, or treating a placard as a substitute for proper removal or deactivation."
+  - "Assuming any simple-looking maintenance task is preventive maintenance or omitting the return-to-service entry."
+source_verification:
+  status: source_relevance_review_complete
+  verified_at_utc: "2026-08-25T18:05:23.139Z"
+  link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: complete
+review:
+  editorial_status: script_and_listening_qa_approved
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - "Stage and validate the immutable audio object in the hosting workflow"
+audio:
+  manifest: audio-manifest.yaml
+  status: candidate_rendered_listening_qa_approved
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

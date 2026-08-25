@@ -13,6 +13,7 @@
     "test": "node --test scripts/*.test.cjs"
   },
   "dependencies": {
+    "fast-xml-parser": "^5.11.0",
     "pdfjs-dist": "6.2.108",
     "ws": "8.21.3",
     "yaml": "2.9.0"

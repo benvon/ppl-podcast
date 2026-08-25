@@ -16,6 +16,7 @@ const { spawnSync } = require("child_process");
 const WebSocket = require("ws");
 const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
+const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -30,7 +31,7 @@ const REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in
 const LEGACY_REQUIRED_NOTICE = "This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor and is not flight instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.";
 const DISCLAIMER_SECTION = "disclaimer";
 const LEGACY_DISCLAIMER_SECTION = "required production notice";
-const PRONUNCIATION_TRANSFORMS = Object.freeze({ AI: "artificial intelligence", PHAK: "pea hack" });
+const PRONUNCIATION_TRANSFORMS = Object.freeze({ AI: "artificial intelligence", PHAK: "pea hack", MEL: "M. E. L" });
 const DEFAULTS = {
   model: "gpt-realtime-2.1",
   instructorVoice: "marin",
@@ -66,6 +67,7 @@ function assertSourceRelevanceApproved(scriptPath) {
   const validationPath = path.join(path.dirname(scriptPath), "link-validation.yaml");
   if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
   if (!fs.existsSync(validationPath)) throw new RenderError("Source-relevance review must pass before rendering. Run sources:validate --require-llm and record its completion in episode.yaml.");
+  if (fs.existsSync(`${validationPath}.in-progress`) || fs.existsSync(`${validationPath}.in-progress.recovering`)) throw new RenderError("Source-relevance validation is in progress, recovering, or was interrupted. Complete a fresh validation run before rendering.");
 
   let episode; let validation;
   try {
@@ -81,9 +83,15 @@ function assertSourceRelevanceApproved(scriptPath) {
   if (validation?.llm_requested !== true || validation?.claim_mapping?.valid !== true || validation?.show_notes_mapping?.valid !== true) {
     throw new RenderError("link-validation.yaml does not record a passing LLM source-relevance review.");
   }
+  const currentInputs = sourceValidationInputHashes(path.dirname(scriptPath));
+  if (!Object.entries(currentInputs).every(([name, digest]) => validation?.input_sha256?.[name] === digest)) {
+    throw new RenderError("link-validation.yaml is not bound to the current sources, claims, and show-notes inputs. Run a fresh source-relevance review before rendering.");
+  }
+  const coverageErrors = validationCoverageErrors(path.dirname(scriptPath), validation);
+  if (coverageErrors.length) throw new RenderError(coverageErrors[0]);
 
   const sourceResults = Array.isArray(validation.results) ? validation.results : [];
-  if (!sourceResults.length || sourceResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true) || result?.relevance?.status !== "assessed" || ["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.verdict) || ["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.locator_assessment?.verdict) || result?.claim_assessments?.valid !== true)) {
+  if (!sourceResults.length || sourceResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true) || result?.relevance?.status !== "assessed" || result.relevance?.assessment?.verdict !== "supports" || result.relevance?.assessment?.locator_assessment?.verdict !== "supports" || result?.claim_assessments?.valid !== true)) {
     throw new RenderError("link-validation.yaml contains unresolved source-relevance findings; resolve them before rendering.");
   }
 
@@ -142,7 +150,7 @@ function ensureDir(directory) { fs.mkdirSync(directory, { recursive: true }); }
 function writeAtomic(target, body) { const temporary = `${target}.${process.pid}.tmp`; fs.writeFileSync(temporary, body); fs.renameSync(temporary, target); }
 function cleanText(value) { return value.replace(/\*\*/g, "").replace(/\s+/g, " ").trim(); }
 function spokenText(value) {
-  return value.replace(/\bAI\b/g, PRONUNCIATION_TRANSFORMS.AI).replace(/\bPHAK\b/g, PRONUNCIATION_TRANSFORMS.PHAK);
+  return value.replace(/\bAI\b/g, PRONUNCIATION_TRANSFORMS.AI).replace(/\bPHAK\b/g, PRONUNCIATION_TRANSFORMS.PHAK).replace(/\bMEL\b/g, PRONUNCIATION_TRANSFORMS.MEL);
 }
 
 function splitText(text, maxWords) {

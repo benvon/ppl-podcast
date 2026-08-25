@@ -76,6 +76,7 @@ function releaseEpisode({ episodePath, cwd }) {
   const candidatePath = path.resolve(cwd, candidate.mp3 || "");
   const renderPath = path.resolve(cwd, candidate.render_manifest || "");
   if (!candidate.mp3 || !fs.existsSync(candidatePath)) throw new HostingHandoffError("Approved candidate MP3 is unavailable.");
+  if (!/^[a-f0-9]{64}$/i.test(candidate.sha256 || "")) throw new HostingHandoffError("Approved candidate MP3 does not have a valid checksum.");
   if (!candidate.render_manifest || !fs.existsSync(renderPath)) throw new HostingHandoffError("Approved render manifest is unavailable.");
   const render = readJson(renderPath);
   const markers = render.chapters?.markers;
@@ -84,17 +85,15 @@ function releaseEpisode({ episodePath, cwd }) {
   try { identity = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
   catch (error) { throw new HostingHandoffError(`Invalid release identity: ${error.message}`); }
   const release = { ...hosting.publisher_release, release_key: identity.releaseKey, content_version: identity.contentVersion, chapters: markers.map(({ title, start_ms }) => ({ title, start_ms })), chapters_audio_sha256: candidate.sha256 };
-  return { candidatePath, release };
+  return { candidatePath, candidateSha256: candidate.sha256.toLowerCase(), release };
 }
 
-function sealPayload({ episodePath, outputDir, cwd }) {
-  const episode = readYaml(path.join(episodePath, "episode.yaml"));
-  const { candidatePath } = releaseEpisode({ episodePath, cwd });
+function sealPayload({ episode, sourceFiles, candidatePath, outputDir }) {
   const handoffFiles = Object.fromEntries(HANDOFF_FILES.map((name) => [name, sha256File(path.join(outputDir, name))]));
   return {
     schema_version: 1,
     episode: { id: episode.id, title: episode.title, version: episode.version, published_at: episode.published_at },
-    source_package_files: sourcePackageFiles(episodePath),
+    source_package_files: sourceFiles,
     handoff_files: handoffFiles,
     audio: { sha256: sha256File(candidatePath), bytes: fs.statSync(candidatePath).size },
   };
@@ -105,9 +104,13 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
   const resolvedOutput = path.resolve(outputDir);
   if (resolvedOutput === resolvedEpisode || resolvedOutput.startsWith(`${resolvedEpisode}${path.sep}`)) throw new HostingHandoffError("Hosting handoff output must be outside the source episode directory.");
   if (fs.existsSync(resolvedOutput)) throw new HostingHandoffError(`Refusing to replace existing handoff directory: ${resolvedOutput}`);
+  const sourceFiles = sourcePackageFiles(resolvedEpisode);
   const preHosting = validatePreHosting({ episodePath: resolvedEpisode, cwd });
   if (!preHosting.valid) throw new HostingHandoffError(`Pre-hosting validation failed:\n${preHosting.errors.join("\n")}`);
-  const { candidatePath, release } = releaseEpisode({ episodePath: resolvedEpisode, cwd });
+  if (sha256Value(sourcePackageFiles(resolvedEpisode)) !== sha256Value(sourceFiles)) throw new HostingHandoffError("Source episode package changed while pre-hosting validation was running; rerun validation before creating a handoff.");
+  const { candidatePath, candidateSha256, release } = releaseEpisode({ episodePath: resolvedEpisode, cwd });
+  const episode = readYaml(path.join(resolvedEpisode, "episode.yaml"));
+  if (sha256File(candidatePath) !== candidateSha256) throw new HostingHandoffError("Approved candidate MP3 does not match its manifest checksum.");
   const temporary = `${resolvedOutput}.tmp-${process.pid}-${crypto.randomBytes(6).toString("hex")}`;
   try {
     fs.mkdirSync(path.dirname(resolvedOutput), { recursive: true, mode: 0o755 });
@@ -115,7 +118,9 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
     fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(release), { mode: 0o644 });
     fs.copyFileSync(path.join(resolvedEpisode, "show-notes.md"), path.join(temporary, "show-notes.md"));
     fs.copyFileSync(candidatePath, path.join(temporary, "audio.mp3"));
-    const payload = sealPayload({ episodePath: resolvedEpisode, outputDir: temporary, cwd });
+    if (sha256File(path.join(temporary, "audio.mp3")) !== candidateSha256) throw new HostingHandoffError("Candidate MP3 changed while the hosting handoff was being assembled.");
+    if (sha256Value(sourcePackageFiles(resolvedEpisode)) !== sha256Value(sourceFiles)) throw new HostingHandoffError("Source episode package changed after pre-hosting validation; rerun validation before creating a handoff.");
+    const payload = sealPayload({ episode, sourceFiles, candidatePath, outputDir: temporary });
     const seal = { schema_version: 1, sealed_at_utc: new Date().toISOString(), payload, payload_sha256: sha256Value(payload) };
     fs.writeFileSync(path.join(temporary, SEAL_FILE), YAML.stringify(seal), { mode: 0o644 });
     fs.renameSync(temporary, resolvedOutput);

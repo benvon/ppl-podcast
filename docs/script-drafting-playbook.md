@@ -45,6 +45,29 @@ When a later section will define a term that must be mentioned earlier, give a o
 
 Refer to another episode by its listener-facing episode number and RSS title—for example, “Episode 3, *Stalls, Load Factor, and Spin Avoidance*”—not by an internal production ID such as `core-03`.
 
+## Draft for listening, not for a page
+
+The script is spoken work. Write it for a listener who hears a sentence once,
+not for a reader who can scan backward through a dense paragraph.
+
+- Use plain subject-verb-object sentences and introduce one new relationship at
+  a time. When a rule has conditions, name the person, aircraft, operation, or
+  document each condition concerns before explaining the exception.
+- Prefer a concrete question and its answer to a slogan. Avoid bumper-sticker
+  lines, clever reversals, quips, snark, or a sentence constructed mainly to
+  sound memorable. If a phrase sounds clever but does not clarify the next
+  decision, remove it.
+- Regulatory topics need the same causal chain as aerodynamic topics: start
+  with the practical question, explain what evidence answers it, then name the
+  rule or record that supplies that evidence. Do not turn a regulation into a
+  list of isolated numbers or acronyms.
+- Do not insert trivia, warnings, or contrasts that have not been prepared by
+  the explanation. Explain why a historical detail, document distinction, or
+  record-location fact changes the learner’s understanding before using it.
+- Read each paragraph aloud. If it sounds like a written memo, split it,
+  replace compressed labels with their meaning, or use a Learner question to
+  create the missing transition.
+
 ## Make the practical takeaway concrete
 
 An operational takeaway must identify both the changing aerodynamic or system demand and the pilot response it supports. A statement such as “this changes the picture” or “be more mindful” is not enough. Say what is changing, why it matters, and the bounded habit it should prompt—such as avoiding abrupt added demand, preserving coordination, checking the approved aircraft information, or choosing a lower-demand option early.
@@ -87,5 +110,8 @@ Read the draft aloud or listen to a short render and check each section for:
 - **Scope:** Are caveats concise and non-repetitive?
 - **Visual support:** Do spoken diagram references exactly match labeled show-note links?
 - **Pacing:** Does the Announcer orient without interrupting the lesson?
+- **Spoken clarity:** Could a first-time listener understand every sentence
+  without seeing it on the page, and has every clever-but-unclear phrase been
+  removed?
 
 Log material refinements in the episode’s `production-log.md`, update the recorded word count, and rerun the script structure, source-mapping, and renderer checks after edits.

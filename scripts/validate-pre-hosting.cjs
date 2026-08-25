@@ -8,6 +8,7 @@ const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
+const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
 class PreHostingValidationError extends Error {}
 
@@ -78,6 +79,16 @@ function requireFile(episodePath, fileName, errors) {
   return filePath;
 }
 
+function pathWithin(root, candidate) {
+  try {
+    const resolvedRoot = fs.realpathSync(root);
+    const resolvedCandidate = fs.realpathSync(candidate);
+    return resolvedCandidate === resolvedRoot || resolvedCandidate.startsWith(`${resolvedRoot}${path.sep}`);
+  } catch (_) {
+    return false;
+  }
+}
+
 function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   const resolvedEpisode = path.resolve(episodePath);
   const errors = [];
@@ -143,9 +154,15 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   expect(errors, Boolean(renderManifestPath && fs.existsSync(renderManifestPath)), "render manifest is missing from the audio manifest path.");
   expect(errors, Boolean(qualityReportPath && fs.existsSync(qualityReportPath)), "audio-quality report is missing from the audio manifest path.");
   expect(errors, Boolean(chapterReviewPath && fs.existsSync(chapterReviewPath)), "chapter-review page is missing from the audio manifest path.");
+  for (const [label, artifactPath] of [["approved MP3", mp3Path], ["render manifest", renderManifestPath], ["audio-quality report", qualityReportPath], ["chapter-review page", chapterReviewPath]]) {
+    expect(errors, Boolean(artifactPath && pathWithin(cwd, artifactPath)), `${label} must be stored within the repository workspace.`);
+  }
   if (mp3Path && fs.existsSync(mp3Path) && candidateSha256) expect(errors, sha256File(mp3Path) === candidateSha256, "approved MP3 bytes do not match the audio-manifest checksum.");
   if (renderManifestPath && fs.existsSync(renderManifestPath)) {
     const render = readJson(renderManifestPath);
+    const renderScriptPath = typeof render.script === "string" ? path.resolve(cwd, render.script) : null;
+    expect(errors, renderScriptPath === paths["narration.md"], "render manifest script path must identify the current narration derivative.");
+    if (renderScriptPath && fs.existsSync(renderScriptPath)) expect(errors, validSha256(render.script_sha256) === sha256File(renderScriptPath), "render manifest script checksum must match its declared script file.");
     expect(errors, validSha256(render.script_sha256) === sha256File(paths["narration.md"]), "render manifest script checksum must match the current narration derivative.");
     expect(errors, validSha256(render.audio?.sha256) === candidateSha256, "render manifest MP3 checksum must match the audio manifest.");
     expect(errors, validSha256(render.chapters?.audio_sha256) === candidateSha256, "render manifest chapter checksum must match the audio manifest.");
@@ -178,15 +195,17 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   }
 
   expect(errors, sourceValidation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
+  expect(errors, !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress`) && !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress.recovering`), "source validation must not be in progress, recovering, or interrupted.");
   expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
   expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");
   expect(errors, sourceValidation.results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded source citations and links must be valid.");
   const sourceResultsByID = new Map((sourceValidation.results || []).map((result) => [result.source_id, result]));
   expect(errors, sourceValidation.show_notes_results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded show-notes links must be valid deep citations.");
   expect(errors, sourceValidation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
-  expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && !["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.verdict) && !["does_not_support", "insufficient_evidence"].includes(result.relevance?.assessment?.locator_assessment?.verdict) && result.claim_assessments?.valid === true), "link validation must retain successful source- and claim-level relevance assessments.");
-  const currentValidationInputHashes = { sources: sha256File(paths["sources.yaml"]), claims: sha256File(paths["claim-inventory.yaml"]), show_notes: sha256File(paths["show-notes.md"]), show_notes_manifest: sha256File(paths["show-notes-manifest.yaml"]) };
+  expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && result.relevance?.assessment?.verdict === "supports" && result.relevance?.assessment?.locator_assessment?.verdict === "supports" && result.claim_assessments?.valid === true), "link validation must retain successful source- and claim-level relevance assessments.");
+  const currentValidationInputHashes = sourceValidationInputHashes(resolvedEpisode);
   expect(errors, Object.entries(currentValidationInputHashes).every(([name, digest]) => sourceValidation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs.");
+  errors.push(...validationCoverageErrors(resolvedEpisode, sourceValidation));
   expect(errors, episode.source_verification?.verified_at_utc === sourceValidation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
   expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");
   expect(errors, !/^## Production notice\b/im.test(showNotes), "show notes must not duplicate the hosting production disclosure.");
@@ -208,4 +227,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { PreHostingValidationError, durationDisplay, parseArgs, sha256File, validatePreHosting };
+module.exports = { PreHostingValidationError, durationDisplay, parseArgs, pathWithin, sha256File, validatePreHosting };

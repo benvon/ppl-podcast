@@ -1,4 +1,4 @@
-# {{TITLE}}
+# MOSAIC, Light-Sport Certification, and Sport-Pilot Maintenance Privileges
 
 **Version:** 0.1.0 — draft
 **Target runtime:** [30-45 minutes]

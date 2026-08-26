@@ -1,0 +1,69 @@
+id: "core-09"
+series: ppl-study-podcast
+title: "Weight, Balance, and Center of Gravity"
+slug: "weight-balance-center-of-gravity"
+track: "core"
+status: first_review
+version: 0.1.0
+published_at: null
+runtime_target_minutes: 40
+runtime_actual_seconds: null
+word_count: 4741
+speakers: [instructor, learner, announcer]
+audience: "U.S. private-pilot airplane learners"
+aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
+acs_references:
+  - PA.I.F.K1-K3
+  - PA.I.F.R1-R3
+  - PA.I.F.S1-S2
+  - PA.II.B.K4
+  - PA.II.B.S1
+phak_references:
+  - "FAA-H-8083-25C, Chapter 10: Weight and Balance"
+aim_references: []
+advisory_circular_references: []
+cfr_references:
+  - "14 CFR § 91.9"
+learning_objectives:
+  - "Distinguish total-weight limits from center-of-gravity limits and explain why both comparisons are required."
+  - "Explain datum, arm, moment, and the lever reasoning behind a loaded-CG calculation."
+  - "Identify the current aircraft-specific data and approved method needed before calculating a loading."
+  - "Compute or interpret loaded weight and CG using computational, graph, or table methods without transferring sample aircraft data."
+  - "Explain how forward and aft CG affect stability, control forces, and control authority."
+  - "Track fuel-driven weight and CG changes through relevant phases of flight and correct an unacceptable loading."
+  - "Carry takeoff and landing weights into performance planning and secure every item at its calculated station."
+trouble_spots:
+  - "Treating a below-maximum weight as proof that CG is within limits."
+  - "Using sample or stale aircraft data instead of the current empty-weight and configuration record."
+  - "Reading an envelope as a one-dimensional maximum-weight chart."
+  - "Assuming fuel burn moves CG in one universal direction."
+  - "Moving baggage to address an overweight condition without removing weight."
+  - "Reducing fuel without rebuilding the fuel, reserve, and performance plan."
+source_verification:
+  status: research_complete_validation_pending
+  verified_at_utc: null
+  link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: required_before_render
+review:
+  editorial_status: independent_spoken_review_pending
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - "Complete independent spoken-script review and resolve material findings"
+  - "Complete human editorial and technical review"
+  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
+  - "Complete human listening QA, including the front-matter and chapter checks"
+  - "Re-verify every public source and link on publication day"
+  - "Validate hosting metadata and external audio-store workflow"
+audio:
+  manifest: audio-manifest.yaml
+  status: not_rendered
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

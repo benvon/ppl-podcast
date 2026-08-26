@@ -23,9 +23,9 @@
 
 ## Audio
 
-- [ ] Opening is 10–45 seconds and the required notice follows immediately.
-- [ ] Notice is clearly heard as “artificial intelligence-assisted production.”
-- [ ] Five-segment opening preview has been listened to before full rendering.
+- [x] Opening is 10–45 seconds and the required notice follows immediately.
+- [x] Notice is clearly heard as “artificial intelligence-assisted production.”
+- [x] Five-segment opening preview has been listened to before full rendering.
 - [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
 - [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains.
 - [ ] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material.

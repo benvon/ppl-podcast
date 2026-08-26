@@ -95,3 +95,9 @@
 - Added a renderer-only pronunciation transform that supplies `envelope` to the voice model as `en-vuh-lope`; the published script remains unchanged. Added a regression test and documented the transform alongside the existing initialism guidance.
 - Re-rendered the five-segment opening preview and segment 7, which exercises POH, AFM, CG, and the corrected envelope pronunciation, into `audio-artifacts/core-09-qa-correction-20260826T171100Z.segments`.
 - Automated post-assembly audio-quality analysis passed for both corrected local MP3 previews. Human listening confirmation remains pending.
+
+## 2026-08-26 — opening QA accepted
+
+- The corrected five-segment opening preview and the focused POH, AFM, CG, and envelope-pronunciation sample were listened to and accepted.
+- The required artificial-intelligence-assisted production notice was clearly heard. The opening-preview and grouped-initialism QA gates are complete.
+- Full-episode rendering, script-aligned listening QA, chapter review, and release gates remain pending.

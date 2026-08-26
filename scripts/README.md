@@ -169,9 +169,11 @@ audio.
 - Render complete speaker turns, with a 240-word maximum segment size and
   bounded adjacent-dialogue context.
 - Keep the approved script and show notes unchanged. Only for the voice-model
-  input, expand standalone `AI` to `artificial intelligence` and `PHAK` to
-  `pea hack`; the listener should hear “artificial intelligence-assisted
-  production” and “pea hack.”
+  input, expand named initialisms through the renderer’s pronunciation map.
+  `AI` becomes `artificial intelligence`; `PHAK` becomes `pea hack`; and
+  initialisms such as `POH`, `CG`, `AFM`, `ACS`, and `MEL` use grouped
+  hyphenated letter names so they are spoken together rather than as letters
+  separated by pronounced pauses.
 - Use the versioned, Git-ignored render manifest for duration, checksums, response
   usage, usage-derived cost estimates, stitch positions, chapter markers, and
   the audio-quality report. It is not an invoice.

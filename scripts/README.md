@@ -172,8 +172,9 @@ audio.
   familiar initialisms such as `POH`, `CG`, `AFM`, `ACS`, and `MEL` exactly as
   written because hyphenated spellings created audible hitches and unnatural
   emphasis. The pronunciation map is reserved for narrow phonetic corrections:
-  `AI` becomes `artificial intelligence`, `PHAK` becomes `pee hack`, and
-  `envelope` is sent as `en-vuh-lope`.
+  `AI` becomes `artificial intelligence` and `PHAK` becomes `pee hack`.
+  For a homograph such as `envelope`, the text remains unchanged and the
+  affected segment receives a silent noun-pronunciation instruction instead.
 - Use the versioned, Git-ignored render manifest for duration, checksums, response
   usage, usage-derived cost estimates, stitch positions, chapter markers, and
   the audio-quality report. It is not an invoice.

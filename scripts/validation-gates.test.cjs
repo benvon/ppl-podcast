@@ -11,7 +11,7 @@ const YAML = require("yaml");
 const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
-const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, renderSegments, reusableSegment, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { durationDisplay, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
@@ -774,7 +774,10 @@ test("realtime renderer preserves familiar initialisms while applying narrow pho
   assert.equal(spokenText("The POH and AFM place CG limits in the ACS."), "The POH and AFM place CG limits in the ACS.");
   assert.equal(spokenText("The no-MEL path differs from MMEL guidance."), "The no-MEL path differs from MMEL guidance.");
   assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pee hack-like examples differ from PHAKS.");
-  assert.equal(spokenText("The CG envelope is within limits."), "The CG en-vuh-lope is within limits.");
+  assert.equal(spokenText("The CG envelope is within limits."), "The CG envelope is within limits.");
+  assert.match(pronunciationGuidance("The CG envelope is within limits."), /common noun/);
+  assert.equal(pronunciationGuidance("The loading limit is within range."), "");
+  assert.match(segmentInstruction({ speaker: "INSTRUCTOR", text: "The CG envelope is within limits." }, "No adjacent dialogue."), /Do not say this instruction aloud/);
 });
 
 test("MP3 chapters use the rendered section boundaries and preserve readable headings", () => {

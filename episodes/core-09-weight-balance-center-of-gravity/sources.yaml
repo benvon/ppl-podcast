@@ -6,7 +6,7 @@ sources:
     authority: faa_regulatory_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
     document_id: "FAA-S-ACS-6C"
-    locator: "PA.I.F.K1–K3 and R1–R3, Performance and Limitations, p. 7"
+    locator: "PA.I.F.K1–K3 and R1–R3, Performance and Limitations, p. 6"
     url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14"
     revision: "April 2024; effective May 31, 2024"
     relevance_excerpt: "Task F requires understanding the use of performance charts, loading including CG, weight and balance, aerodynamics, limitations, and possible differences between calculated and actual performance."
@@ -18,7 +18,7 @@ sources:
     authority: faa_regulatory_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
     document_id: "FAA-S-ACS-6C"
-    locator: "PA.I.F.S1–S2, Performance and Limitations, p. 8"
+    locator: "PA.I.F.S1–S2, Performance and Limitations, p. 7"
     url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15"
     revision: "April 2024; effective May 31, 2024"
     relevance_excerpt: "The applicant computes weight and balance, corrects out-of-CG loading errors, determines that weight and balance remain within limits during all phases of flight, and uses the appropriate performance data."
@@ -30,7 +30,7 @@ sources:
     authority: faa_regulatory_standard
     title: "Private Pilot for Airplane Category Airman Certification Standards"
     document_id: "FAA-S-ACS-6C"
-    locator: "PA.II.B.K4 and S1, Flight Deck Management, p. 13"
+    locator: "PA.II.B.K4 and S1, Flight Deck Management, p. 12"
     url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20"
     revision: "April 2024; effective May 31, 2024"
     relevance_excerpt: "Flight Deck Management includes knowledge of securing items and cargo and the skill to secure all items in the aircraft."
@@ -105,7 +105,7 @@ sources:
     locator: "Ch. 10, Figures 10-2 through 10-4 and accompanying explanation, p. 10-6"
     url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6"
     revision: "2023 edition"
-    relevance_excerpt: "Figures 10-2 through 10-4 show the datum, arms, CG range, and how equal moments can be produced by different combinations of weight and distance."
+    relevance_excerpt: "Figures 10-2 through 10-4 show the datum, arms, CG range, and how equal moments can be produced by different combinations of weight and distance. The accompanying Weight and Balance Restrictions text says sample AFM or POH loading problems are guidance only because a particular aircraft's empty weight and loading conditions may differ after equipment changes or modifications."
     verified_at_utc: "2026-08-26T00:38:13Z"
     link_status: 200
     supports_claims: [moment-distance-leverage, sample-data-not-aircraft-data]

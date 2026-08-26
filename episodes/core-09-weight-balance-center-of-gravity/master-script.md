@@ -391,7 +391,7 @@ Only if the revised fuel quantity still supports the planned flight, applicable 
 [Source: sources.yaml#phak-weight-effects-and-cg]
 [Claim type: FAA guidance]
 
-Many airplanes cannot remain within their weight and balance limits with every seat occupied, the baggage compartments full, and the fuel tanks full. The planning question is not which item matters least in the abstract. It is which complete combination supports the occupants, route, fuel needs, performance margin, and the limits for that airplane. Sometimes the correct decision is a fuel stop. Sometimes it is less baggage, fewer occupants, or a different airplane. Sometimes the flight waits for conditions that support the required performance.
+Many modern aircraft cannot remain within their weight and balance limits with every seat occupied, the baggage compartments full, and the fuel tanks full. The planning question is not which item matters least in the abstract. It is which complete combination supports the occupants, route, fuel needs, performance margin, and the limits for that airplane. Sometimes the correct decision is a fuel stop. Sometimes it is less baggage, fewer occupants, or a different airplane. Sometimes the flight waits for conditions that support the required performance.
 
 [Source: sources.yaml#phak-weight-balance-management]
 [Claim type: FAA guidance and teaching explanation]

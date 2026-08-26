@@ -168,14 +168,12 @@ audio.
   role instructions.
 - Render complete speaker turns, with a 240-word maximum segment size and
   bounded adjacent-dialogue context.
-- Keep the approved script and show notes unchanged. Only for the voice-model
-  input, expand named initialisms through the renderer’s pronunciation map.
-  `AI` becomes `artificial intelligence`; `PHAK` becomes `pea hack`; and
-  initialisms such as `POH`, `CG`, `AFM`, `ACS`, and `MEL` use grouped
-  hyphenated letter names so they are spoken together rather than as letters
-  separated by pronounced pauses. The same map may use a narrow phonetic
-  spelling for a repeatedly mispronounced technical term; `envelope` is sent
-  as `en-vuh-lope`.
+- Keep the approved script and show notes unchanged. The renderer preserves
+  familiar initialisms such as `POH`, `CG`, `AFM`, `ACS`, and `MEL` exactly as
+  written because hyphenated spellings created audible hitches and unnatural
+  emphasis. The pronunciation map is reserved for narrow phonetic corrections:
+  `AI` becomes `artificial intelligence`, `PHAK` becomes `pee hack`, and
+  `envelope` is sent as `en-vuh-lope`.
 - Use the versioned, Git-ignored render manifest for duration, checksums, response
   usage, usage-derived cost estimates, stitch positions, chapter markers, and
   the audio-quality report. It is not an invoice.

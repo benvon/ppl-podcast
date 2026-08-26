@@ -769,12 +769,12 @@ test("realtime renderer requires completed source-relevance review before render
   }
 });
 
-test("realtime renderer expands approved pronunciations only in spoken input", () => {
-  assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pea hack says artificial intelligence-assisted production is reviewed by an M-E-L.");
-  assert.equal(spokenText("The POH and AFM place CG limits in the ACS."), "The P-O-H and A-F-M place C-G limits in the A-C-S.");
-  assert.equal(spokenText("The no-MEL path differs from MMEL guidance."), "The no-M-E-L path differs from M-M-E-L guidance.");
-  assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pea hack-like examples differ from PHAKS.");
-  assert.equal(spokenText("The CG envelope is within limits."), "The C-G en-vuh-lope is within limits.");
+test("realtime renderer preserves familiar initialisms while applying narrow phonetic corrections", () => {
+  assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pee hack says artificial intelligence-assisted production is reviewed by an MEL.");
+  assert.equal(spokenText("The POH and AFM place CG limits in the ACS."), "The POH and AFM place CG limits in the ACS.");
+  assert.equal(spokenText("The no-MEL path differs from MMEL guidance."), "The no-MEL path differs from MMEL guidance.");
+  assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pee hack-like examples differ from PHAKS.");
+  assert.equal(spokenText("The CG envelope is within limits."), "The CG en-vuh-lope is within limits.");
 });
 
 test("MP3 chapters use the rendered section boundaries and preserve readable headings", () => {

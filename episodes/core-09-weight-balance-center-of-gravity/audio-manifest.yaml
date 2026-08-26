@@ -2,33 +2,36 @@ episode_id: "core-09"
 status: candidate_rendered_pending_listening_qa
 current_candidate_render:
   script_version: 0.1.4
-  rendered_at_utc: "2026-08-26T19:14:17.767Z"
+  rendered_at_utc: "2026-08-26T19:56:15.581Z"
   provider: openai-realtime
   renderer: scripts/render_episode_realtime.cjs
   renderer_version: 10
   model: gpt-realtime-2.1
   voices: {instructor: marin, learner: cedar, announcer: ballad}
-  mp3: "audio-artifacts/core-09-20260826T190729Z.mp3"
-  lossless_master: "audio-artifacts/core-09-20260826T190729Z.master.wav"
-  render_manifest: "audio-artifacts/core-09-20260826T190729Z.render-manifest.json"
-  audio_quality_report: "audio-artifacts/core-09-20260826T190729Z.audio-quality.json"
-  chapter_review: "audio-artifacts/core-09-20260826T190729Z.mp3.chapters.21c5439c952706fe58d55b5d4f280d8b0d24e43734c720791d665cb6171666f6.html"
-  duration_seconds: 1960.29
-  duration_display: "32:40"
+  mp3: "audio-artifacts/core-09-20260826T194604Z.mp3"
+  lossless_master: "audio-artifacts/core-09-20260826T194604Z.master.wav"
+  render_manifest: "audio-artifacts/core-09-20260826T194604Z.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-09-20260826T194604Z.audio-quality.json"
+  chapter_review: "audio-artifacts/core-09-20260826T194604Z.mp3.chapters.a97a490f3a39467fb18b5240c7ee8f00982eea4c76446c020a9bee2488ede1b3.html"
+  duration_seconds: 1962.69
+  duration_display: "32:42"
   codec: mp3
   sample_rate_hz: 24000
   channels: 1
-  sha256: "21c5439c952706fe58d55b5d4f280d8b0d24e43734c720791d665cb6171666f6"
+  sha256: "a97a490f3a39467fb18b5240c7ee8f00982eea4c76446c020a9bee2488ede1b3"
   front_matter_validation: "The accepted preview's Opening and Disclaimer segments were reused unchanged. The first ACS teaching heading was re-rendered because its delivery input changed."
   spoken_input_transform: "Standalone AI expands to artificial intelligence; PHAK expands to pee hack. POH, AFM, CG, ACS, MEL, and MMEL remain in the written form for natural delivery. Envelope remains in the spoken text and receives a silent noun-stress instruction. The published script remains unchanged."
   music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade."
-  usage_estimate_usd: 2.751833
-  incremental_rebuild_usage_estimate_usd: 2.26699
-  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 58 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Thirty-one segments whose exact render inputs changed were re-rendered; all other segments were reused only after their sidecar render-input SHA-256 matched. Full script-aligned human listening QA and manual chapter review remain pending. Audio artifacts are Git-ignored."
+  usage_estimate_usd: 2.755297
+  incremental_candidate_update_usage_estimate_usd: 0.059276
+  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 58 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. This candidate retains the prior pronunciation rebuild and replaces segment 58 after focused human QA accepted the correction for a duplicated word. Full script-aligned human listening QA and manual chapter review remain pending. Audio artifacts are Git-ignored."
 superseded_candidates:
   - mp3: "audio-artifacts/core-09-20260826T171100Z.mp3"
     sha256: "8bd8c57541eff538732591db3bdffafc99be830e37cc46130cacd8b2382183d7"
     superseded_reason: "Pre-listening-QA pronunciation feedback found rigid initialism delivery and incorrect PHAK and envelope pronunciation."
+  - mp3: "audio-artifacts/core-09-20260826T190729Z.mp3"
+    sha256: "21c5439c952706fe58d55b5d4f280d8b0d24e43734c720791d665cb6171666f6"
+    superseded_reason: "Focused listening QA found segment 58 duplicated the word input."
 opening_preview:
   script_version: 0.1.4
   rendered_at_utc: "2026-08-26T17:11:00Z"
@@ -54,9 +57,9 @@ opening_preview:
 chapter_markers:
   status: embedded_and_ffprobe_validated_pending_human_review
   source: "master-script.md section headings"
-  audio_sha256: "21c5439c952706fe58d55b5d4f280d8b0d24e43734c720791d665cb6171666f6"
+  audio_sha256: "a97a490f3a39467fb18b5240c7ee8f00982eea4c76446c020a9bee2488ede1b3"
   required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
-  review_page: "audio-artifacts/core-09-20260826T190729Z.mp3.chapters.21c5439c952706fe58d55b5d4f280d8b0d24e43734c720791d665cb6171666f6.html"
+  review_page: "audio-artifacts/core-09-20260826T194604Z.mp3.chapters.a97a490f3a39467fb18b5240c7ee8f00982eea4c76446c020a9bee2488ede1b3.html"
 required_before_release:
   - "Complete human listening QA against master-script.md."
   - "Confirm chapter titles and starts are useful and correctly aligned during listening QA."

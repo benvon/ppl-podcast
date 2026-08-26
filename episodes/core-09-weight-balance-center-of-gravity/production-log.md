@@ -118,3 +118,11 @@
 - Automated audio-quality analysis passed decode, duration, clipping, and 58 stitched-boundary checks. The MP3 contains 17 embedded ID3 chapters, and `ffprobe` verified them. The hash-bound chapter-review page was generated locally.
 - The final render manifest's all-segment usage estimate is $2.751833. Re-rendered segments account for an incremental usage-derived estimate of $2.266990. Generated audio and render artifacts remain local and Git-ignored.
 - The earlier 17:11 candidate is superseded. Full script-aligned listening QA and manual chapter review remain pending on this rebuilt candidate.
+
+## 2026-08-26 — final-segment synthesis correction
+
+- Listening QA found a duplicated word in segment 58: the approved script says “Practice changing one input at a time,” but the candidate was heard as “one put input.” The script was verified unchanged and correct.
+- Re-rendered segment 58 only. Its focused QA sample was listened to and accepted before assembly.
+- Reassembled local candidate `audio-artifacts/core-09-20260826T194604Z.mp3`: 1,962.69 seconds (32:42), 24 kHz mono MP3, SHA-256 `a97a490f3a39467fb18b5240c7ee8f00982eea4c76446c020a9bee2488ede1b3`.
+- Automated audio-quality analysis passed decode, duration, clipping, and 58 stitched-boundary checks. The MP3 contains 17 embedded ID3 chapters, and `ffprobe` verified them. The hash-bound chapter-review page was generated locally.
+- The correction's usage-derived estimate is $0.059276. The prior 19:07 candidate is superseded. Full script-aligned listening QA and manual chapter review remain pending on this candidate.

@@ -120,7 +120,7 @@ sources:
     relevance_excerpt: "A loaded-aircraft computation lists aircraft, occupants, fuel, and baggage; totals weight and moment; divides total moment by total weight for CG; and compares both results with the applicable limits."
     verified_at_utc: "2026-08-26T00:38:13Z"
     link_status: 200
-    supports_claims: [computational-sequence, weight-and-cg-independent-checks, manufacturer-methods]
+    supports_claims: [computational-sequence, moment-index-scale, weight-and-cg-independent-checks, manufacturer-methods]
 
   - id: phak-loading-graph-envelope
     authority: faa_guidance

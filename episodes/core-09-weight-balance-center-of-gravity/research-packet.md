@@ -3,7 +3,7 @@
 ## Scope
 
 - Audience: U.S. private-pilot airplane learners preparing for ground study, flight planning, and the practical test.
-- Target duration: approximately 40 minutes; 30–45 minute editorial window.
+- Target duration: approximately 42 minutes; 30–45 minute editorial window.
 - Core question: How does a pilot turn the actual airplane, occupants, baggage, cargo, and fuel into a loading decision that remains within weight and CG limits throughout the flight and feeds a realistic performance plan?
 - Primary anchors: FAA-S-ACS-6C PA.I.F, Performance and Limitations, and FAA-H-8083-25C Chapter 10, Weight and Balance.
 - Supporting anchors: FAA-S-ACS-6C PA.II.B cargo securement and current 14 CFR § 91.9 operating-limitations and approved-manual requirements.
@@ -23,9 +23,9 @@
 
 1. **Decision frame:** The ACS requires a valid computation, correction of out-of-CG loading, all-phase limit compliance, and use of performance data.
 2. **Separate limit questions:** PHAK Chapter 10 distinguishes total weight from the location of CG and explains that either can fail while the other passes.
-3. **Mental model:** Datum, arm, and moment create a lever model that explains why location changes the effect of a load.
+3. **Mental model:** A seesaw and fulcrum make the turning effect visible before datum, arm, and moment transfer that lever model to the airplane.
 4. **Aircraft-specific foundation:** Current empty-weight and configuration data, the approved loading method, markings, placards, and applicable limits belong to the actual airplane. Section 91.9 supplies the operating-limitation boundary.
-5. **Calculation:** List the airplane and loads, obtain moments, total weight and moment, calculate or plot CG, and compare both coordinates with the applicable limits.
+5. **Calculation:** List the airplane and loads, obtain and total weights and moments, preserve any moment-index scale, calculate or plot CG, and compare both coordinates with the limits. A spoken pointer sends listeners to the labeled FAA computational worksheet in the show notes.
 6. **Handling effects:** Forward CG increases control demand and can reduce low-speed nose-up authority; aft CG reduces longitudinal stability and stall/spin recovery capability.
 7. **Performance connection:** Weight increases required lift and can degrade takeoff, climb, cruise, stall, approach, and landing performance; approved performance data completes the decision.
 8. **Across-flight connection:** Fuel burn removes weight at the fuel-tank arm, so both total weight and the direction of CG movement must be checked for relevant phases.
@@ -87,4 +87,4 @@ None. Detailed part 23 certification endpoints, mechanic weighing procedures, pe
 - Official FAA and eCFR sources were accessed on August 25, 2026, and entered at page- or section-level in `sources.yaml`.
 - The current eCFR page for § 91.9 reported Title 14 up to date through August 24, 2026.
 - Deterministic link validation and OpenAI claim-relevance validation were deliberately not run during the initial drafting assignment. Both remain pre-render gates.
-- A separate agent that did not draft this lesson must still perform the independent spoken-script review required by `docs/script-drafting-playbook.md`.
+- A separate agent that did not draft this lesson completed the independent spoken-script review required by `docs/script-drafting-playbook.md` on August 26, 2026. The drafting agent resolved every required finding and the accepted clarity suggestion; human editorial review remains pending.

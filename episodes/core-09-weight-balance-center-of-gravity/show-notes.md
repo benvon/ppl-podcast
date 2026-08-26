@@ -25,7 +25,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 - [Private Pilot ACS — Performance and Limitations knowledge and risk management](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14)
 - [Private Pilot ACS — Weight-and-balance computation skills](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15)
 - [PHAK Chapter 10 — Datum, arm, moment, and balance figures](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6)
-- [PHAK Chapter 10 — Computational method and sample worksheet](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7)
+- [PHAK Chapter 10 visual aid — Computational method and sample worksheet](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7)
 - [PHAK Chapter 10 — Loading graph and CG moment envelope](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8)
 
 ## Fact-check and source material

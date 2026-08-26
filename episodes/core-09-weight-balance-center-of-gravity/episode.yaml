@@ -3,12 +3,12 @@ series: ppl-study-podcast
 title: "Weight, Balance, and Center of Gravity"
 slug: "weight-balance-center-of-gravity"
 track: "core"
-status: first_review
-version: 0.1.0
+status: script_approved
+version: 0.1.3
 published_at: null
 runtime_target_minutes: 42
 runtime_actual_seconds: null
-word_count: 5184
+word_count: 4979
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
@@ -46,13 +46,12 @@ source_verification:
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: required_before_render
 review:
-  editorial_status: independent_spoken_review_complete_editorial_pending
+  editorial_status: script_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human editorial and technical review"
   - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter and chapter checks"
   - "Re-verify every public source and link on publication day"

@@ -57,7 +57,7 @@ sources:
     locator: "Ch. 10, Effects of Weight through Balance, Stability, and Center of Gravity, p. 10-2"
     url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2"
     revision: "2023 edition"
-    relevance_excerpt: "Excess weight degrades takeoff, climb, stall, landing, range, and maneuvering performance; CG depends on weight distribution and may change as loads shift or are expended."
+    relevance_excerpt: "Excess weight degrades takeoff, climb, stall, landing, range, and maneuvering performance; CG depends on weight distribution; installing extra radios or instruments and completing repairs or modifications may affect aircraft weight."
     verified_at_utc: "2026-08-26T00:38:13Z"
     link_status: 200
     supports_claims: [weight-performance-effects, combined-performance-risk, cg-is-weight-distribution, fuel-load-tradeoff, equipment-changes-data]
@@ -81,7 +81,7 @@ sources:
     locator: "Ch. 10, Management of Weight and Balance Control, p. 10-4"
     url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4"
     revision: "2023 edition"
-    relevance_excerpt: "The approved AFM supplies weight-and-balance limits and computation aids; pilots control loading and fuel management, and current aircraft records are the basis for calculations and decisions."
+    relevance_excerpt: "Current and accurate weight-and-balance information and records are the basis for calculations and decisions; aircraft changes must be recorded and the equipment list updated as appropriate; the AFM supplies charts or graphs and manufacturer loading procedures."
     verified_at_utc: "2026-08-26T00:38:13Z"
     link_status: 200
     supports_claims: [aircraft-data-foundation, loading-fuel-variable-factors, seats-bags-fuel-tradeoff]
@@ -117,7 +117,7 @@ sources:
     locator: "Ch. 10, Determining Loaded Weight and CG and Computational Method, p. 10-7"
     url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7"
     revision: "2023 edition"
-    relevance_excerpt: "A loaded-aircraft computation lists aircraft, occupants, fuel, and baggage; totals weight and moment; divides total moment by total weight for CG; and compares both results with the applicable limits."
+    relevance_excerpt: "A loaded-aircraft computation lists aircraft, occupants, fuel, and baggage; totals weight and moment; and divides total moment by total weight for CG. Moment may be divided by 100, 1,000, or 10,000 to simplify calculations. The graph method follows the computational steps except that manufacturer-provided graphs supply moments; manufacturer-provided tables are also identified as a method."
     verified_at_utc: "2026-08-26T00:38:13Z"
     link_status: 200
     supports_claims: [computational-sequence, moment-index-scale, weight-and-cg-independent-checks, manufacturer-methods]
@@ -153,7 +153,7 @@ sources:
     locator: "Ch. 10, Weight Addition or Removal and Chapter Summary, p. 10-11"
     url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11"
     revision: "2023 edition"
-    relevance_excerpt: "Adding or removing weight requires a new CG check; fuel burn reduces weight at the fuel-tank arm, and the CG effect depends on tank location."
+    relevance_excerpt: "Adding or removing weight requires a new CG calculation and limit check; the example shows baggage added aft of the old CG moving the new CG aft. Fuel consumption reduces weight at the fuel tanks, and tanks in most small aircraft are near CG, so CG generally changes little as fuel is consumed."
     verified_at_utc: "2026-08-26T00:38:13Z"
     link_status: 200
     supports_claims: [addition-removal-recompute, fuel-burn-path]

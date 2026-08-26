@@ -48,3 +48,28 @@
 - Local structural checks passed: 14 sources and 34 claims map reciprocally; all 14 listener-facing links match the show-notes manifest; every claimed script section exists; opening order and Announcer transitions are correct; the narration derivative is exact; and the recorded word count and runtime target match the current script. The checks also found no hard-wrapped spoken paragraphs, spaced initialisms, requested obsolete phrases, trailing whitespace, or diff whitespace errors.
 - `npm test` passed all 71 repository tests, and all six YAML package files parsed successfully.
 - No audio was rendered, no external source-relevance validation was run, and no commit or pull request was created.
+
+## 2026-08-26 — source-relevance findings resolved in draft
+
+- Narrowed eight claims and their script passages to the exact evidence identified in the failed source-relevance report while preserving the ACS-first lesson structure and prior user edits.
+- Replaced the broad weight-versus-CG margin explanation with the PHAK's supported distinction: excess weight compromises structural integrity and performance, while CG outside limits creates control difficulty.
+- Limited the equipment-change statement to extra radios or instruments, repairs, and modifications affecting aircraft weight. Separated that statement from the PHAK's supported recordkeeping guidance that aircraft changes be recorded and the equipment list updated as appropriate.
+- Narrowed the aircraft-data foundation to current, accurate weight-and-balance information and records, AFM charts or graphs, and manufacturer loading procedures.
+- Removed the unsupported forward-CG “stronger nose-down tendency” characterization while retaining the supported higher-control-force, nose-raising, and flare discussion.
+- Limited the moment-index explanation to the PHAK's stated simplification by division by 100, 1,000, or 10,000. Removed the unsupported scale-consistency rule.
+- Limited the method comparison to the PHAK's supported statement that the graph method follows computational steps except that graphs supply moments. Tables are identified only as a possible manufacturer-provided method, without claiming procedural equivalence.
+- Reframed the addition/removal reasonableness check around recalculation and the PHAK's exact aft-baggage example; removed the unsupported general forward-added-item rule.
+- Reframed fuel burn around reduced tank weight, the PHAK observation that tanks in most small aircraft are near CG and CG generally changes little, and the practical requirement to check the actual airplane's planned fuel conditions. Removed generic directional claims based on tank location.
+- Updated the source-led research chain and relevance excerpts to match those narrowed boundaries. Show-note URLs, labels, and claim mappings did not require changes.
+- Regenerated `narration.md` only from the revised master script. The narration contains 4,979 spoken words, and the 42-minute target remains within the intended 30–45 minute scope.
+- Local dry validation passed the input shape and reciprocal mappings for 14 sources, 34 claims, and 14 show-note links without making network or API requests. Structural checks confirmed the narration derivative, recorded word count, opening order, Announcer transitions, claim section references, paragraph formatting, and preservation of the user's seesaw and fuel-consumption edits.
+- `npm test` passed all 71 repository tests, and all six YAML package files parsed successfully.
+- A fresh external source-relevance run remains required before rendering. No external validation, audio rendering, commit, or pull request was performed during this revision.
+
+## 2026-08-26 — script approved
+
+- The user accepted the revised script after changing the final moment-scaling wording to “scaled moment.” The reciprocal claim now uses that same listener-facing terminology.
+- Marked the package as `script_approved` at version `0.1.3` and completed the human editorial gate.
+- Regenerated `narration.md` from the accepted `master-script.md`; the source-tagged master remains the only editable script source of truth.
+- The previous source-relevance report predates this accepted wording change and cannot be used as an attestation for this package. A fresh deterministic and LLM source-relevance validation remains required before rendering.
+- No audio was rendered, staged, or published.

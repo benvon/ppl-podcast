@@ -24,11 +24,11 @@
 1. **Decision frame:** The ACS requires a valid computation, correction of out-of-CG loading, all-phase limit compliance, and use of performance data.
 2. **Separate limit questions:** PHAK Chapter 10 distinguishes total weight from the location of CG and explains that either can fail while the other passes.
 3. **Mental model:** A seesaw and fulcrum make the turning effect visible before datum, arm, and moment transfer that lever model to the airplane.
-4. **Aircraft-specific foundation:** Current empty-weight and configuration data, the approved loading method, markings, placards, and applicable limits belong to the actual airplane. Section 91.9 supplies the operating-limitation boundary.
-5. **Calculation:** List the airplane and loads, obtain and total weights and moments, preserve any moment-index scale, calculate or plot CG, and compare both coordinates with the limits. A spoken pointer sends listeners to the labeled FAA computational worksheet in the show notes.
+4. **Aircraft-specific foundation:** Current and accurate weight-and-balance records and the AFM's loading charts, graphs, or manufacturer procedures form the calculation foundation. Section 91.9 supplies the operating-limitation boundary.
+5. **Calculation:** List the airplane and loads, obtain and total weights and moments, recognize a moment index as a simplified moment value, calculate or plot CG, and compare both coordinates with the limits. A spoken pointer sends listeners to the labeled FAA computational worksheet in the show notes.
 6. **Handling effects:** Forward CG increases control demand and can reduce low-speed nose-up authority; aft CG reduces longitudinal stability and stall/spin recovery capability.
 7. **Performance connection:** Weight increases required lift and can degrade takeoff, climb, cruise, stall, approach, and landing performance; approved performance data completes the decision.
-8. **Across-flight connection:** Fuel burn removes weight at the fuel-tank arm, so both total weight and the direction of CG movement must be checked for relevant phases.
+8. **Across-flight connection:** Fuel burn removes weight at the fuel tanks. PHAK notes that tanks in most small aircraft are near CG, so CG generally changes little, but the actual airplane's planned fuel conditions still require the all-phase check.
 9. **Correction:** Shift, add, or remove weight; then rerun loading, fuel, and performance planning rather than treating one acceptable output as the end of the process.
 10. **Physical integrity:** Secure each item in the station used by the calculation.
 
@@ -47,8 +47,8 @@
   - Correction: The plotted point has both a weight and a moment or CG coordinate and must be inside every applicable boundary.
   - Source: PHAK Chapter 10, Figure 10-8, p. 10-8.
 - Misconception: Fuel burn always improves weight and balance.
-  - Correction: It reduces total weight, but the direction of CG movement depends on tank arm and fuel-use sequence.
-  - Source: PHAK Chapter 10, pp. 10-10–10-11.
+  - Correction: It reduces total weight. PHAK says tanks in most small aircraft are near CG, so CG generally changes little, but the actual airplane's planned fuel conditions still require checking.
+  - Source: PHAK Chapter 10, p. 10-11.
 - Misconception: Moving baggage forward corrects an overweight condition.
   - Correction: Moving an item changes moment and CG but leaves total weight unchanged.
   - Source: PHAK Chapter 10, p. 10-10.
@@ -87,4 +87,5 @@ None. Detailed part 23 certification endpoints, mechanic weighing procedures, pe
 - Official FAA and eCFR sources were accessed on August 25, 2026, and entered at page- or section-level in `sources.yaml`.
 - The current eCFR page for § 91.9 reported Title 14 up to date through August 24, 2026.
 - Deterministic link validation and OpenAI claim-relevance validation were deliberately not run during the initial drafting assignment. Both remain pre-render gates.
+- A later source-relevance run identified eight partially supported claims. Their statements and corresponding script passages were narrowed to the cited FAA evidence on August 26, 2026; a fresh external validation run remains required before rendering.
 - A separate agent that did not draft this lesson completed the independent spoken-script review required by `docs/script-drafting-playbook.md` on August 26, 2026. The drafting agent resolved every required finding and the accepted clarity suggestion; human editorial review remains pending.

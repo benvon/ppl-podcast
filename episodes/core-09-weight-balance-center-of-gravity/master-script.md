@@ -1,9 +1,9 @@
 # Weight, Balance, and Center of Gravity
 
-**Version:** 0.1.0 — initial source-led draft
+**Version:** 0.1.3 — approved script
 **Target runtime:** approximately 42 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** First-review draft; not flight instruction and not cleared for public release.
+**Production status:** Script approved. A fresh source-relevance review is required before audio rendering.
 
 ## [00:00] Opening
 
@@ -88,7 +88,7 @@ It can. An airplane may be under its maximum weight but have its CG outside the 
 [Source: sources.yaml#phak-computational-method]
 [Claim type: FAA guidance]
 
-Maximum weight and CG limits protect different parts of the operating margin. Weight affects structural load and the performance the wing and powerplant must produce. CG affects stability, control forces, and the control authority available to manage the airplane. Chapter 10 states the distinction plainly: operating above maximum weight compromises structural integrity and performance, while operating outside the airplane's CG limits creates control difficulty.
+Maximum weight and CG limits guard against different problems. Chapter 10 states the distinction plainly: operating above maximum weight compromises structural integrity and performance, while operating outside the airplane's CG limits creates control difficulty.
 
 [Source: sources.yaml#phak-weight-balance-introduction]
 [Claim type: FAA guidance]
@@ -146,9 +146,13 @@ Basic empty weight represents the airplane and the installed items included by i
 [Source: sources.yaml#phak-terms-and-principles]
 [Claim type: FAA guidance]
 
-The starting record must match the current configuration. Installing or removing equipment, or completing a repair or modification, can change empty weight and balance. Chapter 10 explains that these changes must be accounted for in the weight-and-balance records and equipment list as appropriate. Without current information, the pilot has no sound foundation for the loading calculation.
+Installing extra radios or instruments, or completing repairs or modifications, may affect aircraft weight.
 
 [Source: sources.yaml#phak-weight-effects-and-cg]
+[Claim type: FAA guidance]
+
+Chapter 10 says aircraft changes must be recorded and the equipment list updated as appropriate. Current and accurate weight-and-balance information and records are the foundation for the calculations and decisions the pilot makes. The AFM supplies loading charts or graphs and the manufacturer's loading procedures.
+
 [Source: sources.yaml#phak-weight-balance-management]
 [Claim type: FAA guidance]
 
@@ -158,7 +162,7 @@ What if the POH contains a sample problem for the same model?
 
 **INSTRUCTOR:**
 
-Use the sample to learn the method, not as the starting data for your airplane. Chapter 10 cautions that empty weight and loading conditions for a particular aircraft can differ from the sample because of equipment changes or modifications. Match the POH or AFM revision, applicable supplements, and the airplane's current weight-and-balance record before you rely on the numbers.
+Use the sample to learn the method, not as the starting data for your airplane. Chapter 10 cautions that empty weight and loading conditions for a particular aircraft can differ from the sample because of equipment changes or modifications.
 
 [Source: sources.yaml#phak-moment-mental-model]
 [Claim type: FAA guidance]
@@ -182,9 +186,9 @@ The computational method follows a consistent chain. Begin with the airplane's c
 
 After every item has a weight and a moment, add the weights. That total answers the first question: how heavy is the loaded airplane? Next, add the moments. That total combines the turning effect of the empty airplane and every item aboard. The two totals are separate because equal total weights can still produce different balance points.
 
-Some worksheets divide every moment by the same fixed number and call the result a moment index. The index is shorthand that keeps long moment values manageable. It does not change the leverage or balance. Keep the scale shown on the worksheet consistent from the individual rows through the final comparison, and do not treat an indexed moment as though it were the full inch-pound value.
+To simplify calculations, a worksheet may divide moment values by 100, 1,000, or 10,000 and call the result a scaled moment.
 
-For a direct computational method that uses full moments, divide total moment by total weight to obtain loaded CG. If the airplane's worksheet uses a moment index, follow its stated scale or compare the indexed total directly with the matching envelope or table. Compare total weight with the limit for the phase of flight being checked. Then compare loaded CG with the forward and aft boundaries at that weight. A CG boundary may change with weight, so read the envelope or table at the actual loaded weight instead of remembering one pair of numbers.
+For a direct computational method that uses full moments, divide total moment by total weight to obtain loaded CG. Compare total weight with the limit for the phase of flight being checked. Then compare loaded CG with the forward and aft boundaries at that weight. A CG boundary may change with weight, so read the envelope or table at the actual loaded weight instead of remembering one pair of numbers.
 
 The show notes link labeled “PHAK Chapter 10 visual aid — Computational method and sample worksheet” opens the FAA example on page 10-7. Use it to follow the weight, arm, and moment columns while listening. The values are illustrative; the organization of the columns is the point.
 
@@ -203,7 +207,7 @@ Suppose the total weight passes, but the loaded CG falls aft of the envelope. Th
 
 Now suppose the CG point is inside the envelope but total weight is above the limit. Moving a bag forward can change moment and CG, but it does not reduce total weight. The correction must include removing weight or otherwise changing the plan within the options permitted by the airplane's POH, AFM, and loading limits.
 
-That is why a reasonableness check follows the arithmetic. Ask whether the direction of the result makes sense. Compare the added item's station with the airplane's current CG. An item added aft of the current CG moves the CG aft. An item added forward of the current CG moves the CG forward. Moving an item forward should reduce total moment when the station convention uses increasing positive arms aft of the datum. A result that violates those relationships deserves an input and formula review before you trust it.
+That is why a reasonableness check follows the arithmetic. Ask whether the result fits the loading change. In the PHAK example, baggage added aft of the old CG moves the new CG aft. For another station or another airplane, enter the change, recalculate CG, and compare the result with the airplane's limits rather than relying on an assumed direction. A result that does not fit the inputs deserves an input and formula review before you trust it.
 
 The handbook's sample numbers illustrate this chain, but the POH, AFM, and current weight-and-balance record for your airplane supply the usable calculation. The method is general. The values and limits are aircraft specific.
 
@@ -220,16 +224,16 @@ The method may look different in your POH.
 
 **INSTRUCTOR:**
 
-The POH, AFM, or loading documents for a particular airplane may use a loading graph instead of asking you to multiply every weight by an arm. You enter an occupant, fuel, or baggage weight and read the corresponding moment or moment index. After obtaining each moment, you total the weights and moments, then plot the combined point on a CG moment envelope.
+The POH, AFM, or loading documents for a particular airplane may use a loading graph instead of asking you to multiply every weight by an arm. You enter an occupant, fuel, or baggage weight and read the corresponding moment or scaled moment. After obtaining each moment, you total the weights and moments, then plot the combined point on a CG moment envelope.
 
-The point has two coordinates. One represents loaded weight. The other represents loaded moment or moment index. The point must fall inside the CG envelope for that airplane and weight. Being below the top edge does not help if the point lies beyond the aft boundary. Being between the forward and aft sides does not help if the weight is above the envelope.
+The point has two coordinates. One represents loaded weight. The other represents loaded moment or scaled moment. The point must fall inside the CG envelope for that airplane and weight. Being below the top edge does not help if the point lies beyond the aft boundary. Being between the forward and aft sides does not help if the weight is above the envelope.
 
 PHAK Figures 10-7 and 10-8 show this two-step process: a loading graph for the individual moments, followed by a CG moment envelope for the combined result. Those figures are also linked in the show notes.
 
 [Source: sources.yaml#phak-loading-graph-envelope]
 [Claim type: FAA guidance and teaching explanation]
 
-Other airplanes use tables. A table may give moment values for specified weights, or it may state the allowable moment range at each weight. Some electronic tools perform the same calculation and display an envelope. The interface changes, but the underlying questions remain: were the current empty-weight data, occupants, baggage, and fuel entered correctly; is the takeoff or landing weight below its limit; is the CG inside the envelope; and are the seat and baggage-area limits satisfied?
+PHAK says the graph method follows the same steps as the computational method, except that manufacturer-provided graphs supply the moments. Manufacturer-provided tables may also be part of an airplane's loading method. Use the format specified for the airplane, and verify the inputs and comparisons its instructions require.
 
 [Source: sources.yaml#phak-computational-method]
 [Claim type: FAA guidance]
@@ -257,7 +261,7 @@ The CG range published for the airplane balances stability with controllability.
 [Source: sources.yaml#phak-adverse-balance-effects]
 [Claim type: FAA guidance]
 
-Do not turn that into a claim that every loading near the forward limit is unsafe. The published range is the allowable range for the stated weight and operation. The lesson is about what changes as CG moves within that range and why crossing the limit is unacceptable. At a more forward CG, the airplane has a stronger nose-down tendency, so the pilot can need greater control effort to raise the nose. The specific handling and performance information belongs to the airplane's POH or AFM and to flight instruction.
+Do not turn that into a claim that every loading near the forward limit is unsafe. The published range is the allowable range for the stated weight and operation. The lesson is about what changes as CG moves within that range and why crossing the limit is unacceptable. At a more-forward CG, raising the nose can require greater control effort. The specific handling and performance information belongs to the airplane's POH or AFM and to flight instruction.
 
 An aft loading places CG closer to the aft limit. As CG moves aft, longitudinal stability decreases. PHAK says the airplane has less tendency to right itself after maneuvering or turbulence. Beyond the aft limit, undesirable effects can include very light control forces, extreme control difficulty, violent stall characteristics, and reduced capability to recover from stalls and spins.
 
@@ -325,7 +329,7 @@ Check the whole flight, not one snapshot.
 
 **INSTRUCTOR:**
 
-The airplane may have different loaded conditions at ramp, takeoff, and landing. Fuel used for start, taxi, takeoff, climb, cruise, and descent is consumed by the airplane's engine over time. That reduces total weight at the fuel-tank station. The resulting CG change depends on where the tanks are located relative to the airplane's current CG.
+The airplane may have different loaded conditions at ramp, takeoff, and landing. Fuel used for start, taxi, takeoff, climb, cruise, and descent is consumed by the airplane's engine over time. That reduces total weight at the fuel-tank station, so the planned fuel conditions remain part of the weight-and-balance check.
 
 The PHAK uses a sample table that separately tracks ramp weight, takeoff weight after taxi fuel, and landing weight after en route fuel. Its chapter summary says pilots must ensure that CG remains within the airplane's limits throughout all phases of flight.
 
@@ -343,7 +347,7 @@ Does fuel burn always improve the loading because the airplane becomes lighter?
 
 **INSTRUCTOR:**
 
-It improves the total-weight side by removing fuel weight, but the balance side depends on tank arm. If the fuel is located near CG, the shift may be small. If it is located forward of the loaded CG, burning it tends to move CG aft. If it is aft of the loaded CG, burning it tends to move CG forward. Airplanes with multiple tanks may require a specified fuel-use sequence that changes the path again.
+It improves the total-weight side by removing fuel weight, but you still check balance from the actual airplane's data. The PHAK notes that fuel tanks in most small aircraft are near CG, so fuel consumption generally does not affect CG greatly. Do not turn that general observation into an assumption for a particular airplane or fuel condition.
 
 [Source: sources.yaml#phak-addition-removal-fuel]
 [Claim type: FAA guidance and teaching explanation]
@@ -455,13 +459,13 @@ Review.
 
 Weight and balance asks two separate questions. Total weight tells you how heavy the loaded airplane is. Center of gravity tells you where that weight is centered. An airplane must satisfy both its weight limits and its CG limits.
 
-The datum is the manufacturer's fixed measurement reference. Arm is distance from the datum. Moment is weight times arm. Add the loaded weights and moments. When the computational method applies, total moment divided by total weight gives loaded CG. Graph and table methods organize the same physical relationships in a different form.
+The datum is the manufacturer's fixed measurement reference. Arm is distance from the datum. Moment is weight times arm. Add the loaded weights and moments. When the computational method applies, total moment divided by total weight gives loaded CG. In the graph method, manufacturer-provided graphs supply the moments.
 
-Start with current data for the actual airplane. A sample problem teaches a process but does not supply another airplane's empty weight, equipment, arms, or limits. Confirm every occupant, bag, cargo area, and fuel entry, and keep units and moment-index scaling consistent.
+Start with current data for the actual airplane. A sample problem teaches a process but does not supply another airplane's empty weight, equipment, arms, or limits. Confirm every occupant, bag, cargo area, and fuel entry against the airplane's loading instructions.
 
 Forward and aft CG affect stability, control force, and control authority differently. Use the CG envelope in the airplane's loading data rather than a general preference. Weight also affects takeoff, climb, stall, approach, landing, and range performance, so an acceptable loading calculation must feed the aircraft-specific performance plan.
 
-Check more than takeoff. Fuel burn changes weight and can change CG according to tank location. The ACS expects the airplane to remain within weight-and-balance limits during all phases of flight. Recalculate whenever the load or fuel plan changes.
+Check more than takeoff. Fuel burn changes the loaded condition. The ACS expects the airplane to remain within weight-and-balance limits during all phases of flight. Recalculate whenever the load or fuel plan changes.
 
 If the result is unacceptable, verify the inputs, then change the physical loading or the plan. Moving an item changes moment without changing total weight. Adding or removing an item changes both. A fuel reduction also changes endurance and range, so it must remain part of a complete fuel decision.
 

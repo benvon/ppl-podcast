@@ -8,7 +8,7 @@
 - [x] Spoken pointers to PHAK Figures 10-2 through 10-4, the p. 10-7 computational worksheet, and Figures 10-7 and 10-8 have exact, plainly labeled show-note links.
 - [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. The August 26, 2026 adversarial review checked grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension; all required and accepted clarity findings were resolved.
-- [ ] Human editorial pass completed; unresolved technical questions were removed or resolved.
+- [x] Human editorial pass completed; unresolved technical questions were removed or resolved.
 - [ ] Publication-day FAA and eCFR currency check completed and recorded.
 
 ## Script and narration
@@ -18,7 +18,7 @@
 - [x] Announcer transitions use the listener-facing heading and introduce no new technical claim.
 - [x] Spoken prose uses one physical line per paragraph without hard wrapping.
 - [x] Source tags remain in `master-script.md` and are removed from the derived `narration.md`.
-- [x] Renderer-derived spoken word count is recorded as 5,184 words.
+- [x] Renderer-derived spoken word count is recorded as 4,979 words.
 - [x] Independent reviewer findings and resolutions are recorded in `production-log.md`.
 
 ## Audio

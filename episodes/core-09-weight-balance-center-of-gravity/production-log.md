@@ -81,3 +81,10 @@
 - Tightened the evidence package during review: narrowed several claim statements to their cited PHAK boundaries, corrected the printed ACS page locators, and changed the spoken scope from “many airplanes” to the PHAK-supported “many modern aircraft.” The user approved that final spoken refinement before this passing run.
 - `link-validation.yaml` records the exact hashes of the sources, claim inventory, show notes, and show-notes manifest that were reviewed.
 - Marked the source-relevance gate complete at version `0.1.4`. Audio rendering, listening QA, and later release gates remain pending; no audio was rendered, staged, or published.
+
+## 2026-08-26 — opening and pronunciation QA render
+
+- Rendered reusable source-hash-bound segments into the local QA work directory `audio-artifacts/core-09-qa-pronunciation-20260826T170700Z.segments`.
+- Assembled the standard five-segment opening preview with the configured music bed, plus two focused pronunciation samples: segment 7 exercises POH, AFM, and CG; segment 14 exercises PHAK and CG.
+- Automated post-assembly audio-quality analysis passed for all three local MP3 previews. Human listening QA, including confirmation that the required notice is clearly heard and the initialisms sound natural, remains pending.
+- Audio artifacts remain local and are not tracked in Git.

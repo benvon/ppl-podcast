@@ -109,3 +109,12 @@
 - Automated audio-quality analysis passed decode, duration, clipping, and 58 stitched-boundary checks. The MP3 contains 17 embedded ID3 chapters, and `ffprobe` verified them. The hash-bound chapter-review page was generated locally.
 - The renderer reported an estimated API cost of $2.771447. Generated audio and render artifacts remain local and Git-ignored.
 - Full script-aligned listening QA and manual chapter review remain pending.
+
+## 2026-08-26 — pronunciation-corrected candidate rebuilt
+
+- Listening feedback found that the prior candidate's hyphenated letter substitutions created audible pauses and tonal changes, PHAK could be heard as “pee-ah hack,” and the phonetic spelling for envelope could produce verb stress. The shared renderer now preserves familiar initialisms in the spoken text, sends PHAK as “pee hack,” and provides a silent noun-stress instruction for envelope.
+- Rebuilt the full candidate in `audio-artifacts/core-09-rebuild-20260826T190729Z.segments`. The renderer compared every prior sidecar's render-input SHA-256 with the current model input, re-rendered the 31 changed segments, and reused the other 28 segments only when their exact inputs matched.
+- Assembled local candidate `audio-artifacts/core-09-20260826T190729Z.mp3`: 1,960.29 seconds (32:40), 24 kHz mono MP3, SHA-256 `21c5439c952706fe58d55b5d4f280d8b0d24e43734c720791d665cb6171666f6`.
+- Automated audio-quality analysis passed decode, duration, clipping, and 58 stitched-boundary checks. The MP3 contains 17 embedded ID3 chapters, and `ffprobe` verified them. The hash-bound chapter-review page was generated locally.
+- The final render manifest's all-segment usage estimate is $2.751833. Re-rendered segments account for an incremental usage-derived estimate of $2.266990. Generated audio and render artifacts remain local and Git-ignored.
+- The earlier 17:11 candidate is superseded. Full script-aligned listening QA and manual chapter review remain pending on this rebuilt candidate.

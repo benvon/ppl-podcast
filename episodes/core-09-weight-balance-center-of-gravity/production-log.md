@@ -101,3 +101,11 @@
 - The corrected five-segment opening preview and the focused POH, AFM, CG, and envelope-pronunciation sample were listened to and accepted.
 - The required artificial-intelligence-assisted production notice was clearly heard. The opening-preview and grouped-initialism QA gates are complete.
 - Full-episode rendering, script-aligned listening QA, chapter review, and release gates remain pending.
+
+## 2026-08-26 — full candidate rendered
+
+- Rendered the complete 59-segment Core 09 narration with OpenAI Realtime `gpt-realtime-2.1`, using Marin as Instructor, Cedar as Learner, and Ballad as Announcer. Reused the accepted opening-preview segments and corrected POH/AFM/CG/envelope segment where their render inputs matched.
+- Assembled local candidate `audio-artifacts/core-09-20260826T171100Z.mp3`: 1,971.29 seconds (32:51), 24 kHz mono MP3, SHA-256 `8bd8c57541eff538732591db3bdffafc99be830e37cc46130cacd8b2382183d7`.
+- Automated audio-quality analysis passed decode, duration, clipping, and 58 stitched-boundary checks. The MP3 contains 17 embedded ID3 chapters, and `ffprobe` verified them. The hash-bound chapter-review page was generated locally.
+- The renderer reported an estimated API cost of $2.771447. Generated audio and render artifacts remain local and Git-ignored.
+- Full script-aligned listening QA and manual chapter review remain pending.

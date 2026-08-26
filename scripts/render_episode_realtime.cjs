@@ -38,6 +38,7 @@ const PRONUNCIATION_TRANSFORMS = Object.freeze({
   AFM: "A-F-M",
   AI: "artificial intelligence",
   CG: "C-G",
+  envelope: "en-vuh-lope",
   MEL: "M-E-L",
   MMEL: "M-M-E-L",
   PHAK: "pea hack",
@@ -68,7 +69,7 @@ const DEFAULTS = {
 const STYLE = {
   INSTRUCTOR: "Calm, engaged, and practical flight instructor. Use natural, purposeful intonation and modest emphasis on safety-critical words and contrasts. Sound alert and conversational, never theatrical. Speak at a steady, unhurried study pace without drawn-out words or post-processing speed changes.",
   LEARNER: "Prepared adult learner: attentive and naturally curious, with restrained conversational inflection. Sound thoughtful rather than performative. Speak at a steady, unhurried study pace without drawn-out words or post-processing speed changes.",
-  ANNOUNCER: "Upbeat, clear, and welcoming podcast announcer. Sound confident and warm, with light forward energy. Never clownish, theatrical, or promotional. Keep transitions brief and let the lesson remain the focus. Speak at a steady, natural pace without drawn-out words or post-processing speed changes.",
+  ANNOUNCER: "Upbeat, clear, and welcoming podcast announcer. Sound confident and warm, with light forward energy. Never clownish, theatrical, or promotional. Use natural emphasis; do not over-stress individual words. Keep transitions brief and let the lesson remain the focus. Speak at a steady, natural pace without drawn-out words or post-processing speed changes.",
 };
 
 class RenderError extends Error {}

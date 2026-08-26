@@ -88,3 +88,10 @@
 - Assembled the standard five-segment opening preview with the configured music bed, plus two focused pronunciation samples: segment 7 exercises POH, AFM, and CG; segment 14 exercises PHAK and CG.
 - Automated post-assembly audio-quality analysis passed for all three local MP3 previews. Human listening QA, including confirmation that the required notice is clearly heard and the initialisms sound natural, remains pending.
 - Audio artifacts remain local and are not tracked in Git.
+
+## 2026-08-26 — QA render correction
+
+- In response to listening feedback, refined the Announcer voice instruction to use natural emphasis and not over-stress individual words.
+- Added a renderer-only pronunciation transform that supplies `envelope` to the voice model as `en-vuh-lope`; the published script remains unchanged. Added a regression test and documented the transform alongside the existing initialism guidance.
+- Re-rendered the five-segment opening preview and segment 7, which exercises POH, AFM, CG, and the corrected envelope pronunciation, into `audio-artifacts/core-09-qa-correction-20260826T171100Z.segments`.
+- Automated post-assembly audio-quality analysis passed for both corrected local MP3 previews. Human listening confirmation remains pending.

@@ -173,7 +173,9 @@ audio.
   `AI` becomes `artificial intelligence`; `PHAK` becomes `pea hack`; and
   initialisms such as `POH`, `CG`, `AFM`, `ACS`, and `MEL` use grouped
   hyphenated letter names so they are spoken together rather than as letters
-  separated by pronounced pauses.
+  separated by pronounced pauses. The same map may use a narrow phonetic
+  spelling for a repeatedly mispronounced technical term; `envelope` is sent
+  as `en-vuh-lope`.
 - Use the versioned, Git-ignored render manifest for duration, checksums, response
   usage, usage-derived cost estimates, stitch positions, chapter markers, and
   the audio-quality report. It is not an invoice.

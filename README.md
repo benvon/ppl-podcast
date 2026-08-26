@@ -135,6 +135,10 @@ acceptable attribution for a material claim.
 
 ## Prepare a sealed hosting handoff
 
+The public [PPL Study Guide hosting repository](https://github.com/benvon/ppl-postcast-hosting)
+documents how a sealed episode handoff is staged, published, hosted, and
+attested after this source repository's release gates have passed.
+
 After the publication-day source check, approved listening QA, and pre-hosting
 validation have all passed, create the hosting input directory with this
 command. It copies the exact MP3, listener-facing metadata, and show notes,

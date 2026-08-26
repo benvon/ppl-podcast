@@ -37,7 +37,7 @@ npm run precommit:check
 
    ```sh
    node scripts/derive-narration.cjs \
-     --script episodes/EPISODE/narration.md \
+     --script episodes/EPISODE/master-script.md \
      --output episodes/EPISODE/narration.md
    ```
 

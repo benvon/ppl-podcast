@@ -1,0 +1,1621 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-26T17:06:29.232Z
+sources_file: episodes/core-09-weight-balance-center-of-gravity/sources.yaml
+claims_file: episodes/core-09-weight-balance-center-of-gravity/claim-inventory.yaml
+show_notes_file: episodes/core-09-weight-balance-center-of-gravity/show-notes.md
+show_notes_manifest_file: episodes/core-09-weight-balance-center-of-gravity/show-notes-manifest.yaml
+input_sha256:
+  sources: 3e2fec6ac2de7dbdc67f42586494820ff95453c86e336e07a100f0d7eb6322c7
+  claims: 893181a485e9c636e163ab3601b3675c8fb0dd5829559461a68b2d244d5163b7
+  show_notes: e6dc5b8c9387217773bdf2a167a43d5286ade6f2530cf2f997b3a41a4f97e26f
+  show_notes_manifest: 24df7a0596a7f1a34781b7666984270add9232d56f5219766947ff5775f5ca52
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 14
+  manifest_link_count: 14
+show_notes_results:
+  - id: acs-performance-knowledge
+    text: Private Pilot ACS — Performance and Limitations knowledge and risk
+      management
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    source_id: acs-performance-knowledge-risk
+    claim_ids:
+      - acs-performance-connections
+      - acs-performance-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-performance-skills
+    text: Private Pilot ACS — Weight-and-balance computation skills
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    source_id: acs-performance-skills
+    claim_ids:
+      - acs-compute-correct-all-phases
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-moment-figures
+    text: PHAK Chapter 10 — Datum, arm, moment, and balance figures
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+    source_id: phak-moment-mental-model
+    claim_ids:
+      - moment-distance-leverage
+      - sample-data-not-aircraft-data
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3585
+      pdf_page_text_sha256: 197d5cafa04b8e2216393dac740891c4d3aca5b3c3c21cdd8096ae838d16980f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-computational-method
+    text: PHAK Chapter 10 visual aid — Computational method and sample worksheet
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+    source_id: phak-computational-method
+    claim_ids:
+      - computational-sequence
+      - moment-index-scale
+      - weight-and-cg-independent-checks
+      - manufacturer-methods
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4337
+      pdf_page_text_sha256: 99b75be3f43887b673cce852e9692d6bc8dabe30200dc95e7e89f375193719a3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-graph-envelope
+    text: PHAK Chapter 10 — Loading graph and CG moment envelope
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+    source_id: phak-loading-graph-envelope
+    claim_ids:
+      - graph-method-same-logic
+      - envelope-point-two-coordinates
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1091
+      pdf_page_text_sha256: b8b8d41b2e9cddcf3bcae96da9f5e025016c030f12eb0d4cad611b0c8bd4df5e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-cargo-securement
+    text: Private Pilot ACS — Flight Deck Management cargo securement
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+    source_id: acs-cargo-securement
+    claim_ids:
+      - cargo-securement-separate
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1983
+      pdf_page_text_sha256: 3393c79cb32d1cce013ebfe2d97c9d4332161550f82ae38a7781f50517c08773
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-introduction
+    text: PHAK Chapter 10 — Introduction and Weight Control
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+    source_id: phak-weight-balance-introduction
+    claim_ids:
+      - weight-and-cg-separate-limits
+      - excess-weight-lift-demand
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1257
+      pdf_page_text_sha256: 47a8e18b06ada7e1e6905001286d944c33404594264f741f05c61caca9548e55
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-weight-effects
+    text: PHAK Chapter 10 — Effects of Weight and Center of Gravity
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+    source_id: phak-weight-effects-and-cg
+    claim_ids:
+      - weight-performance-effects
+      - combined-performance-risk
+      - cg-is-weight-distribution
+      - fuel-load-tradeoff
+      - equipment-changes-data
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3823
+      pdf_page_text_sha256: 4360a85c316b938117b2d5f5a4210104734ea62078f0c984320cbd864017c0aa
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-adverse-balance
+    text: PHAK Chapter 10 — Effects of Adverse Balance
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+    source_id: phak-adverse-balance-effects
+    claim_ids:
+      - forward-cg-effects
+      - aft-cg-effects
+      - cg-limits-aircraft-specific
+      - loading-controls-cg
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5181
+      pdf_page_text_sha256: 5ad53a7606f589eba40142130056a395c68072cad71edd34a1936ddd30248b37
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-management
+    text: PHAK Chapter 10 — Management of Weight and Balance Control
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+    source_id: phak-weight-balance-management
+    claim_ids:
+      - aircraft-data-foundation
+      - loading-fuel-variable-factors
+      - seats-bags-fuel-tradeoff
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5260
+      pdf_page_text_sha256: 0e5fd6332c3b83aaa35bde6293e01b291fc9c726514318f6a92643a7fb53682c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-terms
+    text: PHAK Chapter 10 — Terms and Principles
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+    source_id: phak-terms-and-principles
+    claim_ids:
+      - datum-arm-moment
+      - useful-load-definition
+      - total-weight-and-distribution
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4647
+      pdf_page_text_sha256: 0ccae39cee19c06b75764a41fb4d08d9c2685ced94779b369804f86f702d5fcc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-flight-phases
+    text: PHAK Chapter 10 — Flight phases and shifting weight
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+    source_id: phak-flight-phase-and-shifting
+    claim_ids:
+      - phase-checks
+      - shifting-changes-moment-not-weight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4249
+      pdf_page_text_sha256: 776f2906e6a3edf9e5624c84620ae6d8a27739b4a5a8f0e8e46623f3c80a0a88
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-addition-removal
+    text: PHAK Chapter 10 — Weight Addition or Removal
+    url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+    source_id: phak-addition-removal-fuel
+    claim_ids:
+      - addition-removal-recompute
+      - fuel-burn-path
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4011
+      pdf_page_text_sha256: b618a4a2fd20bcae5d229f9da0a4473c513731b64ac83ebed76cf01286d97f9e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: cfr-91-9
+    text: 14 CFR § 91.9
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+    source_id: cfr-91-9-operating-limitations
+    claim_ids:
+      - operating-limitations-control
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a3 []
+      title: null
+      truncated: false
+      content_sha256: 2c7dc879a743eafe5415ccf951333c82c04b6fde53e684cee42f9c33629527d2
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-24
+        title_status_sha256: eb0ba155fb03b14689f65ba294165d0d856c9e04bb4108d2d5d923ff1c1a9a3b
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.9"
+        date: 2026-08-24
+        section_number: "91.9"
+      section_text_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      excerpt_characters: 1912
+      excerpt_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1912
+results:
+  - source_id: acs-performance-knowledge-risk
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-26T17:05:57.880Z
+    linked_claim_ids:
+      - acs-performance-connections
+      - acs-performance-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly contains ACS Task PA.I.F, Performance
+          and Limitations, including the listed knowledge and risk-management
+          elements addressed by both claims.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 14 and displays page 6 of the ACS,
+            where Task PA.I.F appears. The locator’s Task references
+            PA.I.F.K1–K3 and R1–R3 accurately identify the relevant material,
+            though the stated page number corresponds to the document’s printed
+            page rather than the PDF page.
+        claim_assessments:
+          - claim_id: acs-performance-connections
+            verdict: supports
+            rationale: PA.I.F.K1 requires explaining use of charts, tables, and data to
+              determine performance. PA.I.F.K2 identifies loading, including CG,
+              and weight and balance as factors affecting performance, while
+              PA.I.F.K3 covers aerodynamics. Together, these directly support
+              the stated connection.
+          - claim_id: acs-performance-risk
+            verdict: supports
+            rationale: The Risk Management section explicitly lists PA.I.F.R1, use of
+              performance charts, tables, and data; PA.I.F.R2, airplane
+              limitations; and PA.I.F.R3, possible differences between
+              calculated and actual performance.
+      usage:
+        input_tokens: 949
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 277
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1226
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-performance-skills
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-26T17:05:57.899Z
+    linked_claim_ids:
+      - acs-compute-correct-all-phases
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states in PA.I.F.S1 that the applicant must
+          compute weight and balance, correct out-of-CG loading errors, and
+          determine whether weight and balance remains within limits during all
+          phases of flight.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page excerpt contains PA.I.F.S1 under Area of Operation
+            I, Preflight Preparation, Performance and Limitations skills,
+            matching the locator's referenced skill content.
+        claim_assessments:
+          - claim_id: acs-compute-correct-all-phases
+            verdict: supports
+            rationale: "PA.I.F.S1 states all three elements of the claim: compute weight and
+              balance; correct out-of-CG loading errors; and determine whether
+              weight and balance remains within limits during all phases of
+              flight."
+      usage:
+        input_tokens: 900
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 181
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1081
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-cargo-securement
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-26T17:05:58.398Z
+    linked_claim_ids:
+      - cargo-securement-separate
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1983
+      pdf_page_text_sha256: 3393c79cb32d1cce013ebfe2d97c9d4332161550f82ae38a7781f50517c08773
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt from cited PDF page 20 (printed page 12) explicitly lists
+          PA.II.B.K4, “Securing items and cargo,” under Knowledge and
+          PA.II.B.S1, “Secure all items in the aircraft,” under Skills for
+          Flight Deck Management.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies PA.II.B.K4 and S1 in Flight Deck Management on
+            printed page 12, and the excerpt contains both items on that page.
+        claim_assessments:
+          - claim_id: cargo-securement-separate
+            verdict: supports
+            rationale: The excerpt expressly distinguishes the knowledge requirement,
+              PA.II.B.K4 “Securing items and cargo,” from the skill requirement,
+              PA.II.B.S1 “Secure all items in the aircraft.”
+      usage:
+        input_tokens: 870
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 187
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1057
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-weight-balance-introduction
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.404Z
+    linked_claim_ids:
+      - weight-and-cg-separate-limits
+      - excess-weight-lift-demand
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1257
+      pdf_page_text_sha256: 47a8e18b06ada7e1e6905001286d944c33404594264f741f05c61caca9548e55
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states the safety effects of exceeding
+          maximum weight and operating outside approved CG limits, and explains
+          that lift must counteract weight while lift production is limited by
+          airfoil design, AOA, airspeed, and air density.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 1 and contains the Chapter 10
+            introduction and the Weight Control discussion identified by the
+            locator.
+        claim_assessments:
+          - claim_id: weight-and-cg-separate-limits
+            verdict: supports
+            rationale: The excerpt explicitly says that operating above maximum weight
+              compromises structural integrity and adversely affects
+              performance, and that CG outside approved limits results in
+              control difficulty. Its statement that compliance with
+              weight-and-balance limits is critical supports checking both.
+          - claim_id: excess-weight-lift-demand
+            verdict: supports
+            rationale: The excerpt states that lift is the force that counteracts weight,
+              that lift is limited by airfoil design, AOA, airspeed, and air
+              density, and that if weight exceeds generated lift the aircraft
+              may be incapable of flight. This supports the stated relationship
+              between added weight and required lift.
+      usage:
+        input_tokens: 712
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 259
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 971
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-weight-effects-and-cg
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.418Z
+    linked_claim_ids:
+      - weight-performance-effects
+      - combined-performance-risk
+      - cg-is-weight-distribution
+      - fuel-load-tradeoff
+      - equipment-changes-data
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3823
+      pdf_page_text_sha256: 4360a85c316b938117b2d5f5a4210104734ea62078f0c984320cbd864017c0aa
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses the effects of excessive
+          aircraft weight on performance, the added risk when combined with
+          other performance-reducing factors, fuel-weight/range tradeoffs, and
+          CG as a balance point determined by weight distribution. It also
+          expressly states that equipment installations, repairs, and
+          modifications may affect weight.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 10-2, and the supplied excerpt is from
+            that exact page. The excerpt contains sections titled “Effects of
+            Weight,” “Weight Changes,” and “Balance, Stability, and Center of
+            Gravity,” which directly address all listed claims.
+        claim_assessments:
+          - claim_id: weight-performance-effects
+            verdict: supports
+            rationale: The excerpt lists higher takeoff, stall, approach, and landing
+              speeds; longer takeoff run and landing roll; and reduced climb
+              rate/angle, range, cruising speed, and maneuverability as
+              performance deficiencies of excessive weight.
+          - claim_id: combined-performance-risk
+            verdict: supports
+            rationale: The excerpt states that excessive weight reduces safety margins and
+              becomes even more hazardous when other performance-reducing
+              factors are combined with excess weight.
+          - claim_id: cg-is-weight-distribution
+            verdict: supports
+            rationale: The excerpt defines the CG as the point where the aircraft would
+              balance if suspended and states that its location depends on the
+              distribution of weight in the aircraft.
+          - claim_id: fuel-load-tradeoff
+            verdict: supports
+            rationale: The excerpt states that operating weight can be changed by altering
+              fuel load and that reducing weight by reducing fuel decreases
+              range, which must be considered during flight planning.
+          - claim_id: equipment-changes-data
+            verdict: supports
+            rationale: The excerpt expressly says installation of extra radios or
+              instruments, as well as repairs or modifications, may affect
+              aircraft weight.
+      usage:
+        input_tokens: 1303
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1300
+        output_tokens: 441
+        output_tokens_details:
+          reasoning_tokens: 41
+        total_tokens: 1744
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-adverse-balance-effects
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.678Z
+    linked_claim_ids:
+      - forward-cg-effects
+      - aft-cg-effects
+      - cg-limits-aircraft-specific
+      - loading-controls-cg
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5181
+      pdf_page_text_sha256: 5ad53a7606f589eba40142130056a395c68072cad71edd34a1936ddd30248b37
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses adverse forward and aft CG
+          effects, manufacturer-established CG limits and their publications,
+          possible limit variation by weight/operation, and loading/fuel factors
+          that alter CG.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 10-3 and contains the referenced
+            sections on Effects of Adverse Balance, Stability and Center of
+            Gravity, and Control.
+        claim_assessments:
+          - claim_id: forward-cg-effects
+            verdict: supports
+            rationale: The excerpt states that nose-heavy loading causes problems
+              controlling and raising the nose, that exceeding the forward CG
+              limit can cause higher control forces, and that in extreme cases
+              it can make it difficult or impossible to flare for landing.
+          - claim_id: aft-cg-effects
+            verdict: supports
+            rationale: The excerpt states that tail-heavy loading seriously affects
+              longitudinal stability, reduces the capability to recover from
+              stalls and spins, and produces very light control forces. It also
+              describes reduced stability and very light forces for CG aft of
+              the allowable range.
+          - claim_id: cg-limits-aircraft-specific
+            verdict: supports
+            rationale: The excerpt says CG limits are established by the manufacturer and
+              published for each aircraft in the TCDS/specification and AFM or
+              POH. It further states that fore and aft limits may vary as gross
+              weight changes and for certain operations.
+          - claim_id: loading-controls-cg
+            verdict: supports
+            rationale: The excerpt says baggage/cargo placement, passenger seat assignments,
+              and fuel burn based on tank location affect CG. It specifically
+              gives placing heavy passengers forward as an example for a
+              tail-heavy aircraft, supporting loading-arrangement correction.
+      usage:
+        input_tokens: 1521
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1518
+        output_tokens: 364
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1885
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-weight-balance-management
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.691Z
+    linked_claim_ids:
+      - aircraft-data-foundation
+      - loading-fuel-variable-factors
+      - seats-bags-fuel-tradeoff
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5260
+      pdf_page_text_sha256: 0e5fd6332c3b83aaa35bde6293e01b291fc9c726514318f6a92643a7fb53682c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly addresses weight-and-balance control,
+          including current records after aircraft changes, AFM charts/graphs
+          and manufacturer procedures, pilot-controlled loading and fuel
+          management, and the practical tradeoff among passengers, baggage, and
+          fuel in many modern aircraft.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 10-4, and the supplied excerpt is
+            explicitly headed “10-4 Management of Weight and Balance Control.”
+            All three claims are addressed on that page.
+        claim_assessments:
+          - claim_id: aircraft-data-foundation
+            verdict: supports
+            rationale: The excerpt states that the owner/operator should ensure up-to-date
+              information is available, records are properly updated after
+              repairs or modifications, and equipment-list/weight changes are
+              accounted for. It says that without this information, the pilot
+              has no foundation for necessary calculations and decisions. It
+              also states that approved AFM charts and graphs enable
+              weight-and-balance computations and that manufacturers devise
+              loading-determination procedures.
+          - claim_id: loading-fuel-variable-factors
+            verdict: supports
+            rationale: The excerpt expressly identifies loading and fuel management as “the
+              two variable factors that can change both total weight and CG
+              location” and states that the pilot controls them.
+          - claim_id: seats-bags-fuel-tradeoff
+            verdict: supports
+            rationale: The excerpt explicitly says that, in many modern aircraft, it is not
+              possible to fill all seats, baggage compartments, and fuel tanks
+              while remaining within approved weight-and-balance limits.
+      usage:
+        input_tokens: 1557
+        input_tokens_details:
+          cache_write_tokens: 1554
+          cached_tokens: 0
+        output_tokens: 338
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1895
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-terms-and-principles
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.700Z
+    linked_claim_ids:
+      - datum-arm-moment
+      - useful-load-definition
+      - total-weight-and-distribution
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4647
+      pdf_page_text_sha256: 0ccae39cee19c06b75764a41fb4d08d9c2685ced94779b369804f86f702d5fcc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page directly defines datum, moment, useful load, and CG
+          limits, and explains that weight-and-balance computation requires
+          determining total loaded weight and distributing it so the CG is
+          within specified limits.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the relevant
+            definitions and the opening discussion under “Principles of Weight
+            and Balance Computations.”
+        claim_assessments:
+          - claim_id: datum-arm-moment
+            verdict: supports
+            rationale: The excerpt states that the datum is established by the manufacturer
+              and is the reference from which arm measurements are taken. It
+              defines moment as an item's weight multiplied by its arm.
+          - claim_id: useful-load-definition
+            verdict: supports
+            rationale: The excerpt defines useful load for GA aircraft as pilot, copilot,
+              passengers, baggage, usable fuel, and drainable oil, and states it
+              is basic empty weight subtracted from maximum allowable gross
+              weight.
+          - claim_id: total-weight-and-distribution
+            verdict: supports
+            rationale: The excerpt states that adding the empty-aircraft weight and
+              everything loaded determines total weight, and that the mass must
+              be distributed so the CG is within specified limits.
+      usage:
+        input_tokens: 1431
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1428
+        output_tokens: 354
+        output_tokens_details:
+          reasoning_tokens: 82
+        total_tokens: 1785
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-moment-mental-model
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.708Z
+    linked_claim_ids:
+      - moment-distance-leverage
+      - sample-data-not-aircraft-data
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3585
+      pdf_page_text_sha256: 197d5cafa04b8e2216393dac740891c4d3aca5b3c3c21cdd8096ae838d16980f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly explains moment as weight multiplied by
+          arm, illustrates equal moments from different weight-distance
+          combinations, and explicitly states that AFM/POH sample loading
+          problems are guidance only because an individual aircraft’s loading
+          condition and empty weight may differ following modifications or
+          equipment changes.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator identifies page 10-6 and Figures 10-2 through 10-4
+            with accompanying explanation. The excerpt is from PDF page 10-6 and
+            contains all three figures, their explanatory text, and the relevant
+            Weight and Balance Restrictions paragraph.
+        claim_assessments:
+          - claim_id: moment-distance-leverage
+            verdict: supports
+            rationale: The page defines moment as weight multiplied by arm and gives a 50 lb
+              weight at 100 inches producing 5,000 in-lb. It further states that
+              any combination of weight and distance producing 5,000 in-lb will
+              balance the board, with 100 lb at 25 inches plus 50 lb at 50
+              inches as an example. This supports both parts of the claim.
+          - claim_id: sample-data-not-aircraft-data
+            verdict: supports
+            rationale: The excerpt expressly says that a particular aircraft’s loading
+              conditions and empty weight may differ from the AFM/POH because of
+              modifications or equipment changes, and that sample AFM/POH
+              loading problems are intended for guidance only, so each aircraft
+              must be treated separately.
+      usage:
+        input_tokens: 1338
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1335
+        output_tokens: 320
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1658
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-computational-method
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.718Z
+    linked_claim_ids:
+      - computational-sequence
+      - moment-index-scale
+      - weight-and-cg-independent-checks
+      - manufacturer-methods
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4337
+      pdf_page_text_sha256: 99b75be3f43887b673cce852e9692d6bc8dabe30200dc95e7e89f375193719a3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page directly explains the computational weight-and-balance
+          method, states the moment-scaling convention, discusses independent
+          weight and CG limit issues, and introduces manufacturer-provided graph
+          and table methods.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the section
+            “Determining Loaded Weight and CG,” the “Computational Method”
+            subsection, and the beginning of the “Graph Method” subsection.
+        claim_assessments:
+          - claim_id: computational-sequence
+            verdict: supports
+            rationale: The excerpt directs the pilot to list aircraft, occupant, fuel, and
+              baggage weights; enter each moment using “weight x arm = moment”;
+              total the weight and moment; and divide total moment by total
+              weight to determine CG. Its worked example then compares total
+              loaded weight and CG with the stated maximum-weight and CG-range
+              limits.
+          - claim_id: moment-index-scale
+            verdict: supports
+            rationale: "The excerpt states: “To simplify calculations, the moment may
+              sometimes be divided by 100, 1,000, or 10,000.” The example table
+              also labels moments in “in-lb/1,000.”"
+          - claim_id: weight-and-cg-independent-checks
+            verdict: supports
+            rationale: The excerpt explicitly says some aircraft can be within CG limits but
+              overloaded in weight, while others can be out of CG limits even
+              though useful load has not been exceeded.
+          - claim_id: manufacturer-methods
+            verdict: supports
+            rationale: The excerpt states that loaded weight and CG may be determined by
+              computational methods or by graphs and tables provided by the
+              manufacturer. It further states that the graph method uses the
+              same steps as the computational method, except that the provided
+              graphs calculate the moments and help determine whether loading is
+              within limits.
+      usage:
+        input_tokens: 1546
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1543
+        output_tokens: 439
+        output_tokens_details:
+          reasoning_tokens: 48
+        total_tokens: 1985
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-loading-graph-envelope
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.742Z
+    linked_claim_ids:
+      - graph-method-same-logic
+      - envelope-point-two-coordinates
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1091
+      pdf_page_text_sha256: b8b8d41b2e9cddcf3bcae96da9f5e025016c030f12eb0d4cad611b0c8bd4df5e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains Figure 10-7, labeled “Loading graph,”
+          with load weight and load moment axes, and Figure 10-8, labeled “CG
+          moment envelope,” with loaded aircraft weight and loaded aircraft
+          moment axes and plotted normal/utility-category boundary regions.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 8 and visibly includes Figures
+            10-7 and 10-8, matching the locator.
+        claim_assessments:
+          - claim_id: graph-method-same-logic
+            verdict: supports
+            rationale: Figure 10-7 directly relates load weight to load moment for listed
+              loading items. Figure 10-8 depicts the loaded-aircraft weight and
+              loaded-aircraft moment condition within CG-moment envelope
+              boundaries.
+          - claim_id: envelope-point-two-coordinates
+            verdict: supports
+            rationale: Figure 10-8 labels its axes as Loaded Aircraft Weight and Loaded
+              Aircraft Moment and shows bounded regions labeled normal category
+              and utility category.
+      usage:
+        input_tokens: 912
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 230
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1142
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-flight-phase-and-shifting
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.751Z
+    linked_claim_ids:
+      - phase-checks
+      - shifting-changes-moment-not-weight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4249
+      pdf_page_text_sha256: 776f2906e6a3edf9e5624c84620ae6d8a27739b4a5a8f0e8e46623f3c80a0a88
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page includes a sample weight-and-balance table with
+          separate ramp, takeoff, and actual landing weights, including
+          deductions for fuel used for start/taxi/takeoff and fuel to
+          destination. It also explicitly explains that shifting weight leaves
+          total aircraft weight unchanged while changing total moments, and that
+          the new CG is found from the new total moments divided by total
+          weight.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page 10-10 and contains both Figure
+            10-11, showing ramp/takeoff/landing phases, and the “Shifting,
+            Adding, and Removing Weight” / “Weight Shifting” discussion
+            identified by the locator.
+        claim_assessments:
+          - claim_id: phase-checks
+            verdict: supports
+            rationale: Figure 10-11 presents distinct subtotal ramp weight, takeoff weight
+              after start/taxi/takeoff fuel, and actual landing weight after
+              fuel to destination. The differing fuel quantities show that fuel
+              changes the loaded condition across these phases.
+          - claim_id: shifting-changes-moment-not-weight
+            verdict: supports
+            rationale: "The excerpt expressly states: “When weight is shifted from one
+              location to another, the total weight of the aircraft is
+              unchanged.” It further states total moments change with direction
+              and distance moved, and demonstrates calculating a new CG by
+              dividing new total moments by unchanged total aircraft weight."
+      usage:
+        input_tokens: 1619
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1616
+        output_tokens: 308
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1927
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-addition-removal-fuel
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and
+      Balance"
+    checked_at_utc: 2026-08-26T17:05:58.782Z
+    linked_claim_ids:
+      - addition-removal-recompute
+      - fuel-burn-path
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4011
+      pdf_page_text_sha256: b618a4a2fd20bcae5d229f9da0a4473c513731b64ac83ebed76cf01286d97f9e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly addresses weight addition or removal,
+          states that a new CG must be calculated and checked against
+          limitations, provides an example of baggage added at an aft station
+          shifting CG aft, and explains the typical small-aircraft fuel-burn
+          effect on CG.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 11 and contains both the “Weight
+            Addition or Removal” section and “Chapter Summary” identified by the
+            locator.
+        claim_assessments:
+          - claim_id: addition-removal-recompute
+            verdict: supports
+            rationale: "The excerpt states: “When this happens, a new CG must be calculated
+              and checked against the limitations.” Its example adds 140 lb of
+              baggage at station 150 when the old CG is station 80, calculates a
+              1.4-inch aft CG shift, and gives a new CG of 81.4 inches."
+          - claim_id: fuel-burn-path
+            verdict: supports
+            rationale: The excerpt states that burning fuel reduces weight at the fuel tanks
+              and that most small aircraft have tanks close to the CG;
+              therefore, fuel consumption does not affect CG to any great
+              extent.
+      usage:
+        input_tokens: 1569
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1566
+        output_tokens: 261
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1830
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-91-9-operating-limitations
+    title: 14 CFR § 91.9 — Civil aircraft flight manual, marking, and placard
+      requirements
+    checked_at_utc: 2026-08-26T17:05:57.899Z
+    linked_claim_ids:
+      - operating-limitations-control
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 2c7dc879a743eafe5415ccf951333c82c04b6fde53e684cee42f9c33629527d2
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91&section=91.9
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-24
+        title_status_sha256: eb0ba155fb03b14689f65ba294165d0d856c9e04bb4108d2d5d923ff1c1a9a3b
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.9"
+        date: 2026-08-24
+        section_number: "91.9"
+      section_text_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      excerpt_characters: 1912
+      excerpt_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1912
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that no person may operate a civil
+          aircraft without complying with operating limitations in the approved
+          Airplane or Rotorcraft Flight Manual, markings, placards, or
+          applicable limitations prescribed by the country of registry (§
+          91.9(a)). It also requires, for U.S.-registered aircraft, the
+          applicable current approved flight manual, approved manual material,
+          markings, placards, or a permitted combination to be available in the
+          aircraft (§ 91.9(b)).
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, § 91.9(a)–(b), contains both the
+            operating-limitations compliance requirement and the in-aircraft
+            availability requirements.
+        claim_assessments:
+          - claim_id: operating-limitations-control
+            verdict: supports
+            rationale: The claim accurately summarizes § 91.9(a) and (b), while using the
+              appropriately qualified term “applicable” for the manual-material
+              availability requirement.
+      usage:
+        input_tokens: 895
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 217
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1112
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

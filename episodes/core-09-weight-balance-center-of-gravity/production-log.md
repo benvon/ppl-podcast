@@ -73,3 +73,11 @@
 - Regenerated `narration.md` from the accepted `master-script.md`; the source-tagged master remains the only editable script source of truth.
 - The previous source-relevance report predates this accepted wording change and cannot be used as an attestation for this package. A fresh deterministic and LLM source-relevance validation remains required before rendering.
 - No audio was rendered, staged, or published.
+
+## 2026-08-26 — source-relevance validation passed
+
+- Ran the deterministic FAA/eCFR source and show-notes validation plus the required OpenAI source-relevance review against the accepted source package. Final run ID: `ed1a4a45-24eb-49b6-900c-50460031b712`; report timestamp: 2026-08-26T17:06:29.232Z; review model: `gpt-5.6-terra`.
+- All 14 source citations and 14 listener-facing show-note links resolved successfully. All 34 mapped claims, citation locators, and claim-to-source relevance assessments were supported.
+- Tightened the evidence package during review: narrowed several claim statements to their cited PHAK boundaries, corrected the printed ACS page locators, and changed the spoken scope from “many airplanes” to the PHAK-supported “many modern aircraft.” The user approved that final spoken refinement before this passing run.
+- `link-validation.yaml` records the exact hashes of the sources, claim inventory, show notes, and show-notes manifest that were reviewed.
+- Marked the source-relevance gate complete at version `0.1.4`. Audio rendering, listening QA, and later release gates remain pending; no audio was rendered, staged, or published.

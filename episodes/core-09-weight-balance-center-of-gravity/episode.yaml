@@ -3,8 +3,8 @@ series: ppl-study-podcast
 title: "Weight, Balance, and Center of Gravity"
 slug: "weight-balance-center-of-gravity"
 track: "core"
-status: script_approved
-version: 0.1.3
+status: source_review_complete
+version: 0.1.4
 published_at: null
 runtime_target_minutes: 42
 runtime_actual_seconds: null
@@ -40,11 +40,11 @@ trouble_spots:
   - "Moving baggage to address an overweight condition without removing weight."
   - "Reducing fuel without rebuilding the fuel, reserve, and performance plan."
 source_verification:
-  status: research_complete_validation_pending
-  verified_at_utc: null
+  status: source_relevance_review_complete
+  verified_at_utc: "2026-08-26T17:06:29.232Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: required_before_render
+  relevance_review: complete
 review:
   editorial_status: script_approved
   qualified_aviation_review: optional_and_welcome
@@ -52,7 +52,6 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter and chapter checks"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"

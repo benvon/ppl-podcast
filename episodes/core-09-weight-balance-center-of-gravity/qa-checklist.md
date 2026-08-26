@@ -6,7 +6,7 @@
 - [x] Regulation, FAA regulatory standard, FAA guidance, and teaching explanation are labeled separately.
 - [x] Every listener-facing attribution identifies a specific ACS task/page, PHAK section/page, figure/page, or exact eCFR section.
 - [x] Spoken pointers to PHAK Figures 10-2 through 10-4, the p. 10-7 computational worksheet, and Figures 10-7 and 10-8 have exact, plainly labeled show-note links.
-- [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
+- [x] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`. Final run: `ed1a4a45-24eb-49b6-900c-50460031b712` at 2026-08-26T17:06:29Z.
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. The August 26, 2026 adversarial review checked grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension; all required and accepted clarity findings were resolved.
 - [x] Human editorial pass completed; unresolved technical questions were removed or resolved.
 - [ ] Publication-day FAA and eCFR currency check completed and recorded.

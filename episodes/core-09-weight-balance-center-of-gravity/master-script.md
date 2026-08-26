@@ -1,9 +1,9 @@
 # Weight, Balance, and Center of Gravity
 
-**Version:** 0.1.3 — approved script
+**Version:** 0.1.4 — source-evidence review complete
 **Target runtime:** approximately 42 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Script approved. A fresh source-relevance review is required before audio rendering.
+**Production status:** Script and source-relevance review complete. Audio rendering and listening QA remain pending.
 
 ## [00:00] Opening
 

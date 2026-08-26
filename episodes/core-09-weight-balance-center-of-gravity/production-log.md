@@ -126,3 +126,16 @@
 - Reassembled local candidate `audio-artifacts/core-09-20260826T194604Z.mp3`: 1,962.69 seconds (32:42), 24 kHz mono MP3, SHA-256 `a97a490f3a39467fb18b5240c7ee8f00982eea4c76446c020a9bee2488ede1b3`.
 - Automated audio-quality analysis passed decode, duration, clipping, and 58 stitched-boundary checks. The MP3 contains 17 embedded ID3 chapters, and `ffprobe` verified them. The hash-bound chapter-review page was generated locally.
 - The correction's usage-derived estimate is $0.059276. The prior 19:07 candidate is superseded. Full script-aligned listening QA and manual chapter review remain pending on this candidate.
+
+## 2026-08-26 — listening QA and publication-day source validation approved
+
+- Full script-aligned listening QA and manual embedded-chapter review were accepted after the pronunciation and duplicated-word corrections.
+- Ran `sources:validate --require-llm` on publication day through `direnv`. All 14 FAA/eCFR source citations, 14 listener-facing show-note links, exact locators, claim mappings, and source- and claim-level relevance assessments passed at `2026-08-26T20:04:07.999Z`.
+- Updated the approved runtime to 1,962.69 seconds and set the local package to ready for hosting handoff. The pre-hosting validation remains the final check before creating the sealed hosting package.
+
+## 2026-08-26 — pre-hosting provenance corrections
+
+- The first pre-hosting validation found no source, claim, audio, or chapter-quality failure. It found release-process defects: the render manifest named `master-script.md` rather than `narration.md`, show notes had stale metadata and a duplicate production notice, and one completed chapter-review checklist line did not use the validator's required language.
+- Hardened the renderer to reject any input other than a current `narration.md` derivative, updated the show-notes template to omit the duplicate disclosure, and added pre-render checklist prompts for narration and show-notes readiness. The pre-render source validator now also rejects a `Production notice` heading in show notes, with regression coverage.
+- Refreshed source validation after the show-notes correction. All 14 sources, 14 show-note links, and every relevance assessment passed at `2026-08-26T20:09:21.769Z`.
+- Rebuilt the render manifest from `narration.md`; all 59 verified segment renders were reused without new synthesis. The resulting audio bytes and 17 embedded chapters are unchanged, but the render provenance now binds to the proper derived narration input.

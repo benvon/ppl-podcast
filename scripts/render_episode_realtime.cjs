@@ -16,6 +16,7 @@ const { spawnSync } = require("child_process");
 const WebSocket = require("ws");
 const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
+const { deriveNarration } = require("./derive-narration.cjs");
 const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
 const SAMPLE_RATE = 24000;
@@ -71,6 +72,15 @@ const STYLE = {
 };
 
 class RenderError extends Error {}
+
+function assertNarrationInput(scriptPath) {
+  if (path.basename(scriptPath) !== "narration.md") throw new RenderError("Render from the current narration.md derivative, not master-script.md.");
+  const masterScriptPath = path.join(path.dirname(scriptPath), "master-script.md");
+  if (!fs.existsSync(masterScriptPath) || !fs.statSync(masterScriptPath).isFile()) throw new RenderError("Render input must have a sibling master-script.md from which narration.md is derived.");
+  const narration = fs.readFileSync(scriptPath, "utf8");
+  const expected = deriveNarration(fs.readFileSync(masterScriptPath, "utf8"));
+  if (narration !== expected) throw new RenderError("narration.md is not the current derivative of master-script.md. Regenerate it before rendering.");
+}
 
 function assertSourceRelevanceApproved(scriptPath) {
   const episodePath = path.join(path.dirname(scriptPath), "episode.yaml");
@@ -280,7 +290,7 @@ function settingsFor(options, scriptHash) {
   // Music is an assembly choice recorded in the output manifest. Keeping it
   // out of the segment settings lets a previously rendered voice sample be
   // reused for a dry mix, a music mix, or a revised bed level.
-  return { renderer: "openai-realtime", renderer_version: 10, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, music: null, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, pronunciation_guidance: PRONUNCIATION_GUIDANCE, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
+  return { renderer: "openai-realtime", renderer_version: 11, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, music: null, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, pronunciation_guidance: PRONUNCIATION_GUIDANCE, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
 }
 
 function establishSettings(workDir, settings) {
@@ -511,7 +521,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
   } else publishedPath = writeWavOutput({ masterPath, wavPath, masterPcm, mixed: Boolean(options.music && Object.keys(musicPlan).length) });
   const frontMatter = selected[0].index === 1 && selected.some((segment) => [DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION].includes(segment.section)) ? "included" : "not_in_selected_range";
   const outputSha256 = sha256(fs.readFileSync(publishedPath));
-  const manifest = { renderer: "openai-realtime", renderer_version: 10, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, pronunciation_guidance: PRONUNCIATION_GUIDANCE, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", audio_sha256: outputSha256, markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, first_segment_fade_in: false, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: outputSha256, quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
+  const manifest = { renderer: "openai-realtime", renderer_version: 11, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, pronunciation_guidance: PRONUNCIATION_GUIDANCE, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", audio_sha256: outputSha256, markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, first_segment_fade_in: false, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: outputSha256, quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   const audioQuality = analyzeRenderedAudio({ manifestPath, masterPath, outputPath: publishedPath, stitchBoundaries, reportPath: qualityReportPath });
   manifest.audio.quality = { result: audioQuality.result, report: qualityReportPath, stitch_warnings: audioQuality.master.stitches.warnings.length, clipped_samples: audioQuality.master.pcm.clipped_samples };
   // The render manifest is the candidate's final record. Do not expose an
@@ -527,7 +537,7 @@ async function main() {
   if (!SAFE_ID_RE.test(raw["episode-id"])) throw new RenderError("--episode-id must be lowercase kebab-case.");
   const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice; const announcerVoice = raw["announcer-voice"] || DEFAULTS.announcerVoice;
   if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
-  const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
+  const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`); assertNarrationInput(scriptPath);
   assertSourceRelevanceApproved(scriptPath);
   const musicValuesSpecified = ["music-bed-gain-db", "music-voice-gain-db", "music-level-transition-seconds", "music-intro-lead-seconds", "music-intro-tail-seconds", "music-intro-fade-seconds", "music-outro-tail-seconds", "music-outro-fade-seconds"].some((name) => raw[name] !== undefined);
   if (musicValuesSpecified && !raw["music-bed"]) throw new RenderError("Music timing and gain options require --music-bed.");
@@ -549,4 +559,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, assemble, assertNarrationInput, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

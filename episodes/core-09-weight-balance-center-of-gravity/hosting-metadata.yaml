@@ -1,12 +1,12 @@
 schema_version: 1
-handoff_status: draft
+handoff_status: ready_for_hosting_pr
 publisher_release:
   id: "core-09"
   guid: "pplstudyguide.com:core-09"
   title: "Weight, Balance, and Center of Gravity"
   description: "Connect the actual airplane, occupants, baggage, cargo, and fuel to total weight, center of gravity, aircraft handling, all-phase limit checks, and practical performance planning."
-  published_at: null # RFC3339 UTC timestamp, set only when release is approved.
-  duration: null # HH:MM:SS, derived from approved audio.
+  published_at: "2026-08-26T20:04:52Z"
+  duration: "00:32:43"
   season: 1
   number: 9
   explicit: false
@@ -16,4 +16,4 @@ provenance:
   show_notes: show-notes.md
   audio_manifest: audio-manifest.yaml
   source_validation: link-validation.yaml
-  content_version: 0.1.0
+  content_version: 0.1.4

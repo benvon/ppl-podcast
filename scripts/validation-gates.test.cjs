@@ -11,7 +11,7 @@ const YAML = require("yaml");
 const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
-const { REQUIRED_NOTICE, assemble, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, assemble, assertNarrationInput, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { durationDisplay, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
@@ -70,6 +70,13 @@ test("the master-script template preserves the standard ACS opening and paragrap
   assert.match(template, /## \[01:05\] What the ACS is asking you to connect/);
   assert.match(template, /\*\*ANNOUNCER:\*\*\n\nWhat the ACS is asking you to connect\./);
   assert.match(template, /Write each spoken paragraph as one normal Markdown line\. Do not hard-wrap prose\./);
+});
+
+test("the show-notes template leaves the single production disclosure to hosting", () => {
+  const template = fs.readFileSync(path.join(__dirname, "..", "templates", "show-notes.md"), "utf8");
+  const checklist = fs.readFileSync(path.join(__dirname, "..", "templates", "qa-checklist.md"), "utf8");
+  assert.doesNotMatch(template, /^## Production notice\b/im);
+  assert.match(checklist, /show notes contain study links and synopsis only/i);
 });
 
 test("chapter review rejects a manifest checksum that does not match its MP3", () => {
@@ -268,6 +275,10 @@ test("show-notes links must be declared and mapped to claims their source suppor
   };
   const valid = validateShowNotesMappings(ledger, claims, manifest, "[AIM paragraph 1-1-1](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html)\n");
   assert.equal(valid.valid, true);
+
+  const duplicateDisclosure = validateShowNotesMappings(ledger, claims, manifest, "## Production notice\n\n[AIM paragraph 1-1-1](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html)\n");
+  assert.equal(duplicateDisclosure.valid, false);
+  assert.match(duplicateDisclosure.errors.join("\n"), /must not duplicate the hosting production disclosure/);
 
   const undeclared = validateShowNotesMappings(ledger, claims, manifest, "[AIM paragraph 1-1-1](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html)\n[Unmapped reference](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_2.html)\n");
   assert.equal(undeclared.valid, false);
@@ -731,6 +742,22 @@ test("realtime renderer accepts an Announcer turn", () => {
   fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Disclaimer\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Podcast introduction\n\n**ANNOUNCER:**\n\nWelcome to the podcast.\n`);
   try {
     assert.equal(parseScript(scriptPath, 240).at(-1).speaker, "ANNOUNCER");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("realtime renderer requires the current narration derivative", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-narration-input-test-"));
+  const masterPath = path.join(temporary, "master-script.md");
+  const narrationPath = path.join(temporary, "narration.md");
+  const master = "# Test\n\n**Version:** 0.1.0\n\n**INSTRUCTOR:**\n\nCurrent spoken text.\n";
+  fs.writeFileSync(masterPath, master, "utf8"); fs.writeFileSync(narrationPath, deriveNarration(master), "utf8");
+  try {
+    assert.doesNotThrow(() => assertNarrationInput(narrationPath));
+    assert.throws(() => assertNarrationInput(masterPath), /narration\.md derivative/);
+    fs.writeFileSync(narrationPath, "stale", "utf8");
+    assert.throws(() => assertNarrationInput(narrationPath), /not the current derivative/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

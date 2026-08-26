@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Weight, Balance, and Center of Gravity"
 slug: "weight-balance-center-of-gravity"
 track: "core"
-status: source_review_complete
+status: ready_for_hosting_pr
 version: 0.1.4
-published_at: null
+published_at: "2026-08-26T20:04:52Z"
 runtime_target_minutes: 42
-runtime_actual_seconds: null
+runtime_actual_seconds: 1962.69
 word_count: 4979
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -41,23 +41,21 @@ trouble_spots:
   - "Reducing fuel without rebuilding the fuel, reserve, and performance plan."
 source_verification:
   status: source_relevance_review_complete
-  verified_at_utc: "2026-08-26T17:06:29.232Z"
+  verified_at_utc: "2026-08-26T20:09:21.769Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
 review:
-  editorial_status: script_approved
+  editorial_status: script_and_listening_qa_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human listening QA, including the front-matter and chapter checks"
-  - "Re-verify every public source and link on publication day"
-  - "Validate hosting metadata and external audio-store workflow"
+  - "Stage and validate the immutable audio object in the hosting workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: candidate_rendered_pending_listening_qa
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.

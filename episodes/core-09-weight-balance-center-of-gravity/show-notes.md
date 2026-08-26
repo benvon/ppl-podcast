@@ -1,12 +1,8 @@
 # Weight, Balance, and Center of Gravity
 
 **Episode:** core-09
-**Version:** 0.1.0
-**Source verification:** Initial official-source research completed August 25, 2026; formal link and claim-relevance validation pending
-
-## Production notice
-
-This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+**Version:** 0.1.4
+**Source verification:** Publication-day FAA/eCFR link, locator, show-note, and claim-relevance validation completed August 26, 2026.
 
 ## In this episode
 
@@ -32,15 +28,15 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 | Topic | Source type | Authoritative source | Locator | Verified |
 | --- | --- | --- | --- | --- |
-| Cargo and item securement | FAA regulatory standard | [Private Pilot ACS — Flight Deck Management cargo securement](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20) | PA.II.B.K4 and S1, p. 13 | 2026-08-25 |
-| Separate weight and CG hazards | FAA guidance | [PHAK Chapter 10 — Introduction and Weight Control](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1) | Introduction and Weight Control, p. 10-1 | 2026-08-25 |
-| Weight effects, fuel tradeoff, and variable CG | FAA guidance | [PHAK Chapter 10 — Effects of Weight and Center of Gravity](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2) | Effects of Weight through Balance, Stability, and Center of Gravity, p. 10-2 | 2026-08-25 |
-| Forward- and aft-CG effects | FAA guidance | [PHAK Chapter 10 — Effects of Adverse Balance](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3) | Effects of Adverse Balance through Stability and Center of Gravity, p. 10-3 | 2026-08-25 |
-| Current aircraft data and loading tradeoffs | FAA guidance | [PHAK Chapter 10 — Management of Weight and Balance Control](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4) | Management of Weight and Balance Control, p. 10-4 | 2026-08-25 |
-| Datum, arm, moment, useful load, and computation principles | FAA guidance | [PHAK Chapter 10 — Terms and Principles](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5) | Terms and Definitions through Principles of Weight and Balance Computations, p. 10-5 | 2026-08-25 |
-| Ramp, takeoff, landing, and load-shifting checks | FAA guidance | [PHAK Chapter 10 — Flight phases and shifting weight](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10) | Figure 10-11 and Shifting, Adding, and Removing Weight, p. 10-10 | 2026-08-25 |
-| Fuel burn and addition or removal of weight | FAA guidance | [PHAK Chapter 10 — Weight Addition or Removal](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11) | Weight Addition or Removal and Chapter Summary, p. 10-11 | 2026-08-25 |
-| Approved operating limitations and current manual material | Regulation | [14 CFR § 91.9](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9) | § 91.9(a)–(b) | 2026-08-25 |
+| Cargo and item securement | FAA regulatory standard | [Private Pilot ACS — Flight Deck Management cargo securement](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20) | PA.II.B.K4 and S1, p. 13 | 2026-08-26 |
+| Separate weight and CG hazards | FAA guidance | [PHAK Chapter 10 — Introduction and Weight Control](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1) | Introduction and Weight Control, p. 10-1 | 2026-08-26 |
+| Weight effects, fuel tradeoff, and variable CG | FAA guidance | [PHAK Chapter 10 — Effects of Weight and Center of Gravity](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2) | Effects of Weight through Balance, Stability, and Center of Gravity, p. 10-2 | 2026-08-26 |
+| Forward- and aft-CG effects | FAA guidance | [PHAK Chapter 10 — Effects of Adverse Balance](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3) | Effects of Adverse Balance through Stability and Center of Gravity, p. 10-3 | 2026-08-26 |
+| Current aircraft data and loading tradeoffs | FAA guidance | [PHAK Chapter 10 — Management of Weight and Balance Control](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4) | Management of Weight and Balance Control, p. 10-4 | 2026-08-26 |
+| Datum, arm, moment, useful load, and computation principles | FAA guidance | [PHAK Chapter 10 — Terms and Principles](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5) | Terms and Definitions through Principles of Weight and Balance Computations, p. 10-5 | 2026-08-26 |
+| Ramp, takeoff, landing, and load-shifting checks | FAA guidance | [PHAK Chapter 10 — Flight phases and shifting weight](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10) | Figure 10-11 and Shifting, Adding, and Removing Weight, p. 10-10 | 2026-08-26 |
+| Fuel burn and addition or removal of weight | FAA guidance | [PHAK Chapter 10 — Weight Addition or Removal](https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11) | Weight Addition or Removal and Chapter Summary, p. 10-11 | 2026-08-26 |
+| Approved operating limitations and current manual material | Regulation | [14 CFR § 91.9](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9) | § 91.9(a)–(b) | 2026-08-26 |
 
 ## Correction status
 

@@ -1,0 +1,172 @@
+episode_id: "core-09"
+verification_date: "2026-08-25"
+verified_at_utc: "2026-08-26T00:38:13Z"
+sources:
+  - id: acs-performance-knowledge-risk
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.I.F.K1–K3 and R1–R3, Performance and Limitations, p. 6"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task F requires understanding the use of performance charts, loading including CG, weight and balance, aerodynamics, limitations, and possible differences between calculated and actual performance."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [acs-performance-connections, acs-performance-risk]
+
+  - id: acs-performance-skills
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.I.F.S1–S2, Performance and Limitations, p. 7"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "The applicant computes weight and balance, corrects out-of-CG loading errors, determines that weight and balance remain within limits during all phases of flight, and uses the appropriate performance data."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [acs-compute-correct-all-phases]
+
+  - id: acs-cargo-securement
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.II.B.K4 and S1, Flight Deck Management, p. 12"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Flight Deck Management includes knowledge of securing items and cargo and the skill to secure all items in the aircraft."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [cargo-securement-separate]
+
+  - id: phak-weight-balance-introduction
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Introduction and Weight Control, p. 10-1"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=1"
+    revision: "2023 edition; Chapter 10 page updated July 10, 2023"
+    relevance_excerpt: "Operating above maximum weight compromises structural integrity and performance; a CG outside approved limits creates control difficulty."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [weight-and-cg-separate-limits, excess-weight-lift-demand]
+
+  - id: phak-weight-effects-and-cg
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Effects of Weight through Balance, Stability, and Center of Gravity, p. 10-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2"
+    revision: "2023 edition"
+    relevance_excerpt: "Excess weight degrades takeoff, climb, stall, landing, range, and maneuvering performance; CG depends on weight distribution; installing extra radios or instruments and completing repairs or modifications may affect aircraft weight."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [weight-performance-effects, combined-performance-risk, cg-is-weight-distribution, fuel-load-tradeoff, equipment-changes-data]
+
+  - id: phak-adverse-balance-effects
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Effects of Adverse Balance through Stability and Center of Gravity, p. 10-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=3"
+    revision: "2023 edition"
+    relevance_excerpt: "Forward CG can create high control forces and insufficient flare authority; aft CG reduces longitudinal stability, produces light control forces, and reduces stall and spin recovery capability."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [forward-cg-effects, aft-cg-effects, cg-limits-aircraft-specific, loading-controls-cg]
+
+  - id: phak-weight-balance-management
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Management of Weight and Balance Control, p. 10-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4"
+    revision: "2023 edition"
+    relevance_excerpt: "Current and accurate weight-and-balance information and records are the basis for calculations and decisions; aircraft changes must be recorded and the equipment list updated as appropriate; the AFM supplies charts or graphs and manufacturer loading procedures."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [aircraft-data-foundation, loading-fuel-variable-factors, seats-bags-fuel-tradeoff]
+
+  - id: phak-terms-and-principles
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Terms and Definitions through Principles of Weight and Balance Computations, p. 10-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=5"
+    revision: "2023 edition"
+    relevance_excerpt: "The datum establishes the measurement reference, arm is distance from it, moment is weight times arm, useful load is maximum allowable gross weight minus basic empty weight, and loaded weight must also be distributed within CG limits."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [datum-arm-moment, useful-load-definition, total-weight-and-distribution]
+
+  - id: phak-moment-mental-model
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Figures 10-2 through 10-4 and accompanying explanation, p. 10-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=6"
+    revision: "2023 edition"
+    relevance_excerpt: "Figures 10-2 through 10-4 show the datum, arms, CG range, and how equal moments can be produced by different combinations of weight and distance. The accompanying Weight and Balance Restrictions text says sample AFM or POH loading problems are guidance only because a particular aircraft's empty weight and loading conditions may differ after equipment changes or modifications."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [moment-distance-leverage, sample-data-not-aircraft-data]
+
+  - id: phak-computational-method
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Determining Loaded Weight and CG and Computational Method, p. 10-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=7"
+    revision: "2023 edition"
+    relevance_excerpt: "A loaded-aircraft computation lists aircraft, occupants, fuel, and baggage; totals weight and moment; and divides total moment by total weight for CG. Moment may be divided by 100, 1,000, or 10,000 to simplify calculations. The graph method follows the computational steps except that manufacturer-provided graphs supply moments; manufacturer-provided tables are also identified as a method."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [computational-sequence, moment-index-scale, weight-and-cg-independent-checks, manufacturer-methods]
+
+  - id: phak-loading-graph-envelope
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Figures 10-7 and 10-8, Loading Graph and CG Moment Envelope, p. 10-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=8"
+    revision: "2023 edition"
+    relevance_excerpt: "The loading graph supplies item moments and the CG moment envelope tests the combined loaded weight and moment against the depicted approved region."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [graph-method-same-logic, envelope-point-two-coordinates]
+
+  - id: phak-flight-phase-and-shifting
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Figure 10-11 and Shifting, Adding, and Removing Weight, p. 10-10"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=10"
+    revision: "2023 edition"
+    relevance_excerpt: "The sample tracks ramp, takeoff, and landing conditions; shifting a load leaves total weight unchanged but changes total moment and CG."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [phase-checks, shifting-changes-moment-not-weight]
+
+  - id: phak-addition-removal-fuel
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 10: Weight and Balance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 10, Weight Addition or Removal and Chapter Summary, p. 10-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=11"
+    revision: "2023 edition"
+    relevance_excerpt: "Adding or removing weight requires a new CG calculation and limit check; the example shows baggage added aft of the old CG moving the new CG aft. Fuel consumption reduces weight at the fuel tanks, and tanks in most small aircraft are near CG, so CG generally changes little as fuel is consumed."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [addition-removal-recompute, fuel-burn-path]
+
+  - id: cfr-91-9-operating-limitations
+    authority: regulation
+    title: "14 CFR § 91.9 — Civil aircraft flight manual, marking, and placard requirements"
+    document_id: "14 CFR 91.9"
+    locator: "§ 91.9(a)–(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-24/title-14.xml?part=91"
+    revision: "eCFR current through August 24, 2026"
+    relevance_excerpt: "Section 91.9 requires compliance with operating limitations in the approved flight manual, markings, and placards, and requires applicable current approved manual material to be available in the aircraft."
+    verified_at_utc: "2026-08-26T00:38:13Z"
+    link_status: 200
+    supports_claims: [operating-limitations-control]

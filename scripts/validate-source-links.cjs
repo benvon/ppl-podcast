@@ -767,6 +767,7 @@ function markdownHttpsLinks(markdown) {
 
 function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
   const errors = []; const sourcesById = new Map(ledger.sources.map((source) => [source.id, source])); const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
+  if (/^## Production notice\b/im.test(markdown)) errors.push("show notes must not duplicate the hosting production disclosure");
   const links = markdownHttpsLinks(markdown); const manifestLinks = manifest.links || []; const ids = new Set(); const manifestByKey = new Map();
   for (const entry of manifestLinks) {
     if (!entry.id || ids.has(entry.id)) errors.push(`show-notes manifest has duplicate or missing link id ${entry.id || "(missing)"}`); else ids.add(entry.id);

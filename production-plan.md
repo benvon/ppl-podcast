@@ -7,7 +7,7 @@
 
 ## 1. Product definition and boundaries
 
-This is a three-voice study series organized around private-pilot knowledge domains and the Private Pilot Airplane ACS. The Instructor and Learner carry the lesson; an Announcer provides the podcast introduction, section transitions, and outro. The Pilot's Handbook of Aeronautical Knowledge (PHAK) is the main teaching spine; the ACS determines coverage and emphasis; current regulations and FAA operational guidance control when they apply.
+This is a three-voice study series organized around private-pilot knowledge domains and the Private Pilot Airplane ACS. The Instructor and Learner carry the lesson; an Announcer provides the podcast introduction, section transitions, and outro. The Pilot's Handbook of Aeronautical Knowledge (PHAK) supplies the conceptual teaching spine, and the Airplane Flying Handbook (AFH) keeps that knowledge connected to the airplane in flight and to the practical training context learners are likely experiencing. The ACS determines coverage and emphasis; current regulations and FAA operational guidance control when they apply.
 
 **Artifact home:** Repository root. Keep production materials here. Rendered masters and release derivatives go in `audio-artifacts/`, which is deliberately Git-ignored; their checksums, duration, and repository-relative paths are recorded in each episode's metadata.
 
@@ -52,6 +52,7 @@ The local project copies are research conveniences, not frozen publication sourc
 | Source | Role | Research-discovery source (never a listener-facing claim attribution) |
 | --- | --- | --- |
 | Pilot's Handbook of Aeronautical Knowledge, FAA-H-8083-25C | Primary explanation spine | [FAA PHAK landing page](https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak); research then records the exact chapter, subsection, page, revision, and page-anchored PDF link |
+| Airplane Flying Handbook, FAA-H-8083-3C | Primary flight-context spine | [FAA Airplane Flying Handbook landing page](https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/airplane_handbook); research then records the exact chapter, section, page, revision, and page-anchored PDF link. Use it to keep non-flying instruction grounded in how the airplane is flown without turning the episode into maneuver instruction. |
 | Private Pilot for Airplane Category ACS, FAA-S-ACS-6C | Coverage index and test-standard mapping | [FAA ACS landing page](https://www.faa.gov/training_testing/testing/acs); research then records the exact task/knowledge code, page, revision, and page-anchored PDF link |
 | Aeronautical Information Manual | Current FAA operational procedures and terminology | [FAA AIM HTML](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/); research then records the exact AIM paragraph/anchor and effective change |
 | 14 CFR Part 61 and other applicable CFR sections | Binding regulatory requirements | [Current eCFR Part 61](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61); research then records the exact controlling eCFR section URL, plus an FAA-hosted source whenever FAA guidance is discussed |

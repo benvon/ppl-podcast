@@ -1,6 +1,6 @@
 episode_id: "core-10"
 verification_date: "2026-08-27"
-verified_at_utc: "2026-08-27T19:38:27Z"
+verified_at_utc: "2026-08-27T20:48:00Z"
 sources:
   - id: acs-performance-knowledge-risk
     authority: faa_regulatory_standard
@@ -36,7 +36,7 @@ sources:
     relevance_excerpt: "The POH for most light aircraft built after 1975 is also designated as the FAA-approved flight manual. Its title page identifies FAA-approved AFM content and the airplane registration and serial number to which the manual applies."
     verified_at_utc: "2026-08-27T19:38:27Z"
     link_status: 200
-    supports_claims: [poh-afm-identification, preflight-runway-performance-information]
+    supports_claims: [poh-afm-identification]
 
   - id: phak-performance-data-introduction
     authority: faa_guidance
@@ -108,7 +108,31 @@ sources:
     relevance_excerpt: "Angle of climb compares altitude gained with horizontal distance over the surface, while rate of climb compares altitude gained with time; the accompanying example reports both elapsed time and ground distance for the two climb profiles."
     verified_at_utc: "2026-08-27T01:33:11Z"
     link_status: 200
-    supports_claims: [angle-rate-climb-distinction, climb-ground-distance-planning]
+    supports_claims: [angle-rate-climb-distinction]
+
+  - id: aim-climb-gradient-groundspeed
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Chapter 5: Air Traffic Procedures"
+    document_id: "AIM"
+    locator: "5-4-21(b), Missed Approach: climb-gradient conversion"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_4.html"
+    revision: "AIM Basic with Changes 1, 2, and 3; effective July 9, 2026"
+    relevance_excerpt: "For obstacle-climb planning, the AIM expresses climb gradient in feet per nautical mile and states that conversion to climb rate in feet per minute is based on groundspeed; a higher groundspeed increases the required climb rate."
+    verified_at_utc: "2026-08-27T20:48:00Z"
+    link_status: 200
+    supports_claims: [climb-gradient-groundspeed-conversion]
+
+  - id: phak-groundspeed-wind
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 8, Airspeed Indicator: Groundspeed, p. 8-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9"
+    revision: "2023 edition"
+    relevance_excerpt: "Groundspeed is the airplane's actual speed over the ground and is true airspeed adjusted for wind; it decreases with a headwind and increases with a tailwind."
+    verified_at_utc: "2026-08-27T20:48:00Z"
+    link_status: 200
+    supports_claims: [groundspeed-wind-relationship]
 
   - id: phak-climb-performance-factors
     authority: faa_guidance
@@ -126,13 +150,25 @@ sources:
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
     document_id: "FAA-H-8083-25C"
-    locator: "Ch. 11, Runway Surface and Gradient, pp. 11-12 to 11-13"
+    locator: "Ch. 11, Runway Surface, p. 11-12"
     url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12"
     revision: "2023 edition"
-    relevance_excerpt: "Performance charts commonly assume paved, level, smooth, dry surfaces. Soft or obstructed surfaces can increase takeoff roll, surface condition affects braking, and runway slope changes takeoff acceleration and landing roll."
+    relevance_excerpt: "Performance charts commonly assume paved, level, smooth, dry surfaces. Soft or obstructed surfaces can increase takeoff roll, and water, snow, ice, or mud can reduce braking effectiveness."
     verified_at_utc: "2026-08-27T01:33:11Z"
     link_status: 200
-    supports_claims: [runway-condition-matters, runway-slope-matters]
+    supports_claims: [runway-condition-matters]
+
+  - id: phak-runway-gradient-effects
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Runway Gradient, p. 11-13"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13"
+    revision: "2023 edition"
+    relevance_excerpt: "An upsloping runway impedes takeoff acceleration and lengthens the takeoff ground run while typically reducing landing roll; a downsloping runway aids takeoff acceleration but increases landing distance."
+    verified_at_utc: "2026-08-27T20:48:00Z"
+    link_status: 200
+    supports_claims: [runway-slope-matters]
 
   - id: phak-takeoff-weight-wind
     authority: faa_guidance
@@ -240,7 +276,7 @@ sources:
     relevance_excerpt: "Landing charts account for density altitude, airplane weight, and headwinds and may provide ground roll and distance over a 50-foot obstacle. Landing weight must be recalculated for fuel used during flight."
     verified_at_utc: "2026-08-27T01:33:11Z"
     link_status: 200
-    supports_claims: [landing-outputs-and-arrival-weight, each-leg-performance-rebuild]
+    supports_claims: [landing-outputs-and-arrival-weight]
 
   - id: afh-prior-to-takeoff-performance
     authority: faa_guidance
@@ -272,9 +308,9 @@ sources:
     document_id: "14 CFR 91.103"
     locator: "§ 91.103 introductory text and paragraphs (b)(1)-(2)"
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103"
-    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-17/title-14.xml?part=91"
-    revision: "eCFR Title 14 current through August 17, 2026"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=91"
+    revision: "eCFR Title 14 current through August 25, 2026"
     relevance_excerpt: "Before flight, the pilot in command must become familiar with available information, including intended-airport runway lengths and applicable takeoff and landing distance data or other reliable aircraft-appropriate performance information for expected elevation, slope, gross weight, wind, and temperature."
     verified_at_utc: "2026-08-27T01:33:11Z"
     link_status: 200
-    supports_claims: [preflight-runway-performance-information]
+    supports_claims: [preflight-runway-performance-information, later-flight-preflight-information]

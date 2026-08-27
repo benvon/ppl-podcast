@@ -31,8 +31,8 @@
 5. Temperature, pressure, elevation, and humidity influence density. Basic chart or computer calculations commonly use pressure altitude and outside air temperature; humidity remains a contributing factor rather than a reason to invent an unsupported correction.
 6. A chart is a conditional model. Its title, configuration, assumptions, notes, units, and test basis control the meaning of its output.
 7. AFH Chapter 6 connects the model to flight context: before going to the airplane, predict takeoff and climb with the POH/AFM charts and decide whether the airplane is capable for the conditions and location. Takeoff planning needs the correct weight, pressure altitude and temperature, wind component, runway surface and slope, configuration, and the output that answers the runway or obstacle question.
-8. Climb planning distinguishes angle, which is altitude gained per horizontal distance, from rate, which is altitude gained per time. Relating either result to distance over the ground and terrain or obstacles also requires the corresponding groundspeed, including wind effect. Weight, altitude, and configuration change climb performance.
-9. Multi-leg performance planning treats each leg as its own flight. Cross-country planning carries climb time, fuel, and ground distance into the cruise plan, and fuel use changes the landing weight for that leg.
+8. Climb planning distinguishes angle, which is altitude gained per horizontal distance, from rate, which is altitude gained per time. AIM obstacle-climb guidance makes the conversion explicit: translating feet per nautical mile into feet per minute depends on groundspeed. PHAK Chapter 8 establishes that groundspeed is true airspeed adjusted for wind. Weight, altitude, and configuration also change climb performance.
+9. Cross-country planning carries climb time, fuel, and ground distance into the cruise plan, and fuel use changes the expected landing weight. If an itinerary includes a later flight after landing, § 91.103's preflight duty applies before that flight and the information must concern that flight rather than being carried forward unchanged.
 10. Landing is a distinct planning operation using the actual airplane's landing-distance chart, arrival temperature and pressure altitude, expected landing weight, landing-runway wind, surface, slope, and landing-specific output. AFH Chapter 9 keeps configuration, airspeeds, and technique tied to the manufacturer information rather than generic maneuver instruction.
 11. Calculated performance is a disciplined estimate, made as strong as the airplane data and flight-specific inputs allow, but not a guarantee. Actual performance can differ because the airplane, environment, technique, and chart reading may differ from the flight-test basis. The response is to preserve margin and choose lower-demand conditions early.
 
@@ -59,9 +59,9 @@
 - Misconception: landing uses the departure weight and weather.
   - Correction: treat landing as its own planning operation using the landing-distance chart, arrival conditions, and expected landing weight after fuel use.
   - Source: PHAK Chapter 11, pp. 11-17 and 11-26.
-- Misconception: one performance calculation covers every leg of a trip.
-  - Correction: rebuild each leg with its own loading, runway, weather, takeoff weight, and expected landing weight.
-  - Source: PHAK Chapter 11, pp. 11-1, 11-17, and 11-26.
+- Misconception: a performance result from the first flight can be carried into a later departure unchanged.
+  - Correction: before beginning the later flight, apply § 91.103 to the information concerning that flight and build its performance plan from the applicable loading, runway, and expected conditions.
+  - Source: 14 CFR § 91.103 introductory text and paragraphs (b)(1)-(2).
 - Misconception: a computed distance is what the airplane will achieve.
   - Correction: the result is an estimate tied to the chart's stated airplane, environment, and technique. The ACS explicitly calls out possible calculated-versus-actual differences.
   - Source: FAA-S-ACS-6C PA.I.F.R3 and PHAK Chapter 11, p. 11-19.
@@ -88,7 +88,7 @@
 
 ## Open review items
 
-- Independent adversarial spoken-script review by a non-drafting agent was completed and its material findings were resolved in version 0.1.1. Version 0.1.2 preserves subsequent user edits and resolves the focused first-listen, AFH flight-context, multi-leg, landing-operation, and estimate-versus-guarantee review.
+- Independent adversarial spoken-script review by a non-drafting agent was completed and its material findings were resolved in version 0.1.1. Version 0.1.2 preserved subsequent user edits and resolved the focused first-listen, AFH flight-context, later-flight, landing-operation, and estimate-versus-guarantee review. Version 0.1.3 narrows and remaps the four source-relevance findings without changing the lesson's PHAK-primary structure.
 - Human editorial review and script approval are pending.
-- Deterministic source-link validation and required LLM source-relevance review are pending and must pass before any audio render.
+- Formal deterministic source-link validation passed before the 0.1.3 relevance corrections, and deterministic dry mapping validation passed after them. Required LLM source-relevance review must be rerun and pass before any audio render.
 - No aircraft-specific performance example has been selected for public use; the draft intentionally remains at the general method level.

@@ -1,9 +1,9 @@
 # Aircraft Performance and Density Altitude
 
-**Version:** 0.1.2 — reviewed draft
+**Version:** 0.1.3 — reviewed draft
 **Target runtime:** approximately 40 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Independent adversarial review and focused source/context revision resolved; human editorial review pending; not cleared for audio or public release.
+**Production status:** Independent adversarial review and focused source-relevance revisions resolved; formal relevance rerun and human editorial review pending; not cleared for audio or public release.
 
 ## [00:00] Opening
 
@@ -100,10 +100,10 @@ Yes, for the general reasoning. The book gives useful examples of tables, graphs
 
 That distinction prevents a subtle error. Two airplanes can look similar, and two charts can use the same labels, yet their tested configurations, speeds, correction notes, or output definitions can differ. Appropriate performance data means the correct document and the correct chart inside that document, not merely a familiar-looking chart.
 
-If a trip has more than one leg, treat every leg as its own flight for performance purposes. Rebuild the takeoff, climb, cruise, and landing inputs for the airplane's weight, weather, runway, and loading on that leg. A result from the first departure is not automatically the result for the next departure or arrival.
+If an itinerary includes another departure after landing, do not carry the first flight's performance result forward. Before beginning that later flight, section 91.103 again requires the pilot in command to become familiar with available information concerning that flight. Build its performance plan from the airplane's loading, runway, and expected conditions for that departure.
 
-[Source: sources.yaml#phak-landing-charts]
-[Claim type: Teaching explanation]
+[Source: sources.yaml#cfr-preflight-performance]
+[Claim type: Regulation]
 
 ## [06:30] Density altitude is a performance altitude
 
@@ -294,7 +294,6 @@ Begin with the runway question. What is the takeoff distance available on the in
 Section 91.103 requires runway lengths and applicable takeoff and landing performance information before flight. Use the data path you identified from the airplane's POH, AFM, and documentation: the applicable approved flight-manual data when required, or other reliable information appropriate to the airplane when that is the rule's path. In either case, use the airplane-specific takeoff chart or table and the inputs it requires.
 
 [Source: sources.yaml#cfr-preflight-performance]
-[Source: sources.yaml#phak-poh-afm-identification]
 [Source: sources.yaml#phak-takeoff-density-inputs]
 [Claim type: Regulation and FAA guidance]
 
@@ -322,6 +321,7 @@ Ground roll is the distance traveled on the runway before liftoff under the take
 Now compare the takeoff chart's assumptions with the runway. The handbook notes that many charts assume a paved, level, smooth, dry surface. Grass, soft ground, standing water, snow, or other contamination can reduce acceleration or change braking. An upsloping runway impedes takeoff acceleration; a downsloping runway aids it. Use only corrections supported by the airplane's performance information, and treat an unaddressed adverse condition as uncertainty rather than silently calling it equivalent to the test condition.
 
 [Source: sources.yaml#phak-runway-surface-gradient]
+[Source: sources.yaml#phak-runway-gradient-effects]
 [Claim type: FAA guidance]
 
 **LEARNER:**
@@ -362,10 +362,11 @@ The atmosphere, weight, and configuration affect both angle and rate. The climb-
 [Source: sources.yaml#phak-climb-performance-factors]
 [Claim type: FAA guidance]
 
-Build the climb estimate from the takeoff condition. Open the actual airplane's climb-performance chart or table and use the actual takeoff weight, the pressure-altitude or density-altitude input it requires, expected temperature, and specified configuration. If terrain or an obstacle drives the question, determine whether that climb data actually answers the horizontal-distance problem. Relating a climb result to distance over the ground requires the corresponding groundspeed, including the effect of wind. A rate-of-climb number alone does not supply that ground distance.
+Build the climb estimate from the takeoff condition. Open the actual airplane's climb-performance chart or table and use the actual takeoff weight, the pressure-altitude or density-altitude input it requires, expected temperature, and specified configuration. If terrain or an obstacle drives the question, determine whether that climb data actually answers the horizontal-distance problem. The AIM makes the distance-rate relationship explicit in its obstacle-climb guidance: climb gradient is expressed in feet per nautical mile, and converting that requirement to a climb rate in feet per minute is based on groundspeed. A rate-of-climb number by itself therefore does not answer the ground-distance question. The PHAK defines groundspeed as true airspeed adjusted for wind, decreasing with a headwind and increasing with a tailwind. Use the corresponding expected groundspeed when relating the airplane's climb result to terrain or obstacles.
 
-[Source: sources.yaml#phak-climb-angle-rate]
-[Claim type: FAA guidance and teaching explanation]
+[Source: sources.yaml#aim-climb-gradient-groundspeed]
+[Source: sources.yaml#phak-groundspeed-wind]
+[Claim type: FAA guidance]
 
 **LEARNER:**
 
@@ -404,7 +405,16 @@ Cruise tables then connect altitude, power setting, temperature, true airspeed, 
 [Source: sources.yaml#phak-cruise-performance-table]
 [Claim type: FAA guidance]
 
-The useful planning habit is continuity within each leg. The takeoff weight feeds that leg's climb calculation. Climb fuel changes the weight and fuel remaining at cruise. Cruise time and fuel use change expected arrival weight. That arrival weight then becomes an input to the landing calculation for the same leg. On the next leg, begin again with its loading, weather, runway, and airplane condition.
+The useful planning habit is continuity within the flight. Takeoff weight feeds the climb calculation. Climb fuel changes the weight and fuel remaining at cruise. Cruise time and fuel use change expected arrival weight. That arrival weight then becomes an input to the landing calculation.
+
+[Source: sources.yaml#phak-climb-cruise-charts]
+[Source: sources.yaml#phak-landing-charts]
+[Claim type: FAA guidance]
+
+If the itinerary includes another departure after landing, its section 91.103 preflight information must concern that later flight. Begin its performance plan again with the applicable loading, weather, runway, and airplane information.
+
+[Source: sources.yaml#cfr-preflight-performance]
+[Claim type: Regulation]
 
 ## [30:20] Plan landing as its own operation
 
@@ -450,6 +460,7 @@ Yes. On the actual airplane's landing-distance chart, the total-distance figure 
 Surface and slope affect landing roll directly. An upslope can shorten it; a downslope can lengthen it. Water, snow, ice, soft ground, or poor braking can make a dry, hard, paved-runway assumption a poor match. Apply only the corrections in the airplane's landing data, not a correction from a takeoff chart or handbook example.
 
 [Source: sources.yaml#phak-runway-surface-gradient]
+[Source: sources.yaml#phak-runway-gradient-effects]
 [Claim type: FAA guidance]
 
 Use the expected arrival wind for the intended landing runway. Apply the landing chart's correction; do not assume headwind credit and tailwind penalty are mirror images or treat a forecast headwind as guaranteed margin.
@@ -512,7 +523,7 @@ First, identify the intended airplane and its current POH or AFM performance inf
 [Source: sources.yaml#phak-performance-chart-boundaries]
 [Claim type: FAA guidance]
 
-Second, build the flight-specific inputs for each leg. Use takeoff and landing weights from that leg's loading plan. Record the expected departure and arrival altimeter settings, determine the pressure-altitude inputs the takeoff and landing charts require, and record the corresponding temperatures. Determine the intended runway lengths, wind components, surface, slope, and relevant obstacle or terrain question. Include the airplane configuration and technique specified by each chart.
+Second, build the inputs for the flight being planned. Use takeoff and landing weights from its loading plan. Record the expected departure and arrival altimeter settings, determine the pressure-altitude inputs the takeoff and landing charts require, and record the corresponding temperatures. Determine the intended runway lengths, wind components, surface, slope, and relevant obstacle or terrain question. Include the airplane configuration and technique specified by each chart. If another flight follows after landing, repeat this preflight work with the information for that later flight.
 
 [Source: sources.yaml#acs-performance-knowledge-risk]
 [Source: sources.yaml#phak-takeoff-density-inputs]
@@ -550,7 +561,7 @@ Thin air can reduce normally aspirated engine power, propeller thrust, and wing 
 
 Read each actual-airplane performance chart from the outside inward: title, conditions, notes, inputs, units, and only then the output. Keep takeoff ground roll separate from total distance over an obstacle. Keep climb angle separate from climb rate. Plan landing as its own operation with its landing-distance chart, arrival weather, and landing weight.
 
-A chart calculation is a disciplined estimate tied to stated conditions and technique, not a guarantee. Compare it with the runway, obstacle, climb, and fuel questions for each leg. Test plausible less-favorable inputs. When margin is inadequate or fragile, choose a lower-demand plan early.
+A chart calculation is a disciplined estimate tied to stated conditions and technique, not a guarantee. Compare it with the runway, obstacle, climb, and fuel questions for the flight. Test plausible less-favorable inputs. When margin is inadequate or fragile, choose a lower-demand plan early.
 
 **LEARNER:**
 

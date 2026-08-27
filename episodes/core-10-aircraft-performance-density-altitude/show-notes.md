@@ -1,8 +1,8 @@
 # Aircraft Performance and Density Altitude
 
 **Episode:** core-10
-**Version:** 0.1.2
-**Source verification:** Revised FAA/eCFR access and page-level mapping completed August 27, 2026; formal source-relevance validation remains pending.
+**Version:** 0.1.3
+**Source verification:** Revised FAA/eCFR access and page-level mapping completed August 27, 2026; formal source-relevance validation rerun remains pending.
 
 ## In this episode
 
@@ -13,7 +13,7 @@
 - How to read a POH or AFM performance chart from its title and conditions through its inputs and outputs.
 - How takeoff ground roll differs from total distance over an obstacle.
 - How climb angle differs from climb rate, and how climb fuel, time, and distance connect to cruise planning.
-- Why every leg needs its own performance inputs and landing is a distinct planning operation using arrival weather and landing weight.
+- Why a later flight needs its own current preflight information, while landing remains a distinct operation using arrival weather and landing weight.
 - How to account for the possible difference between calculated and actual performance without inventing an airplane-specific procedure.
 
 ## Study materials and visual aids
@@ -34,8 +34,11 @@
 | Pressure-altitude and density-altitude definitions | FAA guidance | [PHAK Chapter 11 — Pressure Altitude and Density Altitude](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3) | Pressure Altitude and Density Altitude, p. 11-3 | 2026-08-26 |
 | Moisture and air density | FAA guidance | [PHAK Chapter 11 — Effects of Humidity on Density](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5) | Effects of Humidity on Density, p. 11-5 | 2026-08-26 |
 | Angle of climb and rate of climb | FAA guidance | [PHAK Chapter 11 — Angle and Rate of Climb](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7) | Angle of Climb and Rate of Climb, p. 11-7 | 2026-08-26 |
+| Climb gradient and groundspeed | FAA guidance | [AIM — Climb-gradient conversion and groundspeed](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_4.html) | 5-4-21(b), Missed Approach: climb-gradient conversion | 2026-08-27 |
+| Wind and groundspeed | FAA guidance | [PHAK Chapter 8 — Groundspeed and wind](https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9) | Airspeed Indicator: Groundspeed, p. 8-9 | 2026-08-27 |
 | Weight, altitude, and configuration in climb | FAA guidance | [PHAK Chapter 11 — Climb Performance Factors](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8) | Climb Performance Factors, p. 11-8 | 2026-08-26 |
-| Runway surface and slope | FAA guidance | [PHAK Chapter 11 — Runway Surface and Gradient](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12) | Runway Surface and Gradient, pp. 11-12 to 11-13 | 2026-08-26 |
+| Runway surface | FAA guidance | [PHAK Chapter 11 — Runway Surface](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12) | Runway Surface, p. 11-12 | 2026-08-26 |
+| Runway slope effects | FAA guidance | [PHAK Chapter 11 — Runway Gradient](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13) | Runway Gradient, p. 11-13 | 2026-08-27 |
 | Takeoff weight and wind effects | FAA guidance | [PHAK Chapter 11 — Takeoff weight and wind](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15) | Takeoff Performance: gross weight and wind, p. 11-15 | 2026-08-26 |
 | Density altitude and takeoff inputs | FAA guidance | [PHAK Chapter 11 — Takeoff density-altitude effects](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16) | Density-altitude effect and primary takeoff considerations, p. 11-16 | 2026-08-26 |
 | Pre-takeoff prediction and density-altitude flight context | FAA guidance | [AFH Chapter 6 — Prior to Takeoff](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1) | Prior to Takeoff, p. 6-1 | 2026-08-27 |

@@ -1,0 +1,244 @@
+episode_id: "core-10"
+verification_date: "2026-08-26"
+verified_at_utc: "2026-08-27T01:33:11Z"
+sources:
+  - id: acs-performance-knowledge-risk
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.I.F.K1-K3 and R1-R3, Performance and Limitations, printed p. 6"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "Task F requires chart, table, and data use; factors including atmosphere, technique, configuration, airport environment, loading, weight and balance, and aerodynamics; and risk management for data use, limitations, and differences between calculated and actual performance."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [acs-performance-objective, acs-performance-factors, acs-calculated-actual-risk]
+
+  - id: acs-performance-skill
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.I.F.S2, Performance and Limitations, printed p. 7"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15"
+    revision: "April 2024; effective May 31, 2024"
+    relevance_excerpt: "The applicant uses the appropriate airplane performance charts, tables, and data."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [acs-use-appropriate-data]
+
+  - id: phak-performance-data-introduction
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Introduction and Importance of Performance Data, p. 11-1"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1"
+    revision: "2023 edition; Chapter 11 page updated July 10, 2023"
+    relevance_excerpt: "The AFM/POH performance or operational information section contains operating data for takeoff, climb, range, endurance, descent, and landing."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [afm-poh-primary-performance-data]
+
+  - id: phak-data-basis-and-density-effects
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, performance-data basis and air-density effects, p. 11-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2"
+    revision: "2023 edition"
+    relevance_excerpt: "Manufacturer performance presentation is not standardized and may use tables or graphs based on standard conditions, pressure altitude, or density altitude. Less-dense air reduces power, propeller thrust, and lift."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [performance-data-not-standardized, thin-air-reduces-performance]
+
+  - id: phak-pressure-density-altitude-definitions
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Pressure Altitude and Density Altitude, p. 11-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3"
+    revision: "2023 edition"
+    relevance_excerpt: "Pressure altitude is altitude in the standard atmosphere corresponding to sensed pressure when the altimeter is set to 29.92 inches of mercury. Density altitude is pressure altitude corrected for nonstandard temperature."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [pressure-altitude-definition, density-altitude-definition]
+
+  - id: phak-density-altitude-performance
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Density Altitude and Figure 11-4, p. 11-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4"
+    revision: "2023 edition"
+    relevance_excerpt: "Higher density altitude means lower air density and decreased performance. High elevation, low pressure, high temperature, and high humidity can produce high density altitude; the page provides a pressure-altitude and temperature chart."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [high-density-altitude-thin-air, density-altitude-inputs, high-density-altitude-factors]
+
+  - id: phak-humidity-density
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Effects of Humidity on Density, p. 11-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5"
+    revision: "2023 edition"
+    relevance_excerpt: "Water vapor is lighter than dry air, so increasing water content makes air less dense, increases density altitude, and decreases performance; humidity contributes even though it is usually not an essential density-altitude calculation input."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [humidity-contributes-to-density]
+
+  - id: phak-climb-angle-rate
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Angle of Climb and Rate of Climb, p. 11-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7"
+    revision: "2023 edition"
+    relevance_excerpt: "Angle of climb compares altitude gained with horizontal distance and supports obstacle clearance; rate of climb compares altitude gained with time."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [angle-rate-climb-distinction]
+
+  - id: phak-climb-performance-factors
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Climb Performance Factors, p. 11-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8"
+    revision: "2023 edition"
+    relevance_excerpt: "Weight, altitude, and configuration changes affect excess thrust and power. Increased weight, increased altitude, gear extension, or flap extension reduce maximum angle and rate of climb performance."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [climb-factors-change-margin]
+
+  - id: phak-runway-surface-gradient
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Runway Surface and Gradient, pp. 11-12 to 11-13"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12"
+    revision: "2023 edition"
+    relevance_excerpt: "Performance charts commonly assume paved, level, smooth, dry surfaces. Soft or obstructed surfaces can increase takeoff roll, surface condition affects braking, and runway slope changes takeoff acceleration and landing roll."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [runway-condition-matters, runway-slope-matters]
+
+  - id: phak-takeoff-weight-wind
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Takeoff Performance: gross weight and wind, p. 11-15"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15"
+    revision: "2023 edition"
+    relevance_excerpt: "Higher gross weight raises lift-off speed, increases the mass to accelerate, and increases drag and ground friction. A headwind permits lift-off speed at lower groundspeed, while a tailwind requires higher groundspeed."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [takeoff-weight-effects, takeoff-wind-groundspeed]
+
+  - id: phak-takeoff-density-inputs
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, density-altitude effect and primary takeoff considerations, p. 11-16"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16"
+    revision: "2023 edition"
+    relevance_excerpt: "Higher density altitude can increase true lift-off speed and reduce thrust and net acceleration. Primary takeoff-distance considerations include pressure altitude and temperature, gross weight, wind, and runway slope and condition."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [density-altitude-takeoff-effects, takeoff-chart-primary-inputs]
+
+  - id: phak-landing-performance-inputs
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Landing Performance, p. 11-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17"
+    revision: "2023 edition"
+    relevance_excerpt: "Landing distance changes with gross weight, density altitude, wind, runway slope and condition, and landing speed. Higher density altitude raises true speed for the same indicated speed and increases landing distance."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [landing-density-altitude-effect, landing-chart-primary-inputs]
+
+  - id: phak-performance-chart-boundaries
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Performance Charts and Figure 11-20, p. 11-19"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19"
+    revision: "2023 edition"
+    relevance_excerpt: "Manufacturer charts are based on flight-test conditions and contain conditions and notes. Aircraft condition, adverse conditions, technique, and chart-reading accuracy can make actual performance differ from chart results."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [chart-flight-test-basis, chart-conditions-notes, chart-accuracy-boundary]
+
+  - id: phak-interpolation-takeoff-charts
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Interpolation, Density Altitude Charts, and Takeoff Charts, p. 11-20"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20"
+    revision: "2023 edition"
+    relevance_excerpt: "Interpolation derives intermediate values from known chart values; pilots sometimes round to a more adverse value. Takeoff charts may provide ground roll and distance over a 50-foot obstacle for weight, altitude, temperature, wind, and obstacle height."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [interpolation-purpose, takeoff-outputs-distinct]
+
+  - id: phak-climb-cruise-charts
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Climb and Cruise Charts, p. 11-21"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21"
+    revision: "2023 edition"
+    relevance_excerpt: "Climb and cruise charts support cross-country planning; fuel, time, and distance-to-climb charts estimate the fuel used, time elapsed, and ground distance covered during climb."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [climb-chart-three-outputs]
+
+  - id: phak-range-endurance
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Range Performance: range and endurance distinction, p. 11-9"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9"
+    revision: "2023 edition"
+    relevance_excerpt: "Range concerns flying distance for fuel consumed, while endurance concerns flying time; the chapter defines separate specific-range and specific-endurance relationships."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [range-endurance-distinction]
+
+  - id: phak-cruise-performance-table
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Cruise and Range Performance and Figure 11-27, p. 11-24"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24"
+    revision: "2023 edition"
+    relevance_excerpt: "The sample cruise and range table supplies true airspeed, fuel consumption, endurance, and range for specific altitude, power, and configuration conditions."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [cruise-chart-outputs]
+
+  - id: phak-landing-charts
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft Performance"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 11, Landing Charts, p. 11-26"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26"
+    revision: "2023 edition"
+    relevance_excerpt: "Landing charts account for density altitude, airplane weight, and headwinds and may provide ground roll and distance over a 50-foot obstacle. Landing weight must be recalculated for fuel used during flight."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [landing-outputs-and-arrival-weight]
+
+  - id: cfr-preflight-performance
+    authority: regulation
+    title: "14 CFR § 91.103 — Preflight action"
+    document_id: "14 CFR 91.103"
+    locator: "§ 91.103 introductory text and paragraphs (b)(1)-(2)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-17/title-14.xml?part=91"
+    revision: "eCFR Title 14 current through August 17, 2026"
+    relevance_excerpt: "Before flight, the pilot in command must become familiar with available information, including intended-airport runway lengths and applicable takeoff and landing distance data or other reliable aircraft-appropriate performance information for expected elevation, slope, gross weight, wind, and temperature."
+    verified_at_utc: "2026-08-27T01:33:11Z"
+    link_status: 200
+    supports_claims: [preflight-runway-performance-information]

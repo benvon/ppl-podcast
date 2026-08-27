@@ -27,7 +27,7 @@
 5. Temperature, pressure, elevation, and humidity influence density. Basic chart or computer calculations commonly use pressure altitude and outside air temperature; humidity remains a contributing factor rather than a reason to invent an unsupported correction.
 6. A chart is a conditional model. Its title, configuration, assumptions, notes, units, and test basis control the meaning of its output.
 7. Takeoff planning needs the correct weight, pressure altitude and temperature, wind component, runway surface and slope, configuration, and the output that answers the runway or obstacle question.
-8. Climb planning distinguishes angle, which is altitude per ground distance, from rate, which is altitude per time. Weight, altitude, and configuration change both.
+8. Climb planning distinguishes angle, which is altitude gained per horizontal distance, from rate, which is altitude gained per time. Relating either result to distance over the ground and terrain or obstacles also requires the corresponding groundspeed, including wind effect. Weight, altitude, and configuration change climb performance.
 9. Cross-country planning carries climb time, fuel, and ground distance into the cruise plan.
 10. Landing planning is rebuilt for arrival temperature, pressure altitude, wind, surface, slope, and landing weight. Takeoff inputs cannot simply be reused.
 11. Calculated performance can differ from actual performance because the airplane, environment, technique, and chart reading may differ from the flight-test basis. The response is to preserve margin and choose lower-demand conditions early, not to treat a single computed value as certainty.
@@ -65,7 +65,7 @@
 - Long lists of similar outcomes, conditions, or controls that obscure the decision point.
 - Using “high, hot, and heavy” as a slogan instead of explaining pressure altitude, temperature, weight, and their separate effects.
 - Giving handbook sample numbers the sound of airplane-specific procedure or performance.
-- Treating humidity as a reason to improvise a correction not supplied by the intended airplane's approved data or planning method.
+- Treating humidity as a reason to improvise a correction not supplied by the intended airplane's POH or AFM performance data or planning method.
 - Repeating legal or instruction caveats after the required production notice.
 - Giving a universal numerical runway margin or correction factor not established by the intended airplane's data and the pilot's planning standard.
 - Letting the Announcer carry technical definitions or safety claims.
@@ -76,11 +76,11 @@
 - Does density altitude include humidity in its basic definition? PHAK defines density altitude as pressure altitude corrected for nonstandard temperature. It separately explains that humidity can lower air density and performance but is usually not treated as an essential input in basic density-altitude calculations. The script preserves that distinction.
 - Can the episode teach a generic POH sample chart? It can teach a read order and use FAA figures as visual examples, but no sample values or corrections are transferred to a particular airplane.
 - Should a fixed runway safety factor be taught? No. The sources do not establish one universal private-pilot factor. The script teaches comparison, sensitivity checks, and a deliberately chosen planning margin without inventing a number.
-- What regulatory detail changes the typical decision? Section 91.103 requires knowledge of intended-airport runway lengths and applicable takeoff and landing distance information. Broader performance regulation is not needed for this lesson.
+- What regulatory detail changes the typical decision? Section 91.103 requires knowledge of intended-airport runway lengths. When an approved flight manual containing takeoff and landing distance data is required, the pilot uses that data. For other civil aircraft, the pilot uses other reliable information appropriate to the aircraft and expected conditions named by the rule. Broader performance regulation is not needed for this lesson.
 
 ## Open review items
 
-- Independent spoken-script review by a non-drafting agent is pending for grammar, complete thoughts, callbacks and call-forwards, and first-listen comprehension.
+- Independent adversarial spoken-script review by a non-drafting agent was completed and its material findings were resolved in version 0.1.1.
 - Human editorial review and script approval are pending.
 - Deterministic source-link validation and required LLM source-relevance review are pending and must pass before any audio render.
-- No aircraft-specific performance example has been approved for public use; the draft intentionally remains at the general method level.
+- No aircraft-specific performance example has been selected for public use; the draft intentionally remains at the general method level.

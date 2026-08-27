@@ -22,3 +22,16 @@
 - No audio was rendered, staged, handed to hosting, or published. No release pull request was opened.
 - Formal deterministic and LLM source-relevance validation were not run because both are pre-render gates after independent editorial review and script approval.
 - Status: complete initial source-led draft. Independent spoken-script review by a non-drafting agent, human editorial review, formal source validation, and every audio and release gate remain pending.
+
+## 2026-08-26 — independent adversarial review resolved
+
+- Received and resolved the independent non-drafting review of first-listen clarity, source boundaries, complete thoughts, and series consistency.
+- Renamed the final lesson section and Announcer line from “Closing review” to the series-standard “Retrieval review.”
+- Replaced vague pressure references with the usable inputs: the altimeter setting used to determine pressure altitude, and the departure and arrival pressure-altitude inputs required by the applicable takeoff and landing charts.
+- Kept angle of climb as altitude gained per horizontal distance and rate of climb as altitude gained per time. Added the explicit planning connection that distance over the ground requires the corresponding groundspeed, including wind effect; added one reciprocal teaching-explanation claim to the existing PHAK climb source.
+- Clarified the two § 91.103 performance-information paths in plain language: use the takeoff and landing data in an approved flight manual when such a manual is required, and use other reliable aircraft-appropriate information for other civil aircraft.
+- Removed the displaced-threshold and declared-distance extension because it was outside the cited landing-chart source. Rephrased the remaining landing sensitivity check around airplane and pilot-technique differences from the chart's stated conditions and mapped that section to the existing performance-chart boundary claim.
+- Replaced broad or indirect wording about approved data, interpolation, planning margin, runway-versus-climb planning, and in-flight comparison with direct POH/AFM-centered language.
+- Changed the sensitivity example to the unambiguous “a smaller headwind—or a tailwind” condition.
+- Regenerated `narration.md` from the revised source-tagged master script. The reviewed narration contains 4,900 spoken words.
+- Preserved the ACS-centered structure, source set, 30-45 minute scope, and the no-render/no-publication gates. Human editorial approval, formal source-relevance validation, audio work, and release work remain pending.

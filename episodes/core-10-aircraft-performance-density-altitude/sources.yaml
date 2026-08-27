@@ -93,10 +93,10 @@ sources:
     locator: "Ch. 11, Angle of Climb and Rate of Climb, p. 11-7"
     url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7"
     revision: "2023 edition"
-    relevance_excerpt: "Angle of climb compares altitude gained with horizontal distance and supports obstacle clearance; rate of climb compares altitude gained with time."
+    relevance_excerpt: "Angle of climb compares altitude gained with horizontal distance over the surface, while rate of climb compares altitude gained with time; the accompanying example reports both elapsed time and ground distance for the two climb profiles."
     verified_at_utc: "2026-08-27T01:33:11Z"
     link_status: 200
-    supports_claims: [angle-rate-climb-distinction]
+    supports_claims: [angle-rate-climb-distinction, climb-ground-distance-planning]
 
   - id: phak-climb-performance-factors
     authority: faa_guidance

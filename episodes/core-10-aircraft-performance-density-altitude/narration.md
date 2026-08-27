@@ -43,7 +43,7 @@ So the examiner is not only looking for a density-altitude definition or one tak
 
 Correct. A definition and a calculation are parts of the task. The larger skill is building a traceable answer. You identify the airplane and the performance source. You identify the runway and the expected conditions. You select the chart that answers the actual question. You enter the inputs carefully, follow its notes, and compare the output with what is available. Then you ask how much confidence and margin the plan has if conditions or execution are less favorable than expected.
 
-That same practical question appears in the preflight-action rule. Before beginning a flight, section 91.103 requires the pilot in command to become familiar with available information concerning that flight. For any flight, that includes runway lengths at airports of intended use and the applicable takeoff and landing distance data, or other reliable performance information appropriate to the aircraft and expected conditions described by the rule.
+That same practical question appears in the preflight-action rule. Before beginning a flight, section 91.103 requires the pilot in command to become familiar with available information concerning that flight. For any flight, that includes runway lengths at airports of intended use. If the airplane is required to have an approved flight manual containing takeoff and landing distance data, use that manual's data. For other civil aircraft, use other reliable performance information appropriate to that aircraft and the expected airport elevation, runway slope, gross weight, wind, and temperature.
 
 **LEARNER:**
 
@@ -127,7 +127,7 @@ Yes. Correct pressure altitude for the difference between actual temperature and
 
 PHAK Figure 11-4, linked in the show notes as “Density altitude chart and explanation,” makes that relationship visible. You enter with outside air temperature, move to the pressure-altitude line, and read density altitude. A flight computer can perform the same basic calculation from pressure altitude and outside air temperature.
 
-The practical habit is to preserve the inputs. Record the pressure source, the expected outside air temperature, and the time those values represent. A density-altitude result without traceable inputs can look precise while answering the wrong part of the day.
+The practical habit is to preserve the inputs. Record the altimeter setting used to determine pressure altitude, the expected outside air temperature, and the time those values represent. A density-altitude result without traceable inputs can look precise while answering the wrong part of the day.
 
 ## [11:15] Temperature and moisture change density
 
@@ -147,7 +147,7 @@ Humidity is in that list, but the basic density-altitude calculation usually ask
 
 You are following the basic method PHAK describes. Water vapor is lighter than the dry-air mixture it replaces, so increasing moisture makes the air less dense and can reduce performance. PHAK also says humidity alone is usually not treated as an essential factor in calculating density altitude, although it contributes and high humidity can decrease overall performance.
 
-Do not invent a humidity correction that the airplane's data does not provide. Recognize moisture as one more reason the atmosphere may be less favorable than a simple dry-air model suggests. Then use the POH or AFM method and any instructions that accompany the approved performance data.
+Do not invent a humidity correction that the airplane's data does not provide. Recognize moisture as one more reason the atmosphere may be less favorable than a simple dry-air model suggests. Then use the POH or AFM method and the instructions that accompany that airplane's performance data.
 
 **LEARNER:**
 
@@ -209,7 +209,7 @@ What if my temperature or altitude falls between the printed values?
 
 **INSTRUCTOR:**
 
-Use the method the chart specifies. PHAK defines interpolation as using known values to estimate an intermediate value. Its sample takes values on either side of the desired pressure altitude and finds the value between them. PHAK also notes that pilots sometimes use a slightly more adverse printed value to obtain a conservative estimate. Neither idea authorizes extending a chart beyond its published range or improvising a method that conflicts with the manufacturer's directions.
+Use the method the chart specifies. PHAK defines interpolation as using known values to estimate an intermediate value. Its sample takes values on either side of the desired pressure altitude and finds the value between them. PHAK also notes that pilots sometimes use a slightly more adverse printed value to obtain a conservative estimate. Stay within the chart's published range and follow the manufacturer's directions for values between entries.
 
 Finally, make the result easy to audit. Write down the chart name, revision or page, inputs, corrections, and final output. If an electronic tool supplies the answer, confirm its airplane profile and inputs, then compare the displayed result with the POH or AFM method until you understand what the tool has done.
 
@@ -223,11 +223,11 @@ Build the takeoff picture.
 
 Begin with the runway question. What is the takeoff distance available in the intended direction? Is there an obstacle or departure path that makes the total distance to clear an obstacle the relevant output? What are the surface and slope? What wind component is expected along that runway?
 
-Section 91.103 requires runway lengths and applicable takeoff and landing performance information before flight. The regulation names expected airport elevation, runway slope, gross weight, wind, and temperature among the relevant conditions when other reliable aircraft-appropriate information is used. The POH or AFM may require additional inputs or define them differently, so the chart still controls the calculation.
+Section 91.103 requires runway lengths and applicable takeoff and landing performance information before flight. When an approved flight manual with takeoff and landing distance data is required, use the data in that manual. For other civil aircraft, the rule calls for other reliable information appropriate to the aircraft and expected airport elevation, runway slope, gross weight, wind, and temperature. In either path, use the airplane-specific chart and the inputs it requires.
 
-Next, determine the expected takeoff weight from the loading plan. Weight matters in several ways. PHAK explains that higher weight requires a higher lift-off speed, adds mass that must be accelerated, and increases retarding forces such as drag and ground friction. A legal weight does not tell you that the runway or climb margin is adequate. Weight remains a performance input inside the approved loading limits.
+Next, determine the expected takeoff weight from the loading plan. Weight matters in several ways. PHAK explains that higher weight requires a higher lift-off speed, adds mass that must be accelerated, and increases retarding forces such as drag and ground friction. A legal weight does not tell you that the runway or climb margin is adequate. Weight remains a performance input inside the POH or AFM loading limits.
 
-Then determine pressure altitude and temperature, or density altitude if that is what the chart requests. Use the expected conditions for takeoff time, not a convenient observation from hours earlier. Enter the wind in the form the chart specifies. A headwind allows the airplane to reach the required airspeed at a lower groundspeed. A tailwind requires a higher groundspeed. Because chart corrections differ, apply only the wind adjustment given by the actual airplane's data.
+Then use the expected departure altimeter setting and airport elevation to determine the takeoff pressure-altitude input the chart requires, and record the expected temperature. If the chart requests density altitude directly, calculate it with the method the airplane's performance information specifies. Use the expected conditions for takeoff time, not a convenient observation from hours earlier. Enter the wind in the form the chart specifies. A headwind allows the airplane to reach the required airspeed at a lower groundspeed. A tailwind requires a higher groundspeed. Because chart corrections differ, apply only the wind adjustment given by the actual airplane's data.
 
 **LEARNER:**
 
@@ -259,7 +259,7 @@ Climb is distance and time.
 
 Takeoff distance answers how the airplane reaches liftoff and an initial height. Climb performance answers what happens after that. Two measures are especially important, and their names describe different comparisons.
 
-Angle of climb compares altitude gained with horizontal distance traveled. It matters when the question is clearing an obstacle or gaining height within limited ground distance. Rate of climb compares altitude gained with time. It matters when the question is how quickly the airplane can reach an altitude.
+Angle of climb compares altitude gained with horizontal distance traveled. Rate of climb compares altitude gained with time. The first describes the flight-path relationship; the second describes how quickly altitude increases.
 
 **LEARNER:**
 
@@ -271,7 +271,7 @@ Correct. The POH or AFM supplies the airplane-specific speeds, configurations, a
 
 The atmosphere, weight, and configuration affect both angle and rate. PHAK explains that increased weight raises drag and power required. Increased altitude reduces power available from a normally aspirated engine. Extending gear or flaps can add drag. Each change reduces the excess thrust or power that supports climb.
 
-Build the climb estimate from the takeoff condition. Use the actual takeoff weight, pressure altitude or density-altitude inputs required by the chart, expected temperature, and specified configuration. If terrain or an obstacle drives the question, determine whether the available chart actually answers the horizontal-distance problem. A rate-of-climb number alone does not give ground distance without time and groundspeed information.
+Build the climb estimate from the takeoff condition. Use the actual takeoff weight, the pressure-altitude or density-altitude input required by the chart, expected temperature, and specified configuration. If terrain or an obstacle drives the question, determine whether the available chart actually answers the horizontal-distance problem. Relating a climb result to distance over the ground requires the corresponding groundspeed, including the effect of wind. A rate-of-climb number alone does not supply that ground distance.
 
 **LEARNER:**
 
@@ -279,7 +279,7 @@ So a good takeoff-distance result can still lead to an unacceptable plan if clim
 
 **INSTRUCTOR:**
 
-Yes. Runway fit and climb fit are connected but separate. The airplane may become airborne within the pavement and still have little climb margin for terrain, obstacles, rising ground, or a high cruise altitude. Complete both questions while the choices are still available on the ground.
+Yes. Takeoff distance and climb performance are connected but separate planning questions. The airplane may become airborne within the pavement and still have little climb margin for terrain, obstacles, rising ground, or a high cruise altitude. Complete both questions while the choices are still available on the ground.
 
 ## [27:45] Plan cruise and the climb to it
 
@@ -317,7 +317,7 @@ Do not copy the takeoff calculation and change the chart title. Landing occurs a
 
 Start with landing weight. PHAK's landing-chart discussion says landing weight is not the same as takeoff weight and should be recalculated for fuel used during the flight. If passengers, baggage, or fuel change between legs, use the loading plan for the landing being evaluated.
 
-Next, determine expected pressure altitude and temperature at the destination, the wind component for the intended runway, runway slope and surface condition, and the landing configuration required by the chart. PHAK identifies those as primary landing-distance considerations.
+Next, use the expected destination altimeter setting and airport elevation to determine the arrival pressure-altitude input the chart requires. Record the expected arrival temperature, wind component for the intended runway, runway slope and surface condition, and the landing configuration required by the chart. PHAK identifies those as primary landing-distance considerations.
 
 Higher density altitude can increase landing distance even when the indicated approach or landing speed prescribed by the airplane information has not changed. In less-dense air, the same indicated speed corresponds to a higher true airspeed. With the same wind, that means a higher groundspeed and more energy to dissipate after touchdown.
 
@@ -327,13 +327,13 @@ Landing charts also separate ground roll from distance over a 50-foot obstacle, 
 
 **INSTRUCTOR:**
 
-Yes. The total-distance figure includes the airborne path from the stated obstacle height and the ground roll under the chart's assumptions. The ground-roll figure begins at touchdown. Select the output that matches the available runway and obstacle question. Then account for displaced thresholds, declared distances, or other runway information through the current airport data and the planning method you have been taught.
+Yes. The total-distance figure includes the airborne path from the stated obstacle height and the ground roll under the chart's assumptions. The ground-roll figure begins at touchdown. Select the output that matches the available runway and obstacle question.
 
 Surface and slope matter again, but their effects reverse in important ways. An upsloping runway generally impedes takeoff acceleration and can shorten landing roll. A downsloping runway can help takeoff acceleration and increase landing roll. Water, snow, ice, soft ground, or poor braking can make a dry-paved-runway chart assumption a poor match for the runway that exists.
 
 Wind must be rebuilt too. A runway that had a headwind at departure may have a tailwind at arrival, or the intended runway may change. Apply the actual chart's wind correction. Do not assume a headwind credit and tailwind penalty are mirror images, and do not treat a forecast headwind as guaranteed margin.
 
-Finally, compare the result with landing distance available and with the margin chosen for the operation. Ask what happens if arrival is warmer, the wind shifts, the runway is wet, or the approach is not stabilized to the conditions assumed by the data. If the plan depends on every input remaining at its most favorable value, identify a longer runway, a different time, or another airport before the flight narrows the choices.
+Finally, compare the result with landing distance available and with the margin chosen for the operation. Ask what happens if arrival is warmer, the wind shifts, the runway is wet, or the airplane and pilot technique do not match the chart's stated conditions. If the plan depends on every input remaining at its most favorable value, identify a longer runway, a different time, or another airport before the flight narrows the choices.
 
 ## [34:15] Calculated performance is a starting point
 
@@ -355,11 +355,11 @@ How do I turn that uncertainty into a decision without making up a universal cor
 
 **INSTRUCTOR:**
 
-Use a deliberate margin established with your instructor, school, operator, or personal-minimum process, and do not present it as a number the manufacturer guarantees. Then run sensitivity checks. Recalculate with the plausible warmer temperature, higher weight, smaller headwind or tailwind, and runway condition you may actually encounter. Check both takeoff and landing, and check climb where terrain or obstacles matter.
+Choose a deliberate planning margin with your instructor, school, operator, or personal-minimum process. Treat it as your planning standard, not as a number the manufacturer guarantees. Then run sensitivity checks. Recalculate with a plausible warmer temperature, higher weight, a smaller headwind—or a tailwind—and the runway condition you may actually encounter. Check both takeoff and landing, and check climb where terrain or obstacles matter.
 
 If a small change removes the margin, the plan is fragile. Change something that reduces the performance demand while you still can. Remove allowable load while preserving the fuel plan, depart during cooler conditions, select a longer or more favorable runway, choose another airport, or delay the flight. The appropriate choice comes from the actual airplane, route, weather, and operational constraints.
 
-During flight instruction, practice comparing the planned cues with the airplane's actual acceleration and climb while following the POH or AFM and your instructor's procedures. That connects the preflight numbers with what you will recognize in the airplane without inventing a generic abort point or aircraft-specific technique here.
+During flight instruction, practice comparing the expected takeoff acceleration and climb performance with what the airplane actually produces while following the POH or AFM and your instructor's procedures. That connects the preflight numbers with what you will recognize in the airplane without inventing a generic abort point or aircraft-specific technique here.
 
 ## [37:05] A repeatable planning flow
 
@@ -373,7 +373,7 @@ Here is the complete sequence.
 
 First, identify the intended airplane and its current POH or AFM performance information. Confirm the model, configuration, chart title, revision or page, conditions, notes, and units.
 
-Second, build the flight-specific inputs. Use takeoff and landing weights from the loading plan. Obtain the expected pressure and temperature for departure and arrival. Determine the intended runway lengths, wind components, surface, slope, and relevant obstacle or terrain question. Include the airplane configuration and technique specified by each chart.
+Second, build the flight-specific inputs. Use takeoff and landing weights from the loading plan. Record the expected departure and arrival altimeter settings, determine the pressure-altitude inputs the takeoff and landing charts require, and record the corresponding temperatures. Determine the intended runway lengths, wind components, surface, slope, and relevant obstacle or terrain question. Include the airplane configuration and technique specified by each chart.
 
 Third, calculate the outputs that answer the question. For takeoff, distinguish ground roll from total obstacle-clearance distance. For climb, distinguish altitude per ground distance from altitude per time, and include time, fuel, and distance to climb when the cross-country plan needs them. For landing, use expected landing weight and arrival conditions, then distinguish ground roll from total obstacle-clearance distance.
 
@@ -391,11 +391,11 @@ That sounds less like one calculation and more like a chain of evidence.
 
 It is. The airplane document tells you what the performance model expects. Weather, loading, and airport information supply the inputs. The calculation supplies an estimate. The comparison and sensitivity check turn that estimate into a decision.
 
-## [40:10] Closing review
+## [40:10] Retrieval review
 
 **ANNOUNCER:**
 
-Closing review.
+Retrieval review.
 
 **INSTRUCTOR:**
 

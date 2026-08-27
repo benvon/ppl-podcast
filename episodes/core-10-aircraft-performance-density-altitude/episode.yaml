@@ -3,12 +3,12 @@ series: ppl-study-podcast
 title: "Aircraft Performance and Density Altitude"
 slug: "aircraft-performance-density-altitude"
 track: "core"
-status: initial_draft
-version: 0.1.0
+status: reviewed_draft
+version: 0.1.1
 published_at: null
 runtime_target_minutes: 40
 runtime_actual_seconds: null
-word_count: 4830
+word_count: 4900
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
@@ -44,13 +44,12 @@ source_verification:
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: required_before_render
 review:
-  editorial_status: initial_draft_independent_review_pending
+  editorial_status: independent_review_complete_human_editorial_pending
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete independent spoken-script review by a non-drafting agent and resolve material findings"
   - "Complete human editorial review and approve the script"
   - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter check"

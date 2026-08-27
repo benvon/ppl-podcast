@@ -1,8 +1,8 @@
 # Aircraft Performance and Density Altitude
 
 **Episode:** core-10
-**Version:** 0.1.1
-**Source verification:** Initial FAA/eCFR access and page-level mapping completed August 26, 2026; formal source-relevance validation remains pending.
+**Version:** 0.1.2
+**Source verification:** Revised FAA/eCFR access and page-level mapping completed August 27, 2026; formal source-relevance validation remains pending.
 
 ## In this episode
 
@@ -13,7 +13,7 @@
 - How to read a POH or AFM performance chart from its title and conditions through its inputs and outputs.
 - How takeoff ground roll differs from total distance over an obstacle.
 - How climb angle differs from climb rate, and how climb fuel, time, and distance connect to cruise planning.
-- Why landing performance must be rebuilt with arrival weather and landing weight.
+- Why every leg needs its own performance inputs and landing is a distinct planning operation using arrival weather and landing weight.
 - How to account for the possible difference between calculated and actual performance without inventing an airplane-specific procedure.
 
 ## Study materials and visual aids
@@ -28,6 +28,7 @@
 | Topic | Source type | Authoritative source | Locator | Verified |
 | --- | --- | --- | --- | --- |
 | Appropriate airplane performance data | FAA regulatory standard | [Private Pilot ACS — Performance and Limitations skill](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15) | PA.I.F.S2, printed p. 7 | 2026-08-26 |
+| Identifying the applicable POH or AFM | FAA guidance | [PHAK Chapter 9 — AFM/POH and preliminary pages](https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2) | AFM/POH and Preliminary Pages, p. 9-2 | 2026-08-27 |
 | POH or AFM performance-data scope | FAA guidance | [PHAK Chapter 11 — Importance of Performance Data](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1) | Introduction and Importance of Performance Data, p. 11-1 | 2026-08-26 |
 | Chart formats and thin-air effects | FAA guidance | [PHAK Chapter 11 — Data basis and air-density effects](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2) | Performance-data basis and air-density effects, p. 11-2 | 2026-08-26 |
 | Pressure-altitude and density-altitude definitions | FAA guidance | [PHAK Chapter 11 — Pressure Altitude and Density Altitude](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3) | Pressure Altitude and Density Altitude, p. 11-3 | 2026-08-26 |
@@ -37,11 +38,13 @@
 | Runway surface and slope | FAA guidance | [PHAK Chapter 11 — Runway Surface and Gradient](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12) | Runway Surface and Gradient, pp. 11-12 to 11-13 | 2026-08-26 |
 | Takeoff weight and wind effects | FAA guidance | [PHAK Chapter 11 — Takeoff weight and wind](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15) | Takeoff Performance: gross weight and wind, p. 11-15 | 2026-08-26 |
 | Density altitude and takeoff inputs | FAA guidance | [PHAK Chapter 11 — Takeoff density-altitude effects](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16) | Density-altitude effect and primary takeoff considerations, p. 11-16 | 2026-08-26 |
+| Pre-takeoff prediction and density-altitude flight context | FAA guidance | [AFH Chapter 6 — Prior to Takeoff](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1) | Prior to Takeoff, p. 6-1 | 2026-08-27 |
 | Landing-distance inputs and density altitude | FAA guidance | [PHAK Chapter 11 — Landing Performance](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17) | Landing Performance, p. 11-17 | 2026-08-26 |
 | Climb fuel, time, and distance | FAA guidance | [PHAK Chapter 11 — Climb and Cruise Charts](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21) | Climb and Cruise Charts, p. 11-21 | 2026-08-26 |
 | Range and endurance | FAA guidance | [PHAK Chapter 11 — Range and Endurance](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9) | Range Performance, p. 11-9 | 2026-08-26 |
 | Cruise speed, fuel consumption, endurance, and range | FAA guidance | [PHAK Chapter 11 — Cruise and Range Performance](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24) | Cruise and Range Performance and Figure 11-27, p. 11-24 | 2026-08-26 |
 | Landing charts and landing weight | FAA guidance | [PHAK Chapter 11 — Landing Charts](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26) | Landing Charts, p. 11-26 | 2026-08-26 |
+| Airplane-specific landing information | FAA guidance | [AFH Chapter 9 — Approaches and Landings](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1) | Introduction, p. 9-1 | 2026-08-27 |
 | Preflight runway and performance information | Regulation | [14 CFR § 91.103](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103) | Introductory text and paragraphs (b)(1)-(2) | 2026-08-26 |
 
 ## Correction status

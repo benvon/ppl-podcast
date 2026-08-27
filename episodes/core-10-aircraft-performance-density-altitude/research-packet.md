@@ -5,6 +5,7 @@
 - Audience: U.S. private-pilot airplane learners preparing to explain and use performance information on a knowledge test, oral evaluation, and ordinary preflight plan.
 - Target duration: approximately 40 minutes, within the series' 30-45 minute range.
 - Core question: How does a pilot turn expected atmosphere, airplane, runway, and loading conditions into a supportable takeoff, climb, cruise, and landing plan using the intended airplane's POH or AFM?
+- Source roles: PHAK Chapter 11 remains the conceptual teaching spine. AFH Chapters 6 and 9 provide complementary flight context for applying predicted performance to takeoff, climb, and landing without supplying maneuver instruction.
 - Out of scope: aircraft-specific speeds and procedures; transport-category accelerate-stop or engine-out requirements; obstacle-departure procedure design; manufacturer-specific electronic flight-bag workflows; generic numerical safety factors presented as universal rules; and a complete weather-observation lesson.
 
 ## ACS and knowledge mapping
@@ -17,20 +18,23 @@
 | Manage chart-use, limitation, and calculated-versus-actual risk | FAA-S-ACS-6C, PA.I.F.R1-R3, printed p. 6 | Separates a chart result from a guarantee and introduces sensitivity checks and lower-demand choices. |
 | Use appropriate airplane performance information | FAA-S-ACS-6C, PA.I.F.S2, printed p. 7 | Keeps the airplane's current POH or AFM as the controlling source; PHAK charts remain teaching examples only. |
 | Know intended runway lengths and applicable performance information before flight | 14 CFR § 91.103 introductory text and (b)(1)-(2) | Connects the study workflow to the pilot in command's preflight information duty without turning the episode into a regulatory recital. |
+| Identify whether the training airplane's POH contains its FAA-approved flight-manual information | PHAK Ch. 9, AFM/POH and Preliminary Pages, p. 9-2 | Directs the learner to the actual POH/AFM title and preliminary pages, then to instructor or operator confirmation, rather than asking the learner to interpret “civil aircraft.” |
+| Connect predicted takeoff and climb performance to the flight | AFH Ch. 6, Prior to Takeoff, p. 6-1 | Supports checking the actual POH/AFM performance charts before going to the airplane and deciding whether predicted takeoff and climb are adequate for the conditions and location. |
+| Keep landing information airplane-specific | AFH Ch. 9, Introduction, p. 9-1 | Establishes that manufacturer-recommended landing configuration, airspeeds, and related information in the AFM/POH control over general handbook discussion. |
 
 ## Source-led teaching chain
 
 1. The ACS asks for connected use of data, airplane and runway variables, risk management, and actual-airplane performance information.
-2. PHAK Chapter 11 identifies the AFM/POH performance section as the source of takeoff, climb, range, endurance, descent, and landing data, while warning that formats and data bases are not standardized.
+2. PHAK Chapter 11 identifies the AFM/POH performance section as the source of takeoff, climb, range, endurance, descent, and landing data, while warning that formats and data bases are not standardized. PHAK Chapter 9 explains how the learner identifies the applicable POH/AFM status from the actual airplane's documentation.
 3. Pressure altitude provides the pressure reference. Correcting it for nonstandard temperature produces density altitude.
 4. High density altitude means thin air. Lower density reduces normally aspirated engine power, propeller thrust, and wing lift; the practical outputs appear in the actual airplane's charts.
 5. Temperature, pressure, elevation, and humidity influence density. Basic chart or computer calculations commonly use pressure altitude and outside air temperature; humidity remains a contributing factor rather than a reason to invent an unsupported correction.
 6. A chart is a conditional model. Its title, configuration, assumptions, notes, units, and test basis control the meaning of its output.
-7. Takeoff planning needs the correct weight, pressure altitude and temperature, wind component, runway surface and slope, configuration, and the output that answers the runway or obstacle question.
+7. AFH Chapter 6 connects the model to flight context: before going to the airplane, predict takeoff and climb with the POH/AFM charts and decide whether the airplane is capable for the conditions and location. Takeoff planning needs the correct weight, pressure altitude and temperature, wind component, runway surface and slope, configuration, and the output that answers the runway or obstacle question.
 8. Climb planning distinguishes angle, which is altitude gained per horizontal distance, from rate, which is altitude gained per time. Relating either result to distance over the ground and terrain or obstacles also requires the corresponding groundspeed, including wind effect. Weight, altitude, and configuration change climb performance.
-9. Cross-country planning carries climb time, fuel, and ground distance into the cruise plan.
-10. Landing planning is rebuilt for arrival temperature, pressure altitude, wind, surface, slope, and landing weight. Takeoff inputs cannot simply be reused.
-11. Calculated performance can differ from actual performance because the airplane, environment, technique, and chart reading may differ from the flight-test basis. The response is to preserve margin and choose lower-demand conditions early, not to treat a single computed value as certainty.
+9. Multi-leg performance planning treats each leg as its own flight. Cross-country planning carries climb time, fuel, and ground distance into the cruise plan, and fuel use changes the landing weight for that leg.
+10. Landing is a distinct planning operation using the actual airplane's landing-distance chart, arrival temperature and pressure altitude, expected landing weight, landing-runway wind, surface, slope, and landing-specific output. AFH Chapter 9 keeps configuration, airspeeds, and technique tied to the manufacturer information rather than generic maneuver instruction.
+11. Calculated performance is a disciplined estimate, made as strong as the airplane data and flight-specific inputs allow, but not a guarantee. Actual performance can differ because the airplane, environment, technique, and chart reading may differ from the flight-test basis. The response is to preserve margin and choose lower-demand conditions early.
 
 ## Likely trouble spots
 
@@ -53,8 +57,11 @@
   - Correction: angle compares altitude with horizontal distance; rate compares altitude with time.
   - Source: PHAK Chapter 11, p. 11-7.
 - Misconception: landing uses the departure weight and weather.
-  - Correction: rebuild the landing calculation for arrival conditions and expected landing weight after fuel use.
+  - Correction: treat landing as its own planning operation using the landing-distance chart, arrival conditions, and expected landing weight after fuel use.
   - Source: PHAK Chapter 11, pp. 11-17 and 11-26.
+- Misconception: one performance calculation covers every leg of a trip.
+  - Correction: rebuild each leg with its own loading, runway, weather, takeoff weight, and expected landing weight.
+  - Source: PHAK Chapter 11, pp. 11-1, 11-17, and 11-26.
 - Misconception: a computed distance is what the airplane will achieve.
   - Correction: the result is an estimate tied to the chart's stated airplane, environment, and technique. The ACS explicitly calls out possible calculated-versus-actual differences.
   - Source: FAA-S-ACS-6C PA.I.F.R3 and PHAK Chapter 11, p. 11-19.
@@ -76,11 +83,12 @@
 - Does density altitude include humidity in its basic definition? PHAK defines density altitude as pressure altitude corrected for nonstandard temperature. It separately explains that humidity can lower air density and performance but is usually not treated as an essential input in basic density-altitude calculations. The script preserves that distinction.
 - Can the episode teach a generic POH sample chart? It can teach a read order and use FAA figures as visual examples, but no sample values or corrections are transferred to a particular airplane.
 - Should a fixed runway safety factor be taught? No. The sources do not establish one universal private-pilot factor. The script teaches comparison, sensitivity checks, and a deliberately chosen planning margin without inventing a number.
-- What regulatory detail changes the typical decision? Section 91.103 requires knowledge of intended-airport runway lengths. When an approved flight manual containing takeoff and landing distance data is required, the pilot uses that data. For other civil aircraft, the pilot uses other reliable information appropriate to the aircraft and expected conditions named by the rule. Broader performance regulation is not needed for this lesson.
+- How does a typical learner determine which § 91.103 performance-information path applies? Start with the actual airplane's POH, AFM, and aircraft documentation. PHAK Chapter 9 says the POH for most light airplanes built after 1975 is also designated as the FAA-approved flight manual, and its title or preliminary pages identify approval status and airplane applicability. Confirm those pages with the instructor or operator. If the required approved flight manual contains takeoff and landing data, use them; otherwise use reliable information appropriate to the airplane and conditions named by the rule. Broader aircraft-category distinctions are not needed for this lesson.
+- Why add the AFH without changing the source spine? PHAK Chapter 11 remains the conceptual source for performance relationships and chart use. AFH Chapter 6 supplies the pre-takeoff connection between predicted performance and the actual flight, while AFH Chapter 9 reinforces that landing configuration, speeds, and technique remain manufacturer-specific.
 
 ## Open review items
 
-- Independent adversarial spoken-script review by a non-drafting agent was completed and its material findings were resolved in version 0.1.1.
+- Independent adversarial spoken-script review by a non-drafting agent was completed and its material findings were resolved in version 0.1.1. Version 0.1.2 preserves subsequent user edits and resolves the focused first-listen, AFH flight-context, multi-leg, landing-operation, and estimate-versus-guarantee review.
 - Human editorial review and script approval are pending.
 - Deterministic source-link validation and required LLM source-relevance review are pending and must pass before any audio render.
 - No aircraft-specific performance example has been selected for public use; the draft intentionally remains at the general method level.

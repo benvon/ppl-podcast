@@ -5,6 +5,7 @@
 - [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
 - [x] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
 - [x] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
+- [x] PHAK remains the conceptual teaching spine; complementary AFH Chapter 6 and Chapter 9 claims use exact pages and connect planning to flight context without adding maneuver instruction.
 - [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
 - [x] Before any audio render, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package.
 - [x] Before any audio render, show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.

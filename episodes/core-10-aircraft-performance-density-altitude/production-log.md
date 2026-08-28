@@ -21,6 +21,15 @@
 - Generated `narration.md` from the source-tagged `master-script.md` with the repository derivation tool. Completed episode and hosting metadata, show notes and reciprocal manifest, the research packet, QA state, and the not-rendered audio manifest.
 - No audio was rendered, staged, handed to hosting, or published. No release pull request was opened.
 
+## 2026-08-28 — human editorial approval
+
+- The user approved the Core 10 `master-script.md` at version 0.1.5. The human editorial gate is complete. The focused revision added or changed source-validation inputs, so a fresh full source-link and LLM relevance review remains the next pre-render gate.
+
+## 2026-08-28 — source-relevance review refreshed
+
+- The source validator passed the approved version 0.1.5 package: all 56 deterministic source/show-note checks and all 28 LLM relevance assessments support their mapped claims. The report replaces the earlier version 0.1.4 result and records the exact source and show-note input hashes.
+- The source-relevance pre-render gate is complete. No audio has been rendered, staged, handed to hosting, or published.
+
 ## 2026-08-28 — formal source-relevance validation complete
 
 - Replaced the whole AIM Chapter 5 HTML citation with the exact FAA PDF page containing §5-4-21(b), so the validator supplies the cited climb-gradient passage rather than an unrelated beginning-of-chapter excerpt. Added a 50 MB bounded retrieval path only for a specifically cited PDF page; the general source and eCFR limits are unchanged. A regression test covers the larger page-citation boundary.

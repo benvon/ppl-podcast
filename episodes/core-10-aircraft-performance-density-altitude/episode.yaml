@@ -48,19 +48,18 @@ trouble_spots:
   - "Treating landing planning as a reversal of takeoff planning instead of using the landing chart, arrival conditions, and landing-specific risks."
   - "Treating a calculated distance as a guarantee instead of an estimate tied to stated conditions and technique."
 source_verification:
-  status: revision_source_mapping_complete
-  verified_at_utc: "2026-08-28T14:25:12Z"
+  status: source_relevance_complete
+  verified_at_utc: "2026-08-28T14:37:52Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: required_before_render
+  relevance_review: complete
 review:
-  editorial_status: independent_review_complete_human_editorial_pending
+  editorial_status: script_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human editorial review and approve the script"
   - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"

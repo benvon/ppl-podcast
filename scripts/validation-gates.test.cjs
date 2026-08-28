@@ -340,6 +340,21 @@ test("PDF page extraction reads only the page named by the citation", async () =
   assert.equal(text, "Load Factors in Steep Turns");
 });
 
+test("PDF page citations can use the bounded large-document limit", async () => {
+  const link = await fetchSource("https://www.faa.gov/example.pdf#page=448", {
+    includePdfBytes: true,
+    maxBytes: 50_000_000,
+    fetchImpl: async () => ({
+      status: 200,
+      headers: new Headers({ "content-type": "application/pdf", "content-length": "41049516" }),
+      body: new ReadableStream({ start(controller) { controller.enqueue(new Uint8Array([1])); controller.close(); } }),
+    }),
+  });
+
+  assert.deepEqual(link.pdf_bytes, Buffer.from([1]));
+  assert.equal(link.truncated, false);
+});
+
 test("PDF page extraction is cancelled and destroys the pending loading task", async () => {
   const controller = new AbortController(); let destroyed = false; let started;
   const startedPromise = new Promise((resolve) => { started = resolve; });

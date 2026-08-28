@@ -100,7 +100,7 @@ Yes, for the general reasoning. The book gives useful examples of tables, graphs
 
 That distinction prevents a subtle error. Two airplanes can look similar, and two charts can use the same labels, yet their tested configurations, speeds, correction notes, or output definitions can differ. Appropriate performance data means the correct document and the correct chart inside that document, not merely a familiar-looking chart.
 
-If an itinerary includes another departure after landing, do not carry the first flight's performance result forward. Before beginning that later flight, section 91.103 again requires the pilot in command to become familiar with available information concerning that flight. Build its performance plan from the airplane's loading, runway, and expected conditions for that departure.
+If an itinerary includes another departure after landing, treat it as a new performance-planning question. Before beginning that later flight, section 91.103 again requires the pilot in command to become familiar with available information concerning that flight. Build its performance plan from the airplane's loading, runway, and expected conditions for that departure.
 
 [Source: sources.yaml#cfr-preflight-performance]
 [Claim type: Regulation]
@@ -213,12 +213,12 @@ Why thinner air changes takeoff and climb.
 
 **INSTRUCTOR:**
 
-The PHAK identifies three direct effects as air becomes less dense. A normally aspirated engine takes in less air and produces less power. A propeller working in thin air produces less thrust. The wing also experiences less aerodynamic force at a given true speed and angle of attack.
+The PHAK identifies three direct effects as air becomes less dense. The engine takes in less air and produces less power. A propeller working in thin air produces less thrust. The wing also experiences less aerodynamic force at a given true speed and angle of attack.
 
 [Source: sources.yaml#phak-data-basis-and-density-effects]
 [Claim type: FAA guidance]
 
-Picture the airplane at the start of the takeoff roll. In thinner air, its normally aspirated engine produces less power and its propeller produces less thrust, so acceleration is weaker. The wing still has to reach the aerodynamic condition needed for liftoff. That condition now occurs at a higher true airspeed and, with the same wind, a higher groundspeed. More runway is needed to reach liftoff, and less excess thrust or power remains for climb.
+Picture the airplane at the start of the takeoff roll. In thinner air, its engine produces less power and its propeller produces less thrust, so acceleration is weaker. The wing still has to reach the aerodynamic condition needed for liftoff. That condition now occurs at a higher true airspeed and, with the same wind, a higher groundspeed. More runway is needed to reach liftoff, and less excess thrust or power remains for climb.
 
 The takeoff-performance section describes the runway effect as greater true takeoff speed combined with decreased thrust and net accelerating force. The distance change is not a universal percentage. It comes from the intended airplane's takeoff-distance and climb data for the applicable weight, configuration, pressure altitude, temperature, wind, and runway.
 
@@ -557,7 +557,7 @@ Retrieval review.
 
 Density altitude is pressure altitude corrected for nonstandard temperature. A high density-altitude value means thin air and reduced performance. High elevation, low pressure, high temperature, and high humidity can contribute, but use the actual POH or AFM method instead of relying on a slogan.
 
-Thin air can reduce normally aspirated engine power, propeller thrust, and wing lift. For takeoff, that can mean a higher true speed and groundspeed for liftoff along with weaker acceleration. For climb, reduced excess thrust or power means less angle or rate. Weight and configuration can reduce the remaining margin further.
+Thin air can reduce engine power, propeller thrust, and wing lift. For takeoff, that can mean a higher true speed and groundspeed for liftoff along with weaker acceleration. For climb, reduced excess thrust or power means less angle or rate. Weight and configuration can reduce the remaining margin further.
 
 Read each actual-airplane performance chart from the outside inward: title, conditions, notes, inputs, units, and only then the output. Keep takeoff ground roll separate from total distance over an obstacle. Keep climb angle separate from climb rate. Plan landing as its own operation with its landing-distance chart, arrival weather, and landing weight.
 

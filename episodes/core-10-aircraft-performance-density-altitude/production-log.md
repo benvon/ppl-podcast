@@ -20,6 +20,13 @@
 - Drafted each spoken paragraph on one physical Markdown line, used restrained Instructor/Learner dialogue, and included a practical POH/AFM planning workflow without transferring sample data into an aircraft-specific procedure.
 - Generated `narration.md` from the source-tagged `master-script.md` with the repository derivation tool. Completed episode and hosting metadata, show notes and reciprocal manifest, the research packet, QA state, and the not-rendered audio manifest.
 - No audio was rendered, staged, handed to hosting, or published. No release pull request was opened.
+
+## 2026-08-28 — formal source-relevance validation complete
+
+- Replaced the whole AIM Chapter 5 HTML citation with the exact FAA PDF page containing §5-4-21(b), so the validator supplies the cited climb-gradient passage rather than an unrelated beginning-of-chapter excerpt. Added a 50 MB bounded retrieval path only for a specifically cited PDF page; the general source and eCFR limits are unchanged. A regression test covers the larger page-citation boundary.
+- Narrowed the §91.103 claim and listener-facing synopsis to the regulation's actual requirement: before a later flight begins, the pilot in command becomes familiar with available information concerning that later flight.
+- Narrowed two PHAK claims to the cited text: thin air reduces engine power, propeller thrust, and wing lift; and takeoff charts list ground roll and total 50-foot-obstacle distance as separate outputs. Updated the corresponding spoken phrasing, regenerated `narration.md`, and bumped the package to version 0.1.4 with 5,370 spoken words.
+- The required full validator run passed: 52 deterministic source/show-notes checks and all 26 LLM source-relevance assessments support their mapped claims. `npm test` passed all 81 tests and `git diff --check` passed. No audio was rendered, staged, handed to hosting, or published.
 - Formal deterministic and LLM source-relevance validation were not run because both are pre-render gates after independent editorial review and script approval.
 - Status: complete initial source-led draft. Independent spoken-script review by a non-drafting agent, human editorial review, formal source validation, and every audio and release gate remain pending.
 

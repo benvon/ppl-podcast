@@ -18,6 +18,7 @@ const RETRYABLE_HTTP_STATUSES = new Set([408, 429, 502, 503, 504]);
 const RETRY_DELAY_MS = 1_000;
 const MAX_BYTES = 1_000_000;
 const MAX_HASH_BYTES = 32_000_000;
+const MAX_PDF_CITATION_BYTES = 50_000_000;
 const MAX_ECFR_BYTES = 2_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
 const PDF_EXTRACTION_TIMEOUT_MS = 20_000;
@@ -191,8 +192,9 @@ function sameUrlIgnoringFragment(left, right) {
 async function readBoundedBody(response, { includeContentHash = false, includeBytes = false, maxBytes, signal } = {}) {
   const contentLength = Number(response.headers.get("content-length"));
   const defaultLimit = includeContentHash || includeBytes ? MAX_HASH_BYTES : MAX_BYTES;
+  const maximumLimit = includeBytes ? MAX_PDF_CITATION_BYTES : defaultLimit;
   const readLimit = maxBytes === undefined ? defaultLimit : maxBytes;
-  if (!Number.isSafeInteger(readLimit) || readLimit < 1 || readLimit > defaultLimit) throw new Error("invalid bounded-response limit");
+  if (!Number.isSafeInteger(readLimit) || readLimit < 1 || readLimit > maximumLimit) throw new Error("invalid bounded-response limit");
   const textLimit = Math.min(MAX_BYTES, readLimit);
   if (Number.isFinite(contentLength) && contentLength > readLimit) return { text: "", body: null, truncated: true, content_sha256: null, hash_truncated: includeContentHash };
   if (!includeContentHash && !includeBytes && Number.isFinite(contentLength) && contentLength > readLimit) return { text: "", body: null, truncated: true, content_sha256: null, hash_truncated: false };
@@ -463,7 +465,8 @@ async function verifyEcfrSection(source, { fetchImpl = fetch, timeoutMs = FETCH_
 async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includePdfPageText = false, pdfjsLoader, fetchCache, signal, ecfrRateLimiter } = {}) {
   if (isEcfrSource(source)) return verifyEcfrSection(source, { fetchImpl, timeoutMs, fetchCache, signal, ecfrRateLimiter });
   const citationPage = includePdfPageText ? citedPdfPageNumber(source.url) : null;
-  const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: Boolean(source.programmatic_url), includePdfBytes: Boolean(citationPage), signal }, fetchCache);
+  const pdfPageFetchOptions = citationPage ? { maxBytes: MAX_PDF_CITATION_BYTES } : {};
+  const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: Boolean(source.programmatic_url), includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
   citation.citation_url = source.url;
   citation.validation_url = source.validation_url || source.url;
   citation.errors = linkResponseErrors(source.validation_url || source.url, citation);
@@ -473,7 +476,7 @@ async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs
     return { link, citation_link: link, content_attestation: { valid: true, status: "not_configured" } };
   }
 
-  const programmatic = await fetchSourceCached(source.programmatic_url, { fetchImpl, timeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage), signal }, fetchCache);
+  const programmatic = await fetchSourceCached(source.programmatic_url, { fetchImpl, timeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
   programmatic.errors = linkResponseErrors(source.programmatic_url, programmatic);
   programmatic.valid = programmatic.errors.length === 0;
   const attestationConfig = source.programmatic_attestation;

@@ -13,7 +13,7 @@
 - How to read a POH or AFM performance chart from its title and conditions through its inputs and outputs.
 - How takeoff ground roll differs from total distance over an obstacle.
 - How climb angle differs from climb rate, and how climb fuel, time, and distance connect to cruise planning.
-- Why a later flight needs its own current preflight information, while landing remains a distinct operation using arrival weather and landing weight.
+- Why a later flight needs a new preflight review of information concerning that flight, while landing remains a distinct operation using arrival weather and landing weight.
 - How to account for the possible difference between calculated and actual performance without inventing an airplane-specific procedure.
 
 ## Study materials and visual aids
@@ -34,7 +34,7 @@
 | Pressure-altitude and density-altitude definitions | FAA guidance | [PHAK Chapter 11 — Pressure Altitude and Density Altitude](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3) | Pressure Altitude and Density Altitude, p. 11-3 | 2026-08-26 |
 | Moisture and air density | FAA guidance | [PHAK Chapter 11 — Effects of Humidity on Density](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5) | Effects of Humidity on Density, p. 11-5 | 2026-08-26 |
 | Angle of climb and rate of climb | FAA guidance | [PHAK Chapter 11 — Angle and Rate of Climb](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7) | Angle of Climb and Rate of Climb, p. 11-7 | 2026-08-26 |
-| Climb gradient and groundspeed | FAA guidance | [AIM — Climb-gradient conversion and groundspeed](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_4.html) | 5-4-21(b), Missed Approach: climb-gradient conversion | 2026-08-27 |
+| Climb gradient and groundspeed | FAA guidance | [AIM — Climb-gradient conversion and groundspeed](https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448) | 5-4-21(b), Missed Approach, printed p. 5-4-58 (PDF p. 448) | 2026-08-28 |
 | Wind and groundspeed | FAA guidance | [PHAK Chapter 8 — Groundspeed and wind](https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9) | Airspeed Indicator: Groundspeed, p. 8-9 | 2026-08-27 |
 | Weight, altitude, and configuration in climb | FAA guidance | [PHAK Chapter 11 — Climb Performance Factors](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8) | Climb Performance Factors, p. 11-8 | 2026-08-26 |
 | Runway surface | FAA guidance | [PHAK Chapter 11 — Runway Surface](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12) | Runway Surface, p. 11-12 | 2026-08-26 |

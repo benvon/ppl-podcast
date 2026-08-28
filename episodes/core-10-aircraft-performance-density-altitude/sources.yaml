@@ -114,9 +114,9 @@ sources:
     authority: faa_guidance
     title: "Aeronautical Information Manual, Chapter 5: Air Traffic Procedures"
     document_id: "AIM"
-    locator: "5-4-21(b), Missed Approach: climb-gradient conversion"
-    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_4.html"
-    revision: "AIM Basic with Changes 1, 2, and 3; effective July 9, 2026"
+    locator: "5-4-21(b), Missed Approach, printed p. 5-4-58 (PDF p. 448)"
+    url: "https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448"
+    revision: "AIM Basic with Changes 1 and 2, dated January 22, 2026; cited page dated February 20, 2025"
     relevance_excerpt: "For obstacle-climb planning, the AIM expresses climb gradient in feet per nautical mile and states that conversion to climb rate in feet per minute is based on groundspeed; a higher groundspeed increases the required climb rate."
     verified_at_utc: "2026-08-27T20:48:00Z"
     link_status: 200

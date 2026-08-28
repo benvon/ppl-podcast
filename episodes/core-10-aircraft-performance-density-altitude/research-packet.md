@@ -88,7 +88,7 @@
 
 ## Open review items
 
-- Independent adversarial spoken-script review by a non-drafting agent was completed and its material findings were resolved in version 0.1.1. Version 0.1.2 preserved subsequent user edits and resolved the focused first-listen, AFH flight-context, later-flight, landing-operation, and estimate-versus-guarantee review. Version 0.1.3 narrows and remaps the four source-relevance findings without changing the lesson's PHAK-primary structure.
+- Independent adversarial spoken-script review by a non-drafting agent was completed and its material findings were resolved in version 0.1.1. Version 0.1.2 preserved subsequent user edits and resolved the focused first-listen, AFH flight-context, later-flight, landing-operation, and estimate-versus-guarantee review. Version 0.1.3 narrowed and remapped the four initial source-relevance findings without changing the lesson's PHAK-primary structure. Version 0.1.4 completed the required deterministic and LLM source-relevance validation.
 - Human editorial review and script approval are pending.
-- Formal deterministic source-link validation passed before the 0.1.3 relevance corrections, and deterministic dry mapping validation passed after them. Required LLM source-relevance review must be rerun and pass before any audio render.
+- Formal deterministic source-link validation and the required LLM source-relevance review passed in version 0.1.4. Both must be rerun if any source-validation input changes before audio render.
 - No aircraft-specific performance example has been selected for public use; the draft intentionally remains at the general method level.

@@ -1,9 +1,9 @@
 # Aircraft Performance and Density Altitude
 
-**Version:** 0.1.3 — reviewed draft
+**Version:** 0.1.4 — reviewed draft
 **Target runtime:** approximately 40 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Independent adversarial review and focused source-relevance revisions resolved; formal relevance rerun and human editorial review pending; not cleared for audio or public release.
+**Production status:** Independent adversarial review and formal source-relevance validation are complete; human editorial review is pending; not cleared for audio or public release.
 
 ## [00:00] Opening
 

@@ -1,8 +1,8 @@
 # Aircraft Performance and Density Altitude
 
 **Episode:** core-10
-**Version:** 0.1.3
-**Source verification:** Revised FAA/eCFR access and page-level mapping completed August 27, 2026; formal source-relevance validation rerun remains pending.
+**Version:** 0.1.4
+**Source verification:** FAA/eCFR links, page-level citations, and claim relevance were validated August 28, 2026.
 
 ## In this episode
 

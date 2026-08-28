@@ -27,8 +27,7 @@
 - Narrowed the §91.103 claim and listener-facing synopsis to the regulation's actual requirement: before a later flight begins, the pilot in command becomes familiar with available information concerning that later flight.
 - Narrowed two PHAK claims to the cited text: thin air reduces engine power, propeller thrust, and wing lift; and takeoff charts list ground roll and total 50-foot-obstacle distance as separate outputs. Updated the corresponding spoken phrasing, regenerated `narration.md`, and bumped the package to version 0.1.4 with 5,370 spoken words.
 - The required full validator run passed: 52 deterministic source/show-notes checks and all 26 LLM source-relevance assessments support their mapped claims. `npm test` passed all 81 tests and `git diff --check` passed. No audio was rendered, staged, handed to hosting, or published.
-- Formal deterministic and LLM source-relevance validation were not run because both are pre-render gates after independent editorial review and script approval.
-- Status: complete initial source-led draft. Independent spoken-script review by a non-drafting agent, human editorial review, formal source validation, and every audio and release gate remain pending.
+- Status: complete initial source-led draft. Independent spoken-script review and formal source validation are complete; human editorial review and every audio and release gate remain pending.
 
 ## 2026-08-26 — independent adversarial review resolved
 

@@ -1,0 +1,3036 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-28T16:16:39.721Z
+sources_file: episodes/core-10-aircraft-performance-density-altitude/sources.yaml
+claims_file: episodes/core-10-aircraft-performance-density-altitude/claim-inventory.yaml
+show_notes_file: episodes/core-10-aircraft-performance-density-altitude/show-notes.md
+show_notes_manifest_file: episodes/core-10-aircraft-performance-density-altitude/show-notes-manifest.yaml
+input_sha256:
+  sources: bf775c58b165e3db9975ffb2e8e964771f63979060b49b845645ffd1bf36fc34
+  claims: 213efece24e43a5c8c4f8f885eda488383d57dab6f5037d114aa256acaae6065
+  show_notes: d2c858694a6eddd2c198cac2531a4d7f07b0121901f8147d561b782db965ab86
+  show_notes_manifest: f1ec106576282f0c0021b2e0b5660fcc6de016a6e495edc820e691160b7d92a7
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 29
+  manifest_link_count: 29
+show_notes_results:
+  - id: acs-performance-knowledge
+    text: Private Pilot ACS — Performance and Limitations knowledge and risk
+      management
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    source_id: acs-performance-knowledge-risk
+    claim_ids:
+      - acs-performance-objective
+      - acs-performance-factors
+      - acs-calculated-actual-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-density-altitude-chart
+    text: Density altitude chart and explanation
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+    source_id: phak-density-altitude-performance
+    claim_ids:
+      - high-density-altitude-thin-air
+      - density-altitude-inputs
+      - high-density-altitude-factors
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3652
+      pdf_page_text_sha256: 70151d4d25e803bd6c47b55cd41fc79e12fafdd7ee776ef14fe51e6f854dc0dc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-performance-chart-conditions
+    text: PHAK Chapter 11 visual aid — Performance-chart conditions and notes
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+    source_id: phak-performance-chart-boundaries
+    claim_ids:
+      - chart-flight-test-basis
+      - chart-conditions-notes
+      - chart-accuracy-boundary
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      errors: []
+      valid: true
+      pdf_page_number: 19
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3355
+      pdf_page_text_sha256: ca2a6edaef5693daa263a0c2e7f37b332b13eb940768ddac09db4c2a15db707f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-interpolation-takeoff
+    text: PHAK Chapter 11 visual aid — Interpolation and sample takeoff table
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+    source_id: phak-interpolation-takeoff-charts
+    claim_ids:
+      - interpolation-purpose
+      - takeoff-outputs-distinct
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4634
+      pdf_page_text_sha256: 33acc429f1ba6515e876ff6ddb6853287f5df576e54013f87a2c7494d6b97772
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: afh-prior-to-takeoff-performance
+    text: AFH Chapter 6 — Prior to Takeoff
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+    source_id: afh-prior-to-takeoff-performance
+    claim_ids:
+      - afh-predict-takeoff-climb-performance
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a8 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4885
+      pdf_page_text_sha256: 6ca30247f8f0e7043e352146ff0a6c71268ab0c4c599e08fd3ecd6f36da7b99b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-performance-skill
+    text: Private Pilot ACS — Performance and Limitations skill
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    source_id: acs-performance-skill
+    claim_ids:
+      - acs-use-appropriate-data
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-airfoil-air-reaction
+    text: PHAK Chapter 4 — Airfoil Design
+    url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+    source_id: phak-airfoil-air-reaction
+    claim_ids:
+      - airfoil-air-reaction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4001
+      pdf_page_text_sha256: 8757eb9024010384345fcd0c64cb26a0b36dfb605cf0f4ac1b87f5b103d0a43b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-poh-afm-identification
+    text: PHAK Chapter 9 — AFM/POH and preliminary pages
+    url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+    source_id: phak-poh-afm-identification
+    claim_ids:
+      - poh-afm-identification
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5271
+      pdf_page_text_sha256: 1778bd642ad494fb19e7e9df3fa63867b7cd572a8f41d8f3e909ed559077da6d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-performance-data-introduction
+    text: PHAK Chapter 11 — Importance of Performance Data
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+    source_id: phak-performance-data-introduction
+    claim_ids:
+      - afm-poh-primary-performance-data
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 744
+      pdf_page_text_sha256: 655877e4673a38e702fb389d13dd2659d33d28f52a4ab16c78afe74306e96838
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-data-basis-density
+    text: PHAK Chapter 11 — Data basis and air-density effects
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+    source_id: phak-data-basis-and-density-effects
+    claim_ids:
+      - performance-data-not-standardized
+      - thin-air-reduces-performance
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4361
+      pdf_page_text_sha256: d943fd81be9ef42bd4bb438ebb00260cf2cc83186d3c526365d7e073cd81cd9e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-pressure-density-definitions
+    text: PHAK Chapter 11 — Pressure Altitude and Density Altitude
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+    source_id: phak-pressure-density-altitude-definitions
+    claim_ids:
+      - pressure-altitude-definition
+      - density-altitude-definition
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3277
+      pdf_page_text_sha256: fdea68f32d8399eefd0a4eb61461016a3a6d0566b47ddcd2adc8479d760d7420
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-humidity-density
+    text: PHAK Chapter 11 — Effects of Humidity on Density
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+    source_id: phak-humidity-density
+    claim_ids:
+      - humidity-contributes-to-density
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5318
+      pdf_page_text_sha256: d56382719c35d1082637bf0cca4e1d5e27b968771f07b739c8fdce3864aaca9b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-angle-rate-climb
+    text: PHAK Chapter 11 — Angle and Rate of Climb
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+    source_id: phak-climb-angle-rate
+    claim_ids:
+      - angle-rate-climb-distinction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3231
+      pdf_page_text_sha256: adf75e357562363140636dbb09515d2e67b465b70a58d27fa30ffdb1a83ef7dd
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-climb-gradient-groundspeed
+    text: AIM — Climb-gradient conversion and groundspeed
+    url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+    source_id: aim-climb-gradient-groundspeed
+    claim_ids:
+      - climb-gradient-groundspeed-conversion
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      final_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a6 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      validation_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      errors: []
+      valid: true
+      pdf_page_number: 448
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4520
+      pdf_page_text_sha256: 3e501e2d84e9b3557b643d961ac65a5a7279b1f9f0f594dbe3fa787e643f760d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-indicated-airspeed
+    text: PHAK Chapter 8 — Indicated airspeed
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+    source_id: phak-indicated-airspeed
+    claim_ids:
+      - indicated-airspeed-definition-use
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3485
+      pdf_page_text_sha256: 36a7f06547e97fc5d465977b796f7119b46d5c04c98c9ba573c04170eb723cce
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-airspeed-cas-tas-groundspeed
+    text: PHAK Chapter 8 — Calibrated, true, and groundspeed
+    url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+    source_id: phak-airspeed-cas-tas-groundspeed
+    claim_ids:
+      - calibrated-true-airspeed-corrections
+      - groundspeed-wind-relationship
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4184
+      pdf_page_text_sha256: a45585967e86c3e537dfd3d7aa63ad40e2ed940f82a753969c1da3ec006b480b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: pcg-true-airspeed-definition
+    text: FAA Pilot/Controller Glossary — True Airspeed
+    url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+    source_id: pcg-true-airspeed-definition
+    claim_ids:
+      - true-airspeed-reference-and-planning
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      final_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a7 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      validation_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      errors: []
+      valid: true
+      pdf_page_number: 148
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2897
+      pdf_page_text_sha256: a18377edb692db45999f1e38b3ad22e0290d325c8697658908b5a89c7783a6e3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-climb-factors
+    text: PHAK Chapter 11 — Climb Performance Factors
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+    source_id: phak-climb-performance-factors
+    claim_ids:
+      - climb-factors-change-margin
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4137
+      pdf_page_text_sha256: 9005e9b65b665bcfa970c22b60149c962cd5e621f0b2facaf69381a03042910b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-runway-surface-gradient
+    text: PHAK Chapter 11 — Runway Surface
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+    source_id: phak-runway-surface-gradient
+    claim_ids:
+      - runway-condition-matters
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4546
+      pdf_page_text_sha256: 9522ea33d9a2251fc418c5742220f7753093fd38cfebb80398aca83988e926ef
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-runway-gradient-effects
+    text: PHAK Chapter 11 — Runway Gradient
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+    source_id: phak-runway-gradient-effects
+    claim_ids:
+      - runway-slope-matters
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1821
+      pdf_page_text_sha256: 5ced4931fc82c6b07b554dfcfc7616d4972322f40862c2482bd234f01fa88c9d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-takeoff-weight-wind
+    text: PHAK Chapter 11 — Takeoff weight and wind
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+    source_id: phak-takeoff-weight-wind
+    claim_ids:
+      - takeoff-weight-effects
+      - takeoff-wind-groundspeed
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4355
+      pdf_page_text_sha256: 9326a16dfd1aa5e6b9dadf6770544d83c9bfef2340af8700c90eb68877151c80
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-takeoff-density
+    text: PHAK Chapter 11 — Takeoff density-altitude effects
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+    source_id: phak-takeoff-density-inputs
+    claim_ids:
+      - density-altitude-takeoff-effects
+      - takeoff-chart-primary-inputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5346
+      pdf_page_text_sha256: 8cbe13b1e3a839c944833edd47abf0726908949961ddbeb876eef34db0cf5326
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-landing-performance
+    text: PHAK Chapter 11 — Landing Performance
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+    source_id: phak-landing-performance-inputs
+    claim_ids:
+      - landing-density-altitude-effect
+      - landing-chart-primary-inputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5185
+      pdf_page_text_sha256: 7a9f6c9721c6b35276a68abb66bfc4ae2cb4a7725d44dae390654e7c339c24ee
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-climb-cruise-charts
+    text: PHAK Chapter 11 — Climb and Cruise Charts
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+    source_id: phak-climb-cruise-charts
+    claim_ids:
+      - climb-chart-three-outputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4122
+      pdf_page_text_sha256: c1098960581eef8f5d0d18fcec4c6570c33cdafc5fd6e73136ee5e68a2d4ab2f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-range-endurance
+    text: PHAK Chapter 11 — Range and Endurance
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+    source_id: phak-range-endurance
+    claim_ids:
+      - range-endurance-distinction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2582
+      pdf_page_text_sha256: 1e0e718d12e5d0d8a90d3db9f44142a6809d628b7a49e14996aeebfd7bd5c772
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cruise-range
+    text: PHAK Chapter 11 — Cruise and Range Performance
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+    source_id: phak-cruise-performance-table
+    claim_ids:
+      - cruise-chart-outputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4764
+      pdf_page_text_sha256: ec33dd09a51a4e7c5ab0297cf7c80e320c01c1d95a1e9dd6a0f63780365ff516
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-landing-charts
+    text: PHAK Chapter 11 — Landing Charts
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+    source_id: phak-landing-charts
+    claim_ids:
+      - landing-outputs-and-arrival-weight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3345
+      pdf_page_text_sha256: 315121cc7d099e23865b3b5c374978cc400591d1430fd3dcf34ede0c8a9f1cd7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: afh-landing-airplane-information
+    text: AFH Chapter 9 — Approaches and Landings
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+    source_id: afh-landing-airplane-information
+    claim_ids:
+      - afh-landing-airplane-data-controls
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a9 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2059
+      pdf_page_text_sha256: 650eb91aba346778c137d2acfa670c1805da42ae0d9c82f0535a9270620c2c9f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: cfr-preflight-performance
+    text: 14 CFR § 91.103
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+    source_id: cfr-preflight-performance
+    claim_ids:
+      - preflight-runway-performance-information
+      - later-flight-preflight-information
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a10 []
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-26
+        title_status_sha256: c0ec3cff197fe2b85109d6b125a877dbc1c922c21916c8094e7dbb08cc815f0d
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-08-26
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+results:
+  - source_id: acs-performance-knowledge-risk
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-28T16:15:46.930Z
+    linked_claim_ids:
+      - acs-performance-objective
+      - acs-performance-factors
+      - acs-calculated-actual-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains Task PA.I.F, Performance and Limitations,
+          including its objective, knowledge elements, and risk-management
+          elements. Each claim closely reflects text stated on that page.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 14 (printed page 6) and explicitly
+            contains PA.I.F.K1-K3 and PA.I.F.R1-R3 under Task F, Performance and
+            Limitations.
+        claim_assessments:
+          - claim_id: acs-performance-objective
+            verdict: supports
+            rationale: The objective states that the task determines whether the applicant
+              exhibits satisfactory knowledge, risk management, and skills
+              associated with operating an airplane safely within the parameters
+              of its performance capabilities and limitations.
+          - claim_id: acs-performance-factors
+            verdict: supports
+            rationale: PA.I.F.K1 addresses using charts, tables, and data to determine
+              performance; PA.I.F.K2 lists atmospheric conditions, pilot
+              technique, airplane configuration, airport environment,
+              loading/CG, and weight and balance; PA.I.F.K3 lists aerodynamics.
+          - claim_id: acs-calculated-actual-risk
+            verdict: supports
+            rationale: PA.I.F.R1-R3 explicitly identify risk associated with use of
+              performance charts, tables, and data; airplane limitations; and
+              possible differences between calculated and actual performance.
+      usage:
+        input_tokens: 990
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 296
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1286
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-performance-skill
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-28T16:15:46.931Z
+    linked_claim_ids:
+      - acs-use-appropriate-data
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt explicitly states under Area of Operation I, Preflight
+          Preparation Skills: “PA.I.F.S2 Use the appropriate airplane
+          performance charts, tables, and data.”"
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page excerpt contains PA.I.F.S2 verbatim. Although the
+            excerpt’s printed page number is 7, the supplied cited_pdf_page is
+            the exact PDF page from which it was extracted.
+        claim_assessments:
+          - claim_id: acs-use-appropriate-data
+            verdict: supports
+            rationale: The claim accurately quotes the PA.I.F.S2 skill requirement shown in
+              the excerpt.
+      usage:
+        input_tokens: 887
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 152
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1039
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-airfoil-air-reaction
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 4: Principles of
+      Flight"
+    checked_at_utc: 2026-08-28T16:15:47.411Z
+    linked_claim_ids:
+      - airfoil-air-reaction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4001
+      pdf_page_text_sha256: 8757eb9024010384345fcd0c64cb26a0b36dfb605cf0f4ac1b87f5b103d0a43b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt defines an airfoil as a structure designed to obtain
+          reaction upon its surface from air moving through or past it, and
+          specifies that the airfoils discussed are designed to produce lift.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains the “Airfoil Design” section and the
+            relevant definition of an airfoil and lift-producing airfoils.
+        claim_assessments:
+          - claim_id: airfoil-air-reaction
+            verdict: supports
+            rationale: The excerpt directly states that an airfoil is designed to obtain
+              reaction upon its surface from air moving past it and that
+              aircraft airfoils are designed to produce lift.
+      usage:
+        input_tokens: 1301
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1298
+        output_tokens: 158
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1459
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-poh-afm-identification
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
+      and Other Documents"
+    checked_at_utc: 2026-08-28T16:15:47.415Z
+    linked_claim_ids:
+      - poh-afm-identification
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5271
+      pdf_page_text_sha256: 1778bd642ad494fb19e7e9df3fa63867b7cd572a8f41d8f3e909ed559077da6d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that the POH for most light aircraft
+          built after 1975 is designated as the FAA-approved flight manual. It
+          also states that when “POH” is used in the main title, the title page
+          must indicate which sections are FAA approved as the AFM, and that
+          manufacturers must include the aircraft serial number and registration
+          on the title page to identify the aircraft to which the manual
+          belongs.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 9-2, and the supplied excerpt from that
+            exact page contains the relevant AFM/POH identification,
+            approval-status, title-page, serial-number, and registration
+            discussion.
+        claim_assessments:
+          - claim_id: poh-afm-identification
+            verdict: supports
+            rationale: The claim is supported by the excerpt’s statements regarding
+              post-1975 light-aircraft POHs, FAA-approved AFM content/status,
+              title-page approval statements, and title-page aircraft
+              registration and serial-number identification.
+      usage:
+        input_tokens: 1480
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1477
+        output_tokens: 227
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1707
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-performance-data-introduction
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:48.247Z
+    linked_claim_ids:
+      - afm-poh-primary-performance-data
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 744
+      pdf_page_text_sha256: 655877e4673a38e702fb389d13dd2659d33d28f52a4ab16c78afe74306e96838
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that the performance or operational
+          information section of the AFM/POH contains operating data pertaining
+          to takeoff, climb, range, endurance, descent, and landing.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 11-1 and contains the “Importance of
+            Performance Data” passage quoted in the claim.
+        claim_assessments:
+          - claim_id: afm-poh-primary-performance-data
+            verdict: supports
+            rationale: "The claim closely restates the excerpt: “The performance or
+              operational information section of the Aircraft Flight
+              Manual/Pilot’s Operating Handbook (AFM/POH) contains the operating
+              data for the aircraft ... pertaining to takeoff, climb, range,
+              endurance, descent, and landing.”"
+      usage:
+        input_tokens: 564
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 180
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 744
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-data-basis-and-density-effects
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:48.387Z
+    linked_claim_ids:
+      - performance-data-not-standardized
+      - thin-air-reduces-performance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4361
+      pdf_page_text_sha256: d943fd81be9ef42bd4bb438ebb00260cf2cc83186d3c526365d7e073cd81cd9e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly addresses both the nonstandardized presentation
+          and basis of manufacturer performance data and the effects of reduced
+          air density on engine power, propeller thrust, and lift.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 11-2, and the excerpt from that page
+            contains the relevant statements for both claims.
+        claim_assessments:
+          - claim_id: performance-data-not-standardized
+            verdict: supports
+            rationale: The excerpt states that manufacturers’ AFM/POH information and data
+              are 'not standardized,' may be provided in tabular form or graphs,
+              and may be based on standard atmospheric conditions, pressure
+              altitude, or density altitude.
+          - claim_id: thin-air-reduces-performance
+            verdict: supports
+            rationale: The excerpt explicitly states that as air becomes less dense it
+              reduces power because the engine takes in less air, thrust because
+              the propeller is less efficient in thin air, and lift because thin
+              air exerts less force on airfoils.
+      usage:
+        input_tokens: 1401
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1398
+        output_tokens: 230
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1631
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-pressure-density-altitude-definitions
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:48.766Z
+    linked_claim_ids:
+      - pressure-altitude-definition
+      - density-altitude-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3277
+      pdf_page_text_sha256: fdea68f32d8399eefd0a4eb61461016a3a6d0566b47ddcd2adc8479d760d7420
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines both pressure altitude and
+          density altitude and states the specified method for obtaining
+          pressure altitude using an altimeter setting of 29.92 inches Hg.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 11, the “Pressure Altitude and Density
+            Altitude” material, on page 11-3. The supplied excerpt is from cited
+            PDF page 3 and contains those sections and definitions.
+        claim_assessments:
+          - claim_id: pressure-altitude-definition
+            verdict: supports
+            rationale: The excerpt states that, with the altimeter set to 29.92 inches Hg,
+              the indicated altitude is pressure altitude, defined as “the
+              altitude in the standard atmosphere corresponding to the sensed
+              pressure.”
+          - claim_id: density-altitude-definition
+            verdict: supports
+            rationale: "The excerpt explicitly states: “Density altitude is pressure
+              altitude corrected for nonstandard temperature.”"
+      usage:
+        input_tokens: 1496
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1493
+        output_tokens: 210
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1706
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-density-altitude-performance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:48.788Z
+    linked_claim_ids:
+      - high-density-altitude-thin-air
+      - density-altitude-inputs
+      - high-density-altitude-factors
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3652
+      pdf_page_text_sha256: 70151d4d25e803bd6c47b55cd41fc79e12fafdd7ee776ef14fe51e6f854dc0dc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines density altitude, explains its
+          relationship to air density and aircraft performance, identifies the
+          inputs and methods used to determine it, and lists the conditions
+          associated with high density altitude.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 11-4 and includes Figure 11-4,
+            titled “Density altitude chart,” plus the surrounding
+            density-altitude discussion specified by the locator.
+        claim_assessments:
+          - claim_id: high-density-altitude-thin-air
+            verdict: supports
+            rationale: The excerpt explicitly states that “as air density decreases (higher
+              density altitude), aircraft performance decreases” and that high
+              density altitude refers to thin air.
+          - claim_id: density-altitude-inputs
+            verdict: supports
+            rationale: The excerpt states that density altitude is computed using pressure
+              altitude and temperature, and can be computed with a flight
+              computer by inputting pressure altitude and outside air
+              temperature or determined from the referenced chart.
+          - claim_id: high-density-altitude-factors
+            verdict: supports
+            rationale: The excerpt explicitly lists high elevations, low atmospheric
+              pressures, high temperatures, high humidity, or combinations of
+              these factors as conditions that result in high density altitude.
+      usage:
+        input_tokens: 1316
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1313
+        output_tokens: 273
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1589
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-humidity-density
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:48.812Z
+    linked_claim_ids:
+      - humidity-contributes-to-density
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5318
+      pdf_page_text_sha256: d56382719c35d1082637bf0cca4e1d5e27b968771f07b739c8fdce3864aaca9b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that water vapor is lighter than air,
+          so increasing water content makes air less dense, increases density
+          altitude, and decreases aircraft performance. It also states that
+          humidity is usually not considered an essential factor in calculating
+          density altitude and aircraft performance, although it contributes.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 11-5, and the excerpt contains the section
+            titled “Effects of Humidity (Moisture) on Density,” directly
+            addressing the claim.
+        claim_assessments:
+          - claim_id: humidity-contributes-to-density
+            verdict: supports
+            rationale: "The page directly says: “as the water content of the air increases,
+              the air becomes less dense, increasing density altitude and
+              decreasing performance,” and adds that humidity usually is not
+              considered an essential calculation factor but does contribute."
+      usage:
+        input_tokens: 1424
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1421
+        output_tokens: 194
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1618
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-climb-angle-rate
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:48.826Z
+    linked_claim_ids:
+      - angle-rate-climb-distinction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3231
+      pdf_page_text_sha256: adf75e357562363140636dbb09515d2e67b465b70a58d27fa30ffdb1a83ef7dd
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly defines AOC as altitude gained relative to
+          distance traveled and ROC as altitude gained relative to the time
+          needed to reach that altitude. This matches the claim’s distinction
+          between altitude per horizontal distance and altitude per unit time.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page 11-7 contains the relevant “Angle of Climb (AOC)”
+            and “Rate of Climb (ROC)” definitions and discussion.
+        claim_assessments:
+          - claim_id: angle-rate-climb-distinction
+            verdict: supports
+            rationale: "The page states: “AOC is a comparison of altitude gained relative to
+              distance traveled” and “ROC is a comparison of altitude gained
+              relative to the time needed to reach that altitude.”"
+      usage:
+        input_tokens: 1132
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1129
+        output_tokens: 176
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1308
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-climb-gradient-groundspeed
+    title: "Aeronautical Information Manual, Chapter 5: Air Traffic Procedures"
+    checked_at_utc: 2026-08-28T16:15:48.832Z
+    linked_claim_ids:
+      - climb-gradient-groundspeed-conversion
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      final_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      validation_url: https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448
+      errors: []
+      valid: true
+      pdf_page_number: 448
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4520
+      pdf_page_text_sha256: 3e501e2d84e9b3557b643d961ac65a5a7279b1f9f0f594dbe3fa787e643f760d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited AIM page explicitly states that missed-approach climb
+          gradients are expressed in feet per nautical mile, that conversion
+          tables to feet per minute are based on groundspeed, and that
+          higher-than-anticipated groundspeed increases the required climb rate
+          in feet per minute.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and includes AIM 5-4-21(b),
+            the specified Missed Approach paragraph, containing the relevant
+            statements.
+        claim_assessments:
+          - claim_id: climb-gradient-groundspeed-conversion
+            verdict: supports
+            rationale: AIM 5-4-21(b) says pilots must be able to meet the required climb
+              gradient “expressed in feet per nautical mile,” that conversion
+              tables to climb rate “feet per minute” are “based on ground
+              speed,” and that higher groundspeed increases the feet-per-minute
+              climb-rate requirement.
+      usage:
+        input_tokens: 1408
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1405
+        output_tokens: 207
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1615
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-indicated-airspeed
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-28T16:15:48.848Z
+    linked_claim_ids:
+      - indicated-airspeed-definition-use
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3485
+      pdf_page_text_sha256: 36a7f06547e97fc5d465977b796f7119b46d5c04c98c9ba573c04170eb723cce
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly defines indicated airspeed (IAS) as the
+          direct ASI reading uncorrected for atmospheric-density, installation,
+          or instrument-error variations, and states that takeoff, landing, and
+          stall speeds in the AFM/POH are IAS and normally do not vary with
+          altitude or temperature.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 8 and contains the “Airspeed
+            Indicator (ASI)” section, including the bullet defining “Indicated
+            airspeed (IAS).” This matches the cited locator.
+        claim_assessments:
+          - claim_id: indicated-airspeed-definition-use
+            verdict: supports
+            rationale: "The excerpt directly states both portions of the claim: IAS is the
+              direct ASI reading without density, installation, or
+              instrument-error corrections; and AFM/POH takeoff, landing, and
+              stall speeds are IAS."
+      usage:
+        input_tokens: 1181
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1178
+        output_tokens: 209
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1390
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-airspeed-cas-tas-groundspeed
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    checked_at_utc: 2026-08-28T16:15:49.514Z
+    linked_claim_ids:
+      - calibrated-true-airspeed-corrections
+      - groundspeed-wind-relationship
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4184
+      pdf_page_text_sha256: a45585967e86c3e537dfd3d7aa63ad40e2ed940f82a753969c1da3ec006b480b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines CAS, TAS, and GS and states the
+          stated correction and wind relationships verbatim or substantively
+          identically.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 8-9 and contains the “Calibrated,
+            True, and Groundspeed” material identified by the locator.
+        claim_assessments:
+          - claim_id: calibrated-true-airspeed-corrections
+            verdict: supports
+            rationale: "The excerpt states: “Calibrated airspeed (CAS)—IAS corrected for
+              installation error and instrument error” and “True airspeed
+              (TAS)—CAS corrected for altitude and nonstandard temperature.”"
+          - claim_id: groundspeed-wind-relationship
+            verdict: supports
+            rationale: The excerpt states that GS is “TAS adjusted for wind,” that it
+              “decreases with a headwind,” and “increases with a tailwind.”
+      usage:
+        input_tokens: 1425
+        input_tokens_details:
+          cache_write_tokens: 1422
+          cached_tokens: 0
+        output_tokens: 216
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1641
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: pcg-true-airspeed-definition
+    title: "Aeronautical Information Manual: Pilot/Controller Glossary"
+    checked_at_utc: 2026-08-28T16:15:49.533Z
+    linked_claim_ids:
+      - true-airspeed-reference-and-planning
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      final_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a7
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      validation_url: https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148
+      errors: []
+      valid: true
+      pdf_page_number: 148
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2897
+      pdf_page_text_sha256: a18377edb692db45999f1e38b3ad22e0290d325c8697658908b5a89c7783a6e3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page contains the Pilot/Controller Glossary definition
+          of true airspeed: “The airspeed of an aircraft relative to undisturbed
+          air. Used primarily in flight planning and en route portion of
+          flight.” This directly supports the claim."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the Airspeed and True Airspeed entries on PCG
+            A-12, PDF page 148, and the supplied excerpt from that exact page
+            contains those entries.
+        claim_assessments:
+          - claim_id: true-airspeed-reference-and-planning
+            verdict: supports
+            rationale: The excerpt expressly states that true airspeed is relative to
+              undisturbed air and is used primarily in flight planning.
+      usage:
+        input_tokens: 1085
+        input_tokens_details:
+          cache_write_tokens: 1082
+          cached_tokens: 0
+        output_tokens: 170
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1255
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-climb-performance-factors
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.871Z
+    linked_claim_ids:
+      - climb-factors-change-margin
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4137
+      pdf_page_text_sha256: 9005e9b65b665bcfa970c22b60149c962cd5e621f0b2facaf69381a03042910b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that increases in weight and altitude,
+          as well as lowering landing gear or flaps, decrease excess thrust and
+          excess power, and therefore decrease maximum angle-of-climb and
+          maximum rate-of-climb performance.
+        locator_assessment:
+          verdict: supports
+          rationale: "The cited locator is supported: the excerpt is from PDF page 11-8
+            and contains the “Climb Performance Factors” section directly
+            addressing the claim."
+        claim_assessments:
+          - claim_id: climb-factors-change-margin
+            verdict: supports
+            rationale: The source states that increased weight, increased altitude, lowered
+              landing gear, and lowered flaps decrease excess thrust and power
+              for all aircraft; it then concludes that maximum AOC and maximum
+              ROC decrease under those conditions.
+      usage:
+        input_tokens: 1282
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1279
+        output_tokens: 178
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1460
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-runway-surface-gradient
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.888Z
+    linked_claim_ids:
+      - runway-condition-matters
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4546
+      pdf_page_text_sha256: 9522ea33d9a2251fc418c5742220f7753093fd38cfebb80398aca83988e926ef
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states that performance chart information
+          typically assumes paved, level, smooth, and dry runway surfaces. It
+          also states that non-hard/smooth surfaces increase takeoff ground
+          roll, mud, snow, or standing water reduce acceleration, and surface
+          condition affects braking ability/effectiveness.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 12, and the supplied excerpt from page
+            11-12 contains the “Runway Surface and Gradient” section directly
+            addressing the claim.
+        claim_assessments:
+          - claim_id: runway-condition-matters
+            verdict: supports
+            rationale: "The claim accurately summarizes the excerpt: typical chart
+              assumptions are paved, level, smooth, dry surfaces; soft or
+              obstructed/contaminated surfaces can reduce acceleration; and
+              surface condition affects braking effectiveness."
+      usage:
+        input_tokens: 1329
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1326
+        output_tokens: 193
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1522
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-runway-gradient-effects
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.906Z
+    linked_claim_ids:
+      - runway-slope-matters
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1821
+      pdf_page_text_sha256: 5ced4931fc82c6b07b554dfcfc7616d4972322f40862c2482bd234f01fa88c9d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that an upsloping runway impedes
+          acceleration and produces a longer takeoff ground run, while typically
+          reducing landing roll. It also states that a downsloping runway aids
+          takeoff acceleration and shortens takeoff distance, with the opposite
+          effect during landing—increasing landing distance.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 11-13, and the supplied excerpt from that
+            exact page contains the runway-gradient discussion supporting the
+            claim.
+        claim_assessments:
+          - claim_id: runway-slope-matters
+            verdict: supports
+            rationale: "Directly supported: the excerpt describes the stated upsloping
+              effects and expressly gives the opposite takeoff and landing
+              effects for a downsloping runway."
+      usage:
+        input_tokens: 800
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 179
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 979
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-takeoff-weight-wind
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.914Z
+    linked_claim_ids:
+      - takeoff-weight-effects
+      - takeoff-wind-groundspeed
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4355
+      pdf_page_text_sha256: 9326a16dfd1aa5e6b9dadf6770544d83c9bfef2340af8700c90eb68877151c80
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses both gross-weight effects on
+          takeoff performance and wind effects on takeoff distance/groundspeed,
+          matching both claims.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 15 and contains the relevant
+            gross-weight and wind discussion under the stated Chapter 11
+            takeoff-performance locator.
+        claim_assessments:
+          - claim_id: takeoff-weight-effects
+            verdict: supports
+            rationale: "The excerpt explicitly lists the threefold effect of increased gross
+              weight: higher lift-off speed, greater mass to accelerate, and
+              increased retarding force from drag and ground friction."
+          - claim_id: takeoff-wind-groundspeed
+            verdict: supports
+            rationale: The excerpt explicitly states that a headwind permits reaching
+              lift-off speed at a lower groundspeed and that a tailwind requires
+              a greater groundspeed to attain lift-off speed.
+      usage:
+        input_tokens: 1403
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1400
+        output_tokens: 204
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1607
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-takeoff-density-inputs
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.932Z
+    linked_claim_ids:
+      - density-altitude-takeoff-effects
+      - takeoff-chart-primary-inputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5346
+      pdf_page_text_sha256: 8cbe13b1e3a839c944833edd47abf0726908949961ddbeb876eef34db0cf5326
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly discusses density-altitude effects on
+          takeoff performance and explicitly lists the primary considerations
+          for predicting takeoff distance from AFM/POH data.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 16 and contains both the
+            density-altitude discussion and the primary takeoff considerations
+            described by the locator.
+        claim_assessments:
+          - claim_id: density-altitude-takeoff-effects
+            verdict: supports
+            rationale: "The excerpt states that increased density altitude produces: “1.
+              Greater takeoff speed” and “2. Decreased thrust and reduced net
+              accelerating force.” It also explains that IAS remains the same
+              but TAS is greater in reduced air density. These effects support
+              increased takeoff-performance demand, including takeoff distance."
+          - claim_id: takeoff-chart-primary-inputs
+            verdict: supports
+            rationale: "The excerpt explicitly lists the primary considerations in
+              predicting takeoff distance from AFM/POH data: pressure altitude
+              and temperature, gross weight, wind, and runway slope and
+              condition."
+      usage:
+        input_tokens: 1460
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1457
+        output_tokens: 239
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1699
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-landing-performance-inputs
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.939Z
+    linked_claim_ids:
+      - landing-density-altitude-effect
+      - landing-chart-primary-inputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5185
+      pdf_page_text_sha256: 7a9f6c9721c6b35276a68abb66bfc4ae2cb4a7725d44dae390654e7c339c24ee
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly addresses both the effect of density altitude on
+          landing speed/distance and the AFM/POH landing-distance prediction
+          considerations listed in the claims.
+        locator_assessment:
+          verdict: supports
+          rationale: "The cited locator is appropriate: the excerpt is explicitly from PDF
+            page 11-17 and contains the relevant landing-performance discussion
+            and input list."
+        claim_assessments:
+          - claim_id: landing-density-altitude-effect
+            verdict: supports
+            rationale: The excerpt states that an increase in density altitude increases
+              landing speed; at altitude the aircraft lands at the same IAS but
+              with greater TAS because of reduced density. It further states
+              that the greater TAS increases landing distance.
+          - claim_id: landing-chart-primary-inputs
+            verdict: supports
+            rationale: "The excerpt explicitly lists the considerations for predicting
+              minimum landing distance from AFM/POH data: pressure altitude and
+              temperature, gross weight, wind, and runway slope and condition."
+      usage:
+        input_tokens: 1412
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1409
+        output_tokens: 214
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1626
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-performance-chart-boundaries
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.949Z
+    linked_claim_ids:
+      - chart-flight-test-basis
+      - chart-conditions-notes
+      - chart-accuracy-boundary
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=19
+      errors: []
+      valid: true
+      pdf_page_number: 19
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3355
+      pdf_page_text_sha256: ca2a6edaef5693daa263a0c2e7f37b332b13eb940768ddac09db4c2a15db707f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page directly discusses the origin, assumptions,
+          limitations, and proper use of manufacturer performance charts,
+          including test-flight conditions, chart notes, adverse conditions,
+          piloting skill, and the consequences of chart-reading errors.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 19 (printed page 11-19) and
+            contains the cited Performance Charts discussion and Figure 11-20
+            reference.
+        claim_assessments:
+          - claim_id: chart-flight-test-basis
+            verdict: supports
+            rationale: The excerpt states that manufacturers gather chart information from
+              test flights in a new aircraft, under normal operating conditions,
+              using average piloting skills, with the aircraft and engine in
+              good working order; engineers then create charts from the recorded
+              flight data.
+          - claim_id: chart-conditions-notes
+            verdict: supports
+            rationale: The excerpt states that every chart is based on certain conditions
+              and contains notes on adapting information for flight conditions,
+              and instructs pilots to read every chart, understand its use, and
+              read manufacturer instructions.
+          - claim_id: chart-accuracy-boundary
+            verdict: supports
+            rationale: The excerpt says chart data will not be accurate if the aircraft is
+              not in good working order or is operated under adverse conditions,
+              advises compensation for below-average pilot skills, and says a
+              small chart-reading error can lead to a large error at the end.
+              These points support the stated boundaries regarding condition,
+              environment, technique, and reading accuracy.
+      usage:
+        input_tokens: 1114
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1111
+        output_tokens: 324
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1438
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-interpolation-takeoff-charts
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.959Z
+    linked_claim_ids:
+      - interpolation-purpose
+      - takeoff-outputs-distinct
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4634
+      pdf_page_text_sha256: 33acc429f1ba6515e876ff6ddb6853287f5df576e54013f87a2c7494d6b97772
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page explicitly defines interpolation as computing
+          intermediate information from known chart data and says using values
+          reflecting slightly more adverse conditions can provide a reasonable
+          performance estimate and margin of safety. The page’s takeoff-distance
+          chart also separately labels ground roll and total feet to clear a
+          50-foot obstacle, and the accompanying text describes takeoff charts
+          for both types of distance.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page 11-20 and contains the
+            relevant “Interpolation” and “Takeoff Charts” discussion, along with
+            Figure 11-21 showing the distinct takeoff-distance outputs.
+        claim_assessments:
+          - claim_id: interpolation-purpose
+            verdict: supports
+            rationale: The excerpt states that interpolation computes intermediate
+              information using known information. It also states that pilots
+              sometimes use values reflecting slightly more adverse conditions
+              to obtain a reasonable estimate and a slight safety margin.
+          - claim_id: takeoff-outputs-distinct
+            verdict: supports
+            rationale: Figure 11-21 separately identifies “Grnd roll (ft)” and “Total feet
+              to clear 50 ft OBS,” and the text discusses charts for takeoff
+              distance and clearing a 50-foot obstacle.
+      usage:
+        input_tokens: 1697
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1694
+        output_tokens: 309
+        output_tokens_details:
+          reasoning_tokens: 39
+        total_tokens: 2006
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-climb-cruise-charts
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.973Z
+    linked_claim_ids:
+      - climb-chart-three-outputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4122
+      pdf_page_text_sha256: c1098960581eef8f5d0d18fcec4c6570c33cdafc5fd6e73136ee5e68a2d4ab2f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that a fuel, time, and
+          distance-to-climb chart gives the fuel amount used during climb, the
+          time required to climb, and the ground distance covered during climb.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 11-21, and the excerpt on that page
+            contains the “Climb and Cruise Charts” section with the directly
+            relevant statement.
+        claim_assessments:
+          - claim_id: climb-chart-three-outputs
+            verdict: supports
+            rationale: "The excerpt states: “This chart gives the fuel amount used during
+              the climb, the time it takes to accomplish the climb, and the
+              ground distance that is covered during the climb.”"
+      usage:
+        input_tokens: 1526
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1523
+        output_tokens: 168
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1694
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-range-endurance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:49.986Z
+    linked_claim_ids:
+      - range-endurance-distinction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2582
+      pdf_page_text_sha256: 1e0e718d12e5d0d8a90d3db9f44142a6809d628b7a49e14996aeebfd7bd5c772
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt explicitly states: “Range involves consideration of
+          flying distance, while endurance involves consideration of flying
+          time.” It also defines specific range as distance per fuel consumed
+          and specific endurance as flight hours per fuel consumed."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is 11-9, and the excerpt from that page directly
+            contains the range-versus-endurance distinction described by the
+            locator.
+        claim_assessments:
+          - claim_id: range-endurance-distinction
+            verdict: supports
+            rationale: The claim accurately reflects the excerpt’s explicit distinction
+              between range as flying distance and endurance as flying time,
+              both in relation to fuel consumption.
+      usage:
+        input_tokens: 966
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 158
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1124
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-cruise-performance-table
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:50.001Z
+    linked_claim_ids:
+      - cruise-chart-outputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4764
+      pdf_page_text_sha256: ec33dd09a51a4e7c5ab0297cf7c80e320c01c1d95a1e9dd6a0f63780365ff516
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that a cruise and range performance
+          table is designed to provide TAS, fuel consumption, endurance, and
+          range at specific cruise configurations. Figure 11-27 shows altitude,
+          RPM/power-related entries, TAS, gallons per hour, endurance, and
+          range, with stated conditions including gross weight, standard
+          conditions, zero wind, and lean mixture.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 11-24 and contains Figure 11-27 plus
+            explanatory text directly describing the cruise and range table and
+            its outputs.
+        claim_assessments:
+          - claim_id: cruise-chart-outputs
+            verdict: supports
+            rationale: The source directly supports that cruise performance tables relate
+              altitude and cruise power configuration (shown through RPM and
+              percent BHP) to TAS, fuel consumption, endurance, and range under
+              specified conditions.
+      usage:
+        input_tokens: 1863
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1860
+        output_tokens: 200
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2063
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-landing-charts
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
+      Performance"
+    checked_at_utc: 2026-08-28T16:15:50.013Z
+    linked_claim_ids:
+      - landing-outputs-and-arrival-weight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3345
+      pdf_page_text_sha256: 315121cc7d099e23865b3b5c374978cc400591d1430fd3dcf34ede0c8a9f1cd7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that landing distance information is available as
+          normal landing information and as landing distance over a 50-foot
+          obstacle. Its Sample Problem 11 specifically identifies both “total
+          landing distance to clear a 50 foot obstacle” and “ground roll
+          distance.” It also says landing weight is not the same as takeoff
+          weight and must be recalculated for fuel used during the flight.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is the extracted page, and it contains the
+            “Landing Charts” discussion and Sample Problem 11 directly
+            supporting the claim.
+        claim_assessments:
+          - claim_id: landing-outputs-and-arrival-weight
+            verdict: supports
+            rationale: "The page directly supports all elements: ground-roll output, total
+              distance to clear a 50-foot obstacle, and use of recalculated
+              landing weight reflecting fuel burned."
+      usage:
+        input_tokens: 1220
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1217
+        output_tokens: 197
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1417
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-prior-to-takeoff-performance
+    title: "Airplane Flying Handbook, Chapter 6: Takeoffs and Departure Climbs"
+    checked_at_utc: 2026-08-28T16:15:50.034Z
+    linked_claim_ids:
+      - afh-predict-takeoff-climb-performance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a8
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/07_afh_ch6.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4885
+      pdf_page_text_sha256: 6ca30247f8f0e7043e352146ff0a6c71268ab0c4c599e08fd3ecd6f36da7b99b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited excerpt directly states that before going to the airplane,
+          the pilot should check POH/AFM performance charts to determine
+          predicted performance and decide whether a safe takeoff and climb are
+          possible for the conditions and location. It also explicitly states
+          that high density altitude reduces engine and propeller performance,
+          increases takeoff rolls, and decreases climb performance.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 6, “Prior to Takeoff,” page 6-1, and
+            the supplied excerpt from cited PDF page 1 contains the quoted
+            prior-to-takeoff performance guidance.
+        claim_assessments:
+          - claim_id: afh-predict-takeoff-climb-performance
+            verdict: supports
+            rationale: Both portions of the claim are stated directly in the excerpt.
+      usage:
+        input_tokens: 1423
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1420
+        output_tokens: 186
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1609
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-landing-airplane-information
+    title: "Airplane Flying Handbook, Chapter 9: Approaches and Landings"
+    checked_at_utc: 2026-08-28T16:15:50.494Z
+    linked_claim_ids:
+      - afh-landing-airplane-data-controls
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a9
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2059
+      pdf_page_text_sha256: 650eb91aba346778c137d2acfa670c1805da42ae0d9c82f0535a9270620c2c9f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states that manufacturer-recommended
+          procedures, including airplane configuration, airspeeds, and other
+          approach-and-landing information, are in the FAA-approved AFM/POH. It
+          also expressly states that if the chapter differs from the
+          manufacturer's AFM/POH recommendations, the manufacturer's
+          recommendations take precedence.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is Chapter 9, Introduction, page 9-1, and the
+            supplied excerpt is from cited PDF page 1 and contains the quoted
+            AFM/POH-precedence language.
+        claim_assessments:
+          - claim_id: afh-landing-airplane-data-controls
+            verdict: supports
+            rationale: Directly supported by the excerpt.
+      usage:
+        input_tokens: 893
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 172
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1065
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-preflight-performance
+    title: 14 CFR § 91.103 — Preflight action
+    checked_at_utc: 2026-08-28T16:15:46.931Z
+    linked_claim_ids:
+      - preflight-runway-performance-information
+      - later-flight-preflight-information
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a10
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-08-26
+        title_status_sha256: c0ec3cff197fe2b85109d6b125a877dbc1c922c21916c8094e7dbb08cc815f0d
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-08-26
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states the preflight familiarization duty and
+          the runway-length and takeoff/landing-distance information
+          requirements in § 91.103(b), including the distinction between
+          approved flight-manual data under (b)(1) and other reliable,
+          aircraft-appropriate information under (b)(2).
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the introductory text and paragraphs
+            (b)(1)-(2), which contain the provisions needed for both claims,
+            including the general before-flight duty and the specified
+            performance-information requirements.
+        claim_assessments:
+          - claim_id: preflight-runway-performance-information
+            verdict: supports
+            rationale: The excerpt requires, for any flight, runway lengths at intended-use
+              airports and takeoff and landing distance information. It
+              specifies approved Airplane or Rotorcraft Flight Manual data when
+              (b)(1) applies and otherwise reliable information appropriate to
+              the aircraft addressing airport elevation and runway slope, gross
+              weight, wind, and temperature.
+          - claim_id: later-flight-preflight-information
+            verdict: supports
+            rationale: The excerpt states that each pilot in command must, before beginning
+              a flight, become familiar with all available information
+              concerning that flight. This applies to a later flight when that
+              later flight is about to begin.
+      usage:
+        input_tokens: 768
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 336
+        output_tokens_details:
+          reasoning_tokens: 55
+        total_tokens: 1104
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

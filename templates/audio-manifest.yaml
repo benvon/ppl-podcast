@@ -1,5 +1,6 @@
 episode_id: "{{EPISODE_ID}}"
 status: not_rendered
+publication_day_validation: pending
 current_candidate_render: null
 superseded_candidates: []
 chapter_markers:

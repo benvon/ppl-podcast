@@ -10,12 +10,16 @@ const { releaseIdentity } = require("./release-identity.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
+const APPROVED_DRAFT_PRODUCTION_STATUS = "Script approval and source-relevance review are complete; audio has not been rendered and release work remains pending.";
+const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
+
 class PreHostingValidationError extends Error {}
 
 function parseArgs(argv) {
-  const values = {};
+  const values = { packageOnly: false };
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
+    if (token === "--package-only") { values.packageOnly = true; continue; }
     if (!token.startsWith("--")) throw new PreHostingValidationError(`Unexpected argument: ${token}`);
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new PreHostingValidationError(`Missing value for ${token}`);
@@ -89,11 +93,89 @@ function pathWithin(root, candidate) {
   }
 }
 
-function validatePreHosting({ episodePath, cwd = process.cwd() }) {
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function markdownSections(markdown) {
+  return String(markdown).split(/(?=^##\s+)/m).filter((section) => /^##\s+/.test(section));
+}
+
+function reviewSentenceHas(sentence, statusPattern) {
+  return /\b(?:independent|non-drafting)\b/i.test(sentence)
+    && /\breview\b/i.test(sentence)
+    && statusPattern.test(sentence);
+}
+
+function hasResolvedIndependentSpokenScriptReview(productionLog) {
+  return markdownSections(productionLog).some((section) => {
+    const [heading, ...bodyLines] = section.split("\n");
+    const body = bodyLines.join("\n");
+    const headingIdentifiesReview = /\b(?:independent|non-drafting)\b/i.test(heading)
+      && /\b(?:spoken-script|adversarial)\b/i.test(heading)
+      && /\breview\b/i.test(heading);
+    const incompleteStatus = /\b(?:pending|incomplete|unresolved|awaiting)\b|\bnot\s+(?:completed|resolved|accepted)\b/i;
+    const headingRecordsResolution = /\b(?:completed|resolved|accepted)\b/i.test(heading) && !incompleteStatus.test(heading);
+    const sentences = body.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
+    const resolutionRecorded = sentences.some((sentence) => reviewSentenceHas(sentence, /\b(?:completed|resolved|accepted)\b/i));
+    const stillPending = sentences.some((sentence) => reviewSentenceHas(sentence, incompleteStatus));
+    return headingIdentifiesReview && headingRecordsResolution && resolutionRecorded && !stillPending;
+  });
+}
+
+function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
+  const errors = [];
+  expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
+  expect(errors, episode.source_verification?.show_notes_manifest === "show-notes-manifest.yaml", "episode.yaml must reference show-notes-manifest.yaml.");
+  expect(errors, typeof episode.source_verification?.status === "string" && episode.source_verification.status.length > 0, "episode.yaml must record a source verification status.");
+  expect(errors, episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
+  expect(errors, sourceValidation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
+  expect(errors, !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress`) && !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress.recovering`), "source validation must not be in progress, recovering, or interrupted.");
+  expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
+  expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");
+  expect(errors, sourceValidation.results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded source citations and links must be valid.");
+  const sourceResultsByID = new Map((sourceValidation.results || []).map((result) => [result.source_id, result]));
+  expect(errors, sourceValidation.show_notes_results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded show-notes links must be valid deep citations.");
+  expect(errors, sourceValidation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
+  expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && result.relevance?.assessment?.verdict === "supports" && result.relevance?.assessment?.locator_assessment?.verdict === "supports" && result.claim_assessments?.valid === true), "link validation must retain successful source- and claim-level relevance assessments.");
+  const currentValidationInputHashes = sourceValidationInputHashes(episodePath);
+  expect(errors, Object.entries(currentValidationInputHashes).every(([name, digest]) => sourceValidation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs.");
+  errors.push(...validationCoverageErrors(episodePath, sourceValidation));
+  expect(errors, episode.source_verification?.verified_at_utc === sourceValidation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
+  return errors;
+}
+
+function validateDraftPackageShape({ episodePath, paths, episode, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
+  const errors = [];
+  expect(errors, episode.status === "reviewed_draft", "episode.yaml status must be reviewed_draft before audio rendering.");
+  expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
+  expect(errors, masterScript.includes(`**Version:** ${episode.version}`), "master-script.md version must match episode.yaml.");
+  const productionStatus = masterScript.match(/^\*\*Production status:\*\*\s*(.+)$/im)?.[1] || "";
+  expect(errors, Boolean(productionStatus) && !/(?:editorial|source-relevance) review\s+(?:is|are)\s+pending\b/i.test(productionStatus), "master-script.md production status must not leave completed editorial or source review pending.");
+  expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && showNotes.includes(`**Version:** ${episode.version}`), "show-notes.md episode and version must match episode.yaml.");
+  expect(errors, new RegExp(`\\*\\*Source verification:\\*\\*.*source-relevance review is complete for version ${escapeRegExp(episode.version)}\\.`, "i").test(showNotes), "show-notes.md must record the completed source review for the current version.");
+  expect(errors, researchPacket.includes("Human editorial review and script approval are complete."), "research-packet.md must record completed human editorial review.");
+  expect(errors, researchPacket.includes(`source-relevance review passed for version ${episode.version}.`), "research-packet.md must record the completed source review for the current version.");
+  expect(errors, !episode.release_gates_remaining?.some((gate) => /human editorial|source-link validation with llm relevance/i.test(gate)), "episode.yaml must not retain completed editorial or source-relevance gates.");
+  expect(errors, hosting.provenance?.content_version === episode.version, "hosting-metadata content version must match episode.yaml.");
+  try {
+    expect(errors, deriveNarration(masterScript) === narration, "narration.md must be the current derivative of master-script.md.");
+  } catch (error) {
+    errors.push(`master-script.md cannot produce a narration derivative: ${error.message}`);
+  }
+  expect(errors, /- \[x\] Human editorial pass completed/i.test(qaChecklist), "qa-checklist.md must mark the human editorial pass complete.");
+  expect(errors, /- \[x\] Before any audio render, source-link validator was run with `--require-llm`/i.test(qaChecklist), "qa-checklist.md must mark the source-relevance gate complete.");
+  expect(errors, /- \[x\] Independent spoken-script review completed by a second agent that did not draft the lesson/i.test(qaChecklist), "qa-checklist.md must mark the independent spoken-script review complete.");
+  expect(errors, hasResolvedIndependentSpokenScriptReview(productionLog), "production-log.md must record the independent spoken-script review and its resolution.");
+  errors.push(...sourceReviewErrors({ episodePath, paths, episode, sourceValidation }));
+  return { valid: errors.length === 0, kind: DRAFT_PACKAGE_SHAPE, final: false, errors };
+}
+
+function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = false }) {
   const resolvedEpisode = path.resolve(episodePath);
   const errors = [];
   if (!fs.existsSync(resolvedEpisode) || !fs.statSync(resolvedEpisode).isDirectory()) throw new PreHostingValidationError(`Episode directory does not exist: ${resolvedEpisode}`);
-  const files = ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "narration.md", "sources.yaml", "claim-inventory.yaml", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md"];
+  const files = ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "narration.md", "sources.yaml", "claim-inventory.yaml", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md", "research-packet.md", "production-log.md"];
   const paths = Object.fromEntries(files.map((fileName) => [fileName, requireFile(resolvedEpisode, fileName, errors)]));
   if (errors.length) return { valid: false, errors };
 
@@ -104,7 +186,10 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
   const masterScript = fs.readFileSync(paths["master-script.md"], "utf8");
   const narration = fs.readFileSync(paths["narration.md"], "utf8");
   const showNotes = fs.readFileSync(paths["show-notes.md"], "utf8");
+  const researchPacket = fs.readFileSync(paths["research-packet.md"], "utf8");
+  const productionLog = fs.readFileSync(paths["production-log.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
+  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, paths, episode, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist });
   const candidate = audioManifest.current_candidate_render || {};
   let releaseIdentityRecord;
   try { releaseIdentityRecord = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
@@ -112,6 +197,11 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
 
   expect(errors, episode.status === "ready_for_hosting_pr", "episode.yaml status must be ready_for_hosting_pr.");
   expect(errors, audioManifest.status === "candidate_rendered_listening_qa_approved", "audio-manifest.yaml status must record approved listening QA.");
+  // Existing release packages predate this convenience record. Their bound
+  // source-validation report, publication date, and completed release gates
+  // remain the authoritative proof of publication-day validation below.
+  expect(errors, audioManifest.publication_day_validation === undefined || audioManifest.publication_day_validation === "passed", "audio-manifest publication_day_validation must be passed when it is recorded.");
+  expect(errors, !/\bpublication-day validation\s+(?:remains|is)\s+(?:pending|incomplete)\b/i.test(audioManifest.reason || ""), "audio-manifest reason must not contradict completed publication-day validation.");
   expect(errors, hosting.handoff_status === "ready_for_hosting_pr", "hosting-metadata.yaml handoff_status must be ready_for_hosting_pr.");
   expect(errors, episode.audio?.manifest === "audio-manifest.yaml", "episode.yaml must reference audio-manifest.yaml.");
   expect(errors, episode.hosting?.metadata === "hosting-metadata.yaml", "episode.yaml must reference hosting-metadata.yaml.");
@@ -194,19 +284,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
     expect(errors, review.includes(`name="ppl-audio-sha256" content="${candidateSha256}"`), "chapter-review page must identify the approved MP3 checksum.");
   }
 
-  expect(errors, sourceValidation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
-  expect(errors, !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress`) && !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress.recovering`), "source validation must not be in progress, recovering, or interrupted.");
-  expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
-  expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");
-  expect(errors, sourceValidation.results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded source citations and links must be valid.");
-  const sourceResultsByID = new Map((sourceValidation.results || []).map((result) => [result.source_id, result]));
-  expect(errors, sourceValidation.show_notes_results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded show-notes links must be valid deep citations.");
-  expect(errors, sourceValidation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
-  expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && result.relevance?.assessment?.verdict === "supports" && result.relevance?.assessment?.locator_assessment?.verdict === "supports" && result.claim_assessments?.valid === true), "link validation must retain successful source- and claim-level relevance assessments.");
-  const currentValidationInputHashes = sourceValidationInputHashes(resolvedEpisode);
-  expect(errors, Object.entries(currentValidationInputHashes).every(([name, digest]) => sourceValidation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs.");
-  errors.push(...validationCoverageErrors(resolvedEpisode, sourceValidation));
-  expect(errors, episode.source_verification?.verified_at_utc === sourceValidation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
+  errors.push(...sourceReviewErrors({ episodePath: resolvedEpisode, paths, episode, sourceValidation }));
   expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");
   expect(errors, !/^## Production notice\b/im.test(showNotes), "show notes must not duplicate the hosting production disclosure.");
   for (const phrase of ["Full candidate has been listened", "No clipped", "chapter markers have been manually reviewed", "FAA/", "Hosting metadata agrees"]) {
@@ -218,13 +296,14 @@ function validatePreHosting({ episodePath, cwd = process.cwd() }) {
 if (require.main === module) {
   try {
     const options = parseArgs(process.argv.slice(2));
-    const result = validatePreHosting({ episodePath: options.episode });
+    const result = validatePreHosting({ episodePath: options.episode, packageOnly: options.packageOnly });
     if (!result.valid) throw new PreHostingValidationError(result.errors.join("\n"));
-    console.log(`Pre-hosting validation passed for ${path.resolve(options.episode)}.`);
+    if (options.packageOnly) console.log(`Draft-package shape is consistent for ${path.resolve(options.episode)}. This is not a final pre-hosting, release, or hosting approval.`);
+    else console.log(`Pre-hosting validation passed for ${path.resolve(options.episode)}.`);
   } catch (error) {
     console.error(`Pre-hosting validation failed: ${error.message}`);
     process.exitCode = 1;
   }
 }
 
-module.exports = { PreHostingValidationError, durationDisplay, parseArgs, pathWithin, sha256File, validatePreHosting };
+module.exports = { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, PreHostingValidationError, durationDisplay, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, validateDraftPackageShape, validatePreHosting };

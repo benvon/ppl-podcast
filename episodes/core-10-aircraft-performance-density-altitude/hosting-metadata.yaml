@@ -1,0 +1,19 @@
+schema_version: 1
+handoff_status: ready_for_hosting_pr
+publisher_release:
+  id: "core-10"
+  guid: "pplstudyguide.com:core-10"
+  title: "Aircraft Performance and Density Altitude"
+  description: "Connect pressure altitude, temperature, air density, loading, wind, and runway conditions to aircraft-specific takeoff, climb, cruise, and landing performance planning."
+  published_at: "2026-08-28T16:00:53Z"
+  duration: "00:38:23"
+  season: 1
+  number: 10
+  explicit: false
+  audio: {} # Filled by the hosting publisher after private staging.
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.5

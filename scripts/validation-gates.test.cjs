@@ -2,20 +2,22 @@
 
 const assert = require("node:assert/strict");
 const childProcess = require("node:child_process");
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertNarrationInput, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
-const { durationDisplay, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
+const { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, durationDisplay, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
+const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -53,6 +55,13 @@ test("chapter review renders readable, escaped embedded-marker controls", () => 
 
 test("chapter review accepts its manifest argument", () => {
   assert.deepEqual(parseChapterReviewArgs(["--manifest", "audio-artifacts/example.render-manifest.json"]), { manifest: "audio-artifacts/example.render-manifest.json" });
+});
+
+test("pre-hosting validation accepts the approved-draft package flag", () => {
+  assert.deepEqual(parsePreHostingArgs(["--episode", "episodes/core-10-aircraft-performance-density-altitude", "--package-only"]), {
+    episode: "episodes/core-10-aircraft-performance-density-altitude",
+    packageOnly: true,
+  });
 });
 
 test("public release identities keep core, supplemental, and rough-spots tags distinct", () => {
@@ -121,23 +130,84 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
   const qualityRecord = (overrides = {}) => ({ result: "passed", manifest: renderPath, output: { path: audioPath, sha256, probe: { format: { duration: "2.000000" } } }, ...overrides });
   fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord())); fs.writeFileSync(reviewPath, `<meta name="ppl-audio-sha256" content="${sha256}">`);
-  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml" }, hosting: { metadata: "hosting-metadata.yaml" }, public_notes: "show-notes.md", source_verification: { verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" } }));
-  fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: sha256 } }));
+  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml" }, hosting: { metadata: "hosting-metadata.yaml" }, public_notes: "show-notes.md", source_verification: { status: "source_relevance_review_complete", verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" } }));
+  fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", reason: "Publication-day validation passed; package is ready for hosting.", current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: sha256 } }));
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ handoff_status: "ready_for_hosting_pr", publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
-  fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`);
+  fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
   const inputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(fs.readFileSync(path.join(episodePath, file))).digest("hex")]));
   const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened", "No clipped", "chapter markers have been manually reviewed", "FAA/", "Hosting metadata agrees"].map((line) => `- [x] ${line}`).join("\n"));
   try {
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
+    const readyAudioManifest = YAML.parse(fs.readFileSync(path.join(episodePath, "audio-manifest.yaml"), "utf8"));
+    const legacyAudioManifest = { ...readyAudioManifest };
+    delete legacyAudioManifest.publication_day_validation;
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify(legacyAudioManifest));
+    assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ ...readyAudioManifest, publication_day_validation: "pending" }));
+    const pendingPublicationStatus = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(pendingPublicationStatus.valid, false); assert.match(pendingPublicationStatus.errors.join("\n"), /publication_day_validation must be passed/);
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ ...readyAudioManifest, reason: "Publication-day validation remains pending." }));
+    const stalePublicationReason = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(stalePublicationReason.valid, false); assert.match(stalePublicationReason.errors.join("\n"), /reason must not contradict completed publication-day validation/);
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify(readyAudioManifest));
     assert.equal(durationDisplay(5_400), "01:30:00");
     const audioManifestPath = path.join(episodePath, "audio-manifest.yaml");
     const episodeMetadataPath = path.join(episodePath, "episode.yaml");
     const hostingMetadataPath = path.join(episodePath, "hosting-metadata.yaml");
+    const showNotesPath = path.join(episodePath, "show-notes.md");
+    const qaChecklistPath = path.join(episodePath, "qa-checklist.md");
+    const researchPacketPath = path.join(episodePath, "research-packet.md");
+    const productionLogPath = path.join(episodePath, "production-log.md");
     const audioManifest = YAML.parse(fs.readFileSync(audioManifestPath, "utf8"));
     const episodeMetadata = YAML.parse(fs.readFileSync(episodeMetadataPath, "utf8"));
     const hostingMetadata = YAML.parse(fs.readFileSync(hostingMetadataPath, "utf8"));
+    const originalShowNotes = fs.readFileSync(showNotesPath, "utf8");
+    const originalQaChecklist = fs.readFileSync(qaChecklistPath, "utf8");
+    const originalResearchPacket = fs.readFileSync(researchPacketPath, "utf8");
+    const originalProductionLog = fs.readFileSync(productionLogPath, "utf8");
+    const draftMasterScript = `# Test\n\n**Version:** 0.1.0\n**Production status:** ${APPROVED_DRAFT_PRODUCTION_STATUS}\n\n**INSTRUCTOR:**\n\nA test lesson.\n`;
+    const draftShowNotes = `# Test\n\n**Episode:** core-01\n**Version:** 0.1.0\n**Source verification:** FAA/eCFR links and page-level citations were revalidated August 24, 2026; source-relevance review is complete for version 0.1.0.\n\n[FAA reference](${sourceUrl})\n`;
+    const draftInputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(name === "show_notes" ? draftShowNotes : fs.readFileSync(path.join(episodePath, file))).digest("hex")]));
+    const draftLinkValidation = { ...linkValidation(), checked_at_utc: "2026-08-24T13:32:00.123Z", input_sha256: draftInputSha256 };
+    const approvedDraftEpisode = {
+      ...episodeMetadata,
+      status: "reviewed_draft",
+      published_at: null,
+      runtime_actual_seconds: null,
+      source_verification: { ...episodeMetadata.source_verification, verified_at_utc: draftLinkValidation.checked_at_utc },
+      review: { editorial_status: "script_approved" },
+      release_gates_remaining: ["Complete human listening QA, including the front-matter check"],
+    };
+    fs.writeFileSync(masterScriptPath, draftMasterScript);
+    fs.writeFileSync(narrationPath, deriveNarration(draftMasterScript));
+    fs.writeFileSync(showNotesPath, draftShowNotes);
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
+    fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson\n");
+    fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0.\n");
+    fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
+    assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
+    fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent spoken-script review remains pending. The editorial review was accepted.\n");
+    const pendingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
+    assert.equal(pendingIndependentReview.valid, false); assert.match(pendingIndependentReview.errors.join("\n"), /independent spoken-script review/);
+    fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n");
+    const missingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
+    assert.equal(missingIndependentReview.valid, false); assert.match(missingIndependentReview.errors.join("\n"), /independent spoken-script review/);
+    fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson\n");
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...approvedDraftEpisode, source_verification: { ...approvedDraftEpisode.source_verification, verified_at_utc: "2026-08-24T13:32:00Z" } }));
+    const timestampMismatch = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
+    assert.equal(timestampMismatch.valid, false); assert.match(timestampMismatch.errors.join("\n"), /timestamp must match link-validation/);
+    fs.writeFileSync(masterScriptPath, masterScript);
+    fs.writeFileSync(narrationPath, narration);
+    fs.writeFileSync(showNotesPath, originalShowNotes);
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(episodeMetadata));
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
+    fs.writeFileSync(qaChecklistPath, originalQaChecklist);
+    fs.writeFileSync(researchPacketPath, originalResearchPacket);
+    fs.writeFileSync(productionLogPath, originalProductionLog);
     fs.writeFileSync(audioManifestPath, YAML.stringify({ ...audioManifest, current_candidate_render: { ...audioManifest.current_candidate_render, duration_seconds: 3 } }));
     fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...episodeMetadata, runtime_actual_seconds: 3 }));
     fs.writeFileSync(hostingMetadataPath, YAML.stringify({ ...hostingMetadata, publisher_release: { ...hostingMetadata.publisher_release, duration: "00:00:03" } }));
@@ -155,7 +225,7 @@ test("pre-hosting validation requires consistent release records", () => {
     const changedScript = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(changedScript.valid, false); assert.match(changedScript.errors.join("\n"), /narration\.md must be the current derivative/);
     fs.writeFileSync(masterScriptPath, masterScript);
-    const showNotesPath = path.join(episodePath, "show-notes.md"); const originalShowNotes = fs.readFileSync(showNotesPath, "utf8"); const originalCopy = fs.copyFileSync;
+    const originalCopy = fs.copyFileSync;
     fs.copyFileSync = (from, to) => {
       originalCopy(from, to);
       if (path.basename(to) === "show-notes.md") fs.appendFileSync(showNotesPath, "\nChanged during handoff assembly.\n");
@@ -336,6 +406,21 @@ test("PDF page extraction reads only the page named by the citation", async () =
   });
   assert.deepEqual(requestedPages, [34]);
   assert.equal(text, "Load Factors in Steep Turns");
+});
+
+test("PDF page citations can use the bounded large-document limit", async () => {
+  const link = await fetchSource("https://www.faa.gov/example.pdf#page=448", {
+    includePdfBytes: true,
+    maxBytes: 50_000_000,
+    fetchImpl: async () => ({
+      status: 200,
+      headers: new Headers({ "content-type": "application/pdf", "content-length": "41049516" }),
+      body: new ReadableStream({ start(controller) { controller.enqueue(new Uint8Array([1])); controller.close(); } }),
+    }),
+  });
+
+  assert.deepEqual(link.pdf_bytes, Buffer.from([1]));
+  assert.equal(link.truncated, false);
 });
 
 test("PDF page extraction is cancelled and destroys the pending loading task", async () => {
@@ -579,6 +664,72 @@ test("eCFR derives an exact-section XML endpoint from legacy ledgers", async () 
   assert.equal(result.link.resolved_via, "ecfr_exact_section_xml");
   assert.deepEqual(result.link.section_identity, { title: "14", part: "61", section: "61.105", date: "2026-08-10", section_number: "§ 61.105" });
   assert.match(result.link.section_text, /Knowledge areas/);
+});
+
+test("eCFR date refresh updates the source record before section validation reruns", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ecfr-date-refresh-")); const sourcesPath = path.join(temporary, "sources.yaml");
+  try {
+    fs.writeFileSync(sourcesPath, YAML.stringify({ sources: [{ id: "ecfr", url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=91", revision: "eCFR Title 14 current through August 25, 2026", supports_claims: ["claim"] }] }));
+    const ledger = YAML.parse(fs.readFileSync(sourcesPath, "utf8")); let requests = 0;
+    const changes = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl: (url) => {
+      requests += 1; assert.match(String(url), /titles\.json$/);
+      return Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-26" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } }));
+    } });
+    const refreshed = YAML.parse(fs.readFileSync(sourcesPath, "utf8")).sources[0];
+    assert.equal(requests, 1); assert.equal(changes.length, 1);
+    assert.equal(refreshed.validation_url, "https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91");
+    assert.equal(refreshed.revision, "eCFR Title 14 current through August 26, 2026");
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("eCFR refresh keeps the rate limiter alive until the rerun completes", async () => {
+  const events = []; let releaseRerun;
+  const rerunGate = new Promise((resolve) => { releaseRerun = resolve; });
+  const limiter = { close() { events.push("limiter-closed"); } };
+  const running = runWithEcfrRateLimiter(async ({ refreshCount }) => {
+    events.push(`attempt-${refreshCount}`);
+    if (refreshCount === 0) return { refreshedEcfrSources: [{ id: "title-14" }] };
+    await rerunGate;
+    events.push("rerun-complete");
+    return { refreshedEcfrSources: [] };
+  }, limiter);
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(events, ["attempt-0", "attempt-1"]);
+  releaseRerun();
+  await running;
+  assert.deepEqual(events, ["attempt-0", "attempt-1", "rerun-complete", "limiter-closed"]);
+  await assert.rejects(runWithEcfrRefreshes(async () => ({ refreshedEcfrSources: [{ id: "title-14" }] }), { maximumRefreshes: 1 }), /eCFR changed during 2 consecutive validation attempts/);
+});
+
+test("eCFR date refresh leaves malformed eCFR records for normal validation", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ecfr-date-invalid-")); const sourcesPath = path.join(temporary, "sources.yaml");
+  try {
+    const source = { id: "ecfr", url: "https://www.ecfr.gov/current/title-14/part-91/section-91.103", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=99", supports_claims: ["claim"] };
+    fs.writeFileSync(sourcesPath, YAML.stringify({ sources: [source] })); let requests = 0;
+    const changes = await refreshEcfrManifestDates(sourcesPath, { sources: [source] }, { fetchImpl: () => { requests += 1; throw new Error("must not fetch"); } });
+    assert.deepEqual(changes, []); assert.equal(requests, 0);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("eCFR date refresh refuses to overwrite a concurrently changed source manifest", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ecfr-date-race-")); const sourcesPath = path.join(temporary, "sources.yaml");
+  try {
+    const source = { id: "ecfr", url: "https://www.ecfr.gov/current/title-14/part-91/section-91.103", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=91", supports_claims: ["claim"] };
+    fs.writeFileSync(sourcesPath, YAML.stringify({ sources: [source] })); const expectedSourcesSha256 = crypto.createHash("sha256").update(fs.readFileSync(sourcesPath)).digest("hex");
+    fs.appendFileSync(sourcesPath, "# collaborator edit\n");
+    await assert.rejects(refreshEcfrManifestDates(sourcesPath, { sources: [source] }, { expectedSourcesSha256, fetchImpl: () => Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-26" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) }), /changed while eCFR date refresh was pending/);
+    assert.match(fs.readFileSync(sourcesPath, "utf8"), /collaborator edit/);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("eCFR rate limiter governs retry attempts", async () => {
+  const limiter = requestRateLimiter({ maxInFlight: 5, minStartIntervalMs: 15 }); const starts = []; let attempts = 0;
+  const response = await fetchSource("https://www.ecfr.gov/api/versioner/v1/titles.json", { ecfrRateLimiter: limiter, fetchImpl: () => {
+    starts.push(Date.now()); attempts += 1;
+    return Promise.resolve(new Response("{}", { status: attempts === 1 ? 503 : 200, headers: { "content-type": "application/json" } }));
+  } });
+  limiter.close();
+  assert.equal(response.status, 200); assert.equal(starts.length, 2); assert.ok(starts[1] - starts[0] >= 12);
 });
 
 test("eCFR fails closed on unsafe target mismatch, wrong media type, and missing or ambiguous XML sections", async () => {

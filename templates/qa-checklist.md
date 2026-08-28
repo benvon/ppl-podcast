@@ -10,6 +10,7 @@
 - [ ] Before any audio render, show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.
 - [ ] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. This does not require an audit log.
 - [ ] Human editorial pass completed; unresolved technical questions were removed or resolved.
+- [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.
 
 ## Audio
 

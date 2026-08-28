@@ -1,6 +1,7 @@
 "use strict";
 
 const crypto = require("node:crypto");
+const { performance } = require("node:perf_hooks");
 
 function boundedInteger(value, fallback, maximum, name) {
   const number = value === undefined ? fallback : Number(value);
@@ -17,7 +18,11 @@ async function mapConcurrent(items, limit, worker, { signal, onCompleted, keyFor
   };
   const acquire = async () => {
     while (!signal?.aborted) {
-      const position = pending.findIndex((index) => (activeByKey.get(keyFor(items[index], index)) || 0) < perKeyLimit);
+      const position = pending.findIndex((index) => {
+        const key = keyFor(items[index], index);
+        const limitForKey = typeof perKeyLimit === "function" ? perKeyLimit(key, items[index], index) : perKeyLimit;
+        return (activeByKey.get(key) || 0) < limitForKey;
+      });
       if (position >= 0) {
         const index = pending.splice(position, 1)[0]; const key = keyFor(items[index], index);
         activeByKey.set(key, (activeByKey.get(key) || 0) + 1);
@@ -43,6 +48,55 @@ async function mapConcurrent(items, limit, worker, { signal, onCompleted, keyFor
   return results;
 }
 
+function requestRateLimiter({ maxInFlight, minStartIntervalMs, now = () => performance.now(), setTimer = setTimeout, clearTimer = clearTimeout } = {}) {
+  if (!Number.isInteger(maxInFlight) || maxInFlight < 1) throw new Error("maxInFlight must be a positive integer");
+  if (!Number.isSafeInteger(minStartIntervalMs) || minStartIntervalMs < 0) throw new Error("minStartIntervalMs must be a non-negative integer");
+  const pending = []; let active = 0; let lastStartedAt = null; let timer = null; let closed = false;
+  const removePending = (entry) => {
+    const index = pending.indexOf(entry);
+    if (index >= 0) pending.splice(index, 1);
+  };
+  const schedule = () => {
+    if (timer || !pending.length || active >= maxInFlight) return;
+    const wait = lastStartedAt === null ? 0 : Math.max(0, minStartIntervalMs - (now() - lastStartedAt));
+    timer = setTimer(() => { timer = null; pump(); }, wait);
+  };
+  const pump = () => {
+    while (pending.length && active < maxInFlight) {
+      const wait = lastStartedAt === null ? 0 : Math.max(0, minStartIntervalMs - (now() - lastStartedAt));
+      if (wait > 0) { schedule(); return; }
+      const entry = pending.shift();
+      entry.signal?.removeEventListener("abort", entry.cancel);
+      if (entry.signal?.aborted) { entry.reject(new Error("cancelled")); continue; }
+      active += 1; lastStartedAt = now();
+      let released = false;
+      entry.resolve(() => {
+        if (released) return;
+        released = true; active -= 1; pump();
+      });
+    }
+  };
+  return {
+    acquire({ signal } = {}) {
+      if (closed) return Promise.reject(new Error("cancelled"));
+      if (signal?.aborted) return Promise.reject(new Error("cancelled"));
+      return new Promise((resolve, reject) => {
+        const entry = { resolve, reject, signal, cancel: null };
+        entry.cancel = () => { removePending(entry); reject(new Error("cancelled")); };
+        signal?.addEventListener("abort", entry.cancel, { once: true });
+        pending.push(entry); pump();
+      });
+    },
+    close() {
+      closed = true;
+      if (timer) { clearTimer(timer); timer = null; }
+      while (pending.length) {
+        const entry = pending.shift(); entry.signal?.removeEventListener("abort", entry.cancel); entry.reject(new Error("cancelled"));
+      }
+    },
+  };
+}
+
 function progressReporter({ stream = process.stderr, heartbeatSeconds = 10, runId = crypto.randomUUID() } = {}) {
   let timer; let closed = false; let phase = null; let completed = 0; let total = 0;
   const emit = (event, details = {}) => {
@@ -61,4 +115,4 @@ function progressReporter({ stream = process.stderr, heartbeatSeconds = 10, runI
   };
 }
 
-module.exports = { boundedInteger, mapConcurrent, progressReporter };
+module.exports = { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter };

@@ -2,7 +2,7 @@
 
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { mapConcurrent, progressReporter } = require("./validation-runtime.cjs");
+const { mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
 
 test("validation scheduler preserves result order and global/per-origin ceilings", async () => {
   const jobs = ["a/1", "a/2", "b/1", "a/3", "b/2"];
@@ -16,6 +16,17 @@ test("validation scheduler preserves result order and global/per-origin ceilings
   assert.ok(greatest <= 3); assert.ok(greatestByOrigin.get("a") <= 2); assert.ok(greatestByOrigin.get("b") <= 2);
 });
 
+test("validation scheduler accepts a stricter limit for a selected origin", async () => {
+  const jobs = ["ecfr/1", "ecfr/2", "other/1", "ecfr/3"]; let activeEcfr = 0; let greatestEcfr = 0;
+  const results = await mapConcurrent(jobs, 3, async (job) => {
+    if (job.startsWith("ecfr/")) { activeEcfr += 1; greatestEcfr = Math.max(greatestEcfr, activeEcfr); }
+    await new Promise((resolve) => setTimeout(resolve, 3));
+    if (job.startsWith("ecfr/")) activeEcfr -= 1;
+    return job;
+  }, { keyFor: (job) => job.split("/")[0], perKeyLimit: (origin) => origin === "ecfr" ? 1 : 2 });
+  assert.deepEqual(results, jobs); assert.equal(greatestEcfr, 1);
+});
+
 test("validation scheduler wakes every worker blocked by a per-origin limit", async () => {
   const jobs = ["a/1", "a/2", "a/3", "a/4", "a/5"];
   const results = await Promise.race([
@@ -26,6 +37,28 @@ test("validation scheduler wakes every worker blocked by a per-origin limit", as
     new Promise((_, reject) => setTimeout(() => reject(new Error("scheduler deadlocked")), 250)),
   ]);
   assert.deepEqual(results, jobs);
+});
+
+test("request rate limiter limits concurrent requests and their start cadence", async () => {
+  const limiter = requestRateLimiter({ maxInFlight: 3, minStartIntervalMs: 12 });
+  const starts = []; let active = 0; let greatest = 0;
+  await Promise.all(Array.from({ length: 6 }, async () => {
+    const release = await limiter.acquire();
+    starts.push(Date.now()); active += 1; greatest = Math.max(greatest, active);
+    await new Promise((resolve) => setTimeout(resolve, 35));
+    active -= 1; release();
+  }));
+  assert.ok(greatest <= 3);
+  for (let index = 1; index < starts.length; index += 1) assert.ok(starts[index] - starts[index - 1] >= 9, `request ${index} started too soon`);
+});
+
+test("request rate limiter removes a cancelled queued request", async () => {
+  const limiter = requestRateLimiter({ maxInFlight: 1, minStartIntervalMs: 100 });
+  const release = await limiter.acquire(); const controller = new AbortController();
+  const waiting = limiter.acquire({ signal: controller.signal }); controller.abort();
+  await assert.rejects(waiting, /cancelled/);
+  release(); limiter.close();
+  await assert.rejects(limiter.acquire(), /cancelled/);
 });
 
 test("validation progress uses safe NDJSON lifecycle records", () => {

@@ -7,7 +7,7 @@
 
 ## 1. Product definition and boundaries
 
-This is a three-voice study series organized around private-pilot knowledge domains and the Private Pilot Airplane ACS. The Instructor and Learner carry the lesson; an Announcer provides the podcast introduction, section transitions, and outro. The Pilot's Handbook of Aeronautical Knowledge (PHAK) is the main teaching spine; the ACS determines coverage and emphasis; current regulations and FAA operational guidance control when they apply.
+This is a three-voice study series organized around private-pilot knowledge domains and the Private Pilot Airplane ACS. The Instructor and Learner carry the lesson; an Announcer provides the podcast introduction, section transitions, and outro. The Pilot's Handbook of Aeronautical Knowledge (PHAK) supplies the conceptual teaching spine, and the Airplane Flying Handbook (AFH) keeps that knowledge connected to the airplane in flight and to the practical training context learners are likely experiencing. The ACS determines coverage and emphasis; current regulations and FAA operational guidance control when they apply.
 
 **Artifact home:** Repository root. Keep production materials here. Rendered masters and release derivatives go in `audio-artifacts/`, which is deliberately Git-ignored; their checksums, duration, and repository-relative paths are recorded in each episode's metadata.
 
@@ -52,6 +52,7 @@ The local project copies are research conveniences, not frozen publication sourc
 | Source | Role | Research-discovery source (never a listener-facing claim attribution) |
 | --- | --- | --- |
 | Pilot's Handbook of Aeronautical Knowledge, FAA-H-8083-25C | Primary explanation spine | [FAA PHAK landing page](https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak); research then records the exact chapter, subsection, page, revision, and page-anchored PDF link |
+| Airplane Flying Handbook, FAA-H-8083-3C | Primary flight-context spine | [FAA Airplane Flying Handbook landing page](https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/airplane_handbook); research then records the exact chapter, section, page, revision, and page-anchored PDF link. Use it to keep non-flying instruction grounded in how the airplane is flown without turning the episode into maneuver instruction. |
 | Private Pilot for Airplane Category ACS, FAA-S-ACS-6C | Coverage index and test-standard mapping | [FAA ACS landing page](https://www.faa.gov/training_testing/testing/acs); research then records the exact task/knowledge code, page, revision, and page-anchored PDF link |
 | Aeronautical Information Manual | Current FAA operational procedures and terminology | [FAA AIM HTML](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/); research then records the exact AIM paragraph/anchor and effective change |
 | 14 CFR Part 61 and other applicable CFR sections | Binding regulatory requirements | [Current eCFR Part 61](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61); research then records the exact controlling eCFR section URL, plus an FAA-hosted source whenever FAA guidance is discussed |
@@ -126,7 +127,7 @@ INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode
 - Maintain a clean `narration.md` derivative with source tags removed only after the tagged master is approved.
 - Budget words by section and record the actual word count and rendered duration.
 - Avoid invented radio calls, airport instructions, weather, or aircraft checklist steps unless the scenario clearly labels them as hypothetical and no operational action depends on the fictional detail.
-- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue, then complete its listener pass before approving a script draft.
+- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue. The initial drafting loop includes an independent adversarial read and a drafting-agent revision before source-relevance review or script approval.
 
 ### Editorial voice and pacing
 
@@ -152,6 +153,17 @@ Before drafting, create a source packet that contains:
 7. A claim inventory: every statement that is quantitative, prescriptive, regulatory, aircraft-specific, or safety-critical.
 
 Do not begin full scripting with an unresolved source conflict. Escalate it as `OPEN TECHNICAL QUESTION` and either resolve it with a primary source, obtain qualified review when available, or cut it from the episode.
+
+### Initial drafting loop
+
+The initial draft is not ready for source-relevance review or script approval when the first source-led draft is complete. Run this closed loop first:
+
+1. The current Sol model with high reasoning produces the source-led initial package: research packet, reciprocal source ledger and claim inventory, source-tagged master script, derived narration, show notes, metadata, and production log.
+2. A separate agent that did not draft the episode performs an adversarial spoken-script read. It checks grammar, complete thoughts, clear referents and causal chains, earned Learner turns, coherent internal callbacks and call-forwards, first-listen comprehension, scope, and source-tagged claims. Its report distinguishes required findings from optional refinements.
+3. The drafting agent incorporates every required finding with the minimum source-supported revision, keeps the script, narration, claims, show notes, metadata, and source ledger consistent, and records the findings and resolutions in `production-log.md`.
+4. Rerun the script-structure, narration-derivation, source/claim mapping, and relevant repository checks. Only then proceed to formal source-relevance validation and human script approval.
+
+The adversarial review challenges the draft; it does not replace formal source-relevance validation, human editorial judgment, or a qualified aviation review when one is available.
 
 ### Two-pass fact check
 
@@ -416,7 +428,7 @@ supersedes: null
 | 0. Backlog and scope | Episode card | One question, audience, target duration, and reason it belongs in core or Rough Spots. |
 | 1. Research | Research packet and claim inventory | ACS coverage identified; source hierarchy applied; open technical questions resolved or removed. |
 | 2. Outline | Time-budgeted outline | Complete for stated objectives; no source-free safety or regulatory claims. |
-| 3. Draft | Tagged master script | Voice rules followed; scenarios are realistic and clearly bounded. |
+| 3. Draft and adversarial revision | Tagged master script, independent findings, and revised narration-ready package | The source-led initial draft received an independent adversarial spoken-script read; every required finding was incorporated by the drafting agent, logged, and rechecked. |
 | 4. Fact check | Approved source ledger and show-notes draft | Every material claim maps to a current source; FAA links and eCFR links independently checked. |
 | 5. Editorial review | Narration-ready script | Clear distinction among regulation, FAA guidance, and explanation; non-gimmicky dialogue; public-audience language. Qualified aviation review is welcome and recorded when available, but is not a general release prerequisite. |
 | 6. Render and mix | Raw renders, session, lossless master, candidate MP3 | Two voices are distinct, intelligible, correctly pronounced, and in sync with the approved script. |
@@ -434,6 +446,7 @@ Complete `qa-checklist.md` before release.
 - [ ] The verbatim required production notice follows the opening in the script and appears in the show notes.
 - [ ] The episode covers its ACS-mapped objective(s) in plain language, including relevant risk management.
 - [ ] The PHAK is used as a teaching spine, not copied as an audiobook.
+- [ ] The source-led initial draft received an independent adversarial spoken-script read. Every required finding was incorporated by the drafting agent, and the findings and resolutions are recorded in `production-log.md`.
 - [ ] The Learner dialogue advances comprehension; there is no fake banter, humor routine, or persona gimmick.
 - [ ] Every misconception is immediately and unambiguously corrected.
 - [ ] All scenarios distinguish general teaching from real-world flight authority.
@@ -509,6 +522,7 @@ Planned deep-dives into topics of interest that weren't covered in depth in the 
 | supplement-02 | Compass Navigation and Modern Navigation Cross-Checks | Compass-only orientation, pilotage and dead reckoning, then integration with VOR and GPS information | PHAK Chs. 8 and 16, AIM Ch. 1 |
 | supplement-03 | MOSAIC, Light-Sport Certification, and Sport-Pilot Maintenance Privileges | What MOSAIC changes, light-sport certification context, and the boundaries of sport-pilot maintenance privileges | PHAK Ch. 9 MOSAIC addendum, Parts 1/21/43/61/91 as applicable |
 | supplement-04 | Stalls and Spins: A Deeper Study | Stall recognition, spin aerodynamics, risk factors, avoidance, and recovery concepts | PHAK Ch. 5, AFH Ch. 5, ACS Area VII |
+| supplement-05 | Airspeeds: Why IAS, CAS, TAS, and Groundspeed Differ | Pitot-static indication, instrument and installation corrections, density correction, wind, and the distinct planning use of each value | PHAK Ch. 8, aircraft POH/AFM |
 
 ### Open-ended Rough Spots track
 

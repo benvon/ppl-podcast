@@ -1,0 +1,64 @@
+episode_id: "core-10"
+status: candidate_rendered_listening_qa_approved
+publication_day_validation: passed
+reason: >-
+  Script version 0.1.5 has a technically validated candidate render using the
+  accepted opening preview. Full script-aligned human listening QA and manual
+  chapter review are accepted; publication-day validation passed and the package is ready for hosting.
+current_candidate_render:
+  script_version: 0.1.5
+  rendered_at_utc: "2026-08-28T15:17:20.331Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 11
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: "audio-artifacts/core-10-20260828T145800Z.mp3"
+  lossless_master: "audio-artifacts/core-10-20260828T145800Z.master.wav"
+  render_manifest: "audio-artifacts/core-10-20260828T145800Z.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-10-20260828T145800Z.audio-quality.json"
+  chapter_review: "audio-artifacts/core-10-20260828T145800Z.mp3.chapters.581ca6a6c36c70f3e33854bb28d65f97dd202176e4cb109e406bcf0f26b38fdc.html"
+  segment_work_dir: "audio-artifacts/core-10-realtime-20260828T145800Z.segments"
+  duration_seconds: 2303.4
+  duration_display: "38:23"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: "581ca6a6c36c70f3e33854bb28d65f97dd202176e4cb109e406bcf0f26b38fdc"
+  front_matter_validation: "The accepted opening preview contains the Opening and Disclaimer; the full render reused those unchanged segments."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input. Envelope remains in the written script and receives a silent noun-stress instruction."
+  music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade."
+  usage_estimate_usd: 3.244205
+  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 78 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA and manual chapter review are accepted. Audio artifacts are Git-ignored."
+superseded_candidates: []
+opening_preview:
+  script_version: 0.1.5
+  rendered_at_utc: "2026-08-28T15:00:46.206Z"
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 11
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: "audio-artifacts/core-10-20260828T145800Z.preview-001-005.mp3"
+  lossless_master: "audio-artifacts/core-10-20260828T145800Z.preview-001-005.master.wav"
+  render_manifest: "audio-artifacts/core-10-20260828T145800Z.preview-001-005.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-10-20260828T145800Z.preview-001-005.audio-quality.json"
+  chapter_review: "audio-artifacts/core-10-20260828T145800Z.preview-001-005.mp3.chapters.1f06e5f9cab9e97619d2d0548d3c696b245b65b21fad30b4f5cd3b72a07317e8.html"
+  segment_work_dir: "audio-artifacts/core-10-realtime-20260828T145800Z.segments"
+  duration_seconds: 152.72
+  duration_display: "2:33"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: "1f06e5f9cab9e97619d2d0548d3c696b245b65b21fad30b4f5cd3b72a07317e8"
+  included_segments: "1-5: Opening, Disclaimer, podcast introduction, and the first ACS teaching segment"
+  front_matter_validation: "The opening preview was accepted after the required Disclaimer was heard. Renderer preflight confirms that the Opening is immediately followed by the Disclaimer segment."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence only in voice-model input. Envelope remains in the written script and receives a silent noun-stress instruction."
+  music_bed: "10-second lead, steady reduced level under Ballad, 5-second full-level continuation, 0.5-second fade"
+chapter_markers:
+  status: embedded_and_ffprobe_validated
+  source: "master-script.md section headings"
+  audio_sha256: "581ca6a6c36c70f3e33854bb28d65f97dd202176e4cb109e406bcf0f26b38fdc"
+  required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
+  review_page: "audio-artifacts/core-10-20260828T145800Z.mp3.chapters.581ca6a6c36c70f3e33854bb28d65f97dd202176e4cb109e406bcf0f26b38fdc.html"
+required_before_release: []

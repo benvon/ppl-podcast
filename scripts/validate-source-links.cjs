@@ -856,7 +856,12 @@ async function main() {
   const fetchCache = new Map();
   const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
   const showNotesResults = new Array(showNotesManifest?.links.length || 0);
-  const origin = (job) => { try { return new URL(job.type === "source" ? job.source.url : job.note.url).origin; } catch (_) { return "invalid"; } };
+  const origin = (job) => {
+    try {
+      const url = new URL(job.type === "source" ? job.source.url : job.note.url);
+      return canonicalHostname(url) === "ecfr.gov" ? "ecfr-api" : url.origin;
+    } catch (_) { return "invalid"; }
+  };
   progress.phaseStarted("deterministic_validation", allJobs.length);
   await mapConcurrent(allJobs, options.httpConcurrency, async (job) => {
     if (cancellation.signal.aborted) throw new Error("cancelled");
@@ -883,7 +888,7 @@ async function main() {
       applyVerificationEvidence(entry, source, verification);
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results[job.index] = entry; return entry;
-  }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
+  }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? 1 : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
   if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
   const deterministicValid = results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);

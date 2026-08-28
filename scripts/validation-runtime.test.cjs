@@ -28,6 +28,19 @@ test("validation scheduler wakes every worker blocked by a per-origin limit", as
   assert.deepEqual(results, jobs);
 });
 
+test("validation scheduler supports a stricter limit for one origin", async () => {
+  const jobs = ["ecfr/1", "other/1", "ecfr/2", "ecfr/3"];
+  let activeEcfr = 0; let greatestEcfr = 0;
+  const results = await mapConcurrent(jobs, 3, async (job) => {
+    if (job.startsWith("ecfr/")) { activeEcfr += 1; greatestEcfr = Math.max(greatestEcfr, activeEcfr); }
+    await new Promise((resolve) => setTimeout(resolve, 3));
+    if (job.startsWith("ecfr/")) activeEcfr -= 1;
+    return job;
+  }, { keyFor: (job) => job.split("/")[0], perKeyLimit: (origin) => origin === "ecfr" ? 1 : 2 });
+  assert.deepEqual(results, jobs);
+  assert.equal(greatestEcfr, 1);
+});
+
 test("validation progress uses safe NDJSON lifecycle records", () => {
   let output = ""; const stream = { write: (value) => { output += value; } };
   const progress = progressReporter({ stream, heartbeatSeconds: 1, runId: "test-run" });

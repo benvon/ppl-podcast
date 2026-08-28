@@ -17,7 +17,11 @@ async function mapConcurrent(items, limit, worker, { signal, onCompleted, keyFor
   };
   const acquire = async () => {
     while (!signal?.aborted) {
-      const position = pending.findIndex((index) => (activeByKey.get(keyFor(items[index], index)) || 0) < perKeyLimit);
+      const position = pending.findIndex((index) => {
+        const key = keyFor(items[index], index);
+        const limitForKey = typeof perKeyLimit === "function" ? perKeyLimit(key, items[index], index) : perKeyLimit;
+        return (activeByKey.get(key) || 0) < limitForKey;
+      });
       if (position >= 0) {
         const index = pending.splice(position, 1)[0]; const key = keyFor(items[index], index);
         activeByKey.set(key, (activeByKey.get(key) || 0) + 1);

@@ -308,8 +308,8 @@ sources:
     document_id: "14 CFR 91.103"
     locator: "§ 91.103 introductory text and paragraphs (b)(1)-(2)"
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103"
-    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=91"
-    revision: "eCFR Title 14 current through August 25, 2026"
+    validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91"
+    revision: "eCFR Title 14 current through August 26, 2026"
     relevance_excerpt: "Before flight, the pilot in command must become familiar with available information, including intended-airport runway lengths and applicable takeoff and landing distance data or other reliable aircraft-appropriate performance information for expected elevation, slope, gross weight, wind, and temperature."
     verified_at_utc: "2026-08-27T01:33:11Z"
     link_status: 200

@@ -102,7 +102,8 @@ validation URL, extracted section identity, and hashes without retaining the
 source text.
 
 Network validation runs up to four requests globally and two per origin by
-default; the relevance pass runs up to two model assessments. These may be
+default. eCFR API requests are additionally serialized to one in-flight request
+regardless of those settings; the relevance pass runs up to two model assessments. These may be
 tuned for a constrained environment with `--http-concurrency` (1–8),
 `--http-per-origin` (1–4), and `--llm-concurrency` (1–4). Progress is emitted
 as safe NDJSON lifecycle records on stderr while stdout remains human-readable;

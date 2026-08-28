@@ -36,6 +36,12 @@
 - Refreshed the source report after the show-notes update. All 56 deterministic source/show-note checks and all 28 LLM relevance assessments support their mapped claims; `episode.yaml` records the report's exact `2026-08-28T14:53:30.687Z` timestamp.
 - Added the `--package-only` mode to pre-hosting validation and used it before the episode PR. It binds the current source inputs and timestamp, approved-script state, narration derivative, show notes, research packet, QA checklist, and hosting content version without requiring audio artifacts that do not yet exist.
 
+## 2026-08-28 — candidate audio render
+
+- The user accepted the reusable five-segment opening preview, including the required Disclaimer. The full candidate reused those exact rendered segments and rendered the remaining 73 segments with the approved three-voice profile and music bed.
+- The candidate is 38:23 long. Automated WAV/MP3 decode, 24 kHz mono format, duration, clipping, and 78 stitch-boundary checks passed with no discontinuity warnings; all 18 embedded MP3 chapter markers passed `ffprobe` validation.
+- Full script-aligned human listening QA and manual chapter review remain pending. Audio artifacts remain Git-ignored.
+
 ## 2026-08-28 — formal source-relevance validation complete
 
 - Replaced the whole AIM Chapter 5 HTML citation with the exact FAA PDF page containing §5-4-21(b), so the validator supplies the cited climb-gradient passage rather than an unrelated beginning-of-chapter excerpt. Added a 50 MB bounded retrieval path only for a specifically cited PDF page; the general source and eCFR limits are unchanged. A regression test covers the larger page-citation boundary.

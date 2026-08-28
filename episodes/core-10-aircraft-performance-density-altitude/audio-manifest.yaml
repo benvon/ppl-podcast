@@ -60,6 +60,4 @@ chapter_markers:
   audio_sha256: "581ca6a6c36c70f3e33854bb28d65f97dd202176e4cb109e406bcf0f26b38fdc"
   required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
   review_page: "audio-artifacts/core-10-20260828T145800Z.mp3.chapters.581ca6a6c36c70f3e33854bb28d65f97dd202176e4cb109e406bcf0f26b38fdc.html"
-required_before_release:
-  - "Re-verify all cited public links on publication day."
-  - "Validate hosting metadata and external audio-store workflow."
+required_before_release: []

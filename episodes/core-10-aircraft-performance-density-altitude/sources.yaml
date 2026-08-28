@@ -156,7 +156,19 @@ sources:
     relevance_excerpt: "Calibrated airspeed is indicated airspeed corrected for installation and instrument error. True airspeed is calibrated airspeed corrected for altitude and nonstandard temperature and is used for flight planning. Groundspeed is actual speed over the ground, equal to true airspeed adjusted for wind."
     verified_at_utc: "2026-08-28T14:25:12Z"
     link_status: 200
-    supports_claims: [calibrated-true-airspeed-definitions, groundspeed-wind-relationship]
+    supports_claims: [calibrated-true-airspeed-corrections, groundspeed-wind-relationship]
+
+  - id: pcg-true-airspeed-definition
+    authority: faa_guidance
+    title: "Aeronautical Information Manual: Pilot/Controller Glossary"
+    document_id: "FAA Pilot/Controller Glossary"
+    locator: "Airspeed and True Airspeed entries, PCG A-12 (PDF p. 148)"
+    url: "https://www.faa.gov/air_traffic/publications/media/AIM_Chg2_dtd_1-22-26.pdf#page=148"
+    revision: "AIM Change 2 dated January 22, 2026; cited Pilot/Controller Glossary page dated February 20, 2025"
+    relevance_excerpt: "Airspeed is speed relative to the surrounding air mass. True airspeed is airspeed relative to undisturbed air and is used primarily in flight planning and the en route portion of flight."
+    verified_at_utc: "2026-08-28T16:09:51.955Z"
+    link_status: 200
+    supports_claims: [true-airspeed-reference-and-planning]
 
   - id: phak-climb-performance-factors
     authority: faa_guidance

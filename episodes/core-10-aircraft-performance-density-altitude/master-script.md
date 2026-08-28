@@ -3,7 +3,7 @@
 **Version:** 0.1.5 — reviewed draft
 **Target runtime:** approximately 40 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Script approval, source-relevance review, full human listening QA, and manual chapter review are complete. Publication-day validation and release work remain pending.
+**Production status:** Script approval, source-relevance review, full human listening QA, manual chapter review, and publication-day validation are complete. The package is ready for the sealed hosting handoff.
 
 ## [00:00] Opening
 
@@ -240,6 +240,7 @@ Calibrated airspeed is indicated airspeed corrected for instrument and installat
 Groundspeed is the airplane's actual speed across the ground: true airspeed adjusted for wind. A headwind reduces it and a tailwind increases it. In performance planning, keep the jobs separate. Use indicated airspeed for published speeds and limitations stated as indicated. Use calibrated airspeed when the airplane's data or a calculation calls for the corrected value. Use true airspeed for performance and planning through the air, and groundspeed for time and distance across the surface. The POH or AFM chart still decides which value and correction the calculation requires.
 
 [Source: sources.yaml#phak-airspeed-cas-tas-groundspeed]
+[Source: sources.yaml#pcg-true-airspeed-definition]
 [Claim type: FAA guidance]
 
 Picture the airplane at the start of the takeoff roll. In thinner air, its engine produces less power and its propeller produces less thrust, so acceleration is weaker. The wing still has to reach the aerodynamic condition needed for liftoff. That condition now occurs at a higher true airspeed and, with the same wind, a higher groundspeed. More runway is needed to reach liftoff, and less excess thrust or power remains for climb.

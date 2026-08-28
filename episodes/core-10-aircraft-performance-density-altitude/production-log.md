@@ -52,6 +52,12 @@
 - The user accepted the manual review of all 18 chapter markers; their titles and starts are useful and correctly aligned to the listener-facing sections.
 - Recorded the requested publication timestamp `2026-08-28T16:00:53Z` and approved runtime 38:23. Publication-day source validation and the sealed hosting handoff remain required before publishing.
 
+## 2026-08-28 — publication-day validation and ready-for-hosting package
+
+- The full publication-day source validator passed at `2026-08-28T16:16:39.721Z`: all 29 source citations, all 29 listener-facing show-notes links, their exact locators, and all 43 claim-level source-relevance assessments passed.
+- The first publication-day relevance pass exposed one compound claim: the PHAK source supported the calibrated/true-airspeed corrections, while the existing spoken explanation that true airspeed is relative to the surrounding air needed an additional direct source. Added the exact FAA Pilot/Controller Glossary PDF page for that definition and split the compound claim into source-specific claims. The written narration derivative is byte-for-byte unchanged, so the accepted MP3 and its hash-bound chapters remain the approved audio.
+- Recorded the current validation timestamp in `episode.yaml`, synchronized the 38:23 duration and audio checksum with hosting metadata, and marked the package ready for the sealed hosting handoff. Audio artifacts remain Git-ignored.
+
 ## 2026-08-28 — draft-package shape validation clarified
 
 - The `--package-only` mode is now explicitly a draft-package shape check. Its successful result does not approve audio, release readiness, a hosting handoff, or publication.

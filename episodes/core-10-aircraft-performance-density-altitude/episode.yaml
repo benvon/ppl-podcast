@@ -3,7 +3,7 @@ series: ppl-study-podcast
 title: "Aircraft Performance and Density Altitude"
 slug: "aircraft-performance-density-altitude"
 track: "core"
-status: reviewed_draft
+status: ready_for_hosting_pr
 version: 0.1.5
 published_at: "2026-08-28T16:00:53Z"
 runtime_target_minutes: 40
@@ -49,7 +49,7 @@ trouble_spots:
   - "Treating a calculated distance as a guarantee instead of an estimate tied to stated conditions and technique."
 source_verification:
   status: source_relevance_complete
-  verified_at_utc: "2026-08-28T14:53:30.687Z"
+  verified_at_utc: "2026-08-28T16:16:39.721Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
@@ -59,9 +59,7 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - "Re-verify every public source and link on publication day"
-  - "Validate hosting metadata and external audio-store workflow"
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   status: candidate_rendered_listening_qa_approved

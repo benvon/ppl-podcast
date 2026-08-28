@@ -522,6 +522,7 @@ Planned deep-dives into topics of interest that weren't covered in depth in the 
 | supplement-02 | Compass Navigation and Modern Navigation Cross-Checks | Compass-only orientation, pilotage and dead reckoning, then integration with VOR and GPS information | PHAK Chs. 8 and 16, AIM Ch. 1 |
 | supplement-03 | MOSAIC, Light-Sport Certification, and Sport-Pilot Maintenance Privileges | What MOSAIC changes, light-sport certification context, and the boundaries of sport-pilot maintenance privileges | PHAK Ch. 9 MOSAIC addendum, Parts 1/21/43/61/91 as applicable |
 | supplement-04 | Stalls and Spins: A Deeper Study | Stall recognition, spin aerodynamics, risk factors, avoidance, and recovery concepts | PHAK Ch. 5, AFH Ch. 5, ACS Area VII |
+| supplement-05 | Airspeeds: Why IAS, CAS, TAS, and Groundspeed Differ | Pitot-static indication, instrument and installation corrections, density correction, wind, and the distinct planning use of each value | PHAK Ch. 8, aircraft POH/AFM |
 
 ### Open-ended Rough Spots track
 

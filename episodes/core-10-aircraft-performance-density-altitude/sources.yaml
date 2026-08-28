@@ -1,6 +1,6 @@
 episode_id: "core-10"
-verification_date: "2026-08-27"
-verified_at_utc: "2026-08-27T20:48:00Z"
+verification_date: "2026-08-28"
+verified_at_utc: "2026-08-28T14:25:12Z"
 sources:
   - id: acs-performance-knowledge-risk
     authority: faa_regulatory_standard
@@ -25,6 +25,18 @@ sources:
     verified_at_utc: "2026-08-27T01:33:11Z"
     link_status: 200
     supports_claims: [acs-use-appropriate-data]
+
+  - id: phak-airfoil-air-reaction
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 4: Principles of Flight"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 4, Airfoil Design, p. 4-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6"
+    revision: "2023 edition"
+    relevance_excerpt: "An airfoil is designed to obtain a reaction on its surface from air moving past it; the wing airfoils discussed here are designed to produce lift."
+    verified_at_utc: "2026-08-28T14:25:12Z"
+    link_status: 200
+    supports_claims: [airfoil-air-reaction]
 
   - id: phak-poh-afm-identification
     authority: faa_guidance
@@ -122,17 +134,29 @@ sources:
     link_status: 200
     supports_claims: [climb-gradient-groundspeed-conversion]
 
-  - id: phak-groundspeed-wind
+  - id: phak-indicated-airspeed
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
     document_id: "FAA-H-8083-25C"
-    locator: "Ch. 8, Airspeed Indicator: Groundspeed, p. 8-9"
+    locator: "Ch. 8, Airspeed Indicator: Indicated Airspeed, p. 8-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8"
+    revision: "2023 edition"
+    relevance_excerpt: "Indicated airspeed is the direct airspeed-indicator reading without correction for atmospheric density, installation error, or instrument error; AFM/POH takeoff, landing, and stall speeds are normally indicated airspeeds."
+    verified_at_utc: "2026-08-28T14:25:12Z"
+    link_status: 200
+    supports_claims: [indicated-airspeed-definition-use]
+
+  - id: phak-airspeed-cas-tas-groundspeed
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 8, Airspeed Indicator: Calibrated, True, and Groundspeed, p. 8-9"
     url: "https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9"
     revision: "2023 edition"
-    relevance_excerpt: "Groundspeed is the airplane's actual speed over the ground and is true airspeed adjusted for wind; it decreases with a headwind and increases with a tailwind."
-    verified_at_utc: "2026-08-27T20:48:00Z"
+    relevance_excerpt: "Calibrated airspeed is indicated airspeed corrected for installation and instrument error. True airspeed is calibrated airspeed corrected for altitude and nonstandard temperature and is used for flight planning. Groundspeed is actual speed over the ground, equal to true airspeed adjusted for wind."
+    verified_at_utc: "2026-08-28T14:25:12Z"
     link_status: 200
-    supports_claims: [groundspeed-wind-relationship]
+    supports_claims: [calibrated-true-airspeed-definitions, groundspeed-wind-relationship]
 
   - id: phak-climb-performance-factors
     authority: faa_guidance

@@ -1,14 +1,15 @@
 # Aircraft Performance and Density Altitude
 
 **Episode:** core-10
-**Version:** 0.1.4
-**Source verification:** FAA/eCFR links, page-level citations, and claim relevance were validated August 28, 2026.
+**Version:** 0.1.5
+**Source verification:** FAA/eCFR links and page-level citations were updated August 28, 2026; source-relevance review of the focused airspeed revision is pending.
 
 ## In this episode
 
 - What ACS Task PA.I.F expects a private-pilot applicant to connect.
 - Why pressure altitude and density altitude are different performance references.
 - How pressure, temperature, elevation, and moisture affect air density.
+- How indicated, calibrated, true, and groundspeed differ in performance planning.
 - Why thin air changes normally aspirated engine power, propeller thrust, wing lift, takeoff distance, and climb performance.
 - How to read a POH or AFM performance chart from its title and conditions through its inputs and outputs.
 - How takeoff ground roll differs from total distance over an obstacle.
@@ -28,6 +29,7 @@
 | Topic | Source type | Authoritative source | Locator | Verified |
 | --- | --- | --- | --- | --- |
 | Appropriate airplane performance data | FAA regulatory standard | [Private Pilot ACS — Performance and Limitations skill](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15) | PA.I.F.S2, printed p. 7 | 2026-08-26 |
+| Airfoil reaction to moving air | FAA guidance | [PHAK Chapter 4 — Airfoil Design](https://www.faa.gov/sites/faa.gov/files/06_phak_ch4.pdf#page=6) | Airfoil Design, p. 4-6 | 2026-08-28 |
 | Identifying the applicable POH or AFM | FAA guidance | [PHAK Chapter 9 — AFM/POH and preliminary pages](https://www.faa.gov/sites/faa.gov/files/11_phak_ch9.pdf#page=2) | AFM/POH and Preliminary Pages, p. 9-2 | 2026-08-27 |
 | POH or AFM performance-data scope | FAA guidance | [PHAK Chapter 11 — Importance of Performance Data](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1) | Introduction and Importance of Performance Data, p. 11-1 | 2026-08-26 |
 | Chart formats and thin-air effects | FAA guidance | [PHAK Chapter 11 — Data basis and air-density effects](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=2) | Performance-data basis and air-density effects, p. 11-2 | 2026-08-26 |
@@ -35,7 +37,8 @@
 | Moisture and air density | FAA guidance | [PHAK Chapter 11 — Effects of Humidity on Density](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=5) | Effects of Humidity on Density, p. 11-5 | 2026-08-26 |
 | Angle of climb and rate of climb | FAA guidance | [PHAK Chapter 11 — Angle and Rate of Climb](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=7) | Angle of Climb and Rate of Climb, p. 11-7 | 2026-08-26 |
 | Climb gradient and groundspeed | FAA guidance | [AIM — Climb-gradient conversion and groundspeed](https://www.faa.gov/air_traffic/publications/media/AIM%20Basic%20w%20Chg%201%20and%202%20dtd%201-22-26.pdf#page=448) | 5-4-21(b), Missed Approach, printed p. 5-4-58 (PDF p. 448) | 2026-08-28 |
-| Wind and groundspeed | FAA guidance | [PHAK Chapter 8 — Groundspeed and wind](https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9) | Airspeed Indicator: Groundspeed, p. 8-9 | 2026-08-27 |
+| Indicated airspeed | FAA guidance | [PHAK Chapter 8 — Indicated airspeed](https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=8) | Airspeed Indicator: Indicated Airspeed, p. 8-8 | 2026-08-28 |
+| Calibrated, true, and groundspeed | FAA guidance | [PHAK Chapter 8 — Calibrated, true, and groundspeed](https://www.faa.gov/sites/faa.gov/files/10_phak_ch8.pdf#page=9) | Airspeed Indicator: Calibrated, True, and Groundspeed, p. 8-9 | 2026-08-28 |
 | Weight, altitude, and configuration in climb | FAA guidance | [PHAK Chapter 11 — Climb Performance Factors](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=8) | Climb Performance Factors, p. 11-8 | 2026-08-26 |
 | Runway surface | FAA guidance | [PHAK Chapter 11 — Runway Surface](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=12) | Runway Surface, p. 11-12 | 2026-08-26 |
 | Runway slope effects | FAA guidance | [PHAK Chapter 11 — Runway Gradient](https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=13) | Runway Gradient, p. 11-13 | 2026-08-27 |

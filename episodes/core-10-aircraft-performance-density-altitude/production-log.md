@@ -29,6 +29,18 @@
 - The required full validator run passed: 52 deterministic source/show-notes checks and all 26 LLM source-relevance assessments support their mapped claims. `npm test` passed all 81 tests and `git diff --check` passed. No audio was rendered, staged, handed to hosting, or published.
 - Status: complete initial source-led draft. Independent spoken-script review and formal source validation are complete; human editorial review and every audio and release gate remain pending.
 
+## 2026-08-28 — focused lift callback and airspeed planning revision
+
+- Preserved the user's unstaged `master-script.md` changes as authorized input: the split between “The arithmetic serves the decision” and the lesson roadmap remains two spoken paragraphs, and the climb-planning explanation retains the added consequence that a longer climb can use more fuel than expected.
+- Added a brief callback to the earlier airfoil-and-lift lesson at the opening density question. PHAK Chapter 4, Airfoil Design, p. 4-6, supports the statement that moving air acts on the wing airfoil to produce the aerodynamic force the pilot relies on; Chapter 11 remains the performance teaching spine.
+- Added one compact, planning-oriented discussion of indicated, calibrated, true, and groundspeed. PHAK Chapter 8, pp. 8-8 to 8-9, now supports three reciprocal claims covering the direct instrument reading and normally indicated POH/AFM speeds, instrument and installation correction, altitude and temperature correction, and wind adjustment. The discussion identifies where each value matters without expanding into pitot-static operation or aircraft-specific technique.
+- Replaced the ambiguous “The climb section” with “The climb-performance discussion in Chapter 11 of the PHAK.”
+- Scheduled `supplement-05`, “Airspeeds: Why IAS, CAS, TAS, and Groundspeed Differ,” in `production-plan.md` for the deeper pitot-static, error-correction, density, wind, and planning treatment; no supplemental package was drafted.
+- Bumped Core 10 to version 0.1.5 and synchronized the source ledger, reciprocal claims, research packet, show notes and manifest, narration derivative, episode and hosting metadata, and QA checklist. The package now contains 28 sources, 42 claims, 28 listener-facing links, and 5,653 spoken words.
+- Deterministic dry validation passed for all 28 sources, 42 claims, and 28 show-notes links. Structural validation confirmed the standard opening, 18 headings, Retrieval review, one physical line per spoken paragraph, metadata word-count agreement, and exact narration derivation. `npm test` passed all 81 tests, the pre-commit disclosure/secret check passed, and `git diff --check` passed.
+- The prior version 0.1.4 full relevance review remains recorded, but version 0.1.5 changes source-validation inputs. No paid LLM relevance call was made without explicit authorization; `episode.yaml`, show notes, and QA now record relevance review as pending before render.
+- No audio was rendered, staged, handed to hosting, or published. No release pull request was opened.
+
 ## 2026-08-26 — independent adversarial review resolved
 
 - Received and resolved the independent non-drafting review of first-listen clarity, source boundaries, complete thoughts, and series consistency.

@@ -55,7 +55,9 @@ Then the purpose of the chart is not to finish a worksheet. It is to decide whet
 
 **INSTRUCTOR:**
 
-Exactly. The arithmetic serves the decision. We will begin with the source of the airplane-specific information, then explain the atmospheric model behind density altitude, and finally carry both into takeoff, climb, cruise, and landing planning.
+Exactly. The arithmetic serves the decision.
+
+We will begin with the source of the airplane-specific information, then explain the atmospheric model behind density altitude, and finally carry both into takeoff, climb, cruise, and landing planning.
 
 ## [04:20] Performance starts with the actual airplane
 
@@ -89,7 +91,7 @@ Density altitude is a performance altitude.
 
 **INSTRUCTOR:**
 
-Imagine that the airplane could ask one question about the surrounding air: how tightly packed are the air molecules here? Air density affects the mass of air moving through the engine, the propeller, and across the wing. Density altitude expresses that density as an equivalent altitude in the standard atmosphere.
+Imagine that the airplane could ask one question about the surrounding air: how tightly packed are the air molecules here? That matters because, as we discussed in the earlier airfoil-and-lift lesson, air moving past the wing's airfoil produces the aerodynamic force the pilot relies on. The density of that moving air is part of the result. Air density also affects the mass of air moving through the engine and propeller. Density altitude expresses that density as an equivalent altitude in the standard atmosphere.
 
 The PHAK defines density altitude as pressure altitude corrected for nonstandard temperature. A higher density-altitude value corresponds to lower-density air and reduced airplane performance. A lower value corresponds to denser air and improved performance relative to the higher-density-altitude case.
 
@@ -175,6 +177,18 @@ Why thinner air changes takeoff and climb.
 
 The PHAK identifies three direct effects as air becomes less dense. The engine takes in less air and produces less power. A propeller working in thin air produces less thrust. The wing also experiences less aerodynamic force at a given true speed and angle of attack.
 
+**LEARNER:**
+
+Before we use true airspeed and groundspeed, how do they relate to the indicated airspeed I see in the airplane? And where does calibrated airspeed fit?
+
+**INSTRUCTOR:**
+
+Start with indicated airspeed. It is the direct reading on the airspeed indicator, before corrections for air density, installation error, or instrument error. Chapter 8 of the PHAK says the takeoff, landing, and stall speeds listed in the POH or AFM are normally indicated airspeeds. In the airplane, this is the familiar value used to fly the published speed when the document labels it that way.
+
+Calibrated airspeed is indicated airspeed corrected for instrument and installation error. The correction can vary with speed and configuration, so the actual airplane's airspeed-calibration information provides it. True airspeed is calibrated airspeed corrected for altitude and nonstandard temperature. It describes speed through the surrounding air, and for the same calibrated airspeed it increases as air density decreases.
+
+Groundspeed is the airplane's actual speed across the ground: true airspeed adjusted for wind. A headwind reduces it and a tailwind increases it. In performance planning, keep the jobs separate. Use indicated airspeed for published speeds and limitations stated as indicated. Use calibrated airspeed when the airplane's data or a calculation calls for the corrected value. Use true airspeed for performance and planning through the air, and groundspeed for time and distance across the surface. The POH or AFM chart still decides which value and correction the calculation requires.
+
 Picture the airplane at the start of the takeoff roll. In thinner air, its engine produces less power and its propeller produces less thrust, so acceleration is weaker. The wing still has to reach the aerodynamic condition needed for liftoff. That condition now occurs at a higher true airspeed and, with the same wind, a higher groundspeed. More runway is needed to reach liftoff, and less excess thrust or power remains for climb.
 
 The takeoff-performance section describes the runway effect as greater true takeoff speed combined with decreased thrust and net accelerating force. The distance change is not a universal percentage. It comes from the intended airplane's takeoff-distance and climb data for the applicable weight, configuration, pressure altitude, temperature, wind, and runway.
@@ -187,7 +201,7 @@ The indicated airspeed can still look familiar while the airplane covers more gr
 
 Yes. For a given aerodynamic condition, the indicated value can remain similar while true airspeed and groundspeed are higher in less-dense air. That is one reason runway perspective can be misleading. The airplane may reach the expected indicated lift-off speed, yet it used more runway to get there and is moving faster across the ground.
 
-After liftoff, climb depends on thrust or power left over after meeting the demands of flight. The climb section calls these excess thrust and excess power. Higher altitude reduces the power available from a normally aspirated engine. Additional weight increases the power required. Configuration changes such as extended gear or flaps can add drag. Those changes reduce the excess available for climb.
+After liftoff, climb depends on thrust or power left over after meeting the demands of flight. The climb-performance discussion in Chapter 11 of the PHAK calls these excess thrust and excess power. Higher altitude reduces the power available from a normally aspirated engine. Additional weight increases the power required. Configuration changes such as extended gear or flaps can add drag. Those changes reduce the excess available for climb.
 
 The Airplane Flying Handbook connects that knowledge to the flight. Before going to the airplane, check the POH or AFM charts, predict takeoff and climb performance for the conditions and location, and decide whether the airplane is capable. Its summary is direct: high density altitude reduces engine and propeller performance, increases takeoff roll, and decreases climb performance.
 
@@ -307,7 +321,7 @@ Why does distance to climb matter if I already know the route distance?
 
 **INSTRUCTOR:**
 
-Because the airplane is traveling across the ground while it climbs. The point where it reaches cruise altitude affects the route timeline, fuel use, terrain picture, and when the planned cruise performance begins. If the climb is longer than expected, the airplane spends more time at climb power and may cover a different distance before settling into cruise.
+Because the airplane is traveling across the ground while it climbs. The point where it reaches cruise altitude affects the route timeline, fuel use, terrain picture, and when the planned cruise performance begins. If the climb is longer than expected, the airplane spends more time at climb power and may cover a different distance and use more fuel than expected before settling into cruise.
 
 Use the chart exactly as its notes direct. Some charts report cumulative values from sea level, requiring subtraction between the departure and cruise-altitude values. Some apply temperature corrections. Some report fuel in pounds rather than gallons. The sample method does not transfer automatically; read the actual chart's instructions and units.
 

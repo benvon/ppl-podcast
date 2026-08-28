@@ -42,6 +42,12 @@
 - The candidate is 38:23 long. Automated WAV/MP3 decode, 24 kHz mono format, duration, clipping, and 78 stitch-boundary checks passed with no discontinuity warnings; all 18 embedded MP3 chapter markers passed `ffprobe` validation.
 - Full script-aligned human listening QA and manual chapter review remain pending. Audio artifacts remain Git-ignored.
 
+## 2026-08-28 — draft-package shape validation clarified
+
+- The `--package-only` mode is now explicitly a draft-package shape check. Its successful result does not approve audio, release readiness, a hosting handoff, or publication.
+- Source-review completion is established by the current, bound validation report and `relevance_review: complete`, rather than by one exact historical spelling of the auxiliary source-status label. This preserves safe revalidation of established completed packages without migrating their metadata schema.
+- The shape check now also requires the independently reviewed script checkbox and a matching production-log resolution record. The complete release validator remains the only command that can report a final pre-hosting pass.
+
 ## 2026-08-28 — formal source-relevance validation complete
 
 - Replaced the whole AIM Chapter 5 HTML citation with the exact FAA PDF page containing §5-4-21(b), so the validator supplies the cited climb-gradient passage rather than an unrelated beginning-of-chapter excerpt. Added a 50 MB bounded retrieval path only for a specifically cited PDF page; the general source and eCFR limits are unchanged. A regression test covers the larger page-citation boundary.

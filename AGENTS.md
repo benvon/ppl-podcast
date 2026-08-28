@@ -38,10 +38,11 @@
 7. Do not render, stage, publish, or open a PR until the relevant source and
    editorial gates are complete. Before opening an episode PR, run
    `npm run release:prehost -- --episode <episode-directory> --package-only`
-   to verify the approved draft's status records, exact source-validation
-   timestamp, source-report input hashes, narrative derivative, show notes,
-   research packet, QA checklist, and hosting content version. Commit the
-   reviewable package with a signed, conventional commit.
+   as a non-final package-shape check. It verifies the approved draft's status
+   records, exact source-validation timestamp, source-report input hashes,
+   narrative derivative, show notes, research packet, QA checklist, and
+   hosting content version; it does not validate audio, release readiness, or
+   hosting. Commit the reviewable package with a signed, conventional commit.
 8. Draft as speech for a first-time listener. Avoid slogans, quips, snark,
    clever reversals, and compressed regulatory labels. For every rule, explain
    the practical question first, then the evidence and terms that answer it.

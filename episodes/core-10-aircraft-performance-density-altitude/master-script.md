@@ -3,7 +3,7 @@
 **Version:** 0.1.5 — reviewed draft
 **Target runtime:** approximately 40 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Script approval and source-relevance review are complete; audio has not been rendered and release work remains pending.
+**Production status:** Script approval and source-relevance review are complete. A candidate audio render exists; full human listening QA, chapter review, and release work remain pending.
 
 ## [00:00] Opening
 

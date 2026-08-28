@@ -47,6 +47,11 @@
 - The user completed and accepted the full script-aligned audio listening QA for the current candidate, including the already accepted Opening and Disclaimer preview.
 - Automated MP3 chapter embedding and `ffprobe` validation remain recorded as passed. Manual review of chapter titles and starts remains the next audio gate.
 
+## 2026-08-28 — chapter review and publication timestamp
+
+- The user accepted the manual review of all 18 chapter markers; their titles and starts are useful and correctly aligned to the listener-facing sections.
+- Recorded the requested publication timestamp `2026-08-28T16:00:53Z` and approved runtime 38:23. Publication-day source validation and the sealed hosting handoff remain required before publishing.
+
 ## 2026-08-28 — draft-package shape validation clarified
 
 - The `--package-only` mode is now explicitly a draft-package shape check. Its successful result does not approve audio, release readiness, a hosting handoff, or publication.

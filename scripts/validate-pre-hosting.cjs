@@ -197,6 +197,8 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
 
   expect(errors, episode.status === "ready_for_hosting_pr", "episode.yaml status must be ready_for_hosting_pr.");
   expect(errors, audioManifest.status === "candidate_rendered_listening_qa_approved", "audio-manifest.yaml status must record approved listening QA.");
+  expect(errors, audioManifest.publication_day_validation === "passed", "audio-manifest.yaml must record passed publication-day validation before hosting.");
+  expect(errors, !/\bpublication-day validation\s+(?:remains|is)\s+(?:pending|incomplete)\b/i.test(audioManifest.reason || ""), "audio-manifest reason must not contradict completed publication-day validation.");
   expect(errors, hosting.handoff_status === "ready_for_hosting_pr", "hosting-metadata.yaml handoff_status must be ready_for_hosting_pr.");
   expect(errors, episode.audio?.manifest === "audio-manifest.yaml", "episode.yaml must reference audio-manifest.yaml.");
   expect(errors, episode.hosting?.metadata === "hosting-metadata.yaml", "episode.yaml must reference hosting-metadata.yaml.");

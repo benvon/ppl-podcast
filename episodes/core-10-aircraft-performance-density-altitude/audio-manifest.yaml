@@ -1,9 +1,10 @@
 episode_id: "core-10"
 status: candidate_rendered_listening_qa_approved
+publication_day_validation: passed
 reason: >-
   Script version 0.1.5 has a technically validated candidate render using the
   accepted opening preview. Full script-aligned human listening QA and manual
-  chapter review are accepted; publication-day validation remains.
+  chapter review are accepted; publication-day validation passed and the package is ready for hosting.
 current_candidate_render:
   script_version: 0.1.5
   rendered_at_utc: "2026-08-28T15:17:20.331Z"

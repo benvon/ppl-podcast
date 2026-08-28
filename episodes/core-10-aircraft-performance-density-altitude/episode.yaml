@@ -60,12 +60,12 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human listening QA, including the front-matter check"
+  - "Confirm chapter titles and starts are useful and correctly aligned during listening QA"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.

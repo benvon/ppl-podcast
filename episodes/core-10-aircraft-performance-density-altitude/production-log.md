@@ -42,6 +42,11 @@
 - The candidate is 38:23 long. Automated WAV/MP3 decode, 24 kHz mono format, duration, clipping, and 78 stitch-boundary checks passed with no discontinuity warnings; all 18 embedded MP3 chapter markers passed `ffprobe` validation.
 - Full script-aligned human listening QA and manual chapter review remain pending. Audio artifacts remain Git-ignored.
 
+## 2026-08-28 — human listening QA accepted
+
+- The user completed and accepted the full script-aligned audio listening QA for the current candidate, including the already accepted Opening and Disclaimer preview.
+- Automated MP3 chapter embedding and `ffprobe` validation remain recorded as passed. Manual review of chapter titles and starts remains the next audio gate.
+
 ## 2026-08-28 — draft-package shape validation clarified
 
 - The `--package-only` mode is now explicitly a draft-package shape check. Its successful result does not approve audio, release readiness, a hosting handoff, or publication.

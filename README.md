@@ -97,13 +97,16 @@ For eCFR citations, validation derives the official, date-pinned exact-section
 XML request from the cited `current/title-.../part-.../section-...` URL. Legacy
 `validation_url` records that name the title XML and part remain supported, but
 the validator adds the cited section itself; it never validates a regulation
-from a whole-part response or reader HTML. The report records the effective
+from a whole-part response or reader HTML. If the API reports a newer Title
+date, the validator atomically refreshes the eCFR source record and restarts
+before it requests the dated section. The report records the effective
 validation URL, extracted section identity, and hashes without retaining the
 source text.
 
-Network validation runs up to four requests globally and two per origin by
-default. eCFR API requests are additionally serialized to one in-flight request
-regardless of those settings; the relevance pass runs up to two model assessments. These may be
+Network validation runs up to five requests globally and two per origin by
+default. eCFR API requests use a separate limiter: no more than five are
+in-flight and their starts are spaced by at least one second, even if the general
+settings allow more traffic. The relevance pass runs up to two model assessments. These may be
 tuned for a constrained environment with `--http-concurrency` (1–8),
 `--http-per-origin` (1–4), and `--llm-concurrency` (1–4). Progress is emitted
 as safe NDJSON lifecycle records on stderr while stdout remains human-readable;

@@ -2,13 +2,14 @@
 
 const assert = require("node:assert/strict");
 const childProcess = require("node:child_process");
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, refreshEcfrManifestDates, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertNarrationInput, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -16,6 +17,7 @@ const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = requir
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { durationDisplay, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
+const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -579,6 +581,53 @@ test("eCFR derives an exact-section XML endpoint from legacy ledgers", async () 
   assert.equal(result.link.resolved_via, "ecfr_exact_section_xml");
   assert.deepEqual(result.link.section_identity, { title: "14", part: "61", section: "61.105", date: "2026-08-10", section_number: "§ 61.105" });
   assert.match(result.link.section_text, /Knowledge areas/);
+});
+
+test("eCFR date refresh updates the source record before section validation reruns", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ecfr-date-refresh-")); const sourcesPath = path.join(temporary, "sources.yaml");
+  try {
+    fs.writeFileSync(sourcesPath, YAML.stringify({ sources: [{ id: "ecfr", url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=91", revision: "eCFR Title 14 current through August 25, 2026", supports_claims: ["claim"] }] }));
+    const ledger = YAML.parse(fs.readFileSync(sourcesPath, "utf8")); let requests = 0;
+    const changes = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl: (url) => {
+      requests += 1; assert.match(String(url), /titles\.json$/);
+      return Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-26" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } }));
+    } });
+    const refreshed = YAML.parse(fs.readFileSync(sourcesPath, "utf8")).sources[0];
+    assert.equal(requests, 1); assert.equal(changes.length, 1);
+    assert.equal(refreshed.validation_url, "https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91");
+    assert.equal(refreshed.revision, "eCFR Title 14 current through August 26, 2026");
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("eCFR date refresh leaves malformed eCFR records for normal validation", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ecfr-date-invalid-")); const sourcesPath = path.join(temporary, "sources.yaml");
+  try {
+    const source = { id: "ecfr", url: "https://www.ecfr.gov/current/title-14/part-91/section-91.103", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=99", supports_claims: ["claim"] };
+    fs.writeFileSync(sourcesPath, YAML.stringify({ sources: [source] })); let requests = 0;
+    const changes = await refreshEcfrManifestDates(sourcesPath, { sources: [source] }, { fetchImpl: () => { requests += 1; throw new Error("must not fetch"); } });
+    assert.deepEqual(changes, []); assert.equal(requests, 0);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("eCFR date refresh refuses to overwrite a concurrently changed source manifest", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ecfr-date-race-")); const sourcesPath = path.join(temporary, "sources.yaml");
+  try {
+    const source = { id: "ecfr", url: "https://www.ecfr.gov/current/title-14/part-91/section-91.103", validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-08-25/title-14.xml?part=91", supports_claims: ["claim"] };
+    fs.writeFileSync(sourcesPath, YAML.stringify({ sources: [source] })); const expectedSourcesSha256 = crypto.createHash("sha256").update(fs.readFileSync(sourcesPath)).digest("hex");
+    fs.appendFileSync(sourcesPath, "# collaborator edit\n");
+    await assert.rejects(refreshEcfrManifestDates(sourcesPath, { sources: [source] }, { expectedSourcesSha256, fetchImpl: () => Promise.resolve(new Response(JSON.stringify({ titles: [{ number: 14, up_to_date_as_of: "2026-08-26" }], meta: { import_in_progress: false } }), { status: 200, headers: { "content-type": "application/json" } })) }), /changed while eCFR date refresh was pending/);
+    assert.match(fs.readFileSync(sourcesPath, "utf8"), /collaborator edit/);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("eCFR rate limiter governs retry attempts", async () => {
+  const limiter = requestRateLimiter({ maxInFlight: 5, minStartIntervalMs: 15 }); const starts = []; let attempts = 0;
+  const response = await fetchSource("https://www.ecfr.gov/api/versioner/v1/titles.json", { ecfrRateLimiter: limiter, fetchImpl: () => {
+    starts.push(Date.now()); attempts += 1;
+    return Promise.resolve(new Response("{}", { status: attempts === 1 ? 503 : 200, headers: { "content-type": "application/json" } }));
+  } });
+  limiter.close();
+  assert.equal(response.status, 200); assert.equal(starts.length, 2); assert.ok(starts[1] - starts[0] >= 12);
 });
 
 test("eCFR fails closed on unsafe target mismatch, wrong media type, and missing or ambiguous XML sections", async () => {

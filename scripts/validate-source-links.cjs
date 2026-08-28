@@ -8,9 +8,10 @@ const os = require("os");
 const path = require("path");
 const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
-const { boundedInteger, mapConcurrent, progressReporter } = require("./validation-runtime.cjs");
+const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
+const DEFAULT_HTTP_CONCURRENCY = 5;
 const MAX_REDIRECTS = 5;
 const MAX_FETCH_ATTEMPTS = 3;
 const RETRYABLE_HTTP_STATUSES = new Set([408, 429, 502, 503, 504]);
@@ -21,6 +22,9 @@ const MAX_ECFR_BYTES = 2_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
 const PDF_EXTRACTION_TIMEOUT_MS = 20_000;
 const ECFR_TITLES_URL = "https://www.ecfr.gov/api/versioner/v1/titles.json";
+const ECFR_MAX_IN_FLIGHT_REQUESTS = 5;
+const ECFR_MIN_START_INTERVAL_MS = 1_000;
+const MAX_ECFR_MANIFEST_REFRESHES = 3;
 const RELEVANCE_SCHEMA = {
   type: "object",
   additionalProperties: false,
@@ -55,7 +59,7 @@ const RELEVANCE_SCHEMA = {
 };
 
 function parseArgs(argv) {
-  const options = { llm: false, requireLlm: false, dryRun: false, recoverStaleLock: false, model: DEFAULT_MODEL, "http-concurrency": 4, "http-per-origin": 2, "llm-concurrency": 2, "heartbeat-seconds": 10 };
+  const options = { llm: false, requireLlm: false, dryRun: false, recoverStaleLock: false, model: DEFAULT_MODEL, "http-concurrency": DEFAULT_HTTP_CONCURRENCY, "http-per-origin": 2, "llm-concurrency": 2, "heartbeat-seconds": 10 };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
     if (argument === "--llm") { options.llm = true; continue; }
@@ -71,7 +75,7 @@ function parseArgs(argv) {
   if (!options.sources || !options.claims) throw new Error("--sources and --claims are required.");
   if (options.dryRun && options.recoverStaleLock) throw new Error("--recover-stale-lock cannot be combined with --dry-run.");
   if (!/^[a-z0-9][a-z0-9.-]*$/.test(options.model)) throw new Error("--model contains unsupported characters.");
-  options.httpConcurrency = boundedInteger(options["http-concurrency"], 4, 8, "--http-concurrency");
+  options.httpConcurrency = boundedInteger(options["http-concurrency"], DEFAULT_HTTP_CONCURRENCY, 8, "--http-concurrency");
   options.httpPerOrigin = boundedInteger(options["http-per-origin"], 2, 4, "--http-per-origin");
   options.llmConcurrency = boundedInteger(options["llm-concurrency"], 2, 4, "--llm-concurrency");
   options.heartbeatSeconds = boundedInteger(options["heartbeat-seconds"], 10, 60, "--heartbeat-seconds");
@@ -274,16 +278,18 @@ function retryDelay(attempt, retryAfter, signal) {
   });
 }
 
-async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false, includePdfBytes = false, includeBytes = false, maxBytes, signal } = {}) {
+async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includeContentHash = false, includeLinks = false, includePdfBytes = false, includeBytes = false, maxBytes, signal, ecfrRateLimiter } = {}) {
   let current = assertSafeUrl(sourceUrl);
   const citedAuthorityHost = canonicalHostname(current);
   const redirects = [];
   for (let count = 0; count <= MAX_REDIRECTS; count += 1) {
     const controller = new AbortController();
     const abort = () => controller.abort();
-    if (signal) signal.addEventListener("abort", abort, { once: true });
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    let timer; let release;
     try {
+      release = canonicalHostname(current) === "ecfr.gov" && ecfrRateLimiter ? await ecfrRateLimiter.acquire({ signal }) : null;
+      if (signal) signal.addEventListener("abort", abort, { once: true });
+      timer = setTimeout(() => controller.abort(), timeoutMs);
       const response = await fetchImpl(current, { redirect: "manual", signal: controller.signal, headers: { "User-Agent": "ppl-study-podcast-source-validator/1.0" } });
       if ([301, 302, 303, 307, 308].includes(response.status)) {
         const location = response.headers.get("location");
@@ -315,7 +321,7 @@ async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH
         pdf_bytes: includePdfBytes && contentType === "application/pdf" ? body : null,
         body: includeBytes ? body : null,
       };
-    } finally { clearTimeout(timer); if (signal) signal.removeEventListener("abort", abort); }
+    } finally { release?.(); clearTimeout(timer); if (signal) signal.removeEventListener("abort", abort); }
   }
   throw new Error(`redirect limit (${MAX_REDIRECTS}) exceeded`);
 }
@@ -416,8 +422,8 @@ function isEcfrSource(source) {
   try { return canonicalHostname(assertSafeUrl(source.url)) === "ecfr.gov"; } catch (_) { return false; }
 }
 
-async function fetchEcfrTitleStatus(title, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal } = {}) {
-  const raw = await fetchSourceCached(ECFR_TITLES_URL, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, maxBytes: MAX_ECFR_BYTES, signal }, fetchCache);
+async function fetchEcfrTitleStatus(title, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal, ecfrRateLimiter } = {}) {
+  const raw = await fetchSourceCached(ECFR_TITLES_URL, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, maxBytes: MAX_ECFR_BYTES, signal, ecfrRateLimiter }, fetchCache);
   const errors = linkResponseErrors(ECFR_TITLES_URL, raw);
   if (raw.final_url !== ECFR_TITLES_URL || raw.redirects.length) errors.push("eCFR title-status response did not remain at the official metadata endpoint");
   if (raw.content_type !== "application/json") errors.push(`expected JSON content type, received ${raw.content_type || "no content type"}`);
@@ -432,15 +438,15 @@ async function fetchEcfrTitleStatus(title, { fetchImpl = fetch, timeoutMs = FETC
   return { up_to_date_as_of: matches[0].up_to_date_as_of, title_status_sha256: raw.content_sha256, title_status_url: ECFR_TITLES_URL };
 }
 
-async function verifyEcfrSection(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal } = {}) {
+async function verifyEcfrSection(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal, ecfrRateLimiter } = {}) {
   const target = exactEcfrTarget(source);
   let titleStatus;
-  try { titleStatus = await fetchEcfrTitleStatus(target.title, { fetchImpl, timeoutMs, fetchCache, signal }); }
+  try { titleStatus = await fetchEcfrTitleStatus(target.title, { fetchImpl, timeoutMs, fetchCache, signal, ecfrRateLimiter }); }
   catch (error) { return { link: { valid: false, errors: [error.message], citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml" } }; }
   if (titleStatus.up_to_date_as_of !== target.date) {
     return { link: { valid: false, errors: [`eCFR validation date ${target.date} does not match current title ${target.title} date ${titleStatus.up_to_date_as_of}`], citation_url: source.url, validation_url: target.validation_url, resolved_via: "ecfr_exact_section_xml", ecfr_title_status: titleStatus } };
   }
-  const raw = await fetchSourceCached(target.validation_url, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, maxBytes: MAX_ECFR_BYTES, signal }, fetchCache);
+  const raw = await fetchSourceCached(target.validation_url, { fetchImpl, timeoutMs, includeContentHash: true, includeBytes: true, maxBytes: MAX_ECFR_BYTES, signal, ecfrRateLimiter }, fetchCache);
   const errors = linkResponseErrors(target.validation_url, raw);
   if (raw.final_url !== target.validation_url || raw.redirects.length) errors.push("eCFR section response did not remain at the requested exact-section endpoint");
   if (raw.content_type !== "application/xml" && raw.content_type !== "text/xml") errors.push(`expected XML content type, received ${raw.content_type || "no content type"}`);
@@ -454,8 +460,8 @@ async function verifyEcfrSection(source, { fetchImpl = fetch, timeoutMs = FETCH_
   }
 }
 
-async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includePdfPageText = false, pdfjsLoader, fetchCache, signal } = {}) {
-  if (isEcfrSource(source)) return verifyEcfrSection(source, { fetchImpl, timeoutMs, fetchCache, signal });
+async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, includePdfPageText = false, pdfjsLoader, fetchCache, signal, ecfrRateLimiter } = {}) {
+  if (isEcfrSource(source)) return verifyEcfrSection(source, { fetchImpl, timeoutMs, fetchCache, signal, ecfrRateLimiter });
   const citationPage = includePdfPageText ? citedPdfPageNumber(source.url) : null;
   const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: Boolean(source.programmatic_url), includePdfBytes: Boolean(citationPage), signal }, fetchCache);
   citation.citation_url = source.url;
@@ -537,10 +543,55 @@ async function assessRelevance({ model, source, claims, fetched, fetchImpl = fet
   } finally { clearTimeout(timer); signal?.removeEventListener("abort", abort); }
 }
 
-function writeYaml(file, value) {
+function writeTextAtomically(file, text) {
   const temporary = `${file}.${process.pid}.${crypto.randomUUID()}.tmp`;
-  try { fs.writeFileSync(temporary, YAML.stringify(value), "utf8"); fs.renameSync(temporary, file); }
+  try { fs.writeFileSync(temporary, text, "utf8"); fs.renameSync(temporary, file); }
   finally { if (fs.existsSync(temporary)) fs.unlinkSync(temporary); }
+}
+
+function writeYaml(file, value) {
+  writeTextAtomically(file, YAML.stringify(value));
+}
+
+function displayEcfrDate(date) {
+  const [year, month, day] = date.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", { timeZone: "UTC", month: "long", day: "numeric", year: "numeric" }).format(new Date(Date.UTC(year, month - 1, day)));
+}
+
+function refreshedEcfrValidationUrl(source, target, date) {
+  const url = new URL(source.validation_url);
+  url.pathname = `/api/versioner/v1/full/${date}/title-${target.title}.xml`;
+  return url.toString();
+}
+
+async function refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl = fetch, timeoutMs = FETCH_TIMEOUT_MS, fetchCache, signal, ecfrRateLimiter, expectedSourcesSha256 } = {}) {
+  const targets = ledger.sources.map((source, index) => {
+    if (!isEcfrSource(source)) return null;
+    try { return { source, index, target: exactEcfrTarget(source) }; }
+    catch (_) { return null; }
+  }).filter(Boolean);
+  if (!targets.length) return [];
+  const titleStatuses = new Map();
+  await Promise.all(targets.map(async ({ target }) => {
+    if (!titleStatuses.has(target.title)) titleStatuses.set(target.title, fetchEcfrTitleStatus(target.title, { fetchImpl, timeoutMs, fetchCache, signal, ecfrRateLimiter }));
+    await titleStatuses.get(target.title);
+  }));
+  const changes = [];
+  for (const entry of targets) {
+    const currentDate = (await titleStatuses.get(entry.target.title)).up_to_date_as_of;
+    if (entry.target.date !== currentDate) changes.push({ ...entry, current_date: currentDate });
+  }
+  if (!changes.length) return changes;
+  if (expectedSourcesSha256 && fileSha256(sourcesPath) !== expectedSourcesSha256) throw new Error("sources manifest changed while eCFR date refresh was pending; rerun validation instead of overwriting it");
+  const document = YAML.parseDocument(fs.readFileSync(sourcesPath, "utf8"));
+  if (document.errors.length) throw new Error(`Invalid YAML in ${sourcesPath}: ${document.errors[0].message}`);
+  for (const { source, index, target, current_date: currentDate } of changes) {
+    if (source.validation_url) document.setIn(["sources", index, "validation_url"], refreshedEcfrValidationUrl(source, target, currentDate));
+    else document.setIn(["sources", index, "ecfr_date"], currentDate);
+    document.setIn(["sources", index, "revision"], `eCFR Title ${target.title} current through ${displayEcfrDate(currentDate)}`);
+  }
+  writeTextAtomically(sourcesPath, document.toString());
+  return changes;
 }
 
 function validationInProgressPath(outputPath) {
@@ -622,6 +673,12 @@ function completeValidationReport(outputPath, report, run) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
   writeYaml(outputPath, report);
+  assertValidationLockOwner(lockPath, run);
+  fs.unlinkSync(lockPath);
+}
+
+function releaseValidationLock(outputPath, run) {
+  const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
 }
@@ -811,9 +868,10 @@ async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
   return results;
 }
 
-async function main() {
+async function main(refreshCount = 0, sharedEcfrRateLimiter = null) {
   const options = parseArgs(process.argv.slice(2));
   const progress = progressReporter({ heartbeatSeconds: options.heartbeatSeconds });
+  const ecfrRateLimiter = sharedEcfrRateLimiter || requestRateLimiter({ maxInFlight: ECFR_MAX_IN_FLIGHT_REQUESTS, minStartIntervalMs: ECFR_MIN_START_INTERVAL_MS });
   const cancellation = new AbortController(); let cancelled = false;
   const cancel = () => { cancelled = true; cancellation.abort(); };
   process.once("SIGINT", cancel); process.once("SIGTERM", cancel);
@@ -852,8 +910,16 @@ async function main() {
     process.exitCode = 1;
     return;
   }
-  const results = new Array(ledger.sources.length);
   const fetchCache = new Map();
+  const refreshedEcfrSources = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
+  if (refreshedEcfrSources.length) {
+    releaseValidationLock(outputPath, validationRun);
+    progress.emit("ecfr_manifest_refreshed", { source_count: refreshedEcfrSources.length, titles: [...new Set(refreshedEcfrSources.map((entry) => entry.target.title))] });
+    if (refreshCount >= MAX_ECFR_MANIFEST_REFRESHES) throw new Error(`eCFR changed during ${MAX_ECFR_MANIFEST_REFRESHES + 1} consecutive validation attempts; rerun after the title import settles.`);
+    console.error(`Refreshed ${refreshedEcfrSources.length} eCFR source date${refreshedEcfrSources.length === 1 ? "" : "s"}; restarting validation with the current API date.`);
+    return main(refreshCount + 1, ecfrRateLimiter);
+  }
+  const results = new Array(ledger.sources.length);
   const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
   const showNotesResults = new Array(showNotesManifest?.links.length || 0);
   const origin = (job) => {
@@ -871,7 +937,7 @@ async function main() {
       try {
         result.citation_target.errors = [...citationTargetErrors(noteSource), ...validationTargetErrors(noteSource)]; result.citation_target.valid = result.citation_target.errors.length === 0;
         if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
-        const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache, signal: cancellation.signal });
+        const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
         applyVerificationEvidence(result, noteSource, verification);
       } catch (error) { result.link = { valid: false, error: error.message }; }
       showNotesResults[job.index] = result; return result;
@@ -884,11 +950,11 @@ async function main() {
       entry.citation_target.errors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
       entry.citation_target.valid = entry.citation_target.errors.length === 0;
       if (!entry.citation_target.valid) throw new Error(`Deep-citation validation failed: ${entry.citation_target.errors.join("; ")}`);
-      const verification = await verifyProgrammaticFallback(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, signal: cancellation.signal });
+      const verification = await verifyProgrammaticFallback(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
       applyVerificationEvidence(entry, source, verification);
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results[job.index] = entry; return entry;
-  }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? 1 : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
+  }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? ECFR_MAX_IN_FLIGHT_REQUESTS : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
   if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
   const deterministicValid = results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
@@ -933,9 +999,10 @@ async function main() {
     else { progress.emit("run_failed", { message: error.message }); throw error; }
   } finally {
     process.removeListener("SIGINT", cancel); process.removeListener("SIGTERM", cancel); progress.close();
+    if (!sharedEcfrRateLimiter) ecfrRateLimiter.close();
   }
 }
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

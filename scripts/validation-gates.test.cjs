@@ -140,10 +140,18 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened", "No clipped", "chapter markers have been manually reviewed", "FAA/", "Hosting metadata agrees"].map((line) => `- [x] ${line}`).join("\n"));
   try {
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
-    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ ...YAML.parse(fs.readFileSync(path.join(episodePath, "audio-manifest.yaml"), "utf8")), reason: "Publication-day validation remains pending." }));
+    const readyAudioManifest = YAML.parse(fs.readFileSync(path.join(episodePath, "audio-manifest.yaml"), "utf8"));
+    const legacyAudioManifest = { ...readyAudioManifest };
+    delete legacyAudioManifest.publication_day_validation;
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify(legacyAudioManifest));
+    assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ ...readyAudioManifest, publication_day_validation: "pending" }));
+    const pendingPublicationStatus = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(pendingPublicationStatus.valid, false); assert.match(pendingPublicationStatus.errors.join("\n"), /publication_day_validation must be passed/);
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ ...readyAudioManifest, reason: "Publication-day validation remains pending." }));
     const stalePublicationReason = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(stalePublicationReason.valid, false); assert.match(stalePublicationReason.errors.join("\n"), /reason must not contradict completed publication-day validation/);
-    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", reason: "Publication-day validation passed; package is ready for hosting.", current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: sha256 } }));
+    fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify(readyAudioManifest));
     assert.equal(durationDisplay(5_400), "01:30:00");
     const audioManifestPath = path.join(episodePath, "audio-manifest.yaml");
     const episodeMetadataPath = path.join(episodePath, "episode.yaml");

@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-28T14:37:52.228Z
+checked_at_utc: 2026-08-28T14:53:30.687Z
 sources_file: episodes/core-10-aircraft-performance-density-altitude/sources.yaml
 claims_file: episodes/core-10-aircraft-performance-density-altitude/claim-inventory.yaml
 show_notes_file: episodes/core-10-aircraft-performance-density-altitude/show-notes.md
@@ -8,7 +8,7 @@ show_notes_manifest_file: episodes/core-10-aircraft-performance-density-altitude
 input_sha256:
   sources: 2d31e983e5ee851bf9b111e75be90053609dc43d9371634f021f384e390b3873
   claims: 293373b96c84f8e6daca779fceece8ad0877f5a4011738eb138c4864d999919f
-  show_notes: 7ada473567820c33dc03c31871599727fcb1ae16e561ec7a83741c342ab57c3f
+  show_notes: dd38218cefc241ed7ca4b9daf34650405b52d23e42d371bcc2757a9e584f3298
   show_notes_manifest: 3740fbb4f901a5659b0252627bb117db15d27820b6305be91481814dad871b6a
 llm_requested: true
 llm_model: gpt-5.6-terra
@@ -918,7 +918,7 @@ show_notes_results:
 results:
   - source_id: acs-performance-knowledge-risk
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-28T14:36:54.188Z
+    checked_at_utc: 2026-08-28T14:52:37.194Z
     linked_claim_ids:
       - acs-performance-objective
       - acs-performance-factors
@@ -955,44 +955,42 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page contains ACS Task PA.I.F, Performance and
-          Limitations, including its objective, knowledge elements, and
-          risk-management elements. Each claim closely restates material
-          expressly present in the excerpt.
+        rationale: The cited PDF page excerpt contains ACS Task PA.I.F, including its
+          objective, knowledge elements, and risk-management elements. Each
+          claim is directly grounded in the quoted task language.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies PA.I.F.K1-K3 and R1-R3 under Performance and
-            Limitations, and the excerpt from cited PDF page 14 contains those
-            exact elements. Although the printed page number is 6, the cited PDF
-            page 14 corresponds to that printed page.
+          rationale: The locator identifies PA.I.F.K1-K3 and R1-R3 under Task F,
+            Performance and Limitations. Those elements appear on cited PDF page
+            14 (printed page 6) in the supplied excerpt.
         claim_assessments:
           - claim_id: acs-performance-objective
             verdict: supports
-            rationale: The objective states that the task determines whether the applicant
-              exhibits satisfactory knowledge, risk management, and skills
-              associated with operating an airplane safely within the parameters
-              of its performance capabilities and limitations.
+            rationale: The objective states that the applicant must exhibit satisfactory
+              knowledge, risk management, and skills associated with operating
+              an airplane safely within the parameters of its performance
+              capabilities and limitations.
           - claim_id: acs-performance-factors
             verdict: supports
-            rationale: PA.I.F.K1 addresses using charts, tables, and data to determine
-              performance. PA.I.F.K2 lists atmospheric conditions, pilot
+            rationale: PA.I.F.K1 addresses charts, tables, and data used to determine
+              performance; PA.I.F.K2 lists atmospheric conditions, pilot
               technique, airplane configuration, airport environment,
-              loading/CG, and weight and balance as performance factors;
-              PA.I.F.K3 lists aerodynamics.
+              loading/CG, and weight and balance; PA.I.F.K3 addresses
+              aerodynamics.
           - claim_id: acs-calculated-actual-risk
             verdict: supports
-            rationale: The risk-management items explicitly cover use of performance charts,
-              tables, and data; airplane limitations; and possible differences
-              between calculated performance and actual performance.
+            rationale: Risk-management elements PA.I.F.R1 through R3 explicitly cover use of
+              performance charts, tables, and data; airplane limitations; and
+              possible differences between calculated and actual performance.
       usage:
         input_tokens: 990
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 311
+        output_tokens: 294
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1301
+        total_tokens: 1284
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1001,7 +999,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: acs-performance-skill
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-28T14:36:54.188Z
+    checked_at_utc: 2026-08-28T14:52:37.195Z
     linked_claim_ids:
       - acs-use-appropriate-data
     missing_claim_ids: []
@@ -1041,23 +1039,24 @@ results:
           the claim."
         locator_assessment:
           verdict: supports
-          rationale: The cited excerpt is from printed page 7 and includes Area of
-            Operation I, Task F skills, including PA.I.F.S2. The locator
-            identifies PA.I.F.S2 and printed page 7 accurately.
+          rationale: The cited PDF page excerpt contains Area of Operation I, Preflight
+            Preparation, Skills, including PA.I.F.S2 exactly as identified.
+            Although the locator wording says “Performance and Limitations,” the
+            task code and quoted requirement are present on the cited page.
         claim_assessments:
           - claim_id: acs-use-appropriate-data
             verdict: supports
-            rationale: PA.I.F.S2 is quoted verbatim in the excerpt and requires use of
-              appropriate airplane performance charts, tables, and data.
+            rationale: "PA.I.F.S2 is quoted verbatim in the excerpt: “Use the appropriate
+              airplane performance charts, tables, and data.”"
       usage:
         input_tokens: 887
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 157
+        output_tokens: 166
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1044
+        total_tokens: 1053
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1067,7 +1066,7 @@ results:
   - source_id: phak-airfoil-air-reaction
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 4: Principles of
       Flight"
-    checked_at_utc: 2026-08-28T14:36:55.266Z
+    checked_at_utc: 2026-08-28T14:52:37.885Z
     linked_claim_ids:
       - airfoil-air-reaction
     missing_claim_ids: []
@@ -1102,29 +1101,29 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly defines an airfoil as a structure designed to
-          obtain reaction upon its surface from air moving through or past it,
-          and states that the discussion concerns aircraft airfoils designed to
-          produce lift.
+        rationale: The excerpt defines an airfoil as a structure designed to obtain
+          reaction upon its surface from air moving through it or past it, and
+          specifically limits the discussion to aircraft airfoils designed to
+          produce lift. This directly supports the claim.
         locator_assessment:
           verdict: supports
           rationale: The cited PDF page contains the “Airfoil Design” section and the
-            quoted definition and lift-purpose language.
+            definition supporting the claim.
         claim_assessments:
           - claim_id: airfoil-air-reaction
             verdict: supports
-            rationale: "The excerpt explicitly supports both elements: an airfoil obtains
-              reaction from moving air, and aircraft airfoils are designed to
-              produce lift."
+            rationale: The excerpt states that an airfoil is designed to obtain reaction
+              upon its surface from air moving past it and identifies the
+              relevant aircraft airfoils as those designed to produce lift.
       usage:
         input_tokens: 1301
         input_tokens_details:
-          cache_write_tokens: 1298
-          cached_tokens: 0
-        output_tokens: 148
+          cache_write_tokens: 0
+          cached_tokens: 1298
+        output_tokens: 160
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1449
+        total_tokens: 1461
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1134,7 +1133,7 @@ results:
   - source_id: phak-poh-afm-identification
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 9: Flight Manuals
       and Other Documents"
-    checked_at_utc: 2026-08-28T14:36:55.269Z
+    checked_at_utc: 2026-08-28T14:52:37.889Z
     linked_claim_ids:
       - poh-afm-identification
     missing_claim_ids: []
@@ -1169,35 +1168,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states that the POH for most light aircraft
-          built after 1975 is designated as the FAA-approved flight manual. It
-          also states that when “POH” is used in the main title, the title page
-          must state that sections are FAA approved as the AFM, and that
-          manufacturers must include the aircraft serial number and registration
-          on the title page to identify the applicable aircraft.
+        rationale: The excerpt explicitly states that the POH for most light aircraft
+          built after 1975 is also designated as the FAA-approved flight manual.
+          It also states that when “POH” is used in the main title, the title
+          page must include a statement identifying which sections are
+          FAA-approved as the AFM. Further, it says manufacturers must include
+          the aircraft serial number and registration on the title page to
+          identify the aircraft to which the manual belongs.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator is PDF page 2 (printed page 9-2), and the supplied
-            excerpt from that exact page contains the relevant POH/AFM
-            approval-status and aircraft-identification discussion.
+          rationale: The cited PDF page contains the relevant AFM/POH identification and
+            preliminary-pages discussion, including approval-status and
+            aircraft-identification statements.
         claim_assessments:
           - claim_id: poh-afm-identification
             verdict: supports
-            rationale: "The excerpt explicitly supports both parts of the claim: most light
-              aircraft built after 1975 have a POH designated as the
-              FAA-approved flight manual; and the title/preliminary-page
-              material identifies FAA approval status and the particular
-              aircraft through title-page statements plus serial number and
-              registration."
+            rationale: The claim is supported by the excerpt's statements on post-1975
+              light-aircraft POHs being FAA-approved flight manuals, title-page
+              FAA-approval statements, and title-page serial-number/registration
+              identification.
       usage:
         input_tokens: 1480
         input_tokens_details:
-          cache_write_tokens: 1477
-          cached_tokens: 0
-        output_tokens: 234
+          cache_write_tokens: 0
+          cached_tokens: 1477
+        output_tokens: 274
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1714
+          reasoning_tokens: 55
+        total_tokens: 1754
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1207,7 +1205,7 @@ results:
   - source_id: phak-performance-data-introduction
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:55.609Z
+    checked_at_utc: 2026-08-28T14:52:38.413Z
     linked_claim_ids:
       - afm-poh-primary-performance-data
     missing_claim_ids: []
@@ -1242,28 +1240,27 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that the performance or operational
-          information section of the AFM/POH contains operating data pertaining
-          to takeoff, climb, range, endurance, descent, and landing.
+        rationale: The excerpt directly states that the AFM/POH performance or
+          operational information section contains operating data pertaining to
+          takeoff, climb, range, endurance, descent, and landing.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 11-1 and contains the “Importance of
-            Performance Data” passage directly supporting the claim.
+          rationale: The cited PDF page is page 11-1, and the excerpt contains the quoted
+            statement under “Importance of Performance Data.”
         claim_assessments:
           - claim_id: afm-poh-primary-performance-data
             verdict: supports
-            rationale: "The claim closely restates the excerpt: the AFM/POH performance or
-              operational information section contains operating data for
-              takeoff, climb, range, endurance, descent, and landing."
+            rationale: "Directly supported: the excerpt lists the same AFM/POH
+              operating-data categories named in the claim."
       usage:
         input_tokens: 564
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 161
+        output_tokens: 145
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 725
+        total_tokens: 709
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1273,7 +1270,7 @@ results:
   - source_id: phak-data-basis-and-density-effects
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:55.846Z
+    checked_at_utc: 2026-08-28T14:52:39.436Z
     linked_claim_ids:
       - performance-data-not-standardized
       - thin-air-reduces-performance
@@ -1309,36 +1306,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly discusses both the nonstandardized
-          presentation and basis of manufacturer AFM/POH performance data and
-          the effects of reduced air density on power, thrust, and lift.
+        rationale: The cited PDF page explicitly states both that AFM/POH
+          performance-data presentation is not standardized and that less-dense
+          air reduces power, thrust, and lift.
         locator_assessment:
           verdict: supports
-          rationale: "The cited locator is accurate for PDF page 11-2: the excerpt on that
-            page contains the stated performance-data basis discussion and the
-            air-density performance-effects list."
+          rationale: The locator identifies Chapter 11, page 11-2, and the supplied
+            excerpt is from cited PDF page 2 (printed page 11-2). It contains
+            the relevant passages for both claims.
         claim_assessments:
           - claim_id: performance-data-not-standardized
             verdict: supports
             rationale: The excerpt states that manufacturers’ AFM/POH information and data
-              “is not standardized,” that some provide data in tabular form and
+              are 'not standardized,' that some present data in tabular form and
               others use graphs, and that data may be based on standard
               atmospheric conditions, pressure altitude, or density altitude.
           - claim_id: thin-air-reduces-performance
             verdict: supports
-            rationale: The excerpt expressly states that as air becomes less dense it
-              reduces power because the engine takes in less air, thrust because
-              the propeller is less efficient in thin air, and lift because thin
-              air exerts less force on the airfoils.
+            rationale: The excerpt expressly says that as air becomes less dense, it reduces
+              power because the engine takes in less air, thrust because the
+              propeller is less efficient in thin air, and lift because thin air
+              exerts less force on the airfoils.
       usage:
         input_tokens: 1401
         input_tokens_details:
-          cache_write_tokens: 1398
-          cached_tokens: 0
-        output_tokens: 248
+          cache_write_tokens: 0
+          cached_tokens: 1398
+        output_tokens: 252
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1649
+        total_tokens: 1653
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1348,7 +1345,7 @@ results:
   - source_id: phak-pressure-density-altitude-definitions
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:57.041Z
+    checked_at_utc: 2026-08-28T14:52:39.527Z
     linked_claim_ids:
       - pressure-altitude-definition
       - density-altitude-definition
@@ -1384,23 +1381,20 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly defines both pressure altitude and
-          density altitude and describes the 29.92 in Hg altimeter-setting
-          method for determining pressure altitude.
+        rationale: The cited PDF page explicitly defines both pressure altitude and
+          density altitude and states the 29.92 inHg altimeter-setting method
+          for obtaining pressure altitude.
         locator_assessment:
           verdict: supports
           rationale: The locator identifies Chapter 11, the “Pressure Altitude and Density
-            Altitude” material on PDF page 3 (printed page 11-3). The supplied
-            excerpt is from that exact page and contains the relevant
-            definitions.
+            Altitude” material on PDF page 3, and the supplied excerpt is from
+            page 11-3 containing those definitions.
         claim_assessments:
           - claim_id: pressure-altitude-definition
             verdict: supports
-            rationale: The excerpt states that pressure altitude is “the altitude in the
-              standard atmosphere corresponding to the sensed pressure” when the
-              altimeter is set to 29.92 in Hg, and lists setting the altimeter
-              to 29.92 in Hg and reading indicated altitude as a determination
-              method.
+            rationale: The excerpt states that, with the altimeter set to 29.92 inHg, “the
+              altitude indicated is the pressure altitude—the altitude in the
+              standard atmosphere corresponding to the sensed pressure.”
           - claim_id: density-altitude-definition
             verdict: supports
             rationale: "The excerpt explicitly states: “Density altitude is pressure
@@ -1408,12 +1402,12 @@ results:
       usage:
         input_tokens: 1496
         input_tokens_details:
-          cache_write_tokens: 1493
-          cached_tokens: 0
-        output_tokens: 224
+          cache_write_tokens: 0
+          cached_tokens: 1493
+        output_tokens: 200
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1720
+        total_tokens: 1696
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1423,7 +1417,7 @@ results:
   - source_id: phak-density-altitude-performance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:57.057Z
+    checked_at_utc: 2026-08-28T14:52:39.543Z
     linked_claim_ids:
       - high-density-altitude-thin-air
       - density-altitude-inputs
@@ -1460,42 +1454,43 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly defines the relationship between
-          density altitude, air density, and aircraft performance; describes
-          determining density altitude from pressure altitude and temperature
-          using charts or a flight computer; and lists the conditions that
-          produce high density altitude.
+        rationale: The cited PDF page directly defines density altitude, describes its
+          relationship to air density and aircraft performance, identifies the
+          inputs and methods used to determine it, and lists conditions
+          associated with high density altitude. Figure 11-4 on the page is a
+          density-altitude chart based on pressure altitude and outside air
+          temperature.
         locator_assessment:
           verdict: supports
           rationale: The locator identifies Chapter 11, the density-altitude discussion,
-            Figure 11-4, and PDF page 11-4. The supplied excerpt is from that
-            exact page and contains all relevant statements.
+            Figure 11-4, and page 11-4. The supplied excerpt is from cited PDF
+            page 4 and contains Figure 11-4 plus the relevant explanatory text.
         claim_assessments:
           - claim_id: high-density-altitude-thin-air
             verdict: supports
-            rationale: The excerpt states that as air density decreases at higher density
-              altitude, aircraft performance decreases, and that high density
-              altitude refers to thin air.
+            rationale: The excerpt explicitly states that as air density decreases at higher
+              density altitude, aircraft performance decreases, and that high
+              density altitude refers to thin air.
           - claim_id: density-altitude-inputs
             verdict: supports
             rationale: The excerpt states that density altitude is computed using pressure
-              altitude and temperature, and can be computed with a flight
-              computer using pressure altitude and outside air temperature or
-              determined from the referenced chart.
+              altitude and temperature, and says it can be computed with a
+              flight computer using pressure altitude and outside air
+              temperature or determined from the chart in Figure 11-4.
           - claim_id: high-density-altitude-factors
             verdict: supports
-            rationale: The excerpt expressly lists high elevations, low atmospheric
-              pressures, high temperatures, high humidity, or combinations of
-              those factors as conditions resulting in high density altitude.
+            rationale: The excerpt explicitly lists high elevations, low atmospheric
+              pressures, high temperatures, high humidity, and combinations of
+              these factors as conditions resulting in high density altitude.
       usage:
         input_tokens: 1316
         input_tokens_details:
-          cache_write_tokens: 1313
-          cached_tokens: 0
-        output_tokens: 278
+          cache_write_tokens: 0
+          cached_tokens: 1313
+        output_tokens: 310
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1594
+        total_tokens: 1626
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1505,7 +1500,7 @@ results:
   - source_id: phak-humidity-density
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:57.077Z
+    checked_at_utc: 2026-08-28T14:52:39.565Z
     linked_claim_ids:
       - humidity-contributes-to-density
     missing_claim_ids: []
@@ -1540,33 +1535,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that water vapor is lighter than air;
-          as water content increases, air becomes less dense, density altitude
-          increases, and aircraft performance decreases. It also states that
-          humidity alone is usually not considered an essential factor in
-          calculating density altitude and aircraft performance, although it
-          contributes.
+        rationale: The excerpt directly states that water vapor is lighter than air; as
+          water content increases, air becomes less dense, density altitude
+          increases, and performance decreases. It also states that humidity
+          alone is usually not considered an essential factor in calculating
+          density altitude and aircraft performance, although it contributes.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page/excerpt contains the section “Effects of Humidity
-            (Moisture) on Density” and directly includes all elements of the
-            claim.
+          rationale: The cited PDF page/excerpt includes the section titled “Effects of
+            Humidity (Moisture) on Density” and contains the relevant statements
+            verbatim.
         claim_assessments:
           - claim_id: humidity-contributes-to-density
             verdict: supports
-            rationale: "The page directly says: increasing water content makes air less
-              dense, increases density altitude, and decreases performance; it
-              further says humidity is usually not an essential factor in
-              density-altitude/performance calculations but does contribute."
+            rationale: "The claim accurately combines the excerpt’s statements: increasing
+              water content makes air less dense, increases density altitude,
+              decreases performance, and humidity is usually not considered an
+              essential factor in density-altitude/performance calculations but
+              does contribute."
       usage:
         input_tokens: 1424
         input_tokens_details:
-          cache_write_tokens: 1421
-          cached_tokens: 0
-        output_tokens: 189
+          cache_write_tokens: 0
+          cached_tokens: 1421
+        output_tokens: 190
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1613
+        total_tokens: 1614
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1576,7 +1571,7 @@ results:
   - source_id: phak-climb-angle-rate
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:57.091Z
+    checked_at_utc: 2026-08-28T14:52:39.578Z
     linked_claim_ids:
       - angle-rate-climb-distinction
     missing_claim_ids: []
@@ -1616,25 +1611,24 @@ results:
           altitude gained relative to the time needed to reach that altitude.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is 11-7 and contains the relevant AOC and ROC
-            definitions under the headings “Angle of Climb (AOC)” and “Rate of
-            Climb (ROC).
+          rationale: The cited PDF page is page 11-7, and the excerpt from that page
+            contains the relevant AOC and ROC definitions.
         claim_assessments:
           - claim_id: angle-rate-climb-distinction
             verdict: supports
-            rationale: The source states that AOC is “a comparison of altitude gained
-              relative to distance traveled” and ROC is “a comparison of
-              altitude gained relative to the time needed to reach that
-              altitude,” which directly supports the distinction in the claim.
+            rationale: "The source states: “AOC is a comparison of altitude gained relative
+              to distance traveled” and “ROC is a comparison of altitude gained
+              relative to the time needed to reach that altitude,” directly
+              supporting the distinction."
       usage:
         input_tokens: 1132
         input_tokens_details:
-          cache_write_tokens: 1129
-          cached_tokens: 0
-        output_tokens: 185
+          cache_write_tokens: 0
+          cached_tokens: 1129
+        output_tokens: 167
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1317
+        total_tokens: 1299
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1643,7 +1637,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: aim-climb-gradient-groundspeed
     title: "Aeronautical Information Manual, Chapter 5: Air Traffic Procedures"
-    checked_at_utc: 2026-08-28T14:36:57.096Z
+    checked_at_utc: 2026-08-28T14:52:39.584Z
     linked_claim_ids:
       - climb-gradient-groundspeed-conversion
     missing_claim_ids: []
@@ -1678,33 +1672,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited AIM page explicitly states that missed-approach climb
-          gradients are expressed in feet per nautical mile, that conversion
-          tables to feet per minute are based on groundspeed, and that a
+        rationale: The excerpt explicitly states that missed-approach climb gradients
+          are expressed in feet per nautical mile, that conversion tables to
+          feet per minute are based on groundspeed, and that a
           higher-than-anticipated groundspeed increases the required climb rate
           in feet per minute.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator is AIM paragraph 5-4-21(b), printed page 5-4-58/PDF
-            page 448, and the supplied excerpt contains that paragraph and the
-            relevant language.
+          rationale: The cited PDF page contains AIM 5-4-21(b), including the relevant
+            missed-approach climb-gradient and groundspeed-conversion language.
         claim_assessments:
           - claim_id: climb-gradient-groundspeed-conversion
             verdict: supports
-            rationale: "Paragraph 5-4-21(b) states: pilots must plan to meet the required
-              gradient, expressed in feet per nautical mile; conversion tables
-              from feet per nautical mile to feet per minute are based on
-              groundspeed; and higher groundspeed increases the feet-per-minute
-              climb-rate requirement."
+            rationale: AIM 5-4-21(b) directly says pilots must be aware that higher
+              groundspeed increases the climb-rate requirement and identifies
+              conversion tables from feet per nautical mile to feet per minute
+              based on groundspeed.
       usage:
         input_tokens: 1408
         input_tokens_details:
-          cache_write_tokens: 1405
-          cached_tokens: 0
-        output_tokens: 212
+          cache_write_tokens: 0
+          cached_tokens: 1405
+        output_tokens: 186
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1620
+        total_tokens: 1594
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1713,7 +1705,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-indicated-airspeed
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-28T14:36:57.110Z
+    checked_at_utc: 2026-08-28T14:52:39.601Z
     linked_claim_ids:
       - indicated-airspeed-definition-use
     missing_claim_ids: []
@@ -1749,29 +1741,30 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly defines indicated airspeed (IAS) as the
-          direct ASI reading uncorrected for atmospheric-density variations,
-          installation error, or instrument error. It also states that takeoff,
-          landing, and stall speeds listed in the AFM/POH are IAS and normally
-          do not vary with altitude or temperature.
+          direct ASI reading uncorrected for atmospheric-density, installation,
+          or instrument-error variations. It also states that takeoff, landing,
+          and stall speeds listed in the AFM/POH are IAS and normally do not
+          vary with altitude or temperature.
         locator_assessment:
           verdict: supports
           rationale: The excerpt is from cited PDF page 8 and contains the “Airspeed
-            Indicator (ASI)” discussion, including the indicated-airspeed
-            definition and AFM/POH speed statement named by the locator.
+            Indicator (ASI)” section and the IAS definition described by the
+            locator.
         claim_assessments:
           - claim_id: indicated-airspeed-definition-use
             verdict: supports
-            rationale: The claim accurately restates the excerpt’s IAS definition and its
-              statement that AFM/POH takeoff, landing, and stall speeds are IAS.
+            rationale: "The excerpt directly supports both parts of the claim: IAS is the
+              uncorrected direct ASI reading, and AFM/POH takeoff, landing, and
+              stall speeds are stated as IAS."
       usage:
         input_tokens: 1181
         input_tokens_details:
-          cache_write_tokens: 1178
-          cached_tokens: 0
-        output_tokens: 199
+          cache_write_tokens: 0
+          cached_tokens: 1178
+        output_tokens: 196
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1380
+        total_tokens: 1377
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1780,7 +1773,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-airspeed-cas-tas-groundspeed
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 8: Flight Instruments"
-    checked_at_utc: 2026-08-28T14:36:58.044Z
+    checked_at_utc: 2026-08-28T14:52:40.208Z
     linked_claim_ids:
       - calibrated-true-airspeed-definitions
       - groundspeed-wind-relationship
@@ -1816,23 +1809,23 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly defines CAS, TAS, and GS and explicitly
-          states the wind effects on groundspeed. It also states that TAS is
-          used for flight planning.
+        rationale: The cited PDF page explicitly defines calibrated airspeed, true
+          airspeed, and groundspeed, including the stated correction factors,
+          wind effects, and TAS use in flight planning.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 8, the Airspeed Indicator discussion
-            of calibrated, true, and groundspeed on PDF page 8-9. The supplied
-            excerpt is from that exact page and contains the cited material.
+          rationale: The excerpt is from cited PDF page 8-9 and contains the ‘Calibrated,
+            True, and Groundspeed’ material identified by the locator.
         claim_assessments:
           - claim_id: calibrated-true-airspeed-definitions
             verdict: supports
             rationale: The excerpt states that CAS is IAS corrected for installation and
               instrument error, and that TAS is CAS corrected for altitude and
-              nonstandard temperature. It also explicitly says TAS is used for
-              flight planning. The wording 'speed through the surrounding air'
-              is consistent with the TAS definition but is not stated verbatim;
-              the remaining claimed elements are directly supported.
+              nonstandard temperature. It also states that TAS is used for
+              flight planning and filing a flight plan. The phrase ‘speed
+              through the surrounding air’ is not stated verbatim, but is
+              consistent with and directly conveyed by the excerpt’s TAS
+              definition and contrast with GS.
           - claim_id: groundspeed-wind-relationship
             verdict: supports
             rationale: The excerpt explicitly defines GS as TAS adjusted for wind and states
@@ -1840,12 +1833,12 @@ results:
       usage:
         input_tokens: 1433
         input_tokens_details:
-          cache_write_tokens: 1430
-          cached_tokens: 0
-        output_tokens: 253
+          cache_write_tokens: 0
+          cached_tokens: 1430
+        output_tokens: 251
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1686
+        total_tokens: 1684
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1855,7 +1848,7 @@ results:
   - source_id: phak-climb-performance-factors
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.064Z
+    checked_at_utc: 2026-08-28T14:52:40.238Z
     linked_claim_ids:
       - climb-factors-change-margin
     missing_claim_ids: []
@@ -1892,32 +1885,32 @@ results:
         confidence: high
         rationale: The excerpt explicitly states that increases in weight and altitude,
           as well as lowering landing gear or flaps, decrease excess thrust and
-          excess power, and that maximum angle of climb (AOC) and maximum rate
-          of climb (ROC) decrease under these conditions. It also explains that
-          increased weight reduces reserve power and affects both climb angle
-          and climb rate.
+          excess power for all aircraft, and that maximum angle-of-climb (AOC)
+          and maximum rate-of-climb (ROC) performance decrease under those
+          conditions. It also explains that weight changes alter reserve power
+          and thereby affect both climb angle and climb rate.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 11-8, and the excerpt from that exact page
-            contains the section titled “Climb Performance Factors,” including
-            the statements relevant to the claim.
+          rationale: The cited PDF page is page 11-8, and the supplied excerpt from that
+            exact page contains the “Climb Performance Factors” section directly
+            addressing the claim.
         claim_assessments:
           - claim_id: climb-factors-change-margin
             verdict: supports
-            rationale: "Directly supported: the page identifies increased weight, increased
-              altitude, and lowered gear or flaps as conditions that reduce
-              excess thrust/power and states that maximum AOC and ROC decrease.
-              The weight discussion further directly links reduced reserve power
-              to effects on climb angle and rate."
+            rationale: "The page directly supports every listed factor: increased weight,
+              increased altitude, lowered gear, and lowered flaps decrease
+              excess thrust/power; it states that maximum AOC and ROC decrease,
+              and explains that altered reserve power affects both climb angle
+              and climb rate."
       usage:
         input_tokens: 1282
         input_tokens_details:
-          cache_write_tokens: 1279
-          cached_tokens: 0
-        output_tokens: 220
+          cache_write_tokens: 0
+          cached_tokens: 1279
+        output_tokens: 221
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1502
+        total_tokens: 1503
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1927,7 +1920,7 @@ results:
   - source_id: phak-runway-surface-gradient
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.078Z
+    checked_at_utc: 2026-08-28T14:52:40.258Z
     linked_claim_ids:
       - runway-condition-matters
     missing_claim_ids: []
@@ -1962,31 +1955,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that performance chart information
-          typically assumes paved, level, smooth, and dry runway surfaces. It
-          also states that non-hard/smooth surfaces increase takeoff ground
-          roll, mud, snow, or standing water reduce acceleration, and surface
-          condition affects braking ability and braking effectiveness.
+        rationale: The cited excerpt directly states that performance chart information
+          typically assumes paved, level, smooth, and dry runways. It also
+          explains that non-hard or non-smooth surfaces increase takeoff ground
+          roll, that mud, snow, or standing water reduce acceleration, and that
+          surface condition affects braking ability/effectiveness.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page 11-12 contains the “Runway Surface and Gradient”
-            section and directly includes the statements relevant to the claim.
+          rationale: The excerpt was extracted from cited PDF page 12 and includes the
+            section titled “Runway Surface and Gradient,” matching the supplied
+            locator, “Ch. 11, Runway Surface, p. 11-12.”
         claim_assessments:
           - claim_id: runway-condition-matters
             verdict: supports
-            rationale: The claim accurately combines the excerpt’s statements about standard
-              performance-chart assumptions with its discussion of soft, muddy,
-              wet, snow-covered, or water-contaminated surfaces affecting
-              acceleration and braking effectiveness.
+            rationale: "The page expressly supports both portions: the usual
+              paved/level/smooth/dry chart assumptions and degraded acceleration
+              or braking-related performance on soft, wet, muddy, snowy, or
+              water-contaminated surfaces."
       usage:
         input_tokens: 1329
         input_tokens_details:
-          cache_write_tokens: 1326
-          cached_tokens: 0
-        output_tokens: 183
+          cache_write_tokens: 0
+          cached_tokens: 1326
+        output_tokens: 208
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1512
+        total_tokens: 1537
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1996,7 +1990,7 @@ results:
   - source_id: phak-runway-gradient-effects
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.093Z
+    checked_at_utc: 2026-08-28T14:52:40.276Z
     linked_claim_ids:
       - runway-slope-matters
     missing_claim_ids: []
@@ -2031,30 +2025,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited page explicitly states that an upsloping runway impedes
+        rationale: The excerpt directly states that an upsloping runway impedes
           acceleration and produces a longer takeoff ground run, while typically
           reducing landing roll. It also states that a downsloping runway aids
           takeoff acceleration and shortens takeoff distance, with the opposite
-          effect for landing (increased landing distance).
+          effect for landing—increasing landing distance.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 13 and contains the “Runway
-            Gradient” discussion directly supporting the claim.
+          rationale: "The cited locator is supported: the supplied excerpt is from PDF
+            page 11-13 and contains the 'Runway Gradient' discussion relevant to
+            the claim."
         claim_assessments:
           - claim_id: runway-slope-matters
             verdict: supports
-            rationale: "The claim accurately summarizes the excerpt: uphill impedes takeoff
-              acceleration and reduces landing roll; downhill aids takeoff
-              acceleration and increases landing distance."
+            rationale: The claim accurately reflects the excerpt’s statements about
+              upsloping and downsloping runway effects on takeoff acceleration
+              and landing roll/distance.
       usage:
         input_tokens: 800
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 175
+        output_tokens: 180
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 975
+        total_tokens: 980
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2064,7 +2059,7 @@ results:
   - source_id: phak-takeoff-weight-wind
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.100Z
+    checked_at_utc: 2026-08-28T14:52:40.287Z
     linked_claim_ids:
       - takeoff-weight-effects
       - takeoff-wind-groundspeed
@@ -2101,9 +2096,9 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page directly discusses both the threefold effect of
-          increased gross weight on takeoff performance and the effects of
-          headwind and tailwind on the groundspeed needed to attain lift-off
-          speed.
+          increased gross weight on takeoff performance and the respective
+          effects of headwind and tailwind on groundspeed needed to reach
+          lift-off speed.
         locator_assessment:
           verdict: supports
           rationale: The locator identifies Chapter 11, page 11-15, addressing gross
@@ -2112,23 +2107,23 @@ results:
         claim_assessments:
           - claim_id: takeoff-weight-effects
             verdict: supports
-            rationale: "The excerpt explicitly lists the three effects of increased gross
-              weight: higher lift-off speed, greater mass to accelerate, and
+            rationale: "The excerpt states that increased gross weight produces a threefold
+              effect: higher lift-off speed, greater mass to accelerate, and
               increased retarding force from drag and ground friction."
           - claim_id: takeoff-wind-groundspeed
             verdict: supports
-            rationale: The excerpt explicitly states that a headwind permits reaching
+            rationale: The excerpt explicitly says a headwind lets the aircraft reach
               lift-off speed at a lower groundspeed, whereas a tailwind requires
               a greater groundspeed to attain lift-off speed.
       usage:
         input_tokens: 1403
         input_tokens_details:
-          cache_write_tokens: 1400
-          cached_tokens: 0
-        output_tokens: 223
+          cache_write_tokens: 0
+          cached_tokens: 1400
+        output_tokens: 225
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1626
+        total_tokens: 1628
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2138,7 +2133,7 @@ results:
   - source_id: phak-takeoff-density-inputs
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.116Z
+    checked_at_utc: 2026-08-28T14:52:40.303Z
     linked_claim_ids:
       - density-altitude-takeoff-effects
       - takeoff-chart-primary-inputs
@@ -2174,38 +2169,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly explains density-altitude effects on
-          takeoff performance and lists the primary considerations for
-          predicting takeoff distance from AFM/POH performance data. Both claims
-          closely track the excerpt's language.
+        rationale: The cited page directly discusses density altitude's effects on
+          takeoff performance and expressly lists the primary considerations for
+          predicting takeoff distance from AFM/POH data.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 11, page 11-16, addressing
-            density-altitude effects and primary takeoff considerations. The
-            supplied excerpt is from cited PDF page 16 and contains both topics.
+          rationale: The excerpt is from cited PDF page 16 and contains both the
+            density-altitude discussion and the listed primary takeoff
+            considerations described by the locator.
         claim_assessments:
           - claim_id: density-altitude-takeoff-effects
             verdict: supports
-            rationale: "The excerpt states that increased density altitude produces: “1.
-              Greater takeoff speed” and “2. Decreased thrust and reduced net
-              accelerating force.” It further explains that indicated takeoff
-              speed remains the same but true airspeed is greater in
-              reduced-density air, and that accurate accounting is mandatory for
-              predicting takeoff-roll distance."
+            rationale: The excerpt states that increased density altitude produces “greater
+              takeoff speed” and “decreased thrust and reduced net accelerating
+              force.” It further explains that the aircraft takes off at the
+              same IAS but a greater TAS because of reduced air density.
           - claim_id: takeoff-chart-primary-inputs
             verdict: supports
-            rationale: "The excerpt expressly lists the primary AFM/POH takeoff-distance
-              prediction considerations: pressure altitude and temperature,
-              gross weight, wind, and runway slope and condition."
+            rationale: The excerpt explicitly identifies pressure altitude and temperature,
+              gross weight, wind, and runway slope and condition as the primary
+              considerations in predicting takeoff distance from AFM/POH data.
       usage:
         input_tokens: 1460
         input_tokens_details:
-          cache_write_tokens: 1457
-          cached_tokens: 0
-        output_tokens: 260
+          cache_write_tokens: 0
+          cached_tokens: 1457
+        output_tokens: 225
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1720
+        total_tokens: 1685
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2215,7 +2207,7 @@ results:
   - source_id: phak-landing-performance-inputs
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.124Z
+    checked_at_utc: 2026-08-28T14:52:40.314Z
     linked_claim_ids:
       - landing-density-altitude-effect
       - landing-chart-primary-inputs
@@ -2251,35 +2243,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly addresses landing-performance effects of density
-          altitude and explicitly lists the inputs that must be considered when
-          predicting minimum landing distance from AFM/POH data.
+        rationale: The cited excerpt directly discusses density altitude’s effect on
+          landing speed and distance, and explicitly lists the considerations
+          required when predicting minimum landing distance from AFM/POH data.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is identified as page 11-17 in the excerpt, and
-            the relevant landing-performance discussion and planning
-            considerations appear on that page.
+          rationale: The excerpt is from the cited PDF page, p. 11-17, and contains the
+            relevant landing-performance discussion and input list.
         claim_assessments:
           - claim_id: landing-density-altitude-effect
             verdict: supports
-            rationale: The excerpt states that increased density altitude increases landing
-              speed in true-airspeed terms while the aircraft lands at the same
-              IAS, and that the resulting greater TAS increases landing
-              distance.
+            rationale: The excerpt states that at altitude the aircraft lands at the same
+              IAS as at sea level but at a greater TAS because of reduced
+              density, and that the increased TAS increases landing distance.
           - claim_id: landing-chart-primary-inputs
             verdict: supports
-            rationale: The excerpt explicitly states that prediction of minimum landing
-              distance from AFM/POH data must consider pressure altitude and
+            rationale: The excerpt states that, in predicting minimum landing distance from
+              AFM/POH data, consideration must be given to pressure altitude and
               temperature, gross weight, wind, and runway slope and condition.
       usage:
         input_tokens: 1412
         input_tokens_details:
-          cache_write_tokens: 1409
-          cached_tokens: 0
-        output_tokens: 258
+          cache_write_tokens: 0
+          cached_tokens: 1409
+        output_tokens: 259
         output_tokens_details:
-          reasoning_tokens: 47
-        total_tokens: 1670
+          reasoning_tokens: 43
+        total_tokens: 1671
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2289,7 +2279,7 @@ results:
   - source_id: phak-performance-chart-boundaries
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.132Z
+    checked_at_utc: 2026-08-28T14:52:40.322Z
     linked_claim_ids:
       - chart-flight-test-basis
       - chart-conditions-notes
@@ -2326,43 +2316,47 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly explains the test-flight basis,
-          conditions, limitations, and proper use of manufacturer performance
-          charts, including the effects of aircraft condition, adverse
-          conditions, piloting skill, and chart-reading errors.
+        rationale: The cited PDF page directly discusses the basis, limitations, and use
+          of manufacturer performance charts, including test-flight conditions,
+          chart notes and instructions, adverse conditions, pilot skill,
+          aircraft condition, and the consequences of chart-reading errors.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page (11-19) and contains the
-            relevant “Performance Charts” discussion and Figure 11-20 reference.
+          rationale: The excerpt is explicitly from cited PDF page 19 / page 11-19 and
+            contains the “Performance Charts” discussion and Figure 11-20
+            reference identified by the locator.
         claim_assessments:
           - claim_id: chart-flight-test-basis
             verdict: supports
-            rationale: The excerpt states that manufacturers gather chart information from
-              test flights in a new aircraft under normal operating conditions,
-              with average piloting skills and aircraft/engine in good working
-              order; engineers then create charts from those flight data.
+            rationale: The excerpt states that manufacturer chart information is gathered
+              from test flights in a new aircraft, under normal operating
+              conditions, using average piloting skills, with the aircraft and
+              engine in good working order; engineers record the data and create
+              charts from it.
           - claim_id: chart-conditions-notes
             verdict: supports
             rationale: The excerpt states that every chart is based on certain conditions
-              and contains notes on adapting the information for flight
-              conditions, and instructs pilots to read every chart and the
-              manufacturer’s instructions.
+              and contains notes on adapting information for flight conditions,
+              and says it is important to read every chart, understand its use,
+              and read manufacturer instructions.
           - claim_id: chart-accuracy-boundary
             verdict: supports
-            rationale: The excerpt says chart data will not be accurate when the aircraft is
-              not in good working order or under adverse conditions, advises
-              compensation when aircraft condition or piloting skills differ
-              from the basis, and warns that small chart-reading errors can
-              produce large final errors.
+            rationale: The excerpt says chart data will not be accurate if the aircraft is
+              not in good working order or is operated under adverse conditions,
+              advises compensation for below-average piloting skills, and warns
+              that small chart-reading errors can create large final errors.
+              These statements support the listed boundaries, including
+              differences in aircraft condition, environmental/adverse
+              conditions, pilot technique or skill, and chart-reading accuracy.
       usage:
         input_tokens: 1114
         input_tokens_details:
-          cache_write_tokens: 1111
-          cached_tokens: 0
-        output_tokens: 388
+          cache_write_tokens: 0
+          cached_tokens: 1111
+        output_tokens: 340
         output_tokens_details:
-          reasoning_tokens: 89
-        total_tokens: 1502
+          reasoning_tokens: 0
+        total_tokens: 1454
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2372,7 +2366,7 @@ results:
   - source_id: phak-interpolation-takeoff-charts
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.141Z
+    checked_at_utc: 2026-08-28T14:52:40.332Z
     linked_claim_ids:
       - interpolation-purpose
       - takeoff-outputs-distinct
@@ -2408,17 +2402,18 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly explains interpolation as computing
-          intermediate information from known chart values and says that using
-          values reflecting slightly more adverse conditions provides a
-          reasonable estimate and slight safety margin. It also depicts and
-          discusses takeoff-chart outputs including ground roll and total feet
-          to clear a 50-foot obstacle.
+        rationale: The cited page explicitly explains interpolation as computing
+          intermediate information from known chart values and says pilots may
+          use values reflecting slightly more adverse conditions for a
+          reasonable estimate and slight safety margin. It also shows a
+          takeoff-distance chart with distinct labeled outputs for “Grnd roll
+          (ft)” and “Total feet to clear 50 ft OBS,” and the accompanying text
+          describes takeoff-chart calculations for obstacle scenarios.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is extracted from cited PDF page 11-20 and contains the
-            sections “Interpolation” and “Takeoff Charts,” along with Figure
-            11-21, directly relevant to both claims.
+          rationale: The excerpt is extracted from the cited PDF page (11-20) and contains
+            the sections “Interpolation” and “Takeoff Charts,” including Figure
+            11-21 and the relevant discussion.
         claim_assessments:
           - claim_id: interpolation-purpose
             verdict: supports
@@ -2426,22 +2421,22 @@ results:
               compute intermediate information. It further states that pilots
               sometimes round chart values to a more conservative figure and
               that values reflecting slightly more adverse conditions provide a
-              reasonable performance estimate and slight safety margin.
+              reasonable performance estimate and slight margin of safety.
           - claim_id: takeoff-outputs-distinct
             verdict: supports
-            rationale: Figure 11-21 separately labels “Grnd roll (ft)” and “Total feet to
-              clear 50 ft OBS,” and the text says takeoff charts allow
-              computation of takeoff distances including scenarios over a
-              50-foot obstacle.
+            rationale: Figure 11-21 explicitly labels separate performance results as “Grnd
+              roll (ft)” and “Total feet to clear 50 ft OBS.” The takeoff-chart
+              discussion also refers to takeoff distances with and without a
+              50-foot-obstacle scenario.
       usage:
         input_tokens: 1697
         input_tokens_details:
-          cache_write_tokens: 1694
-          cached_tokens: 0
-        output_tokens: 265
+          cache_write_tokens: 0
+          cached_tokens: 1694
+        output_tokens: 290
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1962
+        total_tokens: 1987
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2451,7 +2446,7 @@ results:
   - source_id: phak-climb-cruise-charts
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.156Z
+    checked_at_utc: 2026-08-28T14:52:40.344Z
     linked_claim_ids:
       - climb-chart-three-outputs
     missing_claim_ids: []
@@ -2487,28 +2482,28 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt explicitly states that a fuel, time, and
-          distance-to-climb chart gives the fuel amount used during the climb,
-          the time required to climb, and the ground distance covered during the
-          climb.
+          distance-to-climb chart gives the fuel amount used during climb, the
+          time required to climb, and the ground distance covered during climb.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page 11-21 contains the “Climb and Cruise Charts”
-            section and the exact statement supporting the claim.
+          rationale: The cited PDF page (11-21) contains the “Climb and Cruise Charts”
+            section and explicitly includes the relevant description of fuel,
+            time, and distance-to-climb charts.
         claim_assessments:
           - claim_id: climb-chart-three-outputs
             verdict: supports
-            rationale: "The excerpt directly says: “This chart gives the fuel amount used
+            rationale: "The excerpt directly states: “This chart gives the fuel amount used
               during the climb, the time it takes to accomplish the climb, and
               the ground distance that is covered during the climb.”"
       usage:
         input_tokens: 1526
         input_tokens_details:
-          cache_write_tokens: 1523
-          cached_tokens: 0
-        output_tokens: 164
+          cache_write_tokens: 0
+          cached_tokens: 1523
+        output_tokens: 173
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1690
+        total_tokens: 1699
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2518,7 +2513,7 @@ results:
   - source_id: phak-range-endurance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.167Z
+    checked_at_utc: 2026-08-28T14:52:40.361Z
     linked_claim_ids:
       - range-endurance-distinction
     missing_claim_ids: []
@@ -2555,29 +2550,28 @@ results:
         confidence: high
         rationale: "The excerpt explicitly states: “Range involves consideration of
           flying distance, while endurance involves consideration of flying
-          time.” It also frames range performance as converting fuel energy into
-          flying distance and defines specific endurance in terms of flight
-          hours per fuel consumed."
+          time,” and defines specific range and specific endurance in relation
+          to fuel consumed/flow."
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is 11-9, and the excerpt from that page contains
-            the stated range/endurance distinction under the range-performance
-            discussion.
+          rationale: The cited PDF page is page 11-9, and the excerpt on that page
+            directly contains the range-versus-endurance distinction described
+            by the locator.
         claim_assessments:
           - claim_id: range-endurance-distinction
             verdict: supports
-            rationale: Directly supported by the excerpt’s distinction between flying
-              distance for range and flying time for endurance, in the context
-              of fuel consumption.
+            rationale: "The source directly supports the distinction: range is flying
+              distance and endurance is flying time, with both discussed
+              relative to fuel consumption."
       usage:
         input_tokens: 966
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 161
+        output_tokens: 152
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1127
+        total_tokens: 1118
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2587,7 +2581,7 @@ results:
   - source_id: phak-cruise-performance-table
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.181Z
+    checked_at_utc: 2026-08-28T14:52:40.377Z
     linked_claim_ids:
       - cruise-chart-outputs
     missing_claim_ids: []
@@ -2624,31 +2618,29 @@ results:
         confidence: high
         rationale: The excerpt explicitly states that a cruise and range performance
           table is designed to provide TAS, fuel consumption, endurance, and
-          range at specific cruise configurations. Figure 11-27 and Sample
-          Problem 6 demonstrate this by selecting a pressure altitude and RPM,
-          then reading TAS, fuel burn, endurance, and range. The table’s notes
-          also state the conditions under which the data apply.
+          range at specific cruise configurations. Figure 11-27 displays
+          altitude, RPM/power-related entries, TAS, gallons per hour, endurance,
+          and range, with stated conditions including gross weight, standard
+          conditions, zero wind, and lean mixture.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 11-24 and contains Figure 11-27, its
-            stated operating conditions, and explanatory text describing the
-            table’s outputs and use.
+          rationale: The cited PDF page is page 11-24 and contains Figure 11-27 plus
+            explanatory text directly describing the table and its outputs.
         claim_assessments:
           - claim_id: cruise-chart-outputs
             verdict: supports
-            rationale: "The source directly supports the claim: it ties pressure altitude
-              and RPM/power-related cruise configuration to TAS, fuel
-              consumption, endurance, and range, with stated assumptions such as
-              gross weight, standard conditions, zero wind, and lean mixture."
+            rationale: The page directly supports that cruise tables relate altitude and
+              cruise power configuration (RPM/% BHP) to TAS, fuel consumption,
+              endurance, and range under specified conditions.
       usage:
         input_tokens: 1863
         input_tokens_details:
-          cache_write_tokens: 1860
-          cached_tokens: 0
-        output_tokens: 217
+          cache_write_tokens: 0
+          cached_tokens: 1860
+        output_tokens: 193
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 2080
+        total_tokens: 2056
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2658,7 +2650,7 @@ results:
   - source_id: phak-landing-charts
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11: Aircraft
       Performance"
-    checked_at_utc: 2026-08-28T14:36:58.191Z
+    checked_at_utc: 2026-08-28T14:52:40.389Z
     linked_claim_ids:
       - landing-outputs-and-arrival-weight
     missing_claim_ids: []
@@ -2693,33 +2685,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that landing distance information is
-          available as normal landing information and as landing distance over a
-          50-foot obstacle. Its sample calculation specifically identifies both
-          total landing distance to clear a 50-foot obstacle and ground-roll
-          distance. It also states that landing weight differs from takeoff
-          weight and must be recalculated to account for fuel used during the
-          flight.
+        rationale: The excerpt states that landing-distance information is available as
+          normal landing information and as landing distance over a 50-foot
+          obstacle. Its sample problem specifically identifies both total
+          landing distance to clear a 50-foot obstacle and ground-roll distance.
+          It also states that landing weight differs from takeoff weight and
+          must be recalculated for fuel used during the flight.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 11-26, and the excerpt on that exact page
-            contains the "Landing Charts" discussion and Sample Problem 11
-            language supporting the claim.
+          rationale: The cited PDF page is the page from which the excerpt was extracted,
+            and it contains the Landing Charts discussion and the relevant
+            sample problem.
         claim_assessments:
           - claim_id: landing-outputs-and-arrival-weight
             verdict: supports
-            rationale: "The page supports all parts of the claim: ground-roll output, total
+            rationale: "The page supports all parts of the claim: ground roll, total
               distance over a 50-foot obstacle, and use of recalculated landing
-              weight reflecting fuel burned."
+              weight after fuel burn."
       usage:
         input_tokens: 1220
         input_tokens_details:
-          cache_write_tokens: 1217
-          cached_tokens: 0
-        output_tokens: 201
+          cache_write_tokens: 0
+          cached_tokens: 1217
+        output_tokens: 189
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1421
+        total_tokens: 1409
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2728,7 +2719,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: afh-prior-to-takeoff-performance
     title: "Airplane Flying Handbook, Chapter 6: Takeoffs and Departure Climbs"
-    checked_at_utc: 2026-08-28T14:36:58.210Z
+    checked_at_utc: 2026-08-28T14:52:40.408Z
     linked_claim_ids:
       - afh-predict-takeoff-climb-performance
     missing_claim_ids: []
@@ -2763,7 +2754,7 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly states that, before going to the
+        rationale: The cited PDF page explicitly states that before going to the
           airplane, the pilot should check POH/AFM performance charts to
           determine predicted performance and decide whether the airplane can
           safely take off and climb for the conditions and location. It also
@@ -2774,17 +2765,17 @@ results:
           verdict: supports
           rationale: The locator identifies Chapter 6, “Prior to Takeoff,” page 6-1, and
             the supplied excerpt is from cited PDF page 1 and contains the
-            quoted guidance under that heading.
+            quoted Prior to Takeoff guidance.
         claim_assessments:
           - claim_id: afh-predict-takeoff-climb-performance
             verdict: supports
             rationale: Both portions of the claim are directly supported by the excerpt’s
-              “Prior to Takeoff” text.
+              “Prior to Takeoff” section.
       usage:
         input_tokens: 1423
         input_tokens_details:
-          cache_write_tokens: 1420
-          cached_tokens: 0
+          cache_write_tokens: 0
+          cached_tokens: 1420
         output_tokens: 196
         output_tokens_details:
           reasoning_tokens: 0
@@ -2797,7 +2788,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: afh-landing-airplane-information
     title: "Airplane Flying Handbook, Chapter 9: Approaches and Landings"
-    checked_at_utc: 2026-08-28T14:36:59.350Z
+    checked_at_utc: 2026-08-28T14:52:40.706Z
     linked_claim_ids:
       - afh-landing-airplane-data-controls
     missing_claim_ids: []
@@ -2840,22 +2831,24 @@ results:
           recommendations take precedence.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 9, Introduction, page 9-1, and the
-            supplied excerpt from cited PDF page 1 contains the quoted AFM/POH
-            and precedence language.
+          rationale: The cited locator is Chapter 9, Introduction, page 9-1, and the
+            supplied excerpt is from PDF page 1/page 9-1. The relevant AFM/POH
+            and precedence language appears directly in that excerpt.
         claim_assessments:
           - claim_id: afh-landing-airplane-data-controls
             verdict: supports
-            rationale: Directly supported by the excerpt.
+            rationale: Directly supported by the excerpt's statements about AFM/POH contents
+              and manufacturer recommendations taking precedence over differing
+              handbook information.
       usage:
         input_tokens: 893
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 170
+        output_tokens: 199
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1063
+        total_tokens: 1092
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2864,7 +2857,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: cfr-preflight-performance
     title: 14 CFR § 91.103 — Preflight action
-    checked_at_utc: 2026-08-28T14:36:54.188Z
+    checked_at_utc: 2026-08-28T14:52:37.195Z
     linked_claim_ids:
       - preflight-runway-performance-information
       - later-flight-preflight-information
@@ -2911,39 +2904,40 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt contains the introductory requirement that each pilot in
-          command become familiar with all available information concerning the
-          flight before beginning it, and it expressly lists runway-length and
-          takeoff/landing-distance information requirements in paragraphs (b)(1)
-          and (b)(2).
+        rationale: The excerpt directly reproduces the relevant text of 14 CFR § 91.103,
+          including the general preflight-familiarization duty and the
+          runway-length and takeoff/landing-performance requirements in
+          paragraphs (b)(1) and (b)(2).
         locator_assessment:
           verdict: supports
-          rationale: The stated locator, § 91.103 introductory text and paragraphs
-            (b)(1)-(2), matches the excerpt and contains the provisions needed
-            for both claims.
+          rationale: The locator identifies § 91.103 introductory text and paragraphs
+            (b)(1)-(2), and the excerpt contains that introductory text and
+            those paragraphs.
         claim_assessments:
           - claim_id: preflight-runway-performance-information
             verdict: supports
-            rationale: Paragraph (b) requires, for any flight, runway lengths at
-              intended-use airports and specified takeoff and landing distance
-              information. Paragraph (b)(1) specifies approved Airplane or
-              Rotorcraft Flight Manual data where applicable; paragraph (b)(2)
-              specifies other reliable, aircraft-appropriate information related
-              to the listed expected conditions.
+            rationale: The excerpt states that, for any flight, required information
+              includes runway lengths at intended-use airports and
+              takeoff/landing distance information. It specifies approved
+              AFM/RFM data for aircraft covered by (b)(1), and otherwise
+              reliable aircraft-appropriate information relating to the listed
+              expected conditions.
           - claim_id: later-flight-preflight-information
             verdict: supports
-            rationale: The introductory text applies to each pilot in command before
-              beginning a flight. Thus, when a later flight is to begin, the
-              same requirement applies to that later flight.
+            rationale: The excerpt requires each pilot in command, before beginning a
+              flight, to become familiar with all available information
+              concerning that flight. Applied to a later flight before it
+              begins, the claim accurately restates that timing and
+              flight-specific requirement.
       usage:
         input_tokens: 768
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 297
+        output_tokens: 263
         output_tokens_details:
-          reasoning_tokens: 34
-        total_tokens: 1065
+          reasoning_tokens: 0
+        total_tokens: 1031
     claim_assessments:
       valid: true
       missing_assessment_ids: []

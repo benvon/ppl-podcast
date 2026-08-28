@@ -2,7 +2,7 @@
 
 **Episode:** core-10
 **Version:** 0.1.5
-**Source verification:** FAA/eCFR links and page-level citations were updated August 28, 2026; source-relevance review of the focused airspeed revision is pending.
+**Source verification:** FAA/eCFR links and page-level citations were revalidated August 28, 2026; source-relevance review is complete for version 0.1.5.
 
 ## In this episode
 

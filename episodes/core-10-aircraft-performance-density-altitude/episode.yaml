@@ -49,7 +49,7 @@ trouble_spots:
   - "Treating a calculated distance as a guarantee instead of an estimate tied to stated conditions and technique."
 source_verification:
   status: source_relevance_complete
-  verified_at_utc: "2026-08-28T14:37:52Z"
+  verified_at_utc: "2026-08-28T14:53:30.687Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
@@ -60,7 +60,6 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"

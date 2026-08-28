@@ -30,6 +30,12 @@
 - The source validator passed the approved version 0.1.5 package: all 56 deterministic source/show-note checks and all 28 LLM relevance assessments support their mapped claims. The report replaces the earlier version 0.1.4 result and records the exact source and show-note input hashes.
 - The source-relevance pre-render gate is complete. No audio has been rendered, staged, handed to hosting, or published.
 
+## 2026-08-28 — approved-draft package validation
+
+- Synced all current-status records after script approval and the version 0.1.5 source-relevance review. The master script, show notes, research packet, episode metadata, and QA checklist now distinguish the approved draft from the later audio and release gates.
+- Refreshed the source report after the show-notes update. All 56 deterministic source/show-note checks and all 28 LLM relevance assessments support their mapped claims; `episode.yaml` records the report's exact `2026-08-28T14:53:30.687Z` timestamp.
+- Added the `--package-only` mode to pre-hosting validation and used it before the episode PR. It binds the current source inputs and timestamp, approved-script state, narration derivative, show notes, research packet, QA checklist, and hosting content version without requiring audio artifacts that do not yet exist.
+
 ## 2026-08-28 — formal source-relevance validation complete
 
 - Replaced the whole AIM Chapter 5 HTML citation with the exact FAA PDF page containing §5-4-21(b), so the validator supplies the cited climb-gradient passage rather than an unrelated beginning-of-chapter excerpt. Added a 50 MB bounded retrieval path only for a specifically cited PDF page; the general source and eCFR limits are unchanged. A regression test covers the larger page-citation boundary.

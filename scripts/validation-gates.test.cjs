@@ -175,8 +175,12 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
     fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson\n");
     fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0.\n");
-    fs.writeFileSync(productionLogPath, "Independent adversarial review resolved.\n");
+    fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
+    fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent spoken-script review remains pending. The editorial review was accepted.\n");
+    const pendingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
+    assert.equal(pendingIndependentReview.valid, false); assert.match(pendingIndependentReview.errors.join("\n"), /independent spoken-script review/);
+    fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
     fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n");
     const missingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(missingIndependentReview.valid, false); assert.match(missingIndependentReview.errors.join("\n"), /independent spoken-script review/);

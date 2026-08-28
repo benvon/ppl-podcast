@@ -97,6 +97,32 @@ function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+function markdownSections(markdown) {
+  return String(markdown).split(/(?=^##\s+)/m).filter((section) => /^##\s+/.test(section));
+}
+
+function reviewSentenceHas(sentence, statusPattern) {
+  return /\b(?:independent|non-drafting)\b/i.test(sentence)
+    && /\breview\b/i.test(sentence)
+    && statusPattern.test(sentence);
+}
+
+function hasResolvedIndependentSpokenScriptReview(productionLog) {
+  return markdownSections(productionLog).some((section) => {
+    const [heading, ...bodyLines] = section.split("\n");
+    const body = bodyLines.join("\n");
+    const headingIdentifiesReview = /\b(?:independent|non-drafting)\b/i.test(heading)
+      && /\b(?:spoken-script|adversarial)\b/i.test(heading)
+      && /\breview\b/i.test(heading);
+    const incompleteStatus = /\b(?:pending|incomplete|unresolved|awaiting)\b|\bnot\s+(?:completed|resolved|accepted)\b/i;
+    const headingRecordsResolution = /\b(?:completed|resolved|accepted)\b/i.test(heading) && !incompleteStatus.test(heading);
+    const sentences = body.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
+    const resolutionRecorded = sentences.some((sentence) => reviewSentenceHas(sentence, /\b(?:completed|resolved|accepted)\b/i));
+    const stillPending = sentences.some((sentence) => reviewSentenceHas(sentence, incompleteStatus));
+    return headingIdentifiesReview && headingRecordsResolution && resolutionRecorded && !stillPending;
+  });
+}
+
 function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   const errors = [];
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
@@ -140,7 +166,7 @@ function validateDraftPackageShape({ episodePath, paths, episode, hosting, sourc
   expect(errors, /- \[x\] Human editorial pass completed/i.test(qaChecklist), "qa-checklist.md must mark the human editorial pass complete.");
   expect(errors, /- \[x\] Before any audio render, source-link validator was run with `--require-llm`/i.test(qaChecklist), "qa-checklist.md must mark the source-relevance gate complete.");
   expect(errors, /- \[x\] Independent spoken-script review completed by a second agent that did not draft the lesson/i.test(qaChecklist), "qa-checklist.md must mark the independent spoken-script review complete.");
-  expect(errors, /(?:independent|non-drafting).{0,160}(?:spoken-script|adversarial).{0,320}(?:resolved|accepted)/is.test(productionLog), "production-log.md must record the independent spoken-script review and its resolution.");
+  expect(errors, hasResolvedIndependentSpokenScriptReview(productionLog), "production-log.md must record the independent spoken-script review and its resolution.");
   errors.push(...sourceReviewErrors({ episodePath, paths, episode, sourceValidation }));
   return { valid: errors.length === 0, kind: DRAFT_PACKAGE_SHAPE, final: false, errors };
 }
@@ -275,4 +301,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, PreHostingValidationError, durationDisplay, parseArgs, pathWithin, sha256File, sourceReviewErrors, validateDraftPackageShape, validatePreHosting };
+module.exports = { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, PreHostingValidationError, durationDisplay, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, validateDraftPackageShape, validatePreHosting };

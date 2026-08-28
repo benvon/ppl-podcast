@@ -1,0 +1,15 @@
+episode_id: "core-11"
+status: not_rendered
+publication_day_validation: pending
+current_candidate_render: null
+superseded_candidates: []
+chapter_markers:
+  status: pending_render
+  source: "master-script.md section headings"
+  audio_sha256: null
+  required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
+required_before_release:
+  - "Complete human listening QA against master-script.md."
+  - "Confirm chapter titles and starts are useful and correctly aligned during listening QA."
+  - "Re-verify all cited public links on publication day."
+  - "Validate hosting metadata and external audio-store workflow."

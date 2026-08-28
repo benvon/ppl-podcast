@@ -29,13 +29,14 @@
 3. Uneven surface heating changes air temperature and density. Warmer air expands and becomes less dense; cooler air becomes denser. Those differences contribute to atmospheric motion.
 4. Pressure patterns provide evidence about motion. Descending dry air is generally associated with highs and fairer conditions, while rising air commonly accompanies lows, cloudiness, and precipitation. These are tendencies, not standalone decisions.
 5. A rising parcel enters lower pressure, expands, and cools. A descending parcel enters higher pressure, compresses, and warms. This adiabatic mechanism is distinct from merely observing that environmental temperature often changes with altitude.
-6. Stability compares a displaced parcel with the surrounding atmosphere. Stable air damps vertical displacement; unstable air permits it to grow. Lift can originate from surface heating, terrain, convergence, or weather systems.
-7. A temperature inversion is a stable layer with temperature increasing with altitude. It can suppress mixing and trap moisture, haze, smoke, or pollutants; smooth air therefore does not automatically mean favorable VFR visibility.
-8. Water-vapor content, relative humidity, and dew point are different. Relative humidity depends on both moisture content and temperature. Dew point is the saturation temperature for the parcel's moisture state.
-9. Air reaches saturation through cooling over a surface, mixing, nighttime ground cooling, or lifting. The temperature-dew point spread and convergence model can provide an approximate convective cloud-base estimate, not a measured ceiling.
-10. Cloud formation requires water vapor, condensation nuclei, and cooling to saturation. Cloud shape and depth provide evidence about stability and lift.
-11. Low, middle, high, and vertically developing cloud families organize cloud evidence. Low layers can create ceilings and visibility restrictions; vertical growth marks sustained lift and instability.
-12. Weather products report or forecast pieces of this chain. A VFR pilot correlates pressure, temperature, dew point, clouds, ceiling, visibility, precipitation, trend, route, and time before making or revising the flight decision.
+6. After saturation, a rising parcel cools more slowly. If it remains warmer and less dense than surrounding air, buoyancy can support deeper vertical development when lift continues and the atmosphere is unstable.
+7. Stability compares a displaced parcel with the surrounding atmosphere. Stable air damps vertical displacement; unstable air permits it to grow. Lift can originate from surface heating, terrain, convergence, or weather systems.
+8. A temperature inversion is a stable layer with temperature increasing with altitude. It can suppress mixing and trap moisture, haze, smoke, or pollutants; smooth air therefore does not automatically mean favorable VFR visibility.
+9. Water-vapor content, relative humidity, and dew point are different. Relative humidity depends on both moisture content and temperature. Dew point is the saturation temperature reached by cooling air without changing its water-vapor amount.
+10. Air reaches saturation through cooling over a surface, mixing, nighttime ground cooling, or lifting. The temperature-dew point spread and qualitative convergence model can support an approximate convective cloud-base estimate, not a measured ceiling.
+11. Cloud formation requires water vapor, condensation nuclei, and cooling to saturation. Cloud shape and depth provide evidence about stability and lift.
+12. Low, middle, high, and vertically developing cloud families organize cloud evidence. Low layers can create ceilings and visibility restrictions; vertical growth marks sustained lift and instability.
+13. Weather products report or forecast pieces of this chain. A VFR pilot correlates pressure, temperature, dew point, clouds, ceiling, visibility, precipitation, trend, route, and time before making or revising the flight decision.
 
 ## Likely trouble spots
 
@@ -90,7 +91,7 @@
 
 ## Open review items
 
-- Independent spoken-script review by a separate non-drafting agent remains required before script approval.
+- Independent spoken-script review by a separate non-drafting agent is complete. All required findings on the saturated-parcel buoyancy bridge, dew-point definition, cloud-base convergence wording, pressure-pattern evidence boundary, unsupported high-cloud implication, and cloud-family heading were resolved in version 0.1.1.
 - Human editorial review and script approval remain pending.
-- Deterministic local source and package checks are part of this initial drafting pass; the paid LLM source-relevance review remains required before audio render and was not called during drafting.
+- Network-backed deterministic validation passed for every FAA source link, deep citation, mapping, and listener-facing show-note link. The paid LLM source-relevance review remains required before audio render and was not called during drafting or review resolution.
 - Qualified aviation review remains optional and welcome.

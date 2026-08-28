@@ -8,7 +8,7 @@
 - [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
 - [x] For this initial draft, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package. Recheck after any script edit and before render.
 - [x] Show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.
-- [ ] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. This does not require an audit log.
+- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. This does not require an audit log.
 - [ ] Human editorial pass completed; unresolved technical questions were removed or resolved.
 - [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.
 
@@ -21,8 +21,9 @@
 - [x] Learner turns ask for a missing connection or summarize a conclusion already established by the Instructor.
 - [x] Announcer transitions remain short and introduce no new technical claims.
 - [x] Every spoken visual-aid pointer exactly matches a plainly labeled show-note link.
-- [x] The draft remains within the 30–45 minute target range at 5,133 spoken words and an approximately 42-minute target.
-- [ ] Independent non-drafting reviewer has checked grammar, complete thoughts, callbacks, call-forwards, and first-listen comprehension; material findings are resolved in `production-log.md`.
+- [x] The draft remains within the 30–45 minute target range at 5,111 spoken words and an approximately 42-minute target.
+- [x] Independent non-drafting reviewer has checked grammar, complete thoughts, callbacks, call-forwards, and first-listen comprehension; material findings are resolved in `production-log.md`.
+- [x] Network-backed deterministic validation passed for all FAA source links, deep citations, mappings, and listener-facing show-note links with LLM review disabled.
 
 ## Audio
 

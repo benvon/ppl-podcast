@@ -1,9 +1,9 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
-**Version:** 0.1.0 — initial draft
+**Version:** 0.1.1 — independently reviewed draft
 **Target runtime:** approximately 42 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Source-led initial draft; independent spoken-script review, human editorial review, source-relevance validation, and all audio and release gates remain pending.
+**Production status:** Independent spoken-script review complete; human editorial review, source-relevance validation, and all audio and release gates remain pending.
 
 ## [00:00] Opening
 
@@ -165,7 +165,11 @@ In the Northern Hemisphere, air circulates clockwise around a high-pressure area
 [Source: sources.yaml#phak-high-low-vertical-motion]
 [Claim type: FAA guidance]
 
-Treat those as physical tendencies, not a replacement for a briefing. A high can include operationally important wind, haze, smoke, low visibility, or other hazards. A low can have different weather in different sectors and stages. The model helps you ask why a pattern may support sinking or rising air; current observations and forecasts tell you what is actually present and expected along the flight.
+Treat those as broad physical tendencies, not a route-and-time assessment. The model helps you ask why a pressure pattern may support sinking or rising air. Current observations and forecasts tell you what is actually present and expected along the flight.
+
+[Source: sources.yaml#acs-weather-moisture-clouds-risk]
+[Source: sources.yaml#phak-weather-theory-purpose]
+[Claim type: Teaching explanation]
 
 **LEARNER:**
 
@@ -203,7 +207,12 @@ That answer would miss the mechanism. The surrounding atmosphere often does beco
 
 The rate at which temperature changes with height is called a lapse rate. The environment has an observed or forecast temperature profile. A lifted parcel has a cooling path. Compare them after the parcel is nudged upward. If the parcel becomes colder and denser than its surroundings, it tends to lose buoyancy and return. If it remains warmer and less dense, it tends to continue upward.
 
-Moisture changes the parcel's cooling rate after condensation begins because a phase change exchanges latent heat. We do not need to calculate every lapse rate in this episode. We do need the causal boundary: unsaturated rising air expands and cools; saturated rising air still cools, but condensation changes the rate. That helps explain why moisture can support deeper cloud development when the surrounding atmosphere is unstable.
+Moisture changes the parcel's cooling rate after condensation begins. We do not need to calculate every lapse rate in this episode. We do need the causal boundary: an unsaturated rising parcel expands and cools, while a saturated rising parcel cools more slowly. If that slower cooling leaves the parcel warmer and less dense than the surrounding air, the parcel remains buoyant and can keep rising. That is how moisture can support deeper cloud development when lift continues and the surrounding atmosphere is unstable.
+
+[Source: sources.yaml#phak-lapse-moisture-inversion]
+[Source: sources.yaml#phak-stability-adiabatic]
+[Source: sources.yaml#phak-heating-density-pressure]
+[Claim type: FAA guidance]
 
 ## [17:40] Stability asks what happens after air is lifted
 
@@ -257,7 +266,7 @@ Relative humidity compares the water vapor actually present with the amount the 
 [Source: sources.yaml#phak-lapse-moisture-inversion]
 [Claim type: FAA guidance]
 
-Dew point gives the temperature at which that air would become saturated if cooled without changing its water-vapor amount or pressure in a way that invalidates the simple comparison. When air temperature cools to dew point, the air is saturated. Continued cooling allows water vapor to condense into liquid or deposit as ice, depending on the temperature and process.
+Dew point is the temperature to which air must be cooled to become saturated when its water-vapor amount does not change. When air temperature cools to dew point, the air is saturated. Continued cooling allows water vapor to condense into liquid or deposit as ice, depending on the temperature and process.
 
 [Source: sources.yaml#phak-dewpoint-saturation-lifting]
 [Claim type: FAA guidance]
@@ -295,7 +304,7 @@ Can I tell the cloud type just from knowing that saturation occurred?
 
 No. Saturation explains why moisture becomes visible. Cloud form also depends on the depth and stability of the layer, the strength and persistence of lift, the moisture profile, temperature, wind, and other processes. A shallow stable layer can spread moisture horizontally. A deep unstable layer can support strong vertical development. The same basic phase change appears in very different cloud structures.
 
-The PHAK also presents a temperature-dew point method for estimating an approximate convective cloud-base height. In the simplified model, lifted unsaturated air cools faster than its dew point changes, so the two values converge. The surface spread can be divided by the stated convergence rate to estimate where saturation may occur above ground level.
+The PHAK also presents a simplified temperature-dew point relationship for estimating an approximate convective cloud-base height. Lifted unsaturated air cools faster than its dew point changes, so the two values converge. A wider surface spread generally means more lifting is needed before they meet. The cited page includes the numerical method, but the spoken takeaway here is the relationship rather than a formula.
 
 [Source: sources.yaml#phak-dewpoint-saturation-lifting]
 [Claim type: FAA guidance]
@@ -334,11 +343,11 @@ Low clouds deserve special attention for VFR planning because they occupy the pa
 
 The phrase low cloud does not itself answer whether a proposed flight is legal or prudent. You still need cloud coverage, base or ceiling, visibility, terrain, airspace, route, trend, and personal and aircraft capabilities. But the physical model helps you recognize why a close temperature-dew point spread, continued cooling, and a stable shallow layer may support a broad low layer instead of isolated fair-weather cumulus.
 
-## [30:05] Cloud families are clues, not vocabulary trophies
+## [30:05] What cloud structure can tell you
 
 **ANNOUNCER:**
 
-Cloud families are clues, not vocabulary trophies.
+What cloud structure can tell you.
 
 **INSTRUCTOR:**
 
@@ -367,7 +376,11 @@ So I should learn the names, but always ask what process produced the cloud and 
 
 **INSTRUCTOR:**
 
-Yes. Name, structure, process, consequence. A layered low cloud can mean a ceiling and route restriction. A growing tower can mean increasing convective risk. A high thin layer may signal moisture aloft without the same immediate low-level obstruction. The name helps you communicate; the physical model helps you interpret.
+Yes. Name, structure, process, consequence. A layered low cloud can mean a ceiling and route restriction. A growing tower can mean increasing convective risk. The name helps you communicate; the physical model helps you interpret.
+
+[Source: sources.yaml#phak-cloud-formation-low-clouds]
+[Source: sources.yaml#phak-cloud-families-vertical]
+[Claim type: FAA guidance]
 
 ## [33:05] From physical model to weather products
 

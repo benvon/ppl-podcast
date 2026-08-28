@@ -1,8 +1,8 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
 **Episode:** core-11
-**Version:** 0.1.0
-**Source verification:** Draft sources checked against current FAA pages on August 28, 2026; formal LLM relevance review remains pending before render.
+**Version:** 0.1.1
+**Source verification:** Deterministic FAA link, deep-citation, and mapping validation passed on August 28, 2026; formal LLM relevance review remains pending before render.
 
 ## In this episode
 

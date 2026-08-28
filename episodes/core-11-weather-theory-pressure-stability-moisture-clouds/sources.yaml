@@ -105,10 +105,10 @@ sources:
     locator: "Ch. 12, Adiabatic Process, Moisture and Temperature, Relative Humidity, and Inversion, p. 12-13"
     url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13"
     revision: "2023 edition"
-    relevance_excerpt: "An air parcel cools as it rises and expands and warms as it descends and compresses. Warm air can contain more water vapor; relative humidity compares actual moisture with capacity at the current temperature. Inversions are stable layers that can trap moisture and pollutants."
+    relevance_excerpt: "An air parcel cools as it rises and expands and warms as it descends and compresses. Saturated air cools more slowly than unsaturated air, which can make moist air less stable. Warm air can contain more water vapor; relative humidity compares actual moisture with capacity at the current temperature. Inversions are stable layers that can trap moisture and pollutants."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [adiabatic-parcel-chain, warm-air-moisture-capacity, relative-humidity-definition, inversion-stable-layer]
+    supports_claims: [adiabatic-parcel-chain, saturated-parcel-slower-cooling, warm-air-moisture-capacity, relative-humidity-definition, inversion-stable-layer]
 
   - id: phak-dewpoint-saturation-lifting
     authority: faa_guidance

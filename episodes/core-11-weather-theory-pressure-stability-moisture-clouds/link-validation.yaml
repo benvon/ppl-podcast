@@ -1,0 +1,931 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-08-28T20:01:18.590Z
+sources_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/sources.yaml
+claims_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/claim-inventory.yaml
+show_notes_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes.md
+show_notes_manifest_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes-manifest.yaml
+input_sha256:
+  sources: ddcb7cbbcd04682756e3cced3d79fb06c5c39bc5cff18047b6b76c0199c07439
+  claims: 99449e145e085e926acf671816a2abba984d95a063a8380fb79aca025fa39b74
+  show_notes: 2dd215f363333277205fb7fb8705322f41b10d8a893836103f52f5d59398fe62
+  show_notes_manifest: 3e9d15ee41417510da4973bd6f3ee9d8fc489901991be2e181f1d7f621d5f701
+llm_requested: false
+llm_model: null
+claim_mapping:
+  valid: true
+  errors: []
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 16
+  manifest_link_count: 13
+show_notes_results:
+  - id: acs-weather-stability
+    text: Private Pilot ACS — Atmospheric composition, stability, and wind
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    source_id: acs-weather-stability
+    claim_ids:
+      - acs-weather-theory-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-weather-moisture-clouds-risk
+    text: Private Pilot ACS — Weather conditions, risk management, and skills
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+    source_id: acs-weather-moisture-clouds-risk
+    claim_ids:
+      - acs-weather-theory-scope
+      - acs-weather-decision-use
+      - variables-not-verdicts
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2020
+      pdf_page_text_sha256: 8ed2fbd6b81fe01ff90767ef3562f706e3aba8138dde57a9baf4d4c92cc4fbaa
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-weather-theory-purpose
+    text: PHAK Chapter 12 — Introduction
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+    source_id: phak-weather-theory-purpose
+    claim_ids:
+      - weather-theory-supports-interpretation
+      - variables-not-verdicts
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1054
+      pdf_page_text_sha256: 19469d29f6e57c5d45f981a369cf9157211b32fd9c2748eccea2196325ed1207
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-atmosphere-troposphere
+    text: PHAK Chapter 12 — Atmosphere and composition
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+    source_id: phak-atmosphere-troposphere
+    claim_ids:
+      - atmosphere-mixture-water-vapor
+      - troposphere-weather-layer
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2105
+      pdf_page_text_sha256: ff3df3f87fd8fd3d26baec845cb49a295029f57bc35b710a2c49711d93b72680
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-heating-density-pressure
+    text: PHAK Chapter 12 — Atmospheric circulation and pressure
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+    source_id: phak-heating-density-pressure
+    claim_ids:
+      - unequal-heating-drives-motion
+      - temperature-density-relationship
+      - pressure-air-weight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4212
+      pdf_page_text_sha256: 4d99505435407751bd6587f9cd113af2466fc2bfda72eebf4ff76fd9960332a3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-pressure-reference-altitude
+    text: PHAK pressure reference and altitude relationship
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+    source_id: phak-pressure-reference-altitude
+    claim_ids:
+      - standard-pressure-reference
+      - sea-level-pressure-comparison
+      - pressure-decreases-altitude
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3606
+      pdf_page_text_sha256: bd3a03117d002a8f7fe4ca06b222c977165c59e8a7733f43712d9b2bdf7814d9
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-high-low-vertical-motion
+    text: PHAK Chapter 12 — Wind, currents, highs, and lows
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+    source_id: phak-high-low-vertical-motion
+    claim_ids:
+      - pressure-patterns-motion-weather
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4309
+      pdf_page_text_sha256: c29acb72a435d4e115e9d7719c9a9f83d5b6d231e606a8f32dee0b034f9064fc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-stability-adiabatic
+    text: PHAK Chapter 12 — Atmospheric stability
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+    source_id: phak-stability-adiabatic
+    claim_ids:
+      - stability-definition
+      - rising-cools-descending-warms
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4065
+      pdf_page_text_sha256: d8e03d4f4a8593e7273e22c8bdc1c642fe1ed27e905be1bf765a926c6261c567
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-lapse-moisture-inversion
+    text: PHAK Chapter 12 — Adiabatic process, moisture, and inversion
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+    source_id: phak-lapse-moisture-inversion
+    claim_ids:
+      - adiabatic-parcel-chain
+      - saturated-parcel-slower-cooling
+      - warm-air-moisture-capacity
+      - relative-humidity-definition
+      - inversion-stable-layer
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5124
+      pdf_page_text_sha256: f5f318cacc93d1ebbd224982774242e07b5b731ce2174c46fcc50389635c92bd
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-dewpoint-saturation-lifting
+    text: PHAK temperature, dew point, and approximate cloud-base example
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+    source_id: phak-dewpoint-saturation-lifting
+    claim_ids:
+      - dewpoint-saturation-definition
+      - saturation-four-paths
+      - temperature-dewpoint-cloud-base-model
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2833
+      pdf_page_text_sha256: e9cada1350b574b0575dad90fc94a57febc6de6d4771babc8fbf1da0a686958d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cloud-formation-low-clouds
+    text: PHAK Chapter 12 — Cloud formation and low clouds
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+    source_id: phak-cloud-formation-low-clouds
+    claim_ids:
+      - cloud-formation-requirements
+      - low-cloud-operational-meaning
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4623
+      pdf_page_text_sha256: 587d53508ee13281e5c33d795c1a300595ddb56978a4b9fcbb9e4794807246ff
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cloud-families-vertical
+    text: PHAK basic cloud families and vertical development
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+    source_id: phak-cloud-families-vertical
+    claim_ids:
+      - cloud-family-classification
+      - vertical-cloud-instability
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2733
+      pdf_page_text_sha256: fa137aba4e97622fa952b2e5ad0bbaa4178a69a9ba853980f9c1f075c8fda668
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-ceiling-visibility-precipitation
+    text: PHAK Chapter 12 — Ceiling, visibility, and precipitation
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+    source_id: phak-ceiling-visibility-precipitation
+    claim_ids:
+      - ceiling-visibility-meaning
+      - precipitation-observable-consequence
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4779
+      pdf_page_text_sha256: da546ba95a9078ff0a8d7fb3b472123e1e8e9fcbb6150d259c81fbecb370a62a
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-weather-stability
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-28T20:01:16.843Z
+    linked_claim_ids:
+      - acs-weather-theory-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-weather-moisture-clouds-risk
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-08-28T20:01:16.859Z
+    linked_claim_ids:
+      - acs-weather-theory-scope
+      - acs-weather-decision-use
+      - variables-not-verdicts
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2020
+      pdf_page_text_sha256: 8ed2fbd6b81fe01ff90767ef3562f706e3aba8138dde57a9baf4d4c92cc4fbaa
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-weather-theory-purpose
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:17.300Z
+    linked_claim_ids:
+      - weather-theory-supports-interpretation
+      - variables-not-verdicts
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1054
+      pdf_page_text_sha256: 19469d29f6e57c5d45f981a369cf9157211b32fd9c2748eccea2196325ed1207
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-atmosphere-troposphere
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:17.303Z
+    linked_claim_ids:
+      - atmosphere-mixture-water-vapor
+      - troposphere-weather-layer
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2105
+      pdf_page_text_sha256: ff3df3f87fd8fd3d26baec845cb49a295029f57bc35b710a2c49711d93b72680
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-heating-density-pressure
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.315Z
+    linked_claim_ids:
+      - unequal-heating-drives-motion
+      - temperature-density-relationship
+      - pressure-air-weight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4212
+      pdf_page_text_sha256: 4d99505435407751bd6587f9cd113af2466fc2bfda72eebf4ff76fd9960332a3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-pressure-reference-altitude
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.333Z
+    linked_claim_ids:
+      - standard-pressure-reference
+      - sea-level-pressure-comparison
+      - pressure-decreases-altitude
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3606
+      pdf_page_text_sha256: bd3a03117d002a8f7fe4ca06b222c977165c59e8a7733f43712d9b2bdf7814d9
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-high-low-vertical-motion
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.357Z
+    linked_claim_ids:
+      - pressure-patterns-motion-weather
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4309
+      pdf_page_text_sha256: c29acb72a435d4e115e9d7719c9a9f83d5b6d231e606a8f32dee0b034f9064fc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-stability-adiabatic
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.394Z
+    linked_claim_ids:
+      - stability-definition
+      - rising-cools-descending-warms
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4065
+      pdf_page_text_sha256: d8e03d4f4a8593e7273e22c8bdc1c642fe1ed27e905be1bf765a926c6261c567
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-lapse-moisture-inversion
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.404Z
+    linked_claim_ids:
+      - adiabatic-parcel-chain
+      - saturated-parcel-slower-cooling
+      - warm-air-moisture-capacity
+      - relative-humidity-definition
+      - inversion-stable-layer
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5124
+      pdf_page_text_sha256: f5f318cacc93d1ebbd224982774242e07b5b731ce2174c46fcc50389635c92bd
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-dewpoint-saturation-lifting
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.417Z
+    linked_claim_ids:
+      - dewpoint-saturation-definition
+      - saturation-four-paths
+      - temperature-dewpoint-cloud-base-model
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2833
+      pdf_page_text_sha256: e9cada1350b574b0575dad90fc94a57febc6de6d4771babc8fbf1da0a686958d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-cloud-formation-low-clouds
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.420Z
+    linked_claim_ids:
+      - cloud-formation-requirements
+      - low-cloud-operational-meaning
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4623
+      pdf_page_text_sha256: 587d53508ee13281e5c33d795c1a300595ddb56978a4b9fcbb9e4794807246ff
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-cloud-families-vertical
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.431Z
+    linked_claim_ids:
+      - cloud-family-classification
+      - vertical-cloud-instability
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2733
+      pdf_page_text_sha256: fa137aba4e97622fa952b2e5ad0bbaa4178a69a9ba853980f9c1f075c8fda668
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-ceiling-visibility-precipitation
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-08-28T20:01:18.451Z
+    linked_claim_ids:
+      - ceiling-visibility-meaning
+      - precipitation-observable-consequence
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4779
+      pdf_page_text_sha256: da546ba95a9078ff0a8d7fb3b472123e1e8e9fcbb6150d259c81fbecb370a62a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

@@ -871,14 +871,7 @@ async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
   return results;
 }
 
-async function main(refreshCount = 0, sharedEcfrRateLimiter = null) {
-  const options = parseArgs(process.argv.slice(2));
-  const progress = progressReporter({ heartbeatSeconds: options.heartbeatSeconds });
-  const ecfrRateLimiter = sharedEcfrRateLimiter || requestRateLimiter({ maxInFlight: ECFR_MAX_IN_FLIGHT_REQUESTS, minStartIntervalMs: ECFR_MIN_START_INTERVAL_MS });
-  const cancellation = new AbortController(); let cancelled = false;
-  const cancel = () => { cancelled = true; cancellation.abort(); };
-  process.once("SIGINT", cancel); process.once("SIGTERM", cancel);
-  try {
+async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled, refreshCount }) {
   const sourcesPath = path.resolve(options.sources); const claimsPath = path.resolve(options.claims);
   const outputPath = path.resolve(options.output || path.join(path.dirname(sourcesPath), "link-validation.yaml"));
   const ledger = loadYaml(sourcesPath, "sources"); const claimInventory = loadYaml(claimsPath, "claims");
@@ -918,9 +911,8 @@ async function main(refreshCount = 0, sharedEcfrRateLimiter = null) {
   if (refreshedEcfrSources.length) {
     releaseValidationLock(outputPath, validationRun);
     progress.emit("ecfr_manifest_refreshed", { source_count: refreshedEcfrSources.length, titles: [...new Set(refreshedEcfrSources.map((entry) => entry.target.title))] });
-    if (refreshCount >= MAX_ECFR_MANIFEST_REFRESHES) throw new Error(`eCFR changed during ${MAX_ECFR_MANIFEST_REFRESHES + 1} consecutive validation attempts; rerun after the title import settles.`);
     console.error(`Refreshed ${refreshedEcfrSources.length} eCFR source date${refreshedEcfrSources.length === 1 ? "" : "s"}; restarting validation with the current API date.`);
-    return main(refreshCount + 1, ecfrRateLimiter);
+    return { refreshedEcfrSources };
   }
   const results = new Array(ledger.sources.length);
   const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
@@ -959,7 +951,7 @@ async function main(refreshCount = 0, sharedEcfrRateLimiter = null) {
     results[job.index] = entry; return entry;
   }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? ECFR_MAX_IN_FLIGHT_REQUESTS : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
-  if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
   const deterministicValid = results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
   if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
   await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
@@ -982,7 +974,7 @@ async function main(refreshCount = 0, sharedEcfrRateLimiter = null) {
     return entry;
   }, { signal: cancellation.signal, onCompleted: (entry) => { if (options.llm && deterministicValid) progress.itemCompleted(entry.source_id, entry.relevance.status === "assessed"); } });
   if (options.llm && deterministicValid) progress.phaseCompleted();
-  if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
   for (const entry of results) console.log(`${entry.source_id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
   const reportResults = results.map((result) => ({
     ...result,
@@ -997,15 +989,42 @@ async function main(refreshCount = 0, sharedEcfrRateLimiter = null) {
   progress.emit("report_written", { valid: !unresolved });
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
   if (unresolved) process.exitCode = 1;
+  return { refreshedEcfrSources: [] };
+}
+
+async function runWithEcfrRefreshes(runAttempt, { maximumRefreshes = MAX_ECFR_MANIFEST_REFRESHES } = {}) {
+  for (let refreshCount = 0; ; refreshCount += 1) {
+    const result = await runAttempt({ refreshCount });
+    if (!result?.refreshedEcfrSources?.length) return result;
+    if (refreshCount >= maximumRefreshes) throw new Error(`eCFR changed during ${maximumRefreshes + 1} consecutive validation attempts; rerun after the title import settles.`);
+  }
+}
+
+async function runWithEcfrRateLimiter(runAttempt, ecfrRateLimiter) {
+  try {
+    return await runWithEcfrRefreshes(runAttempt);
+  } finally {
+    ecfrRateLimiter.close();
+  }
+}
+
+async function main() {
+  const options = parseArgs(process.argv.slice(2));
+  const progress = progressReporter({ heartbeatSeconds: options.heartbeatSeconds });
+  const ecfrRateLimiter = requestRateLimiter({ maxInFlight: ECFR_MAX_IN_FLIGHT_REQUESTS, minStartIntervalMs: ECFR_MIN_START_INTERVAL_MS });
+  const cancellation = new AbortController(); let cancelled = false;
+  const cancel = () => { cancelled = true; cancellation.abort(); };
+  process.once("SIGINT", cancel); process.once("SIGTERM", cancel);
+  try {
+    return await runWithEcfrRateLimiter(({ refreshCount }) => validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled: () => cancelled, refreshCount }), ecfrRateLimiter);
   } catch (error) {
     if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; }
     else { progress.emit("run_failed", { message: error.message }); throw error; }
   } finally {
     process.removeListener("SIGINT", cancel); process.removeListener("SIGTERM", cancel); progress.close();
-    if (!sharedEcfrRateLimiter) ecfrRateLimiter.close();
   }
 }
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

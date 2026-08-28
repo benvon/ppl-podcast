@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, refreshEcfrManifestDates, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertNarrationInput, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -664,6 +664,25 @@ test("eCFR date refresh updates the source record before section validation reru
     assert.equal(refreshed.validation_url, "https://www.ecfr.gov/api/versioner/v1/full/2026-08-26/title-14.xml?part=91");
     assert.equal(refreshed.revision, "eCFR Title 14 current through August 26, 2026");
   } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("eCFR refresh keeps the rate limiter alive until the rerun completes", async () => {
+  const events = []; let releaseRerun;
+  const rerunGate = new Promise((resolve) => { releaseRerun = resolve; });
+  const limiter = { close() { events.push("limiter-closed"); } };
+  const running = runWithEcfrRateLimiter(async ({ refreshCount }) => {
+    events.push(`attempt-${refreshCount}`);
+    if (refreshCount === 0) return { refreshedEcfrSources: [{ id: "title-14" }] };
+    await rerunGate;
+    events.push("rerun-complete");
+    return { refreshedEcfrSources: [] };
+  }, limiter);
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(events, ["attempt-0", "attempt-1"]);
+  releaseRerun();
+  await running;
+  assert.deepEqual(events, ["attempt-0", "attempt-1", "rerun-complete", "limiter-closed"]);
+  await assert.rejects(runWithEcfrRefreshes(async () => ({ refreshedEcfrSources: [{ id: "title-14" }] }), { maximumRefreshes: 1 }), /eCFR changed during 2 consecutive validation attempts/);
 });
 
 test("eCFR date refresh leaves malformed eCFR records for normal validation", async () => {

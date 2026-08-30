@@ -21,7 +21,7 @@
 - [x] Learner turns ask for a missing connection or summarize a conclusion already established by the Instructor.
 - [x] Announcer transitions remain short and introduce no new technical claims.
 - [x] Every spoken visual-aid pointer exactly matches a plainly labeled show-note link.
-- [x] The draft remains within the 30–45 minute target range at 5,111 spoken words and an approximately 42-minute target.
+- [x] The draft remains within the requested roughly 5,000–6,000-word range at 5,746 spoken words and an approximately 45-minute target.
 - [x] Independent non-drafting reviewer has checked grammar, complete thoughts, callbacks, call-forwards, and first-listen comprehension; material findings are resolved in `production-log.md`.
 - [x] Network-backed deterministic validation passed for all FAA source links, deep citations, mappings, and listener-facing show-note links with LLM review disabled.
 

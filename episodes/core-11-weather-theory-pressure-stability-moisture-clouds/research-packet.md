@@ -3,9 +3,10 @@
 ## Scope
 
 - Audience: U.S. private-pilot airplane learners building the physical model needed to interpret weather observations and forecasts under VFR.
-- Target duration: approximately 42 minutes, within the series' 30–45 minute range.
+- Target duration: approximately 45 minutes, at the upper edge of the series' 30–45 minute range.
 - Core question: How do pressure, temperature, density, vertical motion, stability, and moisture combine to create clouds and the conditions later reported in aviation weather products?
 - Primary technical source: FAA-H-8083-25C, Pilot's Handbook of Aeronautical Knowledge, Chapter 12, Weather Theory, pp. 12-1 through 12-17.
+- Supplemental technical source: FAA-H-8083-28A, Aviation Weather Handbook, Air Parcel and Troposphere, p. 4-3, and Atmospheric Pressure and Altimetry, pp. 8-3 through 8-13.
 - ACS anchor: FAA-S-ACS-6C, PA.I.C, Weather Information, especially K3a, K3c-K3f, R1-R2, and S2-S3.
 - Out of scope: full wind-system and front analysis; cloud-clearance regulations; weather-product decoding; briefing workflows; thunderstorm, icing, fog, frost, and precipitation hazard procedures; aircraft-specific operational procedures.
 
@@ -24,8 +25,8 @@
 
 ## Source-led causal chain
 
-1. The atmosphere is a moving mixture of gases with a small but highly consequential variable water-vapor component. Most weather occurs in the troposphere.
-2. Air has mass and weight, so it exerts pressure. Pressure decreases with altitude; sea-level reduction permits comparison among stations at different elevations.
+1. The atmosphere is a moving mixture of gases with a small but highly consequential variable water-vapor component. Most weather occurs in the troposphere. An air parcel is an imaginary local region whose approximately uniform properties can be followed; its analytical boundary and useful scope follow the atmospheric process being discussed rather than a physical container created by an aircraft.
+2. Air has mass and weight, so it exerts pressure. Pressure decreases with altitude. Station pressure describes actual pressure at field elevation, while reduction to mean sea level permits comparison among stations at different elevations. MSL, AGL, altimeter setting, pressure altitude, and density altitude each use a deliberately chosen reference for a distinct comparison or planning question.
 3. Uneven surface heating changes air temperature and density. Warmer air expands and becomes less dense; cooler air becomes denser. Those differences contribute to atmospheric motion.
 4. Pressure patterns provide evidence about motion. Descending dry air is generally associated with highs and fairer conditions, while rising air commonly accompanies lows, cloudiness, and precipitation. These are tendencies, not standalone decisions.
 5. A rising parcel enters lower pressure, expands, and cools. A descending parcel enters higher pressure, compresses, and warms. This adiabatic mechanism is distinct from merely observing that environmental temperature often changes with altitude.
@@ -43,6 +44,12 @@
 - Misconception: pressure, temperature, and density are interchangeable names for how much air is present.
   - Correction: pressure is force from air, temperature describes molecular energy, and density is mass per volume. They interact but answer different questions.
   - Source: PHAK Chapter 12, pp. 12-3 and 12-5.
+- Misconception: a parcel is a sharply bounded container of air at one fixed scale, possibly created by the airplane.
+  - Correction: a parcel is an imaginary local region selected for analysis. It has no physical wall or precise numerical size; its useful scope follows the process while its assigned properties remain approximately uniform.
+  - Source: Aviation Weather Handbook, p. 4-3.
+- Misconception: station pressure, sea-level pressure, altimeter setting, pressure altitude, and density altitude are interchangeable conversions of one number.
+  - Correction: station pressure is local at field elevation; sea-level pressure supports pressure-pattern comparison; altimeter setting supports compatible local MSL indication; pressure altitude supplies a standard-atmosphere reference; density altitude expresses the resulting performance environment after nonstandard-temperature correction.
+  - Source: PHAK Chapter 12, p. 12-5; Aviation Weather Handbook, pp. 8-3, 8-6, and 8-10 through 8-13.
 - Misconception: rising air cools only because the atmosphere is colder at higher altitude.
   - Correction: the parcel expands and cools as surrounding pressure decreases; stability then compares the parcel with the environmental temperature profile.
   - Source: PHAK Chapter 12, pp. 12-12 to 12-13.
@@ -85,13 +92,13 @@
 - Which ACS version applies? FAA-S-ACS-6C, published April 2024 and effective May 31, 2024, remains the current Private Pilot for Airplane Category ACS listed by the FAA.
 - Should the episode teach the PHAK's exact average, dry, and moist lapse-rate numbers? No. The causal distinction is required here; detailed calculation would distract from first-listen comprehension and is not needed to explain the typical VFR interpretation question.
 - Should the PHAK cloud-base formula be taught as an operational ceiling prediction? No. It is presented as an approximate parcel-model estimate, explicitly distinguished from current observations, forecasts, and the aviation definition of ceiling.
-- Should density altitude be retaught? Only as a callback. Core 10 covers performance planning. Core 11 uses the same density relationship to explain atmospheric motion and cloud development.
+- Should density altitude be retaught? Only enough to place it in the pressure-reference mental map. Core 10 covers performance planning. Core 11 identifies pressure altitude as the standard-pressure starting point and density altitude as its nonstandard-temperature correction and performance index, then returns to weather theory.
 - Should cloud height bands be narrated as memorization items? No. Figure 12-22 is linked as a visual organizer; the spoken lesson emphasizes structure, process, and consequence.
 - How much fog, front, thunderstorm, icing, and weather-product material belongs here? Only enough to show how the physical model predicts later topics. Their detailed operational treatment remains out of scope.
 
 ## Open review items
 
-- Independent spoken-script review by a separate non-drafting agent is complete. All required findings on the saturated-parcel buoyancy bridge, dew-point definition, cloud-base convergence wording, pressure-pattern evidence boundary, unsupported high-cloud implication, and cloud-family heading were resolved in version 0.1.1.
+- Independent spoken-script review by a separate non-drafting agent is complete. All required findings on the saturated-parcel buoyancy bridge, dew-point definition, cloud-base convergence wording, pressure-pattern evidence boundary, unsupported high-cloud implication, and cloud-family heading were resolved in version 0.1.1. Version 0.1.2 preserves that reviewed scope while incorporating user-directed first-listen clarification of the parcel model and pressure-reference systems.
 - Human editorial review and script approval remain pending.
 - Network-backed deterministic validation passed for every FAA source link, deep citation, mapping, and listener-facing show-note link. The paid LLM source-relevance review remains required before audio render and was not called during drafting or review resolution.
 - Qualified aviation review remains optional and welcome.

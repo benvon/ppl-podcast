@@ -1,6 +1,6 @@
 episode_id: "core-11"
-verification_date: "2026-08-28"
-verified_at_utc: "2026-08-28T19:41:40Z"
+verification_date: "2026-08-30"
+verified_at_utc: "2026-08-30T13:34:42Z"
 sources:
   - id: acs-weather-stability
     authority: faa_regulatory_standard
@@ -50,6 +50,18 @@ sources:
     link_status: 200
     supports_claims: [atmosphere-mixture-water-vapor, troposphere-weather-layer]
 
+  - id: awh-air-parcel-troposphere
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 4, Air Parcel and Troposphere, p. 4-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "An air parcel is an imaginary volume used to assign approximately uniform atmospheric properties; it has no precise numerical size. The troposphere extends from the surface to about 36,000 feet, contains almost all weather, and varies in depth with latitude and season."
+    verified_at_utc: "2026-08-30T13:34:42Z"
+    link_status: 200
+    supports_claims: [troposphere-weather-layer, air-parcel-conceptual-model, parcel-scale-follows-question]
+
   - id: phak-heating-density-pressure
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
@@ -73,6 +85,78 @@ sources:
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
     supports_claims: [standard-pressure-reference, sea-level-pressure-comparison, pressure-decreases-altitude]
+
+  - id: awh-pressure-units-station
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 8, Atmospheric Pressure Units and Station Pressure, p. 8-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "Hectopascals and millibars are equivalent pressure units; inches of mercury are used for U.S. altimetry. Station pressure is the actual pressure at field elevation and is normally lower at higher-elevation airports."
+    verified_at_utc: "2026-08-30T13:34:42Z"
+    link_status: 200
+    supports_claims: [standard-pressure-reference, station-pressure-local-reference]
+
+  - id: awh-sea-level-pressure-reference
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 8, Sea Level Pressure, p. 8-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "Station pressures at different elevations are adjusted to mean sea level to make them comparable; sea-level pressure is typically displayed on surface weather charts."
+    verified_at_utc: "2026-08-30T13:34:42Z"
+    link_status: 200
+    supports_claims: [sea-level-pressure-comparison]
+
+  - id: faa-pcg-altitude-reference
+    authority: faa_guidance
+    title: "Pilot/Controller Glossary"
+    document_id: "FAA Pilot/Controller Glossary"
+    locator: "Term ALTITUDE, including MSL Altitude and AGL Altitude"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE"
+    revision: "Current FAA web edition verified August 30, 2026"
+    relevance_excerpt: "Altitude is the height of a level, point, or object measured above ground level or from mean sea level; MSL altitude is measured from mean sea level and AGL altitude is measured above ground level."
+    verified_at_utc: "2026-08-30T13:34:42Z"
+    link_status: 200
+    supports_claims: [msl-agl-airport-elevation]
+
+  - id: faa-pcg-airport-elevation
+    authority: faa_guidance
+    title: "Pilot/Controller Glossary"
+    document_id: "FAA Pilot/Controller Glossary"
+    locator: "Term AIRPORT ELEVATION"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION"
+    revision: "Current FAA web edition verified August 30, 2026"
+    relevance_excerpt: "Airport elevation is the highest point of an airport's usable runways measured in feet from mean sea level."
+    verified_at_utc: "2026-08-30T13:34:42Z"
+    link_status: 200
+    supports_claims: [msl-agl-airport-elevation]
+
+  - id: awh-altimeter-setting-reference
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 8, Indicated Altitude and Altimeter Setting, pp. 8-10 to 8-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "Indicated altitude is an MSL altitude shown with the local altimeter setting; the setting is chosen so the altimeter indicates true altitude at field elevation and keeps nearby aircraft indications compatible."
+    verified_at_utc: "2026-08-30T13:34:42Z"
+    link_status: 200
+    supports_claims: [altimeter-setting-purpose]
+
+  - id: awh-pressure-density-altitude
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 8, Pressure Altitude and Density Altitude, pp. 8-12 to 8-13"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "Pressure altitude uses the standard 29.92 inHg reference to associate pressure with altitude; density altitude corrects pressure altitude for nonstandard temperature and is an index to aircraft performance."
+    verified_at_utc: "2026-08-30T13:34:42Z"
+    link_status: 200
+    supports_claims: [pressure-density-altitude-reference]
 
   - id: phak-high-low-vertical-motion
     authority: faa_guidance

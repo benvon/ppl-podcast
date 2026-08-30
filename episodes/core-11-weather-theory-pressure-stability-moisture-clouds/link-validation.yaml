@@ -1,15 +1,15 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-28T20:01:18.590Z
+checked_at_utc: 2026-08-30T13:39:32.531Z
 sources_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/sources.yaml
 claims_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/claim-inventory.yaml
 show_notes_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes.md
 show_notes_manifest_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes-manifest.yaml
 input_sha256:
-  sources: ddcb7cbbcd04682756e3cced3d79fb06c5c39bc5cff18047b6b76c0199c07439
-  claims: 99449e145e085e926acf671816a2abba984d95a063a8380fb79aca025fa39b74
-  show_notes: 2dd215f363333277205fb7fb8705322f41b10d8a893836103f52f5d59398fe62
-  show_notes_manifest: 3e9d15ee41417510da4973bd6f3ee9d8fc489901991be2e181f1d7f621d5f701
+  sources: 18a672c8db22d7f2262224a4f1c232fcbecb67818928cd0ffc9c01506461b4ea
+  claims: 18772adf807b548c44e87c9d8688e06f3586b735302f4dfa0ea8d06113cb49cb
+  show_notes: ac5a5113d381e8e2eff3b2dc79c0ea458a68c0855b7377c7cd6fddd4d0cd144b
+  show_notes_manifest: 86696802c313045c415e9efc6594cd3aaa730bfc845ca35256ac14d1d771ee04
 llm_requested: false
 llm_model: null
 claim_mapping:
@@ -18,8 +18,8 @@ claim_mapping:
 show_notes_mapping:
   valid: true
   errors: []
-  markdown_link_count: 16
-  manifest_link_count: 13
+  markdown_link_count: 23
+  manifest_link_count: 20
 show_notes_results:
   - id: acs-weather-stability
     text: Private Pilot ACS — Atmospheric composition, stability, and wind
@@ -149,6 +149,39 @@ show_notes_results:
       pdf_page_text_sha256: ff3df3f87fd8fd3d26baec845cb49a295029f57bc35b710a2c49711d93b72680
       section_text_characters: 0
       section_text_sha256: null
+  - id: awh-air-parcel-troposphere
+    text: Aviation Weather Handbook — Air parcel and troposphere
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+    source_id: awh-air-parcel-troposphere
+    claim_ids:
+      - troposphere-weather-layer
+      - air-parcel-conceptual-model
+      - parcel-scale-follows-question
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      errors: []
+      valid: true
+      pdf_page_number: 72
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3326
+      pdf_page_text_sha256: 64fa3260a924c11d221b99e2907918d236fbd45d8e59c4fb2d67987f19c73aa2
+      section_text_characters: 0
+      section_text_sha256: null
   - id: phak-heating-density-pressure
     text: PHAK Chapter 12 — Atmospheric circulation and pressure
     url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
@@ -213,6 +246,191 @@ show_notes_results:
       excerpt_sha256: null
       pdf_page_text_characters: 3606
       pdf_page_text_sha256: bd3a03117d002a8f7fe4ca06b222c977165c59e8a7733f43712d9b2bdf7814d9
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-pressure-units-station
+    text: Aviation Weather Handbook — Pressure units and station pressure
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+    source_id: awh-pressure-units-station
+    claim_ids:
+      - standard-pressure-reference
+      - station-pressure-local-reference
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      errors: []
+      valid: true
+      pdf_page_number: 106
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1519
+      pdf_page_text_sha256: ad586e92a2b3d0372f6c4f83aca6676882579871d3829cd9c40a281b17477d1c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-sea-level-pressure-reference
+    text: Aviation Weather Handbook — Sea level pressure
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+    source_id: awh-sea-level-pressure-reference
+    claim_ids:
+      - sea-level-pressure-comparison
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      errors: []
+      valid: true
+      pdf_page_number: 109
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1097
+      pdf_page_text_sha256: 4297f0a384bb39d54fc6be37cee1750c1da63babd4b787c8be856c4899a6a746
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-pcg-altitude-reference
+    text: FAA Pilot/Controller Glossary — Altitude reference
+    url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+    source_id: faa-pcg-altitude-reference
+    claim_ids:
+      - msl-agl-airport-elevation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a4 []
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 097fbc460e4586b407a6ceec24f6ee8cdd8ef3aa1b392ed1e741f8da30e39f41
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-pcg-airport-elevation
+    text: FAA Pilot/Controller Glossary — Airport elevation
+    url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+    source_id: faa-pcg-airport-elevation
+    claim_ids:
+      - msl-agl-airport-elevation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 097fbc460e4586b407a6ceec24f6ee8cdd8ef3aa1b392ed1e741f8da30e39f41
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-altimeter-setting-reference
+    text: Aviation Weather Handbook — Altimeter setting
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+    source_id: awh-altimeter-setting-reference
+    claim_ids:
+      - altimeter-setting-purpose
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      errors: []
+      valid: true
+      pdf_page_number: 113
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1383
+      pdf_page_text_sha256: fd79d7f4d4729ab9d602580bcae94cc9ba9f7b653f34a63acb4609cf6fbe27e6
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-pressure-density-altitude
+    text: Aviation Weather Handbook — Pressure altitude and density altitude
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+    source_id: awh-pressure-density-altitude
+    claim_ids:
+      - pressure-density-altitude-reference
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      errors: []
+      valid: true
+      pdf_page_number: 115
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2298
+      pdf_page_text_sha256: 011c880953312a1d5ec90fcc0c5393d648070800c907f239b31202735da59918
       section_text_characters: 0
       section_text_sha256: null
   - id: phak-high-low-vertical-motion
@@ -445,7 +663,7 @@ show_notes_results:
 results:
   - source_id: acs-weather-stability
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-28T20:01:16.843Z
+    checked_at_utc: 2026-08-30T13:39:20.660Z
     linked_claim_ids:
       - acs-weather-theory-scope
     missing_claim_ids: []
@@ -481,7 +699,7 @@ results:
       status: not_requested
   - source_id: acs-weather-moisture-clouds-risk
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-28T20:01:16.859Z
+    checked_at_utc: 2026-08-30T13:39:20.676Z
     linked_claim_ids:
       - acs-weather-theory-scope
       - acs-weather-decision-use
@@ -519,7 +737,7 @@ results:
       status: not_requested
   - source_id: phak-weather-theory-purpose
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:17.300Z
+    checked_at_utc: 2026-08-30T13:39:21.363Z
     linked_claim_ids:
       - weather-theory-supports-interpretation
       - variables-not-verdicts
@@ -556,7 +774,7 @@ results:
       status: not_requested
   - source_id: phak-atmosphere-troposphere
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:17.303Z
+    checked_at_utc: 2026-08-30T13:39:21.365Z
     linked_claim_ids:
       - atmosphere-mixture-water-vapor
       - troposphere-weather-layer
@@ -591,9 +809,47 @@ results:
     claim_assessments:
       valid: null
       status: not_requested
+  - source_id: awh-air-parcel-troposphere
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-08-30T13:39:24.407Z
+    linked_claim_ids:
+      - troposphere-weather-layer
+      - air-parcel-conceptual-model
+      - parcel-scale-follows-question
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72
+      errors: []
+      valid: true
+      pdf_page_number: 72
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3326
+      pdf_page_text_sha256: 64fa3260a924c11d221b99e2907918d236fbd45d8e59c4fb2d67987f19c73aa2
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
   - source_id: phak-heating-density-pressure
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.315Z
+    checked_at_utc: 2026-08-30T13:39:24.452Z
     linked_claim_ids:
       - unequal-heating-drives-motion
       - temperature-density-relationship
@@ -631,7 +887,7 @@ results:
       status: not_requested
   - source_id: phak-pressure-reference-altitude
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.333Z
+    checked_at_utc: 2026-08-30T13:39:24.469Z
     linked_claim_ids:
       - standard-pressure-reference
       - sea-level-pressure-comparison
@@ -667,9 +923,224 @@ results:
     claim_assessments:
       valid: null
       status: not_requested
+  - source_id: awh-pressure-units-station
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-08-30T13:39:24.488Z
+    linked_claim_ids:
+      - standard-pressure-reference
+      - station-pressure-local-reference
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106
+      errors: []
+      valid: true
+      pdf_page_number: 106
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1519
+      pdf_page_text_sha256: ad586e92a2b3d0372f6c4f83aca6676882579871d3829cd9c40a281b17477d1c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: awh-sea-level-pressure-reference
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-08-30T13:39:32.080Z
+    linked_claim_ids:
+      - sea-level-pressure-comparison
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109
+      errors: []
+      valid: true
+      pdf_page_number: 109
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1097
+      pdf_page_text_sha256: 4297f0a384bb39d54fc6be37cee1750c1da63babd4b787c8be856c4899a6a746
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-pcg-altitude-reference
+    title: Pilot/Controller Glossary
+    checked_at_utc: 2026-08-30T13:39:32.099Z
+    linked_claim_ids:
+      - msl-agl-airport-elevation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 097fbc460e4586b407a6ceec24f6ee8cdd8ef3aa1b392ed1e741f8da30e39f41
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-pcg-airport-elevation
+    title: Pilot/Controller Glossary
+    checked_at_utc: 2026-08-30T13:39:32.109Z
+    linked_claim_ids:
+      - msl-agl-airport-elevation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 097fbc460e4586b407a6ceec24f6ee8cdd8ef3aa1b392ed1e741f8da30e39f41
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: awh-altimeter-setting-reference
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-08-30T13:39:32.181Z
+    linked_claim_ids:
+      - altimeter-setting-purpose
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113
+      errors: []
+      valid: true
+      pdf_page_number: 113
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1383
+      pdf_page_text_sha256: fd79d7f4d4729ab9d602580bcae94cc9ba9f7b653f34a63acb4609cf6fbe27e6
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: awh-pressure-density-altitude
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-08-30T13:39:32.181Z
+    linked_claim_ids:
+      - pressure-density-altitude-reference
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115
+      errors: []
+      valid: true
+      pdf_page_number: 115
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2298
+      pdf_page_text_sha256: 011c880953312a1d5ec90fcc0c5393d648070800c907f239b31202735da59918
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
   - source_id: phak-high-low-vertical-motion
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.357Z
+    checked_at_utc: 2026-08-30T13:39:32.220Z
     linked_claim_ids:
       - pressure-patterns-motion-weather
     missing_claim_ids: []
@@ -705,7 +1176,7 @@ results:
       status: not_requested
   - source_id: phak-stability-adiabatic
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.394Z
+    checked_at_utc: 2026-08-30T13:39:32.226Z
     linked_claim_ids:
       - stability-definition
       - rising-cools-descending-warms
@@ -742,7 +1213,7 @@ results:
       status: not_requested
   - source_id: phak-lapse-moisture-inversion
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.404Z
+    checked_at_utc: 2026-08-30T13:39:32.243Z
     linked_claim_ids:
       - adiabatic-parcel-chain
       - saturated-parcel-slower-cooling
@@ -782,7 +1253,7 @@ results:
       status: not_requested
   - source_id: phak-dewpoint-saturation-lifting
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.417Z
+    checked_at_utc: 2026-08-30T13:39:32.250Z
     linked_claim_ids:
       - dewpoint-saturation-definition
       - saturation-four-paths
@@ -820,7 +1291,7 @@ results:
       status: not_requested
   - source_id: phak-cloud-formation-low-clouds
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.420Z
+    checked_at_utc: 2026-08-30T13:39:32.263Z
     linked_claim_ids:
       - cloud-formation-requirements
       - low-cloud-operational-meaning
@@ -857,7 +1328,7 @@ results:
       status: not_requested
   - source_id: phak-cloud-families-vertical
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.431Z
+    checked_at_utc: 2026-08-30T13:39:32.275Z
     linked_claim_ids:
       - cloud-family-classification
       - vertical-cloud-instability
@@ -894,7 +1365,7 @@ results:
       status: not_requested
   - source_id: phak-ceiling-visibility-precipitation
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-28T20:01:18.451Z
+    checked_at_utc: 2026-08-30T13:39:32.292Z
     linked_claim_ids:
       - ceiling-visibility-meaning
       - precipitation-observable-consequence

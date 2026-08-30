@@ -4,11 +4,11 @@ title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
 slug: "weather-theory-pressure-stability-moisture-clouds"
 track: "core"
 status: reviewed_draft_source_relevance_pending
-version: 0.1.1
+version: 0.1.2
 published_at: null
-runtime_target_minutes: 42
+runtime_target_minutes: 45
 runtime_actual_seconds: null
-word_count: 5111
+word_count: 5746
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
@@ -41,7 +41,7 @@ trouble_spots:
   - "Treating one pressure system, report, or favorable weather value as a complete flight decision."
 source_verification:
   status: deterministic_validation_complete_relevance_pending
-  verified_at_utc: "2026-08-28T20:01:18.590Z"
+  verified_at_utc: "2026-08-30T13:39:32.531Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: required_before_render

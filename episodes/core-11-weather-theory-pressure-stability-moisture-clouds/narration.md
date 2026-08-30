@@ -57,9 +57,9 @@ The atmosphere is the working material.
 
 Begin by imagining the atmosphere as a deep, moving ocean of air. The PHAK calls it a blanket of gases around Earth, but it is not still. It has broad currents, smaller swirls, rising and sinking regions, and waves that can travel long distances. Weather is what that moving material is doing at a particular place and time.
 
-Most of the dry gas is nitrogen and oxygen. A much smaller and variable part is water vapor. The PHAK notes that water vapor can range from nearly none to several percent by volume, yet that small changing amount is responsible for major changes in weather. The atmosphere therefore has two useful parts in our mental model: the bulk air that can move, expand, compress, warm, and cool, and the water within it that can remain invisible vapor or become visible liquid or ice.
+Most of the dry gas is nitrogen and oxygen. A much smaller and variable part is water vapor. The PHAK notes that water vapor can range from nearly none to several percent by volume, yet that small changing amount is responsible for major changes in weather. The atmosphere therefore has two useful parts in our mental model: first, the bulk air that can move, expand, compress, warm, and cool; and second, water within the air that can remain invisible vapor or become visible liquid or ice.
 
-Most weather occurs in the troposphere, the lowest major layer of the atmosphere. That is where most clouds, storms, and temperature variations occur. For this lesson, picture the troposphere as the working depth of the atmosphere through which a parcel of air can rise or sink and encounter changing pressure.
+Most weather occurs in the troposphere, the lowest major layer of the atmosphere. That is where most clouds, storms, and temperature variations occur. For this lesson, picture the troposphere as the working depth of the atmosphere through which a parcel of air can rise or sink and encounter changing pressure. As a private pilot, you will spend nearly all your flying time in the troposphere. The troposphere extends from the surface to the tropopause, which is about thirty-six thousand feet high in the standard atmosphere, although its actual depth varies considerably with latitude, season, and atmospheric conditions.
 
 **LEARNER:**
 
@@ -67,9 +67,13 @@ You called it a parcel. Is that a separate container of air?
 
 **INSTRUCTOR:**
 
-No container is required. A parcel is a teaching model: imagine following a manageable body of air while it moves. We compare that parcel with the surrounding atmosphere. Is the parcel warmer or colder than its surroundings? Is it denser or less dense? If it is nudged upward, does it keep rising or settle back? How much water vapor does it contain, and what happens as it cools? Those comparisons are the heart of stability and cloud formation.
+A parcel is an imaginary local region of air that we choose to describe and follow. Picture the air immediately around the airplane, or a nearby region the airplane is about to enter or has just left. The airplane does not make the parcel, and the parcel has no physical wall. We simply assign that region useful properties such as pressure, temperature, density, and moisture so we can reason about what that air is doing.
 
-The parcel model is useful because it separates two questions that are easy to blur. First, what is happening to the moving air itself as pressure changes? Second, how does that moving air compare with the air around it? The first question explains expansion and cooling. The second tells us whether the atmosphere resists or supports continued vertical motion.
+There is no single prescribed parcel size. The useful scope follows the phenomenon we are trying to understand: a small local parcel can represent the air at one point near the aircraft, while a broader conceptual parcel can help us follow a rising thermal or another lifted body of air. In every case, the region should be small enough that its assigned properties are approximately uniform. The parcel boundary is part of the model, not a claim that the atmosphere is divided into fixed boxes.
+
+First, follow what happens to the parcel itself as pressure changes. When the parcel rises into lower pressure, it has room to expand. Expansion uses energy from within the parcel, so its temperature falls. When the parcel descends into higher pressure, compression reverses that process and its temperature rises. The later section on rising and descending air will develop that sequence carefully.
+
+Only after following the parcel itself do we compare it with the environment, meaning the surrounding air at the same level. Is the parcel warmer or colder than that surrounding air? Is it less dense or more dense? The later convection and stability section will show how those comparisons help explain whether a lifted region settles back, remains where it was moved, or develops farther upward. Keeping the parcel process and the parcel-versus-environment comparison separate prevents two different ideas from becoming one vague explanation.
 
 ## [06:40] Pressure is the weight of the air above
 
@@ -81,7 +85,7 @@ Pressure is the weight of the air above.
 
 Air is invisible, but it has mass, takes up space, and has weight. Atmospheric pressure is the force produced by the weight of the air above a surface. Near sea level, there is a deeper column of air overhead than there is high in the atmosphere. As altitude increases and the column above becomes shorter, pressure decreases.
 
-A pressure value needs a reference. In the International Standard Atmosphere, standard sea-level pressure is 29.92 inches of mercury, also expressed as 1,013.2 millibars. Those units describe the same pressure in different measurement systems. The familiar altimeter setting in inches of mercury comes from the historical barometer, where atmospheric pressure supported a column of mercury.
+To compare a pressure measurement, the number needs both a unit and a reference. Inches of mercury, hectopascals, and millibars are units, much as feet and meters are units of length. One thousand thirteen point two hectopascals is the same pressure as one thousand thirteen point two millibars, and standard sea-level pressure is also expressed as twenty-nine point nine two inches of mercury. Converting among those units changes how the pressure is written, not the pressure itself.
 
 **LEARNER:**
 
@@ -89,9 +93,17 @@ If pressure depends on the air above the station, would a mountain station alway
 
 **INSTRUCTOR:**
 
-Its actual station pressure is lower because less atmosphere is above it. Weather analysis needs a fair comparison among stations at different elevations, so stations convert local pressure to a sea-level pressure reference. That allows a forecaster or chart reader to compare the pressure pattern without mistaking terrain elevation for a weather-system difference.
+Yes. The actual pressure measured at the airport is station pressure: pressure at that field elevation. It is a local value, and the mountain station normally has a lower station pressure because less atmosphere is above it. Station pressure therefore describes the air at the station, but raw station pressures do not provide a fair weather-pattern comparison among airports at different elevations.
 
-This distinction will matter when you read weather products. A plotted sea-level pressure is not claiming that the airport has moved to sea level. It is a common reference used to compare the surrounding pressure field. An altimeter setting is also built to make pressure useful for altitude indication. Pressure altitude and density altitude use pressure for performance analysis. The same atmosphere supports several related products, but each value has a specific job.
+For comparing the larger pressure pattern, stations adjust their readings to a common mean-sea-level reference. Mean sea level is a shared vertical baseline rather than the ground beneath every station. Reducing station pressure to sea level removes most of the elevation difference from the comparison. A plotted sea-level pressure is therefore not claiming that the airport has moved or that the pressure on its runway is the plotted value. It is a converted value whose job is to let the pressure field be compared across terrain.
+
+Mean sea level also organizes ordinary altitude references. Airport elevation is published in feet above mean sea level. An altitude stated in MSL uses that same common baseline. A height in AGL, meaning above ground level, instead starts at the local surface beneath the point being described. If an airport elevation is one thousand feet MSL and the airplane is at three thousand feet MSL directly over that airport, the airplane is about two thousand feet above the airport. But terrain can rise or fall away from the field, so MSL altitude and AGL height answer different questions and are not interchangeable.
+
+An altimeter setting has another specific job. It is the local pressure setting calculated so an altimeter on the airport indicates the airport's published elevation. That gives aircraft in the area a compatible MSL-based altitude indication even while atmospheric pressure changes. An altimeter setting and sea-level pressure are related to the same atmosphere, but they are prepared for different uses: one supports consistent altitude indication, while the other supports comparison of weather pressure patterns.
+
+Pressure altitude deliberately leaves the changing local reference behind and uses the standard-atmosphere value of twenty-nine point nine two inches of mercury. It tells us which altitude in the standard atmosphere corresponds to the measured pressure. That fixed reference gives performance calculations a common starting point even when the actual surface pressure is above or below standard. Pressure altitude is therefore not another name for airport elevation, AGL height, or the airplane's true height above mean sea level.
+
+Density altitude takes that pressure-altitude starting point and corrects it for temperature that differs from the standard atmosphere. Its job is to express how the airplane will experience the density of the current air for performance. It is best carried here as a performance index, not as the airplane's geometric height above the ground or sea. These references all describe the same atmosphere, but each exists to answer a different question. Later products and planning tasks will make more sense if you first identify which question the reported value was designed to answer.
 
 Pressure also changes the space available to a moving parcel. Lift the parcel into lower surrounding pressure and it can expand. Bring it downward into higher pressure and it is compressed. That mechanical change produces a temperature change, which will become the link between vertical motion and clouds.
 

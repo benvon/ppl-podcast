@@ -1,8 +1,8 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
 **Episode:** core-11
-**Version:** 0.1.1
-**Source verification:** Deterministic FAA link, deep-citation, and mapping validation passed on August 28, 2026; formal LLM relevance review remains pending before render.
+**Version:** 0.1.2
+**Source verification:** Deterministic FAA link, deep-citation, and mapping validation passed on August 30, 2026; formal LLM relevance review remains pending before render.
 
 ## In this episode
 
@@ -26,8 +26,15 @@
 | ACS moisture, clouds, risk, and correlation | FAA regulatory standard | [Private Pilot ACS — Weather conditions, risk management, and skills](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12) | PA.I.C.K3c-K3l, R1-R2, and S1-S3, printed p. 4 | 2026-08-28 |
 | Purpose of weather theory | FAA guidance | [PHAK Chapter 12 — Introduction](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1) | Introduction, p. 12-1 | 2026-08-28 |
 | Atmosphere, water vapor, and troposphere | FAA guidance | [PHAK Chapter 12 — Atmosphere and composition](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2) | Atmosphere and Composition of the Atmosphere, p. 12-2 | 2026-08-28 |
+| Air parcel and troposphere depth | FAA guidance | [Aviation Weather Handbook — Air parcel and troposphere](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72) | Air Parcel and Troposphere, p. 4-3 | 2026-08-30 |
 | Heating, density, and pressure | FAA guidance | [PHAK Chapter 12 — Atmospheric circulation and pressure](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3) | Atmospheric Circulation and Atmospheric Pressure, p. 12-3 | 2026-08-28 |
 | Pressure measurement and altitude | FAA guidance | [PHAK pressure reference and altitude relationship](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5) | Measurement of Atmospheric Pressure and Altitude and Atmospheric Pressure, p. 12-5 | 2026-08-28 |
+| Pressure units and station pressure | FAA guidance | [Aviation Weather Handbook — Pressure units and station pressure](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106) | Atmospheric Pressure Units and Station Pressure, p. 8-3 | 2026-08-30 |
+| Sea-level pressure comparison | FAA guidance | [Aviation Weather Handbook — Sea level pressure](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109) | Sea Level Pressure, p. 8-6 | 2026-08-30 |
+| MSL and AGL altitude | FAA guidance | [FAA Pilot/Controller Glossary — Altitude reference](https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE) | Term ALTITUDE, including MSL Altitude and AGL Altitude | 2026-08-30 |
+| Airport elevation | FAA guidance | [FAA Pilot/Controller Glossary — Airport elevation](https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION) | Term AIRPORT ELEVATION | 2026-08-30 |
+| Local altimeter setting | FAA guidance | [Aviation Weather Handbook — Altimeter setting](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113) | Indicated Altitude and Altimeter Setting, pp. 8-10 to 8-11 | 2026-08-30 |
+| Pressure altitude and density altitude | FAA guidance | [Aviation Weather Handbook — Pressure altitude and density altitude](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115) | Pressure Altitude and Density Altitude, pp. 8-12 to 8-13 | 2026-08-30 |
 | Pressure patterns and vertical motion | FAA guidance | [PHAK Chapter 12 — Wind, currents, highs, and lows](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7) | Wind and Currents and Wind Patterns, p. 12-7 | 2026-08-28 |
 | Stability and adiabatic temperature change | FAA guidance | [PHAK Chapter 12 — Atmospheric stability](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12) | Atmospheric Stability, p. 12-12 | 2026-08-28 |
 | Parcel lapse, moisture, and inversion | FAA guidance | [PHAK Chapter 12 — Adiabatic process, moisture, and inversion](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13) | Adiabatic Process, Moisture and Temperature, Relative Humidity, and Inversion, p. 12-13 | 2026-08-28 |

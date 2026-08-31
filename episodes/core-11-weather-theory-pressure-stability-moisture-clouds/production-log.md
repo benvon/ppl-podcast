@@ -96,3 +96,10 @@
 
 - The user completed and accepted the full script-aligned listening QA for `core-11-20260831T202200Z.mp3`, including the accepted opening and required production notice. The candidate remains bound to its MP3 checksum, current narration derivative, quality report, and render manifest.
 - Manual chapter-marker review remains the next audio gate; publication-day source verification and hosting handoff validation remain later release gates.
+
+## 2026-08-31 — publication-day validation and hosting readiness
+
+- The user accepted manual review of the 18 MP3 chapter markers. The full candidate’s listening and chapter QA are complete.
+- Publication-day validation run `a93a7285-c210-429b-95f4-338d0130d445` passed at `2026-08-31T22:32:19.002Z`: all 34 cited source links, 34 listener-facing show-note links, exact locators, and all 55 source-relevance assessments support the unchanged version 0.2.1 package.
+- The release timestamp is `2026-08-31T22:32:37Z`. Episode and hosting metadata now bind that timestamp, the 41:49 candidate runtime, the MP3 checksum, and the chapter-review page. Final pre-hosting validation and the episode pull request remain next.
+- Final pre-hosting validation then passed against the sealed MP3, render manifest, audio-quality report, embedded chapters, current narration derivative, release metadata, and publication-day source report. The full repository test suite (85 tests), disclosure and secret check, and whitespace check also passed.

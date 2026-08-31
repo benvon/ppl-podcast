@@ -3,7 +3,7 @@
 **Version:** 0.2.1 — refined structural draft
 **Target runtime:** approximately 45 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Structural rewrite and fresh independent spoken-script review complete; human editorial review, source-relevance validation, and all audio and release gates remain pending.
+**Production status:** Ready for hosting handoff; editorial, source-relevance, listening, chapter, and publication-day source validation are complete.
 
 ## [00:00] Opening
 

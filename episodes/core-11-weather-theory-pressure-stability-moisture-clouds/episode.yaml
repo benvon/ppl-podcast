@@ -3,9 +3,9 @@ series: ppl-study-podcast
 title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
 slug: "weather-theory-pressure-stability-moisture-clouds"
 track: "core"
-status: audio_listening_qa_complete
+status: ready_for_hosting_pr
 version: 0.2.1
-published_at: null
+published_at: "2026-08-31T22:32:37Z"
 runtime_target_minutes: 45
 runtime_actual_seconds: 2508.99
 word_count: 6172
@@ -45,7 +45,7 @@ trouble_spots:
   - "Treating one pressure system, report, or favorable weather value as a complete flight decision."
 source_verification:
   status: source_relevance_complete
-  verified_at_utc: "2026-08-31T20:21:10.054Z"
+  verified_at_utc: "2026-08-31T22:32:18.970Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
@@ -55,10 +55,7 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - "Complete manual chapter-marker review"
-  - "Re-verify every public source and link on publication day"
-  - "Validate hosting metadata and external audio-store workflow"
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   status: candidate_rendered_listening_qa_approved

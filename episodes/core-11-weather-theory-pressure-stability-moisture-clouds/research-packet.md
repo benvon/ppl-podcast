@@ -109,6 +109,6 @@ Audit result: the first pass found that the draft described unequal heating and 
 ## Open review items
 
 - A fresh non-drafting spoken-script review of version 0.2.1 found two material issues: the ACS heat-exchange vocabulary was absent, and the cloud-root recap compressed too many definitions into one turn while overstating `cirro`. The revised draft resolves both findings by adding the four heat-transfer terms inside the heating story and rebuilding the cloud recap as a short exchange with source-bounded meanings. The reviewer confirmed the resolutions and found no remaining grammar, incomplete-thought, callback, call-forward, or first-listen comprehension issue.
-- Human editorial review and script approval remain pending.
-- Network-backed deterministic validation run `f6a5ea9b-ff45-4d3d-b90a-4d909c3fd5f6` passed for the version 0.2.1 package: 31 source links, 43 reciprocal claims, and 31 listener-facing show-note links. The paid LLM source-relevance review remains required before audio render and was not called during this refinement.
+- Human editorial review and script approval are complete.
+- The final network-backed source validation run `5a178085-59da-45f7-9cdf-e46d085c69c5` passed at `2026-08-31T20:21:10.054Z` for the version 0.2.1 package: 34 source links, 34 listener-facing show-note links, and 55 reciprocal claims. Every exact locator and LLM source-relevance assessment supports its mapped claim. The source-relevance review is complete before audio render.
 - Qualified aviation review remains optional and welcome.

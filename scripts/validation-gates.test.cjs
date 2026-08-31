@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, fetchSourceCached, htmlFragmentText, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertNarrationInput, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -421,6 +421,27 @@ test("PDF page citations can use the bounded large-document limit", async () => 
 
   assert.deepEqual(link.pdf_bytes, Buffer.from([1]));
   assert.equal(link.truncated, false);
+});
+
+test("HTML fragment citations assess the referenced definition instead of a long page prefix", () => {
+  const leading = `<p>${"Unrelated glossary content. ".repeat(900)}</p>`;
+  const html = `${leading}<p id="ALTITUDE"><dfn>ALTITUDE</dfn>—Height measured from mean sea level or above ground level.</p><ol><li>MSL Altitude—Measured from mean sea level.</li><li>AGL Altitude—Measured above ground level.</li></ol>`;
+  const excerpt = htmlFragmentText(html, "https://www.faa.gov/example.html#ALTITUDE");
+  assert.match(excerpt, /Height measured from mean sea level or above ground level/);
+  assert.match(excerpt, /MSL Altitude/);
+  assert.doesNotMatch(excerpt, /^Unrelated glossary content/);
+});
+
+test("cached HTML sources preserve the excerpt for each cited fragment", async () => {
+  let calls = 0;
+  const html = '<p id="ALTITUDE">MSL Altitude—Measured from mean sea level.</p><p id="AIRPORT_ELEVATION">Airport elevation—Highest usable runway point.</p>';
+  const fetchCache = new Map(); const fetchImpl = async () => { calls += 1; return new Response(html, { status: 200, headers: { "content-type": "text/html" } }); };
+  const altitude = await fetchSourceCached("https://www.faa.gov/example.html#ALTITUDE", { fetchImpl }, fetchCache);
+  const airport = await fetchSourceCached("https://www.faa.gov/example.html#AIRPORT_ELEVATION", { fetchImpl }, fetchCache);
+  assert.equal(calls, 1);
+  assert.match(altitude.excerpt, /MSL Altitude/);
+  assert.match(airport.excerpt, /Airport elevation/);
+  assert.doesNotMatch(airport.excerpt, /MSL Altitude/);
 });
 
 test("PDF page extraction is cancelled and destroys the pending loading task", async () => {

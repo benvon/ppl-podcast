@@ -3,7 +3,7 @@ series: ppl-study-podcast
 title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
 slug: "weather-theory-pressure-stability-moisture-clouds"
 track: "core"
-status: reviewed_draft_source_relevance_pending
+status: source_relevance_review_complete
 version: 0.2.1
 published_at: null
 runtime_target_minutes: 45
@@ -44,20 +44,18 @@ trouble_spots:
   - "Treating an approximate lifted cloud-base estimate as a reported ceiling."
   - "Treating one pressure system, report, or favorable weather value as a complete flight decision."
 source_verification:
-  status: deterministic_validation_complete_relevance_pending
-  verified_at_utc: "2026-08-31T17:41:03.118Z"
+  status: source_relevance_complete
+  verified_at_utc: "2026-08-31T20:21:10.054Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: required_before_render
+  relevance_review: complete
 review:
-  editorial_status: independent_review_complete_human_editorial_pending
+  editorial_status: script_approved
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human editorial review and approve the script"
-  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
   - "Complete human listening QA, including the front-matter check"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"

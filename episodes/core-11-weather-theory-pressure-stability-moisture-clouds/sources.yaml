@@ -12,7 +12,7 @@ sources:
     relevance_excerpt: "The Weather Information task requires meteorology applicable to departure, en route, alternate, and destination under VFR, including atmospheric composition and stability and wind."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [acs-weather-theory-scope]
+    supports_claims: [acs-weather-vfr-scope]
 
   - id: acs-weather-moisture-clouds-risk
     authority: faa_regulatory_standard
@@ -24,7 +24,7 @@ sources:
     relevance_excerpt: "The task includes temperature and heat exchange, moisture and precipitation, weather-system formation, clouds, turbulence, thunderstorms, icing, fog, frost, and visibility obstructions; the applicant analyzes implications and correlates weather information to flight decisions."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [acs-weather-theory-scope, acs-weather-decision-use, variables-not-verdicts, lesson-causal-overview]
+    supports_claims: [acs-weather-topic-scope, acs-weather-decision-use]
 
   - id: phak-weather-theory-purpose
     authority: faa_guidance
@@ -36,7 +36,7 @@ sources:
     relevance_excerpt: "Weather includes temperature, moisture, wind, visibility, and barometric pressure; understanding theory supports sound decisions based on reports and forecasts."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [weather-theory-supports-interpretation, variables-not-verdicts, lesson-causal-overview]
+    supports_claims: [weather-theory-supports-interpretation]
 
   - id: phak-atmosphere-troposphere
     authority: faa_guidance
@@ -48,7 +48,7 @@ sources:
     relevance_excerpt: "Air is a moving mixture of gases with variable water vapor; most weather, clouds, storms, and temperature variations occur in the troposphere."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [atmosphere-mixture-water-vapor, troposphere-weather-layer]
+    supports_claims: [atmosphere-mixture-water-vapor, troposphere-weather-phenomena]
 
   - id: awh-air-parcel-troposphere
     authority: faa_guidance
@@ -60,7 +60,7 @@ sources:
     relevance_excerpt: "An air parcel is an imaginary volume used to assign approximately uniform atmospheric properties; it has no precise numerical size. The troposphere extends from the surface to about 36,000 feet, contains almost all weather, and varies in depth with latitude and season."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
-    supports_claims: [troposphere-weather-layer, air-parcel-conceptual-model, parcel-scale-follows-question]
+    supports_claims: [troposphere-depth, air-parcel-conceptual-model, parcel-properties-uniform]
 
   - id: awh-standard-atmosphere-reference
     authority: faa_guidance
@@ -84,7 +84,7 @@ sources:
     relevance_excerpt: "Uneven surface heating creates atmospheric motion and pressure changes; warming spreads air molecules and lowers density while cooling packs them more closely and raises density. Atmospheric pressure is force per unit area produced by the weight of the air above."
     verified_at_utc: "2026-08-31T14:38:30Z"
     link_status: 200
-    supports_claims: [unequal-heating-drives-motion, temperature-density-relationship, pressure-air-weight, convection-vertical-transport]
+    supports_claims: [unequal-heating-drives-motion, temperature-density-relationship, pressure-air-weight, surface-heating-rising-air]
 
   - id: awh-heat-transfer-modes
     authority: faa_guidance
@@ -108,7 +108,7 @@ sources:
     relevance_excerpt: "Wind can change an air column's temperature profile by blowing colder or warmer air into a layer; the handbook calls these horizontal temperature changes cold-air advection and warm-air advection."
     verified_at_utc: "2026-08-31T17:25:23Z"
     link_status: 200
-    supports_claims: [heat-transfer-modes]
+    supports_claims: [temperature-advection]
 
   - id: phak-pressure-reference-altitude
     authority: faa_guidance
@@ -132,7 +132,7 @@ sources:
     relevance_excerpt: "Hectopascals and millibars are equivalent pressure units; inches of mercury are used for U.S. altimetry. Station pressure is the actual pressure at field elevation and is normally lower at higher-elevation airports."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
-    supports_claims: [standard-pressure-reference, station-pressure-local-reference]
+    supports_claims: [hectopascal-millibar-equivalence, station-pressure-local-reference]
 
   - id: awh-sea-level-pressure-reference
     authority: faa_guidance
@@ -156,7 +156,7 @@ sources:
     relevance_excerpt: "Altitude is the height of a level, point, or object measured above ground level or from mean sea level; MSL altitude is measured from mean sea level and AGL altitude is measured above ground level."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
-    supports_claims: [msl-agl-airport-elevation]
+    supports_claims: [msl-agl-references]
 
   - id: faa-pcg-airport-elevation
     authority: faa_guidance
@@ -168,31 +168,43 @@ sources:
     relevance_excerpt: "Airport elevation is the highest point of an airport's usable runways measured in feet from mean sea level."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
-    supports_claims: [msl-agl-airport-elevation]
+    supports_claims: [airport-elevation-reference]
 
   - id: awh-altimeter-setting-reference
     authority: faa_guidance
     title: "Aviation Weather Handbook"
     document_id: "FAA-H-8083-28B"
     locator: "Ch. 8, Indicated Altitude and Altimeter Setting, pp. 8-11 to 8-12"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=105"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106"
     revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "Indicated altitude is an MSL altitude shown with the local altimeter setting; the setting is chosen so the altimeter indicates true altitude at field elevation and keeps nearby aircraft indications compatible."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
-    supports_claims: [altimeter-setting-purpose, aviation-pressure-information-uses]
+    supports_claims: [altimeter-setting-purpose]
 
-  - id: awh-pressure-density-altitude
+  - id: awh-pressure-altitude-reference
     authority: faa_guidance
     title: "Aviation Weather Handbook"
     document_id: "FAA-H-8083-28B"
-    locator: "Ch. 8, Pressure Altitude and Density Altitude, pp. 8-13 to 8-15"
+    locator: "Ch. 8, Pressure Altitude, p. 8-13"
     url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107"
     revision: "FAA-H-8083-28B, April 2026"
-    relevance_excerpt: "Pressure altitude uses the standard 29.92 inHg reference to associate pressure with altitude; density altitude corrects pressure altitude for nonstandard temperature and is an index to aircraft performance."
+    relevance_excerpt: "Pressure altitude is the altitude associated with a specific static-port pressure when the altimeter is set to the standard 29.92 inches of mercury reference."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
-    supports_claims: [pressure-density-altitude-reference]
+    supports_claims: [pressure-altitude-reference]
+
+  - id: awh-density-altitude-reference
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 8, Density Altitude, p. 8-14"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Density altitude is pressure altitude corrected for temperature deviations from the standard atmosphere and is an index to aircraft performance."
+    verified_at_utc: "2026-08-31T20:14:00Z"
+    link_status: 200
+    supports_claims: [density-altitude-performance-index]
 
   - id: awh-metar-altimeter-cloud-bases
     authority: faa_guidance
@@ -204,7 +216,7 @@ sources:
     relevance_excerpt: "METAR cloud-layer heights are expressed in feet AGL; the altimeter group reports the altimeter setting in inches of mercury for use by aircraft altimeters."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
-    supports_claims: [aviation-pressure-information-uses, metar-pressure-height-references]
+    supports_claims: [metar-altimeter-cloud-references]
 
   - id: awh-metar-sea-level-pressure
     authority: faa_guidance
@@ -216,19 +228,19 @@ sources:
     relevance_excerpt: "At designated stations, sea-level pressure may appear in METAR remarks as the SLP group, reported in millibars."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
-    supports_claims: [metar-pressure-height-references]
+    supports_claims: [metar-sea-level-pressure-remark]
 
   - id: aim-awos-asos-observations
     authority: faa_guidance
     title: "Aeronautical Information Manual"
     document_id: "AIM"
     locator: "Ch. 7, Automated Surface Observing System/Automated Weather Observing System, para. 7-1-29"
-    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54"
     revision: "Current FAA web edition verified August 31, 2026"
     relevance_excerpt: "ASOS/AWOS provides continuous observations used to generate METAR and other aviation weather information, including an altimeter setting in its weather elements and broadcasts."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
-    supports_claims: [aviation-pressure-information-uses]
+    supports_claims: [asos-awos-observations]
 
   - id: atc-atis-altimeter-content
     authority: faa_guidance
@@ -240,7 +252,7 @@ sources:
     relevance_excerpt: "ATIS weather content includes sky condition, temperature, dew point, altimeter, and other pertinent remarks; ASOS/AWOS is the primary source of altimeter data where equipped."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
-    supports_claims: [aviation-pressure-information-uses]
+    supports_claims: [atis-altimeter-content]
 
   - id: atc-altimeter-setting-issuance
     authority: faa_guidance
@@ -252,7 +264,7 @@ sources:
     relevance_excerpt: "Controllers obtain current altimeter settings from instruments or weather reporting stations and issue settings to en route aircraft and terminal departures under the specified procedures."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
-    supports_claims: [aviation-pressure-information-uses]
+    supports_claims: [atc-altimeter-setting-issuance, pilot-altimeter-setting-use]
 
   - id: phak-high-low-vertical-motion
     authority: faa_guidance
@@ -270,7 +282,7 @@ sources:
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
     document_id: "FAA-H-8083-25C"
-    locator: "Ch. 12, Atmospheric Stability, p. 12-12"
+    locator: "Atmospheric Stability, printed p. 12-12"
     url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12"
     revision: "2023 edition"
     relevance_excerpt: "Stability is resistance to vertical motion. Stable air damps vertical disturbances; unstable air amplifies them. Rising air expands and cools as pressure decreases, while descending air compresses and warms."
@@ -324,7 +336,19 @@ sources:
     relevance_excerpt: "Dew point is the temperature at which air becomes saturated; further cooling causes condensation. Saturation can result from movement over a cold surface, mixing, nighttime ground cooling, or lifting."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [dewpoint-saturation-definition, saturation-four-paths, temperature-dewpoint-cloud-base-model]
+    supports_claims: [saturation-four-paths, temperature-dewpoint-cloud-base-model]
+
+  - id: nws-dew-point-definition
+    authority: federal_science_guidance
+    title: "National Weather Service Glossary"
+    document_id: "NWS Glossary"
+    locator: "Term Dew Point"
+    url: "https://forecast.weather.gov/glossary.php?word=dew%20point"
+    revision: "Current NWS web edition verified August 31, 2026"
+    relevance_excerpt: "Dew point is the temperature to which air must be cooled to reach saturation, assuming air pressure and moisture content are constant."
+    verified_at_utc: "2026-08-31T20:16:00Z"
+    link_status: 200
+    supports_claims: [dewpoint-saturation-definition]
 
   - id: phak-cloud-formation-low-clouds
     authority: faa_guidance
@@ -336,7 +360,7 @@ sources:
     relevance_excerpt: "Cloud formation requires adequate water vapor, condensation nuclei, and cooling to saturation. The cloud-classification list defines cumulus as heaped or piled, stratus as formed in layers, cirrus as ringlets or fibrous high cloud, and nimbus as rain-bearing; low clouds can create low ceilings and visibility restrictions."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning, visible-cloud-causal-chain, cloud-family-classification]
+    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning, visible-cloud-formation, cloud-base-classification]
 
   - id: noaa-cloud-light-scattering
     authority: federal_science_guidance
@@ -348,7 +372,7 @@ sources:
     relevance_excerpt: "Small water droplets and ice crystals scatter sunlight; this light interaction makes cloud particles visible and can produce cloud optical effects."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
-    supports_claims: [visible-cloud-causal-chain]
+    supports_claims: [cloud-particle-light-scattering]
 
   - id: phak-cloud-families-vertical
     authority: faa_guidance
@@ -360,7 +384,19 @@ sources:
     relevance_excerpt: "The basic cloud families are low, middle, high, and vertically developing. Towering cumulus indicates instability, and cumulonimbus contains moisture and unstable air and can produce hazardous weather."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [cloud-family-classification, vertical-cloud-instability]
+    supports_claims: [cloud-vertical-development-family, vertical-cloud-instability]
+
+  - id: phak-cloud-name-classifications
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Cloud classifications, p. 12-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17"
+    revision: "2023 edition"
+    relevance_excerpt: "The PHAK defines cumulus as heaped or piled clouds, stratus as formed in layers, cirrus as ringlets or fibrous clouds, and nimbus as rain-bearing clouds."
+    verified_at_utc: "2026-08-31T20:14:00Z"
+    link_status: 200
+    supports_claims: [cloud-name-classifications]
 
   - id: phak-ceiling-visibility-precipitation
     authority: faa_guidance

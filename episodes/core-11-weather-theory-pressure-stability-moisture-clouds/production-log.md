@@ -75,3 +75,19 @@
 - Regenerated `narration.md` mechanically. The current script contains 6,172 spoken words. The synchronized package contains 31 authoritative sources, 43 reciprocal claims, and 31 listener-facing source links.
 - Network-backed deterministic validation run `f6a5ea9b-ff45-4d3d-b90a-4d909c3fd5f6` passed at `2026-08-31T17:41:03.118Z` for all 31 source links and all 31 listener-facing source links; all 43 claim mappings and show-note mappings passed with LLM review disabled.
 - Human editorial approval, paid source-relevance review, final pre-host approval, audio render and listening QA, staging, publication-day verification, hosting validation, push, and pull request remain pending. No paid LLM call, audio render, staging, publication, push, or pull request was performed.
+
+## 2026-08-31 — human script approval
+
+- The user accepted the version 0.2.1 script after the targeted theory and retrieval refinements. Human editorial approval is complete. The required paid LLM source-relevance review remains the next pre-render gate; no audio render was attempted before that review.
+
+## 2026-08-31 — formal source-relevance validation complete
+
+- The first LLM relevance pass correctly failed closed on broad ledger claims that bundled facts from different cited sections. The spoken script was unchanged. The claim inventory was split into source-sized propositions, the exact FAA source pages for altimeter setting, pressure altitude, density altitude, and cloud-name classifications were corrected, and an official National Weather Service dew-point definition was added for the constant-moisture explanation.
+- The review also exposed a validator defect for long FAA HTML pages: cached HTML text was reused across distinct cited fragments, so a later glossary term could be assessed from the first term's excerpt. The validator now extracts the requested HTML fragment and recomputes that fragment-specific excerpt after a cache hit. Regression tests cover both direct fragment extraction and two fragments sharing one cached fetch.
+- Final run `5a178085-59da-45f7-9cdf-e46d085c69c5` passed at `2026-08-31T20:21:10.054Z`: all 34 cited source links, all 34 listener-facing show-note links, all deep-citation and mapping checks, and all 55 LLM claim-level relevance assessments support the current version 0.2.1 package. Source-relevance review is complete. Audio, listening QA, staging, publication, and pull-request work remain pending.
+
+## 2026-08-31 — full candidate render
+
+- The user accepted the five-segment opening preview and the first ASOS/AWOS/ATIS pronunciation segment. Full candidate `core-11-20260831T202200Z.mp3` reuses those rendered voice segments unchanged.
+- The complete 70-segment candidate uses the established music bed and has an automated quality pass: decodable 24 kHz mono WAV and MP3, matching 2,508.99-second duration, no clipped samples, no stitch-discontinuity warnings across 70 segment boundaries, and 18 embedded MP3 chapters verified with `ffprobe`.
+- Full script-aligned listening QA and manual chapter-marker review remain pending.

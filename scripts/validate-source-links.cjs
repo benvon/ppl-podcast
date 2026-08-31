@@ -233,6 +233,18 @@ function htmlToText(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/\s+/g, " ").trim();
 }
 
+function htmlFragmentText(html, sourceUrl) {
+  const fragment = new URL(sourceUrl).hash.slice(1);
+  if (!fragment) return htmlToText(html);
+  const escaped = decodeURIComponent(fragment).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const target = new RegExp(`<[^>]+\\bid=(['\"])${escaped}\\1[^>]*>`, "i").exec(html);
+  if (!target || target.index === undefined) return htmlToText(html);
+  // A fragment identifies the cited HTML section. Start there so a long
+  // glossary or handbook page cannot make relevance review assess its opening
+  // text instead of the referenced definition and immediate context.
+  return htmlToText(html.slice(target.index, target.index + 24_000));
+}
+
 function htmlTitle(html) {
   const match = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
   return match ? htmlToText(match[1]).slice(0, 300) : null;
@@ -315,11 +327,12 @@ async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH
         content_type: contentType || null,
         redirects,
         title: isHtml ? htmlTitle(text) : null,
-        excerpt: isText ? (isHtml ? htmlToText(text) : text.replace(/\s+/g, " ").trim()).slice(0, 12000) : null,
+        excerpt: isText ? (isHtml ? htmlFragmentText(text, sourceUrl) : text.replace(/\s+/g, " ").trim()).slice(0, 12000) : null,
         truncated,
         content_sha256,
         hash_truncated,
         links: includeLinks && isHtml ? htmlLinks(text, current) : undefined,
+        html: isHtml ? text : null,
         pdf_bytes: includePdfBytes && contentType === "application/pdf" ? body : null,
         body: includeBytes ? body : null,
       };
@@ -417,7 +430,7 @@ async function fetchSourceCached(sourceUrl, options, fetchCache) {
   const cached = await fetchCache.get(key);
   const finalUrl = new URL(cached.final_url);
   finalUrl.hash = new URL(sourceUrl).hash;
-  return { ...cached, requested_url: sourceUrl, final_url: finalUrl.toString() };
+  return { ...cached, requested_url: sourceUrl, final_url: finalUrl.toString(), excerpt: cached.html ? htmlFragmentText(cached.html, sourceUrl).slice(0, 12000) : cached.excerpt };
 }
 
 function isEcfrSource(source) {
@@ -688,7 +701,7 @@ function releaseValidationLock(outputPath, run) {
 
 function publicLinkRecord(link) {
   if (!link || !Object.hasOwn(link, "excerpt")) return link;
-  const { excerpt, links, pdf_bytes, body, pdf_page_text, section_text, ...rest } = link;
+  const { excerpt, links, html, pdf_bytes, body, pdf_page_text, section_text, ...rest } = link;
   return {
     ...rest,
     excerpt_characters: excerpt ? excerpt.length : 0,
@@ -1027,4 +1040,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

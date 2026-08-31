@@ -325,8 +325,9 @@ Relative humidity compares the water vapor actually present with the amount the 
 
 Dew point is the temperature to which air must be cooled to become saturated when its water-vapor amount does not change. Cooling the parcel toward dew point closes the temperature-dew point spread. When temperature reaches dew point, the air is saturated. Further cooling favors condensation into liquid or deposition as ice.
 
+[Source: sources.yaml#nws-dew-point-definition]
 [Source: sources.yaml#phak-dewpoint-saturation-lifting]
-[Claim type: FAA guidance]
+[Claim type: Federal science guidance and FAA guidance]
 
 **LEARNER:**
 
@@ -446,6 +447,7 @@ Yes. Name, structure, process, consequence. A layered low cloud can mean a ceili
 
 [Source: sources.yaml#phak-cloud-formation-low-clouds]
 [Source: sources.yaml#phak-cloud-families-vertical]
+[Source: sources.yaml#phak-cloud-name-classifications]
 [Claim type: FAA guidance]
 
 ## [35:15] From theory to Episode 12

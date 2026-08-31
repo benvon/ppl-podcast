@@ -6,9 +6,9 @@
 - [x] FAA regulatory standards, FAA guidance, and teaching explanations are labeled correctly.
 - [x] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
 - [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
-- [x] For this initial draft, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package. Recheck after any script edit and before render.
+- [x] For this structural rewrite, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package. Recheck after any script edit and before render.
 - [x] Show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.
-- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. This does not require an audit log.
+- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. The fresh version 0.2.0 review checked grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension; findings were reported and resolved or accepted.
 - [ ] Human editorial pass completed; unresolved technical questions were removed or resolved.
 - [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.
 
@@ -21,9 +21,9 @@
 - [x] Learner turns ask for a missing connection or summarize a conclusion already established by the Instructor.
 - [x] Announcer transitions remain short and introduce no new technical claims.
 - [x] Every spoken visual-aid pointer exactly matches a plainly labeled show-note link.
-- [x] The draft remains within the requested roughly 5,000–6,000-word range at 5,746 spoken words and an approximately 45-minute target.
-- [x] Independent non-drafting reviewer has checked grammar, complete thoughts, callbacks, call-forwards, and first-listen comprehension; material findings are resolved in `production-log.md`.
-- [x] Network-backed deterministic validation passed for all FAA source links, deep citations, mappings, and listener-facing show-note links with LLM review disabled.
+- [x] The draft remains within the requested roughly 5,000–6,000-word range at 6,000 spoken words and an approximately 45-minute target.
+- [x] Independent non-drafting reviewer has checked grammar, complete thoughts, callbacks, call-forwards, and first-listen comprehension for version 0.2.0; material findings are resolved in `production-log.md`.
+- [x] Network-backed deterministic validation passed for all federal source links, deep citations, mappings, and listener-facing show-note links with LLM review disabled.
 
 ## Audio
 

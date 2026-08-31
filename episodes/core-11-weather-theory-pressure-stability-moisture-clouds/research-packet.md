@@ -4,9 +4,11 @@
 
 - Audience: U.S. private-pilot airplane learners building the physical model needed to interpret weather observations and forecasts under VFR.
 - Target duration: approximately 45 minutes, at the upper edge of the series' 30–45 minute range.
-- Core question: How do pressure, temperature, density, vertical motion, stability, and moisture combine to create clouds and the conditions later reported in aviation weather products?
+- Core question: How do pressure reference systems, temperature, density, vertical motion, stability, and moisture combine to create clouds and the conditions later reported in aviation weather products?
 - Primary technical source: FAA-H-8083-25C, Pilot's Handbook of Aeronautical Knowledge, Chapter 12, Weather Theory, pp. 12-1 through 12-17.
-- Supplemental technical source: FAA-H-8083-28A, Aviation Weather Handbook, Air Parcel and Troposphere, p. 4-3, and Atmospheric Pressure and Altimetry, pp. 8-3 through 8-13.
+- Supplemental technical source: FAA-H-8083-28A, Aviation Weather Handbook, Air Parcel and Troposphere and Standard Atmosphere, pp. 4-3 and 4-5; Atmospheric Pressure and Altimetry, pp. 8-3 through 8-13; stability and convection, pp. 13-2 and 13-11; and METAR pressure and cloud-height groups, pp. 24-18 and 24-24.
+- Operational reporting sources: current FAA AIM para. 7-1-29 for ASOS/AWOS observations; FAA Order JO 7110.65 paras. 2-7-1 through 2-7-2 and 2-9-3 for controller and ATIS altimeter-setting information; and the FAA Pilot/Controller Glossary for MSL, AGL, and airport elevation.
+- Supplemental federal science source: NOAA NESDIS optical-phenomena guidance for the light scattering that makes cloud droplets and ice crystals visible.
 - ACS anchor: FAA-S-ACS-6C, PA.I.C, Weather Information, especially K3a, K3c-K3f, R1-R2, and S2-S3.
 - Out of scope: full wind-system and front analysis; cloud-clearance regulations; weather-product decoding; briefing workflows; thunderstorm, icing, fog, frost, and precipitation hazard procedures; aircraft-specific operational procedures.
 
@@ -25,19 +27,19 @@
 
 ## Source-led causal chain
 
-1. The atmosphere is a moving mixture of gases with a small but highly consequential variable water-vapor component. Most weather occurs in the troposphere. An air parcel is an imaginary local region whose approximately uniform properties can be followed; its analytical boundary and useful scope follow the atmospheric process being discussed rather than a physical container created by an aircraft.
-2. Air has mass and weight, so it exerts pressure. Pressure decreases with altitude. Station pressure describes actual pressure at field elevation, while reduction to mean sea level permits comparison among stations at different elevations. MSL, AGL, altimeter setting, pressure altitude, and density altitude each use a deliberately chosen reference for a distinct comparison or planning question.
+1. The atmosphere is a moving mixture of gases with a small but highly consequential variable water-vapor component. Most weather occurs in the troposphere. The FAA standard term air parcel means an imaginary volume assigned approximately uniform atmospheric properties. Its selected scale follows the question; it is neither a physical container nor a region created by an aircraft.
+2. Air has mass and weight, so it exerts pressure. Pressure decreases with altitude. Station pressure is measured at field elevation. Normalizing station measurements to mean sea level permits comparison among stations at different elevations. The standard atmosphere supplies a fixed reference. A local altimeter setting supports altitude indication and is not raw station pressure or normalized sea-level pressure. MSL, AGL, pressure altitude, and density altitude each answer a different reporting or performance question.
 3. Uneven surface heating changes air temperature and density. Warmer air expands and becomes less dense; cooler air becomes denser. Those differences contribute to atmospheric motion.
 4. Pressure patterns provide evidence about motion. Descending dry air is generally associated with highs and fairer conditions, while rising air commonly accompanies lows, cloudiness, and precipitation. These are tendencies, not standalone decisions.
-5. A rising parcel enters lower pressure, expands, and cools. A descending parcel enters higher pressure, compresses, and warms. This adiabatic mechanism is distinct from merely observing that environmental temperature often changes with altitude.
-6. After saturation, a rising parcel cools more slowly. If it remains warmer and less dense than surrounding air, buoyancy can support deeper vertical development when lift continues and the atmosphere is unstable.
-7. Stability compares a displaced parcel with the surrounding atmosphere. Stable air damps vertical displacement; unstable air permits it to grow. Lift can originate from surface heating, terrain, convergence, or weather systems.
+5. Stability describes the atmosphere's resistance to vertical motion. A warmed near-surface parcel provides a relatable hypothetical: surface heating may start convection, while stability determines whether the displacement weakens or grows.
+6. Within a rising parcel, lower surrounding pressure permits expansion and cooling. Within a descending parcel, higher pressure produces compression and warming. This adiabatic mechanism is distinct from the later comparison between the parcel and environmental air at the same level.
+7. Parcel-versus-environment comparison explains the response. A colder, denser lifted parcel tends to sink, while a warmer, less-dense parcel remains buoyant. After saturation, slower cooling can leave the rising parcel warmer than its environment and support deeper vertical development.
 8. A temperature inversion is a stable layer with temperature increasing with altitude. It can suppress mixing and trap moisture, haze, smoke, or pollutants; smooth air therefore does not automatically mean favorable VFR visibility.
 9. Water-vapor content, relative humidity, and dew point are different. Relative humidity depends on both moisture content and temperature. Dew point is the saturation temperature reached by cooling air without changing its water-vapor amount.
 10. Air reaches saturation through cooling over a surface, mixing, nighttime ground cooling, or lifting. The temperature-dew point spread and qualitative convergence model can support an approximate convective cloud-base estimate, not a measured ceiling.
-11. Cloud formation requires water vapor, condensation nuclei, and cooling to saturation. Cloud shape and depth provide evidence about stability and lift.
+11. Cloud formation carries one complete causal chain: invisible water vapor cools toward dew point, reaches saturation, condenses or deposits on nuclei, and forms droplets or ice crystals that scatter light as a visible cloud. Cloud shape and depth provide evidence about stability and lift.
 12. Low, middle, high, and vertically developing cloud families organize cloud evidence. Low layers can create ceilings and visibility restrictions; vertical growth marks sustained lift and instability.
-13. Weather products report or forecast pieces of this chain. A VFR pilot correlates pressure, temperature, dew point, clouds, ceiling, visibility, precipitation, trend, route, and time before making or revising the flight decision.
+13. Weather products—reports, forecasts, and charts—report or predict pieces of this chain. A VFR pilot correlates pressure, temperature, dew point, clouds, ceiling, visibility, precipitation, trend, route, and time before making or revising the flight decision. Episode 12 applies the theory to fronts, thunderstorms, icing, fog, and wind.
 
 ## Likely trouble spots
 
@@ -45,11 +47,11 @@
   - Correction: pressure is force from air, temperature describes molecular energy, and density is mass per volume. They interact but answer different questions.
   - Source: PHAK Chapter 12, pp. 12-3 and 12-5.
 - Misconception: a parcel is a sharply bounded container of air at one fixed scale, possibly created by the airplane.
-  - Correction: a parcel is an imaginary local region selected for analysis. It has no physical wall or precise numerical size; its useful scope follows the process while its assigned properties remain approximately uniform.
+  - Correction: an air parcel is an imaginary volume selected for analysis. It has no physical wall or precise numerical size; the selected scale follows the question while assigned properties remain approximately uniform.
   - Source: Aviation Weather Handbook, p. 4-3.
 - Misconception: station pressure, sea-level pressure, altimeter setting, pressure altitude, and density altitude are interchangeable conversions of one number.
   - Correction: station pressure is local at field elevation; sea-level pressure supports pressure-pattern comparison; altimeter setting supports compatible local MSL indication; pressure altitude supplies a standard-atmosphere reference; density altitude expresses the resulting performance environment after nonstandard-temperature correction.
-  - Source: PHAK Chapter 12, p. 12-5; Aviation Weather Handbook, pp. 8-3, 8-6, and 8-10 through 8-13.
+  - Source: PHAK Chapter 12, p. 12-5; Aviation Weather Handbook, pp. 4-5, 8-3, 8-6, and 8-10 through 8-13.
 - Misconception: rising air cools only because the atmosphere is colder at higher altitude.
   - Correction: the parcel expands and cools as surrounding pressure decreases; stability then compares the parcel with the environmental temperature profile.
   - Source: PHAK Chapter 12, pp. 12-12 to 12-13.
@@ -63,8 +65,8 @@
   - Correction: relative humidity compares actual moisture with capacity at the current temperature.
   - Source: PHAK Chapter 12, p. 12-13.
 - Misconception: water vapor becomes visible as a cloud without another step.
-  - Correction: invisible vapor condenses or deposits onto nuclei after cooling reaches saturation, producing visible droplets or ice crystals.
-  - Source: PHAK Chapter 12, p. 12-15.
+  - Correction: invisible vapor condenses or deposits onto nuclei after cooling reaches saturation, producing droplets or ice crystals whose light scattering makes the cloud visible.
+  - Source: PHAK Chapter 12, p. 12-15; NOAA NESDIS optical-phenomena guidance.
 - Misconception: an estimated lifted cloud base is a reported ceiling.
   - Correction: the estimate is a parcel-model result; ceiling is the lowest broken or overcast layer or vertical visibility into an obscuration.
   - Source: PHAK Chapter 12, pp. 12-14 and 12-17.
@@ -98,7 +100,7 @@
 
 ## Open review items
 
-- Independent spoken-script review by a separate non-drafting agent is complete. All required findings on the saturated-parcel buoyancy bridge, dew-point definition, cloud-base convergence wording, pressure-pattern evidence boundary, unsupported high-cloud implication, and cloud-family heading were resolved in version 0.1.1. Version 0.1.2 preserves that reviewed scope while incorporating user-directed first-listen clarification of the parcel model and pressure-reference systems.
+- A fresh non-drafting spoken-script review is complete for version 0.2.0. Required findings on pressure as force per unit area, ATIS availability, and the referent for a weakening upward motion were resolved. Two optional precision suggestions were also accepted; repeated Episode 12 hooks were consciously retained because the user requested repeated top-level hooks and a direct continuation path.
 - Human editorial review and script approval remain pending.
-- Network-backed deterministic validation passed for every FAA source link, deep citation, mapping, and listener-facing show-note link. The paid LLM source-relevance review remains required before audio render and was not called during drafting or review resolution.
+- Network-backed deterministic validation passed for the revised 29-source ledger, 42 reciprocal claims, and 29 listener-facing show-note links with LLM review disabled. The paid LLM source-relevance review remains required before audio render and was not called during this structural rewrite.
 - Qualified aviation review remains optional and welcome.

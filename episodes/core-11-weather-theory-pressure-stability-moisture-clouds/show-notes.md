@@ -1,16 +1,16 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
 **Episode:** core-11
-**Version:** 0.1.2
-**Source verification:** Deterministic FAA link, deep-citation, and mapping validation passed on August 30, 2026; formal LLM relevance review remains pending before render.
+**Version:** 0.2.0
+**Source verification:** Deterministic federal-source link, deep-citation, and mapping validation passed on August 31, 2026; formal LLM relevance review remains pending before render.
 
 ## In this episode
 
-- Distinguish pressure, temperature, and density, then connect unequal heating with atmospheric motion.
+- Distinguish station pressure, normalized sea-level pressure, altimeter setting, and standard-atmosphere references before connecting pressure, temperature, and density with atmospheric motion.
 - Follow a rising parcel through lower pressure, expansion, cooling, stability, saturation, and cloud formation.
-- Separate water-vapor content, relative humidity, dew point, and visible moisture.
+- Carry invisible water vapor through dew point, saturation, condensation on nuclei, droplets or ice crystals, and the light scattering that makes a cloud visible.
 - Read layered and vertically developing clouds as evidence about stability, lift, ceiling, visibility, and precipitation.
-- Carry the physical model into later VFR weather reports, forecasts, and go/no-go or continue/divert decisions.
+- Carry the physical model into later VFR weather reports, forecasts, charts, and go/no-go or continue/divert decisions, then continue to Episode 12 for hazard application.
 
 ## Study materials and visual aids
 
@@ -27,6 +27,7 @@
 | Purpose of weather theory | FAA guidance | [PHAK Chapter 12 — Introduction](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1) | Introduction, p. 12-1 | 2026-08-28 |
 | Atmosphere, water vapor, and troposphere | FAA guidance | [PHAK Chapter 12 — Atmosphere and composition](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2) | Atmosphere and Composition of the Atmosphere, p. 12-2 | 2026-08-28 |
 | Air parcel and troposphere depth | FAA guidance | [Aviation Weather Handbook — Air parcel and troposphere](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72) | Air Parcel and Troposphere, p. 4-3 | 2026-08-30 |
+| Standard-atmosphere reference | FAA guidance | [Aviation Weather Handbook — Standard atmosphere](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=74) | The Standard Atmosphere, p. 4-5 | 2026-08-31 |
 | Heating, density, and pressure | FAA guidance | [PHAK Chapter 12 — Atmospheric circulation and pressure](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3) | Atmospheric Circulation and Atmospheric Pressure, p. 12-3 | 2026-08-28 |
 | Pressure measurement and altitude | FAA guidance | [PHAK pressure reference and altitude relationship](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5) | Measurement of Atmospheric Pressure and Altitude and Atmospheric Pressure, p. 12-5 | 2026-08-28 |
 | Pressure units and station pressure | FAA guidance | [Aviation Weather Handbook — Pressure units and station pressure](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106) | Atmospheric Pressure Units and Station Pressure, p. 8-3 | 2026-08-30 |
@@ -35,11 +36,19 @@
 | Airport elevation | FAA guidance | [FAA Pilot/Controller Glossary — Airport elevation](https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION) | Term AIRPORT ELEVATION | 2026-08-30 |
 | Local altimeter setting | FAA guidance | [Aviation Weather Handbook — Altimeter setting](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113) | Indicated Altitude and Altimeter Setting, pp. 8-10 to 8-11 | 2026-08-30 |
 | Pressure altitude and density altitude | FAA guidance | [Aviation Weather Handbook — Pressure altitude and density altitude](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115) | Pressure Altitude and Density Altitude, pp. 8-12 to 8-13 | 2026-08-30 |
+| METAR cloud heights and altimeter group | FAA guidance | [Aviation Weather Handbook — METAR cloud heights and altimeter group](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=310) | Sky Condition and Altimeter Group, p. 24-18 | 2026-08-31 |
+| METAR sea-level-pressure remark | FAA guidance | [Aviation Weather Handbook — METAR sea-level-pressure remark](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=316) | Sea Level Pressure remark, p. 24-24 | 2026-08-31 |
+| ASOS and AWOS observations | FAA guidance | [AIM — ASOS and AWOS observations](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html) | Para. 7-1-29 | 2026-08-31 |
+| ATIS weather content | FAA guidance | [FAA Air Traffic Control — ATIS weather content](https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html) | Para. 2-9-3 | 2026-08-31 |
+| Altimeter-setting issuance | FAA guidance | [FAA Air Traffic Control — Altimeter-setting issuance](https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html) | Paras. 2-7-1 to 2-7-2 | 2026-08-31 |
 | Pressure patterns and vertical motion | FAA guidance | [PHAK Chapter 12 — Wind, currents, highs, and lows](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7) | Wind and Currents and Wind Patterns, p. 12-7 | 2026-08-28 |
 | Stability and adiabatic temperature change | FAA guidance | [PHAK Chapter 12 — Atmospheric stability](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12) | Atmospheric Stability, p. 12-12 | 2026-08-28 |
+| Parcel-versus-environment stability comparison | FAA guidance | [Aviation Weather Handbook — Parcel comparison for stability](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=163) | Using a Parcel as a Tool to Evaluate Stability, p. 13-2 | 2026-08-31 |
+| Convection | FAA guidance | [Aviation Weather Handbook — Convection](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=172) | Convection, p. 13-11 | 2026-08-31 |
 | Parcel lapse, moisture, and inversion | FAA guidance | [PHAK Chapter 12 — Adiabatic process, moisture, and inversion](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13) | Adiabatic Process, Moisture and Temperature, Relative Humidity, and Inversion, p. 12-13 | 2026-08-28 |
 | Dew point and saturation paths | FAA guidance | [PHAK temperature, dew point, and approximate cloud-base example](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14) | Temperature/Dew Point Relationship and Methods by Which Air Reaches Saturation, p. 12-14 | 2026-08-28 |
 | Cloud formation and low clouds | FAA guidance | [PHAK Chapter 12 — Cloud formation and low clouds](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15) | Clouds and low-cloud classification, p. 12-15 | 2026-08-28 |
+| Cloud particles and light scattering | Federal science guidance | [NOAA NESDIS — Cloud droplets, ice crystals, and light](https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds) | The Short Answer | 2026-08-31 |
 | Cloud families and vertical growth | FAA guidance | [PHAK basic cloud families and vertical development](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16) | Basic Cloud Types and Clouds with Vertical Development, p. 12-16 | 2026-08-28 |
 | Ceiling, visibility, and precipitation | FAA guidance | [PHAK Chapter 12 — Ceiling, visibility, and precipitation](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17) | Ceiling, Visibility, and Precipitation, p. 12-17 | 2026-08-28 |
 

@@ -1,6 +1,6 @@
 episode_id: "core-11"
-verification_date: "2026-08-30"
-verified_at_utc: "2026-08-30T13:34:42Z"
+verification_date: "2026-08-31"
+verified_at_utc: "2026-08-31T14:38:30Z"
 sources:
   - id: acs-weather-stability
     authority: faa_regulatory_standard
@@ -24,7 +24,7 @@ sources:
     relevance_excerpt: "The task includes temperature and heat exchange, moisture and precipitation, weather-system formation, clouds, turbulence, thunderstorms, icing, fog, frost, and visibility obstructions; the applicant analyzes implications and correlates weather information to flight decisions."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [acs-weather-theory-scope, acs-weather-decision-use, variables-not-verdicts]
+    supports_claims: [acs-weather-theory-scope, acs-weather-decision-use, variables-not-verdicts, lesson-causal-overview]
 
   - id: phak-weather-theory-purpose
     authority: faa_guidance
@@ -36,7 +36,7 @@ sources:
     relevance_excerpt: "Weather includes temperature, moisture, wind, visibility, and barometric pressure; understanding theory supports sound decisions based on reports and forecasts."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [weather-theory-supports-interpretation, variables-not-verdicts]
+    supports_claims: [weather-theory-supports-interpretation, variables-not-verdicts, lesson-causal-overview]
 
   - id: phak-atmosphere-troposphere
     authority: faa_guidance
@@ -62,6 +62,18 @@ sources:
     link_status: 200
     supports_claims: [troposphere-weather-layer, air-parcel-conceptual-model, parcel-scale-follows-question]
 
+  - id: awh-standard-atmosphere-reference
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 4, The Standard Atmosphere, p. 4-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=74"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "The standard atmosphere is a hypothetical fixed distribution of temperature, pressure, and density used for altimeter calibration, aircraft performance calculation, and other common reference purposes."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [standard-atmosphere-fixed-reference]
+
   - id: phak-heating-density-pressure
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
@@ -69,10 +81,10 @@ sources:
     locator: "Ch. 12, Atmospheric Circulation and Atmospheric Pressure, p. 12-3"
     url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3"
     revision: "2023 edition"
-    relevance_excerpt: "Uneven surface heating creates atmospheric motion and pressure changes; warming spreads air molecules and lowers density while cooling packs them more closely and raises density. Atmospheric pressure is force from the weight of air."
-    verified_at_utc: "2026-08-28T19:41:40Z"
+    relevance_excerpt: "Uneven surface heating creates atmospheric motion and pressure changes; warming spreads air molecules and lowers density while cooling packs them more closely and raises density. Atmospheric pressure is force per unit area produced by the weight of the air above."
+    verified_at_utc: "2026-08-31T14:38:30Z"
     link_status: 200
-    supports_claims: [unequal-heating-drives-motion, temperature-density-relationship, pressure-air-weight]
+    supports_claims: [unequal-heating-drives-motion, temperature-density-relationship, pressure-air-weight, convection-vertical-transport]
 
   - id: phak-pressure-reference-altitude
     authority: faa_guidance
@@ -144,7 +156,7 @@ sources:
     relevance_excerpt: "Indicated altitude is an MSL altitude shown with the local altimeter setting; the setting is chosen so the altimeter indicates true altitude at field elevation and keeps nearby aircraft indications compatible."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
-    supports_claims: [altimeter-setting-purpose]
+    supports_claims: [altimeter-setting-purpose, aviation-pressure-information-uses]
 
   - id: awh-pressure-density-altitude
     authority: faa_guidance
@@ -157,6 +169,66 @@ sources:
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
     supports_claims: [pressure-density-altitude-reference]
+
+  - id: awh-metar-altimeter-cloud-bases
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 24, Sky Condition, Temperature/Dewpoint, and Altimeter Group, p. 24-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=310"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "METAR cloud-layer heights are expressed in feet AGL; the altimeter group reports the altimeter setting in inches of mercury for use by aircraft altimeters."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [aviation-pressure-information-uses, metar-pressure-height-references]
+
+  - id: awh-metar-sea-level-pressure
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 24, Sea Level Pressure remark, p. 24-24"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=316"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "At designated stations, sea-level pressure may appear in METAR remarks as the SLP group, reported in millibars."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [metar-pressure-height-references]
+
+  - id: aim-awos-asos-observations
+    authority: faa_guidance
+    title: "Aeronautical Information Manual"
+    document_id: "AIM"
+    locator: "Ch. 7, Automated Surface Observing System/Automated Weather Observing System, para. 7-1-29"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html"
+    revision: "Current FAA web edition verified August 31, 2026"
+    relevance_excerpt: "ASOS/AWOS provides continuous observations used to generate METAR and other aviation weather information, including an altimeter setting in its weather elements and broadcasts."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [aviation-pressure-information-uses]
+
+  - id: atc-atis-altimeter-content
+    authority: faa_guidance
+    title: "FAA Order JO 7110.65, Air Traffic Control"
+    document_id: "FAA Order JO 7110.65"
+    locator: "Ch. 2, Automatic Terminal Information Service Procedures, para. 2-9-3"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html"
+    revision: "Current FAA web edition verified August 31, 2026"
+    relevance_excerpt: "ATIS weather content includes sky condition, temperature, dew point, altimeter, and other pertinent remarks; ASOS/AWOS is the primary source of altimeter data where equipped."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [aviation-pressure-information-uses]
+
+  - id: atc-altimeter-setting-issuance
+    authority: faa_guidance
+    title: "FAA Order JO 7110.65, Air Traffic Control"
+    document_id: "FAA Order JO 7110.65"
+    locator: "Ch. 2, Current Settings and Altimeter Setting Issuance, paras. 2-7-1 to 2-7-2"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html"
+    revision: "Current FAA web edition verified August 31, 2026"
+    relevance_excerpt: "Controllers obtain current altimeter settings from instruments or weather reporting stations and issue settings to en route aircraft and terminal departures under the specified procedures."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [aviation-pressure-information-uses]
 
   - id: phak-high-low-vertical-motion
     authority: faa_guidance
@@ -181,6 +253,30 @@ sources:
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
     supports_claims: [stability-definition, rising-cools-descending-warms]
+
+  - id: awh-parcel-stability-comparison
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 13, Using a Parcel as a Tool to Evaluate Stability, p. 13-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=163"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "Atmospheric stability is evaluated by hypothetically lifting a parcel and comparing its temperature and density with surrounding environmental air at the same test level."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [parcel-environment-stability-comparison]
+
+  - id: awh-convection-definition
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28A"
+    locator: "Ch. 13, Convection, p. 13-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=172"
+    revision: "2024 edition; Revision A signed November 26, 2024"
+    relevance_excerpt: "In meteorology, convection is vertical transport of heat and moisture by updrafts and downdrafts in an unstable atmosphere and may occur with or without visible clouds."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [convection-vertical-transport]
 
   - id: phak-lapse-moisture-inversion
     authority: faa_guidance
@@ -216,7 +312,19 @@ sources:
     relevance_excerpt: "Cloud formation requires adequate water vapor, condensation nuclei, and cooling to saturation. Cloud type reflects base height, shape, and characteristics; low clouds can create low ceilings and visibility restrictions."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning]
+    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning, visible-cloud-causal-chain]
+
+  - id: noaa-cloud-light-scattering
+    authority: federal_science_guidance
+    title: "What Are Rainbow Clouds?"
+    document_id: "NOAA NESDIS optical phenomena education"
+    locator: "The Short Answer, cloud-droplet and ice-crystal light scattering"
+    url: "https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds"
+    revision: "Published August 31, 2025; verified August 31, 2026"
+    relevance_excerpt: "Small water droplets and ice crystals scatter sunlight; this light interaction makes cloud particles visible and can produce cloud optical effects."
+    verified_at_utc: "2026-08-31T14:29:00Z"
+    link_status: 200
+    supports_claims: [visible-cloud-causal-chain]
 
   - id: phak-cloud-families-vertical
     authority: faa_guidance

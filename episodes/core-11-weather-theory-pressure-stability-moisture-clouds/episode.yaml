@@ -4,11 +4,11 @@ title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
 slug: "weather-theory-pressure-stability-moisture-clouds"
 track: "core"
 status: reviewed_draft_source_relevance_pending
-version: 0.1.2
+version: 0.2.0
 published_at: null
 runtime_target_minutes: 45
 runtime_actual_seconds: null
-word_count: 5746
+word_count: 6000
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
@@ -19,10 +19,13 @@ acs_references:
   - PA.I.C.S2-S3
 phak_references:
   - "FAA-H-8083-25C, Chapter 12: Weather Theory"
-aim_references: []
+  - "FAA-H-8083-28A, Aviation Weather Handbook, Chapters 4, 8, 13, and 24"
+aim_references:
+  - "AIM 7-1-29, Automated Surface Observing System/Automated Weather Observing System"
 advisory_circular_references: []
 cfr_references: []
 learning_objectives:
+  - "Distinguish station pressure, normalized sea-level pressure, altimeter setting, and standard-atmosphere pressure references by the question each reference answers."
   - "Distinguish atmospheric pressure, temperature, and density and explain how unequal heating sets air in motion."
   - "Explain why rising air expands and cools and descending air compresses and warms."
   - "Use parcel-versus-environment reasoning to distinguish stable air, unstable air, and a temperature inversion."
@@ -31,6 +34,7 @@ learning_objectives:
   - "Use cloud layers and vertical development as evidence about stability, lift, moisture, ceiling, visibility, and precipitation."
   - "Connect the physical model with the observations and forecasts a VFR pilot later correlates for go/no-go and continue/divert decisions."
 trouble_spots:
+  - "Treating raw station pressure, normalized sea-level pressure, and the local altimeter setting as the same value."
   - "Treating pressure, temperature, and density as interchangeable values."
   - "Saying rising air cools only because environmental temperature is lower aloft."
   - "Treating instability as a lifting mechanism rather than the atmosphere's response to displacement."
@@ -41,7 +45,7 @@ trouble_spots:
   - "Treating one pressure system, report, or favorable weather value as a complete flight decision."
 source_verification:
   status: deterministic_validation_complete_relevance_pending
-  verified_at_utc: "2026-08-30T13:39:32.531Z"
+  verified_at_utc: "2026-08-31T14:39:01.369Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: required_before_render

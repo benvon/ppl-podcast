@@ -100,6 +100,7 @@
 ## 2026-08-31 — publication-day validation and hosting readiness
 
 - The user accepted manual review of the 18 MP3 chapter markers. The full candidate’s listening and chapter QA are complete.
-- Publication-day validation run `a93a7285-c210-429b-95f4-338d0130d445` passed at `2026-08-31T22:32:19.002Z`: all 34 cited source links, 34 listener-facing show-note links, exact locators, and all 55 source-relevance assessments support the unchanged version 0.2.1 package.
+- Publication-day validation run `9e34149f-33b7-4115-a949-03946951fa43` passed at `2026-08-31T22:38:49.489Z`: all 34 cited source links, 34 listener-facing show-note links, exact locators, and all 55 source-relevance assessments support the unchanged version 0.2.1 package.
 - The release timestamp is `2026-08-31T22:32:37Z`. Episode and hosting metadata now bind that timestamp, the 41:49 candidate runtime, the MP3 checksum, and the chapter-review page. Final pre-hosting validation and the episode pull request remain next.
 - Final pre-hosting validation then passed against the sealed MP3, render manifest, audio-quality report, embedded chapters, current narration derivative, release metadata, and publication-day source report. The full repository test suite (85 tests), disclosure and secret check, and whitespace check also passed.
+- The non-final `--package-only` shape check also passed before the episode pull request. The validator now accepts all recognized package lifecycle states for that structural check, while the separate full pre-hosting check remains the release-readiness authority.

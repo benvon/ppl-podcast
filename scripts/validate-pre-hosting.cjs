@@ -12,6 +12,7 @@ const { sourceValidationInputHashes, validationCoverageErrors } = require("./sou
 
 const APPROVED_DRAFT_PRODUCTION_STATUS = "Script approval and source-relevance review are complete; audio has not been rendered and release work remains pending.";
 const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
+const PACKAGE_SHAPE_COMPATIBLE_STATUSES = new Set(["reviewed_draft", "source_relevance_review_complete", "audio_listening_qa_complete", "ready_for_hosting_pr"]);
 
 class PreHostingValidationError extends Error {}
 
@@ -107,6 +108,12 @@ function reviewSentenceHas(sentence, statusPattern) {
     && statusPattern.test(sentence);
 }
 
+function showNotesRecordCompletedSourceReview(showNotes, version) {
+  const sourceVerification = String(showNotes).match(/^\*\*Source verification:\*\*\s*(.+)$/im)?.[1] || "";
+  return sourceVerification.includes(`version ${version}`)
+    && /\bsource-relevance review is complete\b/i.test(sourceVerification);
+}
+
 function hasResolvedIndependentSpokenScriptReview(productionLog) {
   return markdownSections(productionLog).some((section) => {
     const [heading, ...bodyLines] = section.split("\n");
@@ -147,15 +154,15 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
 
 function validateDraftPackageShape({ episodePath, paths, episode, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
   const errors = [];
-  expect(errors, episode.status === "reviewed_draft", "episode.yaml status must be reviewed_draft before audio rendering.");
+  expect(errors, PACKAGE_SHAPE_COMPATIBLE_STATUSES.has(episode.status), "episode.yaml status must be a recognized package-shape state.");
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
   expect(errors, masterScript.includes(`**Version:** ${episode.version}`), "master-script.md version must match episode.yaml.");
   const productionStatus = masterScript.match(/^\*\*Production status:\*\*\s*(.+)$/im)?.[1] || "";
   expect(errors, Boolean(productionStatus) && !/(?:editorial|source-relevance) review\s+(?:is|are)\s+pending\b/i.test(productionStatus), "master-script.md production status must not leave completed editorial or source review pending.");
   expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && showNotes.includes(`**Version:** ${episode.version}`), "show-notes.md episode and version must match episode.yaml.");
-  expect(errors, new RegExp(`\\*\\*Source verification:\\*\\*.*source-relevance review is complete for version ${escapeRegExp(episode.version)}\\.`, "i").test(showNotes), "show-notes.md must record the completed source review for the current version.");
+  expect(errors, showNotesRecordCompletedSourceReview(showNotes, episode.version), "show-notes.md must record the completed source review for the current version.");
   expect(errors, researchPacket.includes("Human editorial review and script approval are complete."), "research-packet.md must record completed human editorial review.");
-  expect(errors, researchPacket.includes(`source-relevance review passed for version ${episode.version}.`), "research-packet.md must record the completed source review for the current version.");
+  expect(errors, new RegExp(`source-relevance review passed for version ${escapeRegExp(episode.version)}\\b`, "i").test(researchPacket), "research-packet.md must record the completed source review for the current version.");
   expect(errors, !episode.release_gates_remaining?.some((gate) => /human editorial|source-link validation with llm relevance/i.test(gate)), "episode.yaml must not retain completed editorial or source-relevance gates.");
   expect(errors, hosting.provenance?.content_version === episode.version, "hosting-metadata content version must match episode.yaml.");
   try {

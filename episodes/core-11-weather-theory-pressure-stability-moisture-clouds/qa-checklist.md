@@ -10,7 +10,7 @@
 - [x] Show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. The fresh version 0.2.1 review checked grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension; its heat-exchange and cloud-recap findings were resolved and rechecked.
 - [x] Human editorial pass completed; unresolved technical questions were removed or resolved.
-- [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.
+- [x] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reported a consistent package shape. This was not final pre-hosting, release, or hosting approval.
 
 ## Initial-draft structure and listening readiness
 

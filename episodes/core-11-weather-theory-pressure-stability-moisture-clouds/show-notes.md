@@ -2,7 +2,7 @@
 
 **Episode:** core-11
 **Version:** 0.2.1
-**Source verification:** FAA and federal-science links, exact locators, show-note mappings, and source-relevance review are complete for version 0.2.1 as of August 31, 2026.
+**Source verification:** FAA and federal-science links, exact locators, and show-note mappings are complete; source-relevance review is complete for version 0.2.1 as of August 31, 2026.
 
 ## In this episode
 

@@ -168,7 +168,7 @@ test("pre-hosting validation requires consistent release records", () => {
     const originalResearchPacket = fs.readFileSync(researchPacketPath, "utf8");
     const originalProductionLog = fs.readFileSync(productionLogPath, "utf8");
     const draftMasterScript = `# Test\n\n**Version:** 0.1.0\n**Production status:** ${APPROVED_DRAFT_PRODUCTION_STATUS}\n\n**INSTRUCTOR:**\n\nA test lesson.\n`;
-    const draftShowNotes = `# Test\n\n**Episode:** core-01\n**Version:** 0.1.0\n**Source verification:** FAA/eCFR links and page-level citations were revalidated August 24, 2026; source-relevance review is complete for version 0.1.0.\n\n[FAA reference](${sourceUrl})\n`;
+    const draftShowNotes = `# Test\n\n**Episode:** core-01\n**Version:** 0.1.0\n**Source verification:** FAA/eCFR links and page-level citations were revalidated; source-relevance review is complete for version 0.1.0 as of August 24, 2026.\n\n[FAA reference](${sourceUrl})\n`;
     const draftInputSha256 = Object.fromEntries([["sources", "sources.yaml"], ["claims", "claim-inventory.yaml"], ["show_notes", "show-notes.md"], ["show_notes_manifest", "show-notes-manifest.yaml"]].map(([name, file]) => [name, require("crypto").createHash("sha256").update(name === "show_notes" ? draftShowNotes : fs.readFileSync(path.join(episodePath, file))).digest("hex")]));
     const draftLinkValidation = { ...linkValidation(), checked_at_utc: "2026-08-24T13:32:00.123Z", input_sha256: draftInputSha256 };
     const approvedDraftEpisode = {
@@ -186,7 +186,7 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
     fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson\n");
-    fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0.\n");
+    fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0 and was re-verified for release.\n");
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent spoken-script review remains pending. The editorial review was accepted.\n");
@@ -197,6 +197,9 @@ test("pre-hosting validation requires consistent release records", () => {
     const missingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(missingIndependentReview.valid, false); assert.match(missingIndependentReview.errors.join("\n"), /independent spoken-script review/);
     fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson\n");
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...approvedDraftEpisode, status: "ready_for_hosting_pr" }));
+    assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
     fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...approvedDraftEpisode, source_verification: { ...approvedDraftEpisode.source_verification, verified_at_utc: "2026-08-24T13:32:00Z" } }));
     const timestampMismatch = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(timestampMismatch.valid, false); assert.match(timestampMismatch.errors.join("\n"), /timestamp must match link-validation/);

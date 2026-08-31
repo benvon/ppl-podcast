@@ -53,10 +53,10 @@ sources:
   - id: awh-air-parcel-troposphere
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 4, Air Parcel and Troposphere, p. 4-3"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=72"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "An air parcel is an imaginary volume used to assign approximately uniform atmospheric properties; it has no precise numerical size. The troposphere extends from the surface to about 36,000 feet, contains almost all weather, and varies in depth with latitude and season."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
@@ -65,10 +65,10 @@ sources:
   - id: awh-standard-atmosphere-reference
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 4, The Standard Atmosphere, p. 4-5"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=74"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "The standard atmosphere is a hypothetical fixed distribution of temperature, pressure, and density used for altimeter calibration, aircraft performance calculation, and other common reference purposes."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
@@ -86,6 +86,30 @@ sources:
     link_status: 200
     supports_claims: [unequal-heating-drives-motion, temperature-density-relationship, pressure-air-weight, convection-vertical-transport]
 
+  - id: awh-heat-transfer-modes
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 5, Heat Transfer, Radiation, Conduction, and Convection, pp. 5-4 to 5-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Heat moves through the atmosphere by radiation, conduction, and convection. Solar radiation transfers energy to Earth's surface; conduction transfers heat through molecular contact; convection transports heat by fluid motion."
+    verified_at_utc: "2026-08-31T17:25:23Z"
+    link_status: 200
+    supports_claims: [heat-transfer-modes]
+
+  - id: awh-temperature-advection
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 13, Wind Effects on Stability, p. 13-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Wind can change an air column's temperature profile by blowing colder or warmer air into a layer; the handbook calls these horizontal temperature changes cold-air advection and warm-air advection."
+    verified_at_utc: "2026-08-31T17:25:23Z"
+    link_status: 200
+    supports_claims: [heat-transfer-modes]
+
   - id: phak-pressure-reference-altitude
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
@@ -101,10 +125,10 @@ sources:
   - id: awh-pressure-units-station
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 8, Atmospheric Pressure Units and Station Pressure, p. 8-3"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=106"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "Hectopascals and millibars are equivalent pressure units; inches of mercury are used for U.S. altimetry. Station pressure is the actual pressure at field elevation and is normally lower at higher-elevation airports."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
@@ -113,10 +137,10 @@ sources:
   - id: awh-sea-level-pressure-reference
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 8, Sea Level Pressure, p. 8-6"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=109"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "Station pressures at different elevations are adjusted to mean sea level to make them comparable; sea-level pressure is typically displayed on surface weather charts."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
@@ -149,10 +173,10 @@ sources:
   - id: awh-altimeter-setting-reference
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
-    locator: "Ch. 8, Indicated Altitude and Altimeter Setting, pp. 8-10 to 8-11"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=113"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 8, Indicated Altitude and Altimeter Setting, pp. 8-11 to 8-12"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=105"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "Indicated altitude is an MSL altitude shown with the local altimeter setting; the setting is chosen so the altimeter indicates true altitude at field elevation and keeps nearby aircraft indications compatible."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
@@ -161,10 +185,10 @@ sources:
   - id: awh-pressure-density-altitude
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
-    locator: "Ch. 8, Pressure Altitude and Density Altitude, pp. 8-12 to 8-13"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=115"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 8, Pressure Altitude and Density Altitude, pp. 8-13 to 8-15"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "Pressure altitude uses the standard 29.92 inHg reference to associate pressure with altitude; density altitude corrects pressure altitude for nonstandard temperature and is an index to aircraft performance."
     verified_at_utc: "2026-08-30T13:34:42Z"
     link_status: 200
@@ -173,10 +197,10 @@ sources:
   - id: awh-metar-altimeter-cloud-bases
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 24, Sky Condition, Temperature/Dewpoint, and Altimeter Group, p. 24-18"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=310"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "METAR cloud-layer heights are expressed in feet AGL; the altimeter group reports the altimeter setting in inches of mercury for use by aircraft altimeters."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
@@ -185,10 +209,10 @@ sources:
   - id: awh-metar-sea-level-pressure
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 24, Sea Level Pressure remark, p. 24-24"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=316"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "At designated stations, sea-level pressure may appear in METAR remarks as the SLP group, reported in millibars."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
@@ -257,10 +281,10 @@ sources:
   - id: awh-parcel-stability-comparison
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 13, Using a Parcel as a Tool to Evaluate Stability, p. 13-2"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=163"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "Atmospheric stability is evaluated by hypothetically lifting a parcel and comparing its temperature and density with surrounding environmental air at the same test level."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
@@ -269,10 +293,10 @@ sources:
   - id: awh-convection-definition
     authority: faa_guidance
     title: "Aviation Weather Handbook"
-    document_id: "FAA-H-8083-28A"
+    document_id: "FAA-H-8083-28B"
     locator: "Ch. 13, Convection, p. 13-11"
-    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28A_FAA_Web.pdf#page=172"
-    revision: "2024 edition; Revision A signed November 26, 2024"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164"
+    revision: "FAA-H-8083-28B, April 2026"
     relevance_excerpt: "In meteorology, convection is vertical transport of heat and moisture by updrafts and downdrafts in an unstable atmosphere and may occur with or without visible clouds."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
@@ -309,10 +333,10 @@ sources:
     locator: "Ch. 12, Clouds and low-cloud classification, p. 12-15"
     url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15"
     revision: "2023 edition"
-    relevance_excerpt: "Cloud formation requires adequate water vapor, condensation nuclei, and cooling to saturation. Cloud type reflects base height, shape, and characteristics; low clouds can create low ceilings and visibility restrictions."
+    relevance_excerpt: "Cloud formation requires adequate water vapor, condensation nuclei, and cooling to saturation. The cloud-classification list defines cumulus as heaped or piled, stratus as formed in layers, cirrus as ringlets or fibrous high cloud, and nimbus as rain-bearing; low clouds can create low ceilings and visibility restrictions."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning, visible-cloud-causal-chain]
+    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning, visible-cloud-causal-chain, cloud-family-classification]
 
   - id: noaa-cloud-light-scattering
     authority: federal_science_guidance

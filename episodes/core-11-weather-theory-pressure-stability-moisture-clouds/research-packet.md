@@ -6,7 +6,7 @@
 - Target duration: approximately 45 minutes, at the upper edge of the series' 30–45 minute range.
 - Core question: How do pressure reference systems, temperature, density, vertical motion, stability, and moisture combine to create clouds and the conditions later reported in aviation weather products?
 - Primary technical source: FAA-H-8083-25C, Pilot's Handbook of Aeronautical Knowledge, Chapter 12, Weather Theory, pp. 12-1 through 12-17.
-- Supplemental technical source: FAA-H-8083-28A, Aviation Weather Handbook, Air Parcel and Troposphere and Standard Atmosphere, pp. 4-3 and 4-5; Atmospheric Pressure and Altimetry, pp. 8-3 through 8-13; stability and convection, pp. 13-2 and 13-11; and METAR pressure and cloud-height groups, pp. 24-18 and 24-24.
+- Supplemental technical source: the current FAA-H-8083-28B, Aviation Weather Handbook, Air Parcel and Troposphere and Standard Atmosphere, pp. 4-3 and 4-5; heat-transfer modes, pp. 5-4 through 5-7; Atmospheric Pressure and Altimetry, pp. 8-3 through 8-15; stability, convection, and temperature advection, pp. 13-2, 13-8, and 13-11; and METAR pressure and cloud-height groups, pp. 24-18 and 24-24.
 - Operational reporting sources: current FAA AIM para. 7-1-29 for ASOS/AWOS observations; FAA Order JO 7110.65 paras. 2-7-1 through 2-7-2 and 2-9-3 for controller and ATIS altimeter-setting information; and the FAA Pilot/Controller Glossary for MSL, AGL, and airport elevation.
 - Supplemental federal science source: NOAA NESDIS optical-phenomena guidance for the light scattering that makes cloud droplets and ice crystals visible.
 - ACS anchor: FAA-S-ACS-6C, PA.I.C, Weather Information, especially K3a, K3c-K3f, R1-R2, and S2-S3.
@@ -19,17 +19,25 @@
 | Atmospheric composition and stability | PA.I.C.K3a, printed p. 3 | Defines the atmosphere, parcel model, temperature-density relationship, stability, and inversion. |
 | Temperature and heat exchange | PA.I.C.K3c, printed p. 4 | Connects heating with density and circulation, and expansion/compression with adiabatic cooling/warming. |
 | Moisture and precipitation | PA.I.C.K3d, printed p. 4 | Separates water-vapor amount, relative humidity, dew point, saturation, condensation, and precipitation. |
-| Weather-system formation | PA.I.C.K3e, printed p. 4 | Establishes pressure-pattern and vertical-motion tendencies without expanding into a fronts lesson. |
+| Weather-system formation | PA.I.C.K3e, printed p. 4 | Establishes pressure-pattern and vertical-motion tendencies here; air masses and fronts continue in Episode 12. |
 | Clouds | PA.I.C.K3f, printed p. 4 | Explains formation requirements, low/middle/high/vertical families, and operational meaning. |
 | Go/no-go and continue/divert decisions | PA.I.C.R1, printed p. 4 | Treats physical relationships and products as evidence to correlate with route, time, trend, and decision triggers. |
 | Limitations of reports, forecasts, and inflight resources | PA.I.C.R2, printed p. 4 | Warns against treating one report, one point, or one favorable value as a complete route-and-time answer. |
 | Analyze conditions and correlate information | PA.I.C.S2-S3, printed p. 4 | Ends with two causal scenarios and a repeatable mechanism-first interpretation habit. |
 
+### ACS scope audit for the Core 11 theory lesson
+
+The current Private Pilot ACS places the weather-theory concepts inside PA.I.C.K3a through K3l. Core 11 fully develops the foundational theory named by K3a and K3c through K3f: atmospheric composition and stability, temperature and heat exchange, moisture and precipitation, the pressure and vertical-motion basis of weather-system formation, and clouds. K3e also names air masses and fronts; those applications belong to Episode 12 and are explicitly called forward rather than treated as complete here.
+
+The remaining K3 elements are not missing silently. K3b wind, K3g turbulence, K3h thunderstorms and microbursts, K3i icing and freezing-level information, K3j fog and mist, K3k frost, and K3l visibility obstructions are practical conditions and hazards assigned to Episode 12. Core 11 introduces only the pressure, stability, moisture, and cloud mechanisms needed to understand them. PA.I.C.K1, K2, K4, R2, and S1 require weather sources, products, installed displays, limitations, and briefing use; this episode makes a short interpretation bridge, while the later weather-information lesson will teach those product and briefing workflows. Core 11 retains PA.I.C.R1 and S2-S3 because its scenarios connect theory to go/no-go, continue/divert, implication analysis, and correlation without trying to teach the full briefing process.
+
+Audit result: the first pass found that the draft described unequal heating and vertical motion without explicitly naming the ACS heat-exchange vocabulary. The revised lesson now defines radiation, conduction, convection, and advection inside the existing heating story. No other concept was missing inside Core 11's stated theory scope, and the boundary language and mapping now make every deferred ACS element explicit.
+
 ## Source-led causal chain
 
 1. The atmosphere is a moving mixture of gases with a small but highly consequential variable water-vapor component. Most weather occurs in the troposphere. The FAA standard term air parcel means an imaginary volume assigned approximately uniform atmospheric properties. Its selected scale follows the question; it is neither a physical container nor a region created by an aircraft.
 2. Air has mass and weight, so it exerts pressure. Pressure decreases with altitude. Station pressure is measured at field elevation. Normalizing station measurements to mean sea level permits comparison among stations at different elevations. The standard atmosphere supplies a fixed reference. A local altimeter setting supports altitude indication and is not raw station pressure or normalized sea-level pressure. MSL, AGL, pressure altitude, and density altitude each answer a different reporting or performance question.
-3. Uneven surface heating changes air temperature and density. Warmer air expands and becomes less dense; cooler air becomes denser. Those differences contribute to atmospheric motion.
+3. Uneven surface heating changes air temperature and density. Radiation transfers solar energy to the surface, conduction exchanges heat with adjacent air, convection transports heat and moisture vertically, and advection transports heat horizontally. Warmer air expands and becomes less dense; cooler air becomes denser. Those differences contribute to atmospheric motion.
 4. Pressure patterns provide evidence about motion. Descending dry air is generally associated with highs and fairer conditions, while rising air commonly accompanies lows, cloudiness, and precipitation. These are tendencies, not standalone decisions.
 5. Stability describes the atmosphere's resistance to vertical motion. A warmed near-surface parcel provides a relatable hypothetical: surface heating may start convection, while stability determines whether the displacement weakens or grows.
 6. Within a rising parcel, lower surrounding pressure permits expansion and cooling. Within a descending parcel, higher pressure produces compression and warming. This adiabatic mechanism is distinct from the later comparison between the parcel and environmental air at the same level.
@@ -51,7 +59,7 @@
   - Source: Aviation Weather Handbook, p. 4-3.
 - Misconception: station pressure, sea-level pressure, altimeter setting, pressure altitude, and density altitude are interchangeable conversions of one number.
   - Correction: station pressure is local at field elevation; sea-level pressure supports pressure-pattern comparison; altimeter setting supports compatible local MSL indication; pressure altitude supplies a standard-atmosphere reference; density altitude expresses the resulting performance environment after nonstandard-temperature correction.
-  - Source: PHAK Chapter 12, p. 12-5; Aviation Weather Handbook, pp. 4-5, 8-3, 8-6, and 8-10 through 8-13.
+  - Source: PHAK Chapter 12, p. 12-5; Aviation Weather Handbook, pp. 4-5, 8-3, 8-6, and 8-11 through 8-15.
 - Misconception: rising air cools only because the atmosphere is colder at higher altitude.
   - Correction: the parcel expands and cools as surrounding pressure decreases; stability then compares the parcel with the environmental temperature profile.
   - Source: PHAK Chapter 12, pp. 12-12 to 12-13.
@@ -100,7 +108,7 @@
 
 ## Open review items
 
-- A fresh non-drafting spoken-script review is complete for version 0.2.0. Required findings on pressure as force per unit area, ATIS availability, and the referent for a weakening upward motion were resolved. Two optional precision suggestions were also accepted; repeated Episode 12 hooks were consciously retained because the user requested repeated top-level hooks and a direct continuation path.
+- A fresh non-drafting spoken-script review of version 0.2.1 found two material issues: the ACS heat-exchange vocabulary was absent, and the cloud-root recap compressed too many definitions into one turn while overstating `cirro`. The revised draft resolves both findings by adding the four heat-transfer terms inside the heating story and rebuilding the cloud recap as a short exchange with source-bounded meanings. The reviewer confirmed the resolutions and found no remaining grammar, incomplete-thought, callback, call-forward, or first-listen comprehension issue.
 - Human editorial review and script approval remain pending.
-- Network-backed deterministic validation passed for the revised 29-source ledger, 42 reciprocal claims, and 29 listener-facing show-note links with LLM review disabled. The paid LLM source-relevance review remains required before audio render and was not called during this structural rewrite.
+- Network-backed deterministic validation run `f6a5ea9b-ff45-4d3d-b90a-4d909c3fd5f6` passed for the version 0.2.1 package: 31 source links, 43 reciprocal claims, and 31 listener-facing show-note links. The paid LLM source-relevance review remains required before audio render and was not called during this refinement.
 - Qualified aviation review remains optional and welcome.

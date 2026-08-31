@@ -14,6 +14,8 @@ For each major idea, draft in this order:
 
 Do not compress several of these moves into one sentence. If an explanation says that something “moves,” “changes,” “matters,” or is “valuable,” name the thing, condition, or relationship immediately rather than requiring the listener to infer it.
 
+For a lesson that is heavy on theory, give the listener a short orienting map before the deep explanation begins. Name the major relationships in causal order without trying to teach them all in the overview. Develop each relationship in its own section with a concrete scenario and an explicit callback to the map, then use the retrieval review to rebuild the same chain from beginning to end. When a following episode applies the theory to practical hazards or decisions, name that connection so the listener knows where the model will be used.
+
 ## Make mental pictures usable without a diagram
 
 When an explanation depends on a diagram:

@@ -1,6 +1,6 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
-**Version:** 0.2.0 — structurally revised draft
+**Version:** 0.2.1 — refined structural draft
 **Target runtime:** approximately 45 minutes
 **Speakers:** Instructor, Learner, Announcer
 **Production status:** Structural rewrite and fresh independent spoken-script review complete; human editorial review, source-relevance validation, and all audio and release gates remain pending.
@@ -50,7 +50,7 @@ Then this episode is not trying to teach every kind of weather before I learn th
 
 **INSTRUCTOR:**
 
-Right. Chapter 12 of the Pilot's Handbook of Aeronautical Knowledge provides the physical model. Chapter 13 and later study can apply that model to observations, forecasts, charts, and briefings. The PHAK says understanding weather theory helps a pilot make sound decisions from reports and forecasts. We will build the mechanism first, then make a short bridge to the information a VFR learner will interpret later.
+Right. Chapter 12 of the Pilot's Handbook of Aeronautical Knowledge provides the physical model. Chapter 13 and your own later study of weather can apply that model to observations, forecasts, charts, and briefings. The PHAK says understanding weather theory helps a pilot make sound decisions from reports and forecasts. We will build the mechanism first, then make a short bridge to the information a VFR learner will interpret later.
 
 [Source: sources.yaml#phak-weather-theory-purpose]
 [Claim type: FAA guidance]
@@ -69,7 +69,7 @@ The map for this lesson.
 
 Here is the whole route before we take it one section at a time. First, pressure tells us how the atmosphere pushes, and pressure references let us compare a local measurement with measurements made elsewhere or use it for a particular aviation purpose. Second, uneven heating changes temperature and density, which helps set air in motion. Third, rising air expands and cools while descending air compresses and warms. Fourth, stability tells us whether a lifted region tends to settle back or continue upward. Fifth, cooling can bring invisible water vapor to saturation, where droplets or ice crystals form and a cloud becomes visible.
 
-Weather reports, forecasts, and charts are often called weather products. They give us observations or predictions of pieces of that chain: pressure, temperature, dew point, cloud coverage and height, visibility, precipitation, and change over time. This episode builds the physical relationships beneath those values. The goal is not to decode every product yet. It is to make the later values describe one atmosphere instead of unrelated facts.
+Weather reports, forecasts, and charts are often called weather products. They give us observations or predictions of pieces of that chain: pressure, temperature, dew point, cloud coverage and height, visibility, precipitation, and change over time. This episode builds the physical relationships beneath those reported and forecast values. The goal is not to decode every product yet. It is to understand how the values describe different parts of the same changing atmosphere.
 
 [Source: sources.yaml#phak-weather-theory-purpose]
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
@@ -106,7 +106,7 @@ You said we would follow a region of rising or sinking air. Is there a standard 
 
 **INSTRUCTOR:**
 
-Yes. The FAA Aviation Weather Handbook calls it an air parcel: an imaginary volume of air to which atmospheric properties can be assigned. We will shorten it to parcel. It is not a podcast-only invention, a container with a physical wall, or a region created by the airplane. It is a standard model for asking what happens within selected air as conditions change.
+Yes. The FAA Aviation Weather Handbook calls it an air parcel: an imaginary volume of air to which atmospheric properties can be assigned. We will shorten it to parcel. It is a standard model for asking what happens within selected air as conditions change.
 
 [Source: sources.yaml#awh-air-parcel-troposphere]
 [Claim type: FAA guidance]
@@ -118,7 +118,7 @@ The model has no prescribed numerical size. The scale selected follows the quest
 
 First, describe what happens within the selected parcel as surrounding pressure changes. When the parcel rises into lower pressure, it expands, and its temperature falls. When the parcel descends into higher pressure, compression reverses the process, and its temperature rises. We will discuss this rising and descending air concept in more depth later.
 
-Only after describing the changes within the parcel do we compare its temperature and density with the surrounding air at the same level. Later in this episode we'll discuss convection and stability. That section will show why the comparison helps explain whether a lifted region settles back, remains where it was moved, or develops farther upward. Keeping the change within the parcel separate from the parcel-versus-environment comparison prevents two different ideas from becoming one vague explanation.
+Only after describing how the parcel expands, compresses, cools, or warms do we compare its temperature and density with the surrounding air at the same level. Later in this episode we'll discuss convection and stability. That section will show why this second step helps explain whether a lifted region settles back, remains where it was moved, or develops farther upward. The first step describes what pressure changes do within the parcel. The second compares the changed parcel with its environment to evaluate stability.
 
 ## [09:35] Pressure and its reference systems
 
@@ -157,7 +157,7 @@ For weather-pattern comparison, station pressure is adjusted, or normalized, to 
 [Source: sources.yaml#awh-sea-level-pressure-reference]
 [Claim type: FAA guidance]
 
-The standard atmosphere supplies a different kind of reference. It is a fixed, agreed model of pressure, temperature, and density rather than a report of today's atmosphere. Standard sea-level pressure is twenty-nine point nine two inches of mercury, or one thousand thirteen point two hectopascals. Engineers, performance charts, and pressure-altitude calculations need that unchanging baseline because the real atmosphere never stops changing.
+The standard atmosphere supplies a different kind of reference. It is a fixed, agreed model of pressure, temperature, and density rather than a report of today's atmosphere. Standard sea-level pressure is twenty-nine point nine two inches of mercury. Engineers, performance charts, and pressure-altitude calculations need that unchanging baseline because the real atmosphere never stops changing.
 
 [Source: sources.yaml#awh-standard-atmosphere-reference]
 [Claim type: FAA guidance]
@@ -180,7 +180,7 @@ Now apply the reference map to the information a pilot hears or reads. A METAR, 
 [Source: sources.yaml#atc-altimeter-setting-issuance]
 [Claim type: FAA guidance]
 
-The value the pilot sets is the current reported altimeter setting for the area of operation. That setting is designed so an altimeter at the airport indicates the airport's published elevation. It is not raw station pressure, even though station pressure is part of the measurement process. It is also not the same product as the sea-level pressure used to compare weather systems. The local altimeter setting supports a useful altitude indication; normalized sea-level pressure supports a useful regional pressure comparison.
+The altimeter setting value the pilot sets is the current reported altimeter setting for the area of operation. That setting is designed so an altimeter at the airport indicates the airport's published elevation and all aircraft in the local area are working from a common altimeter setting for safety and coordination. It is not raw station pressure, even though station pressure is part of the measurement process. It is also not the same product as the sea-level pressure used to compare weather systems. The local altimeter setting supports a useful altitude indication; normalized sea-level pressure supports a useful regional pressure comparison.
 
 [Source: sources.yaml#awh-altimeter-setting-reference]
 [Claim type: FAA guidance]
@@ -214,6 +214,11 @@ Heating changes density and starts motion.
 
 The Sun does not heat every surface equally or at the same rate. Dark ground, light ground, water, vegetation, slopes, latitude, season, cloud cover, and time of day all change how energy reaches and leaves the surface. The surface then exchanges heat with the air near it. Unequal heating means neighboring parts of the atmosphere do not remain identical.
 
+The ACS calls this temperature and heat exchange. Radiation carries energy from the Sun through space to Earth's surface. Conduction transfers heat between the surface and the air touching it. Convection transports heat and moisture vertically as warmed air rises. Advection transports heat horizontally as wind moves air across the surface or into another region. These words name different parts of the same heating-and-motion story.
+
+[Source: sources.yaml#awh-heat-transfer-modes]
+[Claim type: FAA guidance]
+
 When air warms, its molecules spread farther apart and the air becomes less dense. When air cools, the molecules pack more closely and the air becomes denser. If warmer, less-dense air sits beside or below cooler, denser air, gravity and pressure differences can set the atmosphere in motion. Warm air can rise while cooler air moves in to replace it, creating a circulation.
 
 [Source: sources.yaml#phak-heating-density-pressure]
@@ -239,7 +244,7 @@ Rising air, stability, and convection.
 
 **INSTRUCTOR:**
 
-Before comparing any temperatures, define the purpose. Atmospheric stability describes how strongly the atmosphere resists vertical motion. In stable air, upward motion after a small displacement tends to weaken. In unstable air, the tendency to continue upward can grow. Picture a ball inside an empty bowl for stable air: move it slightly and it returns toward the bottom. Picture a ball balanced on top of an upside-down bowl for unstable air: move it slightly and it continues away.
+The purpose of comparing temperatures is to evaluate atmospheric stability: how strongly the atmosphere resists vertical motion. In stable air, upward motion after a small displacement tends to weaken. In unstable air, the tendency to continue upward can grow. Picture a ball inside an empty bowl for stable air: move it slightly and it returns toward the bottom. Picture a ball balanced on top of an upside-down bowl for unstable air: move it slightly and it continues away.
 
 [Source: sources.yaml#phak-stability-adiabatic]
 [Claim type: FAA guidance]
@@ -269,7 +274,7 @@ After we know how the parcel changed, compare it with the air around it at the s
 [Source: sources.yaml#awh-parcel-stability-comparison]
 [Claim type: FAA guidance]
 
-The rate at which temperature changes with height is called a lapse rate. The surrounding atmosphere has an environmental temperature profile, observed by weather systems and represented in forecasts. A parcel model has its own cooling path. Forecasters compare those profiles when evaluating stability; a private-pilot learner uses the resulting stability language, temperature patterns, and visible cloud structure to understand whether vertical development is being suppressed or supported. This lesson does not require you to calculate the parcel's path.
+The rate at which temperature changes with height is called a lapse rate. The surrounding atmosphere has an environmental temperature profile, observed by weather systems and represented in forecasts. A parcel model has its own cooling path. Forecasters compare those profiles when evaluating stability; a private-pilot learner uses the resulting stability language, temperature patterns, and visible cloud structure to understand whether vertical development is being suppressed or supported.
 
 Moisture changes that path after condensation begins. An unsaturated rising parcel expands and cools. Once the parcel becomes saturated, condensation releases heat, so it cools more slowly while it continues upward. If the slower cooling leaves it warmer and less dense than the surrounding air, it remains buoyant and can support deeper vertical development in unstable air.
 
@@ -424,7 +429,7 @@ Layered stratus forms point toward stable air and widespread gentle lifting or c
 [Source: sources.yaml#phak-cloud-families-vertical]
 [Claim type: FAA guidance]
 
-This episode will not compress thunderstorm avoidance into one sentence. The appropriate later lesson will cover convective development and hazards directly. The present takeaway is narrower: vertical cloud growth is not decoration. It is visible evidence that lift, moisture, and instability are working through a deepening part of the atmosphere.
+This episode will not compress thunderstorm avoidance into one sentence. The appropriate later lesson will cover convective development and hazards directly. The present takeaway is narrower: vertical cloud growth is not only pretty, puffy clouds. It is visible evidence that lift, moisture, and instability are working through a deepening part of the atmosphere.
 
 Precipitation provides another clue. Cloud droplets or ice particles must grow until the atmosphere can no longer support them and they fall. Precipitation can reduce visibility, contribute to icing in suitable temperatures, and create runway hazards. Its form and whether it reaches the surface provide evidence about temperature and moisture through the layers below the cloud.
 
@@ -478,7 +483,7 @@ The ACS expects correlation, not inspection of one favorable number. Correlation
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA regulatory standard]
 
-For a VFR learner, the bounded habit is to narrate the mechanism before deciding. Name what is changing. Explain how it affects saturation, stability, cloud structure, ceiling, visibility, or precipitation. Check whether observations and forecasts support that explanation. Then compare the expected conditions and trend with the route, terrain, daylight, fuel, alternates, personal minimums, and the airplane's capabilities. That is the bridge from theory to aeronautical decision-making.
+For a VFR learner, a useful habit is to narrate the mechanism before deciding. Name what is changing. Explain how it affects saturation, stability, cloud structure, ceiling, visibility, or precipitation. Check whether observations and forecasts support that explanation. Then compare the expected conditions and trend with the route, terrain, daylight, fuel, alternates, personal minimums, and the airplane's capabilities. That is the bridge from theory to aeronautical decision-making.
 
 Episode 12, *Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind*, takes the next step. It will use pressure, vertical motion, stability, saturation, and cloud structure to explain how those hazards form and why they matter to flight decisions. If you want to ground this theory while the chain is fresh, continue directly into Episode 12.
 
@@ -538,6 +543,20 @@ Lift a parcel into lower pressure and it expands and cools. Bring it down into h
 Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with capacity at the current temperature. Dew point is the temperature reached when cooling with no change in water-vapor amount brings the air to saturation. Condensation or deposition then forms droplets or ice crystals on nuclei. Those particles scatter light, making the cloud visible.
 
 Air can reach saturation by moving over a cold surface, mixing, nighttime ground cooling, or lifting. Cloud formation needs water vapor, nuclei, and cooling to saturation. Layered clouds suggest stable structure. Vertical growth points toward rising air and instability. Cloud height and coverage, visibility, and precipitation turn that structure into operational information.
+
+Repeat four cloud-name parts as memory hooks. Cumulus means heaped or piled, so cumulo points toward a built-up shape. Stratus means formed in layers, so strato points toward a layer. Cirrus describes ringlets or fibrous clouds; in a compound name, cirro identifies the high-cloud family. Nimbus means rain-bearing.
+
+**LEARNER:**
+
+Then a compound cloud name tells me which of those clues to combine.
+
+**INSTRUCTOR:**
+
+Exactly. Stratocumulus combines layering with rounded heaps. Nimbostratus is a rain-bearing layer. Cirrostratus is a high layer or veil. Cumulonimbus is a deeply built-up, rain-bearing cloud. The name helps organize what you see. The cloud's base, coverage, vertical extent, and development provide the operational evidence.
+
+[Source: sources.yaml#phak-cloud-formation-low-clouds]
+[Source: sources.yaml#phak-cloud-families-vertical]
+[Claim type: FAA guidance]
 
 Finally, reports and forecasts provide pieces of evidence, not an automatic decision. Correlate pressure, temperature, dew point, clouds, visibility, precipitation, trend, route, and time. Ask whether the pieces tell one physically consistent story. Then compare that expected atmosphere with the flight's demands and with the conditions that would lead you to delay, cancel, continue, or divert.
 

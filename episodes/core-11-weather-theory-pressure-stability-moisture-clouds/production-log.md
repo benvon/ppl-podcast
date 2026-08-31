@@ -90,4 +90,9 @@
 
 - The user accepted the five-segment opening preview and the first ASOS/AWOS/ATIS pronunciation segment. Full candidate `core-11-20260831T202200Z.mp3` reuses those rendered voice segments unchanged.
 - The complete 70-segment candidate uses the established music bed and has an automated quality pass: decodable 24 kHz mono WAV and MP3, matching 2,508.99-second duration, no clipped samples, no stitch-discontinuity warnings across 70 segment boundaries, and 18 embedded MP3 chapters verified with `ffprobe`.
-- Full script-aligned listening QA and manual chapter-marker review remain pending.
+- At candidate creation, full script-aligned listening QA and manual chapter-marker review remained pending.
+
+## 2026-08-31 — full listening QA accepted
+
+- The user completed and accepted the full script-aligned listening QA for `core-11-20260831T202200Z.mp3`, including the accepted opening and required production notice. The candidate remains bound to its MP3 checksum, current narration derivative, quality report, and render manifest.
+- Manual chapter-marker review remains the next audio gate; publication-day source verification and hosting handoff validation remain later release gates.

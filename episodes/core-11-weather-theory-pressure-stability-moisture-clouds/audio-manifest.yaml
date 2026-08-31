@@ -1,10 +1,10 @@
 episode_id: "core-11"
-status: candidate_rendered_listening_qa_pending
+status: candidate_rendered_listening_qa_approved
 publication_day_validation: pending
 reason: >-
   Script version 0.2.1 has a technically validated candidate render using the
   accepted opening and pronunciation previews. Full script-aligned human
-  listening QA and manual chapter review remain pending.
+  listening QA is accepted; manual chapter review remains pending.
 current_candidate_render:
   script_version: 0.2.1
   rendered_at_utc: "2026-08-31T20:49:40.514Z"
@@ -29,7 +29,7 @@ current_candidate_render:
   spoken_input_transform: "Standalone AI expands to artificial intelligence; PHAK is read as pee hack; ASOS, AWOS, and ATIS use their established spoken forms only in voice-model input; envelope receives a silent noun-stress instruction. The written script remains unchanged."
   music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade."
   usage_estimate_usd: 3.516142
-  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 70 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Human listening QA and manual chapter review remain pending. Audio artifacts are Git-ignored."
+  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 70 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA is accepted; manual chapter review remains pending. Audio artifacts are Git-ignored."
 superseded_candidates: []
 opening_preview:
   script_version: 0.2.1

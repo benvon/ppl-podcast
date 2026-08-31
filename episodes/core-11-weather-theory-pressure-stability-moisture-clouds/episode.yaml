@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
 slug: "weather-theory-pressure-stability-moisture-clouds"
 track: "core"
-status: source_relevance_review_complete
+status: audio_listening_qa_complete
 version: 0.2.1
 published_at: null
 runtime_target_minutes: 45
-runtime_actual_seconds: null
+runtime_actual_seconds: 2508.99
 word_count: 6172
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
@@ -56,12 +56,12 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Complete human listening QA, including the front-matter check"
+  - "Complete manual chapter-marker review"
   - "Re-verify every public source and link on publication day"
   - "Validate hosting metadata and external audio-store workflow"
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.

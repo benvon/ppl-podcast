@@ -8,7 +8,7 @@ version: 0.1.0
 published_at: null
 runtime_target_minutes: 27
 runtime_actual_seconds: null
-word_count: 3887
+word_count: 3890
 speakers:
   - instructor
   - learner
@@ -43,9 +43,9 @@ learning_objectives:
     before the accumulation appears dramatic.
   - Use radiation, advection, upslope, precipitation, frontal, and steam-fog
     mechanisms to reason about formation, persistence, and improvement.
-  - Connect regional wind with terrain and obstruction effects, runway
-    components, airplane capability, personal proficiency, and low-level wind
-    shear.
+  - Connect large-scale wind patterns with local surface changes, terrain and
+    obstruction effects, runway components, airplane capability, personal
+    proficiency, and low-level wind shear.
   - Correlate several hazards across departure, route, destination, and
     alternate conditions to make an early conservative decision.
 trouble_spots:
@@ -74,10 +74,10 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: a382269c580cdad59db2b9acecf432b5d2c5af14617e7a4bd92af08dc0322724
+  pending_script_sha256: 8cdf3faa8cd15e2ffcbc8b02d7599ba61dc2b59967c8bd83fe2a1d9b7a44e643
 release_gates_remaining:
   - Rerun formal source-link validation with required LLM source relevance and
-    confirm that every finding from the first and second reports is resolved.
+    confirm that every finding from the first three reports is resolved.
   - Complete human editorial review and bind approval to the current master
     script.
   - Complete human listening QA, including the front-matter and chapter checks.

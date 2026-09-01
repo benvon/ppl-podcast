@@ -29,7 +29,7 @@
 3. Thunderstorms combine sufficient moisture, instability, and lift; their hazards extend beyond the visible precipitation and evolve faster than a static image suggests.
 4. Structural icing requires supercooled liquid water and subfreezing temperature; freezing level, cloud, precipitation, terrain, and altitude must be correlated in three dimensions.
 5. Fog is cloud at the surface; the mechanism—radiation, advection, upslope, precipitation, steam, or frontal—helps explain persistence and change.
-6. Regional wind is modified by friction, terrain, obstructions, and convection; at a runway it becomes components, gust margin, turbulence, and airplane/pilot capability.
+6. Large-scale wind patterns can change close to the surface because of local conditions and geological features; at a runway the wind becomes components, gust margin, turbulence, and airplane/pilot capability.
 7. Wind shear is rapid change across a short distance, so the same air mass can change airplane performance abruptly near the ground.
 8. The ACS outcome is correlation: combine the mechanisms and evidence into an early conservative choice.
 
@@ -90,9 +90,10 @@ None. Aircraft-specific procedures, equipment capabilities, and limitations are 
 - Initial source-led research and first draft: complete September 1, 2026.
 - Independent spoken-script review by a non-drafting agent: complete September 1, 2026.
 - Required revisions from that review: resolved in version 0.1.0; Episode 11 callbacks, the frontal-zone mental picture, forecast wording, runway wind components, and microburst causality were clarified.
-- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, repository tests, disclosure/secret scan, and whitespace checks: complete after resolving the second formal source-relevance review.
+- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, repository tests, disclosure/secret scan, and whitespace checks: complete after resolving the third formal source-relevance review.
 - Package-only pre-host validation: previously exercised before the formal review and stopped at its expected source-report gate; it remains pending until a clean formal source-relevance rerun is bound to the revised package inputs.
 - Formal LLM source-relevance review run `46d0cb53-8a2e-4c55-a745-aff7593c18fb`: completed with targeted source, locator, claim, and tagged-passage findings; the package has been revised, and a clean formal rerun remains pending.
 - Second formal source-relevance report, checked September 1, 2026 at `17:35:23Z`: completed with four remaining narrow findings; all four are resolved in the revised package, and a clean formal rerun remains pending.
+- Third formal source-relevance report, checked September 1, 2026 at `17:43:00Z`: completed with two final wording findings; both are resolved in the revised package, and a clean formal rerun remains pending.
 - Human editorial approval: pending.
 - Audio rendering, listening QA, staging, release, and publication: not started.

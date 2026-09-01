@@ -21,7 +21,7 @@ sources:
     locator: "Ch. 12, Wind and Currents and Wind Patterns, p. 12-7"
     url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7"
     revision: "2023 edition; Chapter 12 page updated July 10, 2023; October 20, 2025 addendum does not modify Chapter 12"
-    relevance_excerpt: "Pressure differences, Coriolis force, friction, temperature differences, and local effects shape atmospheric motion; currents and winds affect takeoff, landing, cruise, and weather change."
+    relevance_excerpt: "Pressure differences, Coriolis force, friction, and temperature differences produce atmospheric motion. Large-scale circulation theory does not account for local changes; local conditions, geological features, and other anomalies can change wind direction and speed close to the surface."
     verified_at_utc: "2026-09-01T16:47:46Z"
     link_status: 200
     supports_claims: [wind-pressure-local-effects]

@@ -426,7 +426,7 @@ Wind is the atmosphere in motion.
 
 **INSTRUCTOR:**
 
-Pressure differences begin the motion, while temperature differences, Earth’s rotation, friction, terrain, and local heating modify it. That is why the wind at cruise altitude, the wind reported at an airport, and the wind over one end of a runway can differ even though they belong to the same regional weather system.
+Pressure differences, Earth’s rotation, friction, and temperature differences produce atmospheric motion. The PHAK cautions that those large-scale circulation patterns do not account for every local change. Local conditions, geological features, and other anomalies can change wind direction and speed close to the surface.
 
 [Source: sources.yaml#phak-wind-circulation]
 [Claim type: FAA guidance]
@@ -538,7 +538,7 @@ What does the ACS expect you to do with hazardous-weather knowledge?
 
 **LEARNER:**
 
-Analyze what the conditions imply, correlate weather information with the proposed VFR flight, account for resource limitations and personal minimums, and make go or no-go or continue or divert decisions.
+Analyze what the conditions imply, correlate weather information with a flight decision, account for resource limitations and personal minimums, and make go or no-go or continue or divert decisions.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard]
@@ -730,7 +730,7 @@ How does regional wind become a runway decision?
 
 **LEARNER:**
 
-Regional wind is modified near the surface by friction and local effects.
+Large-scale circulation patterns do not account for every local change. Local conditions and geological features can change wind direction and speed close to the surface.
 
 [Source: sources.yaml#phak-wind-circulation]
 [Claim type: FAA guidance]

@@ -2,7 +2,7 @@
 
 **Episode:** core-12
 **Version:** 0.1.0
-**Source verification:** Independent spoken-script review is complete; the four targeted findings from the second formal source-relevance review are resolved, and a clean formal rerun is pending.
+**Source verification:** Independent spoken-script review is complete; the two final wording findings from the third formal source-relevance review are resolved, and a clean formal rerun is pending.
 
 ## In this episode
 
@@ -10,7 +10,7 @@
 - Connect thunderstorm ingredients and life cycle with turbulence, outflow, wind shear, early avoidance decisions, and why delayed radar mosaics cannot be the sole means for tactical path negotiation.
 - Build a three-dimensional icing picture from temperature, liquid moisture, cloud, precipitation, terrain, and altitude.
 - Use fog-formation mechanisms to reason about persistence and improvement instead of assuming every morning layer will clear.
-- Translate regional wind into local turbulence, runway components, airplane capability, personal minimums, and runway options.
+- Connect large-scale wind patterns with local surface changes, runway components, airplane capability, personal minimums, and runway options.
 - Combine several individually marginal hazards into one route-level go/no-go or continue/divert decision.
 
 ## Study materials and visual aids

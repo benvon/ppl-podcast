@@ -26,11 +26,21 @@
    source-led research pass and complete first draft. It must produce the
    source ledger, claim inventory, research packet, source-tagged
    `master-script.md`, derived `narration.md`, show notes, metadata, and
-   production log before review. Before script approval, have a separate agent
-   that did not draft the lesson review the `master-script.md` for complete and
-   correct grammar, complete thoughts, coherent within-episode callbacks and
-   call-forwards, and first-listen comprehension. Record its material findings
-   and resolutions in `production-log.md`.
+   production log. Complete these drafting gates in order before presenting the
+   script for human editorial review:
+   - Have a separate agent that did not draft the lesson review
+     `master-script.md` for complete and correct grammar, complete thoughts,
+     coherent within-episode callbacks and call-forwards, and first-listen
+     comprehension.
+   - Resolve its required findings, regenerate `narration.md`, and record the
+     material findings and resolutions in `production-log.md`.
+   - Run formal source-relevance validation with `--require-llm`. Resolve every
+     source, locator, claim, or source-tagged-passage finding and rerun it until
+     it is clean. This validation must examine the tagged spoken passages, not
+     merely the claim inventory or source links.
+   - Only then hand the source-validated draft to the human editor. If an
+     editorial change alters factual spoken prose, source tags, claims, sources,
+     or show notes, return it to source-relevance validation before rendering.
 5. In `master-script.md`, preserve the standard opening order: `Opening`,
    `Disclaimer`, `Podcast introduction`, then `What the ACS is asking you to
    connect`. The first Announcer line repeats that heading.

@@ -96,7 +96,21 @@ The reviewing agent must check that:
 - each callback and call-forward within the episode points to an idea that has already been taught or is specifically introduced later; and
 - the lesson can be understood on a first listen, rather than relying on the listener to reread a dense sentence or infer an unstated connection.
 
-The reviewer should return findings tied to a section and passage, distinguishing required fixes from optional wording suggestions. The drafting agent or lead editor resolves the required findings before script approval. Record the review, material changes, and any consciously deferred suggestion in the episode `production-log.md`.
+The reviewer should return findings tied to a section and passage, distinguishing required fixes from optional wording suggestions. The drafting agent or lead editor resolves the required findings before source-relevance validation. Record the review, material changes, and any consciously deferred suggestion in the episode `production-log.md`.
+
+## Validate sources before human editorial review
+
+Human editorial review should begin with a source-validated draft. Do not wait until the end of production to discover that an otherwise clear lesson needs a factual rewrite.
+
+Use this order for every new draft:
+
+1. Complete the source-led draft package.
+2. Complete the independent spoken-script review.
+3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
+4. Run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every finding and rerun until the report is clean.
+5. Give that source-validated draft to the human editor.
+
+If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.
 
 ## Make the practical takeaway concrete
 

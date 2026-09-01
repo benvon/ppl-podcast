@@ -18,4 +18,4 @@ provenance:
   show_notes: show-notes.md
   audio_manifest: audio-manifest.yaml
   source_validation: link-validation.yaml
-  content_version: 0.2.1
+  content_version: 0.2.2

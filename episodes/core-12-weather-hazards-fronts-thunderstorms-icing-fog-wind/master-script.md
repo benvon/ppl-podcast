@@ -1,9 +1,9 @@
 # Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind
 
-**Version:** 0.2.1 — independent spoken-review revision
+**Version:** 0.2.2 — human editorial revision
 **Target runtime:** approximately 25–35 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Independent spoken-script review complete and required findings resolved; deterministic checks complete. Renewed formal source-relevance review and human editorial approval are pending. Not cleared for audio production or public release.
+**Production status:** Human editorial revisions and deterministic checks complete; renewed formal source-relevance review and human editorial reapproval are pending. Not cleared for audio production or public release.
 
 ## [00:00] Opening
 
@@ -111,7 +111,7 @@ Now move the fictional departure closer to the northern California coast. Moist 
 [Source: sources.yaml#awh-fog-advection-upslope]
 [Claim type: FAA guidance and teaching explanation]
 
-For that coastal version of the first leg, compare observations along the coast and inland with the forecast wind and temperature pattern. The available choices might be a later departure after documented improvement, an inland departure airport outside the fog area, or postponing the leg. “The morning fog should burn off” is not a planning answer because it does not identify the mechanism or the evidence of improvement.
+For that coastal version of the first leg, compare observations along the coast and inland with the forecast wind and temperature pattern. The available choices might be a later departure after observed and reported improvement, an inland departure airport outside the fog area, or postponing the leg. “The morning fog should burn off” is not a planning answer because it does not identify the mechanism or the evidence of improvement.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard and teaching scenario]
@@ -134,6 +134,16 @@ Ground topography and large buildings disturb wind flow and can produce gusts th
 [Source: sources.yaml#phak-obstruction-wind]
 [Claim type: FAA guidance]
 
+A mountain pass can present more than general turbulence. When wind crossing a ridge forms a mountain wave, the wave can contain broad updrafts and downdrafts. On the downwind side, a rotor—a rolling zone of air—can form near or below ridge level with potentially severe-to-extreme wind shear and turbulence.
+
+[Source: sources.yaml#awh-mountain-wave-hazards]
+[Claim type: FAA guidance]
+
+The AIM notes that mountain-wave activity can be difficult to forecast, highly localized, and short-lived. A forecast or report may therefore identify the possibility without revealing the exact strength and location inside a particular pass.
+
+[Source: sources.yaml#aim-mountain-wave-forecast-limits]
+[Claim type: FAA guidance and teaching explanation]
+
 **LEARNER:**
 
 So a regional wind forecast does not describe every valley, ridge, and runway on the western leg.
@@ -141,6 +151,11 @@ So a regional wind forecast does not describe every valley, ridge, and runway on
 **INSTRUCTOR:**
 
 Correct. For the planned mountain corridor, compare winds aloft and the forecast weather pattern with airport observations, gusts, pilot reports, and the terrain along that corridor. For a planned fuel stop within the corridor, compare the reported wind with the runway orientation and nearby terrain or buildings. Those are two different decisions. One concerns the route through terrain; the other concerns the air close to a particular runway.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching scenario]
+
+That uncertainty makes an escape option part of the plan. Before the route enters narrower or higher terrain, identify a decision point where the airplane can still stop at the corridor-entry airport or turn back toward open terrain without continuing through the pass. If the observations, forecasts, pilot reports, or wind cues no longer support the planned margin, use that option early. Do not press farther into the corridor to discover how strong a downdraft or rotor really is.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard and teaching scenario]
@@ -260,7 +275,7 @@ Place icing inside the frontal cross-section.
 
 **INSTRUCTOR:**
 
-Use two separate vertical slices for the icing question. The first cuts through the planned mountain corridor. The second cuts through the Plains front east of the western-Plains stopover. The same overlap test applies to each slice, but they represent different route segments and different decisions.
+For icing, replace the overhead map with a side view of the route, as if the ground and the air above it had been cut open. Make one side-view cross-section along the planned mountain corridor and a second along the Plains-front segment east of the western-Plains stopover. On each picture, place the terrain and obstacles, cloud layers, precipitation, the temperature profile including the altitude where it reaches zero degrees Celsius, and the proposed flight altitude. Two pictures are necessary because the western one asks whether terrain, cloud, and icing leave the mountain corridor usable, while the Plains one asks whether the airplane should remain at the stopover before the front. The overlap test is the same, but the route segments and decisions are different.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard and teaching scenario]
@@ -275,7 +290,7 @@ Supercooled liquid-water content, temperature, and droplet size are the weather 
 [Source: sources.yaml#awh-icing-factors]
 [Claim type: FAA guidance]
 
-For the planned mountain-corridor slice, place the altitude where forecast temperature reaches zero degrees Celsius, cloud layers, precipitation, terrain, and proposed flight altitude on the same picture. A surface temperature above freezing at the corridor fuel stop does not answer whether cloud along the planned mountain corridor contains supercooled liquid water at the proposed altitude.
+In the mountain-corridor cross-section, rising terrain may reach into the cloud layer while the proposed altitude is below freezing. A surface temperature above freezing at the corridor fuel stop does not answer whether cloud along the planned mountain corridor contains supercooled liquid water at the proposed altitude.
 
 [Source: sources.yaml#awh-icing-supercooled-water]
 [Claim type: FAA guidance and teaching scenario]
@@ -290,12 +305,22 @@ On the windward side of mountains, upward currents can support large supercooled
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Claim type: FAA guidance]
 
-Now use the separate Plains-front slice. Below a front, freezing rain or freezing drizzle is a favored location for severe clear icing and can extend horizontally across a broad area.
+Now use the separate Plains-front cross-section. Below a front, freezing rain or freezing drizzle is a favored location for severe clear icing and can extend horizontally across a broad area.
 
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Claim type: FAA guidance and teaching scenario]
 
-The two decisions must remain separate. For the western-terrain slice, use the planned mountain corridor only if the selected altitude avoids the subfreezing-liquid-water overlap while preserving terrain and VFR cloud-clearance margins; otherwise stop at the corridor entry or wait. For the Plains-front slice, remain at the western-Plains stopover while the proposed eastbound leg overlaps frontal cloud or freezing precipitation. Changing altitude does not solve a segment when another altitude loses terrain or VFR cloud clearance.
+The learner's first planning response may be, “Could I descend into warmer air?” That question checks temperature alone, but temperature is only one part of the route cross-section.
+
+[Source: sources.yaml#awh-icing-supercooled-water]
+[Claim type: FAA guidance and teaching explanation]
+
+But warmer air below does not automatically create a safe or usable VFR altitude. In the western cross-section, lower air may contain terrain or obstacles, and the cloud base may leave no altitude that preserves both terrain clearance and VFR cloud clearance. In the Plains cross-section, a lower altitude may still be inside frontal cloud or freezing precipitation, or the ground may remove the needed margin.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching scenario]
+
+The two decisions must therefore remain separate. Use the planned mountain corridor only if the selected altitude avoids the subfreezing-liquid-water overlap while preserving terrain and VFR cloud-clearance margins; otherwise stop at the corridor entry or wait. Remain at the western-Plains stopover while the proposed eastbound leg overlaps frontal cloud or freezing precipitation. A different altitude solves the planning problem only when it also remains usable for that segment.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard and teaching scenario]
@@ -305,12 +330,17 @@ Small roughness from frost, snow, or ice on a wing can reduce lift and increase 
 [Source: sources.yaml#awh-icing-effects]
 [Claim type: FAA guidance and teaching explanation]
 
-The evidence about frost, snow, or ice also belongs in the morning inspection at each stopover.
+The evidence about frost, snow, or ice also belongs in the aircraft exterior preflight inspection each morning at every stopover, especially the wing's leading edge and upper surface and the other exposed surfaces just named.
 
 [Source: sources.yaml#awh-icing-effects]
 [Claim type: FAA guidance and teaching explanation]
 
-The conservative study habit is to recognize contamination and forecast icing before launch, use the intended airplane's approved information, and avoid building a plan that depends on an encounter to reveal whether the forecast was right.
+Here, contamination means frost, snow, or ice roughening the wing's lifting surface or collecting on other exposed aircraft surfaces. The concern is not merely added weight. That roughness can reduce lift and increase drag before the accumulation looks dramatic.
+
+[Source: sources.yaml#awh-icing-effects]
+[Claim type: FAA guidance and teaching explanation]
+
+The conservative study habit is to recognize that contamination and forecast icing before launch, then use the intended airplane's approved information to set decision points and alternatives before exposure. The plan should already say where to stop, wait, or turn back if the icing overlap remains. Entering the cloud or precipitation to find out whether the forecast was right is not the test.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard and teaching explanation]
@@ -349,10 +379,15 @@ All thunderstorms contain aviation hazards in different combinations. Not every 
 [Source: sources.yaml#awh-thunderstorm-hazards]
 [Claim type: FAA guidance and teaching explanation]
 
-For our eastbound leg, the conservative choice is made at the western Plains stopover. If the front and developing cells block the route, keep the airplane on the ground west of the convective area. A small gap between growing cells is not an alternate route.
+For our eastbound leg, the conservative choice is made at the western Plains stopover. If the front and developing cells block the route, keep the airplane on the ground west of the convective area. A small visual gap between growing cells is not an alternate route. The opening can narrow as the cells grow, and committing to a path between them can leave no safe exit. Weaving between cells is not a planning strategy.
 
 [Source: sources.yaml#awh-thunderstorm-avoidance]
 [Claim type: FAA guidance and teaching scenario]
+
+The gap can also contain hazardous conditions even when it appears clear of the visible rain. Cool gust-front outflow can extend well ahead of the parent cells, so the space between radar echoes is not necessarily the space between thunderstorm effects.
+
+[Source: sources.yaml#awh-thunderstorm-lifecycle]
+[Claim type: FAA guidance and teaching explanation]
 
 A route far around the entire area is a different proposal that needs its own fuel, daylight, terrain, landing, and weather evaluation.
 
@@ -426,7 +461,7 @@ Nearby terrain and structures can disturb the wind and produce gusts or turbulen
 [Source: sources.yaml#phak-obstruction-wind]
 [Claim type: FAA guidance and teaching scenario]
 
-The wind calculation is not the entire arrival decision. Compare gust spread, runway width and surface, reported turbulence, pilot recency, personal minimums, and the intended airplane's POH or AFM. Then use the difference established at the start of the scenario: the Wisconsin alternate has a different runway orientation and lies outside the fog or convective-outflow area affecting the Wisconsin primary. Continue to the Wisconsin primary only when its runway components and surrounding weather preserve the planned margin. Otherwise, use the Wisconsin alternate only when its current observations and forecast confirm the distinct runway and weather advantage. If both destinations are affected, remain at the previous stop.
+The wind calculation is not the entire arrival decision. Compare gust spread, runway width and surface, reported turbulence, pilot recency, personal minimums, and the intended airplane's POH or AFM. Then use the difference established at the start of the scenario: the Wisconsin alternate has a different runway orientation and lies outside the fog or convective-outflow area that may be affecting the Wisconsin primary. Continue to the Wisconsin primary only when its runway components and surrounding weather preserve the planned margin. Otherwise, use the Wisconsin alternate only when its current observations and forecast confirm the distinct runway and weather advantage. If both destinations are affected, remain at the previous stop.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard and teaching scenario]
@@ -600,7 +635,7 @@ The route and altitude must overlap subfreezing temperature and supercooled liqu
 [Source: sources.yaml#awh-icing-supercooled-water]
 [Claim type: FAA guidance]
 
-I use one cross-section for the planned mountain corridor and a separate cross-section for the Plains front. In each, I place the altitude where temperature reaches zero degrees Celsius, cloud, precipitation, terrain, and proposed flight altitude, then consider the lifting mechanism for that route segment. For the Plains-front slice, freezing rain or freezing drizzle below the front is a favored location for severe clear icing and can extend across a broad area.
+I picture two side views rather than one overhead map. The first looks along the planned mountain corridor; the second looks along the Plains-front segment east of the western-Plains stopover. In each, I place terrain and obstacles, cloud, precipitation, the temperature profile including the altitude where it reaches zero degrees Celsius, and the proposed flight altitude. Then I consider the lifting mechanism for that route segment. For the Plains-front cross-section, freezing rain or freezing drizzle below the front is a favored location for severe clear icing and can extend across a broad area.
 
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Claim type: FAA guidance and teaching explanation]

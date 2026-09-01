@@ -4,11 +4,11 @@ title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
 slug: weather-hazards-fronts-thunderstorms-icing-fog-wind
 track: core
 status: editorial_review_pending
-version: 0.2.1
+version: 0.2.2
 published_at: null
 runtime_target_minutes: 35
 runtime_actual_seconds: null
-word_count: 4708
+word_count: 5188
 speakers:
   - instructor
   - learner
@@ -22,9 +22,10 @@ acs_references:
   - PA.I.C.S1-S3
 phak_references:
   - "FAA-H-8083-25C, Chapter 12: Weather Theory"
-  - FAA-H-8083-28B, Aviation Weather Handbook, Chapters 11, 18, 20, and 22
+  - FAA-H-8083-28B, Aviation Weather Handbook, Chapters 11, 16, 18, 20, and 22
   - FAA-H-8083-3C, Airplane Flying Handbook, Chapter 9
-aim_references: []
+aim_references:
+  - AIM 4-6-6.a.3(a), Mountain Wave Activity
 advisory_circular_references: []
 cfr_references: []
 learning_objectives:
@@ -49,6 +50,8 @@ learning_objectives:
     arrival decisions.
   - Connect large-scale wind with western terrain, local obstructions, Wisconsin
     runway components, airplane and pilot capability, and low-level wind shear.
+  - Recognize mountain-wave downdrafts, rotors, and forecast uncertainty, then
+    preserve a viable stop or turnaround before entering narrower terrain.
   - "Name the exact conservative option for each proposed leg: delay, different
     corridor, stopover, or destination outside the affected area."
 trouble_spots:
@@ -68,11 +71,11 @@ trouble_spots:
     usable alternatives instead of naming the source comparison, route segment,
     and specific delay, corridor, stopover, or destination choice.
 source_verification:
-  status: source_relevance_complete
-  verified_at_utc: 2026-09-01T21:42:40.783Z
+  status: source_relevance_pending
+  verified_at_utc: null
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: complete
+  relevance_review: pending
 review:
   editorial_status: reapproval_required
   editorial_script_sha256: null
@@ -80,7 +83,7 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 1a3e6530bcf77c9347c2f2f4693003243e3664815bb8a1b9cb5e4f44d8ac73c9
+  pending_script_sha256: 134df285c8728d4c85cf76f1cb5bd24809306a9e091cf20690aaafdc627d9f3b
 release_gates_remaining:
   - Complete renewed formal source-relevance validation for the redrafted script
     and package.

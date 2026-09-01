@@ -39,6 +39,8 @@ The Learner asks the next reasonable question; the Learner does not supply a con
 
 If the Learner makes a leap, move the missing explanation into the preceding Instructor turn or replace the turn with a more basic question. A sentence that sounds like a correction to something nobody said is usually a sign that the dialogue needs restructuring.
 
+Use the same discipline in a Retrieval review. An Instructor question followed by a Learner answer is especially effective when the Instructor asks one bounded recall question and the Learner rebuilds the causal chain and decision in short, source-tagged paragraphs. Preserve that pattern when it works; do not collapse a clear exchange into an unprompted monologue or a rapid catalog of facts.
+
 The Announcer only orients the listener. Keep an intercession to a short phrase or one plain sentence; do not use it to carry a definition, caveat, or new technical claim.
 
 Use the written section heading as the Announcer's text whenever it reads naturally aloud. If it needs shortening, retain its subject and point; do not replace it with a clever or generic transition that makes the listener guess what comes next.

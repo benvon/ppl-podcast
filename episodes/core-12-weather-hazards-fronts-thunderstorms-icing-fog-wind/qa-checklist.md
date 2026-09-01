@@ -11,6 +11,7 @@
 - [x] Before any audio render, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package.
 - [x] Before any audio render, show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.
 - [x] Independent spoken-script review completed by a second agent that did not draft version 0.2.1. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; all four required findings were resolved and useful optional wording refinements were applied.
+- [x] Human editorial feedback was incorporated in version 0.2.2 while preserving the route scenario and the Instructor-question/Learner-answer Retrieval review format; renewed source relevance and human reapproval remain pending.
 - [x] The full lesson is organized around the hypothetical northern California-to-Wisconsin route, and the script states that the scenario is not a live briefing, recommended route, or operational prescription.
 - [x] Each planning conclusion names the proposed route segment and a specific later departure, different corridor, stopover, or destination choice rather than using vague alternatives.
 - [x] The front mental picture identifies the chart line as the analyzed surface reference, describes the boundary sloping over colder air, and explains why associated weather can occupy a larger three-dimensional volume.

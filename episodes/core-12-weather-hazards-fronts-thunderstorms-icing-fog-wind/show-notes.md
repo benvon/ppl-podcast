@@ -1,8 +1,8 @@
 # Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind
 
 **Episode:** core-12
-**Version:** 0.2.1
-**Source verification:** A human-requested route-scenario redraft superseded the previously validated draft. Independent spoken-script review is complete and its required findings are resolved. The final clear-icing qualifier mismatch from formal source-relevance review is resolved; a clean formal rerun remains pending.
+**Version:** 0.2.2
+**Source verification:** Human editorial revisions clarified mountain-pass wind hazards, the icing cross-sections and preflight decision points, and convective-gap avoidance. The script-review state has been reset; renewed formal source-relevance validation and human reapproval are pending.
 
 ## In this episode
 
@@ -40,13 +40,15 @@
 - [Aviation Weather Handbook — steam fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=227)
 - [PHAK Chapter 12 — atmospheric circulation and wind](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7)
 - [PHAK Chapter 12 — terrain and obstruction effects on wind](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=8)
+- [Aviation Weather Handbook — mountain-wave downdrafts and rotors](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199)
+- [Aeronautical Information Manual — mountain-wave forecast limits](https://www.faa.gov/air_traffic/publications/atpubs/aim/aim0406.html#GWtW21cbmweb)
 - [PHAK Chapter 12 — low-level wind shear and microbursts](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=11)
 - [Airplane Flying Handbook — runway wind components](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=18)
 - [Airplane Flying Handbook — crosswind component chart and capability](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=19)
 
 ## How to use the sources
 
-Start with the PHAK pages for the front, wind, terrain, and wind-shear mental models used along the route. Use the current Aviation Weather Handbook pages for the scenario's fog, icing, thunderstorm, and delayed-radar questions. Use the ACS page to test whether each proposed leg ends in a named delay, corridor, stopover, or destination decision. The Airplane Flying Handbook links supply complementary runway-component context; aircraft-specific values and procedures belong to the current POH or AFM for the airplane being flown.
+Start with the PHAK pages for the front, wind, terrain, and wind-shear mental models used along the route. Use the current Aviation Weather Handbook pages for the scenario's mountain-wave, fog, icing, thunderstorm, and delayed-radar questions, and the AIM for the localized forecast limits of mountain-wave activity. Use the ACS page to test whether each proposed leg ends in a named delay, corridor, stopover, or destination decision. The Airplane Flying Handbook links supply complementary runway-component context; aircraft-specific values and procedures belong to the current POH or AFM for the airplane being flown.
 
 ## Correction status
 

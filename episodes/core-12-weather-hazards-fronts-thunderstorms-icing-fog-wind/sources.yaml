@@ -38,6 +38,30 @@ sources:
     link_status: 200
     supports_claims: [obstruction-terrain-turbulence]
 
+  - id: awh-mountain-wave-hazards
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 16, Trapped Lee Waves and Persistent Horizontal Roll Vortices (Rotors), pp. 16-10 to 16-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Mountain waves can contain larger-scale updraft and downdraft motions. A rotor zone can develop near or below ridge level on the downwind side of a mountain and may contain potentially severe-to-extreme wind shear and turbulence."
+    verified_at_utc: "2026-09-01T23:26:06Z"
+    link_status: 200
+    supports_claims: [mountain-wave-downdraft-rotor]
+
+  - id: aim-mountain-wave-forecast-limits
+    authority: faa_guidance
+    title: "Aeronautical Information Manual"
+    document_id: "AIM"
+    locator: "Section 4-6-6.a.3(a), Mountain Wave Activity"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim/aim0406.html#GWtW21cbmweb"
+    revision: "Current online AIM section verified September 1, 2026"
+    relevance_excerpt: "Mountain-wave activity can occur below as well as above RVSM airspace and can be difficult to forecast, highly localized, and short-lived."
+    verified_at_utc: "2026-09-01T23:26:06Z"
+    link_status: 200
+    supports_claims: [mountain-wave-forecast-variability]
+
   - id: phak-low-level-wind-shear
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"

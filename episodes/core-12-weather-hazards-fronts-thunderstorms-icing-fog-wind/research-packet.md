@@ -8,7 +8,7 @@
 - Reusable route roles: the planned mountain corridor through western terrain; the western-Plains stopover before the frontal crossing; the Wisconsin primary destination; and the Wisconsin alternate with a different runway orientation outside the primary's shared fog or convective-outflow area.
 - Core question: For each proposed leg, what weather mechanism is active, where is the hazard in three dimensions and time, which sources or cues should agree, and which specific delay, corridor, stopover, or destination choice preserves margin?
 - Primary anchor: FAA-H-8083-25C, *Pilot's Handbook of Aeronautical Knowledge*, Chapter 12.
-- Current weather guidance: FAA-H-8083-28B, *Aviation Weather Handbook*, April 2026.
+- Current weather guidance: FAA-H-8083-28B, *Aviation Weather Handbook*, April 2026, including Chapter 16 mountain-wave hazards; and the current AIM mountain-wave forecast-limits discussion.
 - Decision standard: FAA-S-ACS-6C, Private Pilot Airplane ACS, Weather Information task.
 - Complementary airplane context: FAA-H-8083-3C, *Airplane Flying Handbook*, Chapter 9, limited to runway-wind components and airplane capability.
 - Out of scope: exact airport or altitude selection; live product interpretation; maneuver instruction; thunderstorm penetration; icing escape procedures; aircraft-specific anti-ice or deice operation; regulatory VFR weather minimums; mountain-flying technique.
@@ -17,10 +17,10 @@
 
 1. Unfold a multi-day northern California-to-Wisconsin plan and divide it into proposed legs instead of making one coast-to-Midwest go/no-go decision.
 2. At the northern California departure, compare inland radiation fog with coastal advection fog so the mechanism determines what improvement evidence is needed.
-3. At western terrain, separate the regional wind pattern from terrain- and obstruction-shaped flow along the planned mountain corridor and at its fuel stop; add upslope fog where moist stable air climbs terrain.
+3. At western terrain, separate the regional wind pattern from terrain- and obstruction-shaped flow along the planned mountain corridor and at its fuel stop. Add mountain-wave downdrafts, rotor and wind-shear hazards, the limits of precise forecasting, and a decision point with a viable stop or turnaround before narrower terrain; add upslope fog where moist stable air climbs terrain.
 4. Before the Plains, treat a charted front as the surface intersection of a sloping three-dimensional boundary. Compare analyzed and forecast positions with temperature, wind, pressure, cloud, precipitation, freezing-level, advisory, and pilot-report information.
 5. Use warm, cold, stationary, and occluded names to change the route and time question, never as a guaranteed weather script.
-6. Apply the same icing-overlap test to two separate cross-sections: the planned mountain corridor and the Plains front east of the western-Plains stopover. Each segment keeps its own cloud, precipitation, terrain, lift, altitude, and decision.
+6. Build two side-view route cross-sections for the icing-overlap test: one along the planned mountain corridor and one along the Plains front east of the western-Plains stopover. Each view places terrain and obstacles, cloud, precipitation, temperature, and proposed altitude together, then leads to its own decision.
 7. Stop west of a Plains cold front when moisture, instability, and lift support developing thunderstorms. Treat the gust front and other hazards as extending beyond visible rain.
 8. Use delayed data-linked radar for strategic avoidance, not to choose a narrow tactical gap; divert and wait on the ground when the thunderstorm area cannot be navigated around.
 9. At Wisconsin, turn reported wind into runway components, then compare gusts, obstructions, pilot and airplane capability, fog, convective outflow, and low-level wind shear between the Wisconsin primary and the already-defined Wisconsin alternate.
@@ -41,10 +41,10 @@
 ## First-listen causal chains
 
 - Front: unlike air masses meet → the boundary slopes over colder air → lifting can cool air toward saturation → cloud, precipitation, visibility, turbulence, convection, or icing can occupy a volume larger than the surface line → the pilot compares route and time with current information.
-- Thunderstorm: moisture plus instability plus lift → growing cell → mature updraft and downdraft → surface outflow and gust front → hazards can extend beyond visible rain and delayed imagery → stop or route around the entire area rather than aim for a gap.
-- Icing: subfreezing air plus supercooled liquid water → impact freezing on exposed aircraft surfaces → airflow and system effects can begin before ice looks dramatic → avoid the overlap in the route plan and use the airplane's approved information.
+- Thunderstorm: moisture plus instability plus lift → growing cell → mature updraft and downdraft → surface outflow and gust front → a visual gap can narrow or contain outflow and leave no safe exit → stop or route around the entire area rather than weave between cells.
+- Icing: subfreezing air plus supercooled liquid water → impact freezing on exposed aircraft surfaces → roughness on the wing's lifting surface and ice on other exposed surfaces can affect airflow and systems before accumulation looks dramatic → use separate side-view cross-sections and establish stop, wait, or turnaround decisions before exposure.
 - Fog: air reaches saturation at the surface through radiation cooling, advection over a cold surface, upslope cooling, precipitation into cold near-saturated air, or cold air over warmer water → the mechanism identifies the relevant trend and forecast evidence → departure, stopover, or destination changes only after documented improvement.
-- Wind: regional atmospheric motion → terrain and obstructions reshape local flow → runway orientation separates along-runway and crosswind components → gusts and wind shear can change the arrival margin → compare a named primary and alternate destination.
+- Wind: regional atmospheric motion → terrain and obstructions reshape local flow → mountain waves can add downdrafts, rotors, and wind shear whose precise location is difficult to forecast → preserve a stop or turnaround before narrower terrain → runway orientation separates along-runway and crosswind components → compare a named primary and alternate destination.
 
 ## Editorial controls for this redraft
 
@@ -60,6 +60,7 @@
 
 - PHAK Chapter 12, pp. 12-18 to 12-21: front symbols, cross-sections, and warm, cold, stationary, and occluded models.
 - AWH Chapter 20, pp. 20-5 to 20-6: frontal and terrain icing cross-sections.
+- AWH Chapter 16, pp. 16-10 to 16-11: mountain-wave updrafts, downdrafts, and rotor-zone hazards.
 - AWH Chapter 22, pp. 22-2 to 22-3: thunderstorm ingredients and cell life cycle.
 - AWH Chapter 22, pp. 22-7 to 22-10: downburst, microburst, and outflow diagrams.
 - AFH Chapter 9, pp. 9-18 to 9-19: runway-wind components and component chart.
@@ -68,10 +69,11 @@
 
 - Earlier source-validated draft: superseded September 1, 2026 by the human-requested route-scenario architectural redraft.
 - Script-review reset before material redraft: complete September 1, 2026; the prior source-relevance and editorial state is invalid for version 0.2.1.
-- Route-scenario research packet, source-tagged master script, claim section mapping, show notes, metadata, and mechanical narration derivative: complete for version 0.2.1.
-- Independent spoken-script review by a non-drafting agent: complete September 1, 2026; four required findings and the useful optional wording refinements are resolved in version 0.2.1.
-- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, all 93 repository tests, disclosure/secret scan, and whitespace checks: complete for version 0.2.1.
-- Final formal-review qualifier mismatch: resolved by restoring the source-required `clear` qualifier to the severe-clear-icing statement in the Plains-front passage and Retrieval review; a clean formal rerun remains pending.
-- Renewed formal source-relevance validation with `--require-llm`: pending and intentionally not run during this redraft task.
-- Human editorial approval: pending after independent spoken review and renewed formal source relevance.
+- Route-scenario research packet, source-tagged master script, claim section mapping, show notes, metadata, and mechanical narration derivative: complete for version 0.2.2.
+- Independent spoken-script review by a non-drafting agent: complete September 1, 2026; four required findings and the useful optional wording refinements were resolved in version 0.2.1.
+- Formal source-relevance validation: version 0.2.1 passed September 1, 2026. The later human editorial revisions invalidate that approval for version 0.2.2.
+- Human editorial feedback: incorporated in version 0.2.2, including the mountain-wind escape plan, two side-view icing cross-sections, aircraft exterior preflight and contamination clarifications, pre-exposure icing decisions, and the no-weaving thunderstorm explanation.
+- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, all 93 repository tests, disclosure/secret scan, YAML parsing, and whitespace checks: complete for version 0.2.2.
+- Renewed formal source-relevance validation with `--require-llm`: pending and intentionally not run during this human editorial task.
+- Human editorial reapproval: pending after renewed formal source relevance.
 - Audio rendering, listening QA, staging, release, and publication: not started.

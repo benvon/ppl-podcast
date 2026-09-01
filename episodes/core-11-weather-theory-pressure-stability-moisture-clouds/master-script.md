@@ -3,7 +3,7 @@
 **Version:** 0.2.2 — source-bound revision
 **Target runtime:** approximately 45 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Editorial and source-relevance review are complete. The revised narration requires a new audio render, listening QA, chapter review, and publication-day source validation before hosting.
+**Production status:** Editorial and source-relevance review are complete. The current source-bound candidate render requires script-aligned listening QA, chapter review, and publication-day source validation before hosting.
 
 ## [00:00] Opening
 

@@ -114,6 +114,11 @@ function showNotesRecordCompletedSourceReview(showNotes, version) {
     && /\bsource-relevance review is complete\b/i.test(sourceVerification);
 }
 
+function hasExactVisibleVersion(markdown, version) {
+  const visibleVersion = String(markdown).match(/^\*\*Version:\*\*\s*(.+?)\s*$/im)?.[1] || "";
+  return new RegExp(`^${escapeRegExp(version)}(?:\\s+[—–-]\\s+.+)?$`).test(visibleVersion);
+}
+
 function hasResolvedIndependentSpokenScriptReview(productionLog) {
   return markdownSections(productionLog).some((section) => {
     const [heading, ...bodyLines] = section.split("\n");
@@ -157,10 +162,10 @@ function validateDraftPackageShape({ episodePath, paths, episode, hosting, sourc
   const errors = [];
   expect(errors, PACKAGE_SHAPE_COMPATIBLE_STATUSES.has(episode.status), "episode.yaml status must be a recognized package-shape state.");
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
-  expect(errors, masterScript.includes(`**Version:** ${episode.version}`), "master-script.md version must match episode.yaml.");
+  expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
   const productionStatus = masterScript.match(/^\*\*Production status:\*\*\s*(.+)$/im)?.[1] || "";
   expect(errors, Boolean(productionStatus) && !/(?:editorial|source-relevance) review\s+(?:is|are)\s+pending\b/i.test(productionStatus), "master-script.md production status must not leave completed editorial or source review pending.");
-  expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && showNotes.includes(`**Version:** ${episode.version}`), "show-notes.md episode and version must match episode.yaml.");
+  expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode and version must match episode.yaml.");
   expect(errors, showNotesRecordCompletedSourceReview(showNotes, episode.version), "show-notes.md must record the completed source review for the current version.");
   expect(errors, researchPacket.includes("Human editorial review and script approval are complete."), "research-packet.md must record completed human editorial review.");
   expect(errors, new RegExp(`source-relevance review passed for version ${escapeRegExp(episode.version)}\\b`, "i").test(researchPacket), "research-packet.md must record the completed source review for the current version.");
@@ -217,7 +222,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
   expect(errors, episode.source_verification?.show_notes_manifest === "show-notes-manifest.yaml", "episode.yaml must reference show-notes-manifest.yaml.");
   expect(errors, episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
-  expect(errors, masterScript.includes(`**Version:** ${episode.version}`), "master-script.md version must match episode.yaml.");
+  expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
   expect(errors, /\*\*Production status:\*\*.*hosting/i.test(masterScript), "master-script.md production status must reflect the ready-for-hosting handoff.");
   try {
     expect(errors, deriveNarration(masterScript) === narration, "narration.md must be the current derivative of master-script.md.");
@@ -314,4 +319,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, PreHostingValidationError, durationDisplay, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, validateDraftPackageShape, validatePreHosting };
+module.exports = { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, PreHostingValidationError, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, validateDraftPackageShape, validatePreHosting };

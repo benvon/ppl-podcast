@@ -30,14 +30,15 @@
 - [x] Opening preview was accepted before full rendering; the required notice follows immediately.
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.”
 - [x] Five-segment opening and ASOS/AWOS/ATIS pronunciation previews were listened to and accepted before full rendering.
-- [ ] Re-render the source-bound version 0.2.2 narration, then listen against the master script with numbers, units, acronyms, and warnings checked.
+- [x] Source-bound version 0.2.2 narration was rendered as the current candidate.
+- [ ] Listen to the current candidate against the master script with numbers, units, acronyms, and warnings checked.
 - [ ] Confirm that no clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the revised candidate.
 - [ ] Manually review revised chapter markers: the list starts at `00:00`, uses useful listener-facing section labels, and each marker begins before the corresponding material.
-- [ ] Confirm the revised render manifest records a passing `ffprobe` chapter validation for the final MP3.
+- [x] The current candidate render manifest records a passing `ffprobe` chapter validation for the final MP3.
 
 ## Release
 
-- [x] FAA/eCFR links and revisions were re-verified on publication day.
-- [x] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
+- [ ] FAA/eCFR links and revisions were re-verified on publication day.
+- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
 - [ ] After publication, Apple Podcasts and Overcast are checked for the final embedded chapter list.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

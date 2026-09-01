@@ -1,9 +1,9 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
-**Version:** 0.2.2 — source-bound revision
+**Version:** 0.2.3 — source-bound revision
 **Target runtime:** approximately 45 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Editorial and source-relevance review are complete. The current source-bound candidate render requires script-aligned listening QA, chapter review, and publication-day source validation before hosting.
+**Production status:** Editorial and source-relevance review are complete. The revised narration requires a new audio render, listening QA, chapter review, and publication-day source validation before hosting.
 
 ## [00:00] Opening
 
@@ -43,7 +43,7 @@ The remaining knowledge elements include temperature and heat exchange, moisture
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA regulatory standard]
 
-The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements also include the decisions to continue or divert and the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
+The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements call for identifying, assessing, and mitigating risks associated with the decisions to continue or divert and with the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
 
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA regulatory standard]
@@ -138,7 +138,7 @@ Air is invisible, but it has mass, takes up space, and has weight. Atmospheric p
 [Source: sources.yaml#phak-pressure-reference-altitude]
 [Claim type: FAA guidance]
 
-Separate a unit from a reference. Inches of mercury, hectopascals, and millibars are pressure units, much as feet and meters are length units. Hectopascals and millibars are equivalent. Twenty-nine point nine two inches of mercury and one thousand thirteen point two millibars are the same standard-atmosphere pressure reported in different units.
+Separate a unit from a reference. Inches of mercury, hectopascals, and millibars are pressure units, much as feet and meters are length units. Hectopascals and millibars are equivalent. Twenty-nine point nine two inches of mercury and one thousand thirteen point two millibars are the same standard sea-level pressure reference reported in different units.
 
 [Source: sources.yaml#phak-pressure-reference-altitude]
 [Source: sources.yaml#awh-pressure-units-station]
@@ -550,7 +550,14 @@ Retrieval review.
 
 **INSTRUCTOR:**
 
-Build the chain from the beginning. Air has mass and weight, so it exerts pressure, and pressure generally decreases with altitude. Station pressure is measured at field elevation. Normalized sea-level pressure lets weather charts compare the regional pattern. The reported altimeter setting supports the airplane's altitude indication. Pressure altitude and density altitude use the standard atmosphere for performance relationships. Each reference answers a different question about the same atmosphere.
+Build the chain from the beginning. Air has mass and weight, so it exerts pressure, and pressure generally decreases with altitude. Station pressure is the actual pressure at field elevation. Normalized sea-level pressure lets weather charts compare the regional pattern. The reported altimeter setting is the value set so the altimeter indicates true altitude at field elevation. Pressure altitude associates measured static pressure with the standard 29.92 reference. Density altitude corrects pressure altitude for nonstandard temperature as an index of aircraft performance. Each reference answers a different question about the same atmosphere.
+
+[Source: sources.yaml#awh-pressure-units-station]
+[Source: sources.yaml#awh-sea-level-pressure-reference]
+[Source: sources.yaml#awh-altimeter-setting-reference]
+[Source: sources.yaml#awh-pressure-altitude-reference]
+[Source: sources.yaml#awh-density-altitude-reference]
+[Claim type: FAA guidance]
 
 Unequal heating changes temperature and density. Warmed, less-dense air can begin to rise. This starts the vertical-motion part of the chain.
 

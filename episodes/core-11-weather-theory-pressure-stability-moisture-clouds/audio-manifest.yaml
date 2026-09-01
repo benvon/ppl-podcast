@@ -1,37 +1,16 @@
 episode_id: "core-11"
-status: candidate_rendered_pending_listening_qa
+status: not_rendered
 publication_day_validation: pending
 reason: >-
-  Script version 0.2.2 has a technically validated candidate render. Its
-  changed source-bound narration segments were re-rendered, while exact
-  verified segment inputs were reused. Script-aligned human listening QA,
-  manual chapter review, and publication-day validation remain pending.
-current_candidate_render:
-  script_version: 0.2.2
-  rendered_at_utc: "2026-09-01T00:34:26.068Z"
-  provider: openai-realtime
-  renderer: scripts/render_episode_realtime.cjs
-  renderer_version: 12
-  model: gpt-realtime-2.1
-  voices: {instructor: marin, learner: cedar, announcer: ballad}
-  mp3: "audio-artifacts/core-11-20260901T003413Z.mp3"
-  lossless_master: "audio-artifacts/core-11-20260901T003413Z.master.wav"
-  render_manifest: "audio-artifacts/core-11-20260901T003413Z.render-manifest.json"
-  audio_quality_report: "audio-artifacts/core-11-20260901T003413Z.audio-quality.json"
-  chapter_review: "audio-artifacts/core-11-20260901T003413Z.mp3.chapters.e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667.html"
-  segment_work_dir: "audio-artifacts/core-11-realtime-20260831T202200Z.segments"
-  duration_seconds: 2544.44
-  duration_display: "42:24"
-  codec: mp3
-  sample_rate_hz: 24000
-  channels: 1
-  sha256: "e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667"
-  front_matter_validation: "The revised candidate reuses the unchanged Opening and Disclaimer segments; the renderer confirms the required front matter is included."
-  spoken_input_transform: "Standalone AI expands to artificial intelligence; PHAK is read as pee hack; ASOS, AWOS, and ATIS use their established spoken forms only in voice-model input; envelope receives a silent noun-stress instruction. The written script remains unchanged."
-  music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade."
-  usage_estimate_usd: 3.569105
-  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 70 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA and manual chapter review remain pending. Audio artifacts are Git-ignored."
+  Source-review corrections changed the source-bound version 0.2.3 narration.
+  A new candidate render, script-aligned human listening QA, manual chapter
+  review, and publication-day validation are required before hosting.
+current_candidate_render: null
 superseded_candidates:
+  - script_version: 0.2.2
+    mp3: "audio-artifacts/core-11-20260901T003413Z.mp3"
+    sha256: "e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667"
+    superseded_reason: "Source-review corrections changed the narration after this candidate was rendered."
   - script_version: 0.2.2
     mp3: "audio-artifacts/core-11-20260901T000641Z.mp3"
     sha256: "246e473b514023b2db8c1722026c978058d9ec37b3151424243610cc2655264e"
@@ -63,11 +42,11 @@ opening_preview:
   front_matter_validation: "The opening preview was accepted after the required Disclaimer was heard. Renderer preflight confirms that the Opening is immediately followed by the Disclaimer segment."
   spoken_input_transform: "Standalone AI expands to artificial intelligence; PHAK is read as pee hack. The written script remains unchanged."
 chapter_markers:
-  status: embedded_and_ffprobe_validated_pending_manual_review
+  status: pending_render
   source: "master-script.md section headings"
-  audio_sha256: "e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667"
+  audio_sha256: null
   required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
-  review_page: "audio-artifacts/core-11-20260901T003413Z.mp3.chapters.e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667.html"
+  review_page: null
 required_before_release:
   - "Complete human listening QA against master-script.md."
   - "Confirm chapter titles and starts are useful and correctly aligned during listening QA."

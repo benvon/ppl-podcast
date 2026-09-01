@@ -35,7 +35,7 @@ The Private Pilot for Airplane Category Airman Certification Standards puts this
 
 The remaining knowledge elements include temperature and heat exchange, moisture and precipitation, weather-system formation, clouds, turbulence, thunderstorms, icing, fog, frost, and obstructions to visibility. That is a broad list, but the list is not the lesson. The lesson is how those conditions connect.
 
-The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements also include the decisions to continue or divert and the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
+The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements call for identifying, assessing, and mitigating risks associated with the decisions to continue or divert and with the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
 
 **LEARNER:**
 
@@ -103,7 +103,7 @@ Pressure and its reference systems.
 
 Air is invisible, but it has mass, takes up space, and has weight. Atmospheric pressure is the force per unit area produced by the weight of the air above a surface. Near sea level, there is a deeper column of air overhead than there is high in the atmosphere. As altitude increases and the column above becomes shorter, pressure decreases and the air becomes less dense. That is the physical idea beneath every pressure reference in this section.
 
-Separate a unit from a reference. Inches of mercury, hectopascals, and millibars are pressure units, much as feet and meters are length units. Hectopascals and millibars are equivalent. Twenty-nine point nine two inches of mercury and one thousand thirteen point two millibars are the same standard-atmosphere pressure reported in different units.
+Separate a unit from a reference. Inches of mercury, hectopascals, and millibars are pressure units, much as feet and meters are length units. Hectopascals and millibars are equivalent. Twenty-nine point nine two inches of mercury and one thousand thirteen point two millibars are the same standard sea-level pressure reference reported in different units.
 
 **LEARNER:**
 
@@ -377,7 +377,7 @@ Retrieval review.
 
 **INSTRUCTOR:**
 
-Build the chain from the beginning. Air has mass and weight, so it exerts pressure, and pressure generally decreases with altitude. Station pressure is measured at field elevation. Normalized sea-level pressure lets weather charts compare the regional pattern. The reported altimeter setting supports the airplane's altitude indication. Pressure altitude and density altitude use the standard atmosphere for performance relationships. Each reference answers a different question about the same atmosphere.
+Build the chain from the beginning. Air has mass and weight, so it exerts pressure, and pressure generally decreases with altitude. Station pressure is the actual pressure at field elevation. Normalized sea-level pressure lets weather charts compare the regional pattern. The reported altimeter setting is the value set so the altimeter indicates true altitude at field elevation. Pressure altitude associates measured static pressure with the standard 29.92 reference. Density altitude corrects pressure altitude for nonstandard temperature as an index of aircraft performance. Each reference answers a different question about the same atmosphere.
 
 Unequal heating changes temperature and density. Warmed, less-dense air can begin to rise. This starts the vertical-motion part of the chain.
 

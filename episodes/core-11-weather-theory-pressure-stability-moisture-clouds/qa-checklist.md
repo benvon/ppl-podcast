@@ -30,11 +30,10 @@
 - [x] Opening preview was accepted before full rendering; the required notice follows immediately.
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.”
 - [x] Five-segment opening and ASOS/AWOS/ATIS pronunciation previews were listened to and accepted before full rendering.
-- [x] Source-bound version 0.2.2 narration was rendered as the current candidate.
-- [ ] Listen to the current candidate against the master script with numbers, units, acronyms, and warnings checked.
-- [ ] Confirm that no clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the revised candidate.
-- [ ] Manually review revised chapter markers: the list starts at `00:00`, uses useful listener-facing section labels, and each marker begins before the corresponding material.
-- [x] The current candidate render manifest records a passing `ffprobe` chapter validation for the final MP3.
+- [ ] Render the source-bound version 0.2.3 narration, then listen against the master script with numbers, units, acronyms, and warnings checked.
+- [ ] Confirm that no clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the version 0.2.3 candidate.
+- [ ] Manually review version 0.2.3 chapter markers: the list starts at `00:00`, uses useful listener-facing section labels, and each marker begins before the corresponding material.
+- [ ] Confirm the version 0.2.3 render manifest records a passing `ffprobe` chapter validation for the final MP3.
 
 ## Release
 

@@ -118,3 +118,9 @@
 - Final source-bound relevance-validation run `6c7c22de-8791-49e2-9777-2ae6e725fd6b` passed at `2026-09-01T00:30:07.134Z`: all 34 cited sources, 34 show-note links, 54 claims, and 78 source-tagged passages support version 0.2.2.
 - Rendered candidate `audio-artifacts/core-11-20260901T003413Z.mp3` from the current `narration.md` derivative. It reuses 60 segments whose exact Realtime input matched and re-rendered 10 corrected segments. Automated quality analysis passed 24 kHz mono decode, duration agreement, all 70 stitch-boundary checks with no warning, no clipped samples, and embedded MP3 chapter validation.
 - The candidate is checksum-bound to `e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667`. Full script-aligned human listening QA and manual chapter review remain pending.
+
+## 2026-09-01 — retrieval-review source coverage repair
+
+- PR review identified that the Retrieval review restated station pressure, normalized sea-level pressure, altimeter setting, pressure altitude, and density altitude without source tags or claim-section coverage. Added the five exact Aviation Weather Handbook source tags and included `Retrieval review` in the corresponding claim mappings.
+- Source relevance exposed two compressed restatements outside that new coverage: the standard-pressure wording now preserves its sea-level reference, and the ACS risk-management summary now includes identifying, assessing, and mitigating risk. The pressure retrieval recap now retains the defined altimeter-setting, pressure-altitude, and density-altitude relationships.
+- These spoken changes supersede the version 0.2.2 candidate. The source-bound relevance-validation run `ab188dc4-ee88-41b1-b316-0d01bdd1e935` passed at `2026-09-01T02:05:52.389Z` for version 0.2.3: all 34 cited sources, 34 show-note links, 54 claims, and 87 tagged passages support the current package. A new audio render and its listening and chapter QA are required before hosting.

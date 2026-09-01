@@ -347,6 +347,10 @@ test("master-script source tags must name real sources in the claim's declared s
     const ledger = { sources: [source("source-a", ["claim-a"])] };
     const claims = { claims: [{ id: "claim-a", sources: ["source-a"], script_sections: ["Lesson section"] }] };
     assert.equal(validateMasterScriptSourceMappings(temporary, ledger, claims).valid, true);
+    fs.writeFileSync(path.join(temporary, "master-script.md"), "# Test\n\n## Lesson section\n\n**INSTRUCTOR:**\n\nAn untagged teaching statement.\n", "utf8");
+    const untagged = validateMasterScriptSourceMappings(temporary, ledger, claims);
+    assert.equal(untagged.valid, false);
+    assert.match(untagged.errors.join("\n"), /contains no source tags/);
     fs.writeFileSync(path.join(temporary, "master-script.md"), "# Test\n\n## Lesson section\n\n**INSTRUCTOR:**\n\nA sourced teaching statement.\n\n[Source: sources.yaml#wrong-source]\n", "utf8");
     const unknownSource = validateMasterScriptSourceMappings(temporary, ledger, claims);
     assert.equal(unknownSource.valid, false);
@@ -354,7 +358,14 @@ test("master-script source tags must name real sources in the claim's declared s
     fs.writeFileSync(path.join(temporary, "master-script.md"), "# Test\n\n## Other section\n\n**INSTRUCTOR:**\n\nA sourced teaching statement.\n\n[Source: sources.yaml#source-a]\n", "utf8");
     const wrongSection = validateMasterScriptSourceMappings(temporary, ledger, claims);
     assert.equal(wrongSection.valid, false);
-    assert.match(wrongSection.errors.join("\n"), /claim-a has no declared source tag in its script section/);
+    assert.match(wrongSection.errors.join("\n"), /claim-a has no declared source tag in script section: Lesson section/);
+    const repeatedClaims = { claims: [{ id: "claim-a", sources: ["source-a"], script_sections: ["Lesson section", "Retrieval review"] }] };
+    fs.writeFileSync(path.join(temporary, "master-script.md"), "# Test\n\n## Lesson section\n\n**INSTRUCTOR:**\n\nA sourced teaching statement.\n\n[Source: sources.yaml#source-a]\n", "utf8");
+    const incompleteRepeatedCoverage = validateMasterScriptSourceMappings(temporary, ledger, repeatedClaims);
+    assert.equal(incompleteRepeatedCoverage.valid, false);
+    assert.match(incompleteRepeatedCoverage.errors.join("\n"), /script section: Retrieval review/);
+    fs.writeFileSync(path.join(temporary, "master-script.md"), "# Test\n\n## Lesson section\n\n**INSTRUCTOR:**\n\nA sourced teaching statement.\n\n[Source: sources.yaml#source-a]\n\n## Retrieval review\n\n**INSTRUCTOR:**\n\nThe same sourced teaching statement is recalled.\n\n[Source: sources.yaml#source-a]\n", "utf8");
+    assert.equal(validateMasterScriptSourceMappings(temporary, ledger, repeatedClaims).valid, true);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

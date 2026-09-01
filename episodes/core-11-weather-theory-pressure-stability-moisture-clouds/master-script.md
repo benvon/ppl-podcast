@@ -268,6 +268,7 @@ First describe what happens within the rising parcel. Atmospheric pressure decre
 
 [Source: sources.yaml#phak-stability-adiabatic]
 [Source: sources.yaml#phak-lapse-moisture-inversion]
+[Source: sources.yaml#phak-pressure-reference-altitude]
 [Claim type: FAA guidance]
 
 Adiabatic does not mean that nothing happens. It means the temperature change in this model results from expansion or compression without heat transfer into or out of the parcel. Rising air does not cool merely because higher altitude is often colder. The selected air changes temperature because the surrounding pressure changes its volume.
@@ -311,6 +312,7 @@ Pressure patterns can supply broader evidence about vertical motion. In the Nort
 
 Reports, forecasts, and observed cloud development tell you how the atmosphere is actually behaving for the proposed flight.
 
+[Source: sources.yaml#phak-weather-theory-purpose]
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA guidance and Teaching explanation]
 
@@ -555,6 +557,9 @@ Unequal heating changes temperature and density. Warmed, less-dense air can begi
 Lift a parcel into lower pressure and it expands and cools. Bring it down into higher pressure and it compresses and warms. Stability asks what the parcel does after displacement. Stable air resists continued vertical motion. Unstable air supports growth when lift, moisture, and the surrounding temperature profile are favorable.
 
 Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with capacity at the current temperature and pressure. Dew point is the temperature reached when cooling with no change in pressure or water-vapor amount brings the air to saturation. Condensation or deposition then forms small droplets or ice crystals on nuclei. Those small particles scatter light, making the cloud visible.
+
+[Source: sources.yaml#phak-cloud-formation-low-clouds]
+[Source: sources.yaml#noaa-cloud-light-scattering]
 
 Air can reach saturation by moving over a cold surface, mixing, nighttime ground cooling, or lifting. Cloud formation needs water vapor, nuclei, and cooling to saturation. Layered clouds suggest stable structure. Vertical growth points toward rising air and instability. Cloud height and coverage, visibility, and precipitation turn that structure into operational information.
 

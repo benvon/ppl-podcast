@@ -42,7 +42,7 @@ function validateMasterScriptSourceMappings(episodePath, ledger, claimInventory)
   const scriptPath = path.join(episodePath, "master-script.md");
   if (!fs.existsSync(scriptPath)) return { valid: true, status: "not_configured", errors: [], source_tag_count: 0, claim_coverage_count: 0, passages_by_source: {} };
   const records = sourceTagRecords(fs.readFileSync(scriptPath, "utf8"));
-  if (!records.length) return { valid: true, status: "not_configured", errors: [], source_tag_count: 0, claim_coverage_count: 0, passages_by_source: {} };
+  if (!records.length) return { valid: false, status: "configured", errors: ["master-script.md contains no source tags"], source_tag_count: 0, claim_coverage_count: 0, passages_by_source: {} };
   const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
   const tagsBySection = new Map();
   const passagesBySource = new Map();
@@ -61,13 +61,9 @@ function validateMasterScriptSourceMappings(episodePath, ledger, claimInventory)
       errors.push(`claim ${claim.id} must declare at least one script section`);
       continue;
     }
-    const citedSources = new Set();
-    for (const section of claim.script_sections) for (const sourceId of tagsBySection.get(section) || []) citedSources.add(sourceId);
-    if (!claim.sources?.some((sourceId) => citedSources.has(sourceId))) {
-      errors.push(`claim ${claim.id} has no declared source tag in its script section${claim.script_sections.length === 1 ? "" : "s"}`);
-    } else {
-      claimCoverageCount += 1;
-    }
+    const uncoveredSections = claim.script_sections.filter((section) => !claim.sources?.some((sourceId) => tagsBySection.get(section)?.has(sourceId)));
+    if (uncoveredSections.length) errors.push(`claim ${claim.id} has no declared source tag in script section${uncoveredSections.length === 1 ? "" : "s"}: ${uncoveredSections.join(", ")}`);
+    else claimCoverageCount += 1;
   }
   return {
     valid: errors.length === 0,

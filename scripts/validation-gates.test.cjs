@@ -198,6 +198,11 @@ test("pre-hosting validation requires consistent release records", () => {
     const productionLogPath = path.join(episodePath, "production-log.md");
     const audioManifest = YAML.parse(fs.readFileSync(audioManifestPath, "utf8"));
     const episodeMetadata = YAML.parse(fs.readFileSync(episodeMetadataPath, "utf8"));
+    const staleEditorialApproval = { ...episodeMetadata, review: { ...episodeMetadata.review, editorial_script_sha256: "b".repeat(64) } };
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(staleEditorialApproval));
+    const staleEditorialResult = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(staleEditorialResult.valid, false); assert.match(staleEditorialResult.errors.join("\n"), /editorial approval must be bound to the current master-script/);
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(episodeMetadata));
     const hostingMetadata = YAML.parse(fs.readFileSync(hostingMetadataPath, "utf8"));
     const originalShowNotes = fs.readFileSync(showNotesPath, "utf8");
     const originalQaChecklist = fs.readFileSync(qaChecklistPath, "utf8");

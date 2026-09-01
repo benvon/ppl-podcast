@@ -227,6 +227,8 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
   expect(errors, episode.source_verification?.show_notes_manifest === "show-notes-manifest.yaml", "episode.yaml must reference show-notes-manifest.yaml.");
   expect(errors, episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
+  expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before final pre-hosting validation.");
+  expect(errors, episode.review?.editorial_script_sha256 === sha256Text(masterScript), "editorial approval must be bound to the current master-script.md bytes before final pre-hosting validation.");
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
   expect(errors, /\*\*Production status:\*\*.*hosting/i.test(masterScript), "master-script.md production status must reflect the ready-for-hosting handoff.");
   try {

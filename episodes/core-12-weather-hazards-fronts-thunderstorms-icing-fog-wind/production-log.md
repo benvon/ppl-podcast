@@ -123,3 +123,13 @@
 - Ran the required script-review reset and bound pending-review SHA-256 `134df285c8728d4c85cf76f1cb5bd24809306a9e091cf20690aaafdc627d9f3b`. The version 0.2.1 source-relevance approval is explicitly invalid for the edited script.
 - Deterministic validation passed with 30 sources, 37 reciprocal claims, 122 immediate master-script source tags, and 30 listener-facing show-note links; no network or OpenAI API request was made by the validator. All 93 repository tests, the disclosure and secret scan, YAML parsing, narration-derivative verification, and `git diff --check` passed.
 - Paid source relevance, audio rendering, staging, push, PR creation, publication, and human reapproval were not performed.
+
+## 2026-09-01 — revised scenario source-relevance validation passed
+
+- Formal source-relevance review run `e606ac77-9157-4985-a3e1-2891facd07de`, checked at `2026-09-01T23:39:36.949Z`, passed for version 0.2.2 with 30 FAA sources, 30 listener-facing show-note links, 37 claims, and 122 immediate master-script source tags.
+- The report is bound to master-script SHA-256 `134df285c8728d4c85cf76f1cb5bd24809306a9e091cf20690aaafdc627d9f3b`. The source-validated draft is ready to record the completed human editorial approval; audio rendering, hosting, release, and publication remain pending.
+
+## 2026-09-01 — human editorial approval recorded
+
+- Human editorial approval was recorded against the source-validated master-script SHA-256 `134df285c8728d4c85cf76f1cb5bd24809306a9e091cf20690aaafdc627d9f3b` after the renewed formal source-relevance review passed.
+- The next production gate is reusable opening audio QA, followed by the complete audio render and human listening and chapter-marker reviews.

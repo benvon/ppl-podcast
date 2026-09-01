@@ -1,8 +1,8 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
 **Episode:** core-11
-**Version:** 0.2.3
-**Source verification:** FAA and federal-science links, exact locators, show-note mappings, and source-tagged spoken passages are complete; source-relevance review is complete for version 0.2.3 as of September 1, 2026.
+**Version:** 0.2.7
+**Source verification:** FAA and federal-science links, exact locators, show-note mappings, and source-tagged spoken passages are complete; source-relevance review is complete for version 0.2.7 as of September 1, 2026.
 
 ## In this episode
 

@@ -37,7 +37,12 @@
    - Run formal source-relevance validation with `--require-llm`. Resolve every
      source, locator, claim, or source-tagged-passage finding and rerun it until
      it is clean. This validation must examine the tagged spoken passages, not
-     merely the claim inventory or source links.
+     merely the claim inventory or source links. Treat a Retrieval review as
+     source-bound teaching: every factual Instructor or Learner paragraph needs
+     immediate source tags, and each recalled claim must list `Retrieval review`
+     in its `script_sections`. Do not place one source tag after a paragraph
+     that also contains material facts from a different source; split the prose
+     at the source boundary so each tag has one exact supported passage.
    - Only then hand the source-validated draft to the human editor. If an
      editorial change alters factual spoken prose, source tags, claims, sources,
      or show notes, return it to source-relevance validation before rendering.

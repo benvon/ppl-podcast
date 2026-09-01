@@ -146,6 +146,10 @@ When a connected topic needs later treatment, use one short forward reference th
 
 Source tags are not decorative footnotes. Place each `[Source: sources.yaml#...]` tag immediately after the spoken paragraph it supports. For every material claim in `claim-inventory.yaml`, list the script section where it is taught and ensure that section includes at least one of that claim's declared sources. The source validator checks the tag names, the claim-to-section coverage, and the actual source-tagged passages during relevance review.
 
+A Retrieval review is not a citation-free summary. It repeats instructional facts. Every factual Instructor or Learner paragraph in `Retrieval review` needs its own immediate source tags, and every recalled claim must list `Retrieval review` in `script_sections`. The source contract rejects an untagged spoken Instructor or Learner paragraph in that section.
+
+Keep each tagged passage source-pure. If adjacent sentences rely on different sources, split them into separate paragraphs and place each source tag after the sentence or paragraph it actually supports. Do not use one source tag to make a mixed-source paragraph appear fully covered.
+
 If a revision changes a factual condition, definition, limitation, or example in `master-script.md`, regenerate `narration.md` and run a fresh source-relevance review before any render. The validation report is bound to the master-script hash as well as the source ledger, claim inventory, and show notes; an older report is intentionally stale after any of those inputs changes.
 
 ## Run a listener pass before approval

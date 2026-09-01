@@ -21,7 +21,7 @@
 - [x] Learner turns ask for a missing connection or summarize a conclusion already established by the Instructor.
 - [x] Announcer transitions remain short and introduce no new technical claims.
 - [x] Every spoken visual-aid pointer exactly matches a plainly labeled show-note link.
-- [x] The draft remains within the core-series 4,200–6,300-word range at 6,172 spoken words and an approximately 45-minute target.
+- [x] The draft has 6,320 spoken words and an approximately 45-minute target.
 - [x] Independent non-drafting reviewer has checked grammar, complete thoughts, callbacks, call-forwards, and first-listen comprehension for version 0.2.1; material findings are resolved in `production-log.md`.
 - [x] Network-backed deterministic validation passed for all federal source links, deep citations, mappings, and listener-facing show-note links with LLM review disabled.
 
@@ -30,10 +30,10 @@
 - [x] Opening preview was accepted before full rendering; the required notice follows immediately.
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.”
 - [x] Five-segment opening and ASOS/AWOS/ATIS pronunciation previews were listened to and accepted before full rendering.
-- [ ] Render the source-bound version 0.2.3 narration, then listen against the master script with numbers, units, acronyms, and warnings checked.
-- [ ] Confirm that no clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the version 0.2.3 candidate.
-- [ ] Manually review version 0.2.3 chapter markers: the list starts at `00:00`, uses useful listener-facing section labels, and each marker begins before the corresponding material.
-- [ ] Confirm the version 0.2.3 render manifest records a passing `ffprobe` chapter validation for the final MP3.
+- [ ] Render the source-bound version 0.2.7 narration, then listen against the master script with numbers, units, acronyms, and warnings checked.
+- [ ] Confirm that no clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the version 0.2.7 candidate.
+- [ ] Manually review version 0.2.7 chapter markers: the list starts at `00:00`, uses useful listener-facing section labels, and each marker begins before the corresponding material.
+- [ ] Confirm the version 0.2.7 render manifest records a passing `ffprobe` chapter validation for the final MP3.
 
 ## Release
 

@@ -6,6 +6,7 @@
 **Production status:** Draft; not flight instruction and not cleared for public release.
 
 <!-- Write each spoken paragraph as one normal Markdown line. Do not hard-wrap prose. -->
+<!-- A Retrieval review repeats instructional facts: source-tag every factual Instructor or Learner paragraph immediately and list Retrieval review in each recalled claim's script_sections. Keep each tagged passage limited to material supported by that source. -->
 
 ## [00:00] Opening
 

@@ -35,7 +35,7 @@ The Private Pilot for Airplane Category Airman Certification Standards puts this
 
 The remaining knowledge elements include temperature and heat exchange, moisture and precipitation, weather-system formation, clouds, turbulence, thunderstorms, icing, fog, frost, and obstructions to visibility. That is a broad list, but the list is not the lesson. The lesson is how those conditions connect.
 
-The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements call for identifying, assessing, and mitigating risks associated with the decisions to continue or divert and with the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
+The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements call for identifying, assessing, and mitigating risks associated with go or no-go decisions, continue or divert decisions, and the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
 
 **LEARNER:**
 
@@ -115,7 +115,9 @@ Begin with station pressure. Station pressure is the pressure measured at the ai
 
 For weather-pattern comparison, station pressure is adjusted, or normalized, to a common mean-sea-level reference. Normalizing the readings removes the elevation difference that would otherwise dominate the comparison. A surface weather chart can then use sea-level pressure to show how pressure varies across a region, including the arrangement of highs and lows, without making a high-elevation station look like a low-pressure weather system merely because it sits on higher terrain.
 
-The standard atmosphere is a fixed model of pressure, temperature, and density, not a report of today's atmosphere. Standard sea-level pressure is twenty-nine point nine two inches of mercury. It also provides the reference for pressure-altimeter calibration. Performance charts and pressure-altitude calculations need that unchanging baseline because the real atmosphere keeps changing.
+The standard atmosphere is a fixed model of pressure, temperature, and density, not a report of today's atmosphere. It provides the reference for pressure-altimeter calibration and performance calculations because the real atmosphere keeps changing.
+
+Standard sea-level pressure is twenty-nine point nine two inches of mercury. Pressure-altitude calculations use that standard-pressure baseline.
 
 These first references now have separate jobs. Station pressure describes pressure at the station's elevation. Sea-level pressure normalizes stations to a common level for weather-pattern comparison. The standard atmosphere supplies a fixed baseline for calibration and performance relationships. The next section adds the value a pilot receives and sets: the altimeter setting.
 
@@ -133,7 +135,7 @@ The altimeter setting value the pilot sets is the current reported altimeter set
 
 This is where mean sea level and above ground level become useful. Airport elevation is the highest point of an airport's usable runways, published in feet above mean sea level. An altitude stated in MSL uses that common baseline. A height in AGL, meaning above ground level, starts at the local surface beneath the point being described. If an airport elevation is one thousand feet MSL and the airplane is at three thousand feet MSL directly over that airport, the airplane is about two thousand feet above the airport. Terrain can rise or fall away from the field, so MSL altitude and AGL height answer different questions.
 
-A METAR shows why those references must stay separate. Its cloud-layer heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication. Some designated stations also include normalized sea-level pressure in the remarks. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
+A METAR shows why those references must stay separate. Its cloud-layer heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication. Some designated stations also include normalized sea-level pressure in the remarks as an SLP group in millibars. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
 
 Pressure altitude and density altitude complete the orientation. Pressure altitude uses the fixed standard setting of twenty-nine point nine two inches of mercury to associate measured pressure with a level in the standard atmosphere. Density altitude corrects pressure altitude for nonstandard temperature and expresses the density environment the airplane experiences for performance. Neither value is the airplane's geometric height above the ground. Episode 10 developed their performance use; here they show why a reference system is necessary when pressure and temperature are changing.
 
@@ -379,13 +381,13 @@ Retrieval review.
 
 Build the chain from the beginning. Air has mass and weight, so it exerts pressure, and pressure generally decreases with altitude. Station pressure is the actual pressure at field elevation. Normalized sea-level pressure lets weather charts compare the regional pattern. The reported altimeter setting is the value set so the altimeter indicates true altitude at field elevation. Pressure altitude associates measured static pressure with the standard 29.92 reference. Density altitude corrects pressure altitude for nonstandard temperature as an index of aircraft performance. Each reference answers a different question about the same atmosphere.
 
-Unequal heating changes temperature and density. Warmed, less-dense air can begin to rise. This starts the vertical-motion part of the chain.
+Unequal heating changes density and pressure, setting air in motion. Warming spreads air molecules and makes the air less dense. Cooling packs them more closely and makes the air denser. Warmed, less-dense air can begin to rise. This starts the vertical-motion part of the chain.
 
-Lift a parcel into lower pressure and it expands and cools. Bring it down into higher pressure and it compresses and warms. Stability asks what the parcel does after displacement. Stable air resists continued vertical motion. Unstable air supports growth when lift, moisture, and the surrounding temperature profile are favorable.
+Lift a parcel into lower pressure and it expands and cools. Bring it down into higher pressure and it compresses and warms. Stability is the atmosphere's resistance to vertical motion after that displacement. Stable air damps small vertical disturbances. Unstable air allows them to grow when lift, moisture, and the surrounding temperature profile are favorable.
 
-Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with capacity at the current temperature and pressure. Dew point is the temperature reached when cooling with no change in pressure or water-vapor amount brings the air to saturation. Condensation or deposition then forms small droplets or ice crystals on nuclei. Those small particles scatter light, making the cloud visible.
+Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with the amount the air can contain at its current temperature and pressure. Dew point is the temperature reached when cooling with no change in pressure or water-vapor amount brings the air to saturation. Condensation or deposition then forms small droplets or ice crystals on nuclei. Those small particles scatter light, making the cloud visible.
 
-Air can reach saturation by moving over a cold surface, mixing, nighttime ground cooling, or lifting. Cloud formation needs water vapor, nuclei, and cooling to saturation. Layered clouds suggest stable structure. Vertical growth points toward rising air and instability. Cloud height and coverage, visibility, and precipitation turn that structure into operational information.
+Air can reach saturation by moving over a cold surface, mixing warm and cold air, cooling through nighttime contact with the ground, or lifting and cooling. Cloud formation needs water vapor, nuclei, and cooling to saturation. Layered clouds suggest stable structure. Towering cumulus indicates instability, and cumulonimbus contains unstable air and substantial moisture and can produce hazardous weather. Cloud height and coverage, visibility, and precipitation turn that structure into operational information.
 
 Repeat four cloud-name parts as memory hooks. Cumulus means heaped or piled, so cumulo points toward a built-up shape. Stratus means formed in layers, so strato points toward a layer. Cirrus describes ringlets or fibrous clouds; in a compound name, cirro identifies the high-cloud family. Nimbus means rain-bearing.
 
@@ -401,7 +403,7 @@ Finally, reports and forecasts provide pieces of evidence, not an automatic deci
 
 **LEARNER:**
 
-Pressure references tell me what a pressure value is for. Temperature and density help move the air. Vertical motion changes the air parcel's temperature. Stability tells me whether the motion is suppressed or supported. Cooling can bring invisible water vapor to saturation, and droplets or crystals make the cloud visible. Reports, forecasts, and charts help me see where that chain exists or may develop.
+That gives me one connected model to use when reports, forecasts, and charts describe changing weather along a flight.
 
 **INSTRUCTOR:**
 

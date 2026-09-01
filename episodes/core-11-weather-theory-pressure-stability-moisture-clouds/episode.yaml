@@ -4,11 +4,11 @@ title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
 slug: "weather-theory-pressure-stability-moisture-clouds"
 track: "core"
 status: source_relevance_review_complete
-version: 0.2.3
+version: 0.2.7
 published_at: null
 runtime_target_minutes: 45
 runtime_actual_seconds: null
-word_count: 6305
+word_count: 6320
 speakers: [instructor, learner, announcer]
 audience: "U.S. private-pilot airplane learners"
 aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
@@ -45,7 +45,7 @@ trouble_spots:
   - "Treating one pressure system, report, or favorable weather value as a complete flight decision."
 source_verification:
   status: source_relevance_complete
-  verified_at_utc: "2026-09-01T02:05:52.389Z"
+  verified_at_utc: "2026-09-01T02:45:13.179Z"
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
@@ -56,8 +56,8 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Render the source-bound version 0.2.3 narration and complete script-aligned listening QA."
-  - "Confirm the version 0.2.3 MP3 chapter starts and titles during listening QA."
+  - "Render the source-bound version 0.2.7 narration and complete script-aligned listening QA."
+  - "Confirm the version 0.2.7 MP3 chapter starts and titles during listening QA."
   - "Re-verify every public source and link on publication day."
   - "Validate hosting metadata and external audio-store workflow."
 audio:

@@ -2,7 +2,7 @@ episode_id: "core-11"
 status: not_rendered
 publication_day_validation: pending
 reason: >-
-  Source-review corrections changed the source-bound version 0.2.3 narration.
+  Source-review corrections changed the source-bound version 0.2.7 narration.
   A new candidate render, script-aligned human listening QA, manual chapter
   review, and publication-day validation are required before hosting.
 current_candidate_render: null

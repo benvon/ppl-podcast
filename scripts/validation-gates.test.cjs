@@ -18,7 +18,7 @@ const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: par
 const { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
-const { sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { retrievalReviewUntaggedPassageErrors, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -383,6 +383,13 @@ test("master-script source tags must name real sources in the claim's declared s
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+test("retrieval review requires an immediate source tag for every spoken learner or instructor paragraph", () => {
+  const untagged = retrievalReviewUntaggedPassageErrors("## Retrieval review\n\n**ANNOUNCER:**\n\nRetrieval review.\n\n**INSTRUCTOR:**\n\nA factual recap.\n");
+  assert.deepEqual(untagged, ["Retrieval review spoken paragraph at line 9 has no source tag"]);
+  const tagged = retrievalReviewUntaggedPassageErrors("## Retrieval review\n\n**INSTRUCTOR:**\n\nA factual recap.\n\n[Source: sources.yaml#source-a]\n\n**LEARNER:**\n\nA sourced learner recap.\n\n[Source: sources.yaml#source-a]\n");
+  assert.deepEqual(tagged, []);
 });
 
 test("show-notes links must be declared and mapped to claims their source supports", () => {

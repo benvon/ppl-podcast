@@ -37,11 +37,39 @@ function sourceTagRecords(markdown) {
   return records;
 }
 
+function retrievalReviewUntaggedPassageErrors(markdown) {
+  const errors = [];
+  let section = null;
+  let speaker = null;
+  let pendingPassage = null;
+  const flush = () => {
+    if (pendingPassage) errors.push(`Retrieval review spoken paragraph at line ${pendingPassage.line} has no source tag`);
+    pendingPassage = null;
+  };
+  const lines = String(markdown).replace(/\r\n/g, "\n").split("\n");
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    const heading = line.match(/^##\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/);
+    if (heading) { flush(); section = heading[1]; speaker = null; continue; }
+    const speakerLabel = line.trim().match(/^\*\*([A-Z ]+):\*\*$/);
+    if (speakerLabel) { flush(); speaker = speakerLabel[1].trim(); continue; }
+    if (/^\[Source:\s*sources\.yaml#[^\]]+\]$/.test(line.trim())) { pendingPassage = null; continue; }
+    if (/^\[(?:Source|Claim type):/.test(line.trim()) || /^\*\*(?:Version|Target runtime|Speakers|Production status):/.test(line.trim()) || !line.trim()) continue;
+    if (section === "Retrieval review" && (speaker === "INSTRUCTOR" || speaker === "LEARNER")) {
+      flush();
+      pendingPassage = { line: index + 1 };
+    }
+  }
+  flush();
+  return errors;
+}
+
 function validateMasterScriptSourceMappings(episodePath, ledger, claimInventory) {
   const errors = [];
   const scriptPath = path.join(episodePath, "master-script.md");
   if (!fs.existsSync(scriptPath)) return { valid: true, status: "not_configured", errors: [], source_tag_count: 0, claim_coverage_count: 0, passages_by_source: {} };
-  const records = sourceTagRecords(fs.readFileSync(scriptPath, "utf8"));
+  const script = fs.readFileSync(scriptPath, "utf8");
+  const records = sourceTagRecords(script);
   if (!records.length) return { valid: false, status: "configured", errors: ["master-script.md contains no source tags"], source_tag_count: 0, claim_coverage_count: 0, passages_by_source: {} };
   const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
   const tagsBySection = new Map();
@@ -55,6 +83,7 @@ function validateMasterScriptSourceMappings(episodePath, ledger, claimInventory)
     if (!passagesBySource.has(record.source_id)) passagesBySource.set(record.source_id, new Set());
     if (record.passage) passagesBySource.get(record.source_id).add(record.passage);
   }
+  errors.push(...retrievalReviewUntaggedPassageErrors(script));
   let claimCoverageCount = 0;
   for (const claim of claimInventory.claims) {
     if (!Array.isArray(claim.script_sections) || !claim.script_sections.length) {
@@ -107,4 +136,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { retrievalReviewUntaggedPassageErrors, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };

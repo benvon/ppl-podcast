@@ -4,6 +4,7 @@
 
 - [ ] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
 - [ ] Every material claim has a declared source tag in its listed `master-script.md` section, and every source tag names a current source ledger entry.
+- [ ] Every factual Instructor or Learner paragraph in `Retrieval review` has immediate source tags, and each recalled claim lists `Retrieval review` in `script_sections`.
 - [ ] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
 - [ ] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
 - [ ] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`. It reports no unresolved deep-citation, link, locator-relevance, claim-relevance, or tagged-passage failure, and `episode.yaml` records `source_verification.relevance_review: complete`.

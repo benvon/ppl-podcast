@@ -1,9 +1,9 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
-**Version:** 0.2.3 — source-bound revision
+**Version:** 0.2.7 — source-bound revision
 **Target runtime:** approximately 45 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Editorial and source-relevance review are complete. The revised narration requires a new audio render, listening QA, chapter review, and publication-day source validation before hosting.
+**Production status:** Script approval and source-relevance review are complete; audio has not been rendered and release work remains pending.
 
 ## [00:00] Opening
 
@@ -43,7 +43,7 @@ The remaining knowledge elements include temperature and heat exchange, moisture
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA regulatory standard]
 
-The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements call for identifying, assessing, and mitigating risks associated with the decisions to continue or divert and with the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
+The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements call for identifying, assessing, and mitigating risks associated with go or no-go decisions, continue or divert decisions, and the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
 
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA regulatory standard]
@@ -161,9 +161,14 @@ For weather-pattern comparison, station pressure is adjusted, or normalized, to 
 [Source: sources.yaml#awh-sea-level-pressure-reference]
 [Claim type: FAA guidance]
 
-The standard atmosphere is a fixed model of pressure, temperature, and density, not a report of today's atmosphere. Standard sea-level pressure is twenty-nine point nine two inches of mercury. It also provides the reference for pressure-altimeter calibration. Performance charts and pressure-altitude calculations need that unchanging baseline because the real atmosphere keeps changing.
+The standard atmosphere is a fixed model of pressure, temperature, and density, not a report of today's atmosphere. It provides the reference for pressure-altimeter calibration and performance calculations because the real atmosphere keeps changing.
 
 [Source: sources.yaml#awh-standard-atmosphere-reference]
+[Claim type: FAA guidance]
+
+Standard sea-level pressure is twenty-nine point nine two inches of mercury. Pressure-altitude calculations use that standard-pressure baseline.
+
+[Source: sources.yaml#phak-pressure-reference-altitude]
 [Claim type: FAA guidance]
 
 These first references now have separate jobs. Station pressure describes pressure at the station's elevation. Sea-level pressure normalizes stations to a common level for weather-pattern comparison. The standard atmosphere supplies a fixed baseline for calibration and performance relationships. The next section adds the value a pilot receives and sets: the altimeter setting.
@@ -195,7 +200,7 @@ This is where mean sea level and above ground level become useful. Airport eleva
 [Source: sources.yaml#faa-pcg-airport-elevation]
 [Claim type: FAA guidance]
 
-A METAR shows why those references must stay separate. Its cloud-layer heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication. Some designated stations also include normalized sea-level pressure in the remarks. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
+A METAR shows why those references must stay separate. Its cloud-layer heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication. Some designated stations also include normalized sea-level pressure in the remarks as an SLP group in millibars. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
 
 [Source: sources.yaml#awh-metar-altimeter-cloud-bases]
 [Source: sources.yaml#awh-metar-sea-level-pressure]
@@ -559,16 +564,30 @@ Build the chain from the beginning. Air has mass and weight, so it exerts pressu
 [Source: sources.yaml#awh-density-altitude-reference]
 [Claim type: FAA guidance]
 
-Unequal heating changes temperature and density. Warmed, less-dense air can begin to rise. This starts the vertical-motion part of the chain.
+Unequal heating changes density and pressure, setting air in motion. Warming spreads air molecules and makes the air less dense. Cooling packs them more closely and makes the air denser. Warmed, less-dense air can begin to rise. This starts the vertical-motion part of the chain.
 
-Lift a parcel into lower pressure and it expands and cools. Bring it down into higher pressure and it compresses and warms. Stability asks what the parcel does after displacement. Stable air resists continued vertical motion. Unstable air supports growth when lift, moisture, and the surrounding temperature profile are favorable.
+[Source: sources.yaml#phak-heating-density-pressure]
+[Claim type: FAA guidance]
 
-Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with capacity at the current temperature and pressure. Dew point is the temperature reached when cooling with no change in pressure or water-vapor amount brings the air to saturation. Condensation or deposition then forms small droplets or ice crystals on nuclei. Those small particles scatter light, making the cloud visible.
+Lift a parcel into lower pressure and it expands and cools. Bring it down into higher pressure and it compresses and warms. Stability is the atmosphere's resistance to vertical motion after that displacement. Stable air damps small vertical disturbances. Unstable air allows them to grow when lift, moisture, and the surrounding temperature profile are favorable.
 
+[Source: sources.yaml#phak-stability-adiabatic]
+[Claim type: FAA guidance]
+
+Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with the amount the air can contain at its current temperature and pressure. Dew point is the temperature reached when cooling with no change in pressure or water-vapor amount brings the air to saturation. Condensation or deposition then forms small droplets or ice crystals on nuclei. Those small particles scatter light, making the cloud visible.
+
+[Source: sources.yaml#phak-lapse-moisture-inversion]
+[Source: sources.yaml#nws-dew-point-definition]
 [Source: sources.yaml#phak-cloud-formation-low-clouds]
 [Source: sources.yaml#noaa-cloud-light-scattering]
+[Claim type: FAA guidance and federal-science guidance]
 
-Air can reach saturation by moving over a cold surface, mixing, nighttime ground cooling, or lifting. Cloud formation needs water vapor, nuclei, and cooling to saturation. Layered clouds suggest stable structure. Vertical growth points toward rising air and instability. Cloud height and coverage, visibility, and precipitation turn that structure into operational information.
+Air can reach saturation by moving over a cold surface, mixing warm and cold air, cooling through nighttime contact with the ground, or lifting and cooling. Cloud formation needs water vapor, nuclei, and cooling to saturation. Layered clouds suggest stable structure. Towering cumulus indicates instability, and cumulonimbus contains unstable air and substantial moisture and can produce hazardous weather. Cloud height and coverage, visibility, and precipitation turn that structure into operational information.
+
+[Source: sources.yaml#phak-dewpoint-saturation-lifting]
+[Source: sources.yaml#phak-cloud-formation-low-clouds]
+[Source: sources.yaml#phak-cloud-families-vertical]
+[Claim type: FAA guidance]
 
 Repeat four cloud-name parts as memory hooks. Cumulus means heaped or piled, so cumulo points toward a built-up shape. Stratus means formed in layers, so strato points toward a layer. Cirrus describes ringlets or fibrous clouds; in a compound name, cirro identifies the high-cloud family. Nimbus means rain-bearing.
 
@@ -578,6 +597,9 @@ Repeat four cloud-name parts as memory hooks. Cumulus means heaped or piled, so 
 **LEARNER:**
 
 Then a compound cloud name tells me which of those clues to combine.
+
+[Source: sources.yaml#phak-cloud-name-classifications]
+[Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
@@ -595,11 +617,17 @@ Finally, reports and forecasts provide pieces of evidence, not an automatic deci
 
 **LEARNER:**
 
-Pressure references tell me what a pressure value is for. Temperature and density help move the air. Vertical motion changes the air parcel's temperature. Stability tells me whether the motion is suppressed or supported. Cooling can bring invisible water vapor to saturation, and droplets or crystals make the cloud visible. Reports, forecasts, and charts help me see where that chain exists or may develop.
+That gives me one connected model to use when reports, forecasts, and charts describe changing weather along a flight.
+
+[Source: sources.yaml#phak-weather-theory-purpose]
+[Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
 That is the physical model. Episode 12 will use it to develop fronts, thunderstorms, icing, fog, and wind as practical hazards. Continue directly into that episode if you want to apply the theory now, and keep attaching each new weather term to this chain.
+
+[Source: sources.yaml#phak-weather-theory-purpose]
+[Claim type: FAA guidance]
 
 ## [44:35] Outro
 

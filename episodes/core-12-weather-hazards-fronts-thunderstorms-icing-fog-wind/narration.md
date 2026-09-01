@@ -49,11 +49,11 @@ Put the hypothetical route on the table.
 
 **INSTRUCTOR:**
 
-Our study plan divides the trip into several daytime VFR legs. It begins at a northern California airport, crosses western mountain country through a route selected during a real preflight process, continues across the Plains, and ends at a Wisconsin airport. We have not chosen exact airports or altitudes because current weather, terrain, aircraft performance, fuel, daylight, and pilot capability would control those choices in an actual plan.
+Our study plan divides the trip into several daytime VFR legs. It begins at a northern California airport, follows a hypothetical planned mountain corridor through western terrain, reaches a hypothetical western-Plains stopover before the frontal crossing, and ends at a hypothetical Wisconsin primary destination. A hypothetical Wisconsin alternate has a different runway orientation and lies outside the fog or convective-outflow area that could affect the Wisconsin primary. Those four labels will stay with us. They describe roles in the lesson, not real airports, a recommended route, or predetermined safe choices.
 
-On our imaginary planning morning, the broad picture raises four questions. Can surface visibility support the northern California departure? Can wind, cloud, temperature, and terrain leave a workable western crossing? Can the airplane remain well away from a cold front and developing thunderstorms over the Plains? And if the trip reaches Wisconsin later, do fog, runway wind, nearby obstructions, and possible wind shear leave a comfortable arrival and alternate-destination margin?
+On our imaginary planning morning, the broad picture raises four questions. Can surface visibility support the northern California departure? Can wind, cloud, temperature, and terrain leave the planned mountain corridor workable? Can the airplane remain at the western-Plains stopover until it can stay well away from a cold front and developing thunderstorms? And if the trip reaches Wisconsin later, do the Wisconsin primary and Wisconsin alternate provide meaningfully different margins for fog, runway wind, nearby obstructions, and possible wind shear?
 
-This is how we will avoid vague conclusions. We will not say that “the weather looks usable.” We will say which proposed leg is being judged, which observations and forecasts are being compared, and whether the specific choice is to depart later, follow a different corridor, stop before the hazard, or select another destination.
+This is how we will avoid vague conclusions. We will not say that “the weather looks usable.” We will say which proposed leg is being judged, which observations and forecasts are being compared, and whether the specific choice is to depart later, use the planned mountain corridor, remain at the western-Plains stopover, continue to the Wisconsin primary, or use the Wisconsin alternate.
 
 ## [03:45] Northern California departure: ask why visibility is low
 
@@ -99,11 +99,11 @@ So a regional wind forecast does not describe every valley, ridge, and runway on
 
 **INSTRUCTOR:**
 
-Correct. For the proposed mountain crossing, compare winds aloft and the forecast weather pattern with airport observations, gusts, pilot reports, terrain, and the selected corridor. For the proposed fuel stop, compare the reported wind with the runway orientation and nearby terrain or buildings. Those are two different decisions. One concerns the route through terrain; the other concerns the air close to a particular runway.
+Correct. For the planned mountain corridor, compare winds aloft and the forecast weather pattern with airport observations, gusts, pilot reports, and the terrain along that corridor. For a planned fuel stop within the corridor, compare the reported wind with the runway orientation and nearby terrain or buildings. Those are two different decisions. One concerns the route through terrain; the other concerns the air close to a particular runway.
 
 If moist, stable air is being pushed up sloping terrain farther east, the rising air can cool to its dew point and produce upslope fog. That mechanism can turn a broad terrain crossing or a High Plains stop into a ceiling-and-visibility problem rather than a small patch of fog at one airport.
 
-The route choices must therefore be named. A lower-terrain corridor that stays outside the cloud and strong-wind area, a stop before the higher terrain, or waiting for a later weather window are different plans. Calling all three “alternatives” hides the decision. A real briefing must establish which corridor, stopover, and departure time actually preserve terrain, cloud, wind, fuel, and daylight margins.
+The route choices must therefore be named. Using the planned mountain corridor only while it stays outside the cloud and strong-wind area, stopping at the corridor's entry airport before higher terrain, or waiting there for a later weather window are different plans. Calling all three “alternatives” hides the decision. A real briefing must establish whether that corridor, stop, and departure time preserve terrain, cloud, wind, fuel, and daylight margins.
 
 ## [08:45] A front on the route is a sloping volume
 
@@ -129,7 +129,7 @@ Right. The surface line gives a geographic reference, not the complete three-dim
 
 At the surface, the Aviation Weather Handbook identifies several cues that can support the front analysis: a temperature gradient, winds converging along the boundary, and pressure that typically falls before passage and rises after passage. These cues become more useful when their changes agree in location and time.
 
-For the proposed Plains crossing, compare the analyzed and forecast front positions with observations from stations before, near, and beyond the boundary. Ask whether the temperature contrast, wind change, and pressure trend support the forecast timing. Then compare route forecasts, advisories, and pilot reports for the cloud, visibility, precipitation, turbulence, convection, and freezing level expected in the volume surrounding the front.
+For the proposed Plains crossing east of the western-Plains stopover, compare the analyzed and forecast front positions with observations from stations before, near, and beyond the boundary. Ask whether the temperature contrast, wind change, and pressure trend support the forecast timing. Then compare route forecasts, advisories, and pilot reports for the cloud, visibility, precipitation, turbulence, convection, and altitudes where the temperature is forecast to reach zero degrees Celsius in the volume surrounding the front.
 
 ## [11:15] Front names change the route question
 
@@ -139,9 +139,9 @@ Front names change the route question.
 
 **INSTRUCTOR:**
 
-Suppose the line across our eastbound route is a warm front. Warmer air is advancing over colder air on a gradual slope. As that warm air rises and cools, cirriform or stratiform cloud and fog can form along the frontal boundary, and summer thunderstorms are possible.
+Suppose the line across our eastbound route is a warm front. Warmer air is advancing over colder air on a gradual slope. As that warm air rises and cools, high thin cloud, broad layered cloud, and fog can form along the frontal boundary, and summer thunderstorms are possible.
 
-The warm-front model tells us to look beyond the surface line into the colder air ahead of it. For the proposed Plains-to-Midwest leg, compare ceilings, visibility, precipitation, freezing-level information, and station trends across the broad area ahead of the front. A concrete response could be to remain at the western stopover until the front and its associated weather pass, or to select a more distant route around the affected region if fuel, daylight, and weather along that entire detour support it.
+The warm-front model tells us to look beyond the surface line into the colder air ahead of it. For the proposed Plains-to-Midwest leg, compare ceilings, visibility, precipitation, temperature aloft, and station trends across the broad area ahead of the front. The concrete response in our scenario is to remain at the western-Plains stopover until the front and its associated weather pass and current information supports a new eastbound plan.
 
 If the front is cold, colder air is advancing beneath warmer air and forcing the warm air upward. When a cold front moves quickly, friction can make the frontal surface steeper and concentrate weather in a narrower band. If the lifted warm air is unstable, showers or thunderstorms can form along or ahead of the front; stable warm air can instead produce overcast and rain.
 
@@ -149,7 +149,7 @@ That cold-front model focuses our next question. Will the proposed eastbound leg
 
 A stationary front forms when the opposing air-mass forces are relatively equal, and the boundary can influence local weather for days.
 
-For our multi-day trip, that may mean the next planned leg and the following morning's leg remain affected. The specific options are to choose a stopover outside the affected area, delay the trip until the route improves, or choose a route around the stalled boundary with verified fuel, daylight, and landing options.
+For our multi-day trip, that may mean the next planned leg and the following morning's leg remain affected. The specific response is to keep the western-Plains stopover for another night or end the trip there until current information supports an eastbound leg that stays outside the affected area.
 
 An occluded front forms when a faster cold front catches a slower warm front. The name describes how the boundaries came together; it does not promise one simple cloud or precipitation sequence for our route.
 
@@ -165,17 +165,21 @@ Place icing inside the frontal cross-section.
 
 **INSTRUCTOR:**
 
-Return to the imaginary vertical slice through the western mountains and the front. Structural icing requires liquid water that remains unfrozen below zero degrees Celsius and then freezes when it strikes the aircraft. Those droplets are supercooled. Subfreezing temperature by itself is not the complete setup; the planned route and altitude must also overlap liquid water in cloud or precipitation.
+Use two separate vertical slices for the icing question. The first cuts through the planned mountain corridor. The second cuts through the Plains front east of the western-Plains stopover. The same overlap test applies to each slice, but they represent different route segments and different decisions.
+
+Structural icing requires liquid water that remains unfrozen below zero degrees Celsius and then freezes when it strikes the aircraft. Those droplets are supercooled. Subfreezing temperature by itself is not the complete setup; the planned route and altitude must also overlap liquid water in cloud or precipitation.
 
 Supercooled liquid-water content, temperature, and droplet size are the weather quantities most closely related to icing type and severity. Aircraft type, design, and airspeed also affect the result.
 
-For the proposed western leg, place the freezing level, cloud layers, precipitation, terrain, and proposed altitude on the same cross-section. A surface temperature above freezing at the fuel stop does not answer whether cloud along the route contains supercooled liquid water at the planned altitude.
+For the planned mountain-corridor slice, place the altitude where forecast temperature reaches zero degrees Celsius, cloud layers, precipitation, terrain, and proposed flight altitude on the same picture. A surface temperature above freezing at the corridor fuel stop does not answer whether cloud along the planned mountain corridor contains supercooled liquid water at the proposed altitude.
 
-Then compare forecasts, advisories, pilot reports, and the intended airplane's approved equipment, limitations, and procedures.
+For that western-terrain decision, compare forecasts, advisories, pilot reports, and the intended airplane's approved equipment, limitations, and procedures before using the planned mountain corridor.
 
-Terrain and fronts can reshape that overlap. On the windward side of mountains, upward currents can support large supercooled droplets above the freezing level. When a front crosses a mountain range, frontal lift can combine with upslope flow. Below a front, freezing rain or freezing drizzle is a favored location for severe clear icing and can extend horizontally across a broad area.
+On the windward side of mountains, upward currents can support large supercooled droplets above the altitude where temperature reaches zero degrees Celsius. When a front crosses a mountain range, frontal lift can combine with upslope flow.
 
-The concrete planning decision is not to choose an altitude by looking at the freezing level alone. If one altitude overlaps subfreezing cloud and another altitude loses terrain or VFR cloud clearance, neither is made acceptable by the other altitude's problem. The choices may be a different corridor outside the cloud and precipitation, a stop before the affected terrain, or waiting for a weather pattern that removes the overlap.
+Now use the separate Plains-front slice. Below a front, freezing rain or freezing drizzle is a favored location for severe icing and can extend horizontally across a broad area.
+
+The two decisions must remain separate. For the western-terrain slice, use the planned mountain corridor only if the selected altitude avoids the subfreezing-liquid-water overlap while preserving terrain and VFR cloud-clearance margins; otherwise stop at the corridor entry or wait. For the Plains-front slice, remain at the western-Plains stopover while the proposed eastbound leg overlaps frontal cloud or freezing precipitation. Changing altitude does not solve a segment when another altitude loses terrain or VFR cloud clearance.
 
 Small roughness from frost, snow, or ice on a wing can reduce lift and increase drag. Ice can also collect on exposed frontal surfaces such as the propeller, windshield, antennas, vents, intakes, and cowlings. The hazard can change airflow and several aircraft systems before the accumulation looks dramatic.
 
@@ -209,11 +213,11 @@ For our eastbound leg, the conservative choice is made at the western Plains sto
 
 A route far around the entire area is a different proposal that needs its own fuel, daylight, terrain, landing, and weather evaluation.
 
-## [20:40] Use delayed radar to avoid the convective area
+## [20:40] Use delayed radar strategically to stay clear of the convective area
 
 **ANNOUNCER:**
 
-Use delayed radar to avoid the convective area.
+Use delayed radar strategically to stay clear of the convective area.
 
 **INSTRUCTOR:**
 
@@ -249,13 +253,13 @@ Use a crosswind component chart for the reported wind and selected runway. Compa
 
 Nearby terrain and structures can disturb the wind and produce gusts or turbulence close to a runway.
 
-The wind calculation is not the entire arrival decision. Compare gust spread, runway width and surface, reported turbulence, pilot recency, personal minimums, and the intended airplane's POH or AFM. Then compare the Wisconsin destination with a named alternate airport whose runway orientation and surrounding weather provide a genuinely better margin. An alternate with the same crosswind, fog, or convective outflow problem does not improve the plan.
+The wind calculation is not the entire arrival decision. Compare gust spread, runway width and surface, reported turbulence, pilot recency, personal minimums, and the intended airplane's POH or AFM. Then use the difference established at the start of the scenario: the Wisconsin alternate has a different runway orientation and lies outside the fog or convective-outflow area affecting the Wisconsin primary. Continue to the Wisconsin primary only when its runway components and surrounding weather preserve the planned margin. Otherwise, use the Wisconsin alternate only when its current observations and forecast confirm the distinct runway and weather advantage. If both destinations are affected, remain at the previous stop.
 
 Fog can return to this decision without repeating the California mechanism. Precipitation falling from warmer frontal air can evaporate or sublimate into colder air below that is already near its dew point and produce frontal fog.
 
 Very cold air moving over relatively warm water can also gain moisture and produce steam fog. Around Wisconsin lakes, that mechanism directs attention to a different source region and trend than inland radiation fog.
 
-The destination choice must therefore compare actual airport observations, nearby observations, and forecasts for the arrival window. If visibility at the primary and alternate is deteriorating for the same frontal reason, choosing between their runway numbers does not solve the visibility problem.
+The destination choice must therefore compare current observations at the Wisconsin primary, Wisconsin alternate, and nearby airports with forecasts for the arrival window. If visibility at both destinations is deteriorating for the same frontal reason, their different runway orientations do not solve the visibility problem.
 
 ## [25:40] Low-level wind shear can change the arrival before the rain
 
@@ -275,7 +279,7 @@ The arrival decision must compare the airport observation and alerts with nearby
 
 Low-level wind shear is evidence about a hazardous volume of air, not merely a forecast of a rough landing.
 
-If the primary destination or alternate reports wind shear, microburst alerts, or rapidly changing wind from nearby convection, the concrete choices are to remain at the previous stop, land at an airport well outside the convective outflow area, or wait on the ground until the hazard has passed and current information supports a new plan.
+If the Wisconsin primary reports wind shear, microburst alerts, or rapidly changing wind from nearby convection, the concrete choices are to remain at the previous stop or use the Wisconsin alternate only if current information confirms that it remains outside the convective-outflow area. Otherwise, wait on the ground until the hazard has passed and current information supports a new plan.
 
 ## [28:05] Re-plan the whole trip
 
@@ -285,9 +289,9 @@ Re-plan the whole trip.
 
 **INSTRUCTOR:**
 
-The northern California-to-Wisconsin line was never one decision. It was a chain of proposed legs. Fog could delay the first departure. Terrain, wind, cloud, and icing could change the western corridor or require a stop before higher terrain. A cold front and thunderstorms could end the travel day on the western Plains. Wisconsin fog, runway components, obstructions, and wind shear could change the destination.
+The northern California-to-Wisconsin line was never one decision. It was a chain of proposed legs. Fog could delay the first departure. Terrain, wind, cloud, and icing could close the planned mountain corridor and require a stop before higher terrain. A cold front and thunderstorms could keep the airplane at the western-Plains stopover. Wisconsin fog, runway components, obstructions, and wind shear could move the destination choice from the Wisconsin primary to the Wisconsin alternate, or keep both destinations out of the plan.
 
-Each change affects the next leg's fuel, daylight, overnight options, and weather window. That is why the conservative decision is not merely “go” or “no-go” for the whole map. It is a specific statement such as: delay the California departure until observations show sustained improvement; choose a lower-terrain corridor only after its full weather and fuel plan is acceptable; stop west of the Plains front; or use a Wisconsin destination outside the fog and convective outflow area with a more favorable runway.
+Each change affects the next leg's fuel, daylight, overnight options, and weather window. That is why the conservative decision is not merely “go” or “no-go” for the whole map. It is a specific statement such as: delay the California departure until observations show sustained improvement; use the planned mountain corridor only after its full weather and fuel plan is acceptable; remain at the western-Plains stopover; continue to the Wisconsin primary; or use the Wisconsin alternate when its different runway and location outside the shared hazard area provide a verified advantage.
 
 ## [29:15] Retrieval review
 
@@ -341,7 +345,7 @@ What overlap creates structural icing risk?
 
 The route and altitude must overlap subfreezing temperature and supercooled liquid water in cloud or precipitation.
 
-I place the freezing level, cloud, precipitation, terrain, and altitude in one cross-section. I also consider frontal and windward-mountain lifting.
+I use one cross-section for the planned mountain corridor and a separate cross-section for the Plains front. In each, I place the altitude where temperature reaches zero degrees Celsius, cloud, precipitation, terrain, and proposed flight altitude, then consider the lifting mechanism for that route segment.
 
 I compare that cross-section with the intended airplane's approved information.
 
@@ -391,7 +395,7 @@ I compare observations and forecasts for the active mechanism instead of assumin
 
 **INSTRUCTOR:**
 
-How do wind, terrain, runway geometry, and wind shear change the Wisconsin arrival?
+How do fog, the wind components for the available runways, nearby obstructions, and wind shear change the Wisconsin arrival?
 
 **LEARNER:**
 

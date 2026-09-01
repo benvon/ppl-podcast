@@ -84,3 +84,16 @@
 - Deterministic source validation passed with 28 sources, 35 reciprocal claims, 113 master-script source tags, and 28 show-note links; no network or API request was made. All 93 repository tests, the disclosure and secret scan, and `git diff --check` passed.
 - Package-only pre-host validation was exercised and failed closed at the expected pending gates: independent spoken-script review, renewed source relevance, human editorial approval, and current link-validation binding. The previous `link-validation.yaml` is intentionally stale for version 0.2.0.
 - Independent spoken-script review by a non-drafting agent remains pending for the lead agent to assign. Renewed paid source-relevance validation, human editorial approval, audio rendering, staging, release, publication, push, and PR creation were not performed.
+
+## 2026-09-01 — independent route-scenario review resolved
+
+- A non-drafting agent reviewed version 0.2.0 for grammar, complete thoughts and referents, internal callbacks and call-forwards, first-listen comprehension, scenario continuity, vague wording, and definitions at first useful introduction. All four required findings were resolved in version 0.2.1.
+- Defined four reusable hypothetical route roles near the beginning: the planned mountain corridor, western-Plains stopover, Wisconsin primary, and Wisconsin alternate with a different runway orientation outside the primary's shared fog or convective-outflow area. Replaced later placeholder corridors, stopovers, destinations, and airports with those roles.
+- Separated the icing lesson into one vertical cross-section through the planned mountain corridor and another through the Plains front east of the western-Plains stopover. Each segment now has its own overlap test and decision.
+- Defined the Wisconsin alternate before comparison, then made continuation to the Wisconsin primary, use of the Wisconsin alternate, or remaining at the previous stop depend on the distinct runway and weather information established for those roles.
+- Replaced the undefined listener-facing terms `cirriform`, `stratiform`, `freezing level`, and `clear icing` with plain-language descriptions at their first use.
+- Applied the useful optional refinements: renamed the delayed-radar section to emphasize strategic clearance from the convective area and expanded the Wisconsin retrieval prompt to name fog, runway wind components, nearby obstructions, and wind shear.
+- Mechanically regenerated `narration.md`. Version 0.2.1 contains 4,680 spoken words with an approximately 25–35 minute target.
+- Ran the repository-required post-edit script-review reset and bound the pending-review fingerprint to SHA-256 `3ba63b5568f9aeafb144c16843c71c2fc2f758f8f3312022b04fc0db90ee5e72`; prior source-relevance approval remains invalid.
+- Deterministic source validation passed with 28 sources, 35 reciprocal claims, 115 master-script source tags, and 28 show-note links; no network or API request was made. All 93 repository tests, the disclosure and secret scan, YAML parsing, narration-derivative verification, and `git diff --check` passed.
+- Renewed paid source-relevance validation, human editorial approval, audio rendering, staging, release, publication, push, and PR creation were not performed.

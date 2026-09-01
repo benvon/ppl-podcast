@@ -4,11 +4,11 @@ title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
 slug: weather-hazards-fronts-thunderstorms-icing-fog-wind
 track: core
 status: editorial_review_pending
-version: 0.2.0
+version: 0.2.1
 published_at: null
-runtime_target_minutes: 34
+runtime_target_minutes: 35
 runtime_actual_seconds: null
-word_count: 4461
+word_count: 4680
 speakers:
   - instructor
   - learner
@@ -31,6 +31,9 @@ learning_objectives:
   - Use a hypothetical multi-day VFR plan from northern California to Wisconsin
     to identify the mechanism, location, timing, evidence, and concrete planning
     response for each changing weather hazard.
+  - "Reuse four defined hypothetical planning roles: the planned mountain
+    corridor, western-Plains stopover, Wisconsin primary, and Wisconsin
+    alternate outside the primary's shared fog or convective-outflow area."
   - Explain why a surface front symbol marks the bottom reference of a sloping,
     three-dimensional boundary rather than the full edge of associated weather.
   - Use warm, cold, stationary, and occluded front models to ask route- and
@@ -39,9 +42,8 @@ learning_objectives:
     fronts, wind shear, strategic avoidance, and a stop-before-the-front choice.
   - Explain why delayed data-linked radar supports strategic thunderstorm
     avoidance and must not be the sole means for tactical path negotiation.
-  - Place subfreezing temperature, supercooled liquid water, cloud,
-    precipitation, terrain, altitude, and the intended airplane in one icing
-    cross-section.
+  - Apply the subfreezing-liquid-water overlap test separately to the planned
+    mountain-corridor and Plains-front cross-sections.
   - Use radiation, advection, upslope, frontal, and steam-fog mechanisms to
     compare a northern California departure with later route and Wisconsin
     arrival decisions.
@@ -78,9 +80,8 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 14700e06bc15c0ea74820abada9afd4cf956138cd09bfb6be78bf58da369f494
+  pending_script_sha256: 3ba63b5568f9aeafb144c16843c71c2fc2f758f8f3312022b04fc0db90ee5e72
 release_gates_remaining:
-  - Complete independent spoken-script review and resolve required findings.
   - Complete renewed formal source-relevance validation for the redrafted script
     and package.
   - Complete human editorial review and bind approval to the current master

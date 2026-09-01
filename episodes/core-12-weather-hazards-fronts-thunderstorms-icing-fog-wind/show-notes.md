@@ -1,15 +1,15 @@
 # Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind
 
 **Episode:** core-12
-**Version:** 0.2.0
-**Source verification:** A human-requested route-scenario redraft superseded the previously validated draft. Deterministic source, claim, script-tag, and show-note mappings pass; independent spoken-script review and renewed formal source-relevance validation are pending.
+**Version:** 0.2.1
+**Source verification:** A human-requested route-scenario redraft superseded the previously validated draft. Independent spoken-script review is complete and its required findings are resolved. Deterministic source, claim, script-tag, and show-note mappings pass; renewed formal source-relevance validation is pending.
 
 ## In this episode
 
-- Follow a hypothetical multi-day VFR plan from northern California to Wisconsin; the scenario is a study framework, not a live briefing or recommended route.
+- Follow four reusable roles in a hypothetical multi-day VFR plan: the planned mountain corridor, western-Plains stopover, Wisconsin primary, and Wisconsin alternate. The scenario is a study framework, not a live briefing or recommended route.
 - Picture a surface front symbol as the bottom reference of a sloping three-dimensional boundary, then compare the proposed route and timing with observed and forecast weather around it.
 - Use northern California coastal or inland fog, western terrain and wind, Plains frontal convection, and Wisconsin arrival conditions to introduce each term when it becomes useful.
-- Build a three-dimensional icing picture from subfreezing temperature, supercooled liquid water, cloud, precipitation, terrain, altitude, and the intended airplane.
+- Apply the same icing-overlap test to separate western-terrain and Plains-front cross-sections so each route segment leads to its own decision.
 - Use delayed data-linked radar for strategic thunderstorm avoidance, never as the sole means for negotiating a tactical path through a convective area.
 - Translate the analysis into a specific conservative choice: later departure, different corridor, stop before the front, or a destination outside fog and convective outflow with a more favorable runway.
 

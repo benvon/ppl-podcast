@@ -4,8 +4,8 @@ publisher_release:
   id: core-12
   guid: pplstudyguide.com:core-12
   title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
-  description: Follow a hypothetical multi-day VFR plan from northern California
-    to Wisconsin to recognize fronts, thunderstorms, icing, fog, wind, terrain
+  description: Follow defined hypothetical route roles from northern California to
+    Wisconsin to recognize fronts, thunderstorms, icing, fog, wind, terrain
     effects, runway components, and low-level wind shear in context.
   published_at: null
   duration: null
@@ -18,4 +18,4 @@ provenance:
   show_notes: show-notes.md
   audio_manifest: audio-manifest.yaml
   source_validation: link-validation.yaml
-  content_version: 0.2.0
+  content_version: 0.2.1

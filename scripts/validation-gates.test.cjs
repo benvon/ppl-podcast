@@ -542,7 +542,7 @@ test("PDF page extraction is cancelled and destroys the pending loading task", a
 
 test("source validation permits legacy show notes when no manifest is configured", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
-  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claims.yaml");
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml");
   fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
   fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n");
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Existing episode notes\n\n[Source](https://example.invalid)\n");
@@ -555,9 +555,27 @@ test("source validation permits legacy show notes when no manifest is configured
   }
 });
 
+test("source validation rejects alternate source and claim inputs", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-canonical-inputs-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml");
+  const alternateSourcesPath = path.join(temporary, "alternate-sources.yaml"); const alternateClaimsPath = path.join(temporary, "alternate-claims.yaml");
+  const sources = "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n";
+  const claims = "claims:\n  - id: claim-a\n    sources: [source-a]\n";
+  fs.writeFileSync(sourcesPath, sources); fs.writeFileSync(claimsPath, claims); fs.writeFileSync(alternateSourcesPath, sources); fs.writeFileSync(alternateClaimsPath, claims);
+  try {
+    for (const [selectedSources, selectedClaims] of [[alternateSourcesPath, claimsPath], [sourcesPath, alternateClaimsPath]]) {
+      const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", selectedSources, "--claims", selectedClaims, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
+      assert.equal(result.status, 1, result.stderr);
+      assert.match(result.stderr, /canonical episode package files/);
+    }
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("source validation dry runs fail when claim mappings are invalid", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
-  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claims.yaml");
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml");
   fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [missing-claim]\n");
   fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n");
   try {
@@ -1293,7 +1311,7 @@ test("post-assembly audio analysis rejects a clipped master WAV", () => {
 test("invalid claim mappings stop before source fetch and LLM assessment", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
   const sourcesPath = path.join(temporary, "sources.yaml");
-  const claimsPath = path.join(temporary, "claims.yaml");
+  const claimsPath = path.join(temporary, "claim-inventory.yaml");
   const reportPath = path.join(temporary, "report.yaml");
   fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
   fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [different-source]\n");

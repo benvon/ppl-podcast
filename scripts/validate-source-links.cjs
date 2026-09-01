@@ -906,7 +906,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   if (showNotesValidationConfigured && !showNotesFilePresent) throw new Error("show-notes-manifest.yaml requires show-notes.md");
   const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
   const episodePath = path.dirname(sourcesPath);
-  if (path.dirname(claimsPath) !== episodePath || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml")) throw new Error("source validation inputs must be the canonical episode package files");
+  if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml")) throw new Error("source validation inputs must be the canonical episode package files");
   const inputSha256 = sourceValidationInputHashes(episodePath);
   const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));

@@ -10,8 +10,11 @@
 - [ ] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`. It reports no unresolved deep-citation, link, locator-relevance, claim-relevance, or tagged-passage failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
 - [x] Before any audio render, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package.
 - [x] Before any audio render, show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.
-- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. This does not require an audit log.
-- [ ] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved.
+- [ ] Independent spoken-script review completed by a second agent that did not draft version 0.2.0. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. This does not require an audit log.
+- [x] The full lesson is organized around the hypothetical northern California-to-Wisconsin route, and the script states that the scenario is not a live briefing, recommended route, or operational prescription.
+- [x] Each planning conclusion names the proposed route segment and a specific later departure, different corridor, stopover, or destination choice rather than using vague alternatives.
+- [x] The front mental picture identifies the chart line as the analyzed surface reference, describes the boundary sloping over colder air, and explains why associated weather can occupy a larger three-dimensional volume.
+- [ ] Human editorial pass received a clean source-validation result for version 0.2.0; unresolved technical questions were removed or resolved.
 - [ ] If human editorial changes factual spoken prose, source tags, claims, sources, or show notes, source-relevance validation was rerun successfully before audio render.
 - [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.
 

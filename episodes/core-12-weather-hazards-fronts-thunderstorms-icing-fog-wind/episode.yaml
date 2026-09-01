@@ -4,11 +4,11 @@ title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
 slug: weather-hazards-fronts-thunderstorms-icing-fog-wind
 track: core
 status: editorial_review_pending
-version: 0.1.0
+version: 0.2.0
 published_at: null
-runtime_target_minutes: 27
+runtime_target_minutes: 34
 runtime_actual_seconds: null
-word_count: 3890
+word_count: 4461
 speakers:
   - instructor
   - learner
@@ -28,26 +28,27 @@ aim_references: []
 advisory_circular_references: []
 cfr_references: []
 learning_objectives:
-  - Explain why a front is a three-dimensional transition zone and use moisture,
-    stability, movement, and vertical structure to anticipate changing weather
-    without treating a front name as a fixed script.
-  - Connect the three thunderstorm ingredients and cell life cycle with hazards
-    that extend beyond visible precipitation, including outflow, turbulence, and
-    wind shear.
+  - Use a hypothetical multi-day VFR plan from northern California to Wisconsin
+    to identify the mechanism, location, timing, evidence, and concrete planning
+    response for each changing weather hazard.
+  - Explain why a surface front symbol marks the bottom reference of a sloping,
+    three-dimensional boundary rather than the full edge of associated weather.
+  - Use warm, cold, stationary, and occluded front models to ask route- and
+    time-specific questions without treating a front name as a fixed script.
+  - Connect thunderstorm ingredients and cell life cycle with outflow, gust
+    fronts, wind shear, strategic avoidance, and a stop-before-the-front choice.
   - Explain why delayed data-linked radar supports strategic thunderstorm
     avoidance and must not be the sole means for tactical path negotiation.
-  - Identify the overlap of subfreezing temperature and supercooled liquid water
-    and correlate freezing level, cloud, precipitation, terrain, and altitude as
-    a three-dimensional icing risk.
-  - Treat frost, snow, and ice contamination as aerodynamic and system hazards
-    before the accumulation appears dramatic.
-  - Use radiation, advection, upslope, precipitation, frontal, and steam-fog
-    mechanisms to reason about formation, persistence, and improvement.
-  - Connect large-scale wind patterns with local surface changes, terrain and
-    obstruction effects, runway components, airplane capability, personal
-    proficiency, and low-level wind shear.
-  - Correlate several hazards across departure, route, destination, and
-    alternate conditions to make an early conservative decision.
+  - Place subfreezing temperature, supercooled liquid water, cloud,
+    precipitation, terrain, altitude, and the intended airplane in one icing
+    cross-section.
+  - Use radiation, advection, upslope, frontal, and steam-fog mechanisms to
+    compare a northern California departure with later route and Wisconsin
+    arrival decisions.
+  - Connect large-scale wind with western terrain, local obstructions, Wisconsin
+    runway components, airplane and pilot capability, and low-level wind shear.
+  - "Name the exact conservative option for each proposed leg: delay, different
+    corridor, stopover, or destination outside the affected area."
 trouble_spots:
   - Treating a charted front as a narrow line rather than a sloping weather zone.
   - Memorizing one guaranteed cloud-and-weather sequence for each front type.
@@ -61,12 +62,15 @@ trouble_spots:
   - Using total wind speed without resolving runway components or local terrain
     effects.
   - Treating wind shear as merely strong steady wind.
+  - Using vague phrases such as actual evidence, this flight, both names, or
+    usable alternatives instead of naming the source comparison, route segment,
+    and specific delay, corridor, stopover, or destination choice.
 source_verification:
-  status: source_relevance_complete
-  verified_at_utc: 2026-09-01T17:47:37.037Z
+  status: source_relevance_pending
+  verified_at_utc: null
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: complete
+  relevance_review: pending
 review:
   editorial_status: reapproval_required
   editorial_script_sha256: null
@@ -74,8 +78,11 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 8cdf3faa8cd15e2ffcbc8b02d7599ba61dc2b59967c8bd83fe2a1d9b7a44e643
+  pending_script_sha256: 14700e06bc15c0ea74820abada9afd4cf956138cd09bfb6be78bf58da369f494
 release_gates_remaining:
+  - Complete independent spoken-script review and resolve required findings.
+  - Complete renewed formal source-relevance validation for the redrafted script
+    and package.
   - Complete human editorial review and bind approval to the current master
     script.
   - Complete human listening QA, including the front-matter and chapter checks.

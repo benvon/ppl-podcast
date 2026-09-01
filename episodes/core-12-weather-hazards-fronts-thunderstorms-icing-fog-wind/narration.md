@@ -7,23 +7,23 @@
 
 **INSTRUCTOR:**
 
-A line on a weather chart can represent hours of changing cloud, visibility, wind, and precipitation along a VFR route. A thunderstorm can change the wind at an airport before its rain arrives. A temperature above freezing on the ground does not describe the clouds at cruise altitude. This episode turns those separate observations into practical questions: what process is producing the hazard, where is it developing, how is it changing, and what conservative choice keeps the flight away from the narrowing margin?
+Imagine unfolding a chart for a multi-day VFR trip from northern California to Wisconsin. The pencil line crosses coastal influence, high terrain, broad plains, and the Upper Midwest. Now add a front across the middle of the country, possible thunderstorms near the crossing, subfreezing cloud over part of the mountains, morning fog near two possible stops, and a gusty crosswind at the Wisconsin destination. The useful question is not, “Can I name every hazard?” It is, “What is each weather process doing to the next proposed leg, and which change to the route, stopover, departure time, or destination preserves a comfortable margin?”
 
-## [00:30] Disclaimer
+## [00:40] Disclaimer
 
 **INSTRUCTOR:**
 
 This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
 
-## [00:55] Podcast introduction
+## [01:05] Podcast introduction
 
 **ANNOUNCER:**
 
 Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
 
-In this episode, we will apply the pressure, stability, moisture, and cloud model from Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*, to fronts, thunderstorms, icing, fog, turbulence, wind shear, and runway wind decisions.
+In this episode, we will use one hypothetical cross-country plan to apply the pressure, stability, moisture, and cloud model from Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*. The route and weather are invented for teaching. They are not a live briefing, a recommended route, or an operational prescription.
 
-## [01:15] What the ACS is asking you to connect
+## [01:35] What the ACS is asking you to connect
 
 **ANNOUNCER:**
 
@@ -31,303 +31,265 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-The Private Pilot Airplane Airman Certification Standards places these hazards in the Weather Information task. The knowledge elements include weather-system formation and fronts, turbulence, thunderstorms and microbursts, icing and freezing-level information, fog, frost, and other obstructions to visibility. The risk-management elements ask for go or no-go and continue or divert decisions, personal weather minimums, hazardous weather, and the limitations of weather reports, forecasts, onboard equipment, and inflight resources. The skills require analyzing weather implications and correlating the information to a flight decision.
+The Private Pilot Airplane Airman Certification Standards places fronts, turbulence, thunderstorms and microbursts, icing and freezing-level information, fog, frost, and other visibility obstructions in the Weather Information task. It also asks the applicant to manage go or no-go and continue or divert decisions, personal weather minimums, hazardous weather, and the limitations of reports, forecasts, onboard equipment, and inflight resources. The skill is to analyze what the weather means and correlate the available information with a flight decision.
 
 **LEARNER:**
 
-So recognizing a cold front symbol or naming rime ice is only a starting point.
+So the trip from northern California to Wisconsin gives us one decision at a time instead of a list to memorize.
 
 **INSTRUCTOR:**
 
-Yes. Recognition matters because it opens a useful chain of questions. What air is moving? What is lifting? Is the air stable or unstable? Where are temperature and dew point coming together? Where is the freezing level relative to cloud and precipitation? How will the wind meet the runway and nearby terrain? The practical result is a decision about departure, route, altitude, timing, alternate, or staying on the ground.
+Exactly. For each proposed leg, we will name the mechanism producing the hazard, place it in three dimensions and in time, compare more than one relevant weather source or cue, and choose among concrete options. Those options might be a later departure, a route that avoids higher terrain, a stop before a front, or a Wisconsin destination with a more favorable runway and better surrounding weather.
 
-## [02:00] The decision pattern for every hazard
+## [02:35] Put the hypothetical route on the table
 
 **ANNOUNCER:**
 
-The decision pattern for every hazard.
+Put the hypothetical route on the table.
 
 **INSTRUCTOR:**
 
-Use the same pattern throughout this lesson. First, identify the mechanism. Second, locate the hazard in three dimensions and in time. Third, look for more than one piece of evidence. Fourth, compare the expected conditions and uncertainty with the route, terrain, daylight, fuel, alternates, personal minimums, and the intended airplane. Finally, make the lower-workload choice while good options are still available.
+Our study plan divides the trip into several daytime VFR legs. It begins at a northern California airport, crosses western mountain country through a route selected during a real preflight process, continues across the Plains, and ends at a Wisconsin airport. We have not chosen exact airports or altitudes because current weather, terrain, aircraft performance, fuel, daylight, and pilot capability would control those choices in an actual plan.
+
+On our imaginary planning morning, the broad picture raises four questions. Can surface visibility support the northern California departure? Can wind, cloud, temperature, and terrain leave a workable western crossing? Can the airplane remain well away from a cold front and developing thunderstorms over the Plains? And if the trip reaches Wisconsin later, do fog, runway wind, nearby obstructions, and possible wind shear leave a comfortable arrival and alternate-destination margin?
+
+This is how we will avoid vague conclusions. We will not say that “the weather looks usable.” We will say which proposed leg is being judged, which observations and forecasts are being compared, and whether the specific choice is to depart later, follow a different corridor, stop before the hazard, or select another destination.
+
+## [03:45] Northern California departure: ask why visibility is low
+
+**ANNOUNCER:**
+
+Northern California departure: ask why visibility is low.
+
+**INSTRUCTOR:**
+
+The first planning problem appears before takeoff. The departure observation reports low visibility, and nearby stations suggest that the reduction covers more than the airport boundary. Fog is a visible collection of tiny water droplets based at the surface that reduces horizontal visibility below five-eighths of a statute mile. Because the cloud is at the surface, fog occupies the taxi, takeoff, low-level visual-navigation, and return-to-airport environment.
 
 **LEARNER:**
 
-Why insist on more than one piece of evidence?
+Does calling it fog tell us when to depart?
 
 **INSTRUCTOR:**
 
-Because no single value describes the complete atmosphere. A surface temperature does not give the temperature inside a cloud aloft. One airport observation does not describe an entire route. A front symbol gives a boundary and its motion, not the exact ceiling at every point. A radar image can show precipitation while leaving cloud, visibility, and nonprecipitating turbulence unanswered. Correlation means asking whether observations, forecasts, advisories, pilot reports, and the physical model tell a consistent story.
+No. We need the mechanism. Suppose the fictional airport is inland after a clear night. Radiation fog begins when nighttime radiational cooling lowers the surface air to its dew point.
 
-## [03:00] A front is a changing zone between air masses
+Shallow, relatively moist air, clear sky, and light wind favor radiation fog. Calm wind can keep it shallow, a little mixing can deepen it, and stronger wind can disperse it or lift it into low cloud.
+
+The planning comparison is now specific. Compare the departure and nearby observations over time with the forecast for surface heating, cloud cover, and wind during the proposed departure window. If visibility is not improving as expected, the concrete choice is to move the first departure later or remain overnight—not to launch because radiation fog often improves after sunrise.
+
+Now move the fictional departure closer to the northern California coast. Moist air flowing over a colder surface can cool below its dew point and form advection fog. The air is being carried over the surface, so sunrise alone does not answer when the fog will move or dissipate.
+
+For that coastal version of the first leg, compare observations along the coast and inland with the forecast wind and temperature pattern. The available choices might be a later departure after documented improvement, an inland departure airport outside the fog area, or postponing the leg. “The morning fog should burn off” is not a planning answer because it does not identify the mechanism or the evidence of improvement.
+
+## [06:20] Crossing western terrain: wind is not one number
 
 **ANNOUNCER:**
 
-A front is a changing zone between air masses.
+Crossing western terrain: wind is not one number.
 
 **INSTRUCTOR:**
 
-When air masses with different characteristics meet, the boundary layer between them is called a front.
+Once the departure has acceptable VFR conditions, the route approaches western terrain. Pressure differences, Earth’s rotation, friction, and temperature differences produce atmospheric motion. The PHAK cautions that large-scale circulation patterns do not account for every local change. Local conditions, geological features, and other anomalies can change wind direction and speed close to the surface.
 
-A front does not exist only at the surface. It has vertical structure and slopes over the colder, denser air.
-
-On a surface chart, the front line identifies the boundary's analyzed surface location. Use that line as the bottom reference for a sloping weather system rather than as the complete edge of the weather.
-
-Think back to Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*. When warmer air is lifted over colder air, it expands and cools. If cooling reaches saturation, cloud forms.
-
-Stable rising air along a warm front favors widespread layered cloudiness and precipitation. The frontal pattern supplies the lifting structure, but the actual evidence still establishes what has developed for this flight.
+Ground topography and large buildings disturb wind flow and can produce gusts that change rapidly in direction and speed. The turbulence becomes more important as the obstacle size and wind speed increase, and the PHAK emphasizes this concern near runways bordered by large structures or natural obstructions.
 
 **LEARNER:**
 
-What evidence suggests that a front is approaching or passing?
+So a regional wind forecast does not describe every valley, ridge, and runway on the western leg.
 
 **INSTRUCTOR:**
 
-Look for a coordinated change rather than one isolated signal. The Aviation Weather Handbook points to a temperature gradient along the front, wind convergence at the front, and pressure that typically falls as the front approaches and rises after it passes. One cue alone could have another cause. When several cues evolve together and agree with the analyzed and forecast boundary, the frontal explanation becomes stronger.
+Correct. For the proposed mountain crossing, compare winds aloft and the forecast weather pattern with airport observations, gusts, pilot reports, terrain, and the selected corridor. For the proposed fuel stop, compare the reported wind with the runway orientation and nearby terrain or buildings. Those are two different decisions. One concerns the route through terrain; the other concerns the air close to a particular runway.
 
-## [04:20] Front names describe motion; the weather evidence completes the picture
+If moist, stable air is being pushed up sloping terrain farther east, the rising air can cool to its dew point and produce upslope fog. That mechanism can turn a broad terrain crossing or a High Plains stop into a ceiling-and-visibility problem rather than a small patch of fog at one airport.
+
+The route choices must therefore be named. A lower-terrain corridor that stays outside the cloud and strong-wind area, a stop before the higher terrain, or waiting for a later weather window are different plans. Calling all three “alternatives” hides the decision. A real briefing must establish which corridor, stopover, and departure time actually preserve terrain, cloud, wind, fuel, and daylight margins.
+
+## [08:45] A front on the route is a sloping volume
 
 **ANNOUNCER:**
 
-Front names describe motion; the weather evidence completes the picture.
+A front on the route is a sloping volume.
 
 **INSTRUCTOR:**
 
-A warm front means warmer air is advancing and replacing colder air at the surface. The warm air climbs a gradual slope over the colder air. As that air is lifted and cools, cirriform or stratiform cloud and fog can form along the frontal boundary. In summer, thunderstorms may also develop.
+Before the airplane reaches the Plains, the surface analysis shows a front across the proposed eastbound path. A front is the boundary layer between air masses with different characteristics.
 
-Use that description as a starting structure, not a guaranteed sequence. The PHAK cautions that no two fronts are the same. Ask what ceiling, visibility, precipitation, wind, and temperature changes are actually observed and forecast along the route and during the planned time window.
+Build the mental picture from the ground upward. On the surface chart, the colored line marks the analyzed location of the front where the boundary meets the surface. Imagine that line as the bottom seam of a broad, leaning boundary.
 
-A cold front means colder air is advancing and replacing warmer air. The denser cold air slides beneath the warmer air and forces it upward. The cloud type depends on the stability of that warmer air. When a cold front is fast-moving, friction can create a steeper frontal surface and a narrow band of concentrated weather. Unstable warm air can support showers or thunderstorms along or ahead of that front.
-
-Stable warm air can produce overcast and rain instead of thunderstorms along a fast-moving cold front. The useful warning is that a cold front can organize rapid change across a route. A departure that is acceptable now and a destination that is acceptable now can still be separated by a moving band that is not acceptable at the planned crossing time.
-
-A stationary front forms when opposing air-mass forces are relatively equal. The boundary can influence local weather for days. An occlusion forms when a faster cold front catches a slower warm front.
-
-For a VFR plan, both names should prompt a time-and-area question: how long is the route expected to remain affected, and where are the usable alternatives outside that area?
-
-## [06:30] Thunderstorms assemble the weather-theory chain
-
-**ANNOUNCER:**
-
-Thunderstorms assemble the weather-theory chain.
-
-**INSTRUCTOR:**
-
-Thunderstorm development needs three ingredients: sufficient water vapor, unstable air, and a lifting mechanism. Moisture supplies water for cloud and precipitation. Instability lets a lifted parcel continue upward. Lift can come from surface heating, a front, terrain, or converging wind. If one ingredient is missing, the full thunderstorm process cannot develop at that place and time.
+The frontal surface rises over the colder, denser air, so the boundary and the weather produced by lifting along it can occupy air above and on either side of the charted surface line.
 
 **LEARNER:**
 
-Does seeing growing cumulus tell me which stage the cell is in?
+Then crossing the colored line is not the same as crossing one sharp edge of cloud and precipitation.
 
 **INSTRUCTOR:**
 
-It can provide a clue. In the cumulus stage, updrafts dominate and the cloud grows vertically. The mature stage begins when precipitation reaches the surface; strong updrafts and downdrafts coexist. In the dissipating stage, downdrafts dominate and the visible cell weakens. But a weakening cell does not make the larger area simple. Outflow can help trigger new cells, and a cluster can contain cells at different stages.
+Right. The surface line gives a geographic reference, not the complete three-dimensional edge of ceiling, visibility, precipitation, turbulence, or icing concerns. For our Plains leg, trace the proposed route and altitude through an imaginary vertical slice of the atmosphere. Put the colder air near the ground, the sloping frontal boundary above it, and the cloud or precipitation where the lifted air is forecast to cool toward saturation.
 
-The stage model is valuable because it explains change. A cell is not a fixed object painted on a radar image. It grows, produces precipitation and downdraft, spreads outflow, and decays while the whole system moves.
+At the surface, the Aviation Weather Handbook identifies several cues that can support the front analysis: a temperature gradient, winds converging along the boundary, and pressure that typically falls before passage and rises after passage. These cues become more useful when their changes agree in location and time.
 
-A gap that appears open on an old image can close, and a route that aims at a gap can place the airplane near developing outflow or a new cell.
+For the proposed Plains crossing, compare the analyzed and forecast front positions with observations from stations before, near, and beyond the boundary. Ask whether the temperature contrast, wind change, and pressure trend support the forecast timing. Then compare route forecasts, advisories, and pilot reports for the cloud, visibility, precipitation, turbulence, convection, and freezing level expected in the volume surrounding the front.
 
-## [08:05] The hazard extends outside the visible rain
+## [11:15] Front names change the route question
 
 **ANNOUNCER:**
 
-The hazard extends outside the visible rain.
+Front names change the route question.
 
 **INSTRUCTOR:**
 
-All thunderstorms contain aviation hazards in different combinations. The list includes low ceiling and visibility, lightning, adverse wind, downbursts, turbulence, icing, and hail. Not every thunderstorm contains every hazard, and visual appearance cannot determine which hazards are present.
+Suppose the line across our eastbound route is a warm front. Warmer air is advancing over colder air on a gradual slope. As that warm air rises and cools, cirriform or stratiform cloud and fog can form along the frontal boundary, and summer thunderstorms are possible.
 
-A mature-stage downdraft spreads along the surface as a cool, gusty outflow whose leading edge is called a gust front. The Aviation Weather Handbook says that front can move well ahead of the parent cell.
+The warm-front model tells us to look beyond the surface line into the colder air ahead of it. For the proposed Plains-to-Midwest leg, compare ceilings, visibility, precipitation, freezing-level information, and station trends across the broad area ahead of the front. A concrete response could be to remain at the western stopover until the front and its associated weather pass, or to select a more distant route around the affected region if fuel, daylight, and weather along that entire detour support it.
+
+If the front is cold, colder air is advancing beneath warmer air and forcing the warm air upward. When a cold front moves quickly, friction can make the frontal surface steeper and concentrate weather in a narrower band. If the lifted warm air is unstable, showers or thunderstorms can form along or ahead of the front; stable warm air can instead produce overcast and rain.
+
+That cold-front model focuses our next question. Will the proposed eastbound leg reach the crossing before, during, or after a moving band of weather? A departure observation that is VFR and a destination observation that is VFR do not prove that the route between them will remain VFR when the airplane arrives at the front. The decision needs the forecast boundary position and the weather along the crossing at the planned time.
+
+A stationary front forms when the opposing air-mass forces are relatively equal, and the boundary can influence local weather for days.
+
+For our multi-day trip, that may mean the next planned leg and the following morning's leg remain affected. The specific options are to choose a stopover outside the affected area, delay the trip until the route improves, or choose a route around the stalled boundary with verified fuel, daylight, and landing options.
+
+An occluded front forms when a faster cold front catches a slower warm front. The name describes how the boundaries came together; it does not promise one simple cloud or precipitation sequence for our route.
+
+The PHAK cautions that no two fronts are the same. Warm, cold, stationary, and occluded names supply a motion and lifting model.
+
+Current observations, forecasts, advisories, and pilot reports establish what weather is expected along the proposed leg and when.
+
+## [14:40] Place icing inside the frontal cross-section
+
+**ANNOUNCER:**
+
+Place icing inside the frontal cross-section.
+
+**INSTRUCTOR:**
+
+Return to the imaginary vertical slice through the western mountains and the front. Structural icing requires liquid water that remains unfrozen below zero degrees Celsius and then freezes when it strikes the aircraft. Those droplets are supercooled. Subfreezing temperature by itself is not the complete setup; the planned route and altitude must also overlap liquid water in cloud or precipitation.
+
+Supercooled liquid-water content, temperature, and droplet size are the weather quantities most closely related to icing type and severity. Aircraft type, design, and airspeed also affect the result.
+
+For the proposed western leg, place the freezing level, cloud layers, precipitation, terrain, and proposed altitude on the same cross-section. A surface temperature above freezing at the fuel stop does not answer whether cloud along the route contains supercooled liquid water at the planned altitude.
+
+Then compare forecasts, advisories, pilot reports, and the intended airplane's approved equipment, limitations, and procedures.
+
+Terrain and fronts can reshape that overlap. On the windward side of mountains, upward currents can support large supercooled droplets above the freezing level. When a front crosses a mountain range, frontal lift can combine with upslope flow. Below a front, freezing rain or freezing drizzle is a favored location for severe clear icing and can extend horizontally across a broad area.
+
+The concrete planning decision is not to choose an altitude by looking at the freezing level alone. If one altitude overlaps subfreezing cloud and another altitude loses terrain or VFR cloud clearance, neither is made acceptable by the other altitude's problem. The choices may be a different corridor outside the cloud and precipitation, a stop before the affected terrain, or waiting for a weather pattern that removes the overlap.
+
+Small roughness from frost, snow, or ice on a wing can reduce lift and increase drag. Ice can also collect on exposed frontal surfaces such as the propeller, windshield, antennas, vents, intakes, and cowlings. The hazard can change airflow and several aircraft systems before the accumulation looks dramatic.
+
+The evidence about frost, snow, or ice also belongs in the morning inspection at each stopover.
+
+The conservative study habit is to recognize contamination and forecast icing before launch, use the intended airplane's approved information, and avoid building a plan that depends on an encounter to reveal whether the forecast was right.
+
+## [18:05] Stop before the Plains cold front
+
+**ANNOUNCER:**
+
+Stop before the Plains cold front.
+
+**INSTRUCTOR:**
+
+Now suppose the front across the Plains is cold, the warm air ahead of it is moist and unstable, and surface heating is increasing. Thunderstorm development requires sufficient water vapor, unstable air, and a lifting mechanism. In this scenario, moisture supplies the water, instability allows lifted parcels to keep rising, and the cold front supplies organized lift.
 
 **LEARNER:**
 
-So an airport can be outside the rain and still have a thunderstorm wind problem.
+If towering cumulus is just beginning, do we have time to cross before thunderstorms mature?
 
 **INSTRUCTOR:**
 
-Exactly. A favorable airport observation still needs to be connected with nearby convective movement and trend because a gust front can arrive ahead of its parent cell.
+The cell life cycle explains why that is the wrong race to plan. In the cumulus stage, updrafts dominate and the cloud grows vertically. The mature stage begins when precipitation reaches the surface and a downdraft develops beside the updraft. Later, downdrafts dominate the dissipating stage. A group of storms can contain cells at different stages, and outflow from one cell can help start another.
 
-If that outflow produces wind shear near the surface, the risk is concentrated where takeoff and landing leave little altitude or time for recovery.
+A mature downdraft can spread outward along the surface as cool, gusty outflow. Its leading edge, the gust front, can move well ahead of the parent thunderstorm. An airport can therefore experience a rapid wind change before the rain or the main radar echo arrives.
 
-## [09:25] Thunderstorm decisions are made before the gap becomes a question
+All thunderstorms contain aviation hazards in different combinations. Not every storm contains every possible hazard, and visual appearance cannot tell a pilot which combination is present. The planning boundary is therefore not the visible rain shaft or the edge of a colored radar return.
+
+For our eastbound leg, the conservative choice is made at the western Plains stopover. If the front and developing cells block the route, keep the airplane on the ground west of the convective area. A small gap between growing cells is not an alternate route.
+
+A route far around the entire area is a different proposal that needs its own fuel, daylight, terrain, landing, and weather evaluation.
+
+## [20:40] Use delayed radar to avoid the convective area
 
 **ANNOUNCER:**
 
-Thunderstorm decisions are made before the gap becomes a question.
+Use delayed radar to avoid the convective area.
 
 **INSTRUCTOR:**
 
-FAA guidance treats avoidance as the primary policy. It warns against taking off or landing toward an approaching storm, flying beneath a thunderstorm, or flying beneath its anvil.
+FAA guidance makes thunderstorm avoidance the primary policy. It warns against taking off or landing toward an approaching storm and against flying beneath a thunderstorm or its anvil.
 
-When a thunderstorm area cannot be navigated around, the guidance says to divert and wait out the thunderstorms on the ground.
-
-Data-linked NEXRAD mosaic imagery is useful for strategic route selection that avoids thunderstorms. The FAA says not to use it as the sole means for negotiating a tactical path through a thunderstorm area. It shows where the weather was, and the conditions may be fifteen to twenty minutes older than the age indicated on the display. Use that delayed picture to keep the route away from the convective area.
+Data-linked NEXRAD mosaic imagery is useful for strategic route selection that keeps a flight away from thunderstorms. It is not a live window. The weather shown may be fifteen to twenty minutes older than the age indicated on the display, and FAA guidance says not to use the mosaic as the sole means for negotiating a tactical path through a thunderstorm area.
 
 **LEARNER:**
 
-What would a conservative VFR decision sound like before departure?
+What should we compare before leaving the stopover?
 
 **INSTRUCTOR:**
 
-It would name the expected convective area and timing, identify a route or time that stays clear of it, and define an alternate that remains usable if development is faster or broader than forecast. It would also acknowledge when the safe route requires more distance, fuel, daylight, or certainty than the flight has. In that case, the lower-workload choice is to change the plan before launch.
+Compare the forecast position and movement of the cold front with current observations, convective forecasts and advisories, radar trends, lightning information when available, and pilot reports. The purpose is to decide whether the next route segment remains outside the convective area with margin.
 
-## [10:50] Icing begins with supercooled liquid water
+Do not use that comparison to select a narrow opening in delayed imagery.
+
+If the thunderstorm area cannot be navigated around, FAA guidance says to divert and wait out the thunderstorms on the ground. In our scenario, that means keeping the stopover, changing the next departure time, or ending the travel day. It does not mean continuing toward the front to see whether a gap remains open.
+
+## [22:45] A Wisconsin arrival begins with runway geometry
 
 **ANNOUNCER:**
 
-Icing begins with supercooled liquid water.
+A Wisconsin arrival begins with runway geometry.
 
 **INSTRUCTOR:**
 
-Structural icing begins when liquid water remains unfrozen below zero degrees Celsius and then freezes on contact with the aircraft. Those droplets are called supercooled. Temperature alone is not enough. The airplane also needs to encounter liquid water, commonly in cloud or precipitation.
+After the front has passed and the route has been re-evaluated, suppose the trip can continue toward Wisconsin. The destination now reports a gusty wind at an angle to its primary runway. Begin with the available landing directions because each runway changes the angle between the reported wind and the airplane's ground track.
 
-Supercooled liquid water content, temperature, and droplet size are the weather quantities most closely related to icing type and severity. Aircraft type, design, and airspeed also matter.
+Picture the selected runway as a straight line. The part of the wind acting along that line is a headwind when it comes from ahead or a tailwind when it comes from behind. The part acting at right angles to the runway is the crosswind. A wind nearly aligned with the runway has a larger along-runway component; a wind closer to ninety degrees has a larger crosswind component.
 
-Clear, rime, and mixed describe the ice that forms. Evaluating an icing risk still requires the actual weather and the intended airplane's limitations.
+Use a crosswind component chart for the reported wind and selected runway. Compare the resulting crosswind with the airplane's maximum crosswind capability, and avoid conditions that exceed that capability.
 
-**LEARNER:**
+Nearby terrain and structures can disturb the wind and produce gusts or turbulence close to a runway.
 
-Then “the temperature is below freezing” identifies only part of the setup.
+The wind calculation is not the entire arrival decision. Compare gust spread, runway width and surface, reported turbulence, pilot recency, personal minimums, and the intended airplane's POH or AFM. Then compare the Wisconsin destination with a named alternate airport whose runway orientation and surrounding weather provide a genuinely better margin. An alternate with the same crosswind, fog, or convective outflow problem does not improve the plan.
 
-**INSTRUCTOR:**
+Fog can return to this decision without repeating the California mechanism. Precipitation falling from warmer frontal air can evaporate or sublimate into colder air below that is already near its dew point and produce frontal fog.
 
-Right. Ask three separate questions. Where is the air at or below freezing? Where are cloud or liquid precipitation present? Where does the planned route and altitude overlap both?
+Very cold air moving over relatively warm water can also gain moisture and produce steam fog. Around Wisconsin lakes, that mechanism directs attention to a different source region and trend than inland radiation fog.
 
-Then ask what the forecast and pilot reports say about intensity, extent, and change, and what the intended airplane's approved information says about equipment, limitations, and procedures.
+The destination choice must therefore compare actual airport observations, nearby observations, and forecasts for the arrival window. If visibility at the primary and alternate is deteriorating for the same frontal reason, choosing between their runway numbers does not solve the visibility problem.
 
-## [12:25] A freezing level is one boundary, not a complete answer
+## [25:40] Low-level wind shear can change the arrival before the rain
 
 **ANNOUNCER:**
 
-A freezing level is one boundary, not a complete answer.
+Low-level wind shear can change the arrival before the rain.
 
 **INSTRUCTOR:**
 
-Freezing rain or freezing drizzle below a front is a favored location for severe clear icing. The freezing precipitation can extend horizontally over a broad area. In mountains, upward air currents on the windward side support large supercooled droplets above the freezing level, and a front crossing the range can combine frontal lift with that upslope flow.
+Wind shear is a sudden change in wind speed or direction over a small area. An airplane crossing that change can experience an abrupt change in indicated airspeed, performance, and flightpath. Near the ground, little altitude remains to absorb the result. Fronts, thunderstorms, inversions, and strong winds aloft can all support low-level wind shear.
 
-For this lesson, turn those FAA descriptions into a three-dimensional planning cross-section. Place the freezing level, cloud, precipitation, terrain, and proposed altitude on the same picture. Then use the ACS decision framework to ask whether the route overlaps the described icing region and whether another altitude introduces unacceptable ceiling, visibility, terrain, or convective risk.
+A microburst is a severe convective example. A strong downdraft reaches the surface and spreads outward. Along one path through it, the airplane may first meet an increasing headwind that raises indicated airspeed, then the downdraft pushes the airplane downward, and then an increasing tailwind reduces indicated airspeed and performance. That sequence can happen close to the ground.
 
-## [13:30] Ice changes the airplane before it looks dramatic
+Return to the earlier gust-front picture. Because outflow can arrive well ahead of the parent cell, a Wisconsin airport outside the visible rain can still experience rapidly changing wind.
+
+The arrival decision must compare the airport observation and alerts with nearby convective position, movement, and trend.
+
+Low-level wind shear is evidence about a hazardous volume of air, not merely a forecast of a rough landing.
+
+If the primary destination or alternate reports wind shear, microburst alerts, or rapidly changing wind from nearby convection, the concrete choices are to remain at the previous stop, land at an airport well outside the convective outflow area, or wait on the ground until the hazard has passed and current information supports a new plan.
+
+## [28:05] Re-plan the whole trip
 
 **ANNOUNCER:**
 
-Ice changes the airplane before it looks dramatic.
+Re-plan the whole trip.
 
 **INSTRUCTOR:**
 
-Small roughness from frost, snow, or ice on a wing can reduce lift and increase drag. Ice can also accumulate on exposed frontal surfaces including the propeller, windshield, antennas, vents, intakes, and cowlings. The operational problem is not the weight of a dramatic ice sculpture. It is that contamination changes airflow and can affect several exposed parts of the airplane while it is already in weather.
+The northern California-to-Wisconsin line was never one decision. It was a chain of proposed legs. Fog could delay the first departure. Terrain, wind, cloud, and icing could change the western corridor or require a stop before higher terrain. A cold front and thunderstorms could end the travel day on the western Plains. Wisconsin fog, runway components, obstructions, and wind shear could change the destination.
 
-The same aerodynamic evidence matters before flight. Visible frost, snow, or ice on a wing can change airflow before the airplane leaves the ground. Treat that contamination as part of the preflight weather decision, and use the approved airplane information for aircraft-specific limitations and methods.
+Each change affects the next leg's fuel, daylight, overnight options, and weather window. That is why the conservative decision is not merely “go” or “no-go” for the whole map. It is a specific statement such as: delay the California departure until observations show sustained improvement; choose a lower-terrain corridor only after its full weather and fuel plan is acceptable; stop west of the Plains front; or use a Wisconsin destination outside the fog and convective outflow area with a more favorable runway.
 
-The study skill comes before an encounter: identify the overlap of subfreezing temperature and liquid moisture, compare it with the airplane's capabilities, and make a plan that does not rely on an encounter to discover whether the forecast was accurate.
-
-## [14:40] Fog is a cloud at the surface
-
-**ANNOUNCER:**
-
-Fog is a cloud at the surface.
-
-**INSTRUCTOR:**
-
-Fog is based at the surface and reduces horizontal visibility below five-eighths statute mile. Freezing fog is composed of liquid droplets at or below freezing, while ice fog is composed of ice crystals.
-
-The same saturation model from Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*, applies, but now the cloud occupies the departure, arrival, taxi, and low-level visual environment. Under the ACS decision framework, that makes the reported and forecast fog direct evidence for a VFR departure or arrival decision.
-
-**LEARNER:**
-
-If all fog involves saturation, why study different fog types?
-
-**INSTRUCTOR:**
-
-Because the mechanism tells you what may form it, move it, thicken it, or dissipate it. The name is useful only when it helps forecast change.
-
-## [15:30] Fog mechanisms tell you what may change it
-
-**ANNOUNCER:**
-
-Fog mechanisms tell you what may change it.
-
-**INSTRUCTOR:**
-
-Radiation fog begins when nighttime radiational cooling brings the surface air to its dew point.
-
-Formation is favored by shallow, relatively moist surface air, clear sky, and light wind. Calm wind tends to keep the fog shallow, light wind can deepen it, and stronger wind can disperse it or lift it into a low cloud layer.
-
-A specific departure still needs current observations and a forecast that describes the expected change.
-
-Advection fog forms when moist air moves over a colder surface and cools below its dew point.
-
-Upslope fog forms when moist stable air moves up sloping terrain and cools adiabatically to or below its dew point.
-
-Frontal fog can form when precipitation evaporates or sublimates into cold air below that is already near its dew point and saturates it. This can produce a continuous fog zone from the ground into the frontal cloud.
-
-Steam fog can form when very cold air moves over relatively warm water. Water evaporates into the cold air, then recondenses into rising streamers.
-
-For a VFR decision, ask what mechanism is active, what observation confirms it, what change the forecast describes in that mechanism, and whether the route contains a reliable area of better conditions. A marginal airport surrounded by equal or worse visibility is not improved by calling it an alternate.
-
-## [17:15] Wind is the atmosphere in motion
-
-**ANNOUNCER:**
-
-Wind is the atmosphere in motion.
-
-**INSTRUCTOR:**
-
-Pressure differences, Earth’s rotation, friction, and temperature differences produce atmospheric motion. The PHAK cautions that those large-scale circulation patterns do not account for every local change. Local conditions, geological features, and other anomalies can change wind direction and speed close to the surface.
-
-Ground topography and large buildings disturb the flow. The disturbed air can contain rapidly changing gusts and turbulence. The effect becomes more important as wind speed and obstacle size increase, and the PHAK emphasizes the hazard near airport runways with large buildings or natural obstructions nearby.
-
-**LEARNER:**
-
-Then a steady wind reported by the airport does not guarantee steady air on final.
-
-**INSTRUCTOR:**
-
-Correct. The report is an essential observation at a defined place and time. The pilot still connects it with gusts, nearby terrain and structures, runway orientation, local reports, and the trend. Wind is not one number because the airplane encounters a moving three-dimensional flow.
-
-## [18:20] Wind becomes practical at the runway
-
-**ANNOUNCER:**
-
-Wind becomes practical at the runway.
-
-**INSTRUCTOR:**
-
-Begin with the available landing directions because each runway direction changes the angle between the reported wind and the ground track. Picture the selected runway as a straight line. When the reported wind meets that line at an angle, one part of the wind acts along the runway and the other acts across it. The along-runway part is a headwind if it comes from ahead or a tailwind if it comes from behind. The across-runway part is the crosswind. A wind nearly aligned with the runway has a larger along-runway component and a smaller crosswind component. A wind closer to ninety degrees from the runway has a larger crosswind component.
-
-Use a crosswind component chart to determine the headwind and crosswind components for the reported wind and runway. Compare the crosswind with the airplane's maximum crosswind capability, and avoid wind conditions that exceed it.
-
-The airplane's demonstrated crosswind information is one airplane reference; it does not measure the current pilot's proficiency. A complete decision also considers gust spread, runway width and surface, obstacles, turbulence, pilot recency, and what the POH or AFM says for the aircraft. Together, those factors answer whether this runway, airplane, pilot, and wind leave a comfortable margin today.
-
-## [19:25] Wind shear is change across a short distance
-
-**ANNOUNCER:**
-
-Wind shear is change across a short distance.
-
-**INSTRUCTOR:**
-
-Wind shear is a sudden change in wind speed or direction over a small area. An airplane crossing that change can experience an abrupt change in indicated airspeed, performance, and flightpath. Near the ground, there is little altitude in which to absorb the result. Fronts, thunderstorms, inversions, and strong winds aloft can all support low-level wind shear.
-
-A microburst is a particularly severe convective form. A strong downdraft reaches the surface and spreads outward. Depending on the path through it, an airplane may first encounter an increasing headwind that raises indicated airspeed, then the downdraft pushes the airplane downward, and then an increasing tailwind reduces indicated airspeed and performance. Near the ground, that downward motion and later airspeed loss can combine while little altitude remains.
-
-The conservative connection is straightforward. A wind-shear or microburst alert, a gust front, or rapidly changing wind near convection changes the takeoff or landing decision. It is evidence about a hazardous volume of air, not merely a reason to expect a rough ride.
-
-## [20:40] A route can collect several hazards
-
-**ANNOUNCER:**
-
-A route can collect several hazards.
-
-**INSTRUCTOR:**
-
-Imagine a morning VFR flight toward a warm front. The departure is clear, but observations toward the destination show lowering layered cloud and falling visibility. Light rain is forecast before arrival, and the temperature aloft approaches freezing inside the cloud layer. A surface wind is also increasing across the destination runway.
-
-No single hazard name completes that decision. The front explains organized lift and the broad trend. The fog and precipitation mechanisms explain why visibility may continue to fall. The freezing level and cloud overlap identify icing exposure. The runway wind turns a regional system into a landing-margin question. Correlation means evaluating the combined route, not awarding a pass because each item looks marginal when isolated.
-
-Now imagine an afternoon return after a cold front approaches faster than forecast. Cumulus is growing along the boundary, radar shows developing cells, and surface stations ahead report gusty wind shifts. The question is not whether one gap remains visible. The physical story says organized lift, instability, moisture, developing cells, and spreading outflow are changing the route. An early landing, diversion, delay, or cancellation preserves options that may disappear if the airplane continues toward the line.
-
-## [22:10] Retrieval review
+## [29:15] Retrieval review
 
 **ANNOUNCER:**
 
@@ -339,61 +301,37 @@ What does the ACS expect you to do with hazardous-weather knowledge?
 
 **LEARNER:**
 
-Analyze what the conditions imply, correlate weather information with a flight decision, account for resource limitations and personal minimums, and make go or no-go or continue or divert decisions.
+Analyze what the conditions imply, correlate weather information with a flight decision, account for resource limitations and personal minimums, and make a go or no-go or continue or divert decision for the specific proposed leg.
 
 **INSTRUCTOR:**
 
-What is a front, and why is the chart line incomplete?
+What does a front line mark on the chart, and what should you picture above it?
 
 **LEARNER:**
 
-A front is the boundary between air masses with different characteristics.
+The front is the boundary between air masses with different characteristics.
 
-It slopes over the colder air instead of existing only at the surface.
+The line marks the front's analyzed surface location.
 
-The chart symbol depicts its analyzed surface location, not the entire sloping front.
+I picture the boundary rising over the colder, denser air. Cloud, precipitation, turbulence, visibility restrictions, and icing concerns can occupy a larger volume than the line itself.
 
-At the surface, I look for the temperature gradient, converging wind, and the pressure trend before and after passage.
+At the surface, I compare the temperature gradient, wind convergence, and pressure trend with the analyzed and forecast front position.
 
 **INSTRUCTOR:**
 
-What do the front names tell you?
+How do warm, cold, stationary, and occluded fronts change the planning question?
 
 **LEARNER:**
 
-They tell me which air mass is advancing.
+A warm front has warm air advancing gradually over colder air, so I look into the colder air ahead for broad layered cloud, fog, precipitation, and possible summer thunderstorms.
 
-A warm front rises gradually over colder air and can produce layered cloud and fog.
+A cold front has cold air advancing beneath warm air. A fast-moving cold front can concentrate changing weather in a narrower band, and unstable lifted air can support showers or thunderstorms.
 
-A fast-moving cold front can concentrate weather in a narrow band.
+A stationary front can affect an area for days, and an occluded front forms when a faster cold front catches a slower warm front.
 
-A stationary front can influence local weather for days, and an occlusion forms when a faster cold front catches a slower warm front.
+Those patterns tell me where to investigate, but they are not guaranteed weather scripts.
 
-Those are generalized patterns, not guarantees.
-
-I complete the picture with the actual observations and forecasts.
-
-**INSTRUCTOR:**
-
-What three ingredients support thunderstorm development?
-
-**LEARNER:**
-
-Sufficient water vapor, unstable air, and lift.
-
-Every thunderstorm contains aviation hazards in some combination, and visual appearance cannot identify which ones.
-
-The mature-stage gust front can spread well ahead of the parent cell.
-
-**INSTRUCTOR:**
-
-How do you use data-linked radar around thunderstorms?
-
-**LEARNER:**
-
-For strategic route selection that keeps the flight away from the convective area. FAA guidance says not to use the delayed mosaic as the sole means for negotiating a tactical path through a thunderstorm area.
-
-If I cannot navigate around the thunderstorm area, FAA guidance says to divert and wait it out on the ground.
+I still compare current observations, forecasts, advisories, and pilot reports for the proposed leg and time.
 
 **INSTRUCTOR:**
 
@@ -401,63 +339,81 @@ What overlap creates structural icing risk?
 
 **LEARNER:**
 
-Subfreezing temperature and supercooled liquid water in cloud or precipitation.
+The route and altitude must overlap subfreezing temperature and supercooled liquid water in cloud or precipitation.
 
-FAA guidance says freezing rain or drizzle below a front is a favored location for severe clear icing and can extend over a broad area. Over mountains, upward air currents on the windward side can support large supercooled droplets above the freezing level.
+I place the freezing level, cloud, precipitation, terrain, and altitude in one cross-section. I also consider frontal and windward-mountain lifting.
 
-Small ice or frost roughness on a wing can already reduce lift and increase drag.
+I compare that cross-section with the intended airplane's approved information.
 
-For planning, I place those facts with cloud, precipitation, terrain, and planned altitude on one picture.
+Small frost, snow, or ice roughness can reduce wing lift and increase drag before the contamination looks dramatic.
 
 **INSTRUCTOR:**
 
-Why identify the fog mechanism?
+What three ingredients support thunderstorm development, and why should the airplane stop before a blocked convective area?
 
 **LEARNER:**
 
-Fog is based at the surface, and the mechanism tells me what may change it.
+Thunderstorms need sufficient water vapor, unstable air, and lift.
 
-Relatively moist surface air, clear sky, and light wind support radiation fog.
+A mature cell has a downdraft beside the updraft, and its gust front can move well ahead of the parent storm.
+
+Every thunderstorm contains aviation hazards in some combination, and appearance does not reveal which combination is present.
+
+FAA guidance makes thunderstorm avoidance the primary policy.
+
+If I cannot navigate around the thunderstorm area, I divert and wait on the ground.
+
+**INSTRUCTOR:**
+
+How should data-linked radar be used near thunderstorms?
+
+**LEARNER:**
+
+For strategic route selection that keeps the flight away from the convective area. The mosaic is delayed, possibly fifteen to twenty minutes beyond its displayed age, and it must not be the sole means for negotiating a tactical path through thunderstorms.
+
+**INSTRUCTOR:**
+
+Why do the northern California and Wisconsin fog questions have different answers?
+
+**LEARNER:**
+
+The mechanism controls what evidence of change I need. Clear night, moist surface air, and light wind favor radiation fog.
 
 Moist air moving over a colder surface supports advection fog.
 
 Moist stable air moving uphill supports upslope fog.
 
-I use the actual trend and forecast rather than assuming daylight will clear every kind.
+Precipitation entering cold air near its dew point can support frontal fog.
+
+Very cold air crossing warmer water can support steam fog.
+
+I compare observations and forecasts for the active mechanism instead of assuming sunrise will improve every fog layer.
 
 **INSTRUCTOR:**
 
-How does regional wind become a runway decision?
+How do wind, terrain, runway geometry, and wind shear change the Wisconsin arrival?
 
 **LEARNER:**
 
-Large-scale circulation patterns do not account for every local change. Local conditions and geological features can change wind direction and speed close to the surface.
+Local conditions and geological features can change wind direction and speed close to the surface.
 
-I account for local terrain and obstructions.
+Terrain and obstructions can produce gusts or turbulence close to a runway.
 
-I consider the available landing directions, then resolve the wind for the selected runway into along-runway and crosswind components.
+For the selected runway, I separate the reported wind into an along-runway headwind or tailwind component and an across-runway crosswind component.
 
-I use the component chart for the reported wind and runway and compare the crosswind with the airplane's capability.
+I use the component chart and compare the result with the airplane's capability.
 
-Then I add gusts, turbulence, runway options, proficiency, and personal minimums to the decision.
+Wind shear is a rapid change in wind speed or direction across a short distance. It can abruptly change airspeed, performance, and flightpath near the ground, so a wind-shear or microburst alert changes the takeoff or landing decision.
 
 **INSTRUCTOR:**
 
-What makes low-level wind shear different from a steady wind?
+Rebuild the full route decision in one sentence.
 
 **LEARNER:**
 
-It is a rapid change in speed or direction across a short distance, so it can abruptly change airspeed, performance, and flightpath near the ground. That evidence changes the takeoff or landing decision.
+For each proposed leg, name the mechanism, place the hazard in space and time, compare the relevant observations, forecasts, advisories, and reports, then choose a specific delay, route, stopover, or destination that preserves margin while good options remain.
 
-**INSTRUCTOR:**
-
-Now rebuild the full decision pattern.
-
-**LEARNER:**
-
-Name the mechanism. Locate the hazard in space and time. Confirm it with more than one source. Compare the combined conditions and uncertainty with the route, terrain, fuel, daylight, alternates, personal minimums, and airplane. Make the lower-workload choice while good options remain.
-
-## [24:50] From hazards to weather information
+## [33:40] From hazards to weather information
 
 **ANNOUNCER:**
 
@@ -465,9 +421,9 @@ From hazards to weather information.
 
 **INSTRUCTOR:**
 
-This episode has supplied the questions that weather products need to answer. Episode 13, *Weather Information and Preflight Decisions*, will work with observations, forecasts, reports, advisories, and briefings. Carry this mechanism forward. The product is useful when you know which part of the developing hazard it describes, how old it is, what it cannot show, and what decision it supports.
+This hypothetical trip has supplied the questions that weather products need to answer. Episode 13, *Weather Information and Preflight Decisions*, will work with observations, forecasts, reports, advisories, and briefings. Carry the route habit forward: identify which part of the hazard each product describes, how current it is, what it cannot show, and which specific flight-plan decision it supports.
 
-## [25:10] Outro
+## [34:15] Outro
 
 **ANNOUNCER:**
 

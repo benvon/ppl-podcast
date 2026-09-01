@@ -15,5 +15,7 @@ required_before_release:
     listening QA.
   - Re-verify all cited public links on publication day.
   - Validate hosting metadata and external audio-store workflow.
-reason: The master script changed after its prior review. Render, listening QA,
-  chapter review, and publication-day validation must be repeated.
+reason: A human-requested architectural redraft superseded the prior
+  source-validated script. Independent spoken-script review, renewed formal
+  source relevance, human editorial approval, rendering, listening QA, chapter
+  review, and publication-day validation must be completed for version 0.2.0.

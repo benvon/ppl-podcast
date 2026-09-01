@@ -104,3 +104,9 @@
 - Restored `severe clear icing` in the Plains-front teaching passage and the corresponding Retrieval review statement. The existing `icing-frontal-terrain-distribution` claim already contained the correct qualifier, so the claim and source ledger required no wording change.
 - Mechanically regenerated `narration.md`; the revised script contains 4,708 spoken words. Ran the repository-required post-edit script-review reset and bound pending-review SHA-256 `1a3e6530bcf77c9347c2f2f4693003243e3664815bb8a1b9cb5e4f44d8ac73c9`.
 - Deterministic source mapping, repository tests, disclosure and secret scanning, YAML parsing, narration-derivative verification, and whitespace checks passed. No paid relevance rerun, rendering, staging, push, PR, or publication was performed.
+
+## 2026-09-01 — route-scenario source-relevance validation passed
+
+- Formal source-relevance review run `a15327b5-3410-4a88-bef2-0c68e77d7f30`, checked at `2026-09-01T21:42:40.783Z`, passed for version 0.2.1 with 28 current FAA sources, 28 listener-facing show-note links, 35 claims, and 115 immediate master-script source tags.
+- The final report is bound to the current source ledger, claim inventory, master script, show notes, and show-notes manifest. Every assessed source, locator, claim, and tagged spoken passage passed.
+- This source-validated route-scenario draft is ready for human editorial review. Audio rendering, hosting, release, and publication remain pending.

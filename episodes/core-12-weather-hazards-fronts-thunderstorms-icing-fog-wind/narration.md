@@ -21,7 +21,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
 
-In this episode, we will apply the pressure, stability, moisture, and cloud model from Episode 11 to fronts, thunderstorms, icing, fog, turbulence, wind shear, and runway wind decisions.
+In this episode, we will apply the pressure, stability, moisture, and cloud model from Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*, to fronts, thunderstorms, icing, fog, turbulence, wind shear, and runway wind decisions.
 
 ## [01:15] What the ACS is asking you to connect
 
@@ -67,9 +67,9 @@ A front is a changing zone between air masses.
 
 **INSTRUCTOR:**
 
-An air mass is a large body of air with broadly similar temperature and moisture characteristics acquired over its source region. When unlike air masses meet, the boundary is called a front. The Aviation Weather Handbook makes an important refinement: the boundary is a transition zone with depth and slope. The colored line on a surface chart marks the analyzed surface position. The weather can extend well away from that line and above it.
+An air mass is a large body of air with broadly similar temperature and moisture characteristics acquired over its source region. When unlike air masses meet, the boundary is called a front. The Aviation Weather Handbook makes an important refinement: the boundary is a transition zone with depth and slope. The colored line on a surface chart marks the analyzed position of the boundary at the surface. Above and on either side of that surface boundary, cloud, precipitation, turbulence, and visibility restrictions can occupy a much larger three-dimensional area.
 
-Think back to Episode 11. If less-dense air is lifted over denser air, it expands and cools. If cooling reaches saturation, cloud forms. Stability shapes whether that lift spreads a layered cloud shield or supports strong vertical growth. Moisture controls how much cloud and precipitation can develop. The front supplies organized lift, but the air masses determine what the lift has to work with.
+Think back to Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*. If less-dense air is lifted over denser air, it expands and cools. If cooling reaches saturation, cloud forms. Stability shapes whether that lift spreads a layered cloud shield or supports strong vertical growth. Moisture controls how much cloud and precipitation can develop. The front supplies organized lift, but the air masses determine what the lift has to work with.
 
 **LEARNER:**
 
@@ -79,29 +79,29 @@ What evidence suggests that a front is approaching or passing?
 
 Look for a coordinated change rather than one magic signal. The PHAK points to temperature contrast, wind shift, pressure tendency, cloud change, and precipitation. The combination matters. A wind shift alone could have a local cause. Falling pressure alone does not identify a front. When several cues evolve together and agree with the analyzed and forecast boundary, the frontal explanation becomes stronger.
 
-## [04:20] Front names describe motion, not a guaranteed script
+## [04:20] Front names describe motion; the weather evidence completes the picture
 
 **ANNOUNCER:**
 
-Front names describe motion, not a guaranteed script.
+Front names describe motion; the weather evidence completes the picture.
 
 **INSTRUCTOR:**
 
 A warm front means warmer air is advancing and replacing colder air at the surface. Because the warm air commonly climbs a gradual slope over the retreating cold air, its cloud and precipitation can spread across a broad area ahead of the analyzed surface front. Layered cloud, steady precipitation, reduced visibility, and fog are common possibilities when moisture is sufficient.
 
-That description is not a timetable to memorize. If the advancing air is dry, the cloud and precipitation may be limited. If the lifted air is unstable, embedded convection can complicate the broad layered pattern. The operational question is not, “Does this look exactly like the textbook warm front?” It is, “What ceiling, visibility, precipitation, wind, and temperature changes are actually observed and forecast along my route and during my time window?”
+Use that description as a starting structure, then add the evidence for this front. If the advancing air is dry, the cloud and precipitation may be limited. If the lifted air is unstable, embedded convection can complicate the broad layered pattern. Ask what ceiling, visibility, precipitation, wind, and temperature changes are actually observed and forecast along the route and during the planned time window.
 
 A cold front means colder air is advancing and replacing warmer air. The denser cold air usually wedges beneath the warm air along a steeper boundary. Faster and more concentrated lift can support a narrower band of showers, turbulence, abrupt wind shift, or thunderstorms when warm moist unstable air is available.
 
-Again, do not convert “cold front” into “thunderstorms guaranteed.” A dry or stable air mass may produce a different result. The useful warning is that a cold front can organize rapid change across a route. A departure that is acceptable now and a destination that is acceptable now can still be separated by a moving band that is not acceptable at the planned crossing time.
+A dry or stable air mass may produce a cold front without thunderstorms. The useful warning is that a cold front can organize rapid change across a route. A departure that is acceptable now and a destination that is acceptable now can still be separated by a moving band that is not acceptable at the planned crossing time.
 
 A stationary front has little movement, so the associated clouds, precipitation, and reduced visibility can persist or repeatedly affect the same area. An occlusion forms as a faster cold front catches a warm front. It is part of a mature low-pressure system and can combine extensive cloud, precipitation, changing wind, and several air masses. For a VFR plan, both names should prompt a time-and-area question: how long is the route expected to remain affected, and where are the usable alternatives outside that area?
 
-## [06:30] Thunderstorms assemble the Episode 11 chain
+## [06:30] Thunderstorms assemble the weather-theory chain
 
 **ANNOUNCER:**
 
-Thunderstorms assemble the Episode 11 chain.
+Thunderstorms assemble the weather-theory chain.
 
 **INSTRUCTOR:**
 
@@ -201,7 +201,7 @@ Small roughness from frost, snow, or ice can reduce lift and increase drag. Ice 
 
 That begins before flight. Frost, snow, or ice on a lifting surface is an aerodynamic condition, not a cosmetic one. A clean-aircraft check belongs in the preflight decision, and the approved airplane information supplies the aircraft-specific limitations and methods.
 
-This episode is not teaching an icing-escape procedure. The study skill is earlier recognition: identify the overlap of subfreezing temperature and liquid moisture, compare it with the airplane's capabilities, and make a plan that avoids relying on an encounter to discover whether the forecast was accurate.
+The study skill comes before an encounter: identify the overlap of subfreezing temperature and liquid moisture, compare it with the airplane's capabilities, and make a plan that does not rely on an encounter to discover whether the forecast was accurate.
 
 ## [14:40] Fog is a cloud at the surface
 
@@ -211,7 +211,7 @@ Fog is a cloud at the surface.
 
 **INSTRUCTOR:**
 
-Fog is a visible collection of minute water droplets or ice crystals based at the surface that reduces horizontal visibility. The same saturation model from Episode 11 applies, but now the cloud occupies the departure, arrival, taxi, and low-level visual environment. A sky that appears clear above the layer does not make a surface departure or arrival visual.
+Fog is a visible collection of minute water droplets or ice crystals based at the surface that reduces horizontal visibility. The same saturation model from Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*, applies, but now the cloud occupies the departure, arrival, taxi, and low-level visual environment. A sky that appears clear above the layer does not make a surface departure or arrival visual.
 
 **LEARNER:**
 
@@ -235,7 +235,7 @@ Advection fog forms when wind moves moist air over a colder surface. Upslope fog
 
 Precipitation fog can form when rain adds moisture to cooler air below until it becomes saturated. Steam fog can form when cold air moves over warmer water and receives heat and moisture from below. Frontal processes can combine lifting, precipitation, and temperature contrast across a broad area, which connects the fog problem back to the front rather than to one airport.
 
-For a VFR decision, ask what mechanism is active, what observation confirms it, what forecast changes that mechanism, and whether the route contains a reliable area of better conditions. A marginal airport surrounded by equal or worse visibility is not improved by calling it an alternate.
+For a VFR decision, ask what mechanism is active, what observation confirms it, what change the forecast describes in that mechanism, and whether the route contains a reliable area of better conditions. A marginal airport surrounded by equal or worse visibility is not improved by calling it an alternate.
 
 ## [17:15] Wind is the atmosphere in motion
 
@@ -265,9 +265,11 @@ Wind becomes practical at the runway.
 
 **INSTRUCTOR:**
 
-At a runway, separate the reported wind into a headwind or tailwind component and a crosswind component. The Airplane Flying Handbook connects that crosswind with the airplane's controllability and the available runway direction. If the required correction exceeds the airplane's capability, a more favorable runway or another airport is the appropriate planning answer.
+Picture the runway as a straight line. When the reported wind meets that line at an angle, one part of the wind acts along the runway and the other acts across it. The along-runway part is a headwind if it comes from ahead or a tailwind if it comes from behind. The across-runway part is the crosswind. A wind nearly aligned with the runway has a larger along-runway component and a smaller crosswind component. A wind closer to ninety degrees from the runway has a larger crosswind component.
 
-The airplane's demonstrated crosswind information is not a personal proficiency certificate. A complete decision also considers gust spread, runway width and surface, obstacles, turbulence, pilot recency, and what the POH or AFM says for the aircraft. The practical question is not only, “Can this airplane be controlled in some demonstrated condition?” It is, “Does this runway, airplane, pilot, and wind leave a comfortable margin today?”
+After resolving those components, compare the crosswind with the airplane's controllability and the available runway direction. If the crosswind exceeds the airplane's capability, a more favorable runway or another airport is the appropriate planning answer.
+
+The airplane's demonstrated crosswind information is one airplane reference; it does not measure the current pilot's proficiency. A complete decision also considers gust spread, runway width and surface, obstacles, turbulence, pilot recency, and what the POH or AFM says for the aircraft. Together, those factors answer whether this runway, airplane, pilot, and wind leave a comfortable margin today.
 
 ## [19:25] Wind shear is change across a short distance
 
@@ -279,7 +281,7 @@ Wind shear is change across a short distance.
 
 Wind shear is a sudden change in wind speed or direction over a small area. An airplane crossing that change can experience an abrupt change in indicated airspeed, performance, and flightpath. Near the ground, there is little altitude in which to absorb the result. Fronts, thunderstorms, inversions, and strong winds aloft can all support low-level wind shear.
 
-A microburst is a particularly severe convective form. A strong downdraft reaches the surface and spreads outward. Depending on the path through it, an airplane may encounter an increasing headwind, then a downdraft, then an increasing tailwind. The first airspeed increase is not a gift; it can be the beginning of a rapid sequence that removes performance.
+A microburst is a particularly severe convective form. A strong downdraft reaches the surface and spreads outward. Depending on the path through it, an airplane may first encounter an increasing headwind that raises indicated airspeed, then the downdraft pushes the airplane downward, and then an increasing tailwind reduces indicated airspeed and performance. Near the ground, that downward motion and later airspeed loss can combine while little altitude remains.
 
 The conservative connection is straightforward. A wind-shear or microburst alert, a gust front, virga with outflow clues, or rapidly changing wind near convection changes the takeoff or landing decision. It is evidence about a hazardous volume of air, not merely a reason to expect a rough ride.
 

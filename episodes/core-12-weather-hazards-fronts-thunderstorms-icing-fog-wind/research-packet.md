@@ -88,8 +88,8 @@ None. Aircraft-specific procedures, equipment capabilities, and limitations are 
 ## Gate status
 
 - Initial source-led research and first draft: complete September 1, 2026.
-- Independent spoken-script review by a non-drafting agent: pending.
-- Required revisions from that review: pending.
+- Independent spoken-script review by a non-drafting agent: complete September 1, 2026.
+- Required revisions from that review: resolved in version 0.1.0; Episode 11 callbacks, the frontal-zone mental picture, forecast wording, runway wind components, and microburst causality were clarified.
 - Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, repository tests, disclosure/secret scan, and whitespace checks: complete for version 0.1.0.
 - Package-only pre-host validation: exercised and stopped at the expected missing `link-validation.yaml` gate because formal source-relevance validation has not been run.
 - Paid LLM source-relevance review: intentionally pending.

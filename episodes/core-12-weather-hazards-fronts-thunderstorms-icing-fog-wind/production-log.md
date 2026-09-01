@@ -20,3 +20,16 @@
 - All 93 repository tests passed. The pre-commit disclosure and secret scan and `git diff --check` passed.
 - The package-only pre-host command was exercised and stopped at the intended later-stage gate because `link-validation.yaml` does not exist until formal source validation is run.
 - Independent spoken-script review by a non-drafting agent remains pending. Formal paid source-relevance validation, human editorial approval, audio rendering, staging, release, and publication were not performed.
+
+## 2026-09-01 — independent spoken-script review resolved
+
+- A non-drafting agent reviewed grammar, complete thoughts, within-episode callbacks and call-forwards, and first-listen comprehension. All five required findings were resolved.
+- Replaced three number-only callbacks with the full listener-facing title, Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*.
+- Clarified that the chart line marks the analyzed surface boundary while cloud, precipitation, turbulence, and visibility restrictions can occupy a larger three-dimensional area above and on either side of it.
+- Changed the fog decision prompt so a forecast describes an expected change in the active mechanism rather than causing that change.
+- Added a plain runway-line mental model for separating reported wind into along-runway headwind or tailwind and across-runway crosswind components before comparing the result with airplane, runway, and pilot margin. No control technique was added.
+- Replaced the figurative microburst line with the direct sequence: an increasing headwind raises indicated airspeed, the downdraft pushes the airplane downward, and a later increasing tailwind reduces indicated airspeed and performance near the ground.
+- Applied both optional clarity refinements: reframed the front-type section around evidence completing the picture, and shortened the icing boundary sentence to keep the emphasis on recognition before an encounter.
+- Regenerated `narration.md` mechanically. The reviewed narration contains 3,816 spoken words with the same approximately 25–30 minute target.
+- Reset the downstream script-review state and recorded pending-review SHA-256 `1ac90f62cddb5d22207ea32bca2b678142eaaa56eadc07882aee2e3694534d94`. Formal source-relevance validation, human editorial approval, audio rendering, staging, release, and publication remain pending.
+- Re-ran deterministic source validation in `--dry-run` mode: all 19 sources, 29 reciprocal claims, 95 master-script source tags, and 19 show-note links passed without network or API requests. The narration derivative comparison, all 93 repository tests, the disclosure and secret scan, and the diff whitespace check also passed.

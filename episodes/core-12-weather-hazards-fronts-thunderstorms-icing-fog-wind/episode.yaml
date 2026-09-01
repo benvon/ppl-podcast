@@ -8,7 +8,7 @@ version: 0.1.0
 published_at: null
 runtime_target_minutes: 27
 runtime_actual_seconds: null
-word_count: 3722
+word_count: 3816
 speakers:
   - instructor
   - learner
@@ -73,7 +73,7 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 30239eb698b8441a3475af8e6a0cd3c9cf59f6377e57f65eeabdc749afaf0108
+  pending_script_sha256: 1ac90f62cddb5d22207ea32bca2b678142eaaa56eadc07882aee2e3694534d94
 release_gates_remaining:
   - Complete independent spoken-script review by a non-drafting agent and
     resolve required findings.

@@ -9,6 +9,7 @@ const path = require("path");
 const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
+const { sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const DEFAULT_HTTP_CONCURRENCY = 5;
@@ -93,15 +94,6 @@ function loadYaml(file, expectedKey) {
 
 function fileSha256(file) {
   return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
-}
-
-function validationInputHashes({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, showNotesFilePresent, showNotesValidationConfigured }) {
-  return {
-    sources: fileSha256(sourcesPath),
-    claims: fileSha256(claimsPath),
-    show_notes: showNotesFilePresent ? fileSha256(showNotesPath) : null,
-    show_notes_manifest: showNotesValidationConfigured ? fileSha256(showNotesManifestPath) : null,
-  };
 }
 
 function assertSafeUrl(value) {
@@ -527,7 +519,7 @@ function responseText(response) {
   throw new Error("Responses API returned no output text.");
 }
 
-async function assessRelevance({ model, source, claims, fetched, fetchImpl = fetch, signal }) {
+async function assessRelevance({ model, source, claims, authoredPassages = [], fetched, fetchImpl = fetch, signal }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is required for --llm. Load it from your environment; do not place it in a command argument or repository file.");
   // The relevance review must assess text extracted from this validation run.
@@ -538,10 +530,11 @@ async function assessRelevance({ model, source, claims, fetched, fetchImpl = fet
   const input = {
     source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt: excerpt.slice(0, 12000) },
     claims: claims.map((claim) => ({ id: claim.id, statement: claim.statement, type: claim.type })),
+    authored_passages: authoredPassages,
   };
   const body = {
     model,
-    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt and claims. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. Then, for every claim, decide whether the excerpt supports it, partially supports it, does not support it, or is insufficient evidence. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
+    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. For every listed claim, decide whether the excerpt supports it and whether the relevant source-tagged authored passage preserves that claim's material conditions and limitations. A claim is supports only when both are true; an omitted material condition makes it partially_supports. Do not penalize a source for a different factual statement in a shared paragraph when that statement is not part of the listed claim; its own source tag is reviewed separately. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
     input: JSON.stringify(input),
     text: { format: { type: "json_schema", name: "source_relevance", strict: true, schema: RELEVANCE_SCHEMA } },
   };
@@ -892,27 +885,32 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   const showNotesFilePresent = fs.existsSync(showNotesPath); const showNotesValidationConfigured = fs.existsSync(showNotesManifestPath);
   if (showNotesValidationConfigured && !showNotesFilePresent) throw new Error("show-notes-manifest.yaml requires show-notes.md");
   const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
-  const inputSha256 = validationInputHashes({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, showNotesFilePresent, showNotesValidationConfigured });
+  const episodePath = path.dirname(sourcesPath);
+  if (path.dirname(claimsPath) !== episodePath || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml")) throw new Error("source validation inputs must be the canonical episode package files");
+  const inputSha256 = sourceValidationInputHashes(episodePath);
   const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
   const claimMapping = validateClaimMappings(ledger, claimInventory);
+  const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
   const showNotesMapping = showNotesValidationConfigured ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_configured", errors: [] };
   if (options.dryRun) {
-    if (!claimMapping.valid || !showNotesMapping.valid) {
+    if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
       reportMappingErrors(claimMapping, showNotesMapping);
+      for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
       process.exitCode = 1;
       return;
     }
     const showNotesSummary = showNotesValidationConfigured ? `${showNotesManifest.links.length} show-notes links` : showNotesFilePresent ? "show notes without a manifest (not configured)" : "no show-notes manifest";
-    console.log(`Validated input shape, claim mappings, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    console.log(`Validated input shape, claim mappings, ${masterScriptMapping.source_tag_count} master-script source tags, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
   }
   const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
   progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest?.links.length || 0, llm_requested: options.llm });
-  if (!claimMapping.valid || !showNotesMapping.valid) {
+  if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
     reportMappingErrors(claimMapping, showNotesMapping);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
+    for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
     completeValidationReport(outputPath, report, validationRun);
     progress.emit("report_written", { valid: false });
     console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
@@ -965,7 +963,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? ECFR_MAX_IN_FLIGHT_REQUESTS : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
   if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
-  const deterministicValid = results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
+  const deterministicValid = masterScriptMapping.valid && results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
   if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
   await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
     const source = ledger.sources[index];
@@ -980,7 +978,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
       entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
       entry.claim_assessments = validateClaimAssessments(entry.relevance, []);
     } else {
-      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, fetched: entry.link, signal: cancellation.signal }); }
+      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, authoredPassages: masterScriptMapping.passages_by_source[source.id] || [], fetched: entry.link, signal: cancellation.signal }); }
       catch (error) { entry.relevance = { status: "not_assessed", reason: `LLM relevance failed: ${error.message}` }; }
       entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
     }
@@ -996,8 +994,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
-  const unresolved = !claimMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && entry.relevance.assessment.verdict !== "supports") || (options.requireLlm && entry.relevance.status === "assessed" && entry.relevance.assessment.locator_assessment.verdict !== "supports") || (options.requireLlm && !entry.claim_assessments.valid));
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && entry.relevance.assessment.verdict !== "supports") || (options.requireLlm && entry.relevance.status === "assessed" && entry.relevance.assessment.locator_assessment.verdict !== "supports") || (options.requireLlm && !entry.claim_assessments.valid));
   completeValidationReport(outputPath, report, validationRun);
   progress.emit("report_written", { valid: !unresolved });
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);

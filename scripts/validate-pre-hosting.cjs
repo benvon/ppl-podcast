@@ -110,7 +110,7 @@ function reviewSentenceHas(sentence, statusPattern) {
 
 function showNotesRecordCompletedSourceReview(showNotes, version) {
   const sourceVerification = String(showNotes).match(/^\*\*Source verification:\*\*\s*(.+)$/im)?.[1] || "";
-  return sourceVerification.includes(`version ${version}`)
+  return new RegExp(`\\bversion\\s+${escapeRegExp(version)}(?![0-9A-Za-z.-])`, "i").test(sourceVerification)
     && /\bsource-relevance review is complete\b/i.test(sourceVerification);
 }
 
@@ -137,6 +137,7 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   expect(errors, typeof episode.source_verification?.status === "string" && episode.source_verification.status.length > 0, "episode.yaml must record a source verification status.");
   expect(errors, episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
   expect(errors, sourceValidation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
+  expect(errors, sourceValidation.master_script_mapping?.valid === true, "link validation must pass the master-script source mapping.");
   expect(errors, !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress`) && !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress.recovering`), "source validation must not be in progress, recovering, or interrupted.");
   expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
   expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");

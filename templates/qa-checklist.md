@@ -3,6 +3,7 @@
 ## Content and sources
 
 - [ ] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
+- [ ] Every material claim has a declared source tag in its listed `master-script.md` section, and every source tag names a current source ledger entry.
 - [ ] Regulation, FAA guidance, aircraft examples, and teaching explanation are labeled correctly.
 - [ ] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
 - [ ] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.

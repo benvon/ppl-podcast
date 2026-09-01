@@ -120,7 +120,7 @@ sources:
     relevance_excerpt: "Standard sea-level pressure is 29.92 inches of mercury or 1,013.2 millibars; station readings are reduced to sea level for comparison, pressure decreases with altitude, and lower pressure corresponds to less-dense air."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [standard-pressure-reference, sea-level-pressure-comparison, pressure-decreases-altitude]
+    supports_claims: [standard-pressure-reference, pressure-decreases-altitude]
 
   - id: awh-pressure-units-station
     authority: faa_guidance
@@ -264,7 +264,7 @@ sources:
     relevance_excerpt: "Controllers obtain current altimeter settings from instruments or weather reporting stations and issue settings to en route aircraft and terminal departures under the specified procedures."
     verified_at_utc: "2026-08-31T14:29:00Z"
     link_status: 200
-    supports_claims: [atc-altimeter-setting-issuance, pilot-altimeter-setting-use]
+    supports_claims: [atc-altimeter-setting-issuance]
 
   - id: phak-high-low-vertical-motion
     authority: faa_guidance
@@ -360,7 +360,7 @@ sources:
     relevance_excerpt: "Cloud formation requires adequate water vapor, condensation nuclei, and cooling to saturation. The cloud-classification list defines cumulus as heaped or piled, stratus as formed in layers, cirrus as ringlets or fibrous high cloud, and nimbus as rain-bearing; low clouds can create low ceilings and visibility restrictions."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning, visible-cloud-formation, cloud-base-classification]
+    supports_claims: [cloud-formation-requirements, low-cloud-operational-meaning, visible-cloud-formation]
 
   - id: noaa-cloud-light-scattering
     authority: federal_science_guidance
@@ -384,7 +384,7 @@ sources:
     relevance_excerpt: "The basic cloud families are low, middle, high, and vertically developing. Towering cumulus indicates instability, and cumulonimbus contains moisture and unstable air and can produce hazardous weather."
     verified_at_utc: "2026-08-28T19:41:40Z"
     link_status: 200
-    supports_claims: [cloud-vertical-development-family, vertical-cloud-instability]
+    supports_claims: [cloud-base-classification, cloud-vertical-development-family, vertical-cloud-instability]
 
   - id: phak-cloud-name-classifications
     authority: faa_guidance

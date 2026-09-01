@@ -1,9 +1,9 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
-**Version:** 0.2.1 — refined structural draft
+**Version:** 0.2.2 — source-bound revision
 **Target runtime:** approximately 45 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Ready for hosting handoff; editorial, source-relevance, listening, chapter, and publication-day source validation are complete.
+**Production status:** Editorial and source-relevance review are complete. The revised narration requires a new audio render, listening QA, chapter review, and publication-day source validation before hosting.
 
 ## [00:00] Opening
 
@@ -33,13 +33,17 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-The Private Pilot for Airplane Category Airman Certification Standards puts this subject in Area of Operation One, Task C, Weather Information. Its knowledge elements include atmospheric composition and stability, temperature and heat exchange, moisture and precipitation, weather-system formation, clouds, turbulence, thunderstorms, icing, fog, frost, and obstructions to visibility. That is a broad list, but the list is not the lesson. The lesson is how those conditions connect.
+The Private Pilot for Airplane Category Airman Certification Standards puts this subject in Area of Operation One, Task C, Weather Information. It covers meteorology for departure, en route, alternate, and destination planning under VFR in visual meteorological conditions. Its first knowledge elements include atmospheric composition and stability.
 
 [Source: sources.yaml#acs-weather-stability]
+[Claim type: FAA regulatory standard]
+
+The remaining knowledge elements include temperature and heat exchange, moisture and precipitation, weather-system formation, clouds, turbulence, thunderstorms, icing, fog, frost, and obstructions to visibility. That is a broad list, but the list is not the lesson. The lesson is how those conditions connect.
+
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA regulatory standard]
 
-The task's skills show why the connections matter. The applicant analyzes the implications of actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements also include the decisions to continue or divert and the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
+The task's skills show why the connections matter. The applicant analyzes the implications of at least three actual or scenario weather conditions and correlates weather information to make a go or no-go decision. The risk-management elements also include the decisions to continue or divert and the limitations of weather reports, forecasts, onboard equipment, and inflight resources. In other words, a weather value is evidence. It is not a flight decision by itself.
 
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA regulatory standard]
@@ -106,7 +110,7 @@ You said we would follow a region of rising or sinking air. Is there a standard 
 
 **INSTRUCTOR:**
 
-Yes. The FAA Aviation Weather Handbook calls it an air parcel: an imaginary volume of air to which atmospheric properties can be assigned. We will shorten it to parcel. It is a standard model for asking what happens within selected air as conditions change.
+Yes. The FAA Aviation Weather Handbook calls it an air parcel: an imaginary volume of air to which approximately uniform atmospheric properties can be assigned. We will shorten it to parcel. It is a standard model for asking what happens within selected air as conditions change.
 
 [Source: sources.yaml#awh-air-parcel-troposphere]
 [Claim type: FAA guidance]
@@ -128,7 +132,7 @@ Pressure and its reference systems.
 
 **INSTRUCTOR:**
 
-Air is invisible, but it has mass, takes up space, and has weight. Atmospheric pressure is the force per unit area produced by the weight of the air above a surface. Near sea level, there is a deeper column of air overhead than there is high in the atmosphere. As altitude increases and the column above becomes shorter, pressure decreases. That is the physical idea beneath every pressure reference in this section.
+Air is invisible, but it has mass, takes up space, and has weight. Atmospheric pressure is the force per unit area produced by the weight of the air above a surface. Near sea level, there is a deeper column of air overhead than there is high in the atmosphere. As altitude increases and the column above becomes shorter, pressure decreases and the air becomes less dense. That is the physical idea beneath every pressure reference in this section.
 
 [Source: sources.yaml#phak-heating-density-pressure]
 [Source: sources.yaml#phak-pressure-reference-altitude]
@@ -157,7 +161,7 @@ For weather-pattern comparison, station pressure is adjusted, or normalized, to 
 [Source: sources.yaml#awh-sea-level-pressure-reference]
 [Claim type: FAA guidance]
 
-The standard atmosphere supplies a different kind of reference. It is a fixed, agreed model of pressure, temperature, and density rather than a report of today's atmosphere. Standard sea-level pressure is twenty-nine point nine two inches of mercury. Engineers, performance charts, and pressure-altitude calculations need that unchanging baseline because the real atmosphere never stops changing.
+The standard atmosphere is a fixed model of pressure, temperature, and density, not a report of today's atmosphere. Standard sea-level pressure is twenty-nine point nine two inches of mercury. It also provides the reference for pressure-altimeter calibration. Performance charts and pressure-altitude calculations need that unchanging baseline because the real atmosphere keeps changing.
 
 [Source: sources.yaml#awh-standard-atmosphere-reference]
 [Claim type: FAA guidance]
@@ -172,7 +176,7 @@ How pressure references appear in flight information.
 
 **INSTRUCTOR:**
 
-Now apply the reference map to the information a pilot hears or reads. A METAR, the routine aviation weather report for an airport, includes an altimeter-setting group. Automated Surface Observing Systems and Automated Weather Observing Systems, usually called ASOS and AWOS, generate airport weather observations and can broadcast the altimeter setting along with other weather elements. At airports where Automatic Terminal Information Service, or ATIS, is provided, the broadcast includes the current altimeter setting. Air traffic controllers also issue current settings in the situations covered by their procedures.
+Now apply the reference map to the information a pilot hears or reads. A METAR, the routine aviation weather report for an airport, includes an altimeter-setting group. Automated Surface Observing Systems and Automated Weather Observing Systems, usually called ASOS and AWOS, provide continuous airport weather observations that generate METARs and other aviation weather information. They may transmit those observations by radio voice, including the altimeter setting and other weather elements. At airports where Automatic Terminal Information Service, or ATIS, is provided, the broadcast includes the current altimeter setting as appropriate. Air traffic controllers also issue current settings in the situations covered by their procedures.
 
 [Source: sources.yaml#awh-metar-altimeter-cloud-bases]
 [Source: sources.yaml#aim-awos-asos-observations]
@@ -185,13 +189,13 @@ The altimeter setting value the pilot sets is the current reported altimeter set
 [Source: sources.yaml#awh-altimeter-setting-reference]
 [Claim type: FAA guidance]
 
-This is where mean sea level and above ground level become useful. Airport elevation is published in feet above mean sea level. An altitude stated in MSL uses that common baseline. A height in AGL, meaning above ground level, starts at the local surface beneath the point being described. If an airport elevation is one thousand feet MSL and the airplane is at three thousand feet MSL directly over that airport, the airplane is about two thousand feet above the airport. Terrain can rise or fall away from the field, so MSL altitude and AGL height answer different questions.
+This is where mean sea level and above ground level become useful. Airport elevation is the highest point of an airport's usable runways, published in feet above mean sea level. An altitude stated in MSL uses that common baseline. A height in AGL, meaning above ground level, starts at the local surface beneath the point being described. If an airport elevation is one thousand feet MSL and the airplane is at three thousand feet MSL directly over that airport, the airplane is about two thousand feet above the airport. Terrain can rise or fall away from the field, so MSL altitude and AGL height answer different questions.
 
 [Source: sources.yaml#faa-pcg-altitude-reference]
 [Source: sources.yaml#faa-pcg-airport-elevation]
 [Claim type: FAA guidance]
 
-A METAR shows why those references must stay separate. Its cloud-base heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication. Some designated stations also include normalized sea-level pressure in the remarks. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
+A METAR shows why those references must stay separate. Its cloud-layer heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication. Some designated stations also include normalized sea-level pressure in the remarks. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
 
 [Source: sources.yaml#awh-metar-altimeter-cloud-bases]
 [Source: sources.yaml#awh-metar-sea-level-pressure]
@@ -199,7 +203,8 @@ A METAR shows why those references must stay separate. Its cloud-base heights ar
 
 Pressure altitude and density altitude complete the orientation. Pressure altitude uses the fixed standard setting of twenty-nine point nine two inches of mercury to associate measured pressure with a level in the standard atmosphere. Density altitude corrects pressure altitude for nonstandard temperature and expresses the density environment the airplane experiences for performance. Neither value is the airplane's geometric height above the ground. Episode 10 developed their performance use; here they show why a reference system is necessary when pressure and temperature are changing.
 
-[Source: sources.yaml#awh-pressure-density-altitude]
+[Source: sources.yaml#awh-pressure-altitude-reference]
+[Source: sources.yaml#awh-density-altitude-reference]
 [Claim type: FAA guidance]
 
 Return to the lesson map. Pressure references organize the measurements. The physical atmosphere is still doing the same thing: pressure decreases as air rises through the troposphere. When selected air moves into lower or higher surrounding pressure, the change within that air becomes the link from pressure to temperature.
@@ -212,11 +217,15 @@ Heating changes density and starts motion.
 
 **INSTRUCTOR:**
 
-The Sun does not heat every surface equally or at the same rate. Dark ground, light ground, water, vegetation, slopes, latitude, season, cloud cover, and time of day all change how energy reaches and leaves the surface. The surface then exchanges heat with the air near it. Unequal heating means neighboring parts of the atmosphere do not remain identical.
+The Sun does not heat every surface equally or at the same rate. Dark ground, light ground, water, vegetation, slopes, latitude, season, cloud cover, and time of day all change how energy reaches and leaves the surface. The surface then exchanges heat with the air near it. Across the larger atmosphere, uneven heating of Earth's surface changes density and pressure patterns and drives circulation. Locally, those differences set neighboring parts of the atmosphere in motion.
 
-The ACS calls this temperature and heat exchange. Radiation carries energy from the Sun through space to Earth's surface. Conduction transfers heat between the surface and the air touching it. Convection transports heat and moisture vertically as warmed air rises. Advection transports heat horizontally as wind moves air across the surface or into another region. These words name different parts of the same heating-and-motion story.
+[Source: sources.yaml#phak-heating-density-pressure]
+[Claim type: FAA guidance]
+
+The ACS calls this temperature and heat exchange. Radiation carries energy from the Sun through space to Earth's surface. Conduction transfers heat between the surface and the air touching it. Convection transports heat and moisture vertically as warmed air rises. Advection describes horizontal temperature change as wind moves colder or warmer air into part of an air column. These words name different parts of the same heating-and-motion story.
 
 [Source: sources.yaml#awh-heat-transfer-modes]
+[Source: sources.yaml#awh-temperature-advection]
 [Claim type: FAA guidance]
 
 When air warms, its molecules spread farther apart and the air becomes less dense. When air cools, the molecules pack more closely and the air becomes denser. If warmer, less-dense air sits beside or below cooler, denser air, gravity and pressure differences can set the atmosphere in motion. Warm air can rise while cooler air moves in to replace it, creating a circulation.
@@ -290,14 +299,18 @@ Does unstable air begin rising without any trigger?
 
 Not necessarily. Instability describes the response after air is displaced. Surface heating can begin convection. Terrain can force air upslope. Converging air can support upward motion. Fronts and larger weather systems can also provide lift, but Episode 12 will develop those hazard-producing arrangements. Once lift begins, stability helps explain whether the motion is suppressed, sustained, or amplified.
 
-Stable air often favors smoother conditions and layered cloud forms when moisture is present. Unstable air favors stronger vertical currents, turbulence, and vertically developing clouds when moisture and lift are available. A temperature inversion is a particularly stable layer in which temperature increases with altitude. It can act like a cap on mixing and trap moisture, haze, smoke, or other pollutants below it.
+Stable air often favors smoother conditions and layered cloud forms when moisture is present. Unstable air favors stronger vertical currents, turbulence, and vertically developing clouds when moisture and lift are available. A temperature inversion is a particularly stable, commonly smooth layer in which temperature increases with altitude. It can act like a cap on mixing and trap moisture, haze, smoke, or other pollutants below it.
 
 [Source: sources.yaml#phak-lapse-moisture-inversion]
 [Claim type: FAA guidance]
 
-Pressure patterns can supply broader evidence about vertical motion. In the Northern Hemisphere, descending air is commonly associated with high pressure, while convergence and rising air commonly accompany low pressure, cloudiness, or precipitation. These are broad tendencies, not a route-and-time conclusion. Reports, forecasts, and observed cloud development tell you how the atmosphere is actually behaving for the proposed flight.
+Pressure patterns can supply broader evidence about vertical motion. In the Northern Hemisphere, descending dry air is commonly associated with high pressure, while rising air commonly accompanies low pressure, cloudiness, or precipitation. These are broad tendencies, not a route-and-time conclusion.
 
 [Source: sources.yaml#phak-high-low-vertical-motion]
+[Claim type: FAA guidance]
+
+Reports, forecasts, and observed cloud development tell you how the atmosphere is actually behaving for the proposed flight.
+
 [Source: sources.yaml#acs-weather-moisture-clouds-risk]
 [Claim type: FAA guidance and Teaching explanation]
 
@@ -318,12 +331,12 @@ The amount of water vapor present is one fact. The air's capacity before saturat
 [Source: sources.yaml#phak-lapse-moisture-inversion]
 [Claim type: FAA guidance]
 
-Relative humidity compares the water vapor actually present with the amount the air could contain at its current temperature. If the temperature changes while the water-vapor amount stays the same, relative humidity changes. That is why a relative-humidity percentage alone does not tell you the whole moisture story.
+Relative humidity compares the water vapor actually present with the amount the air could contain at its current temperature and pressure. If the temperature changes while the water-vapor amount stays the same, relative humidity changes. That is why a relative-humidity percentage alone does not tell you the whole moisture story.
 
 [Source: sources.yaml#phak-lapse-moisture-inversion]
 [Claim type: FAA guidance]
 
-Dew point is the temperature to which air must be cooled to become saturated when its water-vapor amount does not change. Cooling the parcel toward dew point closes the temperature-dew point spread. When temperature reaches dew point, the air is saturated. Further cooling favors condensation into liquid or deposition as ice.
+Dew point is the temperature to which air must be cooled to become saturated when its pressure and water-vapor amount do not change. Cooling the parcel toward dew point closes the temperature-dew point spread. When temperature reaches dew point, the air is saturated. Further cooling favors condensation into liquid or deposition as ice.
 
 [Source: sources.yaml#nws-dew-point-definition]
 [Source: sources.yaml#phak-dewpoint-saturation-lifting]
@@ -339,13 +352,13 @@ Yes, for the reported place, time, and level. If temperature and dew point are c
 
 Think of temperature and dew point as two moving lines. Cooling lowers the temperature line toward dew point. Adding water vapor raises the dew point toward temperature. Warming increases the separation if moisture stays fixed. Drying lowers dew point. Saturation occurs when they meet, but the atmospheric path that brings them together tells you what kind of weather may form and where.
 
-Saturation is the condition that permits the phase change, but cloud formation also needs condensation or ice nuclei. These are tiny particles such as dust, salt, or smoke that provide surfaces on which water can condense or deposit. Water vapor changes phase onto those nuclei, producing droplets or ice crystals. Those particles interact with and scatter light, so an aggregate of them becomes visible as a cloud.
+Saturation is the condition that permits the phase change. Cloud formation also needs adequate water vapor, condensation or ice nuclei, and a way to cool the air to saturation. The nuclei are tiny particles such as dust, salt, or smoke that provide surfaces on which water can condense or deposit. Water vapor changes phase onto those nuclei, producing small droplets or ice crystals. Those small particles interact with and scatter sunlight, so an aggregate of them becomes visible as a cloud.
 
 [Source: sources.yaml#phak-cloud-formation-low-clouds]
 [Source: sources.yaml#noaa-cloud-light-scattering]
 [Claim type: FAA guidance and Federal science guidance]
 
-Say the full chain once without interruption: invisible water vapor is carried in the air; cooling moves temperature toward dew point; reaching dew point brings saturation; condensation or deposition occurs on nuclei; droplets or ice crystals scatter light; and the cloud becomes visible. Relative humidity, dew point, saturation, condensation nuclei, droplets, and ice crystals are written-exam vocabulary, but here each term marks one step in a physical sequence.
+Say the full chain once without interruption: invisible water vapor is carried in the air; cooling moves temperature toward dew point; reaching dew point brings saturation; condensation or deposition occurs on nuclei; droplets or ice crystals scatter sunlight; and the cloud becomes visible. Relative humidity, dew point, saturation, condensation nuclei, droplets, and ice crystals are written-exam vocabulary, but here each term marks one step in a physical sequence.
 
 ## [27:35] Four paths to saturation
 
@@ -387,7 +400,7 @@ Clouds make the chain visible.
 
 **INSTRUCTOR:**
 
-Now call back the moisture chain in a rising parcel. The parcel begins below saturation with invisible water vapor. A lifting mechanism raises it. Lower pressure permits expansion. Expansion cools the parcel. Temperature approaches dew point. At saturation, water begins to condense or deposit on nuclei. Droplets or ice crystals scatter light, and the cloud becomes visible.
+Now call back the moisture chain in a rising parcel. The parcel begins below saturation with invisible water vapor. A lifting mechanism raises it. Lower pressure permits expansion. Expansion cools the parcel. Temperature approaches dew point. At saturation, water begins to condense or deposit on nuclei. Small droplets or ice crystals scatter sunlight, and the cloud becomes visible.
 
 [Source: sources.yaml#phak-cloud-formation-low-clouds]
 [Source: sources.yaml#noaa-cloud-light-scattering]
@@ -418,14 +431,14 @@ What cloud structure can tell you.
 
 **INSTRUCTOR:**
 
-The PHAK groups basic clouds by the height of their bases and by vertical development: low, middle, high, and clouds with extensive vertical growth. The exact height bands are useful reference information, but for this lesson the operational question is what the cloud structure says about moisture, stability, lift, and the part of the route it may affect.
+The PHAK groups basic cloud forms into low, middle, high, and extensive-vertical-development families. The exact height bands are useful reference information, but for this lesson the operational question is what the cloud structure says about moisture, stability, lift, and the part of the route it may affect.
 
 [Source: sources.yaml#phak-cloud-families-vertical]
 [Claim type: FAA guidance]
 
 The show notes link a visual aid called “PHAK basic cloud families and vertical development.” Figure 12-22 places stratus and stratocumulus in the low family, altostratus and altocumulus in the middle family, cirrus forms in the high family, and towering cumulus and cumulonimbus across a deep vertical range. Use the figure to organize the names around shape and vertical extent rather than memorizing an isolated list.
 
-Layered stratus forms point toward stable air and widespread gentle lifting or cooling. Cumulus forms point toward rising parcels. A small cumulus cloud does not equal a thunderstorm, but growing vertical structure is evidence that upward motion continues. Towering cumulus indicates instability. Cumulonimbus combines deep vertical development, substantial moisture, and unstable air and can produce severe hazards.
+Layered stratus forms point toward stable air and widespread gentle lifting or cooling. Cumulus forms point toward rising parcels. As they build vertically, cumulus clouds can grow into towering cumulus and then cumulonimbus. A small cumulus cloud does not equal a thunderstorm, but growing vertical structure is evidence that upward motion continues. Towering cumulus indicates instability. Cumulonimbus combines deep vertical development, substantial moisture, and unstable air and can produce severe hazards.
 
 [Source: sources.yaml#phak-cloud-families-vertical]
 [Claim type: FAA guidance]
@@ -464,10 +477,9 @@ Surface pressure values can reveal highs, lows, ridges, and troughs, while a pre
 
 [Source: sources.yaml#phak-weather-theory-purpose]
 [Source: sources.yaml#phak-pressure-reference-altitude]
-[Source: sources.yaml#phak-high-low-vertical-motion]
 [Claim type: FAA guidance]
 
-The FAA definition of ceiling is not simply any cloud base. Ceiling is the lowest layer reported as broken or overcast, or the vertical visibility into an obscuration. Visibility is the greatest horizontal distance at which prominent objects can be seen. Those definitions turn cloud and moisture effects into specific reportable observations.
+The FAA definition of ceiling is not simply any cloud base. Ceiling is the lowest layer reported as broken or overcast, or the vertical visibility into an obscuration. Visibility is the greatest horizontal distance at which prominent objects can be seen with the naked eye. Those definitions turn cloud and moisture effects into specific reportable observations.
 
 [Source: sources.yaml#phak-ceiling-visibility-precipitation]
 [Claim type: FAA guidance]
@@ -542,11 +554,14 @@ Unequal heating changes temperature and density. Warmed, less-dense air can begi
 
 Lift a parcel into lower pressure and it expands and cools. Bring it down into higher pressure and it compresses and warms. Stability asks what the parcel does after displacement. Stable air resists continued vertical motion. Unstable air supports growth when lift, moisture, and the surrounding temperature profile are favorable.
 
-Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with capacity at the current temperature. Dew point is the temperature reached when cooling with no change in water-vapor amount brings the air to saturation. Condensation or deposition then forms droplets or ice crystals on nuclei. Those particles scatter light, making the cloud visible.
+Water vapor is invisible. Warmer air can contain more of it before saturation. Relative humidity compares the water vapor present with capacity at the current temperature and pressure. Dew point is the temperature reached when cooling with no change in pressure or water-vapor amount brings the air to saturation. Condensation or deposition then forms small droplets or ice crystals on nuclei. Those small particles scatter light, making the cloud visible.
 
 Air can reach saturation by moving over a cold surface, mixing, nighttime ground cooling, or lifting. Cloud formation needs water vapor, nuclei, and cooling to saturation. Layered clouds suggest stable structure. Vertical growth points toward rising air and instability. Cloud height and coverage, visibility, and precipitation turn that structure into operational information.
 
 Repeat four cloud-name parts as memory hooks. Cumulus means heaped or piled, so cumulo points toward a built-up shape. Stratus means formed in layers, so strato points toward a layer. Cirrus describes ringlets or fibrous clouds; in a compound name, cirro identifies the high-cloud family. Nimbus means rain-bearing.
+
+[Source: sources.yaml#phak-cloud-name-classifications]
+[Claim type: FAA guidance]
 
 **LEARNER:**
 

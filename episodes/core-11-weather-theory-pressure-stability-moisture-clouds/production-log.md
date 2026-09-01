@@ -104,3 +104,17 @@
 - The release timestamp is `2026-08-31T22:32:37Z`. Episode and hosting metadata now bind that timestamp, the 41:49 candidate runtime, the MP3 checksum, and the chapter-review page. Final pre-hosting validation and the episode pull request remain next.
 - Final pre-hosting validation then passed against the sealed MP3, render manifest, audio-quality report, embedded chapters, current narration derivative, release metadata, and publication-day source report. The full repository test suite (85 tests), disclosure and secret check, and whitespace check also passed.
 - The non-final `--package-only` shape check also passed before the episode pull request. The validator now accepts all recognized package lifecycle states for that structural check, while the separate full pre-hosting check remains the release-readiness authority.
+
+## 2026-09-01 — source-review repair and revised-audio gate
+
+- PR source-review findings exposed two stale source identifiers and several cases where the claim inventory was more precise than the immediately tagged spoken prose. Replaced the obsolete pressure source tag, added the missing temperature-advection tag, restored the dew-point constant-pressure condition, and kept the source ledger, claim inventory, show-notes manifest, and script aligned.
+- Strengthened the validator so every source tag in `master-script.md` must name a ledger source and follow spoken prose, every claim must have a listed script section with a matching source tag, and the LLM relevance request receives that source-tagged prose. The validation report now records and hashes `master-script.md`, preventing a passing report from being reused after the authored lesson changes.
+- Corrected the show-notes version comparison to require an exact version token; version `0.2.1` no longer accepts a `0.2.10` review record.
+- Source-bound relevance-validation run `ffcf3135-2e57-42c0-9e43-92f40b706dd5` passed at `2026-09-01T00:05:11.153Z`: all 34 cited sources, 34 show-note links, 54 claims, and 79 tagged passages support the version 0.2.2 package.
+- The prior version 0.2.1 audio candidate is intentionally superseded because the narration changed. A revised candidate must be rendered, technically checked, listened to against the script, and chapter-reviewed before this episode can return to hosting readiness.
+
+## 2026-09-01 — final source-bound candidate rendered
+
+- Final source-bound relevance-validation run `6c7c22de-8791-49e2-9777-2ae6e725fd6b` passed at `2026-09-01T00:30:07.134Z`: all 34 cited sources, 34 show-note links, 54 claims, and 78 source-tagged passages support version 0.2.2.
+- Rendered candidate `audio-artifacts/core-11-20260901T003413Z.mp3` from the current `narration.md` derivative. It reuses 60 segments whose exact Realtime input matched and re-rendered 10 corrected segments. Automated quality analysis passed 24 kHz mono decode, duration agreement, all 70 stitch-boundary checks with no warning, no clipped samples, and embedded MP3 chapter validation.
+- The candidate is checksum-bound to `e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667`. Full script-aligned human listening QA and manual chapter review remain pending.

@@ -48,6 +48,8 @@ What the ACS is asking you to connect.
 [Source: sources.yaml#replace-with-stable-source-id]
 [Claim type: FAA guidance]
 
+<!-- Every material claim in claim-inventory.yaml must have one of its declared sources tagged in its listed script section. Place each source tag immediately after the spoken paragraph it supports. -->
+
 ## [MM:SS] Outro
 
 **ANNOUNCER:**

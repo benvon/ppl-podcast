@@ -1,5 +1,5 @@
 schema_version: 1
-handoff_status: ready_for_hosting_pr
+handoff_status: pending_revised_audio
 publisher_release:
   id: "core-11"
   guid: "pplstudyguide.com:core-11"
@@ -16,4 +16,4 @@ provenance:
   show_notes: show-notes.md
   audio_manifest: audio-manifest.yaml
   source_validation: link-validation.yaml
-  content_version: 0.2.1
+  content_version: 0.2.2

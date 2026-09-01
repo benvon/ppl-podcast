@@ -5,7 +5,7 @@
 - [x] Every material claim is in `claim-inventory.yaml` and maps to `sources.yaml`.
 - [x] FAA regulatory standards, FAA guidance, and teaching explanations are labeled correctly.
 - [x] Every listener-facing attribution identifies the smallest relevant section, task, paragraph, or page; no landing-page, whole-document, or whole-part citation is used for a material claim.
-- [x] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, or claim-relevance failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
+- [x] Before any audio render, source-link validator was run with `--require-llm`, reports no unresolved deep-citation, link, locator-relevance, claim-relevance, or source-tagged-spoken-passage failure, and `episode.yaml` records `source_verification.relevance_review: complete`.
 - [x] For this structural rewrite, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package. Recheck after any script edit and before render.
 - [x] Show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page.
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. The fresh version 0.2.1 review checked grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension; its heat-exchange and cloud-recap findings were resolved and rechecked.
@@ -30,10 +30,10 @@
 - [x] Opening preview was accepted before full rendering; the required notice follows immediately.
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.”
 - [x] Five-segment opening and ASOS/AWOS/ATIS pronunciation previews were listened to and accepted before full rendering.
-- [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
-- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains.
-- [x] Final chapter markers have been manually reviewed: the list starts at `00:00`, uses useful listener-facing section labels, and each marker begins before the corresponding material.
-- [x] The render manifest records a passing `ffprobe` chapter validation for the final MP3.
+- [ ] Re-render the source-bound version 0.2.2 narration, then listen against the master script with numbers, units, acronyms, and warnings checked.
+- [ ] Confirm that no clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the revised candidate.
+- [ ] Manually review revised chapter markers: the list starts at `00:00`, uses useful listener-facing section labels, and each marker begins before the corresponding material.
+- [ ] Confirm the revised render manifest records a passing `ffprobe` chapter validation for the final MP3.
 
 ## Release
 

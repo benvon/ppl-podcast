@@ -1,20 +1,27 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-08-31T22:38:49.489Z
+checked_at_utc: 2026-09-01T00:30:07.134Z
 sources_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/sources.yaml
 claims_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/claim-inventory.yaml
 show_notes_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes.md
 show_notes_manifest_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes-manifest.yaml
 input_sha256:
-  sources: 578f02eb140becefa72dde9b113f44535e329ebfdbd19a28ceb51c149e75f010
-  claims: 931b72f579bd079efb4940a484643d05eea4c30502b4e6bd39a1d8accf2c42c2
-  show_notes: 73a22193322ab7644d3905a518b56ab7931abdfe0c74d39efb16ad931fe5af9a
-  show_notes_manifest: 26590a5008a40571186b32824767f6e8a246541a867ea9b4d2b3d16f395f0c08
+  sources: bf4b0727a9b21d21f0dd03bcd8f7827e6cdf0d57bcb6ca7c3c459345b4cc1517
+  claims: 41df9aacabc163684d4ca2b33949ed28efbbb45ce221dfcb03e4da0aa74be8cf
+  master_script: 2fca9aefde9f22f70a44891cf7bf5b040dab9ca8f289097f06caeabf718614d1
+  show_notes: aeebeb4ad146e1b3a3f809ab419d99e6f627e688034057edb55957a333f6890e
+  show_notes_manifest: 77dcc458e617085d1d6737de1aaac8fcfe5e2d22eb8615081baf2a5811b0fc4e
 llm_requested: true
 llm_model: gpt-5.6-terra
 claim_mapping:
   valid: true
   errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 78
+  claim_coverage_count: 54
 show_notes_mapping:
   valid: true
   errors: []
@@ -313,7 +320,6 @@ show_notes_results:
     source_id: phak-pressure-reference-altitude
     claim_ids:
       - standard-pressure-reference
-      - sea-level-pressure-comparison
       - pressure-decreases-altitude
     citation_target:
       valid: true
@@ -684,7 +690,6 @@ show_notes_results:
     source_id: atc-altimeter-setting-issuance
     claim_ids:
       - atc-altimeter-setting-issuance
-      - pilot-altimeter-setting-use
     citation_target:
       valid: true
       errors: []
@@ -939,7 +944,6 @@ show_notes_results:
       - cloud-formation-requirements
       - low-cloud-operational-meaning
       - visible-cloud-formation
-      - cloud-base-classification
     citation_target:
       valid: true
       errors: []
@@ -1001,6 +1005,7 @@ show_notes_results:
     url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
     source_id: phak-cloud-families-vertical
     claim_ids:
+      - cloud-base-classification
       - cloud-vertical-development-family
       - vertical-cloud-instability
     citation_target:
@@ -1094,7 +1099,7 @@ show_notes_results:
 results:
   - source_id: acs-weather-stability
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-31T22:37:56.210Z
+    checked_at_utc: 2026-09-01T00:28:47.579Z
     linked_claim_ids:
       - acs-weather-vfr-scope
     missing_claim_ids: []
@@ -1129,31 +1134,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page contains Task C, Weather Information, and
-          explicitly lists PA.I.C.K3 as meteorology applicable to the departure,
-          en route, alternate, and destination under VFR in VMC. It specifically
-          includes PA.I.C.K3a, “Atmospheric composition and stability.”
+        rationale: The cited PDF page is the ACS Weather Information task and explicitly
+          lists PA.I.C.K3 as meteorology applicable to the departure, en route,
+          alternate, and destination under VFR in VMC, with PA.I.C.K3a covering
+          atmospheric composition and stability. The authored passage accurately
+          preserves those conditions and scope.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is printed page 3 and includes PA.I.C.K3 through
-            K3b. Although the locator’s wording/order is slightly compressed,
-            the specified ACS task and K3/K3a content appear on this exact page.
+          rationale: The locator identifies PA.I.C.K3/K3b and Weather Information on
+            printed page 3; cited PDF page 11 contains printed page 3 and the
+            relevant PA.I.C.K3 and K3a text. Although the stated claim concerns
+            K3/K3a rather than K3b specifically, the locator reaches the
+            applicable Weather Information/K3 material on the cited page.
         claim_assessments:
           - claim_id: acs-weather-vfr-scope
             verdict: supports
-            rationale: The excerpt directly states that PA.I.C.K3 covers meteorology
-              applicable to departure, en route, alternate, and destination
-              under VFR in VMC, and K3a explicitly identifies atmospheric
-              composition and stability.
+            rationale: The excerpt states that PA.I.C.K3 covers meteorology applicable to
+              departure, en route, alternate, and destination under VFR in VMC,
+              and PA.I.C.K3a specifically identifies atmospheric composition and
+              stability. The authored passage retains the VFR/VMC operational
+              scope and the atmospheric-composition-and-stability element.
       usage:
-        input_tokens: 1045
+        input_tokens: 1188
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1042
-        output_tokens: 210
+          cached_tokens: 1185
+        output_tokens: 265
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1255
+        total_tokens: 1453
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1162,7 +1171,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: acs-weather-moisture-clouds-risk
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-08-31T22:37:56.229Z
+    checked_at_utc: 2026-09-01T00:28:47.596Z
     linked_claim_ids:
       - acs-weather-topic-scope
       - acs-weather-decision-use
@@ -1198,38 +1207,44 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited ACS page explicitly lists the Weather Information knowledge
-          topics, the associated risk-management items, and the required
-          weather-analysis and go/no-go skills described in both claims.
+        rationale: The cited PDF page directly lists the Weather Information knowledge
+          elements, the applicable risk-management elements, and the required
+          weather-related skills. The authored passages accurately preserve the
+          cited scope and the material requirements for analyzing at least three
+          conditions, correlating weather information for a go/no-go decision,
+          and considering continue/divert decisions and weather-resource
+          limitations.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 12 (printed page 4) and directly
-            contains PA.I.C.K3c–K3l, R1–R2, and S1–S3, matching the supplied
-            locator.
+          rationale: The excerpt is from printed page 4 and contains PA.I.C.K3c through
+            K3l, R1 through R2, and S1 through S3, matching the locator.
         claim_assessments:
           - claim_id: acs-weather-topic-scope
             verdict: supports
             rationale: The excerpt expressly includes temperature and heat exchange;
-              moisture/precipitation; weather-system formation including air
-              masses and fronts; clouds; turbulence; thunderstorms and
-              microbursts; icing and freezing-level information; fog/mist;
-              frost; and obstructions to visibility.
+              moisture/precipitation; weather-system formation; clouds;
+              turbulence; thunderstorms and microbursts; icing and
+              freezing-level information; fog/mist; frost; and visibility
+              obstructions. The authored passage accurately summarizes these
+              listed areas.
           - claim_id: acs-weather-decision-use
             verdict: supports
-            rationale: The excerpt states that applicants identify, assess, and mitigate
-              risks related to go/no-go and continue/divert decisions, hazardous
-              weather, and weather-resource use and limitations. It also
-              requires analysis of at least three listed conditions and
-              correlation of weather information for a go/no-go decision.
+            rationale: The excerpt requires analysis of at least three K3 weather conditions
+              and correlation of weather information for a go/no-go decision.
+              Its risk-management items cover go/no-go and continue/divert
+              decisions, hazardous weather, and the use and limitations of
+              onboard weather equipment, reports/forecasts, and inflight
+              resources. The authored passage retains those requirements and
+              limitations.
       usage:
-        input_tokens: 1001
+        input_tokens: 1593
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 265
+          cached_tokens: 1590
+        output_tokens: 528
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1266
+          reasoning_tokens: 219
+        total_tokens: 2121
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1238,7 +1253,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-weather-theory-purpose
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:56.736Z
+    checked_at_utc: 2026-09-01T00:28:48.080Z
     linked_claim_ids:
       - weather-theory-supports-interpretation
     missing_claim_ids: []
@@ -1273,30 +1288,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt expressly states that understanding the theories behind
-          weather helps a pilot make sound weather decisions based on reports
-          and forecasts obtained from an FSS weather specialist and other
-          aviation weather services.
+        rationale: The cited page explicitly states that understanding the theories
+          behind weather helps a pilot make sound weather decisions based on
+          reports and forecasts obtained from an FSS weather specialist and
+          other aviation weather services. The relevant authored passage
+          accurately preserves this relationship and its context as foundational
+          background for later interpretation of reports and forecasts.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator is Chapter 12, Introduction, page 12-1, and the
-            supplied excerpt is from that exact page and contains the stated
-            guidance.
+          rationale: The locator identifies Chapter 12, Introduction, page 12-1, and the
+            supplied excerpt from that exact page contains the supporting
+            statement.
         claim_assessments:
           - claim_id: weather-theory-supports-interpretation
             verdict: supports
-            rationale: The claim accurately paraphrases the excerpt's statement that weather
-              theory helps pilots make sound weather decisions using aviation
-              weather reports and forecasts.
+            rationale: "The excerpt directly supports the claim: understanding weather
+              theory helps pilots make sound decisions based on aviation weather
+              reports and forecasts. The first authored passage states this
+              point without omitting a material limitation."
       usage:
-        input_tokens: 607
+        input_tokens: 1001
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 154
+        output_tokens: 186
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 761
+        total_tokens: 1187
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1305,7 +1323,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-atmosphere-troposphere
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:56.739Z
+    checked_at_utc: 2026-09-01T00:28:48.084Z
     linked_claim_ids:
       - atmosphere-mixture-water-vapor
       - troposphere-weather-phenomena
@@ -1341,38 +1359,45 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly describes the atmosphere as a constantly
-          moving mixture of gases, states that water vapor varies from zero to
+        rationale: The cited PDF page directly states that the atmosphere is a mixture
+          of gases in constant motion; that water vapor varies from zero to
           about five percent by volume and is responsible for major weather
-          changes, and states that the vast majority of weather, clouds, storms,
-          and temperature variances occur in the troposphere.
+          changes; and that the vast majority of weather, clouds, storms, and
+          temperature variances occur in the troposphere. Both authored passages
+          preserve the material content of their respective claims.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 12, the Atmosphere/Composition of the
-            Atmosphere material, page 12-2. The supplied excerpt is from cited
-            PDF page 2 and contains the relevant passages.
+          rationale: The specified locator is PDF page 12-2, and the supplied excerpt is
+            from that exact page. It contains the relevant
+            atmosphere-composition and troposphere statements.
         claim_assessments:
           - claim_id: atmosphere-mixture-water-vapor
             verdict: supports
             rationale: The excerpt says the atmosphere is a mixture of gases in constant
-              motion. It states that a volume of air contains water vapor
-              varying from zero to about five percent by volume, and that this
-              small amount of water vapor is responsible for major changes in
-              the weather.
+              motion, contains water vapor varying from zero to about five
+              percent by volume, and that this small amount is responsible for
+              major weather changes. The first authored passage preserves these
+              points. Its additional discussion of bulk-air processes and water
+              changing phase is not needed for, and does not alter, the listed
+              claim.
           - claim_id: troposphere-weather-phenomena
             verdict: supports
-            rationale: The excerpt explicitly states that the vast majority of weather,
-              clouds, storms, and temperature variances occur within the
-              troposphere.
+            rationale: The excerpt states that the vast majority of weather, clouds, storms,
+              and temperature variances occur in the first atmospheric layer,
+              the troposphere. The second authored passage accurately restates
+              this as most weather, clouds, storms, and temperature variations
+              occurring in the troposphere. Its extra statements about pilot
+              operations and tropopause height are outside the listed claim and
+              are not assessed as part of it.
       usage:
-        input_tokens: 988
+        input_tokens: 1251
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 261
+          cached_tokens: 1248
+        output_tokens: 342
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1249
+        total_tokens: 1593
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1381,7 +1406,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-air-parcel-troposphere
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:57.142Z
+    checked_at_utc: 2026-09-01T00:28:49.512Z
     linked_claim_ids:
       - troposphere-depth
       - air-parcel-conceptual-model
@@ -1419,40 +1444,41 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page directly defines an air parcel and describes the
-          troposphere’s approximate height and its variation by latitude and
-          season. All three claims are addressed in the excerpt.
+          troposphere’s approximate height and variation with latitude and
+          season. Each listed claim is supported by the excerpt, and its
+          corresponding authored passage retains the relevant qualifications.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 63 and contains sections 4.2.1
-            “Air Parcel” and 4.3.1 “Troposphere,” which directly correspond to
-            the cited chapter/page locator.
+          rationale: The excerpt is explicitly from cited PDF page 63 (handbook page 4-3)
+            and contains the relevant Air Parcel and Troposphere sections.
         claim_assessments:
           - claim_id: troposphere-depth
             verdict: supports
-            rationale: The excerpt states that the troposphere extends to about 11 km
-              (36,000 ft) and that its vertical depth varies with temperature
-              variations associated with latitude and season.
+            rationale: The excerpt states that the troposphere begins at Earth’s surface and
+              extends to about 11 km (36,000 ft), and that its vertical depth
+              varies with latitude and season. The authored passage preserves
+              those conditions.
           - claim_id: air-parcel-conceptual-model
             verdict: supports
             rationale: The excerpt defines an air parcel as an imaginary volume of air to
               which atmospheric properties may be assigned and says it is used
-              in meteorology as a tool to describe atmospheric processes. Its
-              statement that the parcel’s properties are approximately uniform
-              supports the conceptual-model portion of the claim.
+              as a tool to describe atmospheric processes. The authored passage
+              accurately presents it as a model for considering selected air as
+              conditions change.
           - claim_id: parcel-properties-uniform
             verdict: supports
-            rationale: The excerpt explicitly says that an air parcel is not given a precise
-              numerical definition and is small enough that assigned properties
-              are approximately uniform.
+            rationale: The excerpt says an air parcel has no precise numerical definition
+              and is small enough that its assigned properties are approximately
+              uniform. The authored passage preserves both points.
       usage:
-        input_tokens: 1222
+        input_tokens: 1545
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1219
-        output_tokens: 290
+          cached_tokens: 1542
+        output_tokens: 533
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1512
+          reasoning_tokens: 237
+        total_tokens: 2078
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1461,7 +1487,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-standard-atmosphere-reference
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:57.183Z
+    checked_at_utc: 2026-09-01T00:28:49.549Z
     linked_claim_ids:
       - standard-atmosphere-fixed-reference
     missing_claim_ids: []
@@ -1496,33 +1522,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly defines the standard atmosphere as a
-          hypothetical vertical distribution of atmospheric temperature,
-          pressure, and density, established by international agreement as a
-          representative reference. It expressly lists pressure-altimeter
-          calibrations and aircraft performance calculations among its uses.
+        rationale: The cited PDF page explicitly defines the standard atmosphere as a
+          hypothetical vertical distribution of temperature, pressure, and
+          density, established as a representative reference by international
+          agreement. It expressly lists pressure-altimeter calibration and
+          aircraft performance calculations among its uses.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page contains section 4.4, “The Standard Atmosphere,”
-            and directly includes the definition and stated applications
-            relevant to the claim.
+          rationale: The excerpt is from the cited PDF page and contains section 4.4, “The
+            Standard Atmosphere,” directly addressing the claimed subject.
         claim_assessments:
           - claim_id: standard-atmosphere-fixed-reference
             verdict: supports
-            rationale: The excerpt supports that it is a hypothetical distribution of
-              pressure, temperature, and density used as a common reference for
-              pressure-altimeter calibration and aircraft-performance
-              calculations. Its description as a defined international standard
-              addresses the claim’s “fixed” reference concept.
+            rationale: The excerpt supports that it is a hypothetical pressure, temperature,
+              and density distribution used as a common reference for
+              pressure-altimeter calibrations and aircraft-performance
+              calculations. The authored passage preserves those uses and
+              accurately characterizes it as a model rather than current
+              atmospheric conditions. Its additional sea-level-pressure
+              statement is not part of this listed claim.
       usage:
-        input_tokens: 665
+        input_tokens: 814
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 185
+        output_tokens: 200
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 850
+        total_tokens: 1014
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1531,7 +1558,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-heating-density-pressure
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:57.969Z
+    checked_at_utc: 2026-09-01T00:28:50.992Z
     linked_claim_ids:
       - unequal-heating-drives-motion
       - temperature-density-relationship
@@ -1569,48 +1596,55 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited excerpt directly explains that uneven surface heating
-          changes air movement, density, and atmospheric pressure; describes
-          warming and cooling effects on molecular spacing and density; defines
-          atmospheric pressure in terms of the weight of air molecules; and
-          states that solar surface heating makes equatorial air less dense and
-          causes it to rise.
+        rationale: The cited PDF page directly explains that uneven surface heating
+          changes air movement, atmospheric pressure, and density; that warming
+          makes air less dense and cooling makes it denser; that atmospheric
+          pressure is exerted by the weight of air molecules; and that solar
+          surface heating makes air less dense and causes it to rise. Each
+          authored passage preserves the relevant mechanisms and does not omit a
+          material limitation from the cited discussion.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is explicitly labeled page 12-3 and contains the sections
-            “Atmospheric Circulation” and “Atmospheric Pressure” identified by
-            the locator.
+          rationale: The cited locator is PDF page 12-3, and the supplied excerpt from
+            that exact page contains the Atmospheric Circulation and Atmospheric
+            Pressure discussions relevant to all four claims.
         claim_assessments:
           - claim_id: unequal-heating-drives-motion
             verdict: supports
-            rationale: The excerpt states that uneven heating is a major factor that sets
-              the atmosphere in motion and that it creates changes in air
-              movement and atmospheric pressure. It also states that unequal
-              heating modifies air density.
+            rationale: The excerpt states that uneven heating is a major factor setting the
+              atmosphere in motion and that it creates changes in air movement
+              and atmospheric pressure; it also states unequal heating modifies
+              density and creates circulation patterns. The corresponding
+              authored passage accurately retains density, pressure-pattern, and
+              circulation/motion relationships.
           - claim_id: temperature-density-relationship
             verdict: supports
-            rationale: The excerpt states that heat causes air molecules to spread apart,
-              making the air less dense, and that cooling packs molecules more
-              closely together, making the air denser.
+            rationale: The excerpt explicitly says heat makes molecules spread apart so
+              expanding air becomes less dense, while cooling makes molecules
+              pack together more closely and become denser. The authored passage
+              states the same relationship.
           - claim_id: pressure-air-weight
             verdict: supports
             rationale: The excerpt defines air pressure as the force exerted by the weight
               of air molecules and illustrates it using a one-square-inch air
-              column. This supports pressure as force per unit area due to the
-              weight of air above.
+              column. The authored passage's 'force per unit area' wording
+              faithfully expresses that square-inch-column concept and retains
+              the weight-of-air mechanism.
           - claim_id: surface-heating-rising-air
             verdict: supports
-            rationale: The excerpt states that solar heating causes higher temperatures in
-              equatorial areas, causing the air to become less dense and rise.
+            rationale: The excerpt says solar heating produces higher temperatures, causing
+              air to become less dense and rise. The authored passage accurately
+              applies this to sunlight warming ground and the air directly above
+              it, while preserving the heating–lower density–rising sequence.
       usage:
-        input_tokens: 1395
+        input_tokens: 1828
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1392
-        output_tokens: 406
+          cached_tokens: 1825
+        output_tokens: 421
         output_tokens_details:
-          reasoning_tokens: 61
-        total_tokens: 1801
+          reasoning_tokens: 0
+        total_tokens: 2249
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1619,7 +1653,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-heat-transfer-modes
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:57.975Z
+    checked_at_utc: 2026-09-01T00:28:50.997Z
     linked_claim_ids:
       - heat-transfer-modes
     missing_claim_ids: []
@@ -1654,30 +1688,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The excerpt explicitly states: “There are three ways heat is
-          transferred into and through the atmosphere: radiation, conduction,
-          convection, or any combination of these.” This directly supports the
-          claim."
+        rationale: "The cited PDF page explicitly states that there are three ways heat
+          is transferred into and through the atmosphere: radiation, conduction,
+          convection, or any combination of these. This directly supports the
+          listed claim."
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 5-4 in Chapter 5, “Heat and Temperature,”
-            and contains section 5.6, “Heat Transfer,” including the exact
-            statement about radiation, conduction, and convection.
+          rationale: The cited PDF page is page 5-4 in Chapter 5, section 5.6, and
+            contains the exact statement identifying the three atmospheric
+            heat-transfer modes.
         claim_assessments:
           - claim_id: heat-transfer-modes
             verdict: supports
-            rationale: The source explicitly identifies radiation, conduction, and
-              convection as the three means of heat transfer into and through
-              the atmosphere.
+            rationale: The excerpt expressly identifies radiation, conduction, and
+              convection as the three modes of heat transfer into and through
+              the atmosphere. The authored passage preserves this framing and
+              does not alter the claim's material conditions; its additional
+              descriptions do not undermine the cited statement.
       usage:
-        input_tokens: 959
+        input_tokens: 1121
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 163
+          cached_tokens: 1118
+        output_tokens: 181
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1122
+        total_tokens: 1302
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1686,7 +1722,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-temperature-advection
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.005Z
+    checked_at_utc: 2026-09-01T00:28:51.025Z
     linked_claim_ids:
       - temperature-advection
     missing_claim_ids: []
@@ -1721,34 +1757,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly explains that wind changes an atmospheric
-          column’s stability by changing its temperature lapse rate,
-          specifically through cold-air advection into the bottom and/or
-          warm-air advection at the top, with the converse also described. This
-          supports temperature advection as wind-driven horizontal transport of
-          warmer or colder air into a layer that changes the column’s
-          temperature profile.
+        rationale: The cited PDF page explicitly states that wind changes an air
+          column's temperature lapse rate by blowing colder or warmer air into
+          the bottom or top of the column. This directly supports the claim that
+          temperature advection is a horizontal wind-driven change to an air
+          column's temperature profile.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is Chapter 13, page 13-8, and contains section
-            13.4.1, “Wind Effects on Stability,” which directly addresses
-            temperature advection.
+          rationale: The excerpt is from the cited PDF page 161 (Chapter 13, page 13-8)
+            and specifically contains section 13.4.1, “Wind Effects on
+            Stability,” which addresses cold and warm air advection into
+            portions of an air column.
         claim_assessments:
           - claim_id: temperature-advection
             verdict: supports
-            rationale: The source states that wind can change an air column’s temperature
-              lapse rate by blowing colder air into its bottom or warmer air
-              into its top, and vice versa. This is consistent with the claim’s
-              description of temperature advection.
+            rationale: The excerpt supports wind-driven introduction of colder or warmer air
+              into part of an air column and its resulting alteration of the
+              temperature lapse rate. The authored passage preserves those
+              material conditions by describing advection as horizontal
+              temperature change as wind moves colder or warmer air into part of
+              an air column.
       usage:
-        input_tokens: 782
+        input_tokens: 946
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 211
+        output_tokens: 221
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 993
+        total_tokens: 1167
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1757,10 +1794,9 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-pressure-reference-altitude
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.019Z
+    checked_at_utc: 2026-09-01T00:28:51.039Z
     linked_claim_ids:
       - standard-pressure-reference
-      - sea-level-pressure-comparison
       - pressure-decreases-altitude
     missing_claim_ids: []
     citation_target:
@@ -1794,43 +1830,39 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly discusses standard sea-level pressure,
-          conversion of weather-station readings to sea-level pressure for
-          common reporting, and the relationship between altitude, pressure, and
-          air density.
+        rationale: The cited PDF page explicitly defines standard sea-level pressure as
+          29.92 inHg and 1,013.2 mb, and explicitly states that atmospheric
+          pressure decreases as altitude increases and that decreasing pressure
+          makes air less dense. The relevant authored passages preserve these
+          points without omitting material qualifications.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 12-5 and contains the referenced
-            material on atmospheric-pressure measurement and altitude.
+          rationale: The cited locator is PDF page 12-5, and the supplied excerpt is from
+            that exact page. It contains the relevant standard-pressure and
+            altitude/pressure discussion.
         claim_assessments:
           - claim_id: standard-pressure-reference
             verdict: supports
-            rationale: 'The excerpt explicitly states: “Standard sea level pressure is
-              defined as 29.92 "Hg” and “Standard sea level pressure is 1,013.2
-              mb.”'
-          - claim_id: sea-level-pressure-comparison
-            verdict: supports
-            rationale: The excerpt says local barometric readings are converted to sea-level
-              pressure “to provide a standard for records and reports,” and that
-              common sea-level readings help ensure altimeters are set
-              correctly. This supports normalizing readings from stations at
-              different elevations to a common reference; the stated purpose of
-              avoiding terrain-elevation confusion is consistent with, though
-              not quoted verbatim from, that explanation.
+            rationale: 'The excerpt states: “Standard sea level pressure is defined as 29.92
+              "Hg” and “Standard sea level pressure is 1,013.2 mb.” The authored
+              passage accurately presents these as equivalent
+              standard-atmosphere pressure values in different units.'
           - claim_id: pressure-decreases-altitude
             verdict: supports
-            rationale: The excerpt explicitly states that atmospheric pressure decreases as
-              altitude increases and that, as pressure decreases, air becomes
-              less dense or thinner.
+            rationale: "The excerpt states: “As altitude increases, atmospheric pressure
+              decreases” and “As pressure decreases, the air becomes less dense
+              or thinner.” The authored passage retains both relationships and
+              explains them through the shorter air column overhead at higher
+              altitude."
       usage:
-        input_tokens: 1298
+        input_tokens: 1648
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1295
-        output_tokens: 289
+          cached_tokens: 1645
+        output_tokens: 265
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1587
+        total_tokens: 1913
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1839,7 +1871,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-pressure-units-station
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.026Z
+    checked_at_utc: 2026-09-01T00:28:51.047Z
     linked_claim_ids:
       - hectopascal-millibar-equivalence
       - station-pressure-local-reference
@@ -1875,35 +1907,40 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly defines the relationship between
-          hectopascals and millibars and defines station pressure as the actual
-          pressure at field elevation, explaining its general decrease with
-          higher airport elevation.
+        rationale: The cited PDF page directly states that millibars and hectopascals
+          are equivalent and defines station pressure as the actual pressure at
+          field elevation. It also states that pressure is lower at higher
+          altitudes, so higher-elevation airports usually have lower station
+          pressure.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 8, page 8-3, and the supplied excerpt
-            is explicitly from page 8-3. Both relevant sections, 8.2.2 and
-            8.2.3, appear on that page.
+          rationale: The locator identifies Chapter 8, section 8.2.2 through 8.2.3, page
+            8-3, which is the cited PDF page and contains the relevant
+            statements.
         claim_assessments:
           - claim_id: hectopascal-millibar-equivalence
             verdict: supports
-            rationale: Section 8.2.2 explicitly states that “millibars” and “hectopascal”
-              are equivalent.
+            rationale: The excerpt explicitly says that some use “millibars” while others
+              use “hectopascal” and that they “are equivalent.” The associated
+              authored passage preserves this equivalence and accurately frames
+              both as pressure units.
           - claim_id: station-pressure-local-reference
             verdict: supports
-            rationale: Section 8.2.3 states that station pressure is “the actual pressure at
-              field elevation” and that pressure is lower at higher altitudes;
-              it therefore says higher-elevation airports usually have lower
-              pressure.
+            rationale: "The excerpt states that station pressure is “the actual pressure at
+              field elevation” and that higher-field-elevation airports usually
+              have lower pressure. The associated authored passage preserves
+              both conditions: it identifies the airport field elevation as the
+              measurement reference and describes the usual lower pressure at a
+              mountain/higher-elevation airport."
       usage:
-        input_tokens: 817
+        input_tokens: 1046
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 237
+          cached_tokens: 1043
+        output_tokens: 279
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1054
+        total_tokens: 1325
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1912,7 +1949,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-sea-level-pressure-reference
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.051Z
+    checked_at_utc: 2026-09-01T00:28:51.077Z
     linked_claim_ids:
       - sea-level-pressure-comparison
     missing_claim_ids: []
@@ -1947,33 +1984,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states that station pressures at different
-          altitudes cannot readily be compared because pressure varies with
-          altitude, and that they are adjusted to a common level—mean sea
-          level—to make them comparable. This supports the claim’s core point
-          that normalization removes elevation-related differences from
-          comparisons.
+        rationale: The cited PDF page explicitly states that station pressures at
+          different altitudes cannot readily be compared because pressure varies
+          greatly with altitude, and that they are adjusted to a common
+          level—mean sea level—to make them comparable. This directly supports
+          the claim’s central point.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is the page containing section 8.2.5, “Sea Level
-            Pressure,” and explicitly provides the relevant explanation.
+          rationale: The excerpt is from the cited PDF page and contains the section
+            “8.2.5 Sea Level Pressure,” which directly addresses reducing
+            station pressure to mean sea level for comparison.
         claim_assessments:
           - claim_id: sea-level-pressure-comparison
             verdict: supports
-            rationale: The excerpt says station pressures are adjusted to mean sea level
-              because pressure varies greatly with altitude, allowing pressures
-              from stations at different elevations to be compared. The phrase
-              about avoiding confusion with the pressure pattern is a reasonable
-              restatement of that stated purpose.
+            rationale: The excerpt states that station pressures are adjusted to a common
+              MSL reference because altitude-related pressure differences
+              otherwise prevent ready comparison. The authored passage preserves
+              this principle. Its added explanation about surface charts,
+              highs/lows, and avoiding misidentification of high terrain as a
+              low-pressure system is consistent with the stated purpose and does
+              not alter or omit a material limitation of the claim.
       usage:
-        input_tokens: 730
+        input_tokens: 899
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 191
+        output_tokens: 220
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 921
+        total_tokens: 1119
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1982,7 +2021,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: faa-pcg-altitude-reference
     title: Pilot/Controller Glossary
-    checked_at_utc: 2026-08-31T22:37:58.073Z
+    checked_at_utc: 2026-09-01T00:28:51.094Z
     linked_claim_ids:
       - msl-agl-references
     missing_claim_ids: []
@@ -2016,28 +2055,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly defines “MSL Altitude” as altitude expressed
-          in feet measured from mean sea level and “AGL Altitude” as altitude
-          expressed in feet measured above ground level.
+        rationale: The excerpt explicitly defines MSL altitude as altitude measured from
+          mean sea level and AGL altitude as altitude measured above ground
+          level. The authored passage preserves those reference definitions and
+          correctly distinguishes the two baselines.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator identifies the ALTITUDE entry and specifically its
-            MSL Altitude and AGL Altitude definitions, which appear in the
-            supplied excerpt.
+          rationale: The cited locator identifies the ALTITUDE term, and the supplied
+            excerpt contains the relevant MSL Altitude and AGL Altitude
+            definitions.
         claim_assessments:
           - claim_id: msl-agl-references
             verdict: supports
-            rationale: The claim directly matches the excerpt’s definitions of MSL Altitude
-              and AGL Altitude.
+            rationale: "The excerpt states: “MSL Altitude—Altitude expressed in feet
+              measured from mean sea level” and “AGL Altitude—Altitude expressed
+              in feet measured above ground level.” The authored passage states
+              the same material references without omitting a limitation
+              relevant to this claim."
       usage:
-        input_tokens: 2547
+        input_tokens: 2756
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 2544
-        output_tokens: 146
+          cached_tokens: 2753
+        output_tokens: 182
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 2693
+        total_tokens: 2938
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2046,7 +2089,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: faa-pcg-airport-elevation
     title: Pilot/Controller Glossary
-    checked_at_utc: 2026-08-31T22:37:58.081Z
+    checked_at_utc: 2026-09-01T00:28:51.101Z
     linked_claim_ids:
       - airport-elevation-reference
     missing_claim_ids: []
@@ -2080,27 +2123,29 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly defines “AIRPORT ELEVATION” as “The highest
+        rationale: The excerpt explicitly defines airport elevation as “the highest
           point of an airport's usable runways measured in feet from mean sea
-          level,” which matches the claim verbatim in substance.
+          level,” which directly matches the listed claim.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies the “AIRPORT ELEVATION” glossary term, and the
-            excerpt begins with that exact term and definition.
+          rationale: The cited locator is the exact glossary entry, “AIRPORT ELEVATION,”
+            and the excerpt contains that entry and its definition.
         claim_assessments:
           - claim_id: airport-elevation-reference
             verdict: supports
-            rationale: The claim is directly and fully supported by the quoted
-              Pilot/Controller Glossary definition.
+            rationale: "The source exactly supports the claim. The authored passage
+              preserves the material conditions: it identifies the highest point
+              of the airport's usable runways and states that the value is in
+              feet above mean sea level."
       usage:
-        input_tokens: 2775
+        input_tokens: 2984
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 2772
-        output_tokens: 141
+          cached_tokens: 2981
+        output_tokens: 158
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 2916
+        total_tokens: 3142
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2109,7 +2154,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-altimeter-setting-reference
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.099Z
+    checked_at_utc: 2026-09-01T00:28:51.139Z
     linked_claim_ids:
       - altimeter-setting-purpose
     missing_claim_ids: []
@@ -2144,27 +2189,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly defines the altimeter setting using
-          substantially identical language to the claim.
+        rationale: The cited PDF page explicitly states that the altimeter setting is
+          the value to which the pressure altimeter scale is set so that the
+          altimeter indicates true altitude at field elevation. The authored
+          passage preserves this purpose by explaining that the setting makes an
+          altimeter at the airport indicate the airport’s published elevation,
+          without contradicting or materially limiting the claim.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page 106 is page 8-12 and contains the quoted
-            definition of altimeter setting.
+          rationale: The excerpt was extracted from cited PDF page 106 (printed page
+            8-12), and it contains the exact statement supporting the claim.
         claim_assessments:
           - claim_id: altimeter-setting-purpose
             verdict: supports
-            rationale: "The excerpt states: “The altimeter setting is the value to which the
-              scale of the pressure altimeter is set so the altimeter indicates
-              true altitude at field elevation.”"
+            rationale: "The excerpt directly supports the claim nearly verbatim: the
+              altimeter setting is set so the altimeter indicates true altitude
+              at field elevation. The authored passage’s airport-elevation
+              explanation is consistent with and preserves that condition."
       usage:
-        input_tokens: 582
+        input_tokens: 781
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 131
+        output_tokens: 199
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 713
+        total_tokens: 980
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2173,7 +2223,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-pressure-altitude-reference
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.099Z
+    checked_at_utc: 2026-09-01T00:28:51.139Z
     linked_claim_ids:
       - pressure-altitude-reference
     missing_claim_ids: []
@@ -2208,30 +2258,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly defines pressure altitude as the altitude
-          shown when the altimeter is set to 29.92 inHg and says it is the
+        rationale: The cited PDF page explicitly defines pressure altitude as the
+          altitude shown when the altimeter is set to 29.92 inHg and as the
           altitude associated with a specific pressure measured by the static
-          port under that setting.
+          port. The authored passage preserves those material conditions by
+          describing a fixed 29.92 inHg standard setting that associates
+          measured pressure with a level in the standard atmosphere.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page contains section 8.4.1.4, “Pressure Altitude,”
-            with the quoted definition.
+          rationale: The cited page, Chapter 8 page 8-13 (PDF page 107), contains section
+            8.4.1.4, “Pressure Altitude,” and directly provides the relevant
+            definition.
         claim_assessments:
           - claim_id: pressure-altitude-reference
             verdict: supports
-            rationale: The claim accurately summarizes the excerpt’s statement that pressure
-              altitude relates static-port-measured pressure to the altitude
-              indicated with the altimeter set to the standard 29.92 inHg
-              reference.
+            rationale: The excerpt states that pressure altitude is associated with a
+              specific pressure measured by the static port when the altimeter
+              is set to 29.92 inHg. The authored passage accurately restates
+              this as associating measured pressure with a level in the standard
+              atmosphere using the fixed 29.92 inHg setting.
       usage:
-        input_tokens: 869
+        input_tokens: 1046
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 164
+          cached_tokens: 1043
+        output_tokens: 232
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1033
+        total_tokens: 1278
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2240,7 +2294,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-density-altitude-reference
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.123Z
+    checked_at_utc: 2026-09-01T00:28:51.161Z
     linked_claim_ids:
       - density-altitude-performance-index
     missing_claim_ids: []
@@ -2275,28 +2329,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly defines density altitude as "the pressure
-          altitude corrected for temperature deviations from the standard
-          atmosphere" and states that "Density altitude is an index to aircraft
-          performance."
+        rationale: The cited PDF page explicitly states that density altitude is “the
+          pressure altitude corrected for temperature deviations from the
+          standard atmosphere” and that “Density altitude is an index to
+          aircraft performance.” The authored passage preserves both material
+          points by describing density altitude as correcting pressure altitude
+          for nonstandard temperature and relating it to aircraft performance.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page 108 is chapter 8, page 8-14, and contains section
-            8.4.1.5, "Density Altitude," including the quoted definition and
-            performance-index statement.
+          rationale: PDF page 108 / handbook page 8-14 contains section 8.4.1.5, “Density
+            Altitude,” including both elements of the claim.
         claim_assessments:
           - claim_id: density-altitude-performance-index
             verdict: supports
-            rationale: The claim is directly stated in the excerpt.
+            rationale: The excerpt directly supports both parts of the claim. The
+              corresponding authored passage accurately retains the
+              temperature-correction and performance-use concepts.
       usage:
-        input_tokens: 1095
+        input_tokens: 1272
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1092
-        output_tokens: 146
+          cached_tokens: 1269
+        output_tokens: 180
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1241
+        total_tokens: 1452
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2305,7 +2362,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-metar-altimeter-cloud-bases
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.136Z
+    checked_at_utc: 2026-09-01T00:28:51.180Z
     linked_claim_ids:
       - metar-altimeter-cloud-references
     missing_claim_ids: []
@@ -2340,30 +2397,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly describes cloud layers with heights stated in
-          feet AGL and explains that the METAR altimeter group codes the current
-          pressure/altimeter setting.
+        rationale: The cited PDF page explicitly states cloud-layer heights as feet AGL
+          in the sky-condition examples and explains that the METAR altimeter
+          group codes the current pressure at elevation (the altimeter setting).
+          The authored passage preserves these points without adding a
+          conflicting material condition.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page contains both the sky-condition examples
-            identifying cloud-layer heights as AGL and section 24.4.3.11
-            describing the altimeter group.
+          rationale: The excerpt is from the cited PDF page and contains both the
+            sky-condition AGL examples and section 24.4.3.11 on the altimeter
+            group.
         claim_assessments:
           - claim_id: metar-altimeter-cloud-references
             verdict: supports
-            rationale: The page states examples such as scattered, overcast, and broken
-              layers at specified heights “AGL.” It also states that the
-              “altimeter setting group codes the current pressure at elevation”
-              and gives A2992 as the coding for a 29.92 inHg altimeter setting.
+            rationale: The excerpt labels scattered, broken, and overcast cloud layers at
+              specified heights 'ft AGL' and states that the altimeter setting
+              group codes the current pressure at elevation. The authored
+              passage accurately summarizes that METAR cloud-layer heights are
+              AGL and that its altimeter group supplies the setting used for
+              altitude indication.
       usage:
-        input_tokens: 1127
+        input_tokens: 1431
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1124
-        output_tokens: 184
+          cached_tokens: 1428
+        output_tokens: 210
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1311
+        total_tokens: 1641
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2372,7 +2433,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-metar-sea-level-pressure
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.160Z
+    checked_at_utc: 2026-09-01T00:28:51.202Z
     linked_claim_ids:
       - metar-sea-level-pressure-remark
     missing_claim_ids: []
@@ -2408,28 +2469,30 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that, at designated stations,
-          sea-level pressure is coded with the identifier "SLP" immediately
-          followed by the sea-level pressure in millibars, and gives examples
-          such as SLP982 and SLP132.
+          sea level pressure is coded with the identifier SLP followed by
+          sea-level pressure in millibars.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies the Sea Level Pressure remark on page 24-24,
-            and the supplied excerpt from cited PDF page 308 contains section
-            24.4.3.13.22, "Sea Level Pressure."
+          rationale: The cited locator is on PDF page 24-24 and the excerpt contains
+            section 24.4.3.13.22, “Sea Level Pressure,” directly addressing the
+            claim.
         claim_assessments:
           - claim_id: metar-sea-level-pressure-remark
             verdict: supports
-            rationale: The excerpt directly supports that designated stations may include an
-              SLP remark group reporting sea-level pressure in millibars.
+            rationale: "The excerpt states: “At designated stations, the sea level pressure
+              is coded” using the identifier “SLP,” followed by sea-level
+              pressure in millibars. The authored passage preserves the material
+              limitation by saying that only “some designated stations” include
+              normalized sea-level pressure in the remarks."
       usage:
-        input_tokens: 1176
+        input_tokens: 1350
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1173
-        output_tokens: 179
+          cached_tokens: 1347
+        output_tokens: 190
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1355
+        total_tokens: 1540
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2438,7 +2501,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: aim-awos-asos-observations
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-08-31T22:37:58.180Z
+    checked_at_utc: 2026-09-01T00:28:51.214Z
     linked_claim_ids:
       - asos-awos-observations
     missing_claim_ids: []
@@ -2473,33 +2536,34 @@ results:
         verdict: supports
         confidence: high
         rationale: The excerpt directly states that ASOS/AWOS provides continuous
-          minute-by-minute observations, performs functions necessary to
-          generate METAR and other aviation weather information, and that
-          information may be transmitted via discrete VHF radio frequency or the
-          voice portion of a local NAVAID. It also identifies computer-generated
-          voice as an available data outlet through FAA radio broadcast to
-          pilots.
+          minute-by-minute observations, generates METARs and other aviation
+          weather information, and has computer-generated voice available
+          through FAA radio broadcasts to pilots. The authored passage preserves
+          these points without omitting a material limitation relevant to the
+          claim.
         locator_assessment:
           verdict: supports
-          rationale: No cited PDF page is specified. The supplied excerpt is explicitly
-            from the cited AIM paragraph on ASOS/AWOS and directly contains the
-            relevant statements.
+          rationale: The cited AIM paragraph is specifically the ASOS/AWOS section and
+            contains the statements supporting all parts of the claim.
         claim_assessments:
           - claim_id: asos-awos-observations
             verdict: supports
-            rationale: The claim is supported by the excerpt's statements regarding
-              continuous observations, METAR and other
-              aviation-weather-information generation, and radio/voice
-              transmission.
+            rationale: The source says ASOS/AWOS provides continuous minute-by-minute
+              observations and performs the functions necessary to generate
+              METARs and other aviation weather information. It also identifies
+              computer-generated voice available through FAA radio broadcast to
+              pilots. The passage's wording that the systems provide continuous
+              airport weather observations and may transmit them by radio voice
+              is supported.
       usage:
-        input_tokens: 2090
+        input_tokens: 2303
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 2087
-        output_tokens: 190
+          cached_tokens: 2300
+        output_tokens: 296
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 2280
+          reasoning_tokens: 86
+        total_tokens: 2599
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2508,7 +2572,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: atc-atis-altimeter-content
     title: FAA Order JO 7110.65, Air Traffic Control
-    checked_at_utc: 2026-08-31T22:37:58.181Z
+    checked_at_utc: 2026-09-01T00:28:51.219Z
     linked_claim_ids:
       - atis-altimeter-content
     missing_claim_ids: []
@@ -2542,29 +2606,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: Paragraph 2-9-3 states that ATIS weather information consists of
-          several elements including “altimeter.” Thus, the excerpt directly
-          supports that the altimeter setting is included in ATIS weather
-          content, as appropriate.
+        rationale: Paragraph 2-9-3 states that ATIS weather information includes the
+          “altimeter” as appropriate. The authored passage accurately
+          characterizes this as the current altimeter setting being included in
+          an ATIS broadcast where provided, with the same as-appropriate
+          limitation preserved.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator is paragraph 2-9-3, “Content,” and the excerpt
-            includes that exact paragraph and its ATIS weather-information
-            requirements.
+          rationale: The cited locator is paragraph 2-9-3, CONTENT, and the excerpt
+            contains that exact paragraph, including altimeter in the required
+            weather-information content.
         claim_assessments:
           - claim_id: atis-altimeter-content
             verdict: supports
-            rationale: The excerpt expressly lists “altimeter” as part of the weather
-              information to include in an ATIS broadcast, as appropriate.
+            rationale: The source directs controllers to include weather information in ATIS
+              broadcasts “as appropriate,” including the altimeter. The authored
+              passage preserves the qualification by saying the broadcast
+              includes the current altimeter setting “as appropriate.”
       usage:
-        input_tokens: 2837
+        input_tokens: 3052
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 2834
-        output_tokens: 158
+          cached_tokens: 3049
+        output_tokens: 186
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 2995
+        total_tokens: 3238
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2573,10 +2640,9 @@ results:
       unsupported_assessment_ids: []
   - source_id: atc-altimeter-setting-issuance
     title: FAA Order JO 7110.65, Air Traffic Control
-    checked_at_utc: 2026-08-31T22:37:58.196Z
+    checked_at_utc: 2026-09-01T00:28:51.244Z
     linked_claim_ids:
       - atc-altimeter-setting-issuance
-      - pilot-altimeter-setting-use
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -2608,39 +2674,34 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly addresses both the acquisition of current
-          altimeter settings and ATC issuance requirements, and it includes a
-          note describing the pilot requirement to set an altimeter to an
-          available station along the route within 100 miles.
+        rationale: The excerpt is the cited JO 7110.65 Section 2-7 material and
+          expressly establishes procedures for obtaining current altimeter
+          settings and issuing them to aircraft in specified en route and
+          terminal circumstances. The authored passage accurately states the
+          bounded proposition that controllers issue current settings in
+          situations covered by their procedures.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator covers paragraphs 2-7-1 and 2-7-2, which are
-            present in the excerpt and contain the relevant material.
+          rationale: The locator identifies Chapter 2, Section 7, paragraphs 2-7-1 through
+            2-7-2, which are included in the excerpt and directly address
+            current settings and altimeter-setting issuance.
         claim_assessments:
           - claim_id: atc-altimeter-setting-issuance
             verdict: supports
-            rationale: Paragraph 2-7-1 states that current altimeter settings must be
-              obtained from direct-reading instruments or directly from weather
-              reporting stations. Paragraph 2-7-2 specifies multiple
-              circumstances in which controllers issue altimeter settings,
-              including to en route aircraft, terminal departures, arriving
-              aircraft, and aircraft descending below the lowest usable flight
-              level.
-          - claim_id: pilot-altimeter-setting-use
-            verdict: supports
-            rationale: The note in paragraph 2-7-2 states that 14 CFR 91.121(1) requires a
-              pilot to set the altimeter to the setting of a station along the
-              route of flight within 100 miles of the aircraft, if one is
-              available.
+            rationale: Paragraphs 2-7-1 and 2-7-2 prescribe how current altimeter settings
+              are obtained and when controllers issue them. The authored passage
+              preserves the material limitation by saying issuance occurs in the
+              situations covered by controller procedures, rather than implying
+              universal issuance.
       usage:
-        input_tokens: 2580
+        input_tokens: 2754
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 2577
-        output_tokens: 277
+          cached_tokens: 2751
+        output_tokens: 272
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 2857
+          reasoning_tokens: 50
+        total_tokens: 3026
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2649,7 +2710,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-high-low-vertical-motion
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.210Z
+    checked_at_utc: 2026-09-01T00:28:51.266Z
     linked_claim_ids:
       - pressure-patterns-motion-weather
     missing_claim_ids: []
@@ -2684,34 +2745,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly states that atmospheric pressure differences and
-          temperature differences near the Earth contribute to atmospheric
-          motion. It also states that high-pressure systems are generally areas
-          of dry, descending air and that low-pressure areas involve air flowing
-          in to replace rising air, usually bringing increasing cloudiness and
-          precipitation.
+        rationale: The cited PDF page directly states that atmospheric pressure
+          differences and temperature differences contribute to atmospheric
+          motion, and that high-pressure systems are generally areas of dry,
+          descending air. It also states that air flows into a low-pressure area
+          to replace rising air and usually brings increasing cloudiness and
+          precipitation. The authored passage accurately preserves these as
+          broad tendencies rather than a specific route-and-time forecast.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 12-7, and the excerpt from that exact page
-            contains the relevant 'Wind and Currents' and 'Wind Patterns'
-            discussion supporting the claim.
+          rationale: The cited locator is PDF page 12-7, and the supplied excerpt from
+            that exact page contains the relevant discussion under “Wind and
+            Currents” and “Wind Patterns.”
         claim_assessments:
           - claim_id: pressure-patterns-motion-weather
             verdict: supports
-            rationale: "Directly supported: the page identifies pressure and temperature
-              differences as causes of atmospheric motion; describes high
-              pressure as generally dry, descending air; and associates low
-              pressure with rising air, increasing cloudiness, and
-              precipitation."
+            rationale: "The excerpt explicitly supports each component: pressure and
+              temperature differences contribute to atmospheric motion; high
+              pressure is generally associated with dry, descending air; and low
+              pressure involves replacement of rising air and usually increasing
+              cloudiness and precipitation. The authored passage retains the
+              general, non-deterministic framing."
       usage:
-        input_tokens: 1274
+        input_tokens: 1408
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1271
-        output_tokens: 195
+          cached_tokens: 1405
+        output_tokens: 226
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1469
+        total_tokens: 1634
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2720,7 +2783,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-stability-adiabatic
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.212Z
+    checked_at_utc: 2026-09-01T00:28:51.272Z
     linked_claim_ids:
       - stability-definition
       - rising-cools-descending-warms
@@ -2756,36 +2819,40 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page contains the “Atmospheric Stability” section and
-          directly states both the definition and behavior of stable versus
-          unstable air, as well as adiabatic cooling during ascent and warming
-          during descent.
+        rationale: "The cited PDF page contains the Atmospheric Stability section and
+          directly states both listed claims. The relevant authored passages
+          preserve the source's conditions: the stability discussion is framed
+          around small vertical disturbances, and the temperature changes are
+          tied to pressure changes during rising and descending motion."
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies “Atmospheric Stability, printed p. 12-12,” and
-            the supplied excerpt from cited PDF page 12 includes that section
-            and the relevant passages.
+          rationale: The excerpt is from cited PDF page 12-12 and includes the heading
+            “Atmospheric Stability” and the exact material relevant to both
+            claims.
         claim_assessments:
           - claim_id: stability-definition
             verdict: supports
-            rationale: The excerpt states that stability depends on the atmosphere’s ability
-              to resist vertical motion; in stable air, small vertical
-              disturbances “dampen out and disappear,” while in unstable air,
-              small vertical movements “tend to become larger.”
+            rationale: The excerpt states that stability is the atmosphere's ability to
+              resist vertical motion; in stable air, small disturbances dampen
+              and disappear, while in unstable air small vertical movements tend
+              to become larger. The first authored passage accurately retains
+              these distinctions.
           - claim_id: rising-cools-descending-warms
             verdict: supports
-            rationale: The excerpt directly says rising air expands and cools as pressure
-              decreases with altitude, while descending air warms as increasing
-              atmospheric pressure compresses it.
+            rationale: The excerpt states that rising air expands and cools as pressure
+              decreases with altitude, while descending air is compressed and
+              warms as pressure increases. The second authored passage preserves
+              this causal sequence and identifies the changes as adiabatic,
+              consistent with the excerpt.
       usage:
-        input_tokens: 1397
+        input_tokens: 1714
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1394
-        output_tokens: 226
+          cached_tokens: 1711
+        output_tokens: 255
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1623
+        total_tokens: 1969
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2794,7 +2861,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-parcel-stability-comparison
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.225Z
+    checked_at_utc: 2026-09-01T00:28:51.285Z
     linked_claim_ids:
       - parcel-environment-stability-comparison
     missing_claim_ids: []
@@ -2829,31 +2896,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly describes lifting a selected air parcel,
-          comparing its temperature with surrounding environmental air, and
-          determining its motion from relative temperature and density. It
-          states that a colder, denser parcel sinks back, while a warmer,
-          less-dense parcel continues rising.
+        rationale: The cited PDF page directly explains parcel-based stability by
+          hypothetically lifting a parcel and comparing its temperature with the
+          surrounding environmental air. It states that a colder, denser parcel
+          sinks back, while a warmer, less-dense parcel continues to rise; it
+          also describes the neutral same-temperature/same-density case. The
+          first authored passage accurately preserves these conditions and
+          outcomes. The second passage is separately tagged and adds
+          moisture/condensation context, but the listed claim does not depend on
+          it.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is Chapter 13, page 13-2, and contains section
-            13.2, “Using a Parcel as a Tool to Evaluate Stability,” which
-            directly presents the claimed parcel-versus-environment comparison.
+          rationale: The excerpt is from the cited PDF page and contains the relevant
+            parcel-versus-environment comparison and stability outcomes.
         claim_assessments:
           - claim_id: parcel-environment-stability-comparison
             verdict: supports
-            rationale: The page explicitly says the lifted parcel and environmental
-              temperatures are compared; if colder, it is denser and sinks, and
-              if warmer, it is less dense and continues to rise.
+            rationale: The excerpt states that a lifted parcel colder than surrounding air
+              is denser and sinks, while one warmer than surrounding air is less
+              dense and continues rising. The authored passage retains the
+              same-level environmental comparison and the associated density and
+              motion relationships.
       usage:
-        input_tokens: 837
+        input_tokens: 1074
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 195
+          cached_tokens: 1071
+        output_tokens: 227
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1032
+        total_tokens: 1301
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2862,7 +2934,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-convection-definition
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-08-31T22:37:58.243Z
+    checked_at_utc: 2026-09-01T00:28:51.300Z
     linked_claim_ids:
       - convection-vertical-transport
     missing_claim_ids: []
@@ -2897,27 +2969,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly defines convection in meteorology as “vertical
-          transport of heat and moisture in the atmosphere.”
+        rationale: The cited page explicitly defines meteorological convection as
+          vertical transport of heat and moisture in the atmosphere, especially
+          by updrafts and downdrafts in unstable air. The authored passage
+          preserves the core claim by describing upward transport of heat and
+          moisture as convection; its illustrative surface-heating scenario does
+          not contradict or materially limit the stated definition.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page/excerpt is Chapter 13, section 13.6, “Convection,”
-            and contains the stated definition.
+          rationale: The excerpt is from the cited PDF page (p. 13-11) and contains the
+            definition in section 13.6, “Convection.”
         claim_assessments:
           - claim_id: convection-vertical-transport
             verdict: supports
-            rationale: Section 13.6 directly states that, in meteorology, convection
-              specifically describes vertical transport of heat and moisture in
-              the atmosphere.
+            rationale: "The excerpt states: “In meteorology, the term is used specifically
+              to describe vertical transport of heat and moisture in the
+              atmosphere.” The authored passage accurately conveys that same
+              core definition."
       usage:
-        input_tokens: 901
+        input_tokens: 1077
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 0
-        output_tokens: 135
+          cached_tokens: 1074
+        output_tokens: 195
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1036
+        total_tokens: 1272
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2926,7 +3003,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-lapse-moisture-inversion
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.260Z
+    checked_at_utc: 2026-09-01T00:28:51.313Z
     linked_claim_ids:
       - adiabatic-parcel-chain
       - saturated-parcel-slower-cooling
@@ -2965,52 +3042,59 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly addresses adiabatic temperature changes,
-          moist versus dry cooling, temperature-dependent moisture capacity,
-          relative humidity, and temperature inversions. Each claim is
-          explicitly stated or directly described in the excerpt.
+        rationale: "The cited PDF page directly addresses all five claims: adiabatic
+          pressure-volume-temperature changes, slower cooling of moist air,
+          temperature-dependent moisture capacity, the definition of relative
+          humidity, and temperature inversions as stable layers that trap
+          weather and pollutants. The corresponding authored passages preserve
+          the relevant concepts and limitations."
         locator_assessment:
           verdict: supports
-          rationale: "The excerpt is from cited PDF page 13 and contains the relevant
-            sections: Adiabatic Process, Inversion, Moisture and Temperature,
-            and Relative Humidity."
+          rationale: The excerpt is from the cited PDF page (12-13) and contains the
+            relevant Adiabatic Process, Inversion, Moisture and Temperature, and
+            Relative Humidity discussions.
         claim_assessments:
           - claim_id: adiabatic-parcel-chain
             verdict: supports
-            rationale: The excerpt states that as air rises into lower pressure it expands
-              and its temperature lowers, and that when air descends the
-              opposite is true. It separately identifies the dry adiabatic lapse
-              rate as applying to unsaturated air.
+            rationale: The excerpt states that rising air enters lower pressure, expands,
+              and cools, while descent produces the opposite result. The
+              authored passage accurately presents this chain and identifies it
+              as adiabatic temperature change.
           - claim_id: saturated-parcel-slower-cooling
             verdict: supports
-            rationale: The excerpt explicitly says that moist air cools at a slower rate
-              than dry air and gives a moist adiabatic lapse-rate range lower
-              than the dry adiabatic lapse rate.
+            rationale: The excerpt explicitly says moist air cools at a slower rate than dry
+              air. The authored passage preserves this point by specifying that,
+              after saturation and condensation, latent-heat release causes
+              slower cooling during continued ascent.
           - claim_id: warm-air-moisture-capacity
             verdict: supports
-            rationale: The excerpt states that every 20 °F increase in temperature doubles
-              the amount of moisture air can hold, while a 20 °F decrease cuts
-              capacity in half.
+            rationale: The excerpt states that each 20 °F temperature increase doubles the
+              amount of moisture air can hold, and a 20 °F decrease halves it.
+              The authored passage accurately summarizes that warmer air can
+              contain more water vapor before saturation.
           - claim_id: relative-humidity-definition
             verdict: supports
-            rationale: The excerpt defines relative humidity as the actual amount of
-              moisture in the air compared with the total amount it could hold
-              at that temperature.
+            rationale: The excerpt defines relative humidity as actual moisture compared
+              with the total amount air could hold at that temperature and
+              pressure. The authored passage retains both the comparison and the
+              current-temperature-and-pressure qualification.
           - claim_id: inversion-stable-layer
             verdict: supports
-            rationale: The excerpt defines an inversion as temperature rising with altitude,
-              describes inversion layers as commonly shallow, smooth, and stable
-              near the ground, and says the top acts as a lid that keeps weather
-              and pollutants trapped below.
+            rationale: The excerpt defines an inversion as temperature increasing with
+              altitude, describes inversion layers as commonly shallow, smooth,
+              and stable, and says the layer can trap weather and pollutants
+              below. The authored passage preserves these points by describing a
+              commonly smooth, stable layer that caps mixing and traps haze,
+              smoke, moisture, and other pollutants.
       usage:
-        input_tokens: 1645
+        input_tokens: 2214
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1642
-        output_tokens: 394
+          cached_tokens: 2211
+        output_tokens: 906
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 2039
+          reasoning_tokens: 444
+        total_tokens: 3120
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3019,7 +3103,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-dewpoint-saturation-lifting
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.266Z
+    checked_at_utc: 2026-09-01T00:28:51.323Z
     linked_claim_ids:
       - saturation-four-paths
       - temperature-dewpoint-cloud-base-model
@@ -3055,37 +3139,46 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly describes all four listed methods by
-          which air reaches saturation and explains the temperature/dew point
-          convergence method for estimating approximate cloud-base height AGL.
+        rationale: The cited PDF page directly states the four methods by which air
+          reaches saturation and gives the temperature/dew-point convergence
+          method for estimating approximate cloud-base height as unsaturated air
+          is lifted. The relevant authored passages accurately preserve those
+          points without omitting material limitations relevant to the listed
+          claims.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page 12-14 and contains both the
-            cloud-base calculation discussion and the section titled “Methods by
-            Which Air Reaches the Saturation Point.”
+          rationale: The cited locator is PDF page 12-14, and the supplied excerpt from
+            that exact page contains both the “Methods by Which Air Reaches the
+            Saturation Point” section and the lifted-air temperature/dew-point
+            convergence cloud-base example.
         claim_assessments:
           - claim_id: saturation-four-paths
             verdict: supports
-            rationale: "The excerpt explicitly lists four methods: warm air moving over a
-              cold surface; mixing cold and warm air; nighttime cooling through
-              contact with cooler ground; and lifting/forced upward motion,
-              which cools rising air."
+            rationale: "The excerpt explicitly lists the same four paths: warm air moving
+              over a cold surface, mixing cold and warm air, nighttime cooling
+              through contact with cooler ground, and lifting/forced upward
+              motion. The corresponding authored passage preserves all four
+              mechanisms and notes that lifting air expands and cools, as stated
+              in the excerpt."
           - claim_id: temperature-dewpoint-cloud-base-model
             verdict: supports
-            rationale: The excerpt states that lifted unsaturated air cools 5.4 °F per 1,000
-              feet while dew point decreases 1 °F per 1,000 feet, producing a
-              4.4 °F convergence rate. It directs use of the surface
-              temperature–dew point spread and that convergence rate to
-              determine the approximate cloud-base height AGL.
+            rationale: The excerpt states that lifted unsaturated air cools at 5.4 °F per
+              1,000 feet while dew point decreases 1 °F per 1,000 feet,
+              producing 4.4 °F-per-1,000-foot convergence; it instructs pilots
+              to apply this relationship to the surface temperature-dew-point
+              spread to determine an approximate cloud-base height AGL. The
+              authored passage accurately conveys the non-formula takeaway that
+              the values converge when lifted and that a wider surface spread
+              requires more lifting before they meet.
       usage:
-        input_tokens: 1251
+        input_tokens: 1692
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1248
-        output_tokens: 265
+          cached_tokens: 1689
+        output_tokens: 618
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1516
+          reasoning_tokens: 263
+        total_tokens: 2310
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3094,7 +3187,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: nws-dew-point-definition
     title: National Weather Service Glossary
-    checked_at_utc: 2026-08-31T22:37:56.229Z
+    checked_at_utc: 2026-09-01T00:28:47.596Z
     linked_claim_ids:
       - dewpoint-saturation-definition
     missing_claim_ids: []
@@ -3128,28 +3221,30 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt directly defines dew point as the temperature to which
-          air must be cooled to reach saturation, explicitly assuming constant
-          air pressure and moisture content.
+        rationale: The excerpt defines dew point as the temperature to which air must be
+          cooled to reach saturation, explicitly assuming constant air pressure
+          and moisture content. The authored passage preserves those material
+          conditions by stating that pressure and water-vapor amount do not
+          change.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator, “Term Dew Point,” matches the Dew Point glossary
-            entry shown in the excerpt.
+          rationale: The cited locator is the NWS Glossary entry for “Dew Point,” and the
+            excerpt is directly from that entry.
         claim_assessments:
           - claim_id: dewpoint-saturation-definition
             verdict: supports
-            rationale: "The claim closely restates the source: “It is the temperature to
-              which air must be cooled in order to reach saturation (assuming
-              air pressure and moisture content are constant).”"
+            rationale: The source explicitly states the claimed definition and its
+              constant-pressure and constant-moisture-content limitation. The
+              authored passage accurately restates those conditions.
       usage:
-        input_tokens: 601
+        input_tokens: 747
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 143
+        output_tokens: 160
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 744
+        total_tokens: 907
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3158,12 +3253,11 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-cloud-formation-low-clouds
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.277Z
+    checked_at_utc: 2026-09-01T00:28:51.333Z
     linked_claim_ids:
       - cloud-formation-requirements
       - low-cloud-operational-meaning
       - visible-cloud-formation
-      - cloud-base-classification
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -3196,48 +3290,48 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly discusses cloud-formation requirements,
-          the visible phase change of water vapor on condensation nuclei, cloud
-          classification by base height and vertical development, and the
-          operational effects of low clouds. All four claims are explicitly
-          supported by the excerpt on cited PDF page 15.
+        rationale: The cited PDF page directly states the cloud-formation prerequisites,
+          explains visible cloud formation through condensation or deposition on
+          condensation nuclei at saturation, and states the operational effects
+          of low clouds on ceilings, visibility, weather variability, and VFR
+          feasibility. The source-tagged authored passages preserve the material
+          conditions and limitations of each listed claim.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 12, page 12-15, addressing clouds and
-            low-cloud classification. The excerpt from that exact page contains
-            the cited cloud-formation and low-cloud material.
+          rationale: The cited PDF page is page 12-15 and contains the relevant “Clouds”
+            and “Low clouds” discussion, including all three claimed points.
         claim_assessments:
           - claim_id: cloud-formation-requirements
             verdict: supports
-            rationale: "The excerpt states: “For clouds to form, there must be adequate
-              water vapor and condensation nuclei, as well as a method by which
-              the air can be cooled.” It further explains cooling to
-              saturation."
+            rationale: The excerpt states that cloud formation requires adequate water
+              vapor, condensation nuclei, and a method by which air can be
+              cooled; it further explains that visibility results when air cools
+              to saturation. The authored passage retains these requirements and
+              accurately describes nuclei as particles such as dust, salt, or
+              smoke.
           - claim_id: low-cloud-operational-meaning
             verdict: supports
-            rationale: The excerpt states that low clouds “create low ceilings, hamper
-              visibility, and can change rapidly” and “can make visual flight
-              rules (VFR) flight impossible.”
+            rationale: The excerpt states that low clouds create low ceilings, hamper
+              visibility, can change rapidly, influence flight planning, and can
+              make VFR flight impossible. The authored passage preserves these
+              operational consequences, using the equivalent wording “restrict
+              visibility.”
           - claim_id: visible-cloud-formation
             verdict: supports
-            rationale: The excerpt states that when air cools and reaches saturation,
-              invisible water vapor becomes visible, and that through
-              deposition/sublimation and condensation, moisture changes onto
-              condensation nuclei.
-          - claim_id: cloud-base-classification
-            verdict: supports
-            rationale: The excerpt explicitly says clouds “are classified according to the
-              height of their bases as low, middle, or high clouds, as well as
-              clouds with vertical development.”
+            rationale: The excerpt says that when air cools to saturation, invisible water
+              vapor becomes visible and that moisture condenses or
+              sublimates/deposits onto condensation nuclei. The authored
+              passages preserve the saturation condition, phase change onto
+              nuclei, and resulting visible cloud appearance.
       usage:
-        input_tokens: 1488
+        input_tokens: 1944
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1485
-        output_tokens: 345
+          cached_tokens: 1941
+        output_tokens: 461
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1833
+          reasoning_tokens: 114
+        total_tokens: 2405
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3246,7 +3340,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: noaa-cloud-light-scattering
     title: What Are Rainbow Clouds?
-    checked_at_utc: 2026-08-31T22:37:56.230Z
+    checked_at_utc: 2026-09-01T00:28:47.596Z
     linked_claim_ids:
       - cloud-particle-light-scattering
     missing_claim_ids: []
@@ -3281,28 +3375,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that iridescent clouds occur through
-          diffraction when small water droplets or small ice crystals scatter
-          the sun's light.
+        rationale: The excerpt explicitly states that small water droplets or small ice
+          crystals scatter the sun's light. Both source-tagged authored passages
+          preserve that statement without adding a conflicting or limiting
+          condition to the claimed particle-light-scattering relationship.
         locator_assessment:
           verdict: supports
-          rationale: The supplied locator identifies the page’s short-answer discussion of
-            cloud-droplet and ice-crystal light scattering, and the excerpt
-            contains that discussion.
+          rationale: The locator identifies the NOAA page's discussion of cloud-droplet
+            and ice-crystal light scattering, and the excerpt contains that
+            discussion in its explanation of cloud iridescence.
         claim_assessments:
           - claim_id: cloud-particle-light-scattering
             verdict: supports
-            rationale: The source directly says that small water droplets or small ice
-              crystals scatter the sun's light.
+            rationale: The excerpt directly says that diffraction occurs when small water
+              droplets or small ice crystals scatter sunlight. The authored
+              passages accurately restate that small droplets or ice crystals
+              scatter sunlight.
       usage:
-        input_tokens: 1444
+        input_tokens: 1691
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1441
-        output_tokens: 133
+          cached_tokens: 1688
+        output_tokens: 212
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1577
+          reasoning_tokens: 39
+        total_tokens: 1903
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3311,8 +3408,9 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-cloud-families-vertical
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.287Z
+    checked_at_utc: 2026-09-01T00:28:51.343Z
     linked_claim_ids:
+      - cloud-base-classification
       - cloud-vertical-development-family
       - vertical-cloud-instability
     missing_claim_ids: []
@@ -3347,36 +3445,48 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited excerpt directly discusses clouds with extensive vertical
-          development, including their progression from cumulus to towering
-          cumulus or cumulonimbus and the instability, moisture, and hazardous
-          weather associated with these clouds.
+        rationale: The cited PDF page directly presents the basic cloud-type grouping
+          and explicitly describes clouds with extensive vertical development,
+          including towering cumulus and cumulonimbus, their instability,
+          moisture, turbulence, and hazardous weather. The authored passages
+          preserve the relevant qualifications for each listed claim.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 12-16 and contains the “Basic Cloud Types
-            and Clouds with Vertical Development” material referenced by the
-            locator, including the relevant statements.
+          rationale: The cited locator is PDF page 12-16, and the supplied excerpt from
+            that exact page contains Figure 12-22 on basic cloud types plus the
+            accompanying discussion of vertically developing cumulus and
+            cumulonimbus clouds.
         claim_assessments:
+          - claim_id: cloud-base-classification
+            verdict: supports
+            rationale: Figure 12-22 classifies basic cloud types as low, middle, high, and
+              clouds with vertical development. The authored passage accurately
+              restates these as cloud families; its additional lesson framing
+              does not alter the claim.
           - claim_id: cloud-vertical-development-family
             verdict: supports
-            rationale: "The excerpt states: “Clouds with extensive vertical development are
-              cumulus clouds that build vertically into towering cumulus or
-              cumulonimbus clouds.”"
+            rationale: The excerpt explicitly states that clouds with extensive vertical
+              development are cumulus clouds that build vertically into towering
+              cumulus or cumulonimbus clouds. The authored passage preserves
+              this progression.
           - claim_id: vertical-cloud-instability
             verdict: supports
             rationale: The excerpt states that towering cumulus indicates atmospheric
-              instability and that cumulonimbus clouds contain large amounts of
-              moisture and unstable air and usually produce hazardous phenomena
+              instability and that cumulonimbus contains large amounts of
+              moisture and unstable air and usually produces hazardous phenomena
               including lightning, hail, tornadoes, gusty winds, and wind shear.
+              The authored passage preserves the substantial-moisture and
+              unstable-air conditions and states that cumulonimbus can produce
+              severe hazards.
       usage:
-        input_tokens: 1033
+        input_tokens: 1427
         input_tokens_details:
-          cache_write_tokens: 1030
-          cached_tokens: 0
-        output_tokens: 223
+          cache_write_tokens: 0
+          cached_tokens: 1424
+        output_tokens: 336
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1256
+        total_tokens: 1763
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3385,7 +3495,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-cloud-name-classifications
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.307Z
+    checked_at_utc: 2026-09-01T00:28:51.363Z
     linked_claim_ids:
       - cloud-name-classifications
     missing_claim_ids: []
@@ -3420,29 +3530,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The excerpt explicitly lists the cited cloud classifications and
-          gives the same definitions stated in the claim: cumulus as “heaped or
-          piled clouds,” stratus as “formed in layers,” cirrus as “ringlets,
-          fibrous clouds,” and nimbus as “rain-bearing clouds.”"
+        rationale: "The cited PDF page explicitly lists the requested cloud-name
+          classifications: cumulus as heaped or piled, stratus as formed in
+          layers, cirrus as ringlets/fibrous clouds, and nimbus as rain-bearing
+          clouds. The relevant authored passage accurately preserves those
+          definitions without omitting a material condition of the claim."
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is 12-17, and the excerpt from that exact page
-            contains the “Cloud classification” list with all four referenced
-            terms and definitions.
+          rationale: The cited locator is PDF page 12-17, and the supplied excerpt from
+            that exact page contains the cloud-classification list.
         claim_assessments:
           - claim_id: cloud-name-classifications
             verdict: supports
-            rationale: The claim accurately reproduces definitions stated verbatim or
-              substantively verbatim in the excerpt.
+            rationale: "The excerpt states: “Cumulus—heaped or piled clouds,”
+              “Stratus—formed in layers,” “Cirrus—ringlets, fibrous clouds,” and
+              “Nimbus—rain-bearing clouds.” The second authored passage repeats
+              these definitions accurately. Its additional statement that cirro
+              identifies the high-cloud family does not alter the listed claim."
       usage:
-        input_tokens: 1378
+        input_tokens: 1577
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1375
-        output_tokens: 166
+          cached_tokens: 1574
+        output_tokens: 217
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1544
+        total_tokens: 1794
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3451,7 +3564,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-ceiling-visibility-precipitation
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-08-31T22:37:58.311Z
+    checked_at_utc: 2026-09-01T00:28:51.367Z
     linked_claim_ids:
       - ceiling-visibility-meaning
       - precipitation-observable-consequence
@@ -3487,38 +3600,43 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly defines both ceiling and visibility and
-          explains precipitation formation and its operational effects,
-          including reduced visibility, icing, and hazardous runway conditions.
+        rationale: The cited PDF page directly defines aviation ceiling and visibility
+          and explains precipitation formation and its visibility, icing, and
+          runway-safety effects. The authored passages preserve the material
+          conditions in those statements, including ceiling being limited to
+          broken/overcast layers or vertical visibility in an obscuration and
+          precipitation effects depending on relevant conditions/form.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 17 and contains the sections
-            “Ceiling,” “Visibility,” and “Precipitation,” matching the cited
-            locator.
+          rationale: The cited locator is PDF page 12-17, and the supplied excerpt from
+            that exact page contains the Ceiling, Visibility, and Precipitation
+            sections supporting both claims.
         claim_assessments:
           - claim_id: ceiling-visibility-meaning
             verdict: supports
-            rationale: The excerpt states that a ceiling is the lowest broken or overcast
+            rationale: The excerpt states that ceiling is the lowest broken or overcast
               cloud layer, or vertical visibility into an obscuration such as
-              fog or haze. It defines visibility as the greatest horizontal
+              fog or haze, and that visibility is the greatest horizontal
               distance at which prominent objects can be viewed with the naked
-              eye.
+              eye. The authored passage preserves these definitions and the
+              broken/overcast limitation.
           - claim_id: precipitation-observable-consequence
             verdict: supports
-            rationale: The excerpt says precipitation occurs when cloud water or ice
+            rationale: The excerpt states that precipitation occurs when cloud water or ice
               particles grow until the atmosphere can no longer support them,
-              and states that it can reduce visibility, create icing situations,
-              and create runway hazards from snow, ice, pooling water, and slick
-              surfaces.
+              and that it can reduce visibility, create icing situations, and
+              create runway hazards from snow, ice, pooling water, and slick
+              surfaces. The authored passage accurately retains these
+              consequences.
       usage:
-        input_tokens: 1431
+        input_tokens: 1648
         input_tokens_details:
           cache_write_tokens: 0
-          cached_tokens: 1428
-        output_tokens: 240
+          cached_tokens: 1645
+        output_tokens: 441
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1671
+          reasoning_tokens: 142
+        total_tokens: 2089
     claim_assessments:
       valid: true
       missing_assessment_ids: []

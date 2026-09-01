@@ -128,6 +128,12 @@ Do not use liability-style hedges such as “not a substitute,” “not a proce
 
 When a connected topic needs later treatment, use one short forward reference that names it—for example, “We will discuss load factor in more depth in a later podcast.” Do not use a vague “later” if a specific term would orient the listener better.
 
+## Keep source tags bound to the spoken lesson
+
+Source tags are not decorative footnotes. Place each `[Source: sources.yaml#...]` tag immediately after the spoken paragraph it supports. For every material claim in `claim-inventory.yaml`, list the script section where it is taught and ensure that section includes at least one of that claim's declared sources. The source validator checks the tag names, the claim-to-section coverage, and the actual source-tagged passages during relevance review.
+
+If a revision changes a factual condition, definition, limitation, or example in `master-script.md`, regenerate `narration.md` and run a fresh source-relevance review before any render. The validation report is bound to the master-script hash as well as the source ledger, claim inventory, and show notes; an older report is intentionally stale after any of those inputs changes.
+
 ## Run a listener pass before approval
 
 Read the draft aloud or listen to a short render and check each section for:

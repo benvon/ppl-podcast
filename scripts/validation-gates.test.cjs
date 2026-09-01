@@ -462,6 +462,22 @@ test("HTML fragment citations assess the referenced definition instead of a long
   assert.doesNotMatch(excerpt, /^Unrelated glossary content/);
 });
 
+test("HTML fragment citations support unquoted IDs and legacy name anchors", () => {
+  const html = '<p id=ALTITUDE>Altitude definition.</p><a name=legacy-anchor></a><p>Legacy definition.</p>';
+  assert.match(htmlFragmentText(html, "https://www.faa.gov/example.html#ALTITUDE"), /Altitude definition/);
+  assert.match(htmlFragmentText(html, "https://www.faa.gov/example.html#legacy-anchor"), /Legacy definition/);
+});
+
+test("HTML fragment citations fail closed when the cited anchor is absent", () => {
+  const html = '<p id="ALTITUDE">Altitude definition.</p>';
+  assert.throws(() => htmlFragmentText(html, "https://www.faa.gov/example.html#MISSING"), /does not identify an id or name anchor/);
+});
+
+test("PDF page fragments do not become HTML-anchor requirements for an interstitial", () => {
+  const html = "<title>Access denied</title><p>Access denied.</p>";
+  assert.match(htmlFragmentText(html, "https://www.faa.gov/example.pdf#page=2"), /Access denied/);
+});
+
 test("cached HTML sources preserve the excerpt for each cited fragment", async () => {
   let calls = 0;
   const html = '<p id="ALTITUDE">MSL Altitude—Measured from mean sea level.</p><p id="AIRPORT_ELEVATION">Airport elevation—Highest usable runway point.</p>';

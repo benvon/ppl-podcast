@@ -56,13 +56,13 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Re-render the revised narration and complete script-aligned listening QA."
-  - "Confirm the revised MP3 chapter starts and titles during listening QA."
+  - "Complete script-aligned listening QA for the current candidate render."
+  - "Confirm the current candidate MP3 chapter starts and titles during listening QA."
   - "Re-verify every public source and link on publication day."
   - "Validate hosting metadata and external audio-store workflow."
 audio:
   manifest: audio-manifest.yaml
-  status: superseded_pending_rerender
+  status: candidate_rendered_pending_listening_qa
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.

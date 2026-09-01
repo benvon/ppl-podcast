@@ -225,16 +225,36 @@ function htmlToText(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/\s+/g, " ").trim();
 }
 
+function htmlFragmentStart(html, fragment) {
+  const tags = html.matchAll(/<([A-Za-z][^\s/>]*)(?:\s[^>]*)?>/g);
+  for (const tag of tags) {
+    const attributes = tag[0];
+    const anchors = attributes.matchAll(/(?:^|\s)(?:id|name)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/gi);
+    for (const anchor of anchors) {
+      const value = anchor[1] ?? anchor[2] ?? anchor[3];
+      if (value === fragment) return tag.index;
+    }
+  }
+  return null;
+}
+
 function htmlFragmentText(html, sourceUrl) {
-  const fragment = new URL(sourceUrl).hash.slice(1);
+  const citationUrl = new URL(sourceUrl);
+  const fragment = citationUrl.hash.slice(1);
   if (!fragment) return htmlToText(html);
-  const escaped = decodeURIComponent(fragment).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const target = new RegExp(`<[^>]+\\bid=(['\"])${escaped}\\1[^>]*>`, "i").exec(html);
-  if (!target || target.index === undefined) return htmlToText(html);
+  // A PDF page fragment belongs to the PDF citation, even if a server has
+  // returned an HTML error or access-interstitial page instead of that PDF.
+  // It is not an HTML-anchor citation and will be rejected by link validation.
+  if (citationUrl.pathname.toLowerCase().endsWith(".pdf") && /^page=[1-9]\d*$/i.test(fragment)) return htmlToText(html);
+  let decodedFragment;
+  try { decodedFragment = decodeURIComponent(fragment); }
+  catch (_) { throw new Error(`HTML citation fragment #${fragment} has invalid percent encoding`); }
+  const targetIndex = htmlFragmentStart(html, decodedFragment);
+  if (targetIndex === null) throw new Error(`HTML citation fragment #${decodedFragment} does not identify an id or name anchor in the cited page`);
   // A fragment identifies the cited HTML section. Start there so a long
   // glossary or handbook page cannot make relevance review assess its opening
   // text instead of the referenced definition and immediate context.
-  return htmlToText(html.slice(target.index, target.index + 24_000));
+  return htmlToText(html.slice(targetIndex, targetIndex + 24_000));
 }
 
 function htmlTitle(html) {

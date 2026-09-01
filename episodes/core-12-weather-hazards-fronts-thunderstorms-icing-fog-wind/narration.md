@@ -161,7 +161,7 @@ FAA guidance treats avoidance as the primary policy. It warns against taking off
 
 When a thunderstorm area cannot be navigated around, the guidance says to divert and wait out the thunderstorms on the ground.
 
-Data-linked radar mosaic imagery is useful for strategic route selection. It is not a real-time window for choosing a tactical path between cells. The displayed weather is older than the airplane's current position in time, and the age shown on a display may not include every part of the collection, processing, and transmission delay. Use it to keep the route away from the convective area, not to reduce separation from a cell.
+Data-linked NEXRAD mosaic imagery is useful for strategic route selection that avoids thunderstorms. The FAA says not to use it as the sole means for negotiating a tactical path through a thunderstorm area. It shows where the weather was, and the conditions may be fifteen to twenty minutes older than the age indicated on the display. Use that delayed picture to keep the route away from the convective area.
 
 **LEARNER:**
 
@@ -203,7 +203,7 @@ A freezing level is one boundary, not a complete answer.
 
 **INSTRUCTOR:**
 
-Icing near a front can occur above or below the frontal surface. Freezing precipitation below a front can extend across a broad area. In mountains, upslope motion on the windward side supports large supercooled droplets above the freezing level, and a front crossing the terrain can combine frontal lift with that upslope flow.
+Freezing rain or freezing drizzle below a front is a favored location for severe clear icing. The freezing precipitation can extend horizontally over a broad area. In mountains, upward air currents on the windward side support large supercooled droplets above the freezing level, and a front crossing the range can combine frontal lift with that upslope flow.
 
 For this lesson, turn those FAA descriptions into a three-dimensional planning cross-section. Place the freezing level, cloud, precipitation, terrain, and proposed altitude on the same picture. Then use the ACS decision framework to ask whether the route overlaps the described icing region and whether another altitude introduces unacceptable ceiling, visibility, terrain, or convective risk.
 
@@ -215,9 +215,9 @@ Ice changes the airplane before it looks dramatic.
 
 **INSTRUCTOR:**
 
-Small roughness from frost, snow, or ice can reduce lift and increase drag. Ice can also affect the propeller, induction system, pitot-static openings, antennas, windscreen, and control surfaces. The operational problem is not the weight of a dramatic ice sculpture. It is that contamination changes airflow and can impair several systems while the airplane is already in weather.
+Small roughness from frost, snow, or ice on a wing can reduce lift and increase drag. Ice can also accumulate on exposed frontal surfaces including the propeller, windshield, antennas, vents, intakes, and cowlings. The operational problem is not the weight of a dramatic ice sculpture. It is that contamination changes airflow and can affect several exposed parts of the airplane while it is already in weather.
 
-The same aerodynamic evidence matters before flight. Visible frost, snow, or ice on a lifting surface can change airflow before the airplane leaves the ground. Treat that contamination as part of the preflight weather decision, and use the approved airplane information for aircraft-specific limitations and methods.
+The same aerodynamic evidence matters before flight. Visible frost, snow, or ice on a wing can change airflow before the airplane leaves the ground. Treat that contamination as part of the preflight weather decision, and use the approved airplane information for aircraft-specific limitations and methods.
 
 The study skill comes before an encounter: identify the overlap of subfreezing temperature and liquid moisture, compare it with the airplane's capabilities, and make a plan that does not rely on an encounter to discover whether the forecast was accurate.
 
@@ -293,7 +293,7 @@ Wind becomes practical at the runway.
 
 **INSTRUCTOR:**
 
-Picture the runway as a straight line. When the reported wind meets that line at an angle, one part of the wind acts along the runway and the other acts across it. The along-runway part is a headwind if it comes from ahead or a tailwind if it comes from behind. The across-runway part is the crosswind. A wind nearly aligned with the runway has a larger along-runway component and a smaller crosswind component. A wind closer to ninety degrees from the runway has a larger crosswind component.
+Begin with the available landing directions because each runway direction changes the angle between the reported wind and the ground track. Picture the selected runway as a straight line. When the reported wind meets that line at an angle, one part of the wind acts along the runway and the other acts across it. The along-runway part is a headwind if it comes from ahead or a tailwind if it comes from behind. The across-runway part is the crosswind. A wind nearly aligned with the runway has a larger along-runway component and a smaller crosswind component. A wind closer to ninety degrees from the runway has a larger crosswind component.
 
 Use a crosswind component chart to determine the headwind and crosswind components for the reported wind and runway. Compare the crosswind with the airplane's maximum crosswind capability, and avoid wind conditions that exceed it.
 
@@ -391,7 +391,9 @@ How do you use data-linked radar around thunderstorms?
 
 **LEARNER:**
 
-For strategic route selection that keeps the flight away from the convective area, not for tactical threading between cells. If I cannot navigate around the thunderstorm area, FAA guidance says to divert and wait it out on the ground.
+For strategic route selection that keeps the flight away from the convective area. FAA guidance says not to use the delayed mosaic as the sole means for negotiating a tactical path through a thunderstorm area.
+
+If I cannot navigate around the thunderstorm area, FAA guidance says to divert and wait it out on the ground.
 
 **INSTRUCTOR:**
 
@@ -401,9 +403,9 @@ What overlap creates structural icing risk?
 
 Subfreezing temperature and supercooled liquid water in cloud or precipitation.
 
-FAA guidance says frontal icing can occur above or below a front and mountain upslope motion can support supercooled droplets above the freezing level.
+FAA guidance says freezing rain or drizzle below a front is a favored location for severe clear icing and can extend over a broad area. Over mountains, upward air currents on the windward side can support large supercooled droplets above the freezing level.
 
-Small ice or frost roughness can already reduce lift and increase drag.
+Small ice or frost roughness on a wing can already reduce lift and increase drag.
 
 For planning, I place those facts with cloud, precipitation, terrain, and planned altitude on one picture.
 
@@ -433,7 +435,7 @@ Regional wind is modified near the surface by friction and local effects.
 
 I account for local terrain and obstructions.
 
-I resolve the wind into along-runway and crosswind components.
+I consider the available landing directions, then resolve the wind for the selected runway into along-runway and crosswind components.
 
 I use the component chart for the reported wind and runway and compare the crosswind with the airplane's capability.
 

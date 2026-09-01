@@ -8,7 +8,7 @@ version: 0.1.0
 published_at: null
 runtime_target_minutes: 27
 runtime_actual_seconds: null
-word_count: 3809
+word_count: 3887
 speakers:
   - instructor
   - learner
@@ -35,7 +35,7 @@ learning_objectives:
     that extend beyond visible precipitation, including outflow, turbulence, and
     wind shear.
   - Explain why delayed data-linked radar supports strategic thunderstorm
-    avoidance rather than tactical navigation between cells.
+    avoidance and must not be the sole means for tactical path negotiation.
   - Identify the overlap of subfreezing temperature and supercooled liquid water
     and correlate freezing level, cloud, precipitation, terrain, and altitude as
     a three-dimensional icing risk.
@@ -53,7 +53,8 @@ trouble_spots:
   - Memorizing one guaranteed cloud-and-weather sequence for each front type.
   - Treating visible rain or a radar echo as the complete thunderstorm hazard
     boundary.
-  - Using delayed data-linked radar as a tactical gap-finding display.
+  - Using delayed data-linked radar as the sole means for tactical path
+    negotiation.
   - Treating a freezing level or surface temperature as a complete icing answer.
   - Treating light frost or ice as cosmetic or primarily a weight problem.
   - Assuming all morning fog dissipates with sunrise.
@@ -73,11 +74,10 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 9601700dd6341ccb825974bd22f9a7edf1f4ceb42d842b627a97380f762431a6
+  pending_script_sha256: a382269c580cdad59db2b9acecf432b5d2c5af14617e7a4bd92af08dc0322724
 release_gates_remaining:
   - Rerun formal source-link validation with required LLM source relevance and
-    confirm that every finding from run 46d0cb53-8a2e-4c55-a745-aff7593c18fb is
-    resolved.
+    confirm that every finding from the first and second reports is resolved.
   - Complete human editorial review and bind approval to the current master
     script.
   - Complete human listening QA, including the front-matter and chapter checks.

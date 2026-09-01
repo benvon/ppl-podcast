@@ -237,7 +237,7 @@ sources:
     locator: "Ch. 20, Icing with Fronts and Icing with Mountains, p. 20-5"
     url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=247"
     revision: "FAA-H-8083-28B, April 2026"
-    relevance_excerpt: "Icing near fronts can occur above or below the frontal surface, and freezing precipitation can extend over a broad area. Mountain upslope motion supports large supercooled droplets above the freezing level and can combine with frontal lift."
+    relevance_excerpt: "Freezing rain or freezing drizzle below a front is a favored location for severe clear icing and can extend horizontally over a broad area. Mountain windward-side upward currents support large supercooled droplets above the freezing level; a front crossing a mountain range can combine frontal lift with upslope flow."
     verified_at_utc: "2026-09-01T16:47:46Z"
     link_status: 200
     supports_claims: [icing-frontal-terrain-distribution]
@@ -249,7 +249,7 @@ sources:
     locator: "Ch. 20, Effects of Icing, p. 20-7"
     url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=249"
     revision: "FAA-H-8083-28B, April 2026"
-    relevance_excerpt: "Small roughness from frost, snow, or ice can reduce lift and increase drag; ice can also affect the propeller, induction, instruments, antennas, and control surfaces."
+    relevance_excerpt: "Small roughness from frost, snow, or ice on a wing can reduce lift and increase drag. Ice also accumulates on exposed frontal surfaces including wings, the propeller, windshield, antennas, vents, intakes, and cowlings."
     verified_at_utc: "2026-09-01T16:47:46Z"
     link_status: 200
     supports_claims: [icing-aerodynamic-system-effects]
@@ -297,7 +297,7 @@ sources:
     locator: "Ch. 22, Thunderstorm Avoidance Guidance, p. 22-21"
     url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=276"
     revision: "FAA-H-8083-28B, April 2026"
-    relevance_excerpt: "Avoidance is the primary policy; the guidance warns against takeoff or landing toward an approaching storm and flight under a cell or anvil, and distinguishes strategic use of delayed data-linked NEXRAD from tactical maneuvering."
+    relevance_excerpt: "Avoidance is the primary policy; the guidance warns against takeoff or landing toward an approaching storm and flight under a cell or anvil. Data-linked NEXRAD mosaic imagery shows where weather was, may be 15 to 20 minutes older than the displayed age, should be used for strategic route selection to avoid thunderstorms entirely, and must not be used as the sole means for tactical path negotiation through a thunderstorm area."
     verified_at_utc: "2026-09-01T16:47:46Z"
     link_status: 200
     supports_claims: [thunderstorm-avoidance-strategy, datalink-strategic-not-tactical]

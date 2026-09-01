@@ -45,3 +45,14 @@
 - Synchronized the 28-source ledger, 35-claim inventory, 28 listener-facing source links and manifest entries, research packet, show notes, episode metadata, and source-tagged Retrieval review. Mechanically regenerated `narration.md`; the revised narration contains 3,809 spoken words.
 - Reset downstream script-review state and bound the pending-review fingerprint to SHA-256 `9601700dd6341ccb825974bd22f9a7edf1f4ceb42d842b627a97380f762431a6`. Formal source relevance, human editorial approval, audio rendering, staging, release, and publication remain pending.
 - Deterministic validation passed: source shape, reciprocal claims, 121 master-script source tags, and 28 show-note links for 28 sources and 35 claims; the mechanical narration derivative; all 93 repository tests; the disclosure and secret scan; and `git diff --check`. No network request, OpenAI relevance call, or audio render was performed.
+
+## 2026-09-01 — second formal source-relevance review resolved
+
+- The second formal source-relevance report, checked at `2026-09-01T17:35:23.248Z`, left four narrow source-alignment findings. This revision resolves only those findings; a clean formal rerun remains the next gate.
+- Icing distribution: replaced the unsupported general statement about icing above a frontal surface with the handbook's exact supported cases—freezing rain or drizzle below a front, broad horizontal extent, and windward mountain upward currents supporting large supercooled droplets above the freezing level.
+- Icing effects: limited the factual claim and spoken examples to wing lift and drag plus the specifically listed exposed frontal surfaces: propeller, windshield, antennas, vents, intakes, and cowlings.
+- Data-linked NEXRAD: restored the material FAA qualifier that mosaic imagery must not be the sole means for tactical path negotiation, while retaining its delayed strategic route-selection use.
+- Runway wind: made available landing directions the first condition in the component mental model before resolving the wind for the selected runway.
+- Synchronized the source excerpts, reciprocal claims, source-tagged lesson and Retrieval review, research packet, listener-facing show notes, and episode metadata. Mechanically regenerated `narration.md`; the revised narration contains 3,887 spoken words.
+- Reset downstream script-review state and bound the pending-review fingerprint to SHA-256 `a382269c580cdad59db2b9acecf432b5d2c5af14617e7a4bd92af08dc0322724`. Formal source relevance, human editorial approval, audio rendering, staging, release, and publication remain pending.
+- Deterministic validation passed: source shape, reciprocal claims, 121 master-script source tags, and 28 show-note links for 28 sources and 35 claims; the mechanical narration derivative; all 93 repository tests; the disclosure and secret scan; and `git diff --check`. No network request, OpenAI relevance call, or audio render was performed.

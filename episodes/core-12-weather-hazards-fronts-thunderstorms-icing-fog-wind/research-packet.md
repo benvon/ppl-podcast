@@ -19,7 +19,7 @@
 | Icing and freezing-level information | PA.I.C.K3i | Builds the overlap of supercooled liquid water and subfreezing temperature; uses a three-dimensional route cross-section rather than treating the freezing level as a complete answer. |
 | Fog and visibility obstructions | PA.I.C.K3j-K3l | Defines fog as surface-based cloud and uses the formation mechanism to reason about persistence and improvement. |
 | Go/no-go and continue/divert decisions, personal minimums, hazardous weather | PA.I.C.R1-R1c | Applies one repeatable pattern: mechanism, location and time, multiple evidence sources, combined margin, early lower-workload choice. |
-| Limitations of installed, forecast, and inflight weather resources | PA.I.C.R2 | Uses delayed data-linked radar as the central example of a product useful for strategic avoidance but unsafe as a tactical gap finder. |
+| Limitations of installed, forecast, and inflight weather resources | PA.I.C.R2 | Uses delayed data-linked radar as the central example of a product useful for strategic avoidance but not as the sole means for tactical path negotiation. |
 | Analyze implications and correlate weather information | PA.I.C.S2-S3 | Integrates frontal weather, fog, icing, convection, and runway wind in two route scenarios. |
 
 ## Source-led teaching chain
@@ -45,7 +45,7 @@
   - Correction: A mature-cell gust front can move well ahead of the parent thunderstorm, and visual appearance cannot identify which combination of hazards a storm contains.
   - Source: AWH Ch. 22, pp. 22-3 and 22-7.
 - Misconception: A radar gap is current enough to navigate tactically.
-  - Correction: Data-linked mosaic imagery is delayed and supports strategic avoidance, not tactical threading.
+  - Correction: Data-linked mosaic imagery is delayed and supports strategic avoidance; FAA guidance says not to use it as the sole means for tactical path negotiation through a thunderstorm area.
   - Source: AWH Ch. 22, pp. 22-21 to 22-22.
 - Misconception: Below-freezing temperature alone means structural icing, or a freezing-level altitude alone resolves icing risk.
   - Correction: Structural icing needs supercooled liquid water; the pilot correlates the thermal profile with cloud, precipitation, terrain, and altitude.
@@ -57,7 +57,7 @@
   - Correction: Different mechanisms persist under different wind, temperature, terrain, and moisture conditions; improvement needs current evidence.
   - Source: AWH Ch. 18, pp. 18-2 to 18-8.
 - Misconception: Total wind speed by itself answers the runway question.
-  - Correction: Direction must be resolved into runway components, then combined with gusts, turbulence, airplane capability, runway options, and pilot proficiency.
+  - Correction: Consider the available landing directions, resolve the wind for the selected runway into components, then combine the result with gusts, turbulence, airplane capability, runway options, and pilot proficiency.
   - Source: AFH Ch. 9, pp. 9-18 to 9-19; ACS PA.I.C.R1.
 - Misconception: Wind shear is simply strong wind.
   - Correction: Wind shear is rapid change over a short distance; its changing wind vector can abruptly change airspeed, performance, and flightpath.
@@ -76,7 +76,7 @@
 - Presenting hazard lists without the causal chain that makes them usable on first listen.
 - Turning front stereotypes into guaranteed sequences.
 - Letting the Learner announce a conclusion before the Instructor establishes the mechanism.
-- Treating delayed radar as a tactical navigation display.
+- Treating delayed radar as the sole means for tactical path negotiation.
 - Giving aircraft-specific maneuver, penetration, icing-escape, or gust-correction instruction.
 - Repeating disclaimer-like hedges instead of naming the bounded study decision.
 - Treating one acceptable airport, altitude, or weather value as a complete route decision.
@@ -90,8 +90,9 @@ None. Aircraft-specific procedures, equipment capabilities, and limitations are 
 - Initial source-led research and first draft: complete September 1, 2026.
 - Independent spoken-script review by a non-drafting agent: complete September 1, 2026.
 - Required revisions from that review: resolved in version 0.1.0; Episode 11 callbacks, the frontal-zone mental picture, forecast wording, runway wind components, and microburst causality were clarified.
-- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, repository tests, disclosure/secret scan, and whitespace checks: complete after resolving the first formal source-relevance review.
+- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, repository tests, disclosure/secret scan, and whitespace checks: complete after resolving the second formal source-relevance review.
 - Package-only pre-host validation: previously exercised before the formal review and stopped at its expected source-report gate; it remains pending until a clean formal source-relevance rerun is bound to the revised package inputs.
 - Formal LLM source-relevance review run `46d0cb53-8a2e-4c55-a745-aff7593c18fb`: completed with targeted source, locator, claim, and tagged-passage findings; the package has been revised, and a clean formal rerun remains pending.
+- Second formal source-relevance report, checked September 1, 2026 at `17:35:23Z`: completed with four remaining narrow findings; all four are resolved in the revised package, and a clean formal rerun remains pending.
 - Human editorial approval: pending.
 - Audio rendering, listening QA, staging, release, and publication: not started.

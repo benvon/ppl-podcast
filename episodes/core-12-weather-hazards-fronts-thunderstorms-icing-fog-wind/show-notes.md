@@ -2,12 +2,12 @@
 
 **Episode:** core-12
 **Version:** 0.1.0
-**Source verification:** Independent spoken-script review is complete; targeted findings from the first formal source-relevance review are resolved, and a clean formal rerun is pending.
+**Source verification:** Independent spoken-script review is complete; the four targeted findings from the second formal source-relevance review are resolved, and a clean formal rerun is pending.
 
 ## In this episode
 
 - Use the pressure, stability, moisture, and cloud model from Episode 11 to recognize how fronts organize changing weather.
-- Connect thunderstorm ingredients and life cycle with turbulence, outflow, wind shear, and early avoidance decisions.
+- Connect thunderstorm ingredients and life cycle with turbulence, outflow, wind shear, early avoidance decisions, and why delayed radar mosaics cannot be the sole means for tactical path negotiation.
 - Build a three-dimensional icing picture from temperature, liquid moisture, cloud, precipitation, terrain, and altitude.
 - Use fog-formation mechanisms to reason about persistence and improvement instead of assuming every morning layer will clear.
 - Translate regional wind into local turbulence, runway components, airplane capability, personal minimums, and runway options.

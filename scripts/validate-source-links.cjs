@@ -9,6 +9,7 @@ const path = require("path");
 const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
+const { sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const DEFAULT_HTTP_CONCURRENCY = 5;
@@ -93,15 +94,6 @@ function loadYaml(file, expectedKey) {
 
 function fileSha256(file) {
   return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
-}
-
-function validationInputHashes({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, showNotesFilePresent, showNotesValidationConfigured }) {
-  return {
-    sources: fileSha256(sourcesPath),
-    claims: fileSha256(claimsPath),
-    show_notes: showNotesFilePresent ? fileSha256(showNotesPath) : null,
-    show_notes_manifest: showNotesValidationConfigured ? fileSha256(showNotesManifestPath) : null,
-  };
 }
 
 function assertSafeUrl(value) {
@@ -233,6 +225,38 @@ function htmlToText(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/\s+/g, " ").trim();
 }
 
+function htmlFragmentStart(html, fragment) {
+  const tags = html.matchAll(/<([A-Za-z][^\s/>]*)(?:\s[^>]*)?>/g);
+  for (const tag of tags) {
+    const attributes = tag[0];
+    const anchors = attributes.matchAll(/(?:^|\s)(?:id|name)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/gi);
+    for (const anchor of anchors) {
+      const value = anchor[1] ?? anchor[2] ?? anchor[3];
+      if (value === fragment) return tag.index;
+    }
+  }
+  return null;
+}
+
+function htmlFragmentText(html, sourceUrl) {
+  const citationUrl = new URL(sourceUrl);
+  const fragment = citationUrl.hash.slice(1);
+  if (!fragment) return htmlToText(html);
+  // A PDF page fragment belongs to the PDF citation, even if a server has
+  // returned an HTML error or access-interstitial page instead of that PDF.
+  // It is not an HTML-anchor citation and will be rejected by link validation.
+  if (citationUrl.pathname.toLowerCase().endsWith(".pdf") && /^page=[1-9]\d*$/i.test(fragment)) return htmlToText(html);
+  let decodedFragment;
+  try { decodedFragment = decodeURIComponent(fragment); }
+  catch (_) { throw new Error(`HTML citation fragment #${fragment} has invalid percent encoding`); }
+  const targetIndex = htmlFragmentStart(html, decodedFragment);
+  if (targetIndex === null) throw new Error(`HTML citation fragment #${decodedFragment} does not identify an id or name anchor in the cited page`);
+  // A fragment identifies the cited HTML section. Start there so a long
+  // glossary or handbook page cannot make relevance review assess its opening
+  // text instead of the referenced definition and immediate context.
+  return htmlToText(html.slice(targetIndex, targetIndex + 24_000));
+}
+
 function htmlTitle(html) {
   const match = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
   return match ? htmlToText(match[1]).slice(0, 300) : null;
@@ -315,11 +339,12 @@ async function fetchSourceOnce(sourceUrl, { fetchImpl = fetch, timeoutMs = FETCH
         content_type: contentType || null,
         redirects,
         title: isHtml ? htmlTitle(text) : null,
-        excerpt: isText ? (isHtml ? htmlToText(text) : text.replace(/\s+/g, " ").trim()).slice(0, 12000) : null,
+        excerpt: isText ? (isHtml ? htmlFragmentText(text, sourceUrl) : text.replace(/\s+/g, " ").trim()).slice(0, 12000) : null,
         truncated,
         content_sha256,
         hash_truncated,
         links: includeLinks && isHtml ? htmlLinks(text, current) : undefined,
+        html: isHtml ? text : null,
         pdf_bytes: includePdfBytes && contentType === "application/pdf" ? body : null,
         body: includeBytes ? body : null,
       };
@@ -417,7 +442,7 @@ async function fetchSourceCached(sourceUrl, options, fetchCache) {
   const cached = await fetchCache.get(key);
   const finalUrl = new URL(cached.final_url);
   finalUrl.hash = new URL(sourceUrl).hash;
-  return { ...cached, requested_url: sourceUrl, final_url: finalUrl.toString() };
+  return { ...cached, requested_url: sourceUrl, final_url: finalUrl.toString(), excerpt: cached.html ? htmlFragmentText(cached.html, sourceUrl).slice(0, 12000) : cached.excerpt };
 }
 
 function isEcfrSource(source) {
@@ -514,7 +539,7 @@ function responseText(response) {
   throw new Error("Responses API returned no output text.");
 }
 
-async function assessRelevance({ model, source, claims, fetched, fetchImpl = fetch, signal }) {
+async function assessRelevance({ model, source, claims, authoredPassages = [], fetched, fetchImpl = fetch, signal }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is required for --llm. Load it from your environment; do not place it in a command argument or repository file.");
   // The relevance review must assess text extracted from this validation run.
@@ -525,10 +550,11 @@ async function assessRelevance({ model, source, claims, fetched, fetchImpl = fet
   const input = {
     source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt: excerpt.slice(0, 12000) },
     claims: claims.map((claim) => ({ id: claim.id, statement: claim.statement, type: claim.type })),
+    authored_passages: authoredPassages,
   };
   const body = {
     model,
-    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt and claims. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. Then, for every claim, decide whether the excerpt supports it, partially supports it, does not support it, or is insufficient evidence. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
+    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
     input: JSON.stringify(input),
     text: { format: { type: "json_schema", name: "source_relevance", strict: true, schema: RELEVANCE_SCHEMA } },
   };
@@ -688,7 +714,7 @@ function releaseValidationLock(outputPath, run) {
 
 function publicLinkRecord(link) {
   if (!link || !Object.hasOwn(link, "excerpt")) return link;
-  const { excerpt, links, pdf_bytes, body, pdf_page_text, section_text, ...rest } = link;
+  const { excerpt, links, html, pdf_bytes, body, pdf_page_text, section_text, ...rest } = link;
   return {
     ...rest,
     excerpt_characters: excerpt ? excerpt.length : 0,
@@ -879,27 +905,32 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   const showNotesFilePresent = fs.existsSync(showNotesPath); const showNotesValidationConfigured = fs.existsSync(showNotesManifestPath);
   if (showNotesValidationConfigured && !showNotesFilePresent) throw new Error("show-notes-manifest.yaml requires show-notes.md");
   const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
-  const inputSha256 = validationInputHashes({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, showNotesFilePresent, showNotesValidationConfigured });
+  const episodePath = path.dirname(sourcesPath);
+  if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml")) throw new Error("source validation inputs must be the canonical episode package files");
+  const inputSha256 = sourceValidationInputHashes(episodePath);
   const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
   const claimMapping = validateClaimMappings(ledger, claimInventory);
+  const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
   const showNotesMapping = showNotesValidationConfigured ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_configured", errors: [] };
   if (options.dryRun) {
-    if (!claimMapping.valid || !showNotesMapping.valid) {
+    if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
       reportMappingErrors(claimMapping, showNotesMapping);
+      for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
       process.exitCode = 1;
       return;
     }
     const showNotesSummary = showNotesValidationConfigured ? `${showNotesManifest.links.length} show-notes links` : showNotesFilePresent ? "show notes without a manifest (not configured)" : "no show-notes manifest";
-    console.log(`Validated input shape, claim mappings, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    console.log(`Validated input shape, claim mappings, ${masterScriptMapping.source_tag_count} master-script source tags, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
   }
   const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
   progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest?.links.length || 0, llm_requested: options.llm });
-  if (!claimMapping.valid || !showNotesMapping.valid) {
+  if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
     reportMappingErrors(claimMapping, showNotesMapping);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, results: [] };
+    for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
     completeValidationReport(outputPath, report, validationRun);
     progress.emit("report_written", { valid: false });
     console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
@@ -952,7 +983,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? ECFR_MAX_IN_FLIGHT_REQUESTS : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
   if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
-  const deterministicValid = results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
+  const deterministicValid = masterScriptMapping.valid && results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
   if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
   await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
     const source = ledger.sources[index];
@@ -967,7 +998,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
       entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
       entry.claim_assessments = validateClaimAssessments(entry.relevance, []);
     } else {
-      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, fetched: entry.link, signal: cancellation.signal }); }
+      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, authoredPassages: masterScriptMapping.passages_by_source[source.id] || [], fetched: entry.link, signal: cancellation.signal }); }
       catch (error) { entry.relevance = { status: "not_assessed", reason: `LLM relevance failed: ${error.message}` }; }
       entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
     }
@@ -983,8 +1014,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
-  const unresolved = !claimMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && entry.relevance.status !== "assessed") || (options.requireLlm && entry.relevance.status === "assessed" && entry.relevance.assessment.verdict !== "supports") || (options.requireLlm && entry.relevance.status === "assessed" && entry.relevance.assessment.locator_assessment.verdict !== "supports") || (options.requireLlm && !entry.claim_assessments.valid));
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
   completeValidationReport(outputPath, report, validationRun);
   progress.emit("report_written", { valid: !unresolved });
   console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
@@ -1027,4 +1058,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

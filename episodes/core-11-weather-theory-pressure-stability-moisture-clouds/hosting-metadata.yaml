@@ -1,0 +1,21 @@
+schema_version: 1
+handoff_status: ready_for_hosting_pr
+publisher_release:
+  id: core-11
+  guid: pplstudyguide.com:core-11
+  title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
+  description: Build the physical chain from pressure, temperature, and density
+    through stability, moisture, saturation, and cloud formation, then connect
+    it to later VFR weather interpretation.
+  published_at: 2026-09-01T16:14:05Z
+  duration: "00:42:43"
+  season: 1
+  number: 11
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.2.12

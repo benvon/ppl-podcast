@@ -14,6 +14,8 @@ For each major idea, draft in this order:
 
 Do not compress several of these moves into one sentence. If an explanation says that something “moves,” “changes,” “matters,” or is “valuable,” name the thing, condition, or relationship immediately rather than requiring the listener to infer it.
 
+For a lesson that is heavy on theory, give the listener a short orienting map before the deep explanation begins. Name the major relationships in causal order without trying to teach them all in the overview. Develop each relationship in its own section with a concrete scenario and an explicit callback to the map, then use the retrieval review to rebuild the same chain from beginning to end. When a following episode applies the theory to practical hazards or decisions, name that connection so the listener knows where the model will be used.
+
 ## Make mental pictures usable without a diagram
 
 When an explanation depends on a diagram:
@@ -94,7 +96,21 @@ The reviewing agent must check that:
 - each callback and call-forward within the episode points to an idea that has already been taught or is specifically introduced later; and
 - the lesson can be understood on a first listen, rather than relying on the listener to reread a dense sentence or infer an unstated connection.
 
-The reviewer should return findings tied to a section and passage, distinguishing required fixes from optional wording suggestions. The drafting agent or lead editor resolves the required findings before script approval. Record the review, material changes, and any consciously deferred suggestion in the episode `production-log.md`.
+The reviewer should return findings tied to a section and passage, distinguishing required fixes from optional wording suggestions. The drafting agent or lead editor resolves the required findings before source-relevance validation. Record the review, material changes, and any consciously deferred suggestion in the episode `production-log.md`.
+
+## Validate sources before human editorial review
+
+Human editorial review should begin with a source-validated draft. Do not wait until the end of production to discover that an otherwise clear lesson needs a factual rewrite.
+
+Use this order for every new draft:
+
+1. Complete the source-led draft package.
+2. Complete the independent spoken-script review.
+3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
+4. Run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every finding and rerun until the report is clean.
+5. Give that source-validated draft to the human editor.
+
+If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.
 
 ## Make the practical takeaway concrete
 
@@ -125,6 +141,16 @@ Keep the required production notice and source tags intact. After that, state an
 Do not use liability-style hedges such as “not a substitute,” “not a procedure,” or “not permission” as a habitual way to narrow an explanation. When a practical skill needs hands-on development, say plainly what the listener can explore with a CFI during flight instruction. That points the listener toward the right next learning environment without burying the lesson in defensive language.
 
 When a connected topic needs later treatment, use one short forward reference that names it—for example, “We will discuss load factor in more depth in a later podcast.” Do not use a vague “later” if a specific term would orient the listener better.
+
+## Keep source tags bound to the spoken lesson
+
+Source tags are not decorative footnotes. Place each `[Source: sources.yaml#...]` tag immediately after the spoken paragraph it supports. For every material claim in `claim-inventory.yaml`, list the script section where it is taught and ensure that section includes at least one of that claim's declared sources. The source validator checks the tag names, the claim-to-section coverage, and the actual source-tagged passages during relevance review.
+
+A Retrieval review is not a citation-free summary. It repeats instructional facts. Every factual Instructor or Learner paragraph in `Retrieval review` needs its own immediate source tags, and every recalled claim must list `Retrieval review` in `script_sections`. The source contract rejects an untagged spoken Instructor or Learner paragraph in that section.
+
+Keep each tagged passage source-pure. If adjacent sentences rely on different sources, split them into separate paragraphs and place each source tag after the sentence or paragraph it actually supports. Do not use one source tag to make a mixed-source paragraph appear fully covered.
+
+If a revision changes a factual condition, definition, limitation, or example in `master-script.md`, regenerate `narration.md` and run a fresh source-relevance review before any render. The validation report is bound to the master-script hash as well as the source ledger, claim inventory, and show notes; an older report is intentionally stale after any of those inputs changes.
 
 ## Run a listener pass before approval
 

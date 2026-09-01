@@ -28,7 +28,7 @@ npm run precommit:check
 
 ## Candidate workflow
 
-1. Confirm the master script has passed fact and editorial review, then run
+1. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Then run
    `sources:validate --require-llm`, resolve every finding, and record
    `source_verification.relevance_review: complete` in `episode.yaml`. The
    renderer verifies that evidence before it sends any audio request.
@@ -172,7 +172,8 @@ audio.
   familiar initialisms such as `POH`, `CG`, `AFM`, `ACS`, and `MEL` exactly as
   written because hyphenated spellings created audible hitches and unnatural
   emphasis. The pronunciation map is reserved for narrow phonetic corrections:
-  `AI` becomes `artificial intelligence` and `PHAK` becomes `pee hack`.
+  `AI` becomes `artificial intelligence`, `PHAK` becomes `pee hack`, `ASOS`
+  becomes `AY-sohs`, `AWOS` becomes `AY-wahs`, and `ATIS` becomes `AY-tis`.
   For a homograph such as `envelope`, the text remains unchanged and the
   affected segment receives a silent noun-pronunciation instruction instead.
 - Use the versioned, Git-ignored render manifest for duration, checksums, response

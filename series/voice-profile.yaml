@@ -1,4 +1,4 @@
-version: 5
+version: 6
 status: approved-for-candidate-renders
 provider: openai-realtime
 model: gpt-realtime-2.1
@@ -48,7 +48,8 @@ delivery:
     terminology while varying stress and cadence naturally with the sentence.
   abbreviation-rule: >-
     Keep the approved written script unchanged. In render input only, expand
-    AI to artificial intelligence and pronounce PHAK as pea hack.
+    AI to artificial intelligence; pronounce PHAK as pea hack, ASOS as
+    AY-sohs, AWOS as AY-wahs, and ATIS as AY-tis.
   prohibited:
     - exaggerated emotion
     - comedy or gimmicky banter

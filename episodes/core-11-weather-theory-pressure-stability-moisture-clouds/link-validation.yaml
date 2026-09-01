@@ -1,0 +1,3582 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-09-01T16:19:16.002Z
+sources_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/sources.yaml
+claims_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/claim-inventory.yaml
+show_notes_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes.md
+show_notes_manifest_file: episodes/core-11-weather-theory-pressure-stability-moisture-clouds/show-notes-manifest.yaml
+input_sha256:
+  sources: bf4b0727a9b21d21f0dd03bcd8f7827e6cdf0d57bcb6ca7c3c459345b4cc1517
+  claims: 609a19d1874dab8f2e6e368a2201f44b8877203b3a731ed299080a293da7b85b
+  master_script: de210781b180d0190408ba67479ea1de5556cba27638fa5904ea75b3a061f619
+  show_notes: ec1810a69184e638471d1e8bbb3403372da7dd69d931a1bbdbcc4254d8612f91
+  show_notes_manifest: 77dcc458e617085d1d6737de1aaac8fcfe5e2d22eb8615081baf2a5811b0fc4e
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 98
+  claim_coverage_count: 54
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 37
+  manifest_link_count: 34
+show_notes_results:
+  - id: acs-weather-stability
+    text: Private Pilot ACS — Atmospheric composition, stability, and wind
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    source_id: acs-weather-stability
+    claim_ids:
+      - acs-weather-vfr-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-weather-moisture-clouds-risk
+    text: Private Pilot ACS — Weather conditions, risk management, and skills
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+    source_id: acs-weather-moisture-clouds-risk
+    claim_ids:
+      - acs-weather-topic-scope
+      - acs-weather-decision-use
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2020
+      pdf_page_text_sha256: 8ed2fbd6b81fe01ff90767ef3562f706e3aba8138dde57a9baf4d4c92cc4fbaa
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-weather-theory-purpose
+    text: PHAK Chapter 12 — Introduction
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+    source_id: phak-weather-theory-purpose
+    claim_ids:
+      - weather-theory-supports-interpretation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1054
+      pdf_page_text_sha256: 19469d29f6e57c5d45f981a369cf9157211b32fd9c2748eccea2196325ed1207
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-atmosphere-troposphere
+    text: PHAK Chapter 12 — Atmosphere and composition
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+    source_id: phak-atmosphere-troposphere
+    claim_ids:
+      - atmosphere-mixture-water-vapor
+      - troposphere-weather-phenomena
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2105
+      pdf_page_text_sha256: ff3df3f87fd8fd3d26baec845cb49a295029f57bc35b710a2c49711d93b72680
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-air-parcel-troposphere
+    text: Aviation Weather Handbook — Air parcel and troposphere
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+    source_id: awh-air-parcel-troposphere
+    claim_ids:
+      - troposphere-depth
+      - air-parcel-conceptual-model
+      - parcel-properties-uniform
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      errors: []
+      valid: true
+      pdf_page_number: 63
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3340
+      pdf_page_text_sha256: 2fd700c37cfaf054ff3a47b18075d5e42257de2aa14436d5b2431be789577696
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-standard-atmosphere-reference
+    text: Aviation Weather Handbook — Standard atmosphere
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+    source_id: awh-standard-atmosphere-reference
+    claim_ids:
+      - standard-atmosphere-fixed-reference
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      errors: []
+      valid: true
+      pdf_page_number: 65
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1301
+      pdf_page_text_sha256: 46628099bacca4f0cfdce490743152e16bcd4a3aceed2c0cc222cf3767eb6d29
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-heating-density-pressure
+    text: PHAK Chapter 12 — Atmospheric circulation and pressure
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+    source_id: phak-heating-density-pressure
+    claim_ids:
+      - unequal-heating-drives-motion
+      - temperature-density-relationship
+      - pressure-air-weight
+      - surface-heating-rising-air
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4212
+      pdf_page_text_sha256: 4d99505435407751bd6587f9cd113af2466fc2bfda72eebf4ff76fd9960332a3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-heat-transfer-modes
+    text: Aviation Weather Handbook — Heat-transfer modes
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+    source_id: awh-heat-transfer-modes
+    claim_ids:
+      - heat-transfer-modes
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      errors: []
+      valid: true
+      pdf_page_number: 70
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2724
+      pdf_page_text_sha256: f4c0bf0460db104db734891d311bb05c4a6259ba03031c711e998714cc53bec9
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-temperature-advection
+    text: Aviation Weather Handbook — Temperature advection
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+    source_id: awh-temperature-advection
+    claim_ids:
+      - temperature-advection
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      errors: []
+      valid: true
+      pdf_page_number: 161
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1713
+      pdf_page_text_sha256: 528883d68aa03ce2d257837d4c4481f7b4960cf1a70fefb638b5816c5e762280
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-pressure-reference-altitude
+    text: PHAK pressure reference and altitude relationship
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+    source_id: phak-pressure-reference-altitude
+    claim_ids:
+      - standard-pressure-reference
+      - pressure-decreases-altitude
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3606
+      pdf_page_text_sha256: bd3a03117d002a8f7fe4ca06b222c977165c59e8a7733f43712d9b2bdf7814d9
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-pressure-units-station
+    text: Aviation Weather Handbook — Pressure units and station pressure
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+    source_id: awh-pressure-units-station
+    claim_ids:
+      - hectopascal-millibar-equivalence
+      - station-pressure-local-reference
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      errors: []
+      valid: true
+      pdf_page_number: 97
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1523
+      pdf_page_text_sha256: dd4868957b2434b54c6c21bf9eabeaf275be67eb94957d1ba936a6acbecb81fd
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-sea-level-pressure-reference
+    text: Aviation Weather Handbook — Sea level pressure
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+    source_id: awh-sea-level-pressure-reference
+    claim_ids:
+      - sea-level-pressure-comparison
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      errors: []
+      valid: true
+      pdf_page_number: 100
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1359
+      pdf_page_text_sha256: 7b0bd022536783a302a5873322dbab82f5ea0e2d4b80f623501c8326ffb4904a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-pcg-altitude-reference
+    text: FAA Pilot/Controller Glossary — Altitude reference
+    url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+    source_id: faa-pcg-altitude-reference
+    claim_ids:
+      - msl-agl-references
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a4 []
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      errors: []
+      valid: true
+      excerpt_characters: 10001
+      excerpt_sha256: 7b1447725475d5d2c749a91a2e236ad5c44ea086f28ba7d61701fd4a607836e0
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-pcg-airport-elevation
+    text: FAA Pilot/Controller Glossary — Airport elevation
+    url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+    source_id: faa-pcg-airport-elevation
+    claim_ids:
+      - airport-elevation-reference
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      errors: []
+      valid: true
+      excerpt_characters: 11117
+      excerpt_sha256: 483f684b4623f21b8c9969a37515486dd50a45b8f9a23514152fad724cbf6fd5
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-altimeter-setting-reference
+    text: Aviation Weather Handbook — Altimeter setting
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+    source_id: awh-altimeter-setting-reference
+    claim_ids:
+      - altimeter-setting-purpose
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      errors: []
+      valid: true
+      pdf_page_number: 106
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 807
+      pdf_page_text_sha256: bbd632a3834f60711f8aa4ffdd29bc5b765934d4790c2097a9de29f5aa7a18eb
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-pressure-altitude-reference
+    text: Aviation Weather Handbook — Pressure altitude
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+    source_id: awh-pressure-altitude-reference
+    claim_ids:
+      - pressure-altitude-reference
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      errors: []
+      valid: true
+      pdf_page_number: 107
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2306
+      pdf_page_text_sha256: d2fc9b94542f02b8ffa432e8a73dea5eeeef52f9a89c883856bf0a8eec0fcfde
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-density-altitude-reference
+    text: Aviation Weather Handbook — Density altitude
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+    source_id: awh-density-altitude-reference
+    claim_ids:
+      - density-altitude-performance-index
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      errors: []
+      valid: true
+      pdf_page_number: 108
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3479
+      pdf_page_text_sha256: b6583e8bd1c138b602953d6d61009fccfc49004b64dbaf20a690c2a1c47e9bd3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-metar-altimeter-cloud-bases
+    text: Aviation Weather Handbook — METAR cloud heights and altimeter group
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+    source_id: awh-metar-altimeter-cloud-bases
+    claim_ids:
+      - metar-altimeter-cloud-references
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      errors: []
+      valid: true
+      pdf_page_number: 302
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2427
+      pdf_page_text_sha256: edda846d22397c88b268e3a302c9fbcb40b736d5b437dfd60e995cdec48e1031
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-metar-sea-level-pressure
+    text: Aviation Weather Handbook — METAR sea-level-pressure remark
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+    source_id: awh-metar-sea-level-pressure
+    claim_ids:
+      - metar-sea-level-pressure-remark
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      errors: []
+      valid: true
+      pdf_page_number: 308
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3227
+      pdf_page_text_sha256: d692d89a7e77d62820f3089bfa2df872ebbdf16135b03a50f626482e15b34cfc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-awos-asos-observations
+    text: AIM — ASOS and AWOS observations
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+    source_id: aim-awos-asos-observations
+    claim_ids:
+      - asos-awos-observations
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a5 []
+      title: Chapter 7. Safety of Flight
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      errors: []
+      valid: true
+      excerpt_characters: 7677
+      excerpt_sha256: d9c3c3c6783dfafb31319e1708946380386bcfa5a0f5616ae5f6edaa57880f91
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: atc-atis-altimeter-content
+    text: FAA Air Traffic Control — ATIS weather content
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+    source_id: atc-atis-altimeter-content
+    claim_ids:
+      - atis-altimeter-content
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a6 []
+      title: Chapter 2. General Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: fb4b211ccbf2dde08457a2c6d9d4003059246374c524f7679cbb7a9c94427352
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: atc-altimeter-setting-issuance
+    text: FAA Air Traffic Control — Altimeter-setting issuance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+    source_id: atc-altimeter-setting-issuance
+    claim_ids:
+      - atc-altimeter-setting-issuance
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a7 []
+      title: Chapter 2. General Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      errors: []
+      valid: true
+      excerpt_characters: 10062
+      excerpt_sha256: 056e06dbc02f5d19f27505476ce07c868d94c6b1d641edf7b9347e34eac3fdb4
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-high-low-vertical-motion
+    text: PHAK Chapter 12 — Wind, currents, highs, and lows
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+    source_id: phak-high-low-vertical-motion
+    claim_ids:
+      - pressure-patterns-motion-weather
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4309
+      pdf_page_text_sha256: c29acb72a435d4e115e9d7719c9a9f83d5b6d231e606a8f32dee0b034f9064fc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-stability-adiabatic
+    text: PHAK Chapter 12 — Atmospheric stability
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+    source_id: phak-stability-adiabatic
+    claim_ids:
+      - stability-definition
+      - rising-cools-descending-warms
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4065
+      pdf_page_text_sha256: d8e03d4f4a8593e7273e22c8bdc1c642fe1ed27e905be1bf765a926c6261c567
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-parcel-stability-comparison
+    text: Aviation Weather Handbook — Parcel comparison for stability
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+    source_id: awh-parcel-stability-comparison
+    claim_ids:
+      - parcel-environment-stability-comparison
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      errors: []
+      valid: true
+      pdf_page_number: 155
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2031
+      pdf_page_text_sha256: 0b2f727cc9d09370065619999fd62f02870a89242388d35669ef2bb97cd83b06
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-convection-definition
+    text: Aviation Weather Handbook — Convection
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+    source_id: awh-convection-definition
+    claim_ids:
+      - convection-vertical-transport
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      errors: []
+      valid: true
+      pdf_page_number: 164
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2510
+      pdf_page_text_sha256: f2c3126d1725202af21c1a289d9d00fe1a23ff7f0ae4526fd48193ef4eb6e085
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-lapse-moisture-inversion
+    text: PHAK Chapter 12 — Adiabatic process, moisture, and inversion
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+    source_id: phak-lapse-moisture-inversion
+    claim_ids:
+      - adiabatic-parcel-chain
+      - saturated-parcel-slower-cooling
+      - warm-air-moisture-capacity
+      - relative-humidity-definition
+      - inversion-stable-layer
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5124
+      pdf_page_text_sha256: f5f318cacc93d1ebbd224982774242e07b5b731ce2174c46fcc50389635c92bd
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-dewpoint-saturation-lifting
+    text: PHAK temperature, dew point, and approximate cloud-base example
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+    source_id: phak-dewpoint-saturation-lifting
+    claim_ids:
+      - saturation-four-paths
+      - temperature-dewpoint-cloud-base-model
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2833
+      pdf_page_text_sha256: e9cada1350b574b0575dad90fc94a57febc6de6d4771babc8fbf1da0a686958d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: nws-dew-point-definition
+    text: National Weather Service Glossary — Dew Point
+    url: https://forecast.weather.gov/glossary.php?word=dew%20point
+    source_id: nws-dew-point-definition
+    claim_ids:
+      - dewpoint-saturation-definition
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      final_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a8 []
+      title: NOAA's National Weather Service - Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      validation_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      errors: []
+      valid: true
+      excerpt_characters: 924
+      excerpt_sha256: 7a0dc419aaca3a1e0d927842caff417b1ab0db9694306e8a02dbecad67963797
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cloud-formation-low-clouds
+    text: PHAK Chapter 12 — Cloud formation and low clouds
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+    source_id: phak-cloud-formation-low-clouds
+    claim_ids:
+      - cloud-formation-requirements
+      - low-cloud-operational-meaning
+      - visible-cloud-formation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4623
+      pdf_page_text_sha256: 587d53508ee13281e5c33d795c1a300595ddb56978a4b9fcbb9e4794807246ff
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: noaa-cloud-light-scattering
+    text: NOAA NESDIS — Cloud droplets, ice crystals, and light
+    url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+    source_id: noaa-cloud-light-scattering
+    claim_ids:
+      - cloud-particle-light-scattering
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      final_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a9 []
+      title: What Are Rainbow Clouds? | NESDIS | National Environmental Satellite,
+        Data, and Information Service
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      validation_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      errors: []
+      valid: true
+      excerpt_characters: 5462
+      excerpt_sha256: b3d9440cee4988a30097fc5590607cbfe7da88f33a6a46f9832718f36e67b937
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cloud-families-vertical
+    text: PHAK basic cloud families and vertical development
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+    source_id: phak-cloud-families-vertical
+    claim_ids:
+      - cloud-base-classification
+      - cloud-vertical-development-family
+      - vertical-cloud-instability
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2733
+      pdf_page_text_sha256: fa137aba4e97622fa952b2e5ad0bbaa4178a69a9ba853980f9c1f075c8fda668
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cloud-name-classifications
+    text: PHAK Chapter 12 — Cloud-name classifications
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+    source_id: phak-cloud-name-classifications
+    claim_ids:
+      - cloud-name-classifications
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4779
+      pdf_page_text_sha256: da546ba95a9078ff0a8d7fb3b472123e1e8e9fcbb6150d259c81fbecb370a62a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-ceiling-visibility-precipitation
+    text: PHAK Chapter 12 — Ceiling, visibility, and precipitation
+    url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+    source_id: phak-ceiling-visibility-precipitation
+    claim_ids:
+      - ceiling-visibility-meaning
+      - precipitation-observable-consequence
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4779
+      pdf_page_text_sha256: da546ba95a9078ff0a8d7fb3b472123e1e8e9fcbb6150d259c81fbecb370a62a
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-weather-stability
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-01T16:17:44.293Z
+    linked_claim_ids:
+      - acs-weather-vfr-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page contains Area of Operation I, Task C, Weather
+          Information, and PA.I.C.K3: meteorology applicable to the departure,
+          en route, alternate, and destination under VFR in VMC. It expressly
+          lists PA.I.C.K3a, “Atmospheric composition and stability.” The
+          authored passage accurately preserves these conditions."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies PA.I.C.K3 through K3b under Weather
+            Information on printed page 3, and the supplied excerpt from cited
+            PDF page 11 contains those exact items.
+        claim_assessments:
+          - claim_id: acs-weather-vfr-scope
+            verdict: supports
+            rationale: PA.I.C.K3 explicitly requires understanding of meteorology applicable
+              to departure, en route, alternate, and destination under VFR in
+              VMC, and PA.I.C.K3a explicitly includes atmospheric composition
+              and stability.
+      usage:
+        input_tokens: 1217
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1214
+        output_tokens: 209
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1426
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-weather-moisture-clouds-risk
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-01T16:17:44.308Z
+    linked_claim_ids:
+      - acs-weather-topic-scope
+      - acs-weather-decision-use
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2020
+      pdf_page_text_sha256: 8ed2fbd6b81fe01ff90767ef3562f706e3aba8138dde57a9baf4d4c92cc4fbaa
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page directly lists the specified Weather Information
+          knowledge elements and directly states the related risk-management and
+          skills requirements for weather analysis, decision-making, and
+          weather-resource limitations. The authored passages preserve those
+          requirements without adding material conditions that conflict with the
+          excerpt.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains PA.I.C.K3c–K3l,
+            R1–R2, and S1–S3 as identified by the locator.
+        claim_assessments:
+          - claim_id: acs-weather-topic-scope
+            verdict: supports
+            rationale: PA.I.C.K3c–K3l explicitly include temperature and heat exchange;
+              moisture/precipitation; weather-system formation; clouds;
+              turbulence; thunderstorms and microbursts; icing and
+              freezing-level information; fog/mist; frost; and visibility
+              obstructions.
+          - claim_id: acs-weather-decision-use
+            verdict: supports
+            rationale: PA.I.C.S2 requires analysis of implications of at least three K3
+              weather conditions, and S3 requires correlating weather
+              information for a go/no-go decision. R1 covers go/no-go and
+              continue/divert decisions, while R2 covers use and limitations of
+              onboard weather equipment, weather reports/forecasts, and inflight
+              weather resources, under the requirement to identify, assess, and
+              mitigate associated risk.
+      usage:
+        input_tokens: 1641
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1638
+        output_tokens: 415
+        output_tokens_details:
+          reasoning_tokens: 110
+        total_tokens: 2056
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-weather-theory-purpose
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:44.776Z
+    linked_claim_ids:
+      - weather-theory-supports-interpretation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1054
+      pdf_page_text_sha256: 19469d29f6e57c5d45f981a369cf9157211b32fd9c2748eccea2196325ed1207
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited Chapter 12 introduction explicitly states that
+          understanding weather theory helps a pilot make sound weather
+          decisions based on reports and forecasts obtained from Flight Service
+          and other aviation weather services.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 12-1, and the supplied excerpt from
+            that exact page contains the supporting statement in the
+            Introduction.
+        claim_assessments:
+          - claim_id: weather-theory-supports-interpretation
+            verdict: supports
+            rationale: "The excerpt directly supports the claim: it says that understanding
+              weather theory helps a pilot make sound weather decisions based on
+              aviation weather reports and forecasts."
+      usage:
+        input_tokens: 1126
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1123
+        output_tokens: 152
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1278
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-atmosphere-troposphere
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:44.778Z
+    linked_claim_ids:
+      - atmosphere-mixture-water-vapor
+      - troposphere-weather-phenomena
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2105
+      pdf_page_text_sha256: ff3df3f87fd8fd3d26baec845cb49a295029f57bc35b710a2c49711d93b72680
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that the atmosphere is a
+          constantly moving mixture of gases, that water vapor varies from zero
+          to about five percent by volume and is responsible for major weather
+          changes, and that the vast majority of weather, clouds, storms, and
+          temperature variances occur in the troposphere. The corresponding
+          portions of both authored passages preserve those conditions.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 12-2, and the excerpt from that exact
+            page contains the relevant atmosphere-composition and troposphere
+            statements.
+        claim_assessments:
+          - claim_id: atmosphere-mixture-water-vapor
+            verdict: supports
+            rationale: The excerpt says the atmosphere is a mixture of gases in constant
+              motion; its water vapor content varies from zero to about five
+              percent by volume; and this small amount is responsible for major
+              weather changes. The first authored passage accurately conveys
+              these points.
+          - claim_id: troposphere-weather-phenomena
+            verdict: supports
+            rationale: The excerpt states that the vast majority of weather, clouds, storms,
+              and temperature variances occur within the troposphere. The second
+              authored passage's statement that most weather, clouds, storms,
+              and temperature variations occur there preserves the claim.
+      usage:
+        input_tokens: 1280
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1277
+        output_tokens: 487
+        output_tokens_details:
+          reasoning_tokens: 205
+        total_tokens: 1767
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-air-parcel-troposphere
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:45.629Z
+    linked_claim_ids:
+      - troposphere-depth
+      - air-parcel-conceptual-model
+      - parcel-properties-uniform
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=63
+      errors: []
+      valid: true
+      pdf_page_number: 63
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3340
+      pdf_page_text_sha256: 2fd700c37cfaf054ff3a47b18075d5e42257de2aa14436d5b2431be789577696
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines an air parcel, states that its
+          assigned properties are approximately uniform and that it has no
+          precise numerical definition, and describes the troposphere’s
+          approximate 36,000-foot height and its variation with latitude and
+          season.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies page 4-3, and the supplied excerpt from cited
+            PDF page 63 contains the relevant Air Parcel and Troposphere
+            sections.
+        claim_assessments:
+          - claim_id: troposphere-depth
+            verdict: supports
+            rationale: The excerpt states that the troposphere extends from the surface to
+              about 11 km (36,000 ft) and that its vertical depth varies with
+              latitude and season.
+          - claim_id: air-parcel-conceptual-model
+            verdict: supports
+            rationale: The excerpt defines an air parcel as an imaginary volume of air to
+              which atmospheric properties may be assigned and says it is used
+              as a tool to describe atmospheric processes.
+          - claim_id: parcel-properties-uniform
+            verdict: supports
+            rationale: The excerpt explicitly states that an air parcel has no precise
+              numerical definition and is small enough that its assigned
+              properties are approximately uniform.
+      usage:
+        input_tokens: 1574
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1571
+        output_tokens: 387
+        output_tokens_details:
+          reasoning_tokens: 119
+        total_tokens: 1961
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-standard-atmosphere-reference
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:45.671Z
+    linked_claim_ids:
+      - standard-atmosphere-fixed-reference
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=65
+      errors: []
+      valid: true
+      pdf_page_number: 65
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1301
+      pdf_page_text_sha256: 46628099bacca4f0cfdce490743152e16bcd4a3aceed2c0cc222cf3767eb6d29
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt defines the standard atmosphere as a hypothetical
+          vertical distribution of atmospheric temperature, pressure, and
+          density, established as a fixed reference because atmospheric
+          properties fluctuate. It explicitly lists pressure-altimeter
+          calibrations and aircraft performance calculations among its purposes.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains section 4.4, “The Standard Atmosphere,”
+            and directly includes the definition and listed applications.
+        claim_assessments:
+          - claim_id: standard-atmosphere-fixed-reference
+            verdict: supports
+            rationale: "The source supports all material elements: a fixed/hypothetical
+              distribution of pressure, temperature, and density used as a
+              common reference for pressure-altimeter calibration and
+              aircraft-performance calculations. The authored passage accurately
+              preserves these conditions and explains that the reference is
+              needed because real atmospheric properties continuously
+              fluctuate."
+      usage:
+        input_tokens: 818
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 190
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1008
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-heating-density-pressure
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:46.833Z
+    linked_claim_ids:
+      - unequal-heating-drives-motion
+      - temperature-density-relationship
+      - pressure-air-weight
+      - surface-heating-rising-air
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4212
+      pdf_page_text_sha256: 4d99505435407751bd6587f9cd113af2466fc2bfda72eebf4ff76fd9960332a3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly explains that uneven surface heating
+          changes air movement, density, and atmospheric pressure; that warming
+          spreads molecules and lowers density while cooling packs them together
+          and raises density; that pressure is force exerted by the weight of
+          air molecules; and that solar-heated, less-dense air rises. The
+          authored passages preserve these relationships without removing
+          material limitations from the source.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 12, page 12-3, and the supplied
+            excerpt is from that exact page. The relevant discussions appear
+            under “Atmospheric Circulation” and “Atmospheric Pressure.”
+        claim_assessments:
+          - claim_id: unequal-heating-drives-motion
+            verdict: supports
+            rationale: The excerpt states that uneven heating is a major factor setting the
+              atmosphere in motion and that it creates changes in air movement
+              and atmospheric pressure; it also states unequal heating modifies
+              density and creates circulation patterns.
+          - claim_id: temperature-density-relationship
+            verdict: supports
+            rationale: The excerpt explicitly says heat causes air molecules to spread
+              apart, making expanding air less dense, and that cooling causes
+              molecules to pack together more closely, making air denser.
+          - claim_id: pressure-air-weight
+            verdict: supports
+            rationale: The excerpt defines air pressure as “the force exerted by the weight
+              of air molecules” and illustrates the force on a one-square-inch
+              air column, supporting the force-per-unit-area formulation.
+          - claim_id: surface-heating-rising-air
+            verdict: supports
+            rationale: The excerpt states that solar heating causes higher temperatures in
+              equatorial areas, causing the air to be less dense and rise; it
+              also explains that warm air rises as heating expands it and lowers
+              its density.
+      usage:
+        input_tokens: 1916
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1913
+        output_tokens: 510
+        output_tokens_details:
+          reasoning_tokens: 127
+        total_tokens: 2426
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-heat-transfer-modes
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:46.839Z
+    linked_claim_ids:
+      - heat-transfer-modes
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=70
+      errors: []
+      valid: true
+      pdf_page_number: 70
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2724
+      pdf_page_text_sha256: f4c0bf0460db104db734891d311bb05c4a6259ba03031c711e998714cc53bec9
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that heat is transferred into
+          and through the atmosphere by “radiation, conduction, convection, or
+          any combination of these.” This directly supports the listed claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is Chapter 5, page 5-4, within the stated Chapter
+            5 / pages 5-4 to 5-7 locator, and contains the relevant sentence.
+        claim_assessments:
+          - claim_id: heat-transfer-modes
+            verdict: supports
+            rationale: The excerpt expressly identifies radiation, conduction, and
+              convection as the three ways heat is transferred into and through
+              the atmosphere, without qualifications omitted from the claim.
+      usage:
+        input_tokens: 1150
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1147
+        output_tokens: 242
+        output_tokens_details:
+          reasoning_tokens: 74
+        total_tokens: 1392
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-temperature-advection
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:46.865Z
+    linked_claim_ids:
+      - temperature-advection
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=161
+      errors: []
+      valid: true
+      pdf_page_number: 161
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1713
+      pdf_page_text_sha256: 528883d68aa03ce2d257837d4c4481f7b4960cf1a70fefb638b5816c5e762280
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that wind changes the stability
+          of an air column by changing its temperature lapse rate, including by
+          blowing colder or warmer air into the bottom or top of the column.
+          This supports the claim's description of temperature advection as a
+          horizontal wind-driven change to an air column's temperature profile.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page (Chapter 13, page 13-8) and
+            directly contains the relevant discussion under “Wind Effects on
+            Stability.”
+        claim_assessments:
+          - claim_id: temperature-advection
+            verdict: supports
+            rationale: The source states that wind can blow colder or warmer air into
+              portions of an atmospheric column, changing its temperature lapse
+              rate. The authored statement preserves this mechanism without
+              adding unsupported limitations or conditions.
+      usage:
+        input_tokens: 975
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 190
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1165
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-pressure-reference-altitude
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:46.879Z
+    linked_claim_ids:
+      - standard-pressure-reference
+      - pressure-decreases-altitude
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3606
+      pdf_page_text_sha256: bd3a03117d002a8f7fe4ca06b222c977165c59e8a7733f43712d9b2bdf7814d9
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly defines standard sea-level pressure as
+          29.92 inHg and 1,013.2 mb, and explicitly states that atmospheric
+          pressure decreases with increasing altitude and that decreasing
+          pressure makes air less dense. The corresponding authored statements
+          preserve these conditions without adding conflicting limitations.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 12-5, and the supplied excerpt from
+            that exact page contains both the standard-pressure definition and
+            the altitude/pressure discussion.
+        claim_assessments:
+          - claim_id: standard-pressure-reference
+            verdict: supports
+            rationale: 'The excerpt states: “Standard sea level pressure is defined as 29.92
+              "Hg” and “Standard sea level pressure is 1,013.2 mb.”'
+          - claim_id: pressure-decreases-altitude
+            verdict: supports
+            rationale: "The excerpt states: “As altitude increases, atmospheric pressure
+              decreases” and “As pressure decreases, the air becomes less dense
+              or thinner.”"
+      usage:
+        input_tokens: 1768
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1765
+        output_tokens: 315
+        output_tokens_details:
+          reasoning_tokens: 87
+        total_tokens: 2083
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-pressure-units-station
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:46.886Z
+    linked_claim_ids:
+      - hectopascal-millibar-equivalence
+      - station-pressure-local-reference
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=97
+      errors: []
+      valid: true
+      pdf_page_number: 97
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1523
+      pdf_page_text_sha256: dd4868957b2434b54c6c21bf9eabeaf275be67eb94957d1ba936a6acbecb81fd
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page explicitly states that hectopascals and millibars are
+          equivalent, and defines station pressure as the actual pressure at
+          field elevation. It also states that pressure is lower at higher
+          altitudes and that higher-elevation airports usually have lower
+          station pressure than lower-elevation airports. The authored passages
+          preserve these conditions, including the qualified comparison of
+          station pressures at differing elevations.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains both section
+            8.2.2, Atmospheric Pressure Units, and section 8.2.3, Station
+            Pressure, directly addressing the claims.
+        claim_assessments:
+          - claim_id: hectopascal-millibar-equivalence
+            verdict: supports
+            rationale: The excerpt explicitly says that millibars and hectopascals are
+              equivalent.
+          - claim_id: station-pressure-local-reference
+            verdict: supports
+            rationale: The excerpt defines station pressure as the actual pressure at field
+              elevation and states that higher-elevation airports usually have
+              lower pressure because pressure decreases with altitude.
+      usage:
+        input_tokens: 1187
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1184
+        output_tokens: 346
+        output_tokens_details:
+          reasoning_tokens: 102
+        total_tokens: 1533
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-sea-level-pressure-reference
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:46.909Z
+    linked_claim_ids:
+      - sea-level-pressure-comparison
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=100
+      errors: []
+      valid: true
+      pdf_page_number: 100
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1359
+      pdf_page_text_sha256: 7b0bd022536783a302a5873322dbab82f5ea0e2d4b80f623501c8326ffb4904a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page directly states that station pressures at different
+          altitudes cannot readily be compared because pressure varies with
+          altitude, and that they are adjusted to a common level—mean sea
+          level—to make them comparable. This supports the claim that sea-level
+          normalization removes elevation-driven differences from
+          station-pressure comparisons.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 8, section 8.2.5, page 8-6, and the
+            supplied excerpt from that exact PDF page contains the relevant
+            discussion of reducing station pressure to sea level.
+        claim_assessments:
+          - claim_id: sea-level-pressure-comparison
+            verdict: supports
+            rationale: The excerpt explicitly says that pressures from stations at different
+              altitudes are adjusted to mean sea level so they can be compared.
+              The claim's explanation that this prevents terrain elevation from
+              being mistaken for the pressure pattern accurately preserves that
+              purpose.
+      usage:
+        input_tokens: 1040
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1037
+        output_tokens: 287
+        output_tokens_details:
+          reasoning_tokens: 81
+        total_tokens: 1327
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: faa-pcg-altitude-reference
+    title: Pilot/Controller Glossary
+    checked_at_utc: 2026-09-01T16:17:46.928Z
+    linked_claim_ids:
+      - msl-agl-references
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#ALTITUDE
+      errors: []
+      valid: true
+      excerpt_characters: 10001
+      excerpt_sha256: 7b1447725475d5d2c749a91a2e236ad5c44ea086f28ba7d61701fd4a607836e0
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly defines “MSL Altitude” as altitude measured
+          from mean sea level and “AGL Altitude” as altitude measured above
+          ground level. The cited passage’s relevant statement preserves those
+          definitions.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the ALTITUDE term, and the excerpt contains
+            the MSL Altitude and AGL Altitude definitions within that term.
+        claim_assessments:
+          - claim_id: msl-agl-references
+            verdict: supports
+            rationale: The source directly states that MSL altitude is measured from mean
+              sea level and AGL altitude is measured above ground level; the
+              corresponding authored passage accurately conveys those
+              distinctions.
+      usage:
+        input_tokens: 2785
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2782
+        output_tokens: 162
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2947
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: faa-pcg-airport-elevation
+    title: Pilot/Controller Glossary
+    checked_at_utc: 2026-09-01T16:17:46.936Z
+    linked_claim_ids:
+      - airport-elevation-reference
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_ELEVATION
+      errors: []
+      valid: true
+      excerpt_characters: 11117
+      excerpt_sha256: 483f684b4623f21b8c9969a37515486dd50a45b8f9a23514152fad724cbf6fd5
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt defines “AIRPORT ELEVATION” exactly as the highest point
+          of an airport’s usable runways measured in feet from mean sea level,
+          matching the listed claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the “AIRPORT ELEVATION” glossary term, and the
+            excerpt begins with that exact entry.
+        claim_assessments:
+          - claim_id: airport-elevation-reference
+            verdict: supports
+            rationale: "The source explicitly states: “The highest point of an airport's
+              usable runways measured in feet from mean sea level.” The authored
+              passage preserves those material conditions; “published in feet
+              above mean sea level” does not alter the defined reference."
+      usage:
+        input_tokens: 3013
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3010
+        output_tokens: 165
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3178
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-altimeter-setting-reference
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:46.978Z
+    linked_claim_ids:
+      - altimeter-setting-purpose
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=106
+      errors: []
+      valid: true
+      pdf_page_number: 106
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 807
+      pdf_page_text_sha256: bbd632a3834f60711f8aa4ffdd29bc5b765934d4790c2097a9de29f5aa7a18eb
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that the altimeter setting is
+          the value to which a pressure altimeter is set so that it indicates
+          true altitude at field elevation. The second authored passage
+          preserves this statement directly. The first passage is also
+          consistent with the excerpt’s explanation that a current setting
+          promotes compatible readings among aircraft in the vicinity.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 8-12 in Chapter 8 and contains the quoted
+            definition of altimeter setting.
+        claim_assessments:
+          - claim_id: altimeter-setting-purpose
+            verdict: supports
+            rationale: "The excerpt directly states the claim: the altimeter setting is set
+              so the altimeter indicates true altitude at field elevation. The
+              authored passage states the same condition without omitting or
+              changing a material limitation."
+      usage:
+        input_tokens: 922
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 309
+        output_tokens_details:
+          reasoning_tokens: 119
+        total_tokens: 1231
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-pressure-altitude-reference
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:46.978Z
+    linked_claim_ids:
+      - pressure-altitude-reference
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=107
+      errors: []
+      valid: true
+      pdf_page_number: 107
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2306
+      pdf_page_text_sha256: d2fc9b94542f02b8ffa432e8a73dea5eeeef52f9a89c883856bf0a8eec0fcfde
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly defines pressure altitude as the
+          altitude shown when the altimeter is set to 29.92 inHg and as the
+          altitude associated with a specific pressure measured by the static
+          port under that setting. This directly supports the claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains section 8.4.1.4,
+            “Pressure Altitude,” with the relevant definition.
+        claim_assessments:
+          - claim_id: pressure-altitude-reference
+            verdict: supports
+            rationale: The source states that pressure altitude is associated with a
+              specific static-port pressure when the altimeter is set to the
+              standard 29.92 inHg reference. The authored statements preserve
+              those material conditions.
+      usage:
+        input_tokens: 1187
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1184
+        output_tokens: 177
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1364
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-density-altitude-reference
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:47.001Z
+    linked_claim_ids:
+      - density-altitude-performance-index
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=108
+      errors: []
+      valid: true
+      pdf_page_number: 108
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3479
+      pdf_page_text_sha256: b6583e8bd1c138b602953d6d61009fccfc49004b64dbaf20a690c2a1c47e9bd3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that density altitude is
+          pressure altitude corrected for temperature deviations from the
+          standard atmosphere and that density altitude is an index to aircraft
+          performance.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 108 (printed page 8-14), under
+            section 8.4.1.5, “Density Altitude,” and directly contains the
+            relevant definitions.
+        claim_assessments:
+          - claim_id: density-altitude-performance-index
+            verdict: supports
+            rationale: "The source states: “Density altitude is the pressure altitude
+              corrected for temperature deviations from the standard atmosphere”
+              and “Density altitude is an index to aircraft performance.” The
+              corresponding statement in the second authored passage preserves
+              both material conditions."
+      usage:
+        input_tokens: 1413
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1410
+        output_tokens: 175
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1588
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-metar-altimeter-cloud-bases
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:47.013Z
+    linked_claim_ids:
+      - metar-altimeter-cloud-references
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=302
+      errors: []
+      valid: true
+      pdf_page_number: 302
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2427
+      pdf_page_text_sha256: edda846d22397c88b268e3a302c9fbcb40b736d5b437dfd60e995cdec48e1031
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited page explicitly states that METAR sky-condition layer
+          heights in the examples are expressed in feet AGL, and that the
+          altimeter group codes the current pressure/altimeter setting. The
+          authored statement accurately keeps cloud-layer heights and the
+          altimeter setting as separate references without adding unsupported
+          conditions.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 24-18 contains both the sky-condition examples labeling
+            layer heights as AGL and section 24.4.3.11 explaining the METAR
+            altimeter group.
+        claim_assessments:
+          - claim_id: metar-altimeter-cloud-references
+            verdict: supports
+            rationale: The excerpt labels scattered, broken, and overcast cloud layers in
+              feet AGL and explains that the altimeter group reports the
+              altimeter setting, coded with an A followed by four digits (for
+              example, A2992).
+      usage:
+        input_tokens: 1403
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1400
+        output_tokens: 273
+        output_tokens_details:
+          reasoning_tokens: 70
+        total_tokens: 1676
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-metar-sea-level-pressure
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:47.038Z
+    linked_claim_ids:
+      - metar-sea-level-pressure-remark
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=308
+      errors: []
+      valid: true
+      pdf_page_number: 308
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3227
+      pdf_page_text_sha256: d692d89a7e77d62820f3089bfa2df872ebbdf16135b03a50f626482e15b34cfc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that, at designated stations,
+          sea level pressure is coded with the identifier SLP immediately
+          followed by sea level pressure in millibars. This directly supports
+          the listed claim and the corresponding authored statements about an
+          SLP remark group and its millibar value.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited page is Chapter 24, page 24-24, section 24.4.3.13.22,
+            titled “Sea Level Pressure,” and contains the described SLP coding
+            guidance.
+        claim_assessments:
+          - claim_id: metar-sea-level-pressure-remark
+            verdict: supports
+            rationale: "The excerpt states: “At designated stations, the sea level pressure
+              is coded” using identifier “SLP” followed by the sea level
+              pressure “in millibars.”"
+      usage:
+        input_tokens: 1378
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1375
+        output_tokens: 194
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1572
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-awos-asos-observations
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-01T16:17:47.052Z
+    linked_claim_ids:
+      - asos-awos-observations
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 7. Safety of Flight
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#chap7_section_1__c_weather_observing_programs-li_54
+      errors: []
+      valid: true
+      excerpt_characters: 7677
+      excerpt_sha256: d9c3c3c6783dfafb31319e1708946380386bcfa5a0f5616ae5f6edaa57880f91
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that ASOS/AWOS provides continuous
+          minute-by-minute observations, performs the functions necessary to
+          generate METARs and other aviation weather information, and may
+          transmit the information via a discrete VHF frequency or the voice
+          portion of a local NAVAID. This directly supports the listed claim.
+          The authored passage preserves these core conditions. The excerpt does
+          not specifically state that an altimeter setting is included in a
+          voice transmission, but that detail is not part of the listed claim
+          and may be supported by another source in the citation group.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator identifies AIM paragraph 7-1-29 on ASOS/AWOS, and
+            the supplied excerpt is from that subject and contains the relevant
+            statements.
+        claim_assessments:
+          - claim_id: asos-awos-observations
+            verdict: supports
+            rationale: The excerpt explicitly supports continuous observations, generation
+              of METARs and other aviation weather information, and radio/voice
+              transmission capability.
+      usage:
+        input_tokens: 2332
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2329
+        output_tokens: 474
+        output_tokens_details:
+          reasoning_tokens: 245
+        total_tokens: 2806
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: atc-atis-altimeter-content
+    title: FAA Order JO 7110.65, Air Traffic Control
+    checked_at_utc: 2026-09-01T16:17:47.055Z
+    linked_claim_ids:
+      - atis-altimeter-content
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a6
+      title: Chapter 2. General Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_9.html
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: fb4b211ccbf2dde08457a2c6d9d4003059246374c524f7679cbb7a9c94427352
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: Paragraph 2-9-3 states that ATIS weather information includes the
+          altimeter, and frames the listed content as included 'as appropriate.'
+          The tagged authored statement preserves that qualification.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is paragraph 2-9-3, CONTENT, and the excerpt
+            contains that exact paragraph with the relevant ATIS weather-content
+            requirement.
+        claim_assessments:
+          - claim_id: atis-altimeter-content
+            verdict: supports
+            rationale: The source explicitly lists 'altimeter' within weather information to
+              be included in an ATIS broadcast as appropriate. The authored
+              passage accurately says ATIS includes the current altimeter
+              setting 'as appropriate.'
+      usage:
+        input_tokens: 3081
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3078
+        output_tokens: 165
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3246
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: atc-altimeter-setting-issuance
+    title: FAA Order JO 7110.65, Air Traffic Control
+    checked_at_utc: 2026-09-01T16:17:47.102Z
+    linked_claim_ids:
+      - atc-altimeter-setting-issuance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a7
+      title: Chapter 2. General Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap2_section_7.html
+      errors: []
+      valid: true
+      excerpt_characters: 10062
+      excerpt_sha256: 056e06dbc02f5d19f27505476ce07c868d94c6b1d641edf7b9347e34eac3fdb4
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt in JO 7110.65, Section 2-7, expressly establishes
+          procedures for obtaining current altimeter settings and for issuing
+          them to aircraft in en route and terminal contexts. The authored
+          statement accurately limits the assertion to situations covered by
+          controller procedures.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, Chapter 2, Section 7, paragraphs 2-7-1 through
+            2-7-2, directly contains the current-setting and altimeter-setting
+            issuance procedures relevant to the claim.
+        claim_assessments:
+          - claim_id: atc-altimeter-setting-issuance
+            verdict: supports
+            rationale: Paragraphs 2-7-1 and 2-7-2 prescribe how controllers obtain,
+              identify, and issue current altimeter settings, including
+              specified en route, departure, arrival, and descent circumstances.
+              The passage's qualified wording—'in the situations covered by
+              their procedures'—preserves those operational limits.
+      usage:
+        input_tokens: 2783
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2780
+        output_tokens: 257
+        output_tokens_details:
+          reasoning_tokens: 33
+        total_tokens: 3040
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-high-low-vertical-motion
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.105Z
+    linked_claim_ids:
+      - pressure-patterns-motion-weather
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4309
+      pdf_page_text_sha256: c29acb72a435d4e115e9d7719c9a9f83d5b6d231e606a8f32dee0b034f9064fc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that atmospheric pressure
+          differences contribute to atmospheric motion and that high-pressure
+          systems are generally areas of dry, descending air, whereas
+          low-pressure areas involve air replacing rising air and usually bring
+          increasing cloudiness and precipitation. The authored passage
+          preserves these as broad tendencies rather than making a specific
+          forecast conclusion.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 12-7 and contains the relevant
+            “Wind and Currents” and “Wind Patterns” discussion, including the
+            stated high- and low-pressure vertical-motion and weather
+            associations.
+        claim_assessments:
+          - claim_id: pressure-patterns-motion-weather
+            verdict: supports
+            rationale: The excerpt states that pressure differences are among the causes of
+              atmospheric motion; high-pressure systems are generally dry and
+              descending; and air flows into lows to replace rising air, usually
+              bringing increasing cloudiness and precipitation. The passage
+              accurately retains the general, non-absolute framing.
+      usage:
+        input_tokens: 1435
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1432
+        output_tokens: 256
+        output_tokens_details:
+          reasoning_tokens: 37
+        total_tokens: 1691
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-stability-adiabatic
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.114Z
+    linked_claim_ids:
+      - stability-definition
+      - rising-cools-descending-warms
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4065
+      pdf_page_text_sha256: d8e03d4f4a8593e7273e22c8bdc1c642fe1ed27e905be1bf765a926c6261c567
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains the “Atmospheric Stability” section and
+          explicitly defines stability in terms of resistance to vertical
+          motion, describes damping versus growth of small vertical
+          disturbances, and explains adiabatic cooling of rising air and warming
+          of descending air.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies “Atmospheric Stability, printed p. 12-12,” and
+            the supplied excerpt from cited PDF page 12 includes that section
+            and the relevant statements.
+        claim_assessments:
+          - claim_id: stability-definition
+            verdict: supports
+            rationale: The excerpt states that atmospheric stability depends on the
+              atmosphere’s ability to resist vertical motion; stable conditions
+              make vertical movement difficult and small disturbances dampen
+              out, while in unstable conditions small vertical movements tend to
+              become larger.
+          - claim_id: rising-cools-descending-warms
+            verdict: supports
+            rationale: The excerpt explicitly states that rising air expands and cools as
+              pressure decreases with altitude, while descending air warms as
+              increasing pressure compresses it.
+      usage:
+        input_tokens: 1810
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1807
+        output_tokens: 433
+        output_tokens_details:
+          reasoning_tokens: 200
+        total_tokens: 2243
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-parcel-stability-comparison
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:47.124Z
+    linked_claim_ids:
+      - parcel-environment-stability-comparison
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=155
+      errors: []
+      valid: true
+      pdf_page_number: 155
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2031
+      pdf_page_text_sha256: 0b2f727cc9d09370065619999fd62f02870a89242388d35669ef2bb97cd83b06
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly explains the parcel-versus-environment
+          comparison used to evaluate stability, including the temperature,
+          density, and resulting vertical-motion relationships stated in the
+          claim. The first authored passage accurately preserves those
+          conditions. The second passage contains additional
+          moisture/condensation statements not established by this excerpt, but
+          those are not part of the listed claim and may be assigned to another
+          source in the citation group.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 13, section 13.2, page 13-2, and cited
+            PDF page 155 contains that exact section and the relevant
+            comparison.
+        claim_assessments:
+          - claim_id: parcel-environment-stability-comparison
+            verdict: supports
+            rationale: The excerpt states that a hypothetically lifted parcel is compared
+              with surrounding environmental air; a colder parcel is denser and
+              sinks back, while a warmer parcel is less dense and continues
+              rising until reaching environmental temperature. It also
+              explicitly describes the equal-temperature/equal-density neutral
+              case.
+      usage:
+        input_tokens: 1103
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1100
+        output_tokens: 230
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1333
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-convection-definition
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-01T16:17:47.144Z
+    linked_claim_ids:
+      - convection-vertical-transport
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=164
+      errors: []
+      valid: true
+      pdf_page_number: 164
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2510
+      pdf_page_text_sha256: f2c3126d1725202af21c1a289d9d00fe1a23ff7f0ae4526fd48193ef4eb6e085
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly defines meteorological convection as
+          vertical transport of heat and moisture in the atmosphere, especially
+          by updrafts and downdrafts in unstable air. The authored passage
+          preserves the claim's core definition; its additional explanatory
+          discussion is not contradicted by the excerpt.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is the exact extracted PDF page and contains
+            section 13.6, “Convection,” including the relevant definition.
+        claim_assessments:
+          - claim_id: convection-vertical-transport
+            verdict: supports
+            rationale: "The excerpt states: “In meteorology, the term is used specifically
+              to describe vertical transport of heat and moisture in the
+              atmosphere.” The passage's statement that upward transport of heat
+              and moisture is convection is consistent with that definition."
+      usage:
+        input_tokens: 1106
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1103
+        output_tokens: 187
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1293
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-lapse-moisture-inversion
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.159Z
+    linked_claim_ids:
+      - adiabatic-parcel-chain
+      - saturated-parcel-slower-cooling
+      - warm-air-moisture-capacity
+      - relative-humidity-definition
+      - inversion-stable-layer
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5124
+      pdf_page_text_sha256: f5f318cacc93d1ebbd224982774242e07b5b731ce2174c46fcc50389635c92bd
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly supports all five listed weather-theory
+          claims, including the adiabatic pressure-volume-temperature sequence,
+          slower cooling of moist air, temperature-dependent moisture capacity,
+          the definition of relative humidity, and inversion characteristics and
+          trapping effects.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies page 12-13, and the supplied excerpt is from
+            that exact page. Each listed topic appears explicitly on the page.
+        claim_assessments:
+          - claim_id: adiabatic-parcel-chain
+            verdict: supports
+            rationale: The excerpt states that as air rises into lower pressure it expands
+              and its temperature lowers, and that descent is the opposite. It
+              separately identifies the dry adiabatic lapse rate as applying to
+              unsaturated air.
+          - claim_id: saturated-parcel-slower-cooling
+            verdict: supports
+            rationale: The excerpt explicitly states, “Since moist air cools at a slower
+              rate,” than dry air. The authored passage's saturated-parcel
+              framing is consistent with the stated moist-versus-dry cooling
+              distinction, though this page does not explain condensation heat
+              release.
+          - claim_id: warm-air-moisture-capacity
+            verdict: supports
+            rationale: The excerpt says atmospheric moisture amount depends on air
+              temperature, that each 20 °F increase doubles the amount the air
+              can hold, and that a 20 °F decrease halves its capacity.
+          - claim_id: relative-humidity-definition
+            verdict: supports
+            rationale: The excerpt defines relative humidity as actual moisture in the air
+              compared with the total amount it could hold at that temperature,
+              and its example specifies the relevant temperature and pressure.
+          - claim_id: inversion-stable-layer
+            verdict: supports
+            rationale: The excerpt defines an inversion as temperature increasing with
+              altitude, describes inversion layers as commonly shallow, smooth,
+              and stable, and states that the top acts as a lid that traps
+              weather and pollutants below.
+      usage:
+        input_tokens: 2329
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2326
+        output_tokens: 749
+        output_tokens_details:
+          reasoning_tokens: 332
+        total_tokens: 3078
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-dewpoint-saturation-lifting
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.168Z
+    linked_claim_ids:
+      - saturation-four-paths
+      - temperature-dewpoint-cloud-base-model
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2833
+      pdf_page_text_sha256: e9cada1350b574b0575dad90fc94a57febc6de6d4771babc8fbf1da0a686958d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly lists the four methods by which air
+          reaches saturation and explains the lifted-unsaturated-air
+          temperature/dew-point convergence method used to estimate approximate
+          cloud-base height AGL.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 12-14 and contains both the
+            “Methods by Which Air Reaches the Saturation Point” section and the
+            cloud-base convergence-rate discussion.
+        claim_assessments:
+          - claim_id: saturation-four-paths
+            verdict: supports
+            rationale: "The page expressly identifies all four stated pathways: warm air
+              over a cold surface, mixing cold and warm air, nighttime cooling
+              through contact with cooler ground, and lifting/forced ascent with
+              expansion and cooling. The corresponding authored passages
+              preserve these conditions."
+          - claim_id: temperature-dewpoint-cloud-base-model
+            verdict: supports
+            rationale: The page states that lifted unsaturated air cools at 5.4 °F per 1,000
+              feet while dew point decreases at 1 °F per 1,000 feet, producing
+              convergence, and directs use of the surface temperature-dew-point
+              spread and convergence rate to estimate approximate cloud-base
+              height AGL. The authored passage accurately presents this as a
+              simplified approximate relationship without overstating it as an
+              exact formula.
+      usage:
+        input_tokens: 1808
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1805
+        output_tokens: 405
+        output_tokens_details:
+          reasoning_tokens: 117
+        total_tokens: 2213
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: nws-dew-point-definition
+    title: National Weather Service Glossary
+    checked_at_utc: 2026-09-01T16:17:44.308Z
+    linked_claim_ids:
+      - dewpoint-saturation-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      final_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a8
+      title: NOAA's National Weather Service - Glossary
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      validation_url: https://forecast.weather.gov/glossary.php?word=dew%20point
+      errors: []
+      valid: true
+      excerpt_characters: 924
+      excerpt_sha256: 7a0dc419aaca3a1e0d927842caff417b1ab0db9694306e8a02dbecad67963797
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly defines dew point as the temperature to which
+          air must be cooled to reach saturation, explicitly assuming constant
+          air pressure and moisture content. The cited passages preserve those
+          conditions using equivalent language ('pressure and water-vapor amount
+          do not change').
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the NWS Glossary entry for 'Dew Point,' and
+            the excerpt is that entry.
+        claim_assessments:
+          - claim_id: dewpoint-saturation-definition
+            verdict: supports
+            rationale: "The source states the claim nearly verbatim: dew point is the
+              temperature to which air must be cooled to reach saturation,
+              assuming pressure and moisture content remain constant. The
+              corresponding authored statements retain the required
+              constant-pressure and constant-water-vapor conditions."
+      usage:
+        input_tokens: 862
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 179
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1041
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-cloud-formation-low-clouds
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.175Z
+    linked_claim_ids:
+      - cloud-formation-requirements
+      - low-cloud-operational-meaning
+      - visible-cloud-formation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4623
+      pdf_page_text_sha256: 587d53508ee13281e5c33d795c1a300595ddb56978a4b9fcbb9e4794807246ff
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page directly states all three listed claims: the
+          requirements for cloud formation, the operational effects of low
+          clouds, and the visible phase change of water vapor onto condensation
+          nuclei after saturation. The corresponding authored statements
+          preserve the source’s material conditions and limitations."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 12, page 12-15, and the supplied
+            excerpt is from that exact page. It contains the relevant “Clouds”
+            and low-cloud discussion.
+        claim_assessments:
+          - claim_id: cloud-formation-requirements
+            verdict: supports
+            rationale: The excerpt states that clouds require adequate water vapor,
+              condensation nuclei, and a method by which air can be cooled; it
+              further explains that visibility occurs when cooling reaches
+              saturation. The authored passages accurately retain these
+              requirements.
+          - claim_id: low-cloud-operational-meaning
+            verdict: supports
+            rationale: The excerpt states that low clouds create low ceilings, hamper
+              visibility, can change rapidly, influence flight planning, and can
+              make VFR flight impossible. The authored passage’s wording,
+              including “restrict visibility,” preserves the meaning.
+          - claim_id: visible-cloud-formation
+            verdict: supports
+            rationale: The excerpt states that, when air cools to saturation, invisible
+              water vapor changes to a visible state and, through
+              deposition/sublimation and condensation, moisture changes onto
+              condensation nuclei. The authored passages accurately describe
+              condensation or deposition onto nuclei and resulting visible cloud
+              particles.
+      usage:
+        input_tokens: 2148
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2145
+        output_tokens: 410
+        output_tokens_details:
+          reasoning_tokens: 86
+        total_tokens: 2558
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: noaa-cloud-light-scattering
+    title: What Are Rainbow Clouds?
+    checked_at_utc: 2026-09-01T16:17:44.308Z
+    linked_claim_ids:
+      - cloud-particle-light-scattering
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      final_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a9
+      title: What Are Rainbow Clouds? | NESDIS | National Environmental Satellite,
+        Data, and Information Service
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      validation_url: https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-are-rainbow-clouds
+      errors: []
+      valid: true
+      excerpt_characters: 5462
+      excerpt_sha256: b3d9440cee4988a30097fc5590607cbfe7da88f33a6a46f9832718f36e67b937
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that diffraction occurs when small
+          water droplets or small ice crystals scatter the sun's light. This
+          directly supports the listed claim that small water droplets or ice
+          crystals scatter sunlight. Each authored passage preserves that core
+          claim without adding a conflicting limitation requiring support from
+          this source.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator identifies the page's short-answer discussion of
+            cloud-droplet and ice-crystal scattering, and the excerpt contains
+            the relevant statement in that section.
+        claim_assessments:
+          - claim_id: cloud-particle-light-scattering
+            verdict: supports
+            rationale: The source says that small water droplets or small ice crystals
+              scatter the sun's light, directly matching the claim.
+      usage:
+        input_tokens: 1806
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1803
+        output_tokens: 169
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1975
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-cloud-families-vertical
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.184Z
+    linked_claim_ids:
+      - cloud-base-classification
+      - cloud-vertical-development-family
+      - vertical-cloud-instability
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2733
+      pdf_page_text_sha256: fa137aba4e97622fa952b2e5ad0bbaa4178a69a9ba853980f9c1f075c8fda668
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly presents the basic cloud-type families,
+          states that cumulus clouds can build into towering cumulus or
+          cumulonimbus, and describes towering cumulus as indicating instability
+          and cumulonimbus as containing moisture and unstable air that produces
+          hazardous weather.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page 12-16 and contains the Figure
+            12-22 cloud-family classification plus the relevant
+            vertical-development, instability, moisture, and hazard statements.
+        claim_assessments:
+          - claim_id: cloud-base-classification
+            verdict: supports
+            rationale: Figure 12-22 and its surrounding text group cloud types as low,
+              middle, high, and clouds with extensive vertical development. The
+              authored wording preserves that classification.
+          - claim_id: cloud-vertical-development-family
+            verdict: supports
+            rationale: The excerpt states that cumulus clouds with extensive vertical
+              development build vertically into towering cumulus or cumulonimbus
+              clouds. The authored statements preserve this relationship.
+          - claim_id: vertical-cloud-instability
+            verdict: supports
+            rationale: The excerpt states that towering cumulus indicates atmospheric
+              instability and that cumulonimbus contains large amounts of
+              moisture and unstable air and usually produces hazardous
+              phenomena. The authored wording retains these material conditions
+              and the hazard qualification.
+      usage:
+        input_tokens: 1544
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1541
+        output_tokens: 464
+        output_tokens_details:
+          reasoning_tokens: 176
+        total_tokens: 2008
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-cloud-name-classifications
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.201Z
+    linked_claim_ids:
+      - cloud-name-classifications
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4779
+      pdf_page_text_sha256: da546ba95a9078ff0a8d7fb3b472123e1e8e9fcbb6150d259c81fbecb370a62a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly lists the relevant cloud
+          classifications and gives the stated definitions for cumulus, stratus,
+          cirrus, and nimbus. The source-tagged passage preserves those
+          definitions without adding unsupported qualifications.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is the exact PDF page containing the “Cloud
+            classification” list and the four relevant entries.
+        claim_assessments:
+          - claim_id: cloud-name-classifications
+            verdict: supports
+            rationale: "The excerpt states: “Cumulus—heaped or piled clouds,”
+              “Stratus—formed in layers,” “Cirrus—ringlets, fibrous clouds,” and
+              “Nimbus—rain-bearing clouds.” The authored statement accurately
+              preserves these definitions."
+      usage:
+        input_tokens: 1620
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1617
+        output_tokens: 172
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1792
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-ceiling-visibility-precipitation
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    checked_at_utc: 2026-09-01T16:17:47.208Z
+    linked_claim_ids:
+      - ceiling-visibility-meaning
+      - precipitation-observable-consequence
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4779
+      pdf_page_text_sha256: da546ba95a9078ff0a8d7fb3b472123e1e8e9fcbb6150d259c81fbecb370a62a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines ceiling and visibility and
+          explains precipitation formation and its safety consequences,
+          including reduced visibility, icing situations, and runway-surface
+          hazards.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 12-17 and contains the sections
+            “Ceiling,” “Visibility,” and “Precipitation” referenced by the
+            locator.
+        claim_assessments:
+          - claim_id: ceiling-visibility-meaning
+            verdict: supports
+            rationale: The excerpt states that a ceiling is the lowest broken or overcast
+              cloud layer, or vertical visibility into an obscuration, and
+              defines visibility as the greatest horizontal distance at which
+              prominent objects can be viewed with the naked eye. The authored
+              passage preserves these conditions.
+          - claim_id: precipitation-observable-consequence
+            verdict: supports
+            rationale: The excerpt says precipitation occurs when cloud water or ice
+              particles grow until the atmosphere can no longer support them,
+              and states that it can reduce visibility, create icing situations,
+              and create runway hazards such as snow, ice, pooling water, and
+              slick surfaces. The authored passage accurately preserves these
+              points, with the suitable-temperature wording appropriately
+              limiting icing.
+      usage:
+        input_tokens: 1656
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1653
+        output_tokens: 263
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1919
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

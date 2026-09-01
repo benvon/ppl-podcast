@@ -127,7 +127,7 @@ INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode
 - Maintain a clean `narration.md` derivative with source tags removed only after the tagged master is approved.
 - Budget words by section and record the actual word count and rendered duration.
 - Avoid invented radio calls, airport instructions, weather, or aircraft checklist steps unless the scenario clearly labels them as hypothetical and no operational action depends on the fictional detail.
-- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue. The initial drafting loop includes an independent adversarial read and a drafting-agent revision before source-relevance review or script approval.
+- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue. The initial drafting loop is: source-led draft, independent adversarial read, drafting-agent revision, formal source-relevance validation, then human editorial review. Do not defer source validation until after editorial approval or final release work.
 
 ### Editorial voice and pacing
 
@@ -161,7 +161,8 @@ The initial draft is not ready for source-relevance review or script approval wh
 1. The current Sol model with high reasoning produces the source-led initial package: research packet, reciprocal source ledger and claim inventory, source-tagged master script, derived narration, show notes, metadata, and production log.
 2. A separate agent that did not draft the episode performs an adversarial spoken-script read. It checks grammar, complete thoughts, clear referents and causal chains, earned Learner turns, coherent internal callbacks and call-forwards, first-listen comprehension, scope, and source-tagged claims. Its report distinguishes required findings from optional refinements.
 3. The drafting agent incorporates every required finding with the minimum source-supported revision, keeps the script, narration, claims, show notes, metadata, and source ledger consistent, and records the findings and resolutions in `production-log.md`.
-4. Rerun the script-structure, narration-derivation, source/claim mapping, and relevant repository checks. Only then proceed to formal source-relevance validation and human script approval.
+4. Rerun the script-structure, narration-derivation, source/claim mapping, and relevant repository checks. Then run formal source-relevance validation with `--require-llm`, which checks source-tagged spoken passages as well as claims, locators, links, and source records. Resolve every finding and rerun it until clean.
+5. Turn the clean, source-validated script over for human editorial review. If that review changes factual spoken prose, source tags, claims, sources, or show notes, return to step 4 before rendering.
 
 The adversarial review challenges the draft; it does not replace formal source-relevance validation, human editorial judgment, or a qualified aviation review when one is available.
 
@@ -429,8 +430,8 @@ supersedes: null
 | 1. Research | Research packet and claim inventory | ACS coverage identified; source hierarchy applied; open technical questions resolved or removed. |
 | 2. Outline | Time-budgeted outline | Complete for stated objectives; no source-free safety or regulatory claims. |
 | 3. Draft and adversarial revision | Tagged master script, independent findings, and revised narration-ready package | The source-led initial draft received an independent adversarial spoken-script read; every required finding was incorporated by the drafting agent, logged, and rechecked. |
-| 4. Fact check | Approved source ledger and show-notes draft | Every material claim maps to a current source; FAA links and eCFR links independently checked. |
-| 5. Editorial review | Narration-ready script | Clear distinction among regulation, FAA guidance, and explanation; non-gimmicky dialogue; public-audience language. Qualified aviation review is welcome and recorded when available, but is not a general release prerequisite. |
+| 4. Source validation | Source-validated draft and report | Formal `--require-llm` validation confirms every material claim, locator, show-note assertion, and source-tagged spoken passage against current sources. All findings are resolved before editorial review. |
+| 5. Editorial review | Narration-ready script | Human editorial review begins with the clean source-validation result. Clear distinction among regulation, FAA guidance, and explanation; non-gimmicky dialogue; public-audience language. Qualified aviation review is welcome and recorded when available, but is not a general release prerequisite. Material factual revisions return to Stage 4. |
 | 6. Render and mix | Raw renders, session, lossless master, candidate MP3 | Two voices are distinct, intelligible, correctly pronounced, and in sync with the approved script. |
 | 7. QA | Completed QA checklist | Full listen completed; metadata, links, script, audio, and notes use same version. |
 | 8. Release package | Immutable episode directory | Publication date and verification time recorded; status changes to `released`. |
@@ -447,6 +448,7 @@ Complete `qa-checklist.md` before release.
 - [ ] The episode covers its ACS-mapped objective(s) in plain language, including relevant risk management.
 - [ ] The PHAK is used as a teaching spine, not copied as an audiobook.
 - [ ] The source-led initial draft received an independent adversarial spoken-script read. Every required finding was incorporated by the drafting agent, and the findings and resolutions are recorded in `production-log.md`.
+- [ ] Formal `--require-llm` source-relevance validation was clean after the adversarial redraft and before human editorial review. Any later factual editorial revision was validated again before rendering.
 - [ ] The Learner dialogue advances comprehension; there is no fake banter, humor routine, or persona gimmick.
 - [ ] Every misconception is immediately and unambiguously corrected.
 - [ ] All scenarios distinguish general teaching from real-world flight authority.

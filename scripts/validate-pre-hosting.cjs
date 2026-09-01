@@ -8,7 +8,7 @@ const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
-const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
+const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
 const APPROVED_DRAFT_PRODUCTION_STATUS = "Script approval and source-relevance review are complete; audio has not been rendered and release work remains pending.";
 const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
@@ -46,6 +46,10 @@ function readJson(filePath) {
 
 function sha256File(filePath) {
   return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
+}
+
+function sha256Text(value) {
+  return crypto.createHash("sha256").update(value).digest("hex");
 }
 
 function validSha256(value) {
@@ -150,7 +154,7 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   const sourceResultsByID = new Map((sourceValidation.results || []).map((result) => [result.source_id, result]));
   expect(errors, sourceValidation.show_notes_results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded show-notes links must be valid deep citations.");
   expect(errors, sourceValidation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
-  expect(errors, sourceValidation.results?.every((result) => result.relevance?.status === "assessed" && result.relevance?.assessment?.verdict === "supports" && result.relevance?.assessment?.locator_assessment?.verdict === "supports" && result.claim_assessments?.valid === true), "link validation must retain successful source- and claim-level relevance assessments.");
+  expect(errors, sourceValidation.results?.every(sourceRelevanceResultValid), "link validation must retain successful source- and claim-level relevance assessments.");
   const currentValidationInputHashes = sourceValidationInputHashes(episodePath);
   expect(errors, Object.entries(currentValidationInputHashes).every(([name, digest]) => sourceValidation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs.");
   errors.push(...validationCoverageErrors(episodePath, sourceValidation));
@@ -162,6 +166,7 @@ function validateDraftPackageShape({ episodePath, paths, episode, hosting, sourc
   const errors = [];
   expect(errors, PACKAGE_SHAPE_COMPATIBLE_STATUSES.has(episode.status), "episode.yaml status must be a recognized package-shape state.");
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
+  expect(errors, episode.review?.editorial_script_sha256 === sha256Text(masterScript), "editorial approval must be bound to the current master-script.md bytes.");
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
   const productionStatus = masterScript.match(/^\*\*Production status:\*\*\s*(.+)$/im)?.[1] || "";
   expect(errors, Boolean(productionStatus) && !/(?:editorial|source-relevance) review\s+(?:is|are)\s+pending\b/i.test(productionStatus), "master-script.md production status must not leave completed editorial or source review pending.");

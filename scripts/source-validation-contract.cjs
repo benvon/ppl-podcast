@@ -108,6 +108,15 @@ function sameStringSet(actual, expected) {
   return Array.isArray(actual) && actual.length === new Set(actual).size && actual.length === expected.length && actual.every((value) => expected.includes(value));
 }
 
+function sourceRelevanceResultValid(result) {
+  return result?.citation_target?.valid === true
+    && result?.link?.valid === true
+    && (!result?.content_attestation || result.content_attestation.valid === true)
+    && result?.relevance?.status === "assessed"
+    && result.relevance?.assessment?.locator_assessment?.verdict === "supports"
+    && result?.claim_assessments?.valid === true;
+}
+
 function validationCoverageErrors(episodePath, validation) {
   const errors = [];
   const read = (name) => YAML.parse(fs.readFileSync(path.join(episodePath, name), "utf8"));
@@ -136,4 +145,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { retrievalReviewUntaggedPassageErrors, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };

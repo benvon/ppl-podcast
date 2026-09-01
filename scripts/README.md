@@ -28,7 +28,7 @@ npm run precommit:check
 
 ## Candidate workflow
 
-1. Confirm the master script has passed fact and editorial review, then run
+1. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Then run
    `sources:validate --require-llm`, resolve every finding, and record
    `source_verification.relevance_review: complete` in `episode.yaml`. The
    renderer verifies that evidence before it sends any audio request.

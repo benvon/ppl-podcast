@@ -17,7 +17,7 @@ const WebSocket = require("ws");
 const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
+const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -114,13 +114,17 @@ function assertSourceRelevanceApproved(scriptPath) {
   if (coverageErrors.length) throw new RenderError(coverageErrors[0]);
 
   const sourceResults = Array.isArray(validation.results) ? validation.results : [];
-  if (!sourceResults.length || sourceResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true) || result?.relevance?.status !== "assessed" || result.relevance?.assessment?.verdict !== "supports" || result.relevance?.assessment?.locator_assessment?.verdict !== "supports" || result?.claim_assessments?.valid !== true)) {
+  if (!sourceResults.length || sourceResults.some((result) => !sourceRelevanceResultValid(result))) {
     throw new RenderError("link-validation.yaml contains unresolved source-relevance findings; resolve them before rendering.");
   }
 
   const showNotesResults = Array.isArray(validation.show_notes_results) ? validation.show_notes_results : [];
   if (showNotesResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true))) {
     throw new RenderError("link-validation.yaml contains unresolved show-notes findings; resolve them before rendering.");
+  }
+  const masterScript = fs.readFileSync(path.join(path.dirname(scriptPath), "master-script.md"), "utf8");
+  if (episode?.review?.editorial_status !== "script_approved" || episode?.review?.editorial_script_sha256 !== sha256(masterScript)) {
+    throw new RenderError("Editorial approval must be recorded for the current master-script.md bytes before rendering. Run episode:script-review --approve after review.");
   }
 }
 

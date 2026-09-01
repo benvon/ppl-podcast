@@ -1,0 +1,21 @@
+schema_version: 1
+handoff_status: pending_script_review
+publisher_release:
+  id: core-12
+  guid: pplstudyguide.com:core-12
+  title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
+  description: Apply weather theory to practical VFR recognition and conservative
+    decisions involving fronts, thunderstorms, icing, fog, wind, turbulence, and
+    wind shear.
+  published_at: null
+  duration: null
+  season: 1
+  number: 12
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.0

@@ -1,0 +1,95 @@
+id: core-12
+series: ppl-study-podcast
+title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
+slug: weather-hazards-fronts-thunderstorms-icing-fog-wind
+track: core
+status: editorial_review_pending
+version: 0.1.0
+published_at: null
+runtime_target_minutes: 27
+runtime_actual_seconds: null
+word_count: 3722
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - PA.I.C.K3e-K3l
+  - PA.I.C.R1-R2
+  - PA.I.C.S1-S3
+phak_references:
+  - "FAA-H-8083-25C, Chapter 12: Weather Theory"
+  - FAA-H-8083-28B, Aviation Weather Handbook, Chapters 11, 18, 20, and 22
+  - FAA-H-8083-3C, Airplane Flying Handbook, Chapter 9
+aim_references: []
+advisory_circular_references: []
+cfr_references: []
+learning_objectives:
+  - Explain why a front is a three-dimensional transition zone and use moisture,
+    stability, movement, and vertical structure to anticipate changing weather
+    without treating a front name as a fixed script.
+  - Connect the three thunderstorm ingredients and cell life cycle with hazards
+    that extend beyond visible precipitation, including outflow, turbulence, and
+    wind shear.
+  - Explain why delayed data-linked radar supports strategic thunderstorm
+    avoidance rather than tactical navigation between cells.
+  - Identify the overlap of subfreezing temperature and supercooled liquid water
+    and correlate freezing level, cloud, precipitation, terrain, and altitude as
+    a three-dimensional icing risk.
+  - Treat frost, snow, and ice contamination as aerodynamic and system hazards
+    before the accumulation appears dramatic.
+  - Use radiation, advection, upslope, precipitation, frontal, and steam-fog
+    mechanisms to reason about formation, persistence, and improvement.
+  - Connect regional wind with terrain and obstruction effects, runway
+    components, airplane capability, personal proficiency, and low-level wind
+    shear.
+  - Correlate several hazards across departure, route, destination, and
+    alternate conditions to make an early conservative decision.
+trouble_spots:
+  - Treating a charted front as a narrow line rather than a sloping weather zone.
+  - Memorizing one guaranteed cloud-and-weather sequence for each front type.
+  - Treating visible rain or a radar echo as the complete thunderstorm hazard
+    boundary.
+  - Using delayed data-linked radar as a tactical gap-finding display.
+  - Treating a freezing level or surface temperature as a complete icing answer.
+  - Treating light frost or ice as cosmetic or primarily a weight problem.
+  - Assuming all morning fog dissipates with sunrise.
+  - Using total wind speed without resolving runway components or local terrain
+    effects.
+  - Treating wind shear as merely strong steady wind.
+source_verification:
+  status: source_relevance_pending
+  verified_at_utc: null
+  link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: pending
+review:
+  editorial_status: reapproval_required
+  editorial_script_sha256: null
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+  pending_script_sha256: 30239eb698b8441a3475af8e6a0cd3c9cf59f6377e57f65eeabdc749afaf0108
+release_gates_remaining:
+  - Complete independent spoken-script review by a non-drafting agent and
+    resolve required findings.
+  - Run formal source-link validation with required LLM source relevance and
+    resolve every finding.
+  - Complete human editorial review and bind approval to the current master
+    script.
+  - Complete human listening QA, including the front-matter and chapter checks.
+  - Re-verify every public source and link on publication day.
+  - Validate hosting metadata and external audio-store workflow.
+audio:
+  manifest: audio-manifest.yaml
+  status: not_rendered
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

@@ -62,11 +62,11 @@ trouble_spots:
     effects.
   - Treating wind shear as merely strong steady wind.
 source_verification:
-  status: source_relevance_pending
-  verified_at_utc: null
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-01T17:47:37.037Z
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: pending
+  relevance_review: complete
 review:
   editorial_status: reapproval_required
   editorial_script_sha256: null
@@ -76,8 +76,6 @@ review:
     email: feedback@pplstudyguide.com
   pending_script_sha256: 8cdf3faa8cd15e2ffcbc8b02d7599ba61dc2b59967c8bd83fe2a1d9b7a44e643
 release_gates_remaining:
-  - Rerun formal source-link validation with required LLM source relevance and
-    confirm that every finding from the first three reports is resolved.
   - Complete human editorial review and bind approval to the current master
     script.
   - Complete human listening QA, including the front-matter and chapter checks.

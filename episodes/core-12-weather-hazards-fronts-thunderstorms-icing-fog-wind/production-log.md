@@ -65,3 +65,9 @@
 - Synchronized the source excerpt, reciprocal claims, source-tagged lesson and Retrieval review, research packet, listener-facing show notes, and episode metadata. Mechanically regenerated `narration.md`; the revised narration contains 3,890 spoken words.
 - Reset downstream script-review state and bound the pending-review fingerprint to SHA-256 `8cdf3faa8cd15e2ffcbc8b02d7599ba61dc2b59967c8bd83fe2a1d9b7a44e643`. Formal source relevance, human editorial approval, audio rendering, staging, release, and publication remain pending.
 - Deterministic validation passed: source shape, reciprocal claims, 121 master-script source tags, and 28 show-note links for 28 sources and 35 claims; the mechanical narration derivative; all 93 repository tests; the disclosure and secret scan; and `git diff --check`. No network request, OpenAI relevance call, or audio render was performed.
+
+## 2026-09-01 — formal source-relevance validation passed
+
+- Formal source-relevance review run `2724acc1-3b60-459b-9c99-f5219396dfa2`, checked at `2026-09-01T17:47:37.037Z`, passed with 28 FAA sources, 28 listener-facing show-note links, 35 claims, and 121 immediate master-script source tags.
+- The report is bound to the current source ledger, claim inventory, master script, show notes, and show-notes manifest. Every assessed source, locator, claim, and tagged spoken passage passed.
+- The source-validated draft is now ready for human editorial review. Audio rendering, hosting, release, and publication remain pending.

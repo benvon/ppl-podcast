@@ -81,13 +81,27 @@ A front is a changing zone between air masses.
 
 **INSTRUCTOR:**
 
-An air mass is a large body of air with broadly similar temperature and moisture characteristics acquired over its source region. When unlike air masses meet, the boundary is called a front. The Aviation Weather Handbook makes an important refinement: the boundary is a transition zone with depth and slope. The colored line on a surface chart marks the analyzed position of the boundary at the surface. Above and on either side of that surface boundary, cloud, precipitation, turbulence, and visibility restrictions can occupy a much larger three-dimensional area.
+When air masses with different characteristics meet, the boundary layer between them is called a front.
 
 [Source: sources.yaml#phak-fronts-air-masses]
+[Claim type: FAA guidance]
+
+A front does not exist only at the surface. It has vertical structure and slopes over the colder, denser air.
+
 [Source: sources.yaml#awh-front-variability]
 [Claim type: FAA guidance]
 
-Think back to Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*. If less-dense air is lifted over denser air, it expands and cools. If cooling reaches saturation, cloud forms. Stability shapes whether that lift spreads a layered cloud shield or supports strong vertical growth. Moisture controls how much cloud and precipitation can develop. The front supplies organized lift, but the air masses determine what the lift has to work with.
+On a surface chart, the front line identifies the boundary's analyzed surface location. Use that line as the bottom reference for a sloping weather system rather than as the complete edge of the weather.
+
+[Source: sources.yaml#phak-front-chart-location]
+[Claim type: FAA guidance and teaching explanation]
+
+Think back to Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*. When warmer air is lifted over colder air, it expands and cools. If cooling reaches saturation, cloud forms.
+
+[Source: sources.yaml#phak-warm-front]
+[Claim type: FAA guidance]
+
+Stable rising air along a warm front favors widespread layered cloudiness and precipitation. The frontal pattern supplies the lifting structure, but the actual evidence still establishes what has developed for this flight.
 
 [Source: sources.yaml#awh-front-variability]
 [Claim type: FAA guidance and teaching explanation]
@@ -98,9 +112,9 @@ What evidence suggests that a front is approaching or passing?
 
 **INSTRUCTOR:**
 
-Look for a coordinated change rather than one magic signal. The PHAK points to temperature contrast, wind shift, pressure tendency, cloud change, and precipitation. The combination matters. A wind shift alone could have a local cause. Falling pressure alone does not identify a front. When several cues evolve together and agree with the analyzed and forecast boundary, the frontal explanation becomes stronger.
+Look for a coordinated change rather than one isolated signal. The Aviation Weather Handbook points to a temperature gradient along the front, wind convergence at the front, and pressure that typically falls as the front approaches and rises after it passes. One cue alone could have another cause. When several cues evolve together and agree with the analyzed and forecast boundary, the frontal explanation becomes stronger.
 
-[Source: sources.yaml#phak-fronts-air-masses]
+[Source: sources.yaml#awh-front-surface-signs]
 [Claim type: FAA guidance]
 
 ## [04:20] Front names describe motion; the weather evidence completes the picture
@@ -111,30 +125,36 @@ Front names describe motion; the weather evidence completes the picture.
 
 **INSTRUCTOR:**
 
-A warm front means warmer air is advancing and replacing colder air at the surface. Because the warm air commonly climbs a gradual slope over the retreating cold air, its cloud and precipitation can spread across a broad area ahead of the analyzed surface front. Layered cloud, steady precipitation, reduced visibility, and fog are common possibilities when moisture is sufficient.
+A warm front means warmer air is advancing and replacing colder air at the surface. The warm air climbs a gradual slope over the colder air. As that air is lifted and cools, cirriform or stratiform cloud and fog can form along the frontal boundary. In summer, thunderstorms may also develop.
 
 [Source: sources.yaml#phak-warm-front]
 [Claim type: FAA guidance]
 
-Use that description as a starting structure, then add the evidence for this front. If the advancing air is dry, the cloud and precipitation may be limited. If the lifted air is unstable, embedded convection can complicate the broad layered pattern. Ask what ceiling, visibility, precipitation, wind, and temperature changes are actually observed and forecast along the route and during the planned time window.
+Use that description as a starting structure, not a guaranteed sequence. The PHAK cautions that no two fronts are the same. Ask what ceiling, visibility, precipitation, wind, and temperature changes are actually observed and forecast along the route and during the planned time window.
 
-[Source: sources.yaml#awh-front-variability]
-[Claim type: FAA guidance and teaching explanation]
+[Source: sources.yaml#phak-fronts-air-masses]
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA guidance, FAA regulatory standard, and teaching explanation]
 
-A cold front means colder air is advancing and replacing warmer air. The denser cold air usually wedges beneath the warm air along a steeper boundary. Faster and more concentrated lift can support a narrower band of showers, turbulence, abrupt wind shift, or thunderstorms when warm moist unstable air is available.
+A cold front means colder air is advancing and replacing warmer air. The denser cold air slides beneath the warmer air and forces it upward. The cloud type depends on the stability of that warmer air. When a cold front is fast-moving, friction can create a steeper frontal surface and a narrow band of concentrated weather. Unstable warm air can support showers or thunderstorms along or ahead of that front.
 
 [Source: sources.yaml#phak-cold-front]
 [Claim type: FAA guidance]
 
-A dry or stable air mass may produce a cold front without thunderstorms. The useful warning is that a cold front can organize rapid change across a route. A departure that is acceptable now and a destination that is acceptable now can still be separated by a moving band that is not acceptable at the planned crossing time.
+Stable warm air can produce overcast and rain instead of thunderstorms along a fast-moving cold front. The useful warning is that a cold front can organize rapid change across a route. A departure that is acceptable now and a destination that is acceptable now can still be separated by a moving band that is not acceptable at the planned crossing time.
 
-[Source: sources.yaml#awh-front-variability]
+[Source: sources.yaml#phak-cold-front]
 [Claim type: FAA guidance and teaching explanation]
 
-A stationary front has little movement, so the associated clouds, precipitation, and reduced visibility can persist or repeatedly affect the same area. An occlusion forms as a faster cold front catches a warm front. It is part of a mature low-pressure system and can combine extensive cloud, precipitation, changing wind, and several air masses. For a VFR plan, both names should prompt a time-and-area question: how long is the route expected to remain affected, and where are the usable alternatives outside that area?
+A stationary front forms when opposing air-mass forces are relatively equal. The boundary can influence local weather for days. An occlusion forms when a faster cold front catches a slower warm front.
 
 [Source: sources.yaml#phak-stationary-occluded-fronts]
-[Claim type: FAA guidance and teaching explanation]
+[Claim type: FAA guidance]
+
+For a VFR plan, both names should prompt a time-and-area question: how long is the route expected to remain affected, and where are the usable alternatives outside that area?
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching explanation]
 
 ## [06:30] Thunderstorms assemble the weather-theory chain
 
@@ -157,12 +177,16 @@ Does seeing growing cumulus tell me which stage the cell is in?
 
 It can provide a clue. In the cumulus stage, updrafts dominate and the cloud grows vertically. The mature stage begins when precipitation reaches the surface; strong updrafts and downdrafts coexist. In the dissipating stage, downdrafts dominate and the visible cell weakens. But a weakening cell does not make the larger area simple. Outflow can help trigger new cells, and a cluster can contain cells at different stages.
 
-[Source: sources.yaml#awh-thunderstorm-ingredients-lifecycle]
+[Source: sources.yaml#awh-thunderstorm-lifecycle]
 [Claim type: FAA guidance]
 
-The stage model is valuable because it explains change. A cell is not a fixed object painted on a radar image. It grows, produces precipitation and downdraft, spreads outflow, and decays while the whole system moves. A gap that appears open on an old image can close, and a route that aims at a gap can place the airplane near developing outflow or a new cell.
+The stage model is valuable because it explains change. A cell is not a fixed object painted on a radar image. It grows, produces precipitation and downdraft, spreads outflow, and decays while the whole system moves.
 
-[Source: sources.yaml#awh-thunderstorm-ingredients-lifecycle]
+[Source: sources.yaml#awh-thunderstorm-lifecycle]
+[Claim type: FAA guidance and teaching explanation]
+
+A gap that appears open on an old image can close, and a route that aims at a gap can place the airplane near developing outflow or a new cell.
+
 [Source: sources.yaml#awh-thunderstorm-avoidance]
 [Claim type: FAA guidance and teaching explanation]
 
@@ -174,14 +198,14 @@ The hazard extends outside the visible rain.
 
 **INSTRUCTOR:**
 
-All thunderstorms contain aviation hazards. The list includes turbulence, strong vertical currents, wind shear, heavy precipitation, hail, lightning, and icing. The hazards do not share one neat boundary, and the rain shaft is not the outside edge of the problem.
+All thunderstorms contain aviation hazards in different combinations. The list includes low ceiling and visibility, lightning, adverse wind, downbursts, turbulence, icing, and hail. Not every thunderstorm contains every hazard, and visual appearance cannot determine which hazards are present.
 
 [Source: sources.yaml#awh-thunderstorm-hazards]
 [Claim type: FAA guidance]
 
-A downdraft that reaches the ground spreads outward. That outflow can create a gust front with an abrupt wind shift and turbulence ahead of the precipitation. Dust, a shelf cloud, virga, or a sharp surface wind change may provide clues, but the absence of one visible clue does not prove that hazardous outflow is absent.
+A mature-stage downdraft spreads along the surface as a cool, gusty outflow whose leading edge is called a gust front. The Aviation Weather Handbook says that front can move well ahead of the parent cell.
 
-[Source: sources.yaml#awh-thunderstorm-hazards]
+[Source: sources.yaml#awh-thunderstorm-lifecycle]
 [Claim type: FAA guidance]
 
 **LEARNER:**
@@ -190,9 +214,13 @@ So an airport can be outside the rain and still have a thunderstorm wind problem
 
 **INSTRUCTOR:**
 
-Exactly. That is why a favorable observation at the airport cannot be separated from nearby convective movement and trend. A thunderstorm several miles away can alter runway wind before rain arrives. If the outflow produces wind shear near the surface, the risk is concentrated where takeoff and landing leave little altitude or time for recovery.
+Exactly. A favorable airport observation still needs to be connected with nearby convective movement and trend because a gust front can arrive ahead of its parent cell.
 
-[Source: sources.yaml#awh-thunderstorm-hazards]
+[Source: sources.yaml#awh-thunderstorm-lifecycle]
+[Claim type: FAA guidance and teaching explanation]
+
+If that outflow produces wind shear near the surface, the risk is concentrated where takeoff and landing leave little altitude or time for recovery.
+
 [Source: sources.yaml#phak-low-level-wind-shear]
 [Claim type: FAA guidance and teaching explanation]
 
@@ -204,9 +232,14 @@ Thunderstorm decisions are made before the gap becomes a question.
 
 **INSTRUCTOR:**
 
-FAA guidance treats avoidance as the primary policy. It warns against taking off or landing toward an approaching storm, flying beneath a thunderstorm, or flying beneath its anvil. If the area cannot be safely navigated around, diverting and waiting on the ground are named options.
+FAA guidance treats avoidance as the primary policy. It warns against taking off or landing toward an approaching storm, flying beneath a thunderstorm, or flying beneath its anvil.
 
 [Source: sources.yaml#awh-thunderstorm-avoidance]
+[Claim type: FAA guidance]
+
+When a thunderstorm area cannot be navigated around, the guidance says to divert and wait out the thunderstorms on the ground.
+
+[Source: sources.yaml#awh-thunderstorm-divert-wait]
 [Claim type: FAA guidance]
 
 Data-linked radar mosaic imagery is useful for strategic route selection. It is not a real-time window for choosing a tactical path between cells. The displayed weather is older than the airplane's current position in time, and the age shown on a display may not include every part of the collection, processing, and transmission delay. Use it to keep the route away from the convective area, not to reduce separation from a cell.
@@ -223,8 +256,7 @@ What would a conservative VFR decision sound like before departure?
 It would name the expected convective area and timing, identify a route or time that stays clear of it, and define an alternate that remains usable if development is faster or broader than forecast. It would also acknowledge when the safe route requires more distance, fuel, daylight, or certainty than the flight has. In that case, the lower-workload choice is to change the plan before launch.
 
 [Source: sources.yaml#acs-weather-hazards-decisions]
-[Source: sources.yaml#awh-thunderstorm-avoidance]
-[Claim type: FAA regulatory standard, FAA guidance, and teaching explanation]
+[Claim type: FAA regulatory standard and teaching explanation]
 
 ## [10:50] Icing begins with supercooled liquid water
 
@@ -239,10 +271,15 @@ Structural icing begins when liquid water remains unfrozen below zero degrees Ce
 [Source: sources.yaml#awh-icing-supercooled-water]
 [Claim type: FAA guidance]
 
-Droplet size, the amount of liquid water, temperature, and the shape and speed of the aircraft influence how ice forms and where it accumulates. Clear, rime, and mixed ice are useful descriptions, but the label does not turn an encounter into a predictable or acceptable one. Different parts of the aircraft can collect ice differently, and the visible leading edge may not reveal every affected surface or opening.
+Supercooled liquid water content, temperature, and droplet size are the weather quantities most closely related to icing type and severity. Aircraft type, design, and airspeed also matter.
 
-[Source: sources.yaml#awh-icing-supercooled-water]
+[Source: sources.yaml#awh-icing-factors]
 [Claim type: FAA guidance]
+
+Clear, rime, and mixed describe the ice that forms. Evaluating an icing risk still requires the actual weather and the intended airplane's limitations.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching explanation]
 
 **LEARNER:**
 
@@ -250,11 +287,15 @@ Then “the temperature is below freezing” identifies only part of the setup.
 
 **INSTRUCTOR:**
 
-Right. Ask three separate questions. Where is the air at or below freezing? Where are cloud or liquid precipitation present? Where does the planned route and altitude overlap both? Then ask what the forecast and pilot reports say about intensity, extent, and change, and what the intended airplane's approved information says about equipment, limitations, and procedures.
+Right. Ask three separate questions. Where is the air at or below freezing? Where are cloud or liquid precipitation present? Where does the planned route and altitude overlap both?
 
 [Source: sources.yaml#awh-icing-supercooled-water]
+[Claim type: FAA guidance and teaching explanation]
+
+Then ask what the forecast and pilot reports say about intensity, extent, and change, and what the intended airplane's approved information says about equipment, limitations, and procedures.
+
 [Source: sources.yaml#acs-weather-hazards-decisions]
-[Claim type: FAA guidance, FAA regulatory standard, and teaching explanation]
+[Claim type: FAA regulatory standard and teaching explanation]
 
 ## [12:25] A freezing level is one boundary, not a complete answer
 
@@ -264,12 +305,12 @@ A freezing level is one boundary, not a complete answer.
 
 **INSTRUCTOR:**
 
-The freezing level helps locate the altitude where temperature first reaches zero degrees Celsius, but an icing region has horizontal extent, vertical depth, moisture, and movement. A front can lift moist air across a broad sloping layer. Terrain can force cloud-bearing air upward and deepen liquid-water content on the windward side. Multiple freezing levels can occur when the temperature profile is not simple.
+Icing near a front can occur above or below the frontal surface. Freezing precipitation below a front can extend across a broad area. In mountains, upslope motion on the windward side supports large supercooled droplets above the freezing level, and a front crossing the terrain can combine frontal lift with that upslope flow.
 
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Claim type: FAA guidance]
 
-For a VFR learner, this is a map problem in three dimensions. Place the freezing level, cloud bases and tops, precipitation, terrain, and proposed altitude on the same mental cross-section. A route below the freezing level may still have unacceptable ceiling, visibility, terrain clearance, or convective risk. A route above cloud may require passing through the cloud to get there. One apparently favorable altitude does not erase the other hazards.
+For this lesson, turn those FAA descriptions into a three-dimensional planning cross-section. Place the freezing level, cloud, precipitation, terrain, and proposed altitude on the same picture. Then use the ACS decision framework to ask whether the route overlaps the described icing region and whether another altitude introduces unacceptable ceiling, visibility, terrain, or convective risk.
 
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Source: sources.yaml#acs-weather-hazards-decisions]
@@ -288,10 +329,11 @@ Small roughness from frost, snow, or ice can reduce lift and increase drag. Ice 
 [Source: sources.yaml#awh-icing-effects]
 [Claim type: FAA guidance]
 
-That begins before flight. Frost, snow, or ice on a lifting surface is an aerodynamic condition, not a cosmetic one. A clean-aircraft check belongs in the preflight decision, and the approved airplane information supplies the aircraft-specific limitations and methods.
+The same aerodynamic evidence matters before flight. Visible frost, snow, or ice on a lifting surface can change airflow before the airplane leaves the ground. Treat that contamination as part of the preflight weather decision, and use the approved airplane information for aircraft-specific limitations and methods.
 
 [Source: sources.yaml#awh-icing-effects]
-[Claim type: FAA guidance]
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA guidance, FAA regulatory standard, and teaching inference]
 
 The study skill comes before an encounter: identify the overlap of subfreezing temperature and liquid moisture, compare it with the airplane's capabilities, and make a plan that does not rely on an encounter to discover whether the forecast was accurate.
 
@@ -307,10 +349,15 @@ Fog is a cloud at the surface.
 
 **INSTRUCTOR:**
 
-Fog is a visible collection of minute water droplets or ice crystals based at the surface that reduces horizontal visibility. The same saturation model from Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*, applies, but now the cloud occupies the departure, arrival, taxi, and low-level visual environment. A sky that appears clear above the layer does not make a surface departure or arrival visual.
+Fog is based at the surface and reduces horizontal visibility below five-eighths statute mile. Freezing fog is composed of liquid droplets at or below freezing, while ice fog is composed of ice crystals.
 
 [Source: sources.yaml#awh-fog-definition-radiation]
 [Claim type: FAA guidance]
+
+The same saturation model from Episode 11, *Weather Theory: Pressure, Stability, Moisture, and Clouds*, applies, but now the cloud occupies the departure, arrival, taxi, and low-level visual environment. Under the ACS decision framework, that makes the reported and forecast fog direct evidence for a VFR departure or arrival decision.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching inference]
 
 **LEARNER:**
 
@@ -320,7 +367,7 @@ If all fog involves saturation, why study different fog types?
 
 Because the mechanism tells you what may form it, move it, thicken it, or dissipate it. The name is useful only when it helps forecast change.
 
-[Source: sources.yaml#awh-fog-definition-radiation]
+[Source: sources.yaml#awh-radiation-fog-factors]
 [Claim type: FAA guidance and teaching explanation]
 
 ## [15:30] Fog mechanisms tell you what may change it
@@ -331,19 +378,39 @@ Fog mechanisms tell you what may change it.
 
 **INSTRUCTOR:**
 
-Radiation fog favors a moist layer near the ground, nighttime cooling, and light wind. Cooling brings the surface air toward saturation. Some mixing helps deepen the cooled moist layer, while stronger mixing can prevent formation or help disperse it. Sunrise can begin improvement, but the time and completeness of that improvement depend on cloud above, wind, moisture, terrain, and season. “It usually burns off” is not a forecast for a specific departure.
+Radiation fog begins when nighttime radiational cooling brings the surface air to its dew point.
 
 [Source: sources.yaml#awh-fog-definition-radiation]
-[Claim type: FAA guidance and teaching explanation]
+[Claim type: FAA guidance]
 
-Advection fog forms when wind moves moist air over a colder surface. Upslope fog forms when moist stable air is forced uphill and cools toward saturation. Because moving air or terrain lift sustains those mechanisms, daylight alone may not remove them. The wind that would disperse shallow radiation fog can support advection fog by continually bringing in new moist air.
+Formation is favored by shallow, relatively moist surface air, clear sky, and light wind. Calm wind tends to keep the fog shallow, light wind can deepen it, and stronger wind can disperse it or lift it into a low cloud layer.
+
+[Source: sources.yaml#awh-radiation-fog-factors]
+[Claim type: FAA guidance]
+
+A specific departure still needs current observations and a forecast that describes the expected change.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching explanation]
+
+Advection fog forms when moist air moves over a colder surface and cools below its dew point.
 
 [Source: sources.yaml#awh-fog-advection-upslope]
 [Claim type: FAA guidance]
 
-Precipitation fog can form when rain adds moisture to cooler air below until it becomes saturated. Steam fog can form when cold air moves over warmer water and receives heat and moisture from below. Frontal processes can combine lifting, precipitation, and temperature contrast across a broad area, which connects the fog problem back to the front rather than to one airport.
+Upslope fog forms when moist stable air moves up sloping terrain and cools adiabatically to or below its dew point.
+
+[Source: sources.yaml#awh-fog-upslope]
+[Claim type: FAA guidance]
+
+Frontal fog can form when precipitation evaporates or sublimates into cold air below that is already near its dew point and saturates it. This can produce a continuous fog zone from the ground into the frontal cloud.
 
 [Source: sources.yaml#awh-fog-precipitation-steam]
+[Claim type: FAA guidance]
+
+Steam fog can form when very cold air moves over relatively warm water. Water evaporates into the cold air, then recondenses into rising streamers.
+
+[Source: sources.yaml#awh-fog-steam]
 [Claim type: FAA guidance]
 
 For a VFR decision, ask what mechanism is active, what observation confirms it, what change the forecast describes in that mechanism, and whether the route contains a reliable area of better conditions. A marginal airport surrounded by equal or worse visibility is not improved by calling it an alternate.
@@ -364,7 +431,7 @@ Pressure differences begin the motion, while temperature differences, Earth’s 
 [Source: sources.yaml#phak-wind-circulation]
 [Claim type: FAA guidance]
 
-Buildings, tree lines, ridges, bluffs, and other obstructions disturb the flow. The disturbed air can contain rapidly changing gusts and turbulence downwind of the obstruction. The effect becomes more important as wind speed and obstacle size increase, and it matters most near the ground where a runway or terrain limits the available flightpath.
+Ground topography and large buildings disturb the flow. The disturbed air can contain rapidly changing gusts and turbulence. The effect becomes more important as wind speed and obstacle size increase, and the PHAK emphasizes the hazard near airport runways with large buildings or natural obstructions nearby.
 
 [Source: sources.yaml#phak-obstruction-wind]
 [Claim type: FAA guidance]
@@ -393,14 +460,14 @@ Picture the runway as a straight line. When the reported wind meets that line at
 [Source: sources.yaml#afh-crosswind-capability]
 [Claim type: FAA guidance and teaching explanation]
 
-After resolving those components, compare the crosswind with the airplane's controllability and the available runway direction. If the crosswind exceeds the airplane's capability, a more favorable runway or another airport is the appropriate planning answer.
+Use a crosswind component chart to determine the headwind and crosswind components for the reported wind and runway. Compare the crosswind with the airplane's maximum crosswind capability, and avoid wind conditions that exceed it.
 
-[Source: sources.yaml#afh-crosswind-capability]
+[Source: sources.yaml#afh-crosswind-chart-capability]
 [Claim type: FAA guidance]
 
 The airplane's demonstrated crosswind information is one airplane reference; it does not measure the current pilot's proficiency. A complete decision also considers gust spread, runway width and surface, obstacles, turbulence, pilot recency, and what the POH or AFM says for the aircraft. Together, those factors answer whether this runway, airplane, pilot, and wind leave a comfortable margin today.
 
-[Source: sources.yaml#afh-crosswind-capability]
+[Source: sources.yaml#afh-crosswind-chart-capability]
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA guidance, FAA regulatory standard, and teaching explanation]
 
@@ -422,7 +489,7 @@ A microburst is a particularly severe convective form. A strong downdraft reache
 [Source: sources.yaml#phak-low-level-wind-shear]
 [Claim type: FAA guidance]
 
-The conservative connection is straightforward. A wind-shear or microburst alert, a gust front, virga with outflow clues, or rapidly changing wind near convection changes the takeoff or landing decision. It is evidence about a hazardous volume of air, not merely a reason to expect a rough ride.
+The conservative connection is straightforward. A wind-shear or microburst alert, a gust front, or rapidly changing wind near convection changes the takeoff or landing decision. It is evidence about a hazardous volume of air, not merely a reason to expect a rough ride.
 
 [Source: sources.yaml#phak-low-level-wind-shear]
 [Source: sources.yaml#awh-thunderstorm-hazards]
@@ -481,32 +548,70 @@ Analyze what the conditions imply, correlate weather information with the propos
 What is a front, and why is the chart line incomplete?
 
 [Source: sources.yaml#phak-fronts-air-masses]
+[Source: sources.yaml#phak-front-chart-location]
 [Source: sources.yaml#awh-front-variability]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-A front is a transition zone between unlike air masses. Its sloping three-dimensional weather can extend away from the analyzed surface line, so I look for coordinated changes in temperature, wind, pressure, cloud, and precipitation.
+A front is the boundary between air masses with different characteristics.
 
 [Source: sources.yaml#phak-fronts-air-masses]
+[Claim type: FAA guidance]
+
+It slopes over the colder air instead of existing only at the surface.
+
 [Source: sources.yaml#awh-front-variability]
+[Claim type: FAA guidance]
+
+The chart symbol depicts its analyzed surface location, not the entire sloping front.
+
+[Source: sources.yaml#phak-front-chart-location]
+[Claim type: FAA guidance and teaching explanation]
+
+At the surface, I look for the temperature gradient, converging wind, and the pressure trend before and after passage.
+
+[Source: sources.yaml#awh-front-surface-signs]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
 What do the front names tell you?
 
-[Source: sources.yaml#awh-front-variability]
+[Source: sources.yaml#phak-fronts-air-masses]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-They tell me which air mass is advancing or whether the boundary is nearly stationary or occluded. A warm front can spread broad layered weather, and a cold front can concentrate faster change and convection, but moisture, stability, motion, and vertical structure determine the actual weather.
+They tell me which air mass is advancing.
+
+[Source: sources.yaml#phak-fronts-air-masses]
+[Claim type: FAA guidance]
+
+A warm front rises gradually over colder air and can produce layered cloud and fog.
 
 [Source: sources.yaml#phak-warm-front]
-[Source: sources.yaml#phak-cold-front]
-[Source: sources.yaml#awh-front-variability]
 [Claim type: FAA guidance]
+
+A fast-moving cold front can concentrate weather in a narrow band.
+
+[Source: sources.yaml#phak-cold-front]
+[Claim type: FAA guidance]
+
+A stationary front can influence local weather for days, and an occlusion forms when a faster cold front catches a slower warm front.
+
+[Source: sources.yaml#phak-stationary-occluded-fronts]
+[Claim type: FAA guidance]
+
+Those are generalized patterns, not guarantees.
+
+[Source: sources.yaml#phak-fronts-air-masses]
+[Claim type: FAA guidance]
+
+I complete the picture with the actual observations and forecasts.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching explanation]
 
 **INSTRUCTOR:**
 
@@ -517,10 +622,19 @@ What three ingredients support thunderstorm development?
 
 **LEARNER:**
 
-Sufficient water vapor, unstable air, and lift. Every thunderstorm is hazardous, and its gust front and turbulence can extend beyond the visible rain.
+Sufficient water vapor, unstable air, and lift.
 
 [Source: sources.yaml#awh-thunderstorm-ingredients-lifecycle]
+[Claim type: FAA guidance]
+
+Every thunderstorm contains aviation hazards in some combination, and visual appearance cannot identify which ones.
+
 [Source: sources.yaml#awh-thunderstorm-hazards]
+[Claim type: FAA guidance]
+
+The mature-stage gust front can spread well ahead of the parent cell.
+
+[Source: sources.yaml#awh-thunderstorm-lifecycle]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
@@ -532,9 +646,10 @@ How do you use data-linked radar around thunderstorms?
 
 **LEARNER:**
 
-For strategic route selection that keeps the flight away from the convective area, not for tactical threading between cells. If safe navigation around the area is not assured, I divert, delay, or wait on the ground.
+For strategic route selection that keeps the flight away from the convective area, not for tactical threading between cells. If I cannot navigate around the thunderstorm area, FAA guidance says to divert and wait it out on the ground.
 
 [Source: sources.yaml#awh-thunderstorm-avoidance]
+[Source: sources.yaml#awh-thunderstorm-divert-wait]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
@@ -546,12 +661,25 @@ What overlap creates structural icing risk?
 
 **LEARNER:**
 
-Subfreezing temperature and supercooled liquid water in cloud or precipitation. I place the freezing level, cloud, precipitation, terrain, and planned altitude on the same three-dimensional picture because small ice or frost roughness can already reduce lift and increase drag.
+Subfreezing temperature and supercooled liquid water in cloud or precipitation.
 
 [Source: sources.yaml#awh-icing-supercooled-water]
+[Claim type: FAA guidance]
+
+FAA guidance says frontal icing can occur above or below a front and mountain upslope motion can support supercooled droplets above the freezing level.
+
 [Source: sources.yaml#awh-icing-fronts-terrain]
+[Claim type: FAA guidance]
+
+Small ice or frost roughness can already reduce lift and increase drag.
+
 [Source: sources.yaml#awh-icing-effects]
 [Claim type: FAA guidance]
+
+For planning, I place those facts with cloud, precipitation, terrain, and planned altitude on one picture.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching inference]
 
 **INSTRUCTOR:**
 
@@ -562,11 +690,30 @@ Why identify the fog mechanism?
 
 **LEARNER:**
 
-Fog is cloud at the surface, and the mechanism tells me what may change it. Nighttime cooling with light wind supports radiation fog. Moist air moving over colder ground supports advection fog. Moist stable air moving uphill supports upslope fog. I use the actual trend and forecast rather than assuming daylight will clear every kind.
+Fog is based at the surface, and the mechanism tells me what may change it.
 
 [Source: sources.yaml#awh-fog-definition-radiation]
+[Claim type: FAA guidance and teaching explanation]
+
+Relatively moist surface air, clear sky, and light wind support radiation fog.
+
+[Source: sources.yaml#awh-radiation-fog-factors]
+[Claim type: FAA guidance]
+
+Moist air moving over a colder surface supports advection fog.
+
 [Source: sources.yaml#awh-fog-advection-upslope]
 [Claim type: FAA guidance]
+
+Moist stable air moving uphill supports upslope fog.
+
+[Source: sources.yaml#awh-fog-upslope]
+[Claim type: FAA guidance]
+
+I use the actual trend and forecast rather than assuming daylight will clear every kind.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching explanation]
 
 **INSTRUCTOR:**
 
@@ -574,16 +721,35 @@ How does regional wind become a runway decision?
 
 [Source: sources.yaml#phak-wind-circulation]
 [Source: sources.yaml#afh-crosswind-capability]
+[Source: sources.yaml#afh-crosswind-chart-capability]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-I account for local terrain and obstructions, translate the wind into runway components, and compare the crosswind, gusts, and turbulence with the airplane, runway options, and my proficiency.
+Regional wind is modified near the surface by friction and local effects.
 
 [Source: sources.yaml#phak-wind-circulation]
+[Claim type: FAA guidance]
+
+I account for local terrain and obstructions.
+
 [Source: sources.yaml#phak-obstruction-wind]
+[Claim type: FAA guidance]
+
+I resolve the wind into along-runway and crosswind components.
+
 [Source: sources.yaml#afh-crosswind-capability]
 [Claim type: FAA guidance]
+
+I use the component chart for the reported wind and runway and compare the crosswind with the airplane's capability.
+
+[Source: sources.yaml#afh-crosswind-chart-capability]
+[Claim type: FAA guidance]
+
+Then I add gusts, turbulence, runway options, proficiency, and personal minimums to the decision.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching explanation]
 
 **INSTRUCTOR:**
 

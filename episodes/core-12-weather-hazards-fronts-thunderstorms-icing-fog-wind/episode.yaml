@@ -8,7 +8,7 @@ version: 0.1.0
 published_at: null
 runtime_target_minutes: 27
 runtime_actual_seconds: null
-word_count: 3816
+word_count: 3809
 speakers:
   - instructor
   - learner
@@ -73,12 +73,11 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 1ac90f62cddb5d22207ea32bca2b678142eaaa56eadc07882aee2e3694534d94
+  pending_script_sha256: 9601700dd6341ccb825974bd22f9a7edf1f4ceb42d842b627a97380f762431a6
 release_gates_remaining:
-  - Complete independent spoken-script review by a non-drafting agent and
-    resolve required findings.
-  - Run formal source-link validation with required LLM source relevance and
-    resolve every finding.
+  - Rerun formal source-link validation with required LLM source relevance and
+    confirm that every finding from run 46d0cb53-8a2e-4c55-a745-aff7593c18fb is
+    resolved.
   - Complete human editorial review and bind approval to the current master
     script.
   - Complete human listening QA, including the front-matter and chapter checks.

@@ -2,7 +2,7 @@
 
 **Episode:** core-12
 **Version:** 0.1.0
-**Source verification:** Initial source-led draft; independent spoken-script review and formal source-relevance validation are pending.
+**Source verification:** Independent spoken-script review is complete; targeted findings from the first formal source-relevance review are resolved, and a clean formal rerun is pending.
 
 ## In this episode
 
@@ -10,30 +10,39 @@
 - Connect thunderstorm ingredients and life cycle with turbulence, outflow, wind shear, and early avoidance decisions.
 - Build a three-dimensional icing picture from temperature, liquid moisture, cloud, precipitation, terrain, and altitude.
 - Use fog-formation mechanisms to reason about persistence and improvement instead of assuming every morning layer will clear.
-- Translate regional wind into local turbulence, runway components, airplane capability, personal minimums, and alternate choices.
+- Translate regional wind into local turbulence, runway components, airplane capability, personal minimums, and runway options.
 - Combine several individually marginal hazards into one route-level go/no-go or continue/divert decision.
 
 ## Study materials and visual aids
 
 - [Private Pilot ACS — hazardous weather and flight decisions](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12)
 - [PHAK Chapter 12 — fronts and air masses](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=18)
-- [PHAK Chapter 12 — warm-front cross-section and route example](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=19)
+- [PHAK Chapter 12 — surface-front chart symbols](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=19)
+- [PHAK Chapter 12 — front boundary and warm-front formation](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=18)
 - [PHAK Chapter 12 — cold-front cross-section and route example](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=20)
-- [PHAK Chapter 12 — stationary and occluded fronts](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=22)
+- [PHAK Chapter 12 — stationary and occluded fronts](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=21)
+- [Aviation Weather Handbook — surface signs of a front](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=138)
 - [Aviation Weather Handbook — frontal transition zones](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=138)
+- [Aviation Weather Handbook — radiation-fog factors](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=223)
 - [Aviation Weather Handbook — thunderstorm ingredients and life cycle](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=257)
+- [Aviation Weather Handbook — mature-stage downdraft and gust front](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=258)
 - [Aviation Weather Handbook — downburst and microburst diagrams](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=262)
 - [Aviation Weather Handbook — thunderstorm avoidance and delayed data-linked radar](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=276)
+- [Aviation Weather Handbook — divert and wait guidance](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=277)
 - [Aviation Weather Handbook — supercooled water and structural icing](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=244)
+- [Aviation Weather Handbook — icing factors](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=245)
 - [Aviation Weather Handbook — frontal and terrain icing diagrams](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=247)
 - [Aviation Weather Handbook — aerodynamic and system effects of icing](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=249)
 - [Aviation Weather Handbook — fog and radiation fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=222)
-- [Aviation Weather Handbook — advection and upslope fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=225)
-- [Aviation Weather Handbook — precipitation, frontal, and steam fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=226)
+- [Aviation Weather Handbook — advection fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=224)
+- [Aviation Weather Handbook — upslope fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=226)
+- [Aviation Weather Handbook — frontal fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=226)
+- [Aviation Weather Handbook — steam fog](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=227)
 - [PHAK Chapter 12 — atmospheric circulation and wind](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7)
 - [PHAK Chapter 12 — terrain and obstruction effects on wind](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=8)
 - [PHAK Chapter 12 — low-level wind shear and microbursts](https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=11)
 - [Airplane Flying Handbook — runway crosswind capability and component chart](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=18)
+- [Airplane Flying Handbook — crosswind component chart and capability](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=19)
 
 ## How to use the sources
 

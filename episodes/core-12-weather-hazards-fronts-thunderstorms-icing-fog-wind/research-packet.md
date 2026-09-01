@@ -25,7 +25,7 @@
 ## Source-led teaching chain
 
 1. A hazard name opens a mechanism question; it does not complete the decision.
-2. A front organizes lift between unlike air masses, while moisture, stability, motion, and vertical structure determine the resulting weather.
+2. A front is a sloping boundary between unlike air masses; its name supplies a general pattern, while current observations and forecasts establish the weather for the planned route and time.
 3. Thunderstorms combine sufficient moisture, instability, and lift; their hazards extend beyond the visible precipitation and evolve faster than a static image suggests.
 4. Structural icing requires supercooled liquid water and subfreezing temperature; freezing level, cloud, precipitation, terrain, and altitude must be correlated in three dimensions.
 5. Fog is cloud at the surface; the mechanism—radiation, advection, upslope, precipitation, steam, or frontal—helps explain persistence and change.
@@ -35,15 +35,15 @@
 
 ## Likely trouble spots
 
-- Misconception: A front is the narrow colored line on a chart.
-  - Correction: The line is the analyzed surface position of a sloping transition zone; cloud and precipitation may extend far from it.
-  - Source: AWH Ch. 11, pp. 11-5 to 11-8; PHAK Ch. 12, pp. 12-18 to 12-22.
+- Misconception: A front is only the narrow colored line on a chart.
+  - Correction: The surface symbol depicts the front's analyzed location, while the front itself has vertical structure and slopes over colder air.
+  - Source: AWH Ch. 11, p. 11-5; PHAK Ch. 12, pp. 12-18 to 12-19.
 - Misconception: Every warm front or cold front follows the same memorized cloud-and-weather sequence.
-  - Correction: Front motion is only one variable; moisture, stability, speed, and vertical structure control the actual weather.
-  - Source: AWH Ch. 11, pp. 11-5 to 11-8.
+  - Correction: The PHAK states that no two fronts are the same; use each type's generalized pattern as a starting point and complete it with actual observations and forecasts.
+  - Source: PHAK Ch. 12, p. 12-18; ACS PA.I.C.R1 and S2-S3.
 - Misconception: The visible rain shaft or radar echo marks the full thunderstorm hazard boundary.
-  - Correction: Gust fronts, wind shear, turbulence, hail, and anvil hazards can extend beyond visible precipitation or the echo edge.
-  - Source: AWH Ch. 22, pp. 22-7 to 22-10 and 22-21 to 22-22.
+  - Correction: A mature-cell gust front can move well ahead of the parent thunderstorm, and visual appearance cannot identify which combination of hazards a storm contains.
+  - Source: AWH Ch. 22, pp. 22-3 and 22-7.
 - Misconception: A radar gap is current enough to navigate tactically.
   - Correction: Data-linked mosaic imagery is delayed and supports strategic avoidance, not tactical threading.
   - Source: AWH Ch. 22, pp. 22-21 to 22-22.
@@ -65,7 +65,7 @@
 
 ## Visual aids selected for show notes
 
-- PHAK Chapter 12, pp. 12-19 to 12-22: warm, cold, stationary, and occluded front cross-sections and route-weather examples.
+- PHAK Chapter 12, pp. 12-18 to 12-21: warm, cold, stationary, and occluded front descriptions, symbols, cross-sections, and route-weather examples.
 - AWH Chapter 20, pp. 20-5 to 20-6: frontal and terrain icing cross-sections.
 - AWH Chapter 22, pp. 22-2 to 22-3: thunderstorm ingredients and cell life cycle.
 - AWH Chapter 22, pp. 22-7 to 22-10: downburst, microburst, and outflow diagrams.
@@ -90,8 +90,8 @@ None. Aircraft-specific procedures, equipment capabilities, and limitations are 
 - Initial source-led research and first draft: complete September 1, 2026.
 - Independent spoken-script review by a non-drafting agent: complete September 1, 2026.
 - Required revisions from that review: resolved in version 0.1.0; Episode 11 callbacks, the frontal-zone mental picture, forecast wording, runway wind components, and microburst causality were clarified.
-- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, repository tests, disclosure/secret scan, and whitespace checks: complete for version 0.1.0.
-- Package-only pre-host validation: exercised and stopped at the expected missing `link-validation.yaml` gate because formal source-relevance validation has not been run.
-- Paid LLM source-relevance review: intentionally pending.
+- Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, repository tests, disclosure/secret scan, and whitespace checks: complete after resolving the first formal source-relevance review.
+- Package-only pre-host validation: previously exercised before the formal review and stopped at its expected source-report gate; it remains pending until a clean formal source-relevance rerun is bound to the revised package inputs.
+- Formal LLM source-relevance review run `46d0cb53-8a2e-4c55-a745-aff7593c18fb`: completed with targeted source, locator, claim, and tagged-passage findings; the package has been revised, and a clean formal rerun remains pending.
 - Human editorial approval: pending.
 - Audio rendering, listening QA, staging, release, and publication: not started.

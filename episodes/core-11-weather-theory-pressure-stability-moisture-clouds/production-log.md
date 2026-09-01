@@ -132,3 +132,35 @@
 - Added a source-contract test that fails an untagged Instructor or Learner paragraph in `Retrieval review`, plus matching drafting guidance and template QA. From this revision forward, source-led drafting and source-relevance review must treat a retrieval recap as new spoken instructional evidence, before human editorial review and well before a PR is opened.
 - The first version 0.2.4 relevance run caught one final compressed ACS recap: risk identification, assessment, and mitigation must cover go/no-go as well as continue/divert decisions. The following version 0.2.5 run caught another compressed stated claim: an applicable METAR remark is the `SLP` group, reported in millibars. Version 0.2.6 then exposed a source-boundary problem: the standard-atmosphere sentence mixed its own reference with 29.92 and pressure-altitude facts. Version 0.2.7 separates those facts under their respective sources and requires a fresh clean relevance review, a new audio render, script-aligned listening QA, and chapter review before hosting.
 - The final version 0.2.7 source-bound relevance-validation run `7bafabc4-6b52-4b38-aeb5-0e220cae5775` passed at `2026-09-01T02:45:13.179Z`: all 34 cited sources, 34 show-note links, 54 claims, and 98 source-tagged spoken passages support the current package. No audio candidate exists for this revision; rendering and human audio QA remain later gates.
+
+## 2026-09-01 — SLP-group definition
+
+- Added a brief first-use definition: `SLP` means sea-level pressure, and an SLP group is the compact METAR code for the normalized sea-level-pressure value in millibars. Split the preceding METAR paragraph at the source boundary so the altimeter and cloud-height statements remain bound to their Aviation Weather Handbook source and the SLP explanation remains bound to its own source.
+- This spoken revision creates version 0.2.8 and requires a fresh source-relevance review before rendering.
+
+## 2026-09-01 — version 0.2.8 source review
+
+- Source-bound relevance-validation run `01e9735f-9389-406d-8f41-f1f97762981b` passed at `2026-09-01T12:34:06.872Z`: all 34 cited sources, 34 show-note links, 54 claims, and 98 source-tagged spoken passages support version 0.2.8, including the first-use definition of the SLP group.
+
+## 2026-09-01 — final source-bound script correction
+
+- Subsequent review identified two qualifiers that exceeded their cited PHAK passages: an implied ordered progression from towering cumulus to cumulonimbus, and a restriction of the temperature/dew-point cloud-base estimate to convective clouds. The narration now says cumulus can develop into towering cumulus or cumulonimbus and describes the estimate as a general approximate cloud-base height.
+- Source-bound relevance-validation run `e9f98f05-945f-4662-8cbd-98f431ac6da7` passed at `2026-09-01T12:59:39.963Z`: all 34 cited sources, 34 listener-facing show-note links, 54 claims, and 98 source-tagged spoken passages support version 0.2.12. The prior opening preview remains applicable because its opening segments did not change; a full version 0.2.12 candidate still requires rendering, listening QA, and chapter review.
+
+## 2026-09-01 — version 0.2.12 candidate render
+
+- Rendered `audio-artifacts/core-11-20260901T130149Z.mp3` from the source-bound version 0.2.12 narration derivative. The renderer reused only prior segments whose complete Realtime input identity matched; it regenerated the changed source-bound segments and rebuilt all later timing from the stitched audio.
+- Automated analysis passed a 24 kHz mono decode, duration agreement, 70 stitch-boundary checks with no warnings, no clipped samples, and `ffprobe` verification of 18 embedded MP3 chapters. The candidate SHA-256 is `1492c81737cfee19f97898a136259adce1637b64ca1d7ae2c0fafd3696962691` and its duration is 42:43. Full script-aligned listening QA and manual chapter review remain pending.
+
+## 2026-09-01 — version 0.2.12 listening QA accepted
+
+- The user completed and accepted full script-aligned listening QA for `audio-artifacts/core-11-20260901T130149Z.mp3`. The accepted candidate remains bound to its MP3 checksum, current narration derivative, render manifest, and automated audio-quality record.
+- Manual review of the embedded chapter markers and publication-day validation remain pending.
+
+## 2026-09-01 — version 0.2.12 chapter review accepted
+
+- The user manually reviewed and accepted the 18 embedded MP3 chapter markers for `audio-artifacts/core-11-20260901T130149Z.mp3`. The release timestamp is set to `2026-09-01T16:14:05Z`; publication-day source and link validation is next.
+
+## 2026-09-01 — publication-day source validation
+
+- Publication-day source-validation run `1ed826f4-d44c-4fa5-8f46-a47be3bf69a5` passed at `2026-09-01T16:19:16.002Z`: all 34 cited sources, 34 listener-facing show-note links, 54 claims, and 98 source-tagged spoken passages support the released version 0.2.12 package. This report is bound to the final ready-for-hosting master script, source ledger, claim inventory, show notes, and show-note manifest.

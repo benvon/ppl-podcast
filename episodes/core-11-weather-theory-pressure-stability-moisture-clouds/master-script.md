@@ -1,9 +1,9 @@
 # Weather Theory: Pressure, Stability, Moisture, and Clouds
 
-**Version:** 0.2.7 — source-bound revision
+**Version:** 0.2.12 — source-bound revision
 **Target runtime:** approximately 45 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Script approval and source-relevance review are complete; audio has not been rendered and release work remains pending.
+**Production status:** Script approval, source-relevance review, listening QA, and chapter review are complete; the package is ready for hosting handoff.
 
 ## [00:00] Opening
 
@@ -200,9 +200,13 @@ This is where mean sea level and above ground level become useful. Airport eleva
 [Source: sources.yaml#faa-pcg-airport-elevation]
 [Claim type: FAA guidance]
 
-A METAR shows why those references must stay separate. Its cloud-layer heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication. Some designated stations also include normalized sea-level pressure in the remarks as an SLP group in millibars. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
+A METAR shows why those references must stay separate. Its cloud-layer heights are reported above ground level, while its altimeter group supplies the setting used for altitude indication.
 
 [Source: sources.yaml#awh-metar-altimeter-cloud-bases]
+[Claim type: FAA guidance]
+
+Some designated stations also include sea-level pressure in the remarks as an SLP group. SLP means sea-level pressure; the group is a compact code for that value in millibars. One airport report can therefore contain pressure values prepared for different purposes. You do not need to decode those groups in this theory lesson. You do need to ask what reference a value uses before comparing it or acting on it.
+
 [Source: sources.yaml#awh-metar-sea-level-pressure]
 [Claim type: FAA guidance]
 
@@ -390,7 +394,7 @@ Can I tell the cloud type just from knowing that saturation occurred?
 
 No. Saturation creates the condition in which cloud particles can form. Cloud form also depends on the depth and stability of the layer, the strength and persistence of lift, the moisture profile, temperature, wind, and other processes. A shallow stable layer can spread moisture horizontally. A deep unstable layer can support strong vertical development. The same basic phase change appears in very different cloud structures.
 
-The PHAK also presents a simplified temperature-dew point relationship for estimating an approximate convective cloud-base height. Lifted unsaturated air cools faster than its dew point changes, so the two values converge. A wider surface spread generally means more lifting is needed before they meet. The cited page includes the numerical method, but the spoken takeaway here is the relationship rather than a formula.
+The PHAK also presents a simplified temperature-dew point relationship for estimating an approximate cloud-base height. Lifted unsaturated air cools faster than its dew point changes, so the two values converge. A wider surface spread generally means more lifting is needed before they meet. The cited page includes the numerical method, but the spoken takeaway here is the relationship rather than a formula.
 
 [Source: sources.yaml#phak-dewpoint-saturation-lifting]
 [Claim type: FAA guidance]
@@ -445,14 +449,14 @@ The PHAK groups basic cloud forms into low, middle, high, and extensive-vertical
 
 The show notes link a visual aid called “PHAK basic cloud families and vertical development.” Figure 12-22 places stratus and stratocumulus in the low family, altostratus and altocumulus in the middle family, cirrus forms in the high family, and towering cumulus and cumulonimbus across a deep vertical range. Use the figure to organize the names around shape and vertical extent rather than memorizing an isolated list.
 
-Layered stratus forms point toward stable air and widespread gentle lifting or cooling. Cumulus forms point toward rising parcels. As they build vertically, cumulus clouds can grow into towering cumulus and then cumulonimbus. A small cumulus cloud does not equal a thunderstorm, but growing vertical structure is evidence that upward motion continues. Towering cumulus indicates instability. Cumulonimbus combines deep vertical development, substantial moisture, and unstable air and can produce severe hazards.
+Layered stratus forms point toward stable air and widespread gentle lifting or cooling. Cumulus forms point toward rising parcels. As they build vertically, cumulus clouds can grow into towering cumulus or cumulonimbus. A small cumulus cloud does not equal a thunderstorm, but growing vertical structure is evidence that upward motion continues. Towering cumulus indicates instability. Cumulonimbus combines deep vertical development, substantial moisture, and unstable air and can produce severe hazards.
 
 [Source: sources.yaml#phak-cloud-families-vertical]
 [Claim type: FAA guidance]
 
 This episode will not compress thunderstorm avoidance into one sentence. The appropriate later lesson will cover convective development and hazards directly. The present takeaway is narrower: vertical cloud growth is not only pretty, puffy clouds. It is visible evidence that lift, moisture, and instability are working through a deepening part of the atmosphere.
 
-Precipitation provides another clue. Cloud droplets or ice particles must grow until the atmosphere can no longer support them and they fall. Precipitation can reduce visibility, contribute to icing in suitable temperatures, and create runway hazards. Its form and whether it reaches the surface provide evidence about temperature and moisture through the layers below the cloud.
+Precipitation provides another clue. Cloud droplets or ice particles must grow until the atmosphere can no longer support them and they fall. Precipitation can reduce visibility, contribute to icing in suitable temperatures, and create runway hazards.
 
 [Source: sources.yaml#phak-ceiling-visibility-precipitation]
 [Claim type: FAA guidance]

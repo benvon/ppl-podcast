@@ -1,54 +1,83 @@
-episode_id: "core-11"
-status: not_rendered
-publication_day_validation: pending
-reason: >-
-  Source-review corrections changed the source-bound version 0.2.7 narration.
-  A new candidate render, script-aligned human listening QA, manual chapter
-  review, and publication-day validation are required before hosting.
-current_candidate_render: null
-superseded_candidates:
-  - script_version: 0.2.2
-    mp3: "audio-artifacts/core-11-20260901T003413Z.mp3"
-    sha256: "e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667"
-    superseded_reason: "Source-review corrections changed the narration after this candidate was rendered."
-  - script_version: 0.2.2
-    mp3: "audio-artifacts/core-11-20260901T000641Z.mp3"
-    sha256: "246e473b514023b2db8c1722026c978058d9ec37b3151424243610cc2655264e"
-    superseded_reason: "Additional source-review corrections changed the narration after this candidate was rendered."
-  - script_version: 0.2.1
-    mp3: "audio-artifacts/core-11-20260831T202200Z.mp3"
-    sha256: "6ceceb16779217e19550101d0022605d3cc3719f52016f973bf21d1f2cb2221c"
-    superseded_reason: "Source-review repairs changed the narration and its cited spoken passages; the previously accepted audio cannot attest to version 0.2.2."
-opening_preview:
-  script_version: 0.2.1
-  rendered_at_utc: "2026-08-31T20:24:11.501Z"
+episode_id: core-11
+status: candidate_rendered_listening_qa_approved
+publication_day_validation: passed
+reason: The version 0.2.12 source-bound candidate passed automated audio-quality, embedded-chapter validation, full script-aligned human listening QA, manual chapter review, and publication-day source and link validation. The package is ready for hosting handoff validation.
+current_candidate_render:
+  script_version: 0.2.12
+  rendered_at_utc: "2026-09-01T13:05:11.340Z"
   provider: openai-realtime
   renderer: scripts/render_episode_realtime.cjs
   renderer_version: 12
   model: gpt-realtime-2.1
   voices: {instructor: marin, learner: cedar, announcer: ballad}
-  mp3: "audio-artifacts/core-11-20260831T202200Z.preview-001-005.mp3"
-  lossless_master: "audio-artifacts/core-11-20260831T202200Z.preview-001-005.master.wav"
-  render_manifest: "audio-artifacts/core-11-20260831T202200Z.preview-001-005.render-manifest.json"
-  audio_quality_report: "audio-artifacts/core-11-20260831T202200Z.preview-001-005.audio-quality.json"
+  mp3: "audio-artifacts/core-11-20260901T130149Z.mp3"
+  lossless_master: "audio-artifacts/core-11-20260901T130149Z.master.wav"
+  render_manifest: "audio-artifacts/core-11-20260901T130149Z.render-manifest.json"
+  audio_quality_report: "audio-artifacts/core-11-20260901T130149Z.audio-quality.json"
+  chapter_review: "audio-artifacts/core-11-20260901T130149Z.mp3.chapters.1492c81737cfee19f97898a136259adce1637b64ca1d7ae2c0fafd3696962691.html"
   segment_work_dir: "audio-artifacts/core-11-realtime-20260831T202200Z.segments"
-  duration_seconds: 147.22
-  duration_display: "2:27"
+  duration_seconds: 2563.09
+  duration_display: "42:43"
   codec: mp3
   sample_rate_hz: 24000
   channels: 1
-  sha256: "e5bbcc04480c25eea060f9dac929e640f387311a796766df8862ca404ebc7ca9"
-  included_segments: "1-5: Opening, Disclaimer, podcast introduction, and the first ACS teaching segment"
-  front_matter_validation: "The opening preview was accepted after the required Disclaimer was heard. Renderer preflight confirms that the Opening is immediately followed by the Disclaimer segment."
-  spoken_input_transform: "Standalone AI expands to artificial intelligence; PHAK is read as pee hack. The written script remains unchanged."
+  sha256: "1492c81737cfee19f97898a136259adce1637b64ca1d7ae2c0fafd3696962691"
+  front_matter_validation: "The accepted opening preview contains the Opening and Disclaimer; the full candidate reused the unchanged opening segments."
+  spoken_input_transform: "Standalone AI expands to artificial intelligence; PHAK is read as pea hack; ASOS, AWOS, and ATIS use established spoken forms. The written script remains unchanged."
+  music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade."
+  usage_estimate_usd: 3.593441
+  validation: "Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 70 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA and manual chapter review are accepted. Audio artifacts are Git-ignored."
+superseded_candidates:
+  - script_version: 0.2.2
+    mp3: audio-artifacts/core-11-20260901T003413Z.mp3
+    sha256: e51b49c25d1bb2293a3c8c56015de8ce8a903a2f96d59b157af38a6bcbe24667
+    superseded_reason: Source-review corrections changed the narration after this
+      candidate was rendered.
+  - script_version: 0.2.2
+    mp3: audio-artifacts/core-11-20260901T000641Z.mp3
+    sha256: 246e473b514023b2db8c1722026c978058d9ec37b3151424243610cc2655264e
+    superseded_reason: Additional source-review corrections changed the narration
+      after this candidate was rendered.
+  - script_version: 0.2.1
+    mp3: audio-artifacts/core-11-20260831T202200Z.mp3
+    sha256: 6ceceb16779217e19550101d0022605d3cc3719f52016f973bf21d1f2cb2221c
+    superseded_reason: Source-review repairs changed the narration and its cited
+      spoken passages; the previously accepted audio cannot attest to version
+      0.2.2.
+opening_preview:
+  script_version: 0.2.1
+  rendered_at_utc: 2026-08-31T20:24:11.501Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 12
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: audio-artifacts/core-11-20260831T202200Z.preview-001-005.mp3
+  lossless_master: audio-artifacts/core-11-20260831T202200Z.preview-001-005.master.wav
+  render_manifest: audio-artifacts/core-11-20260831T202200Z.preview-001-005.render-manifest.json
+  audio_quality_report: audio-artifacts/core-11-20260831T202200Z.preview-001-005.audio-quality.json
+  segment_work_dir: audio-artifacts/core-11-realtime-20260831T202200Z.segments
+  duration_seconds: 147.22
+  duration_display: 2:27
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: e5bbcc04480c25eea060f9dac929e640f387311a796766df8862ca404ebc7ca9
+  included_segments: "1-5: Opening, Disclaimer, podcast introduction, and the
+    first ACS teaching segment"
+  front_matter_validation: The opening preview was accepted after the required
+    Disclaimer was heard. Renderer preflight confirms that the Opening is
+    immediately followed by the Disclaimer segment.
+  spoken_input_transform: Standalone AI expands to artificial intelligence; PHAK
+    is read as pee hack. The written script remains unchanged.
 chapter_markers:
-  status: pending_render
-  source: "master-script.md section headings"
-  audio_sha256: null
-  required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
-  review_page: null
+  status: embedded_and_ffprobe_validated
+  source: master-script.md section headings
+  audio_sha256: "1492c81737cfee19f97898a136259adce1637b64ca1d7ae2c0fafd3696962691"
+  required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast
+  review_page: "audio-artifacts/core-11-20260901T130149Z.mp3.chapters.1492c81737cfee19f97898a136259adce1637b64ca1d7ae2c0fafd3696962691.html"
 required_before_release:
-  - "Complete human listening QA against master-script.md."
-  - "Confirm chapter titles and starts are useful and correctly aligned during listening QA."
-  - "Re-verify all cited public links on publication day."
-  - "Validate hosting metadata and external audio-store workflow."
+  - Validate hosting metadata and external audio-store workflow.

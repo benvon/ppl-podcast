@@ -1,17 +1,21 @@
-id: "core-11"
+id: core-11
 series: ppl-study-podcast
 title: "Weather Theory: Pressure, Stability, Moisture, and Clouds"
-slug: "weather-theory-pressure-stability-moisture-clouds"
-track: "core"
-status: source_relevance_review_complete
-version: 0.2.7
-published_at: null
+slug: weather-theory-pressure-stability-moisture-clouds
+track: core
+status: ready_for_hosting_pr
+version: 0.2.12
+published_at: 2026-09-01T16:14:05Z
 runtime_target_minutes: 45
-runtime_actual_seconds: null
+runtime_actual_seconds: 2563.09
 word_count: 6320
-speakers: [instructor, learner, announcer]
-audience: "U.S. private-pilot airplane learners"
-aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
 acs_references:
   - PA.I.C.K3a
   - PA.I.C.K3c-K3f
@@ -19,33 +23,47 @@ acs_references:
   - PA.I.C.S2-S3
 phak_references:
   - "FAA-H-8083-25C, Chapter 12: Weather Theory"
-  - "FAA-H-8083-28B, Aviation Weather Handbook, Chapters 4, 5, 8, 13, and 24"
+  - FAA-H-8083-28B, Aviation Weather Handbook, Chapters 4, 5, 8, 13, and 24
 aim_references:
-  - "AIM 7-1-29, Automated Surface Observing System/Automated Weather Observing System"
+  - AIM 7-1-29, Automated Surface Observing System/Automated Weather Observing
+    System
 advisory_circular_references: []
 cfr_references: []
 learning_objectives:
-  - "Distinguish station pressure, normalized sea-level pressure, altimeter setting, and standard-atmosphere pressure references by the question each reference answers."
-  - "Distinguish atmospheric pressure, temperature, and density and explain how unequal heating sets air in motion."
-  - "Explain why rising air expands and cools and descending air compresses and warms."
-  - "Use parcel-versus-environment reasoning to distinguish stable air, unstable air, and a temperature inversion."
-  - "Distinguish water-vapor content, relative humidity, dew point, and saturation."
-  - "Explain four broad paths to saturation and the requirements for cloud formation."
-  - "Use cloud layers and vertical development as evidence about stability, lift, moisture, ceiling, visibility, and precipitation."
-  - "Connect the physical model with the observations and forecasts a VFR pilot later correlates for go/no-go and continue/divert decisions."
+  - Distinguish station pressure, normalized sea-level pressure, altimeter
+    setting, and standard-atmosphere pressure references by the question each
+    reference answers.
+  - Distinguish atmospheric pressure, temperature, and density and explain how
+    unequal heating sets air in motion.
+  - Explain why rising air expands and cools and descending air compresses and
+    warms.
+  - Use parcel-versus-environment reasoning to distinguish stable air, unstable
+    air, and a temperature inversion.
+  - Distinguish water-vapor content, relative humidity, dew point, and
+    saturation.
+  - Explain four broad paths to saturation and the requirements for cloud
+    formation.
+  - Use cloud layers and vertical development as evidence about stability, lift,
+    moisture, ceiling, visibility, and precipitation.
+  - Connect the physical model with the observations and forecasts a VFR pilot
+    later correlates for go/no-go and continue/divert decisions.
 trouble_spots:
-  - "Treating raw station pressure, normalized sea-level pressure, and the local altimeter setting as the same value."
-  - "Treating pressure, temperature, and density as interchangeable values."
-  - "Saying rising air cools only because environmental temperature is lower aloft."
-  - "Treating instability as a lifting mechanism rather than the atmosphere's response to displacement."
-  - "Assuming smooth or stable air automatically means favorable VFR weather."
-  - "Treating relative humidity as independent of temperature."
-  - "Calling invisible water vapor a visible cloud."
-  - "Treating an approximate lifted cloud-base estimate as a reported ceiling."
-  - "Treating one pressure system, report, or favorable weather value as a complete flight decision."
+  - Treating raw station pressure, normalized sea-level pressure, and the local
+    altimeter setting as the same value.
+  - Treating pressure, temperature, and density as interchangeable values.
+  - Saying rising air cools only because environmental temperature is lower
+    aloft.
+  - Treating instability as a lifting mechanism rather than the atmosphere's
+    response to displacement.
+  - Assuming smooth or stable air automatically means favorable VFR weather.
+  - Treating relative humidity as independent of temperature.
+  - Calling invisible water vapor a visible cloud.
+  - Treating an approximate lifted cloud-base estimate as a reported ceiling.
+  - Treating one pressure system, report, or favorable weather value as a
+    complete flight decision.
 source_verification:
   status: source_relevance_complete
-  verified_at_utc: "2026-09-01T02:45:13.179Z"
+  verified_at_utc: 2026-09-01T16:19:16.002Z
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
@@ -55,17 +73,15 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
+  editorial_script_sha256: de210781b180d0190408ba67479ea1de5556cba27638fa5904ea75b3a061f619
 release_gates_remaining:
-  - "Render the source-bound version 0.2.7 narration and complete script-aligned listening QA."
-  - "Confirm the version 0.2.7 MP3 chapter starts and titles during listening QA."
-  - "Re-verify every public source and link on publication day."
-  - "Validate hosting metadata and external audio-store workflow."
+  - Validate hosting metadata and external audio-store workflow.
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: listening_qa_and_chapter_review_approved
 hosting:
   metadata: hosting-metadata.yaml
-  handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.
+  handoff_seal: source-release-seal.yaml
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null

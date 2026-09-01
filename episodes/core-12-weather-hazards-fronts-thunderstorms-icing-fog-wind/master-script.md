@@ -290,7 +290,7 @@ On the windward side of mountains, upward currents can support large supercooled
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Claim type: FAA guidance]
 
-Now use the separate Plains-front slice. Below a front, freezing rain or freezing drizzle is a favored location for severe icing and can extend horizontally across a broad area.
+Now use the separate Plains-front slice. Below a front, freezing rain or freezing drizzle is a favored location for severe clear icing and can extend horizontally across a broad area.
 
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Claim type: FAA guidance and teaching scenario]
@@ -600,7 +600,7 @@ The route and altitude must overlap subfreezing temperature and supercooled liqu
 [Source: sources.yaml#awh-icing-supercooled-water]
 [Claim type: FAA guidance]
 
-I use one cross-section for the planned mountain corridor and a separate cross-section for the Plains front. In each, I place the altitude where temperature reaches zero degrees Celsius, cloud, precipitation, terrain, and proposed flight altitude, then consider the lifting mechanism for that route segment.
+I use one cross-section for the planned mountain corridor and a separate cross-section for the Plains front. In each, I place the altitude where temperature reaches zero degrees Celsius, cloud, precipitation, terrain, and proposed flight altitude, then consider the lifting mechanism for that route segment. For the Plains-front slice, freezing rain or freezing drizzle below the front is a favored location for severe clear icing and can extend across a broad area.
 
 [Source: sources.yaml#awh-icing-fronts-terrain]
 [Claim type: FAA guidance and teaching explanation]

@@ -8,7 +8,7 @@ version: 0.2.1
 published_at: null
 runtime_target_minutes: 35
 runtime_actual_seconds: null
-word_count: 4680
+word_count: 4708
 speakers:
   - instructor
   - learner
@@ -80,7 +80,7 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 3ba63b5568f9aeafb144c16843c71c2fc2f758f8f3312022b04fc0db90ee5e72
+  pending_script_sha256: 1a3e6530bcf77c9347c2f2f4693003243e3664815bb8a1b9cb5e4f44d8ac73c9
 release_gates_remaining:
   - Complete renewed formal source-relevance validation for the redrafted script
     and package.

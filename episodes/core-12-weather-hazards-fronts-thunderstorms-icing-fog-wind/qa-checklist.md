@@ -16,7 +16,7 @@
 - [x] The front mental picture identifies the chart line as the analyzed surface reference, describes the boundary sloping over colder air, and explains why associated weather can occupy a larger three-dimensional volume.
 - [x] The planned mountain corridor, western-Plains stopover, Wisconsin primary, and Wisconsin alternate are defined early and reused consistently; the alternate has a distinct runway orientation and location outside the shared fog or convective-outflow area.
 - [x] The icing overlap test is applied separately to the planned mountain-corridor and Plains-front cross-sections, with a distinct decision for each segment.
-- [x] Cirriform, stratiform, freezing level, and clear icing are not used as undefined listener-facing terms; the script uses plain-language descriptions instead.
+- [x] Cirriform, stratiform, and freezing level are replaced with plain-language descriptions; the source-required `clear` qualifier is present in the Plains-front severe-clear-icing passage and Retrieval review.
 - [ ] Human editorial pass received a clean source-validation result for version 0.2.1; unresolved technical questions were removed or resolved.
 - [ ] If human editorial changes factual spoken prose, source tags, claims, sources, or show notes, source-relevance validation was rerun successfully before audio render.
 - [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.

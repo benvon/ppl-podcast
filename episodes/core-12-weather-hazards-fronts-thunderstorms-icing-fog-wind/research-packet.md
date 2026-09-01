@@ -71,6 +71,7 @@
 - Route-scenario research packet, source-tagged master script, claim section mapping, show notes, metadata, and mechanical narration derivative: complete for version 0.2.1.
 - Independent spoken-script review by a non-drafting agent: complete September 1, 2026; four required findings and the useful optional wording refinements are resolved in version 0.2.1.
 - Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, all 93 repository tests, disclosure/secret scan, and whitespace checks: complete for version 0.2.1.
+- Final formal-review qualifier mismatch: resolved by restoring the source-required `clear` qualifier to the severe-clear-icing statement in the Plains-front passage and Retrieval review; a clean formal rerun remains pending.
 - Renewed formal source-relevance validation with `--require-llm`: pending and intentionally not run during this redraft task.
 - Human editorial approval: pending after independent spoken review and renewed formal source relevance.
 - Audio rendering, listening QA, staging, release, and publication: not started.

@@ -2,7 +2,7 @@
 
 **Episode:** core-12
 **Version:** 0.2.1
-**Source verification:** A human-requested route-scenario redraft superseded the previously validated draft. Independent spoken-script review is complete and its required findings are resolved. Deterministic source, claim, script-tag, and show-note mappings pass; renewed formal source-relevance validation is pending.
+**Source verification:** A human-requested route-scenario redraft superseded the previously validated draft. Independent spoken-script review is complete and its required findings are resolved. The final clear-icing qualifier mismatch from formal source-relevance review is resolved; a clean formal rerun remains pending.
 
 ## In this episode
 

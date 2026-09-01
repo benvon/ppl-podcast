@@ -177,7 +177,7 @@ For that western-terrain decision, compare forecasts, advisories, pilot reports,
 
 On the windward side of mountains, upward currents can support large supercooled droplets above the altitude where temperature reaches zero degrees Celsius. When a front crosses a mountain range, frontal lift can combine with upslope flow.
 
-Now use the separate Plains-front slice. Below a front, freezing rain or freezing drizzle is a favored location for severe icing and can extend horizontally across a broad area.
+Now use the separate Plains-front slice. Below a front, freezing rain or freezing drizzle is a favored location for severe clear icing and can extend horizontally across a broad area.
 
 The two decisions must remain separate. For the western-terrain slice, use the planned mountain corridor only if the selected altitude avoids the subfreezing-liquid-water overlap while preserving terrain and VFR cloud-clearance margins; otherwise stop at the corridor entry or wait. For the Plains-front slice, remain at the western-Plains stopover while the proposed eastbound leg overlaps frontal cloud or freezing precipitation. Changing altitude does not solve a segment when another altitude loses terrain or VFR cloud clearance.
 
@@ -345,7 +345,7 @@ What overlap creates structural icing risk?
 
 The route and altitude must overlap subfreezing temperature and supercooled liquid water in cloud or precipitation.
 
-I use one cross-section for the planned mountain corridor and a separate cross-section for the Plains front. In each, I place the altitude where temperature reaches zero degrees Celsius, cloud, precipitation, terrain, and proposed flight altitude, then consider the lifting mechanism for that route segment.
+I use one cross-section for the planned mountain corridor and a separate cross-section for the Plains front. In each, I place the altitude where temperature reaches zero degrees Celsius, cloud, precipitation, terrain, and proposed flight altitude, then consider the lifting mechanism for that route segment. For the Plains-front slice, freezing rain or freezing drizzle below the front is a favored location for severe clear icing and can extend across a broad area.
 
 I compare that cross-section with the intended airplane's approved information.
 

@@ -97,3 +97,10 @@
 - Ran the repository-required post-edit script-review reset and bound the pending-review fingerprint to SHA-256 `3ba63b5568f9aeafb144c16843c71c2fc2f758f8f3312022b04fc0db90ee5e72`; prior source-relevance approval remains invalid.
 - Deterministic source validation passed with 28 sources, 35 reciprocal claims, 115 master-script source tags, and 28 show-note links; no network or API request was made. All 93 repository tests, the disclosure and secret scan, YAML parsing, narration-derivative verification, and `git diff --check` passed.
 - Renewed paid source-relevance validation, human editorial approval, audio rendering, staging, release, publication, push, and PR creation were not performed.
+
+## 2026-09-01 — final clear-icing qualifier mismatch resolved
+
+- Formal source-relevance review identified one final exact mismatch: the Plains-front source and existing claim specify that freezing rain or freezing drizzle below a front is a favored location for severe clear icing, while the spoken passage had omitted the material `clear` qualifier.
+- Restored `severe clear icing` in the Plains-front teaching passage and the corresponding Retrieval review statement. The existing `icing-frontal-terrain-distribution` claim already contained the correct qualifier, so the claim and source ledger required no wording change.
+- Mechanically regenerated `narration.md`; the revised script contains 4,708 spoken words. Ran the repository-required post-edit script-review reset and bound pending-review SHA-256 `1a3e6530bcf77c9347c2f2f4693003243e3664815bb8a1b9cb5e4f44d8ac73c9`.
+- Deterministic source mapping, repository tests, disclosure and secret scanning, YAML parsing, narration-derivative verification, and whitespace checks passed. No paid relevance rerun, rendering, staging, push, PR, or publication was performed.

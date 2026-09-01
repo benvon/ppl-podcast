@@ -5,6 +5,12 @@
 - Run any command that needs the project environment—particularly OpenAI API source-relevance validation—from this repository root with `direnv exec .`.
 - Keep credentials in the local environment. Never place an API key in a command argument, project file, generated artifact, or output.
 
+## Hosting handoff credential boundary
+
+- The hosting repository's `.envrc` is a credential-bearing local file. Never read, print, search, source, diff, or otherwise inspect it, and never run `env`, `printenv`, or `direnv export` there.
+- To stage a sealed handoff, use the hosting repository's purpose-built command exactly as `direnv exec . ./scripts/stage-episode <absolute-handoff-path>`. `direnv` injects the credentials only into that child process; its values must never be surfaced or copied into another command.
+- Inspect and validate the generated release manifest and Git state after the staging command. Those files—not the local environment—are the reviewable evidence for the hosting PR.
+
 ## Starting a new episode
 
 1. Inspect the working tree, sync `origin/main`, and create a fresh `feature/` branch. Preserve unrelated work; do not copy a prior episode directory.

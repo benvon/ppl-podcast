@@ -730,6 +730,8 @@ test("source relevance assesses freshly fetched text instead of a ledger excerpt
     assert.match(request.input, /CURRENT FETCHED TEXT/);
     assert.doesNotMatch(request.input, /STALE LEDGER TEXT/);
     assert.match(request.input, /AUTHORED SCRIPT PASSAGE/);
+    assert.match(request.instructions, /citation group/);
+    assert.match(request.instructions, /combines the claim assessments from every tagged source/);
   } finally {
     if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
   }

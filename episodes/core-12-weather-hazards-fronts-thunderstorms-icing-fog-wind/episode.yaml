@@ -84,7 +84,6 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - Complete human listening QA, including the front-matter and chapter checks.
   - Re-verify every public source and link on publication day.
   - Validate hosting metadata and external audio-store workflow.
 audio:

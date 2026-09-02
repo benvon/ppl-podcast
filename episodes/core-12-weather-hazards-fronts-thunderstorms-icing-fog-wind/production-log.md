@@ -139,3 +139,13 @@
 - Rendered reusable segments 1-5 with Marin, Cedar, and Ballad. The initial dry assembly omitted the established intro music bed; it was not accepted and was replaced without re-rendering the unchanged voice segments.
 - The accepted music-mixed preview is `audio-artifacts/core-12-20260902T002617Z.preview-001-005.mp3` (SHA-256 `84b272530c025eff9a777d4a24c55198fa0d85f79f48b9c6aeaaa857e9aa7952`). It uses the licensed bed at -24 dB base and -30 dB under Ballad, with a 10-second lead, 5-second continuation, and 0.5-second fade.
 - Automated audio analysis passed with no clipped samples or stitch warnings. Human opening QA accepted the corrected mix and required notice. The rendered voice segments are reusable for the full candidate.
+
+## 2026-09-02 — full script-aligned listening QA accepted
+
+- Assembled the complete version 0.2.2 candidate from 69 source segments, safely reusing the accepted opening segments and applying the recorded intro/outro music mix. The final candidate is `audio-artifacts/core-12-20260902T003203Z.mp3` (SHA-256 `bce5b3e32dcd442b0a2432fb74b05d601ffd4e32e05f4775322d34943e3f28c4`), with a runtime of 34:55.
+- Automated analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 68 stitch boundaries with no discontinuity warnings, no clipped samples, and ffprobe validation of 18 embedded ID3 chapters. Full script-aligned human listening QA is accepted. Manual chapter review, publication-day source and link validation, and hosting validation remain pending.
+
+## 2026-09-02 — manual chapter review accepted
+
+- Human review accepted all 18 embedded chapter markers. The list begins at `00:00`, uses listener-facing section titles, and each marker starts before its corresponding material.
+- The complete audio gate is closed. Publication-day source and link validation and hosting validation remain pending.

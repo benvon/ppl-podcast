@@ -1,0 +1,10 @@
+episode_id: "core-13"
+# Declare every HTTPS link in show-notes.md. Link text and URL must match the
+# Markdown exactly. Each link must map to claims supported by its ledger source.
+links:
+  - id: replace-with-stable-link-id
+    text: "Specific source section"
+    url: "https://www.faa.gov/path/to/document.pdf#page=1"
+    locator: "Specific section/task/paragraph and printed p. 1"
+    source_id: replace-with-stable-source-id
+    claim_ids: [replace-with-stable-claim-id]

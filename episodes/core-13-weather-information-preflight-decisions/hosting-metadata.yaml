@@ -1,0 +1,18 @@
+schema_version: 1
+publisher_release:
+  id: "core-13"
+  guid: "pplstudyguide.com:core-13"
+  title: "Weather Information and Preflight Decisions"
+  description: null
+  published_at: null # RFC3339 UTC timestamp, set only when release is approved.
+  duration: null # HH:MM:SS, derived from approved audio.
+  season: 1
+  number: null
+  explicit: false
+  audio: {} # Filled by the hosting publisher after private staging.
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.0

@@ -12,7 +12,13 @@ Using an explicitly hypothetical VFR trip from Northern California to Wisconsin,
 
 ## Study materials and visual aids
 
+- [Official Aviation Weather Center Graphical Forecasts for Aviation (GFA)](https://aviationweather.gov/gfa/)
 - [Graphical Forecasts for Aviation tutorial](https://aviationweather.gov/gfa/help/?page=tutorial)
+- [Official Flight Service briefing portal: 1800wxbrief.com](https://www.1800wxbrief.com/)
+- [FAA sample preflight briefing checklist (AC 91-92)](https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20)
+- [FAA study reference: interpreting METARs and SPECIs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289)
+- [FAA study reference: interpreting PIREPs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310)
+- [FAA study reference: AIRMETs, SIGMETs, and Convective SIGMETs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369)
 
 ## Fact-check and source material
 

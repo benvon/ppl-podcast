@@ -7,7 +7,7 @@
 
 **INSTRUCTOR:**
 
-A weather report becomes useful when it changes a decision. Today we will take the observations, forecasts, and advisories that can feel like separate test questions and use them to build one coherent preflight weather picture.
+A weather report becomes useful when it informs a decision. Today we will take the observations, forecasts, and advisories that can feel like separate test questions and use them to build one coherent preflight weather picture.
 
 ## [00:20] Disclaimer
 
@@ -75,7 +75,11 @@ Four questions for every product.
 
 **INSTRUCTOR:**
 
-When you open a weather display, ask four questions before trusting the picture it creates. First: what kind of information is this—an observation, an analysis, a forecast, or an advisory? Second: what place and altitude does it describe? Third: when was it observed or issued, and when is it valid? Fourth: what decision can it inform, and what other evidence should agree or disagree with it?
+In this lesson, a weather product is a named, standardized aviation-weather report, analysis, forecast, advisory, chart, layer, or briefing element. It is built from weather observations, forecast models, forecaster analysis, or some combination of them, and it has a defined place or area, altitude when applicable, and observation or valid time. That is a technical use of product, not the everyday consumer-app sense of the word.
+
+**INSTRUCTOR:**
+
+When you open a weather product in a display, ask four questions before trusting the picture it creates. First: what kind of information is this—an observation, an analysis, a forecast, or an advisory? Second: what place and altitude does it describe? Third: when was it observed or issued, and when is it valid? Fourth: what decision can it inform, and what other evidence should agree or disagree with it?
 
 **LEARNER:**
 
@@ -83,7 +87,7 @@ I tend to think in terms of websites and apps. Is the app itself one of the weat
 
 **INSTRUCTOR:**
 
-Usually the app is an access and display tool. The underlying METAR, TAF, forecast layer, advisory, or radar product is the information you must understand. Two apps may display the same source differently. Check the product name, source, timestamp, valid time, legend, altitude, and any layer that may be hidden. A polished map does not give the underlying data a larger geographic scope or a newer valid time.
+Usually the app is an access and display tool. The underlying METAR, TAF, forecast layer, advisory, or radar product is the information you must understand. Two apps can access and present the same weather product differently. Check the product name, source, timestamp, valid time, legend, altitude, and any layer that may be hidden. A polished map does not give the underlying data a larger geographic scope or a newer valid time.
 
 **INSTRUCTOR:**
 
@@ -106,6 +110,10 @@ Does that mean I must speak with Flight Service, or can I brief myself?
 **INSTRUCTOR:**
 
 FAA guidance recognizes both self-briefing and Flight Service. A self-briefing places the interpretation work directly on the pilot. A Flight Service specialist can provide a consultative briefing and answer questions. In either case, the goal is not simply to say that a briefing occurred. The goal is to understand the relevant evidence well enough to make and explain the decision.
+
+**INSTRUCTOR:**
+
+The official 1800wxbrief.com portal is one way to access Flight Service briefing support. The show notes link directly to it, along with the FAA briefing checklist in AC 91-92 if you want a structured starting point for your own route-and-time worksheet.
 
 **INSTRUCTOR:**
 
@@ -149,7 +157,7 @@ METAR and SPECI.
 
 **INSTRUCTOR:**
 
-A METAR is a routine observation of surface weather at an observing site. It gives the station identifier, observation time, wind, visibility, significant weather, sky condition, temperature and dew point, altimeter setting, and remarks as applicable. A SPECI uses the same general format but is an unscheduled special observation issued when specified conditions change.
+A METAR is a routine observation of surface weather at an observing site. It gives the station identifier, observation time, wind, visibility, significant weather, sky condition, temperature and dew point, altimeter setting, and remarks as applicable. A SPECI uses the same general format but is an unscheduled special observation issued when specified conditions change. Both use a precise encoded format that takes practice to read. Private-pilot knowledge-test learners are expected to interpret METARs, but this episode will use them as decision evidence rather than teach every code group.
 
 **LEARNER:**
 
@@ -189,7 +197,7 @@ PIREP.
 
 **INSTRUCTOR:**
 
-A pilot weather report, or PIREP, describes conditions actually encountered by an aircraft. The useful context includes location, time, altitude, aircraft type, and the reported condition. A report of turbulence from a light training airplane may have different practical meaning than the same wording from a much larger aircraft. A report two hours earlier or far from the route may no longer answer the question you are asking.
+A pilot weather report, or PIREP, is an actual report from an aircraft about conditions it encountered. Routine reports are identified as UA; urgent reports are identified as UUA when they contain weather significant enough to need prompt dissemination. In a typical briefing, PIREPs appear with current-weather information as individual reports or map entries. The useful context includes location, time, altitude, aircraft type, and the reported condition. A report of turbulence from a light training airplane may have different practical meaning than the same wording from a much larger aircraft. A report two hours earlier or far from the route may no longer answer the question you are asking.
 
 **LEARNER:**
 
@@ -311,6 +319,10 @@ AIRMETs, SIGMETs, and Convective SIGMETs.
 
 AIRMETs and SIGMETs identify specified en route hazards. AIRMETs address hazards including instrument conditions or mountain obscuration, moderate turbulence, strong surface winds, moderate icing, and freezing-level information. SIGMETs address specified hazards significant to aircraft. Convective SIGMETs focus attention on qualifying convective activity. The exact category matters, but the planning question remains: where, when, at what altitude, and how does the hazard intersect the route?
 
+**INSTRUCTOR:**
+
+At a high level, an AIRMET identifies a forecast en route hazard that can matter especially to light aircraft; a SIGMET identifies a specified significant hazard; and a Convective SIGMET identifies qualifying convective activity. The show notes link to the FAA references for each. A future supplemental episode, *PIREPs, AIRMETs, and SIGMETs*, will spend more time on their formats, how they appear in a briefing, and their practical uses and limits.
+
 **LEARNER:**
 
 If the route line does not cross the shaded advisory polygon, am I done with that advisory?
@@ -331,7 +343,7 @@ For the fictional Plains segment, begin with the regional pattern and Convective
 
 **INSTRUCTOR:**
 
-A small gap between growing cells is not an alternate route. A useful alternate is outside the area in which convection may remove options, and it must be reachable before the flight depends on threading between rapidly changing hazards. If the plan only works if a narrow gap remains open, the plan is asking an encounter to reveal whether the forecast was right.
+A small gap between growing cells is not an alternate route. A useful alternate is outside the area in which convection may remove options, and it must be reachable before the flight depends on threading between rapidly changing hazards. When the plan depends on a narrow gap remaining open, it becomes a test of the forecast rather than a plan with a reliable way to reach the destination safely.
 
 **LEARNER:**
 

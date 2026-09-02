@@ -61,7 +61,7 @@ sources:
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Organizes adverse conditions, synopsis, observations, forecasts, destination timing, and winds aloft."
-    supports_claims: [standard-sequence, winds-aloft, arrival-window]
+    supports_claims: [standard-sequence, winds-aloft, arrival-window, pirep-report-types]
   - id: ac-pirep-value
     title: AC 91-92 Pilot's Guide to a Preflight Briefing
     publisher: FAA
@@ -71,7 +71,7 @@ sources:
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Explains that PIREPs report actual conditions and improve warnings and forecasts."
-    supports_claims: [pirep-context]
+    supports_claims: [pirep-context, pirep-report-types]
   - id: phak-weather-overview
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 13
     publisher: FAA
@@ -132,6 +132,36 @@ sources:
     verification_date: "2026-09-02"
     relevance: "Documents the current GFA interface and warns that gridded analysis between observations is an estimate."
     supports_claims: [gfa-layers, gridded-estimate]
+  - id: awc-gfa-application
+    title: Graphical Forecasts for Aviation
+    publisher: National Weather Service Aviation Weather Center
+    url: https://aviationweather.gov/gfa/
+    locator: "GFA interactive application"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Official Aviation Weather Center entry point for the Graphical Forecasts for Aviation application."
+    supports_claims: [gfa-official-access]
+  - id: flight-service-portal
+    title: 1800wxbrief.com
+    publisher: FAA Flight Service
+    url: https://www.1800wxbrief.com/
+    locator: "Official Flight Service briefing portal"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Official Flight Service web portal for preflight briefing support."
+    supports_claims: [flight-service-portal-access]
+  - id: ac-briefing-checklist
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+    locator: "Appendix, Sample Preflight Briefing Checklist"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Provides an FAA sample preflight briefing checklist that can structure a pilot's planning notes."
+    supports_claims: [briefing-checklist]
   - id: awh-taf
     title: Aviation Weather Handbook
     publisher: FAA

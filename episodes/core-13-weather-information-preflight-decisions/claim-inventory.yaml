@@ -45,6 +45,11 @@ claims:
     claim_type: FAA guidance
     sources: [awh-pirep, ac-pirep-value]
     script_sections: [PIREP, Test the western terrain corridor, Retrieval review]
+  - id: pirep-report-types
+    claim: "PIREPs are actual pilot reports; routine reports use UA, urgent reports use UUA, and briefing displays provide report context including location, time, altitude, aircraft type, and reported conditions."
+    claim_type: FAA guidance
+    sources: [awh-pirep, ac-standard-elements]
+    script_sections: [PIREP]
   - id: surface-analysis
     claim: "A surface analysis is an analyzed snapshot of the current large-scale pressure pattern, fronts, and reported weather; it is not a forecast."
     claim_type: FAA guidance
@@ -55,6 +60,11 @@ claims:
     claim_type: weather service documentation
     sources: [awc-gfa-help]
     script_sections: [Graphical Forecasts for Aviation, Test the western terrain corridor]
+  - id: gfa-official-access
+    claim: "The Aviation Weather Center provides the Graphical Forecasts for Aviation application as an official access point for its graphical weather information."
+    claim_type: weather service information
+    sources: [awc-gfa-application]
+    script_sections: [Graphical Forecasts for Aviation]
   - id: gridded-estimate
     claim: "A gridded ceiling and visibility analysis interpolates between observations and may not represent the actual condition at every point."
     claim_type: weather service documentation
@@ -105,3 +115,13 @@ claims:
     claim_type: FAA guidance
     sources: [aim-fis-limitations]
     script_sections: [Update the decision in flight, Retrieval review]
+  - id: flight-service-portal-access
+    claim: "1800wxbrief.com is an official Flight Service web portal for preflight briefing support."
+    claim_type: FAA service information
+    sources: [flight-service-portal]
+    script_sections: [A briefing is a decision process]
+  - id: briefing-checklist
+    claim: "AC 91-92 includes a sample preflight briefing checklist that can provide a planning structure."
+    claim_type: FAA guidance
+    sources: [ac-briefing-checklist]
+    script_sections: [A briefing is a decision process, Put the hypothetical route on the table]

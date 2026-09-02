@@ -30,3 +30,15 @@
 - Mechanically regenerated `narration.md` after the revisions. The reviewed narration contains 4,177 spoken words with the same 35–40 minute target, and downstream script-review state was reset for the revised script.
 - Formal source-relevance review should scrutinize these five targets: GFA ceiling/visibility interpolation; TAF change-group wording; freezing-level distinction from AIRMET hazard categories; G-AIRMET between snapshots; Convective Outlook scope.
 - No OpenAI relevance call, render, staging operation, commit, push, or PR was performed during this review-resolution pass.
+
+## 2026-09-02 — weather-product vocabulary and study-resource refinement
+
+- Defined `weather product` at first use as the technical term for standardized aviation-weather reports, analyses, forecasts, advisories, charts, layers, and briefing elements with defined scope and time. Explicitly separated that meaning from a consumer app, which accesses or displays the underlying products.
+- Expanded METAR and SPECI context to establish their precise encoded format, the private-pilot knowledge-test expectation to interpret METARs, and the episode boundary: decision use rather than a full code-group lesson.
+- Expanded PIREP context to distinguish routine `UA` and urgent `UUA` reports, establish them as actual pilot reports, and explain their placement with current-weather information in a briefing. Added a listener-facing call-forward to the future supplemental episode, *PIREPs, AIRMETs, and SIGMETs*, for deeper treatment of reports and advisories.
+- Added concise high-level AIRMET, SIGMET, and Convective SIGMET distinctions and pointed listeners to FAA source links in the show notes.
+- Replaced the narrow-convective-gap sentence with the route-planning distinction: a plan dependent on a narrow gap staying open is a test of the forecast, not a plan with a reliable way to reach the destination safely.
+- Added source-mapped study links for the direct official GFA application, 1800wxbrief.com, the FAA sample preflight briefing checklist, and focused FAA references for METAR/SPECI, PIREP, and advisory interpretation.
+- Added three reciprocal source and claim entries: the official GFA application, the Flight Service portal, and the AC 91-92 sample briefing checklist. Added a PIREP report-type claim and associated source support.
+- Mechanically regenerated `narration.md`; the revised script contains 4,445 spoken words with the same 35–40 minute target. The required script-review reset follows this entry.
+- Formal source-relevance validation, human editorial approval, audio rendering, staging, release, publication, commit, push, and PR creation remain outside this pass.

@@ -28,6 +28,7 @@ Using an explicitly hypothetical VFR trip from Northern California to Wisconsin,
 | Surface analysis | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350) | Chapter 25 |
 | TAFs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=408) | Chapter 27 |
 | Winds and temperatures aloft | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405) | Chapter 27 |
+| Mountain waves, turbulence, and downdrafts | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199) | Chapter 16, pp. 16-9 to 16-11 |
 | SIGMETs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369) | Chapter 26 |
 | AIRMETs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383) | Chapter 26 |
 | Convective Outlook | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=458) | Chapter 27 |

@@ -43,7 +43,7 @@ Exactly. We will build that larger skill around a hypothetical VFR cross-country
 
 **INSTRUCTOR:**
 
-The route also continues the planning context from Episode 12, Weather Hazards and Route Decisions. In that lesson, we asked how fronts, clouds, icing, wind, and convection could affect a route. Here we ask how a pilot gathers the evidence that supports those conclusions.
+The route also continues the planning context from Episode 12, *Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind*. In that lesson, we asked how fronts, clouds, icing, wind, and convection could affect a route. Here we ask how a pilot gathers the evidence that supports those conclusions.
 
 ## [02:40] Put the hypothetical route on the table
 
@@ -171,7 +171,7 @@ Test the Northern California departure.
 
 **INSTRUCTOR:**
 
-Return to the fictional route. Suppose the departure airport’s latest observation is VFR. That is encouraging, but the decision is not finished. Check the trend at that station, nearby observations in the intended departure direction, any special reports, the short-range forecast picture, and the terrain that may disappear into cloud soon after takeoff.
+Return to the fictional route. Suppose the departure airport’s latest observation is VFR. That is encouraging, but the decision is not finished. Check the trend at that station, nearby observations in the intended departure direction, any special reports, and the GFA ceiling, visibility, cloud, and precipitation forecast layers for the departure period. Then compare that weather picture with the terrain along the first segment.
 
 **LEARNER:**
 
@@ -179,7 +179,7 @@ If the airport is VFR, why look beyond it before departure?
 
 **INSTRUCTOR:**
 
-Because the airplane will leave the observation point. A VFR report at the runway does not establish the visibility, ceiling, precipitation, or terrain clearance along the first segment. The departure decision needs a practical escape plan too. If the route ahead is worse than expected, is there room to remain in known conditions, return, land nearby, or delay before entering narrowing terrain and weather choices?
+Because the airplane will leave the observation point. A VFR report at the airport does not establish the visibility, ceiling, or precipitation along the first segment. It also does not tell you whether the conditions farther along that segment leave usable clearance from the terrain. The departure decision needs a practical escape plan too. If the route ahead is worse than expected, is there room to remain in known conditions, return, land nearby, or delay before entering narrowing terrain and weather choices?
 
 ## [13:20] PIREP
 
@@ -259,7 +259,7 @@ Why do the winds deserve special attention in the western terrain segment?
 
 **INSTRUCTOR:**
 
-The same broad wind forecast that changes groundspeed can also signal a more demanding terrain environment. The route decision should combine the forecast wind with terrain orientation, altitude capability, turbulence forecasts and advisories, PIREPs, cloud layers, and the available escape routes. Your CFI can turn that planning picture into practical instruction about local mountain winds, downdrafts, and route choices.
+Wind direction and speed relative to a ridge can support mountain-wave activity, turbulence, and strong downdrafts on the downwind side. That makes the route question more than a groundspeed calculation. Compare the forecast wind with ridge orientation, cloud cover, the airplane’s altitude capability, turbulence forecasts and advisories, relevant PIREPs, and escape routes. Your CFI can turn that planning picture into practical instruction about local mountain winds, downdrafts, and route choices.
 
 ## [19:55] Test the western terrain corridor
 
@@ -277,7 +277,7 @@ What if the direct corridor looks questionable but another route appears better?
 
 **INSTRUCTOR:**
 
-Build the alternate route as a real plan. Give it a time, altitude, fuel consequence, airports, terrain limits, and its own weather evidence. A vague arrow around a colored area is not yet an alternate. If both routes depend on an uncertain gap staying open, the decision may be to delay or stop rather than ask an encounter to reveal whether the forecast was right.
+Build the alternate route as a real plan. Give it a time, altitude, fuel consequence, airports, terrain limits, and its own weather evidence. A vague arrow around a colored area is not yet an alternate. If both routes depend on an uncertain gap staying open, the decision may be to delay or stop rather than let an encounter reveal whether the forecast was right.
 
 ## [21:35] TAF
 
@@ -339,7 +339,7 @@ How should I treat a planned fuel stop on a multi-leg trip?
 
 **INSTRUCTOR:**
 
-Treat its arrival as a destination decision for that leg. Put the estimated arrival time against its TAF when one is available, its surrounding forecasts, and realistic alternatives. If passengers, fuel, or timing change, update the next leg rather than carrying forward yesterday’s assumptions. The Wisconsin destination receives the same treatment, with special attention to significant forecast changes around arrival time.
+Treat its arrival as a destination decision for that leg. Put the estimated arrival time against its TAF when one is available, its surrounding forecasts, and realistic alternatives. If passengers, fuel, or timing change, update the next leg rather than carrying forward earlier assumptions. The Wisconsin destination receives the same treatment, with special attention to significant forecast changes around arrival time.
 
 ## [27:00] Turn the early plan into a departure decision
 
@@ -361,7 +361,7 @@ Write the conclusion and its reasons. For example: the Northern California depar
 
 **INSTRUCTOR:**
 
-Then write the trigger that would change the decision: a ceiling below your personal minimum, a wind or turbulence forecast beyond your experience, a destination trend that removes the alternate, an advisory that intersects the route, or a timing change that moves the flight into a worse forecast period. Personal minimums make those triggers clearer before schedule pressure arrives.
+Then write the trigger that would change the decision: a ceiling below your personal minimum, a wind or turbulence forecast beyond your experience, a destination trend that makes the planned alternate unsuitable and leaves no practical alternate option, an advisory that intersects the route, or a timing change that moves the flight into a worse forecast period. Personal minimums make those triggers clearer before schedule pressure arrives.
 
 ## [28:45] Make the decision explicit
 
@@ -455,7 +455,7 @@ What makes a PIREP relevant?
 
 **LEARNER:**
 
-Its location, time, altitude, aircraft type, and reported condition. No PIREPs does not prove good conditions; it may only mean that no useful report is available.
+Its location, time, altitude, aircraft type, and reported condition. The absence of PIREPs does not prove good conditions; it may only mean that no useful report is available.
 
 **INSTRUCTOR:**
 

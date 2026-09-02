@@ -70,6 +70,11 @@ claims:
     claim_type: FAA guidance
     sources: [awh-winds-aloft, ac-standard-elements]
     script_sections: [Winds and temperatures aloft, Test the western terrain corridor, Retrieval review]
+  - id: mountain-wave-route
+    claim: "Wind direction and speed relative to mountain ridges can support mountain-wave activity, turbulence, rotors, and strong downdrafts on the downwind side, so route decisions must account for terrain and practical escape options."
+    claim_type: FAA guidance and teaching synthesis
+    sources: [awh-mountain-wave, acs-weather-decisions]
+    script_sections: [Winds and temperatures aloft]
   - id: advisories
     claim: "SIGMETs and AIRMETs identify specified en route hazards; pilots should use the advisory text, graphics, valid time, and surrounding evidence together."
     claim_type: FAA guidance

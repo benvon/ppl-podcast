@@ -8,7 +8,7 @@ version: 0.1.0
 published_at: null
 runtime_target_minutes: 38
 runtime_actual_seconds: null
-word_count: 4126
+word_count: 4177
 speakers:
   - instructor
   - learner
@@ -61,7 +61,7 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 9b2cbea1fafc1c8ede982d38ea7821e4c91af576c57ec8048db6701f3280df18
+  pending_script_sha256: 5b7f45d2ae35116d29010d50fea643c30aa747c272557e9012baa3225d06fd37
 release_gates_remaining:
   - Run source-link validation with LLM relevance review and resolve every
     finding.

@@ -16,3 +16,17 @@
 - Mechanically derived `narration.md` from `master-script.md`. The initial narration contains 4,126 words with a 35–40 minute target.
 - Identified one source-review focus: the ACS names Ceiling and Visibility Analysis while the current Aviation Weather Center presents gridded ceiling and visibility analysis within GFA. The draft teaches the current interface without claiming a legacy standalone display is the only presentation.
 - Independent spoken-script review, resolution of its findings, formal source-relevance validation, and human editorial review remain for the lead workflow. No OpenAI relevance call, render, staging operation, commit, push, or PR was performed in this drafting pass.
+
+## 2026-09-02 — independent spoken-script review resolved
+
+- A separate, non-drafting agent reviewed the initial script for grammar, complete thoughts, coherent within-episode callbacks and call-forwards, and first-listen comprehension. All six required findings were resolved.
+- Corrected the listener-facing callback to Episode 12, *Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind*.
+- Clarified that a VFR airport report does not establish visibility, ceiling, or precipitation along the first route segment and does not determine whether later conditions leave usable terrain clearance.
+- Replaced the undefined phrase “more demanding terrain environment” with the causal mountain-wind picture: wind relative to ridges can support mountain waves, turbulence, rotors, and strong downwind-side downdrafts. Added the exact Aviation Weather Handbook source, reciprocal claim, show-note link, and source tag.
+- Rephrased the uncertain-gap decision so a pilot delays or stops rather than letting an encounter reveal whether the forecast was right.
+- Defined the destination-trend trigger as making the planned alternate unsuitable and leaving no practical alternate option.
+- Corrected grammatical agreement in the Retrieval review: “The absence of PIREPs does not prove good conditions.”
+- Applied both optional clarity refinements: named the GFA ceiling, visibility, cloud, and precipitation forecast layers in the departure example, and changed “yesterday’s assumptions” to “earlier assumptions.”
+- Mechanically regenerated `narration.md` after the revisions. The reviewed narration contains 4,177 spoken words with the same 35–40 minute target, and downstream script-review state was reset for the revised script.
+- Formal source-relevance review should scrutinize these five targets: GFA ceiling/visibility interpolation; TAF change-group wording; freezing-level distinction from AIRMET hazard categories; G-AIRMET between snapshots; Convective Outlook scope.
+- No OpenAI relevance call, render, staging operation, commit, push, or PR was performed during this review-resolution pass.

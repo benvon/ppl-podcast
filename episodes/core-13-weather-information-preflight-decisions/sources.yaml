@@ -21,7 +21,7 @@ sources:
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Requires an adequate briefing, correlation of weather information, and sound go, no-go, continue, and divert decisions."
-    supports_claims: [acs-weather-scope, integrated-decision, datalink-augment]
+    supports_claims: [acs-weather-scope, integrated-decision, datalink-augment, mountain-wave-route]
   - id: cfr-preflight-action
     title: 14 CFR 91.103 Preflight action
     publisher: eCFR
@@ -152,6 +152,16 @@ sources:
     verification_date: "2026-09-02"
     relevance: "Describes forecast wind direction, speed, and temperature by location, altitude, and time."
     supports_claims: [winds-aloft]
+  - id: awh-mountain-wave
+    title: Aviation Weather Handbook
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+    locator: "Chapter 16, Mountain Waves, Trapped Lee Waves, and Rotors, pp. 16-9 to 16-11"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Explains how airflow across mountain ridges can produce waves, turbulence, rotors, and strong downdrafts on the downwind side."
+    supports_claims: [mountain-wave-route]
   - id: awh-sigmet
     title: Aviation Weather Handbook
     publisher: FAA

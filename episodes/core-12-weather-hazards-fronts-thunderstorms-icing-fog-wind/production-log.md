@@ -175,3 +175,9 @@
 - Rendered a 35:04 replacement candidate for the corrected, source-validated narration. The renderer reused 66 exact-matching segments and requested new audio only for segments 18, 19, and 64, which contain the approved source-support corrections.
 - The replacement MP3 SHA-256 is `0773c19a3388b881fc5e63d25209a67aa0f7ffe7e03b5c7b375f820d9a7d137e`. Automated analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 68 stitch-boundary checks with no warnings, no clipped samples, and ffprobe validation of 18 embedded MP3 chapters.
 - Focused script-aligned listening QA and manual chapter review are accepted. The prior 34:55 candidate remains superseded. Hosting validation, staging, release, and publication remain pending.
+
+## 2026-09-02 — upslope-fog Retrieval review correction
+
+- Replaced the incomplete Retrieval-review shorthand with the approved, source-complete wording: “Moist, stable air moving uphill can cool adiabatically to its dew point and form upslope fog.”
+- Formal source-relevance run `2c6db98e-41e2-46a6-b076-e6988a0c4bb8`, checked at `2026-09-02T13:35:16.498Z`, passed with 30 FAA sources, 30 listener-facing study links, 37 claims, and 124 immediate source tags. The result is bound to master-script SHA-256 `66a1dfdc25f39a580290bf218eaf6602a23cd8a8337528531c7c6fe3b94c0819`.
+- Rendered a 35:03 replacement candidate, reusing 67 exact-matching segments and rerendering only the short Retrieval-review prompt and its corrected Learner response. Automated WAV/MP3, stitch, clipping, and embedded-chapter checks passed. Focused listening QA and manual chapter review are pending.

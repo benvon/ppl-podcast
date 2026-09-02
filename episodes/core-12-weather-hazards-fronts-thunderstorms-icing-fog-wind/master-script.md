@@ -3,7 +3,7 @@
 **Version:** 0.2.2 — human editorial revision
 **Target runtime:** approximately 25–35 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Source relevance and human editorial approval are complete for the approved script corrections. Audio rendering, listening QA, chapter review, and publication-day validation must be repeated for the new candidate.
+**Production status:** Publication-day source validation identified a Retrieval review source-support follow-up. Release and hosting handoff validation are blocked pending its resolution.
 
 ## [00:00] Opening
 
@@ -728,7 +728,7 @@ Moist air moving over a colder surface supports advection fog.
 [Source: sources.yaml#awh-fog-advection-upslope]
 [Claim type: FAA guidance]
 
-Moist stable air moving uphill supports upslope fog.
+Moist, stable air moving uphill can cool adiabatically to its dew point and form upslope fog.
 
 [Source: sources.yaml#awh-fog-upslope]
 [Claim type: FAA guidance]

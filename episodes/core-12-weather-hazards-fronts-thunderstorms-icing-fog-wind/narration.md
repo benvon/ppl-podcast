@@ -403,7 +403,7 @@ The mechanism controls what evidence of change I need. Clear night, moist surfac
 
 Moist air moving over a colder surface supports advection fog.
 
-Moist stable air moving uphill supports upslope fog.
+Moist, stable air moving uphill can cool adiabatically to its dew point and form upslope fog.
 
 Precipitation entering cold air near its dew point can support frontal fog.
 

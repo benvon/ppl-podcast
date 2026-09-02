@@ -1,6 +1,6 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
-checked_at_utc: 2026-09-02T13:06:36.915Z
+checked_at_utc: 2026-09-02T13:35:16.498Z
 sources_file: episodes/core-12-weather-hazards-fronts-thunderstorms-icing-fog-wind/sources.yaml
 claims_file: episodes/core-12-weather-hazards-fronts-thunderstorms-icing-fog-wind/claim-inventory.yaml
 show_notes_file: episodes/core-12-weather-hazards-fronts-thunderstorms-icing-fog-wind/show-notes.md
@@ -8,7 +8,7 @@ show_notes_manifest_file: episodes/core-12-weather-hazards-fronts-thunderstorms-
 input_sha256:
   sources: 2377df74bf7e3ffabc01dfb8e94dd74092e478a3d7c6bb8edbdac7c9aa22bd88
   claims: b90b2f47e71fbade985894d90306aaf3c247c7907513890dffdad0d5826fd803
-  master_script: 7be98abb068d9c6676bd1eea17c6c4e021e04255ae328dfa60c00631cb736eca
+  master_script: 66a1dfdc25f39a580290bf218eaf6602a23cd8a8337528531c7c6fe3b94c0819
   show_notes: ffb716a1ee338918ad81d8fef24e5ef434569e5f812073e20b89246748dcaaa2
   show_notes_manifest: 4c4677dca3727f833e7e4aeae68c0a73dff63550eca01d7d52652fad963e5d3e
 llm_requested: true
@@ -968,7 +968,7 @@ show_notes_results:
 results:
   - source_id: acs-weather-hazards-decisions
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-09-02T13:05:18.217Z
+    checked_at_utc: 2026-09-02T13:34:05.371Z
     linked_claim_ids:
       - acs-hazards-decision-standard
       - conservative-correlation-framework
@@ -1004,40 +1004,39 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited ACS page expressly covers hazardous weather, go/no-go and
-          continue/divert decisions, personal weather minimums, limitations of
-          weather resources, analysis of weather implications, and correlation
-          of weather information to a go/no-go decision. The source-tagged
-          statements accurately preserve these requirements without adding
-          unsupported operational standards.
+        rationale: The cited ACS page explicitly lists the Weather Information knowledge
+          elements, hazardous-weather risk-management items, weather-resource
+          limitations, personal weather minimums, and the required skills to
+          analyze weather implications and correlate weather information to
+          go/no-go decisions.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from printed page 4 and contains PA.I.C.K3e–K3l,
-            R1–R2, and S1–S3, matching the cited locator.
+          rationale: The excerpt is from printed page 4 and directly contains
+            PA.I.C.K3e–K3l, R1–R2, and S1–S3 as specified by the locator.
         claim_assessments:
           - claim_id: acs-hazards-decision-standard
             verdict: supports
-            rationale: The ACS lists hazardous weather conditions under risk management;
-              requires go/no-go and continue/divert decision-making; and
-              requires analysis of weather implications and correlation to a
-              go/no-go decision. This goes beyond mere identification or recall
-              of weather phenomena.
+            rationale: The page requires knowledge of several hazardous-weather phenomena
+              and risk management for go/no-go and continue/divert decisions,
+              including hazardous weather. S2 and S3 require analysis of
+              conditions and correlation of weather information to a go/no-go
+              decision, establishing more than mere recall.
           - claim_id: conservative-correlation-framework
             verdict: supports
-            rationale: S2 requires analysis of implications of listed weather conditions, S3
+            rationale: S2 requires analysis of the implications of weather conditions, S3
               requires correlating weather information to a go/no-go decision,
-              and R1–R2 address personal weather minimums and the use and
-              limitations of onboard equipment, reports/forecasts, and inflight
-              resources.
+              R1 includes personal weather minimums and continue/divert
+              decisions, and R2 explicitly addresses the use and limitations of
+              onboard equipment, reports/forecasts, and inflight resources.
       usage:
         input_tokens: 3566
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 3563
-        output_tokens: 445
+        output_tokens: 442
         output_tokens_details:
-          reasoning_tokens: 162
-        total_tokens: 4011
+          reasoning_tokens: 161
+        total_tokens: 4008
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1046,7 +1045,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-wind-circulation
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:18.232Z
+    checked_at_utc: 2026-09-02T13:34:05.387Z
     linked_claim_ids:
       - wind-pressure-local-effects
     missing_claim_ids: []
@@ -1082,32 +1081,32 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that atmospheric pressure
-          differences, Coriolis force, friction, and temperature differences
-          near the Earth cause atmospheric motion, and that local conditions,
+          differences, Coriolis force, friction, and near-surface temperature
+          differences cause atmospheric motion, and that local conditions,
           geological features, and other anomalies can change wind direction and
-          speed close to the surface. The cited authored statements preserve
-          these conditions without adding unsupported material.
+          speed close to Earth’s surface. The authored passages preserve these
+          material conditions; “Earth’s rotation” is a plain-language rendering
+          of Coriolis force.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies page 12-7, and the supplied excerpt is from
-            that exact page and contains both the atmospheric-motion explanation
-            and the local-scale limitation.
+          rationale: The excerpt is from cited PDF page 12-7 and contains the relevant
+            material under “Wind and Currents” and “Wind Patterns.”
         claim_assessments:
           - claim_id: wind-pressure-local-effects
             verdict: supports
-            rationale: "The excerpt directly supports both parts of the claim: the listed
-              forces and temperature differences cause atmospheric motion, and
-              local conditions and geological features can alter near-surface
-              wind direction and speed."
+            rationale: "The page directly supports both parts of the claim: the listed
+              forces and temperature differences produce atmospheric motion, and
+              local conditions/geological features can alter near-surface wind
+              direction and speed."
       usage:
         input_tokens: 1498
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1495
-        output_tokens: 188
+        output_tokens: 199
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1686
+        total_tokens: 1697
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1116,7 +1115,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-obstruction-wind
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:18.934Z
+    checked_at_utc: 2026-09-02T13:34:05.876Z
     linked_claim_ids:
       - obstruction-terrain-turbulence
     missing_claim_ids: []
@@ -1152,32 +1151,31 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that ground topography and large
-          buildings break up wind flow and create gusts that rapidly change
-          direction and speed; that obstruction-related turbulence intensity
-          depends on obstacle size and primary wind velocity; and that vigilance
-          is especially important at airports with large buildings or natural
-          obstructions near runways.
+          buildings can break up wind flow and create gusts that rapidly change
+          direction and speed; that turbulence intensity depends on obstacle
+          size and primary wind velocity; and that vigilance is especially
+          important at airports with large buildings or natural obstructions
+          near the runway.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 8 and contains the section “Effect
-            of Obstructions on Wind,” directly addressing the claim.
+          rationale: The cited page is PDF page 12-8 and contains the section titled
+            “Effect of Obstructions on Wind,” matching the locator.
         claim_assessments:
           - claim_id: obstruction-terrain-turbulence
             verdict: supports
-            rationale: "The claim preserves the source’s conditions: relevant obstructions
-              include terrain/topography and buildings, gusts can rapidly vary
-              in direction and speed, turbulence intensity depends on obstacle
-              size and wind velocity, and the hazard is particularly pertinent
-              near runways."
+            rationale: "The claim preserves the source’s material conditions:
+              topography/buildings disturb wind flow, create rapidly changing
+              gusts, turbulence intensity depends on obstacle size and wind
+              velocity, and the hazard is particularly relevant near runways."
       usage:
         input_tokens: 1054
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1051
-        output_tokens: 197
+        output_tokens: 192
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1251
+        total_tokens: 1246
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1186,7 +1184,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-mountain-wave-hazards
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:22.221Z
+    checked_at_utc: 2026-09-02T13:34:06.696Z
     linked_claim_ids:
       - mountain-wave-downdraft-rotor
     missing_claim_ids: []
@@ -1229,27 +1227,27 @@ results:
           and limitations.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 199 (printed page 16-10) and
-            contains both the mountain-wave vertical-motion discussion and
-            section 16.2.5 on persistent horizontal roll vortices.
+          rationale: The cited PDF page is page 16-10 and contains the relevant discussion
+            of mountain-wave vertical motions and persistent horizontal roll
+            vortices (rotors).
         claim_assessments:
           - claim_id: mountain-wave-downdraft-rotor
             verdict: supports
-            rationale: "The excerpt directly supports all material elements: larger-scale
-              updrafts and downdrafts are part of mountain waves; a rotor zone
-              can develop near or below ridge level on the downwind side; and
-              the zone presents potentially severe-to-extreme wind shear and
-              turbulence. The authored wording 'can form' is appropriately no
-              stronger than the source's 'quite common.'"
+            rationale: "The excerpt directly supports both elements: larger-scale updrafts
+              and downdrafts are part of the wave, and a rotor zone can develop
+              near or below ridge level on the downwind side with potentially
+              severe-to-extreme wind shear and turbulence. The authored wording
+              accurately retains the condition that the rotor occurs when
+              mountain waves are present."
       usage:
         input_tokens: 1027
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1024
-        output_tokens: 242
+        output_tokens: 226
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1269
+        total_tokens: 1253
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1258,7 +1256,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: aim-mountain-wave-forecast-limits
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-02T13:05:22.240Z
+    checked_at_utc: 2026-09-02T13:34:06.716Z
     linked_claim_ids:
       - mountain-wave-forecast-variability
     missing_claim_ids: []
@@ -1290,32 +1288,33 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: partially_supports
+        verdict: supports
         confidence: high
-        rationale: The excerpt expressly states that mountain wave activity (MWA) is
-          difficult to forecast and can be highly localized and short lived.
-          However, the authored passage adds that a forecast or report may
-          identify the possibility without revealing the exact strength and
-          location inside a particular pass; that additional inference is not
-          stated in the excerpt.
+        rationale: "The excerpt explicitly states: “MWA is difficult to forecast and can
+          be highly localized and short lived.” The cited authored sentence
+          accurately preserves those conditions. The additional sentence about a
+          forecast or report possibly identifying a general possibility without
+          exact strength/location is not directly stated in this source, but it
+          is not part of the listed claim for this source assessment."
         locator_assessment:
           verdict: supports
-          rationale: The cited AIM section 4-6-6.a.3(a), Mountain Wave Activity, contains
-            the quoted forecast-limitations language.
+          rationale: The cited AIM locator, Section 4-6-6.a.3(a), is the exact subsection
+            containing the stated forecast, localization, and duration language.
         claim_assessments:
           - claim_id: mountain-wave-forecast-variability
             verdict: supports
-            rationale: The excerpt states verbatim that “MWA is difficult to forecast and
-              can be highly localized and short lived.”
+            rationale: Section 4-6-6.a.3(a) expressly says mountain wave activity “is
+              difficult to forecast and can be highly localized and short
+              lived,” matching the claim.
       usage:
         input_tokens: 3083
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 3080
-        output_tokens: 177
+        output_tokens: 199
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 3260
+        total_tokens: 3282
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1324,7 +1323,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-low-level-wind-shear
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:22.283Z
+    checked_at_utc: 2026-09-02T13:34:06.788Z
     linked_claim_ids:
       - wind-shear-performance-change
       - microburst-outflow-sequence
@@ -1362,44 +1361,43 @@ results:
         confidence: high
         rationale: The cited PDF page is the Low-Level Wind Shear section and directly
           defines wind shear, describes its low-level hazard and performance
-          effects, and explains the microburst downdraft/outflow encounter
-          sequence shown in Figure 12-17. The corresponding authored statements
-          preserve the source’s material conditions, including the special
-          hazard near the ground and the ordered headwind–downdraft–tailwind
-          sequence.
+          effects, and explains the microburst downdraft/headwind/tailwind
+          encounter sequence shown in Figure 12-17. The authored passages
+          preserve the relevant conditions and limitations presented on the
+          page.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is extracted from cited PDF page 12-11 and contains the
-            “Low-Level Wind Shear” discussion and Figure 12-17 referenced by the
-            locator.
+          rationale: The cited locator is PDF page 12-11, and the supplied excerpt is page
+            12-11 containing the Low-Level Wind Shear discussion and Figure
+            12-17.
         claim_assessments:
           - claim_id: wind-shear-performance-change
             verdict: supports
-            rationale: The excerpt defines wind shear as a sudden, drastic change in wind
-              speed and/or direction over a very small area; says it can cause
-              abrupt changes to aircraft horizontal movement, rapidly change
-              aircraft performance, and disrupt normal flight attitude; and
-              identifies low-level wind shear as especially hazardous because of
-              proximity to the ground. The authored descriptions retain these
-              conditions and effects.
+            rationale: The excerpt defines wind shear as a sudden, drastic wind-speed and/or
+              direction change over a very small area. It states that it can
+              cause abrupt horizontal movement changes, rapidly change aircraft
+              performance, and is especially hazardous at low level because of
+              proximity to the ground. Its examples explicitly describe airspeed
+              and performance changes as headwind and tailwind components shift.
           - claim_id: microburst-outflow-sequence
             verdict: supports
-            rationale: The excerpt describes a microburst as the most severe low-level
-              wind-shear type, identifies strong downdrafts and hazardous
-              wind-direction changes, and explains that an aircraft may
-              encounter a performance-increasing headwind, then downdrafts, then
-              a rapidly increasing tailwind. Figure 12-17 labels the downdraft
-              and outward outflow. The authored description accurately preserves
-              this sequence.
+            rationale: The excerpt identifies a microburst as the most severe low-level
+              wind-shear type, describes strong downdrafts and hazardous
+              wind-direction changes, and Figure 12-17 labels the downdraft and
+              outflow. It expressly states that an aircraft taking off into a
+              microburst may encounter a performance-increasing headwind, then
+              performance-decreasing downdrafts, followed by a rapidly
+              increasing tailwind; it says an approach encounter involves the
+              same sequence.
       usage:
         input_tokens: 1596
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1593
-        output_tokens: 507
+        output_tokens: 503
         output_tokens_details:
-          reasoning_tokens: 166
-        total_tokens: 2103
+          reasoning_tokens: 162
+        total_tokens: 2099
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1408,7 +1406,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-fronts-air-masses
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:22.320Z
+    checked_at_utc: 2026-09-02T13:34:06.832Z
     linked_claim_ids:
       - air-mass-front-boundary
       - fronts-not-weather-script
@@ -1444,35 +1442,35 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly defines a front as the boundary layer
-          between air masses with different characteristics and states that no
-          two fronts are the same, while generalized weather conditions are
-          associated with specific front types to help identify them.
+        rationale: The cited PDF page directly defines a front as the boundary layer
+          between air masses with different characteristics and explicitly
+          states that no two fronts are the same, while generalized weather
+          conditions associated with each front type can help identify it. The
+          page locator is accurate for both claims.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 12-18 and contains the 'Fronts'
-            section and the beginning of 'Warm Front,' matching the locator.
+          rationale: PDF page 12-18 contains the "Fronts" section and the beginning of the
+            "Warm Front" section, including both cited statements.
         claim_assessments:
           - claim_id: air-mass-front-boundary
             verdict: supports
-            rationale: "The excerpt states: 'The boundary layer between two types of air
-              masses is known as a front.' This preserves the claim's condition
-              that the air masses have different characteristics."
+            rationale: 'The excerpt states: "The boundary layer between two types of air
+              masses is known as a front." This directly supports the claim.'
           - claim_id: fronts-not-weather-script
             verdict: supports
-            rationale: The excerpt states that 'no two fronts are the same' and that
+            rationale: The excerpt states that "no two fronts are the same" and that
               generalized weather conditions associated with a specific front
-              type help identify the front, which supports the claim without
-              presenting the patterns as guaranteed.
+              type help identify the front. This preserves the claim's
+              qualification.
       usage:
         input_tokens: 1206
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1203
-        output_tokens: 226
+        output_tokens: 221
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1432
+        total_tokens: 1427
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1481,7 +1479,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-front-chart-location
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:22.355Z
+    checked_at_utc: 2026-09-02T13:34:06.873Z
     linked_claim_ids:
       - front-chart-surface-location
     missing_claim_ids: []
@@ -1516,31 +1514,31 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly labels Figure 12-24 as depicting
-          weather-front location and states that its symbols are shown on the
-          surface analysis chart. It identifies warm, cold, stationary, and
-          occluded front symbols.
+        rationale: The cited PDF page explicitly labels Figure 12-24 as showing symbols
+          for surface fronts on the surface analysis chart and identifies warm,
+          cold, stationary, and occluded front symbols as depicting
+          weather-front location.
         locator_assessment:
           verdict: supports
-          rationale: "The cited locator is accurate: page 12-19 contains Figure 12-24,
-            titled “Common chart symbology to depict weather front location.”"
+          rationale: The cited locator identifies Chapter 12, Figure 12-24, page 12-19,
+            and that exact figure and page are present in the excerpt.
         claim_assessments:
           - claim_id: front-chart-surface-location
             verdict: supports
-            rationale: The excerpt states that symbols for warm, cold, stationary, and
-              occluded fronts are shown on the surface analysis chart, and
-              Figure 12-24 identifies them as chart symbology depicting
-              weather-front location. The authored statement that the line marks
-              the front’s analyzed surface location preserves the claim.
+            rationale: Figure 12-24 states that it shows symbols for surface fronts on the
+              surface analysis chart and lists warm, cold, stationary, and
+              occluded fronts as common chart symbology depicting weather-front
+              location. The authored statement that the line marks the analyzed
+              surface location preserves the claim's relevant limitation.
       usage:
         input_tokens: 1329
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1326
-        output_tokens: 194
+        output_tokens: 192
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1523
+        total_tokens: 1521
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1549,7 +1547,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-front-surface-signs
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:22.374Z
+    checked_at_utc: 2026-09-02T13:34:06.894Z
     linked_claim_ids:
       - front-multi-cue-recognition
     missing_claim_ids: []
@@ -1584,30 +1582,32 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly states that fronts are usually
-          detectable at the surface by significant temperature gradients,
-          converging winds, and pressure that typically decreases as a front
-          approaches and increases after it passes. This directly supports the
-          listed claim.
+        rationale: The excerpt explicitly states that fronts are usually detectable at
+          the surface through significant temperature gradients, converging
+          winds, and pressure that typically decreases as a front approaches and
+          increases after it passes. This directly supports the listed claim.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 138 and is labeled Chapter 11,
-            page 11-5. It contains the stated surface-front detection criteria.
+          rationale: The cited PDF page is page 11-5, and the excerpt on that page
+            contains the stated surface-detection cues.
         claim_assessments:
           - claim_id: front-multi-cue-recognition
             verdict: supports
-            rationale: "The claim accurately preserves the source’s conditions: the cues
-              apply at the surface, and the pressure pattern is a decrease as
-              the front approaches followed by an increase after passage."
+            rationale: "The claim preserves the source’s conditions: these are surface
+              indicators, and the pressure trend is described relative to
+              approach/passage. The first authored passage accurately attributes
+              the three cues to the handbook. The added statement about
+              agreement in location and time is not presented as sourced to this
+              handbook and does not alter the cited factual cues."
       usage:
         input_tokens: 1122
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1119
-        output_tokens: 172
+        output_tokens: 194
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1294
+        total_tokens: 1316
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1616,7 +1616,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-warm-front
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:25.621Z
+    checked_at_utc: 2026-09-02T13:34:07.444Z
     linked_claim_ids:
       - warm-front-broad-weather
     missing_claim_ids: []
@@ -1649,39 +1649,37 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: partially_supports
+        verdict: supports
         confidence: high
-        rationale: "The cited PDF page directly supports the listed warm-front weather
-          description: warm air advances over and gradually slides over colder
-          air; lifting leads to cooling and condensation; cirriform or
-          stratiform clouds and fog generally form along the frontal boundary
-          before passage; and cumulonimbus clouds/thunderstorms are likely in
-          summer. However, the second authored passage adds precipitation and
-          says these conditions are sought \"into the colder air ahead,\"
-          neither of which is stated on this cited page. The first authored
-          passage preserves the source's material conditions and is supported."
+        rationale: The excerpt on cited PDF page 12-18 directly states that a warm air
+          mass advances over and gradually slides atop cooler air; lifting cools
+          the air and causes condensation; and cirriform or stratiform clouds
+          and fog generally form along the frontal boundary before passage, with
+          cumulonimbus thunderstorms likely in summer. The first authored
+          passage preserves these conditions. The second passage’s added
+          reference to precipitation is not supported by this excerpt, but
+          precipitation is not part of the listed claim.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 12-18 and contains the beginning
-            of the "Warm Front" section described by the locator.
+          rationale: The cited locator identifies the beginning of the “Warm Front”
+            section on page 12-18, and the supplied excerpt from that exact page
+            contains the relevant warm-front discussion.
         claim_assessments:
           - claim_id: warm-front-broad-weather
             verdict: supports
-            rationale: The excerpt expressly states that a warm air mass advances and
-              replaces colder air, slides over the cooler air on a gradual
-              slope, and that lifting causes cooling and condensation. It states
-              that cirriform or stratiform clouds and fog can generally be
-              expected along the frontal boundary before passage, and that
-              cumulonimbus clouds (thunderstorms) are likely in summer.
+            rationale: The source explicitly supports advancing warm air gradually sliding
+              over colder air, lifting and cooling with condensation, cirriform
+              or stratiform clouds and fog along the frontal boundary, and
+              possible summer thunderstorms.
       usage:
         input_tokens: 1168
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1165
-        output_tokens: 269
+        output_tokens: 451
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1437
+          reasoning_tokens: 220
+        total_tokens: 1619
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1690,7 +1688,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-cold-front
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:25.630Z
+    checked_at_utc: 2026-09-02T13:34:07.452Z
     linked_claim_ids:
       - cold-front-concentrated-weather
     missing_claim_ids: []
@@ -1725,34 +1723,37 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly states that cold, dense air slides
-          under warmer air and forces the warmer air aloft. It also states that,
-          for fast-moving cold fronts, ground friction creates a steeper frontal
-          surface, resulting in a very narrow band of weather concentrated along
-          the leading edge of the front. The authored passages preserve these
-          conditions; their added statements about stable versus unstable warm
-          air are also stated on the page.
+        rationale: "The cited PDF page explicitly states that a typical cold front
+          slides beneath warmer air and forces it aloft. It also explains that,
+          for a fast-moving cold front, ground friction retards the front and
+          creates a steeper frontal surface, resulting in a very narrow band of
+          weather concentrated along the leading edge. The authored passages
+          preserve these conditions. The page also supports the passages'
+          stable/unstable-air distinctions: stable warm air may yield overcast
+          and rain behind the front, while unstable warm air may produce
+          scattered thunderstorms and rain showers, with a squall line possible
+          along or ahead of the front."
         locator_assessment:
           verdict: supports
           rationale: The cited locator is PDF page 12-20, and the supplied excerpt from
-            that exact page contains both the Cold Front and Fast-Moving Cold
-            Front discussions supporting the claim.
+            that exact page contains both the "Cold Front" and "Fast-Moving Cold
+            Front" discussions supporting the claim.
         claim_assessments:
           - claim_id: cold-front-concentrated-weather
             verdict: supports
-            rationale: "The excerpt directly supports both elements: advancing cold air
-              slides beneath and lifts warmer air, and a fast-moving cold front
-              can have a steeper frontal surface with weather concentrated in a
-              narrow band."
+            rationale: The excerpt states that cold, dense air slides under warmer air and
+              forces it aloft, and that friction associated with a fast-moving
+              cold front creates a steeper frontal surface and a narrow,
+              concentrated band of weather.
       usage:
         input_tokens: 1687
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1684
-        output_tokens: 284
+        output_tokens: 325
         output_tokens_details:
-          reasoning_tokens: 65
-        total_tokens: 1971
+          reasoning_tokens: 60
+        total_tokens: 2012
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1761,7 +1762,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: phak-stationary-occluded-fronts
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
-    checked_at_utc: 2026-09-02T13:05:25.644Z
+    checked_at_utc: 2026-09-02T13:34:07.465Z
     linked_claim_ids:
       - stationary-front-duration
       - occluded-front-formation
@@ -1801,37 +1802,37 @@ results:
           when the forces of two air masses are relatively equal and states that
           it can influence local weather for days. It also explicitly states
           that an occluded front occurs when a fast-moving cold front catches up
-          with a slow-moving warm front. The authored passages preserve these
-          material conditions. The added statement that an occlusion does not
-          promise one simple cloud or precipitation sequence is not supported by
-          this excerpt, but it is not part of either listed claim.
+          with a slow-moving warm front. The corresponding authored statements
+          preserve these conditions. The additional authored sentence about not
+          promising a single cloud or precipitation sequence is not a factual
+          claim assigned to either listed claim and does not contradict the
+          excerpt.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page 12-21 contains the "Stationary Front" section and
-            the beginning of the "Occluded Front" section, including both
-            claimed statements.
+          rationale: The cited PDF page 12-21 contains the “Stationary Front” section and
+            the beginning of the “Occluded Front” section, including the exact
+            supporting language.
         claim_assessments:
           - claim_id: stationary-front-duration
             verdict: supports
-            rationale: 'The excerpt states: "When the forces of two air masses are
-              relatively equal, the boundary or front that separates them
-              remains stationary" and that it "influences the local weather for
-              days." The authored stationary-front statements retain both
-              conditions.'
+            rationale: The excerpt states that when the forces of two air masses are
+              relatively equal, the boundary remains stationary and influences
+              local weather for days. The authored passages retain both the
+              relative-equality condition and the duration.
           - claim_id: occluded-front-formation
             verdict: supports
-            rationale: 'The excerpt states: "An occluded front occurs when a fast-moving
-              cold front catches up with a slow-moving warm front." The authored
-              passages accurately preserve this formation mechanism.'
+            rationale: The excerpt states that an occluded front occurs when a fast-moving
+              cold front catches up with a slow-moving warm front. The authored
+              passages accurately preserve that formation description.
       usage:
         input_tokens: 1363
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1360
-        output_tokens: 290
+        output_tokens: 279
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1653
+        total_tokens: 1642
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1840,7 +1841,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-front-variability
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.660Z
+    checked_at_utc: 2026-09-02T13:34:07.482Z
     linked_claim_ids:
       - front-transition-zone
     missing_claim_ids: []
@@ -1876,31 +1877,32 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that fronts have vertical
-          structure, do not exist only at the Earth’s surface, and slope over
-          the colder (denser) air mass. The authored passages preserve those
-          material conditions when describing the frontal boundary rising over
-          colder, denser air and extending above the charted surface line.
+          structure and that the front slopes over the colder, denser air mass
+          rather than existing only at Earth’s surface. The authored passages
+          preserve this central concept; their additional operational discussion
+          is not required to be supported by this particular claim/source.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page 11-5 and contains the relevant
-            vertical-structure statement immediately before the warm-front
-            discussion.
+          rationale: The excerpt is from cited PDF page 138 (handbook page 11-5) and
+            contains both the surface-detection discussion and the explicit
+            statement about a front’s vertical structure and slope over colder,
+            denser air.
         claim_assessments:
           - claim_id: front-transition-zone
             verdict: supports
-            rationale: "The excerpt directly states: “Fronts do not exist only at the
-              surface of the Earth; they have a vertical structure in which the
-              front slopes over the colder (denser) air mass.” This fully
-              supports the claim."
+            rationale: "The excerpt directly says: “Fronts do not exist only at the surface
+              of the Earth; they have a vertical structure in which the front
+              slopes over the colder (denser) air mass.” This fully supports the
+              claim."
       usage:
         input_tokens: 1209
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1206
-        output_tokens: 243
+        output_tokens: 249
         output_tokens_details:
-          reasoning_tokens: 49
-        total_tokens: 1452
+          reasoning_tokens: 42
+        total_tokens: 1458
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1909,7 +1911,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-fog-definition-radiation
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.675Z
+    checked_at_utc: 2026-09-02T13:34:07.495Z
     linked_claim_ids:
       - fog-cloud-at-surface
     missing_claim_ids: []
@@ -1944,30 +1946,30 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly defines fog as a visible aggregate of
-          minute water droplets based at the Earth's surface that reduces
-          horizontal visibility to less than 5/8 statute mile (1 km). This
-          directly supports the listed claim with its numerical visibility
-          threshold.
+        rationale: The cited PDF page expressly defines fog as minute water droplets
+          based at the Earth's surface that reduce horizontal visibility to less
+          than 5/8 SM. This directly supports the listed claim, including both
+          its surface-based condition and visibility threshold.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page and contains Section 18.1.1,
-            “Fog,” which states the definition used by the claim.
+          rationale: The locator identifies Chapter 18, page 18-2, and the supplied
+            excerpt from cited PDF page 222 contains section 18.1.1, 'Fog,' with
+            the quoted definition.
         claim_assessments:
           - claim_id: fog-cloud-at-surface
             verdict: supports
-            rationale: The source states that fog is based at the Earth's surface and
-              reduces horizontal visibility to less than 5/8 SM. The claim
-              preserves both material conditions.
+            rationale: The excerpt states that fog is 'based at the Earth's surface' and
+              'reduces horizontal visibility to less than 5/8 SM (1 km).' The
+              claim preserves both material conditions.
       usage:
         input_tokens: 1035
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1032
-        output_tokens: 170
+        output_tokens: 184
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1205
+        total_tokens: 1219
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -1976,7 +1978,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-radiation-fog-factors
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.709Z
+    checked_at_utc: 2026-09-02T13:34:07.547Z
     linked_claim_ids:
       - radiation-fog-ingredients
     missing_claim_ids: []
@@ -2011,33 +2013,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page is the Radiation Fog discussion and explicitly
-          lists the three favoring factors and describes the effects of calm,
-          light, and stronger winds on fog depth, dispersion, and stratus
-          formation.
+        rationale: The cited PDF page explicitly lists the three factors favoring
+          radiation fog and describes the effects of calm, light, and stronger
+          winds on fog depth, dispersion, and stratus-cloud formation.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 18, Radiation Fog factors, page 18-3,
-            which matches cited PDF page 223 and the excerpt heading/content.
+          rationale: The excerpt is from cited PDF page 223 (handbook page 18-3) and
+            contains the Radiation Fog factors and wind-effect discussion
+            identified by the locator.
         claim_assessments:
           - claim_id: radiation-fog-ingredients
             verdict: supports
             rationale: The excerpt states that radiation fog is favored by a shallow surface
               layer of relatively moist air beneath dry air, clear skies, and
-              light surface winds. It says calm winds keep it shallow; winds up
-              to about 5 kt tend to deepen it through slight mixing; and
-              stronger winds disperse it or mix it into a deeper layer with
-              stratus clouds at the mixing-layer top. The authored passage
-              preserves these material conditions in concise form.
+              light surface winds. It says calm wind keeps it shallow; winds up
+              to about 5 kt can deepen it through slight mixing; and stronger
+              winds disperse fog or mix air deeper, forming stratus clouds at
+              the mixing-layer top. The authored passage accurately preserves
+              these conditions in concise form.
       usage:
         input_tokens: 1138
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1135
-        output_tokens: 217
+        output_tokens: 214
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1355
+        total_tokens: 1352
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2046,7 +2048,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-fog-advection-upslope
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.732Z
+    checked_at_utc: 2026-09-02T13:34:07.566Z
     linked_claim_ids:
       - advection-fog-formation
     missing_claim_ids: []
@@ -2086,23 +2088,24 @@ results:
           its dewpoint.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page 18-4 and contains the
-            Advection Fog subsection with the claimed formation mechanism.
+          rationale: The locator identifies Chapter 18, Advection Fog, page 18-4, and the
+            supplied excerpt from cited PDF page 224 contains section
+            18.1.1.1.2, “Advection Fog,” with the stated formation mechanism.
         claim_assessments:
           - claim_id: advection-fog-formation
             verdict: supports
-            rationale: "Both authored passages preserve the material conditions stated in
-              the claim: moist air moves/flows over a colder surface, cools
-              below its dew point, and forms or supports advection fog."
+            rationale: "The source directly supports the claim, including both material
+              conditions: moist air moves over a colder surface and cools to
+              below its dewpoint."
       usage:
         input_tokens: 748
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 151
+        output_tokens: 168
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 899
+        total_tokens: 916
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2111,7 +2114,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-fog-upslope
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.741Z
+    checked_at_utc: 2026-09-02T13:34:07.576Z
     linked_claim_ids:
       - upslope-fog-formation
     missing_claim_ids: []
@@ -2148,28 +2151,29 @@ results:
         confidence: high
         rationale: The cited PDF page explicitly states that upslope fog forms when
           moist, stable air moves up sloping terrain and is adiabatically cooled
-          to or below its dewpoint. Both authored passages preserve the
-          essential formation mechanism; the first paraphrases it, and the
-          second states the core condition more concisely.
+          to or below its dewpoint.
         locator_assessment:
           verdict: supports
-          rationale: "The cited locator is exact: page 18-6 contains section 18.1.1.1.3,
-            “Upslope Fog,” with the stated formation mechanism."
+          rationale: The cited locator is PDF page 226 / handbook page 18-6, which
+            contains section 18.1.1.1.3, “Upslope Fog,” and the quoted formation
+            mechanism.
         claim_assessments:
           - claim_id: upslope-fog-formation
             verdict: supports
-            rationale: The excerpt directly supports the claim, including moist and stable
-              air, movement up sloping terrain, adiabatic cooling, and cooling
-              to or below the dewpoint.
+            rationale: "Both authored passages preserve the material mechanism: moist,
+              stable air moves uphill/up sloping terrain, cools adiabatically to
+              its dewpoint, and forms/produces upslope fog. The source says ‘to
+              or below its dewpoint’; stating ‘to its dew point’ does not
+              materially contradict that condition."
       usage:
-        input_tokens: 955
+        input_tokens: 966
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 190
+        output_tokens: 199
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1145
+        total_tokens: 1165
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2178,7 +2182,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-fog-precipitation-steam
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.754Z
+    checked_at_utc: 2026-09-02T13:34:07.590Z
     linked_claim_ids:
       - frontal-fog-formation
     missing_claim_ids: []
@@ -2214,32 +2218,31 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that when warm, moist air is
-          lifted over a front, clouds and precipitation may form; if the cold
-          air below is near its dewpoint, evaporation or sublimation from the
-          precipitation can saturate that cold air and form frontal
+          lifted over a front, precipitation may form, and if the cold air below
+          is near its dewpoint, evaporation or sublimation from that
+          precipitation can saturate the cold air and form frontal
           (precipitation-induced) fog. Both authored passages preserve the
-          claim’s key conditions.
+          relevant conditions without adding unsupported material.
         locator_assessment:
           verdict: supports
-          rationale: The cited locator is page 18-6, and the supplied excerpt from that
-            exact page contains section 18.1.1.1.4, “Frontal Fog,” with the
-            relevant formation mechanism.
+          rationale: The excerpt is from cited PDF page 226 (handbook page 18-6) and
+            contains section 18.1.1.1.4, “Frontal Fog,” directly addressing the
+            claim.
         claim_assessments:
           - claim_id: frontal-fog-formation
             verdict: supports
-            rationale: The excerpt directly supports that precipitation evaporating or
-              sublimating into cold air below a front, when that air is near its
-              dewpoint, can saturate it and form frontal fog. The authored
-              wording accurately retains these material conditions.
+            rationale: The excerpt directly supports formation of frontal fog through
+              evaporation or sublimation of precipitation into cold air below
+              that is near its dewpoint, saturating that air.
       usage:
         input_tokens: 978
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 217
+        output_tokens: 204
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1195
+        total_tokens: 1182
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2248,7 +2251,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-fog-steam
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.773Z
+    checked_at_utc: 2026-09-02T13:34:07.614Z
     linked_claim_ids:
       - steam-fog-formation
     missing_claim_ids: []
@@ -2284,32 +2287,29 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that when very cold air moves
-          across relatively warm water, moisture evaporates from the surface
-          and, as the rising vapor meets cold air, it immediately recondenses;
-          this phenomenon is steam fog. Both authored passages accurately
-          preserve the core formation mechanism without adding unsupported
-          conditions.
+          across relatively warm water, moisture evaporates from the water
+          surface; as the vapor meets the cold air, it immediately recondenses,
+          producing steam fog. Both authored passages preserve the core
+          formation conditions without adding contradictory limitations.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 18, page 18-7, and the supplied
-            excerpt from cited PDF page 227 contains section 18.1.1.1.5, “Steam
-            Fog,” directly addressing the claim.
+          rationale: The cited locator is the exact PDF page containing section
+            18.1.1.1.5, “Steam Fog,” and directly discusses steam-fog formation.
         claim_assessments:
           - claim_id: steam-fog-formation
             verdict: supports
-            rationale: The excerpt directly supports formation of steam fog from very cold
-              air moving over relatively warm water, evaporation adding
-              moisture, and recondensation of that vapor in the cold air. The
-              cited authored statements retain the relevant conditions.
+            rationale: The excerpt directly supports formation from very cold air moving
+              over relatively warm water, with evaporated moisture recondensing
+              in the cold air.
       usage:
         input_tokens: 816
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 207
+        output_tokens: 176
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1023
+        total_tokens: 992
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2318,7 +2318,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-icing-supercooled-water
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.790Z
+    checked_at_utc: 2026-09-02T13:34:07.623Z
     linked_claim_ids:
       - structural-icing-ingredients
     missing_claim_ids: []
@@ -2353,32 +2353,33 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly states that structural icing occurs when
-          supercooled water droplets strike the airframe and freeze. The
-          authored statements preserve this condition and accurately distinguish
-          subfreezing temperature alone from the need to encounter supercooled
-          liquid water in cloud or precipitation.
+        rationale: The excerpt directly states that structural icing occurs when
+          supercooled water droplets strike the airframe and freeze. It also
+          explains that such droplets are liquid water existing below freezing
+          and freeze readily when agitated/when impacting an aircraft.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page (p. 20-2 / PDF page 244) and
-            contains the relevant sections, “Supercooled Water” and “Structural
-            Icing.”
+          rationale: The cited PDF page is Chapter 20, page 20-2, and contains sections
+            20.2 and 20.3 with the directly relevant definitions of supercooled
+            water and structural icing.
         claim_assessments:
           - claim_id: structural-icing-ingredients
             verdict: supports
-            rationale: The source explicitly says structural icing occurs when supercooled
-              water droplets strike the airframe and freeze. The cited passage's
-              description—liquid water remaining unfrozen below 0°C and freezing
-              upon impact—preserves the claim's material conditions.
+            rationale: "The source states: “Structural icing ... occurs when supercooled
+              water droplets strike the airframe and freeze.” It also
+              establishes that supercooled water is liquid water below its
+              normal freezing point. The authored statements preserve these
+              conditions, including the requirement for supercooled liquid water
+              rather than subfreezing temperature alone."
       usage:
         input_tokens: 1426
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1423
-        output_tokens: 202
+        output_tokens: 210
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1628
+        total_tokens: 1636
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2387,7 +2388,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-icing-factors
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.802Z
+    checked_at_utc: 2026-09-02T13:34:07.637Z
     linked_claim_ids:
       - icing-form-variability
     missing_claim_ids: []
@@ -2424,29 +2425,31 @@ results:
         confidence: high
         rationale: The cited PDF page explicitly states that the meteorological
           quantities most closely related to icing type and severity are, in
-          order of importance, supercooled liquid water content (SLWC),
-          temperature, and droplet size, and that aircraft type/design and
-          airspeed are also important factors. The authored passage accurately
-          preserves those conditions.
+          order of importance, SLWC, temperature, and droplet size, and that
+          aircraft type/design and airspeed are also important factors. The
+          authored passage preserves these conditions without adding unsupported
+          detail.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 245 and contains section 20.3.4,
-            “Icing Factors,” on page 20-3, matching the locator.
+          rationale: The excerpt is from cited PDF page 245, labeled Chapter 20, Icing,
+            page 20-3, and contains section 20.3.4, “Icing Factors,” which
+            directly addresses the claim.
         claim_assessments:
           - claim_id: icing-form-variability
             verdict: supports
-            rationale: The excerpt directly supports every element of the claim, including
-              the listed meteorological factors and the additional importance of
-              aircraft type/design and airspeed.
+            rationale: "The excerpt directly supports every element of the claim: SLWC,
+              temperature, and droplet size are closely related to icing type
+              and severity; aircraft type/design and airspeed are also
+              important."
       usage:
         input_tokens: 1429
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1426
-        output_tokens: 187
+        output_tokens: 203
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1616
+        total_tokens: 1632
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2455,7 +2458,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-icing-fronts-terrain
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.817Z
+    checked_at_utc: 2026-09-02T13:34:07.652Z
     linked_claim_ids:
       - icing-frontal-terrain-distribution
     missing_claim_ids: []
@@ -2490,36 +2493,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page explicitly states that freezing rain and/or
-          freezing drizzle below a front is a favored location for severe clear
-          icing, that icing in freezing precipitation can extend horizontally
-          over a broad area, and that windward-side mountain upward currents
-          support large supercooled water droplets above the freezing level. The
-          source-tagged passages preserve these conditions, including the
-          front-below-freezing-precipitation context and the
-          windward-side/above-freezing-level mountain context.
+        rationale: The cited PDF page directly states that freezing rain and/or freezing
+          drizzle below a front is a favored location for severe clear icing,
+          that icing in freezing precipitation can extend horizontally over a
+          broad area, and that windward-side mountain updrafts support large
+          supercooled water droplets above the freezing level. The authored
+          passages preserve these conditions, including the added condition that
+          frontal lift and upslope flow combine when a front crosses a mountain
+          range.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from cited PDF page 247 (handbook page 20-5), which
-            contains both the 'Icing with Fronts' and 'Icing with Mountains'
-            statements needed for the claim.
+          rationale: The cited locator is PDF page 247 (Chapter 20, page 20-5), and the
+            supplied excerpt from that exact page contains both the
+            frontal-icing and mountain-icing statements.
         claim_assessments:
           - claim_id: icing-frontal-terrain-distribution
             verdict: supports
-            rationale: "The page directly supports each component: favored severe clear
-              icing in freezing rain/drizzle below a front; broad horizontal
-              extent of icing in freezing precipitation; and windward mountain
-              upward currents supporting large supercooled droplets above the
-              freezing level."
+            rationale: "The excerpt directly supports every material element: freezing
+              rain/freezing drizzle below a front as a favored
+              severe-clear-icing location; broad horizontal extent of icing in
+              freezing precipitation; and windward mountain upward currents
+              supporting large supercooled droplets above the freezing level."
       usage:
         input_tokens: 1003
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 277
+        output_tokens: 495
         output_tokens_details:
-          reasoning_tokens: 33
-        total_tokens: 1280
+          reasoning_tokens: 255
+        total_tokens: 1498
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2528,7 +2531,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-icing-effects
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.832Z
+    checked_at_utc: 2026-09-02T13:34:07.675Z
     linked_claim_ids:
       - icing-aerodynamic-system-effects
     missing_claim_ids: []
@@ -2561,38 +2564,38 @@ results:
       status: assessed
       model: gpt-5.6-terra
       assessment:
-        verdict: supports
+        verdict: partially_supports
         confidence: high
-        rationale: The cited PDF page directly states that frost, snow, and ice
-          accumulations on the wing leading edge or upper surface, even when no
-          thicker or rougher than coarse sandpaper, can reduce lift and increase
-          drag. It also explicitly lists exposed frontal surfaces on which ice
-          accumulates, including wings, propeller, windshield, antennas, vents,
-          intakes, and cowlings. The first authored passage preserves these
-          material conditions; its additional general wording about changed
-          airflow and aircraft systems is consistent with, though broader than,
-          the excerpt.
+        rationale: The excerpt directly supports the listed aerodynamic and
+          exposed-surface effects of frost, snow, and ice. However, several
+          authored passages add unsupported qualifications or recommendations,
+          including effects on “several aircraft systems,” a required exterior
+          preflight inspection “each morning at every stopover,” and that the
+          concern is “not merely added weight.”
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page 249, labeled Chapter 20,
-            Icing, page 20-7, and contains the relevant statements.
+          rationale: The cited PDF page is Chapter 20, page 20-7, and contains the quoted
+            discussion of lift/drag degradation from small wing-surface
+            contamination and accumulation on the listed exposed frontal
+            surfaces.
         claim_assessments:
           - claim_id: icing-aerodynamic-system-effects
             verdict: supports
-            rationale: "The excerpt directly supports both elements: small frost/snow/ice
-              roughness on the wing can reduce lift and increase drag, and ice
-              can accumulate on the listed exposed frontal surfaces, including
-              the propeller, windshield, antennas, vents, intakes, and
-              cowlings."
+            rationale: The excerpt states that even frost, snow, or ice no thicker or
+              rougher than coarse sandpaper on a wing leading edge or upper
+              surface can reduce lift and increase drag, and that ice
+              accumulates on every exposed frontal surface, specifically listing
+              wings, propeller, windshield, antennas, vents, intakes, and
+              cowlings.
       usage:
         input_tokens: 1359
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1356
-        output_tokens: 253
+        output_tokens: 237
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1612
+        total_tokens: 1596
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2601,7 +2604,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-thunderstorm-ingredients-lifecycle
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.853Z
+    checked_at_utc: 2026-09-02T13:34:07.685Z
     linked_claim_ids:
       - thunderstorm-three-ingredients
     missing_claim_ids: []
@@ -2641,23 +2644,24 @@ results:
           air, and a lifting mechanism."
         locator_assessment:
           verdict: supports
-          rationale: The cited locator identifies Chapter 22, section 22.2, page 22-2, and
-            the extracted cited PDF page contains that exact section and
-            statement.
+          rationale: The excerpt is from the cited PDF page and contains section 22.2,
+            “Necessary Ingredients for Thunderstorm Cell Formation,” which
+            directly states the claimed ingredients.
         claim_assessments:
           - claim_id: thunderstorm-three-ingredients
             verdict: supports
-            rationale: The excerpt directly supports the full claim, including all three
-              required ingredients.
+            rationale: "The claim preserves all three required ingredients stated in the
+              excerpt: sufficient water vapor, unstable air, and a lifting
+              mechanism."
       usage:
         input_tokens: 924
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 135
+        output_tokens: 144
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1059
+        total_tokens: 1068
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2666,7 +2670,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-thunderstorm-lifecycle
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.864Z
+    checked_at_utc: 2026-09-02T13:34:07.701Z
     linked_claim_ids:
       - thunderstorm-life-cycle
       - gust-front-ahead-parent
@@ -2702,41 +2706,41 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page directly states that the mature stage begins when
-          precipitation reaches the surface, that the resulting downdraft is
-          alongside the updraft, that the dissipating stage is marked by a
-          strong downdraft with subsiding air replacing the updraft, and that
-          surface-spreading downdraft air forms a cool, gusty gust front well in
+        rationale: The cited PDF page explicitly states that the mature stage begins
+          when precipitation reaches the surface, with a strong downdraft
+          developing alongside the updraft; it also states that the dissipating
+          stage is marked by a strong downdraft. The page further states that
+          the mature-stage downdraft spreads along the surface as cool, gusty
+          air and that its leading edge, the gust front, can extend well in
           advance of the parent cell.
         locator_assessment:
           verdict: supports
-          rationale: The supplied excerpt is from cited PDF page 258 (handbook page 22-3)
-            and contains the relevant mature-stage, dissipating-stage, and
-            gust-front statements.
+          rationale: The locator identifies Chapter 22, page 22-3, and cited PDF page 258
+            contains the quoted thunderstorm cell life-cycle discussion,
+            including both the mature/dissipating-stage descriptions and
+            gust-front description.
         claim_assessments:
           - claim_id: thunderstorm-life-cycle
             verdict: supports
-            rationale: The excerpt says the cell transitions to the mature stage when
-              precipitation reaches the surface; precipitation creates a strong
-              downdraft alongside the updraft. It also says the dissipating
-              stage is marked by a strong downdraft and that subsiding air
-              replaces the updraft. The corresponding authored wording preserves
-              these conditions.
+            rationale: "The excerpt directly supports both material elements: transition to
+              mature stage occurs when precipitation reaches the surface and
+              produces a downdraft alongside the updraft; the dissipating stage
+              is marked by a strong downdraft."
           - claim_id: gust-front-ahead-parent
             verdict: supports
-            rationale: The excerpt states that the downdraft spreads along the surface as
-              cool, gusty air and that its leading edge is a gust front
-              extending well in advance of the parent thunderstorm cell. The
-              corresponding authored wording accurately preserves this.
+            rationale: The excerpt directly states that the downdraft spreads along the
+              surface as cool, gusty air, that this leading edge is a gust
+              front, and that it occurs well in advance of the parent
+              thunderstorm cell.
       usage:
         input_tokens: 1376
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1373
-        output_tokens: 386
+        output_tokens: 450
         output_tokens_details:
-          reasoning_tokens: 88
-        total_tokens: 1762
+          reasoning_tokens: 154
+        total_tokens: 1826
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2745,7 +2749,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-thunderstorm-hazards
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.878Z
+    checked_at_utc: 2026-09-02T13:34:07.709Z
     linked_claim_ids:
       - all-thunderstorms-hazardous
       - storm-visual-hazards-uncertain
@@ -2781,35 +2785,39 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited page explicitly states that all thunderstorms have aviation
-          hazards occurring in numerous combinations; not every thunderstorm
-          contains all hazards; and it is not possible to visually determine
-          which hazards a thunderstorm contains. These directly support both
-          listed claims.
+        rationale: The cited PDF page explicitly states that all thunderstorms have
+          aviation hazards occurring in numerous combinations; not every
+          thunderstorm contains all hazards; and it is not possible to visually
+          determine which hazards a thunderstorm contains. Both listed claims
+          are directly supported. The source also supports the first two
+          sentences of each authored passage. The additional statement in the
+          first passage about a planning boundary, visible rain shafts, and
+          colored radar returns is not supported by this excerpt, but it is not
+          part of either listed claim.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from the cited PDF page 22-7 and includes section
-            22.7, “Hazards,” containing the relevant statements.
+          rationale: The cited page is Chapter 22, page 22-7, section 22.7, and contains
+            the quoted general thunderstorm-hazard statements.
         claim_assessments:
           - claim_id: all-thunderstorms-hazardous
             verdict: supports
-            rationale: "The excerpt states: “All thunderstorms have conditions that are
-              hazards to aviation,” that hazards occur “in numerous
-              combinations,” and that “not every thunderstorm contains all
-              hazards.”"
+            rationale: "The excerpt states: 'All thunderstorms have conditions that are
+              hazards to aviation,' that these hazards occur 'in numerous
+              combinations,' and that 'not every thunderstorm contains all
+              hazards.'"
           - claim_id: storm-visual-hazards-uncertain
             verdict: supports
-            rationale: The excerpt states that “it is not possible to visually determine
-              which hazards a thunderstorm contains.”
+            rationale: The excerpt explicitly states that 'it is not possible to visually
+              determine which hazards a thunderstorm contains.'
       usage:
         input_tokens: 1103
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1100
-        output_tokens: 212
+        output_tokens: 267
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1315
+        total_tokens: 1370
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2818,7 +2826,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-thunderstorm-avoidance
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.889Z
+    checked_at_utc: 2026-09-02T13:34:07.729Z
     linked_claim_ids:
       - thunderstorm-avoidance-strategy
       - datalink-strategic-not-tactical
@@ -2854,39 +2862,44 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The cited PDF page contains the FAA's thunderstorm-avoidance
-          guidance, including avoidance as the best policy; prohibitions on
-          takeoff/landing in the face of an approaching thunderstorm and flying
-          under a thunderstorm or anvil; and specific limits and appropriate
-          strategic use of data-linked NEXRAD mosaic imagery.
+        rationale: The cited PDF page is Chapter 22, page 22-21, and contains the stated
+          thunderstorm-avoidance guidance. It explicitly says that avoiding
+          thunderstorms is the best policy; warns not to land or take off in the
+          face of an approaching thunderstorm; and warns against flying under a
+          thunderstorm or its anvil. It also states that data-linked NEXRAD
+          mosaic imagery is not to be used as the sole means for tactical
+          maneuvering through a thunderstorm area, may be 15–20 minutes older
+          than its displayed age, and should be used for strategic route
+          selection to avoid thunderstorms entirely.
         locator_assessment:
           verdict: supports
-          rationale: The excerpt is from Chapter 22, page 22-21, matching the cited
-            locator and PDF page 276. The relevant guidance appears directly on
-            that page.
+          rationale: The locator identifies Chapter 22, “Thunderstorm Avoidance Guidance,”
+            page 22-21, which is the exact extracted PDF page and includes the
+            relevant numbered guidance items.
         claim_assessments:
           - claim_id: thunderstorm-avoidance-strategy
             verdict: supports
             rationale: The excerpt states, “Avoiding thunderstorms is the best policy,” and
-              directs pilots not to land or take off in the face of an
-              approaching thunderstorm, not to fly under a thunderstorm, and not
-              to fly under its anvil.
+              specifically directs pilots not to land or take off in the face of
+              an approaching thunderstorm and not to fly under a thunderstorm or
+              under its anvil. The authored passage preserves these conditions.
           - claim_id: datalink-strategic-not-tactical
             verdict: supports
             rationale: The excerpt says not to use data-linked NEXRAD mosaic imagery as the
-              sole means for tactical maneuvering through a thunderstorm area;
-              states the displayed weather may be 15–20 minutes older than the
-              indicated display age; and directs use of the imagery for
-              strategic route selection to avoid thunderstorms entirely.
+              sole means for tactical path negotiation through a thunderstorm
+              area; says conditions may be 15–20 minutes older than the
+              displayed age; and directs its use for strategic route selection
+              to avoid thunderstorms entirely. The authored passage accurately
+              retains these limitations and uses.
       usage:
         input_tokens: 1643
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1640
-        output_tokens: 289
+        output_tokens: 405
         output_tokens_details:
-          reasoning_tokens: 0
-        total_tokens: 1932
+          reasoning_tokens: 44
+        total_tokens: 2048
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2895,7 +2908,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: awh-thunderstorm-divert-wait
     title: Aviation Weather Handbook
-    checked_at_utc: 2026-09-02T13:05:25.909Z
+    checked_at_utc: 2026-09-02T13:34:07.739Z
     linked_claim_ids:
       - thunderstorm-divert-wait
     missing_claim_ids: []
@@ -2930,32 +2943,30 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: "The cited PDF page contains item 19, which states: “Divert and wait
+        rationale: "The cited PDF page explicitly states in item 19: “Divert and wait
           out the thunderstorms on the ground if unable to navigate around an
-          area of thunderstorms.” This directly supports the listed claim."
+          area of thunderstorms.” This directly supports the listed FAA-guidance
+          claim and the core statements in both authored passages."
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 22, Thunderstorm Avoidance Guidance,
-            item 19, page 22-22. The supplied excerpt is from PDF page 277 and
-            includes item 19 verbatim.
+          rationale: The locator identifies Chapter 22, item 19, page 22-22, and the
+            supplied excerpt from cited PDF page 277 contains that exact item
+            and wording.
         claim_assessments:
           - claim_id: thunderstorm-divert-wait
             verdict: supports
-            rationale: The claim preserves the source condition—being unable to navigate
-              around an area of thunderstorms—and the prescribed
-              action—diverting and waiting out the thunderstorms on the ground.
-              The authored passages' additional scenario-specific implications
-              are not presented as FAA-quoted guidance and do not alter the
-              supported statement.
+            rationale: The claim preserves the source’s condition—being unable to navigate
+              around an area of thunderstorms—and its prescribed
+              action—diverting and waiting on the ground.
       usage:
         input_tokens: 1062
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1059
-        output_tokens: 199
+        output_tokens: 177
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1261
+        total_tokens: 1239
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -2964,7 +2975,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: afh-crosswind-capability
     title: "Airplane Flying Handbook, Chapter 9: Approaches and Landings"
-    checked_at_utc: 2026-09-02T13:05:25.923Z
+    checked_at_utc: 2026-09-02T13:34:07.754Z
     linked_claim_ids:
       - crosswind-components-runway
     missing_claim_ids: []
@@ -2999,36 +3010,36 @@ results:
       assessment:
         verdict: supports
         confidence: high
-        rationale: The excerpt explicitly states that natural wind has a headwind
+        rationale: The cited PDF page expressly states that natural wind has a headwind
           component along the airplane’s ground track and a crosswind component
           90° to that track. It also states that takeoff and landing
           capabilities should be considered in relation to reported surface
           winds and available landing directions. The authored passages preserve
-          these conditions by framing components relative to the selected
-          runway/ground track and available runways.
+          these conditions by applying the components to each selected/available
+          runway and distinguishing along-runway from crosswind components.
         locator_assessment:
           verdict: supports
-          rationale: The cited PDF page is page 9-18 and contains both the discussion of
-            natural-wind headwind/crosswind components and the “Maximum Safe
-            Crosswind Velocities” guidance about reported surface winds and
-            available landing directions.
+          rationale: The excerpt is from the cited PDF page and contains both the
+            discussion of wind components during the after-landing roll and the
+            “Maximum Safe Crosswind Velocities” guidance referenced by the
+            locator.
         claim_assessments:
           - claim_id: crosswind-components-runway
             verdict: supports
-            rationale: "The source directly supports both parts of the claim: wind
-              components are described as along the ground track and at 90° to
-              it, and runway-direction availability plus reported surface winds
-              are identified as considerations for takeoff and landing
+            rationale: "The source directly supports both elements: wind components are
+              described as along the ground track and 90° to it, and pilots are
+              told to consider reported surface wind conditions and available
+              landing directions when evaluating takeoff and landing
               capability."
       usage:
         input_tokens: 1703
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 1700
-        output_tokens: 226
+        output_tokens: 224
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1929
+        total_tokens: 1927
     claim_assessments:
       valid: true
       missing_assessment_ids: []
@@ -3037,7 +3048,7 @@ results:
       unsupported_assessment_ids: []
   - source_id: afh-crosswind-chart-capability
     title: "Airplane Flying Handbook, Chapter 9: Approaches and Landings"
-    checked_at_utc: 2026-09-02T13:05:25.929Z
+    checked_at_utc: 2026-09-02T13:34:07.762Z
     linked_claim_ids:
       - crosswind-component-capability
     missing_claim_ids: []
@@ -3073,33 +3084,31 @@ results:
         verdict: supports
         confidence: high
         rationale: The cited PDF page explicitly states that a crosswind component chart
-          determines headwind and crosswind components for a given situation,
-          and that pilots should determine each airplane’s maximum crosswind
-          component and avoid operations in wind conditions exceeding the
-          airplane’s capability. Both authored passages accurately preserve
-          those conditions without adding unsupported limitations or factual
-          claims.
+          determines the headwind and crosswind components for a given
+          situation, and that pilots should determine each airplane’s maximum
+          crosswind component and avoid operations in winds exceeding the
+          airplane’s capability. Both authored passages preserve those
+          conditions without adding unsupported limitations or claims.
         locator_assessment:
           verdict: supports
-          rationale: The locator identifies Chapter 9, the crosswind-component-chart
-            discussion, and page 9-19. The supplied excerpt is from cited PDF
-            page 19 and contains Figure 9-19 and the relevant accompanying
-            guidance.
+          rationale: The excerpt is from cited PDF page 9-19 and contains the crosswind
+            component chart discussion and the maximum-crosswind-capability
+            guidance identified by the locator.
         claim_assessments:
           - claim_id: crosswind-component-capability
             verdict: supports
-            rationale: "The excerpt directly supports both parts: using the chart to
-              determine wind components and avoiding wind conditions that exceed
-              the airplane’s crosswind capability."
+            rationale: "The page expressly supports both elements: use of a crosswind
+              component chart to determine wind components and avoidance of
+              operations exceeding the airplane’s crosswind capability."
       usage:
         input_tokens: 837
         input_tokens_details:
           cache_write_tokens: 0
           cached_tokens: 0
-        output_tokens: 194
+        output_tokens: 183
         output_tokens_details:
           reasoning_tokens: 0
-        total_tokens: 1031
+        total_tokens: 1020
     claim_assessments:
       valid: true
       missing_assessment_ids: []

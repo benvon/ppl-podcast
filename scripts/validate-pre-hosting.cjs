@@ -146,7 +146,9 @@ function consolidatedProductionStateErrors({ episode, audioManifest, hosting, ma
   if (!usesConsolidatedProductionState(episode)) return [];
   const errors = [];
   expect(errors, audioManifest.status === undefined && audioManifest.publication_day_validation === undefined && audioManifest.chapter_markers?.status === undefined, "audio-manifest.yaml must not duplicate episode.yaml production state.");
+  expect(errors, audioManifest.required_before_release === undefined, "audio-manifest.yaml must not retain legacy release-gate records.");
   expect(errors, hosting.handoff_status === undefined, "hosting-metadata.yaml must not duplicate episode.yaml production state.");
+  expect(errors, hosting.release_readiness === undefined, "hosting-metadata.yaml must not retain legacy release-gate records.");
   expect(errors, !/^\*\*Production status:\*\*/im.test(masterScript), "master-script.md must not duplicate episode.yaml production state.");
   return errors;
 }

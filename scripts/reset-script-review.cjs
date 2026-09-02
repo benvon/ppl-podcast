@@ -57,6 +57,7 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   delete audio.status;
   delete audio.publication_day_validation;
   delete audio.reason;
+  delete audio.required_before_release;
   audio.current_candidate_render = null;
   if (audio.chapter_markers) {
     delete audio.chapter_markers.status;
@@ -74,6 +75,7 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   // A reset migrates a legacy package to the one-file production-state
   // contract before it begins its next revision.
   delete hosting.handoff_status;
+  delete hosting.release_readiness;
   writeYaml(episodePathname, episode);
   writeYaml(audioPathname, audio);
   writeYaml(hostingPathname, hosting);

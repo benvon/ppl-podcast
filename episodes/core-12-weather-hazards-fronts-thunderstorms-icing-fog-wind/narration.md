@@ -107,7 +107,11 @@ Correct. For the planned mountain corridor, compare winds aloft and the forecast
 
 That uncertainty makes an escape option part of the plan. Before the route enters narrower or higher terrain, identify a decision point where the airplane can still stop at the corridor-entry airport or turn back toward open terrain without continuing through the pass. If the observations, forecasts, pilot reports, or wind cues no longer support the planned margin, use that option early. Do not press farther into the corridor to discover how strong a downdraft or rotor really is.
 
-If moist, stable air is being pushed up sloping terrain farther east, the rising air can cool to its dew point and produce upslope fog. That mechanism can turn a broad terrain crossing or a High Plains stop into a ceiling-and-visibility problem rather than a small patch of fog at one airport.
+If moist, stable air is being pushed up sloping terrain farther east, the rising air can cool to its dew point and produce upslope fog.
+
+Fog is based at the surface and reduces horizontal visibility.
+
+For this hypothetical route, compare the planned mountain corridor and western-Plains stopover separately, then connect the forecast and observations to a corridor, stopover, or departure-time decision.
 
 The route choices must therefore be named. Using the planned mountain corridor only while it stays outside the cloud and strong-wind area, stopping at the corridor's entry airport before higher terrain, or waiting there for a later weather window are different plans. Calling all three “alternatives” hides the decision. A real briefing must establish whether that corridor, stop, and departure time preserve terrain, cloud, wind, fuel, and daylight margins.
 
@@ -419,7 +423,7 @@ Terrain and obstructions can produce gusts or turbulence close to a runway.
 
 For the selected runway, I separate the reported wind into an along-runway headwind or tailwind component and an across-runway crosswind component.
 
-I use the component chart and compare the result with the airplane's capability.
+I use the component chart, compare the result with the airplane's capability, and avoid conditions that exceed it.
 
 Wind shear is a rapid change in wind speed or direction across a short distance. It can abruptly change airspeed, performance, and flightpath near the ground, so a wind-shear or microburst alert changes the takeoff or landing decision.
 

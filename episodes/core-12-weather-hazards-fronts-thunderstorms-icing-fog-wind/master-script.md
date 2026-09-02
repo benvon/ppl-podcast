@@ -3,7 +3,7 @@
 **Version:** 0.2.2 — human editorial revision
 **Target runtime:** approximately 25–35 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Listening QA and chapter review are complete. Publication-day source validation identified one source-support follow-up; release and hosting handoff validation are blocked pending its resolution.
+**Production status:** Source relevance and human editorial approval are complete for the approved script corrections. Audio rendering, listening QA, chapter review, and publication-day validation must be repeated for the new candidate.
 
 ## [00:00] Opening
 
@@ -160,10 +160,20 @@ That uncertainty makes an escape option part of the plan. Before the route enter
 [Source: sources.yaml#acs-weather-hazards-decisions]
 [Claim type: FAA regulatory standard and teaching scenario]
 
-If moist, stable air is being pushed up sloping terrain farther east, the rising air can cool to its dew point and produce upslope fog. That mechanism can turn a broad terrain crossing or a High Plains stop into a ceiling-and-visibility problem rather than a small patch of fog at one airport.
+If moist, stable air is being pushed up sloping terrain farther east, the rising air can cool to its dew point and produce upslope fog.
 
 [Source: sources.yaml#awh-fog-upslope]
 [Claim type: FAA guidance and teaching explanation]
+
+Fog is based at the surface and reduces horizontal visibility.
+
+[Source: sources.yaml#awh-fog-definition-radiation]
+[Claim type: FAA guidance]
+
+For this hypothetical route, compare the planned mountain corridor and western-Plains stopover separately, then connect the forecast and observations to a corridor, stopover, or departure-time decision.
+
+[Source: sources.yaml#acs-weather-hazards-decisions]
+[Claim type: FAA regulatory standard and teaching scenario]
 
 The route choices must therefore be named. Using the planned mountain corridor only while it stays outside the cloud and strong-wind area, stopping at the corridor's entry airport before higher terrain, or waiting there for a later weather window are different plans. Calling all three “alternatives” hides the decision. A real briefing must establish whether that corridor, stop, and departure time preserve terrain, cloud, wind, fuel, and daylight margins.
 
@@ -764,7 +774,7 @@ For the selected runway, I separate the reported wind into an along-runway headw
 [Source: sources.yaml#afh-crosswind-capability]
 [Claim type: FAA guidance]
 
-I use the component chart and compare the result with the airplane's capability.
+I use the component chart, compare the result with the airplane's capability, and avoid conditions that exceed it.
 
 [Source: sources.yaml#afh-crosswind-chart-capability]
 [Claim type: FAA guidance]

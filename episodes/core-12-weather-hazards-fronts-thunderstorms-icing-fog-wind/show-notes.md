@@ -2,7 +2,7 @@
 
 **Episode:** core-12
 **Version:** 0.2.2
-**Source verification:** The release package has an identified source-support follow-up before publication. The source and link record will be refreshed before release.
+**Source verification:** FAA sources, exact locators, listener-facing study links, and source-tagged spoken passages are complete; source-relevance review is complete for version 0.2.2, and human editorial approval is recorded.
 
 ## In this episode
 

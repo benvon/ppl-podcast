@@ -161,3 +161,11 @@
 
 - A refreshed publication-day review run `b2e5cdcd-35aa-4baf-a521-bdb91139fc0a` completed current source and link checks but failed closed on `upslope-fog-formation`. The cited Aviation Weather Handbook passage fully supports the physical formation mechanism, but not the authored statement that it can turn a broad terrain crossing or High Plains stop into a ceiling-and-visibility problem.
 - Release, hosting validation, and staging are blocked until that spoken passage is narrowed to the cited mechanism or separated into source-pure passages with an additional exact source for the operational implication. The accepted audio candidate remains preserved but cannot be released until any resulting script and source-validation work is complete.
+
+## 2026-09-02 — publication-day source-support follow-up resolved
+
+- Incorporated the approved upslope-fog correction as three source-pure spoken paragraphs: the Aviation Weather Handbook supports the upslope-formation mechanism, the handbook supports fog as a surface-based visibility reduction, and the ACS supports the route-segment planning decision. Updated the reciprocal claim section mappings accordingly.
+- Incorporated the approved crosswind-capability correction in Retrieval review: the learner now compares the charted component with airplane capability and avoids conditions that exceed it. The source is the existing Airplane Flying Handbook crosswind-capability passage.
+- Re-ran the required script-review reset and mechanically regenerated `narration.md`. The user approved both precise spoken corrections.
+- Final publication-day source-relevance run `6d2c6437-11d9-41f9-866f-27800e0f4cd5`, checked at `2026-09-02T13:06:36.915Z`, passed with 30 FAA sources, 30 listener-facing study links, 37 claims, and 124 immediate source tags. It has no unresolved citation-target, link, locator, claim, show-note, or source-tagged-passage findings, and it is bound to master-script SHA-256 `7be98abb068d9c6676bd1eea17c6c4e021e04255ae328dfa60c00631cb736eca`.
+- Recorded human editorial approval against that exact master-script hash and verified the renderer’s 69-segment plan without sending an audio request. The prior audio candidate remains superseded; replacement audio, listening QA, chapter review, hosting validation, staging, release, and publication remain pending.

@@ -414,13 +414,25 @@ source_verification:
   verified_at_utc: null
   verifier: null
 audio:
-  master: null
-  published_mp3: null
-  transcript: narration.md
+  manifest: audio-manifest.yaml
+  status: not_rendered
+  chapter_markers: pending_render
+  publication_day_validation: pending
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: draft
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
 ```
+
+`episode.yaml` is the only mutable production-status authority. The top-level
+`status` describes the lifecycle, while `source_verification`, `review`,
+`audio`, and `hosting` record their specific gates. `audio-manifest.yaml` and
+`hosting-metadata.yaml` hold evidence and listener-facing release facts, not
+duplicate workflow status. `master-script.md` is speech metadata and does not
+carry a production-status line.
 
 ## 10. Production stages and release gates
 

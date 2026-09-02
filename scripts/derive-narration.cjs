@@ -4,6 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 
+// Production status remains here solely to strip it from legacy scripts.
 const METADATA_LINE = /^\*\*(?:Version|Target runtime|Speakers|Production status):/;
 const SOURCE_TAG_LINE = /^\[(?:Source|Claim type):/;
 

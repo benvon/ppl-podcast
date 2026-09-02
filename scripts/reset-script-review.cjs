@@ -8,6 +8,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 
 class ScriptReviewStateError extends Error {}
 
@@ -21,6 +22,10 @@ function readYaml(filePath) {
 
 function writeYaml(filePath, value) {
   fs.writeFileSync(filePath, YAML.stringify(value), "utf8");
+}
+
+function removeLegacyProductionStatus(script) {
+  return script.replace(/^\*\*Production status:\*\*.*(?:\r?\n)?/gim, "");
 }
 
 function resolveEpisode(episodePath) {
@@ -37,7 +42,11 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   const episodePathname = path.join(resolved, "episode.yaml");
   const audioPathname = path.join(resolved, "audio-manifest.yaml");
   const hostingPathname = path.join(resolved, "hosting-metadata.yaml");
-  const scriptSha256 = sha256Text(fs.readFileSync(path.join(resolved, "master-script.md"), "utf8"));
+  const masterScriptPathname = path.join(resolved, "master-script.md");
+  const originalScript = fs.readFileSync(masterScriptPathname, "utf8");
+  const migratedScript = removeLegacyProductionStatus(originalScript);
+  if (migratedScript !== originalScript) fs.writeFileSync(masterScriptPathname, migratedScript, "utf8");
+  const scriptSha256 = sha256Text(migratedScript);
   const episode = readYaml(episodePathname);
   const audio = readYaml(audioPathname);
   const hosting = readYaml(hostingPathname);
@@ -46,23 +55,29 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   if (candidate?.sha256 && !audio.superseded_candidates?.some((entry) => entry.sha256 === candidate.sha256)) {
     audio.superseded_candidates = [...(audio.superseded_candidates || []), { ...candidate, superseded_reason: reason }];
   }
-  audio.status = "not_rendered";
-  audio.publication_day_validation = "pending";
-  audio.reason = `${reason} Render, listening QA, chapter review, and publication-day validation must be repeated.`;
+  delete audio.status;
+  delete audio.publication_day_validation;
+  delete audio.reason;
+  delete audio.required_before_release;
   audio.current_candidate_render = null;
   if (audio.chapter_markers) {
-    audio.chapter_markers.status = "pending_render";
+    delete audio.chapter_markers.status;
     audio.chapter_markers.audio_sha256 = null;
     audio.chapter_markers.review_page = null;
   }
 
   episode.status = "editorial_review_pending";
   episode.runtime_actual_seconds = null;
-  episode.audio = { ...(episode.audio || {}), status: "not_rendered" };
+  episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_RESET];
+  episode.audio = { ...(episode.audio || {}), status: "not_rendered", publication_day_validation: "pending", chapter_markers: "pending_render" };
   episode.source_verification = { ...(episode.source_verification || {}), status: "source_relevance_pending", verified_at_utc: null, relevance_review: "pending" };
   episode.review = { ...(episode.review || {}), editorial_status: "reapproval_required", editorial_script_sha256: null, pending_script_sha256: scriptSha256 };
 
-  hosting.handoff_status = "pending_script_review";
+  episode.hosting = { ...(episode.hosting || {}), handoff_status: "pending_script_review" };
+  // A reset migrates a legacy package to the one-file production-state
+  // contract before it begins its next revision.
+  delete hosting.handoff_status;
+  delete hosting.release_readiness;
   writeYaml(episodePathname, episode);
   writeYaml(audioPathname, audio);
   writeYaml(hostingPathname, hosting);
@@ -76,6 +91,7 @@ function approveScriptReview({ episodePath }) {
   if (episode.source_verification?.relevance_review !== "complete") throw new ScriptReviewStateError("Source-relevance review must be complete before recording editorial approval.");
   const scriptSha256 = sha256Text(fs.readFileSync(path.join(resolved, "master-script.md"), "utf8"));
   episode.status = "source_relevance_review_complete";
+  episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_APPROVAL];
   episode.review = { ...(episode.review || {}), editorial_status: "script_approved", editorial_script_sha256: scriptSha256 };
   delete episode.review.pending_script_sha256;
   writeYaml(episodePathname, episode);
@@ -110,4 +126,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { ScriptReviewStateError, approveScriptReview, resetScriptReview, sha256Text };
+module.exports = { ScriptReviewStateError, approveScriptReview, removeLegacyProductionStatus, resetScriptReview, sha256Text };

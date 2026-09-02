@@ -51,6 +51,17 @@ general prerequisite for a public study episode. It does not replace the
 required source verification, editorial controls, human listening QA, or the
 disclosure that the project is not flight instruction.
 
+## Production-state authority
+
+`episode.yaml` is the single authority for an episode's mutable workflow state.
+Its top-level lifecycle state plus its `source_verification`, `review`,
+`audio`, and `hosting` fields record the current production gates.
+`audio-manifest.yaml` records the candidate audio's identity and quality facts;
+`hosting-metadata.yaml` records listener-facing release data and provenance;
+and `master-script.md` contains only listener-facing script metadata. Do not
+duplicate production status in those files. Older episode packages may retain
+historical fields, but a future revision uses the current contract.
+
 ## Create an episode package
 
 ```sh

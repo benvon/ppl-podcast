@@ -7,10 +7,10 @@ const path = require("path");
 const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
+const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, sameStringList } = require("./production-state-contract.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
-const APPROVED_DRAFT_PRODUCTION_STATUS = "Script approval and source-relevance review are complete; audio has not been rendered and release work remains pending.";
 const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
 const PACKAGE_SHAPE_COMPATIBLE_STATUSES = new Set(["reviewed_draft", "source_relevance_review_complete", "audio_listening_qa_complete", "ready_for_hosting_pr"]);
 
@@ -139,6 +139,28 @@ function hasResolvedIndependentSpokenScriptReview(productionLog) {
   });
 }
 
+function usesConsolidatedProductionState(episode) {
+  return episode.audio?.publication_day_validation !== undefined || episode.hosting?.handoff_status !== undefined;
+}
+
+function consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }) {
+  if (!usesConsolidatedProductionState(episode)) return [];
+  const errors = [];
+  expect(errors, audioManifest.status === undefined && audioManifest.publication_day_validation === undefined && audioManifest.chapter_markers?.status === undefined, "audio-manifest.yaml must not duplicate episode.yaml production state.");
+  expect(errors, audioManifest.required_before_release === undefined, "audio-manifest.yaml must not retain legacy release-gate records.");
+  expect(errors, hosting.handoff_status === undefined, "hosting-metadata.yaml must not duplicate episode.yaml production state.");
+  expect(errors, hosting.release_readiness === undefined, "hosting-metadata.yaml must not retain legacy release-gate records.");
+  expect(errors, !/^\*\*Production status:\*\*/im.test(masterScript), "master-script.md must not duplicate episode.yaml production state.");
+  return errors;
+}
+
+function pendingAudioReleaseGateErrors(episode) {
+  if (!usesConsolidatedProductionState(episode) || episode.audio?.status !== "not_rendered") return [];
+  const errors = [];
+  expect(errors, sameStringList(episode.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_APPROVAL), "episode.yaml must list the canonical remaining audio, chapter-review, publication-day, and hosting gates after script approval.");
+  return errors;
+}
+
 function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   const errors = [];
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
@@ -162,14 +184,14 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   return errors;
 }
 
-function validateDraftPackageShape({ episodePath, paths, episode, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
+function validateDraftPackageShape({ episodePath, paths, episode, audioManifest, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
   const errors = [];
   expect(errors, PACKAGE_SHAPE_COMPATIBLE_STATUSES.has(episode.status), "episode.yaml status must be a recognized package-shape state.");
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
   expect(errors, episode.review?.editorial_script_sha256 === sha256Text(masterScript), "editorial approval must be bound to the current master-script.md bytes.");
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
-  const productionStatus = masterScript.match(/^\*\*Production status:\*\*\s*(.+)$/im)?.[1] || "";
-  expect(errors, Boolean(productionStatus) && !/(?:editorial|source-relevance) review\s+(?:is|are)\s+pending\b/i.test(productionStatus), "master-script.md production status must not leave completed editorial or source review pending.");
+  errors.push(...consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }));
+  errors.push(...pendingAudioReleaseGateErrors(episode));
   expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode and version must match episode.yaml.");
   expect(errors, showNotesRecordCompletedSourceReview(showNotes, episode.version), "show-notes.md must record the completed source review for the current version.");
   expect(errors, researchPacket.includes("Human editorial review and script approval are complete."), "research-packet.md must record completed human editorial review.");
@@ -207,20 +229,29 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
   const researchPacket = fs.readFileSync(paths["research-packet.md"], "utf8");
   const productionLog = fs.readFileSync(paths["production-log.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
-  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, paths, episode, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist });
+  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, paths, episode, audioManifest, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist });
   const candidate = audioManifest.current_candidate_render || {};
   let releaseIdentityRecord;
   try { releaseIdentityRecord = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
   catch (error) { errors.push(`episode release identity is invalid: ${error.message}`); }
 
+  const consolidatedState = usesConsolidatedProductionState(episode);
   expect(errors, episode.status === "ready_for_hosting_pr", "episode.yaml status must be ready_for_hosting_pr.");
-  expect(errors, audioManifest.status === "candidate_rendered_listening_qa_approved", "audio-manifest.yaml status must record approved listening QA.");
-  // Existing release packages predate this convenience record. Their bound
-  // source-validation report, publication date, and completed release gates
-  // remain the authoritative proof of publication-day validation below.
-  expect(errors, audioManifest.publication_day_validation === undefined || audioManifest.publication_day_validation === "passed", "audio-manifest publication_day_validation must be passed when it is recorded.");
-  expect(errors, !/\bpublication-day validation\s+(?:remains|is)\s+(?:pending|incomplete)\b/i.test(audioManifest.reason || ""), "audio-manifest reason must not contradict completed publication-day validation.");
-  expect(errors, hosting.handoff_status === "ready_for_hosting_pr", "hosting-metadata.yaml handoff_status must be ready_for_hosting_pr.");
+  if (consolidatedState) {
+    expect(errors, episode.audio?.status === "candidate_rendered_listening_qa_approved", "episode.yaml audio status must record approved listening QA.");
+    expect(errors, episode.audio?.publication_day_validation === "passed", "episode.yaml audio publication-day validation must be passed.");
+    expect(errors, episode.audio?.chapter_markers === "embedded_and_ffprobe_validated", "episode.yaml audio chapter-marker validation must be complete.");
+    expect(errors, episode.hosting?.handoff_status === "ready_for_hosting_pr", "episode.yaml hosting handoff status must be ready for the hosting PR.");
+    errors.push(...consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }));
+  } else {
+    // Released packages before the consolidated contract remain verifiable.
+    // Any new script revision runs episode:script-review --reset, which
+    // migrates it to the consolidated state before the next release.
+    expect(errors, audioManifest.status === "candidate_rendered_listening_qa_approved", "legacy audio-manifest.yaml status must record approved listening QA.");
+    expect(errors, audioManifest.publication_day_validation === undefined || audioManifest.publication_day_validation === "passed", "legacy audio-manifest publication-day validation must be passed when recorded.");
+    expect(errors, audioManifest.chapter_markers?.status === "embedded_and_ffprobe_validated", "legacy audio manifest must record embedded, ffprobe-validated chapters.");
+    expect(errors, hosting.handoff_status === "ready_for_hosting_pr", "legacy hosting-metadata handoff status must be ready for the hosting PR.");
+  }
   expect(errors, episode.audio?.manifest === "audio-manifest.yaml", "episode.yaml must reference audio-manifest.yaml.");
   expect(errors, episode.hosting?.metadata === "hosting-metadata.yaml", "episode.yaml must reference hosting-metadata.yaml.");
   expect(errors, episode.public_notes === "show-notes.md", "episode.yaml must reference show-notes.md.");
@@ -230,7 +261,6 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before final pre-hosting validation.");
   expect(errors, episode.review?.editorial_script_sha256 === sha256Text(masterScript), "editorial approval must be bound to the current master-script.md bytes before final pre-hosting validation.");
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
-  expect(errors, /\*\*Production status:\*\*.*hosting/i.test(masterScript), "master-script.md production status must reflect the ready-for-hosting handoff.");
   try {
     expect(errors, deriveNarration(masterScript) === narration, "narration.md must be the current derivative of master-script.md.");
   } catch (error) {
@@ -250,7 +280,6 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
   const candidateSha256 = validSha256(candidate.sha256);
   expect(errors, Boolean(candidateSha256), "audio manifest must record a valid candidate MP3 SHA-256.");
   expect(errors, candidate.script_version === episode.version, "audio manifest script version must match episode.yaml.");
-  expect(errors, audioManifest.chapter_markers?.status === "embedded_and_ffprobe_validated", "audio manifest must record embedded, ffprobe-validated chapters.");
   expect(errors, audioManifest.chapter_markers?.audio_sha256 === candidateSha256, "chapter-marker checksum must match the candidate MP3 checksum.");
   expect(errors, Number.isFinite(candidate.duration_seconds) && candidate.duration_seconds > 0, "audio manifest must record a positive candidate duration.");
   expect(errors, release.duration === durationDisplay(candidate.duration_seconds), "hosting duration must match the approved audio duration rounded to the nearest second.");
@@ -326,4 +355,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { APPROVED_DRAFT_PRODUCTION_STATUS, DRAFT_PACKAGE_SHAPE, PreHostingValidationError, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, validateDraftPackageShape, validatePreHosting };
+module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };

@@ -3,6 +3,32 @@ status: not_rendered
 publication_day_validation: pending
 current_candidate_render: null
 superseded_candidates: []
+opening_preview:
+  script_version: 0.2.2
+  rendered_at_utc: 2026-09-02T00:26:26.982Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 12
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: audio-artifacts/core-12-20260902T002617Z.preview-001-005.mp3
+  lossless_master: audio-artifacts/core-12-20260902T002617Z.preview-001-005.master.wav
+  render_manifest: audio-artifacts/core-12-20260902T002617Z.preview-001-005.render-manifest.json
+  audio_quality_report: audio-artifacts/core-12-20260902T002617Z.preview-001-005.audio-quality.json
+  segment_work_dir: audio-artifacts/core-12-realtime-20260901T234131Z.segments
+  duration_seconds: 166.87
+  duration_display: 2:47
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: 84b272530c025eff9a777d4a24c55198fa0d85f79f48b9c6aeaaa857e9aa7952
+  included_segments: "1-5: Opening, Disclaimer, Podcast introduction, and the first ACS teaching segment"
+  front_matter_validation: The accepted opening preview contains the Opening and Disclaimer; the renderer confirms that the Disclaimer immediately follows the Opening.
+  music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under Ballad; 10-second intro lead, 5-second continuation, 0.5-second fade."
+  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, no stitch-boundary discontinuity warnings, and no clipped samples. Human opening QA accepted after the corrected music mix was heard.
 chapter_markers:
   status: pending_render
   source: master-script.md section headings

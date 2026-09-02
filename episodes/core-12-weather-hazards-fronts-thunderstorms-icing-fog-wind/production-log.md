@@ -133,3 +133,9 @@
 
 - Human editorial approval was recorded against the source-validated master-script SHA-256 `134df285c8728d4c85cf76f1cb5bd24809306a9e091cf20690aaafdc627d9f3b` after the renewed formal source-relevance review passed.
 - The next production gate is reusable opening audio QA, followed by the complete audio render and human listening and chapter-marker reviews.
+
+## 2026-09-02 — opening audio QA accepted
+
+- Rendered reusable segments 1-5 with Marin, Cedar, and Ballad. The initial dry assembly omitted the established intro music bed; it was not accepted and was replaced without re-rendering the unchanged voice segments.
+- The accepted music-mixed preview is `audio-artifacts/core-12-20260902T002617Z.preview-001-005.mp3` (SHA-256 `84b272530c025eff9a777d4a24c55198fa0d85f79f48b9c6aeaaa857e9aa7952`). It uses the licensed bed at -24 dB base and -30 dB under Ballad, with a 10-second lead, 5-second continuation, and 0.5-second fade.
+- Automated audio analysis passed with no clipped samples or stitch warnings. Human opening QA accepted the corrected mix and required notice. The rendered voice segments are reusable for the full candidate.

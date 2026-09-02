@@ -44,6 +44,15 @@ const PRONUNCIATION_TRANSFORMS = Object.freeze({
   ASOS: "AY-sohs",
   AWOS: "AY-wahs",
   ATIS: "AY-tis",
+  TAF: "taf",
+  TAFs: "tafs",
+  SPECI: "speh-SEE",
+  SPECIs: "speh-SEEs",
+  SIGMET: "sig MET",
+  SIGMETs: "sig METs",
+  AIRMET: "air MET",
+  AIRMETs: "air METs",
+  "1800wxbrief.com": "one eight-hundred w x brief dot com",
 });
 const PRONUNCIATION_GUIDANCE = Object.freeze({
   envelope: "When the script uses the word \"envelope,\" pronounce it as the common noun, with first-syllable stress: \"EN-vuh-lope.\" Do not say this instruction aloud.",
@@ -178,8 +187,9 @@ function utcTimestamp() { return new Date().toISOString().replace(/[-:]/g, "").r
 function ensureDir(directory) { fs.mkdirSync(directory, { recursive: true }); }
 function writeAtomic(target, body) { const temporary = `${target}.${process.pid}.tmp`; fs.writeFileSync(temporary, body); fs.renameSync(temporary, target); }
 function cleanText(value) { return value.replace(/\*\*/g, "").replace(/\s+/g, " ").trim(); }
+function escapedTerm(value) { return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 function spokenText(value) {
-  return Object.entries(PRONUNCIATION_TRANSFORMS).reduce((spoken, [initialism, pronunciation]) => spoken.replace(new RegExp(`\\b${initialism}\\b`, "g"), pronunciation), value);
+  return Object.entries(PRONUNCIATION_TRANSFORMS).reduce((spoken, [term, pronunciation]) => spoken.replace(new RegExp(`\\b${escapedTerm(term)}\\b`, "g"), pronunciation), value);
 }
 function pronunciationGuidance(value) {
   return Object.entries(PRONUNCIATION_GUIDANCE).filter(([term]) => new RegExp(`\\b${term}\\b`, "i").test(value)).map(([, guidance]) => guidance).join("\n");

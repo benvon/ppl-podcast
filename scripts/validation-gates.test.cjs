@@ -1185,6 +1185,8 @@ test("realtime renderer requires completed source-relevance review before render
 test("realtime renderer preserves familiar initialisms while applying narrow phonetic corrections", () => {
   assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pee hack says artificial intelligence-assisted production is reviewed by an MEL.");
   assert.equal(spokenText("ASOS, AWOS, and ATIS report airport weather."), "AY-sohs, AY-wahs, and AY-tis report airport weather.");
+  assert.equal(spokenText("TAF, SPECI, SIGMET, AIRMET, and 1800wxbrief.com are weather terms."), "taf, speh-SEE, sig MET, air MET, and one eight-hundred w x brief dot com are weather terms.");
+  assert.equal(spokenText("TAFs, SPECIs, SIGMETs, and AIRMETs can appear in a briefing."), "tafs, speh-SEEs, sig METs, and air METs can appear in a briefing.");
   assert.equal(spokenText("The POH and AFM place CG limits in the ACS."), "The POH and AFM place CG limits in the ACS.");
   assert.equal(spokenText("The no-MEL path differs from MMEL guidance."), "The no-MEL path differs from MMEL guidance.");
   assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pee hack-like examples differ from PHAKS.");

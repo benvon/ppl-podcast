@@ -1,5 +1,5 @@
 schema_version: 1
-handoff_status: pending_manual_chapter_review
+handoff_status: ready_for_hosting_pr
 publisher_release:
   id: core-12
   guid: pplstudyguide.com:core-12

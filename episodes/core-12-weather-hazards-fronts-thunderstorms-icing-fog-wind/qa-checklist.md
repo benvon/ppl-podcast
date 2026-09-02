@@ -20,7 +20,7 @@
 - [x] Cirriform, stratiform, and freezing level are replaced with plain-language descriptions; the source-required `clear` qualifier is present in the Plains-front severe-clear-icing passage and Retrieval review.
 - [x] Human editorial pass received a clean source-validation result for version 0.2.2; unresolved technical questions were removed or resolved.
 - [x] Human editorial changes to factual spoken prose, source tags, claims, sources, or show notes were followed by successful source-relevance validation before audio render.
-- [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.
+- [x] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval.
 
 ## Audio
 
@@ -29,7 +29,7 @@
 - [x] Five-segment opening preview has been listened to before full rendering.
 - [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
 - [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the replacement candidate after automated analysis and focused listening.
-- [ ] The replacement chapter markers have been manually reviewed: the MP3 starts at `00:00`, its titles are useful, listener-facing section labels, and each marker begins before the corresponding material.
+- [x] The replacement chapter markers have been manually reviewed: the MP3 starts at `00:00`, its titles are useful, listener-facing section labels, and each marker begins before the corresponding material.
 - [x] The replacement render manifest records a passing `ffprobe` chapter validation.
 
 ## Release

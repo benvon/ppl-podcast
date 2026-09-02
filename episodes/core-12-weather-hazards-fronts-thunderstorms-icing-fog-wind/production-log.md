@@ -185,3 +185,8 @@
 ## 2026-09-02 — upslope-fog audio correction accepted
 
 - Focused listening QA accepted the rerendered Retrieval-review prompt and Learner response. The unchanged segments retain their prior accepted listening evidence; the replacement candidate now awaits only manual chapter review before final pre-hosting validation.
+
+## 2026-09-02 — replacement chapter review accepted
+
+- Human manual review accepted the 18 embedded chapter markers in the final replacement MP3. The markers remain the timestamps derived directly from the assembled section-boundary frames and are bound to MP3 SHA-256 `58e6c9e31d724baa794a259ff14d8aacaddf969bc469a8d25e2ab319b8292a1b`.
+- The chapter review was accepted without applying a manual timing offset. The complete audio gate is closed; the remaining release work is final pre-hosting validation and staging the sealed hosting handoff.

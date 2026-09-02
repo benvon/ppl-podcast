@@ -2,7 +2,7 @@
 
 **Episode:** core-12
 **Version:** 0.2.2
-**Source verification:** Human editorial revisions clarified mountain-pass wind hazards, the icing cross-sections and preflight decision points, and convective-gap avoidance. The script-review state has been reset; renewed formal source-relevance validation and human reapproval are pending.
+**Source verification:** The release package has an identified source-support follow-up before publication. The source and link record will be refreshed before release.
 
 ## In this episode
 

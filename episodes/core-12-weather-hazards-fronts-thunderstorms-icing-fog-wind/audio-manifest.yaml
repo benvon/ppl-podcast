@@ -1,6 +1,6 @@
 episode_id: core-12
 status: candidate_rendered_listening_qa_approved
-publication_day_validation: pending
+publication_day_validation: failed_source_relevance_follow_up
 current_candidate_render:
   script_version: 0.2.2
   rendered_at_utc: 2026-09-02T00:39:58.062Z
@@ -62,6 +62,6 @@ chapter_markers:
   required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast
   review_page: audio-artifacts/core-12-20260902T003203Z.mp3.chapters.bce5b3e32dcd442b0a2432fb74b05d601ffd4e32e05f4775322d34943e3f28c4.html
 required_before_release:
-  - Re-verify all cited public links on publication day.
+  - Resolve the publication-day source-relevance finding and re-verify all cited public links.
   - Validate hosting metadata and external audio-store workflow.
-reason: The version 0.2.2 source-bound candidate passed automated audio-quality, embedded-chapter validation, full script-aligned human listening QA, and manual chapter review. Publication-day and hosting validation remain pending.
+reason: The version 0.2.2 source-bound candidate passed automated audio-quality, embedded-chapter validation, full script-aligned human listening QA, and manual chapter review. Publication-day source validation found an unresolved source-support mismatch; hosting validation remains blocked.

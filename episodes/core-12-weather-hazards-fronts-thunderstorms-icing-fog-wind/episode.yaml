@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
 slug: weather-hazards-fronts-thunderstorms-icing-fog-wind
 track: core
-status: source_relevance_review_complete
+status: audio_listening_qa_complete
 version: 0.2.2
-published_at: null
+published_at: 2026-09-02T12:43:19Z
 runtime_target_minutes: 35
-runtime_actual_seconds: null
+runtime_actual_seconds: 2095.32
 word_count: 5188
 speakers:
   - instructor
@@ -71,24 +71,25 @@ trouble_spots:
     usable alternatives instead of naming the source comparison, route segment,
     and specific delay, corridor, stopover, or destination choice.
 source_verification:
-  status: source_relevance_complete
-  verified_at_utc: 2026-09-01T23:39:36.949Z
+  status: source_relevance_follow_up_required
+  verified_at_utc: null
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: complete
+  relevance_review: follow_up_required
 review:
-  editorial_status: script_approved
-  editorial_script_sha256: 134df285c8728d4c85cf76f1cb5bd24809306a9e091cf20690aaafdc627d9f3b
+  editorial_status: source_relevance_follow_up_required
+  editorial_script_sha256: null
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
+  pending_script_sha256: bceb71a5b968a69d8e2715542148397bc45c6986e98239adbed33e7753781e1e
 release_gates_remaining:
-  - Re-verify every public source and link on publication day.
+  - Resolve the publication-day source-relevance finding and re-verify every public source and link.
   - Validate hosting metadata and external audio-store workflow.
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: candidate_rendered_listening_qa_approved
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml

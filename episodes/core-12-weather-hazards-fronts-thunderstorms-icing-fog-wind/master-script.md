@@ -3,7 +3,7 @@
 **Version:** 0.2.2 — human editorial revision
 **Target runtime:** approximately 25–35 minutes
 **Speakers:** Instructor, Learner, Announcer
-**Production status:** Human editorial revisions and deterministic checks complete; renewed formal source-relevance review and human editorial reapproval are pending. Not cleared for audio production or public release.
+**Production status:** Listening QA and chapter review are complete. Publication-day source validation identified one source-support follow-up; release and hosting handoff validation are blocked pending its resolution.
 
 ## [00:00] Opening
 

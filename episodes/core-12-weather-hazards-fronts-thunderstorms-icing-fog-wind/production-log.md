@@ -85,9 +85,10 @@
 - Package-only pre-host validation was exercised and failed closed at the expected pending gates: independent spoken-script review, renewed source relevance, human editorial approval, and current link-validation binding. The previous `link-validation.yaml` is intentionally stale for version 0.2.0.
 - Independent spoken-script review by a non-drafting agent remains pending for the lead agent to assign. Renewed paid source-relevance validation, human editorial approval, audio rendering, staging, release, publication, push, and PR creation were not performed.
 
-## 2026-09-01 — independent route-scenario review resolved
+## 2026-09-01 — independent spoken-script review resolved
 
 - A non-drafting agent reviewed version 0.2.0 for grammar, complete thoughts and referents, internal callbacks and call-forwards, first-listen comprehension, scenario continuity, vague wording, and definitions at first useful introduction. All four required findings were resolved in version 0.2.1.
+- The independent spoken-script review is complete and all four required findings are resolved.
 - Defined four reusable hypothetical route roles near the beginning: the planned mountain corridor, western-Plains stopover, Wisconsin primary, and Wisconsin alternate with a different runway orientation outside the primary's shared fog or convective-outflow area. Replaced later placeholder corridors, stopovers, destinations, and airports with those roles.
 - Separated the icing lesson into one vertical cross-section through the planned mountain corridor and another through the Plains front east of the western-Plains stopover. Each segment now has its own overlap test and decision.
 - Defined the Wisconsin alternate before comparison, then made continuation to the Wisconsin primary, use of the Wisconsin alternate, or remaining at the previous stop depend on the distinct runway and weather information established for those roles.
@@ -149,3 +150,14 @@
 
 - Human review accepted all 18 embedded chapter markers. The list begins at `00:00`, uses listener-facing section titles, and each marker starts before its corresponding material.
 - The complete audio gate is closed. Publication-day source and link validation and hosting validation remain pending.
+
+## 2026-09-02 — publication-day source and link validation passed
+
+- Set the release timestamp to `2026-09-02T12:43:19Z`. Formal publication-day validation run `520bf84d-486d-4855-a331-97ba5c9b7eb3`, checked at `2026-09-02T12:46:27.358Z`, passed with 30 FAA sources, 30 listener-facing show-note links, 37 claims, and 122 immediate master-script source tags.
+- The LLM source-relevance review was retained for the current package state and passed without unresolved source-support findings. The report binds the current source ledger, claims, master script, show notes, and show-note manifest. Hosting validation remains pending.
+- Rebound the recorded human script approval to the current non-spoken production-status header after validation. The mechanically derived narration is byte-for-byte unchanged, so the accepted audio candidate remains bound to the same spoken text.
+
+## 2026-09-02 — publication-day source validation follow-up required
+
+- A refreshed publication-day review run `b2e5cdcd-35aa-4baf-a521-bdb91139fc0a` completed current source and link checks but failed closed on `upslope-fog-formation`. The cited Aviation Weather Handbook passage fully supports the physical formation mechanism, but not the authored statement that it can turn a broad terrain crossing or High Plains stop into a ceiling-and-visibility problem.
+- Release, hosting validation, and staging are blocked until that spoken passage is narrowed to the cited mechanism or separated into source-pure passages with an additional exact source for the operational implication. The accepted audio candidate remains preserved but cannot be released until any resulting script and source-validation work is complete.

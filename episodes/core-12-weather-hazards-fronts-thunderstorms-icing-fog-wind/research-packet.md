@@ -71,9 +71,8 @@
 - Script-review reset before material redraft: complete September 1, 2026; the prior source-relevance and editorial state is invalid for version 0.2.1.
 - Route-scenario research packet, source-tagged master script, claim section mapping, show notes, metadata, and mechanical narration derivative: complete for version 0.2.2.
 - Independent spoken-script review by a non-drafting agent: complete September 1, 2026; four required findings and the useful optional wording refinements were resolved in version 0.2.1.
-- Formal source-relevance validation: version 0.2.1 passed September 1, 2026. The later human editorial revisions invalidate that approval for version 0.2.2.
+- Formal source-relevance validation with `--require-llm`: an earlier version 0.2.2 review passed September 1, 2026; the publication-day review identified one source-support follow-up that must be resolved before release.
 - Human editorial feedback: incorporated in version 0.2.2, including the mountain-wind escape plan, two side-view icing cross-sections, aircraft exterior preflight and contamination clarifications, pre-exposure icing decisions, and the no-weaving thunderstorm explanation.
 - Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, all 93 repository tests, disclosure/secret scan, YAML parsing, and whitespace checks: complete for version 0.2.2.
-- Renewed formal source-relevance validation with `--require-llm`: pending and intentionally not run during this human editorial task.
-- Human editorial reapproval: pending after renewed formal source relevance.
-- Audio rendering, listening QA, staging, release, and publication: not started.
+- Human editorial review and script approval are complete.
+- Opening QA, full script-aligned listening QA, and manual chapter review are complete. Publication-day source and link validation is blocked on one source-support follow-up; staging, release, and publication remain pending.

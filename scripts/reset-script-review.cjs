@@ -8,6 +8,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 
 class ScriptReviewStateError extends Error {}
 
@@ -67,6 +68,7 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
 
   episode.status = "editorial_review_pending";
   episode.runtime_actual_seconds = null;
+  episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_RESET];
   episode.audio = { ...(episode.audio || {}), status: "not_rendered", publication_day_validation: "pending", chapter_markers: "pending_render" };
   episode.source_verification = { ...(episode.source_verification || {}), status: "source_relevance_pending", verified_at_utc: null, relevance_review: "pending" };
   episode.review = { ...(episode.review || {}), editorial_status: "reapproval_required", editorial_script_sha256: null, pending_script_sha256: scriptSha256 };
@@ -89,6 +91,7 @@ function approveScriptReview({ episodePath }) {
   if (episode.source_verification?.relevance_review !== "complete") throw new ScriptReviewStateError("Source-relevance review must be complete before recording editorial approval.");
   const scriptSha256 = sha256Text(fs.readFileSync(path.join(resolved, "master-script.md"), "utf8"));
   episode.status = "source_relevance_review_complete";
+  episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_APPROVAL];
   episode.review = { ...(episode.review || {}), editorial_status: "script_approved", editorial_script_sha256: scriptSha256 };
   delete episode.review.pending_script_sha256;
   writeYaml(episodePathname, episode);

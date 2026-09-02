@@ -18,6 +18,7 @@ const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: par
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { approveScriptReview, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
+const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 const { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 
@@ -53,6 +54,7 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(episodeAfterReset.audio.publication_day_validation, "pending");
     assert.equal(episodeAfterReset.audio.chapter_markers, "pending_render");
     assert.equal(episodeAfterReset.hosting.handoff_status, "pending_script_review");
+    assert.deepEqual(episodeAfterReset.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_RESET);
     assert.equal(audioAfterReset.current_candidate_render, null);
     assert.equal(audioAfterReset.status, undefined);
     assert.equal(audioAfterReset.publication_day_validation, undefined);
@@ -73,6 +75,7 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(approved.review.editorial_status, "script_approved");
     assert.equal(approved.review.editorial_script_sha256, sha256Text(migratedScript));
     assert.equal(approved.review.pending_script_sha256, undefined);
+    assert.deepEqual(approved.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_APPROVAL);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -255,6 +258,17 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0 and was re-verified for release.\n");
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
+    const untrackedAudioWork = {
+      ...approvedDraftEpisode,
+      audio: { ...approvedDraftEpisode.audio, status: "not_rendered" },
+      release_gates_remaining: [],
+    };
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(untrackedAudioWork));
+    const missingPendingGates = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
+    assert.equal(missingPendingGates.valid, false); assert.match(missingPendingGates.errors.join("\n"), /must list the canonical remaining audio/);
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...untrackedAudioWork, release_gates_remaining: RELEASE_GATES_AFTER_SCRIPT_APPROVAL }));
+    assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
     fs.writeFileSync(audioManifestPath, YAML.stringify({ ...audioManifest, status: "not_rendered" }));
     const duplicateAudioState = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(duplicateAudioState.valid, false); assert.match(duplicateAudioState.errors.join("\n"), /audio-manifest\.yaml must not duplicate/);

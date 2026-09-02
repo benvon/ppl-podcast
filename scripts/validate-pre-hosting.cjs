@@ -7,6 +7,7 @@ const path = require("path");
 const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
+const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, sameStringList } = require("./production-state-contract.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 
@@ -153,6 +154,13 @@ function consolidatedProductionStateErrors({ episode, audioManifest, hosting, ma
   return errors;
 }
 
+function pendingAudioReleaseGateErrors(episode) {
+  if (!usesConsolidatedProductionState(episode) || episode.audio?.status !== "not_rendered") return [];
+  const errors = [];
+  expect(errors, sameStringList(episode.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_APPROVAL), "episode.yaml must list the canonical remaining audio, chapter-review, publication-day, and hosting gates after script approval.");
+  return errors;
+}
+
 function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   const errors = [];
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
@@ -183,6 +191,7 @@ function validateDraftPackageShape({ episodePath, paths, episode, audioManifest,
   expect(errors, episode.review?.editorial_script_sha256 === sha256Text(masterScript), "editorial approval must be bound to the current master-script.md bytes.");
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
   errors.push(...consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }));
+  errors.push(...pendingAudioReleaseGateErrors(episode));
   expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode and version must match episode.yaml.");
   expect(errors, showNotesRecordCompletedSourceReview(showNotes, episode.version), "show-notes.md must record the completed source review for the current version.");
   expect(errors, researchPacket.includes("Human editorial review and script approval are complete."), "research-packet.md must record completed human editorial review.");
@@ -346,4 +355,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };
+module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };

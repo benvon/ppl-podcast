@@ -32,11 +32,12 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - "Draft and fact-check all material claims against the source ledger"
-  - "Before rendering, run source-link validation with LLM relevance review and resolve failures"
-  - "Complete human listening QA, including the front-matter check"
-  - "Re-verify every public source and link on publication day"
-  - "Validate hosting metadata and external audio-store workflow"
+  - "Run source-link validation with LLM relevance review and resolve every finding."
+  - "Complete human editorial review and approve the current script."
+  - "Render audio and complete human listening QA, including the front-matter check."
+  - "Review embedded chapter markers against the approved audio."
+  - "Re-verify every public source and listener-facing link on publication day."
+  - "Validate hosting metadata and stage the immutable audio object in the hosting workflow."
 audio:
   manifest: audio-manifest.yaml
   status: not_rendered

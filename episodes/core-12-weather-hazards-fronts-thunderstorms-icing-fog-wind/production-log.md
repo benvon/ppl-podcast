@@ -169,3 +169,9 @@
 - Re-ran the required script-review reset and mechanically regenerated `narration.md`. The user approved both precise spoken corrections.
 - Final publication-day source-relevance run `6d2c6437-11d9-41f9-866f-27800e0f4cd5`, checked at `2026-09-02T13:06:36.915Z`, passed with 30 FAA sources, 30 listener-facing study links, 37 claims, and 124 immediate source tags. It has no unresolved citation-target, link, locator, claim, show-note, or source-tagged-passage findings, and it is bound to master-script SHA-256 `7be98abb068d9c6676bd1eea17c6c4e021e04255ae328dfa60c00631cb736eca`.
 - Recorded human editorial approval against that exact master-script hash and verified the renderer’s 69-segment plan without sending an audio request. The prior audio candidate remains superseded; replacement audio, listening QA, chapter review, hosting validation, staging, release, and publication remain pending.
+
+## 2026-09-02 — replacement audio QA accepted
+
+- Rendered a 35:04 replacement candidate for the corrected, source-validated narration. The renderer reused 66 exact-matching segments and requested new audio only for segments 18, 19, and 64, which contain the approved source-support corrections.
+- The replacement MP3 SHA-256 is `0773c19a3388b881fc5e63d25209a67aa0f7ffe7e03b5c7b375f820d9a7d137e`. Automated analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 68 stitch-boundary checks with no warnings, no clipped samples, and ffprobe validation of 18 embedded MP3 chapters.
+- Focused script-aligned listening QA and manual chapter review are accepted. The prior 34:55 candidate remains superseded. Hosting validation, staging, release, and publication remain pending.

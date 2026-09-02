@@ -71,7 +71,7 @@
 - Script-review reset before material redraft: complete September 1, 2026; the prior source-relevance and editorial state is invalid for version 0.2.1.
 - Route-scenario research packet, source-tagged master script, claim section mapping, show notes, metadata, and mechanical narration derivative: complete for version 0.2.2.
 - Independent spoken-script review by a non-drafting agent: complete September 1, 2026; four required findings and the useful optional wording refinements were resolved in version 0.2.1.
-- Formal source-relevance validation with `--require-llm`: a renewed publication-day review completed September 2, 2026 after the approved upslope-fog and crosswind-capability source-support corrections. The final input-bound package record will be refreshed before replacement audio is rendered.
+- Formal source-relevance review passed for version 0.2.2 on September 2, 2026 after the approved upslope-fog and crosswind-capability source-support corrections. The final input-bound package record is complete and is bound to the replacement audio’s approved narration.
 - Human editorial feedback: incorporated in version 0.2.2, including the mountain-wind escape plan, two side-view icing cross-sections, aircraft exterior preflight and contamination clarifications, pre-exposure icing decisions, and the no-weaving thunderstorm explanation.
 - Deterministic source shape, reciprocal claim mapping, script-source mapping, Retrieval review tagging, show-note mapping, narration derivation, all 93 repository tests, disclosure/secret scan, YAML parsing, and whitespace checks: complete for version 0.2.2.
 - Human editorial review and script approval are complete.

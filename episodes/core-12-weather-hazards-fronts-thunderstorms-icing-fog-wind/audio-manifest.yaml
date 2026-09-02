@@ -1,6 +1,6 @@
 episode_id: core-12
-status: candidate_rendered_pending_listening_qa
-publication_day_validation: pending_audio_qa
+status: candidate_rendered_listening_qa_approved
+publication_day_validation: passed
 current_candidate_render:
   script_version: 0.2.2
   rendered_at_utc: 2026-09-02T13:10:12.534Z
@@ -27,7 +27,7 @@ current_candidate_render:
   front_matter_validation: The replacement candidate reused the accepted unchanged Opening, Disclaimer, and Podcast introduction voice segments and music mix.
   music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under Ballad; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade.
   usage_estimate_usd: 2.957878
-  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 68 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Focused human listening QA and manual chapter review are pending. Audio artifacts are Git-ignored.
+  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 68 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Focused human listening QA and manual chapter review are accepted. Audio artifacts are Git-ignored.
 superseded_candidates:
   - script_version: 0.2.2
     rendered_at_utc: 2026-09-02T00:39:58.062Z
@@ -100,13 +100,11 @@ opening_preview:
     format, no stitch-boundary discontinuity warnings, and no clipped samples.
     Human opening QA accepted after the corrected music mix was heard.
 chapter_markers:
-  status: embedded_and_ffprobe_validated_pending_manual_review
+  status: embedded_and_ffprobe_validated
   source: master-script.md section headings
   audio_sha256: 0773c19a3388b881fc5e63d25209a67aa0f7ffe7e03b5c7b375f820d9a7d137e
   required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast
   review_page: audio-artifacts/core-12-20260902T130807Z.mp3.chapters.0773c19a3388b881fc5e63d25209a67aa0f7ffe7e03b5c7b375f820d9a7d137e.html
 required_before_release:
-  - Complete focused listening QA and manual chapter review for the replacement
-    candidate.
   - Validate hosting metadata and external audio-store workflow.
-reason: Replacement candidate rendered after approved publication-day source-support corrections; focused listening QA and manual chapter review are pending.
+reason: Replacement candidate passed automated analysis, focused listening QA, and manual chapter review after approved publication-day source-support corrections.

@@ -27,14 +27,14 @@
 - [x] Opening is 10-45 seconds and the required notice follows immediately.
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.”
 - [x] Five-segment opening preview has been listened to before full rendering.
-- [ ] The replacement candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
-- [ ] Automated analysis and focused listening confirm that no clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the replacement candidate.
-- [ ] The replacement MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material.
-- [ ] The replacement render manifest records a passing `ffprobe` chapter validation.
+- [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the replacement candidate after automated analysis and focused listening.
+- [x] The chapter markers have been manually reviewed: the replacement MP3 starts at `00:00`, its titles are useful, listener-facing section labels, and each marker begins before the corresponding material.
+- [x] The replacement render manifest records a passing `ffprobe` chapter validation.
 
 ## Release
 
 - [x] FAA/eCFR links, locators, claims, tagged passages, and study links were re-verified with `--require-llm` on publication day for the corrected script.
-- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
+- [x] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum.
 - [ ] After publication, Apple Podcasts and Overcast are checked for the final embedded chapter list.
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`.

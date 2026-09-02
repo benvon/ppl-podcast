@@ -1,6 +1,6 @@
 # Weather Information and Preflight Decisions
 
-**Version:** 0.1.0
+**Version:** 0.1.1
 **Target runtime:** 35–40 minutes
 **Speakers:** Instructor, Learner, Announcer
 

@@ -34,7 +34,8 @@ function wavForTest(pcm) {
 test("script-review reset invalidates downstream state and approval fingerprints the current script", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-script-review-test-"));
   try {
-    const script = "# Test\n\n**Version:** 0.1.1\n\n**INSTRUCTOR:**\n\nChanged spoken lesson.\n";
+    const script = "# Test\n\n**Version:** 0.1.1\n**Production status:** Ready for hosting handoff.\n\n**INSTRUCTOR:**\n\nChanged spoken lesson.\n";
+    const migratedScript = script.replace(/^\*\*Production status:\*\*.*\n/m, "");
     fs.writeFileSync(path.join(temporary, "master-script.md"), script);
     fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ status: "ready_for_hosting_pr", runtime_actual_seconds: 12, audio: { status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", chapter_markers: "embedded_and_ffprobe_validated" }, hosting: { handoff_status: "ready_for_hosting_pr" }, source_verification: { status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: "2026-01-01T00:00:00Z" }, review: { editorial_status: "script_approved", editorial_script_sha256: "old" } }));
     fs.writeFileSync(path.join(temporary, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", current_candidate_render: { sha256: "a".repeat(64) }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: "a".repeat(64), review_page: "candidate.html" } }));
@@ -45,7 +46,7 @@ test("script-review reset invalidates downstream state and approval fingerprints
     const audioAfterReset = YAML.parse(fs.readFileSync(path.join(temporary, "audio-manifest.yaml"), "utf8"));
     assert.equal(episodeAfterReset.status, "editorial_review_pending");
     assert.equal(episodeAfterReset.review.editorial_status, "reapproval_required");
-    assert.equal(episodeAfterReset.review.pending_script_sha256, sha256Text(script));
+    assert.equal(episodeAfterReset.review.pending_script_sha256, sha256Text(migratedScript));
     assert.equal(episodeAfterReset.source_verification.relevance_review, "pending");
     assert.equal(episodeAfterReset.runtime_actual_seconds, null);
     assert.equal(episodeAfterReset.audio.status, "not_rendered");
@@ -59,7 +60,8 @@ test("script-review reset invalidates downstream state and approval fingerprints
     const hostingAfterReset = YAML.parse(fs.readFileSync(path.join(temporary, "hosting-metadata.yaml"), "utf8"));
     assert.equal(hostingAfterReset.handoff_status, undefined);
     assert.equal(audioAfterReset.superseded_candidates[0].sha256, "a".repeat(64));
-    assert.equal(reset.scriptSha256, sha256Text(script));
+    assert.equal(reset.scriptSha256, sha256Text(migratedScript));
+    assert.doesNotMatch(fs.readFileSync(path.join(temporary, "master-script.md"), "utf8"), /^\*\*Production status:\*\*/m);
 
     episodeAfterReset.source_verification.relevance_review = "complete";
     fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(episodeAfterReset));
@@ -67,7 +69,7 @@ test("script-review reset invalidates downstream state and approval fingerprints
     const approved = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
     assert.equal(approved.status, "source_relevance_review_complete");
     assert.equal(approved.review.editorial_status, "script_approved");
-    assert.equal(approved.review.editorial_script_sha256, sha256Text(script));
+    assert.equal(approved.review.editorial_script_sha256, sha256Text(migratedScript));
     assert.equal(approved.review.pending_script_sha256, undefined);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });

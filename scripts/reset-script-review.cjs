@@ -23,6 +23,10 @@ function writeYaml(filePath, value) {
   fs.writeFileSync(filePath, YAML.stringify(value), "utf8");
 }
 
+function removeLegacyProductionStatus(script) {
+  return script.replace(/^\*\*Production status:\*\*.*(?:\r?\n)?/gim, "");
+}
+
 function resolveEpisode(episodePath) {
   const resolved = path.resolve(episodePath);
   for (const file of ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md"]) {
@@ -37,7 +41,11 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   const episodePathname = path.join(resolved, "episode.yaml");
   const audioPathname = path.join(resolved, "audio-manifest.yaml");
   const hostingPathname = path.join(resolved, "hosting-metadata.yaml");
-  const scriptSha256 = sha256Text(fs.readFileSync(path.join(resolved, "master-script.md"), "utf8"));
+  const masterScriptPathname = path.join(resolved, "master-script.md");
+  const originalScript = fs.readFileSync(masterScriptPathname, "utf8");
+  const migratedScript = removeLegacyProductionStatus(originalScript);
+  if (migratedScript !== originalScript) fs.writeFileSync(masterScriptPathname, migratedScript, "utf8");
+  const scriptSha256 = sha256Text(migratedScript);
   const episode = readYaml(episodePathname);
   const audio = readYaml(audioPathname);
   const hosting = readYaml(hostingPathname);
@@ -113,4 +121,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { ScriptReviewStateError, approveScriptReview, resetScriptReview, sha256Text };
+module.exports = { ScriptReviewStateError, approveScriptReview, removeLegacyProductionStatus, resetScriptReview, sha256Text };

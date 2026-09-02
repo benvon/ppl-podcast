@@ -1,8 +1,8 @@
-episode_id: "core-13"
+episode_id: core-13
 current_candidate_render: null
 superseded_candidates: []
 chapter_markers:
-  source: "master-script.md section headings"
+  source: master-script.md section headings
   audio_sha256: null
   review_page: null
-  required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"
+  required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast

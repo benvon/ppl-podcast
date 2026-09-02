@@ -1,9 +1,102 @@
-episode_id: "core-13"
+episode_id: core-13
 claims:
-  - id: replace-with-stable-claim-id
-    type: faa_guidance
-    statement: "A concise, testable material claim in the planned episode."
-    sources: [replace-with-stable-source-id]
-    risk: safety_critical
-    script_sections: []
-    status: draft
+  - id: acs-weather-scope
+    claim: "The private-pilot ACS expects an applicant to gather, interpret, and correlate weather sources, observations, forecasts, advisories, and cockpit displays into a flight decision."
+    claim_type: FAA standard
+    sources: [acs-weather-products, acs-weather-decisions]
+    script_sections: [What the ACS is asking you to connect, Retrieval review]
+  - id: preflight-all-information
+    claim: "14 CFR 91.103 requires the pilot in command, before flight, to become familiar with all available information concerning the flight."
+    claim_type: regulation
+    sources: [cfr-preflight-action]
+    script_sections: [A briefing is a decision process]
+  - id: briefing-process
+    claim: "A useful weather briefing is a structured process of planning, interpretation, risk assessment, and decision-making, not merely possession of weather data."
+    claim_type: FAA guidance
+    sources: [ac-preflight-purpose, awh-briefing]
+    script_sections: [A briefing is a decision process, Retrieval review]
+  - id: briefing-types
+    claim: "Outlook, standard, and abbreviated briefings serve different timing and update needs."
+    claim_type: FAA guidance
+    sources: [ac-briefing-types, aim-preflight-briefing]
+    script_sections: [A briefing is a decision process, Turn the early plan into a departure decision, Retrieval review]
+  - id: standard-sequence
+    claim: "A standard briefing connects adverse conditions, synopsis, observations, forecasts, destination timing, and winds aloft along the route."
+    claim_type: FAA guidance
+    sources: [ac-standard-elements, aim-preflight-briefing]
+    script_sections: [Build the route-and-time worksheet, Turn the early plan into a departure decision, Retrieval review]
+  - id: product-questions
+    claim: "Weather products have different jobs and should be interpreted by product type, geographic scope, valid or observation time, and decision use."
+    claim_type: teaching synthesis
+    sources: [acs-weather-products, phak-weather-overview]
+    script_sections: [Four questions for every product, Retrieval review]
+  - id: metar-speci
+    claim: "A METAR is a routine surface observation at an observing site; a SPECI is an unscheduled special observation issued when specified conditions change."
+    claim_type: FAA guidance
+    sources: [awh-metar-speci]
+    script_sections: [METAR and SPECI, Retrieval review]
+  - id: point-observation-limit
+    claim: "A surface observation describes conditions at its site and time, not every location between reporting stations."
+    claim_type: FAA guidance
+    sources: [awh-metar-speci]
+    script_sections: [METAR and SPECI, Test the Northern California departure, Retrieval review]
+  - id: pirep-context
+    claim: "A PIREP is an aircraft report of actual conditions whose time, location, altitude, and aircraft type matter to interpretation."
+    claim_type: FAA guidance
+    sources: [awh-pirep, ac-pirep-value]
+    script_sections: [PIREP, Test the western terrain corridor, Retrieval review]
+  - id: surface-analysis
+    claim: "A surface analysis is an analyzed snapshot of the current large-scale pressure pattern, fronts, and reported weather; it is not a forecast."
+    claim_type: FAA guidance
+    sources: [awh-surface-analysis]
+    script_sections: [Surface analysis, Retrieval review]
+  - id: gfa-layers
+    claim: "The GFA combines observation, forecast, and advisory layers with time and altitude controls, and hidden layers can materially change the picture."
+    claim_type: weather service documentation
+    sources: [awc-gfa-help]
+    script_sections: [Graphical Forecasts for Aviation, Test the western terrain corridor]
+  - id: gridded-estimate
+    claim: "A gridded ceiling and visibility analysis interpolates between observations and may not represent the actual condition at every point."
+    claim_type: weather service documentation
+    sources: [awc-gfa-help]
+    script_sections: [Graphical Forecasts for Aviation, Retrieval review]
+  - id: taf-scope
+    claim: "A TAF forecasts conditions in the terminal area around an airport for a stated valid period and uses change groups and amendments to express expected changes."
+    claim_type: FAA guidance
+    sources: [awh-taf]
+    script_sections: [TAF, Test the Plains stop and Wisconsin arrival]
+  - id: winds-aloft
+    claim: "Winds and temperatures aloft forecasts vary by location, altitude, and forecast time and support route, altitude, time, fuel, and turbulence planning."
+    claim_type: FAA guidance
+    sources: [awh-winds-aloft, ac-standard-elements]
+    script_sections: [Winds and temperatures aloft, Test the western terrain corridor, Retrieval review]
+  - id: advisories
+    claim: "SIGMETs and AIRMETs identify specified en route hazards; pilots should use the advisory text, graphics, valid time, and surrounding evidence together."
+    claim_type: FAA guidance
+    sources: [awh-sigmet, awh-airmet]
+    script_sections: ["AIRMETs, SIGMETs, and Convective SIGMETs", "Retrieval review"]
+  - id: convective-outlook
+    claim: "A Convective Outlook identifies regional potential for severe or general thunderstorm activity, not the weather at one airport."
+    claim_type: FAA guidance
+    sources: [awh-convective-outlook]
+    script_sections: [Test the Plains stop and Wisconsin arrival]
+  - id: arrival-window
+    claim: "A preflight briefing should examine destination conditions near the estimated arrival time and significant changes around that time."
+    claim_type: FAA guidance
+    sources: [ac-standard-elements]
+    script_sections: [Test the Plains stop and Wisconsin arrival]
+  - id: integrated-decision
+    claim: "The ACS evaluates correlation of weather information into go, no-go, continue, and divert decisions rather than isolated decoding."
+    claim_type: FAA standard
+    sources: [acs-weather-decisions]
+    script_sections: [Make the decision explicit, Retrieval review]
+  - id: datalink-augment
+    claim: "Cockpit weather information augments preflight and inflight weather awareness; pilots must account for product age, limitations, and missing information."
+    claim_type: FAA guidance
+    sources: [aim-fis-limitations, acs-weather-decisions]
+    script_sections: [Update the decision in flight, Retrieval review]
+  - id: strategic-not-tactical
+    claim: "Datalink weather is suited to strategic planning and should not be used for close tactical maneuvering around rapidly changing severe weather."
+    claim_type: FAA guidance
+    sources: [aim-fis-limitations]
+    script_sections: [Update the decision in flight, Retrieval review]

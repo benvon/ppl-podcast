@@ -1,43 +1,77 @@
-id: "core-13"
+id: core-13
 series: ppl-study-podcast
-title: "Weather Information and Preflight Decisions"
-slug: "weather-information-preflight-decisions"
-track: "core"
-status: planned
+title: Weather Information and Preflight Decisions
+slug: weather-information-preflight-decisions
+track: core
+status: editorial_review_pending
 version: 0.1.0
 published_at: null
-runtime_target_minutes: null
+runtime_target_minutes: 38
 runtime_actual_seconds: null
-word_count: null
-speakers: [instructor, learner, announcer]
-audience: "U.S. private-pilot airplane learners"
-aircraft_scope: "General ASEL education; aircraft-specific procedures and limitations are excluded unless clearly labeled."
-acs_references: []
-phak_references: []
-aim_references: []
-advisory_circular_references: []
-cfr_references: []
-learning_objectives: []
-trouble_spots: []
+word_count: 4126
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - PA.I.C.K1-K2g
+  - PA.I.C.K4
+  - PA.I.C.R1-R2c
+  - PA.I.C.S1-S3
+phak_references:
+  - "PHAK Chapter 13: Aviation Weather Services"
+aim_references:
+  - "AIM 7-1-5: Preflight Briefing"
+  - "AIM 7-1-9: Flight Information Services"
+advisory_circular_references:
+  - "AC 91-92: Pilot's Guide to a Preflight Briefing"
+cfr_references:
+  - 14 CFR 91.103
+learning_objectives:
+  - Distinguish observations, analyses, forecasts, and advisories by scope and
+    valid time.
+  - Correlate METARs, TAFs, PIREPs, graphical forecasts, winds aloft, and
+    advisories by route segment.
+  - Choose outlook, standard, or abbreviated briefing information for the
+    planning stage.
+  - State go, no-go, delay, reroute, alternate, continue, and divert triggers
+    using personal minimums.
+  - Explain the age, coverage, and strategic-use limits of cockpit weather
+    displays.
+trouble_spots:
+  - Treating an app or display as the product rather than identifying the
+    underlying source and valid time.
+  - Extending point observations and terminal forecasts across an entire route.
+  - Treating gridded interpolation or an empty PIREP display as verified actual
+    conditions.
+  - Collecting weather without connecting it to a route, time, decision, and
+    update trigger.
 source_verification:
-  status: not_started
+  status: source_relevance_pending
   verified_at_utc: null
   link_validation: link-validation.yaml
-  relevance_review: required_before_render
+  relevance_review: pending
 review:
-  editorial_status: not_started
-  editorial_script_sha256: null # Set only after the current script passes editorial review.
+  editorial_status: reapproval_required
+  editorial_script_sha256: null
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
+  pending_script_sha256: 9b2cbea1fafc1c8ede982d38ea7821e4c91af576c57ec8048db6701f3280df18
 release_gates_remaining:
-  - "Run source-link validation with LLM relevance review and resolve every finding."
-  - "Complete human editorial review and approve the current script."
-  - "Render audio and complete human listening QA, including the front-matter check."
-  - "Review embedded chapter markers against the approved audio."
-  - "Re-verify every public source and listener-facing link on publication day."
-  - "Validate hosting metadata and stage the immutable audio object in the hosting workflow."
+  - Run source-link validation with LLM relevance review and resolve every
+    finding.
+  - Complete human editorial review and approve the current script.
+  - Render audio and complete human listening QA, including the front-matter
+    check.
+  - Review embedded chapter markers against the approved audio.
+  - Re-verify every public source and listener-facing link on publication day.
+  - Validate hosting metadata and stage the immutable audio object in the
+    hosting workflow.
 audio:
   manifest: audio-manifest.yaml
   status: not_rendered
@@ -45,8 +79,8 @@ audio:
   publication_day_validation: pending
 hosting:
   metadata: hosting-metadata.yaml
-  handoff_seal: source-release-seal.yaml # Created in a separate hosting handoff directory after pre-hosting validation passes.
-  handoff_status: draft
+  handoff_seal: source-release-seal.yaml
+  handoff_status: pending_script_review
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null

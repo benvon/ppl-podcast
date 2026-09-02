@@ -1,10 +1,18 @@
 episode_id: "core-13"
-# Declare every HTTPS link in show-notes.md. Link text and URL must match the
-# Markdown exactly. Each link must map to claims supported by its ledger source.
 links:
-  - id: replace-with-stable-link-id
-    text: "Specific source section"
-    url: "https://www.faa.gov/path/to/document.pdf#page=1"
-    locator: "Specific section/task/paragraph and printed p. 1"
-    source_id: replace-with-stable-source-id
-    claim_ids: [replace-with-stable-claim-id]
+  - {id: gfa-tutorial, text: "Graphical Forecasts for Aviation tutorial", url: "https://aviationweather.gov/gfa/help/?page=tutorial", locator: "Tutorial", source_id: awc-gfa-help, claim_ids: [gfa-layers, gridded-estimate]}
+  - {id: acs-weather-task, text: "Private Pilot Airplane ACS", url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11", locator: "PA.I.C.K1-K4, printed p. 3", source_id: acs-weather-products, claim_ids: [acs-weather-scope, product-questions]}
+  - {id: cfr-91103, text: "14 CFR 91.103", url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103", locator: "Opening sentence", source_id: cfr-preflight-action, claim_ids: [preflight-all-information]}
+  - {id: ac-briefing, text: "AC 91-92", url: "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7", locator: "Paragraphs 7.3.1-7.3.3, PDF p. 7", source_id: ac-briefing-types, claim_ids: [briefing-types]}
+  - {id: phak-weather, text: "PHAK Chapter 13", url: "https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1", locator: "Aviation Weather Services, p. 13-1", source_id: phak-weather-overview, claim_ids: [product-questions]}
+  - {id: awh-briefing-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26", locator: "Chapter 3, Preflight Briefing, p. 3-3", source_id: awh-briefing, claim_ids: [briefing-process]}
+  - {id: awh-metar-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289", locator: "Chapter 24, METAR and SPECI, pp. 24-4 to 24-6", source_id: awh-metar-speci, claim_ids: [metar-speci, point-observation-limit]}
+  - {id: awh-pirep-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310", locator: "Chapter 24, PIREPs, pp. 24-25 to 24-26", source_id: awh-pirep, claim_ids: [pirep-context]}
+  - {id: awh-surface-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350", locator: "Chapter 25, Surface Analysis, pp. 25-7 to 25-8", source_id: awh-surface-analysis, claim_ids: [surface-analysis]}
+  - {id: awh-taf-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=408", locator: "Chapter 27, TAF, pp. 27-6 to 27-7", source_id: awh-taf, claim_ids: [taf-scope]}
+  - {id: awh-winds-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405", locator: "Chapter 27, Winds and Temperatures Aloft, pp. 27-3 to 27-4", source_id: awh-winds-aloft, claim_ids: [winds-aloft]}
+  - {id: awh-sigmet-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369", locator: "Chapter 26, SIGMET, pp. 26-1 to 26-2", source_id: awh-sigmet, claim_ids: [advisories]}
+  - {id: awh-airmet-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383", locator: "Chapter 26, AIRMET, pp. 26-15 to 26-16", source_id: awh-airmet, claim_ids: [advisories]}
+  - {id: awh-outlook-link, text: "Aviation Weather Handbook", url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=458", locator: "Chapter 27, Convective Outlook, p. 27-56", source_id: awh-convective-outlook, claim_ids: [convective-outlook]}
+  - {id: aim-briefing-link, text: "AIM 7-1-5", url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-5", locator: "Preflight Briefing", source_id: aim-preflight-briefing, claim_ids: [briefing-types, standard-sequence]}
+  - {id: aim-fis-link, text: "AIM 7-1-9", url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9", locator: "Flight Information Services", source_id: aim-fis-limitations, claim_ids: [datalink-augment, strategic-not-tactical]}

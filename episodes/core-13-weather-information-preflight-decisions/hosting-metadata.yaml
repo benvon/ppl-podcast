@@ -1,15 +1,17 @@
 schema_version: 1
 publisher_release:
-  id: "core-13"
-  guid: "pplstudyguide.com:core-13"
-  title: "Weather Information and Preflight Decisions"
-  description: null
-  published_at: null # RFC3339 UTC timestamp, set only when release is approved.
-  duration: null # HH:MM:SS, derived from approved audio.
+  id: core-13
+  guid: pplstudyguide.com:core-13
+  title: Weather Information and Preflight Decisions
+  description: A route-based weather briefing lesson connecting observations,
+    forecasts, advisories, and updates to practical preflight and
+    continue-or-divert decisions.
+  published_at: null
+  duration: null
   season: 1
-  number: null
+  number: 13
   explicit: false
-  audio: {} # Filled by the hosting publisher after private staging.
+  audio: {}
 provenance:
   master_script: master-script.md
   show_notes: show-notes.md

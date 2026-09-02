@@ -1,0 +1,680 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-09-02T17:14:57.127Z
+sources_file: episodes/core-13-weather-information-preflight-decisions/sources.yaml
+claims_file: episodes/core-13-weather-information-preflight-decisions/claim-inventory.yaml
+show_notes_file: episodes/core-13-weather-information-preflight-decisions/show-notes.md
+show_notes_manifest_file: episodes/core-13-weather-information-preflight-decisions/show-notes-manifest.yaml
+input_sha256:
+  sources: 1c80e862084622b38840ae51516ab3cfd9e3fe1923cb778808e228bab034aa01
+  claims: 4dfd018839ef8c7050246919ffdd2a79abfe1a8ac5cf7982f99c9672f1867c3a
+  master_script: f027d6886e461792a558a8ba090cf0a60f887f601a2b14bfad59ff4d06ffd08f
+  show_notes: 9a7fe4fcbb1753960b359b822a17d4010299d67ea43fcea26e0561d34f6d4a35
+  show_notes_manifest: 32b97a262e719ce02426920e1d8fd306b0c05d2b1f17968222dc74df0103a03e
+llm_requested: false
+llm_model: null
+claim_mapping:
+  valid: false
+  errors:
+    - source ac-pirep-value supports claim pirep-report-types, but that claim
+      does not declare the source
+    - claim pirep-report-types declares source awh-pirep, but that source does
+      not support the claim
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 118
+  claim_coverage_count: 25
+  passages_by_source:
+    acs-weather-decisions:
+      - A weather report becomes useful when it informs a decision. Today we
+        will take the observations, forecasts, and advisories that can feel like
+        separate test questions and use them to build one coherent preflight
+        weather picture.
+      - "The private-pilot ACS does not stop at asking whether you can recognize
+        a METAR, a TAF, a PIREP, a graphical forecast, or an advisory. It asks
+        you to obtain an adequate weather briefing, analyze weather conditions,
+        and correlate the information into a sound go-or-no-go decision. Its
+        risk-management language continues beyond departure: it includes
+        deciding when to continue, divert, or change the plan as conditions
+        evolve."
+      - "Because weather evidence has a geographic and time scope. An
+        observation at a departure airport answers a different question than a
+        forecast valid near tomorrow afternoon’s destination. Segmenting the
+        route gives every piece of information a job: departure evidence
+        supports departure, terrain evidence supports the mountain decision, and
+        arrival-time evidence supports the destination and alternate decision."
+      - Because the airplane will leave the observation point. A VFR report at
+        the airport does not establish the visibility, ceiling, or precipitation
+        along the first segment. It also does not tell you whether the
+        conditions farther along that segment leave usable clearance from the
+        terrain. The departure decision needs a practical escape plan too. If
+        the route ahead is worse than expected, is there room to remain in known
+        conditions, return, land nearby, or delay before entering narrowing
+        terrain and weather choices?
+      - Wind direction and speed relative to a ridge can support mountain-wave
+        activity, turbulence, and strong downdrafts on the downwind side. That
+        makes the route question more than a groundspeed calculation. Compare
+        the forecast wind with ridge orientation, cloud cover, the airplane’s
+        altitude capability, turbulence forecasts and advisories, relevant
+        PIREPs, and escape routes. Your CFI can turn that planning picture into
+        practical instruction about local mountain winds, downdrafts, and route
+        choices.
+      - Build the alternate route as a real plan. Give it a time, altitude, fuel
+        consequence, airports, terrain limits, and its own weather evidence. A
+        vague arrow around a colored area is not yet an alternate. If both
+        routes depend on an uncertain gap staying open, the decision may be to
+        delay or stop rather than let an encounter reveal whether the forecast
+        was right.
+      - A small gap between growing cells is not an alternate route. A useful
+        alternate is outside the area in which convection may remove options,
+        and it must be reachable before the flight depends on threading between
+        rapidly changing hazards. When the plan depends on a narrow gap
+        remaining open, it becomes a test of the forecast rather than a plan
+        with a reliable way to reach the destination safely.
+      - "Then write the trigger that would change the decision: a ceiling below
+        your personal minimum, a wind or turbulence forecast beyond your
+        experience, a destination trend that makes the planned alternate
+        unsuitable and leaves no practical alternate option, an advisory that
+        intersects the route, or a timing change that moves the flight into a
+        worse forecast period. Personal minimums make those triggers clearer
+        before schedule pressure arrives."
+      - The ACS asks you to correlate the weather information into a go-or-no-go
+        decision. Correlation means that the pieces explain one another. A
+        surface pattern may explain why observations are deteriorating. A TAF
+        may place that deterioration near arrival. An advisory may identify the
+        en route hazard. A PIREP may confirm what an aircraft actually
+        encountered. The decision follows from the combined route-and-time
+        picture, not from whichever product was opened last.
+      - Departure changes the available evidence; it does not end weather
+        planning. Compare actual progress and conditions with the plan at useful
+        decision points. Updated observations, Flight Service, air traffic
+        control information, PIREPs, and onboard weather can support a continue,
+        divert, land-short, or turn-back decision.
+      - What is the ACS asking you to do with weather information?
+      - Gather an adequate briefing, analyze multiple weather conditions, and
+        correlate the evidence into go, no-go, continue, divert, or
+        change-of-plan decisions.
+      - What turns collected weather into a defensible decision?
+      - I connect every report and forecast to a route segment and time, compare
+        independent evidence, identify uncertainty, apply personal minimums,
+        name the go or no-go conclusion, and write the trigger that would make
+        me delay, reroute, land short, divert, or turn back.
+      - "The practical habit is simple to describe even though it takes
+        practice: identify the product, place it on the route and timeline, test
+        it against other evidence, and state the decision it supports. Bring
+        that worksheet to your CFI. Use your flight instruction to compare the
+        planned picture with what the atmosphere actually looks like and to
+        practice choosing early, practical alternatives."
+    acs-weather-products:
+      - "The private-pilot ACS does not stop at asking whether you can recognize
+        a METAR, a TAF, a PIREP, a graphical forecast, or an advisory. It asks
+        you to obtain an adequate weather briefing, analyze weather conditions,
+        and correlate the information into a sound go-or-no-go decision. Its
+        risk-management language continues beyond departure: it includes
+        deciding when to continue, divert, or change the plan as conditions
+        evolve."
+      - In this lesson, a weather product is a named, standardized
+        aviation-weather report, analysis, forecast, advisory, chart, layer, or
+        briefing element. It is built from weather observations, forecast
+        models, forecaster analysis, or some combination of them, and it has a
+        defined place or area, altitude when applicable, and observation or
+        valid time. That is a technical use of product, not the everyday
+        consumer-app sense of the word.
+      - "When you open a weather product in a display, ask four questions before
+        trusting the picture it creates. First: what kind of information is
+        this—an observation, an analysis, a forecast, or an advisory? Second:
+        what place and altitude does it describe? Third: when was it observed or
+        issued, and when is it valid? Fourth: what decision can it inform, and
+        what other evidence should agree or disagree with it?"
+      - A METAR is a routine observation of surface weather at an observing
+        site. It gives the station identifier, observation time, wind,
+        visibility, significant weather, sky condition, temperature and dew
+        point, altimeter setting, and remarks as applicable. A SPECI uses the
+        same general format but is an unscheduled special observation issued
+        when specified conditions change. Both use a precise encoded format that
+        takes practice to read. Private-pilot knowledge-test learners are
+        expected to interpret METARs, but this episode will use them as decision
+        evidence rather than teach every code group.
+      - This is where the ACS term Ceiling and Visibility Analysis fits the
+        current planning picture. The learning objective is to interpret ceiling
+        and visibility information across an area. In the current GFA
+        presentation, that information appears as part of the graphical analysis
+        and forecast environment rather than as permission to ignore the
+        observations underneath it.
+      - Gather an adequate briefing, analyze multiple weather conditions, and
+        correlate the evidence into go, no-go, continue, divert, or
+        change-of-plan decisions.
+      - What four questions can organize almost any weather product?
+      - What kind of information is it? What place and altitude does it cover?
+        When was it observed or issued, and when is it valid? What decision can
+        it inform, and what other evidence should test that conclusion?
+    ac-standard-elements:
+      - Picture the trip in several planning segments. First, depart Northern
+        California. Second, cross or route around western terrain. Third,
+        evaluate fuel, rest, or overnight stops. Fourth, cross the Plains.
+        Fifth, arrive in Wisconsin. Each segment has its own expected time,
+        terrain, airports, and weather questions. Treat each leg as its own
+        flight for detailed planning, while also looking at the pattern that
+        connects the whole trip.
+      - "Because weather evidence has a geographic and time scope. An
+        observation at a departure airport answers a different question than a
+        forecast valid near tomorrow afternoon’s destination. Segmenting the
+        route gives every piece of information a job: departure evidence
+        supports departure, terrain evidence supports the mountain decision, and
+        arrival-time evidence supports the destination and alternate decision."
+      - Organize the first broad pass in a useful order. Look for adverse
+        conditions. Understand the synopsis, meaning the large-scale weather
+        pattern. Review current conditions. Then examine en route and
+        destination forecasts, winds and temperatures aloft, advisories, and
+        notices that affect the plan. AC 91-92’s standard briefing elements
+        follow this general structure because each step gives context to the
+        next.
+      - A pilot weather report, or PIREP, is an actual report from an aircraft
+        about conditions it encountered. Routine reports are identified as UA;
+        urgent reports are identified as UUA when they contain weather
+        significant enough to need prompt dissemination. In a typical briefing,
+        PIREPs appear with current-weather information as individual reports or
+        map entries. The useful context includes location, time, altitude,
+        aircraft type, and the reported condition. A report of turbulence from a
+        light training airplane may have different practical meaning than the
+        same wording from a much larger aircraft. A report two hours earlier or
+        far from the route may no longer answer the question you are asking.
+      - Winds and temperatures aloft forecasts describe expected wind direction,
+        wind speed, and temperature for specified locations, altitudes, and
+        forecast times. The values support heading, groundspeed, time, fuel,
+        altitude, turbulence, and temperature-related planning. They are
+        forecast values, so the selected valid time must match the leg closely
+        enough to answer the planning question.
+      - Read a TAF as a timeline. Establish the forecast that begins the valid
+        period. Apply each change group at the correct time. Then place the
+        estimated arrival time on that timeline, including realistic delay. AC
+        91-92 specifically directs attention to significant destination changes
+        around the estimated time of arrival, not only the condition at one
+        exact minute.
+      - Treat its arrival as a destination decision for that leg. Put the
+        estimated arrival time against its TAF when one is available, its
+        surrounding forecasts, and realistic alternatives. If passengers, fuel,
+        or timing change, update the next leg rather than carrying forward
+        earlier assumptions. The Wisconsin destination receives the same
+        treatment, with special attention to significant forecast changes around
+        arrival time.
+    ac-briefing-checklist:
+      - Start a route-and-time worksheet. It can be paper or electronic. Give
+        each leg a proposed departure time, estimated arrival time, planned
+        altitude range, major terrain concern, fuel or rest stop, destination,
+        and practical alternatives. Do not fill it with weather conclusions yet.
+        First create the places where the evidence will go.
+      - The official 1800wxbrief.com portal is one way to access Flight Service
+        briefing support. The show notes link directly to it, along with the FAA
+        briefing checklist in AC 91-92 if you want a structured starting point
+        for your own route-and-time worksheet.
+    phak-weather-overview:
+      - In this lesson, a weather product is a named, standardized
+        aviation-weather report, analysis, forecast, advisory, chart, layer, or
+        briefing element. It is built from weather observations, forecast
+        models, forecaster analysis, or some combination of them, and it has a
+        defined place or area, altitude when applicable, and observation or
+        valid time. That is a technical use of product, not the everyday
+        consumer-app sense of the word.
+      - "When you open a weather product in a display, ask four questions before
+        trusting the picture it creates. First: what kind of information is
+        this—an observation, an analysis, a forecast, or an advisory? Second:
+        what place and altitude does it describe? Third: when was it observed or
+        issued, and when is it valid? Fourth: what decision can it inform, and
+        what other evidence should agree or disagree with it?"
+      - The ACS asks you to correlate the weather information into a go-or-no-go
+        decision. Correlation means that the pieces explain one another. A
+        surface pattern may explain why observations are deteriorating. A TAF
+        may place that deterioration near arrival. An advisory may identify the
+        en route hazard. A PIREP may confirm what an aircraft actually
+        encountered. The decision follows from the combined route-and-time
+        picture, not from whichever product was opened last.
+      - What kind of information is it? What place and altitude does it cover?
+        When was it observed or issued, and when is it valid? What decision can
+        it inform, and what other evidence should test that conclusion?
+    awc-gfa-help:
+      - Usually the app is an access and display tool. The underlying METAR,
+        TAF, forecast layer, advisory, or radar product is the information you
+        must understand. Two apps can access and present the same weather
+        product differently. Check the product name, source, timestamp, valid
+        time, legend, altitude, and any layer that may be hidden. A polished map
+        does not give the underlying data a larger geographic scope or a newer
+        valid time.
+      - One METAR does not describe the whole route. It is a point observation.
+        Nearby stations, a sequence of earlier observations, special reports,
+        forecasts, and graphical analyses help reveal whether the condition is
+        local, widespread, improving, or deteriorating. A gap between reporting
+        stations remains a gap; it does not become verified good weather because
+        the map has no report there.
+      - Return to the fictional route. Suppose the departure airport’s latest
+        observation is VFR. That is encouraging, but the decision is not
+        finished. Check the trend at that station, nearby observations in the
+        intended departure direction, any special reports, and the GFA ceiling,
+        visibility, cloud, and precipitation forecast layers for the departure
+        period. Then compare that weather picture with the terrain along the
+        first segment.
+      - The Graphical Forecasts for Aviation tool, or GFA, brings observation,
+        forecast, and advisory layers into an interactive map. Its time and
+        altitude controls are part of the meaning. A cloud layer at one altitude
+        and valid time cannot be carried unchanged to another altitude or
+        another part of the day. Before drawing a conclusion, confirm the
+        selected layer, valid time, altitude, units, and legend.
+      - Not necessarily. The gridded ceiling and visibility analysis
+        interpolates between observations. It estimates conditions in the spaces
+        between reporting sites, and the Aviation Weather Center warns that it
+        may not show the actual condition at every point. Use reporting
+        stations, PIREPs, forecasts, terrain, and other relevant layers to test
+        the smooth picture on the screen.
+      - This is where the ACS term Ceiling and Visibility Analysis fits the
+        current planning picture. The learning objective is to interpret ceiling
+        and visibility information across an area. In the current GFA
+        presentation, that information appears as part of the graphical analysis
+        and forecast environment rather than as permission to ignore the
+        observations underneath it.
+      - Now place the western leg at its proposed time and altitude on the GFA.
+        Examine clouds, ceiling and visibility, precipitation, freezing level
+        where relevant, turbulence, and advisories. Then compare nearby
+        observations and PIREPs. Finally, compare the winds aloft with the
+        terrain and the airplane’s performance. No single layer answers the
+        whole terrain question.
+      - Yes, and disagreement is useful information. An older observation may
+        not yet reflect a forecast change. A point observation may miss a local
+        condition between stations. A PIREP may be at a different altitude. A
+        forecast may simply be uncertain. Identify the mismatch, decide whether
+        newer or more local evidence resolves it, and preserve a conservative
+        option when it does not.
+      - What caution belongs with the GFA gridded ceiling and visibility
+        analysis?
+      - It interpolates between observations and may not show the actual
+        condition at every point. I should confirm the layer, valid time,
+        altitude, and legend, then compare it with observations, forecasts,
+        PIREPs, terrain, and other relevant evidence.
+    aim-fis-limitations:
+      - Usually the app is an access and display tool. The underlying METAR,
+        TAF, forecast layer, advisory, or radar product is the information you
+        must understand. Two apps can access and present the same weather
+        product differently. Check the product name, source, timestamp, valid
+        time, legend, altitude, and any layer that may be hidden. A polished map
+        does not give the underlying data a larger geographic scope or a newer
+        valid time.
+      - A small gap between growing cells is not an alternate route. A useful
+        alternate is outside the area in which convection may remove options,
+        and it must be reachable before the flight depends on threading between
+        rapidly changing hazards. When the plan depends on a narrow gap
+        remaining open, it becomes a test of the forecast rather than a plan
+        with a reliable way to reach the destination safely.
+      - Departure changes the available evidence; it does not end weather
+        planning. Compare actual progress and conditions with the plan at useful
+        decision points. Updated observations, Flight Service, air traffic
+        control information, PIREPs, and onboard weather can support a continue,
+        divert, land-short, or turn-back decision.
+      - Cockpit weather information has age, coverage, resolution, and display
+        limitations. The AIM describes it as information that augments other
+        sources. Check what product is displayed and how old it is. Datalink
+        weather is useful for strategic decisions—changes considered with
+        meaningful time and distance. It is not intended for close tactical
+        maneuvering around rapidly changing severe weather.
+      - Correct. The airplane position may update quickly while the weather
+        product reflects collection, processing, transmission, and display time.
+        Read the product age and leave room for movement and growth. If the plan
+        depends on seeing a safe opening only after reaching the hazard, the
+        decision point has come too late.
+      - How should I use weather displayed in the cockpit?
+      - As an update and strategic planning aid, while checking product age,
+        coverage, and limitations. It does not replace the preflight picture,
+        and it is not a tactical tool for close maneuvering around rapidly
+        changing severe weather.
+    awh-metar-speci:
+      - "This four-question habit protects against several common mistakes:
+        treating a point observation as a route forecast, treating an analysis
+        as a prediction, using a forecast outside its valid period, or seeing an
+        empty area on a display and assuming that no hazard exists there."
+      - A METAR is a routine observation of surface weather at an observing
+        site. It gives the station identifier, observation time, wind,
+        visibility, significant weather, sky condition, temperature and dew
+        point, altimeter setting, and remarks as applicable. A SPECI uses the
+        same general format but is an unscheduled special observation issued
+        when specified conditions change. Both use a precise encoded format that
+        takes practice to read. Private-pilot knowledge-test learners are
+        expected to interpret METARs, but this episode will use them as decision
+        evidence rather than teach every code group.
+      - Decode the format, but then rebuild the physical picture. Where and when
+        was the observation? What is the wind doing? How far can you see? What
+        weather is reducing visibility? What cloud layers or ceiling are
+        reported? How close are temperature and dew point? Then ask how old the
+        report will be at departure or arrival. The code groups matter because
+        they describe a real atmosphere at a particular point and time.
+      - One METAR does not describe the whole route. It is a point observation.
+        Nearby stations, a sequence of earlier observations, special reports,
+        forecasts, and graphical analyses help reveal whether the condition is
+        local, widespread, improving, or deteriorating. A gap between reporting
+        stations remains a gap; it does not become verified good weather because
+        the map has no report there.
+      - Return to the fictional route. Suppose the departure airport’s latest
+        observation is VFR. That is encouraging, but the decision is not
+        finished. Check the trend at that station, nearby observations in the
+        intended departure direction, any special reports, and the GFA ceiling,
+        visibility, cloud, and precipitation forecast layers for the departure
+        period. Then compare that weather picture with the terrain along the
+        first segment.
+      - Because the airplane will leave the observation point. A VFR report at
+        the airport does not establish the visibility, ceiling, or precipitation
+        along the first segment. It also does not tell you whether the
+        conditions farther along that segment leave usable clearance from the
+        terrain. The departure decision needs a practical escape plan too. If
+        the route ahead is worse than expected, is there room to remain in known
+        conditions, return, land nearby, or delay before entering narrowing
+        terrain and weather choices?
+      - Yes, and disagreement is useful information. An older observation may
+        not yet reflect a forecast change. A point observation may miss a local
+        condition between stations. A PIREP may be at a different altitude. A
+        forecast may simply be uncertain. Identify the mismatch, decide whether
+        newer or more local evidence resolves it, and preserve a conservative
+        option when it does not.
+      - What are the principal limits of a METAR, a TAF, and a surface analysis?
+      - A METAR is a point observation. A TAF is a terminal-area forecast for a
+        stated valid period, not a route forecast. A surface analysis is an
+        analyzed current snapshot, not a forecast.
+    awh-surface-analysis:
+      - "This four-question habit protects against several common mistakes:
+        treating a point observation as a route forecast, treating an analysis
+        as a prediction, using a forecast outside its valid period, or seeing an
+        empty area on a display and assuming that no hazard exists there."
+      - "The surface analysis gives the large-scale current picture: pressure
+        systems, fronts, troughs, and analyzed weather based on observations.
+        Think of it as a map that helps explain why individual reports may form
+        a pattern. It is an analysis of the atmosphere around its valid time,
+        not a promise of what the atmosphere will do later."
+      - Correct. Use forecast products to evaluate expected movement and
+        development. The surface analysis helps you recognize the structure that
+        the forecasts are describing. For our hypothetical trip, it may show
+        whether the western terrain concern belongs to a broad pressure pattern
+        and whether the Plains concern is connected to a larger frontal system.
+        That context guides where to look more closely.
+      - What are the principal limits of a METAR, a TAF, and a surface analysis?
+      - A METAR is a point observation. A TAF is a terminal-area forecast for a
+        stated valid period, not a route forecast. A surface analysis is an
+        analyzed current snapshot, not a forecast.
+    cfr-preflight-action:
+      - "Section 91.103 begins the preflight obligation by requiring the pilot
+        in command, before flight, to become familiar with all available
+        information concerning that flight. AC 91-92 turns that broad obligation
+        into a practical weather-briefing process: plan the flight, collect
+        relevant information, interpret it, assess risk, and make a decision."
+    ac-preflight-purpose:
+      - "Section 91.103 begins the preflight obligation by requiring the pilot
+        in command, before flight, to become familiar with all available
+        information concerning that flight. AC 91-92 turns that broad obligation
+        into a practical weather-briefing process: plan the flight, collect
+        relevant information, interpret it, assess risk, and make a decision."
+      - Yes. Record the source, issue or observation time, valid time, route
+        segment, and your interpretation. Also record uncertainty and the next
+        update point. “Check again tomorrow” is too vague. “Review the new
+        forecast cycle before choosing the western stop” connects the update to
+        a decision.
+      - I connect every report and forecast to a route segment and time, compare
+        independent evidence, identify uncertainty, apply personal minimums,
+        name the go or no-go conclusion, and write the trigger that would make
+        me delay, reroute, land short, divert, or turn back.
+    awh-briefing:
+      - FAA guidance recognizes both self-briefing and Flight Service. A
+        self-briefing places the interpretation work directly on the pilot. A
+        Flight Service specialist can provide a consultative briefing and answer
+        questions. In either case, the goal is not simply to say that a briefing
+        occurred. The goal is to understand the relevant evidence well enough to
+        make and explain the decision.
+    aim-preflight-briefing:
+      - FAA guidance recognizes both self-briefing and Flight Service. A
+        self-briefing places the interpretation work directly on the pilot. A
+        Flight Service specialist can provide a consultative briefing and answer
+        questions. In either case, the goal is not simply to say that a briefing
+        occurred. The goal is to understand the relevant evidence well enough to
+        make and explain the decision.
+      - The briefing type should match the planning stage. An outlook briefing
+        is useful when the proposed departure is six or more hours away and the
+        main question is whether the broad plan is plausible. A standard
+        briefing supplies the complete departure-period picture. An abbreviated
+        briefing updates or supplements information you already have, such as a
+        delayed departure, a changed route, or a newly issued advisory.
+      - Several days out, the broad outlook may tell you whether the route and
+        schedule are plausible. Closer to departure, obtain the complete current
+        picture through a standard briefing or an equivalent organized
+        self-briefing. If departure is delayed, the route changes, or a new
+        concern appears, use an abbreviated briefing to update the specific
+        information while keeping the earlier context.
+      - An outlook supports early planning when departure is at least six hours
+        away. A standard briefing supplies the complete departure-period
+        picture. An abbreviated briefing updates or supplements information when
+        I already have the broader context.
+    flight-service-portal:
+      - The official 1800wxbrief.com portal is one way to access Flight Service
+        briefing support. The show notes link directly to it, along with the FAA
+        briefing checklist in AC 91-92 if you want a structured starting point
+        for your own route-and-time worksheet.
+    ac-briefing-types:
+      - The briefing type should match the planning stage. An outlook briefing
+        is useful when the proposed departure is six or more hours away and the
+        main question is whether the broad plan is plausible. A standard
+        briefing supplies the complete departure-period picture. An abbreviated
+        briefing updates or supplements information you already have, such as a
+        delayed departure, a changed route, or a newly issued advisory.
+      - Right. It has context. You identify what you already know and what has
+        changed or still needs clarification.
+      - Several days out, the broad outlook may tell you whether the route and
+        schedule are plausible. Closer to departure, obtain the complete current
+        picture through a standard briefing or an equivalent organized
+        self-briefing. If departure is delayed, the route changes, or a new
+        concern appears, use an abbreviated briefing to update the specific
+        information while keeping the earlier context.
+      - What is the practical difference among outlook, standard, and
+        abbreviated briefings?
+      - An outlook supports early planning when departure is at least six hours
+        away. A standard briefing supplies the complete departure-period
+        picture. An abbreviated briefing updates or supplements information when
+        I already have the broader context.
+    awh-pirep:
+      - A pilot weather report, or PIREP, is an actual report from an aircraft
+        about conditions it encountered. Routine reports are identified as UA;
+        urgent reports are identified as UUA when they contain weather
+        significant enough to need prompt dissemination. In a typical briefing,
+        PIREPs appear with current-weather information as individual reports or
+        map entries. The useful context includes location, time, altitude,
+        aircraft type, and the reported condition. A report of turbulence from a
+        light training airplane may have different practical meaning than the
+        same wording from a much larger aircraft. A report two hours earlier or
+        far from the route may no longer answer the question you are asking.
+      - PIREPs also improve the weather system for other pilots. Reports of good
+        conditions can be useful, not only reports of turbulence, icing, low
+        ceilings, or poor visibility. Your flight instruction should include how
+        and when to make a clear PIREP through the available channels.
+      - Now place the western leg at its proposed time and altitude on the GFA.
+        Examine clouds, ceiling and visibility, precipitation, freezing level
+        where relevant, turbulence, and advisories. Then compare nearby
+        observations and PIREPs. Finally, compare the winds aloft with the
+        terrain and the airplane’s performance. No single layer answers the
+        whole terrain question.
+      - Yes, and disagreement is useful information. An older observation may
+        not yet reflect a forecast change. A point observation may miss a local
+        condition between stations. A PIREP may be at a different altitude. A
+        forecast may simply be uncertain. Identify the mismatch, decide whether
+        newer or more local evidence resolves it, and preserve a conservative
+        option when it does not.
+      - What makes a PIREP relevant?
+      - Its location, time, altitude, aircraft type, and reported condition. The
+        absence of PIREPs does not prove good conditions; it may only mean that
+        no useful report is available.
+    ac-pirep-value:
+      - No. It may mean that no aircraft reported, that few aircraft crossed the
+        area, or that available reports do not match your altitude and time. A
+        PIREP is positive evidence about what one aircraft encountered. An empty
+        PIREP display is not a report of good conditions.
+      - PIREPs also improve the weather system for other pilots. Reports of good
+        conditions can be useful, not only reports of turbulence, icing, low
+        ceilings, or poor visibility. Your flight instruction should include how
+        and when to make a clear PIREP through the available channels.
+      - Its location, time, altitude, aircraft type, and reported condition. The
+        absence of PIREPs does not prove good conditions; it may only mean that
+        no useful report is available.
+    awc-gfa-application:
+      - The Graphical Forecasts for Aviation tool, or GFA, brings observation,
+        forecast, and advisory layers into an interactive map. Its time and
+        altitude controls are part of the meaning. A cloud layer at one altitude
+        and valid time cannot be carried unchanged to another altitude or
+        another part of the day. Before drawing a conclusion, confirm the
+        selected layer, valid time, altitude, units, and legend.
+    awh-winds-aloft:
+      - Winds and temperatures aloft forecasts describe expected wind direction,
+        wind speed, and temperature for specified locations, altitudes, and
+        forecast times. The values support heading, groundspeed, time, fuel,
+        altitude, turbulence, and temperature-related planning. They are
+        forecast values, so the selected valid time must match the leg closely
+        enough to answer the planning question.
+      - Wind direction and speed relative to a ridge can support mountain-wave
+        activity, turbulence, and strong downdrafts on the downwind side. That
+        makes the route question more than a groundspeed calculation. Compare
+        the forecast wind with ridge orientation, cloud cover, the airplane’s
+        altitude capability, turbulence forecasts and advisories, relevant
+        PIREPs, and escape routes. Your CFI can turn that planning picture into
+        practical instruction about local mountain winds, downdrafts, and route
+        choices.
+      - Now place the western leg at its proposed time and altitude on the GFA.
+        Examine clouds, ceiling and visibility, precipitation, freezing level
+        where relevant, turbulence, and advisories. Then compare nearby
+        observations and PIREPs. Finally, compare the winds aloft with the
+        terrain and the airplane’s performance. No single layer answers the
+        whole terrain question.
+      - How do winds aloft, advisories, and a Convective Outlook fit the route
+        decision?
+      - Winds aloft support altitude, groundspeed, time, fuel, temperature, and
+        terrain planning. Advisories identify specified hazards by area,
+        altitude, and time, and require both text and graphic interpretation.
+        The Convective Outlook shows regional potential, so I still need more
+        specific evidence for the route and airports.
+    awh-airmet:
+      - Wind direction and speed relative to a ridge can support mountain-wave
+        activity, turbulence, and strong downdrafts on the downwind side. That
+        makes the route question more than a groundspeed calculation. Compare
+        the forecast wind with ridge orientation, cloud cover, the airplane’s
+        altitude capability, turbulence forecasts and advisories, relevant
+        PIREPs, and escape routes. Your CFI can turn that planning picture into
+        practical instruction about local mountain winds, downdrafts, and route
+        choices.
+      - "AIRMETs and SIGMETs identify specified en route hazards. AIRMETs
+        address hazards including instrument conditions or mountain obscuration,
+        moderate turbulence, strong surface winds, moderate icing, and
+        freezing-level information. SIGMETs address specified hazards
+        significant to aircraft. Convective SIGMETs focus attention on
+        qualifying convective activity. The exact category matters, but the
+        planning question remains: where, when, at what altitude, and how does
+        the hazard intersect the route?"
+      - At a high level, an AIRMET identifies a forecast en route hazard that
+        can matter especially to light aircraft; a SIGMET identifies a specified
+        significant hazard; and a Convective SIGMET identifies qualifying
+        convective activity. The show notes link to the FAA references for each.
+        A future supplemental episode, *PIREPs, AIRMETs, and SIGMETs*, will
+        spend more time on their formats, how they appear in a briefing, and
+        their practical uses and limits.
+      - Read the advisory text and valid time, not only the shape. The graphic
+        summarizes the affected area; the text supplies important details such
+        as altitude, movement, intensity, or forecast basis. Graphical AIRMET
+        snapshots also represent forecast times, with the hazard considered
+        between the displayed snapshots. Allow room for uncertainty and route
+        changes instead of treating the polygon edge as a wall.
+      - How do winds aloft, advisories, and a Convective Outlook fit the route
+        decision?
+      - Winds aloft support altitude, groundspeed, time, fuel, temperature, and
+        terrain planning. Advisories identify specified hazards by area,
+        altitude, and time, and require both text and graphic interpretation.
+        The Convective Outlook shows regional potential, so I still need more
+        specific evidence for the route and airports.
+    awh-mountain-wave:
+      - Wind direction and speed relative to a ridge can support mountain-wave
+        activity, turbulence, and strong downdrafts on the downwind side. That
+        makes the route question more than a groundspeed calculation. Compare
+        the forecast wind with ridge orientation, cloud cover, the airplane’s
+        altitude capability, turbulence forecasts and advisories, relevant
+        PIREPs, and escape routes. Your CFI can turn that planning picture into
+        practical instruction about local mountain winds, downdrafts, and route
+        choices.
+    awh-taf:
+      - A Terminal Aerodrome Forecast, or TAF, predicts conditions in the
+        terminal area around an airport for its stated valid period. It uses
+        weather codes familiar from METARs, but it is a forecast rather than an
+        observation. It may include change groups that show expected permanent,
+        temporary, or probable changes, and it may be amended as forecast
+        thinking changes.
+      - No. Its terminal scope is centered on that airport. Use it for the
+        expected arrival window, then use area forecasts, nearby terminal
+        forecasts, observations, advisories, and the route pattern for the space
+        leading to the airport. A TAF can be highly useful without being a
+        corridor forecast.
+      - Read a TAF as a timeline. Establish the forecast that begins the valid
+        period. Apply each change group at the correct time. Then place the
+        estimated arrival time on that timeline, including realistic delay. AC
+        91-92 specifically directs attention to significant destination changes
+        around the estimated time of arrival, not only the condition at one
+        exact minute.
+      - Treat its arrival as a destination decision for that leg. Put the
+        estimated arrival time against its TAF when one is available, its
+        surrounding forecasts, and realistic alternatives. If passengers, fuel,
+        or timing change, update the next leg rather than carrying forward
+        earlier assumptions. The Wisconsin destination receives the same
+        treatment, with special attention to significant forecast changes around
+        arrival time.
+      - What are the principal limits of a METAR, a TAF, and a surface analysis?
+      - A METAR is a point observation. A TAF is a terminal-area forecast for a
+        stated valid period, not a route forecast. A surface analysis is an
+        analyzed current snapshot, not a forecast.
+    awh-sigmet:
+      - "AIRMETs and SIGMETs identify specified en route hazards. AIRMETs
+        address hazards including instrument conditions or mountain obscuration,
+        moderate turbulence, strong surface winds, moderate icing, and
+        freezing-level information. SIGMETs address specified hazards
+        significant to aircraft. Convective SIGMETs focus attention on
+        qualifying convective activity. The exact category matters, but the
+        planning question remains: where, when, at what altitude, and how does
+        the hazard intersect the route?"
+      - At a high level, an AIRMET identifies a forecast en route hazard that
+        can matter especially to light aircraft; a SIGMET identifies a specified
+        significant hazard; and a Convective SIGMET identifies qualifying
+        convective activity. The show notes link to the FAA references for each.
+        A future supplemental episode, *PIREPs, AIRMETs, and SIGMETs*, will
+        spend more time on their formats, how they appear in a briefing, and
+        their practical uses and limits.
+      - Read the advisory text and valid time, not only the shape. The graphic
+        summarizes the affected area; the text supplies important details such
+        as altitude, movement, intensity, or forecast basis. Graphical AIRMET
+        snapshots also represent forecast times, with the hazard considered
+        between the displayed snapshots. Allow room for uncertainty and route
+        changes instead of treating the polygon edge as a wall.
+      - How do winds aloft, advisories, and a Convective Outlook fit the route
+        decision?
+      - Winds aloft support altitude, groundspeed, time, fuel, temperature, and
+        terrain planning. Advisories identify specified hazards by area,
+        altitude, and time, and require both text and graphic interpretation.
+        The Convective Outlook shows regional potential, so I still need more
+        specific evidence for the route and airports.
+    awh-convective-outlook:
+      - For the fictional Plains segment, begin with the regional pattern and
+        Convective Outlook. The Outlook identifies areas where severe or general
+        thunderstorm activity may develop; it does not forecast the weather at
+        one airport. Place the proposed leg and time inside that regional
+        picture, then examine the more specific forecasts, advisories,
+        observations, and practical routes around the threatened area.
+      - How do winds aloft, advisories, and a Convective Outlook fit the route
+        decision?
+      - Winds aloft support altitude, groundspeed, time, fuel, temperature, and
+        terrain planning. Advisories identify specified hazards by area,
+        altitude, and time, and require both text and graphic interpretation.
+        The Convective Outlook shows regional potential, so I still need more
+        specific evidence for the route and airports.
+show_notes_mapping:
+  valid: false
+  errors:
+    - show-notes link pirep-study-reference maps claim pirep-report-types, but
+      source awh-pirep does not support it
+  markdown_link_count: 23
+  manifest_link_count: 23
+results: []

@@ -71,7 +71,7 @@ sources:
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Explains that PIREPs report actual conditions and improve warnings and forecasts."
-    supports_claims: [pirep-context, pirep-report-types]
+    supports_claims: [pirep-context]
   - id: phak-weather-overview
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 13
     publisher: FAA
@@ -111,7 +111,7 @@ sources:
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Explains PIREP time, location, altitude, aircraft type, and reported conditions."
-    supports_claims: [pirep-context]
+    supports_claims: [pirep-context, pirep-report-types]
   - id: awh-surface-analysis
     title: Aviation Weather Handbook
     publisher: FAA

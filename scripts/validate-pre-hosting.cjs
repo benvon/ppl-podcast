@@ -138,6 +138,19 @@ function hasResolvedIndependentSpokenScriptReview(productionLog) {
   });
 }
 
+function usesConsolidatedProductionState(episode) {
+  return episode.audio?.publication_day_validation !== undefined || episode.hosting?.handoff_status !== undefined;
+}
+
+function consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }) {
+  if (!usesConsolidatedProductionState(episode)) return [];
+  const errors = [];
+  expect(errors, audioManifest.status === undefined && audioManifest.publication_day_validation === undefined && audioManifest.chapter_markers?.status === undefined, "audio-manifest.yaml must not duplicate episode.yaml production state.");
+  expect(errors, hosting.handoff_status === undefined, "hosting-metadata.yaml must not duplicate episode.yaml production state.");
+  expect(errors, !/^\*\*Production status:\*\*/im.test(masterScript), "master-script.md must not duplicate episode.yaml production state.");
+  return errors;
+}
+
 function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   const errors = [];
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
@@ -161,12 +174,13 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   return errors;
 }
 
-function validateDraftPackageShape({ episodePath, paths, episode, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
+function validateDraftPackageShape({ episodePath, paths, episode, audioManifest, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
   const errors = [];
   expect(errors, PACKAGE_SHAPE_COMPATIBLE_STATUSES.has(episode.status), "episode.yaml status must be a recognized package-shape state.");
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
   expect(errors, episode.review?.editorial_script_sha256 === sha256Text(masterScript), "editorial approval must be bound to the current master-script.md bytes.");
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
+  errors.push(...consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }));
   expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode and version must match episode.yaml.");
   expect(errors, showNotesRecordCompletedSourceReview(showNotes, episode.version), "show-notes.md must record the completed source review for the current version.");
   expect(errors, researchPacket.includes("Human editorial review and script approval are complete."), "research-packet.md must record completed human editorial review.");
@@ -204,21 +218,20 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
   const researchPacket = fs.readFileSync(paths["research-packet.md"], "utf8");
   const productionLog = fs.readFileSync(paths["production-log.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
-  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, paths, episode, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist });
+  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, paths, episode, audioManifest, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist });
   const candidate = audioManifest.current_candidate_render || {};
   let releaseIdentityRecord;
   try { releaseIdentityRecord = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
   catch (error) { errors.push(`episode release identity is invalid: ${error.message}`); }
 
-  const usesConsolidatedProductionState = episode.audio?.publication_day_validation !== undefined || episode.hosting?.handoff_status !== undefined;
+  const consolidatedState = usesConsolidatedProductionState(episode);
   expect(errors, episode.status === "ready_for_hosting_pr", "episode.yaml status must be ready_for_hosting_pr.");
-  if (usesConsolidatedProductionState) {
+  if (consolidatedState) {
     expect(errors, episode.audio?.status === "candidate_rendered_listening_qa_approved", "episode.yaml audio status must record approved listening QA.");
     expect(errors, episode.audio?.publication_day_validation === "passed", "episode.yaml audio publication-day validation must be passed.");
     expect(errors, episode.audio?.chapter_markers === "embedded_and_ffprobe_validated", "episode.yaml audio chapter-marker validation must be complete.");
     expect(errors, episode.hosting?.handoff_status === "ready_for_hosting_pr", "episode.yaml hosting handoff status must be ready for the hosting PR.");
-    expect(errors, audioManifest.status === undefined && audioManifest.publication_day_validation === undefined && audioManifest.chapter_markers?.status === undefined, "audio-manifest.yaml must not duplicate episode.yaml production state.");
-    expect(errors, hosting.handoff_status === undefined, "hosting-metadata.yaml must not duplicate episode.yaml production state.");
+    errors.push(...consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }));
   } else {
     // Released packages before the consolidated contract remain verifiable.
     // Any new script revision runs episode:script-review --reset, which
@@ -331,4 +344,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, validateDraftPackageShape, validatePreHosting };
+module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };

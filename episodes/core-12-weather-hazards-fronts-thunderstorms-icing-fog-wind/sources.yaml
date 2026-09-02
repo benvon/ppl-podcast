@@ -1,0 +1,363 @@
+episode_id: "core-12"
+verification_date: "2026-09-01"
+verified_at_utc: "2026-09-01T16:47:46Z"
+sources:
+  - id: acs-weather-hazards-decisions
+    authority: faa_regulatory_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: "FAA-S-ACS-6C"
+    locator: "PA.I.C.K3e-K3l, R1-R2, and S1-S3, Weather Information, printed p. 4"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12"
+    revision: "April 2024; effective May 31, 2024; current ACS listing verified September 1, 2026"
+    relevance_excerpt: "The Weather Information task includes fronts, turbulence, thunderstorms and microbursts, icing and freezing-level information, fog, frost, and visibility obstructions; the applicant analyzes implications, manages go/no-go and continue/divert risk, and correlates weather information to a decision."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [acs-hazards-decision-standard, conservative-correlation-framework]
+
+  - id: phak-wind-circulation
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Wind and Currents and Wind Patterns, p. 12-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=7"
+    revision: "2023 edition; Chapter 12 page updated July 10, 2023; October 20, 2025 addendum does not modify Chapter 12"
+    relevance_excerpt: "Pressure differences, Coriolis force, friction, and temperature differences produce atmospheric motion. Large-scale circulation theory does not account for local changes; local conditions, geological features, and other anomalies can change wind direction and speed close to the surface."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [wind-pressure-local-effects]
+
+  - id: phak-obstruction-wind
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Effect of Obstructions on Wind, p. 12-8"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=8"
+    revision: "2023 edition"
+    relevance_excerpt: "Ground topography and large buildings break up wind flow and create gusts that change rapidly in direction and speed. The associated turbulence depends on obstacle size and the primary wind velocity and is especially important near airport runways."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [obstruction-terrain-turbulence]
+
+  - id: awh-mountain-wave-hazards
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 16, Trapped Lee Waves and Persistent Horizontal Roll Vortices (Rotors), pp. 16-10 to 16-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Mountain waves can contain larger-scale updraft and downdraft motions. A rotor zone can develop near or below ridge level on the downwind side of a mountain and may contain potentially severe-to-extreme wind shear and turbulence."
+    verified_at_utc: "2026-09-01T23:26:06Z"
+    link_status: 200
+    supports_claims: [mountain-wave-downdraft-rotor]
+
+  - id: aim-mountain-wave-forecast-limits
+    authority: faa_guidance
+    title: "Aeronautical Information Manual"
+    document_id: "AIM"
+    locator: "Section 4-6-6.a.3(a), Mountain Wave Activity"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim/aim0406.html#GWtW21cbmweb"
+    revision: "Current online AIM section verified September 1, 2026"
+    relevance_excerpt: "Mountain-wave activity can occur below as well as above RVSM airspace and can be difficult to forecast, highly localized, and short-lived."
+    verified_at_utc: "2026-09-01T23:26:06Z"
+    link_status: 200
+    supports_claims: [mountain-wave-forecast-variability]
+
+  - id: phak-low-level-wind-shear
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Low-Level Wind Shear, p. 12-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=11"
+    revision: "2023 edition"
+    relevance_excerpt: "Wind shear is a sudden change in wind speed or direction over a small area. Low-level shear is hazardous near the ground and is associated with fronts, thunderstorms, inversions, and strong upper-level winds; a microburst combines downdraft and rapidly changing horizontal wind."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [wind-shear-performance-change, microburst-outflow-sequence]
+
+  - id: phak-fronts-air-masses
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Fronts and beginning of Warm Front, p. 12-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=18"
+    revision: "2023 edition"
+    relevance_excerpt: "A front is the boundary layer between air masses with different characteristics. No two fronts are the same, although generalized weather conditions help identify front types."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [air-mass-front-boundary, fronts-not-weather-script]
+
+  - id: phak-front-chart-location
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Figure 12-24, Common chart symbology to depict weather front location, p. 12-19"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=19"
+    revision: "2023 edition"
+    relevance_excerpt: "Figure 12-24 identifies the surface-front symbols used to depict the location of warm, cold, stationary, and occluded fronts on a surface analysis chart."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [front-chart-surface-location]
+
+  - id: awh-front-surface-signs
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 11, surface detection of fronts, p. 11-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=138"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "At the surface, fronts are commonly detectable through temperature gradients, wind convergence, and pressure that typically falls before passage and rises afterward."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [front-multi-cue-recognition]
+
+  - id: phak-warm-front
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, beginning of Warm Front, p. 12-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=18"
+    revision: "2023 edition"
+    relevance_excerpt: "In a warm front, warm air advances over colder air on a gradual slope. Lifting cools the warm air; cirriform or stratiform clouds and fog can form along the frontal boundary, with thunderstorms possible in summer."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [warm-front-broad-weather]
+
+  - id: phak-cold-front
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Cold Front and Fast-Moving Cold Front, p. 12-20"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=20"
+    revision: "2023 edition"
+    relevance_excerpt: "Advancing cold air slides beneath warmer air and forces it upward. Cloud type depends on the stability of the warm air; a fast-moving cold front has a steeper surface and a narrow band of concentrated weather."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [cold-front-concentrated-weather]
+
+  - id: phak-stationary-occluded-fronts
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 12: Weather Theory"
+    document_id: "FAA-H-8083-25C"
+    locator: "Ch. 12, Stationary Front and beginning of Occluded Front, p. 12-21"
+    url: "https://www.faa.gov/sites/faa.gov/files/14_phak_ch12.pdf#page=21"
+    revision: "2023 edition"
+    relevance_excerpt: "A stationary front remains when opposing air-mass forces are relatively equal and can influence local weather for days. An occluded front forms when a fast-moving cold front catches a slow-moving warm front."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [stationary-front-duration, occluded-front-formation]
+
+  - id: awh-front-variability
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 11, surface detection, vertical structure, and Warm Front, p. 11-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=138"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Fronts have vertical structure and slope over colder, denser air rather than existing only at the surface. For a warm front, stable rising air favors widespread layered or stratiform cloudiness and precipitation."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [front-transition-zone]
+
+  - id: awh-fog-definition-radiation
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 18, Fog and beginning of Radiation Fog, p. 18-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=222"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Fog is a visible aggregate of minute water droplets based at the surface and reduces horizontal visibility below five-eighths statute mile; freezing fog and ice fog are also defined. Radiation fog begins when nighttime radiational cooling lowers air to its dewpoint."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [fog-cloud-at-surface]
+
+  - id: awh-radiation-fog-factors
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 18, Radiation Fog factors, p. 18-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=223"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Radiation fog is favored by shallow relatively moist surface air, clear sky, and light wind. Calm wind keeps it shallow, light wind can deepen it, and stronger wind disperses it or lifts it into low cloud."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [radiation-fog-ingredients]
+
+  - id: awh-fog-advection-upslope
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 18, Advection Fog, p. 18-4"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=224"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Advection fog forms when moist air moves over a colder surface and cools below its dewpoint."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [advection-fog-formation]
+
+  - id: awh-fog-upslope
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 18, Upslope Fog, p. 18-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=226"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Upslope fog forms as moist, stable air moves up sloping terrain and cools adiabatically to or below its dewpoint."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [upslope-fog-formation]
+
+  - id: awh-fog-precipitation-steam
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 18, Frontal Fog, p. 18-6"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=226"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "When warm moist air is lifted over a front, precipitation can evaporate or sublimate into cold air below that is already near its dewpoint, saturating it and forming frontal fog."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [frontal-fog-formation]
+
+  - id: awh-fog-steam
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 18, Steam Fog, p. 18-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=227"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Steam fog forms when very cold air crosses relatively warm water, evaporation supplies moisture, and the rising vapor recondenses in the cold air."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [steam-fog-formation]
+
+  - id: awh-icing-supercooled-water
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 20, Supercooled Water and Structural Icing, p. 20-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=244"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Supercooled liquid water can remain unfrozen below zero Celsius and freezes on impact. Structural icing occurs when supercooled water droplets strike the airframe and freeze."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [structural-icing-ingredients]
+
+  - id: awh-icing-factors
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 20, Mixed Icing and Icing Factors, p. 20-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=245"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Supercooled liquid water content, temperature, and droplet size are the meteorological quantities most closely related to icing type and severity; aircraft type, design, and airspeed also matter."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [icing-form-variability]
+
+  - id: awh-icing-fronts-terrain
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 20, Icing with Fronts and Icing with Mountains, p. 20-5"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=247"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Freezing rain or freezing drizzle below a front is a favored location for severe clear icing and can extend horizontally over a broad area. Mountain windward-side upward currents support large supercooled droplets above the freezing level; a front crossing a mountain range can combine frontal lift with upslope flow."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [icing-frontal-terrain-distribution]
+
+  - id: awh-icing-effects
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 20, Effects of Icing, p. 20-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=249"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Small roughness from frost, snow, or ice on a wing can reduce lift and increase drag. Ice also accumulates on exposed frontal surfaces including wings, the propeller, windshield, antennas, vents, intakes, and cowlings."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [icing-aerodynamic-system-effects]
+
+  - id: awh-thunderstorm-ingredients-lifecycle
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 22, Necessary Ingredients and beginning of Cell Life Cycle, p. 22-2"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=257"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Thunderstorm cell formation requires sufficient water vapor, unstable air, and a lifting mechanism. The life cycle has towering cumulus, mature, and dissipating stages."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [thunderstorm-three-ingredients]
+
+  - id: awh-thunderstorm-lifecycle
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 22, Thunderstorm Cell Life Cycle, p. 22-3"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=258"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "The mature stage begins when precipitation reaches the surface, with a downdraft alongside the updraft. The downdraft spreads as a cool gust front well ahead of the parent cell."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [thunderstorm-life-cycle, gust-front-ahead-parent]
+
+  - id: awh-thunderstorm-hazards
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 22, Hazards and beginning of Downburst and Microburst, p. 22-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=262"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "All thunderstorms contain aviation hazards in different combinations; not every storm contains every listed hazard, and visual appearance cannot determine which hazards are present."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [all-thunderstorms-hazardous, storm-visual-hazards-uncertain]
+
+  - id: awh-thunderstorm-avoidance
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 22, Thunderstorm Avoidance Guidance, p. 22-21"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=276"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "Avoidance is the primary policy; the guidance warns against takeoff or landing toward an approaching storm and flight under a cell or anvil. Data-linked NEXRAD mosaic imagery shows where weather was, may be 15 to 20 minutes older than the displayed age, should be used for strategic route selection to avoid thunderstorms entirely, and must not be used as the sole means for tactical path negotiation through a thunderstorm area."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [thunderstorm-avoidance-strategy, datalink-strategic-not-tactical]
+
+  - id: awh-thunderstorm-divert-wait
+    authority: faa_guidance
+    title: "Aviation Weather Handbook"
+    document_id: "FAA-H-8083-28B"
+    locator: "Ch. 22, Thunderstorm Avoidance Guidance, item 19, p. 22-22"
+    url: "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=277"
+    revision: "FAA-H-8083-28B, April 2026"
+    relevance_excerpt: "The guidance says to divert and wait out thunderstorms on the ground when unable to navigate around a thunderstorm area."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [thunderstorm-divert-wait]
+
+  - id: afh-crosswind-capability
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 9: Approaches and Landings"
+    document_id: "FAA-H-8083-3C"
+    locator: "Ch. 9, Crosswind After-Landing Roll and Maximum Safe Crosswind Velocities, p. 9-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=18"
+    revision: "FAA-H-8083-3C, 2021; October 2025 addendum does not modify this section; current FAA handbook listing verified September 1, 2026"
+    relevance_excerpt: "Natural wind has an along-track headwind component and a crosswind component at right angles; takeoff and landing capability should be considered against reported wind and available landing directions."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [crosswind-components-runway]
+
+  - id: afh-crosswind-chart-capability
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 9: Approaches and Landings"
+    document_id: "FAA-H-8083-3C"
+    locator: "Ch. 9, Maximum Safe Crosswind Velocities and crosswind component chart, p. 9-19"
+    url: "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/10_afh_ch9.pdf#page=19"
+    revision: "FAA-H-8083-3C, 2021; October 2025 addendum does not modify this section; current FAA handbook listing verified September 1, 2026"
+    relevance_excerpt: "A crosswind component chart determines headwind and crosswind components, and pilots should know the maximum crosswind component of each airplane and avoid conditions exceeding its capability."
+    verified_at_utc: "2026-09-01T16:47:46Z"
+    link_status: 200
+    supports_claims: [crosswind-component-capability]

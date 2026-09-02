@@ -1,0 +1,147 @@
+episode_id: core-12
+status: candidate_rendered_listening_qa_approved
+publication_day_validation: passed
+current_candidate_render:
+  script_version: 0.2.2
+  rendered_at_utc: 2026-09-02T13:36:15.720Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 12
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: audio-artifacts/core-12-20260902T133600Z.mp3
+  lossless_master: audio-artifacts/core-12-20260902T133600Z.master.wav
+  render_manifest: audio-artifacts/core-12-20260902T133600Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-12-20260902T133600Z.audio-quality.json
+  chapter_review: audio-artifacts/core-12-20260902T133600Z.mp3.chapters.58e6c9e31d724baa794a259ff14d8aacaddf969bc469a8d25e2ab319b8292a1b.html
+  segment_work_dir: audio-artifacts/core-12-realtime-20260901T234131Z.segments
+  duration_seconds: 2102.67
+  duration_display: 35:03
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: 58e6c9e31d724baa794a259ff14d8aacaddf969bc469a8d25e2ab319b8292a1b
+  front_matter_validation: The replacement candidate reused the accepted unchanged Opening, Disclaimer, and Podcast introduction voice segments and music mix.
+  music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under Ballad; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade.
+  usage_estimate_usd: 2.956690
+  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, 68 stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Focused human listening QA and manual chapter review are accepted. Audio artifacts are Git-ignored.
+superseded_candidates:
+  - script_version: 0.2.2
+    rendered_at_utc: 2026-09-02T00:39:58.062Z
+    provider: openai-realtime
+    renderer: scripts/render_episode_realtime.cjs
+    renderer_version: 12
+    model: gpt-realtime-2.1
+    voices:
+      instructor: marin
+      learner: cedar
+      announcer: ballad
+    mp3: audio-artifacts/core-12-20260902T003203Z.mp3
+    lossless_master: audio-artifacts/core-12-20260902T003203Z.master.wav
+    render_manifest: audio-artifacts/core-12-20260902T003203Z.render-manifest.json
+    audio_quality_report: audio-artifacts/core-12-20260902T003203Z.audio-quality.json
+    chapter_review: audio-artifacts/core-12-20260902T003203Z.mp3.chapters.bce5b3e32dcd442b0a2432fb74b05d601ffd4e32e05f4775322d34943e3f28c4.html
+    segment_work_dir: audio-artifacts/core-12-realtime-20260901T234131Z.segments
+    duration_seconds: 2095.32
+    duration_display: 34:55
+    codec: mp3
+    sample_rate_hz: 24000
+    channels: 1
+    sha256: bce5b3e32dcd442b0a2432fb74b05d601ffd4e32e05f4775322d34943e3f28c4
+    front_matter_validation: The accepted opening preview contains the Opening and
+      Disclaimer; the full candidate reused those unchanged voice segments and
+      their accepted music mix.
+    music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256
+      0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB
+      base and -30 dB under Ballad; 10-second intro lead, 5-second continuation,
+      0.5-second fade; 10-second outro continuation and 5-second fade.
+    usage_estimate_usd: 2.946446
+    validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono
+      format, duration agreement, 68 stitch-boundary checks with no
+      discontinuity warnings, no clipped samples, and ffprobe-verified embedded
+      MP3 chapters. Full script-aligned human listening QA and manual chapter
+      review are accepted. Audio artifacts are Git-ignored.
+    superseded_reason: Approved publication-day source-support correction.
+  - script_version: 0.2.2
+    rendered_at_utc: 2026-09-02T13:10:12.534Z
+    provider: openai-realtime
+    renderer: scripts/render_episode_realtime.cjs
+    renderer_version: 12
+    model: gpt-realtime-2.1
+    voices:
+      instructor: marin
+      learner: cedar
+      announcer: ballad
+    mp3: audio-artifacts/core-12-20260902T130807Z.mp3
+    lossless_master: audio-artifacts/core-12-20260902T130807Z.master.wav
+    render_manifest: audio-artifacts/core-12-20260902T130807Z.render-manifest.json
+    audio_quality_report: audio-artifacts/core-12-20260902T130807Z.audio-quality.json
+    chapter_review: audio-artifacts/core-12-20260902T130807Z.mp3.chapters.0773c19a3388b881fc5e63d25209a67aa0f7ffe7e03b5c7b375f820d9a7d137e.html
+    segment_work_dir: audio-artifacts/core-12-realtime-20260901T234131Z.segments
+    duration_seconds: 2103.67
+    duration_display: 35:04
+    codec: mp3
+    sample_rate_hz: 24000
+    channels: 1
+    sha256: 0773c19a3388b881fc5e63d25209a67aa0f7ffe7e03b5c7b375f820d9a7d137e
+    front_matter_validation: The replacement candidate reused the accepted unchanged
+      Opening, Disclaimer, and Podcast introduction voice segments and music
+      mix.
+    music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256
+      0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB
+      base and -30 dB under Ballad; 10-second intro lead, 5-second continuation,
+      0.5-second fade; 10-second outro continuation and 5-second fade.
+    usage_estimate_usd: 2.957878
+    validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono
+      format, duration agreement, 68 stitch-boundary checks with no
+      discontinuity warnings, no clipped samples, and ffprobe-verified embedded
+      MP3 chapters. Focused human listening QA and manual chapter review are
+      accepted. Audio artifacts are Git-ignored.
+    superseded_reason: Publication-day source review identified an unresolved
+      Retrieval review support gap.
+opening_preview:
+  script_version: 0.2.2
+  rendered_at_utc: 2026-09-02T00:26:26.982Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 12
+  model: gpt-realtime-2.1
+  voices:
+    instructor: marin
+    learner: cedar
+    announcer: ballad
+  mp3: audio-artifacts/core-12-20260902T002617Z.preview-001-005.mp3
+  lossless_master: audio-artifacts/core-12-20260902T002617Z.preview-001-005.master.wav
+  render_manifest: audio-artifacts/core-12-20260902T002617Z.preview-001-005.render-manifest.json
+  audio_quality_report: audio-artifacts/core-12-20260902T002617Z.preview-001-005.audio-quality.json
+  segment_work_dir: audio-artifacts/core-12-realtime-20260901T234131Z.segments
+  duration_seconds: 166.87
+  duration_display: 2:47
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: 84b272530c025eff9a777d4a24c55198fa0d85f79f48b9c6aeaaa857e9aa7952
+  included_segments: "1-5: Opening, Disclaimer, Podcast introduction, and the
+    first ACS teaching segment"
+  front_matter_validation: The accepted opening preview contains the Opening and
+    Disclaimer; the renderer confirms that the Disclaimer immediately follows
+    the Opening.
+  music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256
+    0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB
+    base and -30 dB under Ballad; 10-second intro lead, 5-second continuation,
+    0.5-second fade.
+  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono
+    format, no stitch-boundary discontinuity warnings, and no clipped samples.
+    Human opening QA accepted after the corrected music mix was heard.
+chapter_markers:
+  status: embedded_and_ffprobe_validated
+  source: master-script.md section headings
+  audio_sha256: 58e6c9e31d724baa794a259ff14d8aacaddf969bc469a8d25e2ab319b8292a1b
+  required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast
+  review_page: audio-artifacts/core-12-20260902T133600Z.mp3.chapters.58e6c9e31d724baa794a259ff14d8aacaddf969bc469a8d25e2ab319b8292a1b.html
+required_before_release:
+  - Complete hosting validation and stage the sealed handoff.
+reason: Replacement candidate passed automated analysis, focused listening QA, and manual chapter review after the approved upslope-fog Retrieval review correction; it is ready for hosting validation.

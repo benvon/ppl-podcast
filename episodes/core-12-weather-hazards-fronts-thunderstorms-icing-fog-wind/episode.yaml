@@ -1,0 +1,95 @@
+id: core-12
+series: ppl-study-podcast
+title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
+slug: weather-hazards-fronts-thunderstorms-icing-fog-wind
+track: core
+status: ready_for_hosting_pr
+version: 0.2.2
+published_at: 2026-09-02T12:43:19Z
+runtime_target_minutes: 35
+runtime_actual_seconds: 2102.67
+word_count: 5188
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - PA.I.C.K3e-K3l
+  - PA.I.C.R1-R2
+  - PA.I.C.S1-S3
+phak_references:
+  - "FAA-H-8083-25C, Chapter 12: Weather Theory"
+  - FAA-H-8083-28B, Aviation Weather Handbook, Chapters 11, 16, 18, 20, and 22
+  - FAA-H-8083-3C, Airplane Flying Handbook, Chapter 9
+aim_references:
+  - AIM 4-6-6.a.3(a), Mountain Wave Activity
+advisory_circular_references: []
+cfr_references: []
+learning_objectives:
+  - Use a hypothetical multi-day VFR plan from northern California to Wisconsin
+    to identify the mechanism, location, timing, evidence, and concrete planning
+    response for each changing weather hazard.
+  - "Reuse four defined hypothetical planning roles: the planned mountain
+    corridor, western-Plains stopover, Wisconsin primary, and Wisconsin
+    alternate outside the primary's shared fog or convective-outflow area."
+  - Explain why a surface front symbol marks the bottom reference of a sloping,
+    three-dimensional boundary rather than the full edge of associated weather.
+  - Use warm, cold, stationary, and occluded front models to ask route- and
+    time-specific questions without treating a front name as a fixed script.
+  - Connect thunderstorm ingredients and cell life cycle with outflow, gust
+    fronts, wind shear, strategic avoidance, and a stop-before-the-front choice.
+  - Explain why delayed data-linked radar supports strategic thunderstorm
+    avoidance and must not be the sole means for tactical path negotiation.
+  - Apply the subfreezing-liquid-water overlap test separately to the planned
+    mountain-corridor and Plains-front cross-sections.
+  - Use radiation, advection, upslope, frontal, and steam-fog mechanisms to
+    compare a northern California departure with later route and Wisconsin
+    arrival decisions.
+  - Connect large-scale wind with western terrain, local obstructions, Wisconsin
+    runway components, airplane and pilot capability, and low-level wind shear.
+  - Recognize mountain-wave downdrafts, rotors, and forecast uncertainty, then
+    preserve a viable stop or turnaround before entering narrower terrain.
+  - "Name the exact conservative option for each proposed leg: delay, different
+    corridor, stopover, or destination outside the affected area."
+trouble_spots:
+  - Treating a charted front as a narrow line rather than a sloping weather zone.
+  - Memorizing one guaranteed cloud-and-weather sequence for each front type.
+  - Treating visible rain or a radar echo as the complete thunderstorm hazard
+    boundary.
+  - Using delayed data-linked radar as the sole means for tactical path
+    negotiation.
+  - Treating a freezing level or surface temperature as a complete icing answer.
+  - Treating light frost or ice as cosmetic or primarily a weight problem.
+  - Assuming all morning fog dissipates with sunrise.
+  - Using total wind speed without resolving runway components or local terrain
+    effects.
+  - Treating wind shear as merely strong steady wind.
+  - Using vague phrases such as actual evidence, this flight, both names, or
+    usable alternatives instead of naming the source comparison, route segment,
+    and specific delay, corridor, stopover, or destination choice.
+source_verification:
+  status: source_relevance_review_complete
+  verified_at_utc: 2026-09-02T13:35:16.498Z
+  link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: complete
+review:
+  editorial_status: script_approved
+  editorial_script_sha256: 66a1dfdc25f39a580290bf218eaf6602a23cd8a8337528531c7c6fe3b94c0819
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining: []
+audio:
+  manifest: audio-manifest.yaml
+  status: candidate_rendered_listening_qa_approved
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

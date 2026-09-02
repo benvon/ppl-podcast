@@ -139,7 +139,7 @@ acceptable attribution for a material claim.
 
 ## Prepare a sealed hosting handoff
 
-The public [PPL Study Guide hosting repository](https://github.com/benvon/ppl-postcast-hosting)
+The public [PPL Study Guide hosting repository](https://github.com/benvon/ppl-podcast-hosting)
 documents how a sealed episode handoff is staged, published, hosted, and
 attested after this source repository's release gates have passed.
 

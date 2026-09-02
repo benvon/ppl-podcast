@@ -1,0 +1,21 @@
+schema_version: 1
+handoff_status: ready_for_hosting_pr
+publisher_release:
+  id: core-12
+  guid: pplstudyguide.com:core-12
+  title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
+  description: Follow defined hypothetical route roles from northern California to
+    Wisconsin to recognize fronts, thunderstorms, icing, fog, wind, terrain
+    effects, runway components, and low-level wind shear in context.
+  published_at: 2026-09-02T12:43:19Z
+  duration: 00:35:03
+  season: 1
+  number: 12
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.2.2

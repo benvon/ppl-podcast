@@ -181,3 +181,7 @@
 - Replaced the incomplete Retrieval-review shorthand with the approved, source-complete wording: “Moist, stable air moving uphill can cool adiabatically to its dew point and form upslope fog.”
 - Formal source-relevance run `2c6db98e-41e2-46a6-b076-e6988a0c4bb8`, checked at `2026-09-02T13:35:16.498Z`, passed with 30 FAA sources, 30 listener-facing study links, 37 claims, and 124 immediate source tags. The result is bound to master-script SHA-256 `66a1dfdc25f39a580290bf218eaf6602a23cd8a8337528531c7c6fe3b94c0819`.
 - Rendered a 35:03 replacement candidate, reusing 67 exact-matching segments and rerendering only the short Retrieval-review prompt and its corrected Learner response. Automated WAV/MP3, stitch, clipping, and embedded-chapter checks passed. Focused listening QA and manual chapter review are pending.
+
+## 2026-09-02 — upslope-fog audio correction accepted
+
+- Focused listening QA accepted the rerendered Retrieval-review prompt and Learner response. The unchanged segments retain their prior accepted listening evidence; the replacement candidate now awaits only manual chapter review before final pre-hosting validation.

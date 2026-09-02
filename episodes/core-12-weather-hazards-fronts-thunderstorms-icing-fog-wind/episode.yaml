@@ -3,11 +3,11 @@ series: ppl-study-podcast
 title: "Weather Hazards: Fronts, Thunderstorms, Icing, Fog, and Wind"
 slug: weather-hazards-fronts-thunderstorms-icing-fog-wind
 track: core
-status: source_relevance_review_complete
+status: audio_listening_qa_complete
 version: 0.2.2
 published_at: 2026-09-02T12:43:19Z
 runtime_target_minutes: 35
-runtime_actual_seconds: null
+runtime_actual_seconds: 2102.67
 word_count: 5188
 speakers:
   - instructor
@@ -84,10 +84,11 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
+  - Complete manual chapter review for the replacement candidate.
   - Validate hosting metadata and external audio-store workflow.
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
+  status: candidate_rendered_focused_qa_approved_chapter_review_pending
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml

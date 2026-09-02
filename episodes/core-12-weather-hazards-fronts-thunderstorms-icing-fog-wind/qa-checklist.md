@@ -29,7 +29,7 @@
 - [x] Five-segment opening preview has been listened to before full rendering.
 - [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked.
 - [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains in the replacement candidate after automated analysis and focused listening.
-- [x] The chapter markers have been manually reviewed: the replacement MP3 starts at `00:00`, its titles are useful, listener-facing section labels, and each marker begins before the corresponding material.
+- [ ] The replacement chapter markers have been manually reviewed: the MP3 starts at `00:00`, its titles are useful, listener-facing section labels, and each marker begins before the corresponding material.
 - [x] The replacement render manifest records a passing `ffprobe` chapter validation.
 
 ## Release

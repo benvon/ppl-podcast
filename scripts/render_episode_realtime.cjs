@@ -24,6 +24,8 @@ const CHANNELS = 1;
 const BITS_PER_SAMPLE = 16;
 const SPEAKER_RE = /^\*\*(INSTRUCTOR|LEARNER|ANNOUNCER):\*\*$/;
 const SECTION_RE = /^#+\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/;
+// Keep the legacy production-status prefix for older scripts; new packages
+// keep mutable workflow state exclusively in episode.yaml.
 const IGNORED_PREFIXES = ["#", "[Source:", "[Claim type:", "**Version:", "**Target runtime:", "**Speakers:", "**Production status:"];
 const SAFE_ID_RE = /^[a-z0-9][a-z0-9-]*$/;
 const SAFE_MODEL_RE = /^[a-z0-9][a-z0-9.-]*$/;

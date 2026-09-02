@@ -31,6 +31,8 @@ function sourceTagRecords(markdown) {
       records.push({ source_id: tag[1], section, line: index + 1, passage: lastParagraph });
       continue;
     }
+    // Production-status lines are ignored only for legacy scripts. New
+    // packages record mutable state exclusively in episode.yaml.
     if (/^\[(?:Source|Claim type):/.test(line.trim()) || /^\*\*(?:Version|Target runtime|Speakers|Production status):/.test(line.trim()) || !line.trim()) continue;
     lastParagraph = line.trim();
   }
@@ -54,6 +56,8 @@ function retrievalReviewUntaggedPassageErrors(markdown) {
     const speakerLabel = line.trim().match(/^\*\*([A-Z ]+):\*\*$/);
     if (speakerLabel) { flush(); speaker = speakerLabel[1].trim(); continue; }
     if (/^\[Source:\s*sources\.yaml#[^\]]+\]$/.test(line.trim())) { pendingPassage = null; continue; }
+    // Production-status lines are ignored only for legacy scripts. New
+    // packages record mutable state exclusively in episode.yaml.
     if (/^\[(?:Source|Claim type):/.test(line.trim()) || /^\*\*(?:Version|Target runtime|Speakers|Production status):/.test(line.trim()) || !line.trim()) continue;
     if (section === "Retrieval review" && (speaker === "INSTRUCTOR" || speaker === "LEARNER")) {
       flush();

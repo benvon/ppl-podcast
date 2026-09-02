@@ -46,23 +46,26 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   if (candidate?.sha256 && !audio.superseded_candidates?.some((entry) => entry.sha256 === candidate.sha256)) {
     audio.superseded_candidates = [...(audio.superseded_candidates || []), { ...candidate, superseded_reason: reason }];
   }
-  audio.status = "not_rendered";
-  audio.publication_day_validation = "pending";
-  audio.reason = `${reason} Render, listening QA, chapter review, and publication-day validation must be repeated.`;
+  delete audio.status;
+  delete audio.publication_day_validation;
+  delete audio.reason;
   audio.current_candidate_render = null;
   if (audio.chapter_markers) {
-    audio.chapter_markers.status = "pending_render";
+    delete audio.chapter_markers.status;
     audio.chapter_markers.audio_sha256 = null;
     audio.chapter_markers.review_page = null;
   }
 
   episode.status = "editorial_review_pending";
   episode.runtime_actual_seconds = null;
-  episode.audio = { ...(episode.audio || {}), status: "not_rendered" };
+  episode.audio = { ...(episode.audio || {}), status: "not_rendered", publication_day_validation: "pending", chapter_markers: "pending_render" };
   episode.source_verification = { ...(episode.source_verification || {}), status: "source_relevance_pending", verified_at_utc: null, relevance_review: "pending" };
   episode.review = { ...(episode.review || {}), editorial_status: "reapproval_required", editorial_script_sha256: null, pending_script_sha256: scriptSha256 };
 
-  hosting.handoff_status = "pending_script_review";
+  episode.hosting = { ...(episode.hosting || {}), handoff_status: "pending_script_review" };
+  // A reset migrates a legacy package to the one-file production-state
+  // contract before it begins its next revision.
+  delete hosting.handoff_status;
   writeYaml(episodePathname, episode);
   writeYaml(audioPathname, audio);
   writeYaml(hostingPathname, hosting);

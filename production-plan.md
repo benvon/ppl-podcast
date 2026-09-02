@@ -477,7 +477,7 @@ Complete `qa-checklist.md` before release.
 ### Hosting handoff
 
 - [ ] `hosting-metadata.yaml` contains the approved stable ID/GUID, title, description, UTC publication time, duration, season/episode number, explicit flag, current version, and script/show-notes/source-validation references.
-- [ ] Its `publisher_release` object matches the listener-facing episode contract used by `ppl-postcast-hosting`; that publisher writes immutable audio keys, byte count, and checksum after private staging.
+- [ ] Its `publisher_release` object matches the listener-facing episode contract used by `ppl-podcast-hosting`; that publisher writes immutable audio keys, byte count, and checksum after private staging.
 - [ ] The hosting handoff contains no credential, local filesystem path, or unpublished audio artifact.
 - [ ] The hosting handoff was generated after `release:prehost` passed; its `source-release-seal.yaml` binds the staged MP3, listener-facing metadata, and show notes to the reviewed source package.
 

@@ -26,7 +26,7 @@ Target length: approximately 35 to 40 minutes, or about 5,000 to 5,800 spoken wo
 
 ## Source posture
 
-The PHAK Chapter 13 remains the primary learner anchor. The April 2026 Aviation Weather Handbook supplies current detailed product descriptions. AC 91-92 and AIM 7-1 establish briefing structure and cockpit-weather limitations. The ACS supplies scope and assessment outcomes. Section 91.103 supplies the regulatory starting point. Current Aviation Weather Center GFA help documents how the live graphical interface presents layers, time, altitude, and interpolated analyses.
+The PHAK Chapter 13 remains the primary learner anchor. The April 2026 Aviation Weather Handbook supplies current detailed product descriptions. AC 91-92 establishes briefing structure, and AIM 7-1-9 establishes cockpit-weather limitations. The ACS supplies scope and assessment outcomes. Section 91.103 supplies the regulatory starting point. Current Aviation Weather Center GFA help documents how the live graphical interface presents layers, time, altitude, and interpolated analyses.
 
 The Airplane Flying Handbook is complementary when a weather fact needs practical flight context. This episode does not depend on a maneuver or aircraft-control claim that requires an AFH passage.
 
@@ -80,3 +80,11 @@ Observation; analysis; forecast; advisory; valid time; issue time; METAR; SPECI;
 ## Open source question
 
 The ACS still names a Ceiling and Visibility Analysis. The current Aviation Weather Center presents gridded ceiling and visibility analysis within GFA. The draft describes the current presentation and retains the ACS learning objective without claiming that a legacy standalone display is the only current interface. Formal source-relevance review should scrutinize that wording.
+
+## Source-alignment revision
+
+After formal relevance review, the package separates the ACS resource list from its decision skills, uses the exact AC 91-92 pages for briefing types and standard briefing elements, and uses the exact Aviation Weather Handbook pages for SPECI criteria, PIREP UA/UUA report types, TAF terminal scope, mountain-wave formation and rotors, Convective SIGMETs, and the Convective Outlook description. A renewed formal source-relevance review is required because these are material spoken and claim changes.
+
+## Completed review state
+
+Human editorial review and script approval are complete. The source-relevance review passed for version 0.1.1 after the final source-alignment revisions and before audio rendering.

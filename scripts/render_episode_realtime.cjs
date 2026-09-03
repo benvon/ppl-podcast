@@ -44,10 +44,10 @@ const PRONUNCIATION_TRANSFORMS = Object.freeze({
   ASOS: "AY-sohs",
   AWOS: "AY-wahs",
   ATIS: "AY-tis",
+  METAR: "MEE-tar",
+  METARs: "MEE-tars",
   TAF: "taf",
   TAFs: "tafs",
-  SPECI: "speh-SEE",
-  SPECIs: "speh-SEEs",
   SIGMET: "sig MET",
   SIGMETs: "sig METs",
   AIRMET: "air MET",
@@ -56,6 +56,8 @@ const PRONUNCIATION_TRANSFORMS = Object.freeze({
 });
 const PRONUNCIATION_GUIDANCE = Object.freeze({
   envelope: "When the script uses the word \"envelope,\" pronounce it as the common noun, with first-syllable stress: \"EN-vuh-lope.\" Do not say this instruction aloud.",
+  SPECI: "Pronounce \"SPECI\" as one connected word: \"speh-see,\" with only light first-syllable stress. Do not split it into separate syllables or spell it out. Do not say this instruction aloud.",
+  SPECIs: "Pronounce \"SPECIs\" as one connected word: \"speh-sees,\" with only light first-syllable stress. Do not split it into separate syllables or spell it out. Do not say this instruction aloud.",
 });
 const DEFAULTS = {
   model: "gpt-realtime-2.1",

@@ -3,12 +3,12 @@ series: ppl-study-podcast
 title: Weather Information and Preflight Decisions
 slug: weather-information-preflight-decisions
 track: core
-status: editorial_review_pending
+status: ready_for_hosting_pr
 version: 0.1.1
-published_at: null
+published_at: 2026-09-03T10:22:36Z
 runtime_target_minutes: 38
-runtime_actual_seconds: null
-word_count: 4445
+runtime_actual_seconds: 1742.48
+word_count: 4307
 speakers:
   - instructor
   - learner
@@ -24,7 +24,6 @@ acs_references:
 phak_references:
   - "PHAK Chapter 13: Aviation Weather Services"
 aim_references:
-  - "AIM 7-1-5: Preflight Briefing"
   - "AIM 7-1-9: Flight Information Services"
 advisory_circular_references:
   - "AC 91-92: Pilot's Guide to a Preflight Briefing"
@@ -50,37 +49,28 @@ trouble_spots:
   - Collecting weather without connecting it to a route, time, decision, and
     update trigger.
 source_verification:
-  status: source_relevance_pending
-  verified_at_utc: null
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-03T10:19:38.942Z
   link_validation: link-validation.yaml
-  relevance_review: pending
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: complete
 review:
-  editorial_status: reapproval_required
-  editorial_script_sha256: null
+  editorial_status: script_approved
+  editorial_script_sha256: 0e9378e3b4858da83985634e0a72f3a3f19e5607578e41fd11dd071a9e8ae739
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: f027d6886e461792a558a8ba090cf0a60f887f601a2b14bfad59ff4d06ffd08f
-release_gates_remaining:
-  - Run source-link validation with LLM relevance review and resolve every
-    finding.
-  - Complete human editorial review and approve the current script.
-  - Render audio and complete human listening QA, including the front-matter
-    check.
-  - Review embedded chapter markers against the approved audio.
-  - Re-verify every public source and listener-facing link on publication day.
-  - Validate hosting metadata and stage the immutable audio object in the
-    hosting workflow.
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
-  chapter_markers: pending_render
-  publication_day_validation: pending
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: pending_script_review
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null

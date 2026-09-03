@@ -1,10 +1,10 @@
 # Weather Information and Preflight Decisions
 
-**Episode:** 13
+**Episode:** core-13
 
 **Version:** 0.1.1
 
-**Source verification:** Pending formal source-relevance review
+**Source verification:** Version 0.1.1 source-relevance review is complete.
 
 ## In this episode
 
@@ -18,7 +18,11 @@ Using an explicitly hypothetical VFR trip from Northern California to Wisconsin,
 - [FAA sample preflight briefing checklist (AC 91-92)](https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20)
 - [FAA study reference: interpreting METARs and SPECIs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289)
 - [FAA study reference: interpreting PIREPs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310)
-- [FAA study reference: AIRMETs, SIGMETs, and Convective SIGMETs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369)
+- [FAA study reference: PIREP routine and urgent report types](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311)
+- [FAA study reference: SIGMETs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369)
+- [FAA study reference: AIRMETs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383)
+- [FAA study reference: Convective SIGMETs](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374)
+- [FAA study reference: mountain-wave rotor zones](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199)
 
 ## Fact-check and source material
 
@@ -32,13 +36,13 @@ Using an explicitly hypothetical VFR trip from Northern California to Wisconsin,
 | METAR and SPECI | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289) | Chapter 24 |
 | PIREPs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310) | Chapter 24 |
 | Surface analysis | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350) | Chapter 25 |
-| TAFs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=408) | Chapter 27 |
+| TAFs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407) | Chapter 27 |
 | Winds and temperatures aloft | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405) | Chapter 27 |
-| Mountain waves, turbulence, and downdrafts | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199) | Chapter 16, pp. 16-9 to 16-11 |
+| Mountain waves | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191) | Chapter 16, pp. 16-1 to 16-2 |
+| Mountain-wave rotor zones | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199) | Chapter 16, p. 16-10 |
 | SIGMETs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369) | Chapter 26 |
 | AIRMETs | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383) | Chapter 26 |
-| Convective Outlook | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=458) | Chapter 27 |
-| Current briefing guidance | [AIM 7-1-5](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-5) | Preflight Briefing |
+| Convective Outlook | [Aviation Weather Handbook](https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38) | Chapter 3 |
 | Cockpit weather limitations | [AIM 7-1-9](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9) | Flight Information Services |
 
 ## Correction status

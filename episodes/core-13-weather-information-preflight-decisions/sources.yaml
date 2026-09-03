@@ -6,132 +6,178 @@ sources:
     title: Private Pilot for Airplane Category ACS, Area I, Task C
     publisher: FAA
     url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
-    locator: "FAA-S-ACS-6C, PA.I.C.K1-K4"
+    locator: "FAA-S-ACS-6C, PA.I.C.K1-K4, PDF p. 11"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Lists weather sources, reports, forecasts, advisories, and cockpit weather displays a private-pilot applicant must interpret."
-    supports_claims: [acs-weather-scope, product-questions]
+    relevance: "Lists weather sources, reports, forecasts, advisories, and cockpit
+      weather displays a private-pilot applicant must interpret."
+    supports_claims: [ acs-weather-products-list ]
   - id: acs-weather-decisions
     title: Private Pilot for Airplane Category ACS, Area I, Task C
     publisher: FAA
     url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
-    locator: "FAA-S-ACS-6C, PA.I.C.R1-R2 and S1-S3"
+    locator: "FAA-S-ACS-6C, PA.I.C.R1-R2 and S1-S3, PDF p. 12"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Requires an adequate briefing, correlation of weather information, and sound go, no-go, continue, and divert decisions."
-    supports_claims: [acs-weather-scope, integrated-decision, datalink-augment, mountain-wave-route]
+    relevance: "Requires an adequate briefing, correlation of weather information,
+      and sound go, no-go, continue, and divert decisions."
+    supports_claims: [ acs-weather-scope, integrated-decision ]
   - id: cfr-preflight-action
     title: 14 CFR 91.103 Preflight action
     publisher: eCFR
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+    validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91
     locator: "Opening sentence"
     source_type: html
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Requires the pilot in command to become familiar with all available information concerning the flight."
-    supports_claims: [preflight-all-information]
+    relevance: "Requires the pilot in command to become familiar with all available
+      information concerning the flight."
+    supports_claims: [ preflight-all-information ]
+    revision: eCFR Title 14 current through September 1, 2026
   - id: ac-preflight-purpose
     title: AC 91-92 Pilot's Guide to a Preflight Briefing
     publisher: FAA
     url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=1
-    locator: "Purpose"
+    locator: "Purpose, PDF p. 1"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Frames weather self-briefing as a process of planning, interpretation, and risk management."
-    supports_claims: [briefing-process]
+    relevance: "Frames weather self-briefing as a process of planning,
+      interpretation, and risk management."
+    supports_claims: [ preflight-briefing-roadmap ]
   - id: ac-briefing-types
     title: AC 91-92 Pilot's Guide to a Preflight Briefing
     publisher: FAA
     url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
-    locator: "Paragraphs 7.3.1-7.3.3"
+    locator: "Paragraphs 7.2.1-7.2.3, PDF p. 7"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Defines outlook, standard, and abbreviated briefings and when each fits."
-    supports_claims: [briefing-types]
+    supports_claims: [ briefing-types ]
   - id: ac-standard-elements
     title: AC 91-92 Pilot's Guide to a Preflight Briefing
     publisher: FAA
-    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=9
-    locator: "Paragraphs 7.4.1.1-7.4.1.7"
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=10
+    locator: "Paragraphs 7.4.1.2-7.4.1.5, PDF p. 10"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Organizes adverse conditions, synopsis, observations, forecasts, destination timing, and winds aloft."
-    supports_claims: [standard-sequence, winds-aloft, arrival-window, pirep-report-types]
+    relevance: "Directs review of FAA resources, synopsis, current METAR and PIREP
+      observations, and en route forecast information."
+    supports_claims: [ standard-sequence ]
   - id: ac-pirep-value
     title: AC 91-92 Pilot's Guide to a Preflight Briefing
     publisher: FAA
     url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=3
-    locator: "Pilot reports discussion"
+    locator: "Pilot reports discussion, PDF p. 3"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Explains that PIREPs report actual conditions and improve warnings and forecasts."
-    supports_claims: [pirep-context]
+    relevance: "Explains that PIREPs report actual conditions and improve warnings
+      and forecasts."
+    supports_claims: [ pirep-value ]
+  - id: ac-destination-forecast
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=11
+    locator: "Paragraphs 7.4.1.6-7.4.1.7, PDF p. 11"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Directs review of destination forecasts, significant changes within
+      one hour before and after ETA, and forecast winds aloft."
+    supports_claims: [ arrival-window ]
   - id: phak-weather-overview
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 13
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
-    locator: "Aviation Weather Services"
+    locator: "Aviation Weather Services, PDF p. 1"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Primary learner anchor for weather observations, reports, forecasts, and briefings."
-    supports_claims: [product-questions]
+    relevance: "Explains the aviation-weather system's role in providing up-to-date
+      reports and forecasts for informed safety decisions."
+    supports_claims: [ phak-weather-services-overview ]
   - id: awh-briefing
     title: Aviation Weather Handbook
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
-    locator: "Chapter 3, Preflight Briefing"
+    locator: "Chapter 3, Preflight Briefing, PDF p. 26"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Current FAA description of self-briefing, Flight Service, and standard briefing components."
-    supports_claims: [briefing-process]
+    relevance: "Current FAA description of self-briefing and Flight Service access
+      to weather information."
+    supports_claims: [ briefing-process ]
   - id: awh-metar-speci
     title: Aviation Weather Handbook
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
-    locator: "Chapter 24, METAR and SPECI"
+    locator: "Chapter 24, METAR and SPECI, PDF p. 289"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Defines routine and special surface observations, their fields, and report scope."
-    supports_claims: [metar-speci, point-observation-limit]
+    relevance: "Defines routine surface observations and their principal fields."
+    supports_claims: [ metar ]
   - id: awh-pirep
     title: Aviation Weather Handbook
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
-    locator: "Chapter 24, PIREPs"
+    locator: "Chapter 24, PIREPs, PDF p. 310"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Explains PIREP time, location, altitude, aircraft type, and reported conditions."
-    supports_claims: [pirep-context, pirep-report-types]
+    relevance: "Explains PIREP time, location, altitude, aircraft type, and reported
+      conditions."
+    supports_claims: [ pirep-context ]
+  - id: awh-pirep-types
+    title: Aviation Weather Handbook
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+    locator: "Chapter 24, PIREP Message Type (UUA/UA), PDF p. 311"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Defines Urgent (UUA) and Routine (UA) PIREPs."
+    supports_claims: [ pirep-report-types ]
+  - id: awh-speci
+    title: Aviation Weather Handbook
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=290
+    locator: "Chapter 24, Aviation Selected Special Weather Report, PDF p. 290"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Defines SPECI as an unscheduled report issued when specified
+      criteria are observed between routine reports."
+    supports_claims: [ speci ]
   - id: awh-surface-analysis
     title: Aviation Weather Handbook
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
-    locator: "Chapter 25, Surface Analysis"
+    locator: "Chapter 25, Surface Analysis, PDF p. 350"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Describes the surface analysis as an analyzed snapshot of pressure systems, fronts, and observations."
-    supports_claims: [surface-analysis]
+    relevance: "Describes the surface analysis as an analyzed snapshot of pressure
+      systems, fronts, and observations."
+    supports_claims: [ surface-analysis ]
   - id: awc-gfa-help
     title: Graphical Forecasts for Aviation Help
     publisher: National Weather Service Aviation Weather Center
     url: https://aviationweather.gov/gfa/help/?page=tutorial
-    locator: "Tutorial, observations, forecasts, advisories, time, and altitude controls"
+    locator: "Tutorial, observations, forecasts, advisories, time, and altitude
+      controls"
     source_type: html
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Documents the current GFA interface and warns that gridded analysis between observations is an estimate."
-    supports_claims: [gfa-layers, gridded-estimate]
+    relevance: "Documents the current GFA interface and warns that gridded analysis
+      between observations is an estimate."
+    supports_claims: [ gfa-layers, gridded-estimate ]
   - id: awc-gfa-application
     title: Graphical Forecasts for Aviation
     publisher: National Weather Service Aviation Weather Center
@@ -140,8 +186,9 @@ sources:
     source_type: html
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Official Aviation Weather Center entry point for the Graphical Forecasts for Aviation application."
-    supports_claims: [gfa-official-access]
+    relevance: "Official Aviation Weather Center entry point for the Graphical
+      Forecasts for Aviation application."
+    supports_claims: [ gfa-official-access ]
   - id: flight-service-portal
     title: 1800wxbrief.com
     publisher: FAA Flight Service
@@ -151,87 +198,104 @@ sources:
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Official Flight Service web portal for preflight briefing support."
-    supports_claims: [flight-service-portal-access]
+    supports_claims: [ flight-service-portal-access ]
   - id: ac-briefing-checklist
     title: AC 91-92 Pilot's Guide to a Preflight Briefing
     publisher: FAA
     url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
-    locator: "Appendix, Sample Preflight Briefing Checklist"
+    locator: "Appendix, Sample Preflight Briefing Checklist, PDF p. 20"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Provides an FAA sample preflight briefing checklist that can structure a pilot's planning notes."
-    supports_claims: [briefing-checklist]
+    relevance: "Provides an FAA sample preflight briefing checklist that can
+      structure a pilot's planning notes."
+    supports_claims: [ briefing-checklist ]
   - id: awh-taf
     title: Aviation Weather Handbook
     publisher: FAA
-    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=408
-    locator: "Chapter 27, Terminal Aerodrome Forecasts"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+    locator: "Chapter 27, Terminal Aerodrome Forecast, PDF p. 407"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Defines TAF terminal scope, valid periods, change groups, and amendments."
-    supports_claims: [taf-scope]
+    supports_claims: [ taf-scope ]
   - id: awh-winds-aloft
     title: Aviation Weather Handbook
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
-    locator: "Chapter 27, Winds and Temperatures Aloft"
+    locator: "Chapter 27, Winds and Temperatures Aloft, PDF p. 405"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Describes forecast wind direction, speed, and temperature by location, altitude, and time."
-    supports_claims: [winds-aloft]
+    relevance: "Describes forecast wind direction, speed, and temperature by
+      location, altitude, and time."
+    supports_claims: [ winds-aloft ]
   - id: awh-mountain-wave
     title: Aviation Weather Handbook
     publisher: FAA
-    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
-    locator: "Chapter 16, Mountain Waves, Trapped Lee Waves, and Rotors, pp. 16-9 to 16-11"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+    locator: "Chapter 16, Mountain Waves and Adverse Winds, PDF pp. 191-192"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Explains how airflow across mountain ridges can produce waves, turbulence, rotors, and strong downdrafts on the downwind side."
-    supports_claims: [mountain-wave-route]
+    relevance: "Explains that sufficiently strong wind and stable air over mountains
+      or ridges can produce hazardous mountain waves."
+    supports_claims: [ mountain-wave-formation ]
   - id: awh-sigmet
     title: Aviation Weather Handbook
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
-    locator: "Chapter 26, SIGMET"
+    locator: "Chapter 26, SIGMET, PDF p. 369"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Defines SIGMETs and the relationship between advisory text and graphical depiction."
-    supports_claims: [advisories]
+    relevance: "Defines SIGMETs and the relationship between advisory text and
+      graphical depiction."
+    supports_claims: [ sigmet-text-graphic ]
+  - id: awh-convective-sigmet
+    title: Aviation Weather Handbook
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+    locator: "Chapter 26, Convective SIGMET, PDF p. 374"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "States that Convective SIGMETs are issued for qualifying CONUS
+      thunderstorm activity."
+    supports_claims: [ convective-sigmet ]
+  - id: awh-mountain-wave-rotor
+    title: Aviation Weather Handbook
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+    locator: "Chapter 16, rotor zone, PDF p. 199"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-02"
+    relevance: "Describes rotor zones on the downwind side near or below ridge level
+      and their potentially severe-to-extreme wind shear and turbulence."
+    supports_claims: [ mountain-wave-rotor ]
   - id: awh-airmet
     title: Aviation Weather Handbook
     publisher: FAA
     url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
-    locator: "Chapter 26, AIRMET"
+    locator: "Chapter 26, AIRMET, PDF p. 383"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
     relevance: "Defines AIRMET hazards and graphical forecast snapshots."
-    supports_claims: [advisories]
+    supports_claims: [ airmet-hazards ]
   - id: awh-convective-outlook
     title: Aviation Weather Handbook
     publisher: FAA
-    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=458
-    locator: "Chapter 27, Convective Outlook"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+    locator: "Chapter 3, Convective Outlook, PDF p. 38"
     source_type: pdf
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Explains the regional severe and general thunderstorm outlook."
-    supports_claims: [convective-outlook]
-  - id: aim-preflight-briefing
-    title: Aeronautical Information Manual, 7-1-5 Preflight Briefing
-    publisher: FAA
-    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-5
-    locator: "7-1-5"
-    source_type: html
-    link_status: 200
-    verification_date: "2026-09-02"
-    relevance: "Current AIM guidance for self-briefing, Flight Service, and briefing types."
-    supports_claims: [briefing-types, standard-sequence]
+    relevance: "States that Convective Outlooks provide potential for severe and
+      non-severe convection during the following eight days."
+    supports_claims: [ convective-outlook ]
   - id: aim-fis-limitations
     title: Aeronautical Information Manual, 7-1-9 Flight Information Services
     publisher: FAA
@@ -240,5 +304,6 @@ sources:
     source_type: html
     link_status: 200
     verification_date: "2026-09-02"
-    relevance: "Explains age and limitations of cockpit weather and its strategic rather than tactical role."
-    supports_claims: [datalink-augment, strategic-not-tactical]
+    relevance: "Explains age and limitations of cockpit weather and its strategic
+      rather than tactical role."
+    supports_claims: [ datalink-augment, strategic-not-tactical ]

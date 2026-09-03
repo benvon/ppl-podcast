@@ -56,6 +56,10 @@ function retrievalReviewUntaggedPassageErrors(markdown) {
     const speakerLabel = line.trim().match(/^\*\*([A-Z ]+):\*\*$/);
     if (speakerLabel) { flush(); speaker = speakerLabel[1].trim(); continue; }
     if (/^\[Source:\s*sources\.yaml#[^\]]+\]$/.test(line.trim())) { pendingPassage = null; continue; }
+    // An explicitly labeled lesson method or inference is not an external factual
+    // assertion. It does not need a fabricated citation in the Retrieval review.
+    const claimType = line.trim().match(/^\[Claim type:\s*(teaching synthesis|teaching inference)\]$/i);
+    if (claimType && section === "Retrieval review") { pendingPassage = null; continue; }
     // Production-status lines are ignored only for legacy scripts. New
     // packages record mutable state exclusively in episode.yaml.
     if (/^\[(?:Source|Claim type):/.test(line.trim()) || /^\*\*(?:Version|Target runtime|Speakers|Production status):/.test(line.trim()) || !line.trim()) continue;

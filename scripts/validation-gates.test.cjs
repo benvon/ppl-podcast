@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, fetchSourceCached, htmlFragmentText, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, assemble, assertNarrationInput, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -31,6 +31,20 @@ function wavForTest(pcm) {
   header.write("RIFF", 0); header.writeUInt32LE(36 + pcm.length, 4); header.write("WAVE", 8); header.write("fmt ", 12); header.writeUInt32LE(16, 16); header.writeUInt16LE(1, 20); header.writeUInt16LE(1, 22); header.writeUInt32LE(24_000, 24); header.writeUInt32LE(48_000, 28); header.writeUInt16LE(2, 32); header.writeUInt16LE(16, 34); header.write("data", 36); header.writeUInt32LE(pcm.length, 40);
   return Buffer.concat([header, pcm]);
 }
+
+test("source-link validation does not mistake an ordinary site contact CAPTCHA for an access interstitial", () => {
+  const page = {
+    status: 200,
+    content_type: "text/html",
+    title: "GFA",
+    excerpt: "Contact us. Captcha text: Enter the text from the image before submitting the feedback form.",
+  };
+  assert.deepEqual(linkResponseErrors("https://aviationweather.gov/gfa/", page), []);
+  assert.deepEqual(
+    linkResponseErrors("https://aviationweather.gov/gfa/", { ...page, title: "Access denied", excerpt: "Complete the CAPTCHA challenge." }),
+    ["received an access interstitial instead of the cited resource"],
+  );
+});
 
 test("script-review reset invalidates downstream state and approval fingerprints the current script", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-script-review-test-"));
@@ -497,6 +511,10 @@ test("retrieval review requires an immediate source tag for every spoken learner
   assert.deepEqual(untagged, ["Retrieval review spoken paragraph at line 9 has no source tag"]);
   const tagged = retrievalReviewUntaggedPassageErrors("## Retrieval review\n\n**INSTRUCTOR:**\n\nA factual recap.\n\n[Source: sources.yaml#source-a]\n\n**LEARNER:**\n\nA sourced learner recap.\n\n[Source: sources.yaml#source-a]\n");
   assert.deepEqual(tagged, []);
+  const explicitTeachingMethod = retrievalReviewUntaggedPassageErrors("## Retrieval review\n\n**LEARNER:**\n\nMy study method is to ask four organizing questions.\n\n[Claim type: teaching synthesis]\n\n**LEARNER:**\n\nNo PIREP does not prove good conditions.\n\n[Claim type: teaching inference]\n");
+  assert.deepEqual(explicitTeachingMethod, []);
+  const unsupportedLabel = retrievalReviewUntaggedPassageErrors("## Retrieval review\n\n**LEARNER:**\n\nAn unsourced external fact.\n\n[Claim type: FAA guidance]\n");
+  assert.deepEqual(unsupportedLabel, ["Retrieval review spoken paragraph at line 5 has no source tag"]);
 });
 
 test("show-notes links must be declared and mapped to claims their source supports", () => {
@@ -839,10 +857,12 @@ test("source relevance assesses freshly fetched text instead of a ledger excerpt
     return Promise.resolve(new Response(JSON.stringify({ output: [{ content: [{ type: "output_text", text: JSON.stringify(assessment) }] }] }), { status: 200, headers: { "content-type": "application/json" } }));
   };
   try {
-    await assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "STALE LEDGER TEXT" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], authoredPassages: ["AUTHORED SCRIPT PASSAGE"], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
+    await assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "STALE LEDGER TEXT" }, claims: [{ id: "claim-a", claim: "Canonical claim text", claim_type: "guidance" }], authoredPassages: ["AUTHORED SCRIPT PASSAGE"], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
     assert.match(request.input, /CURRENT FETCHED TEXT/);
     assert.doesNotMatch(request.input, /STALE LEDGER TEXT/);
     assert.match(request.input, /AUTHORED SCRIPT PASSAGE/);
+    assert.match(request.input, /Canonical claim text/);
+    assert.match(request.input, /\"type\":\"guidance\"/);
     assert.match(request.instructions, /citation group/);
     assert.match(request.instructions, /combines the claim assessments from every tagged source/);
   } finally {
@@ -1185,11 +1205,14 @@ test("realtime renderer requires completed source-relevance review before render
 test("realtime renderer preserves familiar initialisms while applying narrow phonetic corrections", () => {
   assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pee hack says artificial intelligence-assisted production is reviewed by an MEL.");
   assert.equal(spokenText("ASOS, AWOS, and ATIS report airport weather."), "AY-sohs, AY-wahs, and AY-tis report airport weather.");
+  assert.equal(spokenText("METAR, TAF, SPECI, SIGMET, AIRMET, and 1800wxbrief.com are weather terms."), "MEE-tar, taf, SPECI, sig MET, air MET, and one eight-hundred w x brief dot com are weather terms.");
+  assert.equal(spokenText("METARs, TAFs, SPECIs, SIGMETs, and AIRMETs can appear in a briefing."), "MEE-tars, tafs, SPECIs, sig METs, and air METs can appear in a briefing.");
   assert.equal(spokenText("The POH and AFM place CG limits in the ACS."), "The POH and AFM place CG limits in the ACS.");
   assert.equal(spokenText("The no-MEL path differs from MMEL guidance."), "The no-MEL path differs from MMEL guidance.");
   assert.equal(spokenText("PHAK-like examples differ from PHAKS."), "pee hack-like examples differ from PHAKS.");
   assert.equal(spokenText("The CG envelope is within limits."), "The CG envelope is within limits.");
   assert.match(pronunciationGuidance("The CG envelope is within limits."), /common noun/);
+  assert.match(pronunciationGuidance("A SPECI can follow a METAR."), /one connected word/);
   assert.equal(pronunciationGuidance("The loading limit is within range."), "");
   assert.match(segmentInstruction({ speaker: "INSTRUCTOR", text: "The CG envelope is within limits." }, "No adjacent dialogue."), /Do not say this instruction aloud/);
 });

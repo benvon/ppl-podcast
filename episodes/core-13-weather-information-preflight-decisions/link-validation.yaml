@@ -1,0 +1,2849 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-09-03T10:19:38.942Z
+sources_file: episodes/core-13-weather-information-preflight-decisions/sources.yaml
+claims_file: episodes/core-13-weather-information-preflight-decisions/claim-inventory.yaml
+show_notes_file: episodes/core-13-weather-information-preflight-decisions/show-notes.md
+show_notes_manifest_file: episodes/core-13-weather-information-preflight-decisions/show-notes-manifest.yaml
+input_sha256:
+  sources: 36a0619fb2a2d65b342f71fa2a0775512b13d7b3538b24fd08113e354496e837
+  claims: 49c9a0a6c8a27334df9bec27508c85815d5e41bc64758547ee64a302be5dd198
+  master_script: 0e9378e3b4858da83985634e0a72f3a3f19e5607578e41fd11dd071a9e8ae739
+  show_notes: 42ca0ee80275cb1df9414d15b03477771c2fdac617663dd61830b690e82a5e8e
+  show_notes_manifest: 5df28bce97530a29f7b9f29d03a64c208f6d00cf934327e5240bb3acdf1e9687
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 100
+  claim_coverage_count: 31
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 27
+  manifest_link_count: 27
+show_notes_results:
+  - id: gfa-application
+    text: Official Aviation Weather Center Graphical Forecasts for Aviation (GFA)
+    url: https://aviationweather.gov/gfa/
+    source_id: awc-gfa-application
+    claim_ids:
+      - gfa-official-access
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aviationweather.gov/gfa/
+      final_url: https://aviationweather.gov/gfa/
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a7 []
+      title: GFA
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://aviationweather.gov/gfa/
+      validation_url: https://aviationweather.gov/gfa/
+      errors: []
+      valid: true
+      excerpt_characters: 9785
+      excerpt_sha256: 7a406e565215a22bb3f7bc80499d26589d67d210935065213012efcec4d5c3a0
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: gfa-tutorial
+    text: Graphical Forecasts for Aviation tutorial
+    url: https://aviationweather.gov/gfa/help/?page=tutorial
+    source_id: awc-gfa-help
+    claim_ids:
+      - gfa-layers
+      - gridded-estimate
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      final_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a6 []
+      title: AWC GFA Help
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      validation_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 8c81950fa75e65d293eec9f25467e8412733ad6261aae5a33d2d10e398de3157
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: flight-service-portal
+    text: "Official Flight Service briefing portal: 1800wxbrief.com"
+    url: https://www.1800wxbrief.com/
+    source_id: flight-service-portal
+    claim_ids:
+      - flight-service-portal-access
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.1800wxbrief.com/
+      final_url: https://www.1800wxbrief.com/Website/
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a8
+        - https://www.1800wxbrief.com/Website/
+      title: Home
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.1800wxbrief.com/
+      validation_url: https://www.1800wxbrief.com/
+      errors: []
+      valid: true
+      excerpt_characters: 5503
+      excerpt_sha256: 9543497daef30da003a26bb126d555f5a168911139cd650d810ea18c9faf14cf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: briefing-checklist
+    text: FAA sample preflight briefing checklist (AC 91-92)
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+    source_id: ac-briefing-checklist
+    claim_ids:
+      - briefing-checklist
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1485
+      pdf_page_text_sha256: 3c4cc58facbf8a762e89dad1f6edecc75fcf4b561513f07ddb205684c7d1d3cd
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: metar-study-reference
+    text: "FAA study reference: interpreting METARs and SPECIs"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+    source_id: awh-metar-speci
+    claim_ids:
+      - metar
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      errors: []
+      valid: true
+      pdf_page_number: 289
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2241
+      pdf_page_text_sha256: 146155b00797791e3723221dfd937186441b748fa6c558245fc8139cc1522d33
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: pirep-study-reference
+    text: "FAA study reference: interpreting PIREPs"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+    source_id: awh-pirep
+    claim_ids:
+      - pirep-context
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      errors: []
+      valid: true
+      pdf_page_number: 310
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1777
+      pdf_page_text_sha256: 8213b1cc5edc8e255b1ae799435372dd563e6c7518d859a3b8ee133668a602ac
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: pirep-types-study-reference
+    text: "FAA study reference: PIREP routine and urgent report types"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+    source_id: awh-pirep-types
+    claim_ids:
+      - pirep-report-types
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      errors: []
+      valid: true
+      pdf_page_number: 311
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1949
+      pdf_page_text_sha256: 5beaa348d604c68605a8ade52c6627ae5e40684668cc523b4ce663b3f149a3fb
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: sigmet-study-reference
+    text: "FAA study reference: SIGMETs"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+    source_id: awh-sigmet
+    claim_ids:
+      - sigmet-text-graphic
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      errors: []
+      valid: true
+      pdf_page_number: 369
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1506
+      pdf_page_text_sha256: 7f67ec819fc0fc79c2bdea8cac873ecc89be76d446fc223d0bd96021c54122b7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: airmet-study-reference
+    text: "FAA study reference: AIRMETs"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+    source_id: awh-airmet
+    claim_ids:
+      - airmet-hazards
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      errors: []
+      valid: true
+      pdf_page_number: 383
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2707
+      pdf_page_text_sha256: 16baddb8b0e4ae344a30b082beb45dddc85829766c737345d701e8f8be77bb08
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: convective-sigmet-study-reference
+    text: "FAA study reference: Convective SIGMETs"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+    source_id: awh-convective-sigmet
+    claim_ids:
+      - convective-sigmet
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      errors: []
+      valid: true
+      pdf_page_number: 374
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2590
+      pdf_page_text_sha256: 3de6c32915a329f876cde960ef2b062cc0b2e1610d6ec6f382127fa30d8e5986
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-weather-task
+    text: Private Pilot Airplane ACS
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    source_id: acs-weather-products
+    claim_ids:
+      - acs-weather-products-list
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: cfr-91103
+    text: 14 CFR 91.103
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+    source_id: cfr-preflight-action
+    claim_ids:
+      - preflight-all-information
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a4 []
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-01
+        title_status_sha256: b222bad185c092e6578ea2d28bb8741f2057194652816e8179d67ad7ed46a4bf
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-09-01
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+  - id: ac-briefing
+    text: AC 91-92
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+    source_id: ac-briefing-types
+    claim_ids:
+      - briefing-types
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1328
+      pdf_page_text_sha256: 1f441b0545043a009b858da3662772040590972bf250d5a60be1643795fd0b75
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-weather
+    text: PHAK Chapter 13
+    url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+    source_id: phak-weather-overview
+    claim_ids:
+      - phak-weather-services-overview
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 976
+      pdf_page_text_sha256: 55b0ec167a66cd2f6dac64597ac2160e6836cf7f8931f79177824b8494ca0015
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-briefing-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+    source_id: awh-briefing
+    claim_ids:
+      - briefing-process
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3959
+      pdf_page_text_sha256: a56dcd056e69742e964b464d199f8793d7ded0785eac7c53913f550364a6cf71
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-metar-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+    source_id: awh-metar-speci
+    claim_ids:
+      - metar
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      errors: []
+      valid: true
+      pdf_page_number: 289
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2241
+      pdf_page_text_sha256: 146155b00797791e3723221dfd937186441b748fa6c558245fc8139cc1522d33
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-pirep-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+    source_id: awh-pirep
+    claim_ids:
+      - pirep-context
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      errors: []
+      valid: true
+      pdf_page_number: 310
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1777
+      pdf_page_text_sha256: 8213b1cc5edc8e255b1ae799435372dd563e6c7518d859a3b8ee133668a602ac
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-surface-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+    source_id: awh-surface-analysis
+    claim_ids:
+      - surface-analysis
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      errors: []
+      valid: true
+      pdf_page_number: 350
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1335
+      pdf_page_text_sha256: a2b0a911c281b2068d03a8f4346fa994bc91f5f5e257e811238826fdce9aefb2
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-taf-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+    source_id: awh-taf
+    claim_ids:
+      - taf-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      errors: []
+      valid: true
+      pdf_page_number: 407
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1498
+      pdf_page_text_sha256: f975b5a28866ec27bf16c76d2b49d94fceb4175b2b3d5c04970a1629d4ede2e7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-winds-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+    source_id: awh-winds-aloft
+    claim_ids:
+      - winds-aloft
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      errors: []
+      valid: true
+      pdf_page_number: 405
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2869
+      pdf_page_text_sha256: 03af91b5e16b236d9c9912f7843ca42b9e9f0bc9cb605d7fad50d59c5887d0a6
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-mountain-wave-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+    source_id: awh-mountain-wave
+    claim_ids:
+      - mountain-wave-formation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      errors: []
+      valid: true
+      pdf_page_number: 191
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3306
+      pdf_page_text_sha256: ea84c178a7f18ac4ccd35181c53354b4a8405d4b2263bf993e55ff2b398ebe45
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-mountain-wave-rotor-link
+    text: "FAA study reference: mountain-wave rotor zones"
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+    source_id: awh-mountain-wave-rotor
+    claim_ids:
+      - mountain-wave-rotor
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      errors: []
+      valid: true
+      pdf_page_number: 199
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1844
+      pdf_page_text_sha256: 845fd391bd640bfa683a85db18899f64dd79978169645a85fa8316f743c0b2c5
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-mountain-wave-rotor-table-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+    source_id: awh-mountain-wave-rotor
+    claim_ids:
+      - mountain-wave-rotor
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      errors: []
+      valid: true
+      pdf_page_number: 199
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1844
+      pdf_page_text_sha256: 845fd391bd640bfa683a85db18899f64dd79978169645a85fa8316f743c0b2c5
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-sigmet-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+    source_id: awh-sigmet
+    claim_ids:
+      - sigmet-text-graphic
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      errors: []
+      valid: true
+      pdf_page_number: 369
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1506
+      pdf_page_text_sha256: 7f67ec819fc0fc79c2bdea8cac873ecc89be76d446fc223d0bd96021c54122b7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-airmet-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+    source_id: awh-airmet
+    claim_ids:
+      - airmet-hazards
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      errors: []
+      valid: true
+      pdf_page_number: 383
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2707
+      pdf_page_text_sha256: 16baddb8b0e4ae344a30b082beb45dddc85829766c737345d701e8f8be77bb08
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: awh-outlook-link
+    text: Aviation Weather Handbook
+    url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+    source_id: awh-convective-outlook
+    claim_ids:
+      - convective-outlook
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      errors: []
+      valid: true
+      pdf_page_number: 38
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2797
+      pdf_page_text_sha256: 4190b60ef34cdc611ccf0a1e6ea23e59d76315cac09a4ad7750b0659f81cac00
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-fis-link
+    text: AIM 7-1-9
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+    source_id: aim-fis-limitations
+    claim_ids:
+      - datalink-augment
+      - strategic-not-tactical
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a9 []
+      title: Chapter 7. Safety of Flight
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: a82c2d5e525096696f2809d3feee9e6f57428c69628c6d2c69e515532b35132e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-weather-products
+    title: Private Pilot for Airplane Category ACS, Area I, Task C
+    checked_at_utc: 2026-09-03T10:18:36.093Z
+    linked_claim_ids:
+      - acs-weather-products-list
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page contains Task C, Weather Information, and
+          explicitly lists sources of weather data plus acceptable weather
+          products and resources for preflight planning. Its examples include
+          METARs/SPECIs and PIREPs, analysis and ceiling/visibility products,
+          TAFs, GFA, winds/temperatures aloft, convective outlooks, and AIRMETs,
+          SIGMETs, and Convective SIGMETs. This supports the claim that the task
+          lists weather reports, forecasts, advisories, and related planning
+          resources.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 11 contains the cited Private Pilot ACS Area I, Task C
+            material, including PA.I.C.K1 through the displayed portion of
+            PA.I.C.K3.
+        claim_assessments:
+          - claim_id: acs-weather-products-list
+            verdict: supports
+            rationale: The excerpt expressly identifies weather-data sources and a range of
+              reports, forecasts, advisories, and other weather
+              products/resources for preflight planning and the departure, en
+              route, and arrival phases of flight.
+      usage:
+        input_tokens: 1387
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1384
+        output_tokens: 353
+        output_tokens_details:
+          reasoning_tokens: 111
+        total_tokens: 1740
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-weather-decisions
+    title: Private Pilot for Airplane Category ACS, Area I, Task C
+    checked_at_utc: 2026-09-03T10:18:36.094Z
+    linked_claim_ids:
+      - acs-weather-scope
+      - integrated-decision
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2020
+      pdf_page_text_sha256: 8ed2fbd6b81fe01ff90767ef3562f706e3aba8138dde57a9baf4d4c92cc4fbaa
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly lists the Weather Information task
+          skills to obtain an adequate weather briefing (S1), analyze weather
+          conditions (S2), and correlate weather information to make a go/no-go
+          decision (S3). It also lists continue/divert decision-making under
+          risk management (R1).
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator identifies PA.I.C.R1-R2 and S1-S3, all of which
+            appear in the supplied excerpt from PDF page 12.
+        claim_assessments:
+          - claim_id: acs-weather-scope
+            verdict: supports
+            rationale: The excerpt expressly requires an adequate weather briefing, analysis
+              of at least three specified weather-condition categories, and
+              correlation of weather information to make a go/no-go decision.
+              The authored statement accurately preserves those elements.
+          - claim_id: integrated-decision
+            verdict: supports
+            rationale: PA.I.C.S3 explicitly requires the applicant to correlate weather
+              information to make a go/no-go decision, matching the claim and
+              the authored passage.
+      usage:
+        input_tokens: 1746
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1743
+        output_tokens: 365
+        output_tokens_details:
+          reasoning_tokens: 128
+        total_tokens: 2111
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: cfr-preflight-action
+    title: 14 CFR 91.103 Preflight action
+    checked_at_utc: 2026-09-03T10:18:36.094Z
+    linked_claim_ids:
+      - preflight-all-information
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a4
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-01
+        title_status_sha256: b222bad185c092e6578ea2d28bb8741f2057194652816e8179d67ad7ed46a4bf
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-09-01
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt’s opening sentence states that each pilot in command
+          shall, before beginning a flight, become familiar with all available
+          information concerning that flight. The cited passage accurately
+          preserves this requirement.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator “Opening sentence” precisely identifies the sentence in
+            the excerpt that contains the requirement.
+        claim_assessments:
+          - claim_id: preflight-all-information
+            verdict: supports
+            rationale: The excerpt expressly supports the claim, including the responsible
+              person (pilot in command), timing (before beginning a flight), and
+              scope (all available information concerning that flight).
+      usage:
+        input_tokens: 825
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 146
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 971
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-preflight-purpose
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    checked_at_utc: 2026-09-03T10:18:37.004Z
+    linked_claim_ids:
+      - preflight-briefing-roadmap
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=1
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=1
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2448
+      pdf_page_text_sha256: 8a312d5a90889892ebc471a36ada72fec4eee5ec5c40ddadc073c9d78ffeb3af
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page is the AC’s Purpose section and explicitly states
+          that AC 91-92 provides an educational roadmap for developing and
+          implementing preflight self-briefings, including planning, weather
+          interpretation, and risk identification/mitigation skills. This
+          directly supports the cited statement in the first authored passage.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies “Purpose, PDF p. 1,” and the quoted supporting
+            language appears on that exact page in the excerpt.
+        claim_assessments:
+          - claim_id: preflight-briefing-roadmap
+            verdict: supports
+            rationale: The excerpt expressly describes AC 91-92 as an educational roadmap
+              for preflight self-briefings that includes planning, weather
+              interpretation, and risk identification/mitigation.
+      usage:
+        input_tokens: 1138
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1135
+        output_tokens: 182
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1320
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-briefing-types
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    checked_at_utc: 2026-09-03T10:18:37.007Z
+    linked_claim_ids:
+      - briefing-types
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1328
+      pdf_page_text_sha256: 1f441b0545043a009b858da3662772040590972bf250d5a60be1643795fd0b75
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page expressly defines standard, abbreviated, and
+          outlook briefings using the same conditions and purposes stated in the
+          claim. The corresponding authored statements accurately preserve the
+          source's six-hour threshold, planning-only limitation for outlook
+          briefings, standard-briefing content and flight-planning effects, and
+          the three permitted abbreviated-briefing uses.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 7 contains paragraphs 7.2.1 through 7.2.3, exactly as
+            identified by the locator.
+        claim_assessments:
+          - claim_id: briefing-types
+            verdict: supports
+            rationale: Paragraph 7.2.3 states that an outlook briefing should be obtained
+              when proposed departure is 6 hours or more from the briefing and
+              is for planning purposes only. Paragraph 7.2.1 states that a
+              standard briefing includes conditions and SIGMETs that may
+              influence planning, altering, or cancelling a proposed route or
+              flight. Paragraph 7.2.2 states that an abbreviated briefing
+              supplements mass-disseminated data, updates a previous briefing,
+              or is limited to specific information.
+      usage:
+        input_tokens: 1069
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1066
+        output_tokens: 251
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1320
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-standard-elements
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    checked_at_utc: 2026-09-03T10:18:37.309Z
+    linked_claim_ids:
+      - standard-sequence
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=10
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=10
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1801
+      pdf_page_text_sha256: 1a82fb540bc56d5210642134da02d5dd3b25ba5bb91008d9a3b32d7d60deaade
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly presents adverse conditions, synopsis,
+          current conditions/observations (including METARs and PIREPs), and en
+          route forecast as separate briefing elements. The authored statement
+          preserves these categories without adding material conditions not
+          present in the excerpt.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 10, and the supplied excerpt from that
+            exact page contains paragraphs 7.4.1.2 through 7.4.1.5 addressing
+            the listed briefing components.
+        claim_assessments:
+          - claim_id: standard-sequence
+            verdict: supports
+            rationale: Page 10 separately addresses adverse conditions, synopsis, current
+              conditions—including METARs and PIREPs—and en route forecasts. The
+              corresponding authored passage accurately characterizes them as
+              distinct parts of a weather briefing.
+      usage:
+        input_tokens: 1266
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1263
+        output_tokens: 339
+        output_tokens_details:
+          reasoning_tokens: 145
+        total_tokens: 1605
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-pirep-value
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    checked_at_utc: 2026-09-03T10:18:37.315Z
+    linked_claim_ids:
+      - pirep-value
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=3
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=3
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2968
+      pdf_page_text_sha256: 92427b80fb353915d08f5547cc1c795048a60df3843a92dff75a493a3e9c26e2
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that PIREPs are actual reports
+          of weather encountered by pilots; that adverse-weather reports warn
+          other pilots and inform ATC of hazards; that favorable-weather PIREPs
+          should be submitted where adverse conditions were forecast; and that
+          NWS uses PIREPs to validate and adjust forecasts.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the PIREP discussion on cited PDF page 3, and
+            section 4.17 on that page directly contains the relevant material.
+        claim_assessments:
+          - claim_id: pirep-value
+            verdict: supports
+            rationale: "The excerpt supports both parts of the claim: PIREPs cover actual
+              weather information, including favorable and adverse conditions,
+              and they contribute to warnings for other pilots as well as NWS
+              forecast validation and adjustment. The authored passage
+              accurately preserves the favorable-versus-adverse condition
+              distinction and the listed PIREP weather elements."
+      usage:
+        input_tokens: 1155
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1152
+        output_tokens: 351
+        output_tokens_details:
+          reasoning_tokens: 135
+        total_tokens: 1506
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-destination-forecast
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    checked_at_utc: 2026-09-03T10:18:37.332Z
+    linked_claim_ids:
+      - arrival-window
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=11
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=11
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1753
+      pdf_page_text_sha256: e65a0dbd8bbe09a1c108a496fb9a31d884d6fb974abd9495cd1afd83b4d6b8c3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains paragraph 7.4.1.6, which directs pilots
+          to review the destination forecast, including significant changes
+          expected within 1 hour before and after ETA. Both authored passages
+          preserve that timing condition and apply it to destination/arrival
+          planning without adding a conflicting requirement.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies paragraphs 7.4.1.6-7.4.1.7 on PDF page 11, and
+            the relevant destination-forecast language appears in paragraph
+            7.4.1.6 on that exact page.
+        claim_assessments:
+          - claim_id: arrival-window
+            verdict: supports
+            rationale: 'The excerpt expressly states: "Review the destination forecast,
+              including significant changes expected within 1 hour before and
+              after the estimated time of arrival (ETA)." The authored passages
+              accurately retain the one-hour-before/after-ETA condition.'
+      usage:
+        input_tokens: 1087
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1084
+        output_tokens: 210
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1297
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-weather-overview
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 13
+    checked_at_utc: 2026-09-03T10:18:37.336Z
+    linked_claim_ids:
+      - phak-weather-services-overview
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/15_phak_ch13.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 976
+      pdf_page_text_sha256: 55b0ec167a66cd2f6dac64597ac2160e6836cf7f8931f79177824b8494ca0015
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page is the opening page of PHAK Chapter 13 and
+          explicitly states that, through a complex system of weather services,
+          pilots receive up-to-date weather reports and forecasts that enable
+          informed decisions regarding weather and flight safety before and
+          during flight.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Chapter 13, “Aviation Weather Services,” PDF
+            page 1, which is exactly the supplied excerpt page and contains the
+            relevant statement.
+        claim_assessments:
+          - claim_id: phak-weather-services-overview
+            verdict: supports
+            rationale: "The excerpt directly supports the claim: it describes the combined
+              weather-service system and says pilots receive up-to-date reports
+              and forecasts enabling informed weather and flight-safety
+              decisions."
+      usage:
+        input_tokens: 719
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 176
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 895
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-briefing
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:37.348Z
+    linked_claim_ids:
+      - briefing-process
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3959
+      pdf_page_text_sha256: a56dcd056e69742e964b464d199f8793d7ded0785eac7c53913f550364a6cf71
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that pilots may obtain weather
+          briefings using online weather resources or Flight Service, encourages
+          a self-briefing before contacting Flight Service, and says
+          self-briefing provides familiarity with weather conditions applicable
+          to the route and promotes better understanding of weather information.
+          The additional authored statement about standard briefings influencing
+          planning, altering, or cancelling a route or flight is also supported
+          by the excerpt.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains section 3.3.1, “Weather Briefings,”
+            including the self-briefing and Flight Service discussion relevant
+            to the claim.
+        claim_assessments:
+          - claim_id: briefing-process
+            verdict: supports
+            rationale: The source states that pilots may obtain a weather briefing using
+              online weather resources or Flight Service, and specifically says
+              conducting a self-briefing before contacting Flight Service
+              provides familiarity with route-applicable weather conditions and
+              promotes better understanding of weather information.
+      usage:
+        input_tokens: 1351
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1348
+        output_tokens: 283
+        output_tokens_details:
+          reasoning_tokens: 64
+        total_tokens: 1634
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-metar-speci
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:43.418Z
+    linked_claim_ids:
+      - metar
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=289
+      errors: []
+      valid: true
+      pdf_page_number: 289
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2241
+      pdf_page_text_sha256: 146155b00797791e3723221dfd937186441b748fa6c558245fc8139cc1522d33
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly defines METAR/SPECI as code forms for aviation
+          surface observations and states that a METAR is an Aviation Routine
+          Weather Report. It lists the principal report elements and describes
+          the coded report format, with decoded/plain-language versions also
+          available.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains section 24.4 and 24.4.1, including the
+            METAR definition, coding context, and the listed elements of a
+            METAR.
+        claim_assessments:
+          - claim_id: metar
+            verdict: supports
+            rationale: "The source supports all material parts: METAR is routine, is an
+              aviation surface observation/report, contains prescribed weather
+              data elements, and uses a code form."
+      usage:
+        input_tokens: 1633
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1630
+        output_tokens: 174
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1807
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-pirep
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.465Z
+    linked_claim_ids:
+      - pirep-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=310
+      errors: []
+      valid: true
+      pdf_page_number: 310
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1777
+      pdf_page_text_sha256: 8213b1cc5edc8e255b1ae799435372dd563e6c7518d859a3b8ee133668a602ac
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that pilots may report any
+          observation, including a forecast condition that was not encountered,
+          and lists the prescribed PIREP elements as location, time,
+          altitude/flight level, aircraft type, and at least one element
+          describing the reported phenomena. The authored statement preserves
+          these conditions, including the required additional reported
+          phenomenon.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 310 contains Section 24.5.1, “Pilot Weather Reports
+            (PIREP),” including both the description of what may be reported and
+            the prescribed-format elements.
+        claim_assessments:
+          - claim_id: pirep-context
+            verdict: supports
+            rationale: "The excerpt supports each material part of the claim: PIREPs are
+              pilot/aircrew aircraft observations; they may report observed
+              conditions or forecast conditions that were not encountered; and
+              their prescribed format includes location, time, altitude/FL, and
+              aircraft type. It additionally specifies a message type and at
+              least one reported-phenomena element."
+      usage:
+        input_tokens: 1159
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1156
+        output_tokens: 334
+        output_tokens_details:
+          reasoning_tokens: 102
+        total_tokens: 1493
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-pirep-types
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.481Z
+    linked_claim_ids:
+      - pirep-report-types
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=311
+      errors: []
+      valid: true
+      pdf_page_number: 311
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1949
+      pdf_page_text_sha256: 5beaa348d604c68605a8ade52c6627ae5e40684668cc523b4ce663b3f149a3fb
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that the two PIREP message types are
+          Urgent (UUA) and Routine (UA). The authored passage accurately
+          preserves those designations without omitting a material condition.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains Section 24.5.1.1, “Message Type
+            (UUA/UA),” including the explicit routine/urgent designations.
+        claim_assessments:
+          - claim_id: pirep-report-types
+            verdict: supports
+            rationale: "The source explicitly says: “The two types of PIREPs are Urgent
+              (UUA) and Routine (UA).” The authored statement matches this."
+      usage:
+        input_tokens: 1034
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1031
+        output_tokens: 165
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1199
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-speci
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.505Z
+    linked_claim_ids:
+      - speci
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=290
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=290
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=290
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=290
+      errors: []
+      valid: true
+      pdf_page_number: 290
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2348
+      pdf_page_text_sha256: 0b6021fb9eee3753097aad452fb26a2fa6394c8ec9aae6f5c3f42b01810f275c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines a SPECI as an unscheduled report
+          taken when Table 24-2 criteria are observed between hourly reports and
+          states that SPECIs contain all data elements found in a METAR,
+          supporting the characterization that it uses the METAR format.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 290 contains section 24.4.2, “Aviation Selected Special
+            Weather Report (SPECI),” and Table 24-2 describing the triggering
+            criteria.
+        claim_assessments:
+          - claim_id: speci
+            verdict: supports
+            rationale: The excerpt states that a SPECI is an unscheduled report issued when
+              specified criteria are observed between hourly reports, and that
+              it contains all data elements found in a METAR. The authored
+              passage preserves these conditions without adding material
+              unsupported limitations.
+      usage:
+        input_tokens: 1137
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1134
+        output_tokens: 286
+        output_tokens_details:
+          reasoning_tokens: 90
+        total_tokens: 1423
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-surface-analysis
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.524Z
+    linked_claim_ids:
+      - surface-analysis
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=350
+      errors: []
+      valid: true
+      pdf_page_number: 350
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1335
+      pdf_page_text_sha256: a2b0a911c281b2068d03a8f4346fa994bc91f5f5e257e811238826fdce9aefb2
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly defines a surface chart/analysis as an
+          analyzed chart of surface weather observations and an isobaric
+          analysis showing organized pressure patterns. It also states that it
+          includes highs, lows, ridges, troughs, fronts, and various boundaries.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the relevant
+            definition and listed surface features.
+        claim_assessments:
+          - claim_id: surface-analysis
+            verdict: supports
+            rationale: "The claim accurately preserves the source’s description: analyzed
+              surface observations and pressure patterns, including highs, lows,
+              ridges, troughs, fronts, and boundaries."
+      usage:
+        input_tokens: 979
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 159
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1138
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awc-gfa-help
+    title: Graphical Forecasts for Aviation Help
+    checked_at_utc: 2026-09-03T10:18:36.094Z
+    linked_claim_ids:
+      - gfa-layers
+      - gridded-estimate
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      final_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a6
+      title: AWC GFA Help
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      validation_url: https://aviationweather.gov/gfa/help/?page=tutorial
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 8c81950fa75e65d293eec9f25467e8412733ad6261aae5a33d2d10e398de3157
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly describes GFA as including observational data,
+          forecasts, and warnings/advisories, and it states that displayed
+          observations are valid for the time selected with the time slider. It
+          also explicitly states that the gridded ceiling-and-visibility
+          analysis is interpolated between observation points and may not
+          represent actual conditions occurring.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the GFA help/tutorial material covering
+            observations, forecasts, advisories, time, and altitude controls.
+            The excerpt contains directly relevant GFA overview and gridded
+            flight-category-analysis sections.
+        claim_assessments:
+          - claim_id: gfa-layers
+            verdict: supports
+            rationale: The excerpt says GFA includes observational data, forecasts, and
+              warnings; it further identifies forecaster-produced warnings and
+              advisories under Products. It also states that METAR station plots
+              are valid for the selected time from the time slider. The authored
+              statement accurately preserves these points.
+          - claim_id: gridded-estimate
+            verdict: supports
+            rationale: The excerpt explicitly says the gridded analysis provides
+              near-surface ceiling and visibility information, is an
+              interpolation between observation points, and therefore may not
+              represent actual conditions occurring. The authored statement
+              accurately restates this limitation.
+      usage:
+        input_tokens: 3508
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3505
+        output_tokens: 350
+        output_tokens_details:
+          reasoning_tokens: 70
+        total_tokens: 3858
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awc-gfa-application
+    title: Graphical Forecasts for Aviation
+    checked_at_utc: 2026-09-03T10:18:36.095Z
+    linked_claim_ids:
+      - gfa-official-access
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aviationweather.gov/gfa/
+      final_url: https://aviationweather.gov/gfa/
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a7
+      title: GFA
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://aviationweather.gov/gfa/
+      validation_url: https://aviationweather.gov/gfa/
+      errors: []
+      valid: true
+      excerpt_characters: 9785
+      excerpt_sha256: 7a406e565215a22bb3f7bc80499d26589d67d210935065213012efcec4d5c3a0
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt is from the Aviation Weather Center's GFA application and
+          explicitly identifies the interface as “GFA” / “GFA FORECAST,” with
+          extensive graphical weather-information layers, observations,
+          forecasts, advisories, map options, times, units, and legends. This
+          supports the claim that AWC provides GFA as an official access point
+          for graphical weather information. The authored passage's
+          characterization of GFA as an interactive map integrating observation,
+          forecast, and advisory information is consistent with the displayed
+          application controls and layers.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies the GFA interactive application, and the
+            excerpt is clearly the AWC GFA application interface.
+        claim_assessments:
+          - claim_id: gfa-official-access
+            verdict: supports
+            rationale: The AWC-branded application is explicitly labeled GFA and presents
+              graphical observations, forecast products, and advisory layers,
+              supporting its role as AWC's official GFA access point.
+      usage:
+        input_tokens: 3511
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3508
+        output_tokens: 221
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3732
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: flight-service-portal
+    title: 1800wxbrief.com
+    checked_at_utc: 2026-09-03T10:18:36.243Z
+    linked_claim_ids:
+      - flight-service-portal-access
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.1800wxbrief.com/
+      final_url: https://www.1800wxbrief.com/Website/
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a8
+      title: Home
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.1800wxbrief.com/
+      validation_url: https://www.1800wxbrief.com/
+      errors: []
+      valid: true
+      excerpt_characters: 5503
+      excerpt_sha256: 9543497daef30da003a26bb126d555f5a168911139cd650d810ea18c9faf14cf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt identifies the site as a Flight Service portal, provides
+          Flight Service briefing contact information, and lists
+          preflight-briefing resources and services. This supports the claim
+          that 1800wxbrief.com is an official web portal for accessing Flight
+          Service briefing support.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator describes the site’s homepage as the official Flight
+            Service briefing portal, matching the excerpt’s homepage content.
+        claim_assessments:
+          - claim_id: flight-service-portal-access
+            verdict: supports
+            rationale: The page presents Flight Service functions and instructs users to
+              call Flight Service for flight-plan and weather-briefing services,
+              while offering Plan & Brief and preflight-briefing features. The
+              authored statement accurately characterizes the portal as one
+              means of access without overstating exclusivity.
+      usage:
+        input_tokens: 1682
+        input_tokens_details:
+          cache_write_tokens: 1679
+          cached_tokens: 0
+        output_tokens: 190
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1872
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-briefing-checklist
+    title: AC 91-92 Pilot's Guide to a Preflight Briefing
+    checked_at_utc: 2026-09-03T10:18:45.549Z
+    linked_claim_ids:
+      - briefing-checklist
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-92.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1485
+      pdf_page_text_sha256: 3c4cc58facbf8a762e89dad1f6edecc75fcf4b561513f07ddb205684c7d1d3cd
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page is Appendix B, titled “Sample Preflight
+          Checklist,” and it lists outlook, standard, abbreviated, and
+          non-weather-related preflight briefing elements. This directly
+          supports the claim that AC 91-92 includes a sample preflight briefing
+          checklist that can be used as a planning structure.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies Appendix/sample checklist and PDF page 20; the
+            excerpt is from that exact page and contains Appendix B, “Sample
+            Preflight Checklist.”
+        claim_assessments:
+          - claim_id: briefing-checklist
+            verdict: supports
+            rationale: The excerpt explicitly presents a sample preflight checklist with
+              organized briefing and planning items, supporting the stated use
+              as a planning structure.
+      usage:
+        input_tokens: 1011
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 175
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1186
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-taf
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.552Z
+    linked_claim_ids:
+      - taf-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=407
+      errors: []
+      valid: true
+      pdf_page_number: 407
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1498
+      pdf_page_text_sha256: f975b5a28866ec27bf16c76d2b49d94fceb4175b2b3d5c04970a1629d4ede2e7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly defines a TAF as a concise statement of
+          expected meteorological conditions significant to aviation for a
+          specified time period within 5 SM of the center of an airport's runway
+          complex.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 407 contains Section 27.4, "Terminal Aerodrome Forecast
+            (TAF)," including the quoted scope and time-period definition.
+        claim_assessments:
+          - claim_id: taf-scope
+            verdict: supports
+            rationale: "The excerpt directly supports all material elements:
+              aviation-significant expected conditions, a specified time period,
+              and an area within 5 SM of the center of the airport runway
+              complex. The authored wording accurately renders 5 SM as five
+              statute miles."
+      usage:
+        input_tokens: 1297
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1294
+        output_tokens: 177
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1474
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-winds-aloft
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.585Z
+    linked_claim_ids:
+      - winds-aloft
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=405
+      errors: []
+      valid: true
+      pdf_page_number: 405
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2869
+      pdf_page_text_sha256: 03af91b5e16b236d9c9912f7843ca42b9e9f0bc9cb605d7fad50d59c5887d0a6
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that FB Wind and Temperature
+          Aloft Forecasts are computer-prepared forecasts of wind direction,
+          wind speed, and temperature at specified times, altitudes, and
+          locations. It also states that the product header includes the
+          forecast valid date/time and the period during which the forecast is
+          to be used. This fully supports the corresponding authored passage
+          without omitting material limitations relevant to the claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt was extracted from the cited PDF page and contains
+            Section 27.2.1 and 27.2.1.1.1, which directly provide the claimed
+            description and header information.
+        claim_assessments:
+          - claim_id: winds-aloft
+            verdict: supports
+            rationale: The excerpt directly supports that winds and temperatures aloft
+              forecasts provide forecast wind direction, wind speed, and
+              temperature for specified locations, altitudes, and times.
+      usage:
+        input_tokens: 1438
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1435
+        output_tokens: 273
+        output_tokens_details:
+          reasoning_tokens: 60
+        total_tokens: 1711
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-mountain-wave
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.604Z
+    linked_claim_ids:
+      - mountain-wave-formation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=191
+      errors: []
+      valid: true
+      pdf_page_number: 191
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3306
+      pdf_page_text_sha256: ea84c178a7f18ac4ccd35181c53354b4a8405d4b2263bf993e55ff2b398ebe45
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that if wind is sufficiently strong and the
+          surrounding atmosphere is stable, a wave develops from vertical
+          displacement of a stable air mass over a mountain or ridge, and that
+          both vertically propagating mountain waves and trapped lee waves can
+          be hazardous to aviation operations. The authored passage preserves
+          these conditions and the hazard limitation.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page 191 contains the relevant Chapter 16.2 discussion
+            and explicitly states the formation conditions and aviation hazard
+            of mountain/lee waves.
+        claim_assessments:
+          - claim_id: mountain-wave-formation
+            verdict: supports
+            rationale: The source directly supports that sufficiently strong wind displacing
+              stable air over mountainous terrain can form waves and that the
+              resulting wave types can be hazardous to aviation operations.
+      usage:
+        input_tokens: 1194
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1191
+        output_tokens: 184
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1378
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-sigmet
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.621Z
+    linked_claim_ids:
+      - sigmet-text-graphic
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=369
+      errors: []
+      valid: true
+      pdf_page_number: 369
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1506
+      pdf_page_text_sha256: 7f67ec819fc0fc79c2bdea8cac873ecc89be76d446fc223d0bd96021c54122b7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly defines a SIGMET as a concise description
+          of specified en route weather phenomena that may affect aircraft
+          operational safety. It also explicitly states that a graphical
+          depiction is not the entire SIGMET and that additional information may
+          be contained in the text version. The source-tagged statements
+          preserve these conditions without adding unsupported limitations or
+          conclusions.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 369 contains Section 26.2, “Significant Meteorological
+            Information (SIGMET),” including both the SIGMET definition and the
+            caution that the graphic is not the entire SIGMET.
+        claim_assessments:
+          - claim_id: sigmet-text-graphic
+            verdict: supports
+            rationale: "The excerpt supports both components of the claim: SIGMETs concern
+              specified en route phenomena that may affect operational safety,
+              and the graphic alone is incomplete because the text may contain
+              additional information."
+      usage:
+        input_tokens: 1042
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1039
+        output_tokens: 245
+        output_tokens_details:
+          reasoning_tokens: 38
+        total_tokens: 1287
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-convective-sigmet
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.637Z
+    linked_claim_ids:
+      - convective-sigmet
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=374
+      errors: []
+      valid: true
+      pdf_page_number: 374
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2590
+      pdf_page_text_sha256: 3de6c32915a329f876cde960ef2b062cc0b2e1610d6ec6f382127fa30d8e5986
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt explicitly states: “Convective SIGMETs are issued for
+          the CONUS instead of SIGMETs for thunderstorms.” This directly
+          supports the claim and preserves its geographic limitation to the
+          contiguous United States."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page contains the Convective SIGMET section and the
+            exact supporting statement.
+        claim_assessments:
+          - claim_id: convective-sigmet
+            verdict: supports
+            rationale: The authored passage accurately restates the source’s statement that
+              Convective SIGMETs are issued for the CONUS instead of SIGMETs for
+              thunderstorms.
+      usage:
+        input_tokens: 1156
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1153
+        output_tokens: 148
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1304
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-mountain-wave-rotor
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.656Z
+    linked_claim_ids:
+      - mountain-wave-rotor
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=199
+      errors: []
+      valid: true
+      pdf_page_number: 199
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1844
+      pdf_page_text_sha256: 845fd391bd640bfa683a85db18899f64dd79978169645a85fa8316f743c0b2c5
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that, when mountain waves are
+          present, a rotor zone commonly develops near or below ridge level on
+          the downwind side of the mountain, under a wave crest and an
+          associated lenticular cloud if sufficient moisture is present, and
+          that it is an area of potentially severe-to-extreme wind shear and
+          turbulence. The authored passage preserves these conditions and
+          limitations.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 199 and contains section 16.2.5,
+            “Persistent Horizontal Roll Vortices (Rotors),” with the exact
+            relevant statement.
+        claim_assessments:
+          - claim_id: mountain-wave-rotor
+            verdict: supports
+            rationale: "The excerpt directly supports every material element of the claim:
+              mountain-wave condition, common downwind development near or below
+              ridge level, location under a wave crest, moisture-dependent
+              associated lenticular cloud, and potentially severe-to-extreme
+              wind shear and turbulence."
+      usage:
+        input_tokens: 1001
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 0
+        output_tokens: 222
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1223
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-airmet
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.675Z
+    linked_claim_ids:
+      - airmet-hazards
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=383
+      errors: []
+      valid: true
+      pdf_page_number: 383
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2707
+      pdf_page_text_sha256: 16baddb8b0e4ae344a30b082beb45dddc85829766c737345d701e8f8be77bb08
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly lists the en route hazards depicted by
+          CONUS AIRMETs, including IFR conditions, widespread mountain
+          obscuration, moderate icing, freezing levels, moderate turbulence,
+          non-convective LLWS below 2,000 ft AGL, and sustained surface winds
+          greater than 30 kt. It also explicitly instructs users to assume
+          hazardous weather occurs between forecast snapshots unless a defined
+          initiation or ending time states otherwise. The authored passages
+          preserve these conditions, including the CONUS limitation and the
+          greater-than-30-kt wind threshold.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 383 contains the quoted CONUS AIRMET hazard list and the
+            interpolation guidance for periods between AIRMET forecast times.
+        claim_assessments:
+          - claim_id: airmet-hazards
+            verdict: supports
+            rationale: "The excerpt directly supports every material element: applicability
+              to the CONUS; IFR conditions or mountain obscuration; moderate
+              turbulence; icing and freezing-level information; non-convective
+              LLWS; sustained surface winds greater than 30 kt; and the
+              assumption that hazards occur between forecast-time snapshots
+              unless a defined start or end time is provided."
+      usage:
+        input_tokens: 1352
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1349
+        output_tokens: 262
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1614
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: awh-convective-outlook
+    title: Aviation Weather Handbook
+    checked_at_utc: 2026-09-03T10:18:45.685Z
+    linked_claim_ids:
+      - convective-outlook
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      final_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      validation_url: https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=38
+      errors: []
+      valid: true
+      pdf_page_number: 38
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2797
+      pdf_page_text_sha256: 4190b60ef34cdc611ccf0a1e6ea23e59d76315cac09a4ad7750b0659f81cac00
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that Convective Outlooks provide
+          potential for severe and non-severe (general) convection during the
+          following 8 days. The cited passage preserves those conditions and
+          does not add conflicting limitations.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 38 (printed page 3-15) and
+            contains the Convective Outlook entry directly.
+        claim_assessments:
+          - claim_id: convective-outlook
+            verdict: supports
+            rationale: "The excerpt states: “Convective Outlooks provide the potential for
+              severe ... and non-severe (general) convection ... during the
+              following 8 days,” which directly supports the claim."
+      usage:
+        input_tokens: 1280
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1277
+        output_tokens: 165
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1445
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-fis-limitations
+    title: Aeronautical Information Manual, 7-1-9 Flight Information Services
+    checked_at_utc: 2026-09-03T10:18:45.708Z
+    linked_claim_ids:
+      - datalink-augment
+      - strategic-not-tactical
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a9
+      title: Chapter 7. Safety of Flight
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: a82c2d5e525096696f2809d3feee9e6f57428c69628c6d2c69e515532b35132e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: AIM 7-1-9 expressly states that FIS should not serve as the sole
+          source of aviation weather and other operational information, and that
+          FIS weather products are unsuitable for tactical avoidance of severe
+          weather but support strategic weather decision-making. The cited
+          authored passage accurately preserves these limitations by describing
+          cockpit weather as an augmentation to other sources and as appropriate
+          for strategic, rather than close tactical, decisions around rapidly
+          changing severe weather.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM paragraph 7-1-9, is the section containing the
+            excerpted FIS operational-use limitations, including the sole-source
+            and strategic-versus-tactical guidance.
+        claim_assessments:
+          - claim_id: datalink-augment
+            verdict: supports
+            rationale: The excerpt states that FIS augments traditional ATC/FSS/AOCC
+              services and that it should not serve as the sole source of
+              aviation weather and other operational information.
+          - claim_id: strategic-not-tactical
+            verdict: supports
+            rationale: The excerpt states that FIS weather products are not appropriate for
+              tactical avoidance of severe weather and support strategic weather
+              decision-making, including route selection to avoid a hazard area
+              in its entirety.
+      usage:
+        input_tokens: 3276
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3273
+        output_tokens: 371
+        output_tokens_details:
+          reasoning_tokens: 97
+        total_tokens: 3647
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

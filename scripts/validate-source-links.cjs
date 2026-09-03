@@ -277,7 +277,10 @@ function linkResponseErrors(sourceUrl, link) {
   if (!(link.status >= 200 && link.status < 400)) errors.push(`HTTP ${link.status}`);
   const sourcePath = new URL(sourceUrl).pathname.toLowerCase();
   if (sourcePath.endsWith(".pdf") && link.content_type !== "application/pdf") errors.push(`expected application/pdf, received ${link.content_type || "no content type"}`);
-  if (link.content_type === "text/html" && /(?:pardon our interruption|access denied|unusual traffic|verify you are human|captcha|security check)/i.test(`${link.title || ""} ${link.excerpt || ""}`)) errors.push("received an access interstitial instead of the cited resource");
+  const pageText = `${link.title || ""} ${link.excerpt || ""}`;
+  const explicitInterstitial = /(?:pardon our interruption|access denied|unusual traffic|verify you are human|security check)/i.test(pageText);
+  const captchaChallengeTitle = /\b(?:captcha|verification)\b/i.test(link.title || "") && /\b(?:complete|solve|enter|verify|verification)\b/i.test(pageText);
+  if (link.content_type === "text/html" && (explicitInterstitial || captchaChallengeTitle)) errors.push("received an access interstitial instead of the cited resource");
   return errors;
 }
 
@@ -549,7 +552,15 @@ async function assessRelevance({ model, source, claims, authoredPassages = [], f
   if (!excerpt) return { status: "not_assessed", reason: "The fetched resource has no safely extracted current text for relevance review." };
   const input = {
     source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt: excerpt.slice(0, 12000) },
-    claims: claims.map((claim) => ({ id: claim.id, statement: claim.statement, type: claim.type })),
+    // Episode claim inventories use `claim` and `claim_type`. Accept the
+    // normalized aliases as well so this boundary remains usable by callers
+    // that have already adapted the inventory, while preferring the canonical
+    // on-disk fields.
+    claims: claims.map((claim) => ({
+      id: claim.id,
+      statement: claim.claim ?? claim.statement,
+      type: claim.claim_type ?? claim.type,
+    })),
     authored_passages: authoredPassages,
   };
   const body = {
@@ -1058,4 +1069,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

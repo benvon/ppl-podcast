@@ -1,0 +1,110 @@
+episode_id: core-14
+links:
+  - id: acs-taxiing-link
+    text: "FAA-S-ACS-6C Taxiing task"
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+    locator: "FAA-S-ACS-6C, PA.II.D.K1-K6, R1-R4, and S1-S8, PDF p. 21"
+    source_id: acs-taxiing
+    claim_ids: [acs-taxiing-outcome]
+  - id: acs-night-link
+    text: "FAA-S-ACS-6C Night Operations task"
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+    locator: "FAA-S-ACS-6C, PA.XI.A.K2, K5-K6 and R1-R4, PDF p. 71"
+    source_id: acs-night-operations
+    claim_ids: [acs-night-surface]
+  - id: phak-holding-visual-link
+    text: "Figure 14-11 of the PHAK: runway holding positions"
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+    locator: "Chapter 14, Runway Holding Position Sign and Marking, p. 14-8"
+    source_id: phak-complex-intersections
+    claim_ids: [complex-runway-sign, hold-position-boundary]
+  - id: phak-incursion-link
+    text: "Runway Incursion Avoidance in the PHAK"
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+    locator: "Chapter 14, Runway Incursion Avoidance, p. 14-31"
+    source_id: phak-incursion-avoidance
+    claim_ids: [runway-incursion, surface-attention]
+  - id: aim-taxiway-marking-visual-link
+    text: "Section 2-3-4 of the AIM: taxiway markings and enhanced centerline"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+    locator: "AIM 2-3-4, Taxiway Markings"
+    source_id: aim-taxiway-markings
+    claim_ids: [taxiway-centerline, enhanced-centerline]
+  - id: aim-holding-visual-link
+    text: "Section 2-3-5 of the AIM: runway holding-position markings"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+    locator: "AIM 2-3-5, Runway Holding Position Markings"
+    source_id: aim-holding-markings
+    claim_ids: [hold-position-boundary]
+  - id: aim-mandatory-signs-link
+    text: "Section 2-3-8 of the AIM: mandatory instruction signs"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+    locator: "AIM 2-3-8, Mandatory Instruction Signs"
+    source_id: aim-mandatory-signs
+    claim_ids: [mandatory-sign]
+  - id: aim-location-signs-link
+    text: "Section 2-3-9 of the AIM: location signs"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+    locator: "AIM 2-3-9, Location Signs"
+    source_id: aim-location-signs
+    claim_ids: [location-sign]
+  - id: aim-direction-signs-link
+    text: "Section 2-3-10 of the AIM: direction signs"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+    locator: "AIM 2-3-10, Direction Signs"
+    source_id: aim-direction-signs
+    claim_ids: [direction-sign]
+  - id: aim-rwsl-visual-link
+    text: "Section 2-1-6 of the AIM: runway status lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+    locator: "AIM 2-1-6, Runway Status Light System, Introduction and Pilot Actions"
+    source_id: aim-runway-status-lights
+    claim_ids: [runway-status-lights]
+  - id: aim-runway-lights-link
+    text: "Section 2-1-4 of the AIM: runway edge lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+    locator: "AIM 2-1-4, Runway Edge Light Systems"
+    source_id: aim-runway-edge-lights
+    claim_ids: [runway-light-cues]
+  - id: aim-pcl-link
+    text: "Section 2-1-8 of the AIM: pilot-controlled lighting"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+    locator: "AIM 2-1-8, Pilot Control of Airport Lighting, paragraphs a-d and radio-control table"
+    source_id: aim-pilot-controlled-lighting
+    claim_ids: [pilot-controlled-lighting]
+  - id: aim-beacon-link
+    text: "Section 2-1-9 of the AIM: airport and heliport beacons"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+    locator: "AIM 2-1-9, Airport/Heliport Beacons, paragraphs a-d"
+    source_id: aim-airport-beacons
+    claim_ids: [airport-beacon]
+  - id: aim-taxiway-lights-link
+    text: "Section 2-1-10 of the AIM: taxiway lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+    locator: "AIM 2-1-10, Taxiway Edge and Centerline Lights"
+    source_id: aim-taxiway-lights
+    claim_ids: [taxiway-light-cues]
+  - id: aim-taxiing-link
+    text: "Section 4-3-18 of the AIM: Taxiing"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+    locator: "AIM 4-3-18, Taxiing, paragraphs a-b"
+    source_id: aim-taxiing
+    claim_ids: [movement-area-approval, explicit-runway-crossing, hold-short-readback, clarify-and-progressive, surface-attention]
+  - id: aim-runway-exit-link
+    text: "Section 4-3-21 of the AIM: Exiting the Runway After Landing"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+    locator: "AIM 4-3-21, Exiting the Runway After Landing"
+    source_id: aim-runway-exit
+    claim_ids: [clear-of-runway]
+  - id: phak-current-info-link
+    text: "Chapter 14 of the PHAK: NOTAMs, ATIS, markings, and signs"
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+    locator: "Chapter 14, NOTAMs, ATIS, and Airport Markings and Signs, p. 14-5"
+    source_id: phak-surface-information
+    claim_ids: [surface-plan]
+  - id: acs-airport-operations-link
+    text: "FAA-S-ACS-6C Airport and Seaplane Base Operations"
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+    locator: "FAA-S-ACS-6C, PA.III.A and PA.III.B, PDF p. 24"
+    source_id: acs-airport-operations
+    claim_ids: [acs-surface-recognition]

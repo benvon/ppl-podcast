@@ -1,0 +1,235 @@
+episode_id: core-14
+verification_date: "2026-09-04"
+verified_at_utc: "2026-09-04T10:37:38Z"
+sources:
+  - id: acs-taxiing
+    title: Private Pilot for Airplane Category ACS, Area II, Task D
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+    locator: "FAA-S-ACS-6C, PA.II.D.K1-K6, R1-R4, and S1-S8, PDF p. 21"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-S-ACS-6C, November 2023; effective May 31, 2024"
+    relevance: "Defines the private-pilot taxiing task, including current airport references, taxi clearances, markings, lights, runway-incursion risks, diagram use, situational awareness, readbacks, and hold-line positioning."
+    supports_claims: [acs-taxiing-outcome]
+  - id: acs-airport-operations
+    title: Private Pilot for Airplane Category ACS, Area III, Tasks A-B
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+    locator: "FAA-S-ACS-6C, PA.III.A.K1-K9, R1-R4, S1-S3; PA.III.B.S1 and S4-S6, PDF p. 24"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-S-ACS-6C, November 2023; effective May 31, 2024"
+    relevance: "Connects communications and runway-status lighting with identifying and interpreting airport runways, taxiways, markings, signs, lighting, and orientation."
+    supports_claims: [acs-surface-recognition]
+  - id: acs-night-operations
+    title: Private Pilot for Airplane Category ACS, Area XI, Task A
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+    locator: "FAA-S-ACS-6C, PA.XI.A.K2, K5-K6 and R1-R4, PDF p. 71"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-S-ACS-6C, November 2023; effective May 31, 2024"
+    relevance: "Names night airport, runway, taxiway, obstruction, and pilot-controlled lighting; night orientation and taxi; and runway-incursion risk."
+    supports_claims: [acs-night-surface]
+  - id: phak-surface-information
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+    locator: "Chapter 14, NOTAMs, ATIS, and Airport Markings and Signs, p. 14-5"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-H-8083-25C, Chapter 14; FAA page updated July 10, 2023"
+    relevance: "Explains that NOTAMs may contain runway and taxiway closures and construction, and that ATIS carries runway-use and airport information relevant to taxi planning."
+    supports_claims: [surface-plan]
+  - id: phak-complex-intersections
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+    locator: "Chapter 14, Runway Holding Position Sign and Marking, p. 14-8"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-H-8083-25C, Chapter 14; FAA page updated July 10, 2023"
+    relevance: "Shows how runway holding signs encode runway orientation at complex intersections and explains the four-line holding-position marking and whole-aircraft clearance."
+    supports_claims: [complex-runway-sign, hold-position-boundary]
+  - id: phak-incursion-avoidance
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+    locator: "Chapter 14, Runway Incursion Avoidance, p. 14-31"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-H-8083-25C, Chapter 14; FAA page updated July 10, 2023"
+    relevance: "Defines a runway incursion and emphasizes position awareness, airport diagrams, NOTAMs, route clarification, traffic checks, and disciplined attention."
+    supports_claims: [runway-incursion, surface-attention]
+  - id: phak-clearance-discipline
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=33
+    locator: "Chapter 14, ATC Instructions and Hold Short, p. 14-33"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-H-8083-25C, Chapter 14; FAA page updated July 10, 2023"
+    relevance: "Directs pilots to request clarification or progressive taxi when unsure, write down taxi instructions, monitor similar call signs, and read back clearances and hold-short instructions."
+    supports_claims: [clarify-and-progressive, hold-short-readback]
+  - id: phak-explicit-crossing
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=34
+    locator: "Chapter 14, Explicit Runway Crossing and Line Up and Wait, p. 14-34"
+    source_type: pdf
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "FAA-H-8083-25C, Chapter 14; FAA page updated July 10, 2023"
+    relevance: "Explains explicit runway-crossing clearances, scanning the runway and final approaches before entry, and that line up and wait is not a takeoff clearance."
+    supports_claims: [explicit-runway-crossing, line-up-and-wait]
+  - id: aim-marking-colors
+    title: Aeronautical Information Manual, Airport Pavement Markings
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-2
+    locator: "AIM 2-3-2, Airport Pavement Markings"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "States the standardized color distinction: runway markings are white; taxiway, non-aircraft-use, and holding-position markings are yellow."
+    supports_claims: [marking-colors]
+  - id: aim-taxiway-markings
+    title: Aeronautical Information Manual, Taxiway Markings
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+    locator: "AIM 2-3-4, Taxiway Markings"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines normal and enhanced taxiway centerlines, warns that centerline tracking does not guarantee wingtip clearance, and explains surface-painted location and direction signs."
+    supports_claims: [taxiway-centerline, enhanced-centerline]
+  - id: aim-holding-markings
+    title: Aeronautical Information Manual, Holding Position Markings
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+    locator: "AIM 2-3-5, Runway Holding Position Markings"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines the two-solid/two-dashed holding-position marking, the solid-line holding side, the towered-airport clearance requirement, and when an aircraft exiting is clear."
+    supports_claims: [hold-position-boundary]
+  - id: aim-mandatory-signs
+    title: Aeronautical Information Manual, Mandatory Instruction Signs
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+    locator: "AIM 2-3-8, Mandatory Instruction Signs"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines red-and-white signs for runway or critical-area entrances and prohibited-entry areas, including runway holding-position signs."
+    supports_claims: [mandatory-sign]
+  - id: aim-location-signs
+    title: Aeronautical Information Manual, Location Signs
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+    locator: "AIM 2-3-9, Location Signs"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines black-background, yellow-inscription taxiway location signs and the runway-boundary sign used when exiting."
+    supports_claims: [location-sign]
+  - id: aim-direction-signs
+    title: Aeronautical Information Manual, Direction Signs
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+    locator: "AIM 2-3-10, Direction Signs"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines yellow-background, black-inscription direction signs and their arrows at taxiway intersections."
+    supports_claims: [direction-sign]
+  - id: aim-runway-status-lights
+    title: Aeronautical Information Manual, Runway Status Light System
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+    locator: "AIM 2-1-6, Runway Status Light System, Introduction and Pilot Actions"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Explains that red runway-status lights indicate an unsafe runway condition, do not convey clearance, and require a pilot to stop and resolve a conflict with ATC."
+    supports_claims: [runway-status-lights]
+  - id: aim-runway-edge-lights
+    title: Aeronautical Information Manual, Runway Edge Light Systems
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+    locator: "AIM 2-1-4, Runway Edge Light Systems"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Explains runway-edge-light colors, including normally white edges and red and green runway-end aspects."
+    supports_claims: [runway-light-cues]
+  - id: aim-pilot-controlled-lighting
+    title: Aeronautical Information Manual, Pilot Control of Airport Lighting
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+    locator: "AIM 2-1-8, Pilot Control of Airport Lighting, paragraphs a-d and radio-control table"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Explains selected-airport radio activation, seven/five/three-click intensity selection, 15-minute duration, and the need to obtain the actual system and frequency from the Chart Supplement or approach publication."
+    supports_claims: [pilot-controlled-lighting]
+  - id: aim-airport-beacons
+    title: Aeronautical Information Manual, Airport and Heliport Beacons
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+    locator: "AIM 2-1-9, Airport/Heliport Beacons, paragraphs a-d"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines the white-and-green lighted land-airport beacon and cautions against using daylight beacon operation alone to determine VFR or IFR conditions."
+    supports_claims: [airport-beacon]
+  - id: aim-taxiway-lights
+    title: Aeronautical Information Manual, Taxiway Lights
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+    locator: "AIM 2-1-10, Taxiway Edge and Centerline Lights"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines blue taxiway edge lights and green taxiway centerline lights and explains their surface-guidance purpose."
+    supports_claims: [taxiway-light-cues]
+  - id: aim-taxiing
+    title: Aeronautical Information Manual, Taxiing
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+    locator: "AIM 4-3-18, Taxiing, paragraphs a-b"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Requires tower approval for the movement area, explicit runway-crossing clearances, specified taxi readbacks, clarification when a clearance is not understood, continuous scanning, and progressive taxi when needed."
+    supports_claims: [movement-area-approval, explicit-runway-crossing, hold-short-readback, clarify-and-progressive, surface-attention]
+  - id: aim-runway-exit
+    title: Aeronautical Information Manual, Exiting the Runway After Landing
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+    locator: "AIM 4-3-21, Exiting the Runway After Landing"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-04"
+    revision: "Current online AIM, accessed September 4, 2026"
+    relevance: "Defines clearing a runway with the whole aircraft beyond the holding-position markings and obtaining further taxi instructions."
+    supports_claims: [clear-of-runway]

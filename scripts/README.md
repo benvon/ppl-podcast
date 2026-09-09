@@ -28,10 +28,12 @@ npm run precommit:check
 
 ## Candidate workflow
 
-1. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Then run
+1. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Before the source-relevance or rendering call that sends unpublished material to OpenAI, obtain explicit current-turn authorization for that specific use. Then run
    `sources:validate --require-llm`, resolve every finding, and record
-   `source_verification.relevance_review: complete` in `episode.yaml`. The
-   renderer verifies that evidence before it sends any audio request.
+   `source_verification.relevance_review: complete` in `episode.yaml`. A
+   failed rerun writes a blocking marker beside the canonical report; only a
+   later clean rerun clears it. The renderer verifies that evidence before it
+   sends any audio request.
 2. Derive the clean TTS input from that approved script; do not edit the
    narration copy independently.
 
@@ -49,7 +51,7 @@ npm run precommit:check
 6. Perform the required full listening QA. The automated report catches technical corruption and hard joins; it cannot judge synthesis artifacts, garbled words, pronunciation, pacing, or whether a chapter title is useful to a listener.
 7. Before handing off to hosting, run `npm run release:prehost -- --episode episodes/<episode-id-and-slug>`. It checks the approved MP3 against its final render, chapter, and audio-quality records—including re-reading the embedded MP3 chapters and comparing them to the candidate render record. The renderer itself accepts only a current `narration.md` derivative and records its checksum. The pre-hosting check verifies that binding, the release metadata and source-validation record, every show-note link mapping, and the absence of duplicate public production notices.
 
-Use the same timestamp and work directory for the render and assembly commands that create one candidate. When a revised segment changes duration, reassemble the complete range: the renderer recalculates every later chapter marker from the new stitched audio. You may keep the earlier work directory so unchanged rendered segments can be reused safely.
+Use the same timestamp and work directory for the render and assembly commands that create one candidate. When a revised segment changes duration, reassemble the complete range: the renderer recalculates every later chapter marker from the new stitched audio. You may keep the earlier work directory so unchanged rendered segments can be reused safely. A new assembly must use a new timestamp: the renderer refuses to overwrite any existing candidate output.
 
 ```sh
 direnv exec . npm run render:realtime -- \
@@ -99,31 +101,34 @@ npm run render:realtime -- \
   --assemble-only --format mp3
 ```
 
-## Optional intro/outro music bed
+## Declarative intro/outro music bed
 
-Use `--music-bed` during assembly to add a source track beneath the **Podcast
-introduction** and **Outro** sections. By default, the renderer adds a 10-second
-music-only lead before the Podcast introduction voice, holds the bed at a
-reduced level beneath that voice, continues it at full level for 5 seconds
-afterward, then fades it over 0.5 seconds before the first teaching section.
-It starts music with the Outro voice, continues it at full level for 10 seconds
-after the voice ends, then fades it for 5 seconds. The bed is set to -24 dB at
-full level and -30 dB beneath the Announcer, so narration remains foregrounded.
+New episode packages include `audio-mix.yaml`. It is the authoritative music
+plan for the **Podcast introduction** and **Outro**; do not provide manual
+`--music-*` options when that file exists. Set `music.enabled: false` for an
+episode without a bed. For an enabled bed, configure its audio-mix-relative
+source (which must remain inside the repository), steady full and voice-under gains, and lead, continuation, and fade
+timing in that file. The final pre-hosting validation compares the declared
+plan with the rendered music record.
 
-```sh
-npm run render:realtime -- \
-  --script episodes/EPISODE/narration.md \
-  --audio-dir audio-artifacts \
-  --episode-id core-03 \
-  --timestamp YYYYMMDDTHHMMSSZ \
-  --work-dir audio-artifacts/core-03-realtime-YYYYMMDDTHHMMSSZ.segments \
-  --music-bed assets/music/jonasblakewood-synth-pop_60s-583368.mp3 \
-  --assemble-only --format mp3
+```yaml
+schema_version: 1
+music:
+  enabled: true
+  source: ../../assets/music/jonasblakewood-synth-pop_60s-583368.mp3
+  base_gain_db: -24
+  voice_gain_db: -30
+  level_transition_seconds: 0.15
+  intro_lead_seconds: 10
+  intro_tail_seconds: 5
+  intro_fade_seconds: 0.5
+  outro_tail_seconds: 10
+  outro_fade_seconds: 5
 ```
 
-The render manifest records the source SHA-256, cue plan, and music-level
-settings. Automated checks still cannot judge music balance or editorial fit;
-listen to the intro and outro before approving the episode.
+The render manifest records the source SHA-256, configuration digest, cue plan,
+and music-level settings. Automated checks still cannot judge music balance or
+editorial fit; listen to the intro and outro before approving the episode.
 
 ## Local chapter review
 
@@ -172,8 +177,9 @@ audio.
   familiar initialisms such as `POH`, `CG`, `AFM`, `ACS`, and `MEL` exactly as
   written because hyphenated spellings created audible hitches and unnatural
   emphasis. The pronunciation map is reserved for narrow phonetic corrections:
-  `AI` becomes `artificial intelligence`, `PHAK` becomes `pee hack`, `ASOS`
-  becomes `AY-sohs`, `AWOS` becomes `AY-wahs`, and `ATIS` becomes `AY-tis`.
+  `AI` becomes `artificial intelligence`, `AIM` becomes `aim`, `PHAK` becomes
+  `pee hack`, `ASOS` becomes `AY-sohs`, `AWOS` becomes `AY-wahs`, and `ATIS`
+  becomes `AY-tis`.
   For a homograph such as `envelope`, the text remains unchanged and the
   affected segment receives a silent noun-pronunciation instruction instead.
 - Use the versioned, Git-ignored render manifest for duration, checksums, response

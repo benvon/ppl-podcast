@@ -154,24 +154,32 @@ The public [PPL Study Guide hosting repository](https://github.com/benvon/ppl-po
 documents how a sealed episode handoff is staged, published, hosted, and
 attested after this source repository's release gates have passed.
 
-After the publication-day source check, approved listening QA, and pre-hosting
-validation have all passed, create the hosting input directory with this
-command. It copies the exact MP3, listener-facing metadata, and show notes,
-then writes `source-release-seal.yaml`. The seal records SHA-256 values for the
+After the publication-day source check and approved listening QA, use the
+release-preparation command to synchronize the authoritative release timestamp
+and derived hosting metadata, run final pre-hosting validation, and create the
+hosting input directory. It copies the exact MP3, listener-facing metadata, and
+show notes, then writes `source-release-seal.yaml`. The seal records SHA-256 values for the
 whole source episode package and for every file in the handoff. The handoff
 root contains only the three sealed payload files plus that seal; verification
 rejects extra files, directories, and symlinks. The hosting stager verifies
 this exact package before it stages audio.
 
 ```sh
-npm run release:prepare-handoff -- \
+npm run release:prepare-publication -- \
   --episode episodes/core-08-example \
+  --published-at 2026-09-09T13:00:08Z \
   --out /absolute/path/to/core-08-hosting-handoff
 ```
 
-The command refuses to overwrite an existing directory. Treat the resulting
-directory as an immutable release input: if any source record or audio bytes
-change, rerun the gates and create a new handoff directory.
+The command never stages audio, publishes, or opens a pull request, and it
+refuses to overwrite an existing directory. Treat the resulting directory as an
+immutable release input: if any source record or audio bytes change, rerun the
+gates and create a new handoff directory.
+
+Historical published packages are preservation-only: do not backfill their
+newer validation records or regenerate their handoffs. A revision begins with
+`episode:script-review --reset`, which adopts the current release contract and
+requires the current checks for that new version.
 
 Each sealed handoff also carries a public release key and its content version.
 GitHub releases use those values as immutable tags: core lessons use

@@ -1,0 +1,20 @@
+schema_version: 1
+publisher_release:
+  id: core-14
+  guid: pplstudyguide.com:core-14
+  title: Airport Operations and Surface Safety
+  description: A scenario-led lesson on building a surface-position picture,
+    translating taxi clearances, recognizing signs and markings, and using
+    runway and taxiway lighting at day and night airports.
+  published_at: 2026-09-09T13:00:08Z
+  duration: 00:42:59
+  season: 1
+  number: 14
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.12

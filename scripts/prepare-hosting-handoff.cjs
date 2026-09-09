@@ -105,6 +105,8 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
   if (resolvedOutput === resolvedEpisode || resolvedOutput.startsWith(`${resolvedEpisode}${path.sep}`)) throw new HostingHandoffError("Hosting handoff output must be outside the source episode directory.");
   if (fs.existsSync(resolvedOutput)) throw new HostingHandoffError(`Refusing to replace existing handoff directory: ${resolvedOutput}`);
   const sourceFiles = sourcePackageFiles(resolvedEpisode);
+  const releaseEpisodeRecord = readYaml(path.join(resolvedEpisode, "episode.yaml"));
+  if (releaseEpisodeRecord.production_contract_version !== 2) throw new HostingHandoffError("This is a preserved legacy package. Do not create a new handoff unless it has first been revised under the current release contract.");
   const preHosting = validatePreHosting({ episodePath: resolvedEpisode, cwd });
   if (!preHosting.valid) throw new HostingHandoffError(`Pre-hosting validation failed:\n${preHosting.errors.join("\n")}`);
   if (sha256Value(sourcePackageFiles(resolvedEpisode)) !== sha256Value(sourceFiles)) throw new HostingHandoffError("Source episode package changed while pre-hosting validation was running; rerun validation before creating a handoff.");

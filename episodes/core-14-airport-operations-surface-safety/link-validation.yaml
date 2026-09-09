@@ -1,0 +1,2240 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-09-09T12:59:53.641Z
+sources_file: episodes/core-14-airport-operations-surface-safety/sources.yaml
+claims_file: episodes/core-14-airport-operations-surface-safety/claim-inventory.yaml
+show_notes_file: episodes/core-14-airport-operations-surface-safety/show-notes.md
+show_notes_manifest_file: episodes/core-14-airport-operations-surface-safety/show-notes-manifest.yaml
+input_sha256:
+  sources: 5fb765a18d8a66b11e55a65b32b97ab40bbaf5609e098f3e2a44b2ede3edc675
+  claims: 374cd9eb4c4f9adc0a1678ccb772b5cab8a9734c86372803876c56ca94b9c63b
+  master_script: 61262079c22cdba798f5107a3e3abd2e31324c8befec347db0bb07dfb91450c3
+  show_notes: 0eaff06e64b9333ba1e1b4561a7e40802b9327b23b89adf37a2f474e8e2f64b8
+  show_notes_manifest: 896581b115f52265f5b74e6fd5444eea466f6a716e4800be937c9e38a8588197
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 116
+  claim_coverage_count: 32
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 20
+  manifest_link_count: 19
+show_notes_results:
+  - id: acs-taxiing-link
+    text: FAA-S-ACS-6C Taxiing task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+    source_id: acs-taxiing
+    claim_ids:
+      - acs-taxiing-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2215
+      pdf_page_text_sha256: 23420aaa8099efd55c2a27596d148cc2e1b9fe2b7907184e0ab574ad5e1512ff
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-night-link
+    text: FAA-S-ACS-6C Night Operations task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+    source_id: acs-night-operations
+    claim_ids:
+      - acs-night-surface
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      errors: []
+      valid: true
+      pdf_page_number: 71
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1673
+      pdf_page_text_sha256: 1edca9bc84a44a1967924e92802d8e2a63651871176243ad442b1f9305745ed4
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-holding-visual-link
+    text: "Figure 14-11 of the PHAK: runway holding positions"
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+    source_id: phak-complex-intersections
+    claim_ids:
+      - complex-runway-sign
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4368
+      pdf_page_text_sha256: 623989f85ed3b7f839915c5eb6f693ed79cfa6b707cab9afdda916cfc01e1e1a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-incursion-link
+    text: Runway Incursion Avoidance in the PHAK
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+    source_id: phak-incursion-avoidance
+    claim_ids:
+      - runway-incursion
+      - surface-attention
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      errors: []
+      valid: true
+      pdf_page_number: 31
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4290
+      pdf_page_text_sha256: a21626acd9b754b1e8cce747ab5f5f8d997af763b68d48171034a0aef878c004
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-taxiway-marking-visual-link
+    text: "Section 2-3-4 of the AIM: taxiway markings and enhanced centerline"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+    source_id: aim-taxiway-markings
+    claim_ids:
+      - taxiway-centerline
+      - enhanced-centerline
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a3 []
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 0a00b8f800b77262d59c401694990748bc5dc2dd2993bd57da403e5f5f1b9a4b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-holding-visual-link
+    text: "Section 2-3-5 of the AIM: runway holding-position markings"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+    source_id: aim-holding-markings
+    claim_ids:
+      - hold-position-boundary
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 86f159caed34979d4ae218bc2039148cc97f2264874f96bcc4d8cd3199b80d67
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-mandatory-signs-link
+    text: "Section 2-3-8 of the AIM: mandatory instruction signs"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+    source_id: aim-mandatory-signs
+    claim_ids:
+      - mandatory-sign
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 8cddfea4af60e09fc4453586c41571b1a60ff7cb02d359539c6155684bad5d1a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-location-signs-link
+    text: "Section 2-3-9 of the AIM: location signs"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+    source_id: aim-location-signs
+    claim_ids:
+      - location-sign
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      errors: []
+      valid: true
+      excerpt_characters: 11016
+      excerpt_sha256: 4efd79fbf0afa919a9ba7a1459ff7c45bfec5067cdf01e1ebc37a1645828230d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-direction-signs-link
+    text: "Section 2-3-10 of the AIM: direction signs"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+    source_id: aim-direction-signs
+    claim_ids:
+      - direction-sign
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      errors: []
+      valid: true
+      excerpt_characters: 8852
+      excerpt_sha256: 5e26b9b92a43daa3d0c52ed29e62593fd29ec78130c6e5057de40987237da18e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-rwsl-visual-link
+    text: "Section 2-1-6 of the AIM: runway status lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+    source_id: aim-runway-status-lights
+    claim_ids:
+      - runway-status-lights
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a4 []
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: a4479471b904352186e09c1ac8377bd1c4f547e05d2db2a84ae52b9af33b4d1f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-runway-lights-link
+    text: "Section 2-1-4 of the AIM: runway edge lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+    source_id: aim-runway-edge-lights
+    claim_ids:
+      - runway-light-cues
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 41c5af47829e03e72fc10429c294719a5cfb3e1022f7ad767aecf95d927a2390
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-pcl-link
+    text: "Section 2-1-8 of the AIM: pilot-controlled lighting"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+    source_id: aim-pilot-controlled-lighting
+    claim_ids:
+      - pilot-controlled-lighting
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      errors: []
+      valid: true
+      excerpt_characters: 10030
+      excerpt_sha256: e75fb65a9c26a816d7a67a253c5201e12cc12e7de51d2c159ff1e08f233aac17
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-beacon-link
+    text: "Section 2-1-9 of the AIM: airport and heliport beacons"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+    source_id: aim-airport-beacons
+    claim_ids:
+      - airport-beacon
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 5019
+      excerpt_sha256: 75571f74c9849183f15bd1f58f3944e311bc5fca7c4eefd355b0d7fc0a8f7ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-taxiway-lights-link
+    text: "Section 2-1-10 of the AIM: taxiway lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+    source_id: aim-taxiway-lights
+    claim_ids:
+      - taxiway-light-cues
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      errors: []
+      valid: true
+      excerpt_characters: 2963
+      excerpt_sha256: 84514e839e261e6f0618cb4c6201e386a9771f57172c6da54f99516d2ead7601
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-aircraft-lights-link
+    text: "Section 4-3-24 of the AIM: use of aircraft lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+    source_id: aim-aircraft-lights
+    claim_ids:
+      - ground-lighting-practice
+      - runway-crossing-lighting
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a5 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      errors: []
+      valid: true
+      excerpt_characters: 7285
+      excerpt_sha256: 123410b0595e634e6973392b202cf3454ed5ba499576131583a0ab61d70cc48b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-taxiing-link
+    text: "Section 4-3-18 of the AIM: Taxiing"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+    source_id: aim-taxiing
+    claim_ids:
+      - movement-area-approval
+      - explicit-runway-crossing
+      - hold-short-readback
+      - clarify-and-progressive
+      - surface-attention
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 26d77b057b68b6358435febe784a87638c5f5716f16d5311317d75e1076c2417
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-runway-exit-link
+    text: "Section 4-3-21 of the AIM: Exiting the Runway After Landing"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+    source_id: aim-runway-exit
+    claim_ids:
+      - clear-of-runway
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 948a4215ba8de65dbf30e3b6b2de96210e614e5650869d446037b9ff583a1397
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-current-info-link
+    text: "Chapter 14 of the PHAK: NOTAMs, ATIS, markings, and signs"
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+    source_id: phak-surface-information
+    claim_ids:
+      - surface-plan
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5069
+      pdf_page_text_sha256: 9538050a30f45ddfc5c63be5ee6fb4c9d7e96dadebb01ab3afd959af51b48883
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-airport-operations-link
+    text: FAA-S-ACS-6C Airport and Seaplane Base Operations
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+    source_id: acs-airport-operations
+    claim_ids:
+      - acs-surface-recognition
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2074
+      pdf_page_text_sha256: 31bbf323541a06d11b69c337ab5fba223101d2ac10a7a46a543f97aa16efe115
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-taxiing
+    title: Private Pilot for Airplane Category ACS, Area II, Task D
+    checked_at_utc: 2026-09-09T12:58:51.111Z
+    linked_claim_ids:
+      - acs-taxiing-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2215
+      pdf_page_text_sha256: 23420aaa8099efd55c2a27596d148cc2e1b9fe2b7907184e0ab574ad5e1512ff
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page explicitly lists current airport references, taxi
+          instructions/clearances, airport markings/signs/lights,
+          runway-incursion risk, correct readbacks, airport-diagram use with
+          situational awareness, and proper positioning relative to hold lines
+          as Taxiing-task knowledge, risk-management, or skill elements. The
+          authored discussion preserves these elements and their taxiing
+          context.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies ACS Area II, Task D (Taxiing), and the excerpt
+            is from that exact task page, containing K1-K6, R1-R4, and S1-S8.
+        claim_assessments:
+          - claim_id: acs-taxiing-outcome
+            verdict: supports
+            rationale: "The excerpt directly supports every listed component: current
+              airport references (K1), taxi clearances (K2),
+              markings/signs/lights (K3), runway-incursion risk (R4), readbacks
+              (S1), airport-diagram use and situational awareness (S2), and
+              positioning relative to hold lines (S8)."
+      usage:
+        input_tokens: 1730
+        input_tokens_details:
+          cache_write_tokens: 1727
+          cached_tokens: 0
+        output_tokens: 427
+        output_tokens_details:
+          reasoning_tokens: 184
+        total_tokens: 2157
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-airport-operations
+    title: Private Pilot for Airplane Category ACS, Area III, Tasks A-B
+    checked_at_utc: 2026-09-09T12:58:51.127Z
+    linked_claim_ids:
+      - acs-surface-recognition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2074
+      pdf_page_text_sha256: 31bbf323541a06d11b69c337ab5fba223101d2ac10a7a46a543f97aa16efe115
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS excerpt explicitly lists “PA.III.A.K9 Runway Status
+          Lighting Systems” under Task A, Communications, Light Signals, and
+          Runway Lighting Systems. The authored passage accurately states that
+          the ACS communications task includes runway-status-light systems.
+        locator_assessment:
+          verdict: supports
+          rationale: The supplied excerpt is from cited PDF page 24 and contains
+            PA.III.A.K9, the exact relevant knowledge element.
+        claim_assessments:
+          - claim_id: acs-surface-recognition
+            verdict: supports
+            rationale: The excerpt expressly identifies Runway Status Lighting Systems as
+              required knowledge for the private-pilot ACS communications task,
+              with no additional condition omitted from the claim.
+      usage:
+        input_tokens: 1071
+        input_tokens_details:
+          cache_write_tokens: 1068
+          cached_tokens: 0
+        output_tokens: 165
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1236
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-night-operations
+    title: Private Pilot for Airplane Category ACS, Area XI, Task A
+    checked_at_utc: 2026-09-09T12:58:51.578Z
+    linked_claim_ids:
+      - acs-night-surface
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      errors: []
+      valid: true
+      pdf_page_number: 71
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1673
+      pdf_page_text_sha256: 1edca9bc84a44a1967924e92802d8e2a63651871176243ad442b1f9305745ed4
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page explicitly lists knowledge of lighting systems
+          identifying airports, runways, taxiways, and obstructions, including
+          pilot-controlled lighting (K2); night orientation and taxi operations
+          (K5-K6); and runway-incursion risk management (R4). The authored
+          passages’ statements that the night task connects lighting knowledge,
+          orientation/taxiing, distractions/loss of situational awareness, and
+          runway-incursion risk preserve these listed ACS elements without
+          removing material limitations.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from Area of Operation XI, Task A, Night Operations,
+            and contains K2, K5-K6, and R1-R4 as identified in the locator.
+        claim_assessments:
+          - claim_id: acs-night-surface
+            verdict: supports
+            rationale: K2 covers airport, runway, taxiway, obstruction, and pilot-controlled
+              lighting; K5-K6 cover night orientation and taxi operations; and
+              R4 covers runway-incursion risk.
+      usage:
+        input_tokens: 1580
+        input_tokens_details:
+          cache_write_tokens: 1577
+          cached_tokens: 0
+        output_tokens: 394
+        output_tokens_details:
+          reasoning_tokens: 167
+        total_tokens: 1974
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-surface-information
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    checked_at_utc: 2026-09-09T12:58:51.584Z
+    linked_claim_ids:
+      - surface-plan
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5069
+      pdf_page_text_sha256: 9538050a30f45ddfc5c63be5ee6fb4c9d7e96dadebb01ab3afd959af51b48883
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page expressly states that NOTAMs include taxiway and
+          runway closures and construction, and that ATIS broadcasts include
+          runways in use and airport construction activity that could affect
+          taxi planning. The authored statements preserve those conditions
+          without adding unsupported details.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 14-5, and the supplied excerpt from
+            that exact page contains the relevant NOTAM and ATIS descriptions.
+        claim_assessments:
+          - claim_id: surface-plan
+            verdict: supports
+            rationale: The excerpt explicitly identifies runway and taxiway closures and
+              construction as NOTAM information, and identifies runways in use
+              plus airport construction activity that could affect taxi planning
+              as ATIS information.
+      usage:
+        input_tokens: 1680
+        input_tokens_details:
+          cache_write_tokens: 1677
+          cached_tokens: 0
+        output_tokens: 172
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1852
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-complex-intersections
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    checked_at_utc: 2026-09-09T12:58:51.595Z
+    linked_claim_ids:
+      - complex-runway-sign
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4368
+      pdf_page_text_sha256: 623989f85ed3b7f839915c5eb6f693ed79cfa6b707cab9afdda916cfc01e1e1a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly states that when a runway holding
+          position sign is on a taxiway at the intersection of two runways, both
+          runway designations are shown with arrows for approximate alignment;
+          it further states that each arrow indicates the direction to the
+          threshold of the runway designation immediately next to it. The
+          authored passage accurately preserves these conditions and describes
+          the depicted geometry as two crossing runways.
+        locator_assessment:
+          verdict: supports
+          rationale: The supplied excerpt is from cited PDF page 14-8 and contains the
+            discussion of Figures 14-11A and B, including runway
+            holding-position signs at taxiway/runway-runway intersections.
+        claim_assessments:
+          - claim_id: complex-runway-sign
+            verdict: supports
+            rationale: "The excerpt directly supports all material elements: a taxiway
+              intersection involving two crossing runways, both runway
+              designations on the holding-position sign, arrows indicating
+              approximate runway alignment, and arrows indicating direction to
+              the associated runway thresholds."
+      usage:
+        input_tokens: 1546
+        input_tokens_details:
+          cache_write_tokens: 1543
+          cached_tokens: 0
+        output_tokens: 220
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1766
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-incursion-avoidance
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    checked_at_utc: 2026-09-09T12:58:53.553Z
+    linked_claim_ids:
+      - runway-incursion
+      - surface-attention
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
+      errors: []
+      valid: true
+      pdf_page_number: 31
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4290
+      pdf_page_text_sha256: a21626acd9b754b1e8cce747ab5f5f8d997af763b68d48171034a0aef878c004
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page explicitly defines a runway incursion using the
+          stated aircraft/vehicle/person/object, collision-hazard,
+          required-separation, and takeoff/landing conditions. It also directs
+          pilots to remain aware of their surface position and of other aircraft
+          and vehicle operations on the airport.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the "Runway
+            Incursion Avoidance" section with both the definition and the
+            surface-awareness guidance.
+        claim_assessments:
+          - claim_id: runway-incursion
+            verdict: supports
+            rationale: The excerpt gives this definition substantively verbatim, including
+              that the occurrence is in the airport runway environment, involves
+              an aircraft, vehicle, person, or object on the ground, and creates
+              a collision hazard or loss of required separation with an aircraft
+              taking off, intending to take off, landing, or intending to land.
+          - claim_id: surface-attention
+            verdict: supports
+            rationale: The excerpt states that a pilot should be aware of the aircraft’s
+              position on the surface at all times and aware of other aircraft
+              and vehicle operations on the airport.
+      usage:
+        input_tokens: 1860
+        input_tokens_details:
+          cache_write_tokens: 1857
+          cached_tokens: 0
+        output_tokens: 369
+        output_tokens_details:
+          reasoning_tokens: 111
+        total_tokens: 2229
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-clearance-discipline
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    checked_at_utc: 2026-09-09T12:58:53.568Z
+    linked_claim_ids:
+      - clarify-and-progressive
+      - hold-short-readback
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=33
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=33
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=33
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=33
+      errors: []
+      valid: true
+      pdf_page_number: 33
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2952
+      pdf_page_text_sha256: dc60f3e3bebe560ad5670819151ecc8ab56dad9fbbe80a52e77a63a537909da2
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states that pilots should request
+          clarification when unsure of a clearance or instruction, may ask for
+          progressive taxi when unfamiliar with the airport or unsure of a taxi
+          route, and that ATC is required to obtain a pilot readback of all
+          runway hold-short instructions. The authored passage preserves these
+          conditions. Its additional comments about writing instructions and
+          maintaining the route are also consistent with the page, though not
+          part of the listed claims.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the cited PDF page and contains the relevant
+            ATC-instruction and hold-short-readback text.
+        claim_assessments:
+          - claim_id: clarify-and-progressive
+            verdict: supports
+            rationale: The page says to request clarification when unsure of a clearance or
+              instruction and to ask for progressive taxi when unfamiliar with
+              the airport or unsure of a taxi route. The authored passage
+              accurately retains these conditions.
+          - claim_id: hold-short-readback
+            verdict: supports
+            rationale: "The page expressly states: “ATC is required to obtain a read-back
+              from the pilot of all runway ‘hold short’ instructions.” The
+              authored passage accurately states the same requirement."
+      usage:
+        input_tokens: 1274
+        input_tokens_details:
+          cache_write_tokens: 1271
+          cached_tokens: 0
+        output_tokens: 262
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1536
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-explicit-crossing
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
+    checked_at_utc: 2026-09-09T12:58:53.593Z
+    linked_claim_ids:
+      - each-runway-cross-or-hold
+      - runway-entry-traffic-scan
+      - line-up-and-wait
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=34
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=34
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=34
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=34
+      errors: []
+      valid: true
+      pdf_page_number: 34
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2986
+      pdf_page_text_sha256: 51142b91e3f42d6b62fa2d57ab1c1031dc604318ad8fb871bfd94a0b185bdb64
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states the explicit cross/hold-short
+          requirement and closely spaced-runway exception, the
+          runway/final-approach scan recommendation even after clearance, and
+          the limits of a line-up-and-wait instruction. The authored passages
+          preserve these conditions, including that the runway-crossing pattern
+          is normal rather than absolute and that LUAW is not takeoff clearance.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 14-34 and contains the relevant
+            sections, “ATC Instructions—Explicit Runway Crossing” and “ATC
+            Instructions—Line Up and Wait,” as well as the runway-entry scan
+            guidance.
+        claim_assessments:
+          - claim_id: each-runway-cross-or-hold
+            verdict: supports
+            rationale: The excerpt says ATC is required to issue explicit instructions to
+              “cross” or “hold short” of each runway; that this applies to
+              active, inactive, and closed runways; and that exceptions may
+              apply for closely spaced runways with less than 1,000 feet between
+              centerlines. The cited passages retain the normal/exception
+              framing and direct the pilot to follow the actual clearance.
+          - claim_id: runway-entry-traffic-scan
+            verdict: supports
+            rationale: The excerpt explicitly directs pilots to scan the full runway length
+              and final approaches before entering or crossing any runway, even
+              when ATC has issued clearance. The cited passages state the same
+              condition and action.
+          - claim_id: line-up-and-wait
+            verdict: supports
+            rationale: The excerpt states that LUAW is only clearance to enter the runway
+              and hold in position for takeoff and is not takeoff clearance. The
+              cited passages accurately preserve both the runway-entry
+              authorization and the need for separate takeoff clearance.
+      usage:
+        input_tokens: 1767
+        input_tokens_details:
+          cache_write_tokens: 1764
+          cached_tokens: 0
+        output_tokens: 602
+        output_tokens_details:
+          reasoning_tokens: 216
+        total_tokens: 2369
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-marking-colors
+    title: Aeronautical Information Manual, Airport Pavement Markings
+    checked_at_utc: 2026-09-09T12:58:53.615Z
+    linked_claim_ids:
+      - marking-colors
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: d1b0eb6eb658e377e4279231d25ad05ada98eaaae1c3875017675ef8a194b0aa
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that runway markings are white and that
+          markings for taxiways, holding positions (including those on a
+          runway), and areas not intended for aircraft use are yellow. Each
+          authored passage preserves this broad color distinction and
+          appropriately notes that marking shape/purpose must also be considered
+          rather than relying on color alone.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 2-3-2, is the exact section in the excerpt
+            containing the 'Marking Colors' language supporting the claim.
+        claim_assessments:
+          - claim_id: marking-colors
+            verdict: supports
+            rationale: "AIM 2-3-2 directly supports all components: runway pavement markings
+              are white; taxiway and holding-position markings are yellow; and
+              markings for closed/hazardous areas not intended for aircraft are
+              yellow."
+      usage:
+        input_tokens: 3376
+        input_tokens_details:
+          cache_write_tokens: 3373
+          cached_tokens: 0
+        output_tokens: 195
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3571
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-taxiway-markings
+    title: Aeronautical Information Manual, Taxiway Markings
+    checked_at_utc: 2026-09-09T12:58:53.631Z
+    linked_claim_ids:
+      - taxiway-centerline
+      - enhanced-centerline
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 0a00b8f800b77262d59c401694990748bc5dc2dd2993bd57da403e5f5f1b9a4b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt expressly defines both the normal and enhanced taxiway
+          centerline markings and states their operational cautions/purpose. The
+          authored passages preserve the relevant conditions: the enhanced
+          marking is described as applying where installed and as a warning to
+          prepare to stop unless cleared onto or across the runway."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 2-3-4, is the exact section in the excerpt
+            that contains the normal and enhanced taxiway centerline
+            descriptions.
+        claim_assessments:
+          - claim_id: taxiway-centerline
+            verdict: supports
+            rationale: The excerpt states that the normal taxiway centerline is a single
+              continuous yellow line and that being centered on it does not
+              guarantee wingtip clearance with other aircraft or objects. The
+              corresponding passages accurately retain both points.
+          - claim_id: enhanced-centerline
+            verdict: supports
+            rationale: The excerpt states that the enhanced centerline consists of parallel
+              yellow dashes on either side of the normal centerline, is used
+              before a runway holding position, and warns pilots to prepare to
+              stop unless cleared onto or across the runway. The corresponding
+              passages accurately convey these conditions.
+      usage:
+        input_tokens: 3375
+        input_tokens_details:
+          cache_write_tokens: 3372
+          cached_tokens: 0
+        output_tokens: 260
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3635
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-holding-markings
+    title: Aeronautical Information Manual, Holding Position Markings
+    checked_at_utc: 2026-09-09T12:58:53.641Z
+    linked_claim_ids:
+      - hold-position-boundary
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 86f159caed34979d4ae218bc2039148cc97f2264874f96bcc4d8cd3199b80d67
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt directly supports the listed claim: runway
+          holding-position markings consist of four yellow lines (two solid and
+          two dashed), the solid lines are on the side where the aircraft must
+          hold, towered-airport operations require ATC clearance before crossing
+          the marking, and an aircraft exiting a runway is not clear until all
+          parts have crossed the applicable holding-position marking. The
+          authored passages preserve these conditions, including the
+          whole-aircraft requirement and the relevance of ATC clearance at an
+          operating control tower."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies AIM paragraph 2-3-5, and the excerpt is from
+            that paragraph's discussion of runway holding-position markings.
+        claim_assessments:
+          - claim_id: hold-position-boundary
+            verdict: supports
+            rationale: The source expressly states that the marking consists of four yellow
+              lines—two solid and two dashed—with the solid lines on the side
+              where the aircraft must hold. It states that pilots at airports
+              with operating control towers must not cross the marking without
+              ATC clearance, and that an aircraft exiting a runway is not clear
+              until all parts of the aircraft have crossed the applicable
+              marking.
+      usage:
+        input_tokens: 3562
+        input_tokens_details:
+          cache_write_tokens: 3559
+          cached_tokens: 0
+        output_tokens: 425
+        output_tokens_details:
+          reasoning_tokens: 167
+        total_tokens: 3987
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-mandatory-signs
+    title: Aeronautical Information Manual, Mandatory Instruction Signs
+    checked_at_utc: 2026-09-09T12:58:53.641Z
+    linked_claim_ids:
+      - mandatory-sign
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-8
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 8cddfea4af60e09fc4453586c41571b1a60ff7cb02d359539c6155684bad5d1a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that mandatory instruction signs have a
+          red background with a white inscription and are used to denote an
+          entrance to a runway or critical area and areas where aircraft are
+          prohibited from entering. The first authored passage preserves those
+          conditions. The second passage's statement that the sign identifies a
+          runway holding position is also consistent with the excerpt’s
+          description of runway holding position signs.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is AIM 2-3-8, “Mandatory Instruction Signs,” and
+            the supplied excerpt begins with and directly contains that section.
+        claim_assessments:
+          - claim_id: mandatory-sign
+            verdict: supports
+            rationale: "The excerpt directly supports every element of the claim: red
+              background, white inscription, runway or critical-area entrance,
+              and an area where aircraft entry is prohibited."
+      usage:
+        input_tokens: 3149
+        input_tokens_details:
+          cache_write_tokens: 3146
+          cached_tokens: 0
+        output_tokens: 190
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3339
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-location-signs
+    title: Aeronautical Information Manual, Location Signs
+    checked_at_utc: 2026-09-09T12:58:53.642Z
+    linked_claim_ids:
+      - location-sign
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-9
+      errors: []
+      valid: true
+      excerpt_characters: 11016
+      excerpt_sha256: 4efd79fbf0afa919a9ba7a1459ff7c45bfec5067cdf01e1ebc37a1645828230d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that a taxiway location sign has a
+          black background, yellow inscription, and yellow border, and that its
+          inscription is the designation of the taxiway on which the aircraft is
+          located.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 2-3-9, is the exact section in the excerpt
+            containing the taxiway location-sign description.
+        claim_assessments:
+          - claim_id: location-sign
+            verdict: supports
+            rationale: "The cited passage preserves the material conditions: black
+              background, yellow inscription and border, and identification of
+              the taxiway on which the aircraft is located. The authored
+              references to Alpha or Bravo are consistent examples of the sign's
+              taxiway designation."
+      usage:
+        input_tokens: 2971
+        input_tokens_details:
+          cache_write_tokens: 2968
+          cached_tokens: 0
+        output_tokens: 171
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3142
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-direction-signs
+    title: Aeronautical Information Manual, Direction Signs
+    checked_at_utc: 2026-09-09T12:58:53.642Z
+    linked_claim_ids:
+      - direction-sign
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html#2-3-10
+      errors: []
+      valid: true
+      excerpt_characters: 8852
+      excerpt_sha256: 5e26b9b92a43daa3d0c52ed29e62593fd29ec78130c6e5057de40987237da18e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that direction signs have a yellow
+          background with black inscriptions, identify intersecting taxiway
+          designations, and that each designation is accompanied by an arrow
+          indicating the direction of the turn.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 2-3-10, is the exact section in the excerpt
+            defining direction signs and their markings.
+        claim_assessments:
+          - claim_id: direction-sign
+            verdict: supports
+            rationale: AIM 2-3-10 directly supports the stated color scheme, taxiway
+              designations, and turn-direction arrows at an intersection. The
+              authored passages accurately apply this to a Bravo direction sign
+              while on Alpha and do not add unsupported material conditions.
+      usage:
+        input_tokens: 2476
+        input_tokens_details:
+          cache_write_tokens: 2473
+          cached_tokens: 0
+        output_tokens: 172
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2648
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-runway-status-lights
+    title: Aeronautical Information Manual, Runway Status Light System
+    checked_at_utc: 2026-09-09T12:58:53.643Z
+    linked_claim_ids:
+      - runway-status-lights
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-6
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: a4479471b904352186e09c1ac8377bd1c4f547e05d2db2a84ae52b9af33b4d1f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The AIM excerpt directly states that illuminated red RWSL indications
+          mean it is unsafe to enter, cross, or take off from a runway; RWSL
+          does not convey or substitute for an ATC clearance; a pilot who can
+          safely remain clear should stop/remain stopped and contact ATC when
+          lights conflict with a clearance; and, if stopping or remaining clear
+          is impractical for safety, the crew should use best judgment and
+          contact ATC at the earliest opportunity. It also states that
+          extinguished lights are not authorization to proceed without ATC
+          clearance.
+        locator_assessment:
+          verdict: supports
+          rationale: The supplied locator identifies AIM 2-1-6, and the excerpt is the
+            text of that section, including the RWSL introduction, REL/THL
+            pilot-observation guidance, and pilot actions.
+        claim_assessments:
+          - claim_id: runway-status-lights
+            verdict: supports
+            rationale: The excerpt expressly supports every material element of the claim.
+              The authored passages accurately apply the guidance to a safely
+              stopped aircraft before the runway, preserve the safety-based
+              exception for situations where stopping or remaining clear is
+              impractical, and correctly state that lights going dark do not
+              replace the need for an applicable ATC clearance or resolution of
+              a conflict.
+      usage:
+        input_tokens: 3519
+        input_tokens_details:
+          cache_write_tokens: 3516
+          cached_tokens: 0
+        output_tokens: 402
+        output_tokens_details:
+          reasoning_tokens: 121
+        total_tokens: 3921
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-runway-edge-lights
+    title: Aeronautical Information Manual, Runway Edge Light Systems
+    checked_at_utc: 2026-09-09T12:58:53.643Z
+    linked_claim_ids:
+      - runway-light-cues
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 41c5af47829e03e72fc10429c294719a5cfb3e1022f7ad767aecf95d927a2390
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt from AIM 2-1-4 directly states that runway edge lights
+          are white (with a stated instrument-runway caution-zone exception) and
+          that runway-end lights emit red toward the runway for departing
+          aircraft and green outward to indicate the threshold to landing
+          aircraft. The authored passages preserve the directional red/green
+          meaning and characterize the edge lights as normally white.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator is AIM 2-1-4, Runway Edge Light Systems, and the cited
+            material appears directly in that section.
+        claim_assessments:
+          - claim_id: runway-light-cues
+            verdict: supports
+            rationale: "The source expressly supports the claim: runway edge lights are
+              white, while runway-end lights show red toward a departing
+              aircraft and green outward toward a landing/arriving aircraft. The
+              qualifier “normally” appropriately accommodates the source’s
+              exception that yellow replaces white in the final portion of
+              instrument runways."
+      usage:
+        input_tokens: 3150
+        input_tokens_details:
+          cache_write_tokens: 3147
+          cached_tokens: 0
+        output_tokens: 217
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3367
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-pilot-controlled-lighting
+    title: Aeronautical Information Manual, Pilot Control of Airport Lighting
+    checked_at_utc: 2026-09-09T12:58:53.661Z
+    linked_claim_ids:
+      - pilot-controlled-lighting
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      errors: []
+      valid: true
+      excerpt_characters: 10030
+      excerpt_sha256: e75fb65a9c26a816d7a67a253c5201e12cc12e7de51d2c159ff1e08f233aac17
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states that pilot-controlled lighting is
+          available at selected airports; the applicable activation frequency is
+          published in the Chart Supplement or approach-procedure publications;
+          7, 5, and 3 microphone clicks within 5 seconds select the highest,
+          medium-or-lower, and lowest available intensity, respectively; and
+          lighting normally remains illuminated for 15 minutes from the most
+          recent activation. It expressly excepts one-step and two-step REILs,
+          which may be turned off earlier by the applicable microphone keying.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 2-1-8 (Pilot Control of Airport Lighting),
+            including its radio-control table, corresponds directly to the
+            supplied excerpt and contains all of the claimed details.
+        claim_assessments:
+          - claim_id: pilot-controlled-lighting
+            verdict: supports
+            rationale: "The claim preserves the material conditions in the excerpt: selected
+              airports, use of the published activation frequency, clicks within
+              five seconds, intensities described as available, a 15-minute
+              period measured from the latest activation, and the limited
+              exception for one-step or two-step REILs. The authored passages
+              accurately present these details as applying to the fictional
+              airport's published FAA-standard three-step system rather than
+              universally to every airport."
+      usage:
+        input_tokens: 3077
+        input_tokens_details:
+          cache_write_tokens: 3074
+          cached_tokens: 0
+        output_tokens: 352
+        output_tokens_details:
+          reasoning_tokens: 68
+        total_tokens: 3429
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-airport-beacons
+    title: Aeronautical Information Manual, Airport and Heliport Beacons
+    checked_at_utc: 2026-09-09T12:58:53.661Z
+    linked_claim_ids:
+      - airport-beacon
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 5019
+      excerpt_sha256: 75571f74c9849183f15bd1f58f3944e311bc5fca7c4eefd355b0d7fc0a8f7ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states that a white-and-green beacon identifies
+          a lighted land airport and that pilots should not rely solely on
+          airport-beacon operation to determine whether weather conditions are
+          IFR or VFR. Both authored passages accurately preserve these
+          conditions.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 2-1-9 paragraphs a-d, directly contains both
+            the beacon color-identification information and the caution about
+            beacon operation not being sufficient to determine VFR versus IFR
+            conditions.
+        claim_assessments:
+          - claim_id: airport-beacon
+            verdict: supports
+            rationale: "The excerpt states: 'White and Green—Lighted land airport' and
+              'Pilots should not rely solely on the operation of the airport
+              beacon to indicate if weather conditions are IFR or VFR.' The
+              claim and both corresponding authored statements match these
+              points without omitting a material limitation."
+      usage:
+        input_tokens: 1660
+        input_tokens_details:
+          cache_write_tokens: 1657
+          cached_tokens: 0
+        output_tokens: 203
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1863
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-taxiway-lights
+    title: Aeronautical Information Manual, Taxiway Lights
+    checked_at_utc: 2026-09-09T12:58:53.662Z
+    linked_claim_ids:
+      - taxiway-light-cues
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      errors: []
+      valid: true
+      excerpt_characters: 2963
+      excerpt_sha256: 84514e839e261e6f0618cb4c6201e386a9771f57172c6da54f99516d2ead7601
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly states that taxiway edge lights emit blue
+          light and that taxiway centerline lights are steady-burning and emit
+          green light. Each cited passage preserves those conditions; statements
+          referring to centerline lighting appropriately use
+          installed/where-installed framing or describe the installed
+          fictional-airport condition.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 2-1-10, Taxiway Edge and Centerline Lights,
+            directly corresponds to the excerpted section containing both facts.
+        claim_assessments:
+          - claim_id: taxiway-light-cues
+            verdict: supports
+            rationale: "The source expressly supports both components: taxiway edge lights
+              are blue, and taxiway centerline lights are steady-burning green."
+      usage:
+        input_tokens: 1277
+        input_tokens_details:
+          cache_write_tokens: 1274
+          cached_tokens: 0
+        output_tokens: 173
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1450
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-taxiing
+    title: Aeronautical Information Manual, Taxiing
+    checked_at_utc: 2026-09-09T12:58:53.662Z
+    linked_claim_ids:
+      - movement-area-approval
+      - explicit-runway-crossing
+      - departure-runway-authorization
+      - hold-short-readback
+      - runway-clearance-readbacks
+      - clarify-and-progressive
+      - surface-attention
+      - continuous-surface-scan
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 26d77b057b68b6358435febe784a87638c5f5716f16d5311317d75e1076c2417
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt directly states each listed taxiing requirement and
+          recommendation, including movement-area approval, explicit
+          runway-crossing clearance, limits of a departure-runway assignment,
+          required hold-short readbacks, recommended runway-related readbacks,
+          clarification/progressive taxi, and continuous surface scanning.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 4-3-18 (Taxiing), covers the cited material.
+            The relevant statements appear in the supplied 4-3-18 excerpt.
+        claim_assessments:
+          - claim_id: movement-area-approval
+            verdict: supports
+            rationale: The excerpt states that approval must be obtained before moving an
+              aircraft or vehicle onto the movement area while an airport
+              traffic control tower is in operation.
+          - claim_id: explicit-runway-crossing
+            verdict: supports
+            rationale: The excerpt states that a clearance must be obtained before crossing
+              any runway and that ATC will issue an explicit clearance for all
+              runway crossings.
+          - claim_id: departure-runway-authorization
+            verdict: supports
+            rationale: The excerpt expressly says assignment of a takeoff runway does not
+              authorize the aircraft to enter or cross the assigned departure
+              runway at any point.
+          - claim_id: hold-short-readback
+            verdict: supports
+            rationale: The excerpt states that ATC is required to obtain a readback from the
+              pilot of all runway hold-short instructions.
+          - claim_id: runway-clearance-readbacks
+            verdict: supports
+            rationale: The excerpt says pilots should always read back the runway
+              assignment, any clearance to enter a specific runway, and any
+              instruction to hold short of a specific runway or line up and
+              wait.
+          - claim_id: clarify-and-progressive
+            verdict: supports
+            rationale: The excerpt says pilots should obtain clarification of an unclear
+              clearance or instruction and may request progressive taxi
+              instructions when unfamiliar with the airport or confused about
+              the correct taxi routing.
+          - claim_id: surface-attention
+            verdict: supports
+            rationale: The excerpt directs pilots to avoid collision with other aircraft and
+              to continuously scan for other aircraft and surface vehicles
+              during ground operations.
+          - claim_id: continuous-surface-scan
+            verdict: supports
+            rationale: The excerpt states that proper effective scanning for other aircraft,
+              surface vehicles, or other objects should be continuously
+              exercised in all cases.
+      usage:
+        input_tokens: 4216
+        input_tokens_details:
+          cache_write_tokens: 4213
+          cached_tokens: 0
+        output_tokens: 788
+        output_tokens_details:
+          reasoning_tokens: 293
+        total_tokens: 5004
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-aircraft-lights
+    title: Aeronautical Information Manual, Use of Aircraft Lights
+    checked_at_utc: 2026-09-09T12:58:53.662Z
+    linked_claim_ids:
+      - ground-lighting-practice
+      - runway-crossing-lighting
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      errors: []
+      valid: true
+      excerpt_characters: 7285
+      excerpt_sha256: 123410b0595e634e6973392b202cf3454ed5ba499576131583a0ab61d70cc48b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt from AIM 4-3-24 directly supports both listed
+          FAA-guidance claims, including the stated recommendations,
+          discretionary runway-lighting practice, and adverse-effect
+          limitations. The corresponding authored passages preserve the relevant
+          conditions and limitations.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies AIM 4-3-24, and the excerpt contains the
+            specific before-taxi, taxi-light, rotating-beacon, runway-crossing
+            exterior-light, equipment-limitation, and strobe-light guidance at
+            issue.
+        claim_assessments:
+          - claim_id: ground-lighting-practice
+            verdict: supports
+            rationale: The excerpt recommends turning on navigation, position,
+              anti-collision, and logo lights, if equipped, before taxi;
+              encourages general-aviation pilots with rotating beacons to
+              participate in the engine-operation beacon program; and says to
+              consider using the taxi light while moving or intending to move,
+              turning it off when stopped or yielding. The authored passage
+              accurately retains these conditions.
+          - claim_id: runway-crossing-lighting
+            verdict: supports
+            rationale: The excerpt states that, at the pilot-in-command's discretion,
+              exterior lights should be illuminated when taxiing on or across a
+              runway; it directs pilots to comply with equipment operating
+              limitations and consider effects of landing and strobe lights on
+              nearby aircraft. It also says strobe lights should not be
+              illuminated during taxi if they adversely affect other pilots or
+              ground personnel. The authored passage preserves these
+              limitations.
+      usage:
+        input_tokens: 2354
+        input_tokens_details:
+          cache_write_tokens: 2351
+          cached_tokens: 0
+        output_tokens: 408
+        output_tokens_details:
+          reasoning_tokens: 83
+        total_tokens: 2762
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-runway-exit
+    title: Aeronautical Information Manual, Exiting the Runway After Landing
+    checked_at_utc: 2026-09-09T12:58:53.707Z
+    linked_claim_ids:
+      - clear-of-runway
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 948a4215ba8de65dbf30e3b6b2de96210e614e5650869d446037b9ff583a1397
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt from AIM 4-3-21 expressly defines when an aircraft is
+          clear of the runway and specifies the required action absent ATC
+          instructions: taxi beyond the landing-runway holding-position markings
+          and then hold. The authored passages preserve these conditions and
+          distinguish being clear of the runway from the subsequent requirement
+          to continue beyond the markings before holding."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is AIM 4-3-21, and the excerpt directly contains
+            the relevant runway-exit, runway-clearance definition, and
+            no-ATC-instructions procedure.
+        claim_assessments:
+          - claim_id: clear-of-runway
+            verdict: supports
+            rationale: AIM 4-3-21 states that an aircraft is clear when all parts are past
+              the runway edge and there are no restrictions to continued
+              movement beyond the runway holding-position markings. It further
+              states that, absent ATC instructions, the pilot is expected to
+              taxi beyond the markings and, once all parts have crossed them,
+              must hold. The passage accurately retains both the definition and
+              the conditional instruction.
+      usage:
+        input_tokens: 3039
+        input_tokens_details:
+          cache_write_tokens: 3036
+          cached_tokens: 0
+        output_tokens: 244
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3283
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

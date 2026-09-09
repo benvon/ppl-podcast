@@ -30,8 +30,10 @@ npm run precommit:check
 
 1. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Before the source-relevance or rendering call that sends unpublished material to OpenAI, obtain explicit current-turn authorization for that specific use. Then run
    `sources:validate --require-llm`, resolve every finding, and record
-   `source_verification.relevance_review: complete` in `episode.yaml`. The
-   renderer verifies that evidence before it sends any audio request.
+   `source_verification.relevance_review: complete` in `episode.yaml`. A
+   failed rerun writes a blocking marker beside the canonical report; only a
+   later clean rerun clears it. The renderer verifies that evidence before it
+   sends any audio request.
 2. Derive the clean TTS input from that approved script; do not edit the
    narration copy independently.
 

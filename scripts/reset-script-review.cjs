@@ -66,6 +66,9 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
     audio.chapter_markers.review_page = null;
   }
 
+  // A revision opts a legacy package into the current release contract. It
+  // never alters an untouched historical package or its existing handoff.
+  episode.production_contract_version = 2;
   episode.status = "editorial_review_pending";
   episode.runtime_actual_seconds = null;
   episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_RESET];

@@ -17,7 +17,7 @@ links:
     url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=8
     locator: "Chapter 14, Runway Holding Position Sign and Marking, p. 14-8"
     source_id: phak-complex-intersections
-    claim_ids: [complex-runway-sign, hold-position-boundary]
+    claim_ids: [complex-runway-sign]
   - id: phak-incursion-link
     text: "Runway Incursion Avoidance in the PHAK"
     url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=31
@@ -84,6 +84,12 @@ links:
     locator: "AIM 2-1-10, Taxiway Edge and Centerline Lights"
     source_id: aim-taxiway-lights
     claim_ids: [taxiway-light-cues]
+  - id: aim-aircraft-lights-link
+    text: "Section 4-3-24 of the AIM: use of aircraft lights"
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+    locator: "AIM 4-3-24, Use of Aircraft Lights, paragraphs a.1-a.2 and a.4-a.6"
+    source_id: aim-aircraft-lights
+    claim_ids: [ground-lighting-practice, runway-crossing-lighting]
   - id: aim-taxiing-link
     text: "Section 4-3-18 of the AIM: Taxiing"
     url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18

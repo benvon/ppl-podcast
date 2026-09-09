@@ -56,7 +56,7 @@ sources:
     verification_date: "2026-09-04"
     revision: "FAA-H-8083-25C, Chapter 14; FAA page updated July 10, 2023"
     relevance: "Shows how runway holding signs encode runway orientation at complex intersections and explains the four-line holding-position marking and whole-aircraft clearance."
-    supports_claims: [complex-runway-sign, hold-position-boundary]
+    supports_claims: [complex-runway-sign]
   - id: phak-incursion-avoidance
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 14
     publisher: FAA
@@ -89,7 +89,7 @@ sources:
     verification_date: "2026-09-04"
     revision: "FAA-H-8083-25C, Chapter 14; FAA page updated July 10, 2023"
     relevance: "Explains explicit runway-crossing clearances, scanning the runway and final approaches before entry, and that line up and wait is not a takeoff clearance."
-    supports_claims: [explicit-runway-crossing, line-up-and-wait]
+    supports_claims: [each-runway-cross-or-hold, runway-entry-traffic-scan, line-up-and-wait]
   - id: aim-marking-colors
     title: Aeronautical Information Manual, Airport Pavement Markings
     publisher: FAA
@@ -221,7 +221,18 @@ sources:
     verification_date: "2026-09-04"
     revision: "Current online AIM, accessed September 4, 2026"
     relevance: "Requires tower approval for the movement area, explicit runway-crossing clearances, specified taxi readbacks, clarification when a clearance is not understood, continuous scanning, and progressive taxi when needed."
-    supports_claims: [movement-area-approval, explicit-runway-crossing, hold-short-readback, clarify-and-progressive, surface-attention]
+    supports_claims: [movement-area-approval, explicit-runway-crossing, departure-runway-authorization, hold-short-readback, runway-clearance-readbacks, clarify-and-progressive, surface-attention, continuous-surface-scan]
+  - id: aim-aircraft-lights
+    title: Aeronautical Information Manual, Use of Aircraft Lights
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+    locator: "AIM 4-3-24, Use of Aircraft Lights, paragraphs a.1-a.2 and a.4-a.6"
+    source_type: html
+    link_status: 200
+    verification_date: "2026-09-08"
+    revision: "Current online AIM, accessed September 8, 2026"
+    relevance: "Explains anti-collision, rotating-beacon, taxi-light, and supplemental-strobe guidance, plus the pilot-in-command discretion to illuminate exterior lights while taxiing on or across a runway, subject to equipment limitations and effects on others."
+    supports_claims: [ground-lighting-practice, runway-crossing-lighting]
   - id: aim-runway-exit
     title: Aeronautical Information Manual, Exiting the Runway After Landing
     publisher: FAA

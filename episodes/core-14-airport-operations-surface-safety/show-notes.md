@@ -1,8 +1,7 @@
 # Airport Operations and Surface Safety
 
 **Episode:** core-14
-**Version:** 0.1.0
-**Source verification:** Pending formal source-relevance review
+**Version:** 0.1.12
 
 ## In this episode
 
@@ -30,6 +29,7 @@ The daytime and nighttime airports, geometry, routes, runway identifiers, taxiwa
 - [Section 2-1-8 of the AIM: pilot-controlled lighting](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8) — system variations, activation timing, and seven/five/three-click table.
 - [Section 2-1-9 of the AIM: airport and heliport beacons](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9) — beacon color combinations and weather-interpretation limitation.
 - [Section 2-1-10 of the AIM: taxiway lights](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10) — blue edge lights and green centerline lights.
+- [Section 4-3-24 of the AIM: use of aircraft lights](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24) — anti-collision, rotating-beacon, taxi-light, runway-crossing, and strobe-light guidance.
 
 ## Fact-check and source material
 
@@ -37,6 +37,7 @@ The daytime and nighttime airports, geometry, routes, runway identifiers, taxiwa
 | --- | --- | --- | --- | --- |
 | Taxi clearances and runway crossings | FAA guidance | [Section 4-3-18 of the AIM: Taxiing](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-18) | Paragraphs a-b | 2026-09-04 |
 | Clearing a runway | FAA guidance | [Section 4-3-21 of the AIM: Exiting the Runway After Landing](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-21) | Entire focused paragraph | 2026-09-04 |
+| Aircraft lights during ground operations and runway crossings | FAA guidance | [Section 4-3-24 of the AIM: use of aircraft lights](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24) | Paragraphs a.1-a.2 and a.4-a.6 | 2026-09-08 |
 | Current surface information | FAA handbook | [Chapter 14 of the PHAK: NOTAMs, ATIS, markings, and signs](https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=5) | p. 14-5 | 2026-09-04 |
 | Private-pilot surface outcomes | FAA standard | [FAA-S-ACS-6C Airport and Seaplane Base Operations](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24) | PA.III.A and PA.III.B, PDF p. 24 | 2026-09-04 |
 

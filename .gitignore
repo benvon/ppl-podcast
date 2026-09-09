@@ -2,5 +2,6 @@
 audio-artifacts/
 node_modules/
 .envrc
+.validation-attempts/
 __pycache__/
 *.py[cod]

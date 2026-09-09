@@ -642,6 +642,10 @@ function validationRecoveryPath(outputPath) {
   return `${validationInProgressPath(outputPath)}.recovering`;
 }
 
+function failedValidationAttemptPath(outputPath, run) {
+  return path.join(path.dirname(outputPath), ".validation-attempts", `${run.run_id}.yaml`);
+}
+
 function readValidationLock(lockPath) {
   try {
     const document = YAML.parseDocument(fs.readFileSync(lockPath, "utf8"));
@@ -709,12 +713,15 @@ function assertValidationLockOwner(lockPath, run) {
   if (lock.run_id !== run.run_id || lock.hostname !== run.hostname || lock.pid !== run.pid) throw new Error(`Validation lock ownership changed while producing ${lockPath}; report was not released.`);
 }
 
-function completeValidationReport(outputPath, report, run) {
+function completeValidationReport(outputPath, report, run, { promote = true } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
-  writeYaml(outputPath, report);
+  const writtenPath = promote ? outputPath : failedValidationAttemptPath(outputPath, run);
+  if (!promote) fs.mkdirSync(path.dirname(writtenPath), { recursive: true, mode: 0o700 });
+  writeYaml(writtenPath, report);
   assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
+  return writtenPath;
 }
 
 function releaseValidationLock(outputPath, run) {
@@ -942,9 +949,9 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     reportMappingErrors(claimMapping, showNotesMapping);
     for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
     const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
-    completeValidationReport(outputPath, report, validationRun);
+    const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false });
     progress.emit("report_written", { valid: false });
-    console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
+    console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
     process.exitCode = 1;
     return;
   }
@@ -1027,9 +1034,10 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }));
   const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
-  completeValidationReport(outputPath, report, validationRun);
+  const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved });
   progress.emit("report_written", { valid: !unresolved });
-  console.log(`Wrote ${path.relative(process.cwd(), outputPath)}`);
+  if (unresolved) console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
+  else console.log(`Wrote ${path.relative(process.cwd(), writtenPath)}`);
   if (unresolved) process.exitCode = 1;
   return { refreshedEcfrSources: [] };
 }
@@ -1069,4 +1077,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

@@ -4,9 +4,9 @@ claims:
     claim: "The private-pilot ACS Taxiing task integrates current airport references, taxi clearances, markings, signs, lights, runway-incursion risk, readbacks, diagram use, situational awareness, and proper positioning at hold lines."
     claim_type: FAA standard
     sources: [acs-taxiing]
-    script_sections: [What the ACS is asking you to connect, Retrieval review]
+    script_sections: [What the ACS is asking you to connect, Build the surface picture before moving, Retrieval review]
   - id: acs-surface-recognition
-    claim: "The private-pilot ACS connects communication and runway-status-light knowledge with the skill to identify and interpret runways, taxiways, markings, signs, lighting, and runway orientation."
+    claim: "The private-pilot ACS communications task includes knowledge of runway-status-light systems."
     claim_type: FAA standard
     sources: [acs-airport-operations]
     script_sections: [What the ACS is asking you to connect]
@@ -16,7 +16,7 @@ claims:
     sources: [acs-night-operations]
     script_sections: [What the ACS is asking you to connect, The night scenario changes the cues, Retrieval review]
   - id: surface-plan
-    claim: "A current surface plan uses the airport diagram and current airport information, including NOTAM and ATIS information about runway use, closures, and construction that may affect taxi planning."
+    claim: "NOTAMs provide information about runway and taxiway closures and construction; ATIS provides the runway in use and airport information affecting taxi planning."
     claim_type: FAA guidance
     sources: [phak-surface-information]
     script_sections: [Build the surface picture before moving, Retrieval review]
@@ -61,24 +61,44 @@ claims:
     sources: [phak-complex-intersections]
     script_sections: [Hold short before the complex intersection]
   - id: hold-position-boundary
-    claim: "A runway holding-position marking has two solid and two dashed yellow lines, with the solid lines on the holding side; at a towered airport an aircraft must not cross from the solid side without clearance, and an exiting aircraft is not clear until the entire aircraft is beyond the marking."
+    claim: "A runway holding-position marking has two solid and two dashed yellow lines, with the solid lines on the holding side; at an airport with an operating control tower an aircraft must not cross from the solid side without ATC clearance, and an exiting aircraft is not clear until the entire aircraft is beyond the marking."
     claim_type: FAA guidance
-    sources: [aim-holding-markings, phak-complex-intersections]
+    sources: [aim-holding-markings]
     script_sections: [Hold short before the complex intersection, Separate the runway from the taxiway at night, Retrieval review]
   - id: runway-incursion
     claim: "A runway incursion is an occurrence in the airport runway environment involving an aircraft, vehicle, person, or object on the ground that creates a collision hazard or loss of required separation with an aircraft taking off, intending to take off, landing, or intending to land."
     claim_type: FAA guidance
     sources: [phak-incursion-avoidance]
-    script_sections: [Hold short before the complex intersection]
+    script_sections: [Hold short before the complex intersection, Retrieval review]
   - id: surface-attention
-    claim: "During taxi, pilots should maintain surface-position awareness, keep attention on the moving aircraft and outside scan, and defer nonessential tasks until stopped."
+    claim: "Pilots should remain aware of other aircraft and vehicle traffic during surface operations."
     claim_type: FAA guidance
     sources: [phak-incursion-avoidance, aim-taxiing]
-    script_sections: [Translate the clearance before moving, When the clearance and the picture disagree, Retrieval review]
+    script_sections: [Translate the clearance before moving, When the clearance and the picture disagree, Clear the runway before the next task, Retrieval review]
+  - id: continuous-surface-scan
+    claim: "During taxi, pilots should continuously exercise effective scanning for other aircraft, surface vehicles, and objects."
+    claim_type: FAA guidance
+    sources: [aim-taxiing]
+    script_sections: [Translate the clearance before moving]
+  - id: runway-crossing-lighting
+    claim: "At the pilot in command's discretion, exterior lights should be illuminated when taxiing on or across a runway to increase conspicuity, subject to equipment limitations and the effect of landing and strobe lights on others; supplemental strobes should be off on the ground if they adversely affect other pilots or ground personnel."
+    claim_type: FAA guidance
+    sources: [aim-aircraft-lights]
+    script_sections: [Hold short before the complex intersection]
+  - id: ground-lighting-practice
+    claim: "Before taxi, the AIM recommends navigation, position, and anti-collision lights when equipped; the FAA encourages general-aviation pilots in rotating-beacon-equipped aircraft to use the beacon while the engine is operating; and pilots should consider using a taxi light while moving or intending to move, then turning it off when stopped or yielding to other ground traffic."
+    claim_type: FAA guidance
+    sources: [aim-aircraft-lights]
+    script_sections: [Hold short before the complex intersection]
   - id: hold-short-readback
-    claim: "Pilots should read back the runway assignment, any clearance to enter a specific runway, and any instruction to hold short or line up and wait; controllers must obtain a readback of runway hold-short instructions."
+    claim: "Controllers are responsible for obtaining a pilot readback of all runway hold-short instructions."
     claim_type: FAA guidance
     sources: [aim-taxiing, phak-clearance-discipline]
+    script_sections: [Translate the clearance before moving, Retrieval review]
+  - id: runway-clearance-readbacks
+    claim: "Pilots should read back the runway assignment, any clearance to enter a specific runway, and any instruction to hold short or line up and wait."
+    claim_type: FAA guidance
+    sources: [aim-taxiing]
     script_sections: [Translate the clearance before moving, Hold short before the complex intersection, Retrieval review]
   - id: clarify-and-progressive
     claim: "A pilot who does not understand a taxi clearance should obtain clarification, and may request progressive taxi instructions when unfamiliar with the airport or confused about the route."
@@ -86,9 +106,24 @@ claims:
     sources: [aim-taxiing, phak-clearance-discipline]
     script_sections: [Translate the clearance before moving, When the clearance and the picture disagree, Retrieval review]
   - id: explicit-runway-crossing
-    claim: "At a towered airport, a pilot must receive an explicit clearance before crossing any runway; the assigned departure runway is not authorized for entry or crossing merely by a taxi instruction, and the pilot should scan the runway and final approach before entry."
+    claim: "During the airport control tower's operating hours, each runway crossing needs an explicit ATC clearance."
     claim_type: FAA guidance
-    sources: [aim-taxiing, phak-explicit-crossing]
+    sources: [aim-taxiing]
+    script_sections: [Translate the clearance before moving, Read signs and markings as a route, Hold short before the complex intersection, When the clearance and the picture disagree, Retrieval review]
+  - id: departure-runway-authorization
+    claim: "During the airport control tower's operating hours, assignment of a departure runway in taxi instructions does not authorize entering or crossing that runway."
+    claim_type: FAA guidance
+    sources: [aim-taxiing]
+    script_sections: [Translate the clearance before moving, Retrieval review]
+  - id: each-runway-cross-or-hold
+    claim: "ATC normally issues an explicit instruction to cross or hold short of each runway, including active, inactive, and closed runways; the PHAK notes an exception may apply where closely spaced runways have centerlines less than 1,000 feet apart, so the actual clearance governs."
+    claim_type: FAA guidance
+    sources: [phak-explicit-crossing]
+    script_sections: [Hold short before the complex intersection, Retrieval review]
+  - id: runway-entry-traffic-scan
+    claim: "Before entering or crossing a runway, the pilot should scan the full runway and final approaches for traffic even when ATC has issued a clearance."
+    claim_type: FAA guidance
+    sources: [phak-explicit-crossing]
     script_sections: [Hold short before the complex intersection, Retrieval review]
   - id: line-up-and-wait
     claim: "A line-up-and-wait instruction authorizes entry onto the specified runway to hold in position; it is not a takeoff clearance."
@@ -96,12 +131,12 @@ claims:
     sources: [phak-explicit-crossing]
     script_sections: [Hold short before the complex intersection, Retrieval review]
   - id: runway-status-lights
-    claim: "Illuminated red runway-status lights indicate that entering, crossing, or beginning takeoff is unsafe; they do not convey clearance, and a conflict with an ATC clearance must be stopped and resolved with ATC."
+    claim: "Illuminated red runway-status lights indicate that entering, crossing, or beginning takeoff is unsafe and do not convey clearance. A pilot safely stopped before the runway should remain clear and contact ATC to resolve a conflicting clearance. If stopping or remaining clear is impractical for safety, the pilot should use best judgment and contact ATC as soon as possible."
     claim_type: FAA guidance
     sources: [aim-runway-status-lights]
     script_sections: [When the clearance and the picture disagree, Retrieval review]
   - id: clear-of-runway
-    claim: "After landing, an aircraft is clear of the runway when all parts of it are beyond the runway edge and holding-position markings with no restriction to continued movement, after which the pilot holds unless further instructions have been issued."
+    claim: "After landing, an aircraft is clear of the runway when all parts are beyond the runway edge and there is no restriction to continued movement beyond the holding-position markings. In the absence of ATC instructions, the pilot taxis beyond those markings and holds."
     claim_type: FAA guidance
     sources: [aim-runway-exit]
     script_sections: [Clear the runway before the next task, Retrieval review]
@@ -111,7 +146,7 @@ claims:
     sources: [aim-airport-beacons]
     script_sections: [The night scenario changes the cues, Retrieval review]
   - id: pilot-controlled-lighting
-    claim: "At selected airports, radio-controlled lighting uses the published frequency; seven, five, or three microphone clicks within five seconds select the highest, medium-or-lower, or lowest available intensity, and standard systems illuminate for 15 minutes from the latest activation."
+    claim: "At selected airports, radio-controlled lighting uses the published frequency; seven, five, or three microphone clicks within five seconds select the highest, medium-or-lower, or lowest available intensity. The normal illumination period is 15 minutes from the latest activation, but certain one-step or two-step runway end identifier lights may turn off earlier."
     claim_type: FAA guidance
     sources: [aim-pilot-controlled-lighting]
     script_sections: [Use pilot-controlled lighting as published, Retrieval review]

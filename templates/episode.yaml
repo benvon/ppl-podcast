@@ -3,6 +3,7 @@ series: ppl-study-podcast
 title: "{{TITLE}}"
 slug: "{{SLUG}}"
 track: "{{TRACK}}"
+production_contract_version: 2 # Current releases; older published packages remain unchanged unless revised.
 status: planned
 version: 0.1.0
 published_at: null
@@ -40,6 +41,7 @@ release_gates_remaining:
   - "Validate hosting metadata and stage the immutable audio object in the hosting workflow."
 audio:
   manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
   status: not_rendered
   chapter_markers: pending_render
   publication_day_validation: pending

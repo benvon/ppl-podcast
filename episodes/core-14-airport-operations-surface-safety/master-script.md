@@ -1,11 +1,8 @@
 # Airport Operations and Surface Safety
 
-**Version:** 0.1.0
+**Version:** 0.1.12
 **Target runtime:** 35–40 minutes
 **Speakers:** Instructor, Learner, Announcer
-
-<!-- Write each spoken paragraph as one normal Markdown line. Do not hard-wrap prose. -->
-<!-- A Retrieval review repeats instructional facts: source-tag every factual Instructor or Learner paragraph immediately and list Retrieval review in each recalled claim's script_sections. Keep each tagged passage limited to material supported by that source. -->
 
 ## [00:00] Opening
 
@@ -23,7 +20,7 @@ This podcast uses AI-assisted production. The voices in this episode are AI-gene
 
 **ANNOUNCER:**
 
-Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge, often called the PHAK, and the Airman Certification Standards. For airport operations, we will also use the Aeronautical Information Manual—the A-I-M, often referred to as “the aim.”
+Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge, and the Airman Certification Standards. For airport operations, we will also use the Aeronautical Information Manual—the A-I-M, often referred to as “the aim.”
 
 In this episode: use two airport-surface scenarios to connect taxi clearances with diagrams, signs, markings, lighting, and runway-incursion prevention.
 
@@ -35,36 +32,39 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-The Private Pilot Airplane ACS does not isolate airport signs from taxiing. Its Taxiing task connects current airport references, taxi instructions, markings, signs, lights, runway-incursion risk, correct readbacks, use of an airport diagram, situational awareness, and proper position at a hold line. The practical question is whether the pilot can keep those sources of information aligned while the airplane moves.
+The Taxiing task in the Private Pilot Airplane ACS asks a practical question: can you keep track of where the airplane is, where it is going, and where it must stop? To answer, you connect current airport references and taxi instructions with the diagram, signs, markings, and lights outside. Correct readbacks and hold-line positioning belong to that same task, along with managing distractions, expectation bias, and runway-incursion risk.
 
 [Source: sources.yaml#acs-taxiing]
 [Claim type: FAA standard]
 
 **LEARNER:**
 
-So recognizing one airport sign by its color is only the beginning. I also need to recognize why that sign is in front of me, where I am on the diagram, and what the clearance allows at that point.
+So if a sign identifies the runway ahead, I check whether it is the runway on my route and whether my clearance says to cross it or stop before it.
+
+[Source: sources.yaml#acs-taxiing]
+[Claim type: Teaching synthesis grounded in FAA standard]
 
 **INSTRUCTOR:**
 
-Yes. Another ACS task connects communication and runway-status-light knowledge with identifying and interpreting runways, taxiways, markings, signs, lighting, and runway orientation. The testable outcome is not a color quiz by itself. It is correct interpretation while maintaining orientation.
+Yes. The ACS communications task also includes runway-status-light systems. We will bring those two subjects together later, when a warning light and a crossing clearance disagree.
 
 [Source: sources.yaml#acs-airport-operations]
 [Claim type: FAA standard]
 
 **INSTRUCTOR:**
 
-Night operations add a second layer. The ACS names lighting that identifies airports, runways, taxiways, and obstructions, including pilot-controlled lighting. It also names night orientation, night taxi, distractions, loss of situational awareness, and runway-incursion risk.
+At night, the ACS adds lighting that identifies airports, runways, taxiways, and obstructions, including pilot-controlled lighting. We still need to maintain orientation while taxiing, but now the lights may provide much of the visible information. The night task therefore connects lighting knowledge with distractions, loss of situational awareness, and runway-incursion risk.
 
 [Source: sources.yaml#acs-night-operations]
 [Claim type: FAA standard]
 
 **LEARNER:**
 
-Then the lesson is really one position problem under two sets of visual conditions.
+Then I can use the same way of thinking in both scenarios, even though the outside view changes.
 
 **INSTRUCTOR:**
 
-That is our organizing idea. In each scenario, ask four connected questions: What does the current airport information predict? What route or limit did the controller issue, if there is a controller? What do the signs, markings, and lights say now? And does the outside traffic picture agree? Those four questions are a teaching structure for this episode, not a replacement for FAA procedures or flight instruction.
+Exactly. We will use four connected questions: What does the current airport information predict? What route or limit did the controller issue, if there is a controller? What do the signs, markings, and lights say now? And does the outside traffic picture agree? We will start with the whole route, then get more specific as the airplane approaches each turn and runway boundary.
 
 [Claim type: Teaching synthesis]
 
@@ -76,48 +76,64 @@ Build the surface picture before moving.
 
 **INSTRUCTOR:**
 
-Our first scenario is a hypothetical busy, tower-controlled airport at daytime. The diagram shows parallel runways, several connecting taxiways, and one hot spot where a taxiway meets two runway entrances close together. We will call the parking area the west ramp, but the geometry, names, and clearance are invented for teaching. 
+We begin stopped on the west ramp of our busy daytime airport, with the tower operating. The airport, its layout, and the clearances we use are invented for the lesson. Picture two parallel runways running roughly east and west. Our departure runway is Two Seven Left; the route from the ramp will reach Two Seven Right before it reaches Two Seven Left. Earlier along that route is a separate crossing of Runway One Eight, which runs roughly north and south. We will follow one part at a time rather than try to hold the entire drawing in mind.
+
+Before tracing a route, find the airplane's present position on the current airport diagram. With the west ramp as our starting point, the taxiway letters and runway boundaries become places we can approach in sequence. That connects the current references and diagram use in the ACS with awareness of the airplane's position during taxi.
+
+[Source: sources.yaml#acs-taxiing]
+[Claim type: FAA standard]
+
+**LEARNER:**
+
+Once I have found the ramp, can I plan from the diagram alone?
 
 **INSTRUCTOR:**
 
-Before movement, the pilot establishes the expected picture from current information. Chapter 14 of the PHAK explains that NOTAMs can report runway and taxiway closures and construction. It also explains that ATIS includes the runway in use, airport construction, and other information that may affect taxi planning. The airport diagram supplies the surface layout. Together, those sources show what the pilot expects to find, while the actual signs, markings, controller instructions, and conditions confirm or change that expectation.
+We also need current airport information. Chapter 14 of the PHAK explains that NOTAMs can report runway and taxiway closures and construction, while the ATIS includes the runway in use and airport information affecting taxi planning. Those are the updates we check before taxiing.
 
 [Source: sources.yaml#phak-surface-information]
 [Claim type: FAA guidance]
 
+**INSTRUCTOR:**
+
+Now trace the likely route toward the runway in use, noticing each runway it approaches or crosses. Find any published hot spot along that path—a location whose geometry or history calls for particular attention. The incursion-avoidance guidance in the PHAK connects that preparation with continuing to use the diagram and know your position as you taxi.
+
+[Source: sources.yaml#phak-incursion-avoidance]
+[Claim type: FAA guidance]
+
 **LEARNER:**
 
-What should I find on the diagram before I call ground control?
+What if the route I preview is not the one ground control gives me?
 
 **INSTRUCTOR:**
 
-Start with the airplane's present position. Then trace the likely path toward the runway in use. Mark every runway the route might approach or cross, and locate any published hot spot along that path. A hot spot marks airport geometry or a history that deserves special attention, but it does not supply the clearance. The point of the preview is to make the later instruction fit a known shape instead of arriving as an unfamiliar string of letters and numbers. Be careful though, don't let your expectation bias of your previewed path override what the ground controller gave you as your real path. 
+Then we revise the route we pictured. The ACS identifies expectation bias as a taxiing risk: after previewing one turn, we may be ready to hear it even when the controller assigns a different one. Preparation helps us interpret the actual instruction only if we remain willing to change the plan.
 
 [Source: sources.yaml#acs-taxiing]
-[Source: sources.yaml#phak-incursion-avoidance]
-[Claim type: FAA standard and FAA guidance]
+[Claim type: Teaching synthesis grounded in FAA standard]
 
 **INSTRUCTOR:**
 
-At an airport with an operating control tower, approval is required before an aircraft or vehicle moves onto the movement area. The movement area is the part of the airport used for taxiing, takeoff, and landing that is under ATC control. A ramp may be outside that area, so the pilot needs to know where the local boundary lies rather than assuming every painted surface has the same control status.
+Before leaving this ramp, we also locate the movement-area boundary. The movement area is the airport surface used for taxiing, takeoff, and landing under air traffic control, or ATC. With the tower operating, approval is required before moving onto it. A ramp may be outside that area, so the local boundary tells us where that approval becomes necessary.
 
 [Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-That boundary changes who controls the movement, but it does not make the ramp free of hazards.
+So I need to know where ground control's approval applies, as well as where the route begins.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: Teaching synthesis grounded in FAA guidance]
 
 **INSTRUCTOR:**
 
-Correct. Vehicles, people, propeller or jet blast, and other aircraft can create hazards within and outside the movement area. The distinction tells you where tower approval is required; it does not remove the pilot's responsibility to control the airplane and avoid conflicts.
+Right. That control boundary is separate from the hazards we watch for: other aircraft, vehicles, people, and propeller or jet blast can be present on either side. We keep the outside scan going from the ramp onward.
 
 [Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
-**INSTRUCTOR:**
-
-Now imagine the pilot has the current diagram open, the latest airport information noted, and the airplane's position marked on the west ramp. That preparation gives the next clearance somewhere to go.
+Our airplane is still stopped on the west ramp. We have a starting position and current information; now we can fit the controller's instruction to that layout.
 
 ## [07:10] Translate the clearance before moving
 
@@ -127,61 +143,65 @@ Translate the clearance before moving.
 
 **INSTRUCTOR:**
 
-Ground control issues this fictional instruction: “Runway Two Seven Left, taxi via Alpha, Bravo, cross Runway One Eight, then Charlie; hold short of Runway Two Seven Right.” Do not practice that as a phrase. Break it into the surfaces and limits it describes.
+Here is our fictional instruction: “Runway Two Seven Left, taxi via Alpha, Bravo, cross Runway One Eight, then Charlie; hold short of Runway Two Seven Right.” Picture the route starting at the west ramp: Alpha leads to Bravo, Bravo crosses One Eight, and Charlie then brings us toward the parallel runways. Where does the instruction let this part of the taxi end?
 
 **LEARNER:**
 
-The assigned departure runway is Two Seven Left. The route begins on Alpha, continues on Bravo, crosses Runway One Eight, then uses Charlie. The clearance limit is before Runway Two Seven Right.
+Before Two Seven Right. Two Seven Left is the departure destination, but we have only been told to cross One Eight and then come to a stop before Two Seven Right.
 
 **INSTRUCTOR:**
 
-Good. The runway assignment, the runway crossing, and the hold-short instruction are the parts that need an accurate readback. Section 4-3-18 of the AIM says pilots should read back the runway assignment, any clearance to enter a specific runway, and any instruction to hold short or line up and wait. Controllers are required to obtain a readback of runway hold-short instructions.
+Exactly. “Hold short” means remain before the specified boundary, so a route toward our departure runway can end for now at another runway. Section 4-3-18 of the AIM explains that, during the control tower's operating hours, each runway crossing needs an explicit ATC clearance. In that setting, naming the departure runway does not authorize us to enter or cross it.
 
 [Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+The readback lets the controller check that we understood those boundaries. Section 4-3-18 of the AIM recommends reading back the runway assignment, any clearance to enter a specific runway, and any instruction to hold short or line up and wait. It also explains the controller's responsibility to obtain a readback of runway hold-short instructions. We will contrast holding short with line up and wait when we reach the runway-entry decision.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+The PHAK also emphasizes writing down taxi instructions and asking for clarification when unsure. If the airport is unfamiliar or the route is uncertain, request progressive taxi instructions. The PHAK also states that ATC must obtain a pilot readback of all runway hold-short instructions. Keeping this route in front of us makes it easier to preserve both the taxiway sequence and the Two Seven Right limit as the outside scene changes.
+
 [Source: sources.yaml#phak-clearance-discipline]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-And after reading it back, I trace Alpha, Bravo, the Runway One Eight crossing, Charlie, and the hold point for Two Seven Right on the diagram.
+If I can read that back correctly, what is left to check?
 
 **INSTRUCTOR:**
 
-Exactly. A correct readback helps the controller catch a communication error. Tracing the route helps the pilot catch a position or interpretation error. Neither check replaces the other.
+Whether you can locate the route you just described. Trace it from your known position on the diagram, making sure each named surface fits the next part of the trip. The ACS requires both accurate readbacks and diagram use with position awareness because repeating the instruction correctly does not, by itself, place the airplane on the correct taxiway.
 
 [Source: sources.yaml#acs-taxiing]
 [Claim type: Teaching synthesis grounded in FAA standard]
 
 **LEARNER:**
 
-What if I can repeat the clearance but cannot make the route fit the diagram?
+Suppose I find Alpha and Bravo but cannot make the One Eight crossing fit the route. How do I resolve that before taxiing?
 
 **INSTRUCTOR:**
 
-Then the mismatch is the reason to stop before moving and ask. Section 4-3-18 of the AIM says the pilot should obtain clarification of a clearance or instruction that is not understood. If the airport is unfamiliar or the correct route is confusing, the pilot may request progressive taxi instructions, which provide step-by-step routing directions.
+Ask ATC to clarify the part you cannot locate. Section 4-3-18 of the AIM describes requesting progressive taxi instructions when the airport is unfamiliar or the route is confusing. Those are step-by-step routing directions from the controller, which can help you connect the instruction to your present position before continuing.
 
-[Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-clearance-discipline]
-[Claim type: FAA guidance]
-
-**INSTRUCTOR:**
-
-Once taxi begins, attention has to move between the route ahead, signs and markings, the diagram, radio calls, and other traffic. The PHAK's runway-incursion guidance emphasizes knowing the airplane's position, using the airport diagram, checking traffic, and keeping attention on surface navigation. The AIM calls for continuous scanning and warns single pilots against adding unrelated communications during the critical ground and runway sequence.
-
-[Source: sources.yaml#phak-incursion-avoidance]
 [Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
-**LEARNER:**
-
-So I should not stare at the tablet just because it shows the route clearly.
-
 **INSTRUCTOR:**
 
-Right. The diagram is a reference for confirming position. It does not show every moving aircraft, vehicle, or obstacle. Use it briefly, return your eyes outside, and stop the airplane if a task needs more attention than safe movement allows.
+Once moving, keep scanning outside for other aircraft, surface vehicles, and objects. Section 4-3-18 of the AIM recommends continuous effective scanning, so understanding the clearance is only part of following the route safely.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
+
+The PHAK likewise emphasizes knowing the airplane's surface position and being aware of other aircraft and vehicle operations. It recommends checking for traffic before reaching a runway hold line or entering a taxiway. Those checks keep each part of the planned route connected to what is happening around the airplane.
 
 [Source: sources.yaml#phak-incursion-avoidance]
-[Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
 ## [10:25] Read signs and markings as a route
@@ -192,78 +212,71 @@ Read signs and markings as a route.
 
 **INSTRUCTOR:**
 
-As the airplane leaves the ramp and joins Alpha, the first useful marking is the taxiway centerline. A normal taxiway centerline is a single continuous yellow line. It provides a designated path, but the AIM warns that being centered does not guarantee wingtip clearance from other aircraft or objects.
-
-[Source: sources.yaml#aim-taxiway-markings]
-[Claim type: FAA guidance]
-
-**LEARNER:**
-
-The line guides the wheels. I still have to judge the airplane's full width and the hazards around it.
-
-**INSTRUCTOR:**
-
-Yes. The broader color distinction helps sort the pavement. Runway markings are white. Taxiway markings, holding-position markings, and markings for pavement not intended for aircraft are yellow. At night those colors may be harder to see, but the meaning does not change.
+Our airplane leaves the west ramp and joins Alpha, the first taxiway in the clearance. Before interpreting individual markings, use the broad color distinction in Section 2-3-2 of the AIM: runway markings are white, while taxiway and holding-position markings are yellow. Yellow also marks pavement not intended for aircraft, so the shape and purpose of a marking matter along with its color.
 
 [Source: sources.yaml#aim-marking-colors]
 [Claim type: FAA guidance]
 
+On Alpha, picture a single continuous yellow line following the taxiway. That is the normal taxiway centerline, marking a designated path. As we follow it, we still need to watch the space beside the airplane; Section 2-3-4 of the AIM warns that tracking the centerline does not guarantee wingtip clearance from aircraft or objects.
+
+[Source: sources.yaml#aim-taxiway-markings]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+The centerline helps me follow Alpha. What confirms that this is Alpha rather than the next taxiway?
+
 **INSTRUCTOR:**
 
-Now the signs answer three different questions. A location sign answers, “Where am I?” On a taxiway, it has a black background with a yellow inscription and yellow border. If the sign says Alpha in that pattern, the airplane is on Alpha.
+Look beside the taxiway for a black sign with a yellow border and a yellow letter A, which we call Alpha. That is a taxiway location sign, identifying the taxiway you are on. In this scene, it confirms that our airplane has reached the first surface in the clearance.
 
 [Source: sources.yaml#aim-location-signs]
 [Claim type: FAA guidance]
 
-**INSTRUCTOR:**
-
-A direction sign answers, “Which way leads to another taxiway?” It has a yellow background, black taxiway designations, and arrows. A direction sign for Bravo does not claim the airplane is already on Bravo. It shows which turn leads there.
+Farther ahead, a yellow sign with a black B and an arrow points toward Bravo at the intersection. That is a direction sign, telling us how to reach the next taxiway rather than identifying our present one.
 
 [Source: sources.yaml#aim-direction-signs]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-Black background tells me my location. Yellow background with arrows points toward another route.
+Then seeing the Bravo arrow is consistent with still being on Alpha. I use it to find the turn onto Bravo.
 
-**INSTRUCTOR:**
-
-That is the distinction. Then a mandatory instruction sign answers, “What protected boundary or prohibited area is here?” It has a red background with a white inscription. At a runway entrance, the runway holding-position sign is a mandatory instruction sign.
-
-[Source: sources.yaml#aim-mandatory-signs]
+[Source: sources.yaml#aim-direction-signs]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-The signs are not independent flash cards in this scenario. The Alpha location sign confirms the airplane's present taxiway. The Bravo direction sign identifies the turn in the clearance. The red-and-white runway sign warns that the route is reaching a runway boundary. Each one either confirms the route or tells the pilot to stop and resolve a mismatch.
+Yes, and after making that turn, we can confirm Bravo with its own location sign. Each confirmation updates the airplane's position instead of leaving us mentally back on Alpha.
 
 [Source: sources.yaml#aim-location-signs]
-[Source: sources.yaml#aim-direction-signs]
-[Source: sources.yaml#aim-mandatory-signs]
 [Claim type: Teaching synthesis grounded in FAA guidance]
 
-**LEARNER:**
+Now we are on Bravo, approaching the Runway One Eight crossing. A red sign with white runway numbers comes into view. That color pattern identifies a mandatory instruction sign, used at runway or critical-area entrances and places where entry is prohibited. Here, the numbers identify the runway holding position we are approaching.
 
-Where does the enhanced taxiway centerline fit?
+[Source: sources.yaml#aim-mandatory-signs]
+[Claim type: FAA guidance]
 
-**INSTRUCTOR:**
-
-At some airports, mostly larger commercial-service airports, yellow dashes appear on both sides of the normal taxiway centerline for up to 150 feet before a runway holding-position marking. The enhancement warns that the pilot is approaching a runway hold point and should prepare to stop unless cleared onto or across that runway.
+The centerline gives us another advance cue: yellow dashes now run beside the continuous line on both sides. This enhanced taxiway centerline, where installed, warns that a runway holding position is ahead and tells the pilot to prepare to stop unless cleared onto or across that runway.
 
 [Source: sources.yaml#aim-taxiway-markings]
 [Claim type: FAA guidance]
 
-**INSTRUCTOR:**
+**LEARNER:**
 
-The sequence outside now matches the diagram: Alpha location, Bravo direction, then enhanced centerline dashes before Runway One Eight. That agreement supports the crossing clearance the pilot read back. It does not create the clearance; it confirms the airplane has reached the place where the clearance applies.
+As those dashes appear, I should be connecting the boundary ahead with the crossing in my clearance, rather than just continuing along the yellow line.
 
 [Source: sources.yaml#aim-taxiway-markings]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+**INSTRUCTOR:**
+
+That is the connection we need at our airport with its tower operating. Our clearance already authorizes crossing One Eight, so we are approaching it prepared to cross, not planning to ask for that clearance again. We still identify the runway before using the authorization; a clearance for One Eight does not carry over to a different entrance simply because both look familiar.
+
 [Source: sources.yaml#aim-taxiing]
 [Claim type: Teaching synthesis grounded in FAA guidance]
 
-**INSTRUCTOR:**
-
-The show notes link directly to the FAA diagrams for taxiway markings, location signs, direction signs, mandatory signs, and runway holding positions. Use those visual aids after listening to connect the spoken color and function to the actual sign shapes.
+We are still on Bravo as the actual holding-position marking comes into view. The show notes have labeled FAA visual aids for the signs, normal and enhanced centerlines, and four-line marking we will picture next.
 
 ## [14:20] Hold short before the complex intersection
 
@@ -273,75 +286,149 @@ Hold short before the complex intersection.
 
 **INSTRUCTOR:**
 
-The fictional crossing of Runway One Eight is complete. The airplane follows Charlie toward the parallel runways. Ahead, a red-and-white sign shows more than one runway designation because the taxiway reaches a complex runway intersection. Chapter 14 of the PHAK explains that where a taxiway meets two crossing runways, the sign may show both runway pairs with arrows indicating their approximate alignment and the direction of their thresholds.
-
-[Source: sources.yaml#phak-complex-intersections]
-[Claim type: FAA guidance]
-
-**LEARNER:**
-
-That is where a quick glance could attach a familiar-looking runway number to the wrong pavement.
-
-**INSTRUCTOR:**
-
-Yes. Slow the information down by matching one item at a time: current taxiway, runway sign, pavement orientation, diagram position, and clearance limit. In this scenario, the instruction was to hold short of Two Seven Right. The pilot identifies that specific boundary before deciding where to stop.
-
-[Source: sources.yaml#acs-taxiing]
-[Claim type: Teaching synthesis grounded in FAA standard]
-
-**INSTRUCTOR:**
-
-The runway holding-position marking consists of two solid and two dashed yellow lines. The solid lines are on the side where the aircraft is to hold. Approaching a runway from a taxiway at a towered airport, the airplane must not cross those solid lines without clearance.
+Across Bravo ahead of us are four yellow lines: two solid and two dashed. Approaching the runway from this side, we meet the solid pair first. This is the runway holding-position marking, with the solid lines on the side where an airplane holds when it does not have clearance to proceed. Section 2-3-5 of the AIM describes that boundary and advises against crossing it without ATC clearance at an airport with an operating control tower.
 
 [Source: sources.yaml#aim-holding-markings]
-[Source: sources.yaml#phak-complex-intersections]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-“Do not cross” refers to every part of the airplane, not just the nosewheel.
+We already have the One Eight crossing clearance. Does this marking mean we stop anyway?
 
 **INSTRUCTOR:**
 
-Correct. Position the entire aircraft before the holding-position marking. That protects the runway safety area and keeps the airplane from projecting into the runway environment.
+With our control tower operating, the marking identifies where to hold when the airplane has not been cleared to proceed onto the runway. In our scenario, the crossing clearance is already in place, so the marking is not an additional instruction to stop. We use it to recognize the boundary as we approach the cleared crossing.
+
+[Source: sources.yaml#aim-holding-markings]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+**LEARNER:**
+
+And at Two Seven Right, where we were told to hold short, how much of the airplane stays behind it?
+
+**INSTRUCTOR:**
+
+The entire airplane needs to remain before the marking. That means allowing for the nose and wings as well as the wheels; a wheel behind the line does not establish that every part of the airplane is behind it.
 
 [Source: sources.yaml#aim-holding-markings]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-The PHAK defines a runway incursion as an occurrence in the airport runway environment involving an aircraft, vehicle, person, or object on the ground that creates a collision hazard or a loss of required separation with an aircraft taking off, intending to take off, landing, or intending to land. The definition is about the conflict created, not merely whether the wheels touched pavement called a runway.
+Think about what we are protecting when we keep the airplane back. Another aircraft may be taking off or landing, or intending to do either, and an aircraft, vehicle, person, or object on the ground in its runway environment can create a collision hazard or take away the required separation. The PHAK describes that kind of occurrence as a runway incursion. It is the conflict in the runway environment that matters, which is why the boundary deserves attention before the airplane reaches the runway pavement itself.
 
 [Source: sources.yaml#phak-incursion-avoidance]
 [Claim type: FAA guidance]
 
-**LEARNER:**
+**INSTRUCTOR:**
 
-If the taxi clearance names the departure runway, does that let the airplane cross it to reach another taxiway?
+At an airport with an operating control tower, each runway crossing needs an explicit ATC clearance.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
+
+The PHAK describes the usual pattern more broadly: ATC normally gives an explicit instruction to cross or hold short of each runway, whether it is active, inactive, or closed. It notes that an exception may apply where closely spaced runways have centerlines less than one thousand feet apart, so the actual clearance—not an expectation—governs our movement. In this scenario, the One Eight crossing clearance and Two Seven Right hold-short instruction are examples of the usual pattern.
+
+[Source: sources.yaml#phak-explicit-crossing]
+[Claim type: FAA guidance]
+
+At our One Eight crossing, the sign and position now agree with the explicit crossing clearance. Before entering, we scan the full runway and the final approaches for traffic, as the PHAK recommends even with a clearance. In this scenario, that scan reveals no conflict, so we proceed deliberately across rather than insert an unnecessary stop to request the same clearance again. This is the fourth question from our opening framework: does the traffic outside agree with the movement we are about to make?
+
+[Source: sources.yaml#phak-explicit-crossing]
+[Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-No. Section 4-3-18 of the AIM says a clearance is required before crossing any runway, and ATC issues an explicit clearance for each runway crossing. When ATC assigns a takeoff runway and provides taxi instructions, that does not authorize the aircraft to enter or cross the assigned departure runway at any point.
+Lighting starts before a runway crossing. Before taxi, the AIM recommends navigation, position, and anti-collision lights when the airplane has them. The FAA also encourages general-aviation pilots in rotating-beacon-equipped airplanes to use the beacon while the engine is operating. To signal ground-movement intent, the AIM suggests using the taxi light while moving or intending to move, then turning it off when stopped or yielding to other ground traffic.
+
+[Source: sources.yaml#aim-aircraft-lights]
+[Claim type: FAA guidance]
+
+At the pilot in command's discretion, we can also use exterior lighting to make the airplane more conspicuous during this runway crossing. Section 4-3-24 of the AIM says exterior lights should be illuminated when taxiing on or across a runway, while following equipment limitations and considering their effect on other pilots. Supplemental strobes should stay off on the ground if they would adversely affect other pilots or ground personnel. That supports using them for this crossing when conditions allow, rather than treating a fixed on-and-off sequence as a universal rule.
+
+[Source: sources.yaml#aim-aircraft-lights]
+[Claim type: FAA guidance]
+
+On the far side of One Eight, the holding-position marking faces us from its dashed side. We continue until the entire airplane has passed beyond it, because crossing the runway pavement alone does not establish that the airplane is clear of the runway. Only after the whole airplane is beyond that boundary have we completed this crossing.
+
+[Source: sources.yaml#aim-holding-markings]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+With One Eight behind the entire airplane, we continue on the assigned route along Charlie. Ahead is Two Seven Right, with our departure runway, Two Seven Left, farther beyond it. The diagram identifies the closely spaced entrances in this area as a hot spot.
+
+**INSTRUCTOR:**
+
+What part of the original instruction controls what happens when Charlie reaches Two Seven Right?
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+**LEARNER:**
+
+The hold-short instruction. Our crossing clearance applied to One Eight, and with the tower operating, each runway crossing needs its own explicit clearance. We stop before Two Seven Right even though Two Seven Left remains the departure destination.
 
 [Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-Before entering or crossing a runway, the pilot also checks the runway and final approach for traffic. The PHAK explicitly says to scan the full length of the runway and the final approaches before entry, even when ATC has issued a clearance. The clearance and the visual check address different parts of the risk.
+Exactly. As Charlie brings us toward Two Seven Right, we expect to stop before its holding-position marking. We match the taxiway, diagram position, and runway designation, then position the whole airplane on the holding side. The ACS connects interpreting those cues with maintaining orientation and correct hold-line position. In this scene, we can finish that check by saying where we are: on Charlie, holding short of Two Seven Right.
+
+[Source: sources.yaml#acs-taxiing]
+[Claim type: Teaching synthesis grounded in FAA standard]
+
+**LEARNER:**
+
+What if the controller gives us a crossing clearance while we are still taxiing toward Two Seven Right, before we reach the hold point?
+
+**INSTRUCTOR:**
+
+For that variation, suppose we are still approaching on Charlie and hear an explicit instruction to cross Two Seven Right. The pilot reads back the crossing clearance while taxiing and updates the understood limit: the route now includes that runway crossing. We are responding to a new instruction, rather than treating the original hold-short instruction as unchanged.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+With the runway identified and that amendment understood, we make the same runway and final-approach traffic check before entering. If those checks agree in this variation, we continue deliberately across.
 
 [Source: sources.yaml#phak-explicit-crossing]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+We then continue until the whole airplane is beyond the far-side holding-position marking. That completes the runway crossing as we continue along the assigned taxi route.
+
+[Source: sources.yaml#aim-holding-markings]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+**INSTRUCTOR:**
+
+In our original scenario, that amendment has not arrived, so our airplane remains stopped on Charlie, holding short of Two Seven Right. Keep it there while we compare one other kind of runway geometry.
+
+**LEARNER:**
+
+Is this parallel-runway arrangement the same thing as a sign showing two crossing runways?
+
+**INSTRUCTOR:**
+
+That is a different arrangement. Leave our airplane stopped on Charlie and picture a separate illustration: a taxiway arriving at the intersection of two runways that cross each other. The holding-position sign can display both runway pairs, with arrows showing their approximate alignment and the direction toward each threshold. Figure Fourteen Eleven of the PHAK, linked in the show notes, shows that geometry. Reading the whole sign matters because choosing one familiar runway number would leave part of the intersection unexplained.
+
+[Source: sources.yaml#phak-complex-intersections]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-What changes if tower says, “Line up and wait”?
+Back at our departure, how would “line up and wait” differ from holding short?
 
 **INSTRUCTOR:**
 
-That instruction authorizes the airplane to enter the specified runway and hold in position for takeoff. It is not a takeoff clearance. The pilot still confirms the runway, checks for traffic, enters as instructed, and waits for a separate takeoff clearance.
+Holding short keeps us before the runway boundary. A line-up-and-wait instruction authorizes entering the specified runway and holding in position for takeoff, but a separate takeoff clearance is still required. Those instructions therefore place the airplane in different locations while keeping the beginning of the takeoff as a separate decision.
 
 [Source: sources.yaml#phak-explicit-crossing]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+That is why Section 4-3-18 of the AIM includes line-up-and-wait instructions among the items to read back, along with the runway assignment, runway-entry clearances, and hold-short instructions.
+
+[Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
 ## [18:20] When the clearance and the picture disagree
@@ -352,48 +439,73 @@ When the clearance and the picture disagree.
 
 **INSTRUCTOR:**
 
-Now add the ACS risk of expectation bias. Suppose the pilot expected Alpha to Bravo, but ground control changes that segment while the airplane is stopped: after Alpha, use Delta instead of Bravo. The hazard is not that Delta is inherently difficult. It is that the old route is already vivid, so the pilot may hear the new words and continue following the old mental picture.
+Our airplane is still on Charlie, holding short of Two Seven Right. In the route we originally pictured, Charlie continues on the far side of that runway toward Two Seven Left. Now the controller amends the onward route: use Delta beyond Two Seven Right instead of continuing on Charlie, and continue to hold short of Two Seven Right. On our fictional diagram, Delta is another taxiway on the far side, leading to a different entrance for the same departure runway.
+
+This is the expectation-bias risk named in the ACS: we might hear Delta correctly while still picturing the old Charlie segment. The departure destination has not changed, which can make the change in the route easier to overlook.
 
 [Source: sources.yaml#acs-taxiing]
 [Claim type: Teaching synthesis grounded in FAA standard]
 
 **LEARNER:**
 
-I should redraw the route from Alpha to Delta before moving, then read back the parts identified in the AIM and make that revised segment fit the signs and diagram.
+I need to replace the old Charlie segment with Delta on my diagram. But does that amended route change how far I may taxi now?
 
 **INSTRUCTOR:**
 
-Yes. If the airplane is moving and the pilot becomes uncertain, continuing slowly is not the same as being certain. Stop in a safe place, tell ATC, and ask for clarification or progressive taxi. The AIM explicitly supports progressive instructions when the airport is unfamiliar or the route is confusing.
+Our hold-short limit remains Two Seven Right. With the tower operating, that crossing still needs explicit clearance; the new taxiway assignment only describes the route beyond it. We stay at our present hold point while making sure we understand the revised route.
 
 [Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-clearance-discipline]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+Locating Delta from our known position connects the clearance with the diagram, just as the ACS requires. Now the diagram should show the route actually assigned, rather than the one we expected when we left the ramp.
+
+[Source: sources.yaml#acs-taxiing]
+[Claim type: Teaching synthesis grounded in FAA standard]
+
+**INSTRUCTOR:**
+
+If that new segment does not make sense, ask ATC to clarify it; progressive taxi can help when the route remains confusing. When uncertainty develops while moving, stop in a safe place to resolve it. Continuing toward an unresolved turn only adds movement to a problem that already needs attention.
+
+[Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-Another possible disagreement comes from runway-status lights at airports where they are installed. Runway Entrance Lights and Takeoff Hold Lights are red. When illuminated, they indicate that entering, crossing, or beginning takeoff is unsafe. They do not substitute for or convey an ATC clearance.
+Suppose the route is now understood and the controller subsequently issues an explicit clearance to cross Two Seven Right. At this fictional entrance, however, red Runway Entrance Lights are illuminated. These belong to the runway-status-light system, along with red Takeoff Hold Lights. Section 2-1-6 of the AIM explains that an illuminated indication means entering, crossing, or beginning takeoff is unsafe. These warning lights do not convey an ATC clearance.
 
 [Source: sources.yaml#aim-runway-status-lights]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-What if I believe I heard a crossing or takeoff clearance but the red runway-status lights remain illuminated?
+Now I have a crossing clearance, but the warning says the crossing is unsafe. What should happen before I leave the hold point?
 
 **INSTRUCTOR:**
 
-Stop or remain stopped and contact ATC to resolve the conflict. Do not cross illuminated red runway-status lights. If the lights extinguish, that still is not a clearance to proceed; the pilot needs the applicable ATC clearance.
+We are safely stopped before the runway, so remain there and contact ATC to resolve the conflict before crossing. The clearance and the warning disagree about making the movement now. Section 2-1-6 of the AIM also addresses a different situation: if stopping or remaining clear is impractical for safety, use your best judgment and contact ATC as soon as possible. That exception does not change our decision here, where we can remain safely short of the runway.
+
+[Source: sources.yaml#aim-runway-status-lights]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+Suppose they go out while I am waiting to resolve that conflict with ATC. Can I treat that as the answer and start across?
+
+**INSTRUCTOR:**
+
+No. The warning going dark does not answer the unresolved communication or establish what ATC wants you to do now. Continue coordinating with ATC and have the applicable clearance before proceeding. Runway-status lights alert you to an unsafe condition; their extinguishing is not a clearance or a replacement for resolving the conflict.
 
 [Source: sources.yaml#aim-runway-status-lights]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-That example shows why one cue cannot be allowed to overrule all the others. A remembered clearance may be wrong. A sign may be for an adjacent surface. A moving-map position may lag or be misread. The safe response to disagreement is to stop the sequence and reconcile the information before the airplane enters protected pavement.
+During that exchange, keep track of the airplane's position and the aircraft and vehicle operations around it. The incursion-avoidance guidance in the PHAK calls for that awareness throughout surface operations, including while we are stopped at this boundary.
 
-[Source: sources.yaml#acs-taxiing]
-[Source: sources.yaml#aim-taxiing]
-[Claim type: Teaching synthesis grounded in FAA standard and guidance]
+[Source: sources.yaml#phak-incursion-avoidance]
+[Claim type: Teaching synthesis grounded in FAA guidance]
+
+We will end the departure scenario with the airplane still stopped on Charlie, before Two Seven Right, while that conflict is being resolved. The next example is a separate post-landing situation, not a continuation across this runway.
 
 ## [21:00] Clear the runway before the next task
 
@@ -403,25 +515,40 @@ Clear the runway before the next task.
 
 **INSTRUCTOR:**
 
-Move to the arrival side of the same daytime teaching scenario. After landing and reaching taxi speed, the airplane exits on a taxiway. The holding-position marking is now approached from the dashed-line side. The nose reaches the taxiway first, but the airplane is not clear merely because the cockpit has crossed the runway edge.
-
-**INSTRUCTOR:**
-
-Section 4-3-21 of the AIM says an aircraft is clear when all parts of it are past the runway edge and there is no restriction to continued movement beyond the runway holding-position markings. The pilot taxis the whole aircraft beyond the marking and then holds unless further instructions have already been issued.
+In this separate example, our airplane has landed at the daytime airport and is following an exit taxiway away from the runway. Section 4-3-21 of the AIM defines being clear of the runway using two conditions: all parts of the airplane are beyond the runway edge, and nothing restricts continued movement beyond the holding-position markings. Picture the whole airplane off the runway pavement, with an unobstructed path ahead through those markings.
 
 [Source: sources.yaml#aim-runway-exit]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-So the same four-line marking has two views. Approaching from the solid side, it is the place to hold before runway entry. Approaching from the dashed side after landing, the entire airplane must pass it before the runway is clear.
+So being clear by that definition does not mean this is where I stop. What movement do I finish?
+
+[Source: sources.yaml#aim-runway-exit]
+[Claim type: Teaching synthesis grounded in FAA guidance]
 
 **INSTRUCTOR:**
 
-Exactly. A runway-boundary sign may also face the pilot leaving the runway as another cue. But the whole-aircraft position remains the test. An after-landing checklist, passenger question, or programming task waits until the airplane is clear and can be handled without dividing attention during the exit.
+In the absence of ATC instructions, the same section directs us to taxi beyond the holding-position markings, then hold. We finish that movement with the entire airplane, not just the cockpit. The definition tells us when we are clear of the runway; this guidance tells us where to continue before holding when ATC has not instructed us otherwise.
+
+[Source: sources.yaml#aim-runway-exit]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+A runway-boundary sign may face the pilot leaving the runway and provide another cue to that boundary.
 
 [Source: sources.yaml#aim-location-signs]
-[Source: sources.yaml#aim-runway-exit]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+Once the whole airplane is clear, what am I still tracking as the taxi continues?
+
+**INSTRUCTOR:**
+
+Keep track of where the airplane is on the airport and what other aircraft and vehicles are doing around it. As the route reaches another taxiway, check for traffic before entering it. The PHAK's surface-awareness guidance continues to apply after the runway exit.
+
 [Source: sources.yaml#phak-incursion-avoidance]
 [Claim type: FAA guidance]
 
@@ -433,45 +560,48 @@ The night scenario changes the cues.
 
 **INSTRUCTOR:**
 
-Our second scenario is a different, hypothetical airport at night. It is smaller and less complex: one runway, one roughly parallel taxiway, and a connecting taxiway. We will not teach the traffic pattern or radio calls here. Episode 15, *Traffic Patterns, Nontowered Operations, and Right of Way*, will cover that larger operating context. Our question is narrower: how does the pilot identify the intended airport and keep runway and taxiway surfaces distinct when much of the daytime background has disappeared?
+Our second hypothetical airport is a different place, at night. Picture one east-west runway, designated Nine and Two Seven, with a parallel taxiway south of it and a connecting taxiway between them. We are planning to use Runway Two Seven, so the expected runway extends westward from its eastern threshold. We will use that simple arrangement to compare the lighting we expect with the lights we actually see. Episode 15, Traffic Patterns, Nontowered Operations, and Right of Way, takes up the traffic-pattern and communications context.
 
-**INSTRUCTOR:**
-
-The night ACS task specifically includes lighting that identifies airports, runways, taxiways, and obstructions, including pilot-controlled lighting. It also includes night orientation, night taxi operations, distractions, loss of situational awareness, and runway-incursion risk.
+The night task in the ACS connects lighting knowledge with orientation and taxi risk management. We are applying the same broad questions as in daylight, but fewer surrounding features may be visible to help place each cue. That makes the relationship between the prepared layout and the lights particularly useful.
 
 [Source: sources.yaml#acs-night-operations]
 [Claim type: FAA standard]
 
 **LEARNER:**
 
-The airport may be simpler, but each visible light carries more of the picture.
+What should I have worked out before those two long surfaces appear in the darkness?
 
 **INSTRUCTOR:**
 
-Yes, which makes preparation more important. Before flight, use the current airport diagram and published airport information to learn the runway layout and the lighting actually available. Do not assume that a particular airport has runway edge lights, a taxiway centerline, pilot-controlled lighting, or a familiar activation frequency.
+Study the current airport diagram and published airport information so you know the runway's orientation, where the taxiway sits beside it, and where the two connect. In our example, a long surface south of the runway may be the parallel taxiway rather than the runway we intend to use. We want to be able to test that interpretation against the whole arrangement.
 
 [Source: sources.yaml#acs-night-operations]
-[Source: sources.yaml#aim-pilot-controlled-lighting]
-[Claim type: FAA standard and FAA guidance]
+[Claim type: Teaching synthesis grounded in FAA standard]
 
 **INSTRUCTOR:**
 
-A white-and-green beacon identifies a lighted land airport. It helps the pilot locate and classify the airport, but beacon operation alone does not determine whether the weather is VFR or IFR. Current weather and airport information still answer that question.
+Check which lights are installed and how they are controlled, too. Section 2-1-8 of the AIM directs pilots to the current Chart Supplement or appropriate procedure publication for the lighting system and control frequency. That lets us distinguish a light we expect to find here from one we merely remember from another airport.
+
+[Source: sources.yaml#aim-pilot-controlled-lighting]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+The first visible cue in our scenario is a beacon flashing white and green, the combination for a lighted land airport. Section 2-1-9 of the AIM describes that identification function and cautions against using beacon operation alone to determine whether conditions are VFR or IFR.
 
 [Source: sources.yaml#aim-airport-beacons]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-So the beacon can support “that is a lighted land airport,” but not “the conditions are suitable” or even “that must be my intended runway.”
+That helps me find the airport, but I still need to separate the runway from the taxiway beside it.
 
 **INSTRUCTOR:**
 
-Correct. The beacon is one cue. The published airport layout, runway alignment and designation, surrounding geography, other lighting, and current information must form a consistent identification.
+Yes. Now we narrow our attention from finding the airport to identifying the intended surface within it, using the layout, runway orientation and designation, and visible cues together. That is the orientation task we are practicing, and the published lighting information helps us make the comparison.
 
 [Source: sources.yaml#acs-night-operations]
-[Source: sources.yaml#aim-airport-beacons]
-[Claim type: Teaching synthesis grounded in FAA standard and guidance]
+[Claim type: Teaching synthesis grounded in FAA standard]
 
 ## [25:00] Use pilot-controlled lighting as published
 
@@ -481,33 +611,35 @@ Use pilot-controlled lighting as published.
 
 **INSTRUCTOR:**
 
-Suppose the current Chart Supplement for our fictional airport says it uses an FAA-standard pilot-controlled-lighting system on a listed frequency. That published entry is part of the scenario. It is not a frequency or configuration to reuse anywhere else.
-
-**INSTRUCTOR:**
-
-At selected airports, radio control lets a pilot activate airport lighting by keying the microphone on the published frequency. In the standard three-step system, seven clicks within five seconds select the highest available intensity, five select medium or a lower intensity, and three select the lowest available intensity. The lighting remains on for 15 minutes from the most recent activation.
+Suppose our fictional airport's published entry identifies an FAA-standard, three-step pilot-controlled-lighting system and gives its frequency. This system lets the pilot activate selected airport lights by keying the radio microphone. We use that published description because installed systems, frequencies, and combinations of lights differ between airports.
 
 [Source: sources.yaml#aim-pilot-controlled-lighting]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-Does that mean seven, five, and three always control every light in exactly the same way?
+What can I control with that system, and how long will the setting remain available?
 
 **INSTRUCTOR:**
 
-No. The AIM explains that available systems and combinations differ. Installed lighting components may operate together or independently. The current Chart Supplement or appropriate procedure publication identifies the system and frequency for the airport. The clicks operate the installed system; they do not tell you what was installed.
+The three steps select the available light intensity. For the standard three-step system in this example, seven microphone clicks within five seconds select the highest available intensity; five clicks within five seconds select medium or a lower intensity; and three within five seconds select the lowest available intensity. The normal illumination period is fifteen minutes from the most recent activation, but some one- or two-step runway end identifier lights can switch off earlier.
+
+[Source: sources.yaml#aim-pilot-controlled-lighting]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+So fifteen minutes is the normal period, not a promise that every light will stay on that long. I check the published details for the installed system.
 
 [Source: sources.yaml#aim-pilot-controlled-lighting]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-Activating lights also does not open a runway, separate traffic, or authorize landing, taxi, or runway entry. It changes the lighting state. The pilot still uses current airport information, traffic awareness, applicable communications, and the runway environment to make the operational decision.
+Right. Once the lights are visible, we can use them to check the expected layout. We still need to identify the actual runway and taxiway and keep track of traffic; illumination helps us carry out those night-orientation tasks.
 
 [Source: sources.yaml#acs-night-operations]
-[Source: sources.yaml#aim-pilot-controlled-lighting]
-[Claim type: Teaching synthesis grounded in FAA standard and guidance]
+[Claim type: Teaching synthesis grounded in FAA standard]
 
 ## [26:50] Separate the runway from the taxiway at night
 
@@ -517,59 +649,87 @@ Separate the runway from the taxiway at night.
 
 **INSTRUCTOR:**
 
-Now the lights reveal two long surfaces. Runway edge lights are normally white. At a runway end, the lights show red toward an aircraft departing down the runway and green outward toward an arriving aircraft at the threshold.
+With the airport lights visible, look for the runway arrangement we prepared: two rows extending east and west, with the parallel taxiway to the south. The runway's edge lights are normally white, and the lights at the eastern threshold show green outward toward an arriving airplane. The red runway-end aspect is seen from the other direction, by an airplane departing toward that end. Those are the edge and end cues described in Section 2-1-4 of the AIM.
 
 [Source: sources.yaml#aim-runway-edge-lights]
 [Claim type: FAA guidance]
 
+**LEARNER:**
+
+There is another long line of lights to the south. What would fit the taxiway rather than the runway?
+
 **INSTRUCTOR:**
 
-Taxiway edge lights are blue. Taxiway centerline lights, where installed, are steady green. Those colors help distinguish the parallel taxiway from the runway, but not every taxiway has centerline lights and not every airport has the same lighting equipment.
+Blue lights along the edges would fit the taxiway, and steady green lights along its centerline would fit installed taxiway centerline lighting. Those are the meanings in Section 2-1-10 of the AIM. For our fictional airport, suppose the published information includes both: blue lights outline the parallel taxiway, and a green line runs along its middle.
 
 [Source: sources.yaml#aim-taxiway-lights]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-White runway edges, blue taxiway edges, and green taxiway centerline lights are useful. Why not identify the surface by color alone?
+Then I cannot pick the runway simply by looking for green lights. How does the arrangement help distinguish them?
 
 **INSTRUCTOR:**
 
-Because a correct color can still be attached to the wrong surface. Confirm the runway designation and orientation, the airport diagram, the position of the parallel taxiway, and the expected connection. During taxi, the pavement markings remain the same: runway markings are white, while taxiway and holding-position markings are yellow.
+At the runway threshold, the green aspect appears at the runway end and faces outward toward an arriving airplane. It marks that end of the runway rather than tracing a route along its length.
 
-[Source: sources.yaml#aim-marking-colors]
-[Source: sources.yaml#acs-night-operations]
-[Claim type: FAA guidance and FAA standard]
+[Source: sources.yaml#aim-runway-edge-lights]
+[Claim type: FAA guidance]
 
-**INSTRUCTOR:**
-
-In this fictional scenario, the connecting taxiway has a marked yellow centerline and blue edge lights. After landing, the pilot follows that connecting taxiway without cutting toward a line of lights merely because it appears closer. The airport diagram and marked centerline establish the path; blue edge lights help define it; and the traffic scan protects against moving hazards.
+On the taxiway, the installed steady green centerline lights follow its path lengthwise, inside the blue edge lights. The same color has a different role because of where the lights are placed and how they are arranged.
 
 [Source: sources.yaml#aim-taxiway-lights]
-[Source: sources.yaml#aim-taxiway-markings]
-[Source: sources.yaml#acs-night-operations]
-[Claim type: Teaching synthesis grounded in FAA guidance and standard]
+[Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-At the runway holding-position marking, the same whole-aircraft rule applies at night. When exiting, continue until the entire airplane is beyond the marking. If the pilot is unsure of position, stop where it is safe to do so and resolve the uncertainty before continuing toward another protected surface.
+Now fit both surfaces back into the diagram: an east-west runway with the taxiway south of it. The runway orientation, designation, and location should agree with the surface we have identified. If we can only make a line of lights look like our runway by ignoring where the taxiway belongs, we have more to resolve before treating the identification as complete.
 
-[Source: sources.yaml#aim-holding-markings]
-[Source: sources.yaml#aim-runway-exit]
 [Source: sources.yaml#acs-night-operations]
-[Claim type: FAA guidance and FAA standard]
+[Claim type: Teaching synthesis grounded in FAA standard]
+
+For a separate post-landing moment at this airport, place the airplane on the connector leading south from the runway toward the parallel taxiway. This short connector has blue edge lights and a painted yellow centerline, but no centerline lights. We have already passed the runway holding-position marking with the entire airplane, and ahead we expect a junction where the connector meets the east-west taxiway.
+
+**INSTRUCTOR:**
+
+The yellow taxiway marking and yellow holding-position marking keep the same meanings at night; runway markings remain white. The change is how readily we can see and relate them to the surrounding pavement.
+
+[Source: sources.yaml#aim-marking-colors]
+[Claim type: FAA guidance]
+
+The connector's centerline shows its designated path, while the pilot still checks the space around the airplane. As in daylight, following that line does not guarantee wingtip clearance.
+
+[Source: sources.yaml#aim-taxiway-markings]
+[Claim type: FAA guidance]
 
 **LEARNER:**
 
-The night lesson is not a new sign system. It is the same position discipline with fewer background cues and greater need to confirm each one.
+Suppose I see the parallel taxiway's lights off to one side, but I have not found the actual junction ahead. It is tempting to turn toward them because they look close.
 
 **INSTRUCTOR:**
 
-Exactly. Before the flight, study the airport diagram and published lighting information. Know what the published system can show, keep the airport diagram available, and reduce task demand when the picture becomes uncertain. The goal is not to move quickly through a simple airport. It is to keep the airplane's actual position, intended route, and protected boundaries unmistakable.
+That is the position problem to resolve. Our diagram predicts a connector meeting a taxiway, so we need to identify that junction outside before choosing a turn through it. The nearby lights do not establish a usable path across the intervening space. With the airplane already clear of the runway in this example, stop where safe and restore that connection between your position, the diagram, and the actual pavement before continuing.
 
 [Source: sources.yaml#acs-night-operations]
-[Source: sources.yaml#aim-pilot-controlled-lighting]
-[Claim type: Teaching synthesis grounded in FAA standard and guidance]
+[Claim type: Teaching synthesis grounded in FAA standard]
+
+**INSTRUCTOR:**
+
+Our scenario deliberately placed the entire airplane beyond the runway holding-position marking before that pause. When exiting, passing the cockpit across from the dashed side is still not enough; the whole airplane must be beyond it. That whole-aircraft condition remains important when darkness makes the tail and boundary less easy to see.
+
+[Source: sources.yaml#aim-holding-markings]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+So I keep the two decisions separate: first establish that the entire airplane is clear, then locate the next junction rather than steering toward a nearby light.
+
+**INSTRUCTOR:**
+
+Exactly. The night ACS task asks us to manage distractions, loss of situational awareness, and runway-incursion risk. In this example, restoring our position before continuing is how the lighting knowledge becomes part of that risk management, rather than remaining a list of colors we can recite.
+
+[Source: sources.yaml#acs-night-operations]
+[Claim type: Teaching synthesis grounded in FAA standard]
 
 ## [30:00] Retrieval review
 
@@ -579,249 +739,244 @@ Retrieval review.
 
 **INSTRUCTOR:**
 
-Before the airplane moves at the busy controlled airport, what sources build the expected surface picture?
+Let's return to the daytime ramp and work through a few decisions in more depth. A NOTAM reports construction, and ATIS names a different runway from the one you expected. What information do those two sources give you for taxi planning?
 
 [Source: sources.yaml#phak-surface-information]
-[Source: sources.yaml#acs-taxiing]
-[Claim type: FAA guidance and FAA standard]
+[Claim type: FAA guidance]
 
 **LEARNER:**
 
-Use the current airport diagram and current airport information. NOTAMs may identify runway or taxiway closures and construction. ATIS includes the runway in use and other airport information that can affect taxi planning. Mark the airplane's position, likely route, runway crossings, and published hot spots before movement.
+The NOTAM may identify runway or taxiway closures and construction. ATIS supplies the runway in use and other airport information affecting taxi planning. Those updates tell me what has changed at the airport before I taxi.
 
 [Source: sources.yaml#phak-surface-information]
-[Source: sources.yaml#acs-taxiing]
-[Claim type: FAA guidance and FAA standard]
+[Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-What does the ACS expect the pilot to integrate during taxi?
+Once the controller gives you the instruction, how do you keep your preview from becoming expectation bias?
 
 [Source: sources.yaml#acs-taxiing]
 [Claim type: FAA standard]
 
 **LEARNER:**
 
-The ACS Taxiing task connects current airport references, taxi clearances, markings, signs, lights, distraction and expectation-bias risks, runway-incursion avoidance, correct readbacks, airport-diagram use, situational awareness, and proper hold-line position.
+I compare the instruction with the route I previewed and change the route wherever they differ. Then, as we move, I keep checking our diagram position against signs, markings, and lights, rather than assuming each turn will be the one I expected. That joins clearance compliance and position awareness with managing distractions and correct hold-line positioning.
 
 [Source: sources.yaml#acs-taxiing]
 [Claim type: FAA standard]
 
 **INSTRUCTOR:**
 
-What do the three sign patterns tell you?
+Now take our daytime scenario: departure from Two Seven Left, a crossing clearance for One Eight, and a hold-short instruction for Two Seven Right. Explain the difference between the destination and how far you may go now.
 
-[Source: sources.yaml#aim-location-signs]
-[Source: sources.yaml#aim-direction-signs]
-[Source: sources.yaml#aim-mandatory-signs]
+[Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-A black sign with yellow inscription and border identifies the taxiway the airplane is on. A yellow sign with black designations and arrows points toward intersecting taxiways. A red sign with white inscription gives a mandatory instruction at a runway or critical-area entrance or at a prohibited area.
+Two Seven Left is where the departure is planned, but our present taxi ends before Two Seven Right. The One Eight clearance covers that specific crossing. With our control tower operating, each runway crossing needs explicit clearance; the departure-runway assignment does not authorize entering or crossing that runway, and the earlier crossing does not extend through Two Seven Right.
 
-[Source: sources.yaml#aim-location-signs]
-[Source: sources.yaml#aim-direction-signs]
-[Source: sources.yaml#aim-mandatory-signs]
+[Source: sources.yaml#aim-taxiing]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-What do pavement color and the enhanced centerline add?
+How would you check your understanding before moving, especially if you could repeat the words but could not locate a segment?
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+I read back the runway assignment, runway-entry clearance, and hold-short instruction so the controller can check what I heard. The AIM also recommends reading back line-up-and-wait instructions and explains the controller's responsibility to obtain runway hold-short readbacks. If I cannot locate a segment, I ask for clarification rather than start into it; progressive taxi can provide step-by-step directions when needed.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+With our tower operating, how do the instructions account for each runway? Then, when an instruction authorizes runway entry, what still belongs in the decision? Include the distinction between line up and wait and takeoff.
+
+[Source: sources.yaml#phak-explicit-crossing]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+At an airport with an operating control tower, each runway crossing needs an explicit ATC clearance.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
+
+The PHAK says ATC normally gives an explicit cross or hold-short instruction for each runway, including active, inactive, and closed runways. It notes that an exception may apply where closely spaced runways have centerlines less than one thousand feet apart, so I follow the actual clearance. Before entering, I scan the full runway and final approaches for traffic even with the clearance. If the instruction is line up and wait, it allows me to enter the specified runway and hold in position, but I still need a separate takeoff clearance.
+
+[Source: sources.yaml#phak-explicit-crossing]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+For the next situation, rebuild the outside part of our daytime route. How do the location and direction signs help you follow Alpha onto Bravo without confusing the next taxiway with the one you are already on?
+
+[Source: sources.yaml#acs-taxiing]
+[Claim type: Teaching synthesis grounded in FAA standard]
+
+**LEARNER:**
+
+The black location sign with a yellow Alpha and yellow border identifies our present taxiway as Alpha.
+
+[Source: sources.yaml#aim-location-signs]
+[Claim type: FAA guidance]
+
+The yellow sign with a black Bravo and an arrow points toward Bravo at the intersection. It helps me identify the next turn while I am still on Alpha.
+
+[Source: sources.yaml#aim-direction-signs]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+After turning onto Bravo, describe the clues that bring your attention to the runway boundary, and where you position the airplane when holding.
+
+[Source: sources.yaml#acs-taxiing]
+[Claim type: Teaching synthesis grounded in FAA standard]
+
+**LEARNER:**
+
+The broad pavement distinction is white for runway markings and yellow for taxiway and holding-position markings. Yellow also marks pavement not intended for aircraft, so I interpret the actual marking rather than relying on color alone.
 
 [Source: sources.yaml#aim-marking-colors]
+[Claim type: FAA guidance]
+
+Yellow dashes beside the normal centerline form an enhanced centerline, warning that a runway holding position is ahead and to prepare to stop unless cleared onto or across the runway.
+
 [Source: sources.yaml#aim-taxiway-markings]
 [Claim type: FAA guidance]
 
-**LEARNER:**
+At the entrance, the red sign with white runway numbers identifies a mandatory instruction sign and the runway holding position.
 
-Runway markings are white. Taxiway, holding-position, and pavement-not-intended-for-aircraft markings are yellow. Yellow dashes beside a normal taxiway centerline warn that a runway holding position is approaching and the pilot should prepare to stop unless cleared onto or across the runway.
-
-[Source: sources.yaml#aim-marking-colors]
-[Source: sources.yaml#aim-taxiway-markings]
+[Source: sources.yaml#aim-mandatory-signs]
 [Claim type: FAA guidance]
 
-**INSTRUCTOR:**
-
-Describe the runway holding-position marking and the two directions from which a pilot sees it.
+The four-line holding marking has two solid yellow lines on our holding side and two dashed lines beyond them. When holding short, I keep the whole airplane before the marking; at an airport with an operating control tower, crossing from the solid side needs ATC clearance.
 
 [Source: sources.yaml#aim-holding-markings]
-[Source: sources.yaml#phak-complex-intersections]
 [Claim type: FAA guidance]
 
-**LEARNER:**
+A runway incursion can involve an aircraft, vehicle, person, or object on the ground creating a collision hazard or loss of required separation in the runway environment. The other aircraft may be taking off or landing, or intending to do either; the risk is not limited to a takeoff or landing already underway.
 
-It has two solid and two dashed yellow lines, with the solid lines on the holding side. Approaching a runway at a towered airport, the airplane stays completely before the solid lines unless cleared across or onto that runway. Exiting a runway from the dashed side, the entire aircraft must pass the marking before it is clear.
-
-[Source: sources.yaml#aim-holding-markings]
-[Source: sources.yaml#phak-complex-intersections]
-[Claim type: FAA guidance]
-
-**INSTRUCTOR:**
-
-What must an explicit runway-crossing decision include?
-
-[Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-explicit-crossing]
-[Claim type: FAA guidance]
-
-**LEARNER:**
-
-The pilot needs an explicit ATC clearance for each runway crossing. A taxi instruction to the assigned departure runway does not by itself authorize entry or crossing. Before entering, the pilot scans the runway and final approach for traffic.
-
-[Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-explicit-crossing]
-[Claim type: FAA guidance]
-
-**INSTRUCTOR:**
-
-Which items should be read back during the taxi sequence?
-
-[Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-clearance-discipline]
-[Claim type: FAA guidance]
-
-**LEARNER:**
-
-Read back the runway assignment, any clearance to enter a specific runway, and any instruction to hold short or line up and wait. Controllers must obtain a readback of runway hold-short instructions.
-
-[Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-clearance-discipline]
-[Claim type: FAA guidance]
-
-**INSTRUCTOR:**
-
-What does line up and wait authorize?
-
-[Source: sources.yaml#phak-explicit-crossing]
-[Claim type: FAA guidance]
-
-**LEARNER:**
-
-It authorizes entry onto the specified runway to hold in position. It is not a takeoff clearance.
-
-[Source: sources.yaml#phak-explicit-crossing]
-[Claim type: FAA guidance]
-
-**INSTRUCTOR:**
-
-What if the clearance, diagram, or outside picture does not agree?
-
-[Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-clearance-discipline]
-[Source: sources.yaml#phak-incursion-avoidance]
-[Claim type: FAA guidance]
-
-**LEARNER:**
-
-Stop where it is safe to do so and resolve the mismatch. Ask ATC for clarification. If the airport or route is unfamiliar or confusing, request progressive taxi instructions. While moving, keep attention on position, traffic, and the outside scan rather than letting a diagram or nonessential task absorb the pilot's attention.
-
-[Source: sources.yaml#aim-taxiing]
-[Source: sources.yaml#phak-clearance-discipline]
 [Source: sources.yaml#phak-incursion-avoidance]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-What do illuminated red runway-status lights mean?
+Now we are stopped on Charlie before Two Seven Right. An explicit crossing clearance has arrived, but the red Runway Entrance Lights are illuminated. Explain the conflict and what you do with it.
 
 [Source: sources.yaml#aim-runway-status-lights]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-They indicate that entering, crossing, or beginning takeoff is unsafe. They do not convey a clearance. Stop or remain stopped and contact ATC to resolve any conflict, and do not proceed merely because the lights later extinguish.
+The instruction authorizes crossing, but the lights warn that entering is unsafe. Since we are safely stopped before the runway, I remain there and contact ATC to resolve the conflict before crossing.
 
 [Source: sources.yaml#aim-runway-status-lights]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-When is the airplane clear after landing?
+The lights go out before that conversation is resolved. What has changed, and what still needs resolution?
+
+[Source: sources.yaml#aim-runway-status-lights]
+[Claim type: FAA guidance]
+
+**LEARNER:**
+
+The warning is no longer illuminated, but that does not settle the unresolved conflict with ATC. I continue coordinating and establish the applicable clearance before proceeding. The lights do not provide clearance, whether they are illuminated or dark.
+
+[Source: sources.yaml#aim-runway-status-lights]
+[Claim type: FAA guidance]
+
+**INSTRUCTOR:**
+
+Move to our separate post-landing example. The whole airplane is past the runway edge, and nothing restricts continued movement beyond the holding-position markings. Explain what being clear means here, and where you continue before holding if ATC has given no instructions.
 
 [Source: sources.yaml#aim-runway-exit]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-All parts of the aircraft must be past the runway edge and beyond the runway holding-position marking with no restriction to continued movement. Then hold unless further instructions have already been issued.
+Those two conditions meet the AIM's definition of being clear of the runway: all parts are beyond the runway edge, and movement beyond the holding-position markings is unrestricted. In the absence of ATC instructions, I taxi the entire airplane beyond those markings, then hold. Being clear does not by itself mean that I stop before completing that movement.
 
 [Source: sources.yaml#aim-runway-exit]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-What airport-surface subjects does the night ACS task add?
+After the airplane clears the runway, what helps you keep track of its position and traffic along the next part of the taxi?
 
-[Source: sources.yaml#acs-night-operations]
-[Claim type: FAA standard]
-
-**LEARNER:**
-
-It includes airport, runway, taxiway, obstruction, and pilot-controlled lighting; night orientation and taxi; distractions and loss of situational awareness; and runway-incursion risk.
-
-[Source: sources.yaml#acs-night-operations]
-[Claim type: FAA standard]
-
-**INSTRUCTOR:**
-
-What does a white-and-green airport beacon establish?
-
-[Source: sources.yaml#aim-airport-beacons]
+[Source: sources.yaml#phak-incursion-avoidance]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-It identifies a lighted land airport. It does not establish that the weather is VFR or that the runway and conditions are suitable.
+I stay aware of the airplane's position on the airport and of other aircraft and vehicle operations. I check for traffic before entering the next taxiway or reaching another runway hold line, so the route on the diagram stays connected to the movement around us.
 
-[Source: sources.yaml#aim-airport-beacons]
+[Source: sources.yaml#phak-incursion-avoidance]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-How does the FAA-standard pilot-controlled-lighting sequence work when the published airport information says that system is installed?
+Now return to the smaller airport at night. Before interpreting the illuminated runway and taxiway, explain what you learn about the lighting system from the airport publication.
 
 [Source: sources.yaml#aim-pilot-controlled-lighting]
 [Claim type: FAA guidance]
 
 **LEARNER:**
 
-On the published frequency, seven microphone clicks within five seconds select the highest available intensity, five select medium or a lower intensity, and three select the lowest available intensity. Standard systems remain illuminated for 15 minutes from the latest activation. The current Chart Supplement or appropriate procedure publication supplies the actual system and frequency.
+The current Chart Supplement or appropriate procedure publication identifies the lighting system and control frequency. In our example, the published system is the standard three-step system: seven microphone clicks within five seconds select the highest available intensity, five select medium or lower, and three select the lowest available intensity. The normal illumination period is fifteen minutes from the latest activation, though some one- or two-step runway end identifier lights can turn off earlier.
 
 [Source: sources.yaml#aim-pilot-controlled-lighting]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-What lighting colors help separate runway and taxiway surfaces?
+With the lights visible, how do you work from finding the airport to identifying the runway and the taxiway beside it?
 
-[Source: sources.yaml#aim-runway-edge-lights]
-[Source: sources.yaml#aim-taxiway-lights]
-[Claim type: FAA guidance]
+[Source: sources.yaml#acs-night-operations]
+[Claim type: Teaching synthesis grounded in FAA standard]
 
 **LEARNER:**
 
-Runway edge lights are normally white. Runway-end lights show red toward a departing aircraft and green outward toward an arriving aircraft. Taxiway edge lights are blue, and taxiway centerline lights, where installed, are steady green.
+The white-and-green beacon helps identify a lighted land airport. It does not, by itself, establish whether the weather is VFR or IFR.
+
+[Source: sources.yaml#aim-airport-beacons]
+[Claim type: FAA guidance]
+
+For the runway, I look for normally white edge lights and the runway-end arrangement: green faces outward toward an arriving airplane, while red faces an airplane departing down the runway.
 
 [Source: sources.yaml#aim-runway-edge-lights]
+[Claim type: FAA guidance]
+
+The taxiway has blue edge lights and, where installed, steady green centerline lights. A green line running along the taxiway is a different arrangement from green lights at the runway threshold.
+
 [Source: sources.yaml#aim-taxiway-lights]
 [Claim type: FAA guidance]
 
 **INSTRUCTOR:**
 
-And what is the final check in both scenarios?
+For a final transfer question, suppose you recognize a sign or light confidently, but it does not fit where you think the airplane is on the diagram. How do you respond without simply choosing whichever cue feels most familiar?
 
-[Source: sources.yaml#acs-taxiing]
 [Source: sources.yaml#acs-night-operations]
-[Claim type: Teaching synthesis grounded in FAA standard]
+[Claim type: FAA standard]
 
 **LEARNER:**
 
-The current information, clearance or intended route, diagram position, signs, markings, lights, and outside traffic picture must agree. If they do not, stop the movement and resolve the disagreement before entering a protected surface.
+I treat the disagreement as a position problem to resolve. At our night airport, for example, the runway should run east and west with the taxiway south of it. I compare the observed arrangement with that layout instead of making one familiar color decide which surface I am seeing. During taxi, I stop where safe to restore position awareness before continuing into the uncertainty.
 
-[Source: sources.yaml#acs-taxiing]
 [Source: sources.yaml#acs-night-operations]
 [Claim type: Teaching synthesis grounded in FAA standard]
+
+At the controlled airport, if the route or instruction is part of the uncertainty, I ask ATC for clarification or progressive taxi. That lets me resolve the actual disagreement rather than keep moving while hoping the next sign will explain it.
+
+[Source: sources.yaml#aim-taxiing]
+[Claim type: FAA guidance]
 
 ## [36:35] Outro
 

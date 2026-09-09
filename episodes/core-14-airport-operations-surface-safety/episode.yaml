@@ -3,12 +3,13 @@ series: ppl-study-podcast
 title: Airport Operations and Surface Safety
 slug: airport-operations-surface-safety
 track: core
-status: draft
-version: 0.1.0
-published_at: null
+production_contract_version: 2
+status: ready_for_hosting_pr
+version: 0.1.12
+published_at: 2026-09-09T13:00:08Z
 runtime_target_minutes: 38
-runtime_actual_seconds: null
-word_count: 4323
+runtime_actual_seconds: 2579
+word_count: 6695
 speakers:
   - instructor
   - learner
@@ -39,11 +40,13 @@ aim_references:
   - "AIM 2-3-8 through 2-3-10: Mandatory, Location, and Direction Signs"
   - "AIM 4-3-18: Taxiing"
   - "AIM 4-3-21: Exiting the Runway After Landing"
+  - "AIM 4-3-24: Use of Aircraft Lights"
 advisory_circular_references: []
 cfr_references: []
 learning_objectives:
   - Build and continuously update a surface-position picture from current
-    airport information, the airport diagram, ATC instructions, and outside cues.
+    airport information, the airport diagram, ATC instructions, and outside
+    cues.
   - Translate a taxi clearance into route segments, runway crossings, and
     hold-short limits before movement.
   - Use location, direction, and mandatory signs plus pavement markings to
@@ -53,9 +56,10 @@ learning_objectives:
   - Distinguish airport, runway, and taxiway lighting at night and use
     pilot-controlled lighting only as current airport information describes it.
 trouble_spots:
-  - Treating a correct readback as proof that the airplane is on the correct surface.
-  - Assuming a taxi clearance to the departure runway authorizes intermediate
-    or departure-runway crossings.
+  - Treating a correct readback as proof that the airplane is on the correct
+    surface.
+  - Assuming a taxi clearance to the departure runway authorizes intermediate or
+    departure-runway crossings.
   - Treating a taxiway centerline as a guarantee of wingtip clearance.
   - Crossing a hold marking when the nose or cockpit, rather than the entire
     airplane, appears clear.
@@ -63,34 +67,29 @@ trouble_spots:
   - Identifying a runway or airport at night from one light or color without
     corroborating the diagram, alignment, designation, and current information.
 source_verification:
-  status: not_started
-  verified_at_utc: null
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-09T12:59:53.641Z
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
-  relevance_review: required_before_render
+  relevance_review: complete
 review:
-  editorial_status: not_started
-  editorial_script_sha256: null
+  editorial_status: script_approved
+  editorial_script_sha256: 61262079c22cdba798f5107a3e3abd2e31324c8befec347db0bb07dfb91450c3
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - "Run source-link validation with LLM relevance review and resolve every finding."
-  - "Complete human editorial review and approve the current script."
-  - "Render audio and complete human listening QA, including the front-matter check."
-  - "Review embedded chapter markers against the approved audio."
-  - "Re-verify every public source and listener-facing link on publication day."
-  - "Validate hosting metadata and stage the immutable audio object in the hosting workflow."
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
-  status: not_rendered
-  chapter_markers: pending_render
-  publication_day_validation: pending
+  mix_config: audio-mix.yaml
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: draft
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null

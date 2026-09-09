@@ -19,6 +19,7 @@ const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
+const { validationFailurePath } = require("./validate-source-links.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -106,6 +107,7 @@ function assertSourceRelevanceApproved(scriptPath) {
   if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
   if (!fs.existsSync(validationPath)) throw new RenderError("Source-relevance review must pass before rendering. Run sources:validate --require-llm and record its completion in episode.yaml.");
   if (fs.existsSync(`${validationPath}.in-progress`) || fs.existsSync(`${validationPath}.in-progress.recovering`)) throw new RenderError("Source-relevance validation is in progress, recovering, or was interrupted. Complete a fresh validation run before rendering.");
+  if (fs.existsSync(validationFailurePath(validationPath))) throw new RenderError("The most recent source-relevance validation failed. Resolve its findings and complete a fresh clean validation run before rendering.");
 
   let episode; let validation;
   try {

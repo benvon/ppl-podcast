@@ -11,6 +11,7 @@ const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, sameStringList } = require("./produ
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
+const { validationFailurePath } = require("./validate-source-links.cjs");
 
 const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
 const PACKAGE_SHAPE_COMPATIBLE_STATUSES = new Set(["reviewed_draft", "source_relevance_review_complete", "audio_listening_qa_complete", "ready_for_hosting_pr"]);
@@ -88,6 +89,11 @@ function qaItemComplete(markdown, id, legacyPattern) {
   return /<!--\s*qa-id:\s*[a-z0-9-]+\s*-->/i.test(markdown) ? marker.test(markdown) : legacyPattern.test(markdown);
 }
 
+function qaItemCompleteWithID(markdown, id) {
+  const marker = new RegExp(`^- \\[x\\][^\\n]*<!--\\s*qa-id:\\s*${escapeRegExp(id)}\\s*-->`, "mi");
+  return marker.test(markdown);
+}
+
 function requireFile(episodePath, fileName, errors) {
   const filePath = path.join(episodePath, fileName);
   if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) errors.push(`Missing required file ${fileName}.`);
@@ -161,7 +167,7 @@ function pendingAudioReleaseGateErrors(episode) {
   return errors;
 }
 
-function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
+function sourceReviewErrors({ episodePath, paths, episode, sourceValidation, qaChecklist }) {
   const errors = [];
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
   expect(errors, episode.source_verification?.show_notes_manifest === "show-notes-manifest.yaml", "episode.yaml must reference show-notes-manifest.yaml.");
@@ -170,6 +176,10 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation }) {
   expect(errors, sourceValidation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
   expect(errors, sourceValidation.master_script_mapping?.valid === true, "link validation must pass the master-script source mapping.");
   expect(errors, !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress`) && !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress.recovering`), "source validation must not be in progress, recovering, or interrupted.");
+  expect(errors, !fs.existsSync(validationFailurePath(paths["link-validation.yaml"])), "the most recent source validation must not have unresolved findings.");
+  if (episode.production_contract_version === 2) {
+    expect(errors, qaItemCompleteWithID(qaChecklist, "openai-source-review-authorization"), "qa-checklist.md must record explicit authorization before sending source material to OpenAI for source-relevance review.");
+  }
   expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
   expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");
   expect(errors, sourceValidation.results?.every((result) => result.citation_target?.valid === true && result.link?.valid === true && (!result.content_attestation || result.content_attestation.valid === true)), "all recorded source citations and links must be valid.");
@@ -204,7 +214,7 @@ function validateDraftPackageShape({ episodePath, paths, episode, audioManifest,
   expect(errors, qaItemComplete(qaChecklist, "source-relevance", /- \[x\] (?:Before any audio render, source-link validator was run with `--require-llm`|After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`)/i), "qa-checklist.md must mark the source-relevance gate complete.");
   expect(errors, qaItemComplete(qaChecklist, "independent-script-review", /- \[x\] Independent spoken-script review completed by a second agent that did not draft the lesson/i), "qa-checklist.md must mark the independent spoken-script review complete.");
   expect(errors, hasResolvedIndependentSpokenScriptReview(productionLog), "production-log.md must record the independent spoken-script review and its resolution.");
-  errors.push(...sourceReviewErrors({ episodePath, paths, episode, sourceValidation }));
+  errors.push(...sourceReviewErrors({ episodePath, paths, episode, sourceValidation, qaChecklist }));
   return { valid: errors.length === 0, kind: DRAFT_PACKAGE_SHAPE, final: false, errors };
 }
 
@@ -346,7 +356,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
     expect(errors, review.includes(`name="ppl-audio-sha256" content="${candidateSha256}"`), "chapter-review page must identify the approved MP3 checksum.");
   }
 
-  errors.push(...sourceReviewErrors({ episodePath: resolvedEpisode, paths, episode, sourceValidation }));
+  errors.push(...sourceReviewErrors({ episodePath: resolvedEpisode, paths, episode, sourceValidation, qaChecklist }));
   expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");
   expect(errors, !/^## Production notice\b/im.test(showNotes), "show notes must not duplicate the hosting production disclosure.");
   const requiredChecklistEvidence = [

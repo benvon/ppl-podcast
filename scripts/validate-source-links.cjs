@@ -642,6 +642,10 @@ function validationRecoveryPath(outputPath) {
   return `${validationInProgressPath(outputPath)}.recovering`;
 }
 
+function validationFailurePath(outputPath) {
+  return `${outputPath}.failed`;
+}
+
 function failedValidationAttemptPath(outputPath, run) {
   return path.join(path.dirname(outputPath), ".validation-attempts", `${run.run_id}.yaml`);
 }
@@ -716,9 +720,29 @@ function assertValidationLockOwner(lockPath, run) {
 function completeValidationReport(outputPath, report, run, { promote = true } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
+  const failurePath = validationFailurePath(outputPath);
   const writtenPath = promote ? outputPath : failedValidationAttemptPath(outputPath, run);
   if (!promote) fs.mkdirSync(path.dirname(writtenPath), { recursive: true, mode: 0o700 });
   writeYaml(writtenPath, report);
+  assertValidationLockOwner(lockPath, run);
+  if (promote) {
+    // Keep a prior failure blocking until the replacement canonical report is
+    // safely written and still owned by this run. The lock remains in place
+    // until the marker is removed, so no downstream gate can observe a
+    // partially promoted state.
+    if (fs.existsSync(failurePath)) fs.unlinkSync(failurePath);
+  } else {
+    // The canonical report remains useful evidence of the last clean pass,
+    // but it must not authorize a package after this run found a problem.
+    writeYaml(failurePath, {
+      schema_version: 1,
+      validator: "scripts/validate-source-links.cjs",
+      run_id: run.run_id,
+      failed_at_utc: new Date().toISOString(),
+      input_sha256: run.input_sha256,
+      failed_attempt: path.relative(path.dirname(outputPath), writtenPath),
+    });
+  }
   assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
   return writtenPath;
@@ -915,7 +939,7 @@ async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
   return results;
 }
 
-async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled, refreshCount }) {
+async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled, refreshCount, finalRefreshAttempt }) {
   const sourcesPath = path.resolve(options.sources); const claimsPath = path.resolve(options.claims);
   const outputPath = path.resolve(options.output || path.join(path.dirname(sourcesPath), "link-validation.yaml"));
   const ledger = loadYaml(sourcesPath, "sources"); const claimInventory = loadYaml(claimsPath, "claims");
@@ -958,6 +982,23 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   const fetchCache = new Map();
   const refreshedEcfrSources = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
   if (refreshedEcfrSources.length) {
+    if (finalRefreshAttempt) {
+      const report = {
+        schema_version: 1,
+        validator: "scripts/validate-source-links.cjs",
+        checked_at_utc: new Date().toISOString(),
+        input_sha256: inputSha256,
+        failure: {
+          reason: "eCFR source dates changed repeatedly before validation could complete.",
+          refreshed_source_count: refreshedEcfrSources.length,
+        },
+        results: [],
+      };
+      const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false });
+      progress.emit("report_written", { valid: false });
+      console.error(`eCFR changed repeatedly; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
+      return { refreshedEcfrSources };
+    }
     releaseValidationLock(outputPath, validationRun);
     progress.emit("ecfr_manifest_refreshed", { source_count: refreshedEcfrSources.length, titles: [...new Set(refreshedEcfrSources.map((entry) => entry.target.title))] });
     console.error(`Refreshed ${refreshedEcfrSources.length} eCFR source date${refreshedEcfrSources.length === 1 ? "" : "s"}; restarting validation with the current API date.`);
@@ -1044,7 +1085,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
 
 async function runWithEcfrRefreshes(runAttempt, { maximumRefreshes = MAX_ECFR_MANIFEST_REFRESHES } = {}) {
   for (let refreshCount = 0; ; refreshCount += 1) {
-    const result = await runAttempt({ refreshCount });
+    const result = await runAttempt({ refreshCount, finalRefreshAttempt: refreshCount >= maximumRefreshes });
     if (!result?.refreshedEcfrSources?.length) return result;
     if (refreshCount >= maximumRefreshes) throw new Error(`eCFR changed during ${maximumRefreshes + 1} consecutive validation attempts; rerun after the title import settles.`);
   }
@@ -1066,7 +1107,7 @@ async function main() {
   const cancel = () => { cancelled = true; cancellation.abort(); };
   process.once("SIGINT", cancel); process.once("SIGTERM", cancel);
   try {
-    return await runWithEcfrRateLimiter(({ refreshCount }) => validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled: () => cancelled, refreshCount }), ecfrRateLimiter);
+    return await runWithEcfrRateLimiter(({ refreshCount, finalRefreshAttempt }) => validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled: () => cancelled, refreshCount, finalRefreshAttempt }), ecfrRateLimiter);
   } catch (error) {
     if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; }
     else { progress.emit("run_failed", { message: error.message }); throw error; }
@@ -1077,4 +1118,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

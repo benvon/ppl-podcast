@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -19,7 +19,7 @@ const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: par
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
-const { approveScriptReview, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
+const { approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 const { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
@@ -73,6 +73,8 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(episodeAfterReset.hosting.handoff_status, "pending_script_review");
     assert.deepEqual(episodeAfterReset.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_RESET);
     assert.equal(audioAfterReset.current_candidate_render, null);
+    assert.equal(episodeAfterReset.audio.mix_config, "audio-mix.yaml");
+    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "audio-mix.yaml"), "utf8")), { schema_version: 1, music: { enabled: false } });
     assert.equal(audioAfterReset.status, undefined);
     assert.equal(audioAfterReset.publication_day_validation, undefined);
     assert.equal(audioAfterReset.required_before_release, undefined);
@@ -96,6 +98,26 @@ test("script-review reset invalidates downstream state and approval fingerprints
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+test("historical music metadata migrates to the explicit series mix contract", () => {
+  assert.deepEqual(migratedAudioMix({}), { schema_version: 1, music: { enabled: false } });
+  assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "custom-music.mp3" } }), { schema_version: 1, music: { enabled: false } });
+  assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3" } }), {
+    schema_version: 1,
+    music: {
+      enabled: true,
+      source: "../../assets/music/jonasblakewood-synth-pop_60s-583368.mp3",
+      base_gain_db: -24,
+      voice_gain_db: -30,
+      level_transition_seconds: 0.15,
+      intro_lead_seconds: 10,
+      intro_tail_seconds: 5,
+      intro_fade_seconds: 0.5,
+      outro_tail_seconds: 10,
+      outro_fade_seconds: 5,
+    },
+  });
 });
 
 function wavWithListMetadata(pcm) {
@@ -255,9 +277,18 @@ test("pre-hosting validation requires consistent release records", () => {
   const inputSha256 = sourceValidationInputHashes(episodePath);
   const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
-  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened", "No clipped", "The final MP3 chapter list starts at `00:00`", "FAA/", "Hosting metadata agrees"].map((line) => `- [x] ${line}`).join("\n"));
+  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->"].map((line) => `- [x] ${line}`).join("\n"));
   try {
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml.failed"), "run_id: failed-run\n", "utf8");
+    const failedSourceValidation = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(failedSourceValidation.valid, false); assert.match(failedSourceValidation.errors.join("\n"), /most recent source validation/);
+    fs.unlinkSync(path.join(episodePath, "link-validation.yaml.failed"));
+    const authorizedChecklist = fs.readFileSync(path.join(episodePath, "qa-checklist.md"), "utf8");
+    fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), authorizedChecklist.replace(/^.*openai-source-review-authorization.*\n?/m, ""));
+    const missingAuthorization = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(missingAuthorization.valid, false); assert.match(missingAuthorization.errors.join("\n"), /explicit authorization before sending source material to OpenAI/);
+    fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), authorizedChecklist);
     const readyEpisodeMetadata = YAML.parse(fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8"));
     const pendingPublicationEpisode = { ...readyEpisodeMetadata, audio: { ...readyEpisodeMetadata.audio, publication_day_validation: "pending" } };
     fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify(pendingPublicationEpisode));
@@ -303,7 +334,7 @@ test("pre-hosting validation requires consistent release records", () => {
     draftLinkValidation.input_sha256 = sourceValidationInputHashes(episodePath);
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
-    fs.writeFileSync(qaChecklistPath, "- [x] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`.\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson.\n- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved.\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`. <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. <!-- qa-id: independent-script-review -->\n- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->\n");
     fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0 and was re-verified for release.\n");
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
@@ -363,10 +394,10 @@ test("pre-hosting validation requires consistent release records", () => {
     const pendingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(pendingIndependentReview.valid, false); assert.match(pendingIndependentReview.errors.join("\n"), /independent spoken-script review/);
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
-    fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n");
     const missingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(missingIndependentReview.valid, false); assert.match(missingIndependentReview.errors.join("\n"), /independent spoken-script review/);
-    fs.writeFileSync(qaChecklistPath, "- [x] Human editorial pass completed\n- [x] Before any audio render, source-link validator was run with `--require-llm`\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson <!-- qa-id: independent-script-review -->\n");
     fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...approvedDraftEpisode, status: "ready_for_hosting_pr" }));
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
@@ -915,6 +946,13 @@ test("source validation locks report ownership and refuses unsafe recovery", () 
     assert.equal(failedPath, failedValidationAttemptPath(outputPath, failedRun));
     assert.deepEqual(YAML.parse(fs.readFileSync(outputPath, "utf8")), { result: "released" });
     assert.deepEqual(YAML.parse(fs.readFileSync(failedPath, "utf8")), { result: "failed" });
+    assert.equal(fs.existsSync(validationFailurePath(outputPath)), true);
+    assert.equal(YAML.parse(fs.readFileSync(validationFailurePath(outputPath), "utf8")).run_id, failedRun.run_id);
+
+    const cleanRun = markValidationInProgress(outputPath, { sources: "a" });
+    completeValidationReport(outputPath, { result: "clean" }, cleanRun);
+    assert.equal(fs.existsSync(validationFailurePath(outputPath)), false);
+    assert.deepEqual(YAML.parse(fs.readFileSync(outputPath, "utf8")), { result: "clean" });
 
     fs.writeFileSync(validationInProgressPath(outputPath), YAML.stringify({ run_id: "remote-run", hostname: "other-host.example", pid: 999_999, started_at_utc: "2026-08-25T00:00:00.000Z" }));
     assert.throws(() => markValidationInProgress(outputPath, { sources: "a" }, { recoverStaleLock: true }), /cannot be safely recovered/);
@@ -986,7 +1024,12 @@ test("eCFR refresh keeps the rate limiter alive until the rerun completes", asyn
   releaseRerun();
   await running;
   assert.deepEqual(events, ["attempt-0", "attempt-1", "rerun-complete", "limiter-closed"]);
-  await assert.rejects(runWithEcfrRefreshes(async () => ({ refreshedEcfrSources: [{ id: "title-14" }] }), { maximumRefreshes: 1 }), /eCFR changed during 2 consecutive validation attempts/);
+  const finalAttemptFlags = [];
+  await assert.rejects(runWithEcfrRefreshes(async ({ finalRefreshAttempt }) => {
+    finalAttemptFlags.push(finalRefreshAttempt);
+    return { refreshedEcfrSources: [{ id: "title-14" }] };
+  }, { maximumRefreshes: 1 }), /eCFR changed during 2 consecutive validation attempts/);
+  assert.deepEqual(finalAttemptFlags, [false, true]);
 });
 
 test("eCFR date refresh leaves malformed eCFR records for normal validation", async () => {
@@ -1228,6 +1271,9 @@ test("realtime renderer requires completed source-relevance review before render
     fs.writeFileSync(path.join(temporary, "link-validation.yaml.in-progress"), "started: true\n", "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /in progress, recovering, or was interrupted/);
     fs.unlinkSync(path.join(temporary, "link-validation.yaml.in-progress"));
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml.failed"), "run_id: failed-run\n", "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /most recent source-relevance validation failed/);
+    fs.unlinkSync(path.join(temporary, "link-validation.yaml.failed"));
     fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources: [changed]\n", "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /not bound to the current sources/);
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");

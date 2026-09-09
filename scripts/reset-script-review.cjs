@@ -28,6 +28,40 @@ function removeLegacyProductionStatus(script) {
   return script.replace(/^\*\*Production status:\*\*.*(?:\r?\n)?/gim, "");
 }
 
+function migratedAudioMix(audio) {
+  // Historical episodes that used the established series music bed record it
+  // in their old manifest. A revision needs an explicit current contract, so
+  // preserve that treatment when it is recognizable; otherwise choose a
+  // reviewable disabled default instead of guessing at a new mix.
+  const musicBed = audio.current_candidate_render?.music_bed;
+  const recordedSource = typeof musicBed === "string" ? musicBed : musicBed?.source;
+  if (typeof recordedSource !== "string" || !recordedSource.includes("assets/music/jonasblakewood-synth-pop_60s-583368.mp3")) {
+    return { schema_version: 1, music: { enabled: false } };
+  }
+  return {
+    schema_version: 1,
+    music: {
+      enabled: true,
+      source: "../../assets/music/jonasblakewood-synth-pop_60s-583368.mp3",
+      base_gain_db: -24,
+      voice_gain_db: -30,
+      level_transition_seconds: 0.15,
+      intro_lead_seconds: 10,
+      intro_tail_seconds: 5,
+      intro_fade_seconds: 0.5,
+      outro_tail_seconds: 10,
+      outro_fade_seconds: 5,
+    },
+  };
+}
+
+function ensureAudioMixContract(resolved, episode, audio) {
+  const mixPath = path.join(resolved, "audio-mix.yaml");
+  if (fs.existsSync(mixPath) && !fs.lstatSync(mixPath).isFile()) throw new ScriptReviewStateError("audio-mix.yaml must be a regular file before a script-review reset can migrate this package.");
+  episode.audio = { ...(episode.audio || {}), mix_config: "audio-mix.yaml" };
+  if (!fs.existsSync(mixPath)) writeYaml(mixPath, migratedAudioMix(audio));
+}
+
 function resolveEpisode(episodePath) {
   const resolved = path.resolve(episodePath);
   for (const file of ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md"]) {
@@ -50,6 +84,8 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   const episode = readYaml(episodePathname);
   const audio = readYaml(audioPathname);
   const hosting = readYaml(hostingPathname);
+
+  ensureAudioMixContract(resolved, episode, audio);
 
   const candidate = audio.current_candidate_render;
   if (candidate?.sha256 && !audio.superseded_candidates?.some((entry) => entry.sha256 === candidate.sha256)) {
@@ -129,4 +165,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { ScriptReviewStateError, approveScriptReview, removeLegacyProductionStatus, resetScriptReview, sha256Text };
+module.exports = { ScriptReviewStateError, approveScriptReview, ensureAudioMixContract, migratedAudioMix, removeLegacyProductionStatus, resetScriptReview, sha256Text };

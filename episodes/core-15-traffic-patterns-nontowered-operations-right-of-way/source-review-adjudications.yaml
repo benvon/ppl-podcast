@@ -1,0 +1,19 @@
+schema_version: 1
+adjudications:
+  - id: landing-right-of-way-nonmaterial-omission
+    source_id: ecfr-right-of-way
+    claim_id: landing-right-of-way
+    expected_relevance_verdict: partially_supports
+    decision: accepted_nonmaterial_omission
+    rationale: >-
+      The claim accurately states the landing-priority and lower-aircraft rules
+      within the lesson's stated scope. The omitted adjacent provision does not
+      contradict the claim or make its spoken teaching misleading.
+    authorized_by: human episode editor
+    authorized_at_utc: 2026-09-10T22:27:16Z
+    input_sha256:
+      sources: b7cd01b4bee09701dae0191faa442a9f093ca7bbbf5df7b216fc73e91c07f708
+      claims: aafa272016635570ff3042b6c41102acc1af97a650ca5f40924a4976349ca28e
+      master_script: 798412c6be18488458e071952c63b70e9020df18d5956b27cd74ff9e37dc983a
+      show_notes: 8ef7f71fc88060b2f5e4383246f1f354b2a871c00711b27c8964820113cad30f
+      show_notes_manifest: 3b89c4446a149a7d46a2052bdcd8a1d3326805b6017498517cc593724806ac17

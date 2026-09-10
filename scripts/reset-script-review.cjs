@@ -36,7 +36,13 @@ function migratedAudioMix(audio) {
   const musicBed = audio.current_candidate_render?.music_bed;
   const recordedSource = typeof musicBed === "string" ? musicBed : musicBed?.source;
   if (typeof recordedSource !== "string" || !recordedSource.includes("assets/music/jonasblakewood-synth-pop_60s-583368.mp3")) {
-    return { schema_version: 1, music: { enabled: false } };
+    return {
+      schema_version: 1,
+      music: {
+        enabled: false,
+        disabled_reason: "No established series music treatment is recorded for this historical render.",
+      },
+    };
   }
   return {
     schema_version: 1,

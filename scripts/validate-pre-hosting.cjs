@@ -129,6 +129,19 @@ function hasExactVisibleVersion(markdown, version) {
   return new RegExp(`^${escapeRegExp(version)}(?:\\s+[—–-]\\s+.+)?$`).test(visibleVersion);
 }
 
+function episodeDisplayLabel(episode) {
+  const identity = releaseIdentity(episode);
+  const ordinal = String(Number(identity.releaseKey.match(/-(\d+)$/)?.[1]));
+  if (episode.track === "core") return ordinal;
+  if (episode.track === "supplemental") return `Supplement ${ordinal}`;
+  return `Rough Spot ${ordinal}`;
+}
+
+function hasExactVisibleEpisode(markdown, episode) {
+  const visibleEpisode = String(markdown).match(/^\*\*Episode:\*\*\s*(.+?)\s*$/im)?.[1] || "";
+  return visibleEpisode === episodeDisplayLabel(episode);
+}
+
 function hasResolvedIndependentSpokenScriptReview(productionLog) {
   return markdownSections(productionLog).some((section) => {
     const [heading, ...bodyLines] = section.split("\n");
@@ -202,7 +215,7 @@ function validateDraftPackageShape({ episodePath, paths, episode, audioManifest,
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
   errors.push(...consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }));
   errors.push(...pendingAudioReleaseGateErrors(episode));
-  expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode and version must match episode.yaml.");
+  expect(errors, hasExactVisibleEpisode(showNotes, episode) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode and version must match episode.yaml.");
   expect(errors, !episode.release_gates_remaining?.some((gate) => /human editorial|source-link validation with llm relevance/i.test(gate)), "episode.yaml must not retain completed editorial or source-relevance gates.");
   expect(errors, hosting.provenance?.content_version === episode.version, "hosting-metadata content version must match episode.yaml.");
   try {
@@ -385,4 +398,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };
+module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, episodeDisplayLabel, hasExactVisibleEpisode, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };

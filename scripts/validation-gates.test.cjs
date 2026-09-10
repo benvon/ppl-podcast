@@ -9,20 +9,20 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applySourceReviewAdjudications, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, recordUnexpectedValidationFailure, refreshEcfrManifestDates, relevancePassages, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
-const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, establishSettings, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
-const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
+const { DRAFT_PACKAGE_SHAPE, durationDisplay, episodeDisplayLabel, hasExactVisibleEpisode, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
-const { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewAdjudicationConfig, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -74,7 +74,13 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.deepEqual(episodeAfterReset.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_RESET);
     assert.equal(audioAfterReset.current_candidate_render, null);
     assert.equal(episodeAfterReset.audio.mix_config, "audio-mix.yaml");
-    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "audio-mix.yaml"), "utf8")), { schema_version: 1, music: { enabled: false } });
+    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "audio-mix.yaml"), "utf8")), {
+      schema_version: 1,
+      music: {
+        enabled: false,
+        disabled_reason: "No established series music treatment is recorded for this historical render.",
+      },
+    });
     assert.equal(audioAfterReset.status, undefined);
     assert.equal(audioAfterReset.publication_day_validation, undefined);
     assert.equal(audioAfterReset.required_before_release, undefined);
@@ -101,8 +107,15 @@ test("script-review reset invalidates downstream state and approval fingerprints
 });
 
 test("historical music metadata migrates to the explicit series mix contract", () => {
-  assert.deepEqual(migratedAudioMix({}), { schema_version: 1, music: { enabled: false } });
-  assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "custom-music.mp3" } }), { schema_version: 1, music: { enabled: false } });
+  const noRecordedSeriesMix = {
+    schema_version: 1,
+    music: {
+      enabled: false,
+      disabled_reason: "No established series music treatment is recorded for this historical render.",
+    },
+  };
+  assert.deepEqual(migratedAudioMix({}), noRecordedSeriesMix);
+  assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "custom-music.mp3" } }), noRecordedSeriesMix);
   assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3" } }), {
     schema_version: 1,
     music: {
@@ -178,6 +191,7 @@ test("templates keep mutable production state only in episode metadata", () => {
   const episode = YAML.parse(fs.readFileSync(path.join(root, "templates", "episode.yaml"), "utf8"));
   const audio = YAML.parse(fs.readFileSync(path.join(root, "templates", "audio-manifest.yaml"), "utf8"));
   const hosting = YAML.parse(fs.readFileSync(path.join(root, "templates", "hosting-metadata.yaml"), "utf8"));
+  const mix = YAML.parse(fs.readFileSync(path.join(root, "templates", "audio-mix.yaml"), "utf8"));
   assert.equal(episode.status, "planned");
   assert.equal(episode.audio.status, "not_rendered");
   assert.equal(episode.audio.mix_config, "audio-mix.yaml");
@@ -188,6 +202,21 @@ test("templates keep mutable production state only in episode metadata", () => {
   assert.equal(audio.publication_day_validation, undefined);
   assert.equal(audio.chapter_markers.status, undefined);
   assert.equal(hosting.handoff_status, undefined);
+  assert.deepEqual(mix, {
+    schema_version: 1,
+    music: {
+      enabled: true,
+      source: "../../assets/music/jonasblakewood-synth-pop_60s-583368.mp3",
+      base_gain_db: -24,
+      voice_gain_db: -30,
+      level_transition_seconds: 0.15,
+      intro_lead_seconds: 10,
+      intro_tail_seconds: 5,
+      intro_fade_seconds: 0.5,
+      outro_tail_seconds: 10,
+      outro_fade_seconds: 5,
+    },
+  });
 });
 
 test("publication preparation synchronizes derived release facts without staging", () => {
@@ -224,6 +253,7 @@ test("the show-notes template leaves the single production disclosure to hosting
   const template = fs.readFileSync(path.join(__dirname, "..", "templates", "show-notes.md"), "utf8");
   const checklist = fs.readFileSync(path.join(__dirname, "..", "templates", "qa-checklist.md"), "utf8");
   assert.doesNotMatch(template, /^## Production notice\b/im);
+  assert.match(template, /^\*\*Episode:\*\* \{\{EPISODE_DISPLAY_LABEL\}\}$/m);
   assert.match(checklist, /show notes contain study links and synopsis only/i);
 });
 
@@ -270,7 +300,7 @@ test("pre-hosting validation requires consistent release records", () => {
   const qualityRecord = (overrides = {}) => ({ result: "passed", manifest: renderPath, output: { path: audioPath, sha256, probe: { format: { duration: "2.000000" } } }, ...overrides });
   fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord())); fs.writeFileSync(reviewPath, `<meta name="ppl-audio-sha256" content="${sha256}">`);
   fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", production_contract_version: 2, title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml", mix_config: "audio-mix.yaml", status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", chapter_markers: "embedded_and_ffprobe_validated" }, hosting: { metadata: "hosting-metadata.yaml", handoff_status: "ready_for_hosting_pr" }, public_notes: "show-notes.md", source_verification: { status: "source_relevance_review_complete", verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }));
-  fs.writeFileSync(path.join(episodePath, "audio-mix.yaml"), "schema_version: 1\nmusic:\n  enabled: false\n");
+  fs.writeFileSync(path.join(episodePath, "audio-mix.yaml"), "schema_version: 1\nmusic:\n  enabled: false\n  disabled_reason: Historical fixture without a recorded music treatment.\n");
   fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { audio_sha256: sha256 } }));
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
@@ -316,7 +346,7 @@ test("pre-hosting validation requires consistent release records", () => {
     const originalResearchPacket = fs.readFileSync(researchPacketPath, "utf8");
     const originalProductionLog = fs.readFileSync(productionLogPath, "utf8");
     const draftMasterScript = `# Test\n\n**Version:** 0.1.0\n\n**INSTRUCTOR:**\n\nA test lesson.\n`;
-    const draftShowNotes = `# Test\n\n**Episode:** core-01\n**Version:** 0.1.0\n\n[FAA reference](${sourceUrl})\n`;
+    const draftShowNotes = `# Test\n\n**Episode:** 1\n**Version:** 0.1.0\n\n[FAA reference](${sourceUrl})\n`;
     const draftLinkValidation = { ...linkValidation(), checked_at_utc: "2026-08-24T13:32:00.123Z" };
     const approvedDraftEpisode = {
       ...episodeMetadata,
@@ -378,6 +408,11 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
     assert.equal(hasExactVisibleVersion("**Version:** 0.1.0 — source-bound revision", "0.1.0"), true);
     assert.equal(hasExactVisibleVersion("**Version:** 0.1.01", "0.1.0"), false);
+    assert.equal(episodeDisplayLabel({ track: "core", id: "core-01", version: "0.1.0" }), "1");
+    assert.equal(episodeDisplayLabel({ track: "supplemental", id: "supplement-03", version: "0.1.0" }), "Supplement 3");
+    assert.equal(episodeDisplayLabel({ track: "rough-spots", id: "rough-002", version: "0.1.0" }), "Rough Spot 2");
+    assert.equal(hasExactVisibleEpisode("**Episode:** 1", { track: "core", id: "core-01", version: "0.1.0" }), true);
+    assert.equal(hasExactVisibleEpisode("**Episode:** core-01", { track: "core", id: "core-01", version: "0.1.0" }), false);
     fs.writeFileSync(masterScriptPath, draftMasterScript.replace("**Version:** 0.1.0", "**Version:** 0.1.01"));
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({ ...draftLinkValidation, input_sha256: sourceValidationInputHashes(episodePath) }));
     const visibleMasterPrefix = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
@@ -564,6 +599,19 @@ test("master-script source tags must name real sources in the claim's declared s
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+test("source-tagged passages retain only their episode and local-section context", () => {
+  const script = "# Nontowered Operations\n\n## Build the traffic picture\n\n**INSTRUCTOR:**\n\nA cited statement.\n\n[Source: sources.yaml#source-a]\n\nA nearby but uncited statement.\n\n## Another section\n\n**INSTRUCTOR:**\n\nA second cited statement.\n\n[Source: sources.yaml#source-a]\n";
+  const records = sourceTagRecords(script);
+  assert.deepEqual(records.map(({ source_id, episode_title, section, passage }) => ({ source_id, episode_title, section, passage })), [
+    { source_id: "source-a", episode_title: "Nontowered Operations", section: "Build the traffic picture", passage: "A cited statement." },
+    { source_id: "source-a", episode_title: "Nontowered Operations", section: "Another section", passage: "A second cited statement." },
+  ]);
+  assert.deepEqual(relevancePassages(records.map(({ passage, episode_title, section }) => ({ text: passage, episode_title, section_heading: section }))), [
+    { text: "A cited statement.", episode_title: "Nontowered Operations", section_heading: "Build the traffic picture" },
+    { text: "A second cited statement.", episode_title: "Nontowered Operations", section_heading: "Another section" },
+  ]);
 });
 
 test("retrieval review requires an immediate source tag for every spoken learner or instructor paragraph", () => {
@@ -917,14 +965,21 @@ test("source relevance assesses freshly fetched text instead of a ledger excerpt
     return Promise.resolve(new Response(JSON.stringify({ output: [{ content: [{ type: "output_text", text: JSON.stringify(assessment) }] }] }), { status: 200, headers: { "content-type": "application/json" } }));
   };
   try {
-    await assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "STALE LEDGER TEXT" }, claims: [{ id: "claim-a", claim: "Canonical claim text", claim_type: "guidance" }], authoredPassages: ["AUTHORED SCRIPT PASSAGE"], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
+    await assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "STALE LEDGER TEXT" }, claims: [{ id: "claim-a", claim: "Canonical claim text", claim_type: "guidance" }], authoredPassages: [{ text: "AUTHORED SCRIPT PASSAGE", episode_title: "Nontowered Operations", section_heading: "Build the traffic picture" }], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
     assert.match(request.input, /CURRENT FETCHED TEXT/);
     assert.doesNotMatch(request.input, /STALE LEDGER TEXT/);
     assert.match(request.input, /AUTHORED SCRIPT PASSAGE/);
+    assert.match(request.input, /Nontowered Operations/);
+    assert.match(request.input, /Build the traffic picture/);
     assert.match(request.input, /Canonical claim text/);
     assert.match(request.input, /\"type\":\"guidance\"/);
     assert.match(request.instructions, /citation group/);
     assert.match(request.instructions, /combines the claim assessments from every tagged source/);
+    assert.match(request.instructions, /interpretation-only structural context/);
+    assert.match(request.instructions, /only when their meaning unambiguously matches a source limitation/);
+    assert.match(request.instructions, /cannot add factual details, procedures, thresholds, permissions, exceptions, or any other source condition/);
+    assert.match(request.instructions, /only when omitting it makes the exact claimed or spoken statement false, overbroad, misleadingly mandatory, or misleadingly exhaustive/);
+    assert.match(request.instructions, /optional best practice, a more conservative alternative, an additional consideration for a different context, or another method that does not contradict the passage/);
   } finally {
     if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
   }
@@ -959,6 +1014,68 @@ test("source validation locks report ownership and refuses unsafe recovery", () 
     fs.unlinkSync(validationInProgressPath(outputPath));
     fs.mkdirSync(validationRecoveryPath(outputPath));
     assert.throws(() => markValidationInProgress(outputPath, { sources: "a" }), /lock recovery is in progress/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("unexpected source-validation failures retain the prior clean report and release the owned lock", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-unexpected-failure-test-"));
+  const outputPath = path.join(temporary, "link-validation.yaml");
+  try {
+    const initialRun = markValidationInProgress(outputPath, { sources: "initial" });
+    completeValidationReport(outputPath, { result: "last clean report" }, initialRun);
+
+    const failedRun = markValidationInProgress(outputPath, { sources: "current" });
+    const failedPath = recordUnexpectedValidationFailure(outputPath, failedRun, new Error("eCFR title-status import is in progress"));
+
+    assert.equal(fs.existsSync(validationInProgressPath(outputPath)), false);
+    assert.deepEqual(YAML.parse(fs.readFileSync(outputPath, "utf8")), { result: "last clean report" });
+    assert.equal(failedPath, failedValidationAttemptPath(outputPath, failedRun));
+    assert.match(YAML.parse(fs.readFileSync(failedPath, "utf8")).failure.reason, /eCFR title-status import is in progress/);
+    assert.equal(YAML.parse(fs.readFileSync(validationFailurePath(outputPath), "utf8")).run_id, failedRun.run_id);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("a source-review adjudication is hash-bound and can accept only its recorded partial finding", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-adjudication-test-"));
+  const inputSha256 = { sources: "sources-hash", claims: "claims-hash", master_script: "script-hash", show_notes: "notes-hash", show_notes_manifest: "notes-manifest-hash" };
+  const ledger = { sources: [{ id: "source-a", supports_claims: ["claim-a"] }] };
+  const claims = { claims: [{ id: "claim-a", sources: ["source-a"] }] };
+  try {
+    fs.writeFileSync(path.join(temporary, "source-review-adjudications.yaml"), YAML.stringify({
+      schema_version: 1,
+      adjudications: [{
+        id: "scope-review",
+        source_id: "source-a",
+        claim_id: "claim-a",
+        expected_relevance_verdict: "partially_supports",
+        decision: "accepted_nonmaterial_omission",
+        rationale: "The scoped claim remains accurate without the adjacent provision.",
+        authorized_by: "human episode editor",
+        authorized_at_utc: "2026-09-10T22:20:00Z",
+        input_sha256: inputSha256,
+      }],
+    }));
+    const configured = sourceReviewAdjudicationConfig(temporary, inputSha256, ledger, claims);
+    assert.deepEqual(configured.errors, []);
+
+    const results = [{
+      source_id: "source-a",
+      relevance: { assessment: { claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } },
+      claim_assessments: { valid: false, missing_assessment_ids: [], unexpected_assessment_ids: [], duplicate_assessment_ids: [], unsupported_assessment_ids: ["claim-a"] },
+    }];
+    assert.deepEqual(applySourceReviewAdjudications(results, configured.items), []);
+    assert.equal(results[0].claim_assessments.valid, true);
+    assert.deepEqual(results[0].claim_assessments.adjudicated_assessment_ids, ["claim-a"]);
+
+    const stale = sourceReviewAdjudicationConfig(temporary, { ...inputSha256, master_script: "different-script" }, ledger, claims);
+    assert.match(stale.errors.join("\n"), /bound to the current/);
+    results[0].claim_assessments = { valid: false, missing_assessment_ids: [], unexpected_assessment_ids: [], duplicate_assessment_ids: [], unsupported_assessment_ids: ["claim-a"] };
+    results[0].relevance.assessment.claim_assessments[0].verdict = "does_not_support";
+    assert.match(applySourceReviewAdjudications(results, configured.items).join("\n"), /expected partially_supports/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -1286,7 +1403,8 @@ test("realtime renderer requires completed source-relevance review before render
 test("realtime renderer preserves untreated familiar initialisms while applying narrow phonetic corrections", () => {
   assert.equal(spokenText("The A-I-M, often referred to as the AIM, supports the PHAK."), "The A-I-M, often referred to as the aim, supports the pee hack.");
   assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pee hack says artificial intelligence-assisted production is reviewed by an MEL.");
-  assert.equal(spokenText("ASOS, AWOS, and ATIS report airport weather."), "AY-sohs, AY-wahs, and AY-tis report airport weather.");
+  assert.equal(spokenText("ASOS, AWOS, and ATIS report airport weather."), "ay-soss, ay-wahs, and AY-tis report airport weather.");
+  assert.equal(spokenText("CTAF reports help build the traffic picture."), "seetaff reports help build the traffic picture.");
   assert.equal(spokenText("METAR, TAF, SPECI, SIGMET, AIRMET, and 1800wxbrief.com are weather terms."), "MEE-tar, taf, SPECI, sig MET, air MET, and one eight-hundred w x brief dot com are weather terms.");
   assert.equal(spokenText("METARs, TAFs, SPECIs, SIGMETs, and AIRMETs can appear in a briefing."), "MEE-tars, tafs, SPECIs, sig METs, and air METs can appear in a briefing.");
   assert.equal(spokenText("The POH and AFM place CG limits in the ACS."), "The POH and AFM place CG limits in the ACS.");
@@ -1371,6 +1489,18 @@ test("music assembly options do not invalidate reusable rendered segments", () =
   assert.deepEqual(withMusic, noMusic);
 });
 
+test("a pronunciation rule change preserves reusable segments whose exact render input is unchanged", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-render-settings-test-"));
+  const base = { model: "gpt-realtime-2.1", voices: { instructor: "marin", learner: "cedar", announcer: "ballad" }, stitchFadeMs: 8, maxWords: 240, continuityCharacters: 240, spacing: { leadInMs: 250, continuedTurnMs: 120, speakerChangeMs: 220, sectionChangeMs: 550 } };
+  const first = settingsFor(base, "script-hash");
+  const revised = { ...settingsFor(base, "script-hash"), pronunciation_transforms: { ...first.pronunciation_transforms, CTAF: "seetaff" } };
+  try {
+    establishSettings(temporary, first);
+    assert.doesNotThrow(() => establishSettings(temporary, revised));
+    assert.deepEqual(JSON.parse(fs.readFileSync(path.join(temporary, "render-settings.json"), "utf8")).pronunciation_transforms, revised.pronunciation_transforms);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
 test("episode audio mix configuration is explicit and bound to its rendered record", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-audio-mix-config-test-"));
   const episodePath = path.join(temporary, "episode"); const assetsPath = path.join(temporary, "assets");
@@ -1381,6 +1511,13 @@ test("episode audio mix configuration is explicit and bound to its rendered reco
     assert.equal(mix.enabled, true);
     assert.equal(audioMixMatchesManifest(mix, { source_sha256: mix.sourceSha256, base_gain_db: -24, voice_gain_db: -30, level_transition_seconds: 0.15, cue_plan: { intro: { lead_seconds: 10, continuation_seconds: 5, fade_seconds: 0.5 }, outro: { continuation_seconds: 10, fade_seconds: 5 } } }), true);
     assert.equal(audioMixMatchesManifest(mix, null), false);
+    fs.writeFileSync(path.join(episodePath, "disabled-without-reason.yaml"), "schema_version: 1\nmusic:\n  enabled: false\n");
+    assert.throws(() => loadAudioMixConfig(path.join(episodePath, "disabled-without-reason.yaml"), { repoRoot: temporary, required: true }), /disabled_reason/);
+    fs.writeFileSync(path.join(episodePath, "disabled-with-reason.yaml"), "schema_version: 1\nmusic:\n  enabled: false\n  disabled_reason: This special episode intentionally has no music.\n");
+    const disabledMix = loadAudioMixConfig(path.join(episodePath, "disabled-with-reason.yaml"), { repoRoot: temporary, required: true });
+    assert.equal(disabledMix.enabled, false);
+    assert.equal(disabledMix.disabledReason, "This special episode intentionally has no music.");
+    assert.equal(audioMixMatchesManifest(disabledMix, null), true);
     fs.writeFileSync(path.join(episodePath, "invalid.yaml"), "schema_version: 1\nmusic:\n  enabled: true\n  source: /tmp/outside.mp3\n  base_gain_db: -24\n  voice_gain_db: -30\n  level_transition_seconds: 0.15\n  intro_lead_seconds: 10\n  intro_tail_seconds: 5\n  intro_fade_seconds: 0.5\n  outro_tail_seconds: 10\n  outro_fade_seconds: 5\n");
     assert.throws(() => loadAudioMixConfig(path.join(episodePath, "invalid.yaml"), { repoRoot: temporary, required: true }), AudioMixConfigError);
   } finally { fs.rmSync(temporary, { recursive: true, force: true }); }

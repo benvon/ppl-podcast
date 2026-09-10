@@ -16,19 +16,70 @@ function sourceValidationInputHashes(episodePath) {
   };
 }
 
+function sourceReviewAdjudicationsPath(episodePath) {
+  return path.join(episodePath, "source-review-adjudications.yaml");
+}
+
+function sourceReviewAdjudicationConfig(episodePath, inputHashes, ledger, claimInventory) {
+  const file = sourceReviewAdjudicationsPath(episodePath);
+  if (!fs.existsSync(file)) return { file: null, sha256: null, items: [], errors: [] };
+  const errors = [];
+  let document;
+  try {
+    document = YAML.parseDocument(fs.readFileSync(file, "utf8"));
+    if (document.errors.length) throw new Error(document.errors[0].message);
+  } catch (error) {
+    return { file: path.basename(file), sha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"), items: [], errors: [`source-review-adjudications.yaml is invalid: ${error.message}`] };
+  }
+  const value = document.toJS();
+  if (!value || value.schema_version !== 1 || !Array.isArray(value.adjudications)) {
+    return { file: path.basename(file), sha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"), items: [], errors: ["source-review-adjudications.yaml must declare schema_version: 1 and an adjudications array"] };
+  }
+  const sourcesById = new Map((ledger.sources || []).map((source) => [source.id, source]));
+  const claimsById = new Map((claimInventory.claims || []).map((claim) => [claim.id, claim]));
+  const inputKeys = Object.keys(inputHashes);
+  const ids = new Set();
+  const pairs = new Set();
+  for (const [index, item] of value.adjudications.entries()) {
+    const prefix = `source-review adjudication ${index + 1}`;
+    if (!item || typeof item !== "object") { errors.push(`${prefix} must be an object`); continue; }
+    if (typeof item.id !== "string" || !item.id || ids.has(item.id)) errors.push(`${prefix} must have a unique id`); else ids.add(item.id);
+    if (typeof item.source_id !== "string" || !sourcesById.has(item.source_id)) errors.push(`${prefix} must identify a current source_id`);
+    if (typeof item.claim_id !== "string" || !claimsById.has(item.claim_id)) errors.push(`${prefix} must identify a current claim_id`);
+    const pair = `${item.source_id}\u0000${item.claim_id}`;
+    if (pairs.has(pair)) errors.push(`${prefix} duplicates a source and claim adjudication`); else pairs.add(pair);
+    if (sourcesById.get(item.source_id) && claimsById.get(item.claim_id) && (!sourcesById.get(item.source_id).supports_claims.includes(item.claim_id) || !claimsById.get(item.claim_id).sources.includes(item.source_id))) {
+      errors.push(`${prefix} must use a reciprocal source and claim mapping`);
+    }
+    if (item.expected_relevance_verdict !== "partially_supports") errors.push(`${prefix} may adjudicate only an expected partially_supports verdict`);
+    if (item.decision !== "accepted_nonmaterial_omission") errors.push(`${prefix} must use decision accepted_nonmaterial_omission`);
+    if (typeof item.rationale !== "string" || !item.rationale.trim()) errors.push(`${prefix} must include a human rationale`);
+    if (typeof item.authorized_by !== "string" || !item.authorized_by.trim()) errors.push(`${prefix} must record who authorized it`);
+    if (typeof item.authorized_at_utc !== "string" || Number.isNaN(Date.parse(item.authorized_at_utc))) errors.push(`${prefix} must record authorized_at_utc as a timestamp`);
+    const actualHashes = item.input_sha256;
+    if (!actualHashes || typeof actualHashes !== "object" || Object.keys(actualHashes).length !== inputKeys.length || !inputKeys.every((key) => actualHashes[key] === inputHashes[key])) {
+      errors.push(`${prefix} must be bound to the current sources, claims, master script, and show-notes input hashes`);
+    }
+  }
+  return { file: path.basename(file), sha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"), items: value.adjudications, errors };
+}
+
 function sourceTagRecords(markdown) {
   const records = [];
+  let episodeTitle = null;
   let section = null;
   let lastParagraph = null;
   const lines = String(markdown).replace(/\r\n/g, "\n").split("\n");
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
+    const title = line.match(/^#\s+([^#].+?)\s*$/);
+    if (title && !episodeTitle) { episodeTitle = title[1]; continue; }
     const heading = line.match(/^##\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/);
     if (heading) { section = heading[1]; lastParagraph = null; continue; }
     if (/^\*\*[A-Z ]+:\*\*$/.test(line.trim())) { lastParagraph = null; continue; }
     const tag = line.trim().match(/^\[Source:\s*sources\.yaml#([^\]]+)\]$/);
     if (tag) {
-      records.push({ source_id: tag[1], section, line: index + 1, passage: lastParagraph });
+      records.push({ source_id: tag[1], episode_title: episodeTitle, section, line: index + 1, passage: lastParagraph });
       continue;
     }
     // Production-status lines are ignored only for legacy scripts. New
@@ -88,8 +139,13 @@ function validateMasterScriptSourceMappings(episodePath, ledger, claimInventory)
     if (!record.passage) errors.push(`master-script.md line ${record.line} cites source ${record.source_id} without a preceding spoken paragraph`);
     if (!tagsBySection.has(record.section)) tagsBySection.set(record.section, new Set());
     tagsBySection.get(record.section).add(record.source_id);
-    if (!passagesBySource.has(record.source_id)) passagesBySource.set(record.source_id, new Set());
-    if (record.passage) passagesBySource.get(record.source_id).add(record.passage);
+    if (!passagesBySource.has(record.source_id)) passagesBySource.set(record.source_id, new Map());
+    if (record.passage) {
+      const passage = { text: record.passage, episode_title: record.episode_title, section_heading: record.section };
+      // Preserve a passage once per structural location. The same spoken text
+      // can be used in different sections with materially different scope.
+      passagesBySource.get(record.source_id).set(JSON.stringify(passage), passage);
+    }
   }
   errors.push(...retrievalReviewUntaggedPassageErrors(script));
   let claimCoverageCount = 0;
@@ -108,7 +164,7 @@ function validateMasterScriptSourceMappings(episodePath, ledger, claimInventory)
     errors,
     source_tag_count: records.length,
     claim_coverage_count: claimCoverageCount,
-    passages_by_source: Object.fromEntries([...passagesBySource].map(([sourceId, passages]) => [sourceId, [...passages]])),
+    passages_by_source: Object.fromEntries([...passagesBySource].map(([sourceId, passages]) => [sourceId, [...passages.values()]])),
   };
 }
 
@@ -150,7 +206,28 @@ function validationCoverageErrors(episodePath, validation) {
     const result = showNotesResults.find((candidate) => candidate?.id === link.id);
     if (result?.url !== link.url || result?.source_id !== link.source_id || !sameStringSet(result?.claim_ids, link.claim_ids || [])) errors.push(`link-validation.yaml does not preserve the current show-notes mapping for ${link.id}.`);
   }
+  const adjudications = sourceReviewAdjudicationConfig(episodePath, sourceValidationInputHashes(episodePath), sourceLedger, claimInventory);
+  errors.push(...adjudications.errors);
+  const recorded = validation?.source_review_adjudications;
+  if (!adjudications.file) {
+    if (recorded) errors.push("link-validation.yaml records source-review adjudications, but no current adjudication file exists.");
+    return errors;
+  }
+  if (recorded?.file !== adjudications.file || recorded?.sha256 !== adjudications.sha256) errors.push("link-validation.yaml is not bound to the current source-review adjudications.");
+  const applied = Array.isArray(recorded?.applied) ? recorded.applied : [];
+  if (applied.length !== adjudications.items.length || new Set(applied.map((item) => item.id)).size !== applied.length) errors.push("link-validation.yaml does not preserve every source-review adjudication exactly once.");
+  for (const adjudication of adjudications.items) {
+    const appliedItem = applied.find((item) => item?.id === adjudication.id);
+    if (!appliedItem || appliedItem.source_id !== adjudication.source_id || appliedItem.claim_id !== adjudication.claim_id || appliedItem.expected_relevance_verdict !== adjudication.expected_relevance_verdict || appliedItem.decision !== adjudication.decision) {
+      errors.push(`link-validation.yaml does not preserve source-review adjudication ${adjudication.id}.`);
+      continue;
+    }
+    const result = sourceResults.find((item) => item?.source_id === adjudication.source_id);
+    const assessment = result?.relevance?.assessment?.claim_assessments?.find((item) => item?.claim_id === adjudication.claim_id);
+    if (assessment?.verdict !== adjudication.expected_relevance_verdict) errors.push(`source-review adjudication ${adjudication.id} does not match the recorded LLM assessment.`);
+    if (!result?.claim_assessments?.adjudicated_assessment_ids?.includes(adjudication.claim_id)) errors.push(`source-review adjudication ${adjudication.id} was not applied to its source result.`);
+  }
   return errors;
 }
 
-module.exports = { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewAdjudicationConfig, sourceReviewAdjudicationsPath, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };

@@ -44,9 +44,10 @@ const PRONUNCIATION_TRANSFORMS = Object.freeze({
   AI: "artificial intelligence",
   AIM: "aim",
   PHAK: "pee hack",
-  ASOS: "AY-sohs",
-  AWOS: "AY-wahs",
+  ASOS: "ay-soss",
+  AWOS: "ay-wahs",
   ATIS: "AY-tis",
+  CTAF: "seetaff",
   METAR: "MEE-tar",
   METARs: "MEE-tars",
   TAF: "taf",
@@ -323,10 +324,16 @@ function establishSettings(workDir, settings) {
   ensureDir(workDir); const target = path.join(workDir, "render-settings.json"); const next = `${JSON.stringify(settings, null, 2)}\n`;
   if (fs.existsSync(target)) {
     const existing = JSON.parse(fs.readFileSync(target, "utf8"));
-    const { script_sha256: existingScriptHash, spacing_ms: existingSpacing, ...existingRenderSettings } = existing;
-    const { script_sha256: nextScriptHash, spacing_ms: nextSpacing, ...nextRenderSettings } = settings;
+    // Pronunciation maps are deliberately not a work-directory compatibility
+    // boundary. Each segment records a hash of its exact instructions and
+    // spoken text, so a changed pronunciation rerenders only the segment that
+    // contains that term. Spacing is an assembly-only choice for the same
+    // reason. Model, voice, audio format, and speaking style remain shared
+    // render settings and must not be mixed.
+    const { script_sha256: existingScriptHash, spacing_ms: existingSpacing, pronunciation_transforms: existingTransforms, pronunciation_guidance: existingGuidance, ...existingRenderSettings } = existing;
+    const { script_sha256: nextScriptHash, spacing_ms: nextSpacing, pronunciation_transforms: nextTransforms, pronunciation_guidance: nextGuidance, ...nextRenderSettings } = settings;
     if (JSON.stringify(existingRenderSettings) !== JSON.stringify(nextRenderSettings)) throw new RenderError(`Render settings differ from ${target}. Choose a new --work-dir to avoid mixing incompatible segments.`);
-    if (existingScriptHash !== nextScriptHash) writeAtomic(target, next);
+    if (existingScriptHash !== nextScriptHash || JSON.stringify(existingTransforms) !== JSON.stringify(nextTransforms) || JSON.stringify(existingGuidance) !== JSON.stringify(nextGuidance)) writeAtomic(target, next);
     return;
   }
   writeAtomic(target, next);
@@ -619,4 +626,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, establishSettings, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

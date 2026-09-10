@@ -1,0 +1,88 @@
+id: core-15
+series: ppl-study-podcast
+title: Traffic Patterns, Nontowered Operations, and Right of Way
+slug: traffic-patterns-nontowered-operations-right-of-way
+track: core
+production_contract_version: 2
+status: ready_for_hosting_pr
+version: 0.1.11
+published_at: 2026-09-10T22:29:37Z
+runtime_target_minutes: 30
+runtime_actual_seconds: 1973.98
+word_count: 4903
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - FAA-S-ACS-6C, PA.III.A.K1-K2, R1, R4, S1-S2
+  - FAA-S-ACS-6C, PA.III.B.K1-K4, R1-R3, S2-S6
+phak_references:
+  - PHAK Chapter 14, Traffic Patterns and Collision Avoidance
+aim_references:
+  - AIM 4-1-9, Traffic Advisory Practices at Airports Without Operating Control
+    Towers
+  - AIM 4-3-2 through 4-3-4, Traffic Patterns and Visual Indicators
+  - AIM 7-4-1 and 7-4-5, Wake Turbulence
+advisory_circular_references:
+  - AC 90-66C, Non-Towered Airport Flight Operations
+  - AC 90-48E, Pilots' Role in Collision Avoidance
+cfr_references:
+  - "14 CFR 91.113, Right-of-way rules: Except water operations"
+  - 14 CFR 91.126(b), Operating on or in the vicinity of an airport in Class G
+    airspace
+learning_objectives:
+  - Use current airport information, observed traffic, wind information, and
+    visual indicators to build a nontowered-airport traffic picture.
+  - Identify the standard traffic-pattern legs, altitude, direction, entry,
+    spacing, and departure path.
+  - Use CTAF self-announcements to share position and intentions without
+    treating the frequency as a clearance or sequencing service.
+  - Apply visual scanning and right-of-way rules to converging, head-on,
+    overtaking, landing, and special-category conflicts.
+  - Distinguish regulatory requirements from FAA-recommended operating practices.
+  - Recognize when an early spacing change, extended leg, go-around, or
+    departure delay is the safer resolution to a developing conflict.
+trouble_spots:
+  - Treating a quiet CTAF as evidence that the pattern is empty.
+  - Treating a radio call, UNICOM runway recommendation, or straight-in approach
+    as a clearance or grant of priority.
+  - Descending into a traffic pattern instead of reaching traffic-pattern
+    altitude before entry.
+  - Confusing the departure leg with the upwind leg or using pattern-leg names
+    without a shared mental picture.
+  - Memorizing right-of-way slogans without identifying geometry, aircraft
+    category, and who must give way.
+  - Allowing displays or radio work to replace outside scanning.
+  - Presenting AIM and advisory-circular recommendations as though every
+    recommended technique were a regulation.
+source_verification:
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-10T22:28:41.838Z
+  link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: complete
+review:
+  editorial_status: script_approved
+  editorial_script_sha256: 798412c6be18488458e071952c63b70e9020df18d5956b27cd74ff9e37dc983a
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining: []
+audio:
+  manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: ready_for_hosting_pr
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null

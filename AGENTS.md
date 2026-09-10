@@ -11,6 +11,12 @@
 - To stage a sealed handoff, use the hosting repository's purpose-built command exactly as `direnv exec . ./scripts/stage-episode <absolute-handoff-path>`. `direnv` injects the credentials only into that child process; its values must never be surfaced or copied into another command.
 - Inspect and validate the generated release manifest and Git state after the staging command. Those files—not the local environment—are the reviewable evidence for the hosting PR.
 
+## Production assurance
+
+- Read [docs/production-assurance.md](docs/production-assurance.md) before changing validation, rendering, sealing, staging, or release tooling. It defines the required success, failure, cancellation, retry, provenance, and test behavior. Do not add a check that recognizes a friendly string without verifying the artifact or identity it claims to represent.
+- Treat `--package-only` as a draft-package shape check only. It never establishes final release readiness and must not be described as a final pass.
+- Historical published packages are preservation-only. Do not refresh their seals, staging objects, source-validation records, or workflow fields. A deliberate revision begins under the current contract and creates a new candidate and handoff.
+
 ## Starting a new episode
 
 1. Inspect the working tree, sync `origin/main`, and create a fresh `feature/` branch. Preserve unrelated work; do not copy a prior episode directory.
@@ -20,6 +26,7 @@
    ```
 3. Treat `templates/` as the initial production contract. Before researching or drafting, read `docs/script-drafting-playbook.md`, the new package’s QA checklist, and the template files.
 4. Use the current Sol model with high reasoning effort for the initial source-led research pass and complete first draft. It must produce the source ledger, claim inventory, research packet, source-tagged `master-script.md`, derived `narration.md`, show notes, metadata, and production log. Complete these drafting gates in order before presenting the script for human editorial review:
+   - After research establishes the source ledger, claim inventory, and scenario facts—but before full prose drafting—have an independent source challenger review every proposed factual claim against its exact cited locator. This early claim-source preflight uses the same standard of support as formal source relevance, requires explicit current-turn authorization before sending unpublished source material to OpenAI, and is recorded in `production-log.md`. Do not draft a source-bound factual statement that fails this preflight. The later tagged-passage review remains required and authoritative.
    - Have a separate agent that did not draft the lesson review `master-script.md` for complete and correct grammar, complete thoughts, coherent within-episode callbacks and call-forwards, and first-listen comprehension.
    - Resolve its required findings, regenerate `narration.md`, and record the material findings and resolutions in `production-log.md`.
    - Run formal source-relevance validation with `--require-llm` only after receiving explicit current-turn authorization to send the source excerpts, claims, and tagged passages to OpenAI. Resolve every source, locator, claim, or source-tagged-passage finding and rerun it until it is clean. A failed rerun leaves a blocking marker beside the canonical report; do not render or prepare a handoff until a later clean run replaces the report and clears that marker. This validation must examine the tagged spoken passages, not merely the claim inventory or source links. Treat a Retrieval review as source-bound teaching: every factual Instructor or Learner paragraph needs immediate source tags, and each recalled claim must list `Retrieval review` in its `script_sections`. Do not place one source tag after a paragraph that also contains material facts from a different source; split the prose at the source boundary so each tag has one exact supported passage.

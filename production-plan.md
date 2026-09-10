@@ -90,8 +90,9 @@ Dialogue must earn its place. Remove an exchange if the same information would b
 | Segment | Target | Purpose |
 | --- | ---: | --- |
 | Cold open and scope | 10-20 sec | State the episode subject and practical relevance only. Do not teach the lesson's crux before the required notice. |
-| Required production notice | 20-30 sec | Deliver the approved AI-assisted-production and not-flight-instruction notice verbatim. |
-| Objectives and source posture | 1-2 min | State what the listener should understand and distinguish regulation/guidance/example as needed. |
+| Disclaimer | 20-30 sec | Deliver the approved AI-assisted-production and not-flight-instruction notice verbatim. |
+| Podcast introduction | 20-40 sec | The Announcer gives the standard series introduction and announces the specific episode topic. |
+| What the ACS is asking you to connect | 1-2 min | State what the listener should understand and distinguish regulation/guidance/example as needed. |
 | Core teaching | 15-20 min | Explain the PHAK-centered concepts in a logical sequence. |
 | Practical application | 8-12 min | Work 2-3 realistic scenarios; connect knowledge to risk management and decisions. |
 | ACS and trouble-spot focus | 5-8 min | Translate the ACS into plain language and resolve predictable errors. |
@@ -111,11 +112,15 @@ TARGET: 38 minutes / 5,320 words
 INSTRUCTOR: ...
 LEARNER: ...
 
-[01:00] REQUIRED PRODUCTION NOTICE
+[00:15] DISCLAIMER
 INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
 
-[Source: ACS FAA-S-ACS-6C, Area VII, Task B, Knowledge K1; PHAK ch. 5, Stall Characteristics]
-[Claim type: FAA standard]
+[00:45] PODCAST INTRODUCTION
+ANNOUNCER: [Use the standard series introduction and announce the episode topic.]
+
+[01:05] WHAT THE ACS IS ASKING YOU TO CONNECT
+ANNOUNCER: What the ACS is asking you to connect.
+INSTRUCTOR: [Name the ACS task, its connected variables or evidence, and the practical question this lesson answers.]
 
 [12:40] SCENARIO: Overshooting base to final
 ...

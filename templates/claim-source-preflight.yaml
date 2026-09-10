@@ -1,0 +1,14 @@
+schema_version: 1
+status: pending
+checked_at_utc: null
+llm_requested: false
+llm_model: null
+# Bind this early review to the source ledger and claim inventory that existed
+# before full spoken prose was drafted.
+input_sha256:
+  sources: null
+  claims: null
+# Record one result for every source. Each result must name the exact locator,
+# mapped claims, and an excerpt copied exactly as supplied to the LLM. Its
+# SHA-256 and character count make that retained evidence tamper-evident.
+results: []

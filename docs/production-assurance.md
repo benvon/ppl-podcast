@@ -92,7 +92,7 @@ Use fault injection where practical: abort after lock acquisition, throw while w
 Use this order for each current-contract episode:
 
 1. Research from the ACS, PHAK, AFH when relevant, regulations, and FAA guidance; create the source ledger, claim inventory, and a source map for each planned scenario before prose grows large.
-2. With explicit current-turn authorization, run an independent LLM claim-source preflight against the proposed factual claims and their exact source locators. Resolve every unsupported, over-broad, or incomplete claim before the drafting agent writes full spoken prose. Record the findings and resolutions in `production-log.md`.
+2. With explicit current-turn authorization, run an independent LLM claim-source preflight against the proposed factual claims and their exact source locators. Resolve every unsupported, over-broad, or incomplete claim before the drafting agent writes full spoken prose. Record the input hashes, exact reviewed locators, hash-verified source excerpts, claim mappings, and LLM assessments in `claim-source-preflight.yaml`; record findings and resolutions in `production-log.md`.
 3. Draft the lesson as spoken, scenario-led teaching with the current Sol/high drafting workflow. The drafting agent uses only preflight-supported factual claims, and labels additional reasoning as teaching synthesis.
 4. Have an independent agent conduct the first-listen read for grammar, complete thoughts, clear referents, coherent callbacks, earned Learner turns, and smooth causal transitions.
 5. Resolve required findings, regenerate narration, and run deterministic source/claim/show-note mapping.

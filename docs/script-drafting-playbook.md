@@ -89,7 +89,7 @@ When useful, acknowledge the boundary once in plain language: the lesson gives t
 
 ## Run the claim-source preflight before prose
 
-After the research packet, source ledger, claim inventory, and scenario facts are complete—but before the drafting agent writes full spoken prose—have an independent LLM source challenger review every proposed factual claim against its exact cited locator and relevant source excerpt. Obtain explicit current-turn authorization before sending unpublished material to OpenAI, mark the dedicated preflight-authorization item in the package QA checklist, and record findings and resolutions in `production-log.md`.
+After the research packet, source ledger, claim inventory, and scenario facts are complete—but before the drafting agent writes full spoken prose—have an independent LLM source challenger review every proposed factual claim against its exact cited locator and relevant source excerpt. Obtain explicit current-turn authorization before sending unpublished material to OpenAI, mark the dedicated preflight-authorization item in the package QA checklist, and record the current source/claim input hashes, every reviewed source locator and hash-verified excerpt, and all LLM assessments in `claim-source-preflight.yaml`. Record findings and resolutions in `production-log.md`.
 
 Resolve unsupported, over-broad, or incomplete claims before they become spoken prose. This early review prevents avoidable source-support rewrites during human editorial review. It does not replace the later formal validation of the actual source-tagged passages.
 

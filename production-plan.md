@@ -161,7 +161,7 @@ Do not begin full scripting with an unresolved source conflict. Escalate it as `
 
 ### Claim-source preflight
 
-Before the drafting agent writes full spoken prose, send the proposed factual claims, their exact source locators, and the relevant source excerpts to an independent LLM source challenger. Obtain explicit current-turn authorization before that outbound call, record the authorization in the dedicated QA-checklist item, and record findings and resolutions in `production-log.md`.
+Before the drafting agent writes full spoken prose, send the proposed factual claims, their exact source locators, and the relevant source excerpts to an independent LLM source challenger. Obtain explicit current-turn authorization before that outbound call, record the authorization in the dedicated QA-checklist item, record the reviewed claims, locators, hash-verified excerpts, input hashes, and LLM assessments in `claim-source-preflight.yaml`, and record findings and resolutions in `production-log.md`.
 
 Resolve every unsupported, over-broad, or incomplete claim before drafting. The later formal review still validates the final source-tagged spoken passages; this preflight prevents avoidable sentence-by-sentence source rewrites from reaching human editorial review.
 

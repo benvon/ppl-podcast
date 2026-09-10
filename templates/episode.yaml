@@ -23,6 +23,7 @@ trouble_spots: []
 source_verification:
   status: not_started
   verified_at_utc: null
+  claim_source_preflight: claim-source-preflight.yaml
   link_validation: link-validation.yaml
   relevance_review: required_before_render
 review:

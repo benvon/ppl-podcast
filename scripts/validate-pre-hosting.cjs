@@ -9,7 +9,7 @@ const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, sameStringList } = require("./production-state-contract.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
-const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
+const { claimSourcePreflightInputHashes, sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { validationFailurePath } = require("./validate-source-links.cjs");
 
@@ -56,6 +56,10 @@ function sha256Text(value) {
 
 function validSha256(value) {
   return typeof value === "string" && /^[a-f0-9]{64}$/i.test(value) ? value.toLowerCase() : null;
+}
+
+function sameStringSet(actual, expected) {
+  return Array.isArray(actual) && actual.length === new Set(actual).size && actual.length === expected.length && actual.every((value) => expected.includes(value));
 }
 
 function durationDisplay(seconds) {
@@ -167,7 +171,45 @@ function pendingAudioReleaseGateErrors(episode) {
   return errors;
 }
 
-function sourceReviewErrors({ episodePath, paths, episode, sourceValidation, qaChecklist }) {
+function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
+  if (episode.production_contract_version !== 2) return [];
+  const errors = [];
+  expect(errors, episode.source_verification?.claim_source_preflight === "claim-source-preflight.yaml", "episode.yaml must reference claim-source-preflight.yaml.");
+  expect(errors, preflight?.schema_version === 1, "claim-source-preflight.yaml must use schema_version 1.");
+  expect(errors, preflight?.status === "complete", "claim-source-preflight.yaml must record a complete preflight.");
+  expect(errors, typeof preflight?.checked_at_utc === "string" && !Number.isNaN(Date.parse(preflight.checked_at_utc)), "claim-source-preflight.yaml must record its review timestamp.");
+  expect(errors, preflight?.llm_requested === true && typeof preflight?.llm_model === "string" && preflight.llm_model.length > 0, "claim-source-preflight.yaml must record the LLM review model.");
+  const inputHashes = claimSourcePreflightInputHashes(episodePath);
+  expect(errors, Object.entries(inputHashes).every(([name, digest]) => preflight?.input_sha256?.[name] === digest), "claim-source-preflight.yaml must be bound to the current sources.yaml and claim-inventory.yaml bytes.");
+  const ledger = readYaml(path.join(episodePath, "sources.yaml")); const inventory = readYaml(path.join(episodePath, "claim-inventory.yaml"));
+  const sources = Array.isArray(ledger.sources) ? ledger.sources : [];
+  const claimsByID = new Map((Array.isArray(inventory.claims) ? inventory.claims : []).map((claim) => [claim.id, claim]));
+  const results = Array.isArray(preflight?.results) ? preflight.results : [];
+  expect(errors, sameStringSet(results.map((result) => result?.source_id), sources.map((source) => source.id)), "claim-source-preflight.yaml must cover every current source exactly once.");
+  for (const source of sources) {
+    const result = results.find((candidate) => candidate?.source_id === source.id);
+    if (!result) continue;
+    expect(errors, result.locator === source.locator, `claim-source-preflight.yaml must preserve the exact locator for source ${source.id}.`);
+    expect(errors, sameStringSet(result.linked_claim_ids, source.supports_claims || []), `claim-source-preflight.yaml must preserve the current claim mapping for source ${source.id}.`);
+    const excerpt = result.reviewed_excerpt;
+    const excerptRecorded = typeof excerpt?.kind === "string" && excerpt.kind.length > 0
+      && typeof excerpt.text === "string" && excerpt.text.length > 0
+      && validSha256(excerpt.sha256) === sha256Text(excerpt.text)
+      && Number.isInteger(excerpt.characters) && excerpt.characters === excerpt.text.length;
+    expect(errors, excerptRecorded, `claim-source-preflight.yaml must retain a hash-verified copy of the reviewed excerpt for source ${source.id}.`);
+    const expectedClaims = source.supports_claims || [];
+    expect(errors, expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
+    const assessments = result.relevance?.claim_assessments || [];
+    const assessmentIDs = assessments.map((assessment) => assessment?.claim_id);
+    const allSupporting = result.relevance?.status === "assessed"
+      && sameStringSet(assessmentIDs, expectedClaims)
+      && assessments.every((assessment) => assessment?.verdict === "supports" && typeof assessment.rationale === "string" && assessment.rationale.length > 0);
+    expect(errors, allSupporting, `claim-source-preflight.yaml must record supporting LLM assessments for every claim mapped to source ${source.id}.`);
+  }
+  return errors;
+}
+
+function sourceReviewErrors({ episodePath, paths, episode, preflight, sourceValidation, qaChecklist }) {
   const errors = [];
   expect(errors, episode.source_verification?.link_validation === "link-validation.yaml", "episode.yaml must reference link-validation.yaml.");
   expect(errors, episode.source_verification?.show_notes_manifest === "show-notes-manifest.yaml", "episode.yaml must reference show-notes-manifest.yaml.");
@@ -181,6 +223,7 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation, qaC
     expect(errors, qaItemCompleteWithID(qaChecklist, "openai-claim-source-preflight-authorization"), "qa-checklist.md must record explicit authorization before sending proposed claims and source excerpts to OpenAI for the claim-source preflight.");
     expect(errors, qaItemCompleteWithID(qaChecklist, "claim-source-preflight"), "qa-checklist.md must record that claim-source preflight findings were resolved before full prose drafting.");
     expect(errors, qaItemCompleteWithID(qaChecklist, "openai-source-review-authorization"), "qa-checklist.md must record explicit authorization before sending source material to OpenAI for source-relevance review.");
+    errors.push(...claimSourcePreflightErrors({ episodePath, episode, preflight }));
   }
   expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");
   expect(errors, Array.isArray(sourceValidation.results) && sourceValidation.results.length > 0, "link validation must record source results.");
@@ -196,7 +239,7 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation, qaC
   return errors;
 }
 
-function validateDraftPackageShape({ episodePath, paths, episode, audioManifest, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
+function validateDraftPackageShape({ episodePath, paths, episode, audioManifest, hosting, preflight, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist }) {
   const errors = [];
   expect(errors, PACKAGE_SHAPE_COMPATIBLE_STATUSES.has(episode.status), "episode.yaml status must be a recognized package-shape state.");
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
@@ -216,7 +259,7 @@ function validateDraftPackageShape({ episodePath, paths, episode, audioManifest,
   expect(errors, qaItemComplete(qaChecklist, "source-relevance", /- \[x\] (?:Before any audio render, source-link validator was run with `--require-llm`|After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`)/i), "qa-checklist.md must mark the source-relevance gate complete.");
   expect(errors, qaItemComplete(qaChecklist, "independent-script-review", /- \[x\] Independent spoken-script review completed by a second agent that did not draft the lesson/i), "qa-checklist.md must mark the independent spoken-script review complete.");
   expect(errors, hasResolvedIndependentSpokenScriptReview(productionLog), "production-log.md must record the independent spoken-script review and its resolution.");
-  errors.push(...sourceReviewErrors({ episodePath, paths, episode, sourceValidation, qaChecklist }));
+  errors.push(...sourceReviewErrors({ episodePath, paths, episode, preflight, sourceValidation, qaChecklist }));
   return { valid: errors.length === 0, kind: DRAFT_PACKAGE_SHAPE, final: false, errors };
 }
 
@@ -241,6 +284,9 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
   expect(errors, episode.production_contract_version === undefined || episode.production_contract_version === 2, "episode.yaml production_contract_version must be 2 when present.");
   let mix = null;
   const currentReleaseContract = episode.production_contract_version === 2;
+  if (currentReleaseContract) paths["claim-source-preflight.yaml"] = requireFile(resolvedEpisode, "claim-source-preflight.yaml", errors);
+  if (errors.length) return { valid: false, errors };
+  const preflight = currentReleaseContract ? readYaml(paths["claim-source-preflight.yaml"]) : null;
   const mixConfigured = currentReleaseContract || episode.audio?.mix_config !== undefined;
   if (mixConfigured) {
     expect(errors, episode.audio?.mix_config === "audio-mix.yaml", "episode.yaml audio.mix_config must reference audio-mix.yaml.");
@@ -253,7 +299,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
     }
   }
   if (errors.length) return { valid: false, errors };
-  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, paths, episode, audioManifest, hosting, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist });
+  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, paths, episode, audioManifest, hosting, preflight, sourceValidation, masterScript, narration, showNotes, researchPacket, productionLog, qaChecklist });
   const candidate = audioManifest.current_candidate_render || {};
   let releaseIdentityRecord;
   try { releaseIdentityRecord = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
@@ -358,7 +404,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
     expect(errors, review.includes(`name="ppl-audio-sha256" content="${candidateSha256}"`), "chapter-review page must identify the approved MP3 checksum.");
   }
 
-  errors.push(...sourceReviewErrors({ episodePath: resolvedEpisode, paths, episode, sourceValidation, qaChecklist }));
+  errors.push(...sourceReviewErrors({ episodePath: resolvedEpisode, paths, episode, preflight, sourceValidation, qaChecklist }));
   expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");
   expect(errors, !/^## Production notice\b/im.test(showNotes), "show notes must not duplicate the hosting production disclosure.");
   const requiredChecklistEvidence = [
@@ -387,4 +433,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };
+module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, claimSourcePreflightErrors, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, sourceReviewErrors, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };

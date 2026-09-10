@@ -16,6 +16,14 @@ function sourceValidationInputHashes(episodePath) {
   };
 }
 
+function claimSourcePreflightInputHashes(episodePath) {
+  const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
+  return {
+    sources: digest(path.join(episodePath, "sources.yaml")),
+    claims: digest(path.join(episodePath, "claim-inventory.yaml")),
+  };
+}
+
 function sourceTagRecords(markdown) {
   const records = [];
   let section = null;
@@ -153,4 +161,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };

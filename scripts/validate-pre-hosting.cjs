@@ -178,6 +178,8 @@ function sourceReviewErrors({ episodePath, paths, episode, sourceValidation, qaC
   expect(errors, !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress`) && !fs.existsSync(`${paths["link-validation.yaml"]}.in-progress.recovering`), "source validation must not be in progress, recovering, or interrupted.");
   expect(errors, !fs.existsSync(validationFailurePath(paths["link-validation.yaml"])), "the most recent source validation must not have unresolved findings.");
   if (episode.production_contract_version === 2) {
+    expect(errors, qaItemCompleteWithID(qaChecklist, "openai-claim-source-preflight-authorization"), "qa-checklist.md must record explicit authorization before sending proposed claims and source excerpts to OpenAI for the claim-source preflight.");
+    expect(errors, qaItemCompleteWithID(qaChecklist, "claim-source-preflight"), "qa-checklist.md must record that claim-source preflight findings were resolved before full prose drafting.");
     expect(errors, qaItemCompleteWithID(qaChecklist, "openai-source-review-authorization"), "qa-checklist.md must record explicit authorization before sending source material to OpenAI for source-relevance review.");
   }
   expect(errors, Array.isArray(sourceValidation.show_notes_results) && sourceValidation.show_notes_results.length > 0, "link validation must record checked listener-facing study links.");

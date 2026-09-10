@@ -28,7 +28,7 @@ npm run precommit:check
 
 ## Candidate workflow
 
-1. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Before the source-relevance or rendering call that sends unpublished material to OpenAI, obtain explicit current-turn authorization for that specific use. Then run
+1. Before full prose drafting, complete the authorized claim-source preflight described in `docs/script-drafting-playbook.md`; record its separate authorization in the QA checklist. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Before the formal source-relevance or rendering call that sends unpublished material to OpenAI, obtain explicit current-turn authorization for that specific use. Then run
    `sources:validate --require-llm`, resolve every finding, and record
    `source_verification.relevance_review: complete` in `episode.yaml`. A
    failed rerun writes a blocking marker beside the canonical report; only a

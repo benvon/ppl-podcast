@@ -132,7 +132,7 @@ INSTRUCTOR: [Name the ACS task, its connected variables or evidence, and the pra
 - Maintain a clean `narration.md` derivative with source tags removed only after the tagged master is approved.
 - Budget words by section and record the actual word count and rendered duration.
 - Avoid invented radio calls, airport instructions, weather, or aircraft checklist steps unless the scenario clearly labels them as hypothetical and no operational action depends on the fictional detail.
-- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue. The initial drafting loop is: source-led draft, independent adversarial read, drafting-agent revision, formal source-relevance validation, then human editorial review. Do not defer source validation until after editorial approval or final release work.
+- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue. The initial drafting loop is: source-led research and claim map, authorized claim-source preflight, source-led draft, independent adversarial read, drafting-agent revision, formal tagged-passage source-relevance validation, then human editorial review. Do not defer source validation until after editorial approval or final release work.
 
 ### Editorial voice and pacing
 
@@ -159,15 +159,23 @@ Before drafting, create a source packet that contains:
 
 Do not begin full scripting with an unresolved source conflict. Escalate it as `OPEN TECHNICAL QUESTION` and either resolve it with a primary source, obtain qualified review when available, or cut it from the episode.
 
+### Claim-source preflight
+
+Before the drafting agent writes full spoken prose, send the proposed factual claims, their exact source locators, and the relevant source excerpts to an independent LLM source challenger. Obtain explicit current-turn authorization before that outbound call, record the authorization in the dedicated QA-checklist item, and record findings and resolutions in `production-log.md`.
+
+Resolve every unsupported, over-broad, or incomplete claim before drafting. The later formal review still validates the final source-tagged spoken passages; this preflight prevents avoidable sentence-by-sentence source rewrites from reaching human editorial review.
+
 ### Initial drafting loop
 
 The initial draft is not ready for source-relevance review or script approval when the first source-led draft is complete. Run this closed loop first:
 
-1. The current Sol model with high reasoning produces the source-led initial package: research packet, reciprocal source ledger and claim inventory, source-tagged master script, derived narration, show notes, metadata, and production log.
-2. A separate agent that did not draft the episode performs an adversarial spoken-script read. It checks grammar, complete thoughts, clear referents and causal chains, earned Learner turns, coherent internal callbacks and call-forwards, first-listen comprehension, scope, and source-tagged claims. Its report distinguishes required findings from optional refinements.
-3. The drafting agent incorporates every required finding with the minimum source-supported revision, keeps the script, narration, claims, show notes, metadata, and source ledger consistent, and records the findings and resolutions in `production-log.md`.
-4. Rerun the script-structure, narration-derivation, source/claim mapping, and relevant repository checks. Then run formal source-relevance validation with `--require-llm`, which checks source-tagged spoken passages as well as claims, locators, links, and source records. Resolve every finding and rerun it until clean.
-5. Turn the clean, source-validated script over for human editorial review. If that review changes factual spoken prose, source tags, claims, sources, or show notes, return to step 4 before rendering.
+1. The current Sol model with high reasoning produces the source-led research foundation: research packet, reciprocal source ledger and claim inventory, scenario outline, metadata, and production log.
+2. Run the authorized claim-source preflight against each proposed factual claim, exact locator, and source excerpt. Resolve every finding before the drafting agent writes full prose.
+3. The drafting agent creates the source-tagged master script, derived narration, show notes, and remaining package files from the cleared research foundation.
+4. A separate agent that did not draft the episode performs an adversarial spoken-script read. It checks grammar, complete thoughts, clear referents and causal chains, earned Learner turns, coherent internal callbacks and call-forwards, first-listen comprehension, scope, and source-tagged claims. Its report distinguishes required findings from optional refinements.
+5. The drafting agent incorporates every required finding with the minimum source-supported revision, keeps the script, narration, claims, show notes, metadata, and source ledger consistent, and records the findings and resolutions in `production-log.md`.
+6. Rerun the script-structure, narration-derivation, source/claim mapping, and relevant repository checks. Then run formal source-relevance validation with `--require-llm`, which checks source-tagged spoken passages as well as claims, locators, links, and source records. Resolve every finding and rerun it until clean.
+7. Turn the clean, source-validated script over for human editorial review. If that review changes factual spoken prose, source tags, claims, sources, or show notes, return to step 6 before rendering.
 
 The adversarial review challenges the draft; it does not replace formal source-relevance validation, human editorial judgment, or a qualified aviation review when one is available.
 

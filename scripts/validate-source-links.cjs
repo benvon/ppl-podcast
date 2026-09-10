@@ -786,6 +786,20 @@ function recordUnexpectedValidationFailure(outputPath, run, error) {
   return completeValidationReport(outputPath, report, run, { promote: false });
 }
 
+function recordCancelledValidation(outputPath, run) {
+  return completeValidationReport(outputPath, {
+    schema_version: 1,
+    validator: "scripts/validate-source-links.cjs",
+    checked_at_utc: new Date().toISOString(),
+    input_sha256: run.input_sha256,
+    failure: {
+      reason: "Source validation was cancelled before completion.",
+      kind: "cancelled",
+    },
+    results: [],
+  }, run, { promote: false });
+}
+
 function publicLinkRecord(link) {
   if (!link || !Object.hasOwn(link, "excerpt")) return link;
   const { excerpt, links, html, pdf_bytes, body, pdf_page_text, section_text, ...rest } = link;
@@ -1112,7 +1126,13 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     results[job.index] = entry; return entry;
   }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? ECFR_MAX_IN_FLIGHT_REQUESTS : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
-  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) {
+    const writtenPath = recordCancelledValidation(outputPath, validationRun);
+    validationRunResolved = true;
+    progress.emit("run_cancelled", { exit_code: 130, failed_attempt: path.relative(process.cwd(), writtenPath) });
+    process.exitCode = 130;
+    return;
+  }
   const deterministicValid = masterScriptMapping.valid && !adjudications.errors.length && results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
   if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
   await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
@@ -1135,7 +1155,13 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     return entry;
   }, { signal: cancellation.signal, onCompleted: (entry) => { if (options.llm && deterministicValid) progress.itemCompleted(entry.source_id, entry.relevance.status === "assessed"); } });
   if (options.llm && deterministicValid) progress.phaseCompleted();
-  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) {
+    const writtenPath = recordCancelledValidation(outputPath, validationRun);
+    validationRunResolved = true;
+    progress.emit("run_cancelled", { exit_code: 130, failed_attempt: path.relative(process.cwd(), writtenPath) });
+    process.exitCode = 130;
+    return;
+  }
   const adjudicationErrors = applySourceReviewAdjudications(results, adjudications.items);
   for (const entry of results) console.log(`${entry.source_id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
   const reportResults = results.map((result) => ({
@@ -1212,4 +1238,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applySourceReviewAdjudications, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, recordUnexpectedValidationFailure, refreshEcfrManifestDates, relevancePassages, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { applySourceReviewAdjudications, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, recordCancelledValidation, recordUnexpectedValidationFailure, refreshEcfrManifestDates, relevancePassages, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

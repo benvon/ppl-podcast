@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applySourceReviewAdjudications, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, recordUnexpectedValidationFailure, refreshEcfrManifestDates, relevancePassages, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { applySourceReviewAdjudications, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, recordCancelledValidation, recordUnexpectedValidationFailure, refreshEcfrManifestDates, relevancePassages, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, establishSettings, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -1034,6 +1034,26 @@ test("unexpected source-validation failures retain the prior clean report and re
     assert.equal(failedPath, failedValidationAttemptPath(outputPath, failedRun));
     assert.match(YAML.parse(fs.readFileSync(failedPath, "utf8")).failure.reason, /eCFR title-status import is in progress/);
     assert.equal(YAML.parse(fs.readFileSync(validationFailurePath(outputPath), "utf8")).run_id, failedRun.run_id);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("cancelled source validation records a blocking attempt and releases the owned lock", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-cancelled-test-"));
+  const outputPath = path.join(temporary, "link-validation.yaml");
+  try {
+    const initialRun = markValidationInProgress(outputPath, { sources: "initial" });
+    completeValidationReport(outputPath, { result: "last clean report" }, initialRun);
+
+    const cancelledRun = markValidationInProgress(outputPath, { sources: "current" });
+    const failedPath = recordCancelledValidation(outputPath, cancelledRun);
+
+    assert.equal(fs.existsSync(validationInProgressPath(outputPath)), false);
+    assert.deepEqual(YAML.parse(fs.readFileSync(outputPath, "utf8")), { result: "last clean report" });
+    assert.equal(failedPath, failedValidationAttemptPath(outputPath, cancelledRun));
+    assert.equal(YAML.parse(fs.readFileSync(failedPath, "utf8")).failure.kind, "cancelled");
+    assert.equal(YAML.parse(fs.readFileSync(validationFailurePath(outputPath), "utf8")).run_id, cancelledRun.run_id);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

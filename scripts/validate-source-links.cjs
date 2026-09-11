@@ -4,14 +4,23 @@
 const crypto = require("crypto");
 const fs = require("fs");
 const net = require("net");
-const os = require("os");
 const path = require("path");
 const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
 const { currentClaimSourcePreflightErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
-const { failedValidationAttemptPath, sourceValidationLifecyclePath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
+const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
+const {
+  PACKAGE_OPERATION_IDS,
+  acquireEpisodePackageOperation,
+  assertEpisodePackageOperation,
+  assertValidationLockOwner,
+  episodeStateText,
+  markValidationInProgress,
+  releaseEpisodePackageOperation,
+  releaseValidationLock,
+} = require("./episode-package-lifecycle.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -681,86 +690,6 @@ async function refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl = fetch
   return changes;
 }
 
-function readValidationLock(lockPath) {
-  try {
-    const document = YAML.parseDocument(fs.readFileSync(lockPath, "utf8"));
-    if (document.errors.length) throw new Error(document.errors[0].message);
-    const lock = document.toJS();
-    if (!lock || typeof lock !== "object" || typeof lock.run_id !== "string" || !lock.run_id || typeof lock.hostname !== "string" || !lock.hostname || !Number.isSafeInteger(lock.pid) || lock.pid < 1) {
-      throw new Error("missing run_id, hostname, or pid");
-    }
-    return lock;
-  } catch (error) {
-    throw new Error(`Cannot read validation lock ${lockPath}: ${error.message}`);
-  }
-}
-
-function processIsRunning(pid) {
-  try {
-    process.kill(pid, 0);
-    return true;
-  } catch (error) {
-    // EPERM means a live process we are not allowed to inspect; fail closed.
-    return error.code !== "ESRCH";
-  }
-}
-
-function recoverStaleValidationLock(outputPath, { validator } = {}) {
-  const lockPath = validationInProgressPath(outputPath);
-  const recoveryPath = validationRecoveryPath(outputPath);
-  try {
-    fs.mkdirSync(recoveryPath, 0o700);
-  } catch (error) {
-    if (error.code === "EEXIST") throw new Error(`Validation lock recovery is already in progress (${recoveryPath}).`);
-    throw error;
-  }
-  try {
-    const lock = readValidationLock(lockPath);
-    if (lock.hostname !== os.hostname()) throw new Error(`Validation lock belongs to host ${lock.hostname}; it cannot be safely recovered from ${os.hostname()}.`);
-    if (processIsRunning(lock.pid)) throw new Error(`Validation is already running with pid ${lock.pid}; refusing to replace its lock.`);
-    if (typeof lock.validator !== "string" || !lock.validator || lock.validator !== validator) {
-      throw new Error(`Validation lock belongs to ${typeof lock.validator === "string" && lock.validator ? lock.validator : "an unknown operation"}; recover it only by rerunning that interrupted operation with --recover-stale-lock.`);
-    }
-    // Moving the stale lock while the recovery directory is held avoids the
-    // unlink race where a second worker can delete a newly acquired live
-    // lock. A concurrent acquisition may only race on its own O_EXCL create.
-    const archivedLockPath = `${lockPath}.stale.${crypto.randomUUID()}`;
-    try { fs.renameSync(lockPath, archivedLockPath); }
-    catch (error) {
-      if (error?.code === "ENOENT") return;
-      throw error;
-    }
-    try { fs.unlinkSync(archivedLockPath); }
-    catch (error) { if (error?.code !== "ENOENT") throw error; }
-  } finally {
-    fs.rmdirSync(recoveryPath);
-  }
-}
-
-function markValidationInProgress(outputPath, inputSha256, { recoverStaleLock = false, validator = "scripts/validate-source-links.cjs" } = {}) {
-  const lockPath = validationInProgressPath(outputPath);
-  const recoveryPath = validationRecoveryPath(outputPath);
-  if (fs.existsSync(recoveryPath)) throw new Error(`Source validation lock recovery is in progress (${recoveryPath}).`);
-  if (recoverStaleLock && fs.existsSync(lockPath)) recoverStaleValidationLock(outputPath, { validator });
-  const lock = { schema_version: 1, validator, run_id: crypto.randomUUID(), hostname: os.hostname(), pid: process.pid, started_at_utc: new Date().toISOString(), input_sha256: inputSha256 };
-  let descriptor;
-  try {
-    descriptor = fs.openSync(lockPath, "wx", 0o600);
-    fs.writeFileSync(descriptor, YAML.stringify(lock), "utf8");
-  } catch (error) {
-    if (error.code === "EEXIST") throw new Error(`Source validation is already in progress or was interrupted (${lockPath}). After confirming the recorded process is no longer running, rerun with --recover-stale-lock.`);
-    throw error;
-  } finally {
-    if (descriptor !== undefined) fs.closeSync(descriptor);
-  }
-  return lock;
-}
-
-function assertValidationLockOwner(lockPath, run) {
-  const lock = readValidationLock(lockPath);
-  if (lock.run_id !== run.run_id || lock.hostname !== run.hostname || lock.pid !== run.pid) throw new Error(`Validation lock ownership changed while producing ${lockPath}; report was not released.`);
-}
-
 function completeValidationReport(outputPath, report, run, { promote = true, beforeRelease, validator = "scripts/validate-source-links.cjs" } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
@@ -792,79 +721,6 @@ function completeValidationReport(outputPath, report, run, { promote = true, bef
   assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
   return writtenPath;
-}
-
-function releaseValidationLock(outputPath, run) {
-  const lockPath = validationInProgressPath(outputPath);
-  assertValidationLockOwner(lockPath, run);
-  fs.unlinkSync(lockPath);
-}
-
-function acquireSourceValidationLifecycle(episodePath, inputSha256, { recoverStaleLock = false, validator } = {}) {
-  const outputPath = sourceValidationLifecyclePath(episodePath);
-  const run = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock, validator });
-  return { outputPath, run };
-}
-
-function releaseSourceValidationLifecycle(lease) {
-  if (lease) releaseValidationLock(lease.outputPath, lease.run);
-}
-
-// The source-validation lifecycle file is a package-wide exclusive lease, not
-// merely a coordination detail between the two source-review commands. Any
-// operation that makes a release decision from episode.yaml must hold this
-// lease from its state read through its final effect. Otherwise a source
-// review can start between a consumer's check and use of an older clean
-// report. Keep the original source-specific names as aliases so callers make
-// their intent clear while sharing one coordination primitive.
-function episodePackageLeaseInput() {
-  // A lease may not derive its identity from mutable package bytes. Reading
-  // episode.yaml before lock acquisition recreates the snapshot race the lease
-  // exists to prevent. State transitions bind exact bytes immediately before
-  // their atomic mutation.
-  return { scope: "episode-package" };
-}
-
-function acquireEpisodePackageLease(episodePath, { recoverStaleLock = false, validator = "scripts/episode-package-lease" } = {}) {
-  return acquireSourceValidationLifecycle(episodePath, episodePackageLeaseInput(episodePath), { recoverStaleLock, validator });
-}
-
-function assertEpisodePackageLease(episodePath, lease) {
-  if (!lease || path.resolve(path.dirname(lease.outputPath)) !== path.resolve(episodePath)) {
-    throw new Error("A matching episode package lease is required for this state transition.");
-  }
-  assertValidationLockOwner(validationInProgressPath(lease.outputPath), lease.run);
-}
-
-function episodeStateText(episodePath, episode, lease, expectedText) {
-  assertEpisodePackageLease(episodePath, lease);
-  const episodeFile = path.join(path.resolve(episodePath), "episode.yaml");
-  const currentText = fs.readFileSync(episodeFile, "utf8");
-  if (expectedText !== undefined && currentText !== expectedText) {
-    throw new Error("episode.yaml changed before its state transition could commit; retry from the current package state.");
-  }
-  const currentDocument = YAML.parseDocument(currentText);
-  if (currentDocument.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${currentDocument.errors[0].message}`);
-  const current = currentDocument.toJS();
-  const revision = current?.production_state_revision;
-  if (revision !== undefined && (!Number.isSafeInteger(revision) || revision < 0)) {
-    throw new Error("episode.yaml production_state_revision must be a non-negative integer when present.");
-  }
-  episode.production_state_revision = (revision || 0) + 1;
-  assertEpisodePackageLease(episodePath, lease);
-  return YAML.stringify(episode);
-}
-
-function withEpisodePackageLease(episodePath, options, work) {
-  const lease = acquireEpisodePackageLease(episodePath, options);
-  try { return work(lease); }
-  finally { releaseSourceValidationLifecycle(lease); }
-}
-
-async function withEpisodePackageLeaseAsync(episodePath, options, work) {
-  const lease = acquireEpisodePackageLease(episodePath, options);
-  try { return await work(lease); }
-  finally { releaseSourceValidationLifecycle(lease); }
 }
 
 async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false, validator = "scripts/validate-source-links.cjs", failureReport } = {}) {
@@ -905,7 +761,7 @@ async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancell
 }
 
 function updateEpisodeSourceState(episodePath, outcome, checkedAt = null, lease) {
-  assertEpisodePackageLease(episodePath, lease);
+  assertEpisodePackageOperation(episodePath, lease, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
   const episodeFile = path.join(episodePath, "episode.yaml");
   const originalText = fs.readFileSync(episodeFile, "utf8");
   const document = YAML.parseDocument(originalText);
@@ -1156,7 +1012,11 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   // Acquire package ownership before reading any mutable package input. The
   // lease is intentionally not keyed to a pre-read input hash: a script reset
   // must not be able to replace those bytes between snapshot and ownership.
-  const lifecycleLease = acquireSourceValidationLifecycle(episodePath, { scope: "source-validation" }, { recoverStaleLock: options.recoverStaleLock, validator: "scripts/validate-source-links.cjs:formal-review-lifecycle" });
+  const lifecycleLease = acquireEpisodePackageOperation(
+    episodePath,
+    PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW,
+    { recoverStaleLock: options.recoverStaleLock },
+  );
   try {
     const episodeFile = path.join(episodePath, "episode.yaml");
     if (!fs.existsSync(episodeFile) || !fs.lstatSync(episodeFile).isFile()) throw new Error("source validation requires the canonical episode.yaml package record");
@@ -1327,7 +1187,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     onTerminal: (outcome, checkedAt) => updateEpisodeSourceState(episodePath, outcome, checkedAt, lifecycleLease),
     });
   } finally {
-    releaseSourceValidationLifecycle(lifecycleLease);
+    releaseEpisodePackageOperation(lifecycleLease);
   }
 }
 
@@ -1366,4 +1226,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireEpisodePackageLease, acquireSourceValidationLifecycle, applyVerificationEvidence, assertEpisodePackageLease, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, episodePackageLeaseInput, episodeStateText, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback, withEpisodePackageLease, withEpisodePackageLeaseAsync };
+module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

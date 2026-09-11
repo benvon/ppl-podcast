@@ -11,7 +11,7 @@ const { releaseIdentity } = require("./release-identity.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, productionContractKind, sameStringList } = require("./production-state-contract.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
-const { assertEpisodePackageLease, withEpisodePackageLease } = require("./validate-source-links.cjs");
+const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, withEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
 const PACKAGE_SHAPE_COMPATIBLE_STATUSES = new Set(["reviewed_draft", "source_relevance_review_complete", "audio_listening_qa_complete", "ready_for_hosting_pr"]);
@@ -334,11 +334,15 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
 
 function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = false, packageLease = null, recoverStaleLock = false }) {
   if (packageLease) {
-    assertEpisodePackageLease(episodePath, packageLease);
+    assertEpisodePackageOperation(episodePath, packageLease, [
+      PACKAGE_OPERATION_IDS.PRE_HOSTING_VALIDATION,
+      PACKAGE_OPERATION_IDS.HOSTING_HANDOFF,
+      PACKAGE_OPERATION_IDS.PUBLICATION_PREPARATION,
+    ]);
     return validatePreHostingUnlocked({ episodePath, cwd, packageOnly });
   }
   const resolvedEpisode = path.resolve(episodePath);
-  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/validate-pre-hosting.cjs", recoverStaleLock }, () => (
+  return withEpisodePackageOperation(resolvedEpisode, PACKAGE_OPERATION_IDS.PRE_HOSTING_VALIDATION, { recoverStaleLock }, () => (
     validatePreHostingUnlocked({ episodePath: resolvedEpisode, cwd, packageOnly })
   ));
 }

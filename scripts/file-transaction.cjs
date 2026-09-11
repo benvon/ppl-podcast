@@ -22,6 +22,7 @@ function writeFileSetAtomically(updates, { beforePromote } = {}) {
 
   const originals = new Map(entries.map(({ filePath }) => [filePath, fs.existsSync(filePath) ? fs.readFileSync(filePath) : null]));
   const temporaries = new Map();
+  const promoted = new Map();
   try {
     for (const { filePath, body } of entries) {
       const temporary = `${filePath}.${process.pid}.${crypto.randomUUID()}.tmp`;
@@ -30,16 +31,29 @@ function writeFileSetAtomically(updates, { beforePromote } = {}) {
     }
     entries.forEach(({ filePath }, index) => {
       beforePromote?.({ filePath, index });
+      const original = originals.get(filePath);
+      const current = fs.existsSync(filePath) ? fs.readFileSync(filePath) : null;
+      if ((original === null && current !== null) || (original !== null && (current === null || !current.equals(original)))) {
+        throw new Error(`Transaction target changed before promotion: ${filePath}`);
+      }
       fs.renameSync(temporaries.get(filePath), filePath);
       temporaries.delete(filePath);
+      promoted.set(filePath, entries[index].body);
     });
   } catch (error) {
     const rollbackErrors = [];
     for (const { filePath } of entries) {
+      if (!promoted.has(filePath)) continue;
       try {
         const original = originals.get(filePath);
+        const current = fs.existsSync(filePath) ? fs.readFileSync(filePath) : null;
+        const written = promoted.get(filePath);
+        if ((current === null) || !current.equals(written)) {
+          rollbackErrors.push(`${filePath}: changed after this transaction promoted it`);
+          continue;
+        }
         if (original === null) {
-          if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+          fs.unlinkSync(filePath);
         } else {
           const rollback = `${filePath}.${process.pid}.${crypto.randomUUID()}.rollback`;
           fs.writeFileSync(rollback, original, { mode: 0o644, flag: "wx" });

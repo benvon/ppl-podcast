@@ -12,7 +12,7 @@ const path = require("path");
 const YAML = require("yaml");
 const { PreHostingValidationError, sha256File, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
-const { assertEpisodePackageLease, withEpisodePackageLease } = require("./validate-source-links.cjs");
+const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, withEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 const SEAL_FILE = "source-release-seal.yaml";
 const HANDOFF_FILES = ["episode.yaml", "show-notes.md", "audio.mp3"];
@@ -144,11 +144,14 @@ function createHostingHandoffUnlocked({ episodePath, outputDir, cwd = process.cw
 
 function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd(), packageLease = null, recoverStaleLock = false }) {
   if (packageLease) {
-    assertEpisodePackageLease(episodePath, packageLease);
+    assertEpisodePackageOperation(episodePath, packageLease, [
+      PACKAGE_OPERATION_IDS.HOSTING_HANDOFF,
+      PACKAGE_OPERATION_IDS.PUBLICATION_PREPARATION,
+    ]);
     return createHostingHandoffUnlocked({ episodePath, outputDir, cwd, packageLease });
   }
   const resolvedEpisode = path.resolve(episodePath);
-  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-hosting-handoff.cjs", recoverStaleLock }, (lease) => (
+  return withEpisodePackageOperation(resolvedEpisode, PACKAGE_OPERATION_IDS.HOSTING_HANDOFF, { recoverStaleLock }, (lease) => (
     createHostingHandoffUnlocked({ episodePath: resolvedEpisode, outputDir, cwd, packageLease: lease })
   ));
 }

@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireEpisodePackageLease, acquireSourceValidationLifecycle, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimAssessments, validateClaimMappings, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback, withEpisodePackageLease } = require("./validate-source-links.cjs");
+const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimAssessments, validateClaimMappings, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -27,6 +27,7 @@ const { consumeChecklistAuthorization } = require("./openai-review-authorization
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes, currentClaimSourcePreflightErrors, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { MALFORMED_LOCK_RECOVERY_GRACE_MS, PACKAGE_OPERATION_COMMANDS, PACKAGE_OPERATION_IDS, PACKAGE_OPERATIONS, acquireEpisodePackageOperation, assertEpisodePackageOperation, releaseEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -153,6 +154,93 @@ test("production contract classification is explicit and shared", () => {
   } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
 });
 
+test("every current package operation has one owner, rejects cross-operation recovery, and permits only its own stale recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-package-operation-matrix-"));
+  const lifecyclePath = path.join(temporary, ".source-validation.lifecycle");
+  try {
+    const operationIDs = Object.values(PACKAGE_OPERATION_IDS);
+    assert.deepEqual(Object.keys(PACKAGE_OPERATIONS).sort(), [...operationIDs].sort());
+    assert.deepEqual(Object.keys(PACKAGE_OPERATION_COMMANDS).sort(), [...operationIDs].sort());
+    for (const operationID of operationIDs) {
+      const operation = PACKAGE_OPERATIONS[operationID];
+      const first = acquireEpisodePackageOperation(temporary, operationID);
+      assertEpisodePackageOperation(temporary, first, operationID);
+      releaseEpisodePackageOperation(first);
+
+      fs.writeFileSync(`${lifecyclePath}.in-progress`, YAML.stringify({
+        schema_version: 1,
+        validator: operation.validator,
+        operation_id: operationID,
+        run_id: crypto.randomUUID(),
+        hostname: os.hostname(),
+        pid: 999_999_999,
+        started_at_utc: "2026-09-11T00:00:00Z",
+        input_sha256: { scope: "episode-package" },
+      }), "utf8");
+      const otherOperationID = operationIDs.find((candidate) => candidate !== operationID);
+      assert.throws(
+        () => acquireEpisodePackageOperation(temporary, otherOperationID, { recoverStaleLock: true }),
+        /recover it only by rerunning that interrupted operation/,
+      );
+      const recovered = acquireEpisodePackageOperation(temporary, operationID, { recoverStaleLock: true });
+      assertEpisodePackageOperation(temporary, recovered, operationID);
+      releaseEpisodePackageOperation(recovered);
+    }
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("package operation leases cannot be used by a different lifecycle transition", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-package-operation-owner-test-"));
+  try {
+    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    assert.throws(
+      () => assertEpisodePackageOperation(temporary, lease, PACKAGE_OPERATION_IDS.REALTIME_RENDER),
+      /realtime-render is required/,
+    );
+    releaseEpisodePackageOperation(lease);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("explicit recovery clears an interrupted legacy partial package lock only after its publication grace period", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-partial-package-lock-test-"));
+  const lockPath = path.join(temporary, ".source-validation.lifecycle.in-progress");
+  try {
+    fs.writeFileSync(lockPath, "validator: partial", "utf8");
+    assert.throws(
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW, { recoverStaleLock: true }),
+      /still being published/,
+    );
+    const old = new Date(Date.now() - MALFORMED_LOCK_RECOVERY_GRACE_MS - 1_000);
+    fs.utimesSync(lockPath, old, old);
+    const recovered = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW, { recoverStaleLock: true });
+    assertEpisodePackageOperation(temporary, recovered, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    releaseEpisodePackageOperation(recovered);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("explicit recovery clears an interrupted recovery lease before acquiring the package operation", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-stale-recovery-lease-test-"));
+  const recoveryPath = path.join(temporary, ".source-validation.lifecycle.in-progress.recovering");
+  try {
+    fs.writeFileSync(recoveryPath, YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/episode-package-lifecycle.cjs:recovery",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999_999_999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "stale-lock-recovery" },
+    }), "utf8");
+    assert.throws(
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW),
+      /lock recovery is in progress/,
+    );
+    const recovered = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW, { recoverStaleLock: true });
+    assertEpisodePackageOperation(temporary, recovered, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    releaseEpisodePackageOperation(recovered);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
 test("multi-file state transitions roll back every target when promotion fails", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-file-transaction-test-"));
   const first = path.join(temporary, "first.yaml"); const second = path.join(temporary, "second.yaml"); const created = path.join(temporary, "created.yaml");
@@ -165,6 +253,19 @@ test("multi-file state transitions roll back every target when promotion fails",
     assert.equal(fs.readFileSync(second, "utf8"), "second: old\n");
     assert.equal(fs.existsSync(created), false);
     assert.deepEqual(fs.readdirSync(temporary).sort(), ["first.yaml", "second.yaml"]);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("multi-file state transitions refuse a concurrent edit and never roll it back", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-file-transaction-concurrent-edit-test-"));
+  const first = path.join(temporary, "first.yaml"); const second = path.join(temporary, "second.yaml");
+  fs.writeFileSync(first, "first: old\n", "utf8"); fs.writeFileSync(second, "second: old\n", "utf8");
+  try {
+    assert.throws(() => writeFileSetAtomically(new Map([[first, "first: new\n"], [second, "second: new\n"]]), {
+      beforePromote: ({ index }) => { if (index === 1) fs.writeFileSync(second, "second: user edit\n", "utf8"); },
+    }), /Transaction target changed before promotion/);
+    assert.equal(fs.readFileSync(first, "utf8"), "first: old\n");
+    assert.equal(fs.readFileSync(second, "utf8"), "second: user edit\n");
   } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
 });
 
@@ -1943,14 +2044,14 @@ test("source validation locks report ownership and refuses unsafe recovery", () 
 test("source-validation lifecycle lock serializes preflight and formal review", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-validation-lifecycle-test-"));
   try {
-    const first = acquireSourceValidationLifecycle(temporary, { sources: "a" }, { validator: "preflight" });
+    const first = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT);
     assert.throws(
-      () => acquireSourceValidationLifecycle(temporary, { sources: "a" }, { validator: "formal" }),
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW),
       /already in progress or was interrupted/,
     );
-    releaseSourceValidationLifecycle(first);
-    const second = acquireSourceValidationLifecycle(temporary, { sources: "a" }, { validator: "formal" });
-    releaseSourceValidationLifecycle(second);
+    releaseEpisodePackageOperation(first);
+    const second = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    releaseEpisodePackageOperation(second);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -1959,7 +2060,7 @@ test("source-validation lifecycle lock serializes preflight and formal review", 
 test("formal source validation acquires the package lease before reading package inputs", async () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-formal-validation-lease-test-"));
   try {
-    const lease = acquireSourceValidationLifecycle(temporary, { sources: "held" }, { validator: "test:held-source-validation" });
+    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
     await assert.rejects(
       validateOnce({
         options: {
@@ -1978,7 +2079,7 @@ test("formal source validation acquires the package lease before reading package
       /already in progress or was interrupted/,
       "the held lease must fail before the missing episode.yaml can be observed",
     );
-    releaseSourceValidationLifecycle(lease);
+    releaseEpisodePackageOperation(lease);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -2014,13 +2115,13 @@ test("source-validation dry runs recover only their confirmed-dead package lease
 test("claim-source preflight acquires the package lease before reading package inputs", async () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-lease-test-"));
   try {
-    const lease = acquireSourceValidationLifecycle(temporary, { sources: "held" }, { validator: "test:held-claim-preflight" });
+    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT);
     await assert.rejects(
       createClaimSourcePreflight({ episodePath: temporary }),
       /already in progress or was interrupted/,
       "the held lease must fail before the missing episode.yaml can be observed",
     );
-    releaseSourceValidationLifecycle(lease);
+    releaseEpisodePackageOperation(lease);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -2033,7 +2134,7 @@ test("package lease blocks release consumers and state writers for a source-revi
       production_contract_version: 2,
       source_verification: { claim_source_preflight: "claim-source-preflight.yaml" },
     }));
-    const lease = acquireEpisodePackageLease(temporary, { validator: "test:source-rerun" });
+    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
     assert.throws(
       () => validatePreHosting({ episodePath: temporary }),
       /already in progress or was interrupted/,
@@ -2058,7 +2159,7 @@ test("package lease blocks release consumers and state writers for a source-revi
     const transitioned = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
     assert.equal(transitioned.source_verification.status, "source_relevance_pending");
     assert.equal(transitioned.production_state_revision, 1, "a committed state transition must advance the package revision");
-    releaseSourceValidationLifecycle(lease);
+    releaseEpisodePackageOperation(lease);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -2077,7 +2178,7 @@ test("stale package-lease recovery is restricted to the interrupted operation", 
       input_sha256: { scope: "episode-package" },
     }));
     assert.throws(
-      () => acquireEpisodePackageLease(temporary, { validator: "scripts/reset-script-review.cjs:reset", recoverStaleLock: true }),
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.SCRIPT_RESET, { recoverStaleLock: true }),
       /belongs to scripts\/prepare-publication\.cjs/,
     );
     assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), true);

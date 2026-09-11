@@ -12,7 +12,7 @@ const YAML = require("yaml");
 const { createHostingHandoff, sha256Value, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { durationDisplay, PreHostingValidationError, validatePreHosting } = require("./validate-pre-hosting.cjs");
-const { episodeStateText, withEpisodePackageLease } = require("./validate-source-links.cjs");
+const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, episodeStateText, withEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 class PublicationPreparationError extends Error {}
 const PREPARATION_RECOVERY_FILE = ".publication-preparation.rollback.yaml";
@@ -166,6 +166,7 @@ function synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publis
 
 function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd = process.cwd(), packageLease }) {
   const resolvedEpisode = path.resolve(episodePath);
+  assertEpisodePackageOperation(resolvedEpisode, packageLease, PACKAGE_OPERATION_IDS.PUBLICATION_PREPARATION);
   const episodeYaml = path.join(resolvedEpisode, "episode.yaml");
   const hostingYaml = path.join(resolvedEpisode, "hosting-metadata.yaml");
   const sourceValidationYaml = path.join(resolvedEpisode, "link-validation.yaml");
@@ -236,7 +237,8 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
 
 function preparePublication({ episodePath, outputDir, publishedAt, cwd = process.cwd(), recoverStaleLock = false }) {
   const resolvedEpisode = path.resolve(episodePath);
-  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-publication.cjs", recoverStaleLock }, (packageLease) => {
+  return withEpisodePackageOperation(resolvedEpisode, PACKAGE_OPERATION_IDS.PUBLICATION_PREPARATION, { recoverStaleLock }, (packageLease) => {
+    assertEpisodePackageOperation(resolvedEpisode, packageLease, PACKAGE_OPERATION_IDS.PUBLICATION_PREPARATION);
     const recovered = reconcileInterruptedPublication({ episodePath: resolvedEpisode, outputDir, recoverStaleLock });
     return recovered || preparePublicationUnlocked({ episodePath: resolvedEpisode, outputDir, publishedAt, cwd, packageLease });
   });

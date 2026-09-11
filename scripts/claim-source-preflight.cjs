@@ -12,7 +12,8 @@ const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { ValidationCancelledError, acquireSourceValidationLifecycle, assertEpisodePackageLease, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, episodeStateText, markValidationInProgress, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, relevanceExcerpt, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { PACKAGE_OPERATION_IDS, acquireEpisodePackageOperation, assertEpisodePackageOperation, episodeStateText, releaseEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -182,7 +183,7 @@ function sameInputHashes(left, right) {
 }
 
 function updatePreflightState(episodePath, status, lease) {
-  assertEpisodePackageLease(episodePath, lease);
+  assertEpisodePackageOperation(episodePath, lease, PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT);
   const episodePathname = path.join(episodePath, "episode.yaml");
   const originalText = fs.readFileSync(episodePathname, "utf8");
   const episode = readYamlMapping(episodePathname, "episode.yaml");
@@ -214,7 +215,11 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   const resolved = path.resolve(episodePath);
   // Take package ownership before reading episode.yaml, the source ledger, or
   // the claim inventory. Those files form the outbound-review snapshot.
-  const lifecycleLease = acquireSourceValidationLifecycle(resolved, { scope: "claim-source-preflight" }, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs:lifecycle" });
+  const lifecycleLease = acquireEpisodePackageOperation(
+    resolved,
+    PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT,
+    { recoverStaleLock },
+  );
   let validationRun;
   try {
   const episode = readYamlMapping(path.join(resolved, "episode.yaml"), "episode.yaml");
@@ -309,7 +314,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     onTerminal: (outcome) => updatePreflightState(resolved, outcome, lifecycleLease),
   });
   } finally {
-    releaseSourceValidationLifecycle(lifecycleLease);
+    releaseEpisodePackageOperation(lifecycleLease);
   }
 }
 

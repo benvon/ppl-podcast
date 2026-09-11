@@ -19,7 +19,7 @@ const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { editorialApprovalErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
-const { withEpisodePackageLeaseAsync } = require("./validate-source-links.cjs");
+const { PACKAGE_OPERATION_IDS, withEpisodePackageOperationAsync } = require("./episode-package-lifecycle.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -562,7 +562,7 @@ async function main() {
   const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice; const announcerVoice = raw["announcer-voice"] || DEFAULTS.announcerVoice;
   if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
   const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
-  return withEpisodePackageLeaseAsync(path.dirname(scriptPath), { validator: "scripts/render_episode_realtime.cjs", recoverStaleLock: Boolean(raw["recover-stale-lock"]) }, async () => {
+  return withEpisodePackageOperationAsync(path.dirname(scriptPath), PACKAGE_OPERATION_IDS.REALTIME_RENDER, { recoverStaleLock: Boolean(raw["recover-stale-lock"]) }, async () => {
   assertNarrationInput(scriptPath);
   const episode = assertSourceRelevanceApproved(scriptPath);
   const musicKeys = ["music-bed", "music-bed-gain-db", "music-voice-gain-db", "music-level-transition-seconds", "music-intro-lead-seconds", "music-intro-tail-seconds", "music-intro-fade-seconds", "music-outro-tail-seconds", "music-outro-fade-seconds"];

@@ -12,7 +12,7 @@ const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { episodeStateText, withEpisodePackageLease } = require("./validate-source-links.cjs");
+const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, episodeStateText, withEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 class ScriptReviewStateError extends Error {}
 
@@ -154,6 +154,7 @@ function resolveEpisode(episodePath) {
 
 function resetScriptReviewUnlocked({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically, packageLease }) {
   const resolved = resolveEpisode(episodePath);
+  assertEpisodePackageOperation(resolved, packageLease, PACKAGE_OPERATION_IDS.SCRIPT_RESET);
   const episodePathname = path.join(resolved, "episode.yaml");
   const audioPathname = path.join(resolved, "audio-manifest.yaml");
   const hostingPathname = path.join(resolved, "hosting-metadata.yaml");
@@ -210,13 +211,14 @@ function resetScriptReviewUnlocked({ episodePath, reason = "The master script ch
 
 function resetScriptReview({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically, recoverStaleLock = false }) {
   const resolved = path.resolve(episodePath);
-  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:reset", recoverStaleLock }, (packageLease) => (
+  return withEpisodePackageOperation(resolved, PACKAGE_OPERATION_IDS.SCRIPT_RESET, { recoverStaleLock }, (packageLease) => (
     resetScriptReviewUnlocked({ episodePath: resolved, reason, writeFiles, packageLease })
   ));
 }
 
 function approveScriptReviewUnlocked({ episodePath, packageLease }) {
   const resolved = resolveEpisode(episodePath);
+  assertEpisodePackageOperation(resolved, packageLease, PACKAGE_OPERATION_IDS.SCRIPT_APPROVE);
   const episodePathname = path.join(resolved, "episode.yaml");
   const originalEpisodeText = fs.readFileSync(episodePathname, "utf8");
   const episode = readYaml(episodePathname);
@@ -233,7 +235,7 @@ function approveScriptReviewUnlocked({ episodePath, packageLease }) {
 
 function approveScriptReview({ episodePath, recoverStaleLock = false }) {
   const resolved = path.resolve(episodePath);
-  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:approve", recoverStaleLock }, (packageLease) => (
+  return withEpisodePackageOperation(resolved, PACKAGE_OPERATION_IDS.SCRIPT_APPROVE, { recoverStaleLock }, (packageLease) => (
     approveScriptReviewUnlocked({ episodePath: resolved, packageLease })
   ));
 }

@@ -1,7 +1,7 @@
 episode_id: core-16
 claims:
   - id: acs-route-airspace
-    claim: "The ACS expects a private-pilot applicant to consider airspace and available navigation and communication systems during route planning, manage environmental and ATC-service risks, and apply current charts and NOTAMs."
+    claim: "The ACS expects a private-pilot applicant to consider airspace and available navigation and communication systems during route planning, manage environmental risks and the limitations of ATC services, and apply current charts and NOTAMs."
     claim_type: FAA standard
     sources: [acs-cross-country-airspace]
     risk: safety_critical
@@ -92,7 +92,7 @@ claims:
     script_sections: [Match each class to its entry question, Retrieval review]
     status: supported
   - id: class-c-equipment-crossreference
-    claim: "Class C operations require the applicable equipment specified in 14 CFR 91.215 and 91.225 unless ATC authorizes otherwise."
+    claim: "Class C operations require the applicable equipment specified in 14 CFR 91.215 and 91.225 unless the responsible ATC facility authorizes otherwise."
     claim_type: regulation
     sources: [ecfr-91-130-class-c]
     risk: safety_critical
@@ -211,7 +211,7 @@ claims:
     script_sections: [Turn weather minimums into a usable picture, Retrieval review]
     status: supported
   - id: special-vfr-conditions
-    claim: "Below 10,000 feet MSL, Special VFR for an airplane in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile visibility; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight and the airplane to meet the instrument-equipment requirements in section 91.205(d)."
+    claim: "Below 10,000 feet MSL, Special VFR for an airplane in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile of flight visibility; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight and the airplane to meet the instrument-equipment requirements in section 91.205(d)."
     claim_type: regulation
     sources: [ecfr-91-157-special-vfr]
     risk: safety_critical

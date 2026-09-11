@@ -1,7 +1,7 @@
 # Airspace, Equipment, and VFR Weather Minimums
 
 **Episode:** 16
-**Version:** 0.1.6
+**Version:** 0.1.7
 
 ## In this episode
 

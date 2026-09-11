@@ -1,6 +1,6 @@
 # Airspace, Equipment, and VFR Weather Minimums
 
-**Version:** 0.1.6 — draft
+**Version:** 0.1.7 — draft
 **Target runtime:** 30-35 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -36,7 +36,7 @@ The private-pilot ACS National Airspace System task asks you to understand airsp
 
 [Source: sources.yaml#acs-national-airspace]
 
-The cross-country task adds the planning side: consider airspace and available navigation and communication systems, manage environmental and air traffic control, or ATC, risks, and use current charts, Chart Supplements, and other flight publications. That planning also includes current Notices to Airmen, known as NOTAMs: time-sensitive information that may change whether the route is usable even when the chart itself has not changed.
+The cross-country task adds the planning side: consider airspace and available navigation and communication systems, manage environmental risks and the limitations of air traffic control, or ATC, services, and use current charts, Chart Supplements, and other flight publications. That planning also includes current Notices to Airmen, known as NOTAMs: time-sensitive information that may change whether the route is usable even when the chart itself has not changed.
 
 [Source: sources.yaml#acs-cross-country-airspace]
 
@@ -193,7 +193,7 @@ The AIM says communication has not been established when the controller’s resp
 
 **INSTRUCTOR:**
 
-Now move the same exchange to the Class Charlie airspace that lies along the route before Valley Tower. For a typical arrival or through flight, Class Charlie also requires two-way communication to be established before entry and maintained while within the airspace. The callsign test works the same way: “Cessna One Two Three Alpha Bravo, standby” establishes communication. A reply that omits the aircraft identification does not.
+Now move the same exchange to the Class Charlie airspace that lies along the route before Valley Tower. A VFR arrival or through flight in Class Charlie also requires two-way communication to be established before entry and maintained while within the airspace. The callsign test works the same way: “Cessna One Two Three Alpha Bravo, standby” establishes communication. A reply that omits the aircraft identification does not.
 
 [Source: sources.yaml#ecfr-91-130-class-c]
 [Source: sources.yaml#aim-class-c]
@@ -202,7 +202,7 @@ The AIM describes the installed equipment for Class Charlie as an operable radar
 
 [Source: sources.yaml#aim-class-c]
 
-Section 91.130 connects that Class Charlie operation to the applicable requirements in sections 91.215 and 91.225. We will put those requirements onto the route in the next section.
+Class Charlie operations require the applicable equipment specified in sections 91.215 and 91.225 unless the responsible ATC facility authorizes otherwise. We will put those requirements onto the route in the next section.
 
 [Source: sources.yaml#ecfr-91-130-class-c]
 
@@ -478,7 +478,7 @@ Use Special VFR as a separate decision.
 
 **INSTRUCTOR:**
 
-Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation below 10,000 feet MSL within controlled airspace designated to the surface for an airport when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d).
+Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation below 10,000 feet MSL within controlled airspace designated to the surface for an airport when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile of flight visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d).
 
 [Source: sources.yaml#ecfr-91-157-special-vfr]
 
@@ -728,7 +728,7 @@ What does a Special VFR clearance establish, and what does it leave unanswered?
 
 **LEARNER:**
 
-Below 10,000 feet MSL, it can authorize an airplane to operate within controlled airspace designated to the surface for an airport with at least one statute mile visibility while remaining clear of clouds. For the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d). That Special VFR operation takes place within the controlled surface area.
+Below 10,000 feet MSL, an airplane needs an ATC clearance to operate under Special VFR within controlled airspace designated to the surface for an airport. The operation requires at least one statute mile of flight visibility and remaining clear of clouds. For the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d). That Special VFR operation takes place within the controlled surface area.
 
 [Source: sources.yaml#ecfr-91-157-special-vfr]
 [Source: sources.yaml#aim-special-vfr]

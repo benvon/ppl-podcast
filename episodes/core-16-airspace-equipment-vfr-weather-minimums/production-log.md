@@ -63,3 +63,11 @@
 - Version 0.1.6 restored the warning-area boundary beginning three nautical miles outward from the U.S. coast and carried the ceiling definition's ground-or-water reference into the spoken lesson and retrieval review.
 - Replaced the simplified Special VFR nighttime shorthand with the regulation's applicable Part 61 instrument-flight and section 91.205(d) equipment conditions. Rephrased the surface-area discussion around where Special VFR operations occur rather than claiming that an ATC clearance terminates at the boundary.
 - Regenerated the 5,373-word narration derivative. Formal source relevance must be rerun cleanly before human editorial review.
+
+## 2026-09-11 — final source-condition corrections
+
+- Version 0.1.7 preserves the ACS distinction between environmental risks and limitations of ATC services.
+- Removed the unsupported qualifier from the Class Charlie arrival and through-flight rule and stated the section 91.130 equipment cross-reference as an operating requirement with its responsible-ATC exception.
+- Made the Special VFR retrieval answer explicitly require an ATC clearance and identified the ordinary one-statute-mile requirement as flight visibility.
+- Regenerated the 5,391-word narration derivative.
+- Formal source relevance must be rerun cleanly before human editorial review.

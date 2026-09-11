@@ -5,11 +5,11 @@ slug: airspace-equipment-vfr-weather-minimums
 track: core
 production_contract_version: 2
 status: editorial_review_pending
-version: 0.1.6
+version: 0.1.7
 published_at: null
 runtime_target_minutes: 33
 runtime_actual_seconds: null
-word_count: 5373
+word_count: 5391
 speakers:
   - instructor
   - learner
@@ -84,7 +84,7 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 5975cb76d47beabb651fd1fb3ac7b1e24ca32b43edbab4a69e4d8f2f75a0f167
+  pending_script_sha256: 02ff4b9f587bdf0b99a6ca2fd8d5c77e5090af8be8d1e9534d5aa6ad835268da
 release_gates_remaining:
   - Run source-link validation with LLM relevance review and resolve every
     finding.
@@ -108,4 +108,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 24
+production_state_revision: 29

@@ -991,6 +991,40 @@ test("claim-source preflight records a failed rerun instead of reusing a prior s
   }
 });
 
+test("stale preflight recovery blocks a prior success when fresh authorization is absent", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-recovered-claim-source-preflight-test-"));
+  const sourceEntry = source("source-a", ["claim-a"]);
+  const fetchedText = "Text independently extracted from the exact source locator.";
+  const passingDependencies = {
+    verifyProgrammaticFallback: async () => ({ link: { valid: true, final_url: sourceEntry.url, content_sha256: "9".repeat(64), excerpt: fetchedText } }),
+    assessRelevance: async () => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Test." }] } }),
+  };
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
+    const checklistPath = path.join(temporary, "qa-checklist.md");
+    fs.writeFileSync(checklistPath, "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
+    await createClaimSourcePreflight({ episodePath: temporary, model: "test-model", dependencies: passingDependencies });
+    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
+    const priorSuccess = fs.readFileSync(preflightPath, "utf8");
+    fs.writeFileSync(`${preflightPath}.in-progress`, YAML.stringify({ schema_version: 1, validator: "scripts/claim-source-preflight.cjs", run_id: crypto.randomUUID(), hostname: require("node:os").hostname(), pid: 99999999, started_at_utc: "2026-09-10T00:00:00Z", input_sha256: claimSourcePreflightInputHashes(temporary) }));
+
+    await assert.rejects(
+      createClaimSourcePreflight({ episodePath: temporary, model: "test-model", recoverStaleLock: true, dependencies: passingDependencies }),
+      /explicit current-turn authorization/,
+    );
+    assert.equal(fs.readFileSync(preflightPath, "utf8"), priorSuccess);
+    const marker = YAML.parse(fs.readFileSync(validationFailurePath(preflightPath), "utf8"));
+    const failedAttempt = YAML.parse(fs.readFileSync(path.join(temporary, marker.failed_attempt), "utf8"));
+    assert.equal(failedAttempt.status, "failed");
+    assert.equal(fs.existsSync(`${preflightPath}.in-progress`), false);
+    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "failed");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("claim-source preflight refuses promotion when its captured inputs drift", async () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-drifting-claim-source-preflight-test-"));
   const sourceEntry = source("source-a", ["claim-a"]);

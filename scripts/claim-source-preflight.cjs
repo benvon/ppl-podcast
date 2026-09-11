@@ -12,7 +12,7 @@ const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { qaItemCompleteWithID } = require("./production-gates.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, releaseValidationLock, relevanceExcerpt, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, relevanceExcerpt, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -171,7 +171,7 @@ function throwIfCancelled(signal, isCancelled) {
 }
 
 function failedPreflightReport({ error, outcome, defaultReport }) {
-  if (!error?.preflight) return defaultReport;
+  if (!error?.preflight) return { ...defaultReport, status: outcome };
   return { ...error.preflight, status: outcome };
 }
 
@@ -193,9 +193,6 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   if (targetErrors.length) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
   const preflightPath = path.join(resolved, PREFLIGHT_FILE);
   const validationRun = markValidationInProgress(preflightPath, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs" });
-  let authorization;
-  try { authorization = consumePreflightAuthorization(resolved, episode, validationRun.run_id); }
-  catch (error) { releaseValidationLock(preflightPath, validationRun); throw error; }
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   const verify = dependencies.verifyProgrammaticFallback || verifyProgrammaticFallback;
   const assess = dependencies.assessRelevance || assessRelevance;
@@ -204,20 +201,25 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     maxInFlight: ECFR_MAX_IN_FLIGHT_REQUESTS,
     minStartIntervalMs: ECFR_MIN_START_INTERVAL_MS,
   });
+  let authorization = null;
+  const results = [];
+  const failedPreflight = () => ({
+    schema_version: 1,
+    validator: "scripts/claim-source-preflight.cjs",
+    status: "failed",
+    authorization,
+    checked_at_utc: new Date().toISOString(),
+    llm_requested: true,
+    llm_model: model,
+    input_sha256: inputSha256,
+    results,
+  });
   return runOwnedValidation(preflightPath, validationRun, async () => {
+    // Authorization is deliberately consumed inside the owned lifecycle. If
+    // recovery or a missing authorization stops this attempt, the finalizer
+    // writes a blocking record before releasing the new lock.
+    authorization = consumePreflightAuthorization(resolved, episode, validationRun.run_id);
     updatePreflightState(resolved, "in_progress");
-    const results = [];
-    const failedPreflight = () => ({
-      schema_version: 1,
-      validator: "scripts/claim-source-preflight.cjs",
-      status: "failed",
-      authorization,
-      checked_at_utc: new Date().toISOString(),
-      llm_requested: true,
-      llm_model: model,
-      input_sha256: inputSha256,
-      results,
-    });
     try {
       try {
         for (const source of ledger.sources) {

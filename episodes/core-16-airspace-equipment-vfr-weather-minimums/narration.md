@@ -209,7 +209,7 @@ Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive i
 
 **INSTRUCTOR:**
 
-For the common domestic operations in this scenario, section 91.215 requires an altitude-reporting transponder in Class A, Bravo, and Charlie; above Class Bravo and Charlie within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil around airports listed in appendix D, section 1; and at or above 10,000 feet MSL, except in the airspace at and below 2,500 feet above the surface. If the airplane falls within one of the regulation’s stated exceptions, apply that exception to the specific route before accepting the plan.
+For the common domestic operations in this scenario, section 91.215 requires an altitude-reporting transponder in Class A, Bravo, and Charlie; above Class Bravo and Charlie within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil around airports listed in appendix D, section 1; and, in the 48 contiguous states and the District of Columbia, at or above 10,000 feet MSL, except in the airspace at and below 2,500 feet above the surface. If the airplane falls within one of the regulation’s stated exceptions, apply that exception to the specific route before accepting the plan.
 
 **INSTRUCTOR:**
 
@@ -359,7 +359,9 @@ Use Special VFR as a separate decision.
 
 **INSTRUCTOR:**
 
-Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation below 10,000 feet MSL within controlled airspace designated to the surface for an airport when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile of flight visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d).
+Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation below 10,000 feet MSL within controlled airspace designated to the surface for an airport when the regulatory conditions can be met, except in areas where appendix D, section 3, prohibits fixed-wing Special VFR. For an airplane, the operation requires at least one statute mile of flight visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d).
+
+For a Special VFR takeoff or landing, reported ground visibility controls and must be at least one statute mile. If ground visibility is not reported, flight visibility must be at least one statute mile. For that no-report test, visibility from the cockpit in takeoff position counts as flight visibility only for a Part 91 flight at a satellite airport without weather-reporting capability.
 
 **LEARNER:**
 
@@ -519,7 +521,7 @@ What does a Special VFR clearance establish, and what does it leave unanswered?
 
 **LEARNER:**
 
-Below 10,000 feet MSL, an airplane needs an ATC clearance to operate under Special VFR within controlled airspace designated to the surface for an airport. The operation requires at least one statute mile of flight visibility and remaining clear of clouds. For the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d). That Special VFR operation takes place within the controlled surface area.
+Except in areas where appendix D, section 3, prohibits fixed-wing Special VFR, an airplane below 10,000 feet MSL needs an ATC clearance to operate under Special VFR within controlled airspace designated to the surface for an airport. The operation requires at least one statute mile of flight visibility and remaining clear of clouds. For takeoff or landing, reported ground visibility must also be at least one statute mile. If it is not reported, one statute mile of flight visibility is required; visibility from the takeoff position counts only for a Part 91 flight at a satellite airport without weather-reporting capability. For the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d). That Special VFR operation takes place within the controlled surface area.
 
 It leaves conditions beyond the surface-area boundary unanswered. Outside that boundary, the airplane must meet the VFR weather minimums for the airspace it enters.
 

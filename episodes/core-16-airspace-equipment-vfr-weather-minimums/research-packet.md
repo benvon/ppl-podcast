@@ -22,11 +22,11 @@ At every change, the Instructor returns to the same four questions:
 
 | Scenario decision | Primary source locator | Episode treatment |
 | --- | --- | --- |
-| Scope the airspace decision as an ACS outcome | FAA-S-ACS-6C, PA.I.D.K1/R3-R5/S1-S2, PDF p. 13; PA.I.E.K1-K4/R1/S1-S3, PDF p. 14 | The opening ACS section turns the task into four recurring questions rather than an inventory of classes. |
+| Scope the airspace decision as an ACS outcome | FAA-S-ACS-6C, PA.I.D.K1/R3-R5/S1-S2, document p. 5 (PDF viewer p. 13); PA.I.E.K1-K4/R1/S1-S3, PDF p. 14 | The opening ACS section turns the task into four recurring questions rather than an inventory of classes. |
 | Read airspace as volume, not map color | PHAK Figure 15-1, p. 15-2; Chart Users' Guide VFR terms and symbols, pp. 16-17 | The learner draws a vertical slice through the route and defines floor, ceiling, shelf, MSL, and AGL. |
 | Leave Class G and climb into Class E | PHAK p. 15-3; AIM 3-2-6 and 3-3-1 | The same lateral position changes airspace when altitude crosses the Class E floor. |
 | Enter the Class D destination | 14 CFR 91.129(c); AIM 3-2-5(b)(3), (d)(1) | A controller response using the callsign establishes communication; a call without the identification does not. |
-| Compare Class C and Class B entry | 14 CFR 91.130(c), 91.131(a); AIM 3-2-3(a)-(b) and 3-2-4(b)(2)-(3) | Class C uses established two-way communication; Class B requires an explicit clearance. |
+| Compare Class C and Class B entry | 14 CFR 91.130(c), 91.131(a); AIM 3-2-3(a)-(b) and 3-2-4(b)(1)-(3) | Class C uses established two-way communication; Class B requires an explicit clearance. |
 | Check student-pilot Class B eligibility | 14 CFR 61.95(a)-(c), with 91.131(b) cross-reference | A private-pilot applicant's solo preparation is stated with its training, endorsement, and preceding-90-day conditions without listing every named airport aloud. |
 | Define and check transponder and ADS-B equipment | AIM 4-1-20(a), (c), and (f); AIM 4-5-7(a)(1)-(3); 14 CFR 91.215(b), 91.225(a), (d)-(g); Chart Users' Guide p. 17 | The learner distinguishes Mode C, ADS-B Out, and ADS-B In, then checks a route that remains below a Class B shelf but enters the separately charted Mode C veil. |
 | Apply ordinary VFR weather minimums | 14 CFR 91.155; AIM 3-1-4 TBL 3-1-4; PHAK Figure 15-8 | The weather changes while the airplane moves from daytime Class G into Class E and toward a Class D surface area. The Class G examples use the ordinary airplane rows without invoking the specific exceptions in section 91.155(b). |

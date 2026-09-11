@@ -148,7 +148,7 @@ claims:
     script_sections: [Match the equipment to the route]
     status: supported
   - id: transponder-locations
-    claim: "Subject to regulatory exceptions, an altitude-reporting transponder is required in Classes A, B, and C; above Class B and C within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil; and at or above 10,000 feet MSL excluding airspace at and below 2,500 feet AGL."
+    claim: "Subject to regulatory exceptions, an altitude-reporting transponder is required in Classes A, B, and C; above Class B and C within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil; and, in the 48 contiguous states and the District of Columbia, at or above 10,000 feet MSL excluding airspace at and below 2,500 feet AGL."
     claim_type: regulation
     sources: [ecfr-91-215-transponder]
     risk: safety_critical
@@ -211,7 +211,7 @@ claims:
     script_sections: [Turn weather minimums into a usable picture, Retrieval review]
     status: supported
   - id: special-vfr-conditions
-    claim: "Below 10,000 feet MSL, Special VFR for an airplane in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile of flight visibility; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight and the airplane to meet the instrument-equipment requirements in section 91.205(d)."
+    claim: "Except in areas where appendix D, section 3, prohibits fixed-wing Special VFR, an airplane below 10,000 feet MSL in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile of flight visibility; takeoff or landing requires at least one statute mile of reported ground visibility, or, when ground visibility is not reported, one statute mile of flight visibility, with visibility from the cockpit in takeoff position counting only for a Part 91 flight at a satellite airport without weather-reporting capability; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight and the airplane to meet the instrument-equipment requirements in section 91.205(d)."
     claim_type: regulation
     sources: [ecfr-91-157-special-vfr]
     risk: safety_critical

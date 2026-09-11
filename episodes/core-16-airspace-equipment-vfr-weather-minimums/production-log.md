@@ -71,3 +71,11 @@
 - Made the Special VFR retrieval answer explicitly require an ATC clearance and identified the ordinary one-statute-mile requirement as flight visibility.
 - Regenerated the 5,391-word narration derivative.
 - Formal source relevance must be rerun cleanly before human editorial review.
+
+## 2026-09-11 — threshold-review source alignment
+
+- Corrected the cross-country ACS locator to distinguish document page 5 from PDF viewer page 13, and expanded the Class Charlie AIM locator to include the installed-equipment provision in paragraph (b)(1).
+- Version 0.1.8 carries the contiguous-48-states-and-District-of-Columbia condition into the transponder's 10,000-foot rule.
+- Added the appendix D, section 3, fixed-wing Special VFR exception and the takeoff-or-landing ground-visibility test, including the rule's limited treatment of cockpit visibility from the takeoff position when no ground visibility is reported.
+- Regenerated the 5,534-word narration derivative.
+- Formal source relevance must be rerun cleanly before human editorial review.

@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -858,6 +858,16 @@ test("claim-source preflight evidence is derived from a fetched locator excerpt"
   assert.equal(evidence.fetched_locator.locator_excerpt_sha256, evidence.reviewed_excerpt.sha256);
   assert.equal(evidence.fetched_locator.locator_excerpt_characters, evidence.reviewed_excerpt.characters);
   assert.throws(() => preflightEvidenceFor(sourceEntry, { ...fetched, content_sha256: null }), /has no content hash/);
+});
+
+test("claim-source preflight records the exact bounded excerpt sent to relevance review", () => {
+  const sourceEntry = { id: "source-a", url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html" };
+  const sectionText = ` ${"a".repeat(MAX_RELEVANCE_EXCERPT_CHARACTERS + 10)} `;
+  const fetched = { valid: true, final_url: sourceEntry.url, content_sha256: "b".repeat(64), section_text: sectionText };
+  const evidence = preflightEvidenceFor(sourceEntry, fetched);
+  assert.equal(evidence.reviewed_excerpt.text, relevanceExcerpt(fetched));
+  assert.equal(evidence.reviewed_excerpt.characters, MAX_RELEVANCE_EXCERPT_CHARACTERS);
+  assert.equal(evidence.fetched_locator.locator_excerpt_sha256, crypto.createHash("sha256").update(relevanceExcerpt(fetched)).digest("hex"));
 });
 
 test("claim-source preflight persists only independently fetched source evidence", async () => {

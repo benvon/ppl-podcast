@@ -29,6 +29,7 @@ const ECFR_TITLES_URL = "https://www.ecfr.gov/api/versioner/v1/titles.json";
 const ECFR_MAX_IN_FLIGHT_REQUESTS = 5;
 const ECFR_MIN_START_INTERVAL_MS = 1_000;
 const MAX_ECFR_MANIFEST_REFRESHES = 3;
+const MAX_RELEVANCE_EXCERPT_CHARACTERS = 12_000;
 const RELEVANCE_SCHEMA = {
   type: "object",
   additionalProperties: false,
@@ -546,16 +547,21 @@ function responseText(response) {
   throw new Error("Responses API returned no output text.");
 }
 
+function relevanceExcerpt(fetched) {
+  const raw = fetched?.section_text || fetched?.pdf_page_text || fetched?.excerpt;
+  return typeof raw === "string" ? raw.trim().slice(0, MAX_RELEVANCE_EXCERPT_CHARACTERS) : "";
+}
+
 async function assessRelevance({ model, source, claims, authoredPassages = [], fetched, fetchImpl = fetch, signal }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is required for --llm. Load it from your environment; do not place it in a command argument or repository file.");
   // The relevance review must assess text extracted from this validation run.
   // Ledger excerpts are useful research notes, but cannot substitute for the
   // current cited page, PDF page, or exact eCFR section.
-  const excerpt = fetched.section_text || fetched.pdf_page_text || fetched.excerpt;
+  const excerpt = relevanceExcerpt(fetched);
   if (!excerpt) return { status: "not_assessed", reason: "The fetched resource has no safely extracted current text for relevance review." };
   const input = {
-    source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt: excerpt.slice(0, 12000) },
+    source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt },
     // Episode claim inventories use `claim` and `claim_type`. Accept the
     // normalized aliases as well so this boundary remains usable by callers
     // that have already adapted the inventory, while preferring the canonical
@@ -1210,4 +1216,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

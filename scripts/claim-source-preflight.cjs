@@ -12,7 +12,7 @@ const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { qaItemCompleteWithID } = require("./production-gates.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, releaseValidationLock, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, releaseValidationLock, relevanceExcerpt, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -76,7 +76,9 @@ function locatorExcerpt(fetched) {
 }
 
 function preflightEvidenceFor(source, fetched) {
-  const excerpt = locatorExcerpt(fetched);
+  const locator = locatorExcerpt(fetched);
+  const excerpt = relevanceExcerpt(fetched);
+  if (!excerpt) throw new ClaimSourcePreflightError(`The independently fetched citation target for ${source.id} has no safely bounded text for the LLM review.`);
   if (typeof fetched?.content_sha256 !== "string" || !/^[a-f0-9]{64}$/i.test(fetched.content_sha256)) {
     throw new ClaimSourcePreflightError(`The independently fetched citation target for ${source.id} has no content hash.`);
   }
@@ -86,16 +88,16 @@ function preflightEvidenceFor(source, fetched) {
       citation_url: source.url,
       final_url: fetched.final_url,
       content_sha256: fetched.content_sha256,
-      extraction_kind: excerpt.kind,
-      locator_excerpt_sha256: sha256Text(excerpt.text),
-      locator_excerpt_characters: excerpt.text.length,
+      extraction_kind: locator.kind,
+      locator_excerpt_sha256: sha256Text(excerpt),
+      locator_excerpt_characters: excerpt.length,
       citation_target_valid: fetched.valid === true,
     },
     reviewed_excerpt: {
-      kind: excerpt.kind,
-      text: excerpt.text,
-      sha256: sha256Text(excerpt.text),
-      characters: excerpt.text.length,
+      kind: locator.kind,
+      text: excerpt,
+      sha256: sha256Text(excerpt),
+      characters: excerpt.length,
     },
   };
 }

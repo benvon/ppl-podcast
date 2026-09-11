@@ -590,8 +590,21 @@ def assert_legacy_script_path(script_path: Path) -> None:
     episode_path = script_path.parent / "episode.yaml"
     if not episode_path.is_file():
         return
-    manifest = episode_path.read_text(encoding="utf-8")
-    if re.search(r'^\s*production_contract_version:\s*["\']?2["\']?\s*(?:#.*)?$', manifest, re.MULTILINE):
+    contract_reader = Path(__file__).with_name("read-episode-contract.cjs")
+    try:
+        result = subprocess.run(
+            ["node", str(contract_reader), str(episode_path)],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        contract_version = json.loads(result.stdout)
+    except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
+        raise RenderError(
+            "Could not determine the package production contract; the legacy renderer refuses an unverifiable episode package."
+        ) from exc
+    if contract_version == 2:
         raise RenderError(
             "render_episode_audio.py is for preserved legacy candidate reproduction only. "
             "Contract-v2 episodes must use render_episode_realtime.cjs so current source and editorial gates are enforced."

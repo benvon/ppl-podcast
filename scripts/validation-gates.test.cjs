@@ -315,6 +315,11 @@ test("pre-hosting validation requires consistent release records", () => {
     const alteredExcerpt = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(alteredExcerpt.valid, false); assert.match(alteredExcerpt.errors.join("\n"), /hash-verified copy of the reviewed excerpt/);
     fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
+    const malformedAssessmentsPreflight = preflight(); malformedAssessmentsPreflight.results[0].relevance.claim_assessments = {};
+    fs.writeFileSync(preflightPath, YAML.stringify(malformedAssessmentsPreflight));
+    const malformedAssessments = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(malformedAssessments.valid, false); assert.match(malformedAssessments.errors.join("\n"), /supporting assessment for claim claim-a/);
+    fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
     fs.writeFileSync(preflightPath, YAML.stringify({ ...preflight(), results: [] }));
     const emptyPreflight = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(emptyPreflight.valid, false); assert.match(emptyPreflight.errors.join("\n"), /must cover every current source exactly once/);
@@ -331,6 +336,19 @@ test("pre-hosting validation requires consistent release records", () => {
     const nonReciprocalMapping = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(nonReciprocalMapping.valid, false); assert.match(nonReciprocalMapping.errors.join("\n"), /reciprocal source mapping for claim claim-a/);
     fs.writeFileSync(sourceLedgerPath, originalSourceLedger);
+    fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
+    const claimInventoryPath = path.join(episodePath, "claim-inventory.yaml");
+    const originalClaimInventory = fs.readFileSync(claimInventoryPath, "utf8");
+    fs.writeFileSync(sourceLedgerPath, originalSourceLedger.replace("supports_claims: [claim-a]", "supports_claims: []"));
+    fs.writeFileSync(claimInventoryPath, originalClaimInventory.replace("sources: [source-a]", "sources: []"));
+    const sourceLessPreflight = preflight();
+    sourceLessPreflight.results[0].linked_claim_ids = [];
+    sourceLessPreflight.results[0].relevance.claim_assessments = [];
+    fs.writeFileSync(preflightPath, YAML.stringify(sourceLessPreflight));
+    const sourceLessClaim = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(sourceLessClaim.valid, false); assert.match(sourceLessClaim.errors.join("\n"), /at least one source for claim claim-a/);
+    fs.writeFileSync(sourceLedgerPath, originalSourceLedger);
+    fs.writeFileSync(claimInventoryPath, originalClaimInventory);
     fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
     const readyEpisodeMetadata = YAML.parse(fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8"));
     const pendingPublicationEpisode = { ...readyEpisodeMetadata, audio: { ...readyEpisodeMetadata.audio, publication_day_validation: "pending" } };
@@ -1341,7 +1359,7 @@ test("legacy renderer refuses a contract-v2 episode package", () => {
   const scriptPath = path.join(temporary, "master-script.md");
   try {
     fs.writeFileSync(scriptPath, "# Test\n", "utf8");
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "{ production_contract_version: 2.0 }\n", "utf8");
     const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
     assert.equal(result.status, 2);
     assert.match(result.stderr, /legacy candidate reproduction only/);

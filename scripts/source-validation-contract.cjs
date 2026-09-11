@@ -132,6 +132,10 @@ function validSha256(value) {
   return typeof value === "string" && /^[a-f0-9]{64}$/i.test(value) ? value.toLowerCase() : null;
 }
 
+function claimAssessmentsFor(result) {
+  return Array.isArray(result?.relevance?.claim_assessments) ? result.relevance.claim_assessments : [];
+}
+
 // This is deliberately shared by the renderer and release validator. A
 // contract-v2 episode must not be able to pass one lifecycle gate with a
 // weaker definition of preflight evidence than another.
@@ -163,12 +167,17 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   for (const claim of inventory.claims) {
     const listedSources = Array.isArray(claim?.sources) ? claim.sources : [];
+    expect(listedSources.length > 0, `claim-source-preflight.yaml requires at least one source for claim ${claim.id}.`);
     const supportingSources = sources
       .filter((source) => Array.isArray(source?.supports_claims) && source.supports_claims.includes(claim.id))
       .map((source) => source.id);
     expect(sameStringSet(listedSources, supportingSources), `claim-source-preflight.yaml requires a reciprocal source mapping for claim ${claim.id}.`);
   }
   const results = Array.isArray(preflight?.results) ? preflight.results : [];
+  for (const claim of inventory.claims) {
+    const assessed = results.some((result) => claimAssessmentsFor(result).some((assessment) => assessment?.claim_id === claim.id && assessment?.verdict === "supports"));
+    expect(assessed, `claim-source-preflight.yaml must record a supporting assessment for claim ${claim.id}.`);
+  }
   expect(sameStringSet(results.map((result) => result?.source_id), sources.map((source) => source.id)), "claim-source-preflight.yaml must cover every current source exactly once.");
   for (const source of sources) {
     const result = results.find((candidate) => candidate?.source_id === source.id);
@@ -183,7 +192,7 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
     expect(excerptRecorded, `claim-source-preflight.yaml must retain a hash-verified copy of the reviewed excerpt for source ${source.id}.`);
     const expectedClaims = source.supports_claims || [];
     expect(expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
-    const assessments = result.relevance?.claim_assessments || [];
+    const assessments = claimAssessmentsFor(result);
     const assessmentIDs = assessments.map((assessment) => assessment?.claim_id);
     const locatorSupports = result.relevance?.locator_assessment?.verdict === "supports"
       && typeof result.relevance.locator_assessment.rationale === "string" && result.relevance.locator_assessment.rationale.length > 0;

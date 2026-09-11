@@ -1018,6 +1018,39 @@ test("claim-source preflight retains adverse challenger evidence in its failed a
   }
 });
 
+test("claim-source preflight retains completed source evidence when a later source fails", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-partial-claim-source-preflight-test-"));
+  const firstSource = source("source-a", ["claim-a"]);
+  const secondSource = source("source-b", ["claim-b"]);
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [firstSource, secondSource] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "First test claim.", sources: ["source-a"] }, { id: "claim-b", claim: "Second test claim.", sources: ["source-b"] }] }));
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
+    await assert.rejects(
+      createClaimSourcePreflight({
+        episodePath: temporary,
+        model: "test-model",
+        dependencies: {
+          verifyProgrammaticFallback: async (entry) => {
+            if (entry.id === "source-b") return { link: { valid: false, errors: ["second target unavailable"] } };
+            return { link: { valid: true, final_url: firstSource.url, content_sha256: "2".repeat(64), excerpt: "First independently extracted locator text." } };
+          },
+          assessRelevance: async ({ claims }) => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: claims.map((claim) => ({ claim_id: claim.id, verdict: "supports", rationale: "Test." })) } }),
+        },
+      }),
+      /source-b could not be independently fetched/,
+    );
+    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
+    const marker = YAML.parse(fs.readFileSync(validationFailurePath(preflightPath), "utf8"));
+    const attempt = YAML.parse(fs.readFileSync(path.join(path.dirname(preflightPath), marker.failed_attempt), "utf8"));
+    assert.equal(attempt.results.length, 1);
+    assert.equal(attempt.results[0].source_id, "source-a");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("claim-source preflight cancellation finalizes the owned run", async () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-cancelled-claim-source-preflight-test-"));
   const sourceEntry = source("source-a", ["claim-a"]);

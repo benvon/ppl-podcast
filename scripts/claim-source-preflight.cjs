@@ -194,46 +194,52 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   return runOwnedValidation(preflightPath, validationRun, async () => {
     updatePreflightState(resolved, "in_progress");
     const results = [];
-    try {
-      for (const source of ledger.sources) {
-        throwIfCancelled(signal, isCancelled);
-        if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) throw new ClaimSourcePreflightError("Every source must declare an id, URL, locator, and supports_claims.");
-        const targetErrors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
-        if (targetErrors.length) throw new ClaimSourcePreflightError(`Source ${source.id} has an invalid citation target: ${targetErrors.join("; ")}`);
-        const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter, signal });
-        throwIfCancelled(signal, isCancelled);
-        if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
-        const linkedClaims = linkedClaimsFor(source, claimsByID);
-        const evidence = preflightEvidenceFor(source, verification.link);
-        const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link, signal });
-        throwIfCancelled(signal, isCancelled);
-        if (reviewed?.status !== "assessed" || !reviewed.assessment) throw new ClaimSourcePreflightError(`Source ${source.id} did not receive an LLM relevance assessment.`);
-        results.push({ source_id: source.id, locator: source.locator, linked_claim_ids: source.supports_claims, ...evidence, relevance: { status: reviewed.status, ...reviewed.assessment } });
-      }
-    } finally {
-      if (!dependencies.ecfrRateLimiter) ecfrRateLimiter.close();
-    }
-    if (!sameInputHashes(inputSha256, claimSourcePreflightInputHashes(resolved))) {
-      throw new ClaimSourcePreflightError("sources.yaml or claim-inventory.yaml changed while the claim-source preflight was running; the result was not promoted.");
-    }
-    const preflight = {
+    const failedPreflight = () => ({
       schema_version: 1,
       validator: "scripts/claim-source-preflight.cjs",
-      status: "complete",
+      status: "failed",
       authorization,
       checked_at_utc: new Date().toISOString(),
       llm_requested: true,
       llm_model: model,
       input_sha256: inputSha256,
       results,
-    };
-    const errors = claimSourcePreflightErrors({ episodePath: resolved, episode, preflight });
-    if (errors.length) throw new ClaimSourcePreflightError(`Claim-source preflight failed:\n${errors.join("\n")}`, preflight);
-    completeValidationReport(preflightPath, preflight, validationRun, {
-      validator: "scripts/claim-source-preflight.cjs",
-      beforeRelease: () => updatePreflightState(resolved, "complete"),
     });
-    return preflight;
+    try {
+      try {
+        for (const source of ledger.sources) {
+          throwIfCancelled(signal, isCancelled);
+          if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) throw new ClaimSourcePreflightError("Every source must declare an id, URL, locator, and supports_claims.");
+          const targetErrors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
+          if (targetErrors.length) throw new ClaimSourcePreflightError(`Source ${source.id} has an invalid citation target: ${targetErrors.join("; ")}`);
+          const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter, signal });
+          throwIfCancelled(signal, isCancelled);
+          if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
+          const linkedClaims = linkedClaimsFor(source, claimsByID);
+          const evidence = preflightEvidenceFor(source, verification.link);
+          const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link, signal });
+          throwIfCancelled(signal, isCancelled);
+          if (reviewed?.status !== "assessed" || !reviewed.assessment) throw new ClaimSourcePreflightError(`Source ${source.id} did not receive an LLM relevance assessment.`);
+          results.push({ source_id: source.id, locator: source.locator, linked_claim_ids: source.supports_claims, ...evidence, relevance: { status: reviewed.status, ...reviewed.assessment } });
+        }
+      } finally {
+        if (!dependencies.ecfrRateLimiter) ecfrRateLimiter.close();
+      }
+      if (!sameInputHashes(inputSha256, claimSourcePreflightInputHashes(resolved))) {
+        throw new ClaimSourcePreflightError("sources.yaml or claim-inventory.yaml changed while the claim-source preflight was running; the result was not promoted.");
+      }
+      const preflight = { ...failedPreflight(), status: "complete" };
+      const errors = claimSourcePreflightErrors({ episodePath: resolved, episode, preflight });
+      if (errors.length) throw new ClaimSourcePreflightError(`Claim-source preflight failed:\n${errors.join("\n")}`, preflight);
+      completeValidationReport(preflightPath, preflight, validationRun, {
+        validator: "scripts/claim-source-preflight.cjs",
+        beforeRelease: () => updatePreflightState(resolved, "complete"),
+      });
+      return preflight;
+    } catch (error) {
+      if (error instanceof ValidationCancelledError || (error instanceof ClaimSourcePreflightError && error.preflight)) throw error;
+      throw new ClaimSourcePreflightError(error.message, failedPreflight());
+    }
   }, {
     validator: "scripts/claim-source-preflight.cjs",
     isCancelled,

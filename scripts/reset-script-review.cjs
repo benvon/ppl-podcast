@@ -79,7 +79,7 @@ const CLAIM_SOURCE_PREFLIGHT_TEMPLATE = Object.freeze({
 
 const CLAIM_SOURCE_PREFLIGHT_QA_ITEMS = Object.freeze([
   "- [ ] Explicit current-turn authorization was received before proposed factual claims, exact source locators, and relevant source excerpts were sent to OpenAI for this claim-source preflight run. The preflight command consumes this item and records the run identity in its result. <!-- qa-id: openai-claim-source-preflight-authorization -->",
-  "- [ ] `claim-source-preflight.yaml` was created by `npm run sources:preflight` and is complete and bound to the current source ledger and claim inventory; it records every reviewed source's exact locator, independently fetched citation identity and content hash, locator-excerpt hash, mapped claims, and supporting LLM assessment. Findings were resolved before full spoken prose was drafted and are recorded in `production-log.md`. <!-- qa-id: claim-source-preflight -->",
+  "- [ ] `claim-source-preflight.yaml` was created by `direnv exec . npm run sources:preflight` and is complete and bound to the current source ledger and claim inventory; it records every reviewed source's exact locator, independently fetched citation identity and content hash, locator-excerpt hash, mapped claims, and supporting LLM assessment. Findings were resolved before full spoken prose was drafted and are recorded in `production-log.md`. <!-- qa-id: claim-source-preflight -->",
 ]);
 
 function preflightMatchesCurrentInputs(preflight, inputHashes) {

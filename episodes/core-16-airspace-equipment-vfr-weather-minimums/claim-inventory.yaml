@@ -1,0 +1,184 @@
+episode_id: core-16
+claims:
+  - id: acs-route-airspace
+    claim: "The ACS expects a private-pilot applicant to consider airspace and available navigation and communication systems during route planning, manage environmental and ATC-service risks, and apply current charts and NOTAMs."
+    claim_type: FAA standard
+    sources: [acs-cross-country-airspace]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Retrieval review]
+    status: supported
+  - id: acs-nas-outcome
+    claim: "The ACS National Airspace System task includes airspace classes, chart symbols, SUA, SFRA, TFRs, SVFR, basic VFR weather minimums, and communication and equipment requirements."
+    claim_type: FAA standard
+    sources: [acs-national-airspace]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Retrieval review]
+    status: supported
+  - id: controlled-uncontrolled
+    claim: "Classes A through E are controlled airspace, while Class G is uncontrolled airspace not designated as Class A, B, C, D, or E; controlled airspace does not by itself mean every VFR aircraft is receiving an individual clearance or separation service."
+    claim_type: FAA handbook and guidance
+    sources: [phak-airspace-profile, aim-controlled-airspace, aim-class-g]
+    risk: safety_critical
+    script_sections: [Build a three-dimensional airspace picture, Retrieval review]
+    status: supported
+  - id: class-a-boundary
+    claim: "Class A generally begins at 18,000 feet MSL and extends through Flight Level 600, and operations there are conducted under IFR unless otherwise authorized."
+    claim_type: FAA handbook and guidance
+    sources: [phak-airspace-profile, aim-controlled-airspace]
+    risk: safety_critical
+    script_sections: [Match each class to its entry question, Retrieval review]
+    status: supported
+  - id: terminal-airspace-shapes
+    claim: "Class B and Class C areas are individually tailored layered airspace around designated airports, while Class D is generally a surface area around an airport with an operating control tower."
+    claim_type: FAA handbook and guidance
+    sources: [phak-airspace-profile, aim-controlled-airspace]
+    risk: safety_critical
+    script_sections: [Build a three-dimensional airspace picture, Match each class to its entry question]
+    status: supported
+  - id: class-e-g-layers
+    claim: "Class G extends from the surface to the base of overlying controlled airspace, and Class E commonly begins at 700 or 1,200 feet AGL where charted, with other Class E floors possible."
+    claim_type: FAA handbook and guidance
+    sources: [phak-class-e-g, aim-controlled-airspace, aim-class-g]
+    risk: safety_critical
+    script_sections: [Build a three-dimensional airspace picture, Match each class to its entry question, Retrieval review]
+    status: supported
+  - id: chart-airspace-symbols
+    claim: "On VFR charts, airspace boundary styles and altitude labels identify lateral limits, floors, and ceilings, including dashed blue Class D, dashed magenta Class E surface airspace, and magenta or blue vignettes for common Class E floors."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-airspace-symbols]
+    risk: safety_critical
+    script_sections: [Build a three-dimensional airspace picture, Retrieval review]
+    status: supported
+  - id: class-b-clearance
+    claim: "A VFR aircraft must receive an explicit ATC clearance before entering Class B airspace, and Class B has pilot and aircraft equipment requirements beyond merely establishing radio communication."
+    claim_type: regulation and FAA guidance
+    sources: [ecfr-91-131-class-b, aim-controlled-airspace, phak-operating-requirements]
+    risk: safety_critical
+    script_sections: [Match each class to its entry question, Retrieval review]
+    status: supported
+  - id: class-c-d-communications
+    claim: "For a typical VFR arrival or through flight, Class C and Class D require two-way radio communication to be established before entry and maintained while within the airspace; Class C also generally requires altitude-reporting transponder and ADS-B Out equipment, while Class D by itself generally requires a two-way radio."
+    claim_type: regulation and FAA guidance
+    sources: [ecfr-91-130-class-c, ecfr-91-129-class-d, aim-controlled-airspace, phak-operating-requirements]
+    risk: safety_critical
+    script_sections: [Match each class to its entry question, Retrieval review]
+    status: supported
+  - id: communications-established
+    claim: "For Class C and Class D entry, a controller response using the aircraft callsign establishes two-way communication, including a callsign followed by 'standby'; a response that omits the aircraft identification does not."
+    claim_type: FAA guidance
+    sources: [aim-controlled-airspace]
+    risk: safety_critical
+    script_sections: [Match each class to its entry question, Retrieval review]
+    status: supported
+  - id: student-class-b
+    claim: "A student pilot may operate in Class B only after receiving the required ground and flight training and a current logbook endorsement for the specific Class B area, and student operations are prohibited at the airports named in 14 CFR 61.95(b)."
+    claim_type: regulation
+    sources: [ecfr-61-95-student-class-b]
+    risk: safety_critical
+    script_sections: [Match each class to its entry question]
+    status: supported
+  - id: airspace-equipment-overview
+    claim: "PHAK Figure 15-9 organizes the usual certificate, entry, radio, and transponder requirements by airspace class and notes that ADS-B Out may also be required under 14 CFR 91.225."
+    claim_type: FAA handbook guidance
+    sources: [phak-operating-requirements]
+    risk: instructional
+    script_sections: [Match each class to its entry question]
+    status: supported
+  - id: transponder-locations
+    claim: "Subject to regulatory exceptions, an altitude-reporting transponder is required in Classes A, B, and C; above Class B and C within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil; and at or above 10,000 feet MSL excluding airspace at and below 2,500 feet AGL."
+    claim_type: regulation
+    sources: [ecfr-91-215-transponder]
+    risk: safety_critical
+    script_sections: [Match the equipment to the route, Retrieval review]
+    status: supported
+  - id: adsb-out-locations
+    claim: "Subject to regulatory exceptions, ADS-B Out is required in Classes A, B, and C; above Class B and C within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil; and at or above 10,000 feet MSL excluding airspace at and below 2,500 feet AGL."
+    claim_type: regulation
+    sources: [ecfr-91-225-adsb]
+    risk: safety_critical
+    script_sections: [Match the equipment to the route, Retrieval review]
+    status: supported
+  - id: mode-c-veil
+    claim: "The Mode C veil is generally the airspace from the surface to 10,000 feet MSL within 30 nautical miles of the listed Class B primary airports, and the VFR chart depicts its boundary even where a planned route remains beneath a Class B shelf."
+    claim_type: regulation and FAA chart guidance
+    sources: [ecfr-91-215-transponder, ecfr-91-225-adsb, chart-guide-airspace-symbols]
+    risk: safety_critical
+    script_sections: [Match the equipment to the route, Retrieval review]
+    status: supported
+  - id: basic-vfr-minimums
+    claim: "For airplanes below 10,000 feet MSL, basic VFR minimums are three statute miles and clear of clouds in Class B; three statute miles with 500 feet below, 1,000 feet above, and 2,000 feet horizontal in Classes C, D, and E; and in Class G the requirements change with day or night and height above the surface."
+    claim_type: regulation and FAA guidance
+    sources: [ecfr-91-155-basic-vfr, aim-basic-vfr-minimums, phak-vfr-minimums]
+    risk: safety_critical
+    script_sections: [Turn weather minimums into a usable picture, Apply the minimums to one changing flight, Retrieval review]
+    status: supported
+  - id: surface-area-ceiling
+    claim: "Except under Special VFR, an aircraft may not operate beneath a ceiling under VFR within the lateral boundaries of controlled airspace designated to the surface for an airport when the ceiling is below 1,000 feet."
+    claim_type: regulation and FAA guidance
+    sources: [ecfr-91-155-basic-vfr, aim-basic-vfr-minimums, phak-vfr-minimums]
+    risk: safety_critical
+    script_sections: [Turn weather minimums into a usable picture, Apply the minimums to one changing flight, Retrieval review]
+    status: supported
+  - id: flight-visibility-distinction
+    claim: "In flight, compliance is based on flight visibility from the cockpit; for takeoff or landing where ground visibility is reported, the reported ground visibility controls."
+    claim_type: regulation
+    sources: [ecfr-91-155-basic-vfr]
+    risk: safety_critical
+    script_sections: [Turn weather minimums into a usable picture, Retrieval review]
+    status: supported
+  - id: ceiling-definition
+    claim: "For aviation purposes, a ceiling is the height AGL of the lowest broken or overcast layer, or vertical visibility into an obscuration; a scattered layer is not a ceiling."
+    claim_type: FAA guidance
+    sources: [aim-ceiling-definition]
+    risk: safety_critical
+    script_sections: [Turn weather minimums into a usable picture, Retrieval review]
+    status: supported
+  - id: special-vfr-conditions
+    claim: "For an airplane, Special VFR in a Class B, C, D, or E surface area requires an ATC clearance, remaining clear of clouds, and at least one statute mile visibility; between sunset and sunrise it also requires an instrument-rated pilot and an IFR-equipped airplane."
+    claim_type: regulation and FAA guidance
+    sources: [ecfr-91-157-special-vfr, aim-special-vfr]
+    risk: safety_critical
+    script_sections: [Use Special VFR as a separate decision, Retrieval review]
+    status: supported
+  - id: special-vfr-boundary
+    claim: "A Special VFR clearance applies only within the designated surface area and does not establish that the weather outside the surface area supports continued VFR flight."
+    claim_type: FAA guidance
+    sources: [aim-special-vfr]
+    risk: safety_critical
+    script_sections: [Use Special VFR as a separate decision, Retrieval review]
+    status: supported
+  - id: special-use-distinctions
+    claim: "Prohibited areas prohibit flight; restricted areas contain unusual hazards and require authorization when active; warning areas advise of hazards offshore; MOAs separate certain military training from IFR traffic; alert areas identify high-volume or unusual activity; and CFA activity is suspended when nonparticipating aircraft approach."
+    claim_type: FAA handbook and guidance
+    sources: [phak-special-use, aim-special-use]
+    risk: safety_critical
+    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    status: supported
+  - id: moa-status
+    claim: "VFR flight through an MOA is not generally prohibited, but pilots should obtain current activity information and exercise extreme caution while the MOA is active."
+    claim_type: FAA guidance
+    sources: [aim-special-use]
+    risk: safety_critical
+    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    status: supported
+  - id: tfr-current-notam
+    claim: "A TFR is established and described by a current NOTAM, so a sectional chart alone cannot establish whether a temporary restriction affects a planned flight."
+    claim_type: FAA handbook and guidance
+    sources: [phak-tfr-other-airspace, aim-tfr]
+    risk: safety_critical
+    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    status: supported
+  - id: mtr-awareness
+    claim: "Military training routes are commonly used for military operations below 10,000 feet MSL at speeds above 250 knots, and their IR or VR identifiers and numbers convey route type and whether segments extend above 1,500 feet AGL."
+    claim_type: FAA handbook guidance
+    sources: [phak-tfr-other-airspace]
+    risk: safety_critical
+    script_sections: [Treat every special-use boundary according to its meaning]
+    status: supported
+  - id: satr-sfra-specific-rules
+    claim: "SATR and SFRA designations apply special local operating rules that must be researched for the particular area rather than inferred from the underlying Class B, C, D, E, or G airspace alone."
+    claim_type: FAA guidance
+    sources: [aim-satr-sfra]
+    risk: safety_critical
+    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    status: supported

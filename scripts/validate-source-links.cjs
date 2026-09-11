@@ -552,7 +552,7 @@ function relevanceExcerpt(fetched) {
   return typeof raw === "string" ? raw.trim().slice(0, MAX_RELEVANCE_EXCERPT_CHARACTERS) : "";
 }
 
-async function assessRelevance({ model, source, claims, authoredPassages = [], fetched, fetchImpl = fetch, signal }) {
+async function assessRelevance({ model, source, claims, authoredPassages = [], fetched, fetchImpl = fetch, signal, assessmentScope = "source_tagged_passages" }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is required for --llm. Load it from your environment; do not place it in a command argument or repository file.");
   // The relevance review must assess text extracted from this validation run.
@@ -560,6 +560,7 @@ async function assessRelevance({ model, source, claims, authoredPassages = [], f
   // current cited page, PDF page, or exact eCFR section.
   const excerpt = relevanceExcerpt(fetched);
   if (!excerpt) return { status: "not_assessed", reason: "The fetched resource has no safely extracted current text for relevance review." };
+  if (!["source_tagged_passages", "claim_source_preflight"].includes(assessmentScope)) throw new Error(`Unsupported relevance assessment scope: ${assessmentScope}`);
   const input = {
     source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt },
     // Episode claim inventories use `claim` and `claim_type`. Accept the
@@ -575,7 +576,9 @@ async function assessRelevance({ model, source, claims, authoredPassages = [], f
   };
   const body = {
     model,
-    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
+    instructions: assessmentScope === "claim_source_preflight"
+      ? "You assess a proposed factual claim before a private-pilot study script is drafted. Use only the supplied source excerpt and listed proposed claims. Do not infer missing facts. No authored passage exists yet, so assess only whether the cited locator and excerpt support each proposed claim, including its material conditions and limitations. Do not require or discuss source-tagged prose. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority."
+      : "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
     input: JSON.stringify(input),
     text: { format: { type: "json_schema", name: "source_relevance", strict: true, schema: RELEVANCE_SCHEMA } },
   };

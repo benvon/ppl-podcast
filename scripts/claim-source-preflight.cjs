@@ -108,6 +108,14 @@ function linkedClaimsFor(source, claimsByID) {
   return source.supports_claims.map((claimID) => claimsByID.get(claimID));
 }
 
+function reviewedClaimSnapshots(claims) {
+  return claims.map((claim) => ({
+    id: claim.id,
+    statement: claim.claim ?? claim.statement,
+    type: claim.claim_type ?? claim.type ?? null,
+  }));
+}
+
 function consumePreflightAuthorization(episodePath, episode, runID) {
   if (episode?.source_verification?.claim_source_preflight !== PREFLIGHT_FILE) {
     throw new ClaimSourcePreflightError(`episode.yaml must reference ${PREFLIGHT_FILE} before the claim-source preflight can send source excerpts to OpenAI.`);
@@ -220,10 +228,10 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
           if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
           const linkedClaims = linkedClaimsFor(source, claimsByID);
           const evidence = preflightEvidenceFor(source, verification.link);
-          const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link, signal });
+          const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link, signal, assessmentScope: "claim_source_preflight" });
           throwIfCancelled(signal, isCancelled);
           if (reviewed?.status !== "assessed" || !reviewed.assessment) throw new ClaimSourcePreflightError(`Source ${source.id} did not receive an LLM relevance assessment.`);
-          results.push({ source_id: source.id, locator: source.locator, linked_claim_ids: source.supports_claims, ...evidence, relevance: { status: reviewed.status, ...reviewed.assessment } });
+          results.push({ source_id: source.id, locator: source.locator, linked_claim_ids: source.supports_claims, reviewed_claims: reviewedClaimSnapshots(linkedClaims), ...evidence, relevance: { status: reviewed.status, ...reviewed.assessment } });
         }
       } finally {
         if (!dependencies.ecfrRateLimiter) ecfrRateLimiter.close();
@@ -274,4 +282,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Claim-source preflight failed: ${error.message}`); process.exitCode = error instanceof ValidationCancelledError ? 130 : 1; });
 
-module.exports = { ClaimSourcePreflightError, consumePreflightAuthorization, createClaimSourcePreflight, failedPreflightReport, locatorExcerpt, parseArgs, preflightEvidenceFor, preflightInputSnapshot, sameInputHashes, throwIfCancelled, updatePreflightState };
+module.exports = { ClaimSourcePreflightError, consumePreflightAuthorization, createClaimSourcePreflight, failedPreflightReport, locatorExcerpt, parseArgs, preflightEvidenceFor, preflightInputSnapshot, reviewedClaimSnapshots, sameInputHashes, throwIfCancelled, updatePreflightState };

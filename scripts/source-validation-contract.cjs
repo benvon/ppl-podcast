@@ -208,6 +208,16 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
     if (!result) continue;
     expect(nonEmptyString(source.locator) && nonEmptyString(result.locator) && result.locator === source.locator, `claim-source-preflight.yaml must preserve a non-empty exact locator for source ${source.id}.`);
     expect(sameStringSet(result.linked_claim_ids, source.supports_claims || []), `claim-source-preflight.yaml must preserve the current claim mapping for source ${source.id}.`);
+    const expectedClaims = Array.isArray(source.supports_claims) ? source.supports_claims : [];
+    const reviewedClaims = Array.isArray(result.reviewed_claims) ? result.reviewed_claims : [];
+    const claimSnapshotsMatch = sameStringSet(reviewedClaims.map((claim) => claim?.id), expectedClaims)
+      && reviewedClaims.every((snapshot) => {
+        const claim = claimsByID.get(snapshot?.id);
+        return claim
+          && typeof snapshot.statement === "string" && snapshot.statement === (claim.claim ?? claim.statement)
+          && (snapshot.type ?? null) === (claim.claim_type ?? claim.type ?? null);
+      });
+    expect(claimSnapshotsMatch, `claim-source-preflight.yaml must retain the exact reviewed claim text and type for source ${source.id}.`);
     const excerpt = result.reviewed_excerpt;
     const excerptRecorded = typeof excerpt?.kind === "string" && excerpt.kind.length > 0
       && typeof excerpt.text === "string" && excerpt.text.length > 0
@@ -223,7 +233,6 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
       && Number.isInteger(fetched?.locator_excerpt_characters) && fetched.locator_excerpt_characters === excerpt?.characters
       && fetched?.citation_target_valid === true;
     expect(fetchedEvidence, `claim-source-preflight.yaml must bind the reviewed excerpt to independently fetched locator evidence for source ${source.id}.`);
-    const expectedClaims = Array.isArray(source.supports_claims) ? source.supports_claims : [];
     expect(expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
     const assessments = claimAssessmentsFor(result);
     const assessmentIDs = assessments.map((assessment) => assessment?.claim_id);

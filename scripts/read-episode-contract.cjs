@@ -22,6 +22,16 @@ function publishedLegacyRelease(filePath, episode, kind) {
   const release = metadata.publisher_release;
   if (!release || typeof release !== "object" || Array.isArray(release)) return null;
   if (release.id !== episode.id || release.published_at !== episode.published_at) return null;
+  const published = metadata.published_release;
+  if (!published || typeof published !== "object" || Array.isArray(published)) return null;
+  if (metadata.handoff_status !== "published" || !utcRfc3339Timestamp(published.deployed_at_utc)) return null;
+  if (typeof published.publisher_repository !== "string" || !/^https:\/\/github\.com\/[^/]+\/[^/]+$/.test(published.publisher_repository)) return null;
+  if (typeof published.release_commit !== "string" || !/^[a-f0-9]{40}$/i.test(published.release_commit)) return null;
+  if (typeof published.episode_page !== "string" || !published.episode_page.startsWith("https://")) return null;
+  if (typeof published.enclosure_url !== "string" || !published.enclosure_url.startsWith("https://")) return null;
+  if (!Number.isInteger(published.bytes) || published.bytes <= 0 || typeof published.sha256 !== "string" || !/^[a-f0-9]{64}$/i.test(published.sha256)) return null;
+  const verification = published.public_verification;
+  if (!verification || verification.feed_item !== "verified" || verification.episode_page !== "verified" || verification.enclosure_head !== "verified" || verification.enclosure_byte_range !== "verified") return null;
   return { metadata_path: metadataPath };
 }
 

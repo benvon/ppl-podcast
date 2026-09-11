@@ -7,7 +7,7 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { checklistAuthorizationLockPath, consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
+const { acquireChecklistAuthorizationLock, checklistAuthorizationLockPath, checklistAuthorizationRecoveryPath, consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { consumeSourceReviewAuthorization, sourceReviewFailureReport, staticValidationTargetErrors } = require("./validate-source-links.cjs");
 
 test("formal source review consumes only one checklist authorization and records its run identity", () => {
@@ -53,6 +53,37 @@ test("authorization consumption refuses a concurrent checklist lock without alte
       /being consumed by another validation run/,
     );
     assert.match(fs.readFileSync(checklistPath, "utf8"), /- \[x\] Formal review authorized/);
+  } finally {
+    fs.rmSync(episodePath, { recursive: true, force: true });
+  }
+});
+
+test("stale authorization recovery is serialized and never unlinks the active lock path", () => {
+  const episodePath = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-review-authorization-"));
+  const lockPath = checklistAuthorizationLockPath(episodePath);
+  try {
+    fs.writeFileSync(lockPath, JSON.stringify({ pid: 99999999 }), { mode: 0o600 });
+    fs.mkdirSync(checklistAuthorizationRecoveryPath(lockPath), { mode: 0o700 });
+    assert.throws(
+      () => acquireChecklistAuthorizationLock(episodePath, { qaID: "preflight", runID: crypto.randomUUID() }),
+      /stale-lock recovery is already in progress/,
+    );
+    assert.equal(fs.existsSync(lockPath), true);
+  } finally {
+    fs.rmSync(episodePath, { recursive: true, force: true });
+  }
+});
+
+test("stale authorization recovery archives the observed lock before a new exclusive acquisition", () => {
+  const episodePath = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-review-authorization-"));
+  const lockPath = checklistAuthorizationLockPath(episodePath);
+  try {
+    fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), "- [x] Preflight authorized. <!-- qa-id: preflight -->\n", "utf8");
+    fs.writeFileSync(lockPath, JSON.stringify({ pid: 99999999 }), { mode: 0o600 });
+    const authorization = consumeChecklistAuthorization({ episodePath, qaID: "preflight", operation: "preflight", runID: crypto.randomUUID() });
+    assert.equal(authorization.qa_id, "preflight");
+    assert.equal(fs.existsSync(lockPath), false);
+    assert.equal(fs.existsSync(checklistAuthorizationRecoveryPath(lockPath)), false);
   } finally {
     fs.rmSync(episodePath, { recursive: true, force: true });
   }

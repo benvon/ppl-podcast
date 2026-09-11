@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireEpisodePackageLease, acquireSourceValidationLifecycle, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback, withEpisodePackageLease } = require("./validate-source-links.cjs");
+const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireEpisodePackageLease, acquireSourceValidationLifecycle, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimAssessments, validateClaimMappings, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback, withEpisodePackageLease } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -403,6 +403,11 @@ test("pre-hosting validation accepts the approved-draft package flag", () => {
   assert.deepEqual(parsePreHostingArgs(["--episode", "episodes/core-10-aircraft-performance-density-altitude", "--package-only"]), {
     episode: "episodes/core-10-aircraft-performance-density-altitude",
     packageOnly: true,
+  });
+  assert.deepEqual(parsePreHostingArgs(["--episode", "episodes/core-10-aircraft-performance-density-altitude", "--recover-stale-lock"]), {
+    episode: "episodes/core-10-aircraft-performance-density-altitude",
+    packageOnly: false,
+    "recover-stale-lock": true,
   });
 });
 
@@ -1943,6 +1948,49 @@ test("source-validation lifecycle lock serializes preflight and formal review", 
   }
 });
 
+test("formal source validation acquires the package lease before reading package inputs", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-formal-validation-lease-test-"));
+  try {
+    const lease = acquireSourceValidationLifecycle(temporary, { sources: "held" }, { validator: "test:held-source-validation" });
+    await assert.rejects(
+      validateOnce({
+        options: {
+          sources: path.join(temporary, "sources.yaml"),
+          claims: path.join(temporary, "claim-inventory.yaml"),
+          output: path.join(temporary, "link-validation.yaml"),
+          recoverStaleLock: false,
+        },
+        progress: { emit() {}, phaseStarted() {}, itemCompleted() {}, phaseCompleted() {} },
+        ecfrRateLimiter: { close() {} },
+        cancellation: new AbortController(),
+        isCancelled: () => false,
+        refreshCount: 0,
+        finalRefreshAttempt: false,
+      }),
+      /already in progress or was interrupted/,
+      "the held lease must fail before the missing episode.yaml can be observed",
+    );
+    releaseSourceValidationLifecycle(lease);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("claim-source preflight acquires the package lease before reading package inputs", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-lease-test-"));
+  try {
+    const lease = acquireSourceValidationLifecycle(temporary, { sources: "held" }, { validator: "test:held-claim-preflight" });
+    await assert.rejects(
+      createClaimSourcePreflight({ episodePath: temporary }),
+      /already in progress or was interrupted/,
+      "the held lease must fail before the missing episode.yaml can be observed",
+    );
+    releaseSourceValidationLifecycle(lease);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("package lease blocks release consumers and state writers for a source-review rerun", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-package-lease-test-"));
   try {
@@ -2004,12 +2052,16 @@ test("publication recovery restores a partial package only through explicit stal
     const originalHosting = "publisher_release: {}\n";
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-test\nstatus: partially-prepared\n", "utf8");
     fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  published_at: changed\n", "utf8");
+    const preparedEpisode = "id: core-test\nstatus: partially-prepared\n";
+    const preparedHosting = "publisher_release:\n  published_at: changed\n";
     fs.writeFileSync(path.join(temporary, PREPARATION_RECOVERY_FILE), YAML.stringify({
       schema_version: 1,
       episode_path: temporary,
       output_dir: output,
       original_episode: originalEpisode,
       original_hosting: originalHosting,
+      target_episode: preparedEpisode,
+      target_hosting: preparedHosting,
       target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
       target_source_package_files: { "episode.yaml": "a".repeat(64), "hosting-metadata.yaml": "b".repeat(64) },
     }));
@@ -2021,6 +2073,39 @@ test("publication recovery restores a partial package only through explicit stal
     assert.equal(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"), originalEpisode);
     assert.equal(fs.readFileSync(path.join(temporary, "hosting-metadata.yaml"), "utf8"), originalHosting);
     assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("publication recovery refuses to overwrite package bytes outside its recorded transaction", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-recovery-edited-test-"));
+  const output = path.join(temporary, "handoff");
+  try {
+    const originalEpisode = "id: core-test\nstatus: ready\n";
+    const originalHosting = "publisher_release: {}\n";
+    const preparedEpisode = "id: core-test\nstatus: partially-prepared\n";
+    const preparedHosting = "publisher_release:\n  published_at: changed\n";
+    const userEditedEpisode = "id: core-test\nstatus: user-edited\n";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), userEditedEpisode, "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), preparedHosting, "utf8");
+    fs.writeFileSync(path.join(temporary, PREPARATION_RECOVERY_FILE), YAML.stringify({
+      schema_version: 1,
+      episode_path: temporary,
+      output_dir: output,
+      original_episode: originalEpisode,
+      original_hosting: originalHosting,
+      target_episode: preparedEpisode,
+      target_hosting: preparedHosting,
+      target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
+      target_source_package_files: { "episode.yaml": "a".repeat(64), "hosting-metadata.yaml": "b".repeat(64) },
+    }));
+    assert.throws(
+      () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: true }),
+      /changed after publication preparation was interrupted/,
+    );
+    assert.equal(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"), userEditedEpisode);
+    assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), true);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -2054,6 +2139,28 @@ test("script-review reset exposes confirmed-dead package-lease recovery", () => 
     parseScriptReviewArgs(["--episode", "episodes/core-test", "--reset", "--recover-stale-lock"]),
     { episode: "episodes/core-test", reset: true, "recover-stale-lock": true },
   );
+});
+
+test("pre-hosting validation exposes confirmed-dead package-lease recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-prehost-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "interrupted pre-hosting validation",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { episode_yaml: "stale" },
+    }));
+    assert.throws(() => validatePreHosting({ episodePath: temporary }), /already in progress or was interrupted/);
+    const result = validatePreHosting({ episodePath: temporary, recoverStaleLock: true });
+    assert.equal(result.valid, false, "the incomplete fixture should fail after recovering, not validate as a release candidate");
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });
 
 test("eCFR validation fallback must stay on the official versioner endpoint", () => {

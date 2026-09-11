@@ -60,6 +60,17 @@ function removePreparationRecovery(pathname) {
   catch (error) { if (error?.code !== "ENOENT") throw error; }
 }
 
+function publicationTransactionState({ episodePath, journal }) {
+  const currentEpisode = fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8");
+  const currentHosting = fs.readFileSync(path.join(episodePath, "hosting-metadata.yaml"), "utf8");
+  const episodeState = currentEpisode === journal.original_episode ? "original" : currentEpisode === journal.target_episode ? "target" : null;
+  const hostingState = currentHosting === journal.original_hosting ? "original" : currentHosting === journal.target_hosting ? "target" : null;
+  if (!episodeState || !hostingState) {
+    throw new PublicationPreparationError("Episode or hosting metadata changed after publication preparation was interrupted; refusing recovery that could overwrite newer work.");
+  }
+  return { episodeState, hostingState };
+}
+
 function reconcileInterruptedPublication({ episodePath, outputDir, recoverStaleLock }) {
   const recoveryPath = preparationRecoveryPath(episodePath);
   if (!fs.existsSync(recoveryPath)) return null;
@@ -71,11 +82,16 @@ function reconcileInterruptedPublication({ episodePath, outputDir, recoverStaleL
   const resolvedOutput = path.resolve(outputDir);
   if (journal?.schema_version !== 1 || journal.episode_path !== resolvedEpisode || journal.output_dir !== resolvedOutput
     || typeof journal.original_episode !== "string" || typeof journal.original_hosting !== "string"
+    || typeof journal.target_episode !== "string" || typeof journal.target_hosting !== "string"
     || !journal.target_release || typeof journal.target_release !== "object" || Array.isArray(journal.target_release)
     || !journal.target_source_package_files || typeof journal.target_source_package_files !== "object" || Array.isArray(journal.target_source_package_files)) {
     throw new PublicationPreparationError("Publication-preparation recovery record does not match this episode and output directory; refusing to overwrite either path.");
   }
+  const transactionState = publicationTransactionState({ episodePath: resolvedEpisode, journal });
   if (fs.existsSync(resolvedOutput)) {
+    if (transactionState.episodeState !== "target" || transactionState.hostingState !== "target") {
+      throw new PublicationPreparationError("Interrupted publication left a handoff, but the package metadata is not the exact journaled prepared state; refusing to accept a handoff that no longer matches the package.");
+    }
     try {
       const verified = verifyHostingHandoff({ outputDir: resolvedOutput });
       const sealedEpisode = verified.payload?.episode;
@@ -160,6 +176,8 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
     output_dir: path.resolve(outputDir),
     original_episode: originalEpisode,
     original_hosting: originalHosting,
+    target_episode: preparedEpisode,
+    target_hosting: preparedHosting,
     target_release: {
       id: synchronized.episode.id,
       title: synchronized.episode.title,
@@ -175,12 +193,31 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
     if (!validation.valid) throw new PublicationPreparationError(`Pre-hosting validation failed after release preparation:\n${validation.errors.join("\n")}`);
     const handoff = createHostingHandoff({ episodePath: resolvedEpisode, outputDir, cwd, packageLease });
     verifyHostingHandoff({ outputDir: handoff.outputDir });
+    const transactionState = publicationTransactionState({ episodePath: resolvedEpisode, journal: {
+      original_episode: originalEpisode,
+      original_hosting: originalHosting,
+      target_episode: preparedEpisode,
+      target_hosting: preparedHosting,
+    } });
+    if (transactionState.episodeState !== "target" || transactionState.hostingState !== "target") {
+      throw new PublicationPreparationError("Package metadata changed during handoff preparation; refusing to accept a handoff that no longer matches the package.");
+    }
     removePreparationRecovery(recoveryPath);
     return handoff;
   } catch (error) {
     // Do not leave a package claiming release readiness if any downstream
     // check fails. The handoff builder itself only publishes its output after
     // construction succeeds and never replaces an existing directory.
+    try {
+      publicationTransactionState({ episodePath: resolvedEpisode, journal: {
+        original_episode: originalEpisode,
+        original_hosting: originalHosting,
+        target_episode: preparedEpisode,
+        target_hosting: preparedHosting,
+      } });
+    } catch (recoveryError) {
+      throw new PublicationPreparationError(`Publication preparation failed and package metadata changed unexpectedly; refusing rollback: ${recoveryError.message}`);
+    }
     writeTextAtomically(episodeYaml, originalEpisode);
     writeTextAtomically(hostingYaml, originalHosting);
     removePreparationRecovery(recoveryPath);
@@ -208,4 +245,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { PREPARATION_RECOVERY_FILE, PublicationPreparationError, parseArgs, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata };
+module.exports = { PREPARATION_RECOVERY_FILE, PublicationPreparationError, parseArgs, preparePublication, publicationTransactionState, reconcileInterruptedPublication, synchronizeReleaseMetadata };

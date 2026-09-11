@@ -23,6 +23,7 @@ function parseArgs(argv) {
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     if (token === "--package-only") { values.packageOnly = true; continue; }
+    if (token === "--recover-stale-lock") { values["recover-stale-lock"] = true; continue; }
     if (!token.startsWith("--")) throw new PreHostingValidationError(`Unexpected argument: ${token}`);
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new PreHostingValidationError(`Missing value for ${token}`);
@@ -331,13 +332,13 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
   return { valid: errors.length === 0, errors };
 }
 
-function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = false, packageLease = null }) {
+function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = false, packageLease = null, recoverStaleLock = false }) {
   if (packageLease) {
     assertEpisodePackageLease(episodePath, packageLease);
     return validatePreHostingUnlocked({ episodePath, cwd, packageOnly });
   }
   const resolvedEpisode = path.resolve(episodePath);
-  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/validate-pre-hosting.cjs" }, () => (
+  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/validate-pre-hosting.cjs", recoverStaleLock }, () => (
     validatePreHostingUnlocked({ episodePath: resolvedEpisode, cwd, packageOnly })
   ));
 }
@@ -345,7 +346,7 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
 if (require.main === module) {
   try {
     const options = parseArgs(process.argv.slice(2));
-    const result = validatePreHosting({ episodePath: options.episode, packageOnly: options.packageOnly });
+    const result = validatePreHosting({ episodePath: options.episode, packageOnly: options.packageOnly, recoverStaleLock: Boolean(options["recover-stale-lock"]) });
     if (!result.valid) throw new PreHostingValidationError(result.errors.join("\n"));
     if (options.packageOnly) console.log(`Draft-package shape is consistent for ${path.resolve(options.episode)}. This is not a final pre-hosting, release, or hosting approval.`);
     else console.log(`Pre-hosting validation passed for ${path.resolve(options.episode)}.`);

@@ -212,6 +212,11 @@ function failedPreflightReport({ error, outcome, defaultReport }) {
 
 async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, dependencies = {}, signal, isCancelled = () => false, recoverStaleLock = false }) {
   const resolved = path.resolve(episodePath);
+  // Take package ownership before reading episode.yaml, the source ledger, or
+  // the claim inventory. Those files form the outbound-review snapshot.
+  const lifecycleLease = acquireSourceValidationLifecycle(resolved, { scope: "claim-source-preflight" }, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs:lifecycle" });
+  let validationRun;
+  try {
   const episode = readYamlMapping(path.join(resolved, "episode.yaml"), "episode.yaml");
   requireCurrentProductionContract(episode, "Claim-source preflight");
   const { ledger, inventory, input_sha256: inputSha256 } = preflightInputSnapshot(resolved);
@@ -231,9 +236,6 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   });
   if (targetErrors.length) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
   const preflightPath = path.join(resolved, PREFLIGHT_FILE);
-  const lifecycleLease = acquireSourceValidationLifecycle(resolved, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs:lifecycle" });
-  let validationRun;
-  try {
     validationRun = markValidationInProgress(preflightPath, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs" });
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   const verify = dependencies.verifyProgrammaticFallback || verifyProgrammaticFallback;

@@ -815,9 +815,12 @@ function releaseSourceValidationLifecycle(lease) {
 // review can start between a consumer's check and use of an older clean
 // report. Keep the original source-specific names as aliases so callers make
 // their intent clear while sharing one coordination primitive.
-function episodePackageLeaseInput(episodePath) {
-  const episodeYaml = path.join(path.resolve(episodePath), "episode.yaml");
-  return { episode_yaml: fileSha256(episodeYaml) };
+function episodePackageLeaseInput() {
+  // A lease may not derive its identity from mutable package bytes. Reading
+  // episode.yaml before lock acquisition recreates the snapshot race the lease
+  // exists to prevent. State transitions bind exact bytes immediately before
+  // their atomic mutation.
+  return { scope: "episode-package" };
 }
 
 function acquireEpisodePackageLease(episodePath, { recoverStaleLock = false, validator = "scripts/episode-package-lease" } = {}) {
@@ -1148,8 +1151,13 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   const showNotesPath = path.resolve(options["show-notes"] || path.join(path.dirname(sourcesPath), "show-notes.md")); const showNotesManifestPath = path.resolve(options["show-notes-manifest"] || path.join(path.dirname(sourcesPath), "show-notes-manifest.yaml"));
   const episodePath = path.dirname(sourcesPath);
   if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml") || outputPath !== path.join(episodePath, "link-validation.yaml")) throw new Error("source validation inputs and output must be the canonical episode package files");
-  const episodeFile = path.join(episodePath, "episode.yaml");
-  if (!fs.existsSync(episodeFile) || !fs.lstatSync(episodeFile).isFile()) throw new Error("source validation requires the canonical episode.yaml package record");
+  // Acquire package ownership before reading any mutable package input. The
+  // lease is intentionally not keyed to a pre-read input hash: a script reset
+  // must not be able to replace those bytes between snapshot and ownership.
+  const lifecycleLease = acquireSourceValidationLifecycle(episodePath, { scope: "source-validation" }, { recoverStaleLock: options.recoverStaleLock, validator: "scripts/validate-source-links.cjs:formal-review-lifecycle" });
+  try {
+    const episodeFile = path.join(episodePath, "episode.yaml");
+    if (!fs.existsSync(episodeFile) || !fs.lstatSync(episodeFile).isFile()) throw new Error("source validation requires the canonical episode.yaml package record");
   const episodeDocument = YAML.parseDocument(fs.readFileSync(episodeFile, "utf8"));
   if (episodeDocument.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${episodeDocument.errors[0].message}`);
   const episode = episodeDocument.toJS();
@@ -1169,12 +1177,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     return;
   }
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  // Deterministic link validation also updates source-review state. It must
-  // therefore share the package lease with LLM review, rendering, and release
-  // consumers rather than attempting an unowned episode.yaml transition.
-  const lifecycleLease = acquireSourceValidationLifecycle(episodePath, inputSha256, { recoverStaleLock: options.recoverStaleLock, validator: "scripts/validate-source-links.cjs:formal-review-lifecycle" });
   let validationRun;
-  try {
     validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
     let authorization = null;
     let preflightRunID = null;
@@ -1361,4 +1364,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireEpisodePackageLease, acquireSourceValidationLifecycle, applyVerificationEvidence, assertEpisodePackageLease, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, episodePackageLeaseInput, episodeStateText, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback, withEpisodePackageLease, withEpisodePackageLeaseAsync };
+module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireEpisodePackageLease, acquireSourceValidationLifecycle, applyVerificationEvidence, assertEpisodePackageLease, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, episodePackageLeaseInput, episodeStateText, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback, withEpisodePackageLease, withEpisodePackageLeaseAsync };

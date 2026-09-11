@@ -75,7 +75,8 @@ function locatorExcerpt(fetched) {
   throw new ClaimSourcePreflightError("The independently fetched citation target has no extractable text for the recorded locator.");
 }
 
-function preflightEvidenceFor(source, fetched) {
+function preflightEvidenceFor(source, verification) {
+  const fetched = verification?.link || verification;
   const locator = locatorExcerpt(fetched);
   const excerpt = relevanceExcerpt(fetched);
   if (!excerpt) throw new ClaimSourcePreflightError(`The independently fetched citation target for ${source.id} has no safely bounded text for the LLM review.`);
@@ -83,15 +84,40 @@ function preflightEvidenceFor(source, fetched) {
     throw new ClaimSourcePreflightError(`The independently fetched citation target for ${source.id} has no content hash.`);
   }
   if (typeof fetched?.final_url !== "string" || !fetched.final_url) throw new ClaimSourcePreflightError(`The independently fetched citation target for ${source.id} has no final URL.`);
+  let programmaticFallback = null;
+  if (fetched.resolved_via === "attested_programmatic_fallback") {
+    const configured = source.programmatic_attestation;
+    const attestation = verification?.content_attestation;
+    if (!source.programmatic_url || !configured || typeof configured !== "object" || attestation?.valid !== true) {
+      throw new ClaimSourcePreflightError(`The programmatic fallback for ${source.id} lacks a verified FAA attestation.`);
+    }
+    programmaticFallback = {
+      programmatic_url: source.programmatic_url,
+      attestation_url: configured.url,
+      link_text: configured.link_text,
+      sha256: configured.sha256,
+      content_attestation: {
+        valid: attestation.valid,
+        status: attestation.status,
+        attestation_url: attestation.attestation_url,
+        expected_link_text: attestation.expected_link_text,
+        expected_sha256: attestation.expected_sha256,
+        programmatic_sha256: attestation.programmatic_sha256,
+      },
+    };
+  }
   return {
     fetched_locator: {
       citation_url: source.url,
       final_url: fetched.final_url,
+      validation_url: fetched.validation_url || null,
+      resolved_via: fetched.resolved_via || null,
       content_sha256: fetched.content_sha256,
       extraction_kind: locator.kind,
       locator_excerpt_sha256: sha256Text(excerpt),
       locator_excerpt_characters: excerpt.length,
       citation_target_valid: fetched.valid === true,
+      programmatic_fallback: programmaticFallback,
     },
     reviewed_excerpt: {
       kind: locator.kind,
@@ -229,7 +255,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
           throwIfCancelled(signal, isCancelled);
           if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
           const linkedClaims = linkedClaimsFor(source, claimsByID);
-          const evidence = preflightEvidenceFor(source, verification.link);
+          const evidence = preflightEvidenceFor(source, verification);
           const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link, signal, assessmentScope: "claim_source_preflight" });
           throwIfCancelled(signal, isCancelled);
           if (reviewed?.status !== "assessed" || !reviewed.assessment) throw new ClaimSourcePreflightError(`Source ${source.id} did not receive an LLM relevance assessment.`);

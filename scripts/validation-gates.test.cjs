@@ -872,6 +872,75 @@ test("claim-source preflight evidence is derived from a fetched locator excerpt"
   assert.throws(() => preflightEvidenceFor(sourceEntry, { ...fetched, content_sha256: null }), /has no content hash/);
 });
 
+test("claim-source preflight retains attested programmatic fallback identity", () => {
+  const sourceEntry = {
+    id: "source-a",
+    url: "https://www.faa.gov/human-readable-page",
+    programmatic_url: "https://www.faa.gov/files/source.pdf",
+    programmatic_attestation: { url: "https://www.faa.gov/human-readable-page", link_text: "source.pdf", sha256: "a".repeat(64) },
+  };
+  const verification = {
+    link: {
+      valid: true,
+      final_url: sourceEntry.programmatic_url,
+      validation_url: sourceEntry.programmatic_url,
+      resolved_via: "attested_programmatic_fallback",
+      content_sha256: "a".repeat(64),
+      excerpt: "Text extracted from the attested programmatic fallback.",
+    },
+    content_attestation: {
+      valid: true,
+      status: "attested",
+      attestation_url: sourceEntry.programmatic_attestation.url,
+      expected_link_text: sourceEntry.programmatic_attestation.link_text,
+      expected_sha256: sourceEntry.programmatic_attestation.sha256,
+      programmatic_sha256: sourceEntry.programmatic_attestation.sha256,
+    },
+  };
+  const evidence = preflightEvidenceFor(sourceEntry, verification);
+  assert.equal(evidence.fetched_locator.programmatic_fallback.programmatic_url, sourceEntry.programmatic_url);
+  assert.equal(evidence.fetched_locator.programmatic_fallback.content_attestation.programmatic_sha256, sourceEntry.programmatic_attestation.sha256);
+  assert.throws(() => preflightEvidenceFor(sourceEntry, { ...verification, content_attestation: { ...verification.content_attestation, valid: false } }), /lacks a verified FAA attestation/);
+});
+
+test("claim-source preflight rejects a tampered attested fallback record", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-fallback-contract-test-"));
+  const sourceEntry = {
+    id: "source-a",
+    url: "https://www.faa.gov/human-readable-page",
+    locator: "Attested PDF",
+    supports_claims: ["claim-a"],
+    programmatic_url: "https://www.faa.gov/files/source.pdf",
+    programmatic_attestation: { url: "https://www.faa.gov/human-readable-page", link_text: "source.pdf", sha256: "a".repeat(64) },
+  };
+  try {
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
+    const excerpt = "Text extracted from the attested programmatic fallback.";
+    const evidence = preflightEvidenceFor(sourceEntry, {
+      link: { valid: true, final_url: sourceEntry.programmatic_url, validation_url: sourceEntry.programmatic_url, resolved_via: "attested_programmatic_fallback", content_sha256: "a".repeat(64), excerpt },
+      content_attestation: { valid: true, status: "attested", attestation_url: sourceEntry.programmatic_attestation.url, expected_link_text: "source.pdf", expected_sha256: "a".repeat(64), programmatic_sha256: "a".repeat(64) },
+    });
+    const preflight = {
+      schema_version: 1,
+      validator: "scripts/claim-source-preflight.cjs",
+      status: "complete",
+      authorization: { consumed_at_utc: "2026-09-10T00:00:00Z", run_id: crypto.randomUUID() },
+      checked_at_utc: "2026-09-10T00:00:00Z",
+      llm_requested: true,
+      llm_model: "test-model",
+      input_sha256: claimSourcePreflightInputHashes(temporary),
+      results: [{ source_id: "source-a", locator: sourceEntry.locator, linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], ...evidence, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "Exact source." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Exact source." }] } }],
+    };
+    const episode = { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } };
+    assert.deepEqual(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight }), []);
+    preflight.results[0].fetched_locator.programmatic_fallback.content_attestation.programmatic_sha256 = "b".repeat(64);
+    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight }).join("\n"), /attested programmatic fallback evidence/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("claim-source preflight records the exact bounded excerpt sent to relevance review", () => {
   const sourceEntry = { id: "source-a", url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html" };
   const sectionText = ` ${"a".repeat(MAX_RELEVANCE_EXCERPT_CHARACTERS + 10)} `;

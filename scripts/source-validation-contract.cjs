@@ -228,6 +228,26 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
       && Number.isInteger(fetched?.locator_excerpt_characters) && fetched.locator_excerpt_characters === excerpt?.characters
       && fetched?.citation_target_valid === true;
     expect(fetchedEvidence, `claim-source-preflight.yaml must bind the reviewed excerpt to independently fetched locator evidence for source ${source.id}.`);
+    if (fetched?.resolved_via === "attested_programmatic_fallback") {
+      const configured = source.programmatic_attestation;
+      const fallback = fetched.programmatic_fallback;
+      const fallbackEvidence = source.programmatic_url
+        && configured && typeof configured === "object"
+        && fetched.validation_url === source.programmatic_url
+        && fetched.final_url === source.programmatic_url
+        && fetched.content_sha256 === configured.sha256
+        && fallback?.programmatic_url === source.programmatic_url
+        && fallback?.attestation_url === configured.url
+        && fallback?.link_text === configured.link_text
+        && fallback?.sha256 === configured.sha256
+        && fallback?.content_attestation?.valid === true
+        && fallback.content_attestation.status === "attested"
+        && fallback.content_attestation.attestation_url === configured.url
+        && fallback.content_attestation.expected_link_text === configured.link_text
+        && fallback.content_attestation.expected_sha256 === configured.sha256
+        && fallback.content_attestation.programmatic_sha256 === configured.sha256;
+      expect(fallbackEvidence, `claim-source-preflight.yaml must bind attested programmatic fallback evidence to source ${source.id}.`);
+    }
     expect(expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
     const assessments = claimAssessmentsFor(result);
     const assessmentIDs = assessments.map((assessment) => assessment?.claim_id);

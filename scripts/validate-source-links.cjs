@@ -744,24 +744,37 @@ function releaseValidationLock(outputPath, run) {
   fs.unlinkSync(lockPath);
 }
 
-async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false, validator = "scripts/validate-source-links.cjs" } = {}) {
+async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false, validator = "scripts/validate-source-links.cjs", failureReport } = {}) {
   try {
     return await work();
   } catch (error) {
     const lockPath = validationInProgressPath(outputPath);
     if (fs.existsSync(lockPath)) {
-      const report = {
+      const outcome = error instanceof ValidationCancelledError || isCancelled() ? "cancelled" : "failed";
+      const defaultReport = {
         schema_version: 1,
         validator,
         checked_at_utc: new Date().toISOString(),
         input_sha256: run.input_sha256,
         failure: {
-          outcome: error instanceof ValidationCancelledError || isCancelled() ? "cancelled" : "failed",
+          outcome,
           reason: error.message,
         },
         results: [],
       };
-      try { completeValidationReport(outputPath, report, run, { promote: false, validator, beforeRelease: () => onTerminal?.(report.failure.outcome, report.checked_at_utc) }); }
+      let report = defaultReport;
+      try {
+        const candidate = failureReport?.({ error, outcome, defaultReport });
+        if (candidate !== undefined && candidate !== null) {
+          if (typeof candidate !== "object" || Array.isArray(candidate)) throw new Error("failure report transformer did not return a mapping");
+          report = candidate;
+        }
+      } catch (reportError) {
+        defaultReport.failure.report_transform_error = reportError.message;
+      }
+      report.failure = { ...(report.failure || {}), outcome, reason: error.message };
+      if (!report.checked_at_utc) report.checked_at_utc = defaultReport.checked_at_utc;
+      try { completeValidationReport(outputPath, report, run, { promote: false, validator, beforeRelease: () => onTerminal?.(outcome, report.checked_at_utc) }); }
       catch (finalizeError) { throw new Error(`${error.message}; validation failure finalization also failed: ${finalizeError.message}`, { cause: error }); }
     }
     throw error;

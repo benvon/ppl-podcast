@@ -12,7 +12,7 @@ const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { qaItemCompleteWithID } = require("./production-gates.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, releaseValidationLock, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, releaseValidationLock, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -20,7 +20,12 @@ const PREFLIGHT_FILE = "claim-source-preflight.yaml";
 const ECFR_MAX_IN_FLIGHT_REQUESTS = 5;
 const ECFR_MIN_START_INTERVAL_MS = 1_000;
 
-class ClaimSourcePreflightError extends Error {}
+class ClaimSourcePreflightError extends Error {
+  constructor(message, preflight = null) {
+    super(message);
+    this.preflight = preflight;
+  }
+}
 
 function sha256Text(value) {
   return crypto.createHash("sha256").update(value).digest("hex");
@@ -46,9 +51,10 @@ function writeYamlAtomically(filePath, value) {
 }
 
 function parseArgs(argv) {
-  const options = { model: DEFAULT_MODEL };
+  const options = { model: DEFAULT_MODEL, recoverStaleLock: false };
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
+    if (token === "--recover-stale-lock") { options.recoverStaleLock = true; continue; }
     if (token !== "--episode" && token !== "--require-llm" && token !== "--model") throw new ClaimSourcePreflightError(`Unexpected argument: ${token}`);
     if (token === "--require-llm") { options.requireLlm = true; continue; }
     const value = argv[index + 1];
@@ -150,7 +156,16 @@ function updatePreflightState(episodePath, status) {
   writeYamlAtomically(episodePathname, episode);
 }
 
-async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, dependencies = {} }) {
+function throwIfCancelled(signal, isCancelled) {
+  if (signal?.aborted || isCancelled()) throw new ValidationCancelledError("Claim-source preflight was cancelled.");
+}
+
+function failedPreflightReport({ error, outcome, defaultReport }) {
+  if (!(error instanceof ClaimSourcePreflightError) || !error.preflight) return defaultReport;
+  return { ...error.preflight, status: outcome };
+}
+
+async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, dependencies = {}, signal, isCancelled = () => false, recoverStaleLock = false }) {
   const resolved = path.resolve(episodePath);
   const episode = readYamlMapping(path.join(resolved, "episode.yaml"), "episode.yaml");
   requireCurrentProductionContract(episode, "Claim-source preflight");
@@ -162,7 +177,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   const mapping = validateClaimMappings(ledger, inventory);
   if (!mapping.valid) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid claim mappings:\n${mapping.errors.join("\n")}`);
   const preflightPath = path.join(resolved, PREFLIGHT_FILE);
-  const validationRun = markValidationInProgress(preflightPath, inputSha256, { validator: "scripts/claim-source-preflight.cjs" });
+  const validationRun = markValidationInProgress(preflightPath, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs" });
   let authorization;
   try { authorization = consumePreflightAuthorization(resolved, episode, validationRun.run_id); }
   catch (error) { releaseValidationLock(preflightPath, validationRun); throw error; }
@@ -179,14 +194,17 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     const results = [];
     try {
       for (const source of ledger.sources) {
+        throwIfCancelled(signal, isCancelled);
         if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) throw new ClaimSourcePreflightError("Every source must declare an id, URL, locator, and supports_claims.");
         const targetErrors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
         if (targetErrors.length) throw new ClaimSourcePreflightError(`Source ${source.id} has an invalid citation target: ${targetErrors.join("; ")}`);
-        const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter });
+        const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter, signal });
+        throwIfCancelled(signal, isCancelled);
         if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
         const linkedClaims = linkedClaimsFor(source, claimsByID);
         const evidence = preflightEvidenceFor(source, verification.link);
-        const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link });
+        const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link, signal });
+        throwIfCancelled(signal, isCancelled);
         if (reviewed?.status !== "assessed" || !reviewed.assessment) throw new ClaimSourcePreflightError(`Source ${source.id} did not receive an LLM relevance assessment.`);
         results.push({ source_id: source.id, locator: source.locator, linked_claim_ids: source.supports_claims, ...evidence, relevance: { status: reviewed.status, ...reviewed.assessment } });
       }
@@ -208,7 +226,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
       results,
     };
     const errors = claimSourcePreflightErrors({ episodePath: resolved, episode, preflight });
-    if (errors.length) throw new ClaimSourcePreflightError(`Claim-source preflight failed:\n${errors.join("\n")}`);
+    if (errors.length) throw new ClaimSourcePreflightError(`Claim-source preflight failed:\n${errors.join("\n")}`, preflight);
     completeValidationReport(preflightPath, preflight, validationRun, {
       validator: "scripts/claim-source-preflight.cjs",
       beforeRelease: () => updatePreflightState(resolved, "complete"),
@@ -216,16 +234,29 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     return preflight;
   }, {
     validator: "scripts/claim-source-preflight.cjs",
+    isCancelled,
+    failureReport: failedPreflightReport,
     onTerminal: (outcome) => updatePreflightState(resolved, outcome),
   });
 }
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const preflight = await createClaimSourcePreflight({ episodePath: options.episode, model: options.model });
-  console.log(`Completed independently fetched claim-source preflight for ${preflight.results.length} sources: ${path.join(path.resolve(options.episode), PREFLIGHT_FILE)}`);
+  const cancellation = new AbortController();
+  let cancelled = false;
+  const cancel = () => { cancelled = true; cancellation.abort(); };
+  process.once("SIGINT", cancel); process.once("SIGTERM", cancel);
+  try {
+    const preflight = await createClaimSourcePreflight({ episodePath: options.episode, model: options.model, signal: cancellation.signal, isCancelled: () => cancelled, recoverStaleLock: options.recoverStaleLock });
+    console.log(`Completed independently fetched claim-source preflight for ${preflight.results.length} sources: ${path.join(path.resolve(options.episode), PREFLIGHT_FILE)}`);
+  } catch (error) {
+    if (cancelled || error instanceof ValidationCancelledError) process.exitCode = 130;
+    throw error;
+  } finally {
+    process.removeListener("SIGINT", cancel); process.removeListener("SIGTERM", cancel);
+  }
 }
 
-if (require.main === module) main().catch((error) => { console.error(`Claim-source preflight failed: ${error.message}`); process.exitCode = 1; });
+if (require.main === module) main().catch((error) => { console.error(`Claim-source preflight failed: ${error.message}`); process.exitCode = error instanceof ValidationCancelledError ? 130 : 1; });
 
-module.exports = { ClaimSourcePreflightError, consumePreflightAuthorization, createClaimSourcePreflight, locatorExcerpt, parseArgs, preflightEvidenceFor, preflightInputSnapshot, sameInputHashes, updatePreflightState };
+module.exports = { ClaimSourcePreflightError, consumePreflightAuthorization, createClaimSourcePreflight, failedPreflightReport, locatorExcerpt, parseArgs, preflightEvidenceFor, preflightInputSnapshot, sameInputHashes, throwIfCancelled, updatePreflightState };

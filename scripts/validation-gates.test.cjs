@@ -20,7 +20,7 @@ const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs:
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
-const { createClaimSourcePreflight, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
+const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind } = require("./production-state-contract.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
@@ -153,6 +153,25 @@ test("source validation failure and cancellation use one terminal finalizer", as
       assert.equal(attempt.failure.outcome, failure instanceof ValidationCancelledError ? "cancelled" : "failed");
       assert.equal(fs.readFileSync(output, "utf8"), "status: previous-success\n");
     } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+  }
+});
+
+test("owned validation still finalizes when its optional failure-report transformer fails", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-owned-validation-transformer-test-"));
+  const output = path.join(temporary, "link-validation.yaml");
+  try {
+    const run = markValidationInProgress(output, { sources: "input" });
+    await assert.rejects(
+      runOwnedValidation(output, run, async () => { throw new Error("original failure"); }, { failureReport: () => { throw new Error("transformer failure"); } }),
+      /original failure/,
+    );
+    assert.equal(fs.existsSync(validationInProgressPath(output)), false);
+    const marker = YAML.parse(fs.readFileSync(validationFailurePath(output), "utf8"));
+    const attempt = YAML.parse(fs.readFileSync(path.join(temporary, marker.failed_attempt), "utf8"));
+    assert.equal(attempt.failure.reason, "original failure");
+    assert.equal(attempt.failure.report_transform_error, "transformer failure");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
   }
 });
 
@@ -956,6 +975,76 @@ test("claim-source preflight refuses promotion when its captured inputs drift", 
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+test("claim-source preflight retains adverse challenger evidence in its failed attempt", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-adverse-claim-source-preflight-test-"));
+  const sourceEntry = source("source-a", ["claim-a"]);
+  const fetchedText = "Text independently extracted from the exact source locator.";
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
+    await assert.rejects(
+      createClaimSourcePreflight({
+        episodePath: temporary,
+        model: "test-model",
+        dependencies: {
+          verifyProgrammaticFallback: async () => ({ link: { valid: true, final_url: sourceEntry.url, content_sha256: "f".repeat(64), excerpt: fetchedText } }),
+          assessRelevance: async () => ({ status: "assessed", assessment: { verdict: "partially_supports", confidence: "high", rationale: "The evidence is incomplete.", locator_assessment: { verdict: "partially_supports", rationale: "The locator is broader than the claim." }, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports", rationale: "The cited text does not establish the full claim." }] } }),
+        },
+      }),
+      /Claim-source preflight failed/,
+    );
+    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
+    const marker = YAML.parse(fs.readFileSync(validationFailurePath(preflightPath), "utf8"));
+    const attempt = YAML.parse(fs.readFileSync(path.join(path.dirname(preflightPath), marker.failed_attempt), "utf8"));
+    assert.equal(attempt.status, "failed");
+    assert.equal(attempt.results[0].relevance.locator_assessment.verdict, "partially_supports");
+    assert.equal(attempt.results[0].relevance.claim_assessments[0].rationale, "The cited text does not establish the full claim.");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("claim-source preflight cancellation finalizes the owned run", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-cancelled-claim-source-preflight-test-"));
+  const sourceEntry = source("source-a", ["claim-a"]);
+  const cancellation = new AbortController();
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
+    await assert.rejects(
+      createClaimSourcePreflight({
+        episodePath: temporary,
+        signal: cancellation.signal,
+        isCancelled: () => cancellation.signal.aborted,
+        dependencies: {
+          verifyProgrammaticFallback: async ({}, { signal }) => {
+            assert.equal(signal, cancellation.signal);
+            cancellation.abort();
+            return { link: { valid: true, final_url: sourceEntry.url, content_sha256: "1".repeat(64), excerpt: "Text independently extracted from the exact source locator." } };
+          },
+        },
+      }),
+      /cancelled/,
+    );
+    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
+    assert.equal(fs.existsSync(`${preflightPath}.in-progress`), false);
+    assert.equal(fs.existsSync(validationFailurePath(preflightPath)), true);
+    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "cancelled");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("claim-source preflight accepts only its explicit stale-lock recovery flag", () => {
+  const parsed = parseClaimSourcePreflightArgs(["--episode", "episodes/core-15", "--require-llm", "--recover-stale-lock"]);
+  assert.equal(parsed.recoverStaleLock, true);
+  assert.throws(() => parseClaimSourcePreflightArgs(["--episode", "episodes/core-15", "--recover-stale-lock"]), /--require-llm is required/);
 });
 
 test("master-script source tags must name real sources in the claim's declared section", () => {

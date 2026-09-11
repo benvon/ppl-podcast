@@ -9,7 +9,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
-const { createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
+const { createHostingHandoff, sha256Value, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { durationDisplay, PreHostingValidationError, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { episodeStateText, withEpisodePackageLease } = require("./validate-source-links.cjs");
@@ -70,12 +70,20 @@ function reconcileInterruptedPublication({ episodePath, outputDir, recoverStaleL
   const resolvedEpisode = path.resolve(episodePath);
   const resolvedOutput = path.resolve(outputDir);
   if (journal?.schema_version !== 1 || journal.episode_path !== resolvedEpisode || journal.output_dir !== resolvedOutput
-    || typeof journal.original_episode !== "string" || typeof journal.original_hosting !== "string") {
+    || typeof journal.original_episode !== "string" || typeof journal.original_hosting !== "string"
+    || !journal.target_release || typeof journal.target_release !== "object" || Array.isArray(journal.target_release)
+    || !journal.target_source_package_files || typeof journal.target_source_package_files !== "object" || Array.isArray(journal.target_source_package_files)) {
     throw new PublicationPreparationError("Publication-preparation recovery record does not match this episode and output directory; refusing to overwrite either path.");
   }
   if (fs.existsSync(resolvedOutput)) {
     try {
       const verified = verifyHostingHandoff({ outputDir: resolvedOutput });
+      const sealedEpisode = verified.payload?.episode;
+      if (sealedEpisode?.id !== journal.target_release.id || sealedEpisode?.title !== journal.target_release.title
+        || sealedEpisode?.version !== journal.target_release.version || sealedEpisode?.published_at !== journal.target_release.published_at
+        || sha256Value(verified.payload?.source_package_files) !== sha256Value(journal.target_source_package_files)) {
+        throw new PublicationPreparationError("Interrupted publication handoff does not match the journaled release identity and source package; refusing to accept it as recovered.");
+      }
       removePreparationRecovery(recoveryPath);
       return { outputDir: resolvedOutput, seal: verified.payload, recovered: true };
     } catch (error) {
@@ -140,17 +148,29 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
   const originalEpisode = fs.readFileSync(episodeYaml, "utf8");
   const originalHosting = fs.readFileSync(hostingYaml, "utf8");
   const recoveryPath = preparationRecoveryPath(resolvedEpisode);
+  const synchronized = synchronizeReleaseMetadata({ episode: YAML.parse(originalEpisode), hosting: YAML.parse(originalHosting), sourceValidation: readYaml(sourceValidationYaml), publishedAt });
+  const preparedEpisode = episodeStateText(resolvedEpisode, synchronized.episode, packageLease, originalEpisode);
+  const preparedHosting = YAML.stringify(synchronized.hosting);
+  const expectedSourceFiles = sourcePackageFiles(resolvedEpisode);
+  expectedSourceFiles["episode.yaml"] = crypto.createHash("sha256").update(preparedEpisode).digest("hex");
+  expectedSourceFiles["hosting-metadata.yaml"] = crypto.createHash("sha256").update(preparedHosting).digest("hex");
   writeYamlAtomically(recoveryPath, {
     schema_version: 1,
     episode_path: resolvedEpisode,
     output_dir: path.resolve(outputDir),
     original_episode: originalEpisode,
     original_hosting: originalHosting,
+    target_release: {
+      id: synchronized.episode.id,
+      title: synchronized.episode.title,
+      version: synchronized.episode.version,
+      published_at: synchronized.episode.published_at,
+    },
+    target_source_package_files: expectedSourceFiles,
   });
   try {
-    const synchronized = synchronizeReleaseMetadata({ episode: YAML.parse(originalEpisode), hosting: YAML.parse(originalHosting), sourceValidation: readYaml(sourceValidationYaml), publishedAt });
-    writeYamlAtomically(episodeYaml, episodeStateText(resolvedEpisode, synchronized.episode, packageLease, originalEpisode));
-    writeYamlAtomically(hostingYaml, synchronized.hosting);
+    writeYamlAtomically(episodeYaml, preparedEpisode);
+    writeYamlAtomically(hostingYaml, preparedHosting);
     const validation = validatePreHosting({ episodePath: resolvedEpisode, cwd, packageLease });
     if (!validation.valid) throw new PublicationPreparationError(`Pre-hosting validation failed after release preparation:\n${validation.errors.join("\n")}`);
     const handoff = createHostingHandoff({ episodePath: resolvedEpisode, outputDir, cwd, packageLease });

@@ -2010,6 +2010,8 @@ test("publication recovery restores a partial package only through explicit stal
       output_dir: output,
       original_episode: originalEpisode,
       original_hosting: originalHosting,
+      target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
+      target_source_package_files: { "episode.yaml": "a".repeat(64), "hosting-metadata.yaml": "b".repeat(64) },
     }));
     assert.throws(
       () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: false }),
@@ -2456,7 +2458,15 @@ test("legacy publication evidence requires matching release metadata", () => {
     }), "utf8");
     result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
     assert.equal(result.status, 0);
-    assert.deepEqual(JSON.parse(result.stdout).legacy_published_release, { metadata_path: "hosting-metadata.yaml" });
+    assert.deepEqual(JSON.parse(result.stdout).legacy_published_release, {
+      metadata_path: "hosting-metadata.yaml",
+      publisher_repository: "https://github.com/example/publisher",
+      release_commit: "a".repeat(40),
+      episode_page: "https://example.com/episodes/core-01/",
+      enclosure_url: "https://media.example.com/core-01.mp3",
+      bytes: 1,
+      sha256: "b".repeat(64),
+    });
 
     fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  id: core-01\n  published_at: 2026-09-11T00:00:00Z\n", "utf8");
     result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
@@ -2465,6 +2475,56 @@ test("legacy publication evidence requires matching release metadata", () => {
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+test("legacy renderer verifies public publisher and enclosure identity instead of local status text", () => {
+  const renderer = path.join(__dirname, "render_episode_audio.py");
+  const program = String.raw`
+import hashlib
+import importlib.util
+import json
+import sys
+spec = importlib.util.spec_from_file_location("legacy_renderer", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+payload = b"abc"
+class Response:
+    def __init__(self, body, headers=None):
+        self.body = body
+        self.offset = 0
+        self.headers = headers or {}
+    def __enter__(self): return self
+    def __exit__(self, *args): return False
+    def read(self, count=-1):
+        if count < 0: count = len(self.body) - self.offset
+        part = self.body[self.offset:self.offset + count]
+        self.offset += len(part)
+        return part
+def request(url, timeout=20):
+    if "/commits/" in url: return Response(json.dumps({"sha": "a" * 40}).encode())
+    if "episodes/core-01" in url: return Response(b"ok")
+    if "audio/core-01" in url: return Response(payload, {"Content-Length": str(len(payload))})
+    raise AssertionError(url)
+module.public_request = request
+release = {
+    "publisher_repository": "https://github.com/example/publisher",
+    "release_commit": "a" * 40,
+    "episode_page": "https://example.com/episodes/core-01/",
+    "enclosure_url": "https://media.example.com/audio/core-01.mp3",
+    "bytes": len(payload),
+    "sha256": hashlib.sha256(payload).hexdigest(),
+}
+module.verify_published_legacy_release(release, "core-01")
+release["sha256"] = "0" * 64
+try:
+    module.verify_published_legacy_release(release, "core-01")
+except module.RenderError:
+    sys.exit(0)
+sys.exit(1)
+`;
+  const result = childProcess.spawnSync("python3", ["-c", program, renderer], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
 });
 
 test("legacy renderer refuses an unpublished legacy package before any provider call", () => {

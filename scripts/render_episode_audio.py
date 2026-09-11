@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 import re
@@ -24,6 +25,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.error
+import urllib.parse
 import urllib.request
 import wave
 from dataclasses import dataclass
@@ -625,6 +627,71 @@ def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...
             )
 
 
+def require_https_url(value: object, label: str) -> str:
+    if not isinstance(value, str):
+        raise RenderError(f"Published legacy release is missing {label}.")
+    parsed = urllib.parse.urlparse(value)
+    if parsed.scheme != "https" or not parsed.netloc:
+        raise RenderError(f"Published legacy release {label} must be an HTTPS URL.")
+    return value
+
+
+def public_request(url: str, *, timeout: int = 20) -> urllib.response.addinfourl:
+    request = urllib.request.Request(url, headers={"User-Agent": "ppl-study-guide-legacy-renderer/1"})
+    try:
+        return urllib.request.urlopen(request, timeout=timeout)
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+        raise RenderError(f"Could not verify the published legacy release artifact at {url}: {exc}") from exc
+
+
+def verify_published_legacy_release(release: object, episode_id: str) -> None:
+    """Verify live publisher provenance and immutable public artifact bytes."""
+    if not isinstance(release, dict):
+        raise RenderError("The legacy renderer requires a verifiable published release record.")
+    repository = require_https_url(release.get("publisher_repository"), "publisher_repository")
+    repository_match = re.fullmatch(r"https://github\.com/([^/]+)/([^/]+)", repository)
+    commit = release.get("release_commit")
+    if not repository_match or not isinstance(commit, str) or not re.fullmatch(r"[a-fA-F0-9]{40}", commit):
+        raise RenderError("Published legacy release must identify an exact public GitHub publisher commit.")
+    owner, repo = repository_match.groups()
+    commit_url = f"https://api.github.com/repos/{owner}/{repo}/commits/{commit}"
+    try:
+        with public_request(commit_url) as response:
+            confirmed = json.loads(response.read())
+    except (json.JSONDecodeError, TypeError) as exc:
+        raise RenderError("Could not parse the public publisher commit record for the legacy release.") from exc
+    if not isinstance(confirmed, dict) or str(confirmed.get("sha", "")).lower() != commit.lower():
+        raise RenderError("The recorded legacy publisher commit is not present at the public publisher repository.")
+
+    episode_page = require_https_url(release.get("episode_page"), "episode_page")
+    if episode_id not in urllib.parse.urlparse(episode_page).path:
+        raise RenderError("The recorded legacy episode page URL does not identify the requested episode.")
+    with public_request(episode_page) as response:
+        response.read(1)
+
+    enclosure_url = require_https_url(release.get("enclosure_url"), "enclosure_url")
+    expected_bytes = release.get("bytes")
+    expected_sha256 = release.get("sha256")
+    if not isinstance(expected_bytes, int) or expected_bytes <= 0 or not isinstance(expected_sha256, str) or not re.fullmatch(r"[a-fA-F0-9]{64}", expected_sha256):
+        raise RenderError("Published legacy release enclosure identity is incomplete.")
+    digest = hashlib.sha256()
+    observed_bytes = 0
+    with public_request(enclosure_url, timeout=60) as response:
+        content_length = response.headers.get("Content-Length")
+        if content_length is not None and content_length.isdigit() and int(content_length) != expected_bytes:
+            raise RenderError("The public legacy enclosure byte length does not match its recorded release identity.")
+        while True:
+            block = response.read(1024 * 1024)
+            if not block:
+                break
+            observed_bytes += len(block)
+            if observed_bytes > expected_bytes:
+                raise RenderError("The public legacy enclosure exceeds its recorded byte length.")
+            digest.update(block)
+    if observed_bytes != expected_bytes or digest.hexdigest().lower() != expected_sha256.lower():
+        raise RenderError("The public legacy enclosure bytes do not match the recorded release identity.")
+
+
 def assert_legacy_script_path(script_path: Path, episode_id: str) -> str:
     """Keep the retired renderer from bypassing current-contract render gates."""
     episode_path = script_path.parent / "episode.yaml"
@@ -665,6 +732,7 @@ def assert_legacy_script_path(script_path: Path, episode_id: str) -> str:
             "render_episode_audio.py accepts a preserved legacy package only when its episode.yaml and hosting-metadata.yaml "
             "agree on a valid published release timestamp. Draft and planned packages must use current release tooling."
         )
+    verify_published_legacy_release(legacy_release, episode_id)
     repository_root = Path(__file__).resolve().parent.parent
     episodes_root = repository_root / "episodes"
     try:

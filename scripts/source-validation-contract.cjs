@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { exactEcfrTarget } = require("./ecfr-section.cjs");
 const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 const { validationFailurePath } = require("./validation-records.cjs");
 
@@ -148,12 +149,35 @@ function canonicalHttpsAuthority(url) {
   }
 }
 
+function sameUrlIgnoringFragment(left, right) {
+  try {
+    const normalized = (url) => {
+      const parsed = new URL(url);
+      parsed.hash = "";
+      return parsed.toString();
+    };
+    return normalized(left) === normalized(right);
+  } catch (_) {
+    return false;
+  }
+}
+
 function fallbackRedirectChainValid({ requestedUrl, redirects, finalUrl }) {
   const authority = canonicalHttpsAuthority(requestedUrl);
   if (!authority || !nonEmptyString(finalUrl) || !Array.isArray(redirects)) return false;
   const chain = [requestedUrl, ...redirects];
   if (!chain.every((url) => canonicalHttpsAuthority(url) === authority)) return false;
-  return redirects.length === 0 ? finalUrl === requestedUrl : redirects.at(-1) === finalUrl;
+  return redirects.length === 0
+    ? sameUrlIgnoringFragment(finalUrl, requestedUrl)
+    : sameUrlIgnoringFragment(redirects.at(-1), finalUrl);
+}
+
+function directValidationUrl(source) {
+  if (canonicalHttpsAuthority(source?.url) === "ecfr.gov") {
+    try { return exactEcfrTarget(source).validation_url; }
+    catch (_) { return null; }
+  }
+  return source?.validation_url || source?.url || null;
 }
 
 function claimAssessmentsFor(result) {
@@ -240,7 +264,7 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
       && Number.isInteger(excerpt.characters) && excerpt.characters === excerpt.text.length;
     expect(excerptRecorded, `claim-source-preflight.yaml must retain a hash-verified copy of the reviewed excerpt for source ${source.id}.`);
     const fetched = result.fetched_locator;
-    const normalValidationUrl = source.validation_url || source.url;
+    const normalValidationUrl = directValidationUrl(source);
     const fetchedEvidence = nonEmptyString(fetched?.citation_url) && fetched.citation_url === source.url
       && nonEmptyString(fetched?.validation_url)
       && nonEmptyString(fetched?.final_url)

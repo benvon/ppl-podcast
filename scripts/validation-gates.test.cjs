@@ -1025,6 +1025,69 @@ test("claim-source preflight rejects a tampered attested fallback record", () =>
   }
 });
 
+test("claim-source preflight preserves exact eCFR and fragment-restored redirect identities", () => {
+  const cases = [
+    {
+      source: {
+        id: "ecfr-source",
+        url: "https://www.ecfr.gov/current/title-14/part-91/section-91.103",
+        ecfr_date: "2026-09-10",
+        locator: "14 CFR 91.103",
+        supports_claims: ["claim-a"],
+      },
+      fetched: {
+        valid: true,
+        validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-09-10/title-14.xml?part=91&section=91.103",
+        final_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-09-10/title-14.xml?part=91&section=91.103",
+        redirects: [],
+        content_sha256: "a".repeat(64),
+        section_text: "The pilot in command shall become familiar with all available information concerning that flight.",
+      },
+    },
+    {
+      source: {
+        id: "faa-source",
+        url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#anchor",
+        locator: "Paragraph 1-1-1",
+        supports_claims: ["claim-a"],
+      },
+      fetched: {
+        valid: true,
+        validation_url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#anchor",
+        final_url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_2.html#anchor",
+        redirects: ["https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_2.html"],
+        content_sha256: "b".repeat(64),
+        excerpt: "The retained FAA section text supports the reviewed claim.",
+      },
+    },
+  ];
+  for (const { source: sourceEntry, fetched } of cases) {
+    const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-route-identity-test-"));
+    try {
+      fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
+      fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: [sourceEntry.id] }] }));
+      const evidence = preflightEvidenceFor(sourceEntry, fetched);
+      const runID = crypto.randomUUID();
+      const preflight = {
+        schema_version: 1,
+        validator: "scripts/claim-source-preflight.cjs",
+        run_id: runID,
+        status: "complete",
+        authorization: { qa_id: "openai-claim-source-preflight-authorization", consumed_at_utc: "2026-09-10T00:00:00Z", run_id: runID },
+        checked_at_utc: "2026-09-10T00:00:00Z",
+        llm_requested: true,
+        llm_model: "test-model",
+        input_sha256: claimSourcePreflightInputHashes(temporary),
+        results: [{ source_id: sourceEntry.id, locator: sourceEntry.locator, linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], ...evidence, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "Exact source." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Exact source." }] } }],
+      };
+      const episode = { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } };
+      assert.deepEqual(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight }), []);
+    } finally {
+      fs.rmSync(temporary, { recursive: true, force: true });
+    }
+  }
+});
+
 test("claim-source preflight records the exact bounded excerpt sent to relevance review", () => {
   const sourceEntry = { id: "source-a", url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html" };
   const sectionText = ` ${"a".repeat(MAX_RELEVANCE_EXCERPT_CHARACTERS + 10)} `;

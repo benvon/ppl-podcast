@@ -82,7 +82,7 @@ class AiffProperties:
     compression_type: bytes
 
 
-def parse_script(path: Path, max_words: int) -> list[Segment]:
+def parse_script_text(script: str, max_words: int) -> list[Segment]:
     """Extract spoken dialogue and split it into bounded, same-speaker pieces."""
     turns: list[tuple[str, str, str]] = []
     speaker: str | None = None
@@ -97,7 +97,7 @@ def parse_script(path: Path, max_words: int) -> list[Segment]:
                 turns.append((speaker, text, section))
         paragraphs = []
 
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
+    for raw_line in script.splitlines():
         line = raw_line.strip()
         heading_match = SECTION_HEADING_RE.match(line)
         if heading_match:
@@ -125,6 +125,11 @@ def parse_script(path: Path, max_words: int) -> list[Segment]:
             segments.append(Segment(len(segments) + 1, turn_speaker, piece, turn_section))
     validate_front_matter(segments)
     return segments
+
+
+def parse_script(path: Path, max_words: int) -> list[Segment]:
+    """Parse a script file for callers that do not need a verified snapshot."""
+    return parse_script_text(path.read_text(encoding="utf-8"), max_words)
 
 
 def validate_front_matter(segments: list[Segment]) -> dict[str, list[int]]:
@@ -620,7 +625,7 @@ def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...
             )
 
 
-def assert_legacy_script_path(script_path: Path, episode_id: str) -> None:
+def assert_legacy_script_path(script_path: Path, episode_id: str) -> str:
     """Keep the retired renderer from bypassing current-contract render gates."""
     episode_path = script_path.parent / "episode.yaml"
     if not episode_path.is_file():
@@ -670,10 +675,19 @@ def assert_legacy_script_path(script_path: Path, episode_id: str) -> None:
     if script_path.name != "master-script.md" or contract.get("episode_id") != episode_id or not package_path.name.startswith(f"{episode_id}-"):
         raise RenderError("The legacy script path, package directory, and episode.yaml id must identify the same episode.")
     release_metadata_path = episode_path.parent / legacy_release["metadata_path"]
+    # Snapshot the exact bytes before and after baseline verification, then
+    # parse that retained snapshot. The retired renderer must never verify one
+    # worktree version and send a later edit to a provider.
+    script_snapshot = script_path.read_text(encoding="utf-8")
     assert_trusted_legacy_baseline(
         repository_root,
         (script_path.resolve(), episode_path.resolve(), release_metadata_path.resolve()),
     )
+    if script_path.read_text(encoding="utf-8") != script_snapshot:
+        raise RenderError(
+            "The preserved legacy master script changed during baseline verification; retry after restoring the published bytes."
+        )
+    return script_snapshot
 
 
 def main() -> int:
@@ -693,12 +707,12 @@ def main() -> int:
         raise RenderError("--continuity-context-characters must be between 0 and 1000.")
     if not args.script.is_file():
         raise RenderError(f"Master script not found: {args.script}")
-    assert_legacy_script_path(args.script, args.episode_id)
+    script_snapshot = assert_legacy_script_path(args.script, args.episode_id)
 
     timestamp = args.timestamp or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     if not re.fullmatch(r"\d{8}T\d{6}Z", timestamp):
         raise RenderError("--timestamp must be formatted YYYYMMDDTHHMMSSZ.")
-    segments = parse_script(args.script, args.max_words_per_segment)
+    segments = parse_script_text(script_snapshot, args.max_words_per_segment)
     front_matter = validate_front_matter(segments)
     segment_end = args.segment_end or len(segments)
     if args.render_only and args.assemble_only:

@@ -18,7 +18,7 @@ const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = requir
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
-const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
+const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
@@ -1991,6 +1991,34 @@ test("handoff source snapshot excludes transient package-lease artifacts", () =>
     fs.writeFileSync(path.join(temporary, "link-validation.yaml.failed"), "transient\n", "utf8");
     const files = sourcePackageFiles(temporary);
     assert.deepEqual(Object.keys(files).sort(), ["claim-source-preflight.yaml", "episode.yaml"]);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("publication recovery restores a partial package only through explicit stale-lock recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-recovery-test-"));
+  const output = path.join(temporary, "handoff");
+  try {
+    const originalEpisode = "id: core-test\nstatus: ready\n";
+    const originalHosting = "publisher_release: {}\n";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-test\nstatus: partially-prepared\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  published_at: changed\n", "utf8");
+    fs.writeFileSync(path.join(temporary, PREPARATION_RECOVERY_FILE), YAML.stringify({
+      schema_version: 1,
+      episode_path: temporary,
+      output_dir: output,
+      original_episode: originalEpisode,
+      original_hosting: originalHosting,
+    }));
+    assert.throws(
+      () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: false }),
+      /rerun with --recover-stale-lock/,
+    );
+    assert.equal(reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: true }), null);
+    assert.equal(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"), originalEpisode);
+    assert.equal(fs.readFileSync(path.join(temporary, "hosting-metadata.yaml"), "utf8"), originalHosting);
+    assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), false);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

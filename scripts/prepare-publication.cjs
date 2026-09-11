@@ -15,11 +15,13 @@ const { durationDisplay, PreHostingValidationError, validatePreHosting } = requi
 const { episodeStateText, withEpisodePackageLease } = require("./validate-source-links.cjs");
 
 class PublicationPreparationError extends Error {}
+const PREPARATION_RECOVERY_FILE = ".publication-preparation.rollback.yaml";
 
 function parseArgs(argv) {
   const values = {};
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
+    if (token === "--recover-stale-lock") { values.recoverStaleLock = true; continue; }
     if (!token.startsWith("--")) throw new PublicationPreparationError(`Unexpected argument: ${token}`);
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new PublicationPreparationError(`Missing value for ${token}`);
@@ -47,6 +49,43 @@ function writeTextAtomically(filePath, text) {
 
 function writeYamlAtomically(filePath, value) {
   writeTextAtomically(filePath, typeof value === "string" ? value : YAML.stringify(value));
+}
+
+function preparationRecoveryPath(episodePath) {
+  return path.join(path.resolve(episodePath), PREPARATION_RECOVERY_FILE);
+}
+
+function removePreparationRecovery(pathname) {
+  try { fs.unlinkSync(pathname); }
+  catch (error) { if (error?.code !== "ENOENT") throw error; }
+}
+
+function reconcileInterruptedPublication({ episodePath, outputDir, recoverStaleLock }) {
+  const recoveryPath = preparationRecoveryPath(episodePath);
+  if (!fs.existsSync(recoveryPath)) return null;
+  if (!recoverStaleLock) {
+    throw new PublicationPreparationError("An interrupted publication-preparation transaction was found. After confirming its package lease is dead, rerun with --recover-stale-lock to reconcile it.");
+  }
+  const journal = readYaml(recoveryPath);
+  const resolvedEpisode = path.resolve(episodePath);
+  const resolvedOutput = path.resolve(outputDir);
+  if (journal?.schema_version !== 1 || journal.episode_path !== resolvedEpisode || journal.output_dir !== resolvedOutput
+    || typeof journal.original_episode !== "string" || typeof journal.original_hosting !== "string") {
+    throw new PublicationPreparationError("Publication-preparation recovery record does not match this episode and output directory; refusing to overwrite either path.");
+  }
+  if (fs.existsSync(resolvedOutput)) {
+    try {
+      const verified = verifyHostingHandoff({ outputDir: resolvedOutput });
+      removePreparationRecovery(recoveryPath);
+      return { outputDir: resolvedOutput, seal: verified.payload, recovered: true };
+    } catch (error) {
+      throw new PublicationPreparationError(`Interrupted publication left an existing but invalid handoff; inspect ${resolvedOutput} before retrying: ${error.message}`);
+    }
+  }
+  writeTextAtomically(path.join(resolvedEpisode, "episode.yaml"), journal.original_episode);
+  writeTextAtomically(path.join(resolvedEpisode, "hosting-metadata.yaml"), journal.original_hosting);
+  removePreparationRecovery(recoveryPath);
+  return null;
 }
 
 function sameUtcDate(left, right) {
@@ -100,6 +139,14 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
   if (!fs.existsSync(episodeYaml) || !fs.existsSync(hostingYaml) || !fs.existsSync(sourceValidationYaml)) throw new PublicationPreparationError("The episode package must include episode.yaml, hosting-metadata.yaml, and link-validation.yaml.");
   const originalEpisode = fs.readFileSync(episodeYaml, "utf8");
   const originalHosting = fs.readFileSync(hostingYaml, "utf8");
+  const recoveryPath = preparationRecoveryPath(resolvedEpisode);
+  writeYamlAtomically(recoveryPath, {
+    schema_version: 1,
+    episode_path: resolvedEpisode,
+    output_dir: path.resolve(outputDir),
+    original_episode: originalEpisode,
+    original_hosting: originalHosting,
+  });
   try {
     const synchronized = synchronizeReleaseMetadata({ episode: YAML.parse(originalEpisode), hosting: YAML.parse(originalHosting), sourceValidation: readYaml(sourceValidationYaml), publishedAt });
     writeYamlAtomically(episodeYaml, episodeStateText(resolvedEpisode, synchronized.episode, packageLease, originalEpisode));
@@ -108,6 +155,7 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
     if (!validation.valid) throw new PublicationPreparationError(`Pre-hosting validation failed after release preparation:\n${validation.errors.join("\n")}`);
     const handoff = createHostingHandoff({ episodePath: resolvedEpisode, outputDir, cwd, packageLease });
     verifyHostingHandoff({ outputDir: handoff.outputDir });
+    removePreparationRecovery(recoveryPath);
     return handoff;
   } catch (error) {
     // Do not leave a package claiming release readiness if any downstream
@@ -115,21 +163,23 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
     // construction succeeds and never replaces an existing directory.
     writeTextAtomically(episodeYaml, originalEpisode);
     writeTextAtomically(hostingYaml, originalHosting);
+    removePreparationRecovery(recoveryPath);
     throw error;
   }
 }
 
-function preparePublication({ episodePath, outputDir, publishedAt, cwd = process.cwd() }) {
+function preparePublication({ episodePath, outputDir, publishedAt, cwd = process.cwd(), recoverStaleLock = false }) {
   const resolvedEpisode = path.resolve(episodePath);
-  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-publication.cjs" }, (packageLease) => (
-    preparePublicationUnlocked({ episodePath: resolvedEpisode, outputDir, publishedAt, cwd, packageLease })
-  ));
+  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-publication.cjs", recoverStaleLock }, (packageLease) => {
+    const recovered = reconcileInterruptedPublication({ episodePath: resolvedEpisode, outputDir, recoverStaleLock });
+    return recovered || preparePublicationUnlocked({ episodePath: resolvedEpisode, outputDir, publishedAt, cwd, packageLease });
+  });
 }
 
 if (require.main === module) {
   try {
     const options = parseArgs(process.argv.slice(2));
-    const handoff = preparePublication({ episodePath: options.episode, outputDir: options.out, publishedAt: options["published-at"] });
+    const handoff = preparePublication({ episodePath: options.episode, outputDir: options.out, publishedAt: options["published-at"], recoverStaleLock: Boolean(options.recoverStaleLock) });
     console.log(`Prepared and sealed release handoff: ${handoff.outputDir}`);
   } catch (error) {
     const message = error instanceof PublicationPreparationError || error instanceof PreHostingValidationError ? error.message : `Publication preparation failed: ${error.message}`;
@@ -138,4 +188,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { PublicationPreparationError, parseArgs, preparePublication, synchronizeReleaseMetadata };
+module.exports = { PREPARATION_RECOVERY_FILE, PublicationPreparationError, parseArgs, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata };

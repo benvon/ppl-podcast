@@ -760,6 +760,15 @@ test("claim mapping rejects claims omitted from a source ledger entry", () => {
   assert.match(result.errors.join("\n"), /not supported by any source ledger entry/);
 });
 
+test("claim mapping requires factual text for every claim", () => {
+  const result = validateClaimMappings(
+    { sources: [source("source-a", ["claim-a"])] },
+    { claims: [{ id: "claim-a", sources: ["source-a"] }] },
+  );
+  assert.equal(result.valid, false);
+  assert.match(result.errors.join("\n"), /must declare non-empty factual claim text/);
+});
+
 test("claim mapping rejects source references that do not exist in the claim inventory", () => {
   const result = validateClaimMappings(
     { sources: [source("aim", ["missing-claim"])] },
@@ -916,6 +925,29 @@ test("claim-source preflight rejects empty inventories before outbound work", as
     assert.equal(verifierCalled, false);
     assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
     assert.match(fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8"), /- \[x\] Claim preflight authorization/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("claim-source preflight validates every citation target before outbound work", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-invalid-target-claim-source-preflight-test-"));
+  const firstSource = source("source-a", ["claim-a"]);
+  const secondSource = { ...source("source-b", ["claim-b"]), url: "not-a-url" };
+  let verifierCalled = false;
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [firstSource, secondSource] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "First claim.", sources: ["source-a"] }, { id: "claim-b", claim: "Second claim.", sources: ["source-b"] }] }));
+    const checklistPath = path.join(temporary, "qa-checklist.md");
+    fs.writeFileSync(checklistPath, "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
+    await assert.rejects(
+      createClaimSourcePreflight({ episodePath: temporary, dependencies: { verifyProgrammaticFallback: async () => { verifierCalled = true; } } }),
+      /invalid citation targets/,
+    );
+    assert.equal(verifierCalled, false);
+    assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
+    assert.match(fs.readFileSync(checklistPath, "utf8"), /- \[x\] Claim preflight authorization/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -1079,6 +1111,38 @@ test("claim-source preflight cancellation finalizes the owned run", async () => 
     assert.equal(fs.existsSync(`${preflightPath}.in-progress`), false);
     assert.equal(fs.existsSync(validationFailurePath(preflightPath)), true);
     assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "cancelled");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("claim-source preflight retains completed evidence when cancellation occurs before a later source", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-partial-cancelled-claim-source-preflight-test-"));
+  const firstSource = source("source-a", ["claim-a"]);
+  const secondSource = source("source-b", ["claim-b"]);
+  let cancellationChecks = 0;
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [firstSource, secondSource] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "First claim.", sources: ["source-a"] }, { id: "claim-b", claim: "Second claim.", sources: ["source-b"] }] }));
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
+    await assert.rejects(
+      createClaimSourcePreflight({
+        episodePath: temporary,
+        isCancelled: () => ++cancellationChecks >= 4,
+        dependencies: {
+          verifyProgrammaticFallback: async (entry) => ({ link: { valid: true, final_url: entry.url, content_sha256: entry.id === "source-a" ? "3".repeat(64) : "4".repeat(64), excerpt: `${entry.id} independently extracted locator text.` } }),
+          assessRelevance: async ({ claims }) => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: claims.map((claim) => ({ claim_id: claim.id, verdict: "supports", rationale: "Test." })) } }),
+        },
+      }),
+      /cancelled/,
+    );
+    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
+    const marker = YAML.parse(fs.readFileSync(validationFailurePath(preflightPath), "utf8"));
+    const attempt = YAML.parse(fs.readFileSync(path.join(path.dirname(preflightPath), marker.failed_attempt), "utf8"));
+    assert.equal(attempt.failure.outcome, "cancelled");
+    assert.equal(attempt.results.length, 1);
+    assert.equal(attempt.results[0].source_id, "source-a");
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

@@ -870,6 +870,8 @@ function validateClaimMappings(ledger, claimInventory) {
     if (typeof claim.id !== "string" || !claim.id.trim()) { errors.push("claim inventory contains a claim without an id"); continue; }
     if (claimIds.has(claim.id)) errors.push(`claim inventory contains duplicate claim id ${claim.id}`);
     claimIds.add(claim.id);
+    const statement = claim.claim ?? claim.statement;
+    if (typeof statement !== "string" || !statement.trim()) errors.push(`claim ${claim.id} must declare non-empty factual claim text`);
     if (!Array.isArray(claim.sources)) errors.push(`claim ${claim.id} must declare sources as an array`);
     else if (claim.sources.length !== new Set(claim.sources).size || claim.sources.some((id) => typeof id !== "string" || !id.trim())) errors.push(`claim ${claim.id} must declare unique, non-empty source ids`);
   }

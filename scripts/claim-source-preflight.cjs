@@ -163,7 +163,7 @@ function throwIfCancelled(signal, isCancelled) {
 }
 
 function failedPreflightReport({ error, outcome, defaultReport }) {
-  if (!(error instanceof ClaimSourcePreflightError) || !error.preflight) return defaultReport;
+  if (!error?.preflight) return defaultReport;
   return { ...error.preflight, status: outcome };
 }
 
@@ -178,6 +178,11 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   }
   const mapping = validateClaimMappings(ledger, inventory);
   if (!mapping.valid) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid claim mappings:\n${mapping.errors.join("\n")}`);
+  const targetErrors = ledger.sources.flatMap((source) => {
+    if (!source || typeof source !== "object" || Array.isArray(source)) return ["source ledger contains a non-mapping source"];
+    return [...citationTargetErrors(source), ...validationTargetErrors(source)].map((error) => `Source ${source.id || "<unknown>"} has an invalid citation target: ${error}`);
+  });
+  if (targetErrors.length) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
   const preflightPath = path.join(resolved, PREFLIGHT_FILE);
   const validationRun = markValidationInProgress(preflightPath, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs" });
   let authorization;
@@ -210,8 +215,6 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
         for (const source of ledger.sources) {
           throwIfCancelled(signal, isCancelled);
           if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) throw new ClaimSourcePreflightError("Every source must declare an id, URL, locator, and supports_claims.");
-          const targetErrors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
-          if (targetErrors.length) throw new ClaimSourcePreflightError(`Source ${source.id} has an invalid citation target: ${targetErrors.join("; ")}`);
           const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter, signal });
           throwIfCancelled(signal, isCancelled);
           if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
@@ -237,7 +240,11 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
       });
       return preflight;
     } catch (error) {
-      if (error instanceof ValidationCancelledError || (error instanceof ClaimSourcePreflightError && error.preflight)) throw error;
+      if (error instanceof ValidationCancelledError) {
+        error.preflight = failedPreflight();
+        throw error;
+      }
+      if (error instanceof ClaimSourcePreflightError && error.preflight) throw error;
       throw new ClaimSourcePreflightError(error.message, failedPreflight());
     }
   }, {

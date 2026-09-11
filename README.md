@@ -44,7 +44,7 @@ so. We welcome technically grounded corrections and source updates.
 scope → research + claims → tagged script → independent first-listen review
       → authorized link/relevance validation → editorial review
       → opening preview → full render → human audio QA
-      → publication-day source check → hosting handoff
+      → publication-day deterministic link check → hosting handoff
 ```
 
 Qualified aviation review is welcomed and recorded when available; it is not a
@@ -106,8 +106,20 @@ direnv exec . npm run sources:validate -- \
   --require-llm
 ```
 
-The command writes `link-validation.yaml` beside the source ledger. Resolve
-every failed or inconclusive finding before rendering.
+The formal review writes `link-validation.yaml` beside the source ledger.
+Resolve every failed or inconclusive finding before rendering.
+
+After listening and chapter QA, run the publication-day deterministic check.
+It writes `publication-link-validation.yaml` and verifies the public links
+without replacing the earlier LLM source-relevance evidence or changing the
+editorial source-review state.
+
+```sh
+npm run sources:validate -- \
+  --sources episodes/<current-contract-episode>/sources.yaml \
+  --claims episodes/<current-contract-episode>/claim-inventory.yaml \
+  --publication-check
+```
 
 For eCFR citations, validation derives the official, date-pinned exact-section
 XML request from the cited `current/title-.../part-.../section-...` URL. Legacy
@@ -159,7 +171,7 @@ The public [PPL Study Guide hosting repository](https://github.com/benvon/ppl-po
 documents how a sealed episode handoff is staged, published, hosted, and
 attested after this source repository's release gates have passed.
 
-After the publication-day source check and approved listening QA, use the
+After the publication-day deterministic link check and approved listening QA, use the
 release-preparation command to synchronize the authoritative release timestamp
 and derived hosting metadata, run final pre-hosting validation, and create the
 hosting input directory. It copies the exact MP3, listener-facing metadata, and

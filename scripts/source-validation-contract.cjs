@@ -135,6 +135,17 @@ function sourceRelevanceResultValid(result) {
     && result?.claim_assessments?.valid === true;
 }
 
+// A publication-day link check verifies the same fetched citation evidence as
+// the formal review, but deliberately does not replace that review's LLM
+// assessments. Keep this predicate here so the command that writes the record
+// and the release gate that reads it enforce the same deterministic contract.
+function deterministicValidationResultValid(result) {
+  return result?.citation_target?.valid === true
+    && result?.link?.valid === true
+    && (!result?.content_attestation || result.content_attestation.valid === true)
+    && !result?.missing_claim_ids?.length;
+}
+
 function validationCoverageErrors(episodePath, validation) {
   const errors = [];
   const read = (name) => YAML.parse(fs.readFileSync(path.join(episodePath, name), "utf8"));
@@ -163,4 +174,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { deterministicValidationResultValid, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

@@ -125,13 +125,15 @@ function sameUtcDate(left, right) {
   return typeof left === "string" && typeof right === "string" && left.slice(0, 10) === right.slice(0, 10);
 }
 
-function synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publishedAt }) {
+function synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publicationLinkValidation, publishedAt }) {
   if (episode.production_contract_version !== 2) {
     throw new PublicationPreparationError("This is a preserved legacy package. Do not reprepare it; run episode:script-review --reset before revising it under the current release contract.");
   }
-  if (!sameUtcDate(sourceValidation.checked_at_utc, publishedAt)) throw new PublicationPreparationError("The canonical source-validation report must have passed on the requested publication date.");
   if (episode.source_verification?.relevance_review !== "complete" || sourceValidation.llm_requested !== true) {
     throw new PublicationPreparationError("A completed LLM source-relevance report is required before publication preparation.");
+  }
+  if (publicationLinkValidation?.validation_kind !== "publication_link_check" || publicationLinkValidation.llm_requested !== false || !sameUtcDate(publicationLinkValidation.checked_at_utc, publishedAt)) {
+    throw new PublicationPreparationError("A passing deterministic publication-day source-link check is required on the requested publication date.");
   }
   if (!Number.isFinite(episode.runtime_actual_seconds) || episode.runtime_actual_seconds <= 0) throw new PublicationPreparationError("episode.yaml must record the accepted candidate runtime before publication preparation.");
   let identity;
@@ -170,11 +172,15 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
   const episodeYaml = path.join(resolvedEpisode, "episode.yaml");
   const hostingYaml = path.join(resolvedEpisode, "hosting-metadata.yaml");
   const sourceValidationYaml = path.join(resolvedEpisode, "link-validation.yaml");
+  const publicationLinkValidationYaml = path.join(resolvedEpisode, "publication-link-validation.yaml");
   if (!fs.existsSync(episodeYaml) || !fs.existsSync(hostingYaml) || !fs.existsSync(sourceValidationYaml)) throw new PublicationPreparationError("The episode package must include episode.yaml, hosting-metadata.yaml, and link-validation.yaml.");
   const originalEpisode = fs.readFileSync(episodeYaml, "utf8");
   const originalHosting = fs.readFileSync(hostingYaml, "utf8");
+  const episode = YAML.parse(originalEpisode);
+  if (episode?.production_contract_version !== 2) throw new PublicationPreparationError("This is a preserved legacy package. Do not reprepare it; run episode:script-review --reset before revising it under the current release contract.");
+  if (!fs.existsSync(publicationLinkValidationYaml)) throw new PublicationPreparationError("The episode package must include publication-link-validation.yaml.");
   const recoveryPath = preparationRecoveryPath(resolvedEpisode);
-  const synchronized = synchronizeReleaseMetadata({ episode: YAML.parse(originalEpisode), hosting: YAML.parse(originalHosting), sourceValidation: readYaml(sourceValidationYaml), publishedAt });
+  const synchronized = synchronizeReleaseMetadata({ episode, hosting: YAML.parse(originalHosting), sourceValidation: readYaml(sourceValidationYaml), publicationLinkValidation: readYaml(publicationLinkValidationYaml), publishedAt });
   const preparedEpisode = episodeStateText(resolvedEpisode, synchronized.episode, packageLease, originalEpisode);
   const preparedHosting = YAML.stringify(synchronized.hosting);
   const expectedSourceFiles = sourcePackageFiles(resolvedEpisode);

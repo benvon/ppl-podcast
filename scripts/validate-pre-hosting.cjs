@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { currentContractErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { currentContractErrors, publicationLinkEvidenceErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, productionContractKind, sameStringList } = require("./production-state-contract.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
@@ -125,6 +125,16 @@ function hasExactVisibleVersion(markdown, version) {
   return new RegExp(`^${escapeRegExp(version)}(?:\\s+[—–-]\\s+.+)?$`).test(visibleVersion);
 }
 
+function episodeDisplayLabel(episode) {
+  const number = String(episode?.id || "").match(/-(\d+)$/)?.[1];
+  if (!number) return null;
+  const displayNumber = String(Number(number));
+  if (episode.track === "core") return displayNumber;
+  if (episode.track === "supplemental") return `Supplement ${displayNumber}`;
+  if (episode.track === "rough-spots") return `Rough Spot ${displayNumber}`;
+  return null;
+}
+
 function hasResolvedIndependentSpokenScriptReview(productionLog) {
   return markdownSections(productionLog).some((section) => {
     const [heading, ...bodyLines] = section.split("\n");
@@ -171,7 +181,7 @@ function validateDraftPackageShape({ episodePath, episode, audioManifest, hostin
   expect(errors, hasExactVisibleVersion(masterScript, episode.version), "master-script.md version must match episode.yaml.");
   errors.push(...consolidatedProductionStateErrors({ episode, audioManifest, hosting, masterScript }));
   errors.push(...pendingAudioReleaseGateErrors(episode));
-  expect(errors, showNotes.includes(`**Episode:** ${episode.id}`) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode and version must match episode.yaml.");
+  expect(errors, showNotes.includes(`**Episode:** ${episodeDisplayLabel(episode)}`) && hasExactVisibleVersion(showNotes, episode.version), "show-notes.md episode display label and version must match episode.yaml.");
   expect(errors, !episode.release_gates_remaining?.some((gate) => /human editorial|source-link validation with llm relevance/i.test(gate)), "episode.yaml must not retain completed editorial or source-relevance gates.");
   expect(errors, hosting.provenance?.content_version === episode.version, "hosting-metadata content version must match episode.yaml.");
   try {
@@ -203,7 +213,6 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
 
   const audioManifest = readYaml(paths["audio-manifest.yaml"]);
   const hosting = readYaml(paths["hosting-metadata.yaml"]);
-  const sourceValidation = readYaml(paths["link-validation.yaml"]);
   const masterScript = fs.readFileSync(paths["master-script.md"], "utf8");
   const narration = fs.readFileSync(paths["narration.md"], "utf8");
   const showNotes = fs.readFileSync(paths["show-notes.md"], "utf8");
@@ -315,7 +324,13 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
   }
 
   errors.push(...sourceReviewEvidenceErrors({ episodePath: resolvedEpisode, episode }));
-  expect(errors, sameUtcDate(sourceValidation.checked_at_utc, episode.published_at), "link validation must be recorded on the publication date.");
+  errors.push(...publicationLinkEvidenceErrors({ episodePath: resolvedEpisode, episode }));
+  try {
+    const publicationLinkValidation = readYaml(path.join(resolvedEpisode, "publication-link-validation.yaml"));
+    expect(errors, sameUtcDate(publicationLinkValidation.checked_at_utc, episode.published_at), "publication-day link validation must be recorded on the publication date.");
+  } catch (error) {
+    errors.push(`Could not read publication-link-validation.yaml: ${error.message}`);
+  }
   expect(errors, !/^## Production notice\b/im.test(showNotes), "show notes must not duplicate the hosting production disclosure.");
   const requiredChecklistEvidence = [
     { id: "audio-listening", label: "Full candidate has been listened", pattern: /- \[x\] .*Full candidate has been listened/i },
@@ -358,4 +373,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };
+module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, episodeDisplayLabel, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };

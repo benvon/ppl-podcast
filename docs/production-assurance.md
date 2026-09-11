@@ -39,7 +39,7 @@ The LLM review occurs before human editorial approval and before rendering. A pu
 - Render an opening/pronunciation-risk preview before the full episode. Reuse a segment only if its written input, voice, and renderer settings match the current narration plan.
 - Bind audio quality, listening QA, and chapters to the exact MP3 hash. If spoken audio changes, regenerate the candidate and its chapter evidence.
 - `--package-only` is a shape check. It may confirm a draft package is structurally complete, but it never establishes release readiness.
-- On publication day, run deterministic source-link validation, then `release:prepare-publication`. The release handoff must bind the current approved script, narration, show notes, metadata, and MP3 with deterministic identities.
+- On publication day, run `sources:validate --publication-check`, then `release:prepare-publication`. The deterministic check writes `publication-link-validation.yaml`; it verifies current public links without replacing `link-validation.yaml`, the formal LLM source-relevance record. The release handoff must bind the current approved script, narration, show notes, metadata, and MP3 with deterministic identities.
 - Before staging, verify the sealed handoff rather than an episode directory path. A staging retry may reuse an object only when its checksum and byte count match the sealed handoff.
 - Do not alter historical published packages to satisfy later tooling. A deliberate episode revision starts a new current-contract candidate.
 

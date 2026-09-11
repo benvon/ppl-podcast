@@ -8,6 +8,7 @@ const { deriveNarration } = require("./derive-narration.cjs");
 const { CONTRACT_KINDS, productionContractKind, preservedProductionContract } = require("./production-state-contract.cjs");
 const {
   sourceRelevanceResultValid,
+  deterministicValidationResultValid,
   sourceValidationInputHashes,
   utcRfc3339Timestamp,
   validationCoverageErrors,
@@ -16,6 +17,7 @@ const { validationFailurePath } = require("./validation-records.cjs");
 
 const SOURCE_REVIEW_FILES = Object.freeze({
   validation: "link-validation.yaml",
+  publicationLinkValidation: "publication-link-validation.yaml",
   checklist: "qa-checklist.md",
 });
 
@@ -102,6 +104,34 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   return errors;
 }
 
+function publicationLinkEvidenceErrors({ episodePath, episode }) {
+  const errors = [...currentContractErrors(episode)];
+  if (errors.length) return errors;
+  const expect = (condition, message) => { if (!condition) errors.push(message); };
+  const reportPath = path.join(episodePath, SOURCE_REVIEW_FILES.publicationLinkValidation);
+  const report = readYamlMapping(reportPath, SOURCE_REVIEW_FILES.publicationLinkValidation, errors);
+  if (!report) return errors;
+
+  expect(!fs.existsSync(`${reportPath}.in-progress`) && !fs.existsSync(`${reportPath}.in-progress.recovering`), "Publication-day source-link validation is in progress, recovering, or was interrupted.");
+  expect(!fs.existsSync(validationFailurePath(reportPath)), "The most recent publication-day source-link validation failed and must be rerun successfully.");
+  expect(report.schema_version === 1, "publication-link-validation.yaml must use schema_version 1.");
+  expect(report.validator === "scripts/validate-source-links.cjs", "publication-link-validation.yaml must be produced by scripts/validate-source-links.cjs.");
+  expect(report.validation_kind === "publication_link_check", "publication-link-validation.yaml must record a publication_link_check.");
+  expect(report.llm_requested === false && report.llm_model === null, "publication-link-validation.yaml must not replace the formal LLM source-relevance review.");
+  expect(report.claim_mapping?.valid === true, "publication-day link validation must pass the claim mapping.");
+  expect(report.show_notes_mapping?.valid === true, "publication-day link validation must pass the show-notes mapping.");
+  expect(report.master_script_mapping?.valid === true, "publication-day link validation must pass the master-script source mapping.");
+  expect(typeof report.run_id === "string" && /^[0-9a-f-]{36}$/i.test(report.run_id), "publication-link-validation.yaml must record its validation run ID.");
+  expect(Array.isArray(report.results) && report.results.every(deterministicValidationResultValid), "publication-day link validation must retain successful deterministic source results.");
+  expect(Array.isArray(report.show_notes_results) && report.show_notes_results.every(deterministicValidationResultValid), "publication-day link validation must retain successful deterministic show-notes results.");
+  const currentHashes = sourceValidationInputHashes(episodePath);
+  expect(Object.entries(currentHashes).every(([name, digest]) => report.input_sha256?.[name] === digest), "publication-link-validation.yaml must be bound to the current sources, claims, and show-notes inputs, including the current script and manifest bytes.");
+  try { errors.push(...validationCoverageErrors(episodePath, report)); }
+  catch (error) { errors.push(`Could not verify publication-day source-link coverage: ${error.message}`); }
+  expect(utcRfc3339Timestamp(report.checked_at_utc), "publication-link-validation.yaml must record a valid UTC check timestamp.");
+  return errors;
+}
+
 function editorialApprovalErrors({ episodePath, episode }) {
   const errors = [...currentContractErrors(episode)];
   if (errors.length) return errors;
@@ -136,6 +166,7 @@ module.exports = {
   currentContractErrors,
   editorialApprovalErrors,
   narrationDerivativeErrors,
+  publicationLinkEvidenceErrors,
   renderPrerequisiteErrors,
   sourceReviewEvidenceErrors,
 };

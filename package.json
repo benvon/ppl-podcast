@@ -11,6 +11,7 @@
     "hooks:install": "sh scripts/install-git-hooks.sh",
     "episode:create": "node scripts/create-episode.cjs",
     "episode:script-review": "node scripts/reset-script-review.cjs",
+    "sources:preflight": "node scripts/claim-source-preflight.cjs",
     "sources:validate": "node scripts/validate-source-links.cjs",
     "test": "node --test scripts/*.test.cjs"
   },

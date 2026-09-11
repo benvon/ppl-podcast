@@ -67,6 +67,7 @@ function planAudioMixContract(resolved, episode, audio, updates) {
 
 const CLAIM_SOURCE_PREFLIGHT_TEMPLATE = Object.freeze({
   schema_version: 1,
+  validator: "scripts/claim-source-preflight.cjs",
   status: "pending",
   checked_at_utc: null,
   llm_requested: false,
@@ -77,7 +78,7 @@ const CLAIM_SOURCE_PREFLIGHT_TEMPLATE = Object.freeze({
 
 const CLAIM_SOURCE_PREFLIGHT_QA_ITEMS = Object.freeze([
   "- [ ] Explicit current-turn authorization was received before proposed factual claims, exact source locators, and relevant source excerpts were sent to OpenAI for the claim-source preflight. <!-- qa-id: openai-claim-source-preflight-authorization -->",
-  "- [ ] `claim-source-preflight.yaml` is complete and bound to the current source ledger and claim inventory; it records every reviewed source's exact locator, hash-verified excerpt, mapped claims, and supporting LLM assessment. Findings were resolved before full spoken prose was drafted and are recorded in `production-log.md`. <!-- qa-id: claim-source-preflight -->",
+  "- [ ] `claim-source-preflight.yaml` was created by `npm run sources:preflight` and is complete and bound to the current source ledger and claim inventory; it records every reviewed source's exact locator, independently fetched citation identity and content hash, locator-excerpt hash, mapped claims, and supporting LLM assessment. Findings were resolved before full spoken prose was drafted and are recorded in `production-log.md`. <!-- qa-id: claim-source-preflight -->",
 ]);
 
 function preflightMatchesCurrentInputs(preflight, inputHashes) {

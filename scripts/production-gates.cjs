@@ -10,6 +10,7 @@ const {
   claimSourcePreflightErrors,
   sourceRelevanceResultValid,
   sourceValidationInputHashes,
+  utcRfc3339Timestamp,
   validationCoverageErrors,
 } = require("./source-validation-contract.cjs");
 const { validationFailurePath } = require("./validation-records.cjs");
@@ -27,12 +28,6 @@ function sha256Text(value) {
 function qaItemCompleteWithID(markdown, id) {
   const escaped = String(id).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return new RegExp(`^- \\[x\\][^\\n]*<!--\\s*qa-id:\\s*${escaped}\\s*-->`, "mi").test(markdown);
-}
-
-function utcRfc3339Timestamp(value) {
-  return typeof value === "string"
-    && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)
-    && !Number.isNaN(Date.parse(value));
 }
 
 function readYamlMapping(filePath, label, errors) {

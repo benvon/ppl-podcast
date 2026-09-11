@@ -136,6 +136,12 @@ function nonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function utcRfc3339Timestamp(value) {
+  return typeof value === "string"
+    && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)
+    && !Number.isNaN(Date.parse(value));
+}
+
 function claimAssessmentsFor(result) {
   return Array.isArray(result?.relevance?.claim_assessments) ? result.relevance.claim_assessments : [];
 }
@@ -156,7 +162,8 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   expect(episode.source_verification?.claim_source_preflight === "claim-source-preflight.yaml", "episode.yaml must reference claim-source-preflight.yaml.");
   expect(preflight?.schema_version === 1, "claim-source-preflight.yaml must use schema_version 1.");
   expect(preflight?.status === "complete", "claim-source-preflight.yaml must record a complete preflight.");
-  expect(typeof preflight?.checked_at_utc === "string" && !Number.isNaN(Date.parse(preflight.checked_at_utc)), "claim-source-preflight.yaml must record its review timestamp.");
+  expect(utcRfc3339Timestamp(preflight?.checked_at_utc), "claim-source-preflight.yaml must record a valid UTC RFC 3339 review timestamp.");
+  expect(preflight?.validator === "scripts/claim-source-preflight.cjs", "claim-source-preflight.yaml must be produced by scripts/claim-source-preflight.cjs.");
   expect(preflight?.llm_requested === true && typeof preflight?.llm_model === "string" && preflight.llm_model.length > 0, "claim-source-preflight.yaml must record the LLM review model.");
   const inputHashes = claimSourcePreflightInputHashes(episodePath);
   expect(Object.entries(inputHashes).every(([name, digest]) => preflight?.input_sha256?.[name] === digest), "claim-source-preflight.yaml must be bound to the current sources.yaml and claim-inventory.yaml bytes.");
@@ -204,6 +211,15 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
       && validSha256(excerpt.sha256) === sha256Text(excerpt.text)
       && Number.isInteger(excerpt.characters) && excerpt.characters === excerpt.text.length;
     expect(excerptRecorded, `claim-source-preflight.yaml must retain a hash-verified copy of the reviewed excerpt for source ${source.id}.`);
+    const fetched = result.fetched_locator;
+    const fetchedEvidence = nonEmptyString(fetched?.citation_url) && fetched.citation_url === source.url
+      && nonEmptyString(fetched?.final_url)
+      && validSha256(fetched?.content_sha256)
+      && typeof fetched?.extraction_kind === "string" && fetched.extraction_kind.length > 0
+      && validSha256(fetched?.locator_excerpt_sha256) === validSha256(excerpt?.sha256)
+      && Number.isInteger(fetched?.locator_excerpt_characters) && fetched.locator_excerpt_characters === excerpt?.characters
+      && fetched?.citation_target_valid === true;
+    expect(fetchedEvidence, `claim-source-preflight.yaml must bind the reviewed excerpt to independently fetched locator evidence for source ${source.id}.`);
     const expectedClaims = Array.isArray(source.supports_claims) ? source.supports_claims : [];
     expect(expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
     const assessments = claimAssessmentsFor(result);
@@ -256,4 +272,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { claimSourcePreflightErrors, claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { claimSourcePreflightErrors, claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

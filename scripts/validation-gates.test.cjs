@@ -2029,6 +2029,28 @@ test("package lease blocks release consumers and state writers for a source-revi
   }
 });
 
+test("stale package-lease recovery is restricted to the interrupted operation", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-operation-owned-recovery-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/prepare-publication.cjs",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "episode-package" },
+    }));
+    assert.throws(
+      () => acquireEpisodePackageLease(temporary, { validator: "scripts/reset-script-review.cjs:reset", recoverStaleLock: true }),
+      /belongs to scripts\/prepare-publication\.cjs/,
+    );
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), true);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("handoff source snapshot excludes transient package-lease artifacts", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-handoff-source-snapshot-test-"));
   try {
@@ -2118,7 +2140,7 @@ test("renderer can safely recover a confirmed-dead package lease", () => {
     fs.writeFileSync(path.join(temporary, "narration.md"), "# Test\n", "utf8");
     fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
       schema_version: 1,
-      validator: "interrupted renderer",
+      validator: "scripts/render_episode_realtime.cjs",
       run_id: crypto.randomUUID(),
       hostname: os.hostname(),
       pid: 999999,
@@ -2147,7 +2169,7 @@ test("pre-hosting validation exposes confirmed-dead package-lease recovery", () 
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
     fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
       schema_version: 1,
-      validator: "interrupted pre-hosting validation",
+      validator: "scripts/validate-pre-hosting.cjs",
       run_id: crypto.randomUUID(),
       hostname: os.hostname(),
       pid: 999999,
@@ -2690,6 +2712,64 @@ test("legacy baseline check rejects package files committed after origin main", 
     const result = callBaselineCheck();
     assert.equal(result.status, 1);
     assert.match(result.stderr, /unchanged from origin\/main/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer establishes local provenance before any public release request", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-provenance-order-test-"));
+  const packagePath = path.join(temporary, "episodes", "core-01-test");
+  const scriptPath = path.join(packagePath, "master-script.md");
+  const episodePath = path.join(packagePath, "episode.yaml");
+  const hostingPath = path.join(packagePath, "hosting-metadata.yaml");
+  const renderer = path.join(__dirname, "render_episode_audio.py");
+  const git = (args) => childProcess.execFileSync("git", args, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  try {
+    fs.mkdirSync(packagePath, { recursive: true });
+    fs.writeFileSync(scriptPath, "# Core 01\n", "utf8");
+    fs.writeFileSync(episodePath, "id: core-01\npublished_at: 2026-01-01T00:00:00Z\n", "utf8");
+    fs.writeFileSync(hostingPath, [
+      "publisher_release:",
+      "  id: core-01",
+      "  title: Test episode",
+      "  published_at: 2026-01-01T00:00:00Z",
+      "provenance:",
+      "  content_version: 0.1.0",
+      "published_release:",
+      "  deployed_at_utc: 2026-01-01T00:00:00Z",
+      "  publisher_repository: https://github.com/example/publisher",
+      `  release_commit: ${"a".repeat(40)}`,
+      "  episode_page: https://example.com/episodes/core-01/",
+      "  enclosure_url: https://media.example.com/audio/core-01.mp3",
+      "  bytes: 3",
+      `  sha256: ${crypto.createHash("sha256").update("abc").digest("hex")}`,
+      "",
+    ].join("\n"), "utf8");
+    git(["init", "--initial-branch=main", temporary]);
+    git(["-C", temporary, "config", "user.email", "test@example.invalid"]);
+    git(["-C", temporary, "config", "user.name", "Test"]);
+    git(["-C", temporary, "add", "episodes"]);
+    const baselineCommit = git(["-C", temporary, "commit-tree", git(["-C", temporary, "write-tree"]), "-m", "initial"]);
+    git(["-C", temporary, "update-ref", "refs/heads/main", baselineCommit]);
+    git(["-C", temporary, "update-ref", "refs/remotes/origin/main", baselineCommit]);
+    fs.writeFileSync(hostingPath, fs.readFileSync(hostingPath, "utf8").replace("https://media.example.com", "https://127.0.0.1"), "utf8");
+    const program = [
+      "import importlib.util, pathlib, sys",
+      `spec = importlib.util.spec_from_file_location('legacy_renderer', ${JSON.stringify(renderer)})`,
+      "module = importlib.util.module_from_spec(spec)",
+      "sys.modules[spec.name] = module",
+      "spec.loader.exec_module(module)",
+      "module.public_request = lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError('public request before local provenance'))",
+      "try:",
+      "    module.assert_legacy_script_path(pathlib.Path(sys.argv[1]), 'core-01', repository_root=pathlib.Path(sys.argv[2]))",
+      "except module.RenderError as error:",
+      "    if 'unchanged from origin/main' in str(error): sys.exit(0)",
+      "    raise",
+      "sys.exit(1)",
+    ].join("\n");
+    const result = childProcess.spawnSync("python3", ["-c", program, scriptPath, temporary], { encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

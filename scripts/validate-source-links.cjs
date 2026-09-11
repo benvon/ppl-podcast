@@ -706,7 +706,7 @@ function processIsRunning(pid) {
   }
 }
 
-function recoverStaleValidationLock(outputPath) {
+function recoverStaleValidationLock(outputPath, { validator } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   const recoveryPath = validationRecoveryPath(outputPath);
   try {
@@ -719,6 +719,9 @@ function recoverStaleValidationLock(outputPath) {
     const lock = readValidationLock(lockPath);
     if (lock.hostname !== os.hostname()) throw new Error(`Validation lock belongs to host ${lock.hostname}; it cannot be safely recovered from ${os.hostname()}.`);
     if (processIsRunning(lock.pid)) throw new Error(`Validation is already running with pid ${lock.pid}; refusing to replace its lock.`);
+    if (typeof lock.validator !== "string" || !lock.validator || lock.validator !== validator) {
+      throw new Error(`Validation lock belongs to ${typeof lock.validator === "string" && lock.validator ? lock.validator : "an unknown operation"}; recover it only by rerunning that interrupted operation with --recover-stale-lock.`);
+    }
     // Moving the stale lock while the recovery directory is held avoids the
     // unlink race where a second worker can delete a newly acquired live
     // lock. A concurrent acquisition may only race on its own O_EXCL create.
@@ -739,7 +742,7 @@ function markValidationInProgress(outputPath, inputSha256, { recoverStaleLock = 
   const lockPath = validationInProgressPath(outputPath);
   const recoveryPath = validationRecoveryPath(outputPath);
   if (fs.existsSync(recoveryPath)) throw new Error(`Source validation lock recovery is in progress (${recoveryPath}).`);
-  if (recoverStaleLock && fs.existsSync(lockPath)) recoverStaleValidationLock(outputPath);
+  if (recoverStaleLock && fs.existsSync(lockPath)) recoverStaleValidationLock(outputPath, { validator });
   const lock = { schema_version: 1, validator, run_id: crypto.randomUUID(), hostname: os.hostname(), pid: process.pid, started_at_utc: new Date().toISOString(), input_sha256: inputSha256 };
   let descriptor;
   try {

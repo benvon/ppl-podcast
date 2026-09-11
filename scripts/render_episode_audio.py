@@ -612,8 +612,8 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...]) -> None:
-    """Require preserved package files to still match the fetched main baseline."""
+def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...]) -> dict[Path, bytes]:
+    """Return stable preserved-package bytes after comparing them to origin/main."""
     baseline = subprocess.run(
         ["git", "-C", str(repository_root), "rev-parse", "--verify", "origin/main^{commit}"],
         check=False,
@@ -626,7 +626,9 @@ def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...
             "The legacy renderer requires a locally fetched origin/main baseline to verify a preserved published package."
         )
     baseline_ref = baseline.stdout.strip()
+    snapshots: dict[Path, bytes] = {}
     for tracked_path in paths:
+        snapshot = tracked_path.read_bytes()
         relative = tracked_path.relative_to(repository_root)
         tracked = subprocess.run(
             ["git", "-C", str(repository_root), "ls-files", "--error-unmatch", "--", str(relative)],
@@ -645,6 +647,12 @@ def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...
                 "The legacy renderer accepts only tracked historical package files unchanged from origin/main. "
                 "Start revisions with episode:script-review --reset."
             )
+        if tracked_path.read_bytes() != snapshot:
+            raise RenderError(
+                "The preserved legacy package changed during baseline verification; retry after restoring the published bytes."
+            )
+        snapshots[tracked_path] = snapshot
+    return snapshots
 
 
 def require_https_url(value: object, label: str) -> str:
@@ -723,15 +731,8 @@ def verify_published_legacy_release(release: object, episode_id: str) -> None:
         raise RenderError("The public legacy enclosure bytes do not match the recorded release identity.")
 
 
-def assert_legacy_script_path(script_path: Path, episode_id: str) -> str:
-    """Keep the retired renderer from bypassing current-contract render gates."""
-    episode_path = script_path.parent / "episode.yaml"
-    if not episode_path.is_file():
-        raise RenderError(
-            "render_episode_audio.py requires a sibling episode.yaml proving this is a preserved legacy package. "
-            "Contract-v2 episodes must use render_episode_realtime.cjs."
-        )
-    contract_reader = Path(__file__).with_name("read-episode-contract.cjs")
+def read_episode_contract(contract_reader: Path, episode_path: Path) -> dict:
+    """Read a package contract without performing any network request."""
     try:
         result = subprocess.run(
             ["node", str(contract_reader), str(episode_path)],
@@ -747,6 +748,70 @@ def assert_legacy_script_path(script_path: Path, episode_id: str) -> str:
         ) from exc
     if not isinstance(contract, dict) or contract.get("kind") not in {"legacy", "current", "unsupported"}:
         raise RenderError("Could not determine the package production contract; the legacy renderer refuses an unverifiable episode package.")
+    return contract
+
+
+def trusted_legacy_contract(contract_reader: Path, snapshots: dict[Path, bytes], episode_path: Path, metadata_path: Path) -> dict:
+    """Parse the contract only from the baseline-verified package snapshots."""
+    with tempfile.TemporaryDirectory(prefix="ppl-legacy-contract-") as temporary:
+        temporary_path = Path(temporary)
+        temporary_episode = temporary_path / "episode.yaml"
+        temporary_metadata = temporary_path / "hosting-metadata.yaml"
+        temporary_episode.write_bytes(snapshots[episode_path])
+        temporary_metadata.write_bytes(snapshots[metadata_path])
+        return read_episode_contract(contract_reader, temporary_episode)
+
+
+def assert_legacy_script_path(script_path: Path, episode_id: str, repository_root: Path | None = None) -> str:
+    """Keep the retired renderer from bypassing current-contract render gates."""
+    repository_root = (repository_root or Path(__file__).resolve().parent.parent).resolve()
+    episodes_root = repository_root / "episodes"
+    episode_path = script_path.parent / "episode.yaml"
+    metadata_path = script_path.parent / "hosting-metadata.yaml"
+    if not episode_path.is_file():
+        raise RenderError(
+            "render_episode_audio.py requires a sibling episode.yaml proving this is a preserved legacy package. "
+            "Contract-v2 episodes must use render_episode_realtime.cjs."
+        )
+    # This local classification performs no outbound work. It preserves clear
+    # errors for current and unsupported contracts before provenance handling.
+    contract_reader = Path(__file__).with_name("read-episode-contract.cjs")
+    local_contract = read_episode_contract(contract_reader, episode_path)
+    if local_contract["kind"] == "current":
+        raise RenderError(
+            "render_episode_audio.py is for preserved legacy candidate reproduction only. "
+            "Contract-v2 episodes must use render_episode_realtime.cjs so current source and editorial gates are enforced."
+        )
+    if local_contract["kind"] != "legacy":
+        raise RenderError(
+            "render_episode_audio.py requires production_contract_version to be absent for a preserved legacy package. "
+            "Packages with a current or unsupported contract marker must use current release tooling."
+        )
+    try:
+        package_path = script_path.resolve().parent
+        package_path.relative_to(episodes_root.resolve())
+    except ValueError as exc:
+        raise RenderError("The legacy renderer accepts only preserved episode packages under the repository episodes directory.") from exc
+    if script_path.name != "master-script.md" or not package_path.name.startswith(f"{episode_id}-"):
+        raise RenderError("The legacy script path and package directory must identify the requested episode.")
+    if not metadata_path.is_file() or not isinstance(local_contract.get("legacy_published_release"), dict):
+        raise RenderError(
+            "render_episode_audio.py accepts a preserved legacy package only when its episode.yaml and hosting-metadata.yaml "
+            "agree on a valid published release timestamp. Draft and planned packages must use current release tooling."
+        )
+    resolved_script = script_path.resolve()
+    resolved_episode = episode_path.resolve()
+    resolved_metadata = metadata_path.resolve()
+    snapshots = assert_trusted_legacy_baseline(
+        repository_root,
+        (resolved_script, resolved_episode, resolved_metadata),
+    )
+    contract = trusted_legacy_contract(
+        contract_reader,
+        snapshots,
+        resolved_episode,
+        resolved_metadata,
+    )
     if contract["kind"] == "current":
         raise RenderError(
             "render_episode_audio.py is for preserved legacy candidate reproduction only. "
@@ -763,30 +828,12 @@ def assert_legacy_script_path(script_path: Path, episode_id: str) -> str:
             "render_episode_audio.py accepts a preserved legacy package only when its episode.yaml and hosting-metadata.yaml "
             "agree on a valid published release timestamp. Draft and planned packages must use current release tooling."
         )
-    verify_published_legacy_release(legacy_release, episode_id)
-    repository_root = Path(__file__).resolve().parent.parent
-    episodes_root = repository_root / "episodes"
-    try:
-        package_path = script_path.resolve().parent
-        package_path.relative_to(episodes_root.resolve())
-    except ValueError as exc:
-        raise RenderError("The legacy renderer accepts only preserved episode packages under the repository episodes directory.") from exc
-    if script_path.name != "master-script.md" or contract.get("episode_id") != episode_id or not package_path.name.startswith(f"{episode_id}-"):
+    if contract.get("episode_id") != episode_id:
         raise RenderError("The legacy script path, package directory, and episode.yaml id must identify the same episode.")
-    release_metadata_path = episode_path.parent / legacy_release["metadata_path"]
-    # Snapshot the exact bytes before and after baseline verification, then
-    # parse that retained snapshot. The retired renderer must never verify one
-    # worktree version and send a later edit to a provider.
-    script_snapshot = script_path.read_text(encoding="utf-8")
-    assert_trusted_legacy_baseline(
-        repository_root,
-        (script_path.resolve(), episode_path.resolve(), release_metadata_path.resolve()),
-    )
-    if script_path.read_text(encoding="utf-8") != script_snapshot:
-        raise RenderError(
-            "The preserved legacy master script changed during baseline verification; retry after restoring the published bytes."
-        )
-    return script_snapshot
+    # All URL, byte-count, and release values now come from origin/main-bound
+    # snapshots, not from mutable worktree metadata.
+    verify_published_legacy_release(legacy_release, episode_id)
+    return snapshots[resolved_script].decode("utf-8")
 
 
 def main() -> int:

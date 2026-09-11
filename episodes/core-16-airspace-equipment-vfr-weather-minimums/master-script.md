@@ -1,6 +1,6 @@
 # Airspace, Equipment, and VFR Weather Minimums
 
-**Version:** 0.1.1 — draft
+**Version:** 0.1.2 — draft
 **Target runtime:** 30-35 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -82,11 +82,19 @@ Yes, and the two meanings must stay separate. An airspace ceiling is the top of 
 
 **INSTRUCTOR:**
 
-The PHAK groups Classes Alpha, Bravo, Charlie, Delta, and Echo as controlled airspace. Class Golf is uncontrolled airspace: the portion not designated as one of those controlled classes. Controlled does not mean that every VFR airplane inside it has an individual clearance or is receiving separation. It means ATC service is provided according to that airspace classification. Class Echo is controlled airspace even though a VFR airplane normally has no specific communication requirement just to enter it.
+The PHAK groups Classes Alpha, Bravo, Charlie, Delta, and Echo as controlled airspace. In controlled airspace, ATC service is provided according to that airspace classification.
 
 [Source: sources.yaml#phak-airspace-profile]
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-controlled-overview]
+
+Class Golf is uncontrolled airspace: the portion not designated as one of those controlled classes.
+
 [Source: sources.yaml#aim-class-g]
+
+Controlled does not mean that every VFR airplane inside it has an individual clearance or is receiving separation. Class Echo is controlled airspace even though a VFR airplane normally has no specific arrival or through-flight entry requirement.
+
+[Source: sources.yaml#aim-class-e]
+[Claim type: teaching synthesis]
 
 **LEARNER:**
 
@@ -103,7 +111,7 @@ Right. Keep your collision avoidance, terrain clearance, weather, and navigation
 At Meadow Creek, Class Golf begins at the surface. On our fictional chart, a magenta vignette surrounds the airport. The Chart Users’ Guide uses that shading to show a common Class Echo floor of 700 feet above ground level. Class Golf fills the space below that floor. If the airplane is 400 feet above the airport, it is in Class Golf. At 900 feet above the same airport, it is in Class Echo. Nothing changed on the map. The airplane crossed a vertical boundary.
 
 [Source: sources.yaml#phak-class-e-g]
-[Source: sources.yaml#chart-guide-airspace-symbols]
+[Source: sources.yaml#chart-guide-class-e-equipment-symbols]
 
 **LEARNER:**
 
@@ -120,7 +128,6 @@ Correct. AGL means above ground level. MSL means above mean sea level. To know w
 Elsewhere, Class Echo may begin at 1,200 feet AGL, at the surface, or at a depicted MSL altitude. The PHAK explains that Class Golf extends from the surface to the base of the overlying Class Echo. The chart, not a blanket assumption, supplies the floor for the point being evaluated.
 
 [Source: sources.yaml#phak-class-e-g]
-[Source: sources.yaml#aim-controlled-airspace]
 
 **LEARNER:**
 
@@ -128,9 +135,13 @@ This is where the chart colors become dangerous if I remember only “magenta me
 
 **INSTRUCTOR:**
 
-Yes. Dashed magenta identifies a Class Echo surface area. A magenta vignette commonly identifies Class Echo beginning at 700 feet AGL. A blue vignette can identify a 1,200-foot AGL floor, and other floors may be printed with an altitude. Dashed blue commonly outlines Class Delta. Solid blue outlines and altitude fractions depict Class Bravo. Solid magenta outlines and altitude fractions depict Class Charlie. Use the chart legend and the current Chart Users’ Guide, because the color is only one part of the symbol.
+Yes. Dashed magenta identifies a Class Echo surface area. A magenta vignette identifies Class Echo beginning at 700 feet AGL. A blue vignette identifies a Class Echo floor other than 700 feet that abuts Class Golf, and differing floors above 700 feet AGL are printed with a floor value.
 
-[Source: sources.yaml#chart-guide-airspace-symbols]
+[Source: sources.yaml#chart-guide-class-e-equipment-symbols]
+
+The Chart Users’ Guide uses blue altitude figures for the floors and ceilings of Class Bravo sectors, magenta altitude figures for Class Charlie sectors, and a dashed blue line for Class Delta. Use the chart legend and the current Chart Users’ Guide, because the color is only one part of the symbol.
+
+[Source: sources.yaml#chart-guide-terminal-airspace-symbols]
 
 **INSTRUCTOR:**
 
@@ -148,8 +159,10 @@ Match each class to its entry question.
 
 The Meadow Creek climb reaches Class Echo without a radio call because Class Echo normally has no specific entry requirement for VFR flight. Far above this route, Class Alpha generally begins at 18,000 feet MSL and continues through Flight Level 600. Unless otherwise authorized, operations in Class Alpha are conducted under instrument flight rules, so it is not available as ordinary VFR cruise airspace.
 
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-e]
+[Source: sources.yaml#aim-class-a]
 [Source: sources.yaml#phak-airspace-profile]
+[Claim type: teaching synthesis]
 
 **LEARNER:**
 
@@ -160,13 +173,13 @@ For our VFR flight, the classes that require an entry action are Bravo, Charlie,
 That is the useful focus. Our destination, Valley Tower, is Class Delta. Before entry, the pilot must establish two-way radio communication with the air traffic control facility providing service and maintain that communication while inside. For the usual airplane operation in this scenario, Class Delta itself requires an operable two-way radio. Nearby airspace can create separate equipment requirements, so we will check the airplane against the whole route in the next section.
 
 [Source: sources.yaml#ecfr-91-129-class-d]
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-d]
 
 **INSTRUCTOR:**
 
 Imagine the first call: “Valley Tower, Cessna One Two Three Alpha Bravo, eight miles west, three thousand five hundred, landing with the weather.” If the controller replies, “Cessna One Two Three Alpha Bravo, standby,” the AIM says two-way communication has been established because the response used the aircraft identification. For Class Delta, the airplane may enter unless the controller instructs it to remain outside.
 
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-d]
 
 **LEARNER:**
 
@@ -176,20 +189,19 @@ What if the reply is only, “Aircraft calling Valley Tower, standby”?
 
 The AIM says communication has not been established when the controller’s response does not include the aircraft identification. The pilot remains outside and resolves the communication before crossing the boundary.
 
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-d]
 
 **INSTRUCTOR:**
 
 Now move the same exchange to the Class Charlie airspace that lies along the route before Valley Tower. For a typical arrival or through flight, Class Charlie also requires two-way communication before entry. The callsign test works the same way: “Cessna One Two Three Alpha Bravo, standby” establishes communication. A reply that omits the aircraft identification does not.
 
 [Source: sources.yaml#ecfr-91-130-class-c]
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-c]
 
-Class Charlie adds equipment requirements to that communication requirement. For the usual airplane operation in this scenario, the aircraft must have an operable altitude-reporting transponder and ADS-B Out.
+Class Charlie adds equipment requirements to that communication requirement by pointing to the applicable requirements in sections 91.215 and 91.225. We will put those requirements onto the route in the next section.
 
 [Source: sources.yaml#ecfr-91-130-class-c]
-[Source: sources.yaml#ecfr-91-215-transponder]
-[Source: sources.yaml#ecfr-91-225-adsb]
+[Source: sources.yaml#aim-class-c]
 
 **LEARNER:**
 
@@ -197,10 +209,14 @@ Then Class Bravo is the same call, but with more equipment?
 
 **INSTRUCTOR:**
 
-No. This is the entry distinction worth saying plainly. Class Charlie and Class Delta use established two-way communication. Class Bravo requires an explicit ATC clearance before entry. Hearing your callsign, receiving a transponder code, or being told to standby is not the Class Bravo clearance. The pilot waits for language that actually clears the airplane into the Class Bravo airspace.
+No. This is the entry distinction worth saying plainly. Class Charlie and Class Delta use established two-way communication. Class Bravo requires an explicit ATC clearance before entry. The pilot waits for language that actually clears the airplane into the Class Bravo airspace.
 
 [Source: sources.yaml#ecfr-91-131-class-b]
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-b]
+
+Hearing your callsign, receiving a transponder code, or being told to standby may be part of establishing communication or setting up radar service, but none of those phrases contains a clearance into Class Bravo.
+
+[Claim type: teaching synthesis]
 
 **LEARNER:**
 
@@ -214,7 +230,7 @@ Yes. The PHAK’s Figure 15-9 puts those entry requirements beside the usual pil
 
 **INSTRUCTOR:**
 
-Because many listeners are student pilots, Class Bravo also has a training boundary. Section 61.95 requires specific ground and flight training for solo flight in the particular Class Bravo area and a logbook endorsement dated within the preceding 90 days. The regulation separately requires specific training and a preceding-90-day endorsement for solo flight to, from, or at an airport located within Class Bravo airspace. A student planning Class Bravo work should identify the exact airspace and airport with a CFI, rather than treating one endorsement as nationwide access.
+Because many listeners are student pilots, Class Bravo also has a training boundary. For a student seeking a private pilot certificate, section 61.95 requires specific ground and flight training for solo flight in the particular Class Bravo area and a logbook endorsement dated within the preceding 90 days. The regulation separately applies specific training and a preceding-90-day endorsement to solo flight at an airport for which section 91.131(b) requires it. A student planning Class Bravo work should identify the exact airspace and airport with a CFI, rather than treating one endorsement as nationwide access.
 
 [Source: sources.yaml#ecfr-61-95-student-class-b]
 
@@ -227,7 +243,6 @@ The class name tells me where to begin, but the chart and regulation finish the 
 Exactly. The common shapes help recognition: Class Bravo often looks like a layered wedding cake, Class Charlie commonly has a surface core and an outer shelf, and Class Delta is generally a surface area around an airport with an operating tower. Each area is individually tailored. Read its printed floors, ceilings, hours, and notes instead of forcing the common shape onto the chart.
 
 [Source: sources.yaml#phak-airspace-profile]
-[Source: sources.yaml#aim-controlled-airspace]
 
 ## [13:00] Match the equipment to the route
 
@@ -245,14 +260,18 @@ Let’s define the equipment before we place it on the route.
 
 **INSTRUCTOR:**
 
-Mode C is the official term for the transponder’s altitude-reporting capability. The AIM explains that most Mode C and Mode S transponders convert aircraft altitude into coded information sent to the surveillance facility. Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive information. Transmission from the airplane is ADS-B Out; receipt by the airplane is ADS-B In. Having ADS-B In does not by itself provide the ADS-B Out transmission required in the airspace described by section 91.225.
+Mode C provides the transponder’s automatic altitude-reporting capability.
 
 [Source: sources.yaml#aim-transponder-operation]
+
+Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive information. Transmission from the airplane is ADS-B Out; receipt by the airplane is ADS-B In. In airspace where section 91.225 requires the airplane to transmit using ADS-B Out avionics, receiving ADS-B In is a different function and is not a substitute for that transmission.
+
 [Source: sources.yaml#aim-adsb-services]
+[Claim type: teaching synthesis]
 
 **INSTRUCTOR:**
 
-For the common domestic operations in this scenario, section 91.215 requires an altitude-reporting transponder in Classes Alpha, Bravo, and Charlie; above Class Bravo and Charlie within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil around listed Class Bravo primary airports; and at or above 10,000 feet MSL, except in the airspace at and below 2,500 feet above the surface. If the airplane falls within one of the regulation’s stated exceptions, apply that exception to the specific route before accepting the plan.
+For the common domestic operations in this scenario, section 91.215 requires an altitude-reporting transponder in Classes Alpha, Bravo, and Charlie; above Class Bravo and Charlie within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil around airports listed in appendix D, section 1; and at or above 10,000 feet MSL, except in the airspace at and below 2,500 feet above the surface. If the airplane falls within one of the regulation’s stated exceptions, apply that exception to the specific route before accepting the plan.
 
 [Source: sources.yaml#ecfr-91-215-transponder]
 
@@ -268,11 +287,15 @@ So the shelf and the veil are not the same boundary.
 
 **INSTRUCTOR:**
 
-Correct. The Class Bravo shelves define Class Bravo airspace. The Mode C veil is generally a 30-nautical-mile equipment area from the surface to 10,000 feet MSL around a listed Class Bravo primary airport. The Chart Users’ Guide shows it as a solid magenta boundary. Our training airplane can remain below the Class Bravo shelf and still be inside the veil, where the transponder and ADS-B Out requirements apply to the airplane in this scenario.
+Correct. The Class Bravo shelves define Class Bravo airspace. Section 91.215 describes the Mode C veil as the airspace within 30 nautical miles of an airport listed in appendix D, section 1, from the surface to 10,000 feet MSL.
 
-[Source: sources.yaml#chart-guide-airspace-symbols]
 [Source: sources.yaml#ecfr-91-215-transponder]
+
+The Chart Users’ Guide shows Mode C required airspace within 30 nautical miles of the primary airport for which Class Bravo is designated as a solid magenta boundary. Our training airplane can remain below the Class Bravo shelf and still be inside the veil, where the transponder and ADS-B Out requirements apply to the airplane in this scenario.
+
+[Source: sources.yaml#chart-guide-class-e-equipment-symbols]
 [Source: sources.yaml#ecfr-91-225-adsb]
+[Claim type: teaching synthesis]
 
 **LEARNER:**
 
@@ -296,10 +319,13 @@ The equipment check is complete, but the weather has changed along the route. Be
 
 **INSTRUCTOR:**
 
-Flight visibility is the visibility observed forward from the cockpit while the airplane is in flight. Ground visibility is the visibility reported at an airport. Section 91.155 applies flight visibility to an airplane in flight. For takeoff or landing, when ground visibility is reported at the airport, that reported ground visibility must meet the applicable minimum.
+Flight visibility is the average forward horizontal distance from the cockpit of an aircraft in flight at which specified objects can be seen and identified. Ground visibility is the prevailing horizontal visibility near the surface reported by the National Weather Service or an accredited observer.
+
+[Source: sources.yaml#pcg-visibility]
+
+For takeoff, landing, or traffic-pattern operations within the surface areas of Class Bravo, Charlie, Delta, or Class Echo airspace designated for an airport, section 91.155 requires at least three statute miles. When ground visibility is reported, that value controls this test. When ground visibility is not reported, the pilot uses flight visibility.
 
 [Source: sources.yaml#ecfr-91-155-basic-vfr]
-[Source: sources.yaml#ecfr-1-1-definitions]
 
 **LEARNER:**
 
@@ -327,7 +353,7 @@ And now the second meaning of ceiling?
 
 **INSTRUCTOR:**
 
-For aviation weather, a ceiling is the height above ground level of the lowest layer reported as broken or overcast, or the vertical visibility into an obscuration. A scattered layer is not a ceiling. If a report says scattered at 800 and overcast at 1,500, the ceiling is 1,500 feet AGL.
+For aviation weather, a ceiling is the height above ground level of the lowest layer reported as broken, overcast, or obscuration. A scattered layer is not a ceiling. If a report says scattered at 800 and overcast at 1,500, the ceiling is 1,500 feet AGL.
 
 [Source: sources.yaml#aim-ceiling-definition]
 
@@ -449,7 +475,7 @@ Use Special VFR as a separate decision.
 
 **INSTRUCTOR:**
 
-Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation within a Class Bravo, Charlie, Delta, or Echo surface area when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile visibility and remaining clear of clouds. Between sunset and sunrise, the pilot must be instrument rated and the airplane equipped for instrument flight.
+Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation within controlled airspace designated to the surface for an airport when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires an instrument-rated pilot and an airplane equipped for instrument flight.
 
 [Source: sources.yaml#ecfr-91-157-special-vfr]
 [Source: sources.yaml#aim-special-vfr]
@@ -460,11 +486,13 @@ In our daytime scenario, two miles and 800 overcast might fit the visibility num
 
 **INSTRUCTOR:**
 
-It makes Special VFR an option that may be requested and may be issued when traffic and the local rules permit. Some Class Bravo and Class Charlie airports do not permit fixed-wing Special VFR, and the regulation lists those airports. The Chart Users’ Guide also identifies the chart note used where fixed-wing Special VFR is prohibited.
+It makes Special VFR an option that may be requested and may be issued when traffic and the local rules permit. Some Class Bravo and Class Charlie surface areas do not permit fixed-wing Special VFR. The AIM points to the affected airports in appendix D, section 3, and explains that they are depicted on sectional charts.
 
-[Source: sources.yaml#ecfr-91-157-special-vfr]
 [Source: sources.yaml#aim-special-vfr]
-[Source: sources.yaml#chart-guide-airspace-symbols]
+
+The Chart Users’ Guide identifies the chart note: “NO SVFR” above the airport name.
+
+[Source: sources.yaml#chart-guide-class-e-equipment-symbols]
 
 Even where Special VFR is available, the clearance does not answer the larger safety question. The pilot still needs visual contact with terrain and obstacles, room to remain clear of clouds, manageable workload, and a safe path to the airport.
 
@@ -472,9 +500,14 @@ Even where Special VFR is available, the clearance does not answer the larger sa
 
 **INSTRUCTOR:**
 
-The AIM also explains that a Special VFR clearance is effective only within the surface area. After the airplane leaves that boundary, the clearance does not establish that the next airspace or route segment meets basic VFR minimums. If a departure depends on one mile and clear of clouds inside the surface area but immediately encounters Class Echo requiring three miles outside it, the route still fails.
+The AIM also explains that a Special VFR clearance is effective only within the surface area.
 
 [Source: sources.yaml#aim-special-vfr]
+
+After the airplane leaves that boundary, the pilot must apply the basic VFR minimums for the next airspace or route segment. If a departure depends on one mile and clear of clouds inside the surface area but immediately encounters Class Echo requiring three miles outside it, the route still fails.
+
+[Source: sources.yaml#ecfr-91-155-basic-vfr]
+[Claim type: safety teaching synthesis]
 
 **LEARNER:**
 
@@ -498,17 +531,17 @@ Before departure, the pilot also has to resolve several unusual chart and briefi
 
 [Source: sources.yaml#aim-special-use]
 
-The PHAK discusses military training routes and temporary flight restrictions as other airspace areas, not as additional types of S-U-A.
-
-[Source: sources.yaml#phak-tfr-other-airspace]
-
-The AIM separately describes Special Air Traffic Rules and Special Flight Rules Areas. Their local rules must be evaluated in addition to the underlying airspace class.
+The AIM also describes Special Air Traffic Rules and Special Flight Rules Areas, whose local procedures vary among the affected areas.
 
 [Source: sources.yaml#aim-satr-sfra]
 
 **INSTRUCTOR:**
 
-Prohibited areas contain airspace where flight is prohibited. Restricted areas identify unusual, often invisible hazards such as firing or missiles; entry when the restriction is active requires authorization from the controlling or using agency. Warning areas extend offshore and warn of activity that may be hazardous to nonparticipating aircraft.
+Prohibited areas contain airspace where flight is prohibited for security or national-welfare reasons. Restricted areas contain unusual, often invisible hazards such as firing or missiles, and the AIM warns that penetrating one without authorization may be extremely hazardous.
+
+[Source: sources.yaml#aim-special-use]
+
+Warning areas extend offshore and warn of activity that may be hazardous to nonparticipating aircraft.
 
 [Source: sources.yaml#phak-special-use]
 [Source: sources.yaml#aim-special-use]
@@ -522,7 +555,7 @@ A military operations area, or M-O-A, separates certain military training activi
 
 **LEARNER:**
 
-For the M-O-A near our original route, the useful question is not simply whether I may cross the line. I need its vertical limits, scheduled times, current status, the type of activity, and a plan that does not depend on seeing fast traffic at the last moment. A restricted area is different: if it is active and has not been released, I need authorization to enter rather than merely extra caution.
+For the M-O-A near our original route, the useful question is not simply whether I may cross the line. I need its vertical limits, scheduled times, current status, the type of activity, and a plan that does not depend on seeing fast traffic at the last moment. A restricted area is different: it contains unusual hazards, and the AIM warns that penetrating it without authorization may be extremely hazardous.
 
 [Source: sources.yaml#aim-special-use]
 
@@ -534,13 +567,19 @@ That is the safety decision. The AIM provides contact information for obtaining 
 
 **INSTRUCTOR:**
 
-The chart also shows a military training route, or M-T-R. The PHAK explains that these routes commonly support military operations below 10,000 feet MSL at speeds above 250 knots. They are labeled I-R or V-R followed by numbers, and the number of digits helps indicate whether a segment extends above 1,500 feet AGL. The route symbol is a prompt to check current information and increase traffic awareness, not a wall drawn around an empty corridor.
+The chart also shows a military training route, or M-T-R. The PHAK explains that these routes commonly support military operations below 10,000 feet MSL at speeds above 250 knots. They are labeled I-R or V-R followed by numbers, and the number of digits helps indicate whether a segment extends above 1,500 feet AGL.
 
 [Source: sources.yaml#phak-tfr-other-airspace]
+
+For this planning exercise, the route symbol is a prompt to check current information and increase traffic awareness, not a wall drawn around an empty corridor.
+
+[Claim type: safety teaching synthesis]
 
 **LEARNER:**
 
 And the temporary flight restriction came from the current NOTAM, not from the sectional chart.
+
+[Claim type: teaching synthesis]
 
 **INSTRUCTOR:**
 
@@ -561,7 +600,7 @@ Where do Special Air Traffic Rules and Special Flight Rules Areas fit?
 
 **INSTRUCTOR:**
 
-Special Air Traffic Rules, often shortened to S-A-T-R, and a Special Flight Rules Area, or S-F-R-A, apply special local operating rules. The underlying class of airspace does not tell the whole story. A route affected by one requires the current rules, charting, training, filing, communication, or equipment information for that particular operation. This episode establishes the recognition step; it does not compress different local programs into one generic procedure.
+Special Air Traffic Rules, often shortened to S-A-T-R, and a Special Flight Rules Area, or S-F-R-A, apply special local operating rules and procedures that vary among the affected areas. A route affected by one requires the current information for that particular operation. This episode establishes the recognition step; it does not compress different local programs into one generic procedure.
 
 [Source: sources.yaml#aim-satr-sfra]
 
@@ -599,40 +638,45 @@ The airplane can cross from Class Golf into Class Echo without changing its hori
 
 Which classes are controlled, and what common misunderstanding should you avoid?
 
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-controlled-overview]
 
 **LEARNER:**
 
-Classes Alpha through Echo are controlled, while Golf is uncontrolled. Controlled airspace means ATC services are provided according to the classification; it does not mean every VFR aircraft has an individual clearance or separation service.
+Classes Alpha through Echo are controlled, while Golf is uncontrolled. Controlled airspace means ATC services are provided according to the classification. It does not mean every VFR aircraft has an individual clearance or separation service.
 
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-controlled-overview]
 [Source: sources.yaml#aim-class-g]
+[Claim type: teaching synthesis]
 
 **INSTRUCTOR:**
 
 What is the entry distinction among Class Delta, Class Charlie, and Class Bravo?
 
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-c]
+[Source: sources.yaml#aim-class-d]
+[Source: sources.yaml#aim-class-b]
 
 **LEARNER:**
 
 Delta and Charlie require two-way radio communication before entry. A controller response using my aircraft identification establishes it, including “callsign, standby.” Bravo requires an explicit ATC clearance before entry; a callsign or transponder code alone is not that clearance.
 
-[Source: sources.yaml#aim-controlled-airspace]
+[Source: sources.yaml#aim-class-c]
+[Source: sources.yaml#aim-class-d]
 [Source: sources.yaml#ecfr-91-131-class-b]
+[Claim type: teaching synthesis]
 
 **INSTRUCTOR:**
 
 Why can an airplane below a Class Bravo shelf still need an altitude-reporting transponder and ADS-B Out?
 
-[Source: sources.yaml#chart-guide-airspace-symbols]
+[Source: sources.yaml#chart-guide-class-e-equipment-symbols]
 
 **LEARNER:**
 
-Because the Mode C veil is a separate equipment area, generally within 30 nautical miles of a listed Class Bravo primary airport from the surface to 10,000 feet MSL. The shelf answers the Class Bravo entry question; the veil answers a separate equipment question.
+Because the Mode C veil is a separate equipment area, generally within 30 nautical miles of an airport listed in appendix D, section 1, from the surface to 10,000 feet MSL. The shelf answers the Class Bravo entry question; the veil answers a separate equipment question.
 
 [Source: sources.yaml#ecfr-91-215-transponder]
-[Source: sources.yaml#ecfr-91-225-adsb]
+[Claim type: teaching synthesis]
 
 **INSTRUCTOR:**
 
@@ -654,10 +698,11 @@ What additional variables must you identify before using the Class Golf row?
 
 **LEARNER:**
 
-Day or night, whether the airplane is within 1,200 feet of the surface, and whether it is below or at 10,000 feet MSL. Class Golf uses the five-mile and one-one-one row only when the airplane is both more than 1,200 feet above the surface and at or above 10,000 feet MSL. In flight I evaluate flight visibility from the cockpit; for takeoff or landing, reported airport ground visibility must meet the applicable minimum.
+Day or night, whether the airplane is within 1,200 feet of the surface, and whether it is below or at 10,000 feet MSL. Class Golf uses the five-mile and one-one-one row only when the airplane is both more than 1,200 feet above the surface and at or above 10,000 feet MSL. Flight visibility is the forward horizontal distance I can see and identify specified objects from the cockpit. For takeoff, landing, or pattern operations in a Class Bravo, Charlie, Delta, or Echo surface area, reported airport ground visibility must meet the three-mile minimum when it is available; otherwise, flight visibility applies.
 
 [Source: sources.yaml#ecfr-91-155-basic-vfr]
-[Source: sources.yaml#ecfr-1-1-definitions]
+[Source: sources.yaml#pcg-visibility]
+[Claim type: teaching synthesis]
 
 **INSTRUCTOR:**
 
@@ -667,9 +712,11 @@ Define a weather ceiling, then apply the controlled-surface-area rule.
 
 **LEARNER:**
 
-A ceiling is the lowest broken or overcast layer, or vertical visibility into an obscuration, reported in height above ground level. Except under Special VFR, basic VFR flight may not operate beneath a ceiling within the lateral boundaries of controlled airspace designated to the surface for an airport when that ceiling is below 1,000 feet.
+A ceiling is the lowest layer reported as broken, overcast, or obscuration, stated in height above ground level. Except under Special VFR, basic VFR flight may not operate beneath a ceiling within the lateral boundaries of controlled airspace designated to the surface for an airport when that ceiling is below 1,000 feet.
 
+[Source: sources.yaml#aim-ceiling-definition]
 [Source: sources.yaml#ecfr-91-155-basic-vfr]
+[Claim type: teaching synthesis]
 
 **INSTRUCTOR:**
 
@@ -679,7 +726,7 @@ What does a Special VFR clearance establish, and what does it leave unanswered?
 
 **LEARNER:**
 
-For an airplane, it can authorize operation within a controlled surface area with at least one statute mile visibility while remaining clear of clouds. At night the pilot must be instrument rated and the airplane equipped for instrument flight. The clearance ends at the surface-area boundary.
+For an airplane, it can authorize operation within a controlled surface area with at least one statute mile visibility while remaining clear of clouds. For the lower-48 scenario in this episode, operation between sunset and sunrise also requires an instrument-rated pilot and an airplane equipped for instrument flight. The clearance ends at the surface-area boundary.
 
 [Source: sources.yaml#ecfr-91-157-special-vfr]
 [Source: sources.yaml#aim-special-vfr]
@@ -703,18 +750,18 @@ Prohibited and restricted areas are regulatory S-U-A. Warning areas, M-O-As, ale
 
 **INSTRUCTOR:**
 
-Which items in this lesson are separate from S-U-A?
+What other charted or briefing items did we discuss?
 
 [Source: sources.yaml#acs-national-airspace]
 
 **LEARNER:**
 
-Military training routes are routes, not S-U-A. A T-F-R is a temporary restriction governed by its current NOTAM.
+Military training routes identify routes used for military training, with their labels providing information about route type and altitude. A T-F-R is a temporary restriction established and described through its current NOTAM.
 
 [Source: sources.yaml#phak-tfr-other-airspace]
 [Source: sources.yaml#aim-tfr]
 
-S-A-T-R means Special Air Traffic Rules, and an S-F-R-A is a Special Flight Rules Area. Each requires the specific local rules in addition to the rules for the underlying airspace class.
+S-A-T-R means Special Air Traffic Rules, and an S-F-R-A is a Special Flight Rules Area. Their local rules and procedures vary among the affected areas, so each requires area-specific preparation.
 
 [Source: sources.yaml#aim-satr-sfra]
 

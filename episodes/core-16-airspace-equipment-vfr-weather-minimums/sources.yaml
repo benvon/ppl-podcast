@@ -34,7 +34,7 @@ sources:
     verification_date: null
     revision: "FAA-H-8083-25C, Chapter 15; FAA page updated July 10, 2023"
     relevance: "Three-dimensional profile and introductory definitions for Classes A through E."
-    supports_claims: [controlled-uncontrolled, class-a-boundary, terminal-airspace-shapes]
+    supports_claims: [controlled-airspace-classes, class-a-boundary, terminal-airspace-shapes]
   - id: phak-class-e-g
     title: Pilot's Handbook of Aeronautical Knowledge, Class E and Class G Airspace
     publisher: FAA
@@ -56,7 +56,7 @@ sources:
     verification_date: null
     revision: "FAA-H-8083-25C, Chapter 15; FAA page updated July 10, 2023"
     relevance: "Operational distinctions among the principal special use airspace types."
-    supports_claims: [special-use-distinctions]
+    supports_claims: [nonregulatory-sua-distinctions]
   - id: phak-tfr-other-airspace
     title: Pilot's Handbook of Aeronautical Knowledge, Temporary Flight Restrictions
     publisher: FAA
@@ -89,7 +89,7 @@ sources:
     verification_date: null
     revision: "FAA-H-8083-25C, Chapter 15; FAA page updated July 10, 2023"
     relevance: "Summary figure for pilot, communication, clearance, and equipment requirements."
-    supports_claims: [class-b-clearance, class-c-d-communications, airspace-equipment-overview]
+    supports_claims: [airspace-equipment-overview]
   - id: aim-basic-vfr-minimums
     title: AIM, Basic VFR Weather Minimums
     publisher: FAA
@@ -101,17 +101,72 @@ sources:
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Current FAA table and surface-area ceiling rule."
     supports_claims: [basic-vfr-minimums, surface-area-ceiling]
-  - id: aim-controlled-airspace
-    title: AIM, Controlled Airspace
+  - id: aim-controlled-overview
+    title: AIM, Controlled Airspace Overview
     publisher: FAA
     url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-1
-    locator: "AIM 3-2-1 through 3-2-6"
+    locator: "AIM 3-2-1"
     source_type: html
     link_status: null
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
-    relevance: "Current operational descriptions of Classes A through E."
-    supports_claims: [controlled-uncontrolled, class-a-boundary, terminal-airspace-shapes, class-b-clearance, class-c-d-communications, class-e-g-layers, communications-established]
+    relevance: "Defines controlled airspace and identifies Classes A through E."
+    supports_claims: [controlled-airspace-classes]
+  - id: aim-class-a
+    title: AIM, Class A Airspace
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-2
+    locator: "AIM 3-2-2(a)-(b)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
+    relevance: "Class A vertical limits and IFR operating rule."
+    supports_claims: [class-a-boundary]
+  - id: aim-class-b
+    title: AIM, Class B Airspace
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-3
+    locator: "AIM 3-2-3(a)-(b)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
+    relevance: "Class B clearance requirement."
+    supports_claims: [class-b-clearance]
+  - id: aim-class-c
+    title: AIM, Class C Airspace
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-4
+    locator: "AIM 3-2-4(b)(3), (d)(1)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
+    relevance: "Class C communication entry test and equipment cross-reference."
+    supports_claims: [class-c-communications, communications-established, class-c-equipment-crossreference]
+  - id: aim-class-d
+    title: AIM, Class D Airspace
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-5
+    locator: "AIM 3-2-5(b)(3), (d)(1)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
+    relevance: "Class D communication entry test."
+    supports_claims: [class-d-communications, communications-established]
+  - id: aim-class-e
+    title: AIM, Class E Airspace
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-6
+    locator: "AIM 3-2-6(b)(3), (e)(3)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
+    relevance: "Class E VFR entry and common transition-area floors."
+    supports_claims: [class-e-entry]
   - id: aim-class-g
     title: AIM, Class G Airspace
     publisher: FAA
@@ -122,7 +177,7 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Defines Class G and connects its VFR minima to see-and-avoid responsibility."
-    supports_claims: [controlled-uncontrolled, class-e-g-layers]
+    supports_claims: [class-g-definition]
   - id: aim-special-use
     title: AIM, Special Use Airspace
     publisher: FAA
@@ -133,7 +188,7 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Current definitions, limitations, and status-check guidance for special use airspace."
-    supports_claims: [sua-taxonomy, special-use-distinctions, moa-status]
+    supports_claims: [sua-taxonomy, prohibited-restricted-distinctions, nonregulatory-sua-distinctions, moa-status]
   - id: aim-tfr
     title: AIM, Temporary Flight Restrictions
     publisher: FAA
@@ -166,7 +221,7 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Operational explanation of SVFR scope, request, visibility, cloud, and nighttime conditions."
-    supports_claims: [special-vfr-conditions, special-vfr-boundary, special-vfr-fixed-wing-limits]
+    supports_claims: [special-vfr-conditions, special-vfr-boundary, special-vfr-prohibited-airports]
   - id: aim-transponder-operation
     title: AIM, Transponder and ADS-B Out Operation
     publisher: FAA
@@ -177,7 +232,7 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Defines Mode C altitude reporting and summarizes transponder and ADS-B Out operation."
-    supports_claims: [transponder-adsb-definitions]
+    supports_claims: [mode-c-definition]
   - id: aim-adsb-services
     title: AIM, Automatic Dependent Surveillance-Broadcast Services
     publisher: FAA
@@ -188,7 +243,7 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Defines ADS-B, ADS-B Out transmission, and ADS-B In receipt."
-    supports_claims: [transponder-adsb-definitions]
+    supports_claims: [adsb-definitions]
   - id: aim-ceiling-definition
     title: AIM, Reporting of Cloud Heights
     publisher: FAA
@@ -200,8 +255,30 @@ sources:
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Defines an aviation ceiling and distinguishes its AGL reference from pilot altitude reports."
     supports_claims: [ceiling-definition]
-  - id: chart-guide-airspace-symbols
-    title: FAA Aeronautical Chart Users' Guide, VFR Airspace Symbols
+  - id: pcg-visibility
+    title: Pilot/Controller Glossary, Visibility
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-v.html#VISIBILITY
+    locator: "Pilot/Controller Glossary, VISIBILITY, Flight Visibility and Ground Visibility"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online Pilot/Controller Glossary; accessed September 11, 2026"
+    relevance: "Defines flight visibility and ground visibility."
+    supports_claims: [visibility-definitions]
+  - id: chart-guide-terminal-airspace-symbols
+    title: FAA Aeronautical Chart Users' Guide, Class B, C, and D Symbols
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+    locator: "Aeronautical Chart Users' Guide, VFR Terms and Symbols, Controlled Airspace, PDF p. 16"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA publication page effective July 9, 2026"
+    relevance: "Class B and C altitude labels and Class D dashed-blue boundary symbology."
+    supports_claims: [chart-terminal-airspace-symbols]
+  - id: chart-guide-class-e-equipment-symbols
+    title: FAA Aeronautical Chart Users' Guide, Class E and Equipment Symbols
     publisher: FAA
     url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
     locator: "Aeronautical Chart Users' Guide, VFR Terms and Symbols, Airspace Information, PDF p. 17"
@@ -209,44 +286,32 @@ sources:
     link_status: null
     verification_date: null
     revision: "FAA publication page effective July 9, 2026"
-    relevance: "Airspace boundary, floor, Mode C veil, and no-SVFR chart symbology."
-    supports_claims: [chart-airspace-symbols, mode-c-veil, special-vfr-fixed-wing-limits]
-  - id: ecfr-1-1-definitions
-    title: 14 CFR 1.1, General definitions
-    publisher: eCFR
-    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-A/part-1/section-1.1
-    locator: "14 CFR 1.1, definitions of flight visibility and ground visibility"
-    source_type: ecfr
-    ecfr_date: 2026-09-09
-    link_status: null
-    verification_date: null
-    revision: "eCFR Title 14 current through September 9, 2026"
-    relevance: "Defines flight visibility and ground visibility for applying VFR weather minimums."
-    supports_claims: [flight-visibility-distinction]
+    relevance: "Class E floor symbology, Mode C veil depiction, and NO SVFR chart notation."
+    supports_claims: [chart-class-e-symbols, mode-c-veil-chart, special-vfr-chart-note]
   - id: ecfr-91-131-class-b
     title: 14 CFR 91.131, Operations in Class B airspace
     publisher: eCFR
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.131
-    locator: "14 CFR 91.131(a)-(d)"
+    locator: "14 CFR 91.131(a)(1)"
     source_type: ecfr
     ecfr_date: 2026-09-09
     link_status: null
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
-    relevance: "Class B clearance, pilot qualification, and equipment requirements."
+    relevance: "Explicit ATC clearance required before Class B entry."
     supports_claims: [class-b-clearance]
   - id: ecfr-91-130-class-c
     title: 14 CFR 91.130, Operations in Class C airspace
     publisher: eCFR
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.130
-    locator: "14 CFR 91.130(c)"
+    locator: "14 CFR 91.130(c)-(d)"
     source_type: ecfr
     ecfr_date: 2026-09-09
     link_status: null
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
     relevance: "Class C two-way communication and equipment requirements."
-    supports_claims: [class-c-d-communications]
+    supports_claims: [class-c-communications, class-c-equipment-crossreference]
   - id: ecfr-91-129-class-d
     title: 14 CFR 91.129, Operations in Class D airspace
     publisher: eCFR
@@ -258,7 +323,7 @@ sources:
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
     relevance: "Class D two-way communication requirement."
-    supports_claims: [class-c-d-communications]
+    supports_claims: [class-d-communications]
   - id: ecfr-91-155-basic-vfr
     title: 14 CFR 91.155, Basic VFR weather minimums
     publisher: eCFR
@@ -270,7 +335,7 @@ sources:
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
     relevance: "Controlling regulation for airplane VFR visibility, cloud clearance, and surface-area ceiling minimums."
-    supports_claims: [basic-vfr-minimums, surface-area-ceiling, flight-visibility-distinction]
+    supports_claims: [basic-vfr-minimums, surface-area-ceiling, airport-visibility-rule]
   - id: ecfr-91-157-special-vfr
     title: 14 CFR 91.157, Special VFR weather minimums
     publisher: eCFR
@@ -281,8 +346,8 @@ sources:
     link_status: null
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
-    relevance: "Controlling regulation for airplane SVFR clearance, visibility, cloud, night, and listed fixed-wing airport restrictions."
-    supports_claims: [special-vfr-conditions, special-vfr-fixed-wing-limits]
+    relevance: "Controlling regulation for airplane SVFR clearance, visibility, cloud, and nighttime conditions."
+    supports_claims: [special-vfr-conditions]
   - id: ecfr-91-215-transponder
     title: 14 CFR 91.215, ATC transponder and altitude reporting equipment and use
     publisher: eCFR
@@ -294,24 +359,24 @@ sources:
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
     relevance: "Common domestic transponder and altitude-reporting locations."
-    supports_claims: [transponder-locations, mode-c-veil]
+    supports_claims: [transponder-locations, mode-c-veil-regulation]
   - id: ecfr-91-225-adsb
     title: 14 CFR 91.225, Automatic Dependent Surveillance-Broadcast Out equipment and use
     publisher: eCFR
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.225
-    locator: "14 CFR 91.225(d)-(g)"
+    locator: "14 CFR 91.225(a), (d)-(g)"
     source_type: ecfr
     ecfr_date: 2026-09-09
     link_status: null
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
-    relevance: "Common domestic ADS-B Out locations and deviation-request timing."
-    supports_claims: [adsb-out-locations, mode-c-veil]
+    relevance: "Common domestic ADS-B Out equipment and operating locations."
+    supports_claims: [adsb-out-locations]
   - id: ecfr-61-95-student-class-b
     title: 14 CFR 61.95, Operations in Class B airspace and at airports located within Class B airspace
     publisher: eCFR
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-C/section-61.95
-    locator: "14 CFR 61.95(a)-(b)"
+    locator: "14 CFR 61.95(a)-(c); 14 CFR 91.131(b) cross-reference"
     source_type: ecfr
     ecfr_date: 2026-09-09
     link_status: null

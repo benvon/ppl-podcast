@@ -26,8 +26,18 @@
 - Defined VFR, ATC, NOTAM, Mode C, ADS-B In and Out, CFA, SATR, and SFRA at first useful mention. Added AIM 4-1-20, AIM 4-5-7, and 14 CFR 1.1 to support equipment and visibility definitions.
 - Corrected the Class G high-altitude logic by separating the Class E rule from the two-condition Class G test: more than 1,200 feet above the surface and at or above 10,000 feet MSL.
 - Added the preceding-90-day condition to the student-pilot Class B endorsement discussion.
-- Split regulatory cloud-clearance and Special VFR facts from safety synthesis. Added the fixed-wing Special VFR restriction and chart-note claim with 14 CFR 91.157(c), the AIM, and the Chart Users’ Guide.
+- Split regulatory cloud-clearance and Special VFR facts from safety synthesis. The initial revision attributed the fixed-wing Special VFR restriction to 14 CFR 91.157(c); formal source review later corrected that locator to appendix D, section 3, as described by the AIM and depicted by the Chart Users’ Guide.
 - Reframed the final teaching section and retrieval review to distinguish regulatory and nonregulatory special use airspace from MTRs, TFRs, Special Air Traffic Rules, and SFRAs. Removed the unsupported suggestion that sectionals may show recurring TFR sites.
 - Regenerated `narration.md`. Version 0.1.1 contains 5,080 spoken words.
 - Re-ran local source-contract validation in `--dry-run` mode: 28 sources, 29 claims, 107 master-script source tags, and 21 show-notes links passed without network or OpenAI requests.
 - Formal source-link and LLM relevance validation remain pending. Human editorial review remains pending.
+
+## 2026-09-11 — formal source-review corrections
+
+- The first formal source-relevance run completed deterministic link validation and then failed on broad mixed claims, incomplete locators, and a small number of unsupported or incorrectly attributed details. No finding was treated as a reason to reduce the scenario-led teaching design.
+- Revised the evidence model so each source owns only the atomic factual claims fully supported by its exact locator. Coherent spoken paragraphs still connect several immediately tagged facts and identify the resulting connection as teaching synthesis where appropriate.
+- Added exact AIM locators for Classes Alpha through Echo, separate Chart Users’ Guide sources for terminal-airspace symbols on page 16 and Class Echo, Mode C, and NO SVFR symbols on page 17, and the Pilot/Controller Glossary visibility definitions.
+- Corrected the Mode C veil regulation to appendix D, section 1; the fixed-wing Special VFR airport reference to appendix D, section 3; the ADS-B Out locator to include section 91.225(a); and the private-pilot student Class Bravo scope to include the section 91.131(b) airport cross-reference and the preceding-90-day condition.
+- Narrowed unsupported categorical statements about MTRs, TFRs, SATRs, and SFRAs. The lesson now teaches each item through its sourced operating meaning and keeps the current TFR NOTAM as the controlling source for a temporary restriction.
+- Corrected ceiling wording to the lowest layer reported as broken, overcast, or obscuration, and separated glossary visibility definitions from the section 91.155(d) airport surface-area visibility rule.
+- Advanced the package to version 0.1.2 and regenerated the listener-facing links, research mappings, and 5,197-word narration derivative. The formal LLM review must be rerun after these corrections; human editorial review remains pending.

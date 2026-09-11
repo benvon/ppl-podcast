@@ -23,16 +23,16 @@ At every change, the Instructor returns to the same four questions:
 | Scenario decision | Primary source locator | Episode treatment |
 | --- | --- | --- |
 | Scope the airspace decision as an ACS outcome | FAA-S-ACS-6C, PA.I.D.K1/R3-R5/S1-S2, PDF p. 13; PA.I.E.K1-K4/R1/S1-S3, PDF p. 14 | The opening ACS section turns the task into four recurring questions rather than an inventory of classes. |
-| Read airspace as volume, not map color | PHAK Figure 15-1, p. 15-2; Chart Users' Guide VFR airspace information, p. 17 | The learner draws a vertical slice through the route and defines floor, ceiling, shelf, MSL, and AGL. |
+| Read airspace as volume, not map color | PHAK Figure 15-1, p. 15-2; Chart Users' Guide VFR terms and symbols, pp. 16-17 | The learner draws a vertical slice through the route and defines floor, ceiling, shelf, MSL, and AGL. |
 | Leave Class G and climb into Class E | PHAK p. 15-3; AIM 3-2-6 and 3-3-1 | The same lateral position changes airspace when altitude crosses the Class E floor. |
-| Enter the Class D destination | 14 CFR 91.129(c); AIM 3-2-5 | A controller response using the callsign establishes communication; a call without the identification does not. |
-| Compare Class C and Class B entry | 14 CFR 91.130(c), 91.131(a); AIM 3-2-3 and 3-2-4 | Class C uses established two-way communication; Class B requires an explicit clearance. |
-| Check student-pilot Class B eligibility | 14 CFR 61.95 | A short applicant-focused note connects training and endorsement to future Class B work without listing every named airport aloud. |
-| Define and check transponder and ADS-B equipment | AIM 4-1-20, AIM 4-5-7; 14 CFR 91.215(b), 91.225(d); Chart Users' Guide p. 17 | The learner distinguishes Mode C, ADS-B Out, and ADS-B In, then checks a route that remains below a Class B shelf but enters the Mode C veil. |
+| Enter the Class D destination | 14 CFR 91.129(c); AIM 3-2-5(b)(3), (d)(1) | A controller response using the callsign establishes communication; a call without the identification does not. |
+| Compare Class C and Class B entry | 14 CFR 91.130(c), 91.131(a); AIM 3-2-3(a)-(b) and 3-2-4(b)(3), (d)(1) | Class C uses established two-way communication; Class B requires an explicit clearance. |
+| Check student-pilot Class B eligibility | 14 CFR 61.95(a)-(c), with 91.131(b) cross-reference | A private-pilot applicant's solo preparation is stated with its training, endorsement, and preceding-90-day conditions without listing every named airport aloud. |
+| Define and check transponder and ADS-B equipment | AIM 4-1-20(a), (c), and (f); AIM 4-5-7(a)(1)-(3); 14 CFR 91.215(b), 91.225(a), (d)-(g); Chart Users' Guide p. 17 | The learner distinguishes Mode C, ADS-B Out, and ADS-B In, then checks a route that remains below a Class B shelf but enters the separately charted Mode C veil. |
 | Apply ordinary VFR weather minimums | 14 CFR 91.155; AIM 3-1-4 Table 3-1-1; PHAK Figure 15-8 | The weather changes while the airplane moves from daytime Class G into Class E and toward a Class D surface area. |
-| Define ceiling and visibility evidence | AIM 7-1-14; 14 CFR 1.1; 14 CFR 91.155(d) | Separate a reported ceiling from scattered clouds, and reported ground visibility from flight visibility observed forward from the cockpit in flight. |
-| Evaluate Special VFR | 14 CFR 91.157; AIM 4-4-6 | A destination reports 800 overcast and two miles. The learner identifies what SVFR could authorize, what it cannot establish outside the surface area, and why a legal option may still be a poor safety choice. |
-| Distinguish SUA from other charted or briefing items | AIM 3-4-1 through 3-4-9; AIM 3-5-3 and 3-5-7; PHAK pp. 15-4 and 15-6 | Separate regulatory and nonregulatory SUA from MTRs, TFRs, Special Air Traffic Rules, and SFRAs, then apply the action associated with each type. |
+| Define ceiling and visibility evidence | AIM 7-1-14; Pilot/Controller Glossary, VISIBILITY; 14 CFR 91.155(d) | Separate a reported ceiling from scattered clouds, distinguish reported ground visibility from flight visibility observed from the cockpit, and apply the airport surface-area visibility rule to takeoff, landing, and traffic-pattern operations. |
+| Evaluate Special VFR | 14 CFR 91.157(a)-(c); AIM 4-4-6; Chart Users' Guide p. 17 | A lower-48 destination reports 800 overcast and two miles. The learner identifies what SVFR could authorize inside the surface area, the separate fixed-wing prohibition at listed airports, and why the route beyond that boundary remains its own decision. |
+| Distinguish SUA from other charted or briefing items | AIM 3-4-1 through 3-4-9; AIM 3-5-3 and 3-5-7; PHAK pp. 15-4 and 15-6 | The learner distinguishes each item's FAA-defined operating meaning, then chooses the relevant status check or route decision without treating every chart or briefing item as one category. |
 | Recognize specialized local rules | AIM 3-5-7 | SATR and SFRA are defined and deferred to current area-specific procedures rather than summarized as one generic rule. |
 
 ## Vocabulary plan
@@ -47,28 +47,28 @@ At every change, the Instructor returns to the same four questions:
 - **MSL / AGL:** Altitude above mean sea level versus height above the local surface.
 - **Two-way radio communication established:** For Class C and D entry, ATC responds using the aircraft identification; “callsign, standby” qualifies, while a generic response without the identification does not.
 - **ATC clearance:** Specific authorization required before Class B entry; merely hearing the callsign is not the Class B clearance.
-- **Mode C:** The official term for a transponder altitude-reporting mode.
+- **Mode C:** A transponder mode that provides automatic altitude reporting.
 - **ADS-B Out / ADS-B In:** Transmission of ADS-B information from an aircraft versus receipt of ADS-B information by an aircraft.
 - **Mode C veil:** The charted 30-nautical-mile equipment area around listed Class B primary airports, generally surface to 10,000 feet MSL.
 - **Flight visibility / ground visibility:** Visibility forward from the cockpit while in flight versus visibility reported at an airport.
 - **Cloud clearance:** Required vertical and horizontal distance from clouds.
-- **Weather ceiling:** Lowest broken or overcast layer, or vertical visibility into an obscuration, reported as height AGL.
+- **Weather ceiling:** Lowest layer reported as broken, overcast, or obscuration, stated as height AGL.
 - **Basic VFR / VMC / IMC:** Basic VFR is the operating rule; visual meteorological conditions meet or exceed applicable minima; instrument meteorological conditions are below them.
 - **SVFR:** Special VFR, an ATC clearance for specified operations within a controlled surface area in weather below basic VFR minima when regulatory conditions are met.
 - **SUA / MOA / CFA:** Special use airspace, military operations area, and controlled firing area.
-- **MTR / TFR / SATR / SFRA:** Military training route, temporary flight restriction, Special Air Traffic Rules, and Special Flight Rules Area; these are distinct from SUA.
+- **MTR / TFR / SATR / SFRA:** Military training route, temporary flight restriction, Special Air Traffic Rules, and Special Flight Rules Area. Each has its own operational meaning and source of current information.
 
 ## Likely trouble spots
 
 - **Misconception:** Airspace is a colored area on a flat chart.
   - **Correction:** Airspace is a three-dimensional volume. A pilot must combine lateral position and altitude; the same map point may be Class G near the surface, Class E above, and under a Class B or C shelf higher still.
-  - **Sources:** PHAK Figure 15-1; Chart Users' Guide p. 17.
+  - **Sources:** PHAK Figure 15-1; Chart Users' Guide pp. 16-17.
 - **Misconception:** “Controlled” means ATC controls or separates every VFR airplane.
   - **Correction:** The classification determines which services, entry rules, and requirements apply. Class E is controlled airspace but normally has no specific VFR entry communication requirement.
   - **Sources:** AIM 3-2-1 and 3-2-6; PHAK pp. 15-2 through 15-3.
 - **Misconception:** Hearing “standby” always authorizes entry.
   - **Correction:** In Class C or D, use of the aircraft callsign establishes two-way communication; a generic response without the identification does not. Class B still requires an explicit clearance.
-  - **Sources:** AIM 3-2-3 through 3-2-5; 14 CFR 91.131(a).
+  - **Sources:** AIM 3-2-3 through 3-2-5; 14 CFR 91.129(c), 91.130(c), and 91.131(a).
 - **Misconception:** Staying below a Class B shelf avoids the terminal area's equipment requirements.
   - **Correction:** The Mode C veil and the airspace above a Class B or C area are separate equipment triggers. Check 14 CFR 91.215 and 91.225 against the planned position and altitude.
   - **Sources:** 14 CFR 91.215(b), 91.225(d); Chart Users' Guide p. 17.
@@ -76,13 +76,13 @@ At every change, the Instructor returns to the same four questions:
   - **Correction:** Identify the class, height above the surface, MSL altitude, day or night, phase of flight, reported ground visibility, flight visibility, and weather ceiling before selecting the row.
   - **Sources:** 14 CFR 91.155; AIM Table 3-1-1.
 - **Misconception:** A scattered layer is a ceiling.
-  - **Correction:** The aviation ceiling is the lowest broken or overcast layer, or vertical visibility into an obscuration.
+  - **Correction:** The aviation ceiling is the height of the lowest layer reported as broken, overcast, or obscuration.
   - **Source:** AIM 7-1-14.
 - **Misconception:** One mile and clear of clouds under an SVFR clearance means the rest of the route is workable.
   - **Correction:** The clearance applies only inside the surface area. Terrain, obstacles, workload, pilot capability, and the weather beyond that boundary remain separate decisions.
   - **Sources:** 14 CFR 91.157; AIM 4-4-6.
-- **Misconception:** Every unusual chart or briefing item is another type of special use airspace.
-  - **Correction:** SUA includes regulatory and nonregulatory types with different operational meanings. MTRs, TFRs, Special Air Traffic Rules, and SFRAs are separate; a current TFR is established and described by its NOTAM.
+- **Misconception:** Every unusual chart or briefing item calls for the same airspace decision.
+  - **Correction:** Prohibited areas, restricted areas, MOAs, MTRs, TFRs, SATRs, and SFRAs have different operating meanings. Identify the item first, then use its current controlling information; for a TFR, that is the current NOTAM.
   - **Sources:** AIM 3-4-1 through 3-4-9; AIM 3-5-3 and 3-5-7; PHAK p. 15-6.
 
 ## Editorial risks to avoid
@@ -101,5 +101,5 @@ At every change, the Instructor returns to the same four questions:
 - **Current editions:** Private Pilot ACS FAA-S-ACS-6C remains the current FAA-listed edition. The current online AIM is effective July 9, 2026. PHAK Chapter 15 is FAA-H-8083-25C. These dates require re-verification during formal source review and again on publication day.
 - **eCFR date:** The Title 14 API reported content current through September 9, 2026 when researched on September 11, 2026. The formal validator may advance the pinned date before review.
 - **Chart Users' Guide date:** The FAA landing page labels the guide effective July 9, 2026, while the page text also says the guide's information is effective January 22, 2026. The source ledger records the publication-page date; the formal review should verify the cited PDF page and revision identity.
-- **Special use scope:** AIM 3-4 identifies regulatory and nonregulatory SUA. MTRs and TFRs appear under the PHAK's other-airspace discussion, while the AIM separately addresses TFRs, Special Air Traffic Rules, and SFRAs. The episode preserves those category boundaries.
+- **Evidence boundaries:** Each atomic claim now belongs only to the exact source locator that fully supports it. The spoken lesson may connect multiple immediately tagged facts into a teaching synthesis, but the source ledger does not make one source responsible for the entire synthesis.
 - **No open technical questions remain for first drafting.** Formal source relevance is still required before human editorial review.

@@ -81,7 +81,6 @@ function parseArgs(argv) {
     index += 1;
   }
   if (!options.sources || !options.claims) throw new Error("--sources and --claims are required.");
-  if (options.dryRun && options.recoverStaleLock) throw new Error("--recover-stale-lock cannot be combined with --dry-run.");
   if (!/^[a-z0-9][a-z0-9.-]*$/.test(options.model)) throw new Error("--model contains unsupported characters.");
   options.httpConcurrency = boundedInteger(options["http-concurrency"], DEFAULT_HTTP_CONCURRENCY, 8, "--http-concurrency");
   options.httpPerOrigin = boundedInteger(options["http-per-origin"], 2, 4, "--http-per-origin");

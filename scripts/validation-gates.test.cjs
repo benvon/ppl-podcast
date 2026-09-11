@@ -1984,6 +1984,33 @@ test("formal source validation acquires the package lease before reading package
   }
 });
 
+test("source-validation dry runs recover only their confirmed-dead package lease", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-dry-run-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/validate-source-links.cjs:formal-review-lifecycle",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "source-validation" },
+    }));
+    const result = childProcess.spawnSync(process.execPath, [
+      path.join(process.cwd(), "scripts", "validate-source-links.cjs"),
+      "--sources", path.join(temporary, "sources.yaml"),
+      "--claims", path.join(temporary, "claim-inventory.yaml"),
+      "--dry-run",
+      "--recover-stale-lock",
+    ], { cwd: process.cwd(), encoding: "utf8" });
+    assert.notEqual(result.status, 0, "the incomplete fixture should fail after recovering, not validate inputs");
+    assert.doesNotMatch(`${result.stdout}\n${result.stderr}`, /already in progress or was interrupted/);
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("claim-source preflight acquires the package lease before reading package inputs", async () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-lease-test-"));
   try {

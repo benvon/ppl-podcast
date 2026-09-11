@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { CONTRACT_KINDS, productionContractKind } = require("./production-state-contract.cjs");
+const { CONTRACT_KINDS, productionContractKind, preservedProductionContract } = require("./production-state-contract.cjs");
 const {
   claimSourcePreflightErrors,
   sourceRelevanceResultValid,
@@ -59,7 +59,7 @@ function readTextFile(filePath, label, errors) {
 function currentContractErrors(episode) {
   const kind = productionContractKind(episode);
   if (kind === CONTRACT_KINDS.CURRENT) return [];
-  if (kind === CONTRACT_KINDS.PRESERVED_LEGACY) return ["Current production tooling cannot operate on a preserved legacy package; begin a deliberate revision with episode:script-review --reset."];
+  if (preservedProductionContract(kind)) return ["Current production tooling cannot operate on a preserved package; begin a deliberate revision with episode:script-review --reset."];
   return ["episode.yaml must use the supported production_contract_version 2."];
 }
 

@@ -4,7 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
-const { CONTRACT_KINDS, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
+const { productionContractKind, preservedProductionContract, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 
 function readYamlMapping(filePath) {
   const document = YAML.parseDocument(fs.readFileSync(filePath, "utf8"));
@@ -15,7 +15,7 @@ function readYamlMapping(filePath) {
 }
 
 function publishedLegacyRelease(filePath, episode, kind) {
-  if (kind !== CONTRACT_KINDS.PRESERVED_LEGACY || !utcRfc3339Timestamp(episode.published_at)) return null;
+  if (!preservedProductionContract(kind) || !utcRfc3339Timestamp(episode.published_at)) return null;
   const metadataPath = path.join(path.dirname(filePath), "hosting-metadata.yaml");
   if (!fs.existsSync(metadataPath) || !fs.lstatSync(metadataPath).isFile()) return null;
   const metadata = readYamlMapping(metadataPath);
@@ -38,7 +38,7 @@ function publishedLegacyRelease(filePath, episode, kind) {
 function readProductionContract(filePath) {
   const episode = readYamlMapping(filePath);
   const kind = productionContractKind(episode);
-  const normalizedKind = kind === CONTRACT_KINDS.PRESERVED_LEGACY ? "legacy" : kind;
+  const normalizedKind = preservedProductionContract(kind) ? "legacy" : kind;
   const legacyRelease = publishedLegacyRelease(filePath, episode, kind);
   return {
     kind: normalizedKind,

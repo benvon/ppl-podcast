@@ -122,6 +122,22 @@ test("source-link validation does not mistake an ordinary site contact CAPTCHA f
 test("production contract classification is explicit and shared", () => {
   assert.equal(productionContractKind({ production_contract_version: 2 }), CONTRACT_KINDS.CURRENT);
   assert.equal(productionContractKind({ id: "core-01" }), CONTRACT_KINDS.PRESERVED_LEGACY);
+  assert.equal(
+    productionContractKind({
+      production_contract_version: 2,
+      published_at: "2026-09-09T13:00:08Z",
+      source_verification: {},
+    }),
+    CONTRACT_KINDS.PRESERVED_PRE_PREFLIGHT,
+  );
+  assert.equal(
+    productionContractKind({
+      production_contract_version: 2,
+      published_at: "2026-09-09T13:00:08Z",
+      source_verification: { claim_source_preflight: "claim-source-preflight.yaml", claim_source_preflight_status: "pending" },
+    }),
+    CONTRACT_KINDS.CURRENT,
+  );
   for (const episode of [{ production_contract_version: null }, { production_contract_version: "2" }, { production_contract_version: 3 }, null]) {
     assert.equal(productionContractKind(episode), CONTRACT_KINDS.UNSUPPORTED);
   }
@@ -130,7 +146,7 @@ test("production contract classification is explicit and shared", () => {
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-01\n", "utf8");
     const result = validatePreHosting({ episodePath: temporary, cwd: temporary, packageOnly: true });
     assert.equal(result.valid, false);
-    assert.match(result.errors.join("\n"), /preserved legacy package/);
+    assert.match(result.errors.join("\n"), /preserved package/);
   } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
 });
 

@@ -4,6 +4,7 @@ const CURRENT_PRODUCTION_CONTRACT_VERSION = 2;
 const CONTRACT_KINDS = Object.freeze({
   CURRENT: "current",
   PRESERVED_LEGACY: "preserved_legacy",
+  PRESERVED_PRE_PREFLIGHT: "preserved_pre_preflight",
   UNSUPPORTED: "unsupported",
 });
 
@@ -30,15 +31,30 @@ function utcRfc3339Timestamp(value) {
 function productionContractKind(episode) {
   if (!episode || typeof episode !== "object" || Array.isArray(episode)) return CONTRACT_KINDS.UNSUPPORTED;
   if (!Object.prototype.hasOwnProperty.call(episode, "production_contract_version")) return CONTRACT_KINDS.PRESERVED_LEGACY;
+  // A published contract-v2 package from before claim-source preflight became
+  // a required gate is preservation-only, not a candidate that can be
+  // silently made current by a later validator. A deliberate reset adds the
+  // preflight fields and moves a working revision back into the current
+  // contract.
+  if (episode.production_contract_version === CURRENT_PRODUCTION_CONTRACT_VERSION
+    && utcRfc3339Timestamp(episode.published_at)
+    && episode.source_verification?.claim_source_preflight === undefined
+    && episode.source_verification?.claim_source_preflight_status === undefined) {
+    return CONTRACT_KINDS.PRESERVED_PRE_PREFLIGHT;
+  }
   return episode.production_contract_version === CURRENT_PRODUCTION_CONTRACT_VERSION
     ? CONTRACT_KINDS.CURRENT
     : CONTRACT_KINDS.UNSUPPORTED;
 }
 
+function preservedProductionContract(kind) {
+  return kind === CONTRACT_KINDS.PRESERVED_LEGACY || kind === CONTRACT_KINDS.PRESERVED_PRE_PREFLIGHT;
+}
+
 function requireCurrentProductionContract(episode, operation) {
   const kind = productionContractKind(episode);
   if (kind === CONTRACT_KINDS.CURRENT) return;
-  if (kind === CONTRACT_KINDS.PRESERVED_LEGACY) {
+  if (preservedProductionContract(kind)) {
     throw new Error(`${operation} cannot change a preserved legacy package. Begin a deliberate revision with episode:script-review --reset.`);
   }
   throw new Error(`${operation} requires production_contract_version ${CURRENT_PRODUCTION_CONTRACT_VERSION}.`);
@@ -69,6 +85,7 @@ module.exports = {
   RELEASE_GATES_AFTER_SCRIPT_APPROVAL,
   RELEASE_GATES_AFTER_SCRIPT_RESET,
   productionContractKind,
+  preservedProductionContract,
   requireCurrentProductionContract,
   sameStringList,
   utcRfc3339Timestamp,

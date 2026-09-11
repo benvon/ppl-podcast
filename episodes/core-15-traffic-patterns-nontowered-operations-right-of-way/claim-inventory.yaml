@@ -1,0 +1,162 @@
+episode_id: core-15
+claims:
+  - id: acs-communications-outcome
+    claim: "The ACS communications task addresses frequency use, standard radio procedures and phraseology, and communications risk management."
+    claim_type: FAA standard
+    sources: [acs-communications]
+    script_sections: [What the ACS is asking you to connect]
+  - id: acs-traffic-pattern-outcome
+    claim: "The ACS traffic-pattern task addresses right-of-way rules, collision hazards, recommended traffic-pattern procedures, situational awareness, and spacing from other aircraft in the traffic pattern."
+    claim_type: FAA standard
+    sources: [acs-traffic-patterns]
+    script_sections: [What the ACS is asking you to connect]
+  - id: phak-pattern-visual-model
+    claim: "The PHAK numbers the traffic-pattern key, relates the pattern to the landing runway, and references Figure 14-39."
+    claim_type: FAA handbook guidance
+    sources: [phak-pattern-text]
+    script_sections: [Build the traffic picture before arriving]
+  - id: phak-left-pattern-map
+    claim: "PHAK Figure 14-39 depicts the recommended standard left-hand traffic pattern."
+    claim_type: FAA handbook guidance
+    sources: [phak-pattern-figure]
+    script_sections: [Build the traffic picture before arriving]
+  - id: preflight-publications
+    claim: "AC 90-66C lists the Chart Supplement, AIM, and NOTAMs among appropriate preflight publications for pertinent current traffic-pattern information at departure and arrival airports."
+    claim_type: FAA guidance
+    sources: [ac-preflight]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: automated-weather-monitoring
+    claim: "At an uncontrolled airport with an ASOS or AWOS ground-to-air broadcast, a pilot should monitor the airport weather frequency when near the airport to obtain current weather."
+    claim_type: FAA guidance
+    sources: [aim-automated-weather]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: ctaf-position-reports
+    claim: "At an airport without an operating control tower, CTAF self-announcements share a pilot's position and intention and support traffic awareness."
+    claim_type: FAA guidance
+    sources: [aim-ctaf]
+    script_sections: [Build the traffic picture before arriving, Communicate to improve the shared picture, Retrieval review]
+  - id: active-see-avoid
+    claim: "AC 90-66C calls for active see-and-avoid practices near nontowered airports."
+    claim_type: FAA guidance
+    sources: [ac-active-see-avoid]
+    script_sections: [Communicate to improve the shared picture]
+  - id: straight-in-see-avoid
+    claim: "AC 90-66C reinforces active see-and-avoid and traffic coordination when straight-in traffic is present."
+    claim_type: FAA guidance
+    sources: [ac-straight-in-see-avoid]
+    script_sections: [Join the established flow]
+  - id: straight-in-pattern-priority
+    claim: "Pilots executing a straight-in approach do not have priority over other aircraft in the traffic pattern and must comply with 14 CFR 91.113(g)."
+    claim_type: FAA guidance
+    sources: [aim-straight-in-priority]
+    script_sections: [Resolve conflicts before they become close]
+  - id: quiet-frequency
+    claim: "A quiet CTAF does not establish that the airport traffic area is empty because aircraft may lack radios; pilots remain especially vigilant for other aircraft."
+    claim_type: FAA guidance
+    sources: [ac-quiet-ctaf]
+    script_sections: [Communicate to improve the shared picture, Retrieval review]
+  - id: no-assumed-landing-sequence
+    claim: "Pilots at a nontowered airport should not broadcast an assumed landing sequence."
+    claim_type: FAA guidance
+    sources: [ac-no-assumed-sequence]
+    script_sections: [Communicate to improve the shared picture, Retrieval review]
+  - id: deliberate-scan
+    claim: "Deliberate visual scanning, including attention to blind spots, helps pilots identify other aircraft."
+    claim_type: FAA guidance
+    sources: [ac-scan-technique]
+    script_sections: [Communicate to improve the shared picture, Retrieval review]
+  - id: displays-do-not-replace-scan
+    claim: "Traffic displays are aids and do not replace outside visual scanning."
+    claim_type: FAA guidance
+    sources: [ac-displays-see-avoid]
+    script_sections: [Communicate to improve the shared picture, Retrieval review]
+  - id: aim-six-pattern-terms
+    claim: "AIM 4-3-2(c) defines departure, upwind leg, crosswind leg, downwind leg, base leg, and final approach."
+    claim_type: FAA guidance
+    sources: [aim-pattern-terms]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: aim-upwind-extension
+    claim: "The AIM describes upwind as beginning after departure and continuing straight ahead along the extended runway centerline as an extension of departure for control separation, spacing, or sequencing."
+    claim_type: FAA guidance
+    sources: [aim-pattern-terms]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: afh-departure-leg
+    claim: "The AFH describes departure as the straight course aligned with and leading from the takeoff runway, from liftoff until the turn to crosswind."
+    claim_type: FAA handbook guidance
+    sources: [afh-departure-upwind]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: afh-upwind-context
+    claim: "The AFH describes upwind as a course parallel to the landing runway in the direction of landing in controlled-airport and go-around contexts."
+    claim_type: FAA handbook guidance
+    sources: [afh-departure-upwind]
+    script_sections: [Build the traffic picture before arriving]
+  - id: standard-entry-and-spacing
+    claim: "AC 90-66C recommends reaching pattern altitude, taking time to observe traffic, and using the standard 45-degree downwind entry abeam the midpoint of the runway to be used for landing."
+    claim_type: FAA guidance
+    sources: [ac-standard-entry]
+    script_sections: [Join the established flow, Retrieval review]
+  - id: upwind-side-reentry-model
+    claim: "For an upwind-side arrival, the AFH provides an above-pattern crossing, announce-intentions, scan, descent to pattern altitude, and later 45-degree downwind-entry model; when large or turbine-powered aircraft operate at the airport, it says remaining 2,000 feet AGL during the crossing is best to avoid conflict with their traffic pattern before descending to pattern altitude for entry."
+    claim_type: FAA handbook guidance
+    sources: [afh-upwind-side-entry]
+    script_sections: [Join the established flow, Retrieval review]
+  - id: conflicting-entry-retry
+    claim: "When conflicting traffic prevents a 45-degree entry, the AFH describes turning away from downwind, flying a safe distance away, scanning, and retrying the entry; it also calls for course or speed adjustment before joining."
+    claim_type: FAA handbook guidance
+    sources: [afh-conflicting-entry]
+    script_sections: [Join the established flow, Resolve conflicts before they become close, Retrieval review]
+  - id: class-g-pattern-direction
+    claim: "For powered fixed-wing aircraft approaching to land at a Class G airport without an operating control tower, 14 CFR 91.126 requires left turns unless light signals or visual markings indicate right turns."
+    claim_type: regulation
+    sources: [ecfr-airport-class-g]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: visible-pattern-indicators
+    claim: "A segmented circle can include traffic-pattern indicators, and when no segmented circle is installed the indicator may be on or near the runway end; an arriving pilot checks the approach-end indicator."
+    claim_type: FAA guidance
+    sources: [aim-visible-indicators]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: published-right-pattern
+    claim: "Published airport information can establish a right-hand traffic pattern, rather than allowing a pilot to select pattern direction from wind alone."
+    claim_type: FAA guidance
+    sources: [aim-published-right-pattern, ac-published-right-pattern]
+    script_sections: [Build the traffic picture before arriving, Retrieval review]
+  - id: see-and-avoid-rule
+    claim: "When weather conditions permit, each person operating an aircraft must maintain vigilance to see and avoid other aircraft."
+    claim_type: regulation
+    sources: [ecfr-right-of-way]
+    script_sections: [Communicate to improve the shared picture, Retrieval review]
+  - id: right-of-way-geometries
+    claim: "Under 14 CFR 91.113, when aircraft of the same category converge at approximately the same altitude, except head-on or nearly head-on, the aircraft with the other on its right gives way and may not pass over, under, or ahead unless well clear; head-on aircraft alter right and an overtaking aircraft alters right to pass well clear."
+    claim_type: regulation
+    sources: [ecfr-right-of-way]
+    script_sections: [Resolve conflicts before they become close, Retrieval review]
+  - id: category-and-distress-priority
+    claim: "Distress has priority over all other air traffic; separately, balloon has priority over every other category, glider over powered aircraft, airship over other powered aircraft except towing or refueling aircraft, and towing or refueling aircraft over all other powered aircraft."
+    claim_type: regulation
+    sources: [ecfr-right-of-way]
+    script_sections: [Resolve conflicts before they become close, Retrieval review]
+  - id: landing-right-of-way
+    claim: "Aircraft on final approach to land or while landing have priority, and the lower aircraft approaching to land has priority but may not cut in front of or overtake traffic on final."
+    claim_type: regulation
+    sources: [ecfr-right-of-way]
+    script_sections: [Land without turning priority into pressure, Retrieval review]
+  - id: base-final-spacing
+    claim: "The AFH directs a pilot on base to avoid close proximity to an aircraft established on final and to use avoidance or a go-around rather than a rushed turn that creates a collision hazard."
+    claim_type: FAA handbook guidance
+    sources: [afh-base-final]
+    script_sections: [Resolve conflicts before they become close, Land without turning priority into pressure]
+  - id: go-around-path
+    claim: "AC 90-66C advises an airplane executing a go-around to continue straight ahead beyond the departure end while maintaining awareness of established traffic."
+    claim_type: FAA guidance
+    sources: [ac-go-around]
+    script_sections: [Resolve conflicts before they become close, Land without turning priority into pressure, Retrieval review]
+  - id: wake-vortex-behavior
+    claim: "AIM wake-turbulence guidance explains that vortices can remain behind and below the generating aircraft and can drift and settle."
+    claim_type: FAA guidance
+    sources: [aim-wake-turbulence]
+    script_sections: [Land without turning priority into pressure, Retrieval review]
+  - id: wake-spacing
+    claim: "AC 90-66C directs pilots to remain alert for wake turbulence and avoid flight below and behind another aircraft at low altitude."
+    claim_type: FAA guidance
+    sources: [ac-wake-spacing]
+    script_sections: [Land without turning priority into pressure, Retrieval review]

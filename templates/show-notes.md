@@ -1,6 +1,6 @@
 # {{TITLE}}
 
-**Episode:** {{EPISODE_ID}}
+**Episode:** {{EPISODE_DISPLAY_LABEL}}
 **Version:** 0.1.0
 **Source verification:** Pending
 

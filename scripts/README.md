@@ -28,17 +28,7 @@ npm run precommit:check
 
 ## Candidate workflow
 
-1. Before full prose drafting, obtain authorization, mark the dedicated QA item, and run `direnv exec . npm run sources:preflight -- --episode episodes/EPISODE --require-llm` as described in `docs/script-drafting-playbook.md`. The command consumes that authorization for this single run and records its identity plus input-bound evidence from independently fetched citation text in `claim-source-preflight.yaml`; a retry requires fresh authorization. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`. It clears the prior editorial, source-relevance, audio, and hosting state and fingerprints the changed master script. After source relevance passes and human editorial approval is renewed, run `npm run episode:script-review -- --episode episodes/EPISODE --approve` to bind that approval to the current master-script bytes. Before the formal source-relevance or rendering call that sends unpublished material to OpenAI, obtain explicit current-turn authorization for that specific use. Then run
-   `sources:validate --require-llm` and resolve every finding. The validator
-   records the source-review outcome and report timestamp in `episode.yaml`
-   while it owns the validation lock; do not edit that state by hand. For a
-   contract-v2 package, the renderer also requires the same current,
-   input-bound claim-source preflight evidence that pre-hosting checks; it
-   cannot send audio requests with missing, stale, or unsupported locator
-   evidence. A
-   failed rerun writes a blocking marker beside the canonical report; only a
-   later clean rerun clears it. The renderer verifies that evidence before it
-   sends any audio request.
+1. Build the source-led draft, complete the independent first-listen review, then obtain explicit current-turn authorization and run `sources:validate --require-llm` against the exact source-tagged spoken passages. Resolve material source-support findings before human editorial approval. After any factual or spoken-script edit, run `npm run episode:script-review -- --episode episodes/EPISODE --reset`, renew source relevance and human editorial approval, then run the same command with `--approve` to bind approval to the current master-script bytes.
 2. Derive the clean TTS input from that approved script; do not edit the
    narration copy independently.
 

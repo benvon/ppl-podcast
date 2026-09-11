@@ -4,7 +4,7 @@ const CURRENT_PRODUCTION_CONTRACT_VERSION = 2;
 const CONTRACT_KINDS = Object.freeze({
   CURRENT: "current",
   PRESERVED_LEGACY: "preserved_legacy",
-  PRESERVED_PRE_PREFLIGHT: "preserved_pre_preflight",
+  PRESERVED_PRE_SOURCE_REVIEW: "preserved_pre_source_review",
   UNSUPPORTED: "unsupported",
 });
 
@@ -31,16 +31,13 @@ function utcRfc3339Timestamp(value) {
 function productionContractKind(episode) {
   if (!episode || typeof episode !== "object" || Array.isArray(episode)) return CONTRACT_KINDS.UNSUPPORTED;
   if (!Object.prototype.hasOwnProperty.call(episode, "production_contract_version")) return CONTRACT_KINDS.PRESERVED_LEGACY;
-  // A published contract-v2 package from before claim-source preflight became
-  // a required gate is preservation-only, not a candidate that can be
-  // silently made current by a later validator. A deliberate reset adds the
-  // preflight fields and moves a working revision back into the current
-  // contract.
+  // A published contract-v2 package from before the current, simpler source
+  // review contract is preservation-only. A deliberate script reset marks a
+  // working revision as current; later tooling must never reclassify history.
   if (episode.production_contract_version === CURRENT_PRODUCTION_CONTRACT_VERSION
     && utcRfc3339Timestamp(episode.published_at)
-    && episode.source_verification?.claim_source_preflight === undefined
-    && episode.source_verification?.claim_source_preflight_status === undefined) {
-    return CONTRACT_KINDS.PRESERVED_PRE_PREFLIGHT;
+    && episode.source_verification?.validation_contract !== "source-relevance-v1") {
+    return CONTRACT_KINDS.PRESERVED_PRE_SOURCE_REVIEW;
   }
   return episode.production_contract_version === CURRENT_PRODUCTION_CONTRACT_VERSION
     ? CONTRACT_KINDS.CURRENT
@@ -48,7 +45,7 @@ function productionContractKind(episode) {
 }
 
 function preservedProductionContract(kind) {
-  return kind === CONTRACT_KINDS.PRESERVED_LEGACY || kind === CONTRACT_KINDS.PRESERVED_PRE_PREFLIGHT;
+  return kind === CONTRACT_KINDS.PRESERVED_LEGACY || kind === CONTRACT_KINDS.PRESERVED_PRE_SOURCE_REVIEW;
 }
 
 function requireCurrentProductionContract(episode, operation) {

@@ -1,0 +1,2584 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+checked_at_utc: 2026-09-10T22:28:41.838Z
+sources_file: episodes/core-15-traffic-patterns-nontowered-operations-right-of-way/sources.yaml
+claims_file: episodes/core-15-traffic-patterns-nontowered-operations-right-of-way/claim-inventory.yaml
+show_notes_file: episodes/core-15-traffic-patterns-nontowered-operations-right-of-way/show-notes.md
+show_notes_manifest_file: episodes/core-15-traffic-patterns-nontowered-operations-right-of-way/show-notes-manifest.yaml
+input_sha256:
+  sources: b7cd01b4bee09701dae0191faa442a9f093ca7bbbf5df7b216fc73e91c07f708
+  claims: aafa272016635570ff3042b6c41102acc1af97a650ca5f40924a4976349ca28e
+  master_script: 798412c6be18488458e071952c63b70e9020df18d5956b27cd74ff9e37dc983a
+  show_notes: 8ef7f71fc88060b2f5e4383246f1f354b2a871c00711b27c8964820113cad30f
+  show_notes_manifest: 3b89c4446a149a7d46a2052bdcd8a1d3326805b6017498517cc593724806ac17
+llm_requested: true
+llm_model: gpt-5.6-terra
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 76
+  claim_coverage_count: 32
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 16
+  manifest_link_count: 16
+source_review_adjudications:
+  file: source-review-adjudications.yaml
+  sha256: 56044fde4c5b57481cacf5cf8ce03ab18966f95dc4f33113902d0dcee9aaeb7b
+  applied:
+    - id: landing-right-of-way-nonmaterial-omission
+      source_id: ecfr-right-of-way
+      claim_id: landing-right-of-way
+      expected_relevance_verdict: partially_supports
+      decision: accepted_nonmaterial_omission
+      rationale: The claim accurately states the landing-priority and lower-aircraft
+        rules within the lesson's stated scope. The omitted adjacent provision
+        does not contradict the claim or make its spoken teaching misleading.
+      authorized_by: human episode editor
+      authorized_at_utc: 2026-09-10T22:27:16Z
+      input_sha256:
+        sources: b7cd01b4bee09701dae0191faa442a9f093ca7bbbf5df7b216fc73e91c07f708
+        claims: aafa272016635570ff3042b6c41102acc1af97a650ca5f40924a4976349ca28e
+        master_script: 798412c6be18488458e071952c63b70e9020df18d5956b27cd74ff9e37dc983a
+        show_notes: 8ef7f71fc88060b2f5e4383246f1f354b2a871c00711b27c8964820113cad30f
+        show_notes_manifest: 3b89c4446a149a7d46a2052bdcd8a1d3326805b6017498517cc593724806ac17
+show_notes_results:
+  - id: acs-comms
+    text: Private Pilot ACS communications task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+    source_id: acs-communications
+    claim_ids:
+      - acs-communications-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2074
+      pdf_page_text_sha256: 31bbf323541a06d11b69c337ab5fba223101d2ac10a7a46a543f97aa16efe115
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-patterns
+    text: Private Pilot ACS traffic-pattern task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+    source_id: acs-traffic-patterns
+    claim_ids:
+      - acs-traffic-pattern-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1106
+      pdf_page_text_sha256: 6f98ab5fe338dc265bf22853ac694296d98851c1dcfe74d560a8250e3dcb3686
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-text
+    text: PHAK traffic-pattern text
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+    source_id: phak-pattern-text
+    claim_ids:
+      - phak-pattern-visual-model
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2045
+      pdf_page_text_sha256: 23314ff63561338a142959af250af46032c4a8c1dd550ad91cec71fe8944b83f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-figure
+    text: PHAK Figure 14-39 left-hand traffic pattern
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+    source_id: phak-pattern-figure
+    claim_ids:
+      - phak-left-pattern-map
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3205
+      pdf_page_text_sha256: 9099ce803d199dd53f3619ed1b00780794f8685ad0962478e6c554b578168963
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ac-preflight
+    text: AC 90-66C preflight actions
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+    source_id: ac-preflight
+    claim_ids:
+      - preflight-publications
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1976
+      pdf_page_text_sha256: 21dd79181ce543d1a8a1e4c373e115b3cd9f1d8e0ea9c941e1d7922f9c62e853
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-ctaf
+    text: AIM CTAF guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+    source_id: aim-ctaf
+    claim_ids:
+      - ctaf-position-reports
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a3 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 10691
+      excerpt_sha256: 06637a22b4a9e89f4f59d9c8ab1bb89628ab0a087055b91bda2a84383107c403
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-straight-in-priority
+    text: AIM straight-in landing priority
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+    source_id: aim-straight-in-priority
+    claim_ids:
+      - straight-in-pattern-priority
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: daa1ffc4856e96ebb6d1fd5de800bef341689792940a44482aa116b4ff19dc1f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ac-entry
+    text: AC 90-66C standard entry and go-around path
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+    source_id: ac-standard-entry
+    claim_ids:
+      - standard-entry-and-spacing
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3025
+      pdf_page_text_sha256: 75cb2804a08a78c4a24d8a1e692cd7c6cdeb4e2f9033ea84386ef04f1a881166
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: afh-entry
+    text: AFH upwind-side entry model
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+    source_id: afh-upwind-side-entry
+    claim_ids:
+      - upwind-side-reentry-model
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5307
+      pdf_page_text_sha256: 357c5df611fb2cbf7ca88b09ca77875c7754ddd779e1bc6fe4b094d049750476
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: afh-retry
+    text: conflicting-entry retry
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+    source_id: afh-conflicting-entry
+    claim_ids:
+      - conflicting-entry-retry
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1876
+      pdf_page_text_sha256: 62a9af2426f562c9980e82c0fb49eeca91afcf1923f5b322277ca1482d589155
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-indicators
+    text: AIM visual traffic-pattern indicators
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+    source_id: aim-visible-indicators
+    claim_ids:
+      - visible-pattern-indicators
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a7 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 2f99be2c61b42152d881719afe86f66dbf9dba779b9ec64fc4475f8bea454519
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ecfr-row
+    text: 14 CFR 91.113 right-of-way rules
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.113
+    source_id: ecfr-right-of-way
+    claim_ids:
+      - right-of-way-geometries
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a8 []
+      title: null
+      truncated: false
+      content_sha256: 2a8976043b90ceccd599178c5d0f02e2510011f9a02f27b9af3c5e114ee851d6
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-09
+        title_status_sha256: 7c67a1e9d5b5adb155d7d492ea90b18676183df06f0e334044ba1e28be7b025c
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.113"
+        date: 2026-09-09
+        section_number: "91.113"
+      section_text_sha256: ce45ca739386de8c0a914a8ccf40c505fdbf0b276beeafd2584b4355074c7518
+      excerpt_characters: 2527
+      excerpt_sha256: ce45ca739386de8c0a914a8ccf40c505fdbf0b276beeafd2584b4355074c7518
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2527
+  - id: ecfr-class-g
+    text: 14 CFR 91.126 Class G pattern direction
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.126
+    source_id: ecfr-airport-class-g
+    claim_ids:
+      - class-g-pattern-direction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a9 []
+      title: null
+      truncated: false
+      content_sha256: f9669e37e03e2341e48a3fa038cddea09dc1829c76b0a21eb5fadef1ba74a5f4
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.126
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-09
+        title_status_sha256: 7c67a1e9d5b5adb155d7d492ea90b18676183df06f0e334044ba1e28be7b025c
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.126"
+        date: 2026-09-09
+        section_number: "91.126"
+      section_text_sha256: 5d6780291fb766427debcf5b9df89eb20fc3d8ccc80bba3a609bf740264c3c73
+      excerpt_characters: 2427
+      excerpt_sha256: 5d6780291fb766427debcf5b9df89eb20fc3d8ccc80bba3a609bf740264c3c73
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2427
+  - id: ac-scan
+    text: AC 90-48E scan technique
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+    source_id: ac-scan-technique
+    claim_ids:
+      - deliberate-scan
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a6 []
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3067
+      pdf_page_text_sha256: 0b7e65e776a25996ee07e795f18e6974ec8220611d801911021bfc666eed178d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ac-displays
+    text: traffic displays
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+    source_id: ac-displays-see-avoid
+    claim_ids:
+      - displays-do-not-replace-scan
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2891
+      pdf_page_text_sha256: 41fe750b29cf51b309492492e8e327e8d6e293bbf4d0a4fedb5ed389bb4ecd72
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-wake
+    text: AIM wake-turbulence guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+    source_id: aim-wake-turbulence
+    claim_ids:
+      - wake-vortex-behavior
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a10 []
+      title: Chapter 7. Safety of Flight
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 6bc733cdf74e8436b86936db790f084b6a04034b523e3ed0b4ca2dae59c5a631
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-communications
+    title: Private Pilot ACS, Airport Operations, Communications
+    checked_at_utc: 2026-09-10T22:28:07.609Z
+    linked_claim_ids:
+      - acs-communications-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2074
+      pdf_page_text_sha256: 31bbf323541a06d11b69c337ab5fba223101d2ac10a7a46a543f97aa16efe115
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited ACS page explicitly lists obtaining/selecting/activating
+          appropriate frequencies; proper radio communication procedures and ATC
+          phraseology; transmitting with standard phraseology and procedures;
+          and communication-related risk management. The authored passage
+          accurately summarizes these elements without adding unsupported
+          requirements.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 24 contains Area of Operation III, Task A, “Communications,
+            Light Signals, and Runway Lighting Systems,” including the relevant
+            Knowledge, Risk Management, and Skills elements.
+        claim_assessments:
+          - claim_id: acs-communications-outcome
+            verdict: supports
+            rationale: The excerpt expressly covers frequency use (K1, S1), standard radio
+              procedures and phraseology (K2, S2), and risk management
+              associated with communication (R1). The cited passage preserves
+              these conditions.
+      usage:
+        input_tokens: 1235
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1232
+        output_tokens: 192
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1427
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: acs-traffic-patterns
+    title: Private Pilot ACS, Airport Operations, Traffic Patterns
+    checked_at_utc: 2026-09-10T22:28:07.610Z
+    linked_claim_ids:
+      - acs-traffic-pattern-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1106
+      pdf_page_text_sha256: 6f98ab5fe338dc265bf22853ac694296d98851c1dcfe74d560a8250e3dcb3686
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly lists right-of-way rules (K3), collision
+          hazards (R1), compliance with recommended traffic-pattern procedures
+          (S2), and maintaining situational awareness and proper spacing from
+          other aircraft in the traffic pattern (S6). The authored passage
+          accurately summarizes these connected ACS task elements without adding
+          unsupported conditions.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is identified as page 25 in the locator, and the
+            supplied excerpt from that page contains the relevant PA.III.B
+            knowledge, risk-management, and skill elements.
+        claim_assessments:
+          - claim_id: acs-traffic-pattern-outcome
+            verdict: supports
+            rationale: The claim is directly supported by K3, R1, S2, and S6 in the excerpt.
+      usage:
+        input_tokens: 1031
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1028
+        output_tokens: 182
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1213
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-pattern-text
+    title: Pilot's Handbook of Aeronautical Knowledge, Traffic Patterns
+    checked_at_utc: 2026-09-10T22:28:08.468Z
+    linked_claim_ids:
+      - phak-pattern-visual-model
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2045
+      pdf_page_text_sha256: 23314ff63561338a142959af250af46032c4a8c1dd550ad91cec71fe8944b83f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page contains the numbered “Example: Key to Traffic
+          Pattern Operations—Single Runway,” repeatedly relates the procedures
+          to the landing runway, and cites Figure 14-39 for each listed item.
+          The authored passage accurately characterizes those features. Its
+          statement that the figure is used as a visual reference rather than a
+          complete model is not contradicted by the excerpt and does not add a
+          source-dependent operational requirement."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from the specified PDF page 14-21 and contains the
+            cited numbered traffic-pattern key and Figure 14-39 references.
+        claim_assessments:
+          - claim_id: phak-pattern-visual-model
+            verdict: supports
+            rationale: The page explicitly numbers the single-runway traffic-pattern key,
+              refers to the landing runway in multiple items, and references
+              Figure 14-39.
+      usage:
+        input_tokens: 1250
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1247
+        output_tokens: 251
+        output_tokens_details:
+          reasoning_tokens: 48
+        total_tokens: 1501
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: phak-pattern-figure
+    title: Pilot's Handbook of Aeronautical Knowledge, Figure 14-39, Left-Hand
+      Traffic Pattern
+    checked_at_utc: 2026-09-10T22:28:08.472Z
+    linked_claim_ids:
+      - phak-left-pattern-map
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3205
+      pdf_page_text_sha256: 9099ce803d199dd53f3619ed1b00780794f8685ad0962478e6c554b578168963
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains Figure 14-39 and its legend explicitly
+          states, “Recommended standard left-hand traffic pattern (depicted).”
+          The authored statement accurately reflects that figure without
+          omitting a material condition.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies PHAK Chapter 14, Figure 14-39, PDF page 14-22,
+            and the supplied excerpt is that exact page containing the figure
+            and legend.
+        claim_assessments:
+          - claim_id: phak-left-pattern-map
+            verdict: supports
+            rationale: The figure legend expressly identifies the depicted diagram as the
+              recommended standard left-hand traffic pattern.
+      usage:
+        input_tokens: 1420
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1417
+        output_tokens: 156
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1576
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-preflight
+    title: AC 90-66C, Preflight Actions
+    checked_at_utc: 2026-09-10T22:28:10.469Z
+    linked_claim_ids:
+      - preflight-publications
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1976
+      pdf_page_text_sha256: 21dd79181ce543d1a8a1e4c373e115b3cd9f1d8e0ea9c941e1d7922f9c62e853
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains paragraph 9.1, which expressly says that,
+          as part of § 91.103 preflight requirements, pilots should review
+          appropriate publications—including the Chart Supplement, the AIM, and
+          NOTAMs—for pertinent information on current traffic patterns at
+          departure and arrival airports. The source fully supports the listed
+          claim.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies AC 90-66C, paragraph 9.1, PDF page 5, and the
+            supplied excerpt from that exact page includes paragraph 9.1 and the
+            relevant language.
+        claim_assessments:
+          - claim_id: preflight-publications
+            verdict: supports
+            rationale: Paragraph 9.1 explicitly lists the Chart Supplement, AIM, and NOTAMs
+              as examples of appropriate publications to review for pertinent
+              current traffic-pattern information at the departure and arrival
+              airports. The source-tagged authored statement preserves those
+              conditions.
+      usage:
+        input_tokens: 1385
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1382
+        output_tokens: 212
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1597
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-automated-weather
+    title: AIM, Operations at Uncontrolled Airports With ASOS/AWOS
+    checked_at_utc: 2026-09-10T22:28:10.482Z
+    linked_claim_ids:
+      - automated-weather-monitoring
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-27
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-27
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a7
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-27
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-27
+      errors: []
+      valid: true
+      excerpt_characters: 2167
+      excerpt_sha256: b44c758fcdc177fd871ee0c480edc228e50c9885af4ce92f611b1bdf09e8a8c6
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that all aircraft arriving or departing an
+          ASOS/AWOS-equipped uncontrolled airport should monitor the airport
+          weather frequency to ascertain airspace status. It also explains that
+          the broadcast provides one-minute updated airport weather within
+          approximately 25 NM below 10,000 feet. This supports monitoring the
+          frequency near the airport for current local weather.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 4-3-27(b)-(c), corresponds to the supplied
+            excerpt addressing ASOS/AWOS broadcasts and pilot monitoring at
+            uncontrolled airports.
+        claim_assessments:
+          - claim_id: automated-weather-monitoring
+            verdict: supports
+            rationale: "The claim preserves the relevant conditions: the airport is
+              uncontrolled, equipped with ASOS/AWOS ground-to-air broadcast
+              capability, and the pilot monitors the airport weather frequency
+              near the airport. The source's 'should monitor' language directly
+              supports the stated guidance."
+      usage:
+        input_tokens: 1350
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1347
+        output_tokens: 212
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1562
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-ctaf
+    title: AIM, Traffic Advisory Practices at Airports Without Operating Control
+      Towers
+    checked_at_utc: 2026-09-10T22:28:10.514Z
+    linked_claim_ids:
+      - ctaf-position-reports
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 10691
+      excerpt_sha256: 06637a22b4a9e89f4f59d9c8ab1bb89628ab0a087055b91bda2a84383107c403
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt defines CTAF as a frequency designated for airport
+          advisory practices at airports without an operating control tower. It
+          defines self-announce as broadcasting a pilot's position or intended
+          flight activity/ground operation on the designated CTAF, and states
+          that pilots should exchange traffic information and remain alert for
+          other traffic. This supports the claim that CTAF self-announcements
+          convey position and intention and support traffic awareness.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 4-1-9(a)-(b), is the section excerpted and
+            contains the applicable CTAF, traffic-information, and self-announce
+            guidance.
+        claim_assessments:
+          - claim_id: ctaf-position-reports
+            verdict: supports
+            rationale: The source expressly states that self-announce broadcasts position or
+              intended activity on the designated CTAF and frames CTAF
+              communications as airport advisory practices and
+              traffic-information exchange at airports without operating control
+              towers.
+      usage:
+        input_tokens: 3316
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3313
+        output_tokens: 294
+        output_tokens_details:
+          reasoning_tokens: 79
+        total_tokens: 3610
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-straight-in-priority
+    title: AIM, Straight-in Landings
+    checked_at_utc: 2026-09-10T22:28:10.545Z
+    linked_claim_ids:
+      - straight-in-pattern-priority
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: daa1ffc4856e96ebb6d1fd5de800bef341689792940a44482aa116b4ff19dc1f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt expressly states: “Pilots executing a straight-in
+          approach (IFR or VFR) do not have priority over other aircraft in the
+          traffic pattern, and must comply with the provisions of 14 CFR 91.113
+          (g), Right-of-way rules.” The authored passage accurately preserves
+          both conditions."
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies AIM 4-1-9(g)(4), “Straight-in Landings,” and
+            the cited language appears in the supplied excerpt from that
+            section.
+        claim_assessments:
+          - claim_id: straight-in-pattern-priority
+            verdict: supports
+            rationale: The source directly supports that straight-in aircraft lack priority
+              over traffic-pattern aircraft and must comply with 14 CFR
+              91.113(g).
+      usage:
+        input_tokens: 3270
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3267
+        output_tokens: 182
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3452
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-active-see-avoid
+    title: AC 90-66C, Active See-and-Avoid
+    checked_at_utc: 2026-09-10T22:28:10.546Z
+    linked_claim_ids:
+      - active-see-avoid
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3379
+      pdf_page_text_sha256: e92bee0ca4ecd0ba88b224c5bba7adeeec2bf05ecfbf0b70e35e47f811742cc9
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page contains paragraph 9.11.2, which states that
+          pilots operating within 10 miles of a non-towered airport should
+          monitor and communicate on the CTAF and must remain vigilant to comply
+          with the requirement to see and avoid other aircraft. This directly
+          supports the general statement that AC 90-66C reinforces active
+          see-and-avoid practices near a nontowered airport.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 8 and includes paragraph 9.11.2,
+            the specified locator.
+        claim_assessments:
+          - claim_id: active-see-avoid
+            verdict: supports
+            rationale: Paragraph 9.11.2 expressly emphasizes pilots' responsibility to see
+              and avoid other aircraft in the vicinity and traffic pattern of a
+              non-towered airport.
+      usage:
+        input_tokens: 1430
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1427
+        output_tokens: 192
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1622
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-straight-in-see-avoid
+    title: AC 90-66C, Straight-In Approaches and Active See-and-Avoid
+    checked_at_utc: 2026-09-10T22:28:10.593Z
+    linked_claim_ids:
+      - straight-in-see-avoid
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3379
+      pdf_page_text_sha256: e92bee0ca4ecd0ba88b224c5bba7adeeec2bf05ecfbf0b70e35e47f811742cc9
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page directly states that pilots in the traffic pattern
+          should remain vigilant to see and avoid aircraft, including aircraft
+          conducting straight-in approaches, and should communicate their
+          position to avoid traffic conflicts. It also directs straight-in
+          pilots to self-announce and coordinate with other airport traffic.
+        locator_assessment:
+          verdict: supports
+          rationale: PDF page 8 contains paragraph 9.11.1 and the immediately following
+            9.11.2 text addressing straight-in approaches, see-and-avoid, and
+            traffic-pattern communication.
+        claim_assessments:
+          - claim_id: straight-in-see-avoid
+            verdict: supports
+            rationale: The excerpt explicitly supports active see-and-avoid and traffic
+              coordination in the presence of straight-in traffic.
+      usage:
+        input_tokens: 1440
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1437
+        output_tokens: 173
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1613
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-quiet-ctaf
+    title: AC 90-66C, CTAF Monitoring
+    checked_at_utc: 2026-09-10T22:28:10.607Z
+    linked_claim_ids:
+      - quiet-frequency
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2962
+      pdf_page_text_sha256: ab2de0695b7449fa5ddf74557a5bc4f418d647eb88ffc51b6f74d708e51cf70d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that airports without operating control towers
+          generally do not require two-way radios and therefore pilots should be
+          especially vigilant for other aircraft while operating in the traffic
+          pattern. This supports the claim that a quiet CTAF does not establish
+          an absence of traffic because an aircraft may lack radio
+          communications.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 10 and paragraph 9.12.2. The excerpt
+            from that exact page contains paragraph 9.12.2, titled "No-Radio
+            Aircraft," with the relevant guidance.
+        claim_assessments:
+          - claim_id: quiet-frequency
+            verdict: supports
+            rationale: "The claim accurately preserves the source's material point: no-radio
+              aircraft may operate at nontowered airports, so pilots should be
+              especially vigilant for other aircraft. Although the source does
+              not use the exact phrase \"quiet CTAF,\" that conclusion follows
+              directly from aircraft not being required to use two-way radios
+              and does not add a conflicting condition."
+      usage:
+        input_tokens: 1443
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1440
+        output_tokens: 225
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1668
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-no-assumed-sequence
+    title: AC 90-66C, Communications Note
+    checked_at_utc: 2026-09-10T22:28:10.621Z
+    linked_claim_ids:
+      - no-assumed-landing-sequence
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=13
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=13
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3145
+      pdf_page_text_sha256: c1c5fd1548296a2d2a5e2a39ff459ca61ff6b57d856997b077e3b4b0e6148973
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The excerpt’s paragraph 10.1 note expressly states: “Pilots should
+          not broadcast their assumed sequence for landing when transmitting
+          their position in the pattern.” This directly supports the listed
+          FAA-guidance claim for nontowered-airport operations."
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 13, and the excerpt contains the paragraph
+            10.1 note identified by the locator.
+        claim_assessments:
+          - claim_id: no-assumed-landing-sequence
+            verdict: supports
+            rationale: The source directly says pilots should not broadcast an assumed
+              sequence for landing. The nontowered operational context is
+              consistent with AC 90-66C’s CTAF traffic-pattern guidance, and no
+              omitted condition makes the claim misleading.
+      usage:
+        input_tokens: 1471
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1468
+        output_tokens: 180
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1651
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-scan-technique
+    title: AC 90-48E, Scan Technique
+    checked_at_utc: 2026-09-10T22:28:10.626Z
+    linked_claim_ids:
+      - deliberate-scan
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3067
+      pdf_page_text_sha256: 0b7e65e776a25996ee07e795f18e6974ec8220611d801911021bfc666eed178d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that pilots can compensate for blind spots and
+          enhance identification of other aircraft by adjusting pitch, using
+          shallow banks, and scanning around aircraft structures. This directly
+          supports deliberate visual scanning that accounts for blind spots to
+          help identify traffic.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 13, and the excerpt from that page
+            contains section 12.1 addressing blind-spot scanning techniques
+            during all phases of flight.
+        claim_assessments:
+          - claim_id: deliberate-scan
+            verdict: supports
+            rationale: Section 12.1 explicitly links compensating for blind spots and
+              scanning techniques with enhancing identification of other
+              aircraft.
+      usage:
+        input_tokens: 1429
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1426
+        output_tokens: 161
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1590
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-displays-see-avoid
+    title: AC 90-48E, Traffic Displays
+    checked_at_utc: 2026-09-10T22:28:10.634Z
+    linked_claim_ids:
+      - displays-do-not-replace-scan
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2891
+      pdf_page_text_sha256: 41fe750b29cf51b309492492e8e327e8d6e293bbf4d0a4fedb5ed389bb4ecd72
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that air traffic information equipment does not
+          relieve a pilot’s responsibility to see and avoid other aircraft,
+          warns that display fixation can draw attention away from the outside
+          environment, and says pilots must proactively conduct see-and-avoid
+          procedures. This directly supports the claim that traffic displays are
+          aids rather than replacements for outside visual scanning.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited PDF page is page 14, and the relevant support appears in
+            sections 15 and 16 on that page.
+        claim_assessments:
+          - claim_id: displays-do-not-replace-scan
+            verdict: supports
+            rationale: Sections 15–16 explicitly preserve the pilot’s see-and-avoid
+              responsibility despite air traffic information equipment and
+              caution against attention being drawn from the outside
+              environment.
+      usage:
+        input_tokens: 1375
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1372
+        output_tokens: 184
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1559
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-pattern-terms
+    title: AIM, Airport Traffic Pattern Terms
+    checked_at_utc: 2026-09-10T22:28:10.673Z
+    linked_claim_ids:
+      - aim-six-pattern-terms
+      - aim-upwind-extension
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a7
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 919a089f385793fe383d951e43f3b216ff6045c397a898db5b419c2d0def101e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly lists standard definitions for departure,
+          upwind leg, crosswind leg, downwind leg, base leg, and final approach.
+          It specifically states that the upwind leg begins after departure,
+          continues straight ahead along the extended runway centerline, is an
+          extension of departure, and is used when issuing control instructions
+          for separation, spacing, or sequencing. Both authored passages
+          accurately preserve those conditions.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 4-3-2(c), corresponds to the traffic-pattern
+            terminology material in the supplied excerpt, including the
+            upwind-leg definition.
+        claim_assessments:
+          - claim_id: aim-six-pattern-terms
+            verdict: supports
+            rationale: The excerpt states that the listed traffic-pattern terminology has
+              been adopted as standard and provides definitions for all six
+              named terms.
+          - claim_id: aim-upwind-extension
+            verdict: supports
+            rationale: "The excerpt explicitly provides each element of the claim: after
+              departure, straight ahead along the extended runway centerline,
+              extension of departure, and use for control instructions involving
+              separation, spacing, or sequencing."
+      usage:
+        input_tokens: 3211
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3208
+        output_tokens: 250
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3461
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-departure-upwind
+    title: Airplane Flying Handbook, Departure and Upwind Legs
+    checked_at_utc: 2026-09-10T22:28:10.673Z
+    linked_claim_ids:
+      - afh-departure-leg
+      - afh-upwind-context
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5307
+      pdf_page_text_sha256: 357c5df611fb2cbf7ca88b09ca77875c7754ddd779e1bc6fe4b094d049750476
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page expressly defines both the departure leg and the
+          upwind leg in terms matching the listed claims. All three authored
+          passages accurately preserve the source’s material definitions and
+          contexts.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 8-4 and contains the relevant
+            departure-leg and upwind-leg definitions.
+        claim_assessments:
+          - claim_id: afh-departure-leg
+            verdict: supports
+            rationale: The excerpt states that the departure leg is a straight course
+              aligned with and leading from the takeoff runway, beginning when
+              the airplane leaves the ground and continuing until the pilot
+              begins the 90° turn onto crosswind. The authored statements
+              accurately reflect this.
+          - claim_id: afh-upwind-context
+            verdict: supports
+            rationale: The excerpt states that the upwind leg is parallel to the landing
+              runway and in the same direction as landing traffic, and that it
+              is flown at controlled airports and after go-arounds. The authored
+              statement preserves these points; its wording 'particularly' does
+              not falsely make those contexts exclusive.
+      usage:
+        input_tokens: 2038
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2035
+        output_tokens: 245
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2283
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-standard-entry
+    title: AC 90-66C, Standard Traffic Pattern Entry
+    checked_at_utc: 2026-09-10T22:28:10.678Z
+    linked_claim_ids:
+      - standard-entry-and-spacing
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3025
+      pdf_page_text_sha256: 75cb2804a08a78c4a24d8a1e692cd7c6cdeb4e2f9033ea84386ef04f1a881166
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt on cited PDF page 15 states that arriving aircraft should
+          be at traffic-pattern altitude and allow sufficient time to view the
+          entire pattern, and that downwind entry should be at a 45-degree angle
+          abeam the midpoint of the landing runway. The cited statements
+          preserve these recommendations without omitting a material limitation.
+        locator_assessment:
+          verdict: supports
+          rationale: The relevant material is in paragraph 11.3 on PDF page 15. Although
+            the locator also names paragraph 11.2, the cited page and paragraph
+            range include the supporting text.
+        claim_assessments:
+          - claim_id: standard-entry-and-spacing
+            verdict: supports
+            rationale: Paragraph 11.3 directly supports reaching pattern altitude, allowing
+              time to observe the entire traffic pattern, and entering downwind
+              at a 45-degree angle abeam the midpoint of the runway to be used
+              for landing.
+      usage:
+        input_tokens: 1715
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1712
+        output_tokens: 442
+        output_tokens_details:
+          reasoning_tokens: 237
+        total_tokens: 2157
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-upwind-side-entry
+    title: Airplane Flying Handbook, Upwind-Side Entry Model
+    checked_at_utc: 2026-09-10T22:28:10.686Z
+    linked_claim_ids:
+      - upwind-side-reentry-model
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5307
+      pdf_page_text_sha256: 357c5df611fb2cbf7ca88b09ca77875c7754ddd779e1bc6fe4b094d049750476
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: "The cited PDF page expressly describes an upwind-side arrival
+          method: announce intentions; cross midfield at least 500 feet above
+          pattern altitude; if large or turbine aircraft operate there, remain
+          2,000 feet AGL to avoid their traffic pattern; then, when well clear
+          of the pattern (approximately 2 miles), scan for traffic, descend to
+          pattern altitude, and turn right to join the downwind on a 45° entry
+          at midfield. The authored passages accurately preserve these material
+          steps and the later descent to pattern altitude. They also accurately
+          state the page's caution that the alternate midfield-crosswind method
+          should not be used when the pattern is busy."
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is identified as PDF page 8-4, and the cited material,
+            including the Non-Towered Airports upwind-side entry discussion and
+            Figure 8-3 references, appears on that page.
+        claim_assessments:
+          - claim_id: upwind-side-reentry-model
+            verdict: supports
+            rationale: The page directly supports the stated above-pattern crossing,
+              announcement, traffic scan, descent to pattern altitude, and
+              subsequent 45° midfield downwind-entry model. It also directly
+              says that, when large or turbine aircraft operate at the airport,
+              remaining 2,000 feet AGL is best to avoid conflict with their
+              traffic pattern before descending for entry.
+      usage:
+        input_tokens: 2151
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2148
+        output_tokens: 502
+        output_tokens_details:
+          reasoning_tokens: 199
+        total_tokens: 2653
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-conflicting-entry
+    title: Airplane Flying Handbook, Conflicting Traffic During a 45-Degree Entry
+    checked_at_utc: 2026-09-10T22:28:11.429Z
+    linked_claim_ids:
+      - conflicting-entry-retry
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1876
+      pdf_page_text_sha256: 62a9af2426f562c9980e82c0fb49eeca91afcf1923f5b322277ca1482d589155
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page expressly states that a pilot unable to enter due
+          to conflicting traffic while on a 45° entry can turn away from
+          downwind, fly a safe distance away, scan for traffic, and return for
+          another attempt to join on the 45° entry. It also expressly directs
+          pilots, before joining downwind, to adjust course or speed to fit
+          traffic.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is identified as PDF page 8-5 and contains the quoted
+            guidance on conflicting traffic during a 45° entry and pre-downwind
+            course/speed adjustment.
+        claim_assessments:
+          - claim_id: conflicting-entry-retry
+            verdict: supports
+            rationale: "The claim accurately preserves the source conditions: conflicting
+              traffic prevents pattern entry during a 45° entry; the described
+              response is turn away from downwind, fly a safe distance away,
+              scan, and return for another 45°-entry attempt. The source
+              separately states to adjust course or speed before joining
+              downwind."
+      usage:
+        input_tokens: 1368
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1365
+        output_tokens: 231
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1599
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-visible-indicators
+    title: AIM, Visual Indicators at Airports Without an Operating Control Tower
+    checked_at_utc: 2026-09-10T22:28:11.433Z
+    linked_claim_ids:
+      - visible-pattern-indicators
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a7
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 2f99be2c61b42152d881719afe86f66dbf9dba779b9ec64fc4475f8bea454519
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt expressly states that segmented-circle systems include
+          traffic-pattern indicators, that such indicators show the direction of
+          turns when there is a variation from normal left traffic, that they
+          may be installed on or near a runway end if no segmented circle is
+          installed, and that a pilot preparing to land should concern
+          themselves with the indicator at the approach end of the runway to be
+          used.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, AIM 4-3-4(a)-(c), is the section containing the
+            quoted material on segmented circles, traffic-pattern indicators,
+            their possible runway-end placement, and use of the approach-end
+            indicator.
+        claim_assessments:
+          - claim_id: visible-pattern-indicators
+            verdict: supports
+            rationale: "The claim accurately preserves the source conditions:
+              traffic-pattern indicators are part of the segmented-circle
+              system; absent a segmented circle, they may be on or near the
+              runway end; and a landing pilot should use the approach-end
+              indicator for the runway to be used."
+      usage:
+        input_tokens: 3198
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3195
+        output_tokens: 300
+        output_tokens_details:
+          reasoning_tokens: 71
+        total_tokens: 3498
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-published-right-pattern
+    title: AIM, Traffic Patterns
+    checked_at_utc: 2026-09-10T22:28:11.434Z
+    linked_claim_ids:
+      - published-right-pattern
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a7
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 5899c2f9806fcf6d6bcd993392aef525c3da227220489ac15e78eb60e435ca9a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that, unless otherwise indicated, all
+          traffic-pattern turns must be made to the left, and it explains that
+          right traffic patterns are published/indicated, including by “RP” on
+          applicable charts and by traffic-pattern indicators. This supports the
+          claim that published airport information can establish a right-hand
+          pattern rather than leaving pattern direction to pilot selection based
+          on wind alone.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited AIM 4-3-3(c)-(d) material is the portion of the excerpt
+            addressing the default left-turn pattern and published right-pattern
+            indications.
+        claim_assessments:
+          - claim_id: published-right-pattern
+            verdict: supports
+            rationale: The source expressly provides for published or otherwise indicated
+              right traffic patterns while establishing left turns as the
+              default.
+      usage:
+        input_tokens: 3223
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3220
+        output_tokens: 392
+        output_tokens_details:
+          reasoning_tokens: 206
+        total_tokens: 3615
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-published-right-pattern
+    title: AC 90-66C, Established Traffic Patterns
+    checked_at_utc: 2026-09-10T22:28:11.434Z
+    linked_claim_ids:
+      - published-right-pattern
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=4
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=4
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3057
+      pdf_page_text_sha256: 4d6c94e797ef8b7c6b462c070383ab2eb39a59339c0fb1afadc60db20b1cc4dc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt states that, at an airport without a control tower,
+          pilots must fly left turns unless otherwise stated in the Airport
+          Chart Supplement or on the VFR chart symbol. It specifically explains
+          that an “RP” notation indicates a right-traffic pattern for the listed
+          runway(s). This supports that published airport information can
+          establish a right-hand pattern and that pattern direction is not
+          solely a pilot choice based on wind.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is paragraph 8.2.1.1 on PDF page 4, and the excerpt
+            contains that paragraph and its discussion of published
+            right-traffic-pattern information.
+        claim_assessments:
+          - claim_id: published-right-pattern
+            verdict: supports
+            rationale: The source expressly says published Chart Supplement or VFR chart
+              information can require right turns, with “RP” denoting a
+              right-traffic pattern for specified runways.
+      usage:
+        input_tokens: 1354
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1351
+        output_tokens: 266
+        output_tokens_details:
+          reasoning_tokens: 56
+        total_tokens: 1620
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ecfr-right-of-way
+    title: 14 CFR 91.113, Right-of-way rules except water operations
+    checked_at_utc: 2026-09-10T22:28:07.610Z
+    linked_claim_ids:
+      - see-and-avoid-rule
+      - right-of-way-geometries
+      - category-and-distress-priority
+      - landing-right-of-way
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a8
+      title: null
+      truncated: false
+      content_sha256: 2a8976043b90ceccd599178c5d0f02e2510011f9a02f27b9af3c5e114ee851d6
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-09
+        title_status_sha256: 7c67a1e9d5b5adb155d7d492ea90b18676183df06f0e334044ba1e28be7b025c
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.113"
+        date: 2026-09-09
+        section_number: "91.113"
+      section_text_sha256: ce45ca739386de8c0a914a8ccf40c505fdbf0b276beeafd2584b4355074c7518
+      excerpt_characters: 2527
+      excerpt_sha256: ce45ca739386de8c0a914a8ccf40c505fdbf0b276beeafd2584b4355074c7518
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2527
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: partially_supports
+        confidence: high
+        rationale: The cited provision directly supports the see-and-avoid,
+          converging/head-on/overtaking, distress/category-priority, and
+          landing-priority material. However, the landing claim and
+          corresponding passages state final-approach/landing priority without
+          preserving the express limitation that an aircraft on final or landing
+          may not use that rule to force an already-landed aircraft off the
+          runway while it is attempting to make way. This makes the landing
+          material overbroad.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator, 14 CFR 91.113(b)-(g), precisely covers the cited
+            excerpt’s vigilance, convergence, head-on, overtaking, landing,
+            distress, and aircraft-category right-of-way rules.
+        claim_assessments:
+          - claim_id: see-and-avoid-rule
+            verdict: supports
+            rationale: Section 91.113(b) expressly requires each person operating an
+              aircraft, when weather conditions permit, to maintain vigilance so
+              as to see and avoid other aircraft. The corresponding passages
+              preserve those conditions.
+          - claim_id: right-of-way-geometries
+            verdict: supports
+            rationale: Sections 91.113(b), (d), (e), and (f) support the same-category
+              convergence rule, the requirement for the aircraft with the other
+              on its right to give way, the well-clear restriction on passing
+              when yielding, the head-on right turn, and the overtaking
+              aircraft’s right turn to pass well clear. The corresponding
+              passages preserve the relevant same-category,
+              approximate-altitude, and head-on distinctions.
+          - claim_id: category-and-distress-priority
+            verdict: supports
+            rationale: Sections 91.113(c) and (d)(1)-(4) expressly establish distress
+              priority and the stated balloon, glider, airship, and
+              towing/refueling priority rules. The authored passages accurately
+              preserve the airship exception for towing or refueling aircraft
+              and the powered-aircraft limits.
+          - claim_id: landing-right-of-way
+            verdict: partially_supports
+            rationale: Section 91.113(g) supports final-approach/landing priority and the
+              lower-aircraft rule, including the prohibition on cutting in front
+              of or overtaking traffic on final. But it also expressly provides
+              that aircraft on final or landing may not use their priority to
+              force an aircraft that has already landed and is attempting to
+              make way off the runway surface. The claim and corresponding
+              landing-priority passages omit that material limitation.
+      usage:
+        input_tokens: 2592
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 2589
+        output_tokens: 746
+        output_tokens_details:
+          reasoning_tokens: 223
+        total_tokens: 3338
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+      adjudicated_assessment_ids:
+        - landing-right-of-way
+  - source_id: ecfr-airport-class-g
+    title: 14 CFR 91.126, Operating on or in the vicinity of an airport in Class G
+      airspace
+    checked_at_utc: 2026-09-10T22:28:07.610Z
+    linked_claim_ids:
+      - class-g-pattern-direction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a9
+      title: null
+      truncated: false
+      content_sha256: f9669e37e03e2341e48a3fa038cddea09dc1829c76b0a21eb5fadef1ba74a5f4
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.126
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-09/title-14.xml?part=91&section=91.126
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-09
+        title_status_sha256: 7c67a1e9d5b5adb155d7d492ea90b18676183df06f0e334044ba1e28be7b025c
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.126"
+        date: 2026-09-09
+        section_number: "91.126"
+      section_text_sha256: 5d6780291fb766427debcf5b9df89eb20fc3d8ccc80bba3a609bf740264c3c73
+      excerpt_characters: 2427
+      excerpt_sha256: 5d6780291fb766427debcf5b9df89eb20fc3d8ccc80bba3a609bf740264c3c73
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2427
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt in 14 CFR 91.126(b)(1) directly states that, when
+          approaching to land at an airport without an operating control tower
+          in Class G airspace, a pilot of a powered fixed-wing aircraft must
+          make all turns to the left unless approved light signals or visual
+          markings indicate right turns. This matches the listed claim and the
+          cited statements' stated scenario and exception.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator, 14 CFR 91.126(b), is the exact subsection
+            containing the applicable direction-of-turn requirement.
+        claim_assessments:
+          - claim_id: class-g-pattern-direction
+            verdict: supports
+            rationale: "Section 91.126(b)(1) supports the full claim: it applies to powered
+              fixed-wing aircraft approaching to land at a Class G airport
+              without an operating control tower, requires left turns, and
+              provides the exception for approved light signals or visual
+              markings indicating right turns."
+      usage:
+        input_tokens: 1480
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1477
+        output_tokens: 215
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1695
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: afh-base-final
+    title: Airplane Flying Handbook, Base-to-Final Traffic Conflict
+    checked_at_utc: 2026-09-10T22:28:11.448Z
+    linked_claim_ids:
+      - base-final-spacing
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5307
+      pdf_page_text_sha256: 357c5df611fb2cbf7ca88b09ca77875c7754ddd779e1bc6fe4b094d049750476
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page expressly states that, while on base and before
+          turning final, the pilot should ensure there is no close proximity to
+          another aircraft already established on final. It further states that
+          if turning final would create a collision hazard, a go-around or
+          avoidance maneuver is appropriate, and that rushing the turn to
+          increase distance from another aircraft is reason to abandon the
+          approach and go around.
+        locator_assessment:
+          verdict: supports
+          rationale: The excerpt is from cited PDF page 8-4 and contains the base-to-final
+            traffic-conflict guidance described by the locator.
+        claim_assessments:
+          - claim_id: base-final-spacing
+            verdict: supports
+            rationale: The claim accurately reflects the page's guidance on avoiding close
+              proximity to aircraft on final and using avoidance or a go-around
+              instead of rushing a hazardous turn to final.
+      usage:
+        input_tokens: 1942
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1939
+        output_tokens: 192
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 2134
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-go-around
+    title: AC 90-66C, Go-Around Departure Path
+    checked_at_utc: 2026-09-10T22:28:11.467Z
+    linked_claim_ids:
+      - go-around-path
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3025
+      pdf_page_text_sha256: 75cb2804a08a78c4a24d8a1e692cd7c6cdeb4e2f9033ea84386ef04f1a881166
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: Paragraph 11.6 on the cited PDF page expressly states that airplanes
+          executing a go-around should continue straight ahead until beyond the
+          departure end of the runway, while the pilot maintains awareness of
+          other traffic to avoid conflict with aircraft established in the
+          pattern. This directly supports the listed claim and the source-tagged
+          passages’ core factual statement.
+        locator_assessment:
+          verdict: supports
+          rationale: The locator identifies AC 90-66C paragraph 11.6, and the supplied
+            excerpt from PDF page 15 contains paragraph 11.6, titled “Takeoff
+            and Go-Around,” with the quoted guidance.
+        claim_assessments:
+          - claim_id: go-around-path
+            verdict: supports
+            rationale: "The claim accurately preserves the material elements of paragraph
+              11.6: a go-around airplane should continue straight ahead beyond
+              the departure end and maintain awareness of other traffic so as
+              not to conflict with traffic established in the pattern."
+      usage:
+        input_tokens: 1626
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1623
+        output_tokens: 213
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1839
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: aim-wake-turbulence
+    title: AIM, Wake Turbulence
+    checked_at_utc: 2026-09-10T22:28:11.484Z
+    linked_claim_ids:
+      - wake-vortex-behavior
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a10
+      title: Chapter 7. Safety of Flight
+      truncated: false
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 6bc733cdf74e8436b86936db790f084b6a04034b523e3ed0b4ca2dae59c5a631
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The excerpt explicitly directs pilots to avoid the area below and
+          behind a wake-generating aircraft and states that vortices may remain
+          in the touchdown area, drift from nearby-runway traffic, and sink into
+          takeoff, landing, traffic-pattern, or VFR flight paths. This supports
+          the claim and both authored statements.
+        locator_assessment:
+          verdict: supports
+          rationale: No PDF-page limitation applies. The supplied AIM 7-4-5 through 7-4-9
+            excerpt contains the relevant wake-vortex behavior guidance,
+            principally in 7-4-5.
+        claim_assessments:
+          - claim_id: wake-vortex-behavior
+            verdict: supports
+            rationale: AIM 7-4-5 says to avoid the area below and behind the wake-generating
+              aircraft and identifies conditions in which vortices can remain,
+              drift, and sink. The passages accurately summarize these behaviors
+              without adding unsupported specifics.
+      usage:
+        input_tokens: 3178
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 3175
+        output_tokens: 211
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 3389
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []
+  - source_id: ac-wake-spacing
+    title: AC 90-66C, Wake Turbulence
+    checked_at_utc: 2026-09-10T22:28:11.487Z
+    linked_claim_ids:
+      - wake-spacing
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2962
+      pdf_page_text_sha256: ab2de0695b7449fa5ddf74557a5bc4f418d647eb88ffc51b6f74d708e51cf70d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: assessed
+      model: gpt-5.6-terra
+      assessment:
+        verdict: supports
+        confidence: high
+        rationale: The cited PDF page expressly states that all aircraft generate wake
+          turbulence, pilots should be prepared to encounter it in the traffic
+          pattern (especially in trail of other aircraft), and pilots should
+          avoid the area below and behind the generating aircraft, especially at
+          low altitude. Both authored passages accurately preserve those
+          material conditions as guidance applicable to nontowered
+          traffic-pattern operations.
+        locator_assessment:
+          verdict: supports
+          rationale: The cited locator is PDF page 10, and the excerpt from that exact
+            page contains paragraph 9.12.3.1, “Wake Turbulence,” with the
+            relevant alertness and avoidance guidance.
+        claim_assessments:
+          - claim_id: wake-spacing
+            verdict: supports
+            rationale: The source says pilots should be prepared to encounter wake
+              turbulence and, in flight—especially in a traffic pattern—avoid
+              the area below and behind the generating aircraft, especially at
+              low altitude. This supports the claim's paraphrase to remain alert
+              and avoid flight below and behind another aircraft at low
+              altitude.
+      usage:
+        input_tokens: 1433
+        input_tokens_details:
+          cache_write_tokens: 0
+          cached_tokens: 1430
+        output_tokens: 227
+        output_tokens_details:
+          reasoning_tokens: 0
+        total_tokens: 1660
+    claim_assessments:
+      valid: true
+      missing_assessment_ids: []
+      unexpected_assessment_ids: []
+      duplicate_assessment_ids: []
+      unsupported_assessment_ids: []

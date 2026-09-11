@@ -190,9 +190,8 @@ function uniqueNonEmptyIdentifiers(entries) {
     && identifiers.length === new Set(identifiers).size;
 }
 
-// This is deliberately shared by the renderer and release validator. A
-// contract-v2 episode must not be able to pass one lifecycle gate with a
-// weaker definition of preflight evidence than another.
+// Legacy optional-preflight validator retained only for existing, direct
+// invocations. Current release gates do not read this record.
 function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   if (episode?.production_contract_version !== 2) return [];
   const errors = [];
@@ -203,7 +202,8 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   expect(utcRfc3339Timestamp(preflight?.checked_at_utc), "claim-source-preflight.yaml must record a valid UTC RFC 3339 review timestamp.");
   expect(preflight?.validator === "scripts/claim-source-preflight.cjs", "claim-source-preflight.yaml must be produced by scripts/claim-source-preflight.cjs.");
   expect(typeof preflight?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.run_id), "claim-source-preflight.yaml must record its preflight run ID.");
-  expect(utcRfc3339Timestamp(preflight?.authorization?.consumed_at_utc) && preflight.authorization?.qa_id === "openai-claim-source-preflight-authorization" && typeof preflight.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.authorization.run_id) && preflight.authorization.run_id === preflight.run_id && Date.parse(preflight.authorization.consumed_at_utc) <= Date.parse(preflight.checked_at_utc), "claim-source-preflight.yaml must record the consumed per-run authorization.");
+  const authorizationTime = preflight?.authorization?.authorized_at_utc || preflight?.authorization?.consumed_at_utc;
+  expect(utcRfc3339Timestamp(authorizationTime) && preflight?.authorization?.qa_id === "openai-claim-source-preflight-authorization" && typeof preflight.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.authorization.run_id) && preflight.authorization.run_id === preflight.run_id && Date.parse(authorizationTime) <= Date.parse(preflight.checked_at_utc), "claim-source-preflight.yaml must record the per-run authorization.");
   expect(preflight?.llm_requested === true && typeof preflight?.llm_model === "string" && preflight.llm_model.length > 0, "claim-source-preflight.yaml must record the LLM review model.");
   const inputHashes = claimSourcePreflightInputHashes(episodePath);
   expect(Object.entries(inputHashes).every(([name, digest]) => preflight?.input_sha256?.[name] === digest), "claim-source-preflight.yaml must be bound to the current sources.yaml and claim-inventory.yaml bytes.");

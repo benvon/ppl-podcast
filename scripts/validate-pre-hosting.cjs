@@ -211,8 +211,6 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
   const productionLog = fs.readFileSync(paths["production-log.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
   let mix = null;
-  paths["claim-source-preflight.yaml"] = requireFile(resolvedEpisode, "claim-source-preflight.yaml", errors);
-  if (errors.length) return { valid: false, errors };
   expect(errors, episode.audio?.mix_config === "audio-mix.yaml", "episode.yaml audio.mix_config must reference audio-mix.yaml.");
   const mixPath = path.join(resolvedEpisode, episode.audio?.mix_config || "");
   const hasRegularMixFile = fs.existsSync(mixPath) && fs.lstatSync(mixPath).isFile() && pathWithin(resolvedEpisode, mixPath);

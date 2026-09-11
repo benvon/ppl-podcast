@@ -87,11 +87,10 @@ Teach the decision first, then the small set of terms and conditions needed to r
 
 When useful, acknowledge the boundary once in plain language: the lesson gives the private-pilot study framework, while the full regulation includes additional cases and exceptions. Do not repeat that caveat section by section.
 
-## Run the claim-source preflight before prose
+## Keep source review early and singular
 
-After the research packet, source ledger, claim inventory, and scenario facts are complete—but before the drafting agent writes full spoken prose—obtain explicit current-turn authorization and run `direnv exec . npm run sources:preflight -- --episode episodes/EPISODE --require-llm`. It independently fetches each exact cited target, extracts the locator text, and sends that extracted text to the LLM source challenger. Mark the dedicated preflight-authorization item in the package QA checklist immediately before the command: the command consumes that item for the run and records the authorization UUID and timestamp in the result, so every retry needs new authorization. The resulting `claim-source-preflight.yaml` records a snapshot of the current source/claim input hashes, fetched citation identity and content hash, locator-excerpt hash, claim mapping, and LLM assessments; it is not promoted if the captured inputs change. Record findings and resolutions in `production-log.md`.
+Build the source ledger, claim inventory, and scenario source map before drafting. Then complete the spoken draft, independent first-listen review, and the single `--require-llm` source-relevance review before human editorial approval. The review examines exact source-tagged spoken passages, claims, and fetched source excerpts; resolve contradictions, unsupported factual prose, locator errors, and material scope mismatches before the script reaches the editor.
 
-Resolve unsupported, over-broad, or incomplete claims before they become spoken prose. This early review prevents avoidable source-support rewrites during human editorial review. It does not replace the later formal validation of the actual source-tagged passages.
 
 ## Run an independent spoken-script review
 

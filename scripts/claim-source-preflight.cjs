@@ -265,9 +265,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     results,
   });
   return await runOwnedValidation(preflightPath, validationRun, async () => {
-    // Authorization is deliberately consumed inside the owned lifecycle. If
-    // recovery or a missing authorization stops this attempt, the finalizer
-    // writes a blocking record before releasing the new lock.
+    // Record the explicit current-turn authorization with this outbound run.
     authorization = consumePreflightAuthorization(resolved, episode, validationRun.run_id);
     updatePreflightState(resolved, "in_progress", lifecycleLease);
     try {

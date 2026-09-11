@@ -9,7 +9,7 @@ const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
-const { currentClaimSourcePreflightErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
 const {
   PACKAGE_OPERATION_IDS,
@@ -621,7 +621,7 @@ async function assessRelevance({ model, source, claims, authoredPassages = [], f
     model,
     instructions: assessmentScope === "claim_source_preflight"
       ? "You assess a proposed factual claim before a private-pilot study script is drafted. Use only the supplied source excerpt and listed proposed claims. Do not infer missing facts. No authored passage exists yet, so assess only whether the cited locator and excerpt support each proposed claim, including its material conditions and limitations. Do not require or discuss source-tagged prose. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority."
-      : "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
+      : "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. Report only a contradiction, unsupported factual statement, incorrect locator, or material scope mismatch. Do not request a stylistic rewrite, a harmless wording alternative, or a non-material omission. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
     input: JSON.stringify(input),
     text: { format: { type: "json_schema", name: "source_relevance", strict: true, schema: RELEVANCE_SCHEMA } },
   };
@@ -778,7 +778,7 @@ function updateEpisodeSourceState(episodePath, outcome, checkedAt = null, lease)
   if (!states[outcome]) throw new Error(`Unsupported source-validation outcome: ${outcome}`);
   episode.source_verification = {
     ...(episode.source_verification || {}),
-    claim_source_preflight: "claim-source-preflight.yaml",
+    validation_contract: "source-relevance-v1",
     link_validation: "link-validation.yaml",
     show_notes_manifest: "show-notes-manifest.yaml",
     ...states[outcome],
@@ -1042,7 +1042,6 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   let validationRun;
     validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
     let authorization = null;
-    let preflightRunID = null;
     return await runOwnedValidation(outputPath, validationRun, async () => {
   updateEpisodeSourceState(episodePath, "in_progress", null, lifecycleLease);
   const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
@@ -1066,11 +1065,6 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }
   const targetErrors = staticValidationTargetErrors(ledger, showNotesManifest);
   if (targetErrors.length) throw new Error(`Source validation cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
-  if (options.llm) {
-    const preflightErrors = currentClaimSourcePreflightErrors({ episodePath, episode });
-    if (preflightErrors.length) throw new Error(`Formal source-relevance review requires a complete, current claim-source preflight:\n${preflightErrors.join("\n")}`);
-    preflightRunID = YAML.parse(fs.readFileSync(path.join(episodePath, "claim-source-preflight.yaml"), "utf8")).run_id;
-  }
   const fetchCache = new Map();
   const refreshedEcfrSources = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
   if (refreshedEcfrSources.length) {
@@ -1098,10 +1092,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     return { refreshedEcfrSources };
   }
   // An eCFR refresh is an internal restart, not a completed validation
-  // attempt. Once the input set is stable, every --require-llm invocation
-  // consumes a fresh current-turn grant, including a later deterministic or
-  // cancellation failure. That prevents a new invocation from reusing a
-  // checked box left by an earlier attempt.
+  // attempt. Once inputs are stable, record the explicit current-turn human
+  // authorization alongside the outbound review result.
   if (options.llm) authorization = consumeSourceReviewAuthorization(episodePath, validationRun.run_id);
   const results = new Array(ledger.sources.length);
   const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
@@ -1172,7 +1164,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: validationRun.run_id, preflight_run_id: preflightRunID, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
   const terminalOutcome = sourceValidationTerminalOutcome({ unresolved, requireLlm: options.requireLlm });
   const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => updateEpisodeSourceState(episodePath, terminalOutcome, report.checked_at_utc, lifecycleLease) });

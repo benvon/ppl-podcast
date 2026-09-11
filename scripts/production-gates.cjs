@@ -7,17 +7,14 @@ const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { CONTRACT_KINDS, productionContractKind, preservedProductionContract } = require("./production-state-contract.cjs");
 const {
-  claimSourcePreflightErrors,
   sourceRelevanceResultValid,
   sourceValidationInputHashes,
   utcRfc3339Timestamp,
   validationCoverageErrors,
 } = require("./source-validation-contract.cjs");
 const { validationFailurePath } = require("./validation-records.cjs");
-const { qaItemCompleteWithID } = require("./openai-review-authorization.cjs");
 
 const SOURCE_REVIEW_FILES = Object.freeze({
-  preflight: "claim-source-preflight.yaml",
   validation: "link-validation.yaml",
   checklist: "qa-checklist.md",
 });
@@ -68,25 +65,17 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   if (errors.length) return errors;
   const expect = (condition, message) => { if (!condition) errors.push(message); };
   const validationPath = path.join(episodePath, SOURCE_REVIEW_FILES.validation);
-  const preflight = readYamlMapping(path.join(episodePath, SOURCE_REVIEW_FILES.preflight), SOURCE_REVIEW_FILES.preflight, errors);
   const validation = readYamlMapping(validationPath, SOURCE_REVIEW_FILES.validation, errors);
   const checklist = readTextFile(path.join(episodePath, SOURCE_REVIEW_FILES.checklist), SOURCE_REVIEW_FILES.checklist, errors);
-  if (!preflight || !validation || checklist === null) return errors;
+  if (!validation || checklist === null) return errors;
 
-  expect(episode.source_verification?.claim_source_preflight === SOURCE_REVIEW_FILES.preflight, "episode.yaml must reference claim-source-preflight.yaml.");
   expect(episode.source_verification?.link_validation === SOURCE_REVIEW_FILES.validation, "episode.yaml must reference link-validation.yaml.");
   expect(episode.source_verification?.show_notes_manifest === "show-notes-manifest.yaml", "episode.yaml must reference show-notes-manifest.yaml.");
-  expect(episode.source_verification?.claim_source_preflight_status === "complete", "episode.yaml must record a complete claim-source preflight.");
   expect(episode.source_verification?.status === "source_relevance_complete", "episode.yaml must record source_relevance_complete.");
   expect(episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
-  expect(qaItemCompleteWithID(checklist, "claim-source-preflight"), "qa-checklist.md must record that claim-source preflight findings were resolved before full prose drafting.");
-  errors.push(...claimSourcePreflightErrors({ episodePath, episode, preflight }));
 
   expect(!fs.existsSync(`${validationPath}.in-progress`) && !fs.existsSync(`${validationPath}.in-progress.recovering`), "Source-relevance validation is in progress, recovering, or was interrupted.");
   expect(!fs.existsSync(validationFailurePath(validationPath)), "The most recent source-relevance validation failed and must be rerun successfully.");
-  const preflightPath = path.join(episodePath, SOURCE_REVIEW_FILES.preflight);
-  expect(!fs.existsSync(`${preflightPath}.in-progress`) && !fs.existsSync(`${preflightPath}.in-progress.recovering`), "Claim-source preflight is in progress, recovering, or was interrupted.");
-  expect(!fs.existsSync(validationFailurePath(preflightPath)), "The most recent claim-source preflight failed and must be rerun successfully.");
   expect(validation.schema_version === 1, "link-validation.yaml must use schema_version 1.");
   expect(validation.validator === "scripts/validate-source-links.cjs", "link-validation.yaml must be produced by scripts/validate-source-links.cjs.");
   expect(validation.llm_requested === true, "link-validation.yaml must record a requested LLM review.");
@@ -106,8 +95,8 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   expect(Array.isArray(validation.results) && validation.results.length > 0, "link validation must record source results.");
   expect(utcRfc3339Timestamp(validation.checked_at_utc), "link-validation.yaml must record a valid UTC source-review timestamp.");
   expect(typeof validation.run_id === "string" && /^[0-9a-f-]{36}$/i.test(validation.run_id), "link-validation.yaml must record its validation run ID.");
-  expect(validation.preflight_run_id === preflight.run_id, "link-validation.yaml must be bound to the current claim-source-preflight run.");
-  expect(utcRfc3339Timestamp(validation.authorization?.consumed_at_utc) && validation.authorization?.qa_id === "openai-source-review-authorization" && typeof validation.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(validation.authorization.run_id) && validation.authorization.run_id === validation.run_id && Date.parse(validation.authorization.consumed_at_utc) <= Date.parse(validation.checked_at_utc), "link-validation.yaml must record the consumed source-review authorization for this validation run.");
+  const authorizationTime = validation.authorization?.authorized_at_utc || validation.authorization?.consumed_at_utc;
+  expect(utcRfc3339Timestamp(authorizationTime) && validation.authorization?.qa_id === "openai-source-review-authorization" && typeof validation.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(validation.authorization.run_id) && validation.authorization.run_id === validation.run_id && Date.parse(authorizationTime) <= Date.parse(validation.checked_at_utc), "link-validation.yaml must record the source-review authorization for this validation run.");
   expect(utcRfc3339Timestamp(episode.source_verification?.verified_at_utc), "episode.yaml must record a valid UTC source-review timestamp.");
   expect(episode.source_verification?.verified_at_utc === validation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
   return errors;
@@ -147,7 +136,6 @@ module.exports = {
   currentContractErrors,
   editorialApprovalErrors,
   narrationDerivativeErrors,
-  qaItemCompleteWithID,
   renderPrerequisiteErrors,
   sourceReviewEvidenceErrors,
 };

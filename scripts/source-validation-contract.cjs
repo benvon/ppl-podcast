@@ -119,19 +119,30 @@ function sameStringSet(actual, expected) {
 
 function sourceRelevanceResultValid(result) {
   const expectedClaimIDs = Array.isArray(result?.linked_claim_ids) ? result.linked_claim_ids : [];
-  const assessments = result?.relevance?.assessment?.claim_assessments;
-  if (!Array.isArray(assessments)) return false;
-  const counts = new Map();
-  for (const assessment of assessments) counts.set(assessment?.claim_id, (counts.get(assessment?.claim_id) || 0) + 1);
-  const assessmentsMatchClaims = expectedClaimIDs.length === assessments.length
-    && expectedClaimIDs.every((claimID) => counts.get(claimID) === 1)
-    && assessments.every((assessment) => assessment?.verdict === "supports");
+  // Current reports retain two independent assessments. A report without this
+  // field is a preserved single-pass record and remains readable as such.
+  const reviews = Array.isArray(result?.relevance_reviews) ? result.relevance_reviews : [result?.relevance];
+  const requiredReviewCount = Array.isArray(result?.relevance_reviews) ? 2 : 1;
+  const findingBlocksRelease = (assessment) => assessment?.verdict !== "supports" && assessment?.finding_materiality !== "editorial";
+  const reviewValid = (relevance) => {
+    const assessments = relevance?.assessment?.claim_assessments;
+    if (!Array.isArray(assessments)) return false;
+    const counts = new Map();
+    for (const assessment of assessments) counts.set(assessment?.claim_id, (counts.get(assessment?.claim_id) || 0) + 1);
+    return relevance?.status === "assessed"
+      // A locator is the evidence boundary. A wrong one cannot be softened
+      // into an editorial note because the report would then attest to the
+      // wrong passage or page.
+      && relevance?.assessment?.locator_assessment?.verdict === "supports"
+      && expectedClaimIDs.length === assessments.length
+      && expectedClaimIDs.every((claimID) => counts.get(claimID) === 1)
+      && assessments.every((assessment) => !findingBlocksRelease(assessment));
+  };
   return result?.citation_target?.valid === true
     && result?.link?.valid === true
     && (!result?.content_attestation || result.content_attestation.valid === true)
-    && result?.relevance?.status === "assessed"
-    && result.relevance?.assessment?.locator_assessment?.verdict === "supports"
-    && assessmentsMatchClaims
+    && reviews.length === requiredReviewCount
+    && reviews.every(reviewValid)
     && result?.claim_assessments?.valid === true;
 }
 

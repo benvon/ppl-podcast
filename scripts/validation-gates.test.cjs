@@ -55,7 +55,8 @@ function writePassingSourceGate(episodePath, episode) {
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), "- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
-  const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports" }] } }, claim_assessments: { valid: true } };
+  const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports" }] } };
+  const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } };
   const sourceReviewRunID = crypto.randomUUID();
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({
     schema_version: 1,
@@ -64,6 +65,8 @@ function writePassingSourceGate(episodePath, episode) {
     checked_at_utc: checkedAt,
     llm_requested: true,
     llm_model: "test-model",
+    llm_review_passes: 2,
+    llm_materiality_policy: "safety-and-core-v1",
     authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: checkedAt, run_id: sourceReviewRunID },
     claim_mapping: { valid: true },
     master_script_mapping: { valid: true, source_tag_count: 0, claim_coverage_count: 0 },
@@ -551,7 +554,17 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const linkValidation = () => { const runID = crypto.randomUUID(); return { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } }] }; };
+  const linkValidation = () => {
+    const runID = crypto.randomUUID();
+    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } };
+    return {
+      schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", llm_review_passes: 2, llm_materiality_policy: "safety-and-core-v1",
+      authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256,
+      claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true },
+      show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }],
+      results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } }],
+    };
+  };
   const publicationLinkValidation = () => ({
     schema_version: 1,
     validator: "scripts/validate-source-links.cjs",
@@ -1022,6 +1035,35 @@ test("PDF page citations can use the bounded limit for the current FAA Chart Use
   assert.equal(verification.link.pdf_page_text, "VFR airspace symbols");
 });
 
+test("PDF page citations retain a bounded large-file fetch allowance", async () => {
+  const verification = await verifyProgrammaticFallback({
+    url: "https://www.faa.gov/example.pdf#page=17",
+    locator: "PDF p. 17",
+  }, {
+    // This deliberately shorter caller timeout must not abort a supported
+    // large PDF while its cited page is being fetched.
+    timeoutMs: 1,
+    includePdfPageText: true,
+    fetchCache: new Map(),
+    fetchImpl: (_url, { signal }) => new Promise((resolve, reject) => {
+      const timer = setTimeout(() => resolve(new Response(Buffer.from("pdf"), { status: 200, headers: { "content-type": "application/pdf" } })), 20);
+      signal.addEventListener("abort", () => { clearTimeout(timer); reject(new DOMException("aborted", "AbortError")); }, { once: true });
+    }),
+    pdfjsLoader: async () => ({
+      getDocument: () => ({
+        promise: Promise.resolve({
+          numPages: 20,
+          getPage: async () => ({ getTextContent: async () => ({ items: [{ str: "VFR airspace symbols" }] }) }),
+        }),
+        destroy: async () => {},
+      }),
+    }),
+  });
+
+  assert.equal(verification.link.valid, true);
+  assert.equal(verification.link.pdf_page_text, "VFR airspace symbols");
+});
+
 test("HTML fragment citations assess the referenced definition instead of a long page prefix", () => {
   const leading = `<p>${"Unrelated glossary content. ".repeat(900)}</p>`;
   const html = `${leading}<p id="ALTITUDE"><dfn>ALTITUDE</dfn>—Height measured from mean sea level or above ground level.</p><ol><li>MSL Altitude—Measured from mean sea level.</li><li>AGL Altitude—Measured above ground level.</li></ol>`;
@@ -1217,11 +1259,56 @@ test("per-claim relevance fails closed on a partially supporting assessment", ()
   assert.deepEqual(result.unsupported_assessment_ids, ["claim-a"]);
 });
 
+test("per-claim relevance retains an editorial precision note without blocking release", () => {
+  const result = validateClaimAssessments(
+    { status: "assessed", assessment: { verdict: "partially_supports", claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports", finding_materiality: "editorial" }] } },
+    ["claim-a"],
+  );
+  assert.equal(result.valid, true);
+  assert.deepEqual(result.material_unsupported_assessment_ids, []);
+  assert.deepEqual(result.editorial_note_assessment_ids, ["claim-a"]);
+});
+
 test("citation-group relevance accepts an aggregate partial verdict when every mapped claim and locator supports", () => {
   const result = { linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
   assert.equal(sourceRelevanceResultValid(result), true);
   assert.equal(sourceRelevanceResultValid({ ...result, claim_assessments: { valid: false } }), false);
   assert.equal(sourceRelevanceResultValid({ ...result, relevance: { ...result.relevance, assessment: { ...result.relevance.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } } }), false);
+});
+
+test("current relevance records require two supporting independent assessments", () => {
+  const review = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), true);
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance_reviews: result.relevance_reviews.slice(0, 1) }), false);
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance_reviews: [result.relevance_reviews[0], { pass: 2, ...review, assessment: { ...review.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } }] }), false);
+});
+
+test("current relevance records retain non-material precision notes without treating them as source failures", () => {
+  const review = { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports", finding_materiality: "editorial" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), true);
+});
+
+test("current relevance records never downgrade a locator problem to an editorial note", () => {
+  const review = { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "partially_supports", finding_materiality: "editorial" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), false);
 });
 
 test("source fetch timeout remains active while the response body is read", async () => {
@@ -2051,11 +2138,12 @@ test("realtime renderer requires completed source-relevance review before render
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   const inputSha256 = sourceValidationInputHashes(temporary);
-  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
+  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "test-model", llm_review_passes: 2, llm_materiality_policy: "safety-and-core-v1", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
   fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
   fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
   try {
-    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
+    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } };
+    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } };
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ ...passingResult, link: { valid: false } }]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /source- and claim-level relevance assessments/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");

@@ -82,6 +82,8 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   expect(validation.validator === "scripts/validate-source-links.cjs", "link-validation.yaml must be produced by scripts/validate-source-links.cjs.");
   expect(validation.llm_requested === true, "link-validation.yaml must record a requested LLM review.");
   expect(typeof validation.llm_model === "string" && validation.llm_model.trim().length > 0, "link-validation.yaml must record the LLM review model.");
+  expect(validation.llm_review_passes === 2, "link-validation.yaml must record two independent LLM source-relevance passes.");
+  expect(validation.llm_materiality_policy === "safety-and-core-v1", "link-validation.yaml must record the safety-and-core materiality policy used for its LLM review.");
   expect(validation.claim_mapping?.valid === true, "link validation must pass the claim mapping.");
   expect(validation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
   expect(validation.master_script_mapping?.valid === true, "link validation must pass the master-script source mapping.");

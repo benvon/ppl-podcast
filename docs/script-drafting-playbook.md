@@ -89,7 +89,7 @@ When useful, acknowledge the boundary once in plain language: the lesson gives t
 
 ## Keep source review early and singular
 
-Build the source ledger, claim inventory, and scenario source map before drafting. Then complete the spoken draft, independent first-listen review, and the single `--require-llm` source-relevance review before human editorial approval. The review examines exact source-tagged spoken passages, claims, and fetched source excerpts; resolve contradictions, unsupported factual prose, locator errors, and material scope mismatches before the script reaches the editor.
+Build the source ledger, claim inventory, and scenario source map before drafting. Then complete the spoken draft, independent first-listen review, and the single `--require-llm` source-relevance review before human editorial approval. The review examines exact source-tagged spoken passages, claims, and fetched source excerpts; resolve contradictions, unsupported factual prose, locator errors, and material scope mismatches before the script reaches the editor. A finding is blocking only if it could teach an unsafe, wrong, or materially incomplete decision, rule, condition, or central lesson concept; exact legal wording that does not change the lesson is an editorial note for the human editor.
 
 
 ## Run an independent spoken-script review
@@ -114,7 +114,7 @@ Use this order for every new draft:
 1. Complete the source-led research foundation and draft package, including the source ledger, claim inventory, source-tagged master script, narration, show notes, metadata, and production log.
 2. Complete the independent spoken-script review.
 3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
-4. With explicit current-turn authorization, run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every material finding and rerun until the report is clean.
+4. With explicit current-turn authorization, run source validation with `--require-llm`. It runs two independent assessments against the same frozen package inputs and must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve the union of every material finding and rerun until no material findings remain; retain non-material precision notes for the human editor without reopening the script automatically.
 5. Give that source-validated draft to the human editor.
 
 If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.

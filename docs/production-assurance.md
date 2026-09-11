@@ -99,7 +99,7 @@ Use this order for each current-contract episode:
 6. Run the formal LLM source-relevance review against the tagged spoken passages before human editorial review. It confirms that the actual spoken prose stayed within the preflight's support; resolve every remaining source, locator, claim, and passage finding, then rerun cleanly.
 7. Give the clean draft and a focused change summary to the human editor. Any material factual change returns to step 5; reset and reapprove the script fingerprint before render.
 
-The claim-source preflight is an earlier quality gate, not a substitute for formal tagged-passage validation. Do not use a final PR review as the first substantive source review. A PR should confirm a sealed, internally consistent package—not discover basic source support or stale derivative work.
+The claim-source preflight is an earlier quality gate, not a substitute for formal tagged-passage validation. Its shared contract is enforced both before any audio render and during pre-hosting validation: every source must retain a hash-verified reviewed excerpt, an exact matching locator, a supporting locator assessment with rationale, and supporting assessment for each mapped claim. Do not use a final PR review as the first substantive source review. A PR should confirm a sealed, internally consistent package—not discover basic source support or stale derivative work.
 
 ### Teach for a listener, not coverage inventory
 

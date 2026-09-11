@@ -18,7 +18,7 @@ const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
+const { claimSourcePreflightErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
 const { validationFailurePath } = require("./validate-source-links.cjs");
 
 const SAMPLE_RATE = 24000;
@@ -115,6 +115,21 @@ function assertSourceRelevanceApproved(scriptPath) {
     validation = YAML.parse(fs.readFileSync(validationPath, "utf8"));
   } catch (error) {
     throw new RenderError(`Could not read source-review records: ${error.message}`);
+  }
+
+  if (episode?.production_contract_version === 2) {
+    const preflightPath = path.join(path.dirname(scriptPath), "claim-source-preflight.yaml");
+    if (!fs.existsSync(preflightPath)) throw new RenderError("Claim-source preflight evidence is required before rendering a contract-v2 episode.");
+    let preflight;
+    try {
+      const document = YAML.parseDocument(fs.readFileSync(preflightPath, "utf8"));
+      if (document.errors.length) throw new Error(document.errors[0].message);
+      preflight = document.toJS();
+    } catch (error) {
+      throw new RenderError(`Could not read claim-source preflight evidence: ${error.message}`);
+    }
+    const preflightErrors = claimSourcePreflightErrors({ episodePath: path.dirname(scriptPath), episode, preflight });
+    if (preflightErrors.length) throw new RenderError(`Claim-source preflight is not complete for the current source and claim inputs: ${preflightErrors[0]}`);
   }
 
   if (episode?.source_verification?.relevance_review !== "complete") {

@@ -10,5 +10,7 @@ input_sha256:
   claims: null
 # Record one result for every source. Each result must name the exact locator,
 # mapped claims, and an excerpt copied exactly as supplied to the LLM. Its
-# SHA-256 and character count make that retained evidence tamper-evident.
+# SHA-256 and character count make that retained evidence tamper-evident. Each
+# result's relevance record must include a locator_assessment with verdict:
+# supports and a rationale, plus a supporting assessment for every mapped claim.
 results: []

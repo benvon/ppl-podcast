@@ -278,7 +278,7 @@ test("pre-hosting validation requires consistent release records", () => {
   const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
   const preflightExcerpt = "The cited section directly states the test claim.";
-  const preflight = () => ({ schema_version: 1, status: "complete", checked_at_utc: "2026-08-24T12:00:00Z", llm_requested: true, llm_model: "gpt-5.6-sol", input_sha256: claimSourcePreflightInputHashes(episodePath), results: [{ source_id: "source-a", locator: "Paragraph 1-1-1, p. 1-1-1", linked_claim_ids: ["claim-a"], reviewed_excerpt: { kind: "section_text", text: preflightExcerpt, sha256: crypto.createHash("sha256").update(preflightExcerpt).digest("hex"), characters: preflightExcerpt.length }, relevance: { status: "assessed", claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "The cited section directly states the test claim." }] } }] });
+  const preflight = () => ({ schema_version: 1, status: "complete", checked_at_utc: "2026-08-24T12:00:00Z", llm_requested: true, llm_model: "gpt-5.6-sol", input_sha256: claimSourcePreflightInputHashes(episodePath), results: [{ source_id: "source-a", locator: "Paragraph 1-1-1, p. 1-1-1", linked_claim_ids: ["claim-a"], reviewed_excerpt: { kind: "section_text", text: preflightExcerpt, sha256: crypto.createHash("sha256").update(preflightExcerpt).digest("hex"), characters: preflightExcerpt.length }, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "The retained excerpt is the exact cited paragraph." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "The cited section directly states the test claim." }] } }] });
   fs.writeFileSync(path.join(episodePath, "claim-source-preflight.yaml"), YAML.stringify(preflight()));
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit authorization was received before proposed claims and source excerpts were sent to OpenAI. <!-- qa-id: openai-claim-source-preflight-authorization -->", "Claim-source preflight findings were resolved before full spoken prose was drafted. <!-- qa-id: claim-source-preflight -->", "Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->"].map((line) => `- [x] ${line}`).join("\n"));
   try {
@@ -313,6 +313,11 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(preflightPath, YAML.stringify({ ...preflight(), results: [] }));
     const emptyPreflight = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(emptyPreflight.valid, false); assert.match(emptyPreflight.errors.join("\n"), /must cover every current source exactly once/);
+    fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
+    const preflightWithBroadLocator = preflight(); preflightWithBroadLocator.results[0].relevance.locator_assessment.verdict = "partially_supports";
+    fs.writeFileSync(preflightPath, YAML.stringify(preflightWithBroadLocator));
+    const broadLocator = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(broadLocator.valid, false); assert.match(broadLocator.errors.join("\n"), /supporting LLM locator assessment/);
     fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
     const readyEpisodeMetadata = YAML.parse(fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8"));
     const pendingPublicationEpisode = { ...readyEpisodeMetadata, audio: { ...readyEpisodeMetadata.audio, publication_day_validation: "pending" } };
@@ -1276,20 +1281,30 @@ test("realtime renderer requires completed source-relevance review before render
   const masterScript = "# Test\n\n**INSTRUCTOR:**\n\nLesson.\n";
   fs.writeFileSync(scriptPath, "# Test narration\n", "utf8");
   fs.writeFileSync(path.join(temporary, "master-script.md"), masterScript, "utf8");
-  fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ source_verification: { relevance_review: "complete" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }), "utf8");
-  fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    supports_claims: [claim-a]\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { relevance_review: "complete", claim_source_preflight: "claim-source-preflight.yaml" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }), "utf8");
+  fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
   fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    sources: [source-a]\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   const inputSha256 = sourceValidationInputHashes(temporary);
   const validation = (results) => YAML.stringify({ llm_requested: true, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] });
   fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
+  const preflightExcerpt = "The cited paragraph supports the test claim.";
+  const preflight = () => ({ schema_version: 1, status: "complete", checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "gpt-5.6-sol", input_sha256: claimSourcePreflightInputHashes(temporary), results: [{ source_id: "source-a", locator: "Paragraph 1-1-1", linked_claim_ids: ["claim-a"], reviewed_excerpt: { kind: "section_text", text: preflightExcerpt, sha256: crypto.createHash("sha256").update(preflightExcerpt).digest("hex"), characters: preflightExcerpt.length }, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "The retained paragraph is the cited locator." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "The paragraph supports the test claim." }] } }] });
+  fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify(preflight()), "utf8");
   try {
     const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } };
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ ...passingResult, link: { valid: false } }]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /unresolved source-relevance findings/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
     assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
+    fs.unlinkSync(path.join(temporary, "claim-source-preflight.yaml"));
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /Claim-source preflight evidence is required/);
+    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify(preflight()), "utf8");
+    const broadLocatorPreflight = preflight(); broadLocatorPreflight.results[0].relevance.locator_assessment.verdict = "partially_supports";
+    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify(broadLocatorPreflight), "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /supporting LLM locator assessment/);
+    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify(preflight()), "utf8");
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /does not cover every current source/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
@@ -1300,7 +1315,7 @@ test("realtime renderer requires completed source-relevance review before render
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /most recent source-relevance validation failed/);
     fs.unlinkSync(path.join(temporary, "link-validation.yaml.failed"));
     fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources: [changed]\n", "utf8");
-    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /not bound to the current sources/);
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /bound to the current sources/);
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /marked complete/);
   } finally {

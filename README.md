@@ -41,9 +41,10 @@ so. We welcome technically grounded corrections and source updates.
 ## Episode lifecycle
 
 ```text
-scope → research + claims → tagged script → editorial review
-      → link/relevance validation → opening preview → full render → human audio QA
-      → publication-day source check → hosting handoff
+scope → research + claims → tagged script → independent first-listen review
+      → authorized link/relevance validation → editorial review
+      → opening preview → full render → human audio QA
+      → publication-day deterministic link check → hosting handoff
 ```
 
 Qualified aviation review is welcomed and recorded when available; it is not a
@@ -82,27 +83,43 @@ but the `templates/` directory is the maintained workflow contract.
 
 Run a no-cost network and metadata validation first:
 
+Replace `<current-contract-episode>` with the directory created for the episode
+you are producing. Do not use these commands to refresh a preserved published
+episode.
+
 ```sh
 npm run sources:validate -- \
-  --sources episodes/core-01-aeronautical-decision-making-risk-management/sources.yaml \
-  --claims episodes/core-01-aeronautical-decision-making-risk-management/claim-inventory.yaml
+  --sources episodes/<current-contract-episode>/sources.yaml \
+  --claims episodes/<current-contract-episode>/claim-inventory.yaml
 ```
 
-After editorial approval, run the LLM relevance pass before generating any
-audio. It fetches
+Before human editorial review, run the LLM relevance pass against the tagged
+spoken passages. It fetches
 the public source excerpts and has the model assess whether the excerpt matches
 the cited locator and supports the claims mapped to it; it is an advisory
 review, not an aviation authority.
 
 ```sh
 direnv exec . npm run sources:validate -- \
-  --sources episodes/core-01-aeronautical-decision-making-risk-management/sources.yaml \
-  --claims episodes/core-01-aeronautical-decision-making-risk-management/claim-inventory.yaml \
+  --sources episodes/<current-contract-episode>/sources.yaml \
+  --claims episodes/<current-contract-episode>/claim-inventory.yaml \
   --require-llm
 ```
 
-The command writes `link-validation.yaml` beside the source ledger. Resolve
-every failed or inconclusive finding before rendering.
+The formal review writes `link-validation.yaml` beside the source ledger.
+Resolve every failed or inconclusive finding before rendering.
+
+After listening and chapter QA, run the publication-day deterministic check.
+It writes `publication-link-validation.yaml` and verifies the public links
+without replacing the earlier LLM source-relevance evidence or changing the
+editorial source-review state.
+
+```sh
+npm run sources:validate -- \
+  --sources episodes/<current-contract-episode>/sources.yaml \
+  --claims episodes/<current-contract-episode>/claim-inventory.yaml \
+  --publication-check
+```
 
 For eCFR citations, validation derives the official, date-pinned exact-section
 XML request from the cited `current/title-.../part-.../section-...` URL. Legacy
@@ -154,7 +171,7 @@ The public [PPL Study Guide hosting repository](https://github.com/benvon/ppl-po
 documents how a sealed episode handoff is staged, published, hosted, and
 attested after this source repository's release gates have passed.
 
-After the publication-day source check and approved listening QA, use the
+After the publication-day deterministic link check and approved listening QA, use the
 release-preparation command to synchronize the authoritative release timestamp
 and derived hosting metadata, run final pre-hosting validation, and create the
 hosting input directory. It copies the exact MP3, listener-facing metadata, and

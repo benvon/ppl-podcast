@@ -13,6 +13,7 @@ class AudioMixConfigError extends Error {}
 
 const MUSIC_KEYS = new Set([
   "enabled",
+  "disabled_reason",
   "source",
   "base_gain_db",
   "voice_gain_db",
@@ -58,9 +59,25 @@ function loadAudioMixConfig(configPath, { repoRoot = process.cwd(), required = f
   }
   for (const key of Object.keys(value.music)) if (!MUSIC_KEYS.has(key)) throw new AudioMixConfigError(`${resolvedConfig} has an unsupported music field: ${key}.`);
   if (typeof value.music.enabled !== "boolean") throw new AudioMixConfigError(`${resolvedConfig} music.enabled must be true or false.`);
-  if (!value.music.enabled) return { enabled: false, configPath: resolvedConfig, configSha256: sha256File(resolvedConfig) };
+  if (!value.music.enabled) {
+    if (typeof value.music.disabled_reason !== "string" || !value.music.disabled_reason.trim()) {
+      throw new AudioMixConfigError(`${resolvedConfig} music.disabled_reason must record why this episode intentionally has no music.`);
+    }
+    for (const key of Object.keys(value.music)) {
+      if (key !== "enabled" && key !== "disabled_reason") {
+        throw new AudioMixConfigError(`${resolvedConfig} music.${key} is not allowed when music is disabled.`);
+      }
+    }
+    return {
+      enabled: false,
+      disabledReason: value.music.disabled_reason.trim(),
+      configPath: resolvedConfig,
+      configSha256: sha256File(resolvedConfig),
+    };
+  }
 
-  for (const key of MUSIC_KEYS) if (key !== "enabled" && value.music[key] === undefined) throw new AudioMixConfigError(`${resolvedConfig} music.${key} is required when music is enabled.`);
+  if (value.music.disabled_reason !== undefined) throw new AudioMixConfigError(`${resolvedConfig} music.disabled_reason is only allowed when music is disabled.`);
+  for (const key of MUSIC_KEYS) if (key !== "enabled" && key !== "disabled_reason" && value.music[key] === undefined) throw new AudioMixConfigError(`${resolvedConfig} music.${key} is required when music is enabled.`);
   if (typeof value.music.source !== "string" || !value.music.source) throw new AudioMixConfigError(`${resolvedConfig} music.source must be a non-empty path relative to audio-mix.yaml.`);
   const resolvedRoot = fs.realpathSync(repoRoot);
   const unresolvedSourcePath = path.resolve(path.dirname(resolvedConfig), value.music.source);

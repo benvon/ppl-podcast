@@ -18,8 +18,8 @@ const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
-const { validationFailurePath } = require("./validate-source-links.cjs");
+const { editorialApprovalErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { PACKAGE_OPERATION_IDS, withEpisodePackageOperationAsync } = require("./episode-package-lifecycle.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -47,6 +47,7 @@ const PRONUNCIATION_TRANSFORMS = Object.freeze({
   ASOS: "AY-sohs",
   AWOS: "AY-wahs",
   ATIS: "AY-tis",
+  CTAF: "seetaff",
   METAR: "MEE-tar",
   METARs: "MEE-tars",
   TAF: "taf",
@@ -103,56 +104,28 @@ function assertNarrationInput(scriptPath) {
 
 function assertSourceRelevanceApproved(scriptPath) {
   const episodePath = path.join(path.dirname(scriptPath), "episode.yaml");
-  const validationPath = path.join(path.dirname(scriptPath), "link-validation.yaml");
   if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
-  if (!fs.existsSync(validationPath)) throw new RenderError("Source-relevance review must pass before rendering. Run sources:validate --require-llm and record its completion in episode.yaml.");
-  if (fs.existsSync(`${validationPath}.in-progress`) || fs.existsSync(`${validationPath}.in-progress.recovering`)) throw new RenderError("Source-relevance validation is in progress, recovering, or was interrupted. Complete a fresh validation run before rendering.");
-  if (fs.existsSync(validationFailurePath(validationPath))) throw new RenderError("The most recent source-relevance validation failed. Resolve its findings and complete a fresh clean validation run before rendering.");
-
-  let episode; let validation;
+  let episode;
   try {
     episode = YAML.parse(fs.readFileSync(episodePath, "utf8"));
-    validation = YAML.parse(fs.readFileSync(validationPath, "utf8"));
   } catch (error) {
     throw new RenderError(`Could not read source-review records: ${error.message}`);
   }
-
-  if (episode?.source_verification?.relevance_review !== "complete") {
-    throw new RenderError("Source-relevance review must be marked complete in episode.yaml before rendering.");
-  }
-  if (validation?.llm_requested !== true || validation?.claim_mapping?.valid !== true || validation?.show_notes_mapping?.valid !== true) {
-    throw new RenderError("link-validation.yaml does not record a passing LLM source-relevance review.");
-  }
-  const currentInputs = sourceValidationInputHashes(path.dirname(scriptPath));
-  if (!Object.entries(currentInputs).every(([name, digest]) => validation?.input_sha256?.[name] === digest)) {
-    throw new RenderError("link-validation.yaml is not bound to the current sources, claims, and show-notes inputs. Run a fresh source-relevance review before rendering.");
-  }
-  const coverageErrors = validationCoverageErrors(path.dirname(scriptPath), validation);
-  if (coverageErrors.length) throw new RenderError(coverageErrors[0]);
-
-  const sourceResults = Array.isArray(validation.results) ? validation.results : [];
-  if (!sourceResults.length || sourceResults.some((result) => !sourceRelevanceResultValid(result))) {
-    throw new RenderError("link-validation.yaml contains unresolved source-relevance findings; resolve them before rendering.");
-  }
-
-  const showNotesResults = Array.isArray(validation.show_notes_results) ? validation.show_notes_results : [];
-  if (showNotesResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true))) {
-    throw new RenderError("link-validation.yaml contains unresolved show-notes findings; resolve them before rendering.");
-  }
-  const masterScript = fs.readFileSync(path.join(path.dirname(scriptPath), "master-script.md"), "utf8");
-  if (episode?.review?.editorial_status !== "script_approved" || episode?.review?.editorial_script_sha256 !== sha256(masterScript)) {
-    throw new RenderError("Editorial approval must be recorded for the current master-script.md bytes before rendering. Run episode:script-review --approve after review.");
-  }
+  const errors = [
+    ...sourceReviewEvidenceErrors({ episodePath: path.dirname(scriptPath), episode }),
+    ...editorialApprovalErrors({ episodePath: path.dirname(scriptPath), episode }),
+  ];
+  if (errors.length) throw new RenderError(`Render prerequisites are not satisfied: ${errors[0]}`);
   return episode;
 }
 
 function usage() {
-  console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --speaker instructor|learner|announcer  Render and assemble only one speaker's turns; cannot be combined with a segment range.\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --announcer-voice NAME        Default: ${DEFAULTS.announcerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n\nWhen an episode has audio-mix.yaml, it is the required and exclusive music plan. Legacy packages without that file may use the manual --music-* options. Each assembly writes a new timestamped candidate and refuses to replace existing output paths. Run both render modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
+  console.log(`Usage:\n  node scripts/render_episode_realtime.cjs --script PATH --audio-dir PATH --episode-id core-03 [options]\n\nRequired modes:\n  --render-only                 Render selected segments into a resumable work directory.\n  --assemble-only               Assemble existing selected segments into a WAV master and MP3.\n\nOptions:\n  --work-dir PATH               Segment directory (default: audio-dir/<id>-realtime-<timestamp>.segments)\n  --timestamp YYYYMMDDTHHMMSSZ  Output timestamp (default: current UTC time)\n  --segment-start N             First segment (default: 1)\n  --segment-end N               Last segment (default: final segment)\n  --speaker instructor|learner|announcer  Render and assemble only one speaker's turns; cannot be combined with a segment range.\n  --model NAME                  Default: ${DEFAULTS.model}\n  --instructor-voice NAME       Default: ${DEFAULTS.instructorVoice}\n  --learner-voice NAME          Default: ${DEFAULTS.learnerVoice}\n  --announcer-voice NAME        Default: ${DEFAULTS.announcerVoice}\n  --max-words-per-segment N     Default: ${DEFAULTS.maxWords}\n  --segment-timeout SECONDS     Default: ${DEFAULTS.timeoutSeconds}\n  --format mp3|wav              Default: mp3\n  --dry-run                     Validate script and print the render plan without API calls.\n  --recover-stale-lock          Recover a confirmed-dead package lease before retrying.\n\nWhen an episode has audio-mix.yaml, it is the required and exclusive music plan. Legacy packages without that file may use the manual --music-* options. Each assembly writes a new timestamped candidate and refuses to replace existing output paths. Run both render modes separately. Interrupted --render-only work may be resumed safely when its settings match.`);
 }
 
 function parseArgs(argv) {
   const values = {};
-  const flags = new Set(["render-only", "assemble-only", "dry-run"]);
+  const flags = new Set(["render-only", "assemble-only", "dry-run", "recover-stale-lock"]);
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     if (!token.startsWith("--")) throw new RenderError(`Unexpected argument: ${token}`);
@@ -323,10 +296,16 @@ function establishSettings(workDir, settings) {
   ensureDir(workDir); const target = path.join(workDir, "render-settings.json"); const next = `${JSON.stringify(settings, null, 2)}\n`;
   if (fs.existsSync(target)) {
     const existing = JSON.parse(fs.readFileSync(target, "utf8"));
-    const { script_sha256: existingScriptHash, spacing_ms: existingSpacing, ...existingRenderSettings } = existing;
-    const { script_sha256: nextScriptHash, spacing_ms: nextSpacing, ...nextRenderSettings } = settings;
+    // Pronunciation maps are deliberately not a work-directory compatibility
+    // boundary. Each segment records a hash of its exact instructions and
+    // spoken text, so a changed pronunciation rerenders only the segment that
+    // contains that term. Spacing is an assembly-only choice for the same
+    // reason. Model, voice, audio format, and speaking style remain shared
+    // render settings and must not be mixed.
+    const { script_sha256: existingScriptHash, spacing_ms: existingSpacing, pronunciation_transforms: existingTransforms, pronunciation_guidance: existingGuidance, ...existingRenderSettings } = existing;
+    const { script_sha256: nextScriptHash, spacing_ms: nextSpacing, pronunciation_transforms: nextTransforms, pronunciation_guidance: nextGuidance, ...nextRenderSettings } = settings;
     if (JSON.stringify(existingRenderSettings) !== JSON.stringify(nextRenderSettings)) throw new RenderError(`Render settings differ from ${target}. Choose a new --work-dir to avoid mixing incompatible segments.`);
-    if (existingScriptHash !== nextScriptHash) writeAtomic(target, next);
+    if (existingScriptHash !== nextScriptHash || JSON.stringify(existingTransforms) !== JSON.stringify(nextTransforms) || JSON.stringify(existingGuidance) !== JSON.stringify(nextGuidance)) writeAtomic(target, next);
     return;
   }
   writeAtomic(target, next);
@@ -589,9 +568,10 @@ async function main() {
   if (!SAFE_ID_RE.test(raw["episode-id"])) throw new RenderError("--episode-id must be lowercase kebab-case.");
   const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice; const announcerVoice = raw["announcer-voice"] || DEFAULTS.announcerVoice;
   if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
-  const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`); assertNarrationInput(scriptPath);
+  const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
+  return withEpisodePackageOperationAsync(path.dirname(scriptPath), PACKAGE_OPERATION_IDS.REALTIME_RENDER, { recoverStaleLock: Boolean(raw["recover-stale-lock"]) }, async () => {
+  assertNarrationInput(scriptPath);
   const episode = assertSourceRelevanceApproved(scriptPath);
-  if (episode.production_contract_version !== undefined && episode.production_contract_version !== 2) throw new RenderError(`Unsupported production_contract_version: ${episode.production_contract_version}.`);
   const musicKeys = ["music-bed", "music-bed-gain-db", "music-voice-gain-db", "music-level-transition-seconds", "music-intro-lead-seconds", "music-intro-tail-seconds", "music-intro-fade-seconds", "music-outro-tail-seconds", "music-outro-fade-seconds"];
   const musicValuesSpecified = musicKeys.some((name) => raw[name] !== undefined);
   if (musicValuesSpecified && !raw["music-bed"]) throw new RenderError("Music timing and gain options require --music-bed.");
@@ -615,8 +595,9 @@ async function main() {
   establishSettings(workDir, settingsFor(options, sha256(fs.readFileSync(scriptPath))));
   if (raw["render-only"]) await renderSegments(segments, selected, options, workDir);
   if (raw["assemble-only"]) assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange, selectionLabel);
+  });
 }
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, establishSettings, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

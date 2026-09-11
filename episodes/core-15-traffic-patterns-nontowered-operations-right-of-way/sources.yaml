@@ -1,0 +1,327 @@
+episode_id: core-15
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-communications
+    title: Private Pilot ACS, Airport Operations, Communications
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+    locator: "FAA-S-ACS-6C, PA.III.A, PDF p. 24"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-S-ACS-6C, November 2023; effective May 31, 2024"
+    relevance: "Communications outcomes that bound this episode."
+    supports_claims: [ acs-communications-outcome ]
+  - id: acs-traffic-patterns
+    title: Private Pilot ACS, Airport Operations, Traffic Patterns
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+    locator: "FAA-S-ACS-6C, PA.III.B.K2-K4, R1-R3, S2, S4-S6, PDF p. 25"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-S-ACS-6C, November 2023; effective May 31, 2024"
+    relevance: "Traffic-pattern outcomes that bound this episode."
+    supports_claims: [ acs-traffic-pattern-outcome ]
+  - id: phak-pattern-text
+    title: Pilot's Handbook of Aeronautical Knowledge, Traffic Patterns
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+    locator: "PHAK Chapter 14, Traffic Patterns, PDF p. 14-21"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 14"
+    relevance: "Standard traffic-pattern visual model."
+    supports_claims: [ phak-pattern-visual-model ]
+  - id: phak-pattern-figure
+    title: Pilot's Handbook of Aeronautical Knowledge, Figure 14-39, Left-Hand
+      Traffic Pattern
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+    locator: "PHAK Chapter 14, Figure 14-39, PDF p. 14-22"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 14"
+    relevance: "Left-pattern map used for Pine Valley."
+    supports_claims: [ phak-left-pattern-map ]
+  - id: ac-preflight
+    title: AC 90-66C, Preflight Actions
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+    locator: "AC 90-66C, paragraph 9.1, PDF p. 5"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Preflight publications for pertinent traffic-pattern information."
+    supports_claims: [ preflight-publications ]
+  - id: aim-automated-weather
+    title: AIM, Operations at Uncontrolled Airports With ASOS/AWOS
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-27
+    locator: "AIM 4-3-27(b)-(c)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM; research accessed September 10, 2026"
+    relevance: "Near-airport ASOS/AWOS monitoring."
+    supports_claims: [ automated-weather-monitoring ]
+  - id: aim-ctaf
+    title: AIM, Traffic Advisory Practices at Airports Without Operating Control
+      Towers
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+    locator: "AIM 4-1-9(a)-(b)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM; research accessed September 10, 2026"
+    relevance: "CTAF reports and traffic awareness."
+    supports_claims: [ ctaf-position-reports ]
+  - id: aim-straight-in-priority
+    title: AIM, Straight-in Landings
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+    locator: "AIM 4-1-9(g)(4), Straight-in Landings"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM; research accessed September 10, 2026"
+    relevance: "Straight-in approaches have no priority over pattern traffic and
+      must comply with 14 CFR 91.113(g)."
+    supports_claims: [ straight-in-pattern-priority ]
+  - id: ac-active-see-avoid
+    title: AC 90-66C, Active See-and-Avoid
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+    locator: "AC 90-66C, paragraph 9.11.2, PDF p. 8"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Active see-and-avoid near nontowered airports."
+    supports_claims: [ active-see-avoid ]
+  - id: ac-straight-in-see-avoid
+    title: AC 90-66C, Straight-In Approaches and Active See-and-Avoid
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=8
+    locator: "AC 90-66C, paragraph 9.11.1, PDF p. 8"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Reinforces see-and-avoid and coordination for straight-in traffic."
+    supports_claims: [ straight-in-see-avoid ]
+  - id: ac-quiet-ctaf
+    title: AC 90-66C, CTAF Monitoring
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+    locator: "AC 90-66C, paragraph 9.12.2, PDF p. 10"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "CTAF practices and continuing vigilance near nontowered airports."
+    supports_claims: [ quiet-frequency ]
+  - id: ac-no-assumed-sequence
+    title: AC 90-66C, Communications Note
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=13
+    locator: "AC 90-66C, paragraph 10.1 note, PDF p. 13"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Do not broadcast an assumed landing sequence."
+    supports_claims: [ no-assumed-landing-sequence ]
+  - id: ac-scan-technique
+    title: AC 90-48E, Scan Technique
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+    locator: "AC 90-48E, sections 12-12.1, PDF p. 13"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-48E, October 20, 2022; active"
+    relevance: "Deliberate visual scanning and blind spots."
+    supports_claims: [ deliberate-scan ]
+  - id: ac-displays-see-avoid
+    title: AC 90-48E, Traffic Displays
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+    locator: "AC 90-48E, sections 14-16, PDF p. 14"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-48E, October 20, 2022; active"
+    relevance: "Displays are aids, not replacements for outside scanning."
+    supports_claims: [ displays-do-not-replace-scan ]
+  - id: aim-pattern-terms
+    title: AIM, Airport Traffic Pattern Terms
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-2
+    locator: "AIM 4-3-2(c)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM; research accessed September 10, 2026"
+    relevance: "Six traffic-pattern terms, including departure and upwind."
+    supports_claims: [ aim-six-pattern-terms, aim-upwind-extension ]
+  - id: afh-departure-upwind
+    title: Airplane Flying Handbook, Departure and Upwind Legs
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+    locator: "AFH Chapter 8, Departure and Upwind Legs, PDF p. 8-4"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-3C, Chapter 8"
+    relevance: "Departure definition and AFH upwind context."
+    supports_claims: [ afh-departure-leg, afh-upwind-context ]
+  - id: ac-standard-entry
+    title: AC 90-66C, Standard Traffic Pattern Entry
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+    locator: "AC 90-66C, paragraphs 11.2-11.3, PDF p. 15"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Pattern altitude, time to observe traffic, and the standard
+      45-degree entry."
+    supports_claims: [ standard-entry-and-spacing ]
+  - id: afh-upwind-side-entry
+    title: Airplane Flying Handbook, Upwind-Side Entry Model
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+    locator: "AFH Chapter 8, Non-Towered Airport Entry, PDF p. 8-4"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-3C, Chapter 8"
+    relevance: "Upwind-side crossing, announce-intentions, and later-entry model."
+    supports_claims: [ upwind-side-reentry-model ]
+  - id: afh-conflicting-entry
+    title: Airplane Flying Handbook, Conflicting Traffic During a 45-Degree Entry
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+    locator: "AFH Chapter 8, conflicting traffic during 45-degree entry, PDF p. 8-5"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-3C, Chapter 8"
+    relevance: "Turn away, safe distance, scan, retry 45, and adjust course or speed."
+    supports_claims: [ conflicting-entry-retry ]
+  - id: aim-visible-indicators
+    title: AIM, Visual Indicators at Airports Without an Operating Control Tower
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+    locator: "AIM 4-3-4(a)-(c)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM; research accessed September 10, 2026"
+    relevance: "Segmented-circle and runway-end traffic-pattern indicators."
+    supports_claims: [ visible-pattern-indicators ]
+  - id: aim-published-right-pattern
+    title: AIM, Traffic Patterns
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-3
+    locator: "AIM 4-3-3(c)-(d)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM; research accessed September 10, 2026"
+    relevance: "Published right traffic and normal left-turn convention."
+    supports_claims: [ published-right-pattern ]
+  - id: ac-published-right-pattern
+    title: AC 90-66C, Established Traffic Patterns
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=4
+    locator: "AC 90-66C, paragraph 8.2.1.1, PDF p. 4"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Published or established right-hand traffic pattern."
+    supports_claims: [ published-right-pattern ]
+  - id: ecfr-right-of-way
+    title: 14 CFR 91.113, Right-of-way rules except water operations
+    publisher: eCFR
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.113
+    locator: "14 CFR 91.113(b)-(g)"
+    source_type: ecfr
+    ecfr_date: 2026-09-09
+    link_status: null
+    verification_date: null
+    revision: "eCFR Title 14 current through September 9, 2026"
+    relevance: "Vigilance, well-clear, distress, convergence, category, head-on,
+      overtaking, and landing rules."
+    supports_claims:
+      [
+        see-and-avoid-rule,
+        right-of-way-geometries,
+        category-and-distress-priority,
+        landing-right-of-way
+      ]
+  - id: ecfr-airport-class-g
+    title: 14 CFR 91.126, Operating on or in the vicinity of an airport in Class G
+      airspace
+    publisher: eCFR
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.126
+    locator: "14 CFR 91.126(b)"
+    source_type: ecfr
+    ecfr_date: 2026-09-09
+    link_status: null
+    verification_date: null
+    revision: "eCFR Title 14 current through September 9, 2026"
+    relevance: "Class G left-turn default and right-turn visual-indicator exception."
+    supports_claims: [ class-g-pattern-direction ]
+  - id: afh-base-final
+    title: Airplane Flying Handbook, Base-to-Final Traffic Conflict
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+    locator: "AFH Chapter 8, base-to-final traffic conflict, PDF p. 8-4"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-3C, Chapter 8"
+    relevance: "No-close-proximity and collision-hazard/rushed-turn avoidance."
+    supports_claims: [ base-final-spacing ]
+  - id: ac-go-around
+    title: AC 90-66C, Go-Around Departure Path
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+    locator: "AC 90-66C, paragraph 11.6, PDF p. 15"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Straight-ahead go-around path."
+    supports_claims: [ go-around-path ]
+  - id: aim-wake-turbulence
+    title: AIM, Wake Turbulence
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+    locator: "AIM 7-4-4 and 7-4-5"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM; research accessed September 10, 2026"
+    relevance: "Wake-vortex behavior and airport operations."
+    supports_claims: [ wake-vortex-behavior ]
+  - id: ac-wake-spacing
+    title: AC 90-66C, Wake Turbulence
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=10
+    locator: "AC 90-66C, paragraph 9.12.3.1, PDF p. 10"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-66C, June 6, 2023; active"
+    relevance: "Wake-turbulence alertness and avoiding flight below and behind
+      another aircraft at low altitude."
+    supports_claims: [ wake-spacing ]

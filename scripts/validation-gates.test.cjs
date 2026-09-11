@@ -9,23 +9,71 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimAssessments, validateClaimMappings, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
-const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
-const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
-const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
-const { approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
-const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
+const { DRAFT_PACKAGE_SHAPE, durationDisplay, episodeDisplayLabel, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
+const { HostingHandoffError, createHostingHandoff, parseArgs: parseHandoffArgs, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
+const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
+const { approveScriptReview, migratedAudioMix, parseArgs: parseScriptReviewArgs, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
+const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
+const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
+const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 const { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { MALFORMED_LOCK_RECOVERY_GRACE_MS, PACKAGE_OPERATION_COMMANDS, PACKAGE_OPERATION_IDS, PACKAGE_OPERATIONS, acquireEpisodePackageOperation, assertEpisodePackageOperation, releaseEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
+}
+
+function fetchedLocatorEvidence(sourceEntry, excerpt) {
+  return {
+    citation_url: sourceEntry.url,
+    validation_url: sourceEntry.validation_url || sourceEntry.url,
+    final_url: sourceEntry.url,
+    redirects: [],
+    content_sha256: crypto.createHash("sha256").update(`fetched:${excerpt}`).digest("hex"),
+    extraction_kind: "html_fragment",
+    locator_excerpt_sha256: crypto.createHash("sha256").update(excerpt).digest("hex"),
+    locator_excerpt_characters: excerpt.length,
+    citation_target_valid: true,
+  };
+}
+
+function writePassingSourceGate(episodePath, episode) {
+  const checkedAt = "2026-09-10T00:00:00Z";
+  const sourceLedger = YAML.parse(fs.readFileSync(path.join(episodePath, "sources.yaml"), "utf8"));
+  const claimInventory = YAML.parse(fs.readFileSync(path.join(episodePath, "claim-inventory.yaml"), "utf8"));
+  const sourceEntry = sourceLedger.sources[0]; const claim = claimInventory.claims[0];
+  const excerpt = "The retained source excerpt supports the test claim.";
+  fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), "- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
+  const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports" }] } }, claim_assessments: { valid: true } };
+  const sourceReviewRunID = crypto.randomUUID();
+  fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({
+    schema_version: 1,
+    validator: "scripts/validate-source-links.cjs",
+    run_id: sourceReviewRunID,
+    checked_at_utc: checkedAt,
+    llm_requested: true,
+    llm_model: "test-model",
+    authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: checkedAt, run_id: sourceReviewRunID },
+    claim_mapping: { valid: true },
+    master_script_mapping: { valid: true, source_tag_count: 0, claim_coverage_count: 0 },
+    show_notes_mapping: { valid: true },
+    show_notes_results: [],
+    results: [result],
+    input_sha256: sourceValidationInputHashes(episodePath),
+  }), "utf8");
+  episode.source_verification = { ...episode.source_verification, validation_contract: "source-relevance-v1", status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: checkedAt, link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" };
+  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify(episode), "utf8");
 }
 
 function wavForTest(pcm) {
@@ -48,6 +96,214 @@ test("source-link validation does not mistake an ordinary site contact CAPTCHA f
   );
 });
 
+test("production contract classification is explicit and shared", () => {
+  assert.equal(productionContractKind({ production_contract_version: 2 }), CONTRACT_KINDS.CURRENT);
+  assert.equal(productionContractKind({ id: "core-01" }), CONTRACT_KINDS.PRESERVED_LEGACY);
+  assert.equal(
+    productionContractKind({
+      production_contract_version: 2,
+      published_at: "2026-09-09T13:00:08Z",
+      source_verification: {},
+    }),
+    CONTRACT_KINDS.PRESERVED_PRE_SOURCE_REVIEW,
+  );
+  assert.equal(
+    productionContractKind({
+      production_contract_version: 2,
+      published_at: "2026-09-09T13:00:08Z",
+      source_verification: { validation_contract: "source-relevance-v1" },
+    }),
+    CONTRACT_KINDS.CURRENT,
+  );
+  for (const episode of [{ production_contract_version: null }, { production_contract_version: "2" }, { production_contract_version: 3 }, null]) {
+    assert.equal(productionContractKind(episode), CONTRACT_KINDS.UNSUPPORTED);
+  }
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-prehost-contract-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-01\n", "utf8");
+    const result = validatePreHosting({ episodePath: temporary, cwd: temporary, packageOnly: true });
+    assert.equal(result.valid, false);
+    assert.match(result.errors.join("\n"), /preserved package/);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("show-notes display labels match generated core and supplemental packages", () => {
+  assert.equal(episodeDisplayLabel({ id: "core-01", track: "core" }), "1");
+  assert.equal(episodeDisplayLabel({ id: "supplement-03", track: "supplemental" }), "Supplement 3");
+  assert.equal(episodeDisplayLabel({ id: "rough-002", track: "rough-spots" }), "Rough Spot 2");
+  assert.equal(episodeDisplayLabel({ id: "invalid", track: "core" }), null);
+});
+
+test("every current package operation has one owner, rejects cross-operation recovery, and permits only its own stale recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-package-operation-matrix-"));
+  const lifecyclePath = path.join(temporary, ".source-validation.lifecycle");
+  try {
+    const operationIDs = Object.values(PACKAGE_OPERATION_IDS);
+    assert.deepEqual(Object.keys(PACKAGE_OPERATIONS).sort(), [...operationIDs].sort());
+    assert.deepEqual(Object.keys(PACKAGE_OPERATION_COMMANDS).sort(), [...operationIDs].sort());
+    for (const operationID of operationIDs) {
+      const operation = PACKAGE_OPERATIONS[operationID];
+      const first = acquireEpisodePackageOperation(temporary, operationID);
+      assertEpisodePackageOperation(temporary, first, operationID);
+      releaseEpisodePackageOperation(first);
+
+      fs.writeFileSync(`${lifecyclePath}.in-progress`, YAML.stringify({
+        schema_version: 1,
+        validator: operation.validator,
+        operation_id: operationID,
+        run_id: crypto.randomUUID(),
+        hostname: os.hostname(),
+        pid: 999_999_999,
+        started_at_utc: "2026-09-11T00:00:00Z",
+        input_sha256: { scope: "episode-package" },
+      }), "utf8");
+      const otherOperationID = operationIDs.find((candidate) => candidate !== operationID);
+      assert.throws(
+        () => acquireEpisodePackageOperation(temporary, otherOperationID, { recoverStaleLock: true }),
+        /recover it only by rerunning that interrupted operation/,
+      );
+      const recovered = acquireEpisodePackageOperation(temporary, operationID, { recoverStaleLock: true });
+      assertEpisodePackageOperation(temporary, recovered, operationID);
+      releaseEpisodePackageOperation(recovered);
+    }
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("package operation leases cannot be used by a different lifecycle transition", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-package-operation-owner-test-"));
+  try {
+    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    assert.throws(
+      () => assertEpisodePackageOperation(temporary, lease, PACKAGE_OPERATION_IDS.REALTIME_RENDER),
+      /realtime-render is required/,
+    );
+    releaseEpisodePackageOperation(lease);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("explicit recovery clears an interrupted legacy partial package lock only after its publication grace period", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-partial-package-lock-test-"));
+  const lockPath = path.join(temporary, ".source-validation.lifecycle.in-progress");
+  try {
+    fs.writeFileSync(lockPath, "validator: partial", "utf8");
+    assert.throws(
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW, { recoverStaleLock: true }),
+      /still being published/,
+    );
+    const old = new Date(Date.now() - MALFORMED_LOCK_RECOVERY_GRACE_MS - 1_000);
+    fs.utimesSync(lockPath, old, old);
+    const recovered = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW, { recoverStaleLock: true });
+    assertEpisodePackageOperation(temporary, recovered, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    releaseEpisodePackageOperation(recovered);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("explicit recovery clears an interrupted recovery lease before acquiring the package operation", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-stale-recovery-lease-test-"));
+  const recoveryPath = path.join(temporary, ".source-validation.lifecycle.in-progress.recovering");
+  try {
+    fs.writeFileSync(recoveryPath, YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/episode-package-lifecycle.cjs:recovery",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999_999_999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "stale-lock-recovery" },
+    }), "utf8");
+    assert.throws(
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW),
+      /lock recovery is in progress/,
+    );
+    const recovered = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW, { recoverStaleLock: true });
+    assertEpisodePackageOperation(temporary, recovered, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    releaseEpisodePackageOperation(recovered);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("multi-file state transitions roll back every target when promotion fails", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-file-transaction-test-"));
+  const first = path.join(temporary, "first.yaml"); const second = path.join(temporary, "second.yaml"); const created = path.join(temporary, "created.yaml");
+  fs.writeFileSync(first, "first: old\n", "utf8"); fs.writeFileSync(second, "second: old\n", "utf8");
+  try {
+    assert.throws(() => writeFileSetAtomically(new Map([[first, "first: new\n"], [second, "second: new\n"], [created, "created: true\n"]]), {
+      beforePromote: ({ index }) => { if (index === 1) throw new Error("injected promotion failure"); },
+    }), /injected promotion failure/);
+    assert.equal(fs.readFileSync(first, "utf8"), "first: old\n");
+    assert.equal(fs.readFileSync(second, "utf8"), "second: old\n");
+    assert.equal(fs.existsSync(created), false);
+    assert.deepEqual(fs.readdirSync(temporary).sort(), ["first.yaml", "second.yaml"]);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("multi-file state transitions refuse a concurrent edit and never roll it back", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-file-transaction-concurrent-edit-test-"));
+  const first = path.join(temporary, "first.yaml"); const second = path.join(temporary, "second.yaml");
+  fs.writeFileSync(first, "first: old\n", "utf8"); fs.writeFileSync(second, "second: old\n", "utf8");
+  try {
+    assert.throws(() => writeFileSetAtomically(new Map([[first, "first: new\n"], [second, "second: new\n"]]), {
+      beforePromote: ({ index }) => { if (index === 1) fs.writeFileSync(second, "second: user edit\n", "utf8"); },
+    }), /Transaction target changed before promotion/);
+    assert.equal(fs.readFileSync(first, "utf8"), "first: old\n");
+    assert.equal(fs.readFileSync(second, "utf8"), "second: user edit\n");
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("source validation failure and cancellation use one terminal finalizer", async () => {
+  for (const failure of [new Error("injected failure"), new ValidationCancelledError("injected cancellation")]) {
+    const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validation-finalizer-test-"));
+    const output = path.join(temporary, "link-validation.yaml");
+    fs.writeFileSync(output, "status: previous-success\n", "utf8");
+    const run = markValidationInProgress(output, { sources: "a".repeat(64) });
+    try {
+      await assert.rejects(runOwnedValidation(output, run, async () => { throw failure; }), new RegExp(failure.message));
+      assert.equal(fs.existsSync(validationInProgressPath(output)), false);
+      const marker = YAML.parse(fs.readFileSync(validationFailurePath(output), "utf8"));
+      const attempt = YAML.parse(fs.readFileSync(path.resolve(path.dirname(output), marker.failed_attempt), "utf8"));
+      assert.equal(attempt.failure.outcome, failure instanceof ValidationCancelledError ? "cancelled" : "failed");
+      assert.equal(fs.readFileSync(output, "utf8"), "status: previous-success\n");
+    } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+  }
+});
+
+test("owned validation still finalizes when its optional failure-report transformer fails", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-owned-validation-transformer-test-"));
+  const output = path.join(temporary, "link-validation.yaml");
+  try {
+    const run = markValidationInProgress(output, { sources: "input" });
+    await assert.rejects(
+      runOwnedValidation(output, run, async () => { throw new Error("original failure"); }, { failureReport: () => { throw new Error("transformer failure"); } }),
+      /original failure/,
+    );
+    assert.equal(fs.existsSync(validationInProgressPath(output)), false);
+    const marker = YAML.parse(fs.readFileSync(validationFailurePath(output), "utf8"));
+    const attempt = YAML.parse(fs.readFileSync(path.join(temporary, marker.failed_attempt), "utf8"));
+    assert.equal(attempt.failure.reason, "original failure");
+    assert.equal(attempt.failure.report_transform_error, "transformer failure");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("source validation records signal-driven dependency failures as cancellation", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validation-signal-finalizer-test-"));
+  const output = path.join(temporary, "link-validation.yaml");
+  const run = markValidationInProgress(output, { sources: "a".repeat(64) });
+  try {
+    await assert.rejects(runOwnedValidation(output, run, async () => { throw new Error("request aborted"); }, { isCancelled: () => true }), /request aborted/);
+    const marker = YAML.parse(fs.readFileSync(validationFailurePath(output), "utf8"));
+    const attempt = YAML.parse(fs.readFileSync(path.resolve(path.dirname(output), marker.failed_attempt), "utf8"));
+    assert.equal(attempt.failure.outcome, "cancelled");
+    assert.equal(fs.existsSync(validationInProgressPath(output)), false);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("only a required-LLM validation can complete source-review state", () => {
+  assert.equal(sourceValidationTerminalOutcome({ unresolved: false, requireLlm: false }), "pending");
+  assert.equal(sourceValidationTerminalOutcome({ unresolved: false, requireLlm: true }), "complete");
+  assert.equal(sourceValidationTerminalOutcome({ unresolved: true, requireLlm: true }), "failed");
+});
+
 test("script-review reset invalidates downstream state and approval fingerprints the current script", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-script-review-test-"));
   try {
@@ -66,6 +322,7 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(episodeAfterReset.review.editorial_status, "reapproval_required");
     assert.equal(episodeAfterReset.review.pending_script_sha256, sha256Text(migratedScript));
     assert.equal(episodeAfterReset.source_verification.relevance_review, "pending");
+    assert.equal(episodeAfterReset.source_verification.validation_contract, "source-relevance-v1");
     assert.equal(episodeAfterReset.runtime_actual_seconds, null);
     assert.equal(episodeAfterReset.audio.status, "not_rendered");
     assert.equal(episodeAfterReset.audio.publication_day_validation, "pending");
@@ -74,11 +331,14 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.deepEqual(episodeAfterReset.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_RESET);
     assert.equal(audioAfterReset.current_candidate_render, null);
     assert.equal(episodeAfterReset.audio.mix_config, "audio-mix.yaml");
-    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "audio-mix.yaml"), "utf8")), { schema_version: 1, music: { enabled: false } });
+    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "audio-mix.yaml"), "utf8")), { schema_version: 1, music: { enabled: false, disabled_reason: "No established series music treatment is recorded for this historical render." } });
     assert.equal(audioAfterReset.status, undefined);
     assert.equal(audioAfterReset.publication_day_validation, undefined);
     assert.equal(audioAfterReset.required_before_release, undefined);
     assert.equal(audioAfterReset.chapter_markers.status, undefined);
+    assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
+    const migratedChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
+    assert.doesNotMatch(migratedChecklist, /qa-id: claim-source-preflight/);
     const hostingAfterReset = YAML.parse(fs.readFileSync(path.join(temporary, "hosting-metadata.yaml"), "utf8"));
     assert.equal(hostingAfterReset.handoff_status, undefined);
     assert.equal(hostingAfterReset.release_readiness, undefined);
@@ -86,8 +346,9 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(reset.scriptSha256, sha256Text(migratedScript));
     assert.doesNotMatch(fs.readFileSync(path.join(temporary, "master-script.md"), "utf8"), /^\*\*Production status:\*\*/m);
 
-    episodeAfterReset.source_verification.relevance_review = "complete";
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(episodeAfterReset));
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n", "utf8");
+    writePassingSourceGate(temporary, episodeAfterReset);
     approveScriptReview({ episodePath: temporary });
     const approved = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
     assert.equal(approved.status, "source_relevance_review_complete");
@@ -101,8 +362,9 @@ test("script-review reset invalidates downstream state and approval fingerprints
 });
 
 test("historical music metadata migrates to the explicit series mix contract", () => {
-  assert.deepEqual(migratedAudioMix({}), { schema_version: 1, music: { enabled: false } });
-  assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "custom-music.mp3" } }), { schema_version: 1, music: { enabled: false } });
+  const noMusic = { schema_version: 1, music: { enabled: false, disabled_reason: "No established series music treatment is recorded for this historical render." } };
+  assert.deepEqual(migratedAudioMix({}), noMusic);
+  assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "custom-music.mp3" } }), noMusic);
   assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3" } }), {
     schema_version: 1,
     music: {
@@ -153,6 +415,19 @@ test("pre-hosting validation accepts the approved-draft package flag", () => {
     episode: "episodes/core-10-aircraft-performance-density-altitude",
     packageOnly: true,
   });
+  assert.deepEqual(parsePreHostingArgs(["--episode", "episodes/core-10-aircraft-performance-density-altitude", "--recover-stale-lock"]), {
+    episode: "episodes/core-10-aircraft-performance-density-altitude",
+    packageOnly: false,
+    "recover-stale-lock": true,
+  });
+});
+
+test("hosting-handoff creation accepts the shared stale-lease recovery flag", () => {
+  assert.deepEqual(parseHandoffArgs(["--episode", "episodes/core-test", "--out", "/tmp/core-test", "--recover-stale-lock"]), {
+    episode: "episodes/core-test",
+    out: "/tmp/core-test",
+    "recover-stale-lock": true,
+  });
 });
 
 test("public release identities keep core, supplemental, and rough-spots tags distinct", () => {
@@ -194,14 +469,15 @@ test("publication preparation synchronizes derived release facts without staging
   const episode = { id: "core-14", track: "core", production_contract_version: 2, title: "Airport Operations", version: "0.1.12", runtime_actual_seconds: 2579, source_verification: { relevance_review: "complete" }, audio: {}, hosting: {} };
   const hosting = { publisher_release: { description: "Listener-facing description.", guid: "test-guid" }, provenance: {} };
   const sourceValidation = { checked_at_utc: "2026-09-09T12:59:53.641Z", llm_requested: true };
-  const synchronized = synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publishedAt: "2026-09-09T13:00:08Z" });
+  const publicationLinkValidation = { checked_at_utc: "2026-09-09T13:00:08Z", llm_requested: false, validation_kind: "publication_link_check" };
+  const synchronized = synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publicationLinkValidation, publishedAt: "2026-09-09T13:00:08Z" });
   assert.equal(synchronized.episode.status, "ready_for_hosting_pr");
   assert.equal(synchronized.episode.source_verification.verified_at_utc, sourceValidation.checked_at_utc);
   assert.equal(synchronized.hosting.publisher_release.duration, "00:42:59");
   assert.equal(synchronized.hosting.publisher_release.number, 14);
   assert.deepEqual(synchronized.hosting.publisher_release.audio, {});
-  assert.throws(() => synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publishedAt: "2026-09-10T13:00:08Z" }), PublicationPreparationError);
-  assert.throws(() => synchronizeReleaseMetadata({ episode: { ...episode, production_contract_version: undefined }, hosting, sourceValidation, publishedAt: "2026-09-09T13:00:08Z" }), /preserved legacy package/);
+  assert.throws(() => synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publicationLinkValidation, publishedAt: "2026-09-10T13:00:08Z" }), PublicationPreparationError);
+  assert.throws(() => synchronizeReleaseMetadata({ episode: { ...episode, production_contract_version: undefined }, hosting, sourceValidation, publicationLinkValidation, publishedAt: "2026-09-09T13:00:08Z" }), /preserved legacy package/);
 });
 
 test("legacy publication preparation leaves package bytes untouched", () => {
@@ -264,31 +540,70 @@ test("pre-hosting validation requires consistent release records", () => {
   const narrationSha256 = require("crypto").createHash("sha256").update(narration).digest("hex");
   fs.writeFileSync(masterScriptPath, masterScript); fs.writeFileSync(narrationPath, narration);
   const sourceUrl = "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html";
-  fs.writeFileSync(path.join(episodePath, "sources.yaml"), `sources:\n  - id: source-a\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    sources: [source-a]\n");
+  fs.writeFileSync(path.join(episodePath, "sources.yaml"), `sources:\n  - id: source-a\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n");
   const renderRecord = (chapterMarkers = markers) => ({ script: narrationPath, script_sha256: narrationSha256, audio: { output: audioPath, sha256, duration_seconds: 2, quality: { result: "passed", report: qualityPath } }, chapters: { audio_sha256: sha256, markers: chapterMarkers } });
   fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
   const qualityRecord = (overrides = {}) => ({ result: "passed", manifest: renderPath, output: { path: audioPath, sha256, probe: { format: { duration: "2.000000" } } }, ...overrides });
   fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord())); fs.writeFileSync(reviewPath, `<meta name="ppl-audio-sha256" content="${sha256}">`);
-  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", production_contract_version: 2, title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml", mix_config: "audio-mix.yaml", status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", chapter_markers: "embedded_and_ffprobe_validated" }, hosting: { metadata: "hosting-metadata.yaml", handoff_status: "ready_for_hosting_pr" }, public_notes: "show-notes.md", source_verification: { status: "source_relevance_review_complete", verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }));
-  fs.writeFileSync(path.join(episodePath, "audio-mix.yaml"), "schema_version: 1\nmusic:\n  enabled: false\n");
+  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", production_contract_version: 2, title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml", mix_config: "audio-mix.yaml", status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", chapter_markers: "embedded_and_ffprobe_validated" }, hosting: { metadata: "hosting-metadata.yaml", handoff_status: "ready_for_hosting_pr" }, public_notes: "show-notes.md", source_verification: { validation_contract: "source-relevance-v1", status: "source_relevance_complete", verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }));
+  fs.writeFileSync(path.join(episodePath, "audio-mix.yaml"), "schema_version: 1\nmusic:\n  enabled: false\n  disabled_reason: Historical fixture has no series music treatment.\n");
   fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { audio_sha256: sha256 } }));
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const linkValidation = () => ({ checked_at_utc: "2026-08-24T13:32:00Z", input_sha256: inputSha256, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
+  const linkValidation = () => { const runID = crypto.randomUUID(); return { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } }] }; };
+  const publicationLinkValidation = () => ({
+    schema_version: 1,
+    validator: "scripts/validate-source-links.cjs",
+    validation_kind: "publication_link_check",
+    run_id: crypto.randomUUID(),
+    checked_at_utc: "2026-08-24T13:32:00Z",
+    llm_requested: false,
+    llm_model: null,
+    input_sha256: inputSha256,
+    claim_mapping: { valid: true },
+    master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 },
+    show_notes_mapping: { valid: true },
+    show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }],
+    results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }],
+  });
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
-  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->"].map((line) => `- [x] ${line}`).join("\n"));
+  fs.writeFileSync(path.join(episodePath, "publication-link-validation.yaml"), YAML.stringify(publicationLinkValidation()));
+  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->"].map((line) => `- [x] ${line}`).join("\n"));
   try {
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
+    const formalReviewFromPriorDay = linkValidation();
+    formalReviewFromPriorDay.checked_at_utc = "2026-08-23T13:32:00Z";
+    formalReviewFromPriorDay.authorization.attested_at_utc = "2026-08-23T13:32:00Z";
+    const priorDayEpisode = YAML.parse(fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8"));
+    priorDayEpisode.source_verification.verified_at_utc = formalReviewFromPriorDay.checked_at_utc;
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(formalReviewFromPriorDay));
+    fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify(priorDayEpisode));
+    assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
+    fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ ...priorDayEpisode, source_verification: { ...priorDayEpisode.source_verification, verified_at_utc: "2026-08-24T13:32:00Z" } }));
+    fs.unlinkSync(path.join(episodePath, "publication-link-validation.yaml"));
+    const missingPublicationCheck = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(missingPublicationCheck.valid, false); assert.match(missingPublicationCheck.errors.join("\n"), /Missing required file publication-link-validation\.yaml/);
+    fs.writeFileSync(path.join(episodePath, "publication-link-validation.yaml"), YAML.stringify({ ...publicationLinkValidation(), llm_requested: true, llm_model: "test-model" }));
+    const replacedFormalReview = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(replacedFormalReview.valid, false); assert.match(replacedFormalReview.errors.join("\n"), /must not replace the formal LLM source-relevance review/);
+    fs.writeFileSync(path.join(episodePath, "publication-link-validation.yaml"), YAML.stringify(publicationLinkValidation()));
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml.failed"), "run_id: failed-run\n", "utf8");
     const failedSourceValidation = validatePreHosting({ episodePath, cwd: temporary });
-    assert.equal(failedSourceValidation.valid, false); assert.match(failedSourceValidation.errors.join("\n"), /most recent source validation/);
+    assert.equal(failedSourceValidation.valid, false); assert.match(failedSourceValidation.errors.join("\n"), /most recent source-relevance validation failed/);
     fs.unlinkSync(path.join(episodePath, "link-validation.yaml.failed"));
     const authorizedChecklist = fs.readFileSync(path.join(episodePath, "qa-checklist.md"), "utf8");
-    fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), authorizedChecklist.replace(/^.*openai-source-review-authorization.*\n?/m, ""));
+    const validationWithoutAuthorization = linkValidation(); delete validationWithoutAuthorization.authorization;
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(validationWithoutAuthorization));
     const missingAuthorization = validatePreHosting({ episodePath, cwd: temporary });
-    assert.equal(missingAuthorization.valid, false); assert.match(missingAuthorization.errors.join("\n"), /explicit authorization before sending source material to OpenAI/);
-    fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), authorizedChecklist);
+    assert.equal(missingAuthorization.valid, false); assert.match(missingAuthorization.errors.join("\n"), /source-review authorization attestation for this validation run/);
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
+    const validationWithoutModel = linkValidation(); delete validationWithoutModel.llm_model;
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(validationWithoutModel));
+    const missingModel = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(missingModel.valid, false); assert.match(missingModel.errors.join("\n"), /LLM review model/);
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
     const readyEpisodeMetadata = YAML.parse(fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8"));
     const pendingPublicationEpisode = { ...readyEpisodeMetadata, audio: { ...readyEpisodeMetadata.audio, publication_day_validation: "pending" } };
     fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify(pendingPublicationEpisode));
@@ -316,7 +631,7 @@ test("pre-hosting validation requires consistent release records", () => {
     const originalResearchPacket = fs.readFileSync(researchPacketPath, "utf8");
     const originalProductionLog = fs.readFileSync(productionLogPath, "utf8");
     const draftMasterScript = `# Test\n\n**Version:** 0.1.0\n\n**INSTRUCTOR:**\n\nA test lesson.\n`;
-    const draftShowNotes = `# Test\n\n**Episode:** core-01\n**Version:** 0.1.0\n\n[FAA reference](${sourceUrl})\n`;
+    const draftShowNotes = `# Test\n\n**Episode:** 1\n**Version:** 0.1.0\n\n[FAA reference](${sourceUrl})\n`;
     const draftLinkValidation = { ...linkValidation(), checked_at_utc: "2026-08-24T13:32:00.123Z" };
     const approvedDraftEpisode = {
       ...episodeMetadata,
@@ -334,7 +649,7 @@ test("pre-hosting validation requires consistent release records", () => {
     draftLinkValidation.input_sha256 = sourceValidationInputHashes(episodePath);
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
-    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`. <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. <!-- qa-id: independent-script-review -->\n- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`. <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. <!-- qa-id: independent-script-review -->\n- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->\n");
     fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0 and was re-verified for release.\n");
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
@@ -387,17 +702,17 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(showNotesPath, draftShowNotes.replace("**Version:** 0.1.0", "**Version:** 0.1.01"));
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({ ...draftLinkValidation, input_sha256: sourceValidationInputHashes(episodePath) }));
     const visibleShowNotesPrefix = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
-    assert.equal(visibleShowNotesPrefix.valid, false); assert.match(visibleShowNotesPrefix.errors.join("\n"), /show-notes\.md episode and version must match/);
+    assert.equal(visibleShowNotesPrefix.valid, false); assert.match(visibleShowNotesPrefix.errors.join("\n"), /show-notes\.md episode display label and version must match/);
     fs.writeFileSync(showNotesPath, draftShowNotes);
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent spoken-script review remains pending. The editorial review was accepted.\n");
     const pendingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(pendingIndependentReview.valid, false); assert.match(pendingIndependentReview.errors.join("\n"), /independent spoken-script review/);
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
-    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n");
     const missingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(missingIndependentReview.valid, false); assert.match(missingIndependentReview.errors.join("\n"), /independent spoken-script review/);
-    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson <!-- qa-id: independent-script-review -->\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson <!-- qa-id: independent-script-review -->\n");
     fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...approvedDraftEpisode, status: "ready_for_hosting_pr" }));
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
@@ -496,6 +811,15 @@ test("claim mapping rejects claims omitted from a source ledger entry", () => {
   assert.match(result.errors.join("\n"), /not supported by any source ledger entry/);
 });
 
+test("claim mapping requires factual text for every claim", () => {
+  const result = validateClaimMappings(
+    { sources: [source("source-a", ["claim-a"])] },
+    { claims: [{ id: "claim-a", sources: ["source-a"] }] },
+  );
+  assert.equal(result.valid, false);
+  assert.match(result.errors.join("\n"), /must declare non-empty factual claim text/);
+});
+
 test("claim mapping rejects source references that do not exist in the claim inventory", () => {
   const result = validateClaimMappings(
     { sources: [source("aim", ["missing-claim"])] },
@@ -524,6 +848,21 @@ test("claim mapping rejects duplicate source identifiers", () => {
   );
   assert.equal(result.valid, false);
   assert.match(result.errors.join("\n"), /duplicate source id aim/);
+});
+
+test("claim mapping reports malformed relationship collections without throwing", () => {
+  const sourceResult = validateClaimMappings(
+    { sources: [{ id: "source-a", supports_claims: "claim-a" }] },
+    { claims: [{ id: "claim-a", sources: ["source-a"] }] },
+  );
+  assert.equal(sourceResult.valid, false);
+  assert.match(sourceResult.errors.join("\n"), /supports_claims as an array/);
+  const claimResult = validateClaimMappings(
+    { sources: [{ id: "source-a", supports_claims: ["claim-a"] }] },
+    { claims: [{ id: "claim-a", sources: "source-a" }] },
+  );
+  assert.equal(claimResult.valid, false);
+  assert.match(claimResult.errors.join("\n"), /sources as an array/);
 });
 
 test("claim mapping rejects source-side claims that do not declare the source", () => {
@@ -725,16 +1064,59 @@ test("PDF page extraction is cancelled and destroys the pending loading task", a
   assert.equal(destroyed, true);
 });
 
-test("source validation permits legacy show notes when no manifest is configured", () => {
+test("source validation requires a manifest for current-package show notes", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
   const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml");
   fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
   fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification: {}\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Existing episode notes\n\n[Source](https://example.invalid)\n");
   try {
     const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
-    assert.equal(result.status, 0, result.stderr);
-    assert.match(result.stdout, /show notes without a manifest \(not configured\)/);
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /requires canonical show-notes\.md and show-notes-manifest\.yaml files/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("source validation records malformed canonical input as a failed attempt", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-malformed-input-test-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml"); const reportPath = path.join(temporary, "link-validation.yaml");
+  fs.writeFileSync(sourcesPath, "sources: [\n", "utf8");
+  fs.writeFileSync(claimsPath, "claims: []\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification: {}\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+  try {
+    const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--output", reportPath, "--require-llm"], { encoding: "utf8", timeout: 2_000 });
+    assert.equal(result.status, 1, result.stderr);
+    assert.equal(fs.existsSync(validationInProgressPath(reportPath)), false);
+    assert.equal(fs.existsSync(validationFailurePath(reportPath)), true);
+    const attempts = fs.readdirSync(path.join(temporary, ".validation-attempts"));
+    assert.equal(attempts.length, 1);
+    const episode = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    assert.equal(episode.source_verification.relevance_review, "failed");
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("formal source validation runs without a retired preflight record", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-source-review-test-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml"); const reportPath = path.join(temporary, "link-validation.yaml");
+  try {
+    fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
+    fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n");
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification:\n  validation_contract: source-relevance-v1\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Formal review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
+    const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--output", reportPath, "--require-llm"], { encoding: "utf8", timeout: 2_000 });
+    assert.equal(result.status, 1, result.stderr);
+    assert.doesNotMatch(result.stderr, /preflight/);
+    assert.match(fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8"), /- \[x\] Formal review authorization/);
+    assert.equal(fs.existsSync(validationFailurePath(reportPath)), true);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -747,6 +1129,9 @@ test("source validation rejects alternate source and claim inputs", () => {
   const sources = "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n";
   const claims = "claims:\n  - id: claim-a\n    sources: [source-a]\n";
   fs.writeFileSync(sourcesPath, sources); fs.writeFileSync(claimsPath, claims); fs.writeFileSync(alternateSourcesPath, sources); fs.writeFileSync(alternateClaimsPath, claims);
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification: {}\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   try {
     for (const [selectedSources, selectedClaims] of [[alternateSourcesPath, claimsPath], [sourcesPath, alternateClaimsPath]]) {
       const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", selectedSources, "--claims", selectedClaims, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
@@ -763,6 +1148,9 @@ test("source validation dry runs fail when claim mappings are invalid", () => {
   const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml");
   fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [missing-claim]\n");
   fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification: {}\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   try {
     const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
     assert.equal(result.status, 1, result.stderr);
@@ -817,9 +1205,10 @@ test("per-claim relevance fails closed on a partially supporting assessment", ()
 });
 
 test("citation-group relevance accepts an aggregate partial verdict when every mapped claim and locator supports", () => {
-  const result = { citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
+  const result = { linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
   assert.equal(sourceRelevanceResultValid(result), true);
   assert.equal(sourceRelevanceResultValid({ ...result, claim_assessments: { valid: false } }), false);
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance: { ...result.relevance, assessment: { ...result.relevance.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } } }), false);
 });
 
 test("source fetch timeout remains active while the response body is read", async () => {
@@ -925,10 +1314,13 @@ test("source relevance assesses freshly fetched text instead of a ledger excerpt
     assert.match(request.input, /\"type\":\"guidance\"/);
     assert.match(request.instructions, /citation group/);
     assert.match(request.instructions, /combines the claim assessments from every tagged source/);
+    assert.match(request.instructions, /Do not request a stylistic rewrite/);
+    assert.match(request.instructions, /non-material omission/);
   } finally {
     if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
   }
 });
+
 
 test("source validation locks report ownership and refuses unsafe recovery", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-lock-test-"));
@@ -959,6 +1351,395 @@ test("source validation locks report ownership and refuses unsafe recovery", () 
     fs.unlinkSync(validationInProgressPath(outputPath));
     fs.mkdirSync(validationRecoveryPath(outputPath));
     assert.throws(() => markValidationInProgress(outputPath, { sources: "a" }), /lock recovery is in progress/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("source-validation lifecycle lock serializes formal review attempts", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-validation-lifecycle-test-"));
+  try {
+    const first = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    assert.throws(
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW),
+      /already in progress or was interrupted/,
+    );
+    releaseEpisodePackageOperation(first);
+    const second = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    releaseEpisodePackageOperation(second);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("formal source validation acquires the package lease before reading package inputs", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-formal-validation-lease-test-"));
+  try {
+    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    await assert.rejects(
+      validateOnce({
+        options: {
+          sources: path.join(temporary, "sources.yaml"),
+          claims: path.join(temporary, "claim-inventory.yaml"),
+          output: path.join(temporary, "link-validation.yaml"),
+          recoverStaleLock: false,
+        },
+        progress: { emit() {}, phaseStarted() {}, itemCompleted() {}, phaseCompleted() {} },
+        ecfrRateLimiter: { close() {} },
+        cancellation: new AbortController(),
+        isCancelled: () => false,
+        refreshCount: 0,
+        finalRefreshAttempt: false,
+      }),
+      /already in progress or was interrupted/,
+      "the held lease must fail before the missing episode.yaml can be observed",
+    );
+    releaseEpisodePackageOperation(lease);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("publication-day link checks preserve the formal source review and episode state", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-link-check-test-"));
+  try {
+    const masterScript = "# Test\n\n## Lesson\n\n**INSTRUCTOR:**\n\nA source-backed fact.\n\n[Source: sources.yaml#source-a]\n";
+    const episode = {
+      id: "core-01",
+      track: "core",
+      production_contract_version: 2,
+      source_verification: {
+        validation_contract: "source-relevance-v1",
+        status: "source_relevance_complete",
+        relevance_review: "complete",
+        verified_at_utc: "2026-09-10T00:00:00Z",
+        link_validation: "link-validation.yaml",
+        show_notes_manifest: "show-notes-manifest.yaml",
+      },
+    };
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(episode), "utf8");
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    url: https://example.invalid/source\n    locator: Test section\n    supports_claims: [claim-a]\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: A source-backed fact.\n    sources: [source-a]\n    script_sections: [Lesson]\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "master-script.md"), masterScript, "utf8");
+    fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+    const formalReport = "formal-review: preserved\n";
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), formalReport, "utf8");
+    const originalEpisode = fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8");
+    await validateOnce({
+      options: {
+        sources: path.join(temporary, "sources.yaml"),
+        claims: path.join(temporary, "claim-inventory.yaml"),
+        publicationCheck: true,
+        llm: false,
+        requireLlm: false,
+        dryRun: false,
+        recoverStaleLock: false,
+        model: "test-model",
+        httpConcurrency: 1,
+        httpPerOrigin: 1,
+        llmConcurrency: 1,
+      },
+      progress: { emit() {}, phaseStarted() {}, itemCompleted() {}, phaseCompleted() {} },
+      ecfrRateLimiter: { close() {} },
+      cancellation: new AbortController(),
+      isCancelled: () => false,
+      refreshCount: 0,
+      finalRefreshAttempt: false,
+      fetchImpl: async () => new Response("<html><title>Source</title>A source-backed fact.</html>", { status: 200, headers: { "content-type": "text/html" } }),
+    });
+    assert.equal(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"), originalEpisode);
+    assert.equal(fs.readFileSync(path.join(temporary, "link-validation.yaml"), "utf8"), formalReport);
+    const publicationReport = YAML.parse(fs.readFileSync(path.join(temporary, "publication-link-validation.yaml"), "utf8"));
+    assert.equal(publicationReport.validation_kind, "publication_link_check");
+    assert.equal(publicationReport.llm_requested, false);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("source-validation dry runs recover only their confirmed-dead package lease", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-dry-run-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/validate-source-links.cjs:formal-review-lifecycle",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "source-validation" },
+    }));
+    const result = childProcess.spawnSync(process.execPath, [
+      path.join(process.cwd(), "scripts", "validate-source-links.cjs"),
+      "--sources", path.join(temporary, "sources.yaml"),
+      "--claims", path.join(temporary, "claim-inventory.yaml"),
+      "--dry-run",
+      "--recover-stale-lock",
+    ], { cwd: process.cwd(), encoding: "utf8" });
+    assert.notEqual(result.status, 0, "the incomplete fixture should fail after recovering, not validate inputs");
+    assert.doesNotMatch(`${result.stdout}\n${result.stderr}`, /already in progress or was interrupted/);
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+
+test("package lease blocks release consumers and state writers for a source-review rerun", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-package-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({
+      production_contract_version: 2,
+      source_verification: { validation_contract: "source-relevance-v1" },
+    }));
+    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+    assert.throws(
+      () => validatePreHosting({ episodePath: temporary }),
+      /already in progress or was interrupted/,
+      "a release validator must not read a package while source review owns it",
+    );
+    fs.writeFileSync(path.join(temporary, "narration.md"), "# Test\n", "utf8");
+    const render = childProcess.spawnSync(process.execPath, [path.join(process.cwd(), "scripts", "render_episode_realtime.cjs"), "--script", path.join(temporary, "narration.md"), "--audio-dir", temporary, "--episode-id", "core-test", "--dry-run"], { cwd: process.cwd(), encoding: "utf8" });
+    assert.notEqual(render.status, 0);
+    assert.match(`${render.stdout}\n${render.stderr}`, /already in progress or was interrupted/,
+      "the renderer must acquire the package lease before inspecting prerequisites");
+    assert.throws(
+      () => resetScriptReview({ episodePath: temporary }),
+      /already in progress or was interrupted/,
+      "a script-state writer must not overwrite a source-review transition",
+    );
+    assert.throws(
+      () => updateEpisodeSourceState(temporary, "pending"),
+      /matching episode package lease is required/,
+      "state transitions must prove ownership rather than writing episode.yaml directly",
+    );
+    updateEpisodeSourceState(temporary, "pending", null, lease);
+    const transitioned = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    assert.equal(transitioned.source_verification.status, "source_relevance_pending");
+    assert.equal(transitioned.production_state_revision, 1, "a committed state transition must advance the package revision");
+    releaseEpisodePackageOperation(lease);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("stale package-lease recovery is restricted to the interrupted operation", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-operation-owned-recovery-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/prepare-publication.cjs",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "episode-package" },
+    }));
+    assert.throws(
+      () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.SCRIPT_RESET, { recoverStaleLock: true }),
+      /belongs to scripts\/prepare-publication\.cjs/,
+    );
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), true);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("handoff source snapshot excludes transient package-lease artifacts", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-handoff-source-snapshot-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-test\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), "transient\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".qa-checklist.authorization.lock"), "transient\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml.failed"), "transient\n", "utf8");
+    const files = sourcePackageFiles(temporary);
+    assert.deepEqual(Object.keys(files).sort(), ["episode.yaml"]);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("publication recovery restores a partial package only through explicit stale-lock recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-recovery-test-"));
+  const output = path.join(temporary, "handoff");
+  try {
+    const originalEpisode = "id: core-test\nstatus: ready\n";
+    const originalHosting = "publisher_release: {}\n";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-test\nstatus: partially-prepared\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  published_at: changed\n", "utf8");
+    const preparedEpisode = "id: core-test\nstatus: partially-prepared\n";
+    const preparedHosting = "publisher_release:\n  published_at: changed\n";
+    fs.writeFileSync(path.join(temporary, PREPARATION_RECOVERY_FILE), YAML.stringify({
+      schema_version: 1,
+      episode_path: temporary,
+      output_dir: output,
+      original_episode: originalEpisode,
+      original_hosting: originalHosting,
+      target_episode: preparedEpisode,
+      target_hosting: preparedHosting,
+      target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
+      target_source_package_files: {
+        "episode.yaml": crypto.createHash("sha256").update(preparedEpisode).digest("hex"),
+        "hosting-metadata.yaml": crypto.createHash("sha256").update(preparedHosting).digest("hex"),
+      },
+    }));
+    assert.throws(
+      () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: false }),
+      /rerun with --recover-stale-lock/,
+    );
+    assert.equal(reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: true }), null);
+    assert.equal(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"), originalEpisode);
+    assert.equal(fs.readFileSync(path.join(temporary, "hosting-metadata.yaml"), "utf8"), originalHosting);
+    assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("publication recovery refuses to overwrite package bytes outside its recorded transaction", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-recovery-edited-test-"));
+  const output = path.join(temporary, "handoff");
+  try {
+    const originalEpisode = "id: core-test\nstatus: ready\n";
+    const originalHosting = "publisher_release: {}\n";
+    const preparedEpisode = "id: core-test\nstatus: partially-prepared\n";
+    const preparedHosting = "publisher_release:\n  published_at: changed\n";
+    const userEditedEpisode = "id: core-test\nstatus: user-edited\n";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), userEditedEpisode, "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), preparedHosting, "utf8");
+    fs.writeFileSync(path.join(temporary, PREPARATION_RECOVERY_FILE), YAML.stringify({
+      schema_version: 1,
+      episode_path: temporary,
+      output_dir: output,
+      original_episode: originalEpisode,
+      original_hosting: originalHosting,
+      target_episode: preparedEpisode,
+      target_hosting: preparedHosting,
+      target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
+      target_source_package_files: {
+        "episode.yaml": crypto.createHash("sha256").update(preparedEpisode).digest("hex"),
+        "hosting-metadata.yaml": crypto.createHash("sha256").update(preparedHosting).digest("hex"),
+      },
+    }));
+    assert.throws(
+      () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: true }),
+      /refusing recovery/,
+    );
+    assert.equal(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"), userEditedEpisode);
+    assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), true);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("publication recovery refuses a changed source package even when metadata is still journaled", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-recovery-source-edited-test-"));
+  const output = path.join(temporary, "handoff");
+  try {
+    const originalEpisode = "id: core-test\nstatus: ready\n";
+    const originalHosting = "publisher_release: {}\n";
+    const preparedEpisode = "id: core-test\nstatus: partially-prepared\n";
+    const preparedHosting = "publisher_release:\n  published_at: changed\n";
+    const originalScript = "# Original\n";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), preparedEpisode, "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), preparedHosting, "utf8");
+    fs.writeFileSync(path.join(temporary, "master-script.md"), "# Changed after interruption\n", "utf8");
+    fs.writeFileSync(path.join(temporary, PREPARATION_RECOVERY_FILE), YAML.stringify({
+      schema_version: 1,
+      episode_path: temporary,
+      output_dir: output,
+      original_episode: originalEpisode,
+      original_hosting: originalHosting,
+      target_episode: preparedEpisode,
+      target_hosting: preparedHosting,
+      target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
+      target_source_package_files: {
+        "episode.yaml": crypto.createHash("sha256").update(preparedEpisode).digest("hex"),
+        "hosting-metadata.yaml": crypto.createHash("sha256").update(preparedHosting).digest("hex"),
+        "master-script.md": crypto.createHash("sha256").update(originalScript).digest("hex"),
+      },
+    }));
+    assert.throws(
+      () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: true }),
+      /Source package files changed/,
+    );
+    assert.equal(fs.readFileSync(path.join(temporary, "master-script.md"), "utf8"), "# Changed after interruption\n");
+    assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), true);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("renderer can safely recover a confirmed-dead package lease", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-render-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "narration.md"), "# Test\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/render_episode_realtime.cjs",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { episode_yaml: "stale" },
+    }));
+    const render = childProcess.spawnSync(process.execPath, [path.join(process.cwd(), "scripts", "render_episode_realtime.cjs"), "--script", path.join(temporary, "narration.md"), "--audio-dir", temporary, "--episode-id", "core-test", "--dry-run", "--recover-stale-lock"], { cwd: process.cwd(), encoding: "utf8" });
+    assert.notEqual(render.status, 0, "the incomplete fixture should fail after recovering, not render audio");
+    assert.doesNotMatch(`${render.stdout}\n${render.stderr}`, /already in progress or was interrupted/);
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("script-review reset exposes confirmed-dead package-lease recovery", () => {
+  assert.deepEqual(
+    parseScriptReviewArgs(["--episode", "episodes/core-test", "--reset", "--recover-stale-lock"]),
+    { episode: "episodes/core-test", reset: true, "recover-stale-lock": true },
+  );
+});
+
+test("pre-hosting validation exposes confirmed-dead package-lease recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-prehost-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/validate-pre-hosting.cjs",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { episode_yaml: "stale" },
+    }));
+    assert.throws(() => validatePreHosting({ episodePath: temporary }), /already in progress or was interrupted/);
+    const result = validatePreHosting({ episodePath: temporary, recoverStaleLock: true });
+    assert.equal(result.valid, false, "the incomplete fixture should fail after recovering, not validate as a release candidate");
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("direct handoff creation exposes confirmed-dead package-lease recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-handoff-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/prepare-hosting-handoff.cjs",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "episode-package" },
+    }));
+    let error;
+    try { createHostingHandoff({ episodePath: temporary, outputDir: path.join(temporary, "handoff"), recoverStaleLock: true }); }
+    catch (caught) { error = caught; }
+    assert.ok(error, "the incomplete fixture should fail after recovering, not create a handoff");
+    assert.doesNotMatch(error.message, /already in progress or was interrupted/);
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -1251,20 +2032,37 @@ test("realtime renderer requires completed source-relevance review before render
   const masterScript = "# Test\n\n**INSTRUCTOR:**\n\nLesson.\n";
   fs.writeFileSync(scriptPath, "# Test narration\n", "utf8");
   fs.writeFileSync(path.join(temporary, "master-script.md"), masterScript, "utf8");
-  fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ source_verification: { relevance_review: "complete" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }), "utf8");
-  fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    supports_claims: [claim-a]\n", "utf8");
-  fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    sources: [source-a]\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { validation_contract: "source-relevance-v1", status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: "2026-09-10T00:00:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }), "utf8");
+  fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   const inputSha256 = sourceValidationInputHashes(temporary);
-  const validation = (results) => YAML.stringify({ llm_requested: true, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] });
+  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
   fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
+  fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
   try {
-    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } };
+    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ ...passingResult, link: { valid: false } }]), "utf8");
-    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /unresolved source-relevance findings/);
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /source- and claim-level relevance assessments/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
     assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
+    const wrongProducerValidation = YAML.parse(fs.readFileSync(path.join(temporary, "link-validation.yaml"), "utf8"));
+    wrongProducerValidation.validator = "manual-edit";
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(wrongProducerValidation), "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /must be produced by scripts\/validate-source-links\.cjs/);
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
+    const timestamplessEpisode = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    const timestamplessValidation = YAML.parse(fs.readFileSync(path.join(temporary, "link-validation.yaml"), "utf8"));
+    timestamplessEpisode.source_verification.verified_at_utc = null;
+    timestamplessValidation.checked_at_utc = null;
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(timestamplessEpisode), "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(timestamplessValidation), "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /must record a valid UTC source-review timestamp/);
+    timestamplessEpisode.source_verification.verified_at_utc = "2026-09-10T00:00:00Z";
+    timestamplessValidation.checked_at_utc = "2026-09-10T00:00:00Z";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(timestamplessEpisode), "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(timestamplessValidation), "utf8");
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /does not cover every current source/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
@@ -1275,9 +2073,284 @@ test("realtime renderer requires completed source-relevance review before render
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /most recent source-relevance validation failed/);
     fs.unlinkSync(path.join(temporary, "link-validation.yaml.failed"));
     fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources: [changed]\n", "utf8");
-    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /not bound to the current sources/);
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");
-    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /marked complete/);
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /bound to the current sources/);
+    const pendingEpisode = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    pendingEpisode.source_verification.status = "source_relevance_pending";
+    pendingEpisode.source_verification.relevance_review = "required_before_render";
+    pendingEpisode.source_verification.verified_at_utc = null;
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(pendingEpisode), "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /source_relevance_complete/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer refuses a contract-v2 episode package", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-renderer-gate-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  try {
+    fs.writeFileSync(scriptPath, "# Test\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "{ production_contract_version: 2.0 }\n", "utf8");
+    const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
+    assert.equal(result.status, 2);
+    assert.match(result.stderr, /legacy candidate reproduction only/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("episode contract reader serializes an absent marker as a legacy package", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-contract-reader-test-"));
+  try {
+    const episodePath = path.join(temporary, "episode.yaml");
+    fs.writeFileSync(episodePath, "id: core-01\n", "utf8");
+    const result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
+    assert.equal(result.status, 0);
+    assert.deepEqual(JSON.parse(result.stdout), { kind: "legacy", episode_id: "core-01", legacy_published_release: null });
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy publication evidence requires matching release metadata", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-publication-evidence-test-"));
+  try {
+    const episodePath = path.join(temporary, "episode.yaml");
+    fs.writeFileSync(episodePath, "id: core-01\npublished_at: 2026-09-10T00:00:00Z\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  id: core-01\n  published_at: 2026-09-10T00:00:00Z\n", "utf8");
+    let result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
+    assert.equal(result.status, 0);
+    assert.equal(JSON.parse(result.stdout).legacy_published_release, null);
+
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), YAML.stringify({
+      handoff_status: "published",
+      publisher_release: { id: "core-01", title: "Test episode", published_at: "2026-09-10T00:00:00Z" },
+      provenance: { content_version: "0.1.0" },
+      published_release: {
+        publisher_repository: "https://github.com/example/publisher",
+        release_commit: "a".repeat(40),
+        deployed_at_utc: "2026-09-10T00:01:00Z",
+        episode_page: "https://example.com/episodes/core-01/",
+        enclosure_url: "https://media.example.com/core-01.mp3",
+        bytes: 1,
+        sha256: "b".repeat(64),
+        public_verification: { feed_item: "verified", episode_page: "verified", enclosure_head: "verified", enclosure_byte_range: "verified" },
+      },
+    }), "utf8");
+    result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
+    assert.equal(result.status, 0);
+    assert.deepEqual(JSON.parse(result.stdout).legacy_published_release, {
+      metadata_path: "hosting-metadata.yaml",
+      publisher_repository: "https://github.com/example/publisher",
+      release_commit: "a".repeat(40),
+      episode_page: "https://example.com/episodes/core-01/",
+      enclosure_url: "https://media.example.com/core-01.mp3",
+      bytes: 1,
+      sha256: "b".repeat(64),
+      episode_id: "core-01",
+      title: "Test episode",
+      content_version: "0.1.0",
+    });
+
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  id: core-01\n  published_at: 2026-09-11T00:00:00Z\n", "utf8");
+    result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
+    assert.equal(result.status, 0);
+    assert.equal(JSON.parse(result.stdout).legacy_published_release, null);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer verifies public publisher and enclosure identity instead of local status text", () => {
+  const renderer = path.join(__dirname, "render_episode_audio.py");
+  const program = String.raw`
+import hashlib
+import importlib.util
+import json
+import sys
+spec = importlib.util.spec_from_file_location("legacy_renderer", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+payload = b"abc"
+class Response:
+    def __init__(self, body, headers=None):
+        self.body = body
+        self.offset = 0
+        self.headers = headers or {}
+    def __enter__(self): return self
+    def __exit__(self, *args): return False
+    def geturl(self): return "https://example.com/episodes/core-01/"
+    def read(self, count=-1):
+        if count < 0: count = len(self.body) - self.offset
+        part = self.body[self.offset:self.offset + count]
+        self.offset += len(part)
+        return part
+def request(url, timeout=20):
+    if "/commits/" in url: return Response(json.dumps({"sha": "a" * 40}).encode())
+    if "episodes/core-01" in url: return Response(b"<h1>Test episode</h1> Episode: core-01 Version: 0.1.0 <a href='https://media.example.com/audio/core-01.mp3'>Download</a>")
+    if "audio/core-01" in url: return Response(payload, {"Content-Length": str(len(payload))})
+    raise AssertionError(url)
+module.public_request = request
+release = {
+    "publisher_repository": "https://github.com/example/publisher",
+    "release_commit": "a" * 40,
+    "episode_page": "https://example.com/episodes/core-01/",
+    "enclosure_url": "https://media.example.com/audio/core-01.mp3",
+    "bytes": len(payload),
+    "sha256": hashlib.sha256(payload).hexdigest(),
+    "episode_id": "core-01",
+    "title": "Test episode",
+    "content_version": "0.1.0",
+}
+module.verify_published_legacy_release(release, "core-01")
+release["sha256"] = "0" * 64
+try:
+    module.verify_published_legacy_release(release, "core-01")
+except module.RenderError:
+    sys.exit(0)
+sys.exit(1)
+`;
+  const result = childProcess.spawnSync("python3", ["-c", program, renderer], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+});
+
+test("legacy renderer refuses an unpublished legacy package before any provider call", () => {
+  const repositoryRoot = path.resolve(__dirname, "..");
+  const packagePath = path.join(repositoryRoot, "episodes", "core-02-principles-of-flight-lift-drag-angle-of-attack");
+  const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", path.join(packagePath, "master-script.md"), "--audio-dir", path.join(os.tmpdir(), "ppl-legacy-renderer-draft-output"), "--episode-id", "core-02", "--dry-run"], { encoding: "utf8" });
+  assert.equal(result.status, 2);
+  assert.match(result.stderr, /valid published release timestamp/);
+});
+
+test("legacy baseline check rejects package files committed after origin main", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-baseline-test-"));
+  const trackedFile = path.join(temporary, "episodes", "core-01-test", "master-script.md");
+  const renderer = path.join(__dirname, "render_episode_audio.py");
+  const callBaselineCheck = () => childProcess.spawnSync("python3", ["-c", [
+    "import importlib.util, pathlib, sys",
+    `spec = importlib.util.spec_from_file_location('legacy_renderer', ${JSON.stringify(renderer)})`,
+    "module = importlib.util.module_from_spec(spec)",
+    "sys.modules[spec.name] = module",
+    "spec.loader.exec_module(module)",
+    "module.assert_trusted_legacy_baseline(pathlib.Path(sys.argv[1]), (pathlib.Path(sys.argv[2]),))",
+  ].join("; "), temporary, trackedFile], { encoding: "utf8" });
+  try {
+    const git = (args) => childProcess.execFileSync("git", args, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+    fs.mkdirSync(path.dirname(trackedFile), { recursive: true });
+    fs.writeFileSync(trackedFile, "original\n", "utf8");
+    git(["init", "--initial-branch=main", temporary]);
+    git(["-C", temporary, "config", "user.email", "test@example.invalid"]);
+    git(["-C", temporary, "config", "user.name", "Test"]);
+    git(["-C", temporary, "add", "--force", "episodes"]);
+    const baselineCommit = git(["-C", temporary, "commit-tree", git(["-C", temporary, "write-tree"]), "-m", "initial"]);
+    git(["-C", temporary, "update-ref", "refs/heads/main", baselineCommit]);
+    git(["-C", temporary, "update-ref", "refs/remotes/origin/main", baselineCommit]);
+    git(["-C", temporary, "switch", "-c", "revision"]);
+    const baselineCheck = callBaselineCheck();
+    assert.equal(baselineCheck.status, 0, baselineCheck.stderr);
+    fs.writeFileSync(trackedFile, "revised\n", "utf8");
+    git(["-C", temporary, "add", "--force", "episodes"]);
+    const revisionCommit = git(["-C", temporary, "commit-tree", git(["-C", temporary, "write-tree"]), "-p", baselineCommit, "-m", "revised"]);
+    git(["-C", temporary, "update-ref", "refs/heads/revision", revisionCommit]);
+    const result = callBaselineCheck();
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /unchanged from origin\/main/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer establishes local provenance before any public release request", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-provenance-order-test-"));
+  const packagePath = path.join(temporary, "episodes", "core-01-test");
+  const scriptPath = path.join(packagePath, "master-script.md");
+  const episodePath = path.join(packagePath, "episode.yaml");
+  const hostingPath = path.join(packagePath, "hosting-metadata.yaml");
+  const renderer = path.join(__dirname, "render_episode_audio.py");
+  const git = (args) => childProcess.execFileSync("git", args, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  try {
+    fs.mkdirSync(packagePath, { recursive: true });
+    fs.writeFileSync(scriptPath, "# Core 01\n", "utf8");
+    fs.writeFileSync(episodePath, "id: core-01\npublished_at: 2026-01-01T00:00:00Z\n", "utf8");
+    fs.writeFileSync(hostingPath, [
+      "publisher_release:",
+      "  id: core-01",
+      "  title: Test episode",
+      "  published_at: 2026-01-01T00:00:00Z",
+      "provenance:",
+      "  content_version: 0.1.0",
+      "published_release:",
+      "  deployed_at_utc: 2026-01-01T00:00:00Z",
+      "  publisher_repository: https://github.com/example/publisher",
+      `  release_commit: ${"a".repeat(40)}`,
+      "  episode_page: https://example.com/episodes/core-01/",
+      "  enclosure_url: https://media.example.com/audio/core-01.mp3",
+      "  bytes: 3",
+      `  sha256: ${crypto.createHash("sha256").update("abc").digest("hex")}`,
+      "",
+    ].join("\n"), "utf8");
+    git(["init", "--initial-branch=main", temporary]);
+    git(["-C", temporary, "config", "user.email", "test@example.invalid"]);
+    git(["-C", temporary, "config", "user.name", "Test"]);
+    git(["-C", temporary, "add", "episodes"]);
+    const baselineCommit = git(["-C", temporary, "commit-tree", git(["-C", temporary, "write-tree"]), "-m", "initial"]);
+    git(["-C", temporary, "update-ref", "refs/heads/main", baselineCommit]);
+    git(["-C", temporary, "update-ref", "refs/remotes/origin/main", baselineCommit]);
+    fs.writeFileSync(hostingPath, fs.readFileSync(hostingPath, "utf8").replace("https://media.example.com", "https://127.0.0.1"), "utf8");
+    const program = [
+      "import importlib.util, pathlib, sys",
+      `spec = importlib.util.spec_from_file_location('legacy_renderer', ${JSON.stringify(renderer)})`,
+      "module = importlib.util.module_from_spec(spec)",
+      "sys.modules[spec.name] = module",
+      "spec.loader.exec_module(module)",
+      "module.public_request = lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError('public request before local provenance'))",
+      "try:",
+      "    module.assert_legacy_script_path(pathlib.Path(sys.argv[1]), 'core-01', repository_root=pathlib.Path(sys.argv[2]))",
+      "except module.RenderError as error:",
+      "    if 'unchanged from origin/main' in str(error): sys.exit(0)",
+      "    raise",
+      "sys.exit(1)",
+    ].join("\n");
+    const result = childProcess.spawnSync("python3", ["-c", program, scriptPath, temporary], { encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("UTC RFC 3339 timestamps reject impossible calendar values", () => {
+  assert.equal(utcRfc3339Timestamp("2026-02-28T23:59:59Z"), true);
+  assert.equal(utcRfc3339Timestamp("2024-02-29T00:00:00.123Z"), true);
+  assert.equal(utcRfc3339Timestamp("2026-02-31T00:00:00Z"), false);
+  assert.equal(utcRfc3339Timestamp("2026-01-01T24:00:00Z"), false);
+  assert.equal(utcRfc3339Timestamp("2026-01-01T00:00:60Z"), false);
+});
+
+test("legacy renderer refuses unsupported production contract markers", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-renderer-contract-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  try {
+    fs.writeFileSync(scriptPath, "# Test\n", "utf8");
+    for (const contractValue of ["null", '"2"', "3"]) {
+      fs.writeFileSync(path.join(temporary, "episode.yaml"), `production_contract_version: ${contractValue}\n`, "utf8");
+      const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
+      assert.equal(result.status, 2);
+      assert.match(result.stderr, /requires production_contract_version to be absent/);
+    }
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer refuses scripts outside a preserved package", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-renderer-metadata-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  try {
+    fs.writeFileSync(scriptPath, "# Test\n", "utf8");
+    const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
+    assert.equal(result.status, 2);
+    assert.match(result.stderr, /requires a sibling episode\.yaml/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -1567,9 +2640,12 @@ test("invalid claim mappings stop before source fetch and LLM assessment", () =>
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-test-"));
   const sourcesPath = path.join(temporary, "sources.yaml");
   const claimsPath = path.join(temporary, "claim-inventory.yaml");
-  const reportPath = path.join(temporary, "report.yaml");
+  const reportPath = path.join(temporary, "link-validation.yaml");
   fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
   fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [different-source]\n");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification: {}\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   try {
     const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--output", reportPath, "--require-llm"], { encoding: "utf8", timeout: 2_000 });
     assert.equal(result.status, 1);

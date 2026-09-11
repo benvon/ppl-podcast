@@ -90,8 +90,9 @@ Dialogue must earn its place. Remove an exchange if the same information would b
 | Segment | Target | Purpose |
 | --- | ---: | --- |
 | Cold open and scope | 10-20 sec | State the episode subject and practical relevance only. Do not teach the lesson's crux before the required notice. |
-| Required production notice | 20-30 sec | Deliver the approved AI-assisted-production and not-flight-instruction notice verbatim. |
-| Objectives and source posture | 1-2 min | State what the listener should understand and distinguish regulation/guidance/example as needed. |
+| Disclaimer | 20-30 sec | Deliver the approved AI-assisted-production and not-flight-instruction notice verbatim. |
+| Podcast introduction | 20-40 sec | The Announcer gives the standard series introduction and announces the specific episode topic. |
+| What the ACS is asking you to connect | 1-2 min | State what the listener should understand and distinguish regulation/guidance/example as needed. |
 | Core teaching | 15-20 min | Explain the PHAK-centered concepts in a logical sequence. |
 | Practical application | 8-12 min | Work 2-3 realistic scenarios; connect knowledge to risk management and decisions. |
 | ACS and trouble-spot focus | 5-8 min | Translate the ACS into plain language and resolve predictable errors. |
@@ -111,11 +112,15 @@ TARGET: 38 minutes / 5,320 words
 INSTRUCTOR: ...
 LEARNER: ...
 
-[01:00] REQUIRED PRODUCTION NOTICE
+[00:15] DISCLAIMER
 INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
 
-[Source: ACS FAA-S-ACS-6C, Area VII, Task B, Knowledge K1; PHAK ch. 5, Stall Characteristics]
-[Claim type: FAA standard]
+[00:45] PODCAST INTRODUCTION
+ANNOUNCER: [Use the standard series introduction and announce the episode topic.]
+
+[01:05] WHAT THE ACS IS ASKING YOU TO CONNECT
+ANNOUNCER: What the ACS is asking you to connect.
+INSTRUCTOR: [Name the ACS task, its connected variables or evidence, and the practical question this lesson answers.]
 
 [12:40] SCENARIO: Overshooting base to final
 ...
@@ -127,7 +132,7 @@ INSTRUCTOR: This podcast uses AI-assisted production. The voices in this episode
 - Maintain a clean `narration.md` derivative with source tags removed only after the tagged master is approved.
 - Budget words by section and record the actual word count and rendered duration.
 - Avoid invented radio calls, airport instructions, weather, or aircraft checklist steps unless the scenario clearly labels them as hypothetical and no operational action depends on the fictional detail.
-- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue. The initial drafting loop is: source-led draft, independent adversarial read, drafting-agent revision, formal source-relevance validation, then human editorial review. Do not defer source validation until after editorial approval or final release work.
+- Use [the script drafting playbook](docs/script-drafting-playbook.md) while turning the researched claim map into dialogue. The initial drafting loop is: source-led research and claim map, source-led draft, independent adversarial read, drafting-agent revision, formal tagged-passage source-relevance validation, then human editorial review. Do not defer source validation until after editorial approval or final release work.
 
 ### Editorial voice and pacing
 
@@ -158,11 +163,12 @@ Do not begin full scripting with an unresolved source conflict. Escalate it as `
 
 The initial draft is not ready for source-relevance review or script approval when the first source-led draft is complete. Run this closed loop first:
 
-1. The current Sol model with high reasoning produces the source-led initial package: research packet, reciprocal source ledger and claim inventory, source-tagged master script, derived narration, show notes, metadata, and production log.
-2. A separate agent that did not draft the episode performs an adversarial spoken-script read. It checks grammar, complete thoughts, clear referents and causal chains, earned Learner turns, coherent internal callbacks and call-forwards, first-listen comprehension, scope, and source-tagged claims. Its report distinguishes required findings from optional refinements.
-3. The drafting agent incorporates every required finding with the minimum source-supported revision, keeps the script, narration, claims, show notes, metadata, and source ledger consistent, and records the findings and resolutions in `production-log.md`.
-4. Rerun the script-structure, narration-derivation, source/claim mapping, and relevant repository checks. Then run formal source-relevance validation with `--require-llm`, which checks source-tagged spoken passages as well as claims, locators, links, and source records. Resolve every finding and rerun it until clean.
-5. Turn the clean, source-validated script over for human editorial review. If that review changes factual spoken prose, source tags, claims, sources, or show notes, return to step 4 before rendering.
+1. The current Sol model with high reasoning produces the source-led research foundation: research packet, reciprocal source ledger and claim inventory, scenario outline, metadata, and production log.
+2. The drafting agent creates the source-tagged master script, derived narration, show notes, and remaining package files from that research foundation.
+3. A separate agent that did not draft the episode performs an adversarial spoken-script read. It checks grammar, complete thoughts, clear referents and causal chains, earned Learner turns, coherent internal callbacks and call-forwards, first-listen comprehension, scope, and source-tagged claims. Its report distinguishes required findings from optional refinements.
+4. The drafting agent incorporates every required finding with the minimum source-supported revision, keeps the script, narration, claims, show notes, metadata, and source ledger consistent, and records the findings and resolutions in `production-log.md`.
+5. Rerun the script-structure, narration-derivation, source/claim mapping, and relevant repository checks. Then, with explicit current-turn authorization, run formal source-relevance validation with `--require-llm`, which checks source-tagged spoken passages as well as claims, locators, links, and source records. Resolve every material finding and rerun it until clean.
+6. Turn the clean, source-validated script over for human editorial review. If that review changes factual spoken prose, source tags, claims, sources, or show notes, return to step 5 before rendering.
 
 The adversarial review challenges the draft; it does not replace formal source-relevance validation, human editorial judgment, or a qualified aviation review when one is available.
 
@@ -361,7 +367,7 @@ ppl-podcast/
       ...
   scripts/
     render_episode_realtime.cjs   # default candidate renderer
-    render_episode_audio.py       # legacy candidate reproduction only
+    render_episode_audio.py       # legacy candidate reproduction only; refuses contract-v2 packages
   audio-artifacts/              # Git-ignored rendered masters and derivatives
   templates/
     episode.yaml
@@ -373,7 +379,7 @@ ppl-podcast/
 
 `source-release-seal.yaml` is generated beside the handoff's `episode.yaml`,
 `show-notes.md`, and `audio.mp3`; it is not edited in the source episode
-directory. On publication day, use `npm run release:prepare-publication -- --episode <episode-directory> --published-at <UTC-RFC3339> --out <new-absolute-handoff-directory>` after source-link and human audio/chapter QA are complete. It synchronizes the authoritative release metadata, runs final pre-hosting validation, and creates the sealed handoff, but it does not stage audio, publish, or create a pull request. `production_contract_version: 2` marks a package governed by these current gates. Historical published packages without that marker remain sealed and untouched. If one is revised, the reset command migrates its working copy to contract 2; only the revision must satisfy the new checks.
+directory. On publication day, use `npm run release:prepare-publication -- --episode <episode-directory> --published-at <UTC-RFC3339> --out <new-absolute-handoff-directory>` after source-link and human audio/chapter QA are complete. It synchronizes the authoritative release metadata, runs final pre-hosting validation, and creates the sealed handoff, but it does not stage audio, publish, or create a pull request. `production_contract_version: 2` plus `source_verification.validation_contract: source-relevance-v1` marks a package governed by these current gates. Historical published packages without the current source-review marker remain sealed and untouched. If one is revised, the reset command migrates its working copy to the current contract; only the revision must satisfy the new checks.
 
 - Use lowercase kebab-case filenames and `core-NN` / `rough-NNN` episode IDs.
 - Keep raw renders, production sessions, lossless masters, and published audio in the Git-ignored `audio-artifacts/` directory; `audio-manifest.yaml` records their paths/URLs, checksums, duration, and version.

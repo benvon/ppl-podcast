@@ -87,6 +87,11 @@ Teach the decision first, then the small set of terms and conditions needed to r
 
 When useful, acknowledge the boundary once in plain language: the lesson gives the private-pilot study framework, while the full regulation includes additional cases and exceptions. Do not repeat that caveat section by section.
 
+## Keep source review early and singular
+
+Build the source ledger, claim inventory, and scenario source map before drafting. Then complete the spoken draft, independent first-listen review, and the single `--require-llm` source-relevance review before human editorial approval. The review examines exact source-tagged spoken passages, claims, and fetched source excerpts; resolve contradictions, unsupported factual prose, locator errors, and material scope mismatches before the script reaches the editor.
+
+
 ## Run an independent spoken-script review
 
 After the source-led drafting agent completes a proposed script, assign a second agent that did not write that draft to review the source-tagged `master-script.md` in order. This is an editorial review, separate from source relevance and factual-claim validation.
@@ -106,10 +111,10 @@ Human editorial review should begin with a source-validated draft. Do not wait u
 
 Use this order for every new draft:
 
-1. Complete the source-led draft package.
+1. Complete the source-led research foundation and draft package, including the source ledger, claim inventory, source-tagged master script, narration, show notes, metadata, and production log.
 2. Complete the independent spoken-script review.
 3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
-4. Run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every finding and rerun until the report is clean.
+4. With explicit current-turn authorization, run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every material finding and rerun until the report is clean.
 5. Give that source-validated draft to the human editor.
 
 If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.

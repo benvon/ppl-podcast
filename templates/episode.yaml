@@ -21,6 +21,7 @@ cfr_references: []
 learning_objectives: []
 trouble_spots: []
 source_verification:
+  validation_contract: source-relevance-v1
   status: not_started
   verified_at_utc: null
   link_validation: link-validation.yaml

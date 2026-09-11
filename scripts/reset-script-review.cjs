@@ -8,7 +8,10 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { writeFileSetAtomically } = require("./file-transaction.cjs");
+const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
+const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, episodeStateText, withEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 class ScriptReviewStateError extends Error {}
 
@@ -17,11 +20,11 @@ function sha256Text(value) {
 }
 
 function readYaml(filePath) {
-  return YAML.parse(fs.readFileSync(filePath, "utf8"));
-}
-
-function writeYaml(filePath, value) {
-  fs.writeFileSync(filePath, YAML.stringify(value), "utf8");
+  const document = YAML.parseDocument(fs.readFileSync(filePath, "utf8"));
+  if (document.errors.length) throw new ScriptReviewStateError(`Invalid YAML in ${filePath}: ${document.errors[0].message}`);
+  const value = document.toJS();
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new ScriptReviewStateError(`${filePath} must contain a YAML mapping.`);
+  return value;
 }
 
 function removeLegacyProductionStatus(script) {
@@ -36,7 +39,13 @@ function migratedAudioMix(audio) {
   const musicBed = audio.current_candidate_render?.music_bed;
   const recordedSource = typeof musicBed === "string" ? musicBed : musicBed?.source;
   if (typeof recordedSource !== "string" || !recordedSource.includes("assets/music/jonasblakewood-synth-pop_60s-583368.mp3")) {
-    return { schema_version: 1, music: { enabled: false } };
+    return {
+      schema_version: 1,
+      music: {
+        enabled: false,
+        disabled_reason: "No established series music treatment is recorded for this historical render.",
+      },
+    };
   }
   return {
     schema_version: 1,
@@ -55,37 +64,63 @@ function migratedAudioMix(audio) {
   };
 }
 
-function ensureAudioMixContract(resolved, episode, audio) {
+function planAudioMixContract(resolved, episode, audio, updates) {
   const mixPath = path.join(resolved, "audio-mix.yaml");
   if (fs.existsSync(mixPath) && !fs.lstatSync(mixPath).isFile()) throw new ScriptReviewStateError("audio-mix.yaml must be a regular file before a script-review reset can migrate this package.");
   episode.audio = { ...(episode.audio || {}), mix_config: "audio-mix.yaml" };
-  if (!fs.existsSync(mixPath)) writeYaml(mixPath, migratedAudioMix(audio));
+  if (!fs.existsSync(mixPath)) updates.set(mixPath, YAML.stringify(migratedAudioMix(audio)));
+}
+
+function markChecklistItemsUnchecked(checklist, qaIDs) {
+  const ids = new Set(qaIDs);
+  return checklist.replace(/^(\s*-\s*)\[[ xX]\](.*<!--\s*qa-id:\s*([^\s>]+)\s*-->.*)$/gm, (line, prefix, remainder, qaID) => (
+    ids.has(qaID) ? `${prefix}[ ]${remainder}` : line
+  ));
+}
+
+function planSourceReviewChecklist(resolved, episode, updates) {
+  const checklistPath = path.join(resolved, "qa-checklist.md");
+  if (fs.existsSync(checklistPath) && !fs.lstatSync(checklistPath).isFile()) throw new ScriptReviewStateError("qa-checklist.md must be a regular file before a script-review reset.");
+  const templatePath = path.join(__dirname, "..", "templates", "qa-checklist.md");
+  let checklist = fs.existsSync(checklistPath)
+    ? fs.readFileSync(checklistPath, "utf8")
+    : fs.readFileSync(templatePath, "utf8").replaceAll("{{TITLE}}", episode.title || episode.id || "Episode");
+  if (!checklist.includes("qa-id: openai-source-review-authorization")) {
+    checklist = `${checklist.trimEnd()}\n\n- [ ] Explicit current-turn authorization was received before source excerpts, claims, and tagged passages were sent to OpenAI for the \`--require-llm\` source-relevance review, and the report records that authorization with its run. <!-- qa-id: openai-source-review-authorization -->\n`;
+  }
+  checklist = markChecklistItemsUnchecked(checklist, ["openai-source-review-authorization"]);
+  const original = fs.existsSync(checklistPath) ? fs.readFileSync(checklistPath, "utf8") : null;
+  if (checklist !== original) updates.set(checklistPath, checklist);
 }
 
 function resolveEpisode(episodePath) {
   const resolved = path.resolve(episodePath);
   for (const file of ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md"]) {
     const candidate = path.join(resolved, file);
-    if (!fs.existsSync(candidate) || !fs.statSync(candidate).isFile()) throw new ScriptReviewStateError(`Episode package is missing ${file}.`);
+    if (!fs.existsSync(candidate) || !fs.lstatSync(candidate).isFile()) throw new ScriptReviewStateError(`Episode package is missing ${file}.`);
   }
   return resolved;
 }
 
-function resetScriptReview({ episodePath, reason = "The master script changed after its prior review." }) {
+function resetScriptReviewUnlocked({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically, packageLease }) {
   const resolved = resolveEpisode(episodePath);
+  assertEpisodePackageOperation(resolved, packageLease, PACKAGE_OPERATION_IDS.SCRIPT_RESET);
   const episodePathname = path.join(resolved, "episode.yaml");
   const audioPathname = path.join(resolved, "audio-manifest.yaml");
   const hostingPathname = path.join(resolved, "hosting-metadata.yaml");
   const masterScriptPathname = path.join(resolved, "master-script.md");
   const originalScript = fs.readFileSync(masterScriptPathname, "utf8");
   const migratedScript = removeLegacyProductionStatus(originalScript);
-  if (migratedScript !== originalScript) fs.writeFileSync(masterScriptPathname, migratedScript, "utf8");
   const scriptSha256 = sha256Text(migratedScript);
+  const originalEpisodeText = fs.readFileSync(episodePathname, "utf8");
   const episode = readYaml(episodePathname);
   const audio = readYaml(audioPathname);
   const hosting = readYaml(hostingPathname);
+  const updates = new Map();
 
-  ensureAudioMixContract(resolved, episode, audio);
+  planAudioMixContract(resolved, episode, audio, updates);
+  episode.source_verification = { ...(episode.source_verification || {}), validation_contract: "source-relevance-v1" };
+  planSourceReviewChecklist(resolved, episode, updates);
 
   const candidate = audio.current_candidate_render;
   if (candidate?.sha256 && !audio.superseded_candidates?.some((entry) => entry.sha256 === candidate.sha256)) {
@@ -117,32 +152,51 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   // contract before it begins its next revision.
   delete hosting.handoff_status;
   delete hosting.release_readiness;
-  writeYaml(episodePathname, episode);
-  writeYaml(audioPathname, audio);
-  writeYaml(hostingPathname, hosting);
+  if (migratedScript !== originalScript) updates.set(masterScriptPathname, migratedScript);
+  updates.set(episodePathname, episodeStateText(resolved, episode, packageLease, originalEpisodeText));
+  updates.set(audioPathname, YAML.stringify(audio));
+  updates.set(hostingPathname, YAML.stringify(hosting));
+  writeFiles(updates);
   return { scriptSha256, episodePath: resolved };
 }
 
-function approveScriptReview({ episodePath }) {
+function resetScriptReview({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically, recoverStaleLock = false }) {
+  const resolved = path.resolve(episodePath);
+  return withEpisodePackageOperation(resolved, PACKAGE_OPERATION_IDS.SCRIPT_RESET, { recoverStaleLock }, (packageLease) => (
+    resetScriptReviewUnlocked({ episodePath: resolved, reason, writeFiles, packageLease })
+  ));
+}
+
+function approveScriptReviewUnlocked({ episodePath, packageLease }) {
   const resolved = resolveEpisode(episodePath);
+  assertEpisodePackageOperation(resolved, packageLease, PACKAGE_OPERATION_IDS.SCRIPT_APPROVE);
   const episodePathname = path.join(resolved, "episode.yaml");
+  const originalEpisodeText = fs.readFileSync(episodePathname, "utf8");
   const episode = readYaml(episodePathname);
-  if (episode.source_verification?.relevance_review !== "complete") throw new ScriptReviewStateError("Source-relevance review must be complete before recording editorial approval.");
+  const sourceErrors = sourceReviewEvidenceErrors({ episodePath: resolved, episode });
+  if (sourceErrors.length) throw new ScriptReviewStateError(`Source-relevance review is not valid for the current package: ${sourceErrors[0]}`);
   const scriptSha256 = sha256Text(fs.readFileSync(path.join(resolved, "master-script.md"), "utf8"));
   episode.status = "source_relevance_review_complete";
   episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_APPROVAL];
   episode.review = { ...(episode.review || {}), editorial_status: "script_approved", editorial_script_sha256: scriptSha256 };
   delete episode.review.pending_script_sha256;
-  writeYaml(episodePathname, episode);
+  writeFileSetAtomically(new Map([[episodePathname, episodeStateText(resolved, episode, packageLease, originalEpisodeText)]]));
   return { scriptSha256, episodePath: resolved };
+}
+
+function approveScriptReview({ episodePath, recoverStaleLock = false }) {
+  const resolved = path.resolve(episodePath);
+  return withEpisodePackageOperation(resolved, PACKAGE_OPERATION_IDS.SCRIPT_APPROVE, { recoverStaleLock }, (packageLease) => (
+    approveScriptReviewUnlocked({ episodePath: resolved, packageLease })
+  ));
 }
 
 function parseArgs(argv) {
   const values = {};
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
-    if (!["--episode", "--reset", "--approve", "--reason"].includes(argument)) throw new ScriptReviewStateError(`Unexpected argument: ${argument}`);
-    if (argument === "--reset" || argument === "--approve") { values[argument.slice(2)] = true; continue; }
+    if (!["--episode", "--reset", "--approve", "--recover-stale-lock", "--reason"].includes(argument)) throw new ScriptReviewStateError(`Unexpected argument: ${argument}`);
+    if (argument === "--reset" || argument === "--approve" || argument === "--recover-stale-lock") { values[argument.slice(2)] = true; continue; }
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new ScriptReviewStateError(`Missing value for ${argument}.`);
     values[argument.slice(2)] = value;
@@ -155,7 +209,7 @@ function parseArgs(argv) {
 function main() {
   try {
     const options = parseArgs(process.argv.slice(2));
-    const result = options.reset ? resetScriptReview({ episodePath: options.episode, reason: options.reason }) : approveScriptReview({ episodePath: options.episode });
+    const result = options.reset ? resetScriptReview({ episodePath: options.episode, reason: options.reason, recoverStaleLock: Boolean(options["recover-stale-lock"]) }) : approveScriptReview({ episodePath: options.episode, recoverStaleLock: Boolean(options["recover-stale-lock"]) });
     console.log(`${options.reset ? "Reset" : "Recorded"} script-review state for ${result.episodePath} (${result.scriptSha256}).`);
   } catch (error) {
     console.error(error instanceof ScriptReviewStateError ? error.message : `Script-review state update failed: ${error.message}`);
@@ -165,4 +219,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { ScriptReviewStateError, approveScriptReview, ensureAudioMixContract, migratedAudioMix, removeLegacyProductionStatus, resetScriptReview, sha256Text };
+module.exports = { ScriptReviewStateError, approveScriptReview, markChecklistItemsUnchecked, migratedAudioMix, parseArgs, planAudioMixContract, removeLegacyProductionStatus, resetScriptReview, sha256Text };

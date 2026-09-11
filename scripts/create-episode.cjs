@@ -32,7 +32,9 @@ function main() {
   const destination = path.join(root, "episodes", `${values.id}-${values.slug}`);
   if (fs.existsSync(destination)) throw new Error(`Episode directory already exists: ${destination}`);
   fs.mkdirSync(destination, { recursive: true });
-  const substitutions = { "{{EPISODE_ID}}": values.id, "{{SLUG}}": values.slug, "{{TITLE}}": values.title, "{{TRACK}}": values.track };
+  const episodeNumber = String(Number(values.id.match(/-(\d+)$/)[1]));
+  const episodeDisplayLabel = values.track === "core" ? episodeNumber : values.track === "supplemental" ? `Supplement ${episodeNumber}` : `Rough Spot ${episodeNumber}`;
+  const substitutions = { "{{EPISODE_ID}}": values.id, "{{EPISODE_DISPLAY_LABEL}}": episodeDisplayLabel, "{{SLUG}}": values.slug, "{{TITLE}}": values.title, "{{TRACK}}": values.track };
   for (const name of fs.readdirSync(source)) {
     if (name === "README.md") continue;
     const input = fs.readFileSync(path.join(source, name), "utf8");

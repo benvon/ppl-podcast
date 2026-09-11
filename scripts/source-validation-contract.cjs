@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 
 function sourceValidationInputHashes(episodePath) {
   const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
@@ -117,12 +118,32 @@ function sameStringSet(actual, expected) {
 }
 
 function sourceRelevanceResultValid(result) {
+  const expectedClaimIDs = Array.isArray(result?.linked_claim_ids) ? result.linked_claim_ids : [];
+  const assessments = result?.relevance?.assessment?.claim_assessments;
+  if (!Array.isArray(assessments)) return false;
+  const counts = new Map();
+  for (const assessment of assessments) counts.set(assessment?.claim_id, (counts.get(assessment?.claim_id) || 0) + 1);
+  const assessmentsMatchClaims = expectedClaimIDs.length === assessments.length
+    && expectedClaimIDs.every((claimID) => counts.get(claimID) === 1)
+    && assessments.every((assessment) => assessment?.verdict === "supports");
   return result?.citation_target?.valid === true
     && result?.link?.valid === true
     && (!result?.content_attestation || result.content_attestation.valid === true)
     && result?.relevance?.status === "assessed"
     && result.relevance?.assessment?.locator_assessment?.verdict === "supports"
+    && assessmentsMatchClaims
     && result?.claim_assessments?.valid === true;
+}
+
+// A publication-day link check verifies the same fetched citation evidence as
+// the formal review, but deliberately does not replace that review's LLM
+// assessments. Keep this predicate here so the command that writes the record
+// and the release gate that reads it enforce the same deterministic contract.
+function deterministicValidationResultValid(result) {
+  return result?.citation_target?.valid === true
+    && result?.link?.valid === true
+    && (!result?.content_attestation || result.content_attestation.valid === true)
+    && !result?.missing_claim_ids?.length;
 }
 
 function validationCoverageErrors(episodePath, validation) {
@@ -153,4 +174,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { deterministicValidationResultValid, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

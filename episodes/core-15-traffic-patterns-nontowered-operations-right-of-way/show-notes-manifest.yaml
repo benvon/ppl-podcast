@@ -1,0 +1,98 @@
+episode_id: core-15
+links:
+  - id: acs-comms
+    text: Private Pilot ACS communications task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=24
+    locator: "FAA-S-ACS-6C, PA.III.A, PDF p. 24"
+    source_id: acs-communications
+    claim_ids: [acs-communications-outcome]
+  - id: acs-patterns
+    text: Private Pilot ACS traffic-pattern task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=25
+    locator: "FAA-S-ACS-6C, PA.III.B.K2-K4, R1-R3, S2, S4-S6, PDF p. 25"
+    source_id: acs-traffic-patterns
+    claim_ids: [acs-traffic-pattern-outcome]
+  - id: phak-text
+    text: PHAK traffic-pattern text
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=21
+    locator: "PHAK Chapter 14, Traffic Patterns, PDF p. 14-21"
+    source_id: phak-pattern-text
+    claim_ids: [phak-pattern-visual-model]
+  - id: phak-figure
+    text: PHAK Figure 14-39 left-hand traffic pattern
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14_0.pdf#page=22
+    locator: "PHAK Chapter 14, Figure 14-39, PDF p. 14-22"
+    source_id: phak-pattern-figure
+    claim_ids: [phak-left-pattern-map]
+  - id: ac-preflight
+    text: AC 90-66C preflight actions
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=5
+    locator: "AC 90-66C, paragraph 9.1, PDF p. 5"
+    source_id: ac-preflight
+    claim_ids: [preflight-publications]
+  - id: aim-ctaf
+    text: AIM CTAF guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-9
+    locator: "AIM 4-1-9(a)-(b)"
+    source_id: aim-ctaf
+    claim_ids: [ctaf-position-reports]
+  - id: aim-straight-in-priority
+    text: AIM straight-in landing priority
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#chap4_section_1__c_traffic_advisory_practices_at_airports_without_operating_control_towers-li_31
+    locator: "AIM 4-1-9(g)(4), Straight-in Landings"
+    source_id: aim-straight-in-priority
+    claim_ids: [straight-in-pattern-priority]
+  - id: ac-entry
+    text: AC 90-66C standard entry and go-around path
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-66c.pdf#page=15
+    locator: "AC 90-66C, paragraphs 11.2-11.3, PDF p. 15"
+    source_id: ac-standard-entry
+    claim_ids: [standard-entry-and-spacing]
+  - id: afh-entry
+    text: AFH upwind-side entry model
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=4
+    locator: "AFH Chapter 8, Non-Towered Airport Entry, PDF p. 8-4"
+    source_id: afh-upwind-side-entry
+    claim_ids: [upwind-side-reentry-model]
+  - id: afh-retry
+    text: conflicting-entry retry
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/09_afh_ch8.pdf#page=5
+    locator: "AFH Chapter 8, conflicting traffic during 45-degree entry, PDF p. 8-5"
+    source_id: afh-conflicting-entry
+    claim_ids: [conflicting-entry-retry]
+  - id: aim-indicators
+    text: AIM visual traffic-pattern indicators
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-4
+    locator: "AIM 4-3-4(a)-(c)"
+    source_id: aim-visible-indicators
+    claim_ids: [visible-pattern-indicators]
+  - id: ecfr-row
+    text: 14 CFR 91.113 right-of-way rules
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.113
+    locator: "14 CFR 91.113(b)-(g)"
+    source_id: ecfr-right-of-way
+    claim_ids: [right-of-way-geometries]
+  - id: ecfr-class-g
+    text: 14 CFR 91.126 Class G pattern direction
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.126
+    locator: "14 CFR 91.126(b)"
+    source_id: ecfr-airport-class-g
+    claim_ids: [class-g-pattern-direction]
+  - id: ac-scan
+    text: AC 90-48E scan technique
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=13
+    locator: "AC 90-48E, sections 12-12.1, PDF p. 13"
+    source_id: ac-scan-technique
+    claim_ids: [deliberate-scan]
+  - id: ac-displays
+    text: traffic displays
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+    locator: "AC 90-48E, sections 14-16, PDF p. 14"
+    source_id: ac-displays-see-avoid
+    claim_ids: [displays-do-not-replace-scan]
+  - id: aim-wake
+    text: AIM wake-turbulence guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html#7-4-5
+    locator: "AIM 7-4-4 and 7-4-5"
+    source_id: aim-wake-turbulence
+    claim_ids: [wake-vortex-behavior]

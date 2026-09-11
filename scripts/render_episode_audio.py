@@ -15,6 +15,8 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
+import html.parser
 import json
 import os
 import re
@@ -24,6 +26,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.error
+import urllib.parse
 import urllib.request
 import wave
 from dataclasses import dataclass
@@ -82,7 +85,26 @@ class AiffProperties:
     compression_type: bytes
 
 
-def parse_script(path: Path, max_words: int) -> list[Segment]:
+class EpisodePageParser(html.parser.HTMLParser):
+    """Collect page text and media links needed to bind a public release."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.text: list[str] = []
+        self.links: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self.text.append(data)
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = dict(attrs)
+        if tag in {"a", "audio", "source"}:
+            candidate = values.get("href") if tag == "a" else values.get("src")
+            if candidate:
+                self.links.append(candidate)
+
+
+def parse_script_text(script: str, max_words: int) -> list[Segment]:
     """Extract spoken dialogue and split it into bounded, same-speaker pieces."""
     turns: list[tuple[str, str, str]] = []
     speaker: str | None = None
@@ -97,7 +119,7 @@ def parse_script(path: Path, max_words: int) -> list[Segment]:
                 turns.append((speaker, text, section))
         paragraphs = []
 
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
+    for raw_line in script.splitlines():
         line = raw_line.strip()
         heading_match = SECTION_HEADING_RE.match(line)
         if heading_match:
@@ -125,6 +147,11 @@ def parse_script(path: Path, max_words: int) -> list[Segment]:
             segments.append(Segment(len(segments) + 1, turn_speaker, piece, turn_section))
     validate_front_matter(segments)
     return segments
+
+
+def parse_script(path: Path, max_words: int) -> list[Segment]:
+    """Parse a script file for callers that do not need a verified snapshot."""
+    return parse_script_text(path.read_text(encoding="utf-8"), max_words)
 
 
 def validate_front_matter(segments: list[Segment]) -> dict[str, list[int]]:
@@ -585,6 +612,230 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...]) -> dict[Path, bytes]:
+    """Return stable preserved-package bytes after comparing them to origin/main."""
+    baseline = subprocess.run(
+        ["git", "-C", str(repository_root), "rev-parse", "--verify", "origin/main^{commit}"],
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=5,
+    )
+    if baseline.returncode != 0 or not baseline.stdout.strip():
+        raise RenderError(
+            "The legacy renderer requires a locally fetched origin/main baseline to verify a preserved published package."
+        )
+    baseline_ref = baseline.stdout.strip()
+    snapshots: dict[Path, bytes] = {}
+    for tracked_path in paths:
+        snapshot = tracked_path.read_bytes()
+        relative = tracked_path.relative_to(repository_root)
+        tracked = subprocess.run(
+            ["git", "-C", str(repository_root), "ls-files", "--error-unmatch", "--", str(relative)],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        unchanged = subprocess.run(
+            ["git", "-C", str(repository_root), "diff", "--quiet", baseline_ref, "--", str(relative)],
+            check=False,
+            timeout=5,
+        )
+        if tracked.returncode != 0 or unchanged.returncode != 0:
+            raise RenderError(
+                "The legacy renderer accepts only tracked historical package files unchanged from origin/main. "
+                "Start revisions with episode:script-review --reset."
+            )
+        if tracked_path.read_bytes() != snapshot:
+            raise RenderError(
+                "The preserved legacy package changed during baseline verification; retry after restoring the published bytes."
+            )
+        snapshots[tracked_path] = snapshot
+    return snapshots
+
+
+def require_https_url(value: object, label: str) -> str:
+    if not isinstance(value, str):
+        raise RenderError(f"Published legacy release is missing {label}.")
+    parsed = urllib.parse.urlparse(value)
+    if parsed.scheme != "https" or not parsed.netloc:
+        raise RenderError(f"Published legacy release {label} must be an HTTPS URL.")
+    return value
+
+
+def public_request(url: str, *, timeout: int = 20) -> urllib.response.addinfourl:
+    request = urllib.request.Request(url, headers={"User-Agent": "ppl-study-guide-legacy-renderer/1"})
+    try:
+        return urllib.request.urlopen(request, timeout=timeout)
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+        raise RenderError(f"Could not verify the published legacy release artifact at {url}: {exc}") from exc
+
+
+def verify_published_legacy_release(release: object, episode_id: str) -> None:
+    """Verify live publisher provenance and immutable public artifact bytes."""
+    if not isinstance(release, dict):
+        raise RenderError("The legacy renderer requires a verifiable published release record.")
+    repository = require_https_url(release.get("publisher_repository"), "publisher_repository")
+    repository_match = re.fullmatch(r"https://github\.com/([^/]+)/([^/]+)", repository)
+    commit = release.get("release_commit")
+    if not repository_match or not isinstance(commit, str) or not re.fullmatch(r"[a-fA-F0-9]{40}", commit):
+        raise RenderError("Published legacy release must identify an exact public GitHub publisher commit.")
+    owner, repo = repository_match.groups()
+    commit_url = f"https://api.github.com/repos/{owner}/{repo}/commits/{commit}"
+    try:
+        with public_request(commit_url) as response:
+            confirmed = json.loads(response.read())
+    except (json.JSONDecodeError, TypeError) as exc:
+        raise RenderError("Could not parse the public publisher commit record for the legacy release.") from exc
+    if not isinstance(confirmed, dict) or str(confirmed.get("sha", "")).lower() != commit.lower():
+        raise RenderError("The recorded legacy publisher commit is not present at the public publisher repository.")
+
+    episode_page = require_https_url(release.get("episode_page"), "episode_page")
+    expected_title = release.get("title")
+    expected_version = release.get("content_version")
+    if release.get("episode_id") != episode_id or not isinstance(expected_title, str) or not expected_title.strip() or not isinstance(expected_version, str) or not expected_version.strip():
+        raise RenderError("Published legacy release is missing its episode identity, title, or content version.")
+    if episode_id not in urllib.parse.urlparse(episode_page).path:
+        raise RenderError("The recorded legacy episode page URL does not identify the requested episode.")
+    with public_request(episode_page) as response:
+        page_url = response.geturl()
+        page = response.read(1_000_000).decode("utf-8", errors="replace")
+
+    enclosure_url = require_https_url(release.get("enclosure_url"), "enclosure_url")
+    expected_bytes = release.get("bytes")
+    expected_sha256 = release.get("sha256")
+    if not isinstance(expected_bytes, int) or expected_bytes <= 0 or not isinstance(expected_sha256, str) or not re.fullmatch(r"[a-fA-F0-9]{64}", expected_sha256):
+        raise RenderError("Published legacy release enclosure identity is incomplete.")
+    parser = EpisodePageParser()
+    parser.feed(page)
+    page_text = " ".join(parser.text)
+    page_links = {urllib.parse.urljoin(page_url, link).split("#", 1)[0] for link in parser.links}
+    if episode_id not in page_text or expected_title not in page_text or expected_version not in page_text or enclosure_url not in page_links:
+        raise RenderError("The public legacy episode page does not bind the requested episode, version, and recorded enclosure together.")
+    digest = hashlib.sha256()
+    observed_bytes = 0
+    with public_request(enclosure_url, timeout=60) as response:
+        content_length = response.headers.get("Content-Length")
+        if content_length is not None and content_length.isdigit() and int(content_length) != expected_bytes:
+            raise RenderError("The public legacy enclosure byte length does not match its recorded release identity.")
+        while True:
+            block = response.read(1024 * 1024)
+            if not block:
+                break
+            observed_bytes += len(block)
+            if observed_bytes > expected_bytes:
+                raise RenderError("The public legacy enclosure exceeds its recorded byte length.")
+            digest.update(block)
+    if observed_bytes != expected_bytes or digest.hexdigest().lower() != expected_sha256.lower():
+        raise RenderError("The public legacy enclosure bytes do not match the recorded release identity.")
+
+
+def read_episode_contract(contract_reader: Path, episode_path: Path) -> dict:
+    """Read a package contract without performing any network request."""
+    try:
+        result = subprocess.run(
+            ["node", str(contract_reader), str(episode_path)],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        contract = json.loads(result.stdout)
+    except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
+        raise RenderError(
+            "Could not determine the package production contract; the legacy renderer refuses an unverifiable episode package."
+        ) from exc
+    if not isinstance(contract, dict) or contract.get("kind") not in {"legacy", "current", "unsupported"}:
+        raise RenderError("Could not determine the package production contract; the legacy renderer refuses an unverifiable episode package.")
+    return contract
+
+
+def trusted_legacy_contract(contract_reader: Path, snapshots: dict[Path, bytes], episode_path: Path, metadata_path: Path) -> dict:
+    """Parse the contract only from the baseline-verified package snapshots."""
+    with tempfile.TemporaryDirectory(prefix="ppl-legacy-contract-") as temporary:
+        temporary_path = Path(temporary)
+        temporary_episode = temporary_path / "episode.yaml"
+        temporary_metadata = temporary_path / "hosting-metadata.yaml"
+        temporary_episode.write_bytes(snapshots[episode_path])
+        temporary_metadata.write_bytes(snapshots[metadata_path])
+        return read_episode_contract(contract_reader, temporary_episode)
+
+
+def assert_legacy_script_path(script_path: Path, episode_id: str, repository_root: Path | None = None) -> str:
+    """Keep the retired renderer from bypassing current-contract render gates."""
+    repository_root = (repository_root or Path(__file__).resolve().parent.parent).resolve()
+    episodes_root = repository_root / "episodes"
+    episode_path = script_path.parent / "episode.yaml"
+    metadata_path = script_path.parent / "hosting-metadata.yaml"
+    if not episode_path.is_file():
+        raise RenderError(
+            "render_episode_audio.py requires a sibling episode.yaml proving this is a preserved legacy package. "
+            "Contract-v2 episodes must use render_episode_realtime.cjs."
+        )
+    # This local classification performs no outbound work. It preserves clear
+    # errors for current and unsupported contracts before provenance handling.
+    contract_reader = Path(__file__).with_name("read-episode-contract.cjs")
+    local_contract = read_episode_contract(contract_reader, episode_path)
+    if local_contract["kind"] == "current":
+        raise RenderError(
+            "render_episode_audio.py is for preserved legacy candidate reproduction only. "
+            "Contract-v2 episodes must use render_episode_realtime.cjs so current source and editorial gates are enforced."
+        )
+    if local_contract["kind"] != "legacy":
+        raise RenderError(
+            "render_episode_audio.py requires production_contract_version to be absent for a preserved legacy package. "
+            "Packages with a current or unsupported contract marker must use current release tooling."
+        )
+    try:
+        package_path = script_path.resolve().parent
+        package_path.relative_to(episodes_root.resolve())
+    except ValueError as exc:
+        raise RenderError("The legacy renderer accepts only preserved episode packages under the repository episodes directory.") from exc
+    if script_path.name != "master-script.md" or not package_path.name.startswith(f"{episode_id}-"):
+        raise RenderError("The legacy script path and package directory must identify the requested episode.")
+    if not metadata_path.is_file() or not isinstance(local_contract.get("legacy_published_release"), dict):
+        raise RenderError(
+            "render_episode_audio.py accepts a preserved legacy package only when its episode.yaml and hosting-metadata.yaml "
+            "agree on a valid published release timestamp. Draft and planned packages must use current release tooling."
+        )
+    resolved_script = script_path.resolve()
+    resolved_episode = episode_path.resolve()
+    resolved_metadata = metadata_path.resolve()
+    snapshots = assert_trusted_legacy_baseline(
+        repository_root,
+        (resolved_script, resolved_episode, resolved_metadata),
+    )
+    contract = trusted_legacy_contract(
+        contract_reader,
+        snapshots,
+        resolved_episode,
+        resolved_metadata,
+    )
+    if contract["kind"] == "current":
+        raise RenderError(
+            "render_episode_audio.py is for preserved legacy candidate reproduction only. "
+            "Contract-v2 episodes must use render_episode_realtime.cjs so current source and editorial gates are enforced."
+        )
+    if contract["kind"] != "legacy":
+        raise RenderError(
+            "render_episode_audio.py requires production_contract_version to be absent for a preserved legacy package. "
+            "Packages with a current or unsupported contract marker must use current release tooling."
+        )
+    legacy_release = contract.get("legacy_published_release")
+    if not isinstance(legacy_release, dict) or legacy_release.get("metadata_path") != "hosting-metadata.yaml":
+        raise RenderError(
+            "render_episode_audio.py accepts a preserved legacy package only when its episode.yaml and hosting-metadata.yaml "
+            "agree on a valid published release timestamp. Draft and planned packages must use current release tooling."
+        )
+    if contract.get("episode_id") != episode_id:
+        raise RenderError("The legacy script path, package directory, and episode.yaml id must identify the same episode.")
+    # All URL, byte-count, and release values now come from origin/main-bound
+    # snapshots, not from mutable worktree metadata.
+    verify_published_legacy_release(legacy_release, episode_id)
+    return snapshots[resolved_script].decode("utf-8")
+
+
 def main() -> int:
     args = parse_args()
     if not SAFE_EPISODE_ID.fullmatch(args.episode_id):
@@ -602,11 +853,12 @@ def main() -> int:
         raise RenderError("--continuity-context-characters must be between 0 and 1000.")
     if not args.script.is_file():
         raise RenderError(f"Master script not found: {args.script}")
+    script_snapshot = assert_legacy_script_path(args.script, args.episode_id)
 
     timestamp = args.timestamp or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     if not re.fullmatch(r"\d{8}T\d{6}Z", timestamp):
         raise RenderError("--timestamp must be formatted YYYYMMDDTHHMMSSZ.")
-    segments = parse_script(args.script, args.max_words_per_segment)
+    segments = parse_script_text(script_snapshot, args.max_words_per_segment)
     front_matter = validate_front_matter(segments)
     segment_end = args.segment_end or len(segments)
     if args.render_only and args.assemble_only:

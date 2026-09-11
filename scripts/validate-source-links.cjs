@@ -4,12 +4,24 @@
 const crypto = require("crypto");
 const fs = require("fs");
 const net = require("net");
-const os = require("os");
 const path = require("path");
 const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
+const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
-const { sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { deterministicValidationResultValid, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
+const {
+  PACKAGE_OPERATION_IDS,
+  acquireEpisodePackageOperation,
+  assertEpisodePackageOperation,
+  assertValidationLockOwner,
+  episodeStateText,
+  markValidationInProgress,
+  releaseEpisodePackageOperation,
+  releaseValidationLock,
+} = require("./episode-package-lifecycle.cjs");
+const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const DEFAULT_HTTP_CONCURRENCY = 5;
@@ -27,6 +39,7 @@ const ECFR_TITLES_URL = "https://www.ecfr.gov/api/versioner/v1/titles.json";
 const ECFR_MAX_IN_FLIGHT_REQUESTS = 5;
 const ECFR_MIN_START_INTERVAL_MS = 1_000;
 const MAX_ECFR_MANIFEST_REFRESHES = 3;
+const MAX_RELEVANCE_EXCERPT_CHARACTERS = 12_000;
 const RELEVANCE_SCHEMA = {
   type: "object",
   additionalProperties: false,
@@ -60,12 +73,15 @@ const RELEVANCE_SCHEMA = {
   },
 };
 
+class ValidationCancelledError extends Error {}
+
 function parseArgs(argv) {
-  const options = { llm: false, requireLlm: false, dryRun: false, recoverStaleLock: false, model: DEFAULT_MODEL, "http-concurrency": DEFAULT_HTTP_CONCURRENCY, "http-per-origin": 2, "llm-concurrency": 2, "heartbeat-seconds": 10 };
+  const options = { llm: false, requireLlm: false, publicationCheck: false, dryRun: false, recoverStaleLock: false, model: DEFAULT_MODEL, "http-concurrency": DEFAULT_HTTP_CONCURRENCY, "http-per-origin": 2, "llm-concurrency": 2, "heartbeat-seconds": 10 };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
     if (argument === "--llm") { options.llm = true; continue; }
     if (argument === "--require-llm") { options.llm = true; options.requireLlm = true; continue; }
+    if (argument === "--publication-check") { options.publicationCheck = true; continue; }
     if (argument === "--dry-run") { options.dryRun = true; continue; }
     if (argument === "--recover-stale-lock") { options.recoverStaleLock = true; continue; }
     if (!argument.startsWith("--")) throw new Error(`Unexpected argument: ${argument}`);
@@ -75,7 +91,7 @@ function parseArgs(argv) {
     index += 1;
   }
   if (!options.sources || !options.claims) throw new Error("--sources and --claims are required.");
-  if (options.dryRun && options.recoverStaleLock) throw new Error("--recover-stale-lock cannot be combined with --dry-run.");
+  if (options.publicationCheck && (options.llm || options.requireLlm)) throw new Error("--publication-check cannot be combined with --llm or --require-llm.");
   if (!/^[a-z0-9][a-z0-9.-]*$/.test(options.model)) throw new Error("--model contains unsupported characters.");
   options.httpConcurrency = boundedInteger(options["http-concurrency"], DEFAULT_HTTP_CONCURRENCY, 8, "--http-concurrency");
   options.httpPerOrigin = boundedInteger(options["http-per-origin"], 2, 4, "--http-per-origin");
@@ -90,6 +106,41 @@ function loadYaml(file, expectedKey) {
   const value = document.toJS();
   if (!value || !Array.isArray(value[expectedKey])) throw new Error(`${file} must contain a ${expectedKey} array.`);
   return value;
+}
+
+function consumeSourceReviewAuthorization(episodePath, runID) {
+  return consumeChecklistAuthorization({
+    episodePath,
+    qaID: "openai-source-review-authorization",
+    operation: "the formal source-relevance review",
+    runID,
+  });
+}
+
+function sourceReviewFailureReport({ options, validationRun, authorizationForRun }) {
+  return ({ defaultReport }) => ({
+    ...defaultReport,
+    validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review",
+    run_id: validationRun.run_id,
+    llm_requested: options.llm,
+    llm_model: options.llm ? options.model : null,
+    authorization: authorizationForRun(),
+  });
+}
+
+function staticValidationTargetErrors(ledger, showNotesManifest) {
+  const errors = [];
+  const sourcesByID = new Map(ledger.sources.map((source) => [source.id, source]));
+  for (const source of ledger.sources) {
+    for (const error of [...citationTargetErrors(source), ...validationTargetErrors(source)]) errors.push(`Source ${source.id} has an invalid citation target: ${error}`);
+  }
+  for (const note of showNotesManifest.links) {
+    const source = sourcesByID.get(note.source_id);
+    if (!source) continue;
+    const target = { ...source, url: note.url, locator: note.locator };
+    for (const error of [...citationTargetErrors(target), ...validationTargetErrors(target)]) errors.push(`Show-notes link ${note.id} has an invalid citation target: ${error}`);
+  }
+  return errors;
 }
 
 function fileSha256(file) {
@@ -494,7 +545,7 @@ async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs
   if (isEcfrSource(source)) return verifyEcfrSection(source, { fetchImpl, timeoutMs, fetchCache, signal, ecfrRateLimiter });
   const citationPage = includePdfPageText ? citedPdfPageNumber(source.url) : null;
   const pdfPageFetchOptions = citationPage ? { maxBytes: MAX_PDF_CITATION_BYTES } : {};
-  const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: Boolean(source.programmatic_url), includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
+  const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
   citation.citation_url = source.url;
   citation.validation_url = source.validation_url || source.url;
   citation.errors = linkResponseErrors(source.validation_url || source.url, citation);
@@ -542,16 +593,21 @@ function responseText(response) {
   throw new Error("Responses API returned no output text.");
 }
 
+function relevanceExcerpt(fetched) {
+  const raw = fetched?.section_text || fetched?.pdf_page_text || fetched?.excerpt;
+  return typeof raw === "string" ? raw.trim().slice(0, MAX_RELEVANCE_EXCERPT_CHARACTERS) : "";
+}
+
 async function assessRelevance({ model, source, claims, authoredPassages = [], fetched, fetchImpl = fetch, signal }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is required for --llm. Load it from your environment; do not place it in a command argument or repository file.");
   // The relevance review must assess text extracted from this validation run.
   // Ledger excerpts are useful research notes, but cannot substitute for the
   // current cited page, PDF page, or exact eCFR section.
-  const excerpt = fetched.section_text || fetched.pdf_page_text || fetched.excerpt;
+  const excerpt = relevanceExcerpt(fetched);
   if (!excerpt) return { status: "not_assessed", reason: "The fetched resource has no safely extracted current text for relevance review." };
   const input = {
-    source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt: excerpt.slice(0, 12000) },
+    source: { id: source.id, title: source.title, document_id: source.document_id || null, locator: source.locator || null, final_url: fetched.final_url, cited_pdf_page: fetched.pdf_page_number || null, excerpt },
     // Episode claim inventories use `claim` and `claim_type`. Accept the
     // normalized aliases as well so this boundary remains usable by callers
     // that have already adapted the inventory, while preferring the canonical
@@ -565,7 +621,7 @@ async function assessRelevance({ model, source, claims, authoredPassages = [], f
   };
   const body = {
     model,
-    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
+    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. Report only a contradiction, unsupported factual statement, incorrect locator, or material scope mismatch. Do not request a stylistic rewrite, a harmless wording alternative, or a non-material omission. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
     input: JSON.stringify(input),
     text: { format: { type: "json_schema", name: "source_relevance", strict: true, schema: RELEVANCE_SCHEMA } },
   };
@@ -634,90 +690,7 @@ async function refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl = fetch
   return changes;
 }
 
-function validationInProgressPath(outputPath) {
-  return `${outputPath}.in-progress`;
-}
-
-function validationRecoveryPath(outputPath) {
-  return `${validationInProgressPath(outputPath)}.recovering`;
-}
-
-function validationFailurePath(outputPath) {
-  return `${outputPath}.failed`;
-}
-
-function failedValidationAttemptPath(outputPath, run) {
-  return path.join(path.dirname(outputPath), ".validation-attempts", `${run.run_id}.yaml`);
-}
-
-function readValidationLock(lockPath) {
-  try {
-    const document = YAML.parseDocument(fs.readFileSync(lockPath, "utf8"));
-    if (document.errors.length) throw new Error(document.errors[0].message);
-    const lock = document.toJS();
-    if (!lock || typeof lock !== "object" || typeof lock.run_id !== "string" || !lock.run_id || typeof lock.hostname !== "string" || !lock.hostname || !Number.isSafeInteger(lock.pid) || lock.pid < 1) {
-      throw new Error("missing run_id, hostname, or pid");
-    }
-    return lock;
-  } catch (error) {
-    throw new Error(`Cannot read validation lock ${lockPath}: ${error.message}`);
-  }
-}
-
-function processIsRunning(pid) {
-  try {
-    process.kill(pid, 0);
-    return true;
-  } catch (error) {
-    // EPERM means a live process we are not allowed to inspect; fail closed.
-    return error.code !== "ESRCH";
-  }
-}
-
-function recoverStaleValidationLock(outputPath) {
-  const lockPath = validationInProgressPath(outputPath);
-  const recoveryPath = validationRecoveryPath(outputPath);
-  try {
-    fs.mkdirSync(recoveryPath, 0o700);
-  } catch (error) {
-    if (error.code === "EEXIST") throw new Error(`Validation lock recovery is already in progress (${recoveryPath}).`);
-    throw error;
-  }
-  try {
-    const lock = readValidationLock(lockPath);
-    if (lock.hostname !== os.hostname()) throw new Error(`Validation lock belongs to host ${lock.hostname}; it cannot be safely recovered from ${os.hostname()}.`);
-    if (processIsRunning(lock.pid)) throw new Error(`Validation is already running with pid ${lock.pid}; refusing to replace its lock.`);
-    fs.unlinkSync(lockPath);
-  } finally {
-    fs.rmdirSync(recoveryPath);
-  }
-}
-
-function markValidationInProgress(outputPath, inputSha256, { recoverStaleLock = false } = {}) {
-  const lockPath = validationInProgressPath(outputPath);
-  const recoveryPath = validationRecoveryPath(outputPath);
-  if (fs.existsSync(recoveryPath)) throw new Error(`Source validation lock recovery is in progress (${recoveryPath}).`);
-  if (recoverStaleLock && fs.existsSync(lockPath)) recoverStaleValidationLock(outputPath);
-  const lock = { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: crypto.randomUUID(), hostname: os.hostname(), pid: process.pid, started_at_utc: new Date().toISOString(), input_sha256: inputSha256 };
-  let descriptor;
-  try {
-    descriptor = fs.openSync(lockPath, "wx", 0o600);
-    fs.writeFileSync(descriptor, YAML.stringify(lock), "utf8");
-  } catch (error) {
-    if (error.code === "EEXIST") throw new Error(`Source validation is already in progress or was interrupted (${lockPath}). After confirming the recorded process is no longer running, rerun with --recover-stale-lock.`);
-    throw error;
-  } finally {
-    if (descriptor !== undefined) fs.closeSync(descriptor);
-  }
-  return lock;
-}
-
-function assertValidationLockOwner(lockPath, run) {
-  const lock = readValidationLock(lockPath);
-  if (lock.run_id !== run.run_id || lock.hostname !== run.hostname || lock.pid !== run.pid) throw new Error(`Validation lock ownership changed while producing ${lockPath}; report was not released.`);
-}
-
-function completeValidationReport(outputPath, report, run, { promote = true } = {}) {
+function completeValidationReport(outputPath, report, run, { promote = true, beforeRelease, validator = "scripts/validate-source-links.cjs" } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
   const failurePath = validationFailurePath(outputPath);
@@ -736,7 +709,7 @@ function completeValidationReport(outputPath, report, run, { promote = true } = 
     // but it must not authorize a package after this run found a problem.
     writeYaml(failurePath, {
       schema_version: 1,
-      validator: "scripts/validate-source-links.cjs",
+      validator,
       run_id: run.run_id,
       failed_at_utc: new Date().toISOString(),
       input_sha256: run.input_sha256,
@@ -744,14 +717,78 @@ function completeValidationReport(outputPath, report, run, { promote = true } = 
     });
   }
   assertValidationLockOwner(lockPath, run);
+  beforeRelease?.();
+  assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
   return writtenPath;
 }
 
-function releaseValidationLock(outputPath, run) {
-  const lockPath = validationInProgressPath(outputPath);
-  assertValidationLockOwner(lockPath, run);
-  fs.unlinkSync(lockPath);
+async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false, validator = "scripts/validate-source-links.cjs", failureReport } = {}) {
+  try {
+    return await work();
+  } catch (error) {
+    const lockPath = validationInProgressPath(outputPath);
+    if (fs.existsSync(lockPath)) {
+      const outcome = error instanceof ValidationCancelledError || isCancelled() ? "cancelled" : "failed";
+      const defaultReport = {
+        schema_version: 1,
+        validator,
+        checked_at_utc: new Date().toISOString(),
+        input_sha256: run.input_sha256,
+        failure: {
+          outcome,
+          reason: error.message,
+        },
+        results: [],
+      };
+      let report = defaultReport;
+      try {
+        const candidate = failureReport?.({ error, outcome, defaultReport });
+        if (candidate !== undefined && candidate !== null) {
+          if (typeof candidate !== "object" || Array.isArray(candidate)) throw new Error("failure report transformer did not return a mapping");
+          report = candidate;
+        }
+      } catch (reportError) {
+        defaultReport.failure.report_transform_error = reportError.message;
+      }
+      report.failure = { ...(report.failure || {}), outcome, reason: error.message };
+      if (!report.checked_at_utc) report.checked_at_utc = defaultReport.checked_at_utc;
+      try { completeValidationReport(outputPath, report, run, { promote: false, validator, beforeRelease: () => onTerminal?.(outcome, report.checked_at_utc) }); }
+      catch (finalizeError) { throw new Error(`${error.message}; validation failure finalization also failed: ${finalizeError.message}`, { cause: error }); }
+    }
+    throw error;
+  }
+}
+
+function updateEpisodeSourceState(episodePath, outcome, checkedAt = null, lease) {
+  assertEpisodePackageOperation(episodePath, lease, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
+  const episodeFile = path.join(episodePath, "episode.yaml");
+  const originalText = fs.readFileSync(episodeFile, "utf8");
+  const document = YAML.parseDocument(originalText);
+  if (document.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${document.errors[0].message}`);
+  const episode = document.toJS();
+  requireCurrentProductionContract(episode, "Source validation");
+  const states = {
+    in_progress: { status: "source_relevance_in_progress", relevance_review: "in_progress", verified_at_utc: null },
+    complete: { status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: checkedAt },
+    failed: { status: "source_relevance_failed", relevance_review: "failed", verified_at_utc: null },
+    cancelled: { status: "source_relevance_cancelled", relevance_review: "cancelled", verified_at_utc: null },
+    pending: { status: "source_relevance_pending", relevance_review: "pending", verified_at_utc: null },
+  };
+  if (!states[outcome]) throw new Error(`Unsupported source-validation outcome: ${outcome}`);
+  episode.source_verification = {
+    ...(episode.source_verification || {}),
+    validation_contract: "source-relevance-v1",
+    link_validation: "link-validation.yaml",
+    show_notes_manifest: "show-notes-manifest.yaml",
+    ...states[outcome],
+  };
+  writeTextAtomically(episodeFile, episodeStateText(episodePath, episode, lease, originalText));
+}
+
+function sourceValidationTerminalOutcome({ unresolved, requireLlm }) {
+  if (unresolved) return "failed";
+  return requireLlm ? "complete" : "pending";
 }
 
 function publicLinkRecord(link) {
@@ -780,9 +817,7 @@ function applyVerificationEvidence(result, source, verification) {
   return result;
 }
 
-function deterministicEntryValid(entry) {
-  return entry.citation_target.valid && entry.link.valid && (!entry.content_attestation || entry.content_attestation.valid) && !entry.missing_claim_ids?.length;
-}
+const deterministicEntryValid = deterministicValidationResultValid;
 
 function reportMappingErrors(claimMapping, showNotesMapping) {
   for (const error of claimMapping.errors) console.error(`Claim mapping failed: ${error}`);
@@ -791,21 +826,31 @@ function reportMappingErrors(claimMapping, showNotesMapping) {
 
 function validateClaimMappings(ledger, claimInventory) {
   const errors = [];
+  if (!Array.isArray(ledger?.sources) || !Array.isArray(claimInventory?.claims)) return { valid: false, errors: ["sources and claims must be arrays"] };
   const sourceIds = new Set();
   for (const source of ledger.sources) {
-    if (!source.id) { errors.push("source ledger contains a source without an id"); continue; }
+    if (!source || typeof source !== "object" || Array.isArray(source)) { errors.push("source ledger contains a non-mapping source"); continue; }
+    if (typeof source.id !== "string" || !source.id.trim()) { errors.push("source ledger contains a source without an id"); continue; }
     if (sourceIds.has(source.id)) errors.push(`source ledger contains duplicate source id ${source.id}`);
     sourceIds.add(source.id);
+    if (!Array.isArray(source.supports_claims)) errors.push(`source ${source.id} must declare supports_claims as an array`);
+    else if (source.supports_claims.length !== new Set(source.supports_claims).size || source.supports_claims.some((id) => typeof id !== "string" || !id.trim())) errors.push(`source ${source.id} must declare unique, non-empty claim ids`);
   }
-  const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
+  const sourcesById = new Map(ledger.sources.filter((source) => source && typeof source === "object" && !Array.isArray(source)).map((source) => [source.id, source]));
   const claimIds = new Set();
   for (const claim of claimInventory.claims) {
-    if (!claim.id) { errors.push("claim inventory contains a claim without an id"); continue; }
+    if (!claim || typeof claim !== "object" || Array.isArray(claim)) { errors.push("claim inventory contains a non-mapping claim"); continue; }
+    if (typeof claim.id !== "string" || !claim.id.trim()) { errors.push("claim inventory contains a claim without an id"); continue; }
     if (claimIds.has(claim.id)) errors.push(`claim inventory contains duplicate claim id ${claim.id}`);
     claimIds.add(claim.id);
+    const statement = claim.claim ?? claim.statement;
+    if (typeof statement !== "string" || !statement.trim()) errors.push(`claim ${claim.id} must declare non-empty factual claim text`);
+    if (!Array.isArray(claim.sources)) errors.push(`claim ${claim.id} must declare sources as an array`);
+    else if (claim.sources.length !== new Set(claim.sources).size || claim.sources.some((id) => typeof id !== "string" || !id.trim())) errors.push(`claim ${claim.id} must declare unique, non-empty source ids`);
   }
-  const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
+  const claimsById = new Map(claimInventory.claims.filter((claim) => claim && typeof claim === "object" && !Array.isArray(claim)).map((claim) => [claim.id, claim]));
   for (const source of ledger.sources) {
+    if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) continue;
     for (const claimId of source.supports_claims) {
       const claim = claimsById.get(claimId);
       if (!claim) errors.push(`source ${source.id} maps unknown claim ${claimId}`);
@@ -813,7 +858,7 @@ function validateClaimMappings(ledger, claimInventory) {
     }
   }
   for (const claim of claimInventory.claims) {
-    if (!claim.id) continue;
+    if (!claim || typeof claim !== "object" || !claim.id) continue;
     if (!Array.isArray(claim.sources) || !claim.sources.length) {
       errors.push(`claim ${claim.id} has no declared sources`);
       continue;
@@ -821,9 +866,9 @@ function validateClaimMappings(ledger, claimInventory) {
     for (const sourceId of claim.sources) {
       const source = sourcesById.get(sourceId);
       if (!source) errors.push(`claim ${claim.id} declares unknown source ${sourceId}`);
-      else if (!source.supports_claims.includes(claim.id)) errors.push(`claim ${claim.id} declares source ${sourceId}, but that source does not support the claim`);
+      else if (!Array.isArray(source.supports_claims) || !source.supports_claims.includes(claim.id)) errors.push(`claim ${claim.id} declares source ${sourceId}, but that source does not support the claim`);
     }
-    const supportingSources = ledger.sources.filter((source) => source.supports_claims.includes(claim.id));
+    const supportingSources = ledger.sources.filter((source) => Array.isArray(source?.supports_claims) && source.supports_claims.includes(claim.id));
     if (!supportingSources.length) errors.push(`claim ${claim.id} is not supported by any source ledger entry`);
   }
   return { valid: errors.length === 0, errors };
@@ -939,53 +984,98 @@ async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
   return results;
 }
 
-async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled, refreshCount, finalRefreshAttempt }) {
+function loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath }) {
+  if (!fs.existsSync(showNotesPath) || !fs.lstatSync(showNotesPath).isFile() || !fs.existsSync(showNotesManifestPath) || !fs.lstatSync(showNotesManifestPath).isFile()) {
+    throw new Error("current-contract source validation requires canonical show-notes.md and show-notes-manifest.yaml files");
+  }
+  for (const filePath of [sourcesPath, claimsPath]) {
+    if (!fs.existsSync(filePath) || !fs.lstatSync(filePath).isFile()) {
+      throw new Error("current-contract source validation requires canonical regular sources.yaml and claim-inventory.yaml files");
+    }
+  }
+  return {
+    ledger: loadYaml(sourcesPath, "sources"),
+    claimInventory: loadYaml(claimsPath, "claims"),
+    showNotesManifest: loadYaml(showNotesManifestPath, "links"),
+    showNotesMarkdown: fs.readFileSync(showNotesPath, "utf8"),
+  };
+}
+
+async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled, refreshCount, finalRefreshAttempt, fetchImpl = fetch }) {
   const sourcesPath = path.resolve(options.sources); const claimsPath = path.resolve(options.claims);
-  const outputPath = path.resolve(options.output || path.join(path.dirname(sourcesPath), "link-validation.yaml"));
-  const ledger = loadYaml(sourcesPath, "sources"); const claimInventory = loadYaml(claimsPath, "claims");
+  const reportName = options.publicationCheck ? "publication-link-validation.yaml" : "link-validation.yaml";
+  const outputPath = path.resolve(options.output || path.join(path.dirname(sourcesPath), reportName));
   const showNotesPath = path.resolve(options["show-notes"] || path.join(path.dirname(sourcesPath), "show-notes.md")); const showNotesManifestPath = path.resolve(options["show-notes-manifest"] || path.join(path.dirname(sourcesPath), "show-notes-manifest.yaml"));
-  const showNotesFilePresent = fs.existsSync(showNotesPath); const showNotesValidationConfigured = fs.existsSync(showNotesManifestPath);
-  if (showNotesValidationConfigured && !showNotesFilePresent) throw new Error("show-notes-manifest.yaml requires show-notes.md");
-  const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
   const episodePath = path.dirname(sourcesPath);
-  if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml")) throw new Error("source validation inputs must be the canonical episode package files");
-  const inputSha256 = sourceValidationInputHashes(episodePath);
-  const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
-  const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
-  if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
-  const claimMapping = validateClaimMappings(ledger, claimInventory);
-  const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
-  const showNotesMapping = showNotesValidationConfigured ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_configured", errors: [] };
+  if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml") || outputPath !== path.join(episodePath, reportName)) throw new Error("source validation inputs and output must be the canonical episode package files");
+  // A formal review changes episode state, so it owns the package before
+  // reading mutable inputs. The lease is intentionally not keyed to a
+  // pre-read input hash: a script reset must not replace those bytes between
+  // snapshot and ownership.
+  // A publication check writes only its own evidence record. Its input hashes
+  // make a concurrently edited package stale at the release gate, so it does
+  // not need to own the mutable episode-state lease used by formal reviews.
+  const lifecycleLease = options.publicationCheck ? null : acquireEpisodePackageOperation(
+    episodePath,
+    PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW,
+    { recoverStaleLock: options.recoverStaleLock },
+  );
+  try {
+    const episodeFile = path.join(episodePath, "episode.yaml");
+    if (!fs.existsSync(episodeFile) || !fs.lstatSync(episodeFile).isFile()) throw new Error("source validation requires the canonical episode.yaml package record");
+  const episodeDocument = YAML.parseDocument(fs.readFileSync(episodeFile, "utf8"));
+  if (episodeDocument.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${episodeDocument.errors[0].message}`);
+  const episode = episodeDocument.toJS();
+  requireCurrentProductionContract(episode, "Source validation");
   if (options.dryRun) {
+    const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
+    const claimMapping = validateClaimMappings(ledger, claimInventory);
+    const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
+    const showNotesMapping = validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown);
     if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
       reportMappingErrors(claimMapping, showNotesMapping);
       for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
       process.exitCode = 1;
       return;
     }
-    const showNotesSummary = showNotesValidationConfigured ? `${showNotesManifest.links.length} show-notes links` : showNotesFilePresent ? "show notes without a manifest (not configured)" : "no show-notes manifest";
-    console.log(`Validated input shape, claim mappings, ${masterScriptMapping.source_tag_count} master-script source tags, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    console.log(`Validated input shape, claim mappings, ${masterScriptMapping.source_tag_count} master-script source tags, and ${showNotesManifest.links.length} show-notes links for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
   }
-  const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
-  progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest?.links.length || 0, llm_requested: options.llm });
+  const inputSha256 = sourceValidationInputHashes(episodePath);
+  let validationRun;
+    validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
+    let authorization = null;
+    return await runOwnedValidation(outputPath, validationRun, async () => {
+  if (!options.publicationCheck) updateEpisodeSourceState(episodePath, "in_progress", null, lifecycleLease);
+  const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
+  const showNotesFilePresent = true; const showNotesValidationConfigured = true;
+  const claimsById = new Map(claimInventory.claims.filter((claim) => claim && typeof claim === "object" && !Array.isArray(claim)).map((claim) => [claim.id, claim]));
+  const invalid = ledger.sources.filter((source) => !source || typeof source !== "object" || Array.isArray(source) || !source.id || !source.url || !Array.isArray(source.supports_claims));
+  if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
+  const claimMapping = validateClaimMappings(ledger, claimInventory);
+  const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
+  const showNotesMapping = validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown);
+  progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest.links.length, llm_requested: options.llm });
   if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
     reportMappingErrors(claimMapping, showNotesMapping);
     for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
-    const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false });
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
+    const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, "failed", null, lifecycleLease); } });
     progress.emit("report_written", { valid: false });
     console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
     process.exitCode = 1;
     return;
   }
+  const targetErrors = staticValidationTargetErrors(ledger, showNotesManifest);
+  if (targetErrors.length) throw new Error(`Source validation cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
   const fetchCache = new Map();
-  const refreshedEcfrSources = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
+  const refreshedEcfrSources = options.publicationCheck ? [] : await refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl, fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
   if (refreshedEcfrSources.length) {
     if (finalRefreshAttempt) {
       const report = {
         schema_version: 1,
         validator: "scripts/validate-source-links.cjs",
+        validation_kind: "formal_source_review",
         checked_at_utc: new Date().toISOString(),
         input_sha256: inputSha256,
         failure: {
@@ -994,16 +1084,21 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
         },
         results: [],
       };
-      const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false });
+      const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, "failed", null, lifecycleLease); } });
       progress.emit("report_written", { valid: false });
       console.error(`eCFR changed repeatedly; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
       return { refreshedEcfrSources };
     }
+    updateEpisodeSourceState(episodePath, "pending", null, lifecycleLease);
     releaseValidationLock(outputPath, validationRun);
     progress.emit("ecfr_manifest_refreshed", { source_count: refreshedEcfrSources.length, titles: [...new Set(refreshedEcfrSources.map((entry) => entry.target.title))] });
     console.error(`Refreshed ${refreshedEcfrSources.length} eCFR source date${refreshedEcfrSources.length === 1 ? "" : "s"}; restarting validation with the current API date.`);
     return { refreshedEcfrSources };
   }
+  // An eCFR refresh is an internal restart, not a completed validation
+  // attempt. Once inputs are stable, record the explicit current-turn human
+  // authorization alongside the outbound review result.
+  if (options.llm) authorization = consumeSourceReviewAuthorization(episodePath, validationRun.run_id);
   const results = new Array(ledger.sources.length);
   const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
   const showNotesResults = new Array(showNotesManifest?.links.length || 0);
@@ -1022,7 +1117,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
       try {
         result.citation_target.errors = [...citationTargetErrors(noteSource), ...validationTargetErrors(noteSource)]; result.citation_target.valid = result.citation_target.errors.length === 0;
         if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
-        const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
+        const verification = await verifyProgrammaticFallback(noteSource, { fetchImpl, includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
         applyVerificationEvidence(result, noteSource, verification);
       } catch (error) { result.link = { valid: false, error: error.message }; }
       showNotesResults[job.index] = result; return result;
@@ -1035,13 +1130,13 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
       entry.citation_target.errors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
       entry.citation_target.valid = entry.citation_target.errors.length === 0;
       if (!entry.citation_target.valid) throw new Error(`Deep-citation validation failed: ${entry.citation_target.errors.join("; ")}`);
-      const verification = await verifyProgrammaticFallback(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
+      const verification = await verifyProgrammaticFallback(source, { fetchImpl, includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
       applyVerificationEvidence(entry, source, verification);
     } catch (error) { entry.link = { valid: false, error: error.message }; }
     results[job.index] = entry; return entry;
   }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? ECFR_MAX_IN_FLIGHT_REQUESTS : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
-  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) throw new ValidationCancelledError("Source validation was cancelled during deterministic validation.");
   const deterministicValid = masterScriptMapping.valid && results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
   if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
   await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
@@ -1057,14 +1152,14 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
       entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
       entry.claim_assessments = validateClaimAssessments(entry.relevance, []);
     } else {
-      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, authoredPassages: masterScriptMapping.passages_by_source[source.id] || [], fetched: entry.link, signal: cancellation.signal }); }
+      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, authoredPassages: masterScriptMapping.passages_by_source[source.id] || [], fetched: entry.link, fetchImpl, signal: cancellation.signal }); }
       catch (error) { entry.relevance = { status: "not_assessed", reason: `LLM relevance failed: ${error.message}` }; }
       entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
     }
     return entry;
   }, { signal: cancellation.signal, onCompleted: (entry) => { if (options.llm && deterministicValid) progress.itemCompleted(entry.source_id, entry.relevance.status === "assessed"); } });
   if (options.llm && deterministicValid) progress.phaseCompleted();
-  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) throw new ValidationCancelledError("Source validation was cancelled during relevance review.");
   for (const entry of results) console.log(`${entry.source_id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
   const reportResults = results.map((result) => ({
     ...result,
@@ -1073,14 +1168,23 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
-  const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved });
+  const terminalOutcome = sourceValidationTerminalOutcome({ unresolved, requireLlm: options.requireLlm });
+  const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, terminalOutcome, report.checked_at_utc, lifecycleLease); } });
   progress.emit("report_written", { valid: !unresolved });
   if (unresolved) console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
   else console.log(`Wrote ${path.relative(process.cwd(), writtenPath)}`);
   if (unresolved) process.exitCode = 1;
   return { refreshedEcfrSources: [] };
+  }, {
+    isCancelled,
+    failureReport: sourceReviewFailureReport({ options, validationRun, authorizationForRun: () => authorization }),
+    onTerminal: (outcome, checkedAt) => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, outcome, checkedAt, lifecycleLease); },
+    });
+  } finally {
+    if (lifecycleLease) releaseEpisodePackageOperation(lifecycleLease);
+  }
 }
 
 async function runWithEcfrRefreshes(runAttempt, { maximumRefreshes = MAX_ECFR_MANIFEST_REFRESHES } = {}) {
@@ -1109,7 +1213,7 @@ async function main() {
   try {
     return await runWithEcfrRateLimiter(({ refreshCount, finalRefreshAttempt }) => validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled: () => cancelled, refreshCount, finalRefreshAttempt }), ecfrRateLimiter);
   } catch (error) {
-    if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; }
+    if (cancelled || error instanceof ValidationCancelledError) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; }
     else { progress.emit("run_failed", { message: error.message }); throw error; }
   } finally {
     process.removeListener("SIGINT", cancel); process.removeListener("SIGTERM", cancel); progress.close();
@@ -1118,4 +1222,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

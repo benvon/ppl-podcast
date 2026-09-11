@@ -12,6 +12,7 @@ const path = require("path");
 const YAML = require("yaml");
 const { PreHostingValidationError, sha256File, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
+const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, withEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 const SEAL_FILE = "source-release-seal.yaml";
 const HANDOFF_FILES = ["episode.yaml", "show-notes.md", "audio.mp3"];
@@ -22,6 +23,7 @@ function parseArgs(argv) {
   const values = {};
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
+    if (token === "--recover-stale-lock") { values["recover-stale-lock"] = true; continue; }
     if (!token.startsWith("--")) throw new HostingHandoffError(`Unexpected argument: ${token}`);
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new HostingHandoffError(`Missing value for ${token}`);
@@ -65,7 +67,14 @@ function listedFiles(directory, { exclude = [] } = {}) {
 }
 
 function sourcePackageFiles(episodePath) {
-  return Object.fromEntries(listedFiles(episodePath, { exclude: [SEAL_FILE] }).map((name) => [name, sha256File(path.join(episodePath, name))]));
+  // Locks, failed-attempt markers, and temporary files describe an active or
+  // interrupted local operation. They are not source-package inputs and are
+  // removed by normal cleanup, so including them would make a release seal
+  // attest to bytes that cannot exist once the handoff is complete.
+  const transient = (name) => name.startsWith(".") || name.endsWith(".in-progress") || name.endsWith(".failed") || name.includes(".tmp");
+  return Object.fromEntries(listedFiles(episodePath, { exclude: [SEAL_FILE] })
+    .filter((name) => !transient(name))
+    .map((name) => [name, sha256File(path.join(episodePath, name))]));
 }
 
 function releaseEpisode({ episodePath, cwd }) {
@@ -99,7 +108,7 @@ function sealPayload({ episode, sourceFiles, candidatePath, outputDir }) {
   };
 }
 
-function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
+function createHostingHandoffUnlocked({ episodePath, outputDir, cwd = process.cwd(), packageLease = null }) {
   const resolvedEpisode = path.resolve(episodePath);
   const resolvedOutput = path.resolve(outputDir);
   if (resolvedOutput === resolvedEpisode || resolvedOutput.startsWith(`${resolvedEpisode}${path.sep}`)) throw new HostingHandoffError("Hosting handoff output must be outside the source episode directory.");
@@ -107,7 +116,7 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
   const sourceFiles = sourcePackageFiles(resolvedEpisode);
   const releaseEpisodeRecord = readYaml(path.join(resolvedEpisode, "episode.yaml"));
   if (releaseEpisodeRecord.production_contract_version !== 2) throw new HostingHandoffError("This is a preserved legacy package. Do not create a new handoff unless it has first been revised under the current release contract.");
-  const preHosting = validatePreHosting({ episodePath: resolvedEpisode, cwd });
+  const preHosting = validatePreHosting({ episodePath: resolvedEpisode, cwd, packageLease });
   if (!preHosting.valid) throw new HostingHandoffError(`Pre-hosting validation failed:\n${preHosting.errors.join("\n")}`);
   if (sha256Value(sourcePackageFiles(resolvedEpisode)) !== sha256Value(sourceFiles)) throw new HostingHandoffError("Source episode package changed while pre-hosting validation was running; rerun validation before creating a handoff.");
   const { candidatePath, candidateSha256, release } = releaseEpisode({ episodePath: resolvedEpisode, cwd });
@@ -131,6 +140,20 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
     fs.rmSync(temporary, { recursive: true, force: true });
     throw error;
   }
+}
+
+function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd(), packageLease = null, recoverStaleLock = false }) {
+  if (packageLease) {
+    assertEpisodePackageOperation(episodePath, packageLease, [
+      PACKAGE_OPERATION_IDS.HOSTING_HANDOFF,
+      PACKAGE_OPERATION_IDS.PUBLICATION_PREPARATION,
+    ]);
+    return createHostingHandoffUnlocked({ episodePath, outputDir, cwd, packageLease });
+  }
+  const resolvedEpisode = path.resolve(episodePath);
+  return withEpisodePackageOperation(resolvedEpisode, PACKAGE_OPERATION_IDS.HOSTING_HANDOFF, { recoverStaleLock }, (lease) => (
+    createHostingHandoffUnlocked({ episodePath: resolvedEpisode, outputDir, cwd, packageLease: lease })
+  ));
 }
 
 function verifyHostingHandoff({ outputDir }) {
@@ -164,7 +187,7 @@ function verifyHostingHandoff({ outputDir }) {
 if (require.main === module) {
   try {
     const options = parseArgs(process.argv.slice(2));
-    const result = createHostingHandoff({ episodePath: options.episode, outputDir: options.out });
+    const result = createHostingHandoff({ episodePath: options.episode, outputDir: options.out, recoverStaleLock: Boolean(options["recover-stale-lock"]) });
     verifyHostingHandoff({ outputDir: result.outputDir });
     console.log(`Created and verified sealed hosting handoff: ${result.outputDir}`);
   } catch (error) {
@@ -174,4 +197,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { HANDOFF_FILES, HostingHandoffError, SEAL_FILE, createHostingHandoff, sha256Value, verifyHostingHandoff };
+module.exports = { HANDOFF_FILES, HostingHandoffError, SEAL_FILE, createHostingHandoff, parseArgs, sha256Value, sourcePackageFiles, verifyHostingHandoff };

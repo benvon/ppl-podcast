@@ -1,0 +1,32 @@
+episode_id: core-15
+current_candidate_render:
+  script_version: 0.1.11
+  rendered_at_utc: 2026-09-10T21:28:55.102Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 13
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: audio-artifacts/core-15-20260910T212843Z.mp3
+  lossless_master: audio-artifacts/core-15-20260910T212843Z.master.wav
+  voice_master: audio-artifacts/core-15-20260910T212843Z.voice.master.wav
+  render_manifest: audio-artifacts/core-15-20260910T212843Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-15-20260910T212843Z.audio-quality.json
+  chapter_review: audio-artifacts/core-15-20260910T212843Z.mp3.chapters.f1cc2f53f6c24950d6f3158418f708c3dd357023f1665a29611b9766f7bf493f.html
+  segment_work_dir: audio-artifacts/core-15-realtime-20260910T204847Z.segments
+  duration_seconds: 1973.98
+  duration_display: "32:54"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: f1cc2f53f6c24950d6f3158418f708c3dd357023f1665a29611b9766f7bf493f
+  front_matter_validation: The full candidate includes the required Disclaimer immediately after the Opening.
+  music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade.
+  usage_estimate_usd: 2.836211
+  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, all known stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters.
+superseded_candidates: []
+chapter_markers:
+  source: master-script.md section headings
+  audio_sha256: f1cc2f53f6c24950d6f3158418f708c3dd357023f1665a29611b9766f7bf493f
+  review_page: audio-artifacts/core-15-20260910T212843Z.mp3.chapters.f1cc2f53f6c24950d6f3158418f708c3dd357023f1665a29611b9766f7bf493f.html
+  required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast

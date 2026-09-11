@@ -211,7 +211,7 @@ claims:
     script_sections: [Turn weather minimums into a usable picture, Retrieval review]
     status: supported
   - id: special-vfr-conditions
-    claim: "Below 10,000 feet MSL, Special VFR for an airplane in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile visibility; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires an instrument-rated pilot and an IFR-equipped airplane."
+    claim: "Below 10,000 feet MSL, Special VFR for an airplane in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile visibility; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight and the airplane to meet the instrument-equipment requirements in section 91.205(d)."
     claim_type: regulation
     sources: [ecfr-91-157-special-vfr]
     risk: safety_critical
@@ -232,7 +232,7 @@ claims:
     script_sections: [Use Special VFR as a separate decision]
     status: supported
   - id: special-vfr-boundary
-    claim: "A Special VFR clearance applies only within the designated surface area."
+    claim: "The AIM describes Special VFR as an operation within controlled airspace designated to the surface for an airport."
     claim_type: FAA guidance
     sources: [aim-special-vfr]
     risk: safety_critical
@@ -253,14 +253,14 @@ claims:
     script_sections: [Distinguish special use airspace from other charted areas, Retrieval review]
     status: supported
   - id: nonregulatory-sua-distinctions
-    claim: "Warning areas advise of potentially hazardous activity offshore; MOAs separate certain military training from IFR traffic; alert areas identify high-volume training or unusual aerial activity; and CFA activity is suspended when a spotter aircraft, radar, or ground lookout indicates that an aircraft might be approaching."
+    claim: "Warning areas extend from three nautical miles outward from the U.S. coast and advise of activity that may be hazardous to nonparticipating aircraft; MOAs separate certain military training from IFR traffic; alert areas identify high-volume training or unusual aerial activity; and CFA activity is suspended when a spotter aircraft, radar, or ground lookout indicates that an aircraft might be approaching."
     claim_type: FAA handbook and guidance
     sources: [phak-special-use, aim-special-use]
     risk: safety_critical
     script_sections: [Distinguish special use airspace from other charted areas, Retrieval review]
     status: supported
   - id: moa-status
-    claim: "VFR flight through an MOA is not generally prohibited, but pilots should obtain current activity information and exercise extreme caution while the MOA is active."
+    claim: "The AIM advises VFR pilots to obtain current MOA activity information and exercise extreme caution while military activity is being conducted."
     claim_type: FAA guidance
     sources: [aim-special-use]
     risk: safety_critical

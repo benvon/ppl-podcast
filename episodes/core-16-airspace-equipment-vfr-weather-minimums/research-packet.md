@@ -52,7 +52,7 @@ At every change, the Instructor returns to the same four questions:
 - **Mode C veil:** The charted 30-nautical-mile equipment area around listed Class B primary airports, generally surface to 10,000 feet MSL.
 - **Flight visibility / ground visibility:** Visibility forward from the cockpit while in flight versus visibility reported at an airport.
 - **Cloud clearance:** Required vertical and horizontal distance from clouds.
-- **Weather ceiling:** Lowest layer reported as broken, overcast, or obscuration, stated as height AGL.
+- **Weather ceiling:** Lowest layer reported as broken, overcast, or obscuration, stated as height above ground or water.
 - **Basic VFR / VMC / IMC:** Basic VFR is the operating rule; visual meteorological conditions meet or exceed applicable minima; instrument meteorological conditions are below them.
 - **SVFR:** Special VFR, an ATC clearance for specified operations within a controlled surface area in weather below basic VFR minima when regulatory conditions are met.
 - **SUA / MOA / CFA:** Special use airspace, military operations area, and controlled firing area.
@@ -76,10 +76,10 @@ At every change, the Instructor returns to the same four questions:
   - **Correction:** Identify the class, height above the surface, MSL altitude, day or night, phase of flight, reported ground visibility, flight visibility, and weather ceiling before selecting the row.
   - **Sources:** 14 CFR 91.155; AIM TBL 3-1-4.
 - **Misconception:** A scattered layer is a ceiling.
-  - **Correction:** The aviation ceiling is the height of the lowest layer reported as broken, overcast, or obscuration.
+  - **Correction:** The aviation ceiling is the height above ground or water of the lowest layer reported as broken, overcast, or obscuration.
   - **Source:** AIM 7-1-14.
 - **Misconception:** One mile and clear of clouds under an SVFR clearance means the rest of the route is workable.
-  - **Correction:** The clearance applies only inside the surface area. Terrain, obstacles, workload, pilot capability, and the weather beyond that boundary remain separate decisions.
+  - **Correction:** Special VFR describes an operation inside controlled airspace designated to the surface for an airport. Terrain, obstacles, workload, pilot capability, and the weather beyond that boundary remain separate decisions.
   - **Sources:** 14 CFR 91.157; AIM 4-4-6.
 - **Misconception:** Every unusual chart or briefing item calls for the same airspace decision.
   - **Correction:** Prohibited areas, restricted areas, MOAs, MTRs, TFRs, SATRs, and SFRAs have different operating meanings. Identify the item first, then use its current controlling information; for a TFR, that is the current NOTAM.

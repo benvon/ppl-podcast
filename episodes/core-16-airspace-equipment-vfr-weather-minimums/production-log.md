@@ -56,3 +56,10 @@
 - Added the requirement to maintain two-way communication while within Class Charlie for an arrival or through flight, including in the retrieval review.
 - Kept the below-10,000-feet-MSL Special VFR condition under the controlling section 91.157 claim and removed that condition from the AIM source's claim responsibility. The AIM remains the source for the surface-area boundary and listed fixed-wing restrictions.
 - Advanced the package to version 0.1.4 and regenerated the 5,321-word narration derivative. Formal source relevance must be rerun cleanly before human editorial review.
+
+## 2026-09-11 — focused source-boundary corrections
+
+- Version 0.1.5 narrowed the MOA passage to the AIM's affirmative guidance for VFR pilots.
+- Version 0.1.6 restored the warning-area boundary beginning three nautical miles outward from the U.S. coast and carried the ceiling definition's ground-or-water reference into the spoken lesson and retrieval review.
+- Replaced the simplified Special VFR nighttime shorthand with the regulation's applicable Part 61 instrument-flight and section 91.205(d) equipment conditions. Rephrased the surface-area discussion around where Special VFR operations occur rather than claiming that an ATC clearance terminates at the boundary.
+- Regenerated the 5,373-word narration derivative. Formal source relevance must be rerun cleanly before human editorial review.

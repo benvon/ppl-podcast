@@ -269,7 +269,7 @@ And now the second meaning of ceiling?
 
 **INSTRUCTOR:**
 
-For aviation weather, a ceiling is the height above ground level of the lowest layer reported as broken, overcast, or obscuration. A scattered layer is not a ceiling. If a report says scattered at 800 and overcast at 1,500, the ceiling is 1,500 feet AGL.
+For aviation weather, a ceiling is the height above ground—or above water when applicable—of the lowest layer reported as broken, overcast, or obscuration. A scattered layer is not a ceiling. If a report says scattered at 800 and overcast at 1,500, the ceiling is 1,500 feet AGL.
 
 **INSTRUCTOR:**
 
@@ -359,7 +359,7 @@ Use Special VFR as a separate decision.
 
 **INSTRUCTOR:**
 
-Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation below 10,000 feet MSL within controlled airspace designated to the surface for an airport when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires an instrument-rated pilot and an airplane equipped for instrument flight.
+Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation below 10,000 feet MSL within controlled airspace designated to the surface for an airport when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d).
 
 **LEARNER:**
 
@@ -375,7 +375,7 @@ Even where Special VFR is available, the clearance does not answer the larger sa
 
 **INSTRUCTOR:**
 
-The AIM also explains that a Special VFR clearance is effective only within the surface area.
+The AIM describes Special VFR as an operation within controlled airspace designated to the surface for an airport.
 
 After the airplane leaves that boundary, the pilot must apply the basic VFR minimums for the next airspace or route segment. If a departure depends on one mile and clear of clouds inside the surface area but immediately encounters Class Echo requiring three miles outside it, the route still fails.
 
@@ -403,11 +403,11 @@ The AIM also describes Special Air Traffic Rules and Special Flight Rules Areas,
 
 Prohibited areas contain airspace where flight is prohibited for security or national-welfare reasons. Restricted areas contain unusual, often invisible hazards such as firing or missiles, and the AIM warns that penetrating one without authorization may be extremely hazardous.
 
-Warning areas extend offshore and warn of activity that may be hazardous to nonparticipating aircraft.
+Warning areas extend from three nautical miles outward from the U.S. coast and warn of activity that may be hazardous to nonparticipating aircraft.
 
 **INSTRUCTOR:**
 
-A military operations area, or M-O-A, separates certain military training activities from instrument-flight-rules traffic. VFR flight is not generally prohibited, but the AIM advises pilots to obtain current activity information and exercise extreme caution while an M-O-A is active. An alert area identifies high-volume pilot training or unusual aerial activity and calls for added collision-avoidance attention. A controlled firing area, or C-F-A, does not appear on the chart because its hazardous activity must stop when a spotter aircraft, radar, or ground lookout indicates that an aircraft might be approaching.
+A military operations area, or M-O-A, separates certain military training activities from instrument-flight-rules traffic. The AIM advises VFR pilots to obtain current activity information and exercise extreme caution while an M-O-A is active. An alert area identifies high-volume pilot training or unusual aerial activity and calls for added collision-avoidance attention. A controlled firing area, or C-F-A, does not appear on the chart because its hazardous activity must stop when a spotter aircraft, radar, or ground lookout indicates that an aircraft might be approaching.
 
 **LEARNER:**
 
@@ -511,7 +511,7 @@ Define a weather ceiling, then apply the controlled-surface-area rule.
 
 **LEARNER:**
 
-A ceiling is the lowest layer reported as broken, overcast, or obscuration, stated in height above ground level. Except under Special VFR, basic VFR flight may not operate beneath a ceiling within the lateral boundaries of controlled airspace designated to the surface for an airport when that ceiling is below 1,000 feet.
+A ceiling is the lowest layer reported as broken, overcast, or obscuration, stated as height above ground or water. Except under Special VFR, basic VFR flight may not operate beneath a ceiling within the lateral boundaries of controlled airspace designated to the surface for an airport when that ceiling is below 1,000 feet.
 
 **INSTRUCTOR:**
 
@@ -519,7 +519,7 @@ What does a Special VFR clearance establish, and what does it leave unanswered?
 
 **LEARNER:**
 
-For an airplane, it can authorize operation within a controlled surface area with at least one statute mile visibility while remaining clear of clouds. For the lower-48 scenario in this episode, operation between sunset and sunrise also requires an instrument-rated pilot and an airplane equipped for instrument flight. The clearance ends at the surface-area boundary.
+Below 10,000 feet MSL, it can authorize an airplane to operate within controlled airspace designated to the surface for an airport with at least one statute mile visibility while remaining clear of clouds. For the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight, and the airplane to meet the instrument-equipment requirements in section 91.205(d). That Special VFR operation takes place within the controlled surface area.
 
 It leaves conditions beyond the surface-area boundary unanswered. Outside that boundary, the airplane must meet the VFR weather minimums for the airspace it enters.
 

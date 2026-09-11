@@ -26,7 +26,7 @@ const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
-const { claimSourcePreflightErrors, claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { claimSourcePreflightErrors, claimSourcePreflightInputHashes, currentClaimSourcePreflightErrors, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -306,6 +306,27 @@ test("script-review reset invalidates claim-source preflight authorization when 
     assert.match(missingArtifactChecklist, /- \[ \] Claim preflight authorization/);
     assert.match(missingArtifactChecklist, /- \[ \] Claim preflight complete/);
     assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")), CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("formal review preflight gate rejects a failed or in-progress latest preflight", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-current-preflight-state-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n", "utf8");
+    const episode = { id: "core-test", title: "Test", production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } };
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(episode), "utf8");
+    writePassingSourceGate(temporary, episode);
+    const currentEpisode = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    assert.deepEqual(currentClaimSourcePreflightErrors({ episodePath: temporary, episode: currentEpisode }), []);
+    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
+    fs.writeFileSync(validationFailurePath(preflightPath), "run_id: failed\n", "utf8");
+    assert.match(currentClaimSourcePreflightErrors({ episodePath: temporary, episode: currentEpisode }).join("\n"), /most recent claim-source preflight failed/);
+    fs.unlinkSync(validationFailurePath(preflightPath));
+    fs.writeFileSync(`${preflightPath}.in-progress`, "run_id: active\n", "utf8");
+    assert.match(currentClaimSourcePreflightErrors({ episodePath: temporary, episode: currentEpisode }).join("\n"), /in progress, recovering, or was interrupted/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

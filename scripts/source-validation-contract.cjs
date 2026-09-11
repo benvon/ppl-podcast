@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
+const { validationFailurePath } = require("./validation-records.cjs");
 
 function sourceValidationInputHashes(episodePath) {
   const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
@@ -265,11 +266,15 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
 
 function currentClaimSourcePreflightErrors({ episodePath, episode }) {
   const preflightPath = path.join(episodePath, "claim-source-preflight.yaml");
-  if (!fs.existsSync(preflightPath) || !fs.lstatSync(preflightPath).isFile()) return ["Missing required claim-source-preflight.yaml."];
+  const errors = [];
+  if (episode?.source_verification?.claim_source_preflight_status !== "complete") errors.push("episode.yaml must record a complete claim-source preflight before formal source relevance review.");
+  if (fs.existsSync(`${preflightPath}.in-progress`) || fs.existsSync(`${preflightPath}.in-progress.recovering`)) errors.push("Claim-source preflight is in progress, recovering, or was interrupted.");
+  if (fs.existsSync(validationFailurePath(preflightPath))) errors.push("The most recent claim-source preflight failed and must be rerun successfully.");
+  if (!fs.existsSync(preflightPath) || !fs.lstatSync(preflightPath).isFile()) return [...errors, "Missing required claim-source-preflight.yaml."];
   let preflight;
   try { preflight = YAML.parse(fs.readFileSync(preflightPath, "utf8")); }
-  catch (error) { return [`Could not read claim-source-preflight.yaml: ${error.message}`]; }
-  return claimSourcePreflightErrors({ episodePath, episode, preflight });
+  catch (error) { return [...errors, `Could not read claim-source-preflight.yaml: ${error.message}`]; }
+  return [...errors, ...claimSourcePreflightErrors({ episodePath, episode, preflight })];
 }
 
 function sourceRelevanceResultValid(result) {

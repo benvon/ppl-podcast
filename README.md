@@ -83,10 +83,14 @@ but the `templates/` directory is the maintained workflow contract.
 
 Run a no-cost network and metadata validation first:
 
+Replace `<current-contract-episode>` with the directory created for the episode
+you are producing. Do not use these commands to refresh a preserved published
+episode.
+
 ```sh
 npm run sources:validate -- \
-  --sources episodes/core-01-aeronautical-decision-making-risk-management/sources.yaml \
-  --claims episodes/core-01-aeronautical-decision-making-risk-management/claim-inventory.yaml
+  --sources episodes/<current-contract-episode>/sources.yaml \
+  --claims episodes/<current-contract-episode>/claim-inventory.yaml
 ```
 
 Before human editorial review, run the LLM relevance pass against the tagged
@@ -97,8 +101,8 @@ review, not an aviation authority.
 
 ```sh
 direnv exec . npm run sources:validate -- \
-  --sources episodes/core-01-aeronautical-decision-making-risk-management/sources.yaml \
-  --claims episodes/core-01-aeronautical-decision-making-risk-management/claim-inventory.yaml \
+  --sources episodes/<current-contract-episode>/sources.yaml \
+  --claims episodes/<current-contract-episode>/claim-inventory.yaml \
   --require-llm
 ```
 

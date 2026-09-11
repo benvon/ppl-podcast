@@ -23,6 +23,7 @@ function parseArgs(argv) {
   const values = {};
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
+    if (token === "--recover-stale-lock") { values["recover-stale-lock"] = true; continue; }
     if (!token.startsWith("--")) throw new HostingHandoffError(`Unexpected argument: ${token}`);
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new HostingHandoffError(`Missing value for ${token}`);
@@ -141,13 +142,13 @@ function createHostingHandoffUnlocked({ episodePath, outputDir, cwd = process.cw
   }
 }
 
-function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd(), packageLease = null }) {
+function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd(), packageLease = null, recoverStaleLock = false }) {
   if (packageLease) {
     assertEpisodePackageLease(episodePath, packageLease);
     return createHostingHandoffUnlocked({ episodePath, outputDir, cwd, packageLease });
   }
   const resolvedEpisode = path.resolve(episodePath);
-  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-hosting-handoff.cjs" }, (lease) => (
+  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-hosting-handoff.cjs", recoverStaleLock }, (lease) => (
     createHostingHandoffUnlocked({ episodePath: resolvedEpisode, outputDir, cwd, packageLease: lease })
   ));
 }
@@ -183,7 +184,7 @@ function verifyHostingHandoff({ outputDir }) {
 if (require.main === module) {
   try {
     const options = parseArgs(process.argv.slice(2));
-    const result = createHostingHandoff({ episodePath: options.episode, outputDir: options.out });
+    const result = createHostingHandoff({ episodePath: options.episode, outputDir: options.out, recoverStaleLock: Boolean(options["recover-stale-lock"]) });
     verifyHostingHandoff({ outputDir: result.outputDir });
     console.log(`Created and verified sealed hosting handoff: ${result.outputDir}`);
   } catch (error) {
@@ -193,4 +194,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { HANDOFF_FILES, HostingHandoffError, SEAL_FILE, createHostingHandoff, sha256Value, sourcePackageFiles, verifyHostingHandoff };
+module.exports = { HANDOFF_FILES, HostingHandoffError, SEAL_FILE, createHostingHandoff, parseArgs, sha256Value, sourcePackageFiles, verifyHostingHandoff };

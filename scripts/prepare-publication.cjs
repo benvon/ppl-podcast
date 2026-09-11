@@ -88,6 +88,15 @@ function reconcileInterruptedPublication({ episodePath, outputDir, recoverStaleL
     throw new PublicationPreparationError("Publication-preparation recovery record does not match this episode and output directory; refusing to overwrite either path.");
   }
   const transactionState = publicationTransactionState({ episodePath: resolvedEpisode, journal });
+  const currentSourceFiles = sourcePackageFiles(resolvedEpisode);
+  const expectedCurrentSourceFiles = {
+    ...journal.target_source_package_files,
+    "episode.yaml": crypto.createHash("sha256").update(transactionState.episodeState === "target" ? journal.target_episode : journal.original_episode).digest("hex"),
+    "hosting-metadata.yaml": crypto.createHash("sha256").update(transactionState.hostingState === "target" ? journal.target_hosting : journal.original_hosting).digest("hex"),
+  };
+  if (sha256Value(currentSourceFiles) !== sha256Value(expectedCurrentSourceFiles)) {
+    throw new PublicationPreparationError("Source package files changed after publication preparation was interrupted; refusing recovery that could accept or overwrite newer work.");
+  }
   if (fs.existsSync(resolvedOutput)) {
     if (transactionState.episodeState !== "target" || transactionState.hostingState !== "target") {
       throw new PublicationPreparationError("Interrupted publication left a handoff, but the package metadata is not the exact journaled prepared state; refusing to accept a handoff that no longer matches the package.");

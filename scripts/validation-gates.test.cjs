@@ -17,7 +17,7 @@ const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = req
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
-const { HostingHandoffError, createHostingHandoff, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
+const { HostingHandoffError, createHostingHandoff, parseArgs: parseHandoffArgs, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, parseArgs: parseScriptReviewArgs, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
@@ -407,6 +407,14 @@ test("pre-hosting validation accepts the approved-draft package flag", () => {
   assert.deepEqual(parsePreHostingArgs(["--episode", "episodes/core-10-aircraft-performance-density-altitude", "--recover-stale-lock"]), {
     episode: "episodes/core-10-aircraft-performance-density-altitude",
     packageOnly: false,
+    "recover-stale-lock": true,
+  });
+});
+
+test("hosting-handoff creation accepts the shared stale-lease recovery flag", () => {
+  assert.deepEqual(parseHandoffArgs(["--episode", "episodes/core-test", "--out", "/tmp/core-test", "--recover-stale-lock"]), {
+    episode: "episodes/core-test",
+    out: "/tmp/core-test",
     "recover-stale-lock": true,
   });
 });
@@ -2085,7 +2093,10 @@ test("publication recovery restores a partial package only through explicit stal
       target_episode: preparedEpisode,
       target_hosting: preparedHosting,
       target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
-      target_source_package_files: { "episode.yaml": "a".repeat(64), "hosting-metadata.yaml": "b".repeat(64) },
+      target_source_package_files: {
+        "episode.yaml": crypto.createHash("sha256").update(preparedEpisode).digest("hex"),
+        "hosting-metadata.yaml": crypto.createHash("sha256").update(preparedHosting).digest("hex"),
+      },
     }));
     assert.throws(
       () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: false }),
@@ -2120,13 +2131,54 @@ test("publication recovery refuses to overwrite package bytes outside its record
       target_episode: preparedEpisode,
       target_hosting: preparedHosting,
       target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
-      target_source_package_files: { "episode.yaml": "a".repeat(64), "hosting-metadata.yaml": "b".repeat(64) },
+      target_source_package_files: {
+        "episode.yaml": crypto.createHash("sha256").update(preparedEpisode).digest("hex"),
+        "hosting-metadata.yaml": crypto.createHash("sha256").update(preparedHosting).digest("hex"),
+      },
     }));
     assert.throws(
       () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: true }),
-      /changed after publication preparation was interrupted/,
+      /refusing recovery/,
     );
     assert.equal(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"), userEditedEpisode);
+    assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), true);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("publication recovery refuses a changed source package even when metadata is still journaled", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-recovery-source-edited-test-"));
+  const output = path.join(temporary, "handoff");
+  try {
+    const originalEpisode = "id: core-test\nstatus: ready\n";
+    const originalHosting = "publisher_release: {}\n";
+    const preparedEpisode = "id: core-test\nstatus: partially-prepared\n";
+    const preparedHosting = "publisher_release:\n  published_at: changed\n";
+    const originalScript = "# Original\n";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), preparedEpisode, "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), preparedHosting, "utf8");
+    fs.writeFileSync(path.join(temporary, "master-script.md"), "# Changed after interruption\n", "utf8");
+    fs.writeFileSync(path.join(temporary, PREPARATION_RECOVERY_FILE), YAML.stringify({
+      schema_version: 1,
+      episode_path: temporary,
+      output_dir: output,
+      original_episode: originalEpisode,
+      original_hosting: originalHosting,
+      target_episode: preparedEpisode,
+      target_hosting: preparedHosting,
+      target_release: { id: "core-test", title: "Test", version: "0.1.0", published_at: "2026-09-11T00:00:00Z" },
+      target_source_package_files: {
+        "episode.yaml": crypto.createHash("sha256").update(preparedEpisode).digest("hex"),
+        "hosting-metadata.yaml": crypto.createHash("sha256").update(preparedHosting).digest("hex"),
+        "master-script.md": crypto.createHash("sha256").update(originalScript).digest("hex"),
+      },
+    }));
+    assert.throws(
+      () => reconcileInterruptedPublication({ episodePath: temporary, outputDir: output, recoverStaleLock: true }),
+      /Source package files changed/,
+    );
+    assert.equal(fs.readFileSync(path.join(temporary, "master-script.md"), "utf8"), "# Changed after interruption\n");
     assert.equal(fs.existsSync(path.join(temporary, PREPARATION_RECOVERY_FILE)), true);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
@@ -2179,6 +2231,30 @@ test("pre-hosting validation exposes confirmed-dead package-lease recovery", () 
     assert.throws(() => validatePreHosting({ episodePath: temporary }), /already in progress or was interrupted/);
     const result = validatePreHosting({ episodePath: temporary, recoverStaleLock: true });
     assert.equal(result.valid, false, "the incomplete fixture should fail after recovering, not validate as a release candidate");
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("direct handoff creation exposes confirmed-dead package-lease recovery", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-handoff-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "scripts/prepare-hosting-handoff.cjs",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { scope: "episode-package" },
+    }));
+    let error;
+    try { createHostingHandoff({ episodePath: temporary, outputDir: path.join(temporary, "handoff"), recoverStaleLock: true }); }
+    catch (caught) { error = caught; }
+    assert.ok(error, "the incomplete fixture should fail after recovering, not create a handoff");
+    assert.doesNotMatch(error.message, /already in progress or was interrupted/);
     assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });

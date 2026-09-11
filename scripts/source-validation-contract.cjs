@@ -263,6 +263,15 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   return errors;
 }
 
+function currentClaimSourcePreflightErrors({ episodePath, episode }) {
+  const preflightPath = path.join(episodePath, "claim-source-preflight.yaml");
+  if (!fs.existsSync(preflightPath) || !fs.lstatSync(preflightPath).isFile()) return ["Missing required claim-source-preflight.yaml."];
+  let preflight;
+  try { preflight = YAML.parse(fs.readFileSync(preflightPath, "utf8")); }
+  catch (error) { return [`Could not read claim-source-preflight.yaml: ${error.message}`]; }
+  return claimSourcePreflightErrors({ episodePath, episode, preflight });
+}
+
 function sourceRelevanceResultValid(result) {
   return result?.citation_target?.valid === true
     && result?.link?.valid === true
@@ -300,4 +309,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { claimSourcePreflightErrors, claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { claimSourcePreflightErrors, claimSourcePreflightInputHashes, currentClaimSourcePreflightErrors, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

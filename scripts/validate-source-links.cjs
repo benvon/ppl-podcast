@@ -10,7 +10,7 @@ const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
-const { sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { currentClaimSourcePreflightErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 
@@ -1076,7 +1076,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   if (!fs.existsSync(episodeFile) || !fs.lstatSync(episodeFile).isFile()) throw new Error("source validation requires the canonical episode.yaml package record");
   const episodeDocument = YAML.parseDocument(fs.readFileSync(episodeFile, "utf8"));
   if (episodeDocument.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${episodeDocument.errors[0].message}`);
-  requireCurrentProductionContract(episodeDocument.toJS(), "Source validation");
+  const episode = episodeDocument.toJS();
+  requireCurrentProductionContract(episode, "Source validation");
   if (options.dryRun) {
     const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
     const claimMapping = validateClaimMappings(ledger, claimInventory);
@@ -1117,6 +1118,10 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }
   const targetErrors = staticValidationTargetErrors(ledger, showNotesManifest);
   if (targetErrors.length) throw new Error(`Source validation cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
+  if (options.llm) {
+    const preflightErrors = currentClaimSourcePreflightErrors({ episodePath, episode });
+    if (preflightErrors.length) throw new Error(`Formal source-relevance review requires a complete, current claim-source preflight:\n${preflightErrors.join("\n")}`);
+  }
   const fetchCache = new Map();
   const refreshedEcfrSources = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
   if (refreshedEcfrSources.length) {

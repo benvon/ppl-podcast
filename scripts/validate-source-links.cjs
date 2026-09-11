@@ -681,12 +681,12 @@ function recoverStaleValidationLock(outputPath) {
   }
 }
 
-function markValidationInProgress(outputPath, inputSha256, { recoverStaleLock = false } = {}) {
+function markValidationInProgress(outputPath, inputSha256, { recoverStaleLock = false, validator = "scripts/validate-source-links.cjs" } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   const recoveryPath = validationRecoveryPath(outputPath);
   if (fs.existsSync(recoveryPath)) throw new Error(`Source validation lock recovery is in progress (${recoveryPath}).`);
   if (recoverStaleLock && fs.existsSync(lockPath)) recoverStaleValidationLock(outputPath);
-  const lock = { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: crypto.randomUUID(), hostname: os.hostname(), pid: process.pid, started_at_utc: new Date().toISOString(), input_sha256: inputSha256 };
+  const lock = { schema_version: 1, validator, run_id: crypto.randomUUID(), hostname: os.hostname(), pid: process.pid, started_at_utc: new Date().toISOString(), input_sha256: inputSha256 };
   let descriptor;
   try {
     descriptor = fs.openSync(lockPath, "wx", 0o600);
@@ -705,7 +705,7 @@ function assertValidationLockOwner(lockPath, run) {
   if (lock.run_id !== run.run_id || lock.hostname !== run.hostname || lock.pid !== run.pid) throw new Error(`Validation lock ownership changed while producing ${lockPath}; report was not released.`);
 }
 
-function completeValidationReport(outputPath, report, run, { promote = true, beforeRelease } = {}) {
+function completeValidationReport(outputPath, report, run, { promote = true, beforeRelease, validator = "scripts/validate-source-links.cjs" } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
   const failurePath = validationFailurePath(outputPath);
@@ -724,7 +724,7 @@ function completeValidationReport(outputPath, report, run, { promote = true, bef
     // but it must not authorize a package after this run found a problem.
     writeYaml(failurePath, {
       schema_version: 1,
-      validator: "scripts/validate-source-links.cjs",
+      validator,
       run_id: run.run_id,
       failed_at_utc: new Date().toISOString(),
       input_sha256: run.input_sha256,
@@ -744,7 +744,7 @@ function releaseValidationLock(outputPath, run) {
   fs.unlinkSync(lockPath);
 }
 
-async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false } = {}) {
+async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false, validator = "scripts/validate-source-links.cjs" } = {}) {
   try {
     return await work();
   } catch (error) {
@@ -752,7 +752,7 @@ async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancell
     if (fs.existsSync(lockPath)) {
       const report = {
         schema_version: 1,
-        validator: "scripts/validate-source-links.cjs",
+        validator,
         checked_at_utc: new Date().toISOString(),
         input_sha256: run.input_sha256,
         failure: {
@@ -761,7 +761,7 @@ async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancell
         },
         results: [],
       };
-      try { completeValidationReport(outputPath, report, run, { promote: false, beforeRelease: () => onTerminal?.(report.failure.outcome, report.checked_at_utc) }); }
+      try { completeValidationReport(outputPath, report, run, { promote: false, validator, beforeRelease: () => onTerminal?.(report.failure.outcome, report.checked_at_utc) }); }
       catch (finalizeError) { throw new Error(`${error.message}; validation failure finalization also failed: ${finalizeError.message}`, { cause: error }); }
     }
     throw error;

@@ -12,7 +12,7 @@ const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { qaItemCompleteWithID } = require("./production-gates.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { assessRelevance, citedPdfPageNumber, citationTargetErrors, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, releaseValidationLock, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -26,13 +26,17 @@ function sha256Text(value) {
   return crypto.createHash("sha256").update(value).digest("hex");
 }
 
-function readYamlMapping(filePath, label) {
-  if (!fs.existsSync(filePath) || !fs.lstatSync(filePath).isFile()) throw new ClaimSourcePreflightError(`Missing canonical ${label}.`);
-  const document = YAML.parseDocument(fs.readFileSync(filePath, "utf8"));
+function parseYamlMapping(text, label) {
+  const document = YAML.parseDocument(text);
   if (document.errors.length) throw new ClaimSourcePreflightError(`Invalid YAML in ${label}: ${document.errors[0].message}`);
   const value = document.toJS();
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new ClaimSourcePreflightError(`${label} must be a YAML mapping.`);
   return value;
+}
+
+function readYamlMapping(filePath, label) {
+  if (!fs.existsSync(filePath) || !fs.lstatSync(filePath).isFile()) throw new ClaimSourcePreflightError(`Missing canonical ${label}.`);
+  return parseYamlMapping(fs.readFileSync(filePath, "utf8"), label);
 }
 
 function writeYamlAtomically(filePath, value) {
@@ -96,27 +100,72 @@ function linkedClaimsFor(source, claimsByID) {
   return source.supports_claims.map((claimID) => claimsByID.get(claimID));
 }
 
-function requirePreflightAuthorization(episodePath, episode) {
+function consumePreflightAuthorization(episodePath, episode, runID) {
   if (episode?.source_verification?.claim_source_preflight !== PREFLIGHT_FILE) {
     throw new ClaimSourcePreflightError(`episode.yaml must reference ${PREFLIGHT_FILE} before the claim-source preflight can send source excerpts to OpenAI.`);
   }
   const checklistPath = path.join(episodePath, "qa-checklist.md");
   if (!fs.existsSync(checklistPath) || !fs.lstatSync(checklistPath).isFile()) throw new ClaimSourcePreflightError("qa-checklist.md is required before the claim-source preflight can send source excerpts to OpenAI.");
-  if (!qaItemCompleteWithID(fs.readFileSync(checklistPath, "utf8"), "openai-claim-source-preflight-authorization")) {
+  const checklist = fs.readFileSync(checklistPath, "utf8");
+  if (!qaItemCompleteWithID(checklist, "openai-claim-source-preflight-authorization")) {
     throw new ClaimSourcePreflightError("qa-checklist.md must record explicit current-turn authorization before the claim-source preflight can send source excerpts to OpenAI.");
   }
+  const authorizationID = "openai-claim-source-preflight-authorization";
+  const marker = new RegExp(`^- \\[x\\]([^\\n]*<!--\\s*qa-id:\\s*${authorizationID}\\s*-->[^\\n]*)$`, "mi");
+  const consumed = checklist.replace(marker, "- [ ]$1");
+  if (consumed === checklist) throw new ClaimSourcePreflightError("Could not consume the claim-source preflight authorization checklist item.");
+  const temporary = `${checklistPath}.${process.pid}.${crypto.randomUUID()}.tmp`;
+  try { fs.writeFileSync(temporary, consumed, { mode: 0o644 }); fs.renameSync(temporary, checklistPath); }
+  finally { if (fs.existsSync(temporary)) fs.unlinkSync(temporary); }
+  return { consumed_at_utc: new Date().toISOString(), run_id: runID };
+}
+
+function preflightInputSnapshot(episodePath) {
+  const sourcesPath = path.join(episodePath, "sources.yaml");
+  const claimsPath = path.join(episodePath, "claim-inventory.yaml");
+  for (const filePath of [sourcesPath, claimsPath]) {
+    if (!fs.existsSync(filePath) || !fs.lstatSync(filePath).isFile()) throw new ClaimSourcePreflightError(`Missing canonical ${path.basename(filePath)}.`);
+  }
+  const sourcesBytes = fs.readFileSync(sourcesPath);
+  const claimsBytes = fs.readFileSync(claimsPath);
+  return {
+    ledger: parseYamlMapping(sourcesBytes.toString("utf8"), "sources.yaml"),
+    inventory: parseYamlMapping(claimsBytes.toString("utf8"), "claim-inventory.yaml"),
+    input_sha256: {
+      sources: crypto.createHash("sha256").update(sourcesBytes).digest("hex"),
+      claims: crypto.createHash("sha256").update(claimsBytes).digest("hex"),
+    },
+  };
+}
+
+function sameInputHashes(left, right) {
+  return left?.sources === right?.sources && left?.claims === right?.claims;
+}
+
+function updatePreflightState(episodePath, status) {
+  const episodePathname = path.join(episodePath, "episode.yaml");
+  const episode = readYamlMapping(episodePathname, "episode.yaml");
+  requireCurrentProductionContract(episode, "Claim-source preflight");
+  episode.source_verification = { ...(episode.source_verification || {}), claim_source_preflight: PREFLIGHT_FILE, claim_source_preflight_status: status };
+  writeYamlAtomically(episodePathname, episode);
 }
 
 async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, dependencies = {} }) {
   const resolved = path.resolve(episodePath);
   const episode = readYamlMapping(path.join(resolved, "episode.yaml"), "episode.yaml");
   requireCurrentProductionContract(episode, "Claim-source preflight");
-  requirePreflightAuthorization(resolved, episode);
-  const ledger = readYamlMapping(path.join(resolved, "sources.yaml"), "sources.yaml");
-  const inventory = readYamlMapping(path.join(resolved, "claim-inventory.yaml"), "claim-inventory.yaml");
+  const { ledger, inventory, input_sha256: inputSha256 } = preflightInputSnapshot(resolved);
   if (!Array.isArray(ledger.sources) || !Array.isArray(inventory.claims)) throw new ClaimSourcePreflightError("sources.yaml and claim-inventory.yaml must contain their canonical collections.");
+  if (ledger.sources.length === 0 || inventory.claims.length === 0) {
+    throw new ClaimSourcePreflightError("Claim-source preflight requires at least one source and at least one claim before it can make outbound requests.");
+  }
   const mapping = validateClaimMappings(ledger, inventory);
   if (!mapping.valid) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid claim mappings:\n${mapping.errors.join("\n")}`);
+  const preflightPath = path.join(resolved, PREFLIGHT_FILE);
+  const validationRun = markValidationInProgress(preflightPath, inputSha256, { validator: "scripts/claim-source-preflight.cjs" });
+  let authorization;
+  try { authorization = consumePreflightAuthorization(resolved, episode, validationRun.run_id); }
+  catch (error) { releaseValidationLock(preflightPath, validationRun); throw error; }
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   const verify = dependencies.verifyProgrammaticFallback || verifyProgrammaticFallback;
   const assess = dependencies.assessRelevance || assessRelevance;
@@ -125,37 +174,50 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     maxInFlight: ECFR_MAX_IN_FLIGHT_REQUESTS,
     minStartIntervalMs: ECFR_MIN_START_INTERVAL_MS,
   });
-  const results = [];
-  try {
-    for (const source of ledger.sources) {
-      if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) throw new ClaimSourcePreflightError("Every source must declare an id, URL, locator, and supports_claims.");
-      const targetErrors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
-      if (targetErrors.length) throw new ClaimSourcePreflightError(`Source ${source.id} has an invalid citation target: ${targetErrors.join("; ")}`);
-      const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter });
-      if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
-      const linkedClaims = linkedClaimsFor(source, claimsByID);
-      const evidence = preflightEvidenceFor(source, verification.link);
-      const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link });
-      if (reviewed?.status !== "assessed" || !reviewed.assessment) throw new ClaimSourcePreflightError(`Source ${source.id} did not receive an LLM relevance assessment.`);
-      results.push({ source_id: source.id, locator: source.locator, linked_claim_ids: source.supports_claims, ...evidence, relevance: { status: reviewed.status, ...reviewed.assessment } });
+  return runOwnedValidation(preflightPath, validationRun, async () => {
+    updatePreflightState(resolved, "in_progress");
+    const results = [];
+    try {
+      for (const source of ledger.sources) {
+        if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) throw new ClaimSourcePreflightError("Every source must declare an id, URL, locator, and supports_claims.");
+        const targetErrors = [...citationTargetErrors(source), ...validationTargetErrors(source)];
+        if (targetErrors.length) throw new ClaimSourcePreflightError(`Source ${source.id} has an invalid citation target: ${targetErrors.join("; ")}`);
+        const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter });
+        if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);
+        const linkedClaims = linkedClaimsFor(source, claimsByID);
+        const evidence = preflightEvidenceFor(source, verification.link);
+        const reviewed = await assess({ model, source, claims: linkedClaims, authoredPassages: [], fetched: verification.link });
+        if (reviewed?.status !== "assessed" || !reviewed.assessment) throw new ClaimSourcePreflightError(`Source ${source.id} did not receive an LLM relevance assessment.`);
+        results.push({ source_id: source.id, locator: source.locator, linked_claim_ids: source.supports_claims, ...evidence, relevance: { status: reviewed.status, ...reviewed.assessment } });
+      }
+    } finally {
+      if (!dependencies.ecfrRateLimiter) ecfrRateLimiter.close();
     }
-  } finally {
-    if (!dependencies.ecfrRateLimiter) ecfrRateLimiter.close();
-  }
-  const preflight = {
-    schema_version: 1,
+    if (!sameInputHashes(inputSha256, claimSourcePreflightInputHashes(resolved))) {
+      throw new ClaimSourcePreflightError("sources.yaml or claim-inventory.yaml changed while the claim-source preflight was running; the result was not promoted.");
+    }
+    const preflight = {
+      schema_version: 1,
+      validator: "scripts/claim-source-preflight.cjs",
+      status: "complete",
+      authorization,
+      checked_at_utc: new Date().toISOString(),
+      llm_requested: true,
+      llm_model: model,
+      input_sha256: inputSha256,
+      results,
+    };
+    const errors = claimSourcePreflightErrors({ episodePath: resolved, episode, preflight });
+    if (errors.length) throw new ClaimSourcePreflightError(`Claim-source preflight failed:\n${errors.join("\n")}`);
+    completeValidationReport(preflightPath, preflight, validationRun, {
+      validator: "scripts/claim-source-preflight.cjs",
+      beforeRelease: () => updatePreflightState(resolved, "complete"),
+    });
+    return preflight;
+  }, {
     validator: "scripts/claim-source-preflight.cjs",
-    status: "complete",
-    checked_at_utc: new Date().toISOString(),
-    llm_requested: true,
-    llm_model: model,
-    input_sha256: claimSourcePreflightInputHashes(resolved),
-    results,
-  };
-  const errors = claimSourcePreflightErrors({ episodePath: resolved, episode, preflight });
-  if (errors.length) throw new ClaimSourcePreflightError(`Claim-source preflight failed:\n${errors.join("\n")}`);
-  writeYamlAtomically(path.join(resolved, PREFLIGHT_FILE), preflight);
-  return preflight;
+    onTerminal: (outcome) => updatePreflightState(resolved, outcome),
+  });
 }
 
 async function main() {
@@ -166,4 +228,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Claim-source preflight failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { ClaimSourcePreflightError, createClaimSourcePreflight, locatorExcerpt, parseArgs, preflightEvidenceFor, requirePreflightAuthorization };
+module.exports = { ClaimSourcePreflightError, consumePreflightAuthorization, createClaimSourcePreflight, locatorExcerpt, parseArgs, preflightEvidenceFor, preflightInputSnapshot, sameInputHashes, updatePreflightState };

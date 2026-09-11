@@ -69,6 +69,7 @@ const CLAIM_SOURCE_PREFLIGHT_TEMPLATE = Object.freeze({
   schema_version: 1,
   validator: "scripts/claim-source-preflight.cjs",
   status: "pending",
+  authorization: null,
   checked_at_utc: null,
   llm_requested: false,
   llm_model: null,
@@ -77,7 +78,7 @@ const CLAIM_SOURCE_PREFLIGHT_TEMPLATE = Object.freeze({
 });
 
 const CLAIM_SOURCE_PREFLIGHT_QA_ITEMS = Object.freeze([
-  "- [ ] Explicit current-turn authorization was received before proposed factual claims, exact source locators, and relevant source excerpts were sent to OpenAI for the claim-source preflight. <!-- qa-id: openai-claim-source-preflight-authorization -->",
+  "- [ ] Explicit current-turn authorization was received before proposed factual claims, exact source locators, and relevant source excerpts were sent to OpenAI for this claim-source preflight run. The preflight command consumes this item and records the run identity in its result. <!-- qa-id: openai-claim-source-preflight-authorization -->",
   "- [ ] `claim-source-preflight.yaml` was created by `npm run sources:preflight` and is complete and bound to the current source ledger and claim inventory; it records every reviewed source's exact locator, independently fetched citation identity and content hash, locator-excerpt hash, mapped claims, and supporting LLM assessment. Findings were resolved before full spoken prose was drafted and are recorded in `production-log.md`. <!-- qa-id: claim-source-preflight -->",
 ]);
 
@@ -115,7 +116,12 @@ function planClaimSourcePreflightContract(resolved, episode, updates) {
       stalePreflight = true;
     }
   }
-  if (stalePreflight) updates.set(preflightPath, YAML.stringify(CLAIM_SOURCE_PREFLIGHT_TEMPLATE));
+  if (stalePreflight) {
+    episode.source_verification.claim_source_preflight_status = "pending";
+    updates.set(preflightPath, YAML.stringify(CLAIM_SOURCE_PREFLIGHT_TEMPLATE));
+  } else {
+    episode.source_verification.claim_source_preflight_status = "complete";
+  }
 
   const checklistPath = path.join(resolved, "qa-checklist.md");
   if (fs.existsSync(checklistPath) && !fs.lstatSync(checklistPath).isFile()) throw new ScriptReviewStateError("qa-checklist.md must be a regular file before a script-review reset can migrate this package.");

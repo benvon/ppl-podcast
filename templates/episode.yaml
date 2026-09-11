@@ -24,6 +24,7 @@ source_verification:
   status: not_started
   verified_at_utc: null
   claim_source_preflight: claim-source-preflight.yaml
+  claim_source_preflight_status: pending
   link_validation: link-validation.yaml
   relevance_review: required_before_render
 review:

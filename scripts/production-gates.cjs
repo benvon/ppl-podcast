@@ -80,15 +80,18 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   expect(episode.source_verification?.claim_source_preflight === SOURCE_REVIEW_FILES.preflight, "episode.yaml must reference claim-source-preflight.yaml.");
   expect(episode.source_verification?.link_validation === SOURCE_REVIEW_FILES.validation, "episode.yaml must reference link-validation.yaml.");
   expect(episode.source_verification?.show_notes_manifest === "show-notes-manifest.yaml", "episode.yaml must reference show-notes-manifest.yaml.");
+  expect(episode.source_verification?.claim_source_preflight_status === "complete", "episode.yaml must record a complete claim-source preflight.");
   expect(episode.source_verification?.status === "source_relevance_complete", "episode.yaml must record source_relevance_complete.");
   expect(episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
-  expect(qaItemCompleteWithID(checklist, "openai-claim-source-preflight-authorization"), "qa-checklist.md must record explicit authorization before sending proposed claims and source excerpts to OpenAI for the claim-source preflight.");
   expect(qaItemCompleteWithID(checklist, "claim-source-preflight"), "qa-checklist.md must record that claim-source preflight findings were resolved before full prose drafting.");
   expect(qaItemCompleteWithID(checklist, "openai-source-review-authorization"), "qa-checklist.md must record explicit authorization before sending source material to OpenAI for source-relevance review.");
   errors.push(...claimSourcePreflightErrors({ episodePath, episode, preflight }));
 
   expect(!fs.existsSync(`${validationPath}.in-progress`) && !fs.existsSync(`${validationPath}.in-progress.recovering`), "Source-relevance validation is in progress, recovering, or was interrupted.");
   expect(!fs.existsSync(validationFailurePath(validationPath)), "The most recent source-relevance validation failed and must be rerun successfully.");
+  const preflightPath = path.join(episodePath, SOURCE_REVIEW_FILES.preflight);
+  expect(!fs.existsSync(`${preflightPath}.in-progress`) && !fs.existsSync(`${preflightPath}.in-progress.recovering`), "Claim-source preflight is in progress, recovering, or was interrupted.");
+  expect(!fs.existsSync(validationFailurePath(preflightPath)), "The most recent claim-source preflight failed and must be rerun successfully.");
   expect(validation.llm_requested === true, "link-validation.yaml must record a requested LLM review.");
   expect(validation.claim_mapping?.valid === true, "link validation must pass the claim mapping.");
   expect(validation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");

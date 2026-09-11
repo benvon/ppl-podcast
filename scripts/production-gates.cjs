@@ -14,6 +14,7 @@ const {
   validationCoverageErrors,
 } = require("./source-validation-contract.cjs");
 const { validationFailurePath } = require("./validation-records.cjs");
+const { qaItemCompleteWithID } = require("./openai-review-authorization.cjs");
 
 const SOURCE_REVIEW_FILES = Object.freeze({
   preflight: "claim-source-preflight.yaml",
@@ -23,11 +24,6 @@ const SOURCE_REVIEW_FILES = Object.freeze({
 
 function sha256Text(value) {
   return crypto.createHash("sha256").update(value).digest("hex");
-}
-
-function qaItemCompleteWithID(markdown, id) {
-  const escaped = String(id).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return new RegExp(`^- \\[x\\][^\\n]*<!--\\s*qa-id:\\s*${escaped}\\s*-->`, "mi").test(markdown);
 }
 
 function readYamlMapping(filePath, label, errors) {
@@ -84,7 +80,6 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   expect(episode.source_verification?.status === "source_relevance_complete", "episode.yaml must record source_relevance_complete.");
   expect(episode.source_verification?.relevance_review === "complete", "episode.yaml must record complete source relevance review.");
   expect(qaItemCompleteWithID(checklist, "claim-source-preflight"), "qa-checklist.md must record that claim-source preflight findings were resolved before full prose drafting.");
-  expect(qaItemCompleteWithID(checklist, "openai-source-review-authorization"), "qa-checklist.md must record explicit authorization before sending source material to OpenAI for source-relevance review.");
   errors.push(...claimSourcePreflightErrors({ episodePath, episode, preflight }));
 
   expect(!fs.existsSync(`${validationPath}.in-progress`) && !fs.existsSync(`${validationPath}.in-progress.recovering`), "Source-relevance validation is in progress, recovering, or was interrupted.");
@@ -109,6 +104,8 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   catch (error) { errors.push(`Could not verify source-review coverage: ${error.message}`); }
   expect(Array.isArray(validation.results) && validation.results.length > 0, "link validation must record source results.");
   expect(utcRfc3339Timestamp(validation.checked_at_utc), "link-validation.yaml must record a valid UTC source-review timestamp.");
+  expect(typeof validation.run_id === "string" && /^[0-9a-f-]{36}$/i.test(validation.run_id), "link-validation.yaml must record its validation run ID.");
+  expect(utcRfc3339Timestamp(validation.authorization?.consumed_at_utc) && validation.authorization?.qa_id === "openai-source-review-authorization" && typeof validation.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(validation.authorization.run_id) && validation.authorization.run_id === validation.run_id && Date.parse(validation.authorization.consumed_at_utc) <= Date.parse(validation.checked_at_utc), "link-validation.yaml must record the consumed source-review authorization for this validation run.");
   expect(utcRfc3339Timestamp(episode.source_verification?.verified_at_utc), "episode.yaml must record a valid UTC source-review timestamp.");
   expect(episode.source_verification?.verified_at_utc === validation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
   return errors;

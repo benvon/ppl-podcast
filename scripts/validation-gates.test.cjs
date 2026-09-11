@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -23,6 +23,7 @@ const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, 
 const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
@@ -54,7 +55,7 @@ function writePassingSourceGate(episodePath, episode) {
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), [
     "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->",
     "- [x] Claim preflight complete. <!-- qa-id: claim-source-preflight -->",
-    "- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->",
+    "- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->",
   ].join("\n"), "utf8");
   fs.writeFileSync(path.join(episodePath, "claim-source-preflight.yaml"), YAML.stringify({
     schema_version: 1,
@@ -76,11 +77,14 @@ function writePassingSourceGate(episodePath, episode) {
     }],
   }), "utf8");
   const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } };
+  const sourceReviewRunID = crypto.randomUUID();
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({
     schema_version: 1,
     validator: "scripts/validate-source-links.cjs",
+    run_id: sourceReviewRunID,
     checked_at_utc: checkedAt,
     llm_requested: true,
+    authorization: { qa_id: "openai-source-review-authorization", consumed_at_utc: checkedAt, run_id: sourceReviewRunID },
     claim_mapping: { valid: true },
     master_script_mapping: { valid: true, source_tag_count: 0, claim_coverage_count: 0 },
     show_notes_mapping: { valid: true },
@@ -271,6 +275,7 @@ test("script-review reset invalidates claim-source preflight authorization when 
     resetScriptReview({ episodePath: temporary });
     const currentChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
     assert.match(currentChecklist, /- \[x\] Claim preflight authorization/);
+    assert.match(currentChecklist, /- \[ \] Source review authorization/);
     assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")).status, "complete");
 
     fs.writeFileSync(claimsPath, "claims:\n  - id: claim-b\n    claim: A replacement test claim.\n    sources: [source-a]\n", "utf8");
@@ -478,12 +483,12 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const linkValidation = () => ({ schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, input_sha256: inputSha256, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] });
+  const linkValidation = () => { const runID = crypto.randomUUID(); return { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, authorization: { qa_id: "openai-source-review-authorization", consumed_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] }; };
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
   const preflightExcerpt = "The cited section directly states the test claim.";
   const preflight = () => ({ schema_version: 1, validator: "scripts/claim-source-preflight.cjs", status: "complete", authorization: { consumed_at_utc: "2026-08-24T12:00:00Z", run_id: crypto.randomUUID() }, checked_at_utc: "2026-08-24T12:00:00Z", llm_requested: true, llm_model: "gpt-5.6-sol", input_sha256: claimSourcePreflightInputHashes(episodePath), results: [{ source_id: "source-a", locator: "Paragraph 1-1-1, p. 1-1-1", linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], fetched_locator: fetchedLocatorEvidence({ url: sourceUrl }, preflightExcerpt), reviewed_excerpt: { kind: "section_text", text: preflightExcerpt, sha256: crypto.createHash("sha256").update(preflightExcerpt).digest("hex"), characters: preflightExcerpt.length }, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "The retained excerpt is the exact cited paragraph." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "The cited section directly states the test claim." }] } }] });
   fs.writeFileSync(path.join(episodePath, "claim-source-preflight.yaml"), YAML.stringify(preflight()));
-  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit authorization was received before proposed claims and source excerpts were sent to OpenAI. <!-- qa-id: openai-claim-source-preflight-authorization -->", "Claim-source preflight findings were resolved before full spoken prose was drafted. <!-- qa-id: claim-source-preflight -->", "Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->"].map((line) => `- [x] ${line}`).join("\n"));
+  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit authorization was received before proposed claims and source excerpts were sent to OpenAI. <!-- qa-id: openai-claim-source-preflight-authorization -->", "Claim-source preflight findings were resolved before full spoken prose was drafted. <!-- qa-id: claim-source-preflight -->"].map((line) => `- [x] ${line}`).concat("- [ ] Explicit authorization was consumed for this source review. <!-- qa-id: openai-source-review-authorization -->").join("\n"));
   try {
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml.failed"), "run_id: failed-run\n", "utf8");
@@ -491,10 +496,11 @@ test("pre-hosting validation requires consistent release records", () => {
     assert.equal(failedSourceValidation.valid, false); assert.match(failedSourceValidation.errors.join("\n"), /most recent source-relevance validation failed/);
     fs.unlinkSync(path.join(episodePath, "link-validation.yaml.failed"));
     const authorizedChecklist = fs.readFileSync(path.join(episodePath, "qa-checklist.md"), "utf8");
-    fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), authorizedChecklist.replace(/^.*openai-source-review-authorization.*\n?/m, ""));
+    const validationWithoutAuthorization = linkValidation(); delete validationWithoutAuthorization.authorization;
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(validationWithoutAuthorization));
     const missingAuthorization = validatePreHosting({ episodePath, cwd: temporary });
-    assert.equal(missingAuthorization.valid, false); assert.match(missingAuthorization.errors.join("\n"), /explicit authorization before sending source material to OpenAI/);
-    fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), authorizedChecklist);
+    assert.equal(missingAuthorization.valid, false); assert.match(missingAuthorization.errors.join("\n"), /consumed source-review authorization for this validation run/);
+    fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
     const preflightWithoutAuthorization = preflight(); delete preflightWithoutAuthorization.authorization;
     fs.writeFileSync(path.join(episodePath, "claim-source-preflight.yaml"), YAML.stringify(preflightWithoutAuthorization));
     const missingPreflightAuthorization = validatePreHosting({ episodePath, cwd: temporary });
@@ -2030,9 +2036,9 @@ test("realtime renderer requires completed source-relevance review before render
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   const inputSha256 = sourceValidationInputHashes(temporary);
-  const validation = (results) => YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] });
+  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, authorization: { qa_id: "openai-source-review-authorization", consumed_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
   fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
-  fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n- [x] Preflight complete. <!-- qa-id: claim-source-preflight -->\n- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n- [x] Preflight complete. <!-- qa-id: claim-source-preflight -->\n- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
   const preflightExcerpt = "The cited paragraph supports the test claim.";
   const preflight = () => ({ schema_version: 1, validator: "scripts/claim-source-preflight.cjs", status: "complete", authorization: { consumed_at_utc: "2026-09-10T00:00:00Z", run_id: crypto.randomUUID() }, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "gpt-5.6-sol", input_sha256: claimSourcePreflightInputHashes(temporary), results: [{ source_id: "source-a", locator: "Paragraph 1-1-1", linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], fetched_locator: fetchedLocatorEvidence({ url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html" }, preflightExcerpt), reviewed_excerpt: { kind: "section_text", text: preflightExcerpt, sha256: crypto.createHash("sha256").update(preflightExcerpt).digest("hex"), characters: preflightExcerpt.length }, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "The retained paragraph is the cited locator." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "The paragraph supports the test claim." }] } }] });
   fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify(preflight()), "utf8");

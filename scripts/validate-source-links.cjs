@@ -12,6 +12,7 @@ const { requireCurrentProductionContract } = require("./production-state-contrac
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
 const { sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
+const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const DEFAULT_HTTP_CONCURRENCY = 5;
@@ -95,6 +96,25 @@ function loadYaml(file, expectedKey) {
   const value = document.toJS();
   if (!value || !Array.isArray(value[expectedKey])) throw new Error(`${file} must contain a ${expectedKey} array.`);
   return value;
+}
+
+function consumeSourceReviewAuthorization(episodePath, runID) {
+  return consumeChecklistAuthorization({
+    episodePath,
+    qaID: "openai-source-review-authorization",
+    operation: "the formal source-relevance review",
+    runID,
+  });
+}
+
+function sourceReviewFailureReport({ options, validationRun, authorizationForRun }) {
+  return ({ defaultReport }) => ({
+    ...defaultReport,
+    run_id: validationRun.run_id,
+    llm_requested: options.llm,
+    llm_model: options.llm ? options.model : null,
+    authorization: authorizationForRun(),
+  });
 }
 
 function fileSha256(file) {
@@ -1058,6 +1078,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }
   const inputSha256 = sourceValidationInputHashes(episodePath);
   const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
+  let authorization = null;
   return runOwnedValidation(outputPath, validationRun, async () => {
   updateEpisodeSourceState(episodePath, "in_progress");
   const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
@@ -1105,6 +1126,12 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     console.error(`Refreshed ${refreshedEcfrSources.length} eCFR source date${refreshedEcfrSources.length === 1 ? "" : "s"}; restarting validation with the current API date.`);
     return { refreshedEcfrSources };
   }
+  // An eCFR refresh is an internal restart, not a completed validation
+  // attempt. Once the input set is stable, every --require-llm invocation
+  // consumes a fresh current-turn grant, including a later deterministic or
+  // cancellation failure. That prevents a new invocation from reusing a
+  // checked box left by an earlier attempt.
+  if (options.llm) authorization = consumeSourceReviewAuthorization(episodePath, validationRun.run_id);
   const results = new Array(ledger.sources.length);
   const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
   const showNotesResults = new Array(showNotesManifest?.links.length || 0);
@@ -1174,7 +1201,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
   const terminalOutcome = sourceValidationTerminalOutcome({ unresolved, requireLlm: options.requireLlm });
   const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => updateEpisodeSourceState(episodePath, terminalOutcome, report.checked_at_utc) });
@@ -1183,7 +1210,11 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   else console.log(`Wrote ${path.relative(process.cwd(), writtenPath)}`);
   if (unresolved) process.exitCode = 1;
   return { refreshedEcfrSources: [] };
-  }, { isCancelled, onTerminal: (outcome, checkedAt) => updateEpisodeSourceState(episodePath, outcome, checkedAt) });
+  }, {
+    isCancelled,
+    failureReport: sourceReviewFailureReport({ options, validationRun, authorizationForRun: () => authorization }),
+    onTerminal: (outcome, checkedAt) => updateEpisodeSourceState(episodePath, outcome, checkedAt),
+  });
 }
 
 async function runWithEcfrRefreshes(runAttempt, { maximumRefreshes = MAX_ECFR_MANIFEST_REFRESHES } = {}) {
@@ -1221,4 +1252,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

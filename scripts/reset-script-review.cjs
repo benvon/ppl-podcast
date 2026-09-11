@@ -134,6 +134,10 @@ function planClaimSourcePreflightContract(resolved, episode, updates) {
   const missingItems = CLAIM_SOURCE_PREFLIGHT_QA_ITEMS.filter((item) => !checklist.includes(item.match(/qa-id: ([^ ]+)/)[1]));
   if (missingItems.length) checklist = `${checklist.trimEnd()}\n\n${missingItems.join("\n")}\n`;
   if (stalePreflight) checklist = markChecklistItemsUnchecked(checklist, ["openai-claim-source-preflight-authorization", "claim-source-preflight"]);
+  // Formal source-review approval is a single current-turn grant, never
+  // durable episode state. A script-review reset must not carry it into a
+  // later validator invocation even when the earlier preflight remains valid.
+  checklist = markChecklistItemsUnchecked(checklist, ["openai-source-review-authorization"]);
   const originalChecklist = fs.existsSync(checklistPath) ? fs.readFileSync(checklistPath, "utf8") : null;
   if (checklist !== originalChecklist) updates.set(checklistPath, checklist);
 }

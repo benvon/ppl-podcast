@@ -10,7 +10,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
-const { qaItemCompleteWithID } = require("./production-gates.cjs");
+const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
 const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, relevanceExcerpt, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
@@ -146,20 +146,16 @@ function consumePreflightAuthorization(episodePath, episode, runID) {
   if (episode?.source_verification?.claim_source_preflight !== PREFLIGHT_FILE) {
     throw new ClaimSourcePreflightError(`episode.yaml must reference ${PREFLIGHT_FILE} before the claim-source preflight can send source excerpts to OpenAI.`);
   }
-  const checklistPath = path.join(episodePath, "qa-checklist.md");
-  if (!fs.existsSync(checklistPath) || !fs.lstatSync(checklistPath).isFile()) throw new ClaimSourcePreflightError("qa-checklist.md is required before the claim-source preflight can send source excerpts to OpenAI.");
-  const checklist = fs.readFileSync(checklistPath, "utf8");
-  if (!qaItemCompleteWithID(checklist, "openai-claim-source-preflight-authorization")) {
-    throw new ClaimSourcePreflightError("qa-checklist.md must record explicit current-turn authorization before the claim-source preflight can send source excerpts to OpenAI.");
+  try {
+    return consumeChecklistAuthorization({
+      episodePath,
+      qaID: "openai-claim-source-preflight-authorization",
+      operation: "the claim-source preflight",
+      runID,
+    });
+  } catch (error) {
+    throw new ClaimSourcePreflightError(error.message);
   }
-  const authorizationID = "openai-claim-source-preflight-authorization";
-  const marker = new RegExp(`^- \\[x\\]([^\\n]*<!--\\s*qa-id:\\s*${authorizationID}\\s*-->[^\\n]*)$`, "mi");
-  const consumed = checklist.replace(marker, "- [ ]$1");
-  if (consumed === checklist) throw new ClaimSourcePreflightError("Could not consume the claim-source preflight authorization checklist item.");
-  const temporary = `${checklistPath}.${process.pid}.${crypto.randomUUID()}.tmp`;
-  try { fs.writeFileSync(temporary, consumed, { mode: 0o644 }); fs.renameSync(temporary, checklistPath); }
-  finally { if (fs.existsSync(temporary)) fs.unlinkSync(temporary); }
-  return { consumed_at_utc: new Date().toISOString(), run_id: runID };
 }
 
 function preflightInputSnapshot(episodePath) {

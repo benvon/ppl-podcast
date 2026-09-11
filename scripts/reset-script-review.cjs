@@ -11,7 +11,7 @@ const YAML = require("yaml");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
-const { claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
+const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
 
 class ScriptReviewStateError extends Error {}
 
@@ -103,7 +103,13 @@ function planClaimSourcePreflightContract(resolved, episode, updates) {
     stalePreflight = true;
   } else {
     try {
-      stalePreflight = !preflightMatchesCurrentInputs(readYaml(preflightPath), claimSourcePreflightInputHashes(resolved));
+      const preflight = readYaml(preflightPath);
+      stalePreflight = !preflightMatchesCurrentInputs(preflight, claimSourcePreflightInputHashes(resolved))
+        || claimSourcePreflightErrors({
+          episodePath: resolved,
+          episode: { ...episode, production_contract_version: 2 },
+          preflight,
+        }).length > 0;
     } catch {
       stalePreflight = true;
     }

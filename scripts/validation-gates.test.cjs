@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -24,7 +24,7 @@ const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
-const { claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { claimSourcePreflightErrors, claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 
 function source(id, supportsClaims) {
   return { id, url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html", locator: "Paragraph 1-1-1, p. 1-1-1", supports_claims: supportsClaims };
@@ -153,6 +153,12 @@ test("source validation records signal-driven dependency failures as cancellatio
   } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
 });
 
+test("only a required-LLM validation can complete source-review state", () => {
+  assert.equal(sourceValidationTerminalOutcome({ unresolved: false, requireLlm: false }), "pending");
+  assert.equal(sourceValidationTerminalOutcome({ unresolved: false, requireLlm: true }), "complete");
+  assert.equal(sourceValidationTerminalOutcome({ unresolved: true, requireLlm: true }), "failed");
+});
+
 test("script-review reset invalidates downstream state and approval fingerprints the current script", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-script-review-test-"));
   try {
@@ -222,34 +228,37 @@ test("script-review reset invalidates claim-source preflight authorization when 
     fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), YAML.stringify({}));
     fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
     fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    sources: [source-a]\n", "utf8");
-    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify({ ...CLAIM_SOURCE_PREFLIGHT_TEMPLATE, status: "complete", input_sha256: claimSourcePreflightInputHashes(temporary) }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), [
-      "- [x] Preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->",
-      "- [x] Preflight complete. <!-- qa-id: claim-source-preflight -->",
-    ].join("\n"), "utf8");
+    writePassingSourceGate(temporary, YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")));
 
     resetScriptReview({ episodePath: temporary });
     const currentChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.match(currentChecklist, /- \[x\] Preflight authorization/);
+    assert.match(currentChecklist, /- \[x\] Claim preflight authorization/);
     assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")).status, "complete");
 
     fs.writeFileSync(claimsPath, "claims:\n  - id: claim-b\n    sources: [source-a]\n", "utf8");
     resetScriptReview({ episodePath: temporary });
     const staleChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.match(staleChecklist, /- \[ \] Preflight authorization/);
-    assert.match(staleChecklist, /- \[ \] Preflight complete/);
+    assert.match(staleChecklist, /- \[ \] Claim preflight authorization/);
+    assert.match(staleChecklist, /- \[ \] Claim preflight complete/);
     assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")), CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
 
-    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify({ ...CLAIM_SOURCE_PREFLIGHT_TEMPLATE, status: "complete", input_sha256: claimSourcePreflightInputHashes(temporary) }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), [
-      "- [x] Preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->",
-      "- [x] Preflight complete. <!-- qa-id: claim-source-preflight -->",
-    ].join("\n"), "utf8");
+    fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-b]\n", "utf8");
+    writePassingSourceGate(temporary, YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")));
+    const incompletePreflightPath = path.join(temporary, "claim-source-preflight.yaml");
+    const incompletePreflight = YAML.parse(fs.readFileSync(incompletePreflightPath, "utf8"));
+    incompletePreflight.status = "pending";
+    fs.writeFileSync(incompletePreflightPath, YAML.stringify(incompletePreflight));
+    resetScriptReview({ episodePath: temporary });
+    const incompleteChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
+    assert.match(incompleteChecklist, /- \[ \] Claim preflight authorization/);
+    assert.match(incompleteChecklist, /- \[ \] Claim preflight complete/);
+
+    writePassingSourceGate(temporary, YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")));
     fs.unlinkSync(path.join(temporary, "claim-source-preflight.yaml"));
     resetScriptReview({ episodePath: temporary });
     const missingArtifactChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.match(missingArtifactChecklist, /- \[ \] Preflight authorization/);
-    assert.match(missingArtifactChecklist, /- \[ \] Preflight complete/);
+    assert.match(missingArtifactChecklist, /- \[ \] Claim preflight authorization/);
+    assert.match(missingArtifactChecklist, /- \[ \] Claim preflight complete/);
     assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")), CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
@@ -768,6 +777,33 @@ test("claim mapping rejects source-side claims that do not declare the source", 
   assert.match(result.errors.join("\n"), /source aim-a supports claim claim-a, but that claim does not declare the source/);
 });
 
+test("claim-source preflight requires a non-empty exact locator", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-locator-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [{ id: "source-a", supports_claims: ["claim-a"] }] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", sources: ["source-a"] }] }));
+    const excerpt = "A reviewed source excerpt.";
+    const preflight = {
+      schema_version: 1,
+      status: "complete",
+      checked_at_utc: "2026-09-10T00:00:00Z",
+      llm_requested: true,
+      llm_model: "test-model",
+      input_sha256: claimSourcePreflightInputHashes(temporary),
+      results: [{
+        source_id: "source-a",
+        linked_claim_ids: ["claim-a"],
+        reviewed_excerpt: { kind: "section_text", text: excerpt, sha256: crypto.createHash("sha256").update(excerpt).digest("hex"), characters: excerpt.length },
+        relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Test." }] },
+      }],
+    };
+    const errors = claimSourcePreflightErrors({ episodePath: temporary, episode: { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }, preflight });
+    assert.match(errors.join("\n"), /non-empty exact locator/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("master-script source tags must name real sources in the claim's declared section", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-master-script-source-tags-"));
   try {
@@ -969,6 +1005,28 @@ test("source validation requires a manifest for current-package show notes", () 
     const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--dry-run"], { encoding: "utf8", timeout: 2_000 });
     assert.equal(result.status, 1, result.stderr);
     assert.match(result.stderr, /requires canonical show-notes\.md and show-notes-manifest\.yaml files/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("source validation records malformed canonical input as a failed attempt", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-malformed-input-test-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml"); const reportPath = path.join(temporary, "link-validation.yaml");
+  fs.writeFileSync(sourcesPath, "sources: [\n", "utf8");
+  fs.writeFileSync(claimsPath, "claims: []\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification: {}\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+  fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+  try {
+    const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--output", reportPath, "--require-llm"], { encoding: "utf8", timeout: 2_000 });
+    assert.equal(result.status, 1, result.stderr);
+    assert.equal(fs.existsSync(validationInProgressPath(reportPath)), false);
+    assert.equal(fs.existsSync(validationFailurePath(reportPath)), true);
+    const attempts = fs.readdirSync(path.join(temporary, ".validation-attempts"));
+    assert.equal(attempts.length, 1);
+    const episode = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    assert.equal(episode.source_verification.relevance_review, "failed");
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

@@ -132,6 +132,10 @@ function validSha256(value) {
   return typeof value === "string" && /^[a-f0-9]{64}$/i.test(value) ? value.toLowerCase() : null;
 }
 
+function nonEmptyString(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
 function claimAssessmentsFor(result) {
   return Array.isArray(result?.relevance?.claim_assessments) ? result.relevance.claim_assessments : [];
 }
@@ -192,7 +196,7 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   for (const source of sources) {
     const result = results.find((candidate) => candidate?.source_id === source.id);
     if (!result) continue;
-    expect(result.locator === source.locator, `claim-source-preflight.yaml must preserve the exact locator for source ${source.id}.`);
+    expect(nonEmptyString(source.locator) && nonEmptyString(result.locator) && result.locator === source.locator, `claim-source-preflight.yaml must preserve a non-empty exact locator for source ${source.id}.`);
     expect(sameStringSet(result.linked_claim_ids, source.supports_claims || []), `claim-source-preflight.yaml must preserve the current claim mapping for source ${source.id}.`);
     const excerpt = result.reviewed_excerpt;
     const excerptRecorded = typeof excerpt?.kind === "string" && excerpt.kind.length > 0

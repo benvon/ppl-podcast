@@ -41,8 +41,9 @@ so. We welcome technically grounded corrections and source updates.
 ## Episode lifecycle
 
 ```text
-scope → research + claims → tagged script → editorial review
-      → link/relevance validation → opening preview → full render → human audio QA
+scope → research + claims → authorized claim-source preflight → tagged script
+      → independent first-listen review → link/relevance validation → editorial review
+      → opening preview → full render → human audio QA
       → publication-day source check → hosting handoff
 ```
 
@@ -88,8 +89,8 @@ npm run sources:validate -- \
   --claims episodes/core-01-aeronautical-decision-making-risk-management/claim-inventory.yaml
 ```
 
-After editorial approval, run the LLM relevance pass before generating any
-audio. It fetches
+Before human editorial review, run the LLM relevance pass against the tagged
+spoken passages. It fetches
 the public source excerpts and has the model assess whether the excerpt matches
 the cited locator and supports the claims mapped to it; it is an advisory
 review, not an aviation authority.

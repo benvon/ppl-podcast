@@ -792,6 +792,11 @@ function updateEpisodeSourceState(episodePath, outcome, checkedAt = null) {
   writeTextAtomically(episodeFile, YAML.stringify(episode));
 }
 
+function sourceValidationTerminalOutcome({ unresolved, requireLlm }) {
+  if (unresolved) return "failed";
+  return requireLlm ? "complete" : "pending";
+}
+
 function publicLinkRecord(link) {
   if (!link || !Object.hasOwn(link, "excerpt")) return link;
   const { excerpt, links, html, pdf_bytes, body, pdf_page_text, section_text, ...rest } = link;
@@ -985,44 +990,61 @@ async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
   return results;
 }
 
+function loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath }) {
+  if (!fs.existsSync(showNotesPath) || !fs.lstatSync(showNotesPath).isFile() || !fs.existsSync(showNotesManifestPath) || !fs.lstatSync(showNotesManifestPath).isFile()) {
+    throw new Error("current-contract source validation requires canonical show-notes.md and show-notes-manifest.yaml files");
+  }
+  for (const filePath of [sourcesPath, claimsPath]) {
+    if (!fs.existsSync(filePath) || !fs.lstatSync(filePath).isFile()) {
+      throw new Error("current-contract source validation requires canonical regular sources.yaml and claim-inventory.yaml files");
+    }
+  }
+  return {
+    ledger: loadYaml(sourcesPath, "sources"),
+    claimInventory: loadYaml(claimsPath, "claims"),
+    showNotesManifest: loadYaml(showNotesManifestPath, "links"),
+    showNotesMarkdown: fs.readFileSync(showNotesPath, "utf8"),
+  };
+}
+
 async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled, refreshCount, finalRefreshAttempt }) {
   const sourcesPath = path.resolve(options.sources); const claimsPath = path.resolve(options.claims);
   const outputPath = path.resolve(options.output || path.join(path.dirname(sourcesPath), "link-validation.yaml"));
-  const ledger = loadYaml(sourcesPath, "sources"); const claimInventory = loadYaml(claimsPath, "claims");
   const showNotesPath = path.resolve(options["show-notes"] || path.join(path.dirname(sourcesPath), "show-notes.md")); const showNotesManifestPath = path.resolve(options["show-notes-manifest"] || path.join(path.dirname(sourcesPath), "show-notes-manifest.yaml"));
-  const showNotesFilePresent = fs.existsSync(showNotesPath); const showNotesValidationConfigured = fs.existsSync(showNotesManifestPath);
-  if (!showNotesFilePresent || !showNotesValidationConfigured) throw new Error("current-contract source validation requires canonical show-notes.md and show-notes-manifest.yaml files");
-  const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
   const episodePath = path.dirname(sourcesPath);
   if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml") || outputPath !== path.join(episodePath, "link-validation.yaml")) throw new Error("source validation inputs and output must be the canonical episode package files");
-  for (const filePath of [sourcesPath, claimsPath, showNotesPath, showNotesManifestPath]) if (!fs.lstatSync(filePath).isFile()) throw new Error("source validation inputs must be regular files, not directories or symbolic links");
   const episodeFile = path.join(episodePath, "episode.yaml");
   if (!fs.existsSync(episodeFile) || !fs.lstatSync(episodeFile).isFile()) throw new Error("source validation requires the canonical episode.yaml package record");
   const episodeDocument = YAML.parseDocument(fs.readFileSync(episodeFile, "utf8"));
   if (episodeDocument.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${episodeDocument.errors[0].message}`);
   requireCurrentProductionContract(episodeDocument.toJS(), "Source validation");
-  const inputSha256 = sourceValidationInputHashes(episodePath);
-  const claimsById = new Map(claimInventory.claims.filter((claim) => claim && typeof claim === "object" && !Array.isArray(claim)).map((claim) => [claim.id, claim]));
-  const invalid = ledger.sources.filter((source) => !source || typeof source !== "object" || Array.isArray(source) || !source.id || !source.url || !Array.isArray(source.supports_claims));
-  if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
-  const claimMapping = validateClaimMappings(ledger, claimInventory);
-  const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
-  const showNotesMapping = showNotesValidationConfigured ? validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown) : { valid: true, status: "not_configured", errors: [] };
   if (options.dryRun) {
+    const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
+    const claimMapping = validateClaimMappings(ledger, claimInventory);
+    const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
+    const showNotesMapping = validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown);
     if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
       reportMappingErrors(claimMapping, showNotesMapping);
       for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
       process.exitCode = 1;
       return;
     }
-    const showNotesSummary = showNotesValidationConfigured ? `${showNotesManifest.links.length} show-notes links` : showNotesFilePresent ? "show notes without a manifest (not configured)" : "no show-notes manifest";
-    console.log(`Validated input shape, claim mappings, ${masterScriptMapping.source_tag_count} master-script source tags, and ${showNotesSummary} for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    console.log(`Validated input shape, claim mappings, ${masterScriptMapping.source_tag_count} master-script source tags, and ${showNotesManifest.links.length} show-notes links for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
     return;
   }
+  const inputSha256 = sourceValidationInputHashes(episodePath);
   const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
-  progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest?.links.length || 0, llm_requested: options.llm });
   return runOwnedValidation(outputPath, validationRun, async () => {
   updateEpisodeSourceState(episodePath, "in_progress");
+  const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
+  const showNotesFilePresent = true; const showNotesValidationConfigured = true;
+  const claimsById = new Map(claimInventory.claims.filter((claim) => claim && typeof claim === "object" && !Array.isArray(claim)).map((claim) => [claim.id, claim]));
+  const invalid = ledger.sources.filter((source) => !source || typeof source !== "object" || Array.isArray(source) || !source.id || !source.url || !Array.isArray(source.supports_claims));
+  if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
+  const claimMapping = validateClaimMappings(ledger, claimInventory);
+  const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
+  const showNotesMapping = validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown);
+  progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest.links.length, llm_requested: options.llm });
   if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
     reportMappingErrors(claimMapping, showNotesMapping);
     for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
@@ -1130,7 +1152,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }));
   const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
-  const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => updateEpisodeSourceState(episodePath, unresolved ? "failed" : "complete", report.checked_at_utc) });
+  const terminalOutcome = sourceValidationTerminalOutcome({ unresolved, requireLlm: options.requireLlm });
+  const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => updateEpisodeSourceState(episodePath, terminalOutcome, report.checked_at_utc) });
   progress.emit("report_written", { valid: !unresolved });
   if (unresolved) console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
   else console.log(`Wrote ${path.relative(process.cwd(), writtenPath)}`);
@@ -1174,4 +1197,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

@@ -117,6 +117,21 @@ function sourceReviewFailureReport({ options, validationRun, authorizationForRun
   });
 }
 
+function staticValidationTargetErrors(ledger, showNotesManifest) {
+  const errors = [];
+  const sourcesByID = new Map(ledger.sources.map((source) => [source.id, source]));
+  for (const source of ledger.sources) {
+    for (const error of [...citationTargetErrors(source), ...validationTargetErrors(source)]) errors.push(`Source ${source.id} has an invalid citation target: ${error}`);
+  }
+  for (const note of showNotesManifest.links) {
+    const source = sourcesByID.get(note.source_id);
+    if (!source) continue;
+    const target = { ...source, url: note.url, locator: note.locator };
+    for (const error of [...citationTargetErrors(target), ...validationTargetErrors(target)]) errors.push(`Show-notes link ${note.id} has an invalid citation target: ${error}`);
+  }
+  return errors;
+}
+
 function fileSha256(file) {
   return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 }
@@ -1100,6 +1115,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     process.exitCode = 1;
     return;
   }
+  const targetErrors = staticValidationTargetErrors(ledger, showNotesManifest);
+  if (targetErrors.length) throw new Error(`Source validation cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
   const fetchCache = new Map();
   const refreshedEcfrSources = await refreshEcfrManifestDates(sourcesPath, ledger, { fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
   if (refreshedEcfrSources.length) {
@@ -1252,4 +1269,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

@@ -159,7 +159,7 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   expect(preflight?.status === "complete", "claim-source-preflight.yaml must record a complete preflight.");
   expect(utcRfc3339Timestamp(preflight?.checked_at_utc), "claim-source-preflight.yaml must record a valid UTC RFC 3339 review timestamp.");
   expect(preflight?.validator === "scripts/claim-source-preflight.cjs", "claim-source-preflight.yaml must be produced by scripts/claim-source-preflight.cjs.");
-  expect(utcRfc3339Timestamp(preflight?.authorization?.consumed_at_utc) && typeof preflight.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.authorization.run_id), "claim-source-preflight.yaml must record the consumed per-run authorization.");
+  expect(utcRfc3339Timestamp(preflight?.authorization?.consumed_at_utc) && preflight.authorization?.qa_id === "openai-claim-source-preflight-authorization" && typeof preflight.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.authorization.run_id) && Date.parse(preflight.authorization.consumed_at_utc) <= Date.parse(preflight.checked_at_utc), "claim-source-preflight.yaml must record the consumed per-run authorization.");
   expect(preflight?.llm_requested === true && typeof preflight?.llm_model === "string" && preflight.llm_model.length > 0, "claim-source-preflight.yaml must record the LLM review model.");
   const inputHashes = claimSourcePreflightInputHashes(episodePath);
   expect(Object.entries(inputHashes).every(([name, digest]) => preflight?.input_sha256?.[name] === digest), "claim-source-preflight.yaml must be bound to the current sources.yaml and claim-inventory.yaml bytes.");

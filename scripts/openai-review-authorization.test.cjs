@@ -8,7 +8,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const { checklistAuthorizationLockPath, consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
-const { consumeSourceReviewAuthorization, sourceReviewFailureReport } = require("./validate-source-links.cjs");
+const { consumeSourceReviewAuthorization, sourceReviewFailureReport, staticValidationTargetErrors } = require("./validate-source-links.cjs");
 
 test("formal source review consumes only one checklist authorization and records its run identity", () => {
   const episodePath = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-review-authorization-"));
@@ -71,4 +71,10 @@ test("formal validation failure records authorization consumed after the failure
   assert.equal(report.run_id, runID);
   assert.deepEqual(report.authorization, authorization);
   assert.equal(report.llm_requested, true);
+});
+
+test("formal validation rejects every malformed source target before authorization is consumed", () => {
+  const ledger = { sources: [{ id: "bad-source", url: "http://not-https.example", locator: "", supports_claims: [] }] };
+  const notes = { links: [] };
+  assert.match(staticValidationTargetErrors(ledger, notes).join("\n"), /Source bad-source has an invalid citation target/);
 });

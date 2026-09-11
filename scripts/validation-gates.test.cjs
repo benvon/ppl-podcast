@@ -997,8 +997,15 @@ test("claim-source preflight rejects a tampered attested fallback record", () =>
     };
     const episode = { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } };
     assert.deepEqual(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight }), []);
-    preflight.results[0].fetched_locator.programmatic_fallback.content_attestation.programmatic_sha256 = "b".repeat(64);
-    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight }).join("\n"), /attested programmatic fallback evidence/);
+    const tamperedAttestation = JSON.parse(JSON.stringify(preflight));
+    tamperedAttestation.results[0].fetched_locator.programmatic_fallback.content_attestation.programmatic_sha256 = "b".repeat(64);
+    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: tamperedAttestation }).join("\n"), /attested programmatic fallback evidence/);
+    for (const resolvedVia of [undefined, "direct_citation"]) {
+      const tamperedRoute = JSON.parse(JSON.stringify(preflight));
+      if (resolvedVia === undefined) delete tamperedRoute.results[0].fetched_locator.resolved_via;
+      else tamperedRoute.results[0].fetched_locator.resolved_via = resolvedVia;
+      assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: tamperedRoute }).join("\n"), /attested programmatic fallback evidence/);
+    }
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

@@ -230,11 +230,19 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
       && Number.isInteger(fetched?.locator_excerpt_characters) && fetched.locator_excerpt_characters === excerpt?.characters
       && fetched?.citation_target_valid === true;
     expect(fetchedEvidence, `claim-source-preflight.yaml must bind the reviewed excerpt to independently fetched locator evidence for source ${source.id}.`);
-    if (fetched?.resolved_via === "attested_programmatic_fallback") {
+    // The validation URL and final URL are the artifact identities. Do not
+    // trust a descriptive route marker to decide whether fallback attestation
+    // is required: a corrupted report could otherwise remove that marker and
+    // retain a programmatic response without its FAA-page attestation.
+    const fallbackSelected = nonEmptyString(source.programmatic_url)
+      && source.programmatic_url !== source.url
+      && (fetched?.validation_url === source.programmatic_url || fetched?.final_url === source.programmatic_url);
+    if (fallbackSelected) {
       const configured = source.programmatic_attestation;
       const fallback = fetched.programmatic_fallback;
       const fallbackEvidence = source.programmatic_url
         && configured && typeof configured === "object"
+        && fetched.resolved_via === "attested_programmatic_fallback"
         && fetched.validation_url === source.programmatic_url
         && fetched.final_url === source.programmatic_url
         && fetched.content_sha256 === configured.sha256
@@ -249,6 +257,8 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
         && fallback.content_attestation.expected_sha256 === configured.sha256
         && fallback.content_attestation.programmatic_sha256 === configured.sha256;
       expect(fallbackEvidence, `claim-source-preflight.yaml must bind attested programmatic fallback evidence to source ${source.id}.`);
+    } else {
+      expect(fetched?.resolved_via !== "attested_programmatic_fallback" && fetched?.programmatic_fallback == null, `claim-source-preflight.yaml cannot record fallback evidence without a matching programmatic artifact identity for source ${source.id}.`);
     }
     expect(expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
     const assessments = claimAssessmentsFor(result);

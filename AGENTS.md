@@ -14,6 +14,7 @@
 ## Production assurance
 
 - Read [docs/production-assurance.md](docs/production-assurance.md) before changing validation, rendering, sealing, staging, or release tooling. It defines the required success, failure, cancellation, retry, provenance, and test behavior. Do not add a check that recognizes a friendly string without verifying the artifact or identity it claims to represent.
+- For current-contract packages, use the shared package lease for every source-review, editorial-state, render, package-validation, publication, and handoff transition. Do not read `episode.yaml` to make a release decision outside that lease, and do not write it outside the revisioned state-transition helpers. A busy lease is a blocking condition, never an invitation to reuse a prior clean result.
 - Treat `--package-only` as a draft-package shape check only. It never establishes final release readiness and must not be described as a final pass.
 - Historical published packages are preservation-only. Do not refresh their seals, staging objects, source-validation records, or workflow fields. A deliberate revision begins under the current contract and creates a new candidate and handoff.
 

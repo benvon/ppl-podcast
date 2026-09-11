@@ -12,6 +12,7 @@ const path = require("path");
 const YAML = require("yaml");
 const { PreHostingValidationError, sha256File, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
+const { assertEpisodePackageLease, withEpisodePackageLease } = require("./validate-source-links.cjs");
 
 const SEAL_FILE = "source-release-seal.yaml";
 const HANDOFF_FILES = ["episode.yaml", "show-notes.md", "audio.mp3"];
@@ -99,7 +100,7 @@ function sealPayload({ episode, sourceFiles, candidatePath, outputDir }) {
   };
 }
 
-function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
+function createHostingHandoffUnlocked({ episodePath, outputDir, cwd = process.cwd(), packageLease = null }) {
   const resolvedEpisode = path.resolve(episodePath);
   const resolvedOutput = path.resolve(outputDir);
   if (resolvedOutput === resolvedEpisode || resolvedOutput.startsWith(`${resolvedEpisode}${path.sep}`)) throw new HostingHandoffError("Hosting handoff output must be outside the source episode directory.");
@@ -107,7 +108,7 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
   const sourceFiles = sourcePackageFiles(resolvedEpisode);
   const releaseEpisodeRecord = readYaml(path.join(resolvedEpisode, "episode.yaml"));
   if (releaseEpisodeRecord.production_contract_version !== 2) throw new HostingHandoffError("This is a preserved legacy package. Do not create a new handoff unless it has first been revised under the current release contract.");
-  const preHosting = validatePreHosting({ episodePath: resolvedEpisode, cwd });
+  const preHosting = validatePreHosting({ episodePath: resolvedEpisode, cwd, packageLease });
   if (!preHosting.valid) throw new HostingHandoffError(`Pre-hosting validation failed:\n${preHosting.errors.join("\n")}`);
   if (sha256Value(sourcePackageFiles(resolvedEpisode)) !== sha256Value(sourceFiles)) throw new HostingHandoffError("Source episode package changed while pre-hosting validation was running; rerun validation before creating a handoff.");
   const { candidatePath, candidateSha256, release } = releaseEpisode({ episodePath: resolvedEpisode, cwd });
@@ -131,6 +132,17 @@ function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd() }) {
     fs.rmSync(temporary, { recursive: true, force: true });
     throw error;
   }
+}
+
+function createHostingHandoff({ episodePath, outputDir, cwd = process.cwd(), packageLease = null }) {
+  if (packageLease) {
+    assertEpisodePackageLease(episodePath, packageLease);
+    return createHostingHandoffUnlocked({ episodePath, outputDir, cwd, packageLease });
+  }
+  const resolvedEpisode = path.resolve(episodePath);
+  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-hosting-handoff.cjs" }, (lease) => (
+    createHostingHandoffUnlocked({ episodePath: resolvedEpisode, outputDir, cwd, packageLease: lease })
+  ));
 }
 
 function verifyHostingHandoff({ outputDir }) {

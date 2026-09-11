@@ -106,6 +106,7 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   expect(Array.isArray(validation.results) && validation.results.length > 0, "link validation must record source results.");
   expect(utcRfc3339Timestamp(validation.checked_at_utc), "link-validation.yaml must record a valid UTC source-review timestamp.");
   expect(typeof validation.run_id === "string" && /^[0-9a-f-]{36}$/i.test(validation.run_id), "link-validation.yaml must record its validation run ID.");
+  expect(validation.preflight_run_id === preflight.run_id, "link-validation.yaml must be bound to the current claim-source-preflight run.");
   expect(utcRfc3339Timestamp(validation.authorization?.consumed_at_utc) && validation.authorization?.qa_id === "openai-source-review-authorization" && typeof validation.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(validation.authorization.run_id) && validation.authorization.run_id === validation.run_id && Date.parse(validation.authorization.consumed_at_utc) <= Date.parse(validation.checked_at_utc), "link-validation.yaml must record the consumed source-review authorization for this validation run.");
   expect(utcRfc3339Timestamp(episode.source_verification?.verified_at_utc), "episode.yaml must record a valid UTC source-review timestamp.");
   expect(episode.source_verification?.verified_at_utc === validation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");

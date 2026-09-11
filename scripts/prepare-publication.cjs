@@ -12,6 +12,7 @@ const YAML = require("yaml");
 const { createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { durationDisplay, PreHostingValidationError, validatePreHosting } = require("./validate-pre-hosting.cjs");
+const { episodeStateText, withEpisodePackageLease } = require("./validate-source-links.cjs");
 
 class PublicationPreparationError extends Error {}
 
@@ -45,7 +46,7 @@ function writeTextAtomically(filePath, text) {
 }
 
 function writeYamlAtomically(filePath, value) {
-  writeTextAtomically(filePath, YAML.stringify(value));
+  writeTextAtomically(filePath, typeof value === "string" ? value : YAML.stringify(value));
 }
 
 function sameUtcDate(left, right) {
@@ -91,7 +92,7 @@ function synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publis
   return { episode: nextEpisode, hosting: nextHosting };
 }
 
-function preparePublication({ episodePath, outputDir, publishedAt, cwd = process.cwd() }) {
+function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd = process.cwd(), packageLease }) {
   const resolvedEpisode = path.resolve(episodePath);
   const episodeYaml = path.join(resolvedEpisode, "episode.yaml");
   const hostingYaml = path.join(resolvedEpisode, "hosting-metadata.yaml");
@@ -101,11 +102,11 @@ function preparePublication({ episodePath, outputDir, publishedAt, cwd = process
   const originalHosting = fs.readFileSync(hostingYaml, "utf8");
   try {
     const synchronized = synchronizeReleaseMetadata({ episode: YAML.parse(originalEpisode), hosting: YAML.parse(originalHosting), sourceValidation: readYaml(sourceValidationYaml), publishedAt });
-    writeYamlAtomically(episodeYaml, synchronized.episode);
+    writeYamlAtomically(episodeYaml, episodeStateText(resolvedEpisode, synchronized.episode, packageLease, originalEpisode));
     writeYamlAtomically(hostingYaml, synchronized.hosting);
-    const validation = validatePreHosting({ episodePath: resolvedEpisode, cwd });
+    const validation = validatePreHosting({ episodePath: resolvedEpisode, cwd, packageLease });
     if (!validation.valid) throw new PublicationPreparationError(`Pre-hosting validation failed after release preparation:\n${validation.errors.join("\n")}`);
-    const handoff = createHostingHandoff({ episodePath: resolvedEpisode, outputDir, cwd });
+    const handoff = createHostingHandoff({ episodePath: resolvedEpisode, outputDir, cwd, packageLease });
     verifyHostingHandoff({ outputDir: handoff.outputDir });
     return handoff;
   } catch (error) {
@@ -116,6 +117,13 @@ function preparePublication({ episodePath, outputDir, publishedAt, cwd = process
     writeTextAtomically(hostingYaml, originalHosting);
     throw error;
   }
+}
+
+function preparePublication({ episodePath, outputDir, publishedAt, cwd = process.cwd() }) {
+  const resolvedEpisode = path.resolve(episodePath);
+  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/prepare-publication.cjs" }, (packageLease) => (
+    preparePublicationUnlocked({ episodePath: resolvedEpisode, outputDir, publishedAt, cwd, packageLease })
+  ));
 }
 
 if (require.main === module) {

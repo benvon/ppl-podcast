@@ -19,6 +19,7 @@ const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { editorialApprovalErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { withEpisodePackageLeaseAsync } = require("./validate-source-links.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -560,7 +561,9 @@ async function main() {
   if (!SAFE_ID_RE.test(raw["episode-id"])) throw new RenderError("--episode-id must be lowercase kebab-case.");
   const model = raw.model || DEFAULTS.model; const instructorVoice = raw["instructor-voice"] || DEFAULTS.instructorVoice; const learnerVoice = raw["learner-voice"] || DEFAULTS.learnerVoice; const announcerVoice = raw["announcer-voice"] || DEFAULTS.announcerVoice;
   if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
-  const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`); assertNarrationInput(scriptPath);
+  const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`);
+  return withEpisodePackageLeaseAsync(path.dirname(scriptPath), { validator: "scripts/render_episode_realtime.cjs" }, async () => {
+  assertNarrationInput(scriptPath);
   const episode = assertSourceRelevanceApproved(scriptPath);
   const musicKeys = ["music-bed", "music-bed-gain-db", "music-voice-gain-db", "music-level-transition-seconds", "music-intro-lead-seconds", "music-intro-tail-seconds", "music-intro-fade-seconds", "music-outro-tail-seconds", "music-outro-fade-seconds"];
   const musicValuesSpecified = musicKeys.some((name) => raw[name] !== undefined);
@@ -585,6 +588,7 @@ async function main() {
   establishSettings(workDir, settingsFor(options, sha256(fs.readFileSync(scriptPath))));
   if (raw["render-only"]) await renderSegments(segments, selected, options, workDir);
   if (raw["assemble-only"]) assemble(segments, selected, options, workDir, audioDir, timestamp, explicitRange, selectionLabel);
+  });
 }
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });

@@ -12,6 +12,7 @@ const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
+const { episodeStateText, withEpisodePackageLease } = require("./validate-source-links.cjs");
 
 class ScriptReviewStateError extends Error {}
 
@@ -151,7 +152,7 @@ function resolveEpisode(episodePath) {
   return resolved;
 }
 
-function resetScriptReview({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically }) {
+function resetScriptReviewUnlocked({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically, packageLease }) {
   const resolved = resolveEpisode(episodePath);
   const episodePathname = path.join(resolved, "episode.yaml");
   const audioPathname = path.join(resolved, "audio-manifest.yaml");
@@ -160,6 +161,7 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   const originalScript = fs.readFileSync(masterScriptPathname, "utf8");
   const migratedScript = removeLegacyProductionStatus(originalScript);
   const scriptSha256 = sha256Text(migratedScript);
+  const originalEpisodeText = fs.readFileSync(episodePathname, "utf8");
   const episode = readYaml(episodePathname);
   const audio = readYaml(audioPathname);
   const hosting = readYaml(hostingPathname);
@@ -199,16 +201,24 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   delete hosting.handoff_status;
   delete hosting.release_readiness;
   if (migratedScript !== originalScript) updates.set(masterScriptPathname, migratedScript);
-  updates.set(episodePathname, YAML.stringify(episode));
+  updates.set(episodePathname, episodeStateText(resolved, episode, packageLease, originalEpisodeText));
   updates.set(audioPathname, YAML.stringify(audio));
   updates.set(hostingPathname, YAML.stringify(hosting));
   writeFiles(updates);
   return { scriptSha256, episodePath: resolved };
 }
 
-function approveScriptReview({ episodePath }) {
+function resetScriptReview({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically }) {
+  const resolved = path.resolve(episodePath);
+  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:reset" }, (packageLease) => (
+    resetScriptReviewUnlocked({ episodePath: resolved, reason, writeFiles, packageLease })
+  ));
+}
+
+function approveScriptReviewUnlocked({ episodePath, packageLease }) {
   const resolved = resolveEpisode(episodePath);
   const episodePathname = path.join(resolved, "episode.yaml");
+  const originalEpisodeText = fs.readFileSync(episodePathname, "utf8");
   const episode = readYaml(episodePathname);
   const sourceErrors = sourceReviewEvidenceErrors({ episodePath: resolved, episode });
   if (sourceErrors.length) throw new ScriptReviewStateError(`Source-relevance review is not valid for the current package: ${sourceErrors[0]}`);
@@ -217,8 +227,15 @@ function approveScriptReview({ episodePath }) {
   episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_APPROVAL];
   episode.review = { ...(episode.review || {}), editorial_status: "script_approved", editorial_script_sha256: scriptSha256 };
   delete episode.review.pending_script_sha256;
-  writeFileSetAtomically(new Map([[episodePathname, YAML.stringify(episode)]]));
+  writeFileSetAtomically(new Map([[episodePathname, episodeStateText(resolved, episode, packageLease, originalEpisodeText)]]));
   return { scriptSha256, episodePath: resolved };
+}
+
+function approveScriptReview({ episodePath }) {
+  const resolved = path.resolve(episodePath);
+  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:approve" }, (packageLease) => (
+    approveScriptReviewUnlocked({ episodePath: resolved, packageLease })
+  ));
 }
 
 function parseArgs(argv) {

@@ -12,7 +12,7 @@ const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { ValidationCancelledError, acquireSourceValidationLifecycle, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { ValidationCancelledError, acquireSourceValidationLifecycle, assertEpisodePackageLease, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, episodeStateText, markValidationInProgress, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -46,7 +46,7 @@ function readYamlMapping(filePath, label) {
 
 function writeYamlAtomically(filePath, value) {
   const temporary = `${filePath}.${process.pid}.${crypto.randomUUID()}.tmp`;
-  try { fs.writeFileSync(temporary, YAML.stringify(value), { mode: 0o644 }); fs.renameSync(temporary, filePath); }
+  try { fs.writeFileSync(temporary, typeof value === "string" ? value : YAML.stringify(value), { mode: 0o644 }); fs.renameSync(temporary, filePath); }
   finally { if (fs.existsSync(temporary)) fs.unlinkSync(temporary); }
 }
 
@@ -181,12 +181,24 @@ function sameInputHashes(left, right) {
   return left?.sources === right?.sources && left?.claims === right?.claims;
 }
 
-function updatePreflightState(episodePath, status) {
+function updatePreflightState(episodePath, status, lease) {
+  assertEpisodePackageLease(episodePath, lease);
   const episodePathname = path.join(episodePath, "episode.yaml");
+  const originalText = fs.readFileSync(episodePathname, "utf8");
   const episode = readYamlMapping(episodePathname, "episode.yaml");
   requireCurrentProductionContract(episode, "Claim-source preflight");
-  episode.source_verification = { ...(episode.source_verification || {}), claim_source_preflight: PREFLIGHT_FILE, claim_source_preflight_status: status };
-  writeYamlAtomically(episodePathname, episode);
+  // A new preflight is a new source-claim baseline. Any earlier formal
+  // tagged-passage review predates it, so retain that report only as history
+  // and require a later formal review to establish release readiness again.
+  episode.source_verification = {
+    ...(episode.source_verification || {}),
+    claim_source_preflight: PREFLIGHT_FILE,
+    claim_source_preflight_status: status,
+    status: "source_relevance_pending",
+    relevance_review: "pending",
+    verified_at_utc: null,
+  };
+  writeYamlAtomically(episodePathname, episodeStateText(episodePath, episode, lease, originalText));
 }
 
 function throwIfCancelled(signal, isCancelled) {
@@ -250,7 +262,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     // recovery or a missing authorization stops this attempt, the finalizer
     // writes a blocking record before releasing the new lock.
     authorization = consumePreflightAuthorization(resolved, episode, validationRun.run_id);
-    updatePreflightState(resolved, "in_progress");
+    updatePreflightState(resolved, "in_progress", lifecycleLease);
     try {
       try {
         for (const source of ledger.sources) {
@@ -277,7 +289,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
       if (errors.length) throw new ClaimSourcePreflightError(`Claim-source preflight failed:\n${errors.join("\n")}`, preflight);
       completeValidationReport(preflightPath, preflight, validationRun, {
         validator: "scripts/claim-source-preflight.cjs",
-        beforeRelease: () => updatePreflightState(resolved, "complete"),
+        beforeRelease: () => updatePreflightState(resolved, "complete", lifecycleLease),
       });
       return preflight;
     } catch (error) {
@@ -292,7 +304,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     validator: "scripts/claim-source-preflight.cjs",
     isCancelled,
     failureReport: failedPreflightReport,
-    onTerminal: (outcome) => updatePreflightState(resolved, outcome),
+    onTerminal: (outcome) => updatePreflightState(resolved, outcome, lifecycleLease),
   });
   } finally {
     releaseSourceValidationLifecycle(lifecycleLease);

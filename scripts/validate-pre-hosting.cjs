@@ -11,6 +11,7 @@ const { releaseIdentity } = require("./release-identity.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, productionContractKind, sameStringList } = require("./production-state-contract.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
+const { assertEpisodePackageLease, withEpisodePackageLease } = require("./validate-source-links.cjs");
 
 const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
 const PACKAGE_SHAPE_COMPATIBLE_STATUSES = new Set(["reviewed_draft", "source_relevance_review_complete", "audio_listening_qa_complete", "ready_for_hosting_pr"]);
@@ -185,7 +186,7 @@ function validateDraftPackageShape({ episodePath, episode, audioManifest, hostin
   return { valid: errors.length === 0, kind: DRAFT_PACKAGE_SHAPE, final: false, errors };
 }
 
-function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = false }) {
+function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageOnly = false }) {
   const resolvedEpisode = path.resolve(episodePath);
   const errors = [];
   if (!fs.existsSync(resolvedEpisode) || !fs.statSync(resolvedEpisode).isDirectory()) throw new PreHostingValidationError(`Episode directory does not exist: ${resolvedEpisode}`);
@@ -328,6 +329,17 @@ function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = fa
     expect(errors, qaItemComplete(qaChecklist, id, pattern), `qa-checklist.md must mark complete: ${label}.`);
   }
   return { valid: errors.length === 0, errors };
+}
+
+function validatePreHosting({ episodePath, cwd = process.cwd(), packageOnly = false, packageLease = null }) {
+  if (packageLease) {
+    assertEpisodePackageLease(episodePath, packageLease);
+    return validatePreHostingUnlocked({ episodePath, cwd, packageOnly });
+  }
+  const resolvedEpisode = path.resolve(episodePath);
+  return withEpisodePackageLease(resolvedEpisode, { validator: "scripts/validate-pre-hosting.cjs" }, () => (
+    validatePreHostingUnlocked({ episodePath: resolvedEpisode, cwd, packageOnly })
+  ));
 }
 
 if (require.main === module) {

@@ -78,7 +78,7 @@ sources:
     verification_date: null
     revision: "FAA-H-8083-25C, Chapter 15; FAA page updated July 10, 2023"
     relevance: "Listener-facing visual table for visibility and cloud clearance."
-    supports_claims: [basic-vfr-minimums, surface-area-ceiling]
+    supports_claims: [basic-vfr-minimums]
   - id: phak-operating-requirements
     title: Pilot's Handbook of Aeronautical Knowledge, Requirements for Airspace Operations
     publisher: FAA
@@ -94,7 +94,7 @@ sources:
     title: AIM, Basic VFR Weather Minimums
     publisher: FAA
     url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_1.html#3-1-4
-    locator: "AIM 3-1-4 and Table 3-1-1"
+    locator: "AIM 3-1-4 and TBL 3-1-4"
     source_type: html
     link_status: null
     verification_date: null
@@ -138,24 +138,24 @@ sources:
     title: AIM, Class C Airspace
     publisher: FAA
     url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-4
-    locator: "AIM 3-2-4(b)(3), (d)(1)"
+    locator: "AIM 3-2-4(b)(2)-(3)"
     source_type: html
     link_status: null
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Class C communication entry test and equipment cross-reference."
-    supports_claims: [class-c-communications, communications-established, class-c-equipment-crossreference]
+    supports_claims: [class-c-communications, class-c-communications-established, class-c-installed-equipment]
   - id: aim-class-d
     title: AIM, Class D Airspace
     publisher: FAA
     url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap3_section_2.html#3-2-5
-    locator: "AIM 3-2-5(b)(3), (d)(1)"
+    locator: "AIM 3-2-5(b)(3)"
     source_type: html
     link_status: null
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Class D communication entry test."
-    supports_claims: [class-d-communications, communications-established]
+    supports_claims: [class-d-communications, class-d-communications-established]
   - id: aim-class-e
     title: AIM, Class E Airspace
     publisher: FAA

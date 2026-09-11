@@ -42,6 +42,7 @@ const LEGACY_DISCLAIMER_SECTION = "required production notice";
 // needs a genuinely phonetic correction from the voice model.
 const PRONUNCIATION_TRANSFORMS = Object.freeze({
   AI: "artificial intelligence",
+  "Class A": "Class Alpha",
   AIM: "aim",
   PHAK: "pee hack",
   ASOS: "AY-sohs",

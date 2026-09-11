@@ -2370,6 +2370,7 @@ test("legacy renderer refuses scripts outside a preserved package", () => {
 });
 
 test("realtime renderer preserves untreated familiar initialisms while applying narrow phonetic corrections", () => {
+  assert.equal(spokenText("Class A begins at 18,000 feet MSL."), "Class Alpha begins at 18,000 feet MSL.");
   assert.equal(spokenText("The A-I-M, often referred to as the AIM, supports the PHAK."), "The A-I-M, often referred to as the aim, supports the pee hack.");
   assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pee hack says artificial intelligence-assisted production is reviewed by an MEL.");
   assert.equal(spokenText("ASOS, AWOS, and ATIS report airport weather."), "AY-sohs, AY-wahs, and AY-tis report airport weather.");

@@ -36,8 +36,17 @@
 
 - The first formal source-relevance run completed deterministic link validation and then failed on broad mixed claims, incomplete locators, and a small number of unsupported or incorrectly attributed details. No finding was treated as a reason to reduce the scenario-led teaching design.
 - Revised the evidence model so each source owns only the atomic factual claims fully supported by its exact locator. Coherent spoken paragraphs still connect several immediately tagged facts and identify the resulting connection as teaching synthesis where appropriate.
-- Added exact AIM locators for Classes Alpha through Echo, separate Chart Users’ Guide sources for terminal-airspace symbols on page 16 and Class Echo, Mode C, and NO SVFR symbols on page 17, and the Pilot/Controller Glossary visibility definitions.
+- Added exact AIM locators for Class A through Class E, separate Chart Users’ Guide sources for terminal-airspace symbols on page 16 and Class Echo, Mode C, and NO SVFR symbols on page 17, and the Pilot/Controller Glossary visibility definitions.
 - Corrected the Mode C veil regulation to appendix D, section 1; the fixed-wing Special VFR airport reference to appendix D, section 3; the ADS-B Out locator to include section 91.225(a); and the private-pilot student Class Bravo scope to include the section 91.131(b) airport cross-reference and the preceding-90-day condition.
 - Narrowed unsupported categorical statements about MTRs, TFRs, SATRs, and SFRAs. The lesson now teaches each item through its sourced operating meaning and keeps the current TFR NOTAM as the controlling source for a temporary restriction.
 - Corrected ceiling wording to the lowest layer reported as broken, overcast, or obscuration, and separated glossary visibility definitions from the section 91.155(d) airport surface-area visibility rule.
 - Advanced the package to version 0.1.2 and regenerated the listener-facing links, research mappings, and 5,197-word narration derivative. The formal LLM review must be rerun after these corrections; human editorial review remains pending.
+
+## 2026-09-11 — second formal source-review corrections
+
+- The second formal review reduced the remaining findings to exact regulatory conditions and locators. The scenario and teaching structure were preserved.
+- Split the Class Charlie and Class Delta callsign tests into class-specific atomic claims. The Class Charlie equipment evidence now distinguishes the AIM's installed-equipment statement from section 91.130's regulatory cross-reference, and the source locators point to the exact relevant paragraphs.
+- Restored the source conditions for controlled firing area suspension, the Class Golf exceptions in section 91.155(b), the below-10,000-feet-MSL Special VFR scope, and the geographic and vertical limits in the ADS-B Out requirements.
+- Corrected the AIM weather table locator to TBL 3-1-4, described the fixed-wing Special VFR restriction as applying to listed Class Bravo and Class Charlie surface areas, and retained the regulatory written term `Class A` in the source-facing script.
+- Removed the Special VFR exception claim from the PHAK Figure 15-8 source mapping while retaining it under the exact eCFR and AIM sources.
+- Advanced the package to version 0.1.3 and regenerated the 5,301-word narration derivative. Formal source relevance must be rerun cleanly before human editorial review.

@@ -994,19 +994,32 @@ test("PDF page extraction reads only the page named by the citation", async () =
   assert.equal(text, "Load Factors in Steep Turns");
 });
 
-test("PDF page citations can use the bounded large-document limit", async () => {
-  const link = await fetchSource("https://www.faa.gov/example.pdf#page=448", {
-    includePdfBytes: true,
-    maxBytes: 50_000_000,
+test("PDF page citations can use the bounded limit for the current FAA Chart Users' Guide", async () => {
+  const verification = await verifyProgrammaticFallback({
+    url: "https://www.faa.gov/example.pdf#page=17",
+    locator: "PDF p. 17",
+  }, {
+    includePdfPageText: true,
+    fetchCache: new Map(),
     fetchImpl: async () => ({
       status: 200,
-      headers: new Headers({ "content-type": "application/pdf", "content-length": "41049516" }),
+      headers: new Headers({ "content-type": "application/pdf", "content-length": "56002392" }),
       body: new ReadableStream({ start(controller) { controller.enqueue(new Uint8Array([1])); controller.close(); } }),
+    }),
+    pdfjsLoader: async () => ({
+      getDocument: () => ({
+        promise: Promise.resolve({
+          numPages: 20,
+          getPage: async () => ({ getTextContent: async () => ({ items: [{ str: "VFR airspace symbols" }] }) }),
+        }),
+        destroy: async () => {},
+      }),
     }),
   });
 
-  assert.deepEqual(link.pdf_bytes, Buffer.from([1]));
-  assert.equal(link.truncated, false);
+  assert.equal(verification.link.valid, true);
+  assert.equal(verification.link.truncated, false);
+  assert.equal(verification.link.pdf_page_text, "VFR airspace symbols");
 });
 
 test("HTML fragment citations assess the referenced definition instead of a long page prefix", () => {

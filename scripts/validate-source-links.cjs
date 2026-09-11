@@ -31,7 +31,10 @@ const RETRYABLE_HTTP_STATUSES = new Set([408, 429, 502, 503, 504]);
 const RETRY_DELAY_MS = 1_000;
 const MAX_BYTES = 1_000_000;
 const MAX_HASH_BYTES = 32_000_000;
-const MAX_PDF_CITATION_BYTES = 50_000_000;
+// The current FAA Aeronautical Chart Users' Guide is about 56 MB. Keep the
+// bounded citation fetch large enough to extract a cited page from that
+// primary source without turning ordinary link checks into unbounded reads.
+const MAX_PDF_CITATION_BYTES = 64_000_000;
 const MAX_ECFR_BYTES = 2_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
 const PDF_EXTRACTION_TIMEOUT_MS = 20_000;

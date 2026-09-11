@@ -12,7 +12,7 @@ const YAML = require("yaml");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { claimSourcePreflightErrors, claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
-const { ValidationCancelledError, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, relevanceExcerpt, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { ValidationCancelledError, acquireSourceValidationLifecycle, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, markValidationInProgress, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, validateClaimMappings, validationTargetErrors, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -219,7 +219,10 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   });
   if (targetErrors.length) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
   const preflightPath = path.join(resolved, PREFLIGHT_FILE);
-  const validationRun = markValidationInProgress(preflightPath, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs" });
+  const lifecycleLease = acquireSourceValidationLifecycle(resolved, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs:lifecycle" });
+  let validationRun;
+  try {
+    validationRun = markValidationInProgress(preflightPath, inputSha256, { recoverStaleLock, validator: "scripts/claim-source-preflight.cjs" });
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   const verify = dependencies.verifyProgrammaticFallback || verifyProgrammaticFallback;
   const assess = dependencies.assessRelevance || assessRelevance;
@@ -242,7 +245,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     input_sha256: inputSha256,
     results,
   });
-  return runOwnedValidation(preflightPath, validationRun, async () => {
+  return await runOwnedValidation(preflightPath, validationRun, async () => {
     // Authorization is deliberately consumed inside the owned lifecycle. If
     // recovery or a missing authorization stops this attempt, the finalizer
     // writes a blocking record before releasing the new lock.
@@ -291,6 +294,9 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
     failureReport: failedPreflightReport,
     onTerminal: (outcome) => updatePreflightState(resolved, outcome),
   });
+  } finally {
+    releaseSourceValidationLifecycle(lifecycleLease);
+  }
 }
 
 async function main() {

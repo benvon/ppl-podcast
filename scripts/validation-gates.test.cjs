@@ -9,7 +9,7 @@ const path = require("node:path");
 const test = require("node:test");
 const YAML = require("yaml");
 
-const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
+const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireSourceValidationLifecycle, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, validateClaimAssessments, validateClaimMappings, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
@@ -1920,6 +1920,22 @@ test("source validation locks report ownership and refuses unsafe recovery", () 
     fs.unlinkSync(validationInProgressPath(outputPath));
     fs.mkdirSync(validationRecoveryPath(outputPath));
     assert.throws(() => markValidationInProgress(outputPath, { sources: "a" }), /lock recovery is in progress/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("source-validation lifecycle lock serializes preflight and formal review", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-validation-lifecycle-test-"));
+  try {
+    const first = acquireSourceValidationLifecycle(temporary, { sources: "a" }, { validator: "preflight" });
+    assert.throws(
+      () => acquireSourceValidationLifecycle(temporary, { sources: "a" }, { validator: "formal" }),
+      /already in progress or was interrupted/,
+    );
+    releaseSourceValidationLifecycle(first);
+    const second = acquireSourceValidationLifecycle(temporary, { sources: "a" }, { validator: "formal" });
+    releaseSourceValidationLifecycle(second);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

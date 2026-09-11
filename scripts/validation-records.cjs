@@ -18,8 +18,13 @@ function failedValidationAttemptPath(outputPath, run) {
   return path.join(path.dirname(outputPath), ".validation-attempts", `${run.run_id}.yaml`);
 }
 
+function sourceValidationLifecyclePath(episodePath) {
+  return path.join(episodePath, ".source-validation.lifecycle");
+}
+
 module.exports = {
   failedValidationAttemptPath,
+  sourceValidationLifecyclePath,
   validationFailurePath,
   validationInProgressPath,
   validationRecoveryPath,

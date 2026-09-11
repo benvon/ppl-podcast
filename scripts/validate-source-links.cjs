@@ -11,7 +11,7 @@ const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
 const { currentClaimSourcePreflightErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
-const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
+const { failedValidationAttemptPath, sourceValidationLifecyclePath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
@@ -719,7 +719,17 @@ function recoverStaleValidationLock(outputPath) {
     const lock = readValidationLock(lockPath);
     if (lock.hostname !== os.hostname()) throw new Error(`Validation lock belongs to host ${lock.hostname}; it cannot be safely recovered from ${os.hostname()}.`);
     if (processIsRunning(lock.pid)) throw new Error(`Validation is already running with pid ${lock.pid}; refusing to replace its lock.`);
-    fs.unlinkSync(lockPath);
+    // Moving the stale lock while the recovery directory is held avoids the
+    // unlink race where a second worker can delete a newly acquired live
+    // lock. A concurrent acquisition may only race on its own O_EXCL create.
+    const archivedLockPath = `${lockPath}.stale.${crypto.randomUUID()}`;
+    try { fs.renameSync(lockPath, archivedLockPath); }
+    catch (error) {
+      if (error?.code === "ENOENT") return;
+      throw error;
+    }
+    try { fs.unlinkSync(archivedLockPath); }
+    catch (error) { if (error?.code !== "ENOENT") throw error; }
   } finally {
     fs.rmdirSync(recoveryPath);
   }
@@ -786,6 +796,16 @@ function releaseValidationLock(outputPath, run) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
+}
+
+function acquireSourceValidationLifecycle(episodePath, inputSha256, { recoverStaleLock = false, validator } = {}) {
+  const outputPath = sourceValidationLifecyclePath(episodePath);
+  const run = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock, validator });
+  return { outputPath, run };
+}
+
+function releaseSourceValidationLifecycle(lease) {
+  if (lease) releaseValidationLock(lease.outputPath, lease.run);
 }
 
 async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false, validator = "scripts/validate-source-links.cjs", failureReport } = {}) {
@@ -1093,9 +1113,14 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     return;
   }
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
-  let authorization = null;
-  return runOwnedValidation(outputPath, validationRun, async () => {
+  const lifecycleLease = options.llm
+    ? acquireSourceValidationLifecycle(episodePath, inputSha256, { recoverStaleLock: options.recoverStaleLock, validator: "scripts/validate-source-links.cjs:formal-review-lifecycle" })
+    : null;
+  let validationRun;
+  try {
+    validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
+    let authorization = null;
+    return await runOwnedValidation(outputPath, validationRun, async () => {
   updateEpisodeSourceState(episodePath, "in_progress");
   const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
   const showNotesFilePresent = true; const showNotesValidationConfigured = true;
@@ -1236,7 +1261,10 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     isCancelled,
     failureReport: sourceReviewFailureReport({ options, validationRun, authorizationForRun: () => authorization }),
     onTerminal: (outcome, checkedAt) => updateEpisodeSourceState(episodePath, outcome, checkedAt),
-  });
+    });
+  } finally {
+    releaseSourceValidationLifecycle(lifecycleLease);
+  }
 }
 
 async function runWithEcfrRefreshes(runAttempt, { maximumRefreshes = MAX_ECFR_MANIFEST_REFRESHES } = {}) {
@@ -1274,4 +1302,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, acquireSourceValidationLifecycle, applyVerificationEvidence, assessRelevance, citedPdfPageNumber, citationTargetErrors, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, relevanceExcerpt, releaseSourceValidationLifecycle, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceReviewFailureReport, sourceValidationTerminalOutcome, staticValidationTargetErrors, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

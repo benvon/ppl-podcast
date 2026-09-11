@@ -161,6 +161,13 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   }
   const sources = ledger.sources;
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
+  for (const claim of inventory.claims) {
+    const listedSources = Array.isArray(claim?.sources) ? claim.sources : [];
+    const supportingSources = sources
+      .filter((source) => Array.isArray(source?.supports_claims) && source.supports_claims.includes(claim.id))
+      .map((source) => source.id);
+    expect(sameStringSet(listedSources, supportingSources), `claim-source-preflight.yaml requires a reciprocal source mapping for claim ${claim.id}.`);
+  }
   const results = Array.isArray(preflight?.results) ? preflight.results : [];
   expect(sameStringSet(results.map((result) => result?.source_id), sources.map((source) => source.id)), "claim-source-preflight.yaml must cover every current source exactly once.");
   for (const source of sources) {

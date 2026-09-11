@@ -62,6 +62,40 @@ function ensureAudioMixContract(resolved, episode, audio) {
   if (!fs.existsSync(mixPath)) writeYaml(mixPath, migratedAudioMix(audio));
 }
 
+const CLAIM_SOURCE_PREFLIGHT_TEMPLATE = Object.freeze({
+  schema_version: 1,
+  status: "pending",
+  checked_at_utc: null,
+  llm_requested: false,
+  llm_model: null,
+  input_sha256: { sources: null, claims: null },
+  results: [],
+});
+
+const CLAIM_SOURCE_PREFLIGHT_QA_ITEMS = Object.freeze([
+  "- [ ] Explicit current-turn authorization was received before proposed factual claims, exact source locators, and relevant source excerpts were sent to OpenAI for the claim-source preflight. <!-- qa-id: openai-claim-source-preflight-authorization -->",
+  "- [ ] `claim-source-preflight.yaml` is complete and bound to the current source ledger and claim inventory; it records every reviewed source's exact locator, hash-verified excerpt, mapped claims, and supporting LLM assessment. Findings were resolved before full spoken prose was drafted and are recorded in `production-log.md`. <!-- qa-id: claim-source-preflight -->",
+]);
+
+function ensureClaimSourcePreflightContract(resolved, episode) {
+  const preflightPath = path.join(resolved, "claim-source-preflight.yaml");
+  if (fs.existsSync(preflightPath) && !fs.lstatSync(preflightPath).isFile()) throw new ScriptReviewStateError("claim-source-preflight.yaml must be a regular file before a script-review reset can migrate this package.");
+  episode.source_verification = { ...(episode.source_verification || {}), claim_source_preflight: "claim-source-preflight.yaml" };
+  if (!fs.existsSync(preflightPath)) writeYaml(preflightPath, CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+
+  const checklistPath = path.join(resolved, "qa-checklist.md");
+  if (fs.existsSync(checklistPath) && !fs.lstatSync(checklistPath).isFile()) throw new ScriptReviewStateError("qa-checklist.md must be a regular file before a script-review reset can migrate this package.");
+  let checklist;
+  if (fs.existsSync(checklistPath)) checklist = fs.readFileSync(checklistPath, "utf8");
+  else {
+    const templatePath = path.join(__dirname, "..", "templates", "qa-checklist.md");
+    checklist = fs.readFileSync(templatePath, "utf8").replaceAll("{{TITLE}}", episode.title || episode.id || "Episode");
+  }
+  const missingItems = CLAIM_SOURCE_PREFLIGHT_QA_ITEMS.filter((item) => !checklist.includes(item.match(/qa-id: ([^ ]+)/)[1]));
+  if (missingItems.length) checklist = `${checklist.trimEnd()}\n\n${missingItems.join("\n")}\n`;
+  fs.writeFileSync(checklistPath, checklist, "utf8");
+}
+
 function resolveEpisode(episodePath) {
   const resolved = path.resolve(episodePath);
   for (const file of ["episode.yaml", "audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md"]) {
@@ -86,6 +120,7 @@ function resetScriptReview({ episodePath, reason = "The master script changed af
   const hosting = readYaml(hostingPathname);
 
   ensureAudioMixContract(resolved, episode, audio);
+  ensureClaimSourcePreflightContract(resolved, episode);
 
   const candidate = audio.current_candidate_render;
   if (candidate?.sha256 && !audio.superseded_candidates?.some((entry) => entry.sha256 === candidate.sha256)) {
@@ -165,4 +200,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { ScriptReviewStateError, approveScriptReview, ensureAudioMixContract, migratedAudioMix, removeLegacyProductionStatus, resetScriptReview, sha256Text };
+module.exports = { CLAIM_SOURCE_PREFLIGHT_QA_ITEMS, CLAIM_SOURCE_PREFLIGHT_TEMPLATE, ScriptReviewStateError, approveScriptReview, ensureAudioMixContract, ensureClaimSourcePreflightContract, migratedAudioMix, removeLegacyProductionStatus, resetScriptReview, sha256Text };

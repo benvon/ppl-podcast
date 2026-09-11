@@ -585,6 +585,19 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def assert_legacy_script_path(script_path: Path) -> None:
+    """Keep the retired renderer from bypassing current-contract render gates."""
+    episode_path = script_path.parent / "episode.yaml"
+    if not episode_path.is_file():
+        return
+    manifest = episode_path.read_text(encoding="utf-8")
+    if re.search(r'^\s*production_contract_version:\s*["\']?2["\']?\s*(?:#.*)?$', manifest, re.MULTILINE):
+        raise RenderError(
+            "render_episode_audio.py is for preserved legacy candidate reproduction only. "
+            "Contract-v2 episodes must use render_episode_realtime.cjs so current source and editorial gates are enforced."
+        )
+
+
 def main() -> int:
     args = parse_args()
     if not SAFE_EPISODE_ID.fullmatch(args.episode_id):
@@ -602,6 +615,7 @@ def main() -> int:
         raise RenderError("--continuity-context-characters must be between 0 and 1000.")
     if not args.script.is_file():
         raise RenderError(f"Master script not found: {args.script}")
+    assert_legacy_script_path(args.script)
 
     timestamp = args.timestamp or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     if not re.fullmatch(r"\d{8}T\d{6}Z", timestamp):

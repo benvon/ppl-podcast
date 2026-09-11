@@ -19,7 +19,7 @@ const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: par
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
-const { approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
+const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
 const { claimSourcePreflightInputHashes, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
@@ -66,6 +66,7 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(episodeAfterReset.review.editorial_status, "reapproval_required");
     assert.equal(episodeAfterReset.review.pending_script_sha256, sha256Text(migratedScript));
     assert.equal(episodeAfterReset.source_verification.relevance_review, "pending");
+    assert.equal(episodeAfterReset.source_verification.claim_source_preflight, "claim-source-preflight.yaml");
     assert.equal(episodeAfterReset.runtime_actual_seconds, null);
     assert.equal(episodeAfterReset.audio.status, "not_rendered");
     assert.equal(episodeAfterReset.audio.publication_day_validation, "pending");
@@ -79,6 +80,10 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(audioAfterReset.publication_day_validation, undefined);
     assert.equal(audioAfterReset.required_before_release, undefined);
     assert.equal(audioAfterReset.chapter_markers.status, undefined);
+    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")), CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+    const migratedChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
+    assert.match(migratedChecklist, /qa-id: openai-claim-source-preflight-authorization/);
+    assert.match(migratedChecklist, /qa-id: claim-source-preflight/);
     const hostingAfterReset = YAML.parse(fs.readFileSync(path.join(temporary, "hosting-metadata.yaml"), "utf8"));
     assert.equal(hostingAfterReset.handoff_status, undefined);
     assert.equal(hostingAfterReset.release_readiness, undefined);
@@ -318,6 +323,14 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(preflightPath, YAML.stringify(preflightWithBroadLocator));
     const broadLocator = validatePreHosting({ episodePath, cwd: temporary });
     assert.equal(broadLocator.valid, false); assert.match(broadLocator.errors.join("\n"), /supporting LLM locator assessment/);
+    fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
+    const sourceLedgerPath = path.join(episodePath, "sources.yaml");
+    const originalSourceLedger = fs.readFileSync(sourceLedgerPath, "utf8");
+    fs.writeFileSync(sourceLedgerPath, originalSourceLedger.replace("supports_claims: [claim-a]", "supports_claims: []"));
+    fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
+    const nonReciprocalMapping = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(nonReciprocalMapping.valid, false); assert.match(nonReciprocalMapping.errors.join("\n"), /reciprocal source mapping for claim claim-a/);
+    fs.writeFileSync(sourceLedgerPath, originalSourceLedger);
     fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
     const readyEpisodeMetadata = YAML.parse(fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8"));
     const pendingPublicationEpisode = { ...readyEpisodeMetadata, audio: { ...readyEpisodeMetadata.audio, publication_day_validation: "pending" } };
@@ -1318,6 +1331,20 @@ test("realtime renderer requires completed source-relevance review before render
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /bound to the current sources/);
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "source_verification:\n  relevance_review: required_before_render\n", "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /marked complete/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer refuses a contract-v2 episode package", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-renderer-gate-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  try {
+    fs.writeFileSync(scriptPath, "# Test\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
+    assert.equal(result.status, 2);
+    assert.match(result.stderr, /legacy candidate reproduction only/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

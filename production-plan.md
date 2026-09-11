@@ -374,7 +374,7 @@ ppl-podcast/
       ...
   scripts/
     render_episode_realtime.cjs   # default candidate renderer
-    render_episode_audio.py       # legacy candidate reproduction only
+    render_episode_audio.py       # legacy candidate reproduction only; refuses contract-v2 packages
   audio-artifacts/              # Git-ignored rendered masters and derivatives
   templates/
     episode.yaml

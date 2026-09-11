@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import html.parser
 import json
 import os
 import re
@@ -82,6 +83,25 @@ class AiffProperties:
     sample_width_bits: int
     sample_rate: int
     compression_type: bytes
+
+
+class EpisodePageParser(html.parser.HTMLParser):
+    """Collect page text and media links needed to bind a public release."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.text: list[str] = []
+        self.links: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self.text.append(data)
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = dict(attrs)
+        if tag in {"a", "audio", "source"}:
+            candidate = values.get("href") if tag == "a" else values.get("src")
+            if candidate:
+                self.links.append(candidate)
 
 
 def parse_script_text(script: str, max_words: int) -> list[Segment]:
@@ -664,16 +684,27 @@ def verify_published_legacy_release(release: object, episode_id: str) -> None:
         raise RenderError("The recorded legacy publisher commit is not present at the public publisher repository.")
 
     episode_page = require_https_url(release.get("episode_page"), "episode_page")
+    expected_title = release.get("title")
+    expected_version = release.get("content_version")
+    if release.get("episode_id") != episode_id or not isinstance(expected_title, str) or not expected_title.strip() or not isinstance(expected_version, str) or not expected_version.strip():
+        raise RenderError("Published legacy release is missing its episode identity, title, or content version.")
     if episode_id not in urllib.parse.urlparse(episode_page).path:
         raise RenderError("The recorded legacy episode page URL does not identify the requested episode.")
     with public_request(episode_page) as response:
-        response.read(1)
+        page_url = response.geturl()
+        page = response.read(1_000_000).decode("utf-8", errors="replace")
 
     enclosure_url = require_https_url(release.get("enclosure_url"), "enclosure_url")
     expected_bytes = release.get("bytes")
     expected_sha256 = release.get("sha256")
     if not isinstance(expected_bytes, int) or expected_bytes <= 0 or not isinstance(expected_sha256, str) or not re.fullmatch(r"[a-fA-F0-9]{64}", expected_sha256):
         raise RenderError("Published legacy release enclosure identity is incomplete.")
+    parser = EpisodePageParser()
+    parser.feed(page)
+    page_text = " ".join(parser.text)
+    page_links = {urllib.parse.urljoin(page_url, link).split("#", 1)[0] for link in parser.links}
+    if episode_id not in page_text or expected_title not in page_text or expected_version not in page_text or enclosure_url not in page_links:
+        raise RenderError("The public legacy episode page does not bind the requested episode, version, and recorded enclosure together.")
     digest = hashlib.sha256()
     observed_bytes = 0
     with public_request(enclosure_url, timeout=60) as response:

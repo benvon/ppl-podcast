@@ -21,7 +21,7 @@ function publishedLegacyRelease(filePath, episode, kind) {
   const metadata = readYamlMapping(metadataPath);
   const release = metadata.publisher_release;
   if (!release || typeof release !== "object" || Array.isArray(release)) return null;
-  if (release.id !== episode.id || release.published_at !== episode.published_at) return null;
+  if (release.id !== episode.id || release.published_at !== episode.published_at || typeof release.title !== "string" || !release.title.trim()) return null;
   const published = metadata.published_release;
   if (!published || typeof published !== "object" || Array.isArray(published)) return null;
   if (!utcRfc3339Timestamp(published.deployed_at_utc)) return null;
@@ -41,6 +41,9 @@ function publishedLegacyRelease(filePath, episode, kind) {
     enclosure_url: published.enclosure_url,
     bytes: published.bytes,
     sha256: published.sha256.toLowerCase(),
+    episode_id: release.id,
+    title: release.title,
+    content_version: metadata.provenance?.content_version,
   };
 }
 

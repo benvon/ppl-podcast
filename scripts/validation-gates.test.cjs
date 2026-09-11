@@ -19,7 +19,7 @@ const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: par
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
-const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
+const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, parseArgs: parseScriptReviewArgs, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
@@ -2049,6 +2049,13 @@ test("renderer can safely recover a confirmed-dead package lease", () => {
   }
 });
 
+test("script-review reset exposes confirmed-dead package-lease recovery", () => {
+  assert.deepEqual(
+    parseScriptReviewArgs(["--episode", "episodes/core-test", "--reset", "--recover-stale-lock"]),
+    { episode: "episodes/core-test", reset: true, "recover-stale-lock": true },
+  );
+});
+
 test("eCFR validation fallback must stay on the official versioner endpoint", () => {
   const valid = validationTargetErrors({
     url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.105",
@@ -2444,7 +2451,8 @@ test("legacy publication evidence requires matching release metadata", () => {
 
     fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), YAML.stringify({
       handoff_status: "published",
-      publisher_release: { id: "core-01", published_at: "2026-09-10T00:00:00Z" },
+      publisher_release: { id: "core-01", title: "Test episode", published_at: "2026-09-10T00:00:00Z" },
+      provenance: { content_version: "0.1.0" },
       published_release: {
         publisher_repository: "https://github.com/example/publisher",
         release_commit: "a".repeat(40),
@@ -2466,6 +2474,9 @@ test("legacy publication evidence requires matching release metadata", () => {
       enclosure_url: "https://media.example.com/core-01.mp3",
       bytes: 1,
       sha256: "b".repeat(64),
+      episode_id: "core-01",
+      title: "Test episode",
+      content_version: "0.1.0",
     });
 
     fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  id: core-01\n  published_at: 2026-09-11T00:00:00Z\n", "utf8");
@@ -2496,6 +2507,7 @@ class Response:
         self.headers = headers or {}
     def __enter__(self): return self
     def __exit__(self, *args): return False
+    def geturl(self): return "https://example.com/episodes/core-01/"
     def read(self, count=-1):
         if count < 0: count = len(self.body) - self.offset
         part = self.body[self.offset:self.offset + count]
@@ -2503,7 +2515,7 @@ class Response:
         return part
 def request(url, timeout=20):
     if "/commits/" in url: return Response(json.dumps({"sha": "a" * 40}).encode())
-    if "episodes/core-01" in url: return Response(b"ok")
+    if "episodes/core-01" in url: return Response(b"<h1>Test episode</h1> Episode: core-01 Version: 0.1.0 <a href='https://media.example.com/audio/core-01.mp3'>Download</a>")
     if "audio/core-01" in url: return Response(payload, {"Content-Length": str(len(payload))})
     raise AssertionError(url)
 module.public_request = request
@@ -2514,6 +2526,9 @@ release = {
     "enclosure_url": "https://media.example.com/audio/core-01.mp3",
     "bytes": len(payload),
     "sha256": hashlib.sha256(payload).hexdigest(),
+    "episode_id": "core-01",
+    "title": "Test episode",
+    "content_version": "0.1.0",
 }
 module.verify_published_legacy_release(release, "core-01")
 release["sha256"] = "0" * 64

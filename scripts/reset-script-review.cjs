@@ -208,9 +208,9 @@ function resetScriptReviewUnlocked({ episodePath, reason = "The master script ch
   return { scriptSha256, episodePath: resolved };
 }
 
-function resetScriptReview({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically }) {
+function resetScriptReview({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically, recoverStaleLock = false }) {
   const resolved = path.resolve(episodePath);
-  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:reset" }, (packageLease) => (
+  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:reset", recoverStaleLock }, (packageLease) => (
     resetScriptReviewUnlocked({ episodePath: resolved, reason, writeFiles, packageLease })
   ));
 }
@@ -231,9 +231,9 @@ function approveScriptReviewUnlocked({ episodePath, packageLease }) {
   return { scriptSha256, episodePath: resolved };
 }
 
-function approveScriptReview({ episodePath }) {
+function approveScriptReview({ episodePath, recoverStaleLock = false }) {
   const resolved = path.resolve(episodePath);
-  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:approve" }, (packageLease) => (
+  return withEpisodePackageLease(resolved, { validator: "scripts/reset-script-review.cjs:approve", recoverStaleLock }, (packageLease) => (
     approveScriptReviewUnlocked({ episodePath: resolved, packageLease })
   ));
 }
@@ -242,8 +242,8 @@ function parseArgs(argv) {
   const values = {};
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
-    if (!["--episode", "--reset", "--approve", "--reason"].includes(argument)) throw new ScriptReviewStateError(`Unexpected argument: ${argument}`);
-    if (argument === "--reset" || argument === "--approve") { values[argument.slice(2)] = true; continue; }
+    if (!["--episode", "--reset", "--approve", "--recover-stale-lock", "--reason"].includes(argument)) throw new ScriptReviewStateError(`Unexpected argument: ${argument}`);
+    if (argument === "--reset" || argument === "--approve" || argument === "--recover-stale-lock") { values[argument.slice(2)] = true; continue; }
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new ScriptReviewStateError(`Missing value for ${argument}.`);
     values[argument.slice(2)] = value;
@@ -256,7 +256,7 @@ function parseArgs(argv) {
 function main() {
   try {
     const options = parseArgs(process.argv.slice(2));
-    const result = options.reset ? resetScriptReview({ episodePath: options.episode, reason: options.reason }) : approveScriptReview({ episodePath: options.episode });
+    const result = options.reset ? resetScriptReview({ episodePath: options.episode, reason: options.reason, recoverStaleLock: Boolean(options["recover-stale-lock"]) }) : approveScriptReview({ episodePath: options.episode, recoverStaleLock: Boolean(options["recover-stale-lock"]) });
     console.log(`${options.reset ? "Reset" : "Recorded"} script-review state for ${result.episodePath} (${result.scriptSha256}).`);
   } catch (error) {
     console.error(error instanceof ScriptReviewStateError ? error.message : `Script-review state update failed: ${error.message}`);
@@ -266,4 +266,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { CLAIM_SOURCE_PREFLIGHT_QA_ITEMS, CLAIM_SOURCE_PREFLIGHT_TEMPLATE, ScriptReviewStateError, approveScriptReview, markChecklistItemsUnchecked, migratedAudioMix, planAudioMixContract, planClaimSourcePreflightContract, preflightMatchesCurrentInputs, removeLegacyProductionStatus, resetScriptReview, sha256Text };
+module.exports = { CLAIM_SOURCE_PREFLIGHT_QA_ITEMS, CLAIM_SOURCE_PREFLIGHT_TEMPLATE, ScriptReviewStateError, approveScriptReview, markChecklistItemsUnchecked, migratedAudioMix, parseArgs, planAudioMixContract, planClaimSourcePreflightContract, preflightMatchesCurrentInputs, removeLegacyProductionStatus, resetScriptReview, sha256Text };

@@ -29,6 +29,12 @@ function qaItemCompleteWithID(markdown, id) {
   return new RegExp(`^- \\[x\\][^\\n]*<!--\\s*qa-id:\\s*${escaped}\\s*-->`, "mi").test(markdown);
 }
 
+function utcRfc3339Timestamp(value) {
+  return typeof value === "string"
+    && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)
+    && !Number.isNaN(Date.parse(value));
+}
+
 function readYamlMapping(filePath, label, errors) {
   try {
     if (!fs.existsSync(filePath) || !fs.lstatSync(filePath).isFile()) {
@@ -102,6 +108,8 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   try { errors.push(...validationCoverageErrors(episodePath, validation)); }
   catch (error) { errors.push(`Could not verify source-review coverage: ${error.message}`); }
   expect(Array.isArray(validation.results) && validation.results.length > 0, "link validation must record source results.");
+  expect(utcRfc3339Timestamp(validation.checked_at_utc), "link-validation.yaml must record a valid UTC source-review timestamp.");
+  expect(utcRfc3339Timestamp(episode.source_verification?.verified_at_utc), "episode.yaml must record a valid UTC source-review timestamp.");
   expect(episode.source_verification?.verified_at_utc === validation.checked_at_utc, "episode source-verification timestamp must match link-validation.yaml.");
   return errors;
 }

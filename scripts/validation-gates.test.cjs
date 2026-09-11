@@ -1567,6 +1567,17 @@ test("realtime renderer requires completed source-relevance review before render
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /source- and claim-level relevance assessments/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
     assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
+    const timestamplessEpisode = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    const timestamplessValidation = YAML.parse(fs.readFileSync(path.join(temporary, "link-validation.yaml"), "utf8"));
+    timestamplessEpisode.source_verification.verified_at_utc = null;
+    timestamplessValidation.checked_at_utc = null;
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(timestamplessEpisode), "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(timestamplessValidation), "utf8");
+    assert.throws(() => assertSourceRelevanceApproved(scriptPath), /must record a valid UTC source-review timestamp/);
+    timestamplessEpisode.source_verification.verified_at_utc = "2026-09-10T00:00:00Z";
+    timestamplessValidation.checked_at_utc = "2026-09-10T00:00:00Z";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(timestamplessEpisode), "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(timestamplessValidation), "utf8");
     fs.unlinkSync(path.join(temporary, "claim-source-preflight.yaml"));
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /Missing required file claim-source-preflight\.yaml/);
     fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify(preflight()), "utf8");

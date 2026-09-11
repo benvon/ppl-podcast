@@ -350,6 +350,12 @@ test("pre-hosting validation requires consistent release records", () => {
     fs.writeFileSync(sourceLedgerPath, originalSourceLedger);
     fs.writeFileSync(claimInventoryPath, originalClaimInventory);
     fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
+    fs.writeFileSync(claimInventoryPath, `${originalClaimInventory}  - id: claim-a\n    sources: [source-a]\n`);
+    fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
+    const duplicateClaim = validatePreHosting({ episodePath, cwd: temporary });
+    assert.equal(duplicateClaim.valid, false); assert.match(duplicateClaim.errors.join("\n"), /unique, non-empty claim IDs/);
+    fs.writeFileSync(claimInventoryPath, originalClaimInventory);
+    fs.writeFileSync(preflightPath, YAML.stringify(preflight()));
     const readyEpisodeMetadata = YAML.parse(fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8"));
     const pendingPublicationEpisode = { ...readyEpisodeMetadata, audio: { ...readyEpisodeMetadata.audio, publication_day_validation: "pending" } };
     fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify(pendingPublicationEpisode));
@@ -1363,6 +1369,19 @@ test("legacy renderer refuses a contract-v2 episode package", () => {
     const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
     assert.equal(result.status, 2);
     assert.match(result.stderr, /legacy candidate reproduction only/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer refuses scripts outside a preserved package", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-renderer-metadata-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  try {
+    fs.writeFileSync(scriptPath, "# Test\n", "utf8");
+    const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
+    assert.equal(result.status, 2);
+    assert.match(result.stderr, /requires a sibling episode\.yaml/);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

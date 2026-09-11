@@ -136,6 +136,12 @@ function claimAssessmentsFor(result) {
   return Array.isArray(result?.relevance?.claim_assessments) ? result.relevance.claim_assessments : [];
 }
 
+function uniqueNonEmptyIdentifiers(entries) {
+  const identifiers = entries.map((entry) => entry?.id);
+  return identifiers.every((identifier) => typeof identifier === "string" && identifier.trim().length > 0)
+    && identifiers.length === new Set(identifiers).size;
+}
+
 // This is deliberately shared by the renderer and release validator. A
 // contract-v2 episode must not be able to pass one lifecycle gate with a
 // weaker definition of preflight evidence than another.
@@ -164,6 +170,8 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
     return errors;
   }
   const sources = ledger.sources;
+  expect(uniqueNonEmptyIdentifiers(sources), "claim-source-preflight.yaml requires unique, non-empty source IDs.");
+  expect(uniqueNonEmptyIdentifiers(inventory.claims), "claim-source-preflight.yaml requires unique, non-empty claim IDs.");
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   for (const claim of inventory.claims) {
     const listedSources = Array.isArray(claim?.sources) ? claim.sources : [];

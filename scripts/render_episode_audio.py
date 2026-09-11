@@ -589,7 +589,10 @@ def assert_legacy_script_path(script_path: Path) -> None:
     """Keep the retired renderer from bypassing current-contract render gates."""
     episode_path = script_path.parent / "episode.yaml"
     if not episode_path.is_file():
-        return
+        raise RenderError(
+            "render_episode_audio.py requires a sibling episode.yaml proving this is a preserved legacy package. "
+            "Contract-v2 episodes must use render_episode_realtime.cjs."
+        )
     contract_reader = Path(__file__).with_name("read-episode-contract.cjs")
     try:
         result = subprocess.run(

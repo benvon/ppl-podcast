@@ -17,7 +17,7 @@ const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = req
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
-const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
+const { HostingHandoffError, createHostingHandoff, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
@@ -1976,6 +1976,44 @@ test("package lease blocks release consumers and state writers for a source-revi
     assert.equal(transitioned.source_verification.status, "source_relevance_pending");
     assert.equal(transitioned.production_state_revision, 1, "a committed state transition must advance the package revision");
     releaseSourceValidationLifecycle(lease);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("handoff source snapshot excludes transient package-lease artifacts", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-handoff-source-snapshot-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-test\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), "status: complete\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), "transient\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".qa-checklist.authorization.lock"), "transient\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "link-validation.yaml.failed"), "transient\n", "utf8");
+    const files = sourcePackageFiles(temporary);
+    assert.deepEqual(Object.keys(files).sort(), ["claim-source-preflight.yaml", "episode.yaml"]);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("renderer can safely recover a confirmed-dead package lease", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-render-stale-lease-test-"));
+  try {
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "narration.md"), "# Test\n", "utf8");
+    fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), YAML.stringify({
+      schema_version: 1,
+      validator: "interrupted renderer",
+      run_id: crypto.randomUUID(),
+      hostname: os.hostname(),
+      pid: 999999,
+      started_at_utc: "2026-09-11T00:00:00Z",
+      input_sha256: { episode_yaml: "stale" },
+    }));
+    const render = childProcess.spawnSync(process.execPath, [path.join(process.cwd(), "scripts", "render_episode_realtime.cjs"), "--script", path.join(temporary, "narration.md"), "--audio-dir", temporary, "--episode-id", "core-test", "--dry-run", "--recover-stale-lock"], { cwd: process.cwd(), encoding: "utf8" });
+    assert.notEqual(render.status, 0, "the incomplete fixture should fail after recovering, not render audio");
+    assert.doesNotMatch(`${render.stdout}\n${render.stderr}`, /already in progress or was interrupted/);
+    assert.equal(fs.existsSync(path.join(temporary, ".source-validation.lifecycle.in-progress")), false);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

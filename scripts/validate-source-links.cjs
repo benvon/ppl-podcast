@@ -1169,9 +1169,10 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     return;
   }
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const lifecycleLease = options.llm
-    ? acquireSourceValidationLifecycle(episodePath, inputSha256, { recoverStaleLock: options.recoverStaleLock, validator: "scripts/validate-source-links.cjs:formal-review-lifecycle" })
-    : null;
+  // Deterministic link validation also updates source-review state. It must
+  // therefore share the package lease with LLM review, rendering, and release
+  // consumers rather than attempting an unowned episode.yaml transition.
+  const lifecycleLease = acquireSourceValidationLifecycle(episodePath, inputSha256, { recoverStaleLock: options.recoverStaleLock, validator: "scripts/validate-source-links.cjs:formal-review-lifecycle" });
   let validationRun;
   try {
     validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });

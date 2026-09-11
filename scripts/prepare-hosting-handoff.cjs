@@ -66,7 +66,14 @@ function listedFiles(directory, { exclude = [] } = {}) {
 }
 
 function sourcePackageFiles(episodePath) {
-  return Object.fromEntries(listedFiles(episodePath, { exclude: [SEAL_FILE] }).map((name) => [name, sha256File(path.join(episodePath, name))]));
+  // Locks, failed-attempt markers, and temporary files describe an active or
+  // interrupted local operation. They are not source-package inputs and are
+  // removed by normal cleanup, so including them would make a release seal
+  // attest to bytes that cannot exist once the handoff is complete.
+  const transient = (name) => name.startsWith(".") || name.endsWith(".in-progress") || name.endsWith(".failed") || name.includes(".tmp");
+  return Object.fromEntries(listedFiles(episodePath, { exclude: [SEAL_FILE] })
+    .filter((name) => !transient(name))
+    .map((name) => [name, sha256File(path.join(episodePath, name))]));
 }
 
 function releaseEpisode({ episodePath, cwd }) {
@@ -186,4 +193,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { HANDOFF_FILES, HostingHandoffError, SEAL_FILE, createHostingHandoff, sha256Value, verifyHostingHandoff };
+module.exports = { HANDOFF_FILES, HostingHandoffError, SEAL_FILE, createHostingHandoff, sha256Value, sourcePackageFiles, verifyHostingHandoff };

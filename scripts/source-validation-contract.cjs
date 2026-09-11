@@ -172,6 +172,8 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   const sources = ledger.sources;
   expect(uniqueNonEmptyIdentifiers(sources), "claim-source-preflight.yaml requires unique, non-empty source IDs.");
   expect(uniqueNonEmptyIdentifiers(inventory.claims), "claim-source-preflight.yaml requires unique, non-empty claim IDs.");
+  for (const source of sources) expect(Array.isArray(source?.supports_claims) && uniqueNonEmptyIdentifiers(source.supports_claims.map((id) => ({ id }))), `claim-source-preflight.yaml requires source ${source?.id || "<unknown>"} to declare unique, non-empty claim IDs.`);
+  for (const claim of inventory.claims) expect(Array.isArray(claim?.sources) && uniqueNonEmptyIdentifiers(claim.sources.map((id) => ({ id }))), `claim-source-preflight.yaml requires claim ${claim?.id || "<unknown>"} to declare unique, non-empty source IDs.`);
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   for (const claim of inventory.claims) {
     const listedSources = Array.isArray(claim?.sources) ? claim.sources : [];
@@ -198,7 +200,7 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
       && validSha256(excerpt.sha256) === sha256Text(excerpt.text)
       && Number.isInteger(excerpt.characters) && excerpt.characters === excerpt.text.length;
     expect(excerptRecorded, `claim-source-preflight.yaml must retain a hash-verified copy of the reviewed excerpt for source ${source.id}.`);
-    const expectedClaims = source.supports_claims || [];
+    const expectedClaims = Array.isArray(source.supports_claims) ? source.supports_claims : [];
     expect(expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
     const assessments = claimAssessmentsFor(result);
     const assessmentIDs = assessments.map((assessment) => assessment?.claim_id);

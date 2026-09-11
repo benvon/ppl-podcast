@@ -585,7 +585,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def assert_legacy_script_path(script_path: Path) -> None:
+def assert_legacy_script_path(script_path: Path, episode_id: str) -> None:
     """Keep the retired renderer from bypassing current-contract render gates."""
     episode_path = script_path.parent / "episode.yaml"
     if not episode_path.is_file():
@@ -619,6 +619,31 @@ def assert_legacy_script_path(script_path: Path) -> None:
             "render_episode_audio.py requires production_contract_version to be absent for a preserved legacy package. "
             "Packages with a current or unsupported contract marker must use current release tooling."
         )
+    repository_root = Path(__file__).resolve().parent.parent
+    episodes_root = repository_root / "episodes"
+    try:
+        package_path = script_path.resolve().parent
+        package_path.relative_to(episodes_root.resolve())
+    except ValueError as exc:
+        raise RenderError("The legacy renderer accepts only preserved episode packages under the repository episodes directory.") from exc
+    if script_path.name != "master-script.md" or contract.get("episode_id") != episode_id or not package_path.name.startswith(f"{episode_id}-"):
+        raise RenderError("The legacy script path, package directory, and episode.yaml id must identify the same episode.")
+    for tracked_path in (script_path.resolve(), episode_path.resolve()):
+        relative = tracked_path.relative_to(repository_root)
+        tracked = subprocess.run(
+            ["git", "-C", str(repository_root), "ls-files", "--error-unmatch", "--", str(relative)],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        unchanged = subprocess.run(
+            ["git", "-C", str(repository_root), "diff", "--quiet", "HEAD", "--", str(relative)],
+            check=False,
+            timeout=5,
+        )
+        if tracked.returncode != 0 or unchanged.returncode != 0:
+            raise RenderError("The legacy renderer accepts only tracked, unchanged historical package files. Start revisions with episode:script-review --reset.")
 
 
 def main() -> int:
@@ -638,7 +663,7 @@ def main() -> int:
         raise RenderError("--continuity-context-characters must be between 0 and 1000.")
     if not args.script.is_file():
         raise RenderError(f"Master script not found: {args.script}")
-    assert_legacy_script_path(args.script)
+    assert_legacy_script_path(args.script, args.episode_id)
 
     timestamp = args.timestamp or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     if not re.fullmatch(r"\d{8}T\d{6}Z", timestamp):

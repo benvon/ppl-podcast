@@ -8,8 +8,10 @@ const os = require("os");
 const path = require("path");
 const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
+const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
 const { sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
 
 const DEFAULT_MODEL = "gpt-5.6-terra";
 const DEFAULT_HTTP_CONCURRENCY = 5;
@@ -59,6 +61,8 @@ const RELEVANCE_SCHEMA = {
     },
   },
 };
+
+class ValidationCancelledError extends Error {}
 
 function parseArgs(argv) {
   const options = { llm: false, requireLlm: false, dryRun: false, recoverStaleLock: false, model: DEFAULT_MODEL, "http-concurrency": DEFAULT_HTTP_CONCURRENCY, "http-per-origin": 2, "llm-concurrency": 2, "heartbeat-seconds": 10 };
@@ -634,22 +638,6 @@ async function refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl = fetch
   return changes;
 }
 
-function validationInProgressPath(outputPath) {
-  return `${outputPath}.in-progress`;
-}
-
-function validationRecoveryPath(outputPath) {
-  return `${validationInProgressPath(outputPath)}.recovering`;
-}
-
-function validationFailurePath(outputPath) {
-  return `${outputPath}.failed`;
-}
-
-function failedValidationAttemptPath(outputPath, run) {
-  return path.join(path.dirname(outputPath), ".validation-attempts", `${run.run_id}.yaml`);
-}
-
 function readValidationLock(lockPath) {
   try {
     const document = YAML.parseDocument(fs.readFileSync(lockPath, "utf8"));
@@ -717,7 +705,7 @@ function assertValidationLockOwner(lockPath, run) {
   if (lock.run_id !== run.run_id || lock.hostname !== run.hostname || lock.pid !== run.pid) throw new Error(`Validation lock ownership changed while producing ${lockPath}; report was not released.`);
 }
 
-function completeValidationReport(outputPath, report, run, { promote = true } = {}) {
+function completeValidationReport(outputPath, report, run, { promote = true, beforeRelease } = {}) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
   const failurePath = validationFailurePath(outputPath);
@@ -744,6 +732,8 @@ function completeValidationReport(outputPath, report, run, { promote = true } = 
     });
   }
   assertValidationLockOwner(lockPath, run);
+  beforeRelease?.();
+  assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
   return writtenPath;
 }
@@ -752,6 +742,54 @@ function releaseValidationLock(outputPath, run) {
   const lockPath = validationInProgressPath(outputPath);
   assertValidationLockOwner(lockPath, run);
   fs.unlinkSync(lockPath);
+}
+
+async function runOwnedValidation(outputPath, run, work, { onTerminal, isCancelled = () => false } = {}) {
+  try {
+    return await work();
+  } catch (error) {
+    const lockPath = validationInProgressPath(outputPath);
+    if (fs.existsSync(lockPath)) {
+      const report = {
+        schema_version: 1,
+        validator: "scripts/validate-source-links.cjs",
+        checked_at_utc: new Date().toISOString(),
+        input_sha256: run.input_sha256,
+        failure: {
+          outcome: error instanceof ValidationCancelledError || isCancelled() ? "cancelled" : "failed",
+          reason: error.message,
+        },
+        results: [],
+      };
+      try { completeValidationReport(outputPath, report, run, { promote: false, beforeRelease: () => onTerminal?.(report.failure.outcome, report.checked_at_utc) }); }
+      catch (finalizeError) { throw new Error(`${error.message}; validation failure finalization also failed: ${finalizeError.message}`, { cause: error }); }
+    }
+    throw error;
+  }
+}
+
+function updateEpisodeSourceState(episodePath, outcome, checkedAt = null) {
+  const episodeFile = path.join(episodePath, "episode.yaml");
+  const document = YAML.parseDocument(fs.readFileSync(episodeFile, "utf8"));
+  if (document.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${document.errors[0].message}`);
+  const episode = document.toJS();
+  requireCurrentProductionContract(episode, "Source validation");
+  const states = {
+    in_progress: { status: "source_relevance_in_progress", relevance_review: "in_progress", verified_at_utc: null },
+    complete: { status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: checkedAt },
+    failed: { status: "source_relevance_failed", relevance_review: "failed", verified_at_utc: null },
+    cancelled: { status: "source_relevance_cancelled", relevance_review: "cancelled", verified_at_utc: null },
+    pending: { status: "source_relevance_pending", relevance_review: "pending", verified_at_utc: null },
+  };
+  if (!states[outcome]) throw new Error(`Unsupported source-validation outcome: ${outcome}`);
+  episode.source_verification = {
+    ...(episode.source_verification || {}),
+    claim_source_preflight: "claim-source-preflight.yaml",
+    link_validation: "link-validation.yaml",
+    show_notes_manifest: "show-notes-manifest.yaml",
+    ...states[outcome],
+  };
+  writeTextAtomically(episodeFile, YAML.stringify(episode));
 }
 
 function publicLinkRecord(link) {
@@ -791,21 +829,29 @@ function reportMappingErrors(claimMapping, showNotesMapping) {
 
 function validateClaimMappings(ledger, claimInventory) {
   const errors = [];
+  if (!Array.isArray(ledger?.sources) || !Array.isArray(claimInventory?.claims)) return { valid: false, errors: ["sources and claims must be arrays"] };
   const sourceIds = new Set();
   for (const source of ledger.sources) {
-    if (!source.id) { errors.push("source ledger contains a source without an id"); continue; }
+    if (!source || typeof source !== "object" || Array.isArray(source)) { errors.push("source ledger contains a non-mapping source"); continue; }
+    if (typeof source.id !== "string" || !source.id.trim()) { errors.push("source ledger contains a source without an id"); continue; }
     if (sourceIds.has(source.id)) errors.push(`source ledger contains duplicate source id ${source.id}`);
     sourceIds.add(source.id);
+    if (!Array.isArray(source.supports_claims)) errors.push(`source ${source.id} must declare supports_claims as an array`);
+    else if (source.supports_claims.length !== new Set(source.supports_claims).size || source.supports_claims.some((id) => typeof id !== "string" || !id.trim())) errors.push(`source ${source.id} must declare unique, non-empty claim ids`);
   }
-  const sourcesById = new Map(ledger.sources.map((source) => [source.id, source]));
+  const sourcesById = new Map(ledger.sources.filter((source) => source && typeof source === "object" && !Array.isArray(source)).map((source) => [source.id, source]));
   const claimIds = new Set();
   for (const claim of claimInventory.claims) {
-    if (!claim.id) { errors.push("claim inventory contains a claim without an id"); continue; }
+    if (!claim || typeof claim !== "object" || Array.isArray(claim)) { errors.push("claim inventory contains a non-mapping claim"); continue; }
+    if (typeof claim.id !== "string" || !claim.id.trim()) { errors.push("claim inventory contains a claim without an id"); continue; }
     if (claimIds.has(claim.id)) errors.push(`claim inventory contains duplicate claim id ${claim.id}`);
     claimIds.add(claim.id);
+    if (!Array.isArray(claim.sources)) errors.push(`claim ${claim.id} must declare sources as an array`);
+    else if (claim.sources.length !== new Set(claim.sources).size || claim.sources.some((id) => typeof id !== "string" || !id.trim())) errors.push(`claim ${claim.id} must declare unique, non-empty source ids`);
   }
-  const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
+  const claimsById = new Map(claimInventory.claims.filter((claim) => claim && typeof claim === "object" && !Array.isArray(claim)).map((claim) => [claim.id, claim]));
   for (const source of ledger.sources) {
+    if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) continue;
     for (const claimId of source.supports_claims) {
       const claim = claimsById.get(claimId);
       if (!claim) errors.push(`source ${source.id} maps unknown claim ${claimId}`);
@@ -813,7 +859,7 @@ function validateClaimMappings(ledger, claimInventory) {
     }
   }
   for (const claim of claimInventory.claims) {
-    if (!claim.id) continue;
+    if (!claim || typeof claim !== "object" || !claim.id) continue;
     if (!Array.isArray(claim.sources) || !claim.sources.length) {
       errors.push(`claim ${claim.id} has no declared sources`);
       continue;
@@ -821,9 +867,9 @@ function validateClaimMappings(ledger, claimInventory) {
     for (const sourceId of claim.sources) {
       const source = sourcesById.get(sourceId);
       if (!source) errors.push(`claim ${claim.id} declares unknown source ${sourceId}`);
-      else if (!source.supports_claims.includes(claim.id)) errors.push(`claim ${claim.id} declares source ${sourceId}, but that source does not support the claim`);
+      else if (!Array.isArray(source.supports_claims) || !source.supports_claims.includes(claim.id)) errors.push(`claim ${claim.id} declares source ${sourceId}, but that source does not support the claim`);
     }
-    const supportingSources = ledger.sources.filter((source) => source.supports_claims.includes(claim.id));
+    const supportingSources = ledger.sources.filter((source) => Array.isArray(source?.supports_claims) && source.supports_claims.includes(claim.id));
     if (!supportingSources.length) errors.push(`claim ${claim.id} is not supported by any source ledger entry`);
   }
   return { valid: errors.length === 0, errors };
@@ -945,13 +991,19 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   const ledger = loadYaml(sourcesPath, "sources"); const claimInventory = loadYaml(claimsPath, "claims");
   const showNotesPath = path.resolve(options["show-notes"] || path.join(path.dirname(sourcesPath), "show-notes.md")); const showNotesManifestPath = path.resolve(options["show-notes-manifest"] || path.join(path.dirname(sourcesPath), "show-notes-manifest.yaml"));
   const showNotesFilePresent = fs.existsSync(showNotesPath); const showNotesValidationConfigured = fs.existsSync(showNotesManifestPath);
-  if (showNotesValidationConfigured && !showNotesFilePresent) throw new Error("show-notes-manifest.yaml requires show-notes.md");
+  if (!showNotesFilePresent || !showNotesValidationConfigured) throw new Error("current-contract source validation requires canonical show-notes.md and show-notes-manifest.yaml files");
   const showNotesManifest = showNotesValidationConfigured ? loadYaml(showNotesManifestPath, "links") : null; const showNotesMarkdown = showNotesValidationConfigured ? fs.readFileSync(showNotesPath, "utf8") : null;
   const episodePath = path.dirname(sourcesPath);
-  if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml")) throw new Error("source validation inputs must be the canonical episode package files");
+  if (sourcesPath !== path.join(episodePath, "sources.yaml") || claimsPath !== path.join(episodePath, "claim-inventory.yaml") || showNotesPath !== path.join(episodePath, "show-notes.md") || showNotesManifestPath !== path.join(episodePath, "show-notes-manifest.yaml") || outputPath !== path.join(episodePath, "link-validation.yaml")) throw new Error("source validation inputs and output must be the canonical episode package files");
+  for (const filePath of [sourcesPath, claimsPath, showNotesPath, showNotesManifestPath]) if (!fs.lstatSync(filePath).isFile()) throw new Error("source validation inputs must be regular files, not directories or symbolic links");
+  const episodeFile = path.join(episodePath, "episode.yaml");
+  if (!fs.existsSync(episodeFile) || !fs.lstatSync(episodeFile).isFile()) throw new Error("source validation requires the canonical episode.yaml package record");
+  const episodeDocument = YAML.parseDocument(fs.readFileSync(episodeFile, "utf8"));
+  if (episodeDocument.errors.length) throw new Error(`Invalid YAML in ${episodeFile}: ${episodeDocument.errors[0].message}`);
+  requireCurrentProductionContract(episodeDocument.toJS(), "Source validation");
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
-  const invalid = ledger.sources.filter((source) => !source.id || !source.url || !Array.isArray(source.supports_claims));
+  const claimsById = new Map(claimInventory.claims.filter((claim) => claim && typeof claim === "object" && !Array.isArray(claim)).map((claim) => [claim.id, claim]));
+  const invalid = ledger.sources.filter((source) => !source || typeof source !== "object" || Array.isArray(source) || !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
   const claimMapping = validateClaimMappings(ledger, claimInventory);
   const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
@@ -969,11 +1021,13 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }
   const validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
   progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest?.links.length || 0, llm_requested: options.llm });
+  return runOwnedValidation(outputPath, validationRun, async () => {
+  updateEpisodeSourceState(episodePath, "in_progress");
   if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
     reportMappingErrors(claimMapping, showNotesMapping);
     for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
     const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
-    const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false });
+    const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false, beforeRelease: () => updateEpisodeSourceState(episodePath, "failed") });
     progress.emit("report_written", { valid: false });
     console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
     process.exitCode = 1;
@@ -994,11 +1048,12 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
         },
         results: [],
       };
-      const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false });
+      const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false, beforeRelease: () => updateEpisodeSourceState(episodePath, "failed") });
       progress.emit("report_written", { valid: false });
       console.error(`eCFR changed repeatedly; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
       return { refreshedEcfrSources };
     }
+    updateEpisodeSourceState(episodePath, "pending");
     releaseValidationLock(outputPath, validationRun);
     progress.emit("ecfr_manifest_refreshed", { source_count: refreshedEcfrSources.length, titles: [...new Set(refreshedEcfrSources.map((entry) => entry.target.title))] });
     console.error(`Refreshed ${refreshedEcfrSources.length} eCFR source date${refreshedEcfrSources.length === 1 ? "" : "s"}; restarting validation with the current API date.`);
@@ -1041,7 +1096,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     results[job.index] = entry; return entry;
   }, { signal: cancellation.signal, keyFor: origin, perKeyLimit: (key) => key === "ecfr-api" ? ECFR_MAX_IN_FLIGHT_REQUESTS : options.httpPerOrigin, onCompleted: (result) => progress.itemCompleted(result.source_id || result.id || "unknown", Boolean(result.link?.valid)) });
   progress.phaseCompleted();
-  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) throw new ValidationCancelledError("Source validation was cancelled during deterministic validation.");
   const deterministicValid = masterScriptMapping.valid && results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
   if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
   await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
@@ -1064,7 +1119,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     return entry;
   }, { signal: cancellation.signal, onCompleted: (entry) => { if (options.llm && deterministicValid) progress.itemCompleted(entry.source_id, entry.relevance.status === "assessed"); } });
   if (options.llm && deterministicValid) progress.phaseCompleted();
-  if (isCancelled()) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; return; }
+  if (isCancelled()) throw new ValidationCancelledError("Source validation was cancelled during relevance review.");
   for (const entry of results) console.log(`${entry.source_id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
   const reportResults = results.map((result) => ({
     ...result,
@@ -1075,12 +1130,13 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   }));
   const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
-  const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved });
+  const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => updateEpisodeSourceState(episodePath, unresolved ? "failed" : "complete", report.checked_at_utc) });
   progress.emit("report_written", { valid: !unresolved });
   if (unresolved) console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
   else console.log(`Wrote ${path.relative(process.cwd(), writtenPath)}`);
   if (unresolved) process.exitCode = 1;
   return { refreshedEcfrSources: [] };
+  }, { isCancelled, onTerminal: (outcome, checkedAt) => updateEpisodeSourceState(episodePath, outcome, checkedAt) });
 }
 
 async function runWithEcfrRefreshes(runAttempt, { maximumRefreshes = MAX_ECFR_MANIFEST_REFRESHES } = {}) {
@@ -1109,7 +1165,7 @@ async function main() {
   try {
     return await runWithEcfrRateLimiter(({ refreshCount, finalRefreshAttempt }) => validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled: () => cancelled, refreshCount, finalRefreshAttempt }), ecfrRateLimiter);
   } catch (error) {
-    if (cancelled) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; }
+    if (cancelled || error instanceof ValidationCancelledError) { progress.emit("run_cancelled", { exit_code: 130 }); process.exitCode = 130; }
     else { progress.emit("run_failed", { message: error.message }); throw error; }
   } finally {
     process.removeListener("SIGINT", cancel); process.removeListener("SIGTERM", cancel); progress.close();
@@ -1118,4 +1174,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Source validation failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runWithEcfrRateLimiter, runWithEcfrRefreshes, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };
+module.exports = { ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchEcfrTitleStatus, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, markdownHttpsLinks, refreshEcfrManifestDates, releaseValidationLock, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, updateEpisodeSourceState, validateClaimMappings, validateClaimAssessments, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback };

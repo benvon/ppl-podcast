@@ -54,6 +54,10 @@ Every command must state whether it is one of these scopes:
 
 A shape check may return success, but it must never claim release readiness, clear a release gate, write a seal, or enable staging. Use output terms such as `draft package shape valid`, not `passed` without scope.
 
+Contract identity is resolved once from the parsed `episode.yaml` mapping. An absent contract marker means preserved legacy; the numeric value `2` means the current contract; every other value is unsupported. Current source validation, Realtime rendering, package validation, publication preparation, and handoff creation all use that shared classification and refuse preserved legacy packages. The retired renderer additionally requires a tracked, unchanged historical package whose directory, script name, and episode ID agree.
+
+Source-review readiness and editorial readiness are shared gates, not command-local interpretations. The source validator updates the authoritative `episode.yaml` state while it owns the validation lock and records success, failure, or cancellation before releasing that lock. Rendering, editorial approval, package checks, and release checks all consume the same source-evidence gate. Script-review reset computes the entire multi-file invalidation first and applies it as a rollback-safe file transaction, so a failed write cannot leave a partially migrated package.
+
 ### Make retries safe and narrow
 
 An automatic retry may reuse a prior result only when the exact relevant identity is unchanged. If any input is different, invalidate the downstream result rather than treating it as equivalent.

@@ -4,15 +4,15 @@
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { CONTRACT_KINDS, productionContractKind } = require("./production-state-contract.cjs");
 
 function readProductionContract(filePath) {
   const document = YAML.parseDocument(fs.readFileSync(filePath, "utf8"));
   if (document.errors.length) throw new Error(`Invalid YAML in ${filePath}: ${document.errors[0].message}`);
   const episode = document.toJS();
   if (!episode || typeof episode !== "object" || Array.isArray(episode)) throw new Error(`episode.yaml must contain a mapping: ${filePath}`);
-  if (!Object.prototype.hasOwnProperty.call(episode, "production_contract_version")) return { kind: "legacy" };
-  if (episode.production_contract_version === 2) return { kind: "current" };
-  return { kind: "unsupported" };
+  const kind = productionContractKind(episode);
+  return { kind: kind === CONTRACT_KINDS.PRESERVED_LEGACY ? "legacy" : kind, episode_id: episode.id || null };
 }
 
 function main(argv) {

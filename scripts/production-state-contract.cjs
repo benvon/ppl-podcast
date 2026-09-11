@@ -1,5 +1,29 @@
 "use strict";
 
+const CURRENT_PRODUCTION_CONTRACT_VERSION = 2;
+const CONTRACT_KINDS = Object.freeze({
+  CURRENT: "current",
+  PRESERVED_LEGACY: "preserved_legacy",
+  UNSUPPORTED: "unsupported",
+});
+
+function productionContractKind(episode) {
+  if (!episode || typeof episode !== "object" || Array.isArray(episode)) return CONTRACT_KINDS.UNSUPPORTED;
+  if (!Object.prototype.hasOwnProperty.call(episode, "production_contract_version")) return CONTRACT_KINDS.PRESERVED_LEGACY;
+  return episode.production_contract_version === CURRENT_PRODUCTION_CONTRACT_VERSION
+    ? CONTRACT_KINDS.CURRENT
+    : CONTRACT_KINDS.UNSUPPORTED;
+}
+
+function requireCurrentProductionContract(episode, operation) {
+  const kind = productionContractKind(episode);
+  if (kind === CONTRACT_KINDS.CURRENT) return;
+  if (kind === CONTRACT_KINDS.PRESERVED_LEGACY) {
+    throw new Error(`${operation} cannot change a preserved legacy package. Begin a deliberate revision with episode:script-review --reset.`);
+  }
+  throw new Error(`${operation} requires production_contract_version ${CURRENT_PRODUCTION_CONTRACT_VERSION}.`);
+}
+
 // Production-state records live in episode.yaml. These lists make a reset's
 // outstanding work explicit until the next state transition supersedes it.
 const RELEASE_GATES_AFTER_SCRIPT_RESET = Object.freeze([
@@ -19,4 +43,12 @@ function sameStringList(actual, expected) {
     && actual.every((value, index) => value === expected[index]);
 }
 
-module.exports = { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, sameStringList };
+module.exports = {
+  CONTRACT_KINDS,
+  CURRENT_PRODUCTION_CONTRACT_VERSION,
+  RELEASE_GATES_AFTER_SCRIPT_APPROVAL,
+  RELEASE_GATES_AFTER_SCRIPT_RESET,
+  productionContractKind,
+  requireCurrentProductionContract,
+  sameStringList,
+};

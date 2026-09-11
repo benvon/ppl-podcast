@@ -18,8 +18,7 @@ const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { claimSourcePreflightErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validationCoverageErrors } = require("./source-validation-contract.cjs");
-const { validationFailurePath } = require("./validate-source-links.cjs");
+const { editorialApprovalErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -103,61 +102,18 @@ function assertNarrationInput(scriptPath) {
 
 function assertSourceRelevanceApproved(scriptPath) {
   const episodePath = path.join(path.dirname(scriptPath), "episode.yaml");
-  const validationPath = path.join(path.dirname(scriptPath), "link-validation.yaml");
   if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
-  if (!fs.existsSync(validationPath)) throw new RenderError("Source-relevance review must pass before rendering. Run sources:validate --require-llm and record its completion in episode.yaml.");
-  if (fs.existsSync(`${validationPath}.in-progress`) || fs.existsSync(`${validationPath}.in-progress.recovering`)) throw new RenderError("Source-relevance validation is in progress, recovering, or was interrupted. Complete a fresh validation run before rendering.");
-  if (fs.existsSync(validationFailurePath(validationPath))) throw new RenderError("The most recent source-relevance validation failed. Resolve its findings and complete a fresh clean validation run before rendering.");
-
-  let episode; let validation;
+  let episode;
   try {
     episode = YAML.parse(fs.readFileSync(episodePath, "utf8"));
-    validation = YAML.parse(fs.readFileSync(validationPath, "utf8"));
   } catch (error) {
     throw new RenderError(`Could not read source-review records: ${error.message}`);
   }
-
-  if (episode?.production_contract_version === 2) {
-    const preflightPath = path.join(path.dirname(scriptPath), "claim-source-preflight.yaml");
-    if (!fs.existsSync(preflightPath)) throw new RenderError("Claim-source preflight evidence is required before rendering a contract-v2 episode.");
-    let preflight;
-    try {
-      const document = YAML.parseDocument(fs.readFileSync(preflightPath, "utf8"));
-      if (document.errors.length) throw new Error(document.errors[0].message);
-      preflight = document.toJS();
-    } catch (error) {
-      throw new RenderError(`Could not read claim-source preflight evidence: ${error.message}`);
-    }
-    const preflightErrors = claimSourcePreflightErrors({ episodePath: path.dirname(scriptPath), episode, preflight });
-    if (preflightErrors.length) throw new RenderError(`Claim-source preflight is not complete for the current source and claim inputs: ${preflightErrors[0]}`);
-  }
-
-  if (episode?.source_verification?.relevance_review !== "complete") {
-    throw new RenderError("Source-relevance review must be marked complete in episode.yaml before rendering.");
-  }
-  if (validation?.llm_requested !== true || validation?.claim_mapping?.valid !== true || validation?.show_notes_mapping?.valid !== true) {
-    throw new RenderError("link-validation.yaml does not record a passing LLM source-relevance review.");
-  }
-  const currentInputs = sourceValidationInputHashes(path.dirname(scriptPath));
-  if (!Object.entries(currentInputs).every(([name, digest]) => validation?.input_sha256?.[name] === digest)) {
-    throw new RenderError("link-validation.yaml is not bound to the current sources, claims, and show-notes inputs. Run a fresh source-relevance review before rendering.");
-  }
-  const coverageErrors = validationCoverageErrors(path.dirname(scriptPath), validation);
-  if (coverageErrors.length) throw new RenderError(coverageErrors[0]);
-
-  const sourceResults = Array.isArray(validation.results) ? validation.results : [];
-  if (!sourceResults.length || sourceResults.some((result) => !sourceRelevanceResultValid(result))) {
-    throw new RenderError("link-validation.yaml contains unresolved source-relevance findings; resolve them before rendering.");
-  }
-
-  const showNotesResults = Array.isArray(validation.show_notes_results) ? validation.show_notes_results : [];
-  if (showNotesResults.some((result) => result?.citation_target?.valid !== true || result?.link?.valid !== true || (result?.content_attestation && result.content_attestation.valid !== true))) {
-    throw new RenderError("link-validation.yaml contains unresolved show-notes findings; resolve them before rendering.");
-  }
-  const masterScript = fs.readFileSync(path.join(path.dirname(scriptPath), "master-script.md"), "utf8");
-  if (episode?.review?.editorial_status !== "script_approved" || episode?.review?.editorial_script_sha256 !== sha256(masterScript)) {
-    throw new RenderError("Editorial approval must be recorded for the current master-script.md bytes before rendering. Run episode:script-review --approve after review.");
-  }
+  const errors = [
+    ...sourceReviewEvidenceErrors({ episodePath: path.dirname(scriptPath), episode }),
+    ...editorialApprovalErrors({ episodePath: path.dirname(scriptPath), episode }),
+  ];
+  if (errors.length) throw new RenderError(`Render prerequisites are not satisfied: ${errors[0]}`);
   return episode;
 }
 
@@ -606,7 +562,6 @@ async function main() {
   if (!SAFE_MODEL_RE.test(model) || !SAFE_VOICE_RE.test(instructorVoice) || !SAFE_VOICE_RE.test(learnerVoice) || !SAFE_VOICE_RE.test(announcerVoice)) throw new RenderError("Model and voice identifiers contain unsupported characters.");
   const scriptPath = path.resolve(raw.script); const audioDir = path.resolve(raw["audio-dir"]); if (!fs.statSync(scriptPath).isFile()) throw new RenderError(`Script not found: ${scriptPath}`); assertNarrationInput(scriptPath);
   const episode = assertSourceRelevanceApproved(scriptPath);
-  if (episode.production_contract_version !== undefined && episode.production_contract_version !== 2) throw new RenderError(`Unsupported production_contract_version: ${episode.production_contract_version}.`);
   const musicKeys = ["music-bed", "music-bed-gain-db", "music-voice-gain-db", "music-level-transition-seconds", "music-intro-lead-seconds", "music-intro-tail-seconds", "music-intro-fade-seconds", "music-outro-tail-seconds", "music-outro-fade-seconds"];
   const musicValuesSpecified = musicKeys.some((name) => raw[name] !== undefined);
   if (musicValuesSpecified && !raw["music-bed"]) throw new RenderError("Music timing and gain options require --music-bed.");

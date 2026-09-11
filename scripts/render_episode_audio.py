@@ -619,6 +619,12 @@ def assert_legacy_script_path(script_path: Path, episode_id: str) -> None:
             "render_episode_audio.py requires production_contract_version to be absent for a preserved legacy package. "
             "Packages with a current or unsupported contract marker must use current release tooling."
         )
+    legacy_release = contract.get("legacy_published_release")
+    if not isinstance(legacy_release, dict) or legacy_release.get("metadata_path") != "hosting-metadata.yaml":
+        raise RenderError(
+            "render_episode_audio.py accepts a preserved legacy package only when its episode.yaml and hosting-metadata.yaml "
+            "agree on a valid published release timestamp. Draft and planned packages must use current release tooling."
+        )
     repository_root = Path(__file__).resolve().parent.parent
     episodes_root = repository_root / "episodes"
     try:
@@ -628,7 +634,8 @@ def assert_legacy_script_path(script_path: Path, episode_id: str) -> None:
         raise RenderError("The legacy renderer accepts only preserved episode packages under the repository episodes directory.") from exc
     if script_path.name != "master-script.md" or contract.get("episode_id") != episode_id or not package_path.name.startswith(f"{episode_id}-"):
         raise RenderError("The legacy script path, package directory, and episode.yaml id must identify the same episode.")
-    for tracked_path in (script_path.resolve(), episode_path.resolve()):
+    release_metadata_path = episode_path.parent / legacy_release["metadata_path"]
+    for tracked_path in (script_path.resolve(), episode_path.resolve(), release_metadata_path.resolve()):
         relative = tracked_path.relative_to(repository_root)
         tracked = subprocess.run(
             ["git", "-C", str(repository_root), "ls-files", "--error-unmatch", "--", str(relative)],

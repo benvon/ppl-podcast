@@ -7,6 +7,26 @@ const CONTRACT_KINDS = Object.freeze({
   UNSUPPORTED: "unsupported",
 });
 
+function utcRfc3339Timestamp(value) {
+  if (typeof value !== "string") return false;
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{3}))?Z$/.exec(value);
+  if (!match) return false;
+
+  const [, yearText, monthText, dayText, hourText, minuteText, secondText, fractionText] = match;
+  const [year, month, day, hour, minute, second] = [yearText, monthText, dayText, hourText, minuteText, secondText].map(Number);
+  const milliseconds = Number(fractionText || "0");
+  const timestamp = new Date(0);
+  timestamp.setUTCFullYear(year, month - 1, day);
+  timestamp.setUTCHours(hour, minute, second, milliseconds);
+  return timestamp.getUTCFullYear() === year
+    && timestamp.getUTCMonth() === month - 1
+    && timestamp.getUTCDate() === day
+    && timestamp.getUTCHours() === hour
+    && timestamp.getUTCMinutes() === minute
+    && timestamp.getUTCSeconds() === second
+    && timestamp.getUTCMilliseconds() === milliseconds;
+}
+
 function productionContractKind(episode) {
   if (!episode || typeof episode !== "object" || Array.isArray(episode)) return CONTRACT_KINDS.UNSUPPORTED;
   if (!Object.prototype.hasOwnProperty.call(episode, "production_contract_version")) return CONTRACT_KINDS.PRESERVED_LEGACY;
@@ -51,4 +71,5 @@ module.exports = {
   productionContractKind,
   requireCurrentProductionContract,
   sameStringList,
+  utcRfc3339Timestamp,
 };

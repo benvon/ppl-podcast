@@ -21,7 +21,7 @@ const { HostingHandoffError, createHostingHandoff, verifyHostingHandoff } = requ
 const { PublicationPreparationError, preparePublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { CLAIM_SOURCE_PREFLIGHT_TEMPLATE, approveScriptReview, migratedAudioMix, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
-const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind } = require("./production-state-contract.cjs");
+const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
@@ -1998,10 +1998,45 @@ test("episode contract reader serializes an absent marker as a legacy package", 
     fs.writeFileSync(episodePath, "id: core-01\n", "utf8");
     const result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
     assert.equal(result.status, 0);
-    assert.deepEqual(JSON.parse(result.stdout), { kind: "legacy", episode_id: "core-01" });
+    assert.deepEqual(JSON.parse(result.stdout), { kind: "legacy", episode_id: "core-01", legacy_published_release: null });
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+test("legacy publication evidence requires matching release metadata", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-publication-evidence-test-"));
+  try {
+    const episodePath = path.join(temporary, "episode.yaml");
+    fs.writeFileSync(episodePath, "id: core-01\npublished_at: 2026-09-10T00:00:00Z\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  id: core-01\n  published_at: 2026-09-10T00:00:00Z\n", "utf8");
+    let result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
+    assert.equal(result.status, 0);
+    assert.deepEqual(JSON.parse(result.stdout).legacy_published_release, { metadata_path: "hosting-metadata.yaml" });
+
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), "publisher_release:\n  id: core-01\n  published_at: 2026-09-11T00:00:00Z\n", "utf8");
+    result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
+    assert.equal(result.status, 0);
+    assert.equal(JSON.parse(result.stdout).legacy_published_release, null);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer refuses an unpublished legacy package before any provider call", () => {
+  const repositoryRoot = path.resolve(__dirname, "..");
+  const packagePath = path.join(repositoryRoot, "episodes", "core-02-principles-of-flight-lift-drag-angle-of-attack");
+  const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", path.join(packagePath, "master-script.md"), "--audio-dir", path.join(os.tmpdir(), "ppl-legacy-renderer-draft-output"), "--episode-id", "core-02", "--dry-run"], { encoding: "utf8" });
+  assert.equal(result.status, 2);
+  assert.match(result.stderr, /valid published release timestamp/);
+});
+
+test("UTC RFC 3339 timestamps reject impossible calendar values", () => {
+  assert.equal(utcRfc3339Timestamp("2026-02-28T23:59:59Z"), true);
+  assert.equal(utcRfc3339Timestamp("2024-02-29T00:00:00.123Z"), true);
+  assert.equal(utcRfc3339Timestamp("2026-02-31T00:00:00Z"), false);
+  assert.equal(utcRfc3339Timestamp("2026-01-01T24:00:00Z"), false);
+  assert.equal(utcRfc3339Timestamp("2026-01-01T00:00:60Z"), false);
 });
 
 test("legacy renderer refuses unsupported production contract markers", () => {

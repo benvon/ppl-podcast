@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 
 function sourceValidationInputHashes(episodePath) {
   const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
@@ -134,12 +135,6 @@ function validSha256(value) {
 
 function nonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
-}
-
-function utcRfc3339Timestamp(value) {
-  return typeof value === "string"
-    && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)
-    && !Number.isNaN(Date.parse(value));
 }
 
 function claimAssessmentsFor(result) {

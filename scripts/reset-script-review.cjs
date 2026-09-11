@@ -9,6 +9,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET } = require("./production-state-contract.cjs");
+const { claimSourcePreflightInputHashes } = require("./source-validation-contract.cjs");
 
 class ScriptReviewStateError extends Error {}
 
@@ -77,11 +78,35 @@ const CLAIM_SOURCE_PREFLIGHT_QA_ITEMS = Object.freeze([
   "- [ ] `claim-source-preflight.yaml` is complete and bound to the current source ledger and claim inventory; it records every reviewed source's exact locator, hash-verified excerpt, mapped claims, and supporting LLM assessment. Findings were resolved before full spoken prose was drafted and are recorded in `production-log.md`. <!-- qa-id: claim-source-preflight -->",
 ]);
 
+function preflightMatchesCurrentInputs(preflight, inputHashes) {
+  return typeof inputHashes.sources === "string"
+    && typeof inputHashes.claims === "string"
+    && preflight?.input_sha256?.sources === inputHashes.sources
+    && preflight?.input_sha256?.claims === inputHashes.claims;
+}
+
+function markChecklistItemsUnchecked(checklist, qaIDs) {
+  const ids = new Set(qaIDs);
+  return checklist.replace(/^(\s*-\s*)\[[ xX]\](.*<!--\s*qa-id:\s*([^\s>]+)\s*-->.*)$/gm, (line, prefix, remainder, qaID) => (
+    ids.has(qaID) ? `${prefix}[ ]${remainder}` : line
+  ));
+}
+
 function ensureClaimSourcePreflightContract(resolved, episode) {
   const preflightPath = path.join(resolved, "claim-source-preflight.yaml");
   if (fs.existsSync(preflightPath) && !fs.lstatSync(preflightPath).isFile()) throw new ScriptReviewStateError("claim-source-preflight.yaml must be a regular file before a script-review reset can migrate this package.");
   episode.source_verification = { ...(episode.source_verification || {}), claim_source_preflight: "claim-source-preflight.yaml" };
-  if (!fs.existsSync(preflightPath)) writeYaml(preflightPath, CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+  let stalePreflight = false;
+  if (!fs.existsSync(preflightPath)) {
+    writeYaml(preflightPath, CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+  } else {
+    try {
+      stalePreflight = !preflightMatchesCurrentInputs(readYaml(preflightPath), claimSourcePreflightInputHashes(resolved));
+    } catch {
+      stalePreflight = true;
+    }
+    if (stalePreflight) writeYaml(preflightPath, CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+  }
 
   const checklistPath = path.join(resolved, "qa-checklist.md");
   if (fs.existsSync(checklistPath) && !fs.lstatSync(checklistPath).isFile()) throw new ScriptReviewStateError("qa-checklist.md must be a regular file before a script-review reset can migrate this package.");
@@ -93,6 +118,7 @@ function ensureClaimSourcePreflightContract(resolved, episode) {
   }
   const missingItems = CLAIM_SOURCE_PREFLIGHT_QA_ITEMS.filter((item) => !checklist.includes(item.match(/qa-id: ([^ ]+)/)[1]));
   if (missingItems.length) checklist = `${checklist.trimEnd()}\n\n${missingItems.join("\n")}\n`;
+  if (stalePreflight) checklist = markChecklistItemsUnchecked(checklist, ["openai-claim-source-preflight-authorization", "claim-source-preflight"]);
   fs.writeFileSync(checklistPath, checklist, "utf8");
 }
 
@@ -200,4 +226,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { CLAIM_SOURCE_PREFLIGHT_QA_ITEMS, CLAIM_SOURCE_PREFLIGHT_TEMPLATE, ScriptReviewStateError, approveScriptReview, ensureAudioMixContract, ensureClaimSourcePreflightContract, migratedAudioMix, removeLegacyProductionStatus, resetScriptReview, sha256Text };
+module.exports = { CLAIM_SOURCE_PREFLIGHT_QA_ITEMS, CLAIM_SOURCE_PREFLIGHT_TEMPLATE, ScriptReviewStateError, approveScriptReview, ensureAudioMixContract, ensureClaimSourcePreflightContract, markChecklistItemsUnchecked, migratedAudioMix, preflightMatchesCurrentInputs, removeLegacyProductionStatus, resetScriptReview, sha256Text };

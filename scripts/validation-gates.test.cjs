@@ -105,6 +105,39 @@ test("script-review reset invalidates downstream state and approval fingerprints
   }
 });
 
+test("script-review reset invalidates claim-source preflight authorization when its inputs change", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-script-review-preflight-reset-test-"));
+  try {
+    const sourcesPath = path.join(temporary, "sources.yaml");
+    const claimsPath = path.join(temporary, "claim-inventory.yaml");
+    fs.writeFileSync(path.join(temporary, "master-script.md"), "# Test\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ title: "Test", source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
+    fs.writeFileSync(path.join(temporary, "audio-manifest.yaml"), YAML.stringify({}));
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), YAML.stringify({}));
+    fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n", "utf8");
+    fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify({ ...CLAIM_SOURCE_PREFLIGHT_TEMPLATE, status: "complete", input_sha256: claimSourcePreflightInputHashes(temporary) }));
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), [
+      "- [x] Preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->",
+      "- [x] Preflight complete. <!-- qa-id: claim-source-preflight -->",
+    ].join("\n"), "utf8");
+
+    resetScriptReview({ episodePath: temporary });
+    const currentChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
+    assert.match(currentChecklist, /- \[x\] Preflight authorization/);
+    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")).status, "complete");
+
+    fs.writeFileSync(claimsPath, "claims:\n  - id: claim-b\n", "utf8");
+    resetScriptReview({ episodePath: temporary });
+    const staleChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
+    assert.match(staleChecklist, /- \[ \] Preflight authorization/);
+    assert.match(staleChecklist, /- \[ \] Preflight complete/);
+    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")), CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("historical music metadata migrates to the explicit series mix contract", () => {
   assert.deepEqual(migratedAudioMix({}), { schema_version: 1, music: { enabled: false } });
   assert.deepEqual(migratedAudioMix({ current_candidate_render: { music_bed: "custom-music.mp3" } }), { schema_version: 1, music: { enabled: false } });

@@ -98,6 +98,7 @@ function ensureClaimSourcePreflightContract(resolved, episode) {
   episode.source_verification = { ...(episode.source_verification || {}), claim_source_preflight: "claim-source-preflight.yaml" };
   let stalePreflight = false;
   if (!fs.existsSync(preflightPath)) {
+    stalePreflight = true;
     writeYaml(preflightPath, CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
   } else {
     try {

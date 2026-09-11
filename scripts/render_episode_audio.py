@@ -602,15 +602,22 @@ def assert_legacy_script_path(script_path: Path) -> None:
             text=True,
             timeout=5,
         )
-        contract_version = json.loads(result.stdout)
+        contract = json.loads(result.stdout)
     except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
         raise RenderError(
             "Could not determine the package production contract; the legacy renderer refuses an unverifiable episode package."
         ) from exc
-    if contract_version == 2:
+    if not isinstance(contract, dict) or contract.get("kind") not in {"legacy", "current", "unsupported"}:
+        raise RenderError("Could not determine the package production contract; the legacy renderer refuses an unverifiable episode package.")
+    if contract["kind"] == "current":
         raise RenderError(
             "render_episode_audio.py is for preserved legacy candidate reproduction only. "
             "Contract-v2 episodes must use render_episode_realtime.cjs so current source and editorial gates are enforced."
+        )
+    if contract["kind"] != "legacy":
+        raise RenderError(
+            "render_episode_audio.py requires production_contract_version to be absent for a preserved legacy package. "
+            "Packages with a current or unsupported contract marker must use current release tooling."
         )
 
 

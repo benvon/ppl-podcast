@@ -133,6 +133,18 @@ test("script-review reset invalidates claim-source preflight authorization when 
     assert.match(staleChecklist, /- \[ \] Preflight authorization/);
     assert.match(staleChecklist, /- \[ \] Preflight complete/);
     assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")), CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
+
+    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify({ ...CLAIM_SOURCE_PREFLIGHT_TEMPLATE, status: "complete", input_sha256: claimSourcePreflightInputHashes(temporary) }));
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), [
+      "- [x] Preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->",
+      "- [x] Preflight complete. <!-- qa-id: claim-source-preflight -->",
+    ].join("\n"), "utf8");
+    fs.unlinkSync(path.join(temporary, "claim-source-preflight.yaml"));
+    resetScriptReview({ episodePath: temporary });
+    const missingArtifactChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
+    assert.match(missingArtifactChecklist, /- \[ \] Preflight authorization/);
+    assert.match(missingArtifactChecklist, /- \[ \] Preflight complete/);
+    assert.deepEqual(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")), CLAIM_SOURCE_PREFLIGHT_TEMPLATE);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -1402,6 +1414,35 @@ test("legacy renderer refuses a contract-v2 episode package", () => {
     const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
     assert.equal(result.status, 2);
     assert.match(result.stderr, /legacy candidate reproduction only/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("episode contract reader serializes an absent marker as a legacy package", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-contract-reader-test-"));
+  try {
+    const episodePath = path.join(temporary, "episode.yaml");
+    fs.writeFileSync(episodePath, "id: core-01\n", "utf8");
+    const result = childProcess.spawnSync("node", [path.join(__dirname, "read-episode-contract.cjs"), episodePath], { encoding: "utf8" });
+    assert.equal(result.status, 0);
+    assert.deepEqual(JSON.parse(result.stdout), { kind: "legacy" });
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("legacy renderer refuses unsupported production contract markers", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-renderer-contract-test-"));
+  const scriptPath = path.join(temporary, "master-script.md");
+  try {
+    fs.writeFileSync(scriptPath, "# Test\n", "utf8");
+    for (const contractValue of ["null", '"2"', "3"]) {
+      fs.writeFileSync(path.join(temporary, "episode.yaml"), `production_contract_version: ${contractValue}\n`, "utf8");
+      const result = childProcess.spawnSync("python3", [path.join(__dirname, "render_episode_audio.py"), "--script", scriptPath, "--audio-dir", path.join(temporary, "audio"), "--episode-id", "core-01", "--dry-run"], { encoding: "utf8" });
+      assert.equal(result.status, 2);
+      assert.match(result.stderr, /requires production_contract_version to be absent/);
+    }
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

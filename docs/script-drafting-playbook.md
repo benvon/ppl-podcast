@@ -111,12 +111,11 @@ Human editorial review should begin with a source-validated draft. Do not wait u
 
 Use this order for every new draft:
 
-1. Complete the source-led research foundation and authorized claim-source preflight before writing full prose.
-2. Complete the source-led draft package using only cleared factual claims.
-3. Complete the independent spoken-script review.
-4. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
-5. Run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every finding and rerun until the report is clean.
-6. Give that source-validated draft to the human editor.
+1. Complete the source-led research foundation and draft package, including the source ledger, claim inventory, source-tagged master script, narration, show notes, metadata, and production log.
+2. Complete the independent spoken-script review.
+3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
+4. With explicit current-turn authorization, run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every material finding and rerun until the report is clean.
+5. Give that source-validated draft to the human editor.
 
 If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.
 

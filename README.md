@@ -41,8 +41,8 @@ so. We welcome technically grounded corrections and source updates.
 ## Episode lifecycle
 
 ```text
-scope → research + claims → authorized claim-source preflight → tagged script
-      → independent first-listen review → link/relevance validation → editorial review
+scope → research + claims → tagged script → independent first-listen review
+      → authorized link/relevance validation → editorial review
       → opening preview → full render → human audio QA
       → publication-day source check → hosting handoff
 ```

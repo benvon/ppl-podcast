@@ -13,6 +13,12 @@ function checkedAuthorizationItems(markdown, id) {
   return String(markdown).match(pattern) || [];
 }
 
+function authorizationItems(markdown, id) {
+  const escaped = escapeRegExp(id);
+  const pattern = new RegExp(`^- \\[[ x]\\][^\\n]*<!--\\s*qa-id:\\s*${escaped}\\s*-->`, "gmi");
+  return String(markdown).match(pattern) || [];
+}
+
 function qaItemCompleteWithID(markdown, id) {
   return checkedAuthorizationItems(markdown, id).length > 0;
 }
@@ -26,11 +32,12 @@ function consumeChecklistAuthorization({ episodePath, qaID, operation, runID }) 
     throw new Error(`qa-checklist.md is required before ${operation} can send source material to OpenAI.`);
   }
   const checklist = fs.readFileSync(checklistPath, "utf8");
+  const items = authorizationItems(checklist, qaID);
   const matches = checkedAuthorizationItems(checklist, qaID);
-  if (matches.length !== 1) {
-    throw new Error(`qa-checklist.md must contain exactly one checked ${operation} authorization checklist item before source material is sent to OpenAI.`);
+  if (items.length !== 1 || matches.length !== 1) {
+    throw new Error(`qa-checklist.md must contain exactly one ${operation} authorization checklist item, and it must be checked before source material is sent to OpenAI.`);
   }
-  return { qa_id: qaID, authorized_at_utc: new Date().toISOString(), run_id: runID };
+  return { qa_id: qaID, attested_at_utc: new Date().toISOString(), run_id: runID };
 }
 
 module.exports = { checkedAuthorizationItems, consumeChecklistAuthorization, qaItemCompleteWithID };

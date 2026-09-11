@@ -20,13 +20,12 @@ const { DRAFT_PACKAGE_SHAPE, durationDisplay, hasExactVisibleVersion, parseArgs:
 const { HostingHandoffError, createHostingHandoff, parseArgs: parseHandoffArgs, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
 const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { approveScriptReview, migratedAudioMix, parseArgs: parseScriptReviewArgs, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
-const { createClaimSourcePreflight, parseArgs: parseClaimSourcePreflightArgs, preflightEvidenceFor } = require("./claim-source-preflight.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
-const { claimSourcePreflightErrors, claimSourcePreflightInputHashes, currentClaimSourcePreflightErrors, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { MALFORMED_LOCK_RECOVERY_GRACE_MS, PACKAGE_OPERATION_COMMANDS, PACKAGE_OPERATION_IDS, PACKAGE_OPERATIONS, acquireEpisodePackageOperation, assertEpisodePackageOperation, releaseEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 function source(id, supportsClaims) {
@@ -55,43 +54,17 @@ function writePassingSourceGate(episodePath, episode) {
   const excerpt = "The retained source excerpt supports the test claim.";
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n", "utf8");
-  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), [
-    "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->",
-    "- [x] Claim preflight complete. <!-- qa-id: claim-source-preflight -->",
-    "- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->",
-  ].join("\n"), "utf8");
-  const preflightRunID = crypto.randomUUID();
-  fs.writeFileSync(path.join(episodePath, "claim-source-preflight.yaml"), YAML.stringify({
-    schema_version: 1,
-    validator: "scripts/claim-source-preflight.cjs",
-    run_id: preflightRunID,
-    status: "complete",
-    authorization: { qa_id: "openai-claim-source-preflight-authorization", consumed_at_utc: checkedAt, run_id: preflightRunID },
-    checked_at_utc: checkedAt,
-    llm_requested: true,
-    llm_model: "test-model",
-    input_sha256: claimSourcePreflightInputHashes(episodePath),
-    results: [{
-      source_id: sourceEntry.id,
-      locator: sourceEntry.locator,
-      linked_claim_ids: [claim.id],
-      reviewed_claims: [{ id: claim.id, statement: claim.claim ?? claim.statement, type: claim.claim_type ?? claim.type ?? null }],
-      fetched_locator: fetchedLocatorEvidence(sourceEntry, excerpt),
-      reviewed_excerpt: { kind: "section_text", text: excerpt, sha256: crypto.createHash("sha256").update(excerpt).digest("hex"), characters: excerpt.length },
-      relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "Exact locator." }, claim_assessments: [{ claim_id: claim.id, verdict: "supports", rationale: "Supports claim." }] },
-    }],
-  }), "utf8");
-  const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } };
+  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), "- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
+  const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports" }] } }, claim_assessments: { valid: true } };
   const sourceReviewRunID = crypto.randomUUID();
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({
     schema_version: 1,
     validator: "scripts/validate-source-links.cjs",
     run_id: sourceReviewRunID,
-    preflight_run_id: preflightRunID,
     checked_at_utc: checkedAt,
     llm_requested: true,
     llm_model: "test-model",
-    authorization: { qa_id: "openai-source-review-authorization", consumed_at_utc: checkedAt, run_id: sourceReviewRunID },
+    authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: checkedAt, run_id: sourceReviewRunID },
     claim_mapping: { valid: true },
     master_script_mapping: { valid: true, source_tag_count: 0, claim_coverage_count: 0 },
     show_notes_mapping: { valid: true },
@@ -99,7 +72,7 @@ function writePassingSourceGate(episodePath, episode) {
     results: [result],
     input_sha256: sourceValidationInputHashes(episodePath),
   }), "utf8");
-  episode.source_verification = { ...episode.source_verification, status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: checkedAt, claim_source_preflight: "claim-source-preflight.yaml", claim_source_preflight_status: "complete", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" };
+  episode.source_verification = { ...episode.source_verification, validation_contract: "source-relevance-v1", status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: checkedAt, link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" };
   fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify(episode), "utf8");
 }
 
@@ -381,76 +354,6 @@ test("script-review reset invalidates downstream state and approval fingerprints
   }
 });
 
-test("script-review reset leaves an optional claim-source preflight outside the release state", () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-script-review-preflight-reset-test-"));
-  try {
-    const sourcesPath = path.join(temporary, "sources.yaml");
-    const claimsPath = path.join(temporary, "claim-inventory.yaml");
-    fs.writeFileSync(path.join(temporary, "master-script.md"), "# Test\n", "utf8");
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ title: "Test", source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "audio-manifest.yaml"), YAML.stringify({}));
-    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), YAML.stringify({}));
-    fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
-    fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n", "utf8");
-    writePassingSourceGate(temporary, YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")));
-
-    resetScriptReview({ episodePath: temporary });
-    const currentChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.match(currentChecklist, /- \[x\] Claim preflight authorization/);
-    assert.match(currentChecklist, /- \[ \] Source review authorization/);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")).status, "complete");
-
-    fs.writeFileSync(claimsPath, "claims:\n  - id: claim-b\n    claim: A replacement test claim.\n    sources: [source-a]\n", "utf8");
-    resetScriptReview({ episodePath: temporary });
-    const staleChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.match(staleChecklist, /- \[x\] Claim preflight authorization/);
-    assert.match(staleChecklist, /- \[x\] Claim preflight complete/);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")).status, "complete");
-
-    fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-b]\n", "utf8");
-    writePassingSourceGate(temporary, YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")));
-    const incompletePreflightPath = path.join(temporary, "claim-source-preflight.yaml");
-    const incompletePreflight = YAML.parse(fs.readFileSync(incompletePreflightPath, "utf8"));
-    incompletePreflight.status = "pending";
-    fs.writeFileSync(incompletePreflightPath, YAML.stringify(incompletePreflight));
-    resetScriptReview({ episodePath: temporary });
-    const incompleteChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.match(incompleteChecklist, /- \[x\] Claim preflight authorization/);
-    assert.match(incompleteChecklist, /- \[x\] Claim preflight complete/);
-
-    writePassingSourceGate(temporary, YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")));
-    fs.unlinkSync(path.join(temporary, "claim-source-preflight.yaml"));
-    resetScriptReview({ episodePath: temporary });
-    const missingArtifactChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.match(missingArtifactChecklist, /- \[x\] Claim preflight authorization/);
-    assert.match(missingArtifactChecklist, /- \[x\] Claim preflight complete/);
-    assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("optional claim-source preflight records report their own failed or in-progress state", () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-current-preflight-state-test-"));
-  try {
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n", "utf8");
-    const episode = { id: "core-test", title: "Test", production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } };
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(episode), "utf8");
-    writePassingSourceGate(temporary, episode);
-    const currentEpisode = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
-    assert.deepEqual(currentClaimSourcePreflightErrors({ episodePath: temporary, episode: currentEpisode }), []);
-    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
-    fs.writeFileSync(validationFailurePath(preflightPath), "run_id: failed\n", "utf8");
-    assert.match(currentClaimSourcePreflightErrors({ episodePath: temporary, episode: currentEpisode }).join("\n"), /most recent claim-source preflight failed/);
-    fs.unlinkSync(validationFailurePath(preflightPath));
-    fs.writeFileSync(`${preflightPath}.in-progress`, "run_id: active\n", "utf8");
-    assert.match(currentClaimSourcePreflightErrors({ episodePath: temporary, episode: currentEpisode }).join("\n"), /in progress, recovering, or was interrupted/);
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
 test("historical music metadata migrates to the explicit series mix contract", () => {
   const noMusic = { schema_version: 1, music: { enabled: false, disabled_reason: "No established series music treatment is recorded for this historical render." } };
   assert.deepEqual(migratedAudioMix({}), noMusic);
@@ -640,13 +543,9 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const preflightRunID = crypto.randomUUID();
-  const linkValidation = () => { const runID = crypto.randomUUID(); return { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, preflight_run_id: preflightRunID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", consumed_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } }] }; };
+  const linkValidation = () => { const runID = crypto.randomUUID(); return { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } }] }; };
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
-  const preflightExcerpt = "The cited section directly states the test claim.";
-  const preflight = () => ({ schema_version: 1, validator: "scripts/claim-source-preflight.cjs", run_id: preflightRunID, status: "complete", authorization: { qa_id: "openai-claim-source-preflight-authorization", consumed_at_utc: "2026-08-24T12:00:00Z", run_id: preflightRunID }, checked_at_utc: "2026-08-24T12:00:00Z", llm_requested: true, llm_model: "gpt-5.6-sol", input_sha256: claimSourcePreflightInputHashes(episodePath), results: [{ source_id: "source-a", locator: "Paragraph 1-1-1, p. 1-1-1", linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], fetched_locator: fetchedLocatorEvidence({ url: sourceUrl }, preflightExcerpt), reviewed_excerpt: { kind: "section_text", text: preflightExcerpt, sha256: crypto.createHash("sha256").update(preflightExcerpt).digest("hex"), characters: preflightExcerpt.length }, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "The retained excerpt is the exact cited paragraph." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "The cited section directly states the test claim." }] } }] });
-  fs.writeFileSync(path.join(episodePath, "claim-source-preflight.yaml"), YAML.stringify(preflight()));
-  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit authorization was received before proposed claims and source excerpts were sent to OpenAI. <!-- qa-id: openai-claim-source-preflight-authorization -->", "Claim-source preflight findings were resolved before full spoken prose was drafted. <!-- qa-id: claim-source-preflight -->"].map((line) => `- [x] ${line}`).concat("- [ ] Explicit authorization was consumed for this source review. <!-- qa-id: openai-source-review-authorization -->").join("\n"));
+  fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), ["Full candidate has been listened. <!-- qa-id: audio-listening -->", "No clipped. <!-- qa-id: audio-integrity -->", "The final MP3 chapter list starts at `00:00`. <!-- qa-id: chapters-manual -->", "FAA/ links were re-verified. <!-- qa-id: publication-source-links -->", "Hosting metadata agrees. <!-- qa-id: hosting-metadata -->", "Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->"].map((line) => `- [x] ${line}`).join("\n"));
   try {
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary }), { valid: true, errors: [] });
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml.failed"), "run_id: failed-run\n", "utf8");
@@ -657,7 +556,7 @@ test("pre-hosting validation requires consistent release records", () => {
     const validationWithoutAuthorization = linkValidation(); delete validationWithoutAuthorization.authorization;
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(validationWithoutAuthorization));
     const missingAuthorization = validatePreHosting({ episodePath, cwd: temporary });
-    assert.equal(missingAuthorization.valid, false); assert.match(missingAuthorization.errors.join("\n"), /source-review authorization for this validation run/);
+    assert.equal(missingAuthorization.valid, false); assert.match(missingAuthorization.errors.join("\n"), /source-review authorization attestation for this validation run/);
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(linkValidation()));
     const validationWithoutModel = linkValidation(); delete validationWithoutModel.llm_model;
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(validationWithoutModel));
@@ -709,7 +608,7 @@ test("pre-hosting validation requires consistent release records", () => {
     draftLinkValidation.input_sha256 = sourceValidationInputHashes(episodePath);
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
     fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify(draftLinkValidation));
-    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before proposed claims and source excerpts were sent to OpenAI. <!-- qa-id: openai-claim-source-preflight-authorization -->\n- [x] Claim-source preflight findings were resolved before full spoken prose was drafted. <!-- qa-id: claim-source-preflight -->\n- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`. <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. <!-- qa-id: independent-script-review -->\n- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`. <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson. <!-- qa-id: independent-script-review -->\n- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->\n");
     fs.writeFileSync(researchPacketPath, "Human editorial review and script approval are complete.\nFormal deterministic source-link validation and the required LLM source-relevance review passed for version 0.1.0 and was re-verified for release.\n");
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
@@ -769,10 +668,10 @@ test("pre-hosting validation requires consistent release records", () => {
     const pendingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(pendingIndependentReview.valid, false); assert.match(pendingIndependentReview.errors.join("\n"), /independent spoken-script review/);
     fs.writeFileSync(productionLogPath, "## Independent adversarial review resolved\n\n- The independent non-drafting review was resolved.\n");
-    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before proposed claims and source excerpts were sent to OpenAI. <!-- qa-id: openai-claim-source-preflight-authorization -->\n- [x] Claim-source preflight findings were resolved before full spoken prose was drafted. <!-- qa-id: claim-source-preflight -->\n- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n");
     const missingIndependentReview = validatePreHosting({ episodePath, cwd: temporary, packageOnly: true });
     assert.equal(missingIndependentReview.valid, false); assert.match(missingIndependentReview.errors.join("\n"), /independent spoken-script review/);
-    fs.writeFileSync(qaChecklistPath, "- [x] Explicit authorization was received before proposed claims and source excerpts were sent to OpenAI. <!-- qa-id: openai-claim-source-preflight-authorization -->\n- [x] Claim-source preflight findings were resolved before full spoken prose was drafted. <!-- qa-id: claim-source-preflight -->\n- [x] Explicit authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson <!-- qa-id: independent-script-review -->\n");
+    fs.writeFileSync(qaChecklistPath, "- [x] Explicit current-turn authorization was received before source material was sent to OpenAI. <!-- qa-id: openai-source-review-authorization -->\n- [x] Human editorial pass completed <!-- qa-id: human-editorial -->\n- [x] Before any audio render, source-link validator was run with `--require-llm` <!-- qa-id: source-relevance -->\n- [x] Independent spoken-script review completed by a second agent that did not draft the lesson <!-- qa-id: independent-script-review -->\n");
     fs.writeFileSync(episodeMetadataPath, YAML.stringify({ ...approvedDraftEpisode, status: "ready_for_hosting_pr" }));
     assert.deepEqual(validatePreHosting({ episodePath, cwd: temporary, packageOnly: true }), { valid: true, kind: DRAFT_PACKAGE_SHAPE, final: false, errors: [] });
     fs.writeFileSync(episodeMetadataPath, YAML.stringify(approvedDraftEpisode));
@@ -932,542 +831,6 @@ test("claim mapping rejects source-side claims that do not declare the source", 
   );
   assert.equal(result.valid, false);
   assert.match(result.errors.join("\n"), /source aim-a supports claim claim-a, but that claim does not declare the source/);
-});
-
-test("claim-source preflight requires a non-empty exact locator", () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-locator-test-"));
-  try {
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [{ id: "source-a", supports_claims: ["claim-a"] }] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", sources: ["source-a"] }] }));
-    const excerpt = "A reviewed source excerpt.";
-    const preflight = {
-      schema_version: 1,
-      validator: "scripts/claim-source-preflight.cjs",
-      status: "complete",
-      checked_at_utc: "2026-09-10T00:00:00Z",
-      llm_requested: true,
-      llm_model: "test-model",
-      input_sha256: claimSourcePreflightInputHashes(temporary),
-      results: [{
-        source_id: "source-a",
-        linked_claim_ids: ["claim-a"],
-        reviewed_excerpt: { kind: "section_text", text: excerpt, sha256: crypto.createHash("sha256").update(excerpt).digest("hex"), characters: excerpt.length },
-        relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Test." }] },
-      }],
-    };
-    const errors = claimSourcePreflightErrors({ episodePath: temporary, episode: { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }, preflight });
-    assert.match(errors.join("\n"), /non-empty exact locator/);
-    preflight.checked_at_utc = "2026-09-10";
-    const timestampErrors = claimSourcePreflightErrors({ episodePath: temporary, episode: { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }, preflight });
-    assert.match(timestampErrors.join("\n"), /valid UTC RFC 3339 review timestamp/);
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight evidence is derived from a fetched locator excerpt", () => {
-  const sourceEntry = { id: "source-a", url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html" };
-  const fetched = {
-    valid: true,
-    final_url: sourceEntry.url,
-    content_sha256: "a".repeat(64),
-    excerpt: "Text extracted from the cited HTML fragment.",
-  };
-  const evidence = preflightEvidenceFor(sourceEntry, fetched);
-  assert.equal(evidence.fetched_locator.citation_url, sourceEntry.url);
-  assert.equal(evidence.fetched_locator.locator_excerpt_sha256, evidence.reviewed_excerpt.sha256);
-  assert.equal(evidence.fetched_locator.locator_excerpt_characters, evidence.reviewed_excerpt.characters);
-  assert.throws(() => preflightEvidenceFor(sourceEntry, { ...fetched, content_sha256: null }), /has no content hash/);
-});
-
-test("claim-source preflight retains attested programmatic fallback identity", () => {
-  const sourceEntry = {
-    id: "source-a",
-    url: "https://www.faa.gov/human-readable-page",
-    programmatic_url: "https://www.faa.gov/files/source.pdf",
-    programmatic_attestation: { url: "https://www.faa.gov/human-readable-page", link_text: "source.pdf", sha256: "a".repeat(64) },
-  };
-  const verification = {
-    link: {
-      valid: true,
-      final_url: sourceEntry.programmatic_url,
-      validation_url: sourceEntry.programmatic_url,
-      resolved_via: "attested_programmatic_fallback",
-      content_sha256: "a".repeat(64),
-      excerpt: "Text extracted from the attested programmatic fallback.",
-    },
-    content_attestation: {
-      valid: true,
-      status: "attested",
-      attestation_url: sourceEntry.programmatic_attestation.url,
-      expected_link_text: sourceEntry.programmatic_attestation.link_text,
-      expected_sha256: sourceEntry.programmatic_attestation.sha256,
-      programmatic_sha256: sourceEntry.programmatic_attestation.sha256,
-    },
-  };
-  const evidence = preflightEvidenceFor(sourceEntry, verification);
-  assert.equal(evidence.fetched_locator.programmatic_fallback.programmatic_url, sourceEntry.programmatic_url);
-  assert.equal(evidence.fetched_locator.programmatic_fallback.content_attestation.programmatic_sha256, sourceEntry.programmatic_attestation.sha256);
-  assert.throws(() => preflightEvidenceFor(sourceEntry, { ...verification, content_attestation: { ...verification.content_attestation, valid: false } }), /lacks a verified FAA attestation/);
-});
-
-test("claim-source preflight rejects a tampered attested fallback record", () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-fallback-contract-test-"));
-  const sourceEntry = {
-    id: "source-a",
-    url: "https://www.faa.gov/human-readable-page",
-    locator: "Attested PDF",
-    supports_claims: ["claim-a"],
-    programmatic_url: "https://www.faa.gov/files/source.pdf",
-    programmatic_attestation: { url: "https://www.faa.gov/human-readable-page", link_text: "source.pdf", sha256: "a".repeat(64) },
-  };
-  try {
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
-    const excerpt = "Text extracted from the attested programmatic fallback.";
-    const evidence = preflightEvidenceFor(sourceEntry, {
-      link: { valid: true, final_url: sourceEntry.programmatic_url, validation_url: sourceEntry.programmatic_url, resolved_via: "attested_programmatic_fallback", content_sha256: "a".repeat(64), excerpt },
-      content_attestation: { valid: true, status: "attested", attestation_url: sourceEntry.programmatic_attestation.url, expected_link_text: "source.pdf", expected_sha256: "a".repeat(64), programmatic_sha256: "a".repeat(64) },
-    });
-    const preflightRunID = crypto.randomUUID();
-    const preflight = {
-      schema_version: 1,
-      validator: "scripts/claim-source-preflight.cjs",
-      run_id: preflightRunID,
-      status: "complete",
-      authorization: { qa_id: "openai-claim-source-preflight-authorization", consumed_at_utc: "2026-09-10T00:00:00Z", run_id: preflightRunID },
-      checked_at_utc: "2026-09-10T00:00:00Z",
-      llm_requested: true,
-      llm_model: "test-model",
-      input_sha256: claimSourcePreflightInputHashes(temporary),
-      results: [{ source_id: "source-a", locator: sourceEntry.locator, linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], ...evidence, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "Exact source." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Exact source." }] } }],
-    };
-    const episode = { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } };
-    assert.deepEqual(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight }), []);
-    const tamperedAttestation = JSON.parse(JSON.stringify(preflight));
-    tamperedAttestation.results[0].fetched_locator.programmatic_fallback.content_attestation.programmatic_sha256 = "b".repeat(64);
-    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: tamperedAttestation }).join("\n"), /attested programmatic fallback evidence/);
-    const redirectedFallback = JSON.parse(JSON.stringify(preflight));
-    redirectedFallback.results[0].fetched_locator.final_url = "https://www.faa.gov/files/source-v2.pdf";
-    redirectedFallback.results[0].fetched_locator.redirects = ["https://www.faa.gov/files/source-v2.pdf"];
-    assert.deepEqual(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: redirectedFallback }), []);
-    const crossAuthorityRedirect = JSON.parse(JSON.stringify(redirectedFallback));
-    crossAuthorityRedirect.results[0].fetched_locator.redirects = ["https://example.com/files/source-v2.pdf"];
-    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: crossAuthorityRedirect }).join("\n"), /attested programmatic fallback evidence/);
-    const strippedFallbackIdentity = JSON.parse(JSON.stringify(preflight));
-    delete strippedFallbackIdentity.results[0].fetched_locator.resolved_via;
-    delete strippedFallbackIdentity.results[0].fetched_locator.programmatic_fallback;
-    delete strippedFallbackIdentity.results[0].fetched_locator.validation_url;
-    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: strippedFallbackIdentity }).join("\n"), /exact direct or attested-fallback validation target/);
-    for (const resolvedVia of [undefined, "direct_citation"]) {
-      const tamperedRoute = JSON.parse(JSON.stringify(preflight));
-      if (resolvedVia === undefined) delete tamperedRoute.results[0].fetched_locator.resolved_via;
-      else tamperedRoute.results[0].fetched_locator.resolved_via = resolvedVia;
-      assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: tamperedRoute }).join("\n"), /attested programmatic fallback evidence/);
-    }
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight preserves exact eCFR and fragment-restored redirect identities", () => {
-  const cases = [
-    {
-      source: {
-        id: "ecfr-source",
-        url: "https://www.ecfr.gov/current/title-14/part-91/section-91.103",
-        ecfr_date: "2026-09-10",
-        locator: "14 CFR 91.103",
-        supports_claims: ["claim-a"],
-      },
-      fetched: {
-        valid: true,
-        validation_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-09-10/title-14.xml?part=91&section=91.103",
-        final_url: "https://www.ecfr.gov/api/versioner/v1/full/2026-09-10/title-14.xml?part=91&section=91.103",
-        redirects: [],
-        content_sha256: "a".repeat(64),
-        section_text: "The pilot in command shall become familiar with all available information concerning that flight.",
-      },
-    },
-    {
-      source: {
-        id: "faa-source",
-        url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#anchor",
-        locator: "Paragraph 1-1-1",
-        supports_claims: ["claim-a"],
-      },
-      fetched: {
-        valid: true,
-        validation_url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#anchor",
-        final_url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_2.html#anchor",
-        redirects: ["https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_2.html"],
-        content_sha256: "b".repeat(64),
-        excerpt: "The retained FAA section text supports the reviewed claim.",
-      },
-    },
-  ];
-  for (const { source: sourceEntry, fetched } of cases) {
-    const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-route-identity-test-"));
-    try {
-      fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-      fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: [sourceEntry.id] }] }));
-      const evidence = preflightEvidenceFor(sourceEntry, fetched);
-      const runID = crypto.randomUUID();
-      const preflight = {
-        schema_version: 1,
-        validator: "scripts/claim-source-preflight.cjs",
-        run_id: runID,
-        status: "complete",
-        authorization: { qa_id: "openai-claim-source-preflight-authorization", consumed_at_utc: "2026-09-10T00:00:00Z", run_id: runID },
-        checked_at_utc: "2026-09-10T00:00:00Z",
-        llm_requested: true,
-        llm_model: "test-model",
-        input_sha256: claimSourcePreflightInputHashes(temporary),
-        results: [{ source_id: sourceEntry.id, locator: sourceEntry.locator, linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], ...evidence, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "Exact source." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Exact source." }] } }],
-      };
-      const episode = { production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } };
-      assert.deepEqual(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight }), []);
-    } finally {
-      fs.rmSync(temporary, { recursive: true, force: true });
-    }
-  }
-});
-
-test("claim-source preflight records the exact bounded excerpt sent to relevance review", () => {
-  const sourceEntry = { id: "source-a", url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html" };
-  const sectionText = ` ${"a".repeat(MAX_RELEVANCE_EXCERPT_CHARACTERS + 10)} `;
-  const fetched = { valid: true, final_url: sourceEntry.url, content_sha256: "b".repeat(64), section_text: sectionText };
-  const evidence = preflightEvidenceFor(sourceEntry, fetched);
-  assert.equal(evidence.reviewed_excerpt.text, relevanceExcerpt(fetched));
-  assert.equal(evidence.reviewed_excerpt.characters, MAX_RELEVANCE_EXCERPT_CHARACTERS);
-  assert.equal(evidence.fetched_locator.locator_excerpt_sha256, crypto.createHash("sha256").update(relevanceExcerpt(fetched)).digest("hex"));
-});
-
-test("claim-source preflight persists only independently fetched source evidence", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-claim-source-preflight-test-"));
-  const sourceEntry = source("source-a", ["claim-a"]);
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    const fetchedText = "Text independently extracted from the exact source locator.";
-    const preflight = await createClaimSourcePreflight({
-      episodePath: temporary,
-      model: "test-model",
-      dependencies: {
-        verifyProgrammaticFallback: async () => ({ link: { valid: true, final_url: sourceEntry.url, content_sha256: "c".repeat(64), excerpt: fetchedText } }),
-        assessRelevance: async () => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Test." }] } }),
-      },
-    });
-    const result = preflight.results[0];
-    assert.equal(result.reviewed_excerpt.text, fetchedText);
-    assert.equal(result.fetched_locator.locator_excerpt_sha256, crypto.createHash("sha256").update(fetchedText).digest("hex"));
-    assert.deepEqual(result.reviewed_claims, [{ id: "claim-a", statement: "A test claim.", type: null }]);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "claim-source-preflight.yaml"), "utf8")).validator, "scripts/claim-source-preflight.cjs");
-    assert.match(fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8"), /- \[x\] Claim preflight authorization/);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "complete");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight rejects empty inventories before outbound work", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-empty-claim-source-preflight-test-"));
-  let verifierCalled = false;
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [] }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({
-        episodePath: temporary,
-        dependencies: { verifyProgrammaticFallback: async () => { verifierCalled = true; } },
-      }),
-      /requires at least one source and at least one claim/,
-    );
-    assert.equal(verifierCalled, false);
-    assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
-    assert.match(fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8"), /- \[x\] Claim preflight authorization/);
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight rejects a source with no mapped claims before outbound work", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-claimless-source-preflight-test-"));
-  let verifierCalled = false;
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [source("source-a", ["claim-a"]), source("source-b", [])] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
-    const checklistPath = path.join(temporary, "qa-checklist.md");
-    fs.writeFileSync(checklistPath, "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({ episodePath: temporary, dependencies: { verifyProgrammaticFallback: async () => { verifierCalled = true; } } }),
-      /every source to map at least one claim/,
-    );
-    assert.equal(verifierCalled, false);
-    assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
-    assert.match(fs.readFileSync(checklistPath, "utf8"), /- \[x\] Claim preflight authorization/);
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight validates every citation target before outbound work", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-invalid-target-claim-source-preflight-test-"));
-  const firstSource = source("source-a", ["claim-a"]);
-  const secondSource = { ...source("source-b", ["claim-b"]), url: "not-a-url" };
-  let verifierCalled = false;
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [firstSource, secondSource] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "First claim.", sources: ["source-a"] }, { id: "claim-b", claim: "Second claim.", sources: ["source-b"] }] }));
-    const checklistPath = path.join(temporary, "qa-checklist.md");
-    fs.writeFileSync(checklistPath, "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({ episodePath: temporary, dependencies: { verifyProgrammaticFallback: async () => { verifierCalled = true; } } }),
-      /invalid citation targets/,
-    );
-    assert.equal(verifierCalled, false);
-    assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
-    assert.match(fs.readFileSync(checklistPath, "utf8"), /- \[x\] Claim preflight authorization/);
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight records a failed rerun instead of reusing a prior success", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-failed-claim-source-preflight-test-"));
-  const sourceEntry = source("source-a", ["claim-a"]);
-  const fetchedText = "Text independently extracted from the exact source locator.";
-  const passingDependencies = {
-    verifyProgrammaticFallback: async () => ({ link: { valid: true, final_url: sourceEntry.url, content_sha256: "d".repeat(64), excerpt: fetchedText } }),
-    assessRelevance: async () => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Test." }] } }),
-  };
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
-    const checklistPath = path.join(temporary, "qa-checklist.md");
-    fs.writeFileSync(checklistPath, "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await createClaimSourcePreflight({ episodePath: temporary, model: "test-model", dependencies: passingDependencies });
-    const canonicalPath = path.join(temporary, "claim-source-preflight.yaml");
-    const priorSuccess = fs.readFileSync(canonicalPath, "utf8");
-    fs.writeFileSync(checklistPath, "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({
-        episodePath: temporary,
-        model: "test-model",
-        dependencies: { ...passingDependencies, assessRelevance: async () => { throw new Error("LLM unavailable"); } },
-      }),
-      /LLM unavailable/,
-    );
-    assert.equal(fs.readFileSync(canonicalPath, "utf8"), priorSuccess);
-    assert.equal(fs.existsSync(validationFailurePath(canonicalPath)), true);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "failed");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("stale preflight recovery records a new result under the existing human authorization", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-recovered-claim-source-preflight-test-"));
-  const sourceEntry = source("source-a", ["claim-a"]);
-  const fetchedText = "Text independently extracted from the exact source locator.";
-  const passingDependencies = {
-    verifyProgrammaticFallback: async () => ({ link: { valid: true, final_url: sourceEntry.url, content_sha256: "9".repeat(64), excerpt: fetchedText } }),
-    assessRelevance: async () => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Test." }] } }),
-  };
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
-    const checklistPath = path.join(temporary, "qa-checklist.md");
-    fs.writeFileSync(checklistPath, "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await createClaimSourcePreflight({ episodePath: temporary, model: "test-model", dependencies: passingDependencies });
-    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
-    const priorSuccess = fs.readFileSync(preflightPath, "utf8");
-    fs.writeFileSync(`${preflightPath}.in-progress`, YAML.stringify({ schema_version: 1, validator: "scripts/claim-source-preflight.cjs", run_id: crypto.randomUUID(), hostname: require("node:os").hostname(), pid: 99999999, started_at_utc: "2026-09-10T00:00:00Z", input_sha256: claimSourcePreflightInputHashes(temporary) }));
-
-    const recovered = await createClaimSourcePreflight({ episodePath: temporary, model: "test-model", recoverStaleLock: true, dependencies: passingDependencies });
-    assert.notEqual(fs.readFileSync(preflightPath, "utf8"), priorSuccess);
-    assert.equal(recovered.status, "complete");
-    assert.equal(fs.existsSync(validationFailurePath(preflightPath)), false);
-    assert.equal(fs.existsSync(`${preflightPath}.in-progress`), false);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "complete");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight refuses promotion when its captured inputs drift", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-drifting-claim-source-preflight-test-"));
-  const sourceEntry = source("source-a", ["claim-a"]);
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-    const claimsPath = path.join(temporary, "claim-inventory.yaml");
-    fs.writeFileSync(claimsPath, YAML.stringify({ claims: [{ id: "claim-a", claim: "Original claim.", sources: ["source-a"] }] }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({
-        episodePath: temporary,
-        model: "test-model",
-        dependencies: {
-          verifyProgrammaticFallback: async () => ({ link: { valid: true, final_url: sourceEntry.url, content_sha256: "e".repeat(64), excerpt: "Text independently extracted from the exact source locator." } }),
-          assessRelevance: async () => {
-            fs.writeFileSync(claimsPath, YAML.stringify({ claims: [{ id: "claim-a", claim: "Changed during review.", sources: ["source-a"] }] }));
-            return { status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Test." }] } };
-          },
-        },
-      }),
-      /changed while the claim-source preflight was running/,
-    );
-    const canonicalPath = path.join(temporary, "claim-source-preflight.yaml");
-    assert.equal(fs.existsSync(canonicalPath), false);
-    assert.equal(fs.existsSync(validationFailurePath(canonicalPath)), true);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "failed");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight retains adverse challenger evidence in its failed attempt", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-adverse-claim-source-preflight-test-"));
-  const sourceEntry = source("source-a", ["claim-a"]);
-  const fetchedText = "Text independently extracted from the exact source locator.";
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({
-        episodePath: temporary,
-        model: "test-model",
-        dependencies: {
-          verifyProgrammaticFallback: async () => ({ link: { valid: true, final_url: sourceEntry.url, content_sha256: "f".repeat(64), excerpt: fetchedText } }),
-          assessRelevance: async () => ({ status: "assessed", assessment: { verdict: "partially_supports", confidence: "high", rationale: "The evidence is incomplete.", locator_assessment: { verdict: "partially_supports", rationale: "The locator is broader than the claim." }, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports", rationale: "The cited text does not establish the full claim." }] } }),
-        },
-      }),
-      /Claim-source preflight failed/,
-    );
-    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
-    const marker = YAML.parse(fs.readFileSync(validationFailurePath(preflightPath), "utf8"));
-    const attempt = YAML.parse(fs.readFileSync(path.join(path.dirname(preflightPath), marker.failed_attempt), "utf8"));
-    assert.equal(attempt.status, "failed");
-    assert.equal(attempt.results[0].relevance.locator_assessment.verdict, "partially_supports");
-    assert.equal(attempt.results[0].relevance.claim_assessments[0].rationale, "The cited text does not establish the full claim.");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight retains completed source evidence when a later source fails", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-partial-claim-source-preflight-test-"));
-  const firstSource = source("source-a", ["claim-a"]);
-  const secondSource = source("source-b", ["claim-b"]);
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [firstSource, secondSource] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "First test claim.", sources: ["source-a"] }, { id: "claim-b", claim: "Second test claim.", sources: ["source-b"] }] }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({
-        episodePath: temporary,
-        model: "test-model",
-        dependencies: {
-          verifyProgrammaticFallback: async (entry) => {
-            if (entry.id === "source-b") return { link: { valid: false, errors: ["second target unavailable"] } };
-            return { link: { valid: true, final_url: firstSource.url, content_sha256: "2".repeat(64), excerpt: "First independently extracted locator text." } };
-          },
-          assessRelevance: async ({ claims }) => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: claims.map((claim) => ({ claim_id: claim.id, verdict: "supports", rationale: "Test." })) } }),
-        },
-      }),
-      /source-b could not be independently fetched/,
-    );
-    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
-    const marker = YAML.parse(fs.readFileSync(validationFailurePath(preflightPath), "utf8"));
-    const attempt = YAML.parse(fs.readFileSync(path.join(path.dirname(preflightPath), marker.failed_attempt), "utf8"));
-    assert.equal(attempt.results.length, 1);
-    assert.equal(attempt.results[0].source_id, "source-a");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight cancellation finalizes the owned run", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-cancelled-claim-source-preflight-test-"));
-  const sourceEntry = source("source-a", ["claim-a"]);
-  const cancellation = new AbortController();
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [sourceEntry] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A test claim.", sources: ["source-a"] }] }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({
-        episodePath: temporary,
-        signal: cancellation.signal,
-        isCancelled: () => cancellation.signal.aborted,
-        dependencies: {
-          verifyProgrammaticFallback: async ({}, { signal }) => {
-            assert.equal(signal, cancellation.signal);
-            cancellation.abort();
-            return { link: { valid: true, final_url: sourceEntry.url, content_sha256: "1".repeat(64), excerpt: "Text independently extracted from the exact source locator." } };
-          },
-        },
-      }),
-      /cancelled/,
-    );
-    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
-    assert.equal(fs.existsSync(`${preflightPath}.in-progress`), false);
-    assert.equal(fs.existsSync(validationFailurePath(preflightPath)), true);
-    assert.equal(YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8")).source_verification.claim_source_preflight_status, "cancelled");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight retains completed evidence when cancellation occurs before a later source", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-partial-cancelled-claim-source-preflight-test-"));
-  const firstSource = source("source-a", ["claim-a"]);
-  const secondSource = source("source-b", ["claim-b"]);
-  let cancellationChecks = 0;
-  try {
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { claim_source_preflight: "claim-source-preflight.yaml" } }));
-    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [firstSource, secondSource] }));
-    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "First claim.", sources: ["source-a"] }, { id: "claim-b", claim: "Second claim.", sources: ["source-b"] }] }));
-    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Claim preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n");
-    await assert.rejects(
-      createClaimSourcePreflight({
-        episodePath: temporary,
-        isCancelled: () => ++cancellationChecks >= 4,
-        dependencies: {
-          verifyProgrammaticFallback: async (entry) => ({ link: { valid: true, final_url: entry.url, content_sha256: entry.id === "source-a" ? "3".repeat(64) : "4".repeat(64), excerpt: `${entry.id} independently extracted locator text.` } }),
-          assessRelevance: async ({ claims }) => ({ status: "assessed", assessment: { verdict: "supports", confidence: "high", rationale: "Test.", locator_assessment: { verdict: "supports", rationale: "Test." }, claim_assessments: claims.map((claim) => ({ claim_id: claim.id, verdict: "supports", rationale: "Test." })) } }),
-        },
-      }),
-      /cancelled/,
-    );
-    const preflightPath = path.join(temporary, "claim-source-preflight.yaml");
-    const marker = YAML.parse(fs.readFileSync(validationFailurePath(preflightPath), "utf8"));
-    const attempt = YAML.parse(fs.readFileSync(path.join(path.dirname(preflightPath), marker.failed_attempt), "utf8"));
-    assert.equal(attempt.failure.outcome, "cancelled");
-    assert.equal(attempt.results.length, 1);
-    assert.equal(attempt.results[0].source_id, "source-a");
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
-
-test("claim-source preflight accepts only its explicit stale-lock recovery flag", () => {
-  const parsed = parseClaimSourcePreflightArgs(["--episode", "episodes/core-15", "--require-llm", "--recover-stale-lock"]);
-  assert.equal(parsed.recoverStaleLock, true);
-  assert.throws(() => parseClaimSourcePreflightArgs(["--episode", "episodes/core-15", "--recover-stale-lock"]), /--require-llm is required/);
 });
 
 test("master-script source tags must name real sources in the claim's declared section", () => {
@@ -1698,19 +1061,19 @@ test("source validation records malformed canonical input as a failed attempt", 
   }
 });
 
-test("formal source validation does not require an optional claim-source preflight", () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-preflight-gate-test-"));
+test("formal source validation runs without a retired preflight record", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-source-review-test-"));
   const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml"); const reportPath = path.join(temporary, "link-validation.yaml");
   try {
     fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
     fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n");
-    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification:\n  claim_source_preflight: claim-source-preflight.yaml\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification:\n  validation_contract: source-relevance-v1\n", "utf8");
     fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
     fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
     fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Formal review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
     const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--output", reportPath, "--require-llm"], { encoding: "utf8", timeout: 2_000 });
     assert.equal(result.status, 1, result.stderr);
-    assert.doesNotMatch(result.stderr, /claim-source-preflight/);
+    assert.doesNotMatch(result.stderr, /preflight/);
     assert.match(fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8"), /- \[x\] Formal review authorization/);
     assert.equal(fs.existsSync(validationFailurePath(reportPath)), true);
   } finally {
@@ -1801,9 +1164,10 @@ test("per-claim relevance fails closed on a partially supporting assessment", ()
 });
 
 test("citation-group relevance accepts an aggregate partial verdict when every mapped claim and locator supports", () => {
-  const result = { citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
+  const result = { linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
   assert.equal(sourceRelevanceResultValid(result), true);
   assert.equal(sourceRelevanceResultValid({ ...result, claim_assessments: { valid: false } }), false);
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance: { ...result.relevance, assessment: { ...result.relevance.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } } }), false);
 });
 
 test("source fetch timeout remains active while the response body is read", async () => {
@@ -1916,23 +1280,6 @@ test("source relevance assesses freshly fetched text instead of a ledger excerpt
   }
 });
 
-test("claim-source preflight relevance assesses proposed claims without requiring prose", async () => {
-  const originalKey = process.env.OPENAI_API_KEY; let request;
-  process.env.OPENAI_API_KEY = "test-key";
-  const fetchImpl = (_url, options) => {
-    request = JSON.parse(options.body);
-    const assessment = { verdict: "supports", confidence: "high", rationale: "Source supports the proposal.", locator_assessment: { verdict: "supports", rationale: "Exact locator." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "Supported." }] };
-    return Promise.resolve(new Response(JSON.stringify({ output: [{ content: [{ type: "output_text", text: JSON.stringify(assessment) }] }] }), { status: 200, headers: { "content-type": "application/json" } }));
-  };
-  try {
-    await assessRelevance({ model: "gpt-5.6-terra", assessmentScope: "claim_source_preflight", source: { id: "source-a", title: "Test", locator: "Paragraph 1" }, claims: [{ id: "claim-a", claim: "Canonical proposed claim", claim_type: "guidance" }], authoredPassages: [], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
-    assert.match(request.instructions, /No authored passage exists yet/);
-    assert.doesNotMatch(request.instructions, /source-tagged passage can be a citation group/);
-    assert.match(request.input, /Canonical proposed claim/);
-  } finally {
-    if (originalKey === undefined) delete process.env.OPENAI_API_KEY; else process.env.OPENAI_API_KEY = originalKey;
-  }
-});
 
 test("source validation locks report ownership and refuses unsafe recovery", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-lock-test-"));
@@ -1968,10 +1315,10 @@ test("source validation locks report ownership and refuses unsafe recovery", () 
   }
 });
 
-test("source-validation lifecycle lock serializes preflight and formal review", () => {
+test("source-validation lifecycle lock serializes formal review attempts", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-validation-lifecycle-test-"));
   try {
-    const first = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT);
+    const first = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
     assert.throws(
       () => acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW),
       /already in progress or was interrupted/,
@@ -2039,27 +1386,13 @@ test("source-validation dry runs recover only their confirmed-dead package lease
   }
 });
 
-test("claim-source preflight acquires the package lease before reading package inputs", async () => {
-  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-preflight-lease-test-"));
-  try {
-    const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT);
-    await assert.rejects(
-      createClaimSourcePreflight({ episodePath: temporary }),
-      /already in progress or was interrupted/,
-      "the held lease must fail before the missing episode.yaml can be observed",
-    );
-    releaseEpisodePackageOperation(lease);
-  } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
-  }
-});
 
 test("package lease blocks release consumers and state writers for a source-review rerun", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-package-lease-test-"));
   try {
     fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({
       production_contract_version: 2,
-      source_verification: { claim_source_preflight: "claim-source-preflight.yaml" },
+      source_verification: { validation_contract: "source-relevance-v1" },
     }));
     const lease = acquireEpisodePackageOperation(temporary, PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW);
     assert.throws(
@@ -2118,12 +1451,11 @@ test("handoff source snapshot excludes transient package-lease artifacts", () =>
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-handoff-source-snapshot-test-"));
   try {
     fs.writeFileSync(path.join(temporary, "episode.yaml"), "id: core-test\n", "utf8");
-    fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), "status: complete\n", "utf8");
     fs.writeFileSync(path.join(temporary, ".source-validation.lifecycle.in-progress"), "transient\n", "utf8");
     fs.writeFileSync(path.join(temporary, ".qa-checklist.authorization.lock"), "transient\n", "utf8");
     fs.writeFileSync(path.join(temporary, "link-validation.yaml.failed"), "transient\n", "utf8");
     const files = sourcePackageFiles(temporary);
-    assert.deepEqual(Object.keys(files).sort(), ["claim-source-preflight.yaml", "episode.yaml"]);
+    assert.deepEqual(Object.keys(files).sort(), ["episode.yaml"]);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
@@ -2603,30 +1935,21 @@ test("realtime renderer requires completed source-relevance review before render
   const masterScript = "# Test\n\n**INSTRUCTOR:**\n\nLesson.\n";
   fs.writeFileSync(scriptPath, "# Test narration\n", "utf8");
   fs.writeFileSync(path.join(temporary, "master-script.md"), masterScript, "utf8");
-  fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: "2026-09-10T00:00:00Z", claim_source_preflight: "claim-source-preflight.yaml", claim_source_preflight_status: "complete", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }), "utf8");
+  fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ production_contract_version: 2, source_verification: { validation_contract: "source-relevance-v1", status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: "2026-09-10T00:00:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }), "utf8");
   fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-a]\n", "utf8");
   fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   const inputSha256 = sourceValidationInputHashes(temporary);
-  const preflightRunID = crypto.randomUUID();
-  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, preflight_run_id: preflightRunID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", consumed_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
+  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
   fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
-  fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Preflight authorization. <!-- qa-id: openai-claim-source-preflight-authorization -->\n- [x] Preflight complete. <!-- qa-id: claim-source-preflight -->\n- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
-  const preflightExcerpt = "The cited paragraph supports the test claim.";
-  const preflight = () => ({ schema_version: 1, validator: "scripts/claim-source-preflight.cjs", run_id: preflightRunID, status: "complete", authorization: { qa_id: "openai-claim-source-preflight-authorization", consumed_at_utc: "2026-09-10T00:00:00Z", run_id: preflightRunID }, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "gpt-5.6-sol", input_sha256: claimSourcePreflightInputHashes(temporary), results: [{ source_id: "source-a", locator: "Paragraph 1-1-1", linked_claim_ids: ["claim-a"], reviewed_claims: [{ id: "claim-a", statement: "A test claim.", type: null }], fetched_locator: fetchedLocatorEvidence({ url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html" }, preflightExcerpt), reviewed_excerpt: { kind: "section_text", text: preflightExcerpt, sha256: crypto.createHash("sha256").update(preflightExcerpt).digest("hex"), characters: preflightExcerpt.length }, relevance: { status: "assessed", locator_assessment: { verdict: "supports", rationale: "The retained paragraph is the cited locator." }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", rationale: "The paragraph supports the test claim." }] } }] });
-  fs.writeFileSync(path.join(temporary, "claim-source-preflight.yaml"), YAML.stringify(preflight()), "utf8");
+  fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
   try {
-    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" } } }, claim_assessments: { valid: true } };
+    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ ...passingResult, link: { valid: false } }]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /source- and claim-level relevance assessments/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
     assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
-    const stalePreflightValidation = YAML.parse(fs.readFileSync(path.join(temporary, "link-validation.yaml"), "utf8"));
-    stalePreflightValidation.preflight_run_id = crypto.randomUUID();
-    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(stalePreflightValidation), "utf8");
-    assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
-    fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
     const wrongProducerValidation = YAML.parse(fs.readFileSync(path.join(temporary, "link-validation.yaml"), "utf8"));
     wrongProducerValidation.validator = "manual-edit";
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(wrongProducerValidation), "utf8");
@@ -2643,8 +1966,6 @@ test("realtime renderer requires completed source-relevance review before render
     timestamplessValidation.checked_at_utc = "2026-09-10T00:00:00Z";
     fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify(timestamplessEpisode), "utf8");
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), YAML.stringify(timestamplessValidation), "utf8");
-    fs.unlinkSync(path.join(temporary, "claim-source-preflight.yaml"));
-    assert.doesNotThrow(() => assertSourceRelevanceApproved(scriptPath));
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /does not cover every current source/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");

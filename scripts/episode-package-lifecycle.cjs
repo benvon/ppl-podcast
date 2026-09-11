@@ -25,7 +25,6 @@ const {
 const MALFORMED_LOCK_RECOVERY_GRACE_MS = 30_000;
 
 const PACKAGE_OPERATION_IDS = Object.freeze({
-  CLAIM_SOURCE_PREFLIGHT: "claim-source-preflight",
   FORMAL_SOURCE_REVIEW: "formal-source-review",
   SCRIPT_RESET: "script-reset",
   SCRIPT_APPROVE: "script-approve",
@@ -36,10 +35,6 @@ const PACKAGE_OPERATION_IDS = Object.freeze({
 });
 
 const PACKAGE_OPERATIONS = Object.freeze({
-  [PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT]: Object.freeze({
-    id: PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT,
-    validator: "scripts/claim-source-preflight.cjs:lifecycle",
-  }),
   [PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW]: Object.freeze({
     id: PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW,
     validator: "scripts/validate-source-links.cjs:formal-review-lifecycle",
@@ -71,7 +66,6 @@ const PACKAGE_OPERATIONS = Object.freeze({
 });
 
 const PACKAGE_OPERATION_COMMANDS = Object.freeze({
-  [PACKAGE_OPERATION_IDS.CLAIM_SOURCE_PREFLIGHT]: "scripts/claim-source-preflight.cjs",
   [PACKAGE_OPERATION_IDS.FORMAL_SOURCE_REVIEW]: "scripts/validate-source-links.cjs",
   [PACKAGE_OPERATION_IDS.SCRIPT_RESET]: "scripts/reset-script-review.cjs --reset",
   [PACKAGE_OPERATION_IDS.SCRIPT_APPROVE]: "scripts/reset-script-review.cjs --approve",

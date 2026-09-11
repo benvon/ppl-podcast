@@ -19,7 +19,7 @@ test("formal source review records the checked human authorization without chang
     fs.writeFileSync(checklistPath, checklist, "utf8");
     const authorization = consumeSourceReviewAuthorization(episodePath, runID);
     assert.equal(authorization.run_id, runID);
-    assert.match(authorization.authorized_at_utc, /^\d{4}-\d{2}-\d{2}T/);
+    assert.match(authorization.attested_at_utc, /^\d{4}-\d{2}-\d{2}T/);
     assert.equal(fs.readFileSync(checklistPath, "utf8"), checklist);
   } finally {
     fs.rmSync(episodePath, { recursive: true, force: true });
@@ -33,7 +33,7 @@ test("authorization helper rejects missing or duplicate checked authorization it
     fs.writeFileSync(checklistPath, "- [ ] Not authorized. <!-- qa-id: formal -->\n", "utf8");
     assert.throws(
       () => consumeChecklistAuthorization({ episodePath, qaID: "formal", operation: "formal review", runID: crypto.randomUUID() }),
-      /exactly one checked formal review authorization/,
+      /exactly one formal review authorization checklist item/,
     );
     fs.writeFileSync(checklistPath, [
       "- [x] Formal review authorized. <!-- qa-id: formal -->",
@@ -41,7 +41,15 @@ test("authorization helper rejects missing or duplicate checked authorization it
     ].join("\n"), "utf8");
     assert.throws(
       () => consumeChecklistAuthorization({ episodePath, qaID: "formal", operation: "formal review", runID: crypto.randomUUID() }),
-      /exactly one checked formal review authorization/,
+      /exactly one formal review authorization checklist item/,
+    );
+    fs.writeFileSync(checklistPath, [
+      "- [x] Formal review authorized. <!-- qa-id: formal -->",
+      "- [ ] Stale duplicate authorization. <!-- qa-id: formal -->",
+    ].join("\n"), "utf8");
+    assert.throws(
+      () => consumeChecklistAuthorization({ episodePath, qaID: "formal", operation: "formal review", runID: crypto.randomUUID() }),
+      /exactly one formal review authorization checklist item/,
     );
   } finally {
     fs.rmSync(episodePath, { recursive: true, force: true });
@@ -50,7 +58,7 @@ test("authorization helper rejects missing or duplicate checked authorization it
 
 test("formal validation failure records the authorization that authorized its run", () => {
   const runID = crypto.randomUUID();
-  const authorization = { qa_id: "openai-source-review-authorization", authorized_at_utc: "2026-09-11T00:00:00.000Z", run_id: runID };
+  const authorization = { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-09-11T00:00:00.000Z", run_id: runID };
   const failureReport = sourceReviewFailureReport({
     options: { llm: true, model: "test-model" },
     validationRun: { run_id: runID },

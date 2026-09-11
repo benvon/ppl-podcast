@@ -138,6 +138,24 @@ function nonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function canonicalHttpsAuthority(url) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== "https:") return null;
+    return parsed.hostname.replace(/^www\./i, "").toLowerCase();
+  } catch (_) {
+    return null;
+  }
+}
+
+function fallbackRedirectChainValid({ requestedUrl, redirects, finalUrl }) {
+  const authority = canonicalHttpsAuthority(requestedUrl);
+  if (!authority || !nonEmptyString(finalUrl) || !Array.isArray(redirects)) return false;
+  const chain = [requestedUrl, ...redirects];
+  if (!chain.every((url) => canonicalHttpsAuthority(url) === authority)) return false;
+  return redirects.length === 0 ? finalUrl === requestedUrl : redirects.at(-1) === finalUrl;
+}
+
 function claimAssessmentsFor(result) {
   return Array.isArray(result?.relevance?.claim_assessments) ? result.relevance.claim_assessments : [];
 }
@@ -222,8 +240,11 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
       && Number.isInteger(excerpt.characters) && excerpt.characters === excerpt.text.length;
     expect(excerptRecorded, `claim-source-preflight.yaml must retain a hash-verified copy of the reviewed excerpt for source ${source.id}.`);
     const fetched = result.fetched_locator;
+    const normalValidationUrl = source.validation_url || source.url;
     const fetchedEvidence = nonEmptyString(fetched?.citation_url) && fetched.citation_url === source.url
+      && nonEmptyString(fetched?.validation_url)
       && nonEmptyString(fetched?.final_url)
+      && Array.isArray(fetched?.redirects)
       && validSha256(fetched?.content_sha256)
       && typeof fetched?.extraction_kind === "string" && fetched.extraction_kind.length > 0
       && validSha256(fetched?.locator_excerpt_sha256) === validSha256(excerpt?.sha256)
@@ -236,7 +257,7 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
     // retain a programmatic response without its FAA-page attestation.
     const fallbackSelected = nonEmptyString(source.programmatic_url)
       && source.programmatic_url !== source.url
-      && (fetched?.validation_url === source.programmatic_url || fetched?.final_url === source.programmatic_url);
+      && fetched?.validation_url === source.programmatic_url;
     if (fallbackSelected) {
       const configured = source.programmatic_attestation;
       const fallback = fetched.programmatic_fallback;
@@ -244,7 +265,11 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
         && configured && typeof configured === "object"
         && fetched.resolved_via === "attested_programmatic_fallback"
         && fetched.validation_url === source.programmatic_url
-        && fetched.final_url === source.programmatic_url
+        && fallbackRedirectChainValid({
+          requestedUrl: source.programmatic_url,
+          redirects: fetched.redirects,
+          finalUrl: fetched.final_url,
+        })
         && fetched.content_sha256 === configured.sha256
         && fallback?.programmatic_url === source.programmatic_url
         && fallback?.attestation_url === configured.url
@@ -258,7 +283,15 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
         && fallback.content_attestation.programmatic_sha256 === configured.sha256;
       expect(fallbackEvidence, `claim-source-preflight.yaml must bind attested programmatic fallback evidence to source ${source.id}.`);
     } else {
-      expect(fetched?.resolved_via !== "attested_programmatic_fallback" && fetched?.programmatic_fallback == null, `claim-source-preflight.yaml cannot record fallback evidence without a matching programmatic artifact identity for source ${source.id}.`);
+      const directEvidence = fetched?.validation_url === normalValidationUrl
+        && fetched?.resolved_via !== "attested_programmatic_fallback"
+        && fetched?.programmatic_fallback == null
+        && fallbackRedirectChainValid({
+          requestedUrl: normalValidationUrl,
+          redirects: fetched?.redirects,
+          finalUrl: fetched?.final_url,
+        });
+      expect(directEvidence, `claim-source-preflight.yaml must bind source ${source.id} to its exact direct or attested-fallback validation target.`);
     }
     expect(expectedClaims.every((claimID) => claimsByID.get(claimID)?.sources?.includes(source.id)), `claim-source-preflight.yaml cannot attest a non-reciprocal claim mapping for source ${source.id}.`);
     const assessments = claimAssessmentsFor(result);

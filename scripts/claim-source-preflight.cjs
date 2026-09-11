@@ -110,8 +110,9 @@ function preflightEvidenceFor(source, verification) {
     fetched_locator: {
       citation_url: source.url,
       final_url: fetched.final_url,
-      validation_url: fetched.validation_url || null,
+      validation_url: fetched.validation_url || source.validation_url || source.url,
       resolved_via: fetched.resolved_via || null,
+      redirects: Array.isArray(fetched.redirects) ? fetched.redirects : [],
       content_sha256: fetched.content_sha256,
       extraction_kind: locator.kind,
       locator_excerpt_sha256: sha256Text(excerpt),

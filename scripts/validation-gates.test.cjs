@@ -35,7 +35,9 @@ function source(id, supportsClaims) {
 function fetchedLocatorEvidence(sourceEntry, excerpt) {
   return {
     citation_url: sourceEntry.url,
+    validation_url: sourceEntry.validation_url || sourceEntry.url,
     final_url: sourceEntry.url,
+    redirects: [],
     content_sha256: crypto.createHash("sha256").update(`fetched:${excerpt}`).digest("hex"),
     extraction_kind: "html_fragment",
     locator_excerpt_sha256: crypto.createHash("sha256").update(excerpt).digest("hex"),
@@ -1000,6 +1002,18 @@ test("claim-source preflight rejects a tampered attested fallback record", () =>
     const tamperedAttestation = JSON.parse(JSON.stringify(preflight));
     tamperedAttestation.results[0].fetched_locator.programmatic_fallback.content_attestation.programmatic_sha256 = "b".repeat(64);
     assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: tamperedAttestation }).join("\n"), /attested programmatic fallback evidence/);
+    const redirectedFallback = JSON.parse(JSON.stringify(preflight));
+    redirectedFallback.results[0].fetched_locator.final_url = "https://www.faa.gov/files/source-v2.pdf";
+    redirectedFallback.results[0].fetched_locator.redirects = ["https://www.faa.gov/files/source-v2.pdf"];
+    assert.deepEqual(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: redirectedFallback }), []);
+    const crossAuthorityRedirect = JSON.parse(JSON.stringify(redirectedFallback));
+    crossAuthorityRedirect.results[0].fetched_locator.redirects = ["https://example.com/files/source-v2.pdf"];
+    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: crossAuthorityRedirect }).join("\n"), /attested programmatic fallback evidence/);
+    const strippedFallbackIdentity = JSON.parse(JSON.stringify(preflight));
+    delete strippedFallbackIdentity.results[0].fetched_locator.resolved_via;
+    delete strippedFallbackIdentity.results[0].fetched_locator.programmatic_fallback;
+    delete strippedFallbackIdentity.results[0].fetched_locator.validation_url;
+    assert.match(claimSourcePreflightErrors({ episodePath: temporary, episode, preflight: strippedFallbackIdentity }).join("\n"), /exact direct or attested-fallback validation target/);
     for (const resolvedVia of [undefined, "direct_citation"]) {
       const tamperedRoute = JSON.parse(JSON.stringify(preflight));
       if (resolvedVia === undefined) delete tamperedRoute.results[0].fetched_locator.resolved_via;

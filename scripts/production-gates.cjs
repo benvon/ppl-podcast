@@ -92,6 +92,8 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   const preflightPath = path.join(episodePath, SOURCE_REVIEW_FILES.preflight);
   expect(!fs.existsSync(`${preflightPath}.in-progress`) && !fs.existsSync(`${preflightPath}.in-progress.recovering`), "Claim-source preflight is in progress, recovering, or was interrupted.");
   expect(!fs.existsSync(validationFailurePath(preflightPath)), "The most recent claim-source preflight failed and must be rerun successfully.");
+  expect(validation.schema_version === 1, "link-validation.yaml must use schema_version 1.");
+  expect(validation.validator === "scripts/validate-source-links.cjs", "link-validation.yaml must be produced by scripts/validate-source-links.cjs.");
   expect(validation.llm_requested === true, "link-validation.yaml must record a requested LLM review.");
   expect(validation.claim_mapping?.valid === true, "link validation must pass the claim mapping.");
   expect(validation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");

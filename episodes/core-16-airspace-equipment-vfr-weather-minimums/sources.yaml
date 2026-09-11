@@ -221,7 +221,7 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Operational explanation of SVFR scope, request, visibility, cloud, and nighttime conditions."
-    supports_claims: [special-vfr-conditions, special-vfr-boundary, special-vfr-prohibited-airports]
+    supports_claims: [special-vfr-boundary, special-vfr-prohibited-airports]
   - id: aim-transponder-operation
     title: AIM, Transponder and ADS-B Out Operation
     publisher: FAA

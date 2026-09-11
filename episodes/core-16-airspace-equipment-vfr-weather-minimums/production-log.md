@@ -50,3 +50,9 @@
 - Corrected the AIM weather table locator to TBL 3-1-4, described the fixed-wing Special VFR restriction as applying to listed Class Bravo and Class Charlie surface areas, and retained the regulatory written term `Class A` in the source-facing script.
 - Removed the Special VFR exception claim from the PHAK Figure 15-8 source mapping while retaining it under the exact eCFR and AIM sources.
 - Advanced the package to version 0.1.3 and regenerated the 5,301-word narration derivative. Formal source relevance must be rerun cleanly before human editorial review.
+
+## 2026-09-11 — final formal source-review corrections
+
+- Added the requirement to maintain two-way communication while within Class Charlie for an arrival or through flight, including in the retrieval review.
+- Kept the below-10,000-feet-MSL Special VFR condition under the controlling section 91.157 claim and removed that condition from the AIM source's claim responsibility. The AIM remains the source for the surface-area boundary and listed fixed-wing restrictions.
+- Advanced the package to version 0.1.4 and regenerated the 5,321-word narration derivative. Formal source relevance must be rerun cleanly before human editorial review.

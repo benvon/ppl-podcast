@@ -151,7 +151,7 @@ The AIM says communication has not been established when the controller’s resp
 
 **INSTRUCTOR:**
 
-Now move the same exchange to the Class Charlie airspace that lies along the route before Valley Tower. For a typical arrival or through flight, Class Charlie also requires two-way communication before entry. The callsign test works the same way: “Cessna One Two Three Alpha Bravo, standby” establishes communication. A reply that omits the aircraft identification does not.
+Now move the same exchange to the Class Charlie airspace that lies along the route before Valley Tower. For a typical arrival or through flight, Class Charlie also requires two-way communication to be established before entry and maintained while within the airspace. The callsign test works the same way: “Cessna One Two Three Alpha Bravo, standby” establishes communication. A reply that omits the aircraft identification does not.
 
 The AIM describes the installed equipment for Class Charlie as an operable radar beacon transponder with automatic altitude reporting and operable ADS-B Out equipment, unless ATC authorizes otherwise.
 
@@ -479,7 +479,7 @@ What is the entry distinction among Class Delta, Class Charlie, and Class Bravo?
 
 **LEARNER:**
 
-Delta and Charlie require two-way radio communication before entry. A controller response using my aircraft identification establishes it, including “callsign, standby.” Bravo requires an explicit ATC clearance before entry; a callsign or transponder code alone is not that clearance.
+Delta and Charlie require two-way radio communication before entry and require that communication to be maintained while within the airspace. A controller response using my aircraft identification establishes it, including “callsign, standby.” Bravo requires an explicit ATC clearance before entry; a callsign or transponder code alone is not that clearance.
 
 **INSTRUCTOR:**
 

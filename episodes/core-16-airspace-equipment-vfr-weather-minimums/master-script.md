@@ -1,6 +1,6 @@
 # Airspace, Equipment, and VFR Weather Minimums
 
-**Version:** 0.1.3 — draft
+**Version:** 0.1.4 — draft
 **Target runtime:** 30-35 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -193,7 +193,7 @@ The AIM says communication has not been established when the controller’s resp
 
 **INSTRUCTOR:**
 
-Now move the same exchange to the Class Charlie airspace that lies along the route before Valley Tower. For a typical arrival or through flight, Class Charlie also requires two-way communication before entry. The callsign test works the same way: “Cessna One Two Three Alpha Bravo, standby” establishes communication. A reply that omits the aircraft identification does not.
+Now move the same exchange to the Class Charlie airspace that lies along the route before Valley Tower. For a typical arrival or through flight, Class Charlie also requires two-way communication to be established before entry and maintained while within the airspace. The callsign test works the same way: “Cessna One Two Three Alpha Bravo, standby” establishes communication. A reply that omits the aircraft identification does not.
 
 [Source: sources.yaml#ecfr-91-130-class-c]
 [Source: sources.yaml#aim-class-c]
@@ -481,7 +481,6 @@ Use Special VFR as a separate decision.
 Special VFR, often shortened to S-V-F-R, is an air traffic control clearance for operation below 10,000 feet MSL within controlled airspace designated to the surface for an airport when the regulatory conditions can be met. For an airplane, the operation requires at least one statute mile visibility and remaining clear of clouds. For our lower-48 scenario, operation between sunset and sunrise also requires an instrument-rated pilot and an airplane equipped for instrument flight.
 
 [Source: sources.yaml#ecfr-91-157-special-vfr]
-[Source: sources.yaml#aim-special-vfr]
 
 **LEARNER:**
 
@@ -661,7 +660,7 @@ What is the entry distinction among Class Delta, Class Charlie, and Class Bravo?
 
 **LEARNER:**
 
-Delta and Charlie require two-way radio communication before entry. A controller response using my aircraft identification establishes it, including “callsign, standby.” Bravo requires an explicit ATC clearance before entry; a callsign or transponder code alone is not that clearance.
+Delta and Charlie require two-way radio communication before entry and require that communication to be maintained while within the airspace. A controller response using my aircraft identification establishes it, including “callsign, standby.” Bravo requires an explicit ATC clearance before entry; a callsign or transponder code alone is not that clearance.
 
 [Source: sources.yaml#aim-class-c]
 [Source: sources.yaml#aim-class-d]

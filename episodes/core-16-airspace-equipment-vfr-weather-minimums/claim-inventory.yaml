@@ -212,8 +212,8 @@ claims:
     status: supported
   - id: special-vfr-conditions
     claim: "Below 10,000 feet MSL, Special VFR for an airplane in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile visibility; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires an instrument-rated pilot and an IFR-equipped airplane."
-    claim_type: regulation and FAA guidance
-    sources: [ecfr-91-157-special-vfr, aim-special-vfr]
+    claim_type: regulation
+    sources: [ecfr-91-157-special-vfr]
     risk: safety_critical
     script_sections: [Use Special VFR as a separate decision, Retrieval review]
     status: supported

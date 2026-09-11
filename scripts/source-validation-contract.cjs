@@ -159,7 +159,8 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   expect(preflight?.status === "complete", "claim-source-preflight.yaml must record a complete preflight.");
   expect(utcRfc3339Timestamp(preflight?.checked_at_utc), "claim-source-preflight.yaml must record a valid UTC RFC 3339 review timestamp.");
   expect(preflight?.validator === "scripts/claim-source-preflight.cjs", "claim-source-preflight.yaml must be produced by scripts/claim-source-preflight.cjs.");
-  expect(utcRfc3339Timestamp(preflight?.authorization?.consumed_at_utc) && preflight.authorization?.qa_id === "openai-claim-source-preflight-authorization" && typeof preflight.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.authorization.run_id) && Date.parse(preflight.authorization.consumed_at_utc) <= Date.parse(preflight.checked_at_utc), "claim-source-preflight.yaml must record the consumed per-run authorization.");
+  expect(typeof preflight?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.run_id), "claim-source-preflight.yaml must record its preflight run ID.");
+  expect(utcRfc3339Timestamp(preflight?.authorization?.consumed_at_utc) && preflight.authorization?.qa_id === "openai-claim-source-preflight-authorization" && typeof preflight.authorization?.run_id === "string" && /^[0-9a-f-]{36}$/i.test(preflight.authorization.run_id) && preflight.authorization.run_id === preflight.run_id && Date.parse(preflight.authorization.consumed_at_utc) <= Date.parse(preflight.checked_at_utc), "claim-source-preflight.yaml must record the consumed per-run authorization.");
   expect(preflight?.llm_requested === true && typeof preflight?.llm_model === "string" && preflight.llm_model.length > 0, "claim-source-preflight.yaml must record the LLM review model.");
   const inputHashes = claimSourcePreflightInputHashes(episodePath);
   expect(Object.entries(inputHashes).every(([name, digest]) => preflight?.input_sha256?.[name] === digest), "claim-source-preflight.yaml must be bound to the current sources.yaml and claim-inventory.yaml bytes.");
@@ -181,7 +182,7 @@ function claimSourcePreflightErrors({ episodePath, episode, preflight }) {
   expect(inventory.claims.length > 0, "claim-source-preflight.yaml requires at least one claim.");
   expect(uniqueNonEmptyIdentifiers(sources), "claim-source-preflight.yaml requires unique, non-empty source IDs.");
   expect(uniqueNonEmptyIdentifiers(inventory.claims), "claim-source-preflight.yaml requires unique, non-empty claim IDs.");
-  for (const source of sources) expect(Array.isArray(source?.supports_claims) && uniqueNonEmptyIdentifiers(source.supports_claims.map((id) => ({ id }))), `claim-source-preflight.yaml requires source ${source?.id || "<unknown>"} to declare unique, non-empty claim IDs.`);
+  for (const source of sources) expect(Array.isArray(source?.supports_claims) && source.supports_claims.length > 0 && uniqueNonEmptyIdentifiers(source.supports_claims.map((id) => ({ id }))), `claim-source-preflight.yaml requires source ${source?.id || "<unknown>"} to declare at least one unique, non-empty claim ID.`);
   for (const claim of inventory.claims) expect(Array.isArray(claim?.sources) && uniqueNonEmptyIdentifiers(claim.sources.map((id) => ({ id }))), `claim-source-preflight.yaml requires claim ${claim?.id || "<unknown>"} to declare unique, non-empty source IDs.`);
   const claimsByID = new Map(inventory.claims.map((claim) => [claim.id, claim]));
   for (const claim of inventory.claims) {

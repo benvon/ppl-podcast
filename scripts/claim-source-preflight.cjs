@@ -206,6 +206,10 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   if (ledger.sources.length === 0 || inventory.claims.length === 0) {
     throw new ClaimSourcePreflightError("Claim-source preflight requires at least one source and at least one claim before it can make outbound requests.");
   }
+  const unmappedSources = ledger.sources.filter((source) => !Array.isArray(source?.supports_claims) || source.supports_claims.length === 0);
+  if (unmappedSources.length) {
+    throw new ClaimSourcePreflightError(`Claim-source preflight requires every source to map at least one claim before it can make outbound requests: ${unmappedSources.map((source) => source?.id || "<unknown>").join(", ")}.`);
+  }
   const mapping = validateClaimMappings(ledger, inventory);
   if (!mapping.valid) throw new ClaimSourcePreflightError(`Claim-source preflight cannot start with invalid claim mappings:\n${mapping.errors.join("\n")}`);
   const targetErrors = ledger.sources.flatMap((source) => {
@@ -228,6 +232,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
   const failedPreflight = () => ({
     schema_version: 1,
     validator: "scripts/claim-source-preflight.cjs",
+    run_id: validationRun.run_id,
     status: "failed",
     authorization,
     checked_at_utc: new Date().toISOString(),
@@ -246,7 +251,7 @@ async function createClaimSourcePreflight({ episodePath, model = DEFAULT_MODEL, 
       try {
         for (const source of ledger.sources) {
           throwIfCancelled(signal, isCancelled);
-          if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims)) throw new ClaimSourcePreflightError("Every source must declare an id, URL, locator, and supports_claims.");
+          if (!source || typeof source !== "object" || !Array.isArray(source.supports_claims) || source.supports_claims.length === 0) throw new ClaimSourcePreflightError("Every source must declare at least one mapped claim before the claim-source preflight can make outbound requests.");
           const verification = await verify(source, { includePdfPageText: Boolean(citedPdfPageNumber(source.url)), fetchCache, ecfrRateLimiter, signal });
           throwIfCancelled(signal, isCancelled);
           if (!verification?.link?.valid || verification.content_attestation?.valid === false) throw new ClaimSourcePreflightError(`Source ${source.id} could not be independently fetched and validated: ${(verification?.link?.errors || []).join("; ") || "unknown validation failure"}`);

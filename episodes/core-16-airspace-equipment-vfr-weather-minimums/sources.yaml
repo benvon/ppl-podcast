@@ -133,7 +133,7 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Current definitions, limitations, and status-check guidance for special use airspace."
-    supports_claims: [special-use-distinctions, moa-status]
+    supports_claims: [sua-taxonomy, special-use-distinctions, moa-status]
   - id: aim-tfr
     title: AIM, Temporary Flight Restrictions
     publisher: FAA
@@ -166,7 +166,29 @@ sources:
     verification_date: null
     revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
     relevance: "Operational explanation of SVFR scope, request, visibility, cloud, and nighttime conditions."
-    supports_claims: [special-vfr-conditions, special-vfr-boundary]
+    supports_claims: [special-vfr-conditions, special-vfr-boundary, special-vfr-fixed-wing-limits]
+  - id: aim-transponder-operation
+    title: AIM, Transponder and ADS-B Out Operation
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+    locator: "AIM 4-1-20(a), (c), and (f)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
+    relevance: "Defines Mode C altitude reporting and summarizes transponder and ADS-B Out operation."
+    supports_claims: [transponder-adsb-definitions]
+  - id: aim-adsb-services
+    title: AIM, Automatic Dependent Surveillance-Broadcast Services
+    publisher: FAA
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+    locator: "AIM 4-5-7(a)(1)-(3)"
+    source_type: html
+    link_status: null
+    verification_date: null
+    revision: "Current online AIM, effective July 9, 2026; accessed September 11, 2026"
+    relevance: "Defines ADS-B, ADS-B Out transmission, and ADS-B In receipt."
+    supports_claims: [transponder-adsb-definitions]
   - id: aim-ceiling-definition
     title: AIM, Reporting of Cloud Heights
     publisher: FAA
@@ -188,7 +210,19 @@ sources:
     verification_date: null
     revision: "FAA publication page effective July 9, 2026"
     relevance: "Airspace boundary, floor, Mode C veil, and no-SVFR chart symbology."
-    supports_claims: [chart-airspace-symbols, mode-c-veil]
+    supports_claims: [chart-airspace-symbols, mode-c-veil, special-vfr-fixed-wing-limits]
+  - id: ecfr-1-1-definitions
+    title: 14 CFR 1.1, General definitions
+    publisher: eCFR
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-A/part-1/section-1.1
+    locator: "14 CFR 1.1, definitions of flight visibility and ground visibility"
+    source_type: ecfr
+    ecfr_date: 2026-09-09
+    link_status: null
+    verification_date: null
+    revision: "eCFR Title 14 current through September 9, 2026"
+    relevance: "Defines flight visibility and ground visibility for applying VFR weather minimums."
+    supports_claims: [flight-visibility-distinction]
   - id: ecfr-91-131-class-b
     title: 14 CFR 91.131, Operations in Class B airspace
     publisher: eCFR
@@ -241,14 +275,14 @@ sources:
     title: 14 CFR 91.157, Special VFR weather minimums
     publisher: eCFR
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.157
-    locator: "14 CFR 91.157(a)-(b)"
+    locator: "14 CFR 91.157(a)-(c)"
     source_type: ecfr
     ecfr_date: 2026-09-09
     link_status: null
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
-    relevance: "Controlling regulation for airplane SVFR clearance, visibility, cloud, and night requirements."
-    supports_claims: [special-vfr-conditions]
+    relevance: "Controlling regulation for airplane SVFR clearance, visibility, cloud, night, and listed fixed-wing airport restrictions."
+    supports_claims: [special-vfr-conditions, special-vfr-fixed-wing-limits]
   - id: ecfr-91-215-transponder
     title: 14 CFR 91.215, ATC transponder and altitude reporting equipment and use
     publisher: eCFR
@@ -283,5 +317,5 @@ sources:
     link_status: null
     verification_date: null
     revision: "eCFR Title 14 current through September 9, 2026"
-    relevance: "Student-pilot training and endorsement requirements and named-airport limitation for Class B operations."
+    relevance: "Student-pilot Class B training and preceding-90-day endorsement requirements."
     supports_claims: [student-class-b]

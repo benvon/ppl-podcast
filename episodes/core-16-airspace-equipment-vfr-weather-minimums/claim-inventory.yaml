@@ -71,7 +71,7 @@ claims:
     script_sections: [Match each class to its entry question, Retrieval review]
     status: supported
   - id: student-class-b
-    claim: "A student pilot may operate in Class B only after receiving the required ground and flight training and a current logbook endorsement for the specific Class B area, and student operations are prohibited at the airports named in 14 CFR 61.95(b)."
+    claim: "A student pilot conducting a solo flight in a specific Class B area or to, from, or at an airport in Class B must receive the applicable specific ground and flight training and have the applicable logbook endorsement dated within the preceding 90 days."
     claim_type: regulation
     sources: [ecfr-61-95-student-class-b]
     risk: safety_critical
@@ -83,6 +83,13 @@ claims:
     sources: [phak-operating-requirements]
     risk: instructional
     script_sections: [Match each class to its entry question]
+    status: supported
+  - id: transponder-adsb-definitions
+    claim: "Mode C is an altitude-reporting transponder mode. ADS-B Out is the transmission of ADS-B information from an aircraft, while ADS-B In is the receipt of ADS-B information by an aircraft; ADS-B In alone does not satisfy an ADS-B Out requirement."
+    claim_type: FAA guidance
+    sources: [aim-transponder-operation, aim-adsb-services]
+    risk: instructional
+    script_sections: [Match the equipment to the route]
     status: supported
   - id: transponder-locations
     claim: "Subject to regulatory exceptions, an altitude-reporting transponder is required in Classes A, B, and C; above Class B and C within their lateral limits up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil; and at or above 10,000 feet MSL excluding airspace at and below 2,500 feet AGL."
@@ -106,7 +113,7 @@ claims:
     script_sections: [Match the equipment to the route, Retrieval review]
     status: supported
   - id: basic-vfr-minimums
-    claim: "For airplanes below 10,000 feet MSL, basic VFR minimums are three statute miles and clear of clouds in Class B; three statute miles with 500 feet below, 1,000 feet above, and 2,000 feet horizontal in Classes C, D, and E; and in Class G the requirements change with day or night and height above the surface."
+    claim: "Basic VFR minimums depend on airspace and altitude: Class B requires three statute miles and clear of clouds; Classes C and D, and Class E below 10,000 feet MSL, require three statute miles with 500 feet below, 1,000 feet above, and 2,000 feet horizontal; Class E at or above 10,000 feet MSL requires five statute miles and 1,000 feet below, 1,000 feet above, and one statute mile horizontal; Class G depends on day or night, height above the surface, and MSL altitude, with its five-mile high-altitude row applying only more than 1,200 feet above the surface at or above 10,000 feet MSL."
     claim_type: regulation and FAA guidance
     sources: [ecfr-91-155-basic-vfr, aim-basic-vfr-minimums, phak-vfr-minimums]
     risk: safety_critical
@@ -120,9 +127,9 @@ claims:
     script_sections: [Turn weather minimums into a usable picture, Apply the minimums to one changing flight, Retrieval review]
     status: supported
   - id: flight-visibility-distinction
-    claim: "In flight, compliance is based on flight visibility from the cockpit; for takeoff or landing where ground visibility is reported, the reported ground visibility controls."
+    claim: "Flight visibility is visibility forward from the cockpit of an aircraft in flight. For takeoff or landing under basic VFR, reported ground visibility at the airport must meet the applicable minimum; when it is not reported, flight visibility applies."
     claim_type: regulation
-    sources: [ecfr-91-155-basic-vfr]
+    sources: [ecfr-1-1-definitions, ecfr-91-155-basic-vfr]
     risk: safety_critical
     script_sections: [Turn weather minimums into a usable picture, Retrieval review]
     status: supported
@@ -140,6 +147,13 @@ claims:
     risk: safety_critical
     script_sections: [Use Special VFR as a separate decision, Retrieval review]
     status: supported
+  - id: special-vfr-fixed-wing-limits
+    claim: "Fixed-wing Special VFR is prohibited at the Class B and Class C airports listed in 14 CFR 91.157(c), and FAA VFR charts identify affected surface areas with a NO SVFR notation."
+    claim_type: regulation and FAA chart guidance
+    sources: [ecfr-91-157-special-vfr, aim-special-vfr, chart-guide-airspace-symbols]
+    risk: safety_critical
+    script_sections: [Use Special VFR as a separate decision]
+    status: supported
   - id: special-vfr-boundary
     claim: "A Special VFR clearance applies only within the designated surface area and does not establish that the weather outside the surface area supports continued VFR flight."
     claim_type: FAA guidance
@@ -147,38 +161,45 @@ claims:
     risk: safety_critical
     script_sections: [Use Special VFR as a separate decision, Retrieval review]
     status: supported
+  - id: sua-taxonomy
+    claim: "Special use airspace includes regulatory prohibited and restricted areas and nonregulatory warning areas, MOAs, alert areas, CFAs, and national security areas."
+    claim_type: FAA guidance
+    sources: [aim-special-use]
+    risk: instructional
+    script_sections: [Distinguish special use airspace from other charted areas, Retrieval review]
+    status: supported
   - id: special-use-distinctions
-    claim: "Prohibited areas prohibit flight; restricted areas contain unusual hazards and require authorization when active; warning areas advise of hazards offshore; MOAs separate certain military training from IFR traffic; alert areas identify high-volume or unusual activity; and CFA activity is suspended when nonparticipating aircraft approach."
+    claim: "Prohibited areas prohibit flight; restricted areas contain unusual hazards and require authorization when active and not released; warning areas advise of hazards offshore; MOAs separate certain military training from IFR traffic; alert areas identify high-volume or unusual activity; and CFA activity is suspended when nonparticipating aircraft approach."
     claim_type: FAA handbook and guidance
     sources: [phak-special-use, aim-special-use]
     risk: safety_critical
-    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    script_sections: [Distinguish special use airspace from other charted areas, Retrieval review]
     status: supported
   - id: moa-status
     claim: "VFR flight through an MOA is not generally prohibited, but pilots should obtain current activity information and exercise extreme caution while the MOA is active."
     claim_type: FAA guidance
     sources: [aim-special-use]
     risk: safety_critical
-    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    script_sections: [Distinguish special use airspace from other charted areas, Retrieval review]
     status: supported
   - id: tfr-current-notam
-    claim: "A TFR is established and described by a current NOTAM, so a sectional chart alone cannot establish whether a temporary restriction affects a planned flight."
+    claim: "The PHAK treats TFRs as other airspace areas rather than special use airspace. A TFR is established and described by a current NOTAM, so a sectional chart alone cannot establish whether a temporary restriction affects a planned flight."
     claim_type: FAA handbook and guidance
     sources: [phak-tfr-other-airspace, aim-tfr]
     risk: safety_critical
-    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    script_sections: [Distinguish special use airspace from other charted areas, Retrieval review]
     status: supported
   - id: mtr-awareness
-    claim: "Military training routes are commonly used for military operations below 10,000 feet MSL at speeds above 250 knots, and their IR or VR identifiers and numbers convey route type and whether segments extend above 1,500 feet AGL."
+    claim: "The PHAK treats military training routes as other airspace areas rather than special use airspace. MTRs are commonly used for military operations below 10,000 feet MSL at speeds above 250 knots, and their IR or VR identifiers and numbers convey route type and whether segments extend above 1,500 feet AGL."
     claim_type: FAA handbook guidance
     sources: [phak-tfr-other-airspace]
     risk: safety_critical
-    script_sections: [Treat every special-use boundary according to its meaning]
+    script_sections: [Distinguish special use airspace from other charted areas]
     status: supported
   - id: satr-sfra-specific-rules
-    claim: "SATR and SFRA designations apply special local operating rules that must be researched for the particular area rather than inferred from the underlying Class B, C, D, E, or G airspace alone."
+    claim: "The AIM discusses Special Air Traffic Rules and Special Flight Rules Areas separately from special use airspace. SATR and SFRA designations apply special local operating rules that must be researched for the particular operation rather than inferred from the underlying Class B, C, D, E, or G airspace alone."
     claim_type: FAA guidance
     sources: [aim-satr-sfra]
     risk: safety_critical
-    script_sections: [Treat every special-use boundary according to its meaning, Retrieval review]
+    script_sections: [Distinguish special use airspace from other charted areas, Retrieval review]
     status: supported

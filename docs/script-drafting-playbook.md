@@ -91,6 +91,29 @@ When useful, acknowledge the boundary once in plain language: the lesson gives t
 
 Build the source ledger, claim inventory, and scenario source map before drafting. Then complete the spoken draft, independent first-listen review, and the single `--require-llm` source-relevance review before human editorial approval. The review examines exact source-tagged spoken passages, claims, and fetched source excerpts; resolve contradictions, unsupported factual prose, locator errors, and material scope mismatches before the script reaches the editor. A finding is blocking only if it could teach an unsafe, wrong, or materially incomplete decision, rule, condition, or central lesson concept; exact legal wording that does not change the lesson is an editorial note for the human editor.
 
+### Draft source-bound prose to its actual contract
+
+Before the formal LLM review, the drafting agent must perform one source-contract self-audit. This is a drafting pass, not a new validation tool or release gate: it should catch predictable semantic mismatches before an external review is needed.
+
+For every source-tagged factual paragraph, confirm that the source supports the exact actor, action, scope, condition, and exception stated in that paragraph. Write the factual sentence from the source outward; then place a separate teaching-synthesis sentence after it if the scenario needs an operational connection.
+
+Avoid these high-churn constructions:
+
+- **Broadened nouns:** do not replace a source’s precise category with a larger one—for example, turn “overlying Class Echo” into “overlying controlled airspace.”
+- **Dropped conditions in a recap:** do not compress a conditional rule into a later memory sentence without carrying the condition with it—for example, combine Class Echo with Class Charlie and Delta without retaining the below-10,000-feet-MSL condition.
+- **Mixed authority in one paragraph:** do not use a chart depiction to establish a regulatory equipment obligation, or use a regulation to establish a chart symbol. State the chart fact, tag it, then state the regulatory consequence separately and tag that source.
+- **Exception laundering:** do not attach an exception named by one source to a rule supported by another source unless both are separately stated and tagged. A generic “except where…” opener is especially risky when the exception lives in another document or appendix.
+- **Generic aircraft language where the source is aircraft-specific:** preserve a limitation such as “for an airplane” or “other than a helicopter” when it changes who the rule applies to.
+- **Heading-only locators:** do not cite a whole chapter or a neighboring subsection when the passage relies on a named subheading, table row, appendix, or paragraph. Put that exact target in the source ledger before drafting.
+
+Use this pattern instead:
+
+1. State one atomic, source-supported fact with its condition.
+2. Tag that exact source immediately.
+3. State the scenario consequence as teaching synthesis, or introduce the next atomic fact with its own tag.
+
+The final Retrieval review is a fresh teaching pass, not a license to shorten earlier rules. Rebuild each regulatory conclusion with the same scope and conditions that made it true in the teaching section.
+
 
 ## Run an independent spoken-script review
 

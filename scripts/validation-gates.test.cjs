@@ -2038,6 +2038,44 @@ test("legacy renderer refuses an unpublished legacy package before any provider 
   assert.match(result.stderr, /valid published release timestamp/);
 });
 
+test("legacy baseline check rejects package files committed after origin main", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-legacy-baseline-test-"));
+  const trackedFile = path.join(temporary, "episodes", "core-01-test", "master-script.md");
+  const renderer = path.join(__dirname, "render_episode_audio.py");
+  const callBaselineCheck = () => childProcess.spawnSync("python3", ["-c", [
+    "import importlib.util, pathlib, sys",
+    `spec = importlib.util.spec_from_file_location('legacy_renderer', ${JSON.stringify(renderer)})`,
+    "module = importlib.util.module_from_spec(spec)",
+    "sys.modules[spec.name] = module",
+    "spec.loader.exec_module(module)",
+    "module.assert_trusted_legacy_baseline(pathlib.Path(sys.argv[1]), (pathlib.Path(sys.argv[2]),))",
+  ].join("; "), temporary, trackedFile], { encoding: "utf8" });
+  try {
+    const git = (args) => childProcess.execFileSync("git", args, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+    fs.mkdirSync(path.dirname(trackedFile), { recursive: true });
+    fs.writeFileSync(trackedFile, "original\n", "utf8");
+    git(["init", "--initial-branch=main", temporary]);
+    git(["-C", temporary, "config", "user.email", "test@example.invalid"]);
+    git(["-C", temporary, "config", "user.name", "Test"]);
+    git(["-C", temporary, "add", "--force", "episodes"]);
+    const baselineCommit = git(["-C", temporary, "commit-tree", git(["-C", temporary, "write-tree"]), "-m", "initial"]);
+    git(["-C", temporary, "update-ref", "refs/heads/main", baselineCommit]);
+    git(["-C", temporary, "update-ref", "refs/remotes/origin/main", baselineCommit]);
+    git(["-C", temporary, "switch", "-c", "revision"]);
+    const baselineCheck = callBaselineCheck();
+    assert.equal(baselineCheck.status, 0, baselineCheck.stderr);
+    fs.writeFileSync(trackedFile, "revised\n", "utf8");
+    git(["-C", temporary, "add", "--force", "episodes"]);
+    const revisionCommit = git(["-C", temporary, "commit-tree", git(["-C", temporary, "write-tree"]), "-p", baselineCommit, "-m", "revised"]);
+    git(["-C", temporary, "update-ref", "refs/heads/revision", revisionCommit]);
+    const result = callBaselineCheck();
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /unchanged from origin\/main/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("UTC RFC 3339 timestamps reject impossible calendar values", () => {
   assert.equal(utcRfc3339Timestamp("2026-02-28T23:59:59Z"), true);
   assert.equal(utcRfc3339Timestamp("2024-02-29T00:00:00.123Z"), true);

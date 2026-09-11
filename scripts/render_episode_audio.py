@@ -585,6 +585,41 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def assert_trusted_legacy_baseline(repository_root: Path, paths: tuple[Path, ...]) -> None:
+    """Require preserved package files to still match the fetched main baseline."""
+    baseline = subprocess.run(
+        ["git", "-C", str(repository_root), "rev-parse", "--verify", "origin/main^{commit}"],
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=5,
+    )
+    if baseline.returncode != 0 or not baseline.stdout.strip():
+        raise RenderError(
+            "The legacy renderer requires a locally fetched origin/main baseline to verify a preserved published package."
+        )
+    baseline_ref = baseline.stdout.strip()
+    for tracked_path in paths:
+        relative = tracked_path.relative_to(repository_root)
+        tracked = subprocess.run(
+            ["git", "-C", str(repository_root), "ls-files", "--error-unmatch", "--", str(relative)],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        unchanged = subprocess.run(
+            ["git", "-C", str(repository_root), "diff", "--quiet", baseline_ref, "--", str(relative)],
+            check=False,
+            timeout=5,
+        )
+        if tracked.returncode != 0 or unchanged.returncode != 0:
+            raise RenderError(
+                "The legacy renderer accepts only tracked historical package files unchanged from origin/main. "
+                "Start revisions with episode:script-review --reset."
+            )
+
+
 def assert_legacy_script_path(script_path: Path, episode_id: str) -> None:
     """Keep the retired renderer from bypassing current-contract render gates."""
     episode_path = script_path.parent / "episode.yaml"
@@ -635,22 +670,10 @@ def assert_legacy_script_path(script_path: Path, episode_id: str) -> None:
     if script_path.name != "master-script.md" or contract.get("episode_id") != episode_id or not package_path.name.startswith(f"{episode_id}-"):
         raise RenderError("The legacy script path, package directory, and episode.yaml id must identify the same episode.")
     release_metadata_path = episode_path.parent / legacy_release["metadata_path"]
-    for tracked_path in (script_path.resolve(), episode_path.resolve(), release_metadata_path.resolve()):
-        relative = tracked_path.relative_to(repository_root)
-        tracked = subprocess.run(
-            ["git", "-C", str(repository_root), "ls-files", "--error-unmatch", "--", str(relative)],
-            check=False,
-            capture_output=True,
-            text=True,
-            timeout=5,
-        )
-        unchanged = subprocess.run(
-            ["git", "-C", str(repository_root), "diff", "--quiet", "HEAD", "--", str(relative)],
-            check=False,
-            timeout=5,
-        )
-        if tracked.returncode != 0 or unchanged.returncode != 0:
-            raise RenderError("The legacy renderer accepts only tracked, unchanged historical package files. Start revisions with episode:script-review --reset.")
+    assert_trusted_legacy_baseline(
+        repository_root,
+        (script_path.resolve(), episode_path.resolve(), release_metadata_path.resolve()),
+    )
 
 
 def main() -> int:

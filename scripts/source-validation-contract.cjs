@@ -6,6 +6,33 @@ const path = require("path");
 const YAML = require("yaml");
 const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 
+const SOURCE_REVIEW_WHITESPACE_NORMALIZATION = "markdown-whitespace-v1";
+
+// Source relevance is about the spoken, source-tagged lesson. Keep its
+// identity insensitive to line endings, incidental trailing whitespace, and
+// whitespace-only blank lines, while preserving Markdown hard breaks and all
+// visible structure. Exact file hashes remain in input_sha256 for provenance.
+function normalizeSourceReviewMarkdown(markdown) {
+  return String(markdown)
+    .replace(/\r\n?/g, "\n")
+    .split("\n")
+    .map((line) => {
+      if (/^[\t ]*$/.test(line)) return "";
+      // Two trailing spaces are a Markdown hard break, which can change how a
+      // listener-facing paragraph is derived. Do not normalize that away.
+      return / {2,}$/.test(line) ? line : line.replace(/[\t ]+$/g, "");
+    })
+    .join("\n");
+}
+
+function sourceReviewSemanticInputHashes(episodePath) {
+  const scriptPath = path.join(episodePath, "master-script.md");
+  if (!fs.existsSync(scriptPath)) return { master_script: null };
+  return {
+    master_script: crypto.createHash("sha256").update(normalizeSourceReviewMarkdown(fs.readFileSync(scriptPath, "utf8"))).digest("hex"),
+  };
+}
+
 function sourceValidationInputHashes(episodePath) {
   const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
   return {
@@ -21,12 +48,12 @@ function sourceTagRecords(markdown) {
   const records = [];
   let section = null;
   let lastParagraph = null;
-  const lines = String(markdown).replace(/\r\n/g, "\n").split("\n");
+  const lines = normalizeSourceReviewMarkdown(markdown).split("\n");
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
     const heading = line.match(/^##\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/);
     if (heading) { section = heading[1]; lastParagraph = null; continue; }
-    if (/^\*\*[A-Z ]+:\*\*$/.test(line.trim())) { lastParagraph = null; continue; }
+    if (/^\*\*(?:INSTRUCTOR|LEARNER|ANNOUNCER)(?: \(RADIO\))?:\*\*$/.test(line.trim())) { lastParagraph = null; continue; }
     const tag = line.trim().match(/^\[Source:\s*sources\.yaml#([^\]]+)\]$/);
     if (tag) {
       records.push({ source_id: tag[1], section, line: index + 1, passage: lastParagraph });
@@ -49,12 +76,12 @@ function retrievalReviewUntaggedPassageErrors(markdown) {
     if (pendingPassage) errors.push(`Retrieval review spoken paragraph at line ${pendingPassage.line} has no source tag`);
     pendingPassage = null;
   };
-  const lines = String(markdown).replace(/\r\n/g, "\n").split("\n");
+  const lines = normalizeSourceReviewMarkdown(markdown).split("\n");
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
     const heading = line.match(/^##\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/);
     if (heading) { flush(); section = heading[1]; speaker = null; continue; }
-    const speakerLabel = line.trim().match(/^\*\*([A-Z ]+):\*\*$/);
+    const speakerLabel = line.trim().match(/^\*\*(INSTRUCTOR|LEARNER|ANNOUNCER)(?: \(RADIO\))?:\*\*$/);
     if (speakerLabel) { flush(); speaker = speakerLabel[1].trim(); continue; }
     if (/^\[Source:\s*sources\.yaml#[^\]]+\]$/.test(line.trim())) { pendingPassage = null; continue; }
     // An explicitly labeled lesson method or inference is not an external factual
@@ -185,4 +212,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { deterministicValidationResultValid, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { SOURCE_REVIEW_WHITESPACE_NORMALIZATION, deterministicValidationResultValid, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

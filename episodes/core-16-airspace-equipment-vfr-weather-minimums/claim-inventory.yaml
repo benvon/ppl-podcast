@@ -43,7 +43,7 @@ claims:
     script_sections: [Build a three-dimensional airspace picture, Match each class to its entry question]
     status: supported
   - id: class-e-g-layers
-    claim: "Class G extends from the surface to the base of overlying controlled airspace, and Class E commonly begins at 700 or 1,200 feet AGL where charted, with other Class E floors possible."
+    claim: "Class G extends from the surface to the base of overlying Class E airspace, and Class E commonly begins at 700 or 1,200 feet AGL where charted, with other Class E floors possible."
     claim_type: FAA handbook and guidance
     sources: [phak-class-e-g]
     risk: safety_critical
@@ -211,9 +211,16 @@ claims:
     script_sections: [Turn weather minimums into a usable picture, Retrieval review]
     status: supported
   - id: special-vfr-conditions
-    claim: "Except in areas where appendix D, section 3, prohibits fixed-wing Special VFR, an airplane below 10,000 feet MSL in controlled airspace designated to the surface for an airport requires an ATC clearance, remaining clear of clouds, and at least one statute mile of flight visibility; takeoff or landing requires at least one statute mile of reported ground visibility, or, when ground visibility is not reported, one statute mile of flight visibility, with visibility from the cockpit in takeoff position counting only for a Part 91 flight at a satellite airport without weather-reporting capability; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight and the airplane to meet the instrument-equipment requirements in section 91.205(d)."
+    claim: "For an airplane operating under Special VFR below 10,000 feet MSL in controlled airspace designated to the surface for an airport, the operation requires an ATC clearance, remaining clear of clouds, and at least one statute mile of flight visibility; for an airplane taking off or landing, reported ground visibility must be at least one statute mile, or, when ground visibility is not reported, flight visibility must be at least one statute mile, with visibility from the cockpit in takeoff position counting only for a Part 91 flight at a satellite airport without weather-reporting capability; for the lower-48 scenario in this episode, operation between sunset and sunrise also requires the person receiving the clearance to meet the applicable Part 61 requirements for instrument flight and the airplane to meet the instrument-equipment requirements in section 91.205(d)."
     claim_type: regulation
     sources: [ecfr-91-157-special-vfr]
+    risk: safety_critical
+    script_sections: [Use Special VFR as a separate decision, Retrieval review]
+    status: supported
+  - id: special-vfr-pilot-request
+    claim: "FAA controller guidance says that Special VFR operations may be authorized only when requested by the pilot."
+    claim_type: FAA ATC guidance
+    sources: [atc-special-vfr-pilot-request]
     risk: safety_critical
     script_sections: [Use Special VFR as a separate decision, Retrieval review]
     status: supported

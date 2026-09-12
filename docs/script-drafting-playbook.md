@@ -164,6 +164,18 @@ Avoid legalistic or adversarial phrasing such as “permission to fly.” Use th
 
 Before saying that an ACS relationship matters, state the variables in the relationship and explain how they interact in the scenario at hand. Then say what the ACS reference helps a learner do: connect variables instead of treating one measurement, cue, or rule of thumb as the complete answer.
 
+## Use the radio treatment only for quoted radio traffic
+
+When a scenario includes a brief simulated radio transmission, make it a dedicated turn and mark the existing role with `(RADIO)`:
+
+```md
+**LEARNER (RADIO):**
+
+Valley Tower, Cessna One Two Three Alpha Bravo, ten miles west, inbound for landing.
+```
+
+`(RADIO)` keeps the Learner or Instructor voice identity but applies the renderer's restrained VHF AM treatment to that turn only. It is not a fourth speaker, a source tag, or spoken text. Use it only for an actual quoted transmission or received call—not for surrounding explanation—and keep the call in its own turn so the treatment has an unambiguous boundary. The effect intentionally uses band limiting and light level control without artificial static or distortion; human listening QA decides whether it remains clear and appropriate.
+
 ## Control scope without repetitive disclaimers
 
 Keep the required production notice and source tags intact. After that, state an episode boundary once when it is helpful, then teach directly. Do not repeatedly say that the episode is not a maneuver lesson or that it cannot replace flight instruction.

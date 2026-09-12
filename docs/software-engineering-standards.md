@@ -27,7 +27,7 @@ Use the existing package operation wrapper only for commands that already mutate
 ## Required behavior
 
 - Validate the full intended collection, not a convenient sample: every required source, claim, source tag, show-notes link, handoff file, and candidate artifact.
-- Bind a report or approval to the current relevant bytes. A changed script invalidates script approval and source review; a changed audio file invalidates audio and chapter review; a changed handoff input invalidates the handoff.
+- Bind a report or approval to the current relevant bytes. A changed script invalidates script approval and source review; source review may use an explicitly documented semantic identity for incidental whitespace only, while editorial approval remains bound to exact script bytes. A changed audio file invalidates audio and chapter review; a changed handoff input invalidates the handoff.
 - Make narrow modes explicit. A shape check may say `draft package shape valid`; it must not claim release readiness or create a release seal.
 - Treat the LLM source review as a focused support check. It may block for contradiction, unsupported factual material, an incorrect locator, or a material scope mismatch. It must not create blocking findings for stylistic preferences, harmless wording alternatives, or non-material omissions.
 - Resolve material source findings by revising the source-bound prose or source mapping. If the human editor deliberately accepts a non-material limitation, record the decision in `production-log.md`; do not create a generalized machine waiver mechanism.

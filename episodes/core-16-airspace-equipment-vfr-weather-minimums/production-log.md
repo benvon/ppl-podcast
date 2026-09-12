@@ -79,3 +79,71 @@
 - Added the appendix D, section 3, fixed-wing Special VFR exception and the takeoff-or-landing ground-visibility test, including the rule's limited treatment of cockpit visibility from the takeoff position when no ground visibility is reported.
 - Regenerated the 5,534-word narration derivative.
 - Formal source relevance must be rerun cleanly before human editorial review.
+
+## 2026-09-11 — material source-review corrections
+
+- The two-pass relevance review classified only four findings as material. Corrected the Class Charlie AIM locator to include the specific Equipment and Arrival or Through Flight Entry Requirements subsections.
+- Kept the Mode C veil chart-symbol fact separate from the regulatory question of whether a particular route triggers transponder or ADS-B Out requirements.
+- Qualified the retrieval review's Class Echo weather-minimum recap to below 10,000 feet MSL.
+- Split the fixed-wing Special VFR airport restriction from the section 91.157 conditions, attributed the former to the AIM, and scoped the takeoff-and-landing visibility sentence to airplanes.
+- Version 0.1.9 regenerates the 5,790-word narration derivative and resets editorial/source-review state. The remaining partial-support notes are editorial precision notes under the safety-and-core materiality policy; they do not alter a safety decision or the lesson’s central concepts.
+- Formal source relevance requires a new, explicit authorization because the revised package has new input hashes. Human editorial review remains pending.
+
+## 2026-09-11 — formal source relevance complete
+
+- Completed the authorized two-pass source-relevance review with `gpt-5.6-terra` against the exact version 0.1.9 source ledger, claim inventory, source-tagged script, and show notes. The canonical report is `link-validation.yaml`, run `d58ff66f-af7f-40ab-9b46-7fddddfee03c`.
+- All source links, locators, claims, and source-tagged passages passed under the `safety-and-core-v1` materiality policy. The report retains one editorial note: the MOA prose says to use extreme caution while an MOA is active, while the AIM more specifically ties that caution to military activity being conducted. This is available to the human editor and does not block the lesson.
+- The package is now ready for human editorial review. No audio rendering has started.
+
+## 2026-09-12 — human editorial revision
+
+- Version 0.1.10 incorporates editorial wording changes, including explicit radio-call labels, aviation-radio class names, and an easier-to-follow Special VFR explanation.
+- Added FAA Order JO 7110.65, paragraph 7-5-1(a)(4), as the narrow source for the point that Special VFR may be authorized only when requested by the pilot. The source ledger, claim inventory, source tags, listener-facing study link, and retrieval review now all carry that same claim.
+- Regenerated `narration.md`, reset downstream review state, and require a new authorized source-relevance review before human approval or rendering.
+
+## 2026-09-12 — formal source relevance complete
+
+- Completed the authorized two-pass review with `gpt-5.6-terra` against the exact version 0.1.10 source ledger, claim inventory, source-tagged script, and show notes. The canonical report is `link-validation.yaml`, run `6ccb7443-ae3d-4bbf-a2ce-48bc3af98635`.
+- All deterministic link, locator, claim, tagged-passage, and show-notes checks passed. One pass recorded an editorial note that the AIM’s Special VFR section says Class Bravo, Charlie, Delta, and Echo surface areas rather than repeating the regulatory “designated to the surface for an airport” wording. The controlling section 91.157 source directly supports that wording, so no safety or core-lesson revision is required.
+- The package is ready for continued human editorial review. No audio rendering has started.
+
+## 2026-09-12 — validation-state correction
+
+- Normalized trailing whitespace in the source-tagged script and narration derivative. This does not change the spoken lesson, but it changes the contract’s exact script fingerprint.
+- The preceding clean source-review report remains historical evidence for the prior fingerprint. The current package correctly records source relevance as pending and requires a fresh authorized review before approval or rendering.
+- Updated the script-reset tooling so any future script reset clears current-candidate QA attestations while retaining only historical research-preflight and independent-draft-review records.
+
+## 2026-09-12 — source-review retry preparation
+
+- The authorized two-pass review completed all deterministic checks and identified one material locator mismatch: the Class Echo source combined AIM 3-2-6(b)(3), which supports the VFR entry statement, with unrelated transition-area paragraph 3-2-6(e)(3).
+- Narrowed the source-ledger and listener-facing study-link locator to AIM 3-2-6(b)(3). This is an evidence-boundary correction only; the spoken lesson, claims, and source tags are unchanged.
+- The prior authorization was consumed by the failed run. A fresh explicit authorization is required before retrying the formal source-relevance review.
+
+## 2026-09-12 — second source-review retry findings
+
+- The corrected Class Echo locator passed deterministic validation. The two-pass relevance review then identified one claim-inventory condition to clarify: the Special VFR conditions claim must state that its requirements apply when an airplane is operating under Special VFR, rather than reading as a requirement for every flight in the listed airspace.
+- The review also misclassified two established presentation patterns as material: a multi-source teaching paragraph was assessed as if each cited source had to support every sentence, and the listener-facing aviation-radio pronunciation `Class Alpha` was treated as a new regulatory airspace category rather than the spoken rendering of `Class A`. Those are validator-context defects, not reasons to change the lesson.
+- The authorization was consumed by the failed run. The source-review authorization checklist item is reset pending a fresh authorization after the claim and validator-context corrections are reviewed.
+
+## 2026-09-12 — claim-context correction
+
+- Clarified the standalone Special VFR claim inventory to state that its conditions apply to an airplane operating under Special VFR. The source-tagged script already established that context, so no spoken prose changed.
+- Tightened the source-review prompt to assess only claims assigned to the current source within a multi-source citation group and to recognize the established aviation-radio pronunciations of lettered airspace classes. This preserves the source review’s safety and core-lesson threshold without treating sourced synthesis or a listener-facing pronunciation as a contradiction.
+
+## 2026-09-12 — formal source relevance complete
+
+- Completed the authorized two-pass review with `gpt-5.6-terra` against the current Core 16 source ledger, claim inventory, source-tagged script, and show notes. The canonical report is `link-validation.yaml`, run `ba51a663-dd2a-47f3-8ef5-2b66cc5ebb7c`.
+- All deterministic links, locators, claims, show-note mappings, and source-tagged passages passed under the `safety-and-core-v1` materiality policy. The report retains one editorial note: the AIM's Special VFR discussion names the Class Bravo, Charlie, Delta, and Echo surface areas rather than repeating the regulation's broader controlled-surface-area wording. Section 91.157 directly supports that wording, so no safety or core-lesson revision is required.
+- The report records the `markdown-whitespace-v1` semantic identity for `master-script.md`, while retaining exact input hashes for provenance. Core 16 is ready for human editorial review; no audio work has started.
+
+## 2026-09-12 — radio-treatment and terminology refinement
+
+- Version 0.1.11 restores explicit `airspace`, `surface area`, and `shelf` nouns where the lesson discusses a named airspace volume, a controlled airport surface area, or the layered structure of terminal airspace. The change clarifies the spoken lesson without changing its underlying factual claims.
+- Updated the local VHF AM treatment to version 3: narrower speech bandwidth, restrained compression, and a light bit-reduction blend add communications-radio texture without introducing background hiss or static. Radio turns now instruct the voice renderer to use a brisk, intelligible delivery. Version 3 raises only that texture blend by 20 percent after listening review.
+- Regenerated `narration.md`. The resulting spoken-script revision requires fresh source relevance and editorial approval before another episode render.
+
+## 2026-09-12 — current-script source and spoken-script review complete
+
+- Corrected the Class Echo source locator and matching study-link locator to name the exact current AIM heading: `AIM 3-2-6(b)(3), Arrival or Through Flight Entry Requirements`. The source statement itself and the spoken lesson did not change.
+- Completed the authorized two-pass source-relevance review with `gpt-5.6-terra` against the exact version 0.1.11 package. The canonical report is `link-validation.yaml`, run `d00b8bc1-c0cc-4542-8c87-ccacd07c514b`. All deterministic and material relevance checks passed under the `safety-and-core-v1` policy. Two retained observations are editorial-only: the AIM names the specific Special VFR surface-area classes while the regulation supplies the broader surface-area wording, and section 91.155 cross-references section 91.157 without naming it Special VFR.
+- An independent first-listen review of the current script found no material grammar, completeness, callback, call-forward, or listening-comprehension issue. The human editor approved the current script fingerprint after the clean review.

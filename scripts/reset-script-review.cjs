@@ -78,7 +78,21 @@ function markChecklistItemsUnchecked(checklist, qaIDs) {
   ));
 }
 
-function planSourceReviewChecklist(resolved, episode, updates) {
+function resettableChecklistIDs(checklist, { preserveCurrentSourceReview = false } = {}) {
+  // These records describe whether the current candidate cleared a gate. A
+  // script reset invalidates each of them. The independent draft review and
+  // any historical preflight record remain evidence of work already done;
+  // they are not assertions that the current script has passed later gates.
+  const preserved = new Set(["claim-source-preflight", "independent-script-review"]);
+  if (preserveCurrentSourceReview) {
+    for (const qaID of ["claim-inventory", "script-source-tags", "retrieval-source-tags", "source-classification", "source-locators", "openai-source-review-authorization", "source-relevance", "show-notes-scope", "post-editorial-source-relevance"]) preserved.add(qaID);
+  }
+  return [...checklist.matchAll(/<!--\s*qa-id:\s*([^\s>]+)\s*-->/g)]
+    .map((match) => match[1])
+    .filter((qaID) => !preserved.has(qaID));
+}
+
+function planSourceReviewChecklist(resolved, episode, updates, { preserveCurrentSourceReview = false } = {}) {
   const checklistPath = path.join(resolved, "qa-checklist.md");
   if (fs.existsSync(checklistPath) && !fs.lstatSync(checklistPath).isFile()) throw new ScriptReviewStateError("qa-checklist.md must be a regular file before a script-review reset.");
   const templatePath = path.join(__dirname, "..", "templates", "qa-checklist.md");
@@ -88,7 +102,7 @@ function planSourceReviewChecklist(resolved, episode, updates) {
   if (!checklist.includes("qa-id: openai-source-review-authorization")) {
     checklist = `${checklist.trimEnd()}\n\n- [ ] Explicit current-turn authorization was received before source excerpts, claims, and tagged passages were sent to OpenAI for the \`--require-llm\` source-relevance review, and the report records that authorization with its run. <!-- qa-id: openai-source-review-authorization -->\n`;
   }
-  checklist = markChecklistItemsUnchecked(checklist, ["openai-source-review-authorization"]);
+  checklist = markChecklistItemsUnchecked(checklist, resettableChecklistIDs(checklist, { preserveCurrentSourceReview }));
   const original = fs.existsSync(checklistPath) ? fs.readFileSync(checklistPath, "utf8") : null;
   if (checklist !== original) updates.set(checklistPath, checklist);
 }
@@ -118,9 +132,15 @@ function resetScriptReviewUnlocked({ episodePath, reason = "The master script ch
   const hosting = readYaml(hostingPathname);
   const updates = new Map();
 
+  // A semantic source-review identity is deliberately narrower than exact
+  // editorial approval. Preserve source evidence only when the existing report
+  // proves every source-review input is still current, allowing only the
+  // documented whitespace normalization for master-script.md.
+  const preserveCurrentSourceReview = sourceReviewEvidenceErrors({ episodePath: resolved, episode }).length === 0;
+
   planAudioMixContract(resolved, episode, audio, updates);
   episode.source_verification = { ...(episode.source_verification || {}), validation_contract: "source-relevance-v1" };
-  planSourceReviewChecklist(resolved, episode, updates);
+  planSourceReviewChecklist(resolved, episode, updates, { preserveCurrentSourceReview });
 
   const candidate = audio.current_candidate_render;
   if (candidate?.sha256 && !audio.superseded_candidates?.some((entry) => entry.sha256 === candidate.sha256)) {
@@ -144,7 +164,9 @@ function resetScriptReviewUnlocked({ episodePath, reason = "The master script ch
   episode.runtime_actual_seconds = null;
   episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_RESET];
   episode.audio = { ...(episode.audio || {}), status: "not_rendered", publication_day_validation: "pending", chapter_markers: "pending_render" };
-  episode.source_verification = { ...(episode.source_verification || {}), status: "source_relevance_pending", verified_at_utc: null, relevance_review: "pending" };
+  if (!preserveCurrentSourceReview) {
+    episode.source_verification = { ...(episode.source_verification || {}), status: "source_relevance_pending", verified_at_utc: null, relevance_review: "pending" };
+  }
   episode.review = { ...(episode.review || {}), editorial_status: "reapproval_required", editorial_script_sha256: null, pending_script_sha256: scriptSha256 };
 
   episode.hosting = { ...(episode.hosting || {}), handoff_status: "pending_script_review" };
@@ -157,7 +179,7 @@ function resetScriptReviewUnlocked({ episodePath, reason = "The master script ch
   updates.set(audioPathname, YAML.stringify(audio));
   updates.set(hostingPathname, YAML.stringify(hosting));
   writeFiles(updates);
-  return { scriptSha256, episodePath: resolved };
+  return { scriptSha256, episodePath: resolved, sourceReviewPreserved: preserveCurrentSourceReview };
 }
 
 function resetScriptReview({ episodePath, reason = "The master script changed after its prior review.", writeFiles = writeFileSetAtomically, recoverStaleLock = false }) {
@@ -219,4 +241,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { ScriptReviewStateError, approveScriptReview, markChecklistItemsUnchecked, migratedAudioMix, parseArgs, planAudioMixContract, removeLegacyProductionStatus, resetScriptReview, sha256Text };
+module.exports = { ScriptReviewStateError, approveScriptReview, markChecklistItemsUnchecked, migratedAudioMix, parseArgs, planAudioMixContract, removeLegacyProductionStatus, resetScriptReview, resettableChecklistIDs, sha256Text };

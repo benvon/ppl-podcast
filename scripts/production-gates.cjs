@@ -9,6 +9,8 @@ const { CONTRACT_KINDS, productionContractKind, preservedProductionContract } = 
 const {
   sourceRelevanceResultValid,
   deterministicValidationResultValid,
+  SOURCE_REVIEW_WHITESPACE_NORMALIZATION,
+  sourceReviewSemanticInputHashes,
   sourceValidationInputHashes,
   utcRfc3339Timestamp,
   validationCoverageErrors,
@@ -93,7 +95,13 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   const sourceResultsByID = new Map((validation.results || []).map((result) => [result.source_id, result]));
   expect(validation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
   const currentHashes = sourceValidationInputHashes(episodePath);
-  expect(Object.entries(currentHashes).every(([name, digest]) => validation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs, including the current script and manifest bytes.");
+  const nonScriptInputsMatch = Object.entries(currentHashes)
+    .filter(([name]) => name !== "master_script")
+    .every(([name, digest]) => validation.input_sha256?.[name] === digest);
+  const exactScriptMatches = validation.input_sha256?.master_script === currentHashes.master_script;
+  const semanticScriptMatches = validation.input_normalization?.master_script === SOURCE_REVIEW_WHITESPACE_NORMALIZATION
+    && validation.semantic_input_sha256?.master_script === sourceReviewSemanticInputHashes(episodePath).master_script;
+  expect(nonScriptInputsMatch && (exactScriptMatches || semanticScriptMatches), "link-validation.yaml must be bound to the current sources, claims, show notes, and either the exact script bytes or its recorded whitespace-normalized source-review identity.");
   try { errors.push(...validationCoverageErrors(episodePath, validation)); }
   catch (error) { errors.push(`Could not verify source-review coverage: ${error.message}`); }
   expect(Array.isArray(validation.results) && validation.results.length > 0, "link validation must record source results.");

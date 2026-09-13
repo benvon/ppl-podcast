@@ -72,10 +72,10 @@ trouble_spots:
     airspace.
 source_verification:
   validation_contract: source-relevance-v1
-  status: source_relevance_pending
-  verified_at_utc: null
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-13T00:50:22.758Z
   link_validation: link-validation.yaml
-  relevance_review: pending
+  relevance_review: complete
   show_notes_manifest: show-notes-manifest.yaml
 review:
   editorial_status: reapproval_required
@@ -108,4 +108,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 75
+production_state_revision: 81

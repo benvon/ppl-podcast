@@ -162,3 +162,8 @@
 
 - Replaced the unexplained phrase “Start with the shared picture” with “First, notice where the two regulations overlap.” The opening now establishes the comparison before using it.
 - Named the two requirements in the same sentence: an altitude-reporting transponder and ADS-B Out.
+
+## 2026-09-12 — current v0.1.12 source relevance complete
+
+- Completed the authorized two-pass source-relevance review with `gpt-5.6-terra` against the current source ledger, claim inventory, source-tagged script, and show notes. The canonical report is `link-validation.yaml`, run `7a874d58-a385-462f-960f-557ba0cf0ea1`.
+- All deterministic link, locator, claim, source-tag, and show-notes mapping checks passed. Both relevance passes found no material source-support issue. The package is ready for renewed human editorial review; no audio rendering is authorized by this record.

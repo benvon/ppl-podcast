@@ -28,9 +28,9 @@ For each current-contract episode:
 
 1. Research from the ACS, the PHAK, the AFH when relevant, regulations, and FAA guidance. Build the source ledger, claim inventory, scenario source map, source-tagged script, narration, and show notes.
 2. Have an independent first-listen reviewer assess grammar, complete thoughts, callbacks, call-forwards, and whether the script works when heard rather than read. Resolve material findings.
-3. With explicit current-turn authorization, run the LLM source-relevance review on the exact source-tagged spoken passages, claims, and cited excerpts. Its purpose is to find contradictions, unsupported factual statements, locator errors, and material scope mismatches—not to request stylistic rewrites or chase harmless wording differences.
-4. Resolve material source findings and rerun the review until clean. Record any human editorial decision about a non-material limitation in `production-log.md`; do not build a machine-readable waiver mechanism.
-5. Obtain human editorial approval. If spoken factual prose, claims, sources, source tags, or show notes change, reset the script review state and repeat source relevance before rendering.
+3. With explicit current-turn authorization, run the two-pass LLM source-relevance review on the exact source-tagged spoken passages, claims, and cited excerpts. The two assessments use the same frozen package inputs; retain the union of their findings before changing the script. Its purpose is to find contradictions, unsupported factual statements, locator errors, and material scope mismatches—not to request stylistic rewrites or chase harmless wording differences. A finding is material only when it could teach an unsafe, wrong, or materially incomplete decision, rule, condition, or central lesson concept. Exact-but-nonessential legal wording is an editorial note.
+4. Resolve material source findings and rerun the two-pass review until no material findings remain. The report retains non-material editorial notes for the human editor, but they do not invalidate source review or require a rewrite. Record any human editorial decision about such a note in `production-log.md`; do not build a machine-readable waiver mechanism.
+5. Obtain human editorial approval. If spoken factual prose, claims, sources, source tags, or show notes change, reset the script review state and repeat source relevance before rendering. Incidental script whitespace—line endings, whitespace-only blank lines, or trailing horizontal whitespace that is not a Markdown hard break—does not change the source-review identity. Exact script bytes still govern editorial approval and rendered artifacts.
 
 The LLM review occurs before human editorial approval and before rendering. A pull request should verify an internally consistent, reviewed package; it must not be the first place basic source support is discovered.
 
@@ -42,6 +42,12 @@ The LLM review occurs before human editorial approval and before rendering. A pu
 - On publication day, run `sources:validate --publication-check`, then `release:prepare-publication`. The deterministic check writes `publication-link-validation.yaml`; it verifies current public links without replacing `link-validation.yaml`, the formal LLM source-relevance record. The release handoff must bind the current approved script, narration, show notes, metadata, and MP3 with deterministic identities.
 - Before staging, verify the sealed handoff rather than an episode directory path. A staging retry may reuse an object only when its checksum and byte count match the sealed handoff.
 - Do not alter historical published packages to satisfy later tooling. A deliberate episode revision starts a new current-contract candidate.
+
+### Optional VHF AM radio treatment
+
+The goal is to distinguish a short, simulated radio transmission while preserving the intelligibility of the study lesson. The authoritative input is the explicit `**INSTRUCTOR (RADIO):**` or `**LEARNER (RADIO):**` turn in the narration derivative; ordinary turns remain clean. The renderer synthesizes the underlying role normally, then applies the versioned local VHF AM filter during assembly. It records the treatment identity and filter configuration beside the affected stitch boundary and selected segment in the render manifest.
+
+The treatment has no external effect and does not make another OpenAI request. Its raw synthesized WAV remains reusable if only the local treatment changes; the changed treatment produces a new candidate MP3, whose normal audio-quality, listening, and chapter QA remain required. A missing or failed `ffmpeg` treatment fails assembly before a candidate is written. No historical candidate is remixed or reclassified merely because this optional capability exists.
 
 ## Required checks
 

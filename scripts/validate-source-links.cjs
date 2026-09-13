@@ -9,7 +9,7 @@ const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
-const { deterministicValidationResultValid, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
 const {
   PACKAGE_OPERATION_IDS,
@@ -31,15 +31,30 @@ const RETRYABLE_HTTP_STATUSES = new Set([408, 429, 502, 503, 504]);
 const RETRY_DELAY_MS = 1_000;
 const MAX_BYTES = 1_000_000;
 const MAX_HASH_BYTES = 32_000_000;
-const MAX_PDF_CITATION_BYTES = 50_000_000;
+// The current FAA Aeronautical Chart Users' Guide is about 56 MB. Keep the
+// bounded citation fetch large enough to extract a cited page from that
+// primary source without turning ordinary link checks into unbounded reads.
+const MAX_PDF_CITATION_BYTES = 64_000_000;
 const MAX_ECFR_BYTES = 2_000_000;
 const FETCH_TIMEOUT_MS = 20_000;
+// A cited page from the current Chart Users' Guide requires downloading about
+// 56 MB before PDF.js can extract that one page. Its bounded fetch therefore
+// needs a longer, still finite, allowance than an ordinary FAA HTML page.
+const PDF_CITATION_FETCH_TIMEOUT_MS = 90_000;
 const PDF_EXTRACTION_TIMEOUT_MS = 20_000;
 const ECFR_TITLES_URL = "https://www.ecfr.gov/api/versioner/v1/titles.json";
 const ECFR_MAX_IN_FLIGHT_REQUESTS = 5;
 const ECFR_MIN_START_INTERVAL_MS = 1_000;
 const MAX_ECFR_MANIFEST_REFRESHES = 3;
 const MAX_RELEVANCE_EXCERPT_CHARACTERS = 12_000;
+// Two independent assessments of the same frozen inputs improve recall before
+// any source-bound prose is changed. This is deliberately fixed rather than a
+// release-time tuning knob: a formal current-contract review has one contract.
+const LLM_REVIEW_PASS_COUNT = 2;
+// A source-review finding blocks a package only when it can change a safety
+// decision or the lesson's core teaching. Exact-but-nonessential legal wording
+// remains visible as an editorial note for the human editor.
+const LLM_MATERIALITY_POLICY = "safety-and-core-v1";
 const RELEVANCE_SCHEMA = {
   type: "object",
   additionalProperties: false,
@@ -51,9 +66,10 @@ const RELEVANCE_SCHEMA = {
     locator_assessment: {
       type: "object",
       additionalProperties: false,
-      required: ["verdict", "rationale"],
+      required: ["verdict", "finding_materiality", "rationale"],
       properties: {
         verdict: { type: "string", enum: ["supports", "partially_supports", "does_not_support", "insufficient_evidence"] },
+        finding_materiality: { type: "string", enum: ["none", "editorial", "material"] },
         rationale: { type: "string" },
       },
     },
@@ -62,10 +78,11 @@ const RELEVANCE_SCHEMA = {
       items: {
         type: "object",
         additionalProperties: false,
-        required: ["claim_id", "verdict", "rationale"],
+        required: ["claim_id", "verdict", "finding_materiality", "rationale"],
         properties: {
           claim_id: { type: "string" },
           verdict: { type: "string", enum: ["supports", "partially_supports", "does_not_support", "insufficient_evidence"] },
+          finding_materiality: { type: "string", enum: ["none", "editorial", "material"] },
           rationale: { type: "string" },
         },
       },
@@ -545,7 +562,8 @@ async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs
   if (isEcfrSource(source)) return verifyEcfrSection(source, { fetchImpl, timeoutMs, fetchCache, signal, ecfrRateLimiter });
   const citationPage = includePdfPageText ? citedPdfPageNumber(source.url) : null;
   const pdfPageFetchOptions = citationPage ? { maxBytes: MAX_PDF_CITATION_BYTES } : {};
-  const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
+  const citationFetchTimeoutMs = citationPage ? Math.max(timeoutMs, PDF_CITATION_FETCH_TIMEOUT_MS) : timeoutMs;
+  const citation = await fetchSourceCached(source.validation_url || source.url, { fetchImpl, timeoutMs: citationFetchTimeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
   citation.citation_url = source.url;
   citation.validation_url = source.validation_url || source.url;
   citation.errors = linkResponseErrors(source.validation_url || source.url, citation);
@@ -555,7 +573,7 @@ async function verifyProgrammaticFallback(source, { fetchImpl = fetch, timeoutMs
     return { link, citation_link: link, content_attestation: { valid: true, status: "not_configured" } };
   }
 
-  const programmatic = await fetchSourceCached(source.programmatic_url, { fetchImpl, timeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
+  const programmatic = await fetchSourceCached(source.programmatic_url, { fetchImpl, timeoutMs: citationFetchTimeoutMs, includeContentHash: true, includePdfBytes: Boolean(citationPage), ...pdfPageFetchOptions, signal }, fetchCache);
   programmatic.errors = linkResponseErrors(source.programmatic_url, programmatic);
   programmatic.valid = programmatic.errors.length === 0;
   const attestationConfig = source.programmatic_attestation;
@@ -621,7 +639,7 @@ async function assessRelevance({ model, source, claims, authoredPassages = [], f
   };
   const body = {
     model,
-    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. Report only a contradiction, unsupported factual statement, incorrect locator, or material scope mismatch. Do not request a stylistic rewrite, a harmless wording alternative, or a non-material omission. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: distinct factual statements in that passage may be supported by separately tagged sources. For every listed claim, decide whether this source excerpt supports that claim and whether the corresponding statement in the cited passage preserves the claim's material conditions and limitations. A claim supports only when both are true; an omitted material condition makes it partially_supports. Do not require this one source to support statements assigned to another source tag in the same citation group. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
+    instructions: "You assess citation relevance for a private-pilot study resource. Use only the supplied source excerpt, listed claims, and source-tagged authored passages. Do not infer missing facts. Report only a contradiction, unsupported factual statement, incorrect locator, or scope mismatch. Do not request a stylistic rewrite, a harmless wording alternative, or a non-material omission. For every locator and claim assessment, set finding_materiality to none when it supports; editorial when a qualification would improve precision but does not change a safety decision or the lesson's core teaching; or material when the finding could teach an unsafe, wrong, or materially incomplete decision, rule, condition, or central concept. An incorrect locator is material. When cited_pdf_page is present, the excerpt was extracted from that exact PDF page; assess the locator and claims against that page only, not the document generally. A source-tagged passage can be a citation group: the entire passage is context, but this assessment may evaluate only the listed claims and the exact statements needed to state those claims' material conditions. Never create a finding about another factual statement in the group merely because it has a different source tag. The validator combines the claim assessments from every tagged source before it accepts the cited passage. Listener-facing aviation-radio phonetics are not different regulatory categories: Class Alpha means Class A, Class Bravo means Class B, Class Charlie means Class C, Class Delta means Class D, Class Echo means Class E, and Class Golf means Class G. Set the overall verdict from the listed claims and locator only. This is an advisory relevance classification, not flight instruction or a factual source of authority.",
     input: JSON.stringify(input),
     text: { format: { type: "json_schema", name: "source_relevance", strict: true, schema: RELEVANCE_SCHEMA } },
   };
@@ -875,7 +893,7 @@ function validateClaimMappings(ledger, claimInventory) {
 }
 
 function validateClaimAssessments(relevance, expectedClaimIds) {
-  if (!relevance || relevance.status !== "assessed") return { valid: false, reason: "LLM relevance was not assessed", missing_assessment_ids: expectedClaimIds, unexpected_assessment_ids: [], duplicate_assessment_ids: [], unsupported_assessment_ids: [] };
+  if (!relevance || relevance.status !== "assessed") return { valid: false, reason: "LLM relevance was not assessed", missing_assessment_ids: expectedClaimIds, unexpected_assessment_ids: [], duplicate_assessment_ids: [], unsupported_assessment_ids: [], material_unsupported_assessment_ids: [], editorial_note_assessment_ids: [] };
   const assessments = relevance.assessment.claim_assessments || [];
   const counts = new Map();
   for (const assessment of assessments) counts.set(assessment.claim_id, (counts.get(assessment.claim_id) || 0) + 1);
@@ -884,7 +902,19 @@ function validateClaimAssessments(relevance, expectedClaimIds) {
   const unexpected = assessments.map((assessment) => assessment.claim_id).filter((claimId) => !expected.has(claimId));
   const duplicate = [...counts].filter(([, count]) => count > 1).map(([claimId]) => claimId);
   const unsupported = assessments.filter((assessment) => expected.has(assessment.claim_id) && assessment.verdict !== "supports").map((assessment) => assessment.claim_id);
-  return { valid: !missing.length && !unexpected.length && !duplicate.length && !unsupported.length, missing_assessment_ids: missing, unexpected_assessment_ids: unexpected, duplicate_assessment_ids: duplicate, unsupported_assessment_ids: unsupported };
+  const materialUnsupported = assessments.filter((assessment) => expected.has(assessment.claim_id) && claimAssessmentBlocksSourceRelease(assessment)).map((assessment) => assessment.claim_id);
+  const editorialNotes = assessments.filter((assessment) => expected.has(assessment.claim_id) && assessment.verdict === "partially_supports" && assessment.finding_materiality === "editorial").map((assessment) => assessment.claim_id);
+  return { valid: !missing.length && !unexpected.length && !duplicate.length && !materialUnsupported.length, missing_assessment_ids: missing, unexpected_assessment_ids: unexpected, duplicate_assessment_ids: duplicate, unsupported_assessment_ids: unsupported, material_unsupported_assessment_ids: materialUnsupported, editorial_note_assessment_ids: editorialNotes };
+}
+
+function validateRelevanceReviews(reviews, expectedClaimIds) {
+  const normalized = Array.isArray(reviews) ? reviews : [];
+  const assessments = normalized.map((review) => validateClaimAssessments(review, expectedClaimIds));
+  return {
+    valid: normalized.length === LLM_REVIEW_PASS_COUNT && assessments.every((assessment) => assessment.valid),
+    review_count: normalized.length,
+    reviews: assessments,
+  };
 }
 
 function markdownHttpsLinks(markdown) {
@@ -1042,6 +1072,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     return;
   }
   const inputSha256 = sourceValidationInputHashes(episodePath);
+  const semanticInputSha256 = sourceReviewSemanticInputHashes(episodePath);
   let validationRun;
     validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
     let authorization = null;
@@ -1059,7 +1090,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
     reportMappingErrors(claimMapping, showNotesMapping);
     for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_WHITESPACE_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
     const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, "failed", null, lifecycleLease); } });
     progress.emit("report_written", { valid: false });
     console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
@@ -1078,6 +1109,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
         validation_kind: "formal_source_review",
         checked_at_utc: new Date().toISOString(),
         input_sha256: inputSha256,
+        input_normalization: { master_script: SOURCE_REVIEW_WHITESPACE_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION },
+        semantic_input_sha256: semanticInputSha256,
         failure: {
           reason: "eCFR source dates changed repeatedly before validation could complete.",
           refreshed_source_count: refreshedEcfrSources.length,
@@ -1138,29 +1171,49 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   progress.phaseCompleted();
   if (isCancelled()) throw new ValidationCancelledError("Source validation was cancelled during deterministic validation.");
   const deterministicValid = masterScriptMapping.valid && results.every(deterministicEntryValid) && showNotesResults.every(deterministicEntryValid);
-  if (options.llm && deterministicValid) progress.phaseStarted("llm_relevance", results.length);
-  await mapConcurrent(results, options.llm && deterministicValid ? options.llmConcurrency : 1, async (entry, index) => {
-    const source = ledger.sources[index];
-    const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
-    if (!options.llm) {
-      entry.relevance = { status: "not_requested" };
-      entry.claim_assessments = { valid: null, status: "not_requested" };
-    } else if (!deterministicValid) {
-      entry.relevance = { status: "not_assessed", reason: "LLM relevance was not requested because deterministic source validation failed." };
-      entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
-    } else if (!linkedClaims.length) {
-      entry.relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
-      entry.claim_assessments = validateClaimAssessments(entry.relevance, []);
-    } else {
-      try { entry.relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, authoredPassages: masterScriptMapping.passages_by_source[source.id] || [], fetched: entry.link, fetchImpl, signal: cancellation.signal }); }
-      catch (error) { entry.relevance = { status: "not_assessed", reason: `LLM relevance failed: ${error.message}` }; }
-      entry.claim_assessments = validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id));
+  if (options.llm && deterministicValid) {
+    const reviewJobs = results.flatMap((entry, index) => Array.from({ length: LLM_REVIEW_PASS_COUNT }, (_, passIndex) => ({ entry, index, passIndex })));
+    for (const entry of results) entry.relevance_reviews = new Array(LLM_REVIEW_PASS_COUNT);
+    progress.phaseStarted("llm_relevance", reviewJobs.length);
+    await mapConcurrent(reviewJobs, options.llmConcurrency, async ({ entry, index, passIndex }) => {
+      const source = ledger.sources[index];
+      const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
+      let relevance;
+      if (!linkedClaims.length) relevance = { status: "not_assessed", reason: "No mapped claims for this source." };
+      else {
+        try { relevance = await assessRelevance({ model: options.model, source, claims: linkedClaims, authoredPassages: masterScriptMapping.passages_by_source[source.id] || [], fetched: entry.link, fetchImpl, signal: cancellation.signal }); }
+        catch (error) { relevance = { status: "not_assessed", reason: `LLM relevance failed: ${error.message}` }; }
+      }
+      entry.relevance_reviews[passIndex] = { pass: passIndex + 1, ...relevance };
+      return { source_id: source.id, relevance };
+    }, { signal: cancellation.signal, onCompleted: (result) => progress.itemCompleted(result.source_id, result.relevance.status === "assessed") });
+    for (const entry of results) {
+      // `relevance` remains a first-pass compatibility projection for older
+      // report readers. Release gates use every retained review below.
+      entry.relevance = entry.relevance_reviews[0];
+      entry.claim_assessments = validateRelevanceReviews(entry.relevance_reviews, entry.linked_claim_ids);
     }
-    return entry;
-  }, { signal: cancellation.signal, onCompleted: (entry) => { if (options.llm && deterministicValid) progress.itemCompleted(entry.source_id, entry.relevance.status === "assessed"); } });
+  } else {
+    await mapConcurrent(results, 1, async (entry, index) => {
+      const source = ledger.sources[index];
+      const linkedClaims = source.supports_claims.map((id) => claimsById.get(id)).filter(Boolean);
+      entry.relevance = options.llm
+        ? { status: "not_assessed", reason: "LLM relevance was not requested because deterministic source validation failed." }
+        : { status: "not_requested" };
+      entry.claim_assessments = options.llm
+        ? validateClaimAssessments(entry.relevance, linkedClaims.map((claim) => claim.id))
+        : { valid: null, status: "not_requested" };
+      return entry;
+    }, { signal: cancellation.signal });
+  }
   if (options.llm && deterministicValid) progress.phaseCompleted();
   if (isCancelled()) throw new ValidationCancelledError("Source validation was cancelled during relevance review.");
-  for (const entry of results) console.log(`${entry.source_id}: ${entry.link.valid ? "link OK" : "link FAILED"}${entry.relevance.status === "assessed" ? `; relevance ${entry.relevance.assessment.verdict}` : ""}`);
+  for (const entry of results) {
+    const reviewSummary = Array.isArray(entry.relevance_reviews)
+      ? entry.relevance_reviews.map((review) => `pass ${review.pass}: ${review.status === "assessed" ? review.assessment.verdict : review.status}`).join(", ")
+      : entry.relevance.status === "assessed" ? entry.relevance.assessment.verdict : entry.relevance.status;
+    console.log(`${entry.source_id}: ${entry.link.valid ? "link OK" : "link FAILED"}; relevance ${reviewSummary}`);
+  }
   const reportResults = results.map((result) => ({
     ...result,
     link: publicLinkRecord(result.link),
@@ -1168,7 +1221,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_WHITESPACE_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, llm_review_passes: options.llm ? LLM_REVIEW_PASS_COUNT : 0, llm_materiality_policy: options.llm ? LLM_MATERIALITY_POLICY : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
   const terminalOutcome = sourceValidationTerminalOutcome({ unresolved, requireLlm: options.requireLlm });
   const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, terminalOutcome, report.checked_at_utc, lifecycleLease); } });

@@ -12,8 +12,9 @@ const YAML = require("yaml");
 const { MAX_RELEVANCE_EXCERPT_CHARACTERS, ValidationCancelledError, applyVerificationEvidence, assessRelevance, completeValidationReport, consumeSourceReviewAuthorization, deterministicEntryValid, extractPdfPageText, failedValidationAttemptPath, fetchSource, fetchSourceCached, htmlFragmentText, linkResponseErrors, markValidationInProgress, refreshEcfrManifestDates, relevanceExcerpt, runOwnedValidation, runWithEcfrRateLimiter, runWithEcfrRefreshes, sourceValidationTerminalOutcome, updateEpisodeSourceState, validateClaimAssessments, validateClaimMappings, validateOnce, validateShowNotesMappings, validationFailurePath, validationInProgressPath, validationRecoveryPath, validationTargetErrors, verifyEcfrSection, verifyProgrammaticFallback } = require("./validate-source-links.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
-const { REQUIRED_NOTICE, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
+const { REQUIRED_NOTICE, acquireAssemblyReservation, applyAudioTreatmentPcm, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput } = require("./render_episode_realtime.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
+const { audioTreatmentManifestRecord } = require("./audio-treatment.cjs");
 const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, episodeDisplayLabel, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
@@ -25,7 +26,7 @@ const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
-const { retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { MALFORMED_LOCK_RECOVERY_GRACE_MS, PACKAGE_OPERATION_COMMANDS, PACKAGE_OPERATION_IDS, PACKAGE_OPERATIONS, acquireEpisodePackageOperation, assertEpisodePackageOperation, releaseEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 function source(id, supportsClaims) {
@@ -55,7 +56,8 @@ function writePassingSourceGate(episodePath, episode) {
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), "- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
-  const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports" }] } }, claim_assessments: { valid: true } };
+  const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports", finding_materiality: "none" }] } };
+  const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } };
   const sourceReviewRunID = crypto.randomUUID();
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({
     schema_version: 1,
@@ -64,6 +66,8 @@ function writePassingSourceGate(episodePath, episode) {
     checked_at_utc: checkedAt,
     llm_requested: true,
     llm_model: "test-model",
+    llm_review_passes: 2,
+    llm_materiality_policy: "safety-and-core-v1",
     authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: checkedAt, run_id: sourceReviewRunID },
     claim_mapping: { valid: true },
     master_script_mapping: { valid: true, source_tag_count: 0, claim_coverage_count: 0 },
@@ -71,6 +75,8 @@ function writePassingSourceGate(episodePath, episode) {
     show_notes_results: [],
     results: [result],
     input_sha256: sourceValidationInputHashes(episodePath),
+    input_normalization: { master_script: "markdown-whitespace-v1" },
+    semantic_input_sha256: sourceReviewSemanticInputHashes(episodePath),
   }), "utf8");
   episode.source_verification = { ...episode.source_verification, validation_contract: "source-relevance-v1", status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: checkedAt, link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" };
   fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify(episode), "utf8");
@@ -313,6 +319,14 @@ test("script-review reset invalidates downstream state and approval fingerprints
     fs.writeFileSync(path.join(temporary, "episode.yaml"), YAML.stringify({ status: "ready_for_hosting_pr", runtime_actual_seconds: 12, audio: { status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", chapter_markers: "embedded_and_ffprobe_validated" }, hosting: { handoff_status: "ready_for_hosting_pr" }, source_verification: { status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: "2026-01-01T00:00:00Z" }, review: { editorial_status: "script_approved", editorial_script_sha256: "old" } }));
     fs.writeFileSync(path.join(temporary, "audio-manifest.yaml"), YAML.stringify({ status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", required_before_release: ["Stage the audio."], current_candidate_render: { sha256: "a".repeat(64) }, chapter_markers: { status: "embedded_and_ffprobe_validated", audio_sha256: "a".repeat(64), review_page: "candidate.html" } }));
     fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), YAML.stringify({ handoff_status: "ready_for_hosting_pr", release_readiness: { remaining_release_gates: ["Stage the audio."] }, publisher_release: {} }));
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), [
+      "- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->",
+      "- [x] Source relevance passed. <!-- qa-id: source-relevance -->",
+      "- [x] Human editorial pass passed. <!-- qa-id: human-editorial -->",
+      "- [x] Audio listening passed. <!-- qa-id: audio-listening -->",
+      "- [x] Independent draft review passed. <!-- qa-id: independent-script-review -->",
+      "- [x] Research preflight passed. <!-- qa-id: claim-source-preflight -->",
+    ].join("\n"));
 
     const reset = resetScriptReview({ episodePath: temporary, reason: "Changed spoken lesson." });
     const episodeAfterReset = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
@@ -338,7 +352,12 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(audioAfterReset.chapter_markers.status, undefined);
     assert.equal(fs.existsSync(path.join(temporary, "claim-source-preflight.yaml")), false);
     const migratedChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
-    assert.doesNotMatch(migratedChecklist, /qa-id: claim-source-preflight/);
+    assert.match(migratedChecklist, /- \[x\] Research preflight passed\. <!-- qa-id: claim-source-preflight -->/);
+    assert.match(migratedChecklist, /- \[ \] Source review authorization\. <!-- qa-id: openai-source-review-authorization -->/);
+    assert.match(migratedChecklist, /- \[ \] Source relevance passed\. <!-- qa-id: source-relevance -->/);
+    assert.match(migratedChecklist, /- \[ \] Human editorial pass passed\. <!-- qa-id: human-editorial -->/);
+    assert.match(migratedChecklist, /- \[ \] Audio listening passed\. <!-- qa-id: audio-listening -->/);
+    assert.match(migratedChecklist, /- \[x\] Independent draft review passed\. <!-- qa-id: independent-script-review -->/);
     const hostingAfterReset = YAML.parse(fs.readFileSync(path.join(temporary, "hosting-metadata.yaml"), "utf8"));
     assert.equal(hostingAfterReset.handoff_status, undefined);
     assert.equal(hostingAfterReset.release_readiness, undefined);
@@ -356,9 +375,27 @@ test("script-review reset invalidates downstream state and approval fingerprints
     assert.equal(approved.review.editorial_script_sha256, sha256Text(migratedScript));
     assert.equal(approved.review.pending_script_sha256, undefined);
     assert.deepEqual(approved.release_gates_remaining, RELEASE_GATES_AFTER_SCRIPT_APPROVAL);
+
+    const approvedScript = fs.readFileSync(path.join(temporary, "master-script.md"), "utf8");
+    fs.writeFileSync(path.join(temporary, "master-script.md"), approvedScript.replace("Changed spoken lesson.\n", "Changed spoken lesson. \n"));
+    resetScriptReview({ episodePath: temporary, reason: "Removed incidental trailing whitespace." });
+    const whitespaceReset = YAML.parse(fs.readFileSync(path.join(temporary, "episode.yaml"), "utf8"));
+    const whitespaceChecklist = fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8");
+    assert.equal(whitespaceReset.source_verification.status, "source_relevance_complete");
+    assert.equal(whitespaceReset.source_verification.relevance_review, "complete");
+    assert.match(whitespaceChecklist, /- \[x\] Source review authorization\. <!-- qa-id: openai-source-review-authorization -->/);
+    assert.equal(whitespaceReset.review.editorial_status, "reapproval_required");
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
+});
+
+test("source-review semantic identity ignores only incidental Markdown whitespace", () => {
+  const original = "# Lesson\r\n\r\nA source-tagged paragraph. \r\n\t\r\n";
+  const equivalent = "# Lesson\n\nA source-tagged paragraph.\n\n";
+  assert.equal(normalizeSourceReviewMarkdown(original), equivalent);
+  assert.equal(normalizeSourceReviewMarkdown("A hard break.  \n"), "A hard break.  \n");
+  assert.notEqual(normalizeSourceReviewMarkdown("A changed lesson.\n"), normalizeSourceReviewMarkdown("A different lesson.\n"));
 });
 
 test("historical music metadata migrates to the explicit series mix contract", () => {
@@ -500,6 +537,7 @@ test("the show-notes template leaves the single production disclosure to hosting
   const template = fs.readFileSync(path.join(__dirname, "..", "templates", "show-notes.md"), "utf8");
   const checklist = fs.readFileSync(path.join(__dirname, "..", "templates", "qa-checklist.md"), "utf8");
   assert.doesNotMatch(template, /^## Production notice\b/im);
+  assert.doesNotMatch(template, /^\*\*Source verification:\*\*/im);
   assert.match(checklist, /show notes contain study links and synopsis only/i);
 });
 
@@ -551,7 +589,17 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
   const inputSha256 = sourceValidationInputHashes(episodePath);
-  const linkValidation = () => { const runID = crypto.randomUUID(); return { schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }], results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } }] }; };
+  const linkValidation = () => {
+    const runID = crypto.randomUUID();
+    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+    return {
+      schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", llm_review_passes: 2, llm_materiality_policy: "safety-and-core-v1",
+      authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256,
+      claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true },
+      show_notes_results: [{ id: "note-a", url: sourceUrl, source_id: "source-a", claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }],
+      results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } }],
+    };
+  };
   const publicationLinkValidation = () => ({
     schema_version: 1,
     validator: "scripts/validate-source-links.cjs",
@@ -994,19 +1042,61 @@ test("PDF page extraction reads only the page named by the citation", async () =
   assert.equal(text, "Load Factors in Steep Turns");
 });
 
-test("PDF page citations can use the bounded large-document limit", async () => {
-  const link = await fetchSource("https://www.faa.gov/example.pdf#page=448", {
-    includePdfBytes: true,
-    maxBytes: 50_000_000,
+test("PDF page citations can use the bounded limit for the current FAA Chart Users' Guide", async () => {
+  const verification = await verifyProgrammaticFallback({
+    url: "https://www.faa.gov/example.pdf#page=17",
+    locator: "PDF p. 17",
+  }, {
+    includePdfPageText: true,
+    fetchCache: new Map(),
     fetchImpl: async () => ({
       status: 200,
-      headers: new Headers({ "content-type": "application/pdf", "content-length": "41049516" }),
+      headers: new Headers({ "content-type": "application/pdf", "content-length": "56002392" }),
       body: new ReadableStream({ start(controller) { controller.enqueue(new Uint8Array([1])); controller.close(); } }),
+    }),
+    pdfjsLoader: async () => ({
+      getDocument: () => ({
+        promise: Promise.resolve({
+          numPages: 20,
+          getPage: async () => ({ getTextContent: async () => ({ items: [{ str: "VFR airspace symbols" }] }) }),
+        }),
+        destroy: async () => {},
+      }),
     }),
   });
 
-  assert.deepEqual(link.pdf_bytes, Buffer.from([1]));
-  assert.equal(link.truncated, false);
+  assert.equal(verification.link.valid, true);
+  assert.equal(verification.link.truncated, false);
+  assert.equal(verification.link.pdf_page_text, "VFR airspace symbols");
+});
+
+test("PDF page citations retain a bounded large-file fetch allowance", async () => {
+  const verification = await verifyProgrammaticFallback({
+    url: "https://www.faa.gov/example.pdf#page=17",
+    locator: "PDF p. 17",
+  }, {
+    // This deliberately shorter caller timeout must not abort a supported
+    // large PDF while its cited page is being fetched.
+    timeoutMs: 1,
+    includePdfPageText: true,
+    fetchCache: new Map(),
+    fetchImpl: (_url, { signal }) => new Promise((resolve, reject) => {
+      const timer = setTimeout(() => resolve(new Response(Buffer.from("pdf"), { status: 200, headers: { "content-type": "application/pdf" } })), 20);
+      signal.addEventListener("abort", () => { clearTimeout(timer); reject(new DOMException("aborted", "AbortError")); }, { once: true });
+    }),
+    pdfjsLoader: async () => ({
+      getDocument: () => ({
+        promise: Promise.resolve({
+          numPages: 20,
+          getPage: async () => ({ getTextContent: async () => ({ items: [{ str: "VFR airspace symbols" }] }) }),
+        }),
+        destroy: async () => {},
+      }),
+    }),
+  });
+
+  assert.equal(verification.link.valid, true);
+  assert.equal(verification.link.pdf_page_text, "VFR airspace symbols");
 });
 
 test("HTML fragment citations assess the referenced definition instead of a long page prefix", () => {
@@ -1204,11 +1294,113 @@ test("per-claim relevance fails closed on a partially supporting assessment", ()
   assert.deepEqual(result.unsupported_assessment_ids, ["claim-a"]);
 });
 
+test("per-claim relevance retains an editorial precision note without blocking release", () => {
+  const result = validateClaimAssessments(
+    { status: "assessed", assessment: { verdict: "partially_supports", claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports", finding_materiality: "editorial" }] } },
+    ["claim-a"],
+  );
+  assert.equal(result.valid, true);
+  assert.deepEqual(result.material_unsupported_assessment_ids, []);
+  assert.deepEqual(result.editorial_note_assessment_ids, ["claim-a"]);
+});
+
+test("per-claim relevance never treats missing source support as an editorial note", () => {
+  const result = validateClaimAssessments(
+    { status: "assessed", assessment: { verdict: "does_not_support", claim_assessments: [{ claim_id: "claim-a", verdict: "does_not_support", finding_materiality: "editorial" }] } },
+    ["claim-a"],
+  );
+  assert.equal(result.valid, false);
+  assert.deepEqual(result.material_unsupported_assessment_ids, ["claim-a"]);
+  assert.deepEqual(result.editorial_note_assessment_ids, []);
+});
+
+test("per-claim relevance rejects a materially flagged supporting assessment", () => {
+  const result = validateClaimAssessments(
+    { status: "assessed", assessment: { verdict: "supports", claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "material" }] } },
+    ["claim-a"],
+  );
+  assert.equal(result.valid, false);
+  assert.deepEqual(result.material_unsupported_assessment_ids, ["claim-a"]);
+});
+
 test("citation-group relevance accepts an aggregate partial verdict when every mapped claim and locator supports", () => {
-  const result = { linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
+  const result = { linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } }, claim_assessments: { valid: true } };
   assert.equal(sourceRelevanceResultValid(result), true);
   assert.equal(sourceRelevanceResultValid({ ...result, claim_assessments: { valid: false } }), false);
   assert.equal(sourceRelevanceResultValid({ ...result, relevance: { ...result.relevance, assessment: { ...result.relevance.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } } }), false);
+});
+
+test("current relevance records require two supporting independent assessments", () => {
+  const review = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), true);
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance_reviews: result.relevance_reviews.slice(0, 1) }), false);
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance_reviews: [result.relevance_reviews[0], { pass: 2, ...review, assessment: { ...review.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } }] }), false);
+});
+
+test("current relevance records retain non-material precision notes without treating them as source failures", () => {
+  const review = { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports", finding_materiality: "editorial" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), true);
+});
+
+test("current relevance records reject editorially labeled missing source support", () => {
+  const review = { status: "assessed", assessment: { verdict: "does_not_support", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "does_not_support", finding_materiality: "editorial" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), false);
+});
+
+test("current relevance records reject internally inconsistent supporting assessments", () => {
+  const review = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "material" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), false);
+  const locatorConflict = { ...review, assessment: { ...review.assessment, locator_assessment: { verdict: "supports", finding_materiality: "material" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance: locatorConflict, relevance_reviews: [{ pass: 1, ...locatorConflict }, { pass: 2, ...locatorConflict }] }), false);
+});
+
+test("show-notes source identity ignores only fact-check verification-status cells", () => {
+  const pending = [
+    "## Fact-check and source material",
+    "",
+    "| Topic | Source type | Authoritative source | Locator | Verified |",
+    "| --- | --- | --- | --- | --- |",
+    "| Class B entry | Regulation | [14 CFR 91.131](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.131) | 14 CFR 91.131(a)(1) | Pending formal review |",
+  ].join("\n");
+  const verified = pending.replace("Pending formal review", "2026-09-12");
+  const changedLocator = verified.replace("91.131(a)(1)", "91.131(b)");
+  assert.equal(normalizeShowNotesSourceReviewMarkdown(pending), normalizeShowNotesSourceReviewMarkdown(verified));
+  assert.notEqual(normalizeShowNotesSourceReviewMarkdown(verified), normalizeShowNotesSourceReviewMarkdown(changedLocator));
+});
+
+test("current relevance records never downgrade a locator problem to an editorial note", () => {
+  const review = { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "partially_supports", finding_materiality: "editorial" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), false);
 });
 
 test("source fetch timeout remains active while the response body is read", async () => {
@@ -1313,6 +1505,8 @@ test("source relevance assesses freshly fetched text instead of a ledger excerpt
     assert.match(request.input, /Canonical claim text/);
     assert.match(request.input, /\"type\":\"guidance\"/);
     assert.match(request.instructions, /citation group/);
+    assert.match(request.instructions, /may evaluate only the listed claims/);
+    assert.match(request.instructions, /Class Alpha means Class A/);
     assert.match(request.instructions, /combines the claim assessments from every tagged source/);
     assert.match(request.instructions, /Do not request a stylistic rewrite/);
     assert.match(request.instructions, /non-material omission/);
@@ -2010,6 +2204,34 @@ test("realtime renderer accepts an Announcer turn", () => {
   }
 });
 
+test("radio turns remain an existing speaker with an explicit VHF AM treatment", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-radio-turn-test-"));
+  const scriptPath = path.join(temporary, "narration.md");
+  fs.writeFileSync(scriptPath, `# Test\n\n## Opening\n\n**INSTRUCTOR:**\n\nCold open.\n\n## Disclaimer\n\n**INSTRUCTOR:**\n\n${REQUIRED_NOTICE}\n\n## Lesson\n\n**LEARNER (RADIO):**\n\nValley Tower, Cessna One Two Three.\n\n**LEARNER:**\n\nThat was the radio call.\n`);
+  try {
+    const segments = parseScript(scriptPath, 240);
+    assert.deepEqual(segments.slice(-2).map((segment) => [segment.speaker, segment.audioTreatment]), [["LEARNER", "vhf-am"], ["LEARNER", "clean"]]);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("VHF AM treatment provenance is explicit and versioned", () => {
+  assert.deepEqual(audioTreatmentManifestRecord("vhf-am"), {
+    id: "vhf-am",
+      version: 3,
+      filter: "highpass=f=400,lowpass=f=2600,acompressor=threshold=-20dB:ratio=3:attack=10:release=120:makeup=2,acrusher=bits=10:mix=0.264:mode=lin:aa=0,alimiter=limit=0.86:level=disabled",
+  });
+});
+
+test("radio speaker labels preserve source-tag and retrieval-review boundaries", () => {
+  const script = "# Test\n\n## Retrieval review\n\n**LEARNER (RADIO):**\n\nCessna One Two Three.\n\n[Source: sources.yaml#test]\n";
+  const records = sourceTagRecords(script);
+  assert.equal(records.length, 1);
+  assert.equal(records[0].passage, "Cessna One Two Three.");
+  assert.deepEqual(retrievalReviewUntaggedPassageErrors(script), []);
+});
+
 test("realtime renderer requires the current narration derivative", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-narration-input-test-"));
   const masterPath = path.join(temporary, "master-script.md");
@@ -2038,11 +2260,12 @@ test("realtime renderer requires completed source-relevance review before render
   fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   const inputSha256 = sourceValidationInputHashes(temporary);
-  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "test-model", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
+  const validation = (results) => { const runID = crypto.randomUUID(); return YAML.stringify({ schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-09-10T00:00:00Z", llm_requested: true, llm_model: "test-model", llm_review_passes: 2, llm_materiality_policy: "safety-and-core-v1", authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-09-10T00:00:00Z", run_id: runID }, claim_mapping: { valid: true }, master_script_mapping: { valid: true, status: "not_configured", source_tag_count: 0, claim_coverage_count: 0 }, show_notes_mapping: { valid: true }, input_sha256: inputSha256, results, show_notes_results: [] }); };
   fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
   fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
   try {
-    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
+    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+    const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } };
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ ...passingResult, link: { valid: false } }]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /source- and claim-level relevance assessments/);
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([passingResult]), "utf8");
@@ -2357,6 +2580,8 @@ test("legacy renderer refuses scripts outside a preserved package", () => {
 });
 
 test("realtime renderer preserves untreated familiar initialisms while applying narrow phonetic corrections", () => {
+  assert.equal(spokenText("Class A begins at 18,000 feet MSL."), "Class Alpha begins at 18,000 feet MSL.");
+  assert.equal(spokenText("An MOA may contain military activity; nearby MOAs require the same attention."), "An moah may contain military activity; nearby moahs require the same attention.");
   assert.equal(spokenText("The A-I-M, often referred to as the AIM, supports the PHAK."), "The A-I-M, often referred to as the aim, supports the pee hack.");
   assert.equal(spokenText("The PHAK says AI-assisted production is reviewed by an MEL."), "The pee hack says artificial intelligence-assisted production is reviewed by an MEL.");
   assert.equal(spokenText("ASOS, AWOS, and ATIS report airport weather."), "AY-sohs, AY-wahs, and AY-tis report airport weather.");
@@ -2370,6 +2595,7 @@ test("realtime renderer preserves untreated familiar initialisms while applying 
   assert.match(pronunciationGuidance("A SPECI can follow a METAR."), /one connected word/);
   assert.equal(pronunciationGuidance("The loading limit is within range."), "");
   assert.match(segmentInstruction({ speaker: "INSTRUCTOR", text: "The CG envelope is within limits." }, "No adjacent dialogue."), /Do not say this instruction aloud/);
+  assert.match(segmentInstruction({ speaker: "INSTRUCTOR", audioTreatment: "vhf-am", text: "Valley Tower, Cessna One Two Three." }, "No adjacent dialogue."), /noticeably quicker pace/);
 });
 
 test("MP3 chapters use the rendered section boundaries and preserve readable headings", () => {
@@ -2580,6 +2806,17 @@ test("stitch fade tapers complete PCM segments to silence", () => {
   assert.equal(faded.readInt16LE(0), 0);
   assert.equal(faded.readInt16LE(faded.length - 2), 0);
   assert.equal(pcm.readInt16LE(0), 20_000);
+});
+
+test("VHF AM treatment locally transforms PCM without changing its format", () => {
+  // More than Node's default 1 MiB child-process buffer: a normal long
+  // narration turn must not fail merely because it received local treatment.
+  const frames = 600_000;
+  const pcm = Buffer.alloc(frames * 2);
+  for (let frame = 0; frame < frames; frame += 1) pcm.writeInt16LE(Math.round(16_000 * Math.sin(2 * Math.PI * 100 * frame / 24_000)), frame * 2);
+  const treated = applyAudioTreatmentPcm(pcm, "vhf-am");
+  assert.equal(treated.length, pcm.length);
+  assert.notDeepEqual(treated, pcm);
 });
 
 test("opening segment keeps its first rendered sample after the playback lead-in", () => {

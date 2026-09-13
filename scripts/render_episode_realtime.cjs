@@ -16,6 +16,7 @@ const { spawnSync } = require("child_process");
 const WebSocket = require("ws");
 const YAML = require("yaml");
 const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
+const { audioTreatment, audioTreatmentManifestRecord, treatmentForSpeakerLabel } = require("./audio-treatment.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
 const { editorialApprovalErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
@@ -24,7 +25,7 @@ const { PACKAGE_OPERATION_IDS, withEpisodePackageOperationAsync } = require("./e
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
 const BITS_PER_SAMPLE = 16;
-const SPEAKER_RE = /^\*\*(INSTRUCTOR|LEARNER|ANNOUNCER):\*\*$/;
+const SPEAKER_RE = /^\*\*(INSTRUCTOR|LEARNER|ANNOUNCER)(?: \((RADIO)\))?:\*\*$/;
 const SECTION_RE = /^#+\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/;
 // Keep the legacy production-status prefix for older scripts; new packages
 // keep mutable workflow state exclusively in episode.yaml.
@@ -42,6 +43,9 @@ const LEGACY_DISCLAIMER_SECTION = "required production notice";
 // needs a genuinely phonetic correction from the voice model.
 const PRONUNCIATION_TRANSFORMS = Object.freeze({
   AI: "artificial intelligence",
+  "Class A": "Class Alpha",
+  MOA: "moah",
+  MOAs: "moahs",
   AIM: "aim",
   PHAK: "pee hack",
   ASOS: "AY-sohs",
@@ -193,14 +197,14 @@ function splitText(text, maxWords) {
 
 function parseScript(scriptPath, maxWords) {
   const lines = fs.readFileSync(scriptPath, "utf8").split(/\r?\n/);
-  const turns = []; let speaker = null; let section = ""; let sectionTitle = ""; let paragraphs = [];
-  const flush = () => { if (speaker && paragraphs.length) { const text = cleanText(paragraphs.join(" ")); if (text) turns.push({ speaker, text, section, sectionTitle }); } paragraphs = []; };
+  const turns = []; let speaker = null; let treatmentID = "clean"; let section = ""; let sectionTitle = ""; let paragraphs = [];
+  const flush = () => { if (speaker && paragraphs.length) { const text = cleanText(paragraphs.join(" ")); if (text) turns.push({ speaker, audioTreatment: treatmentID, text, section, sectionTitle }); } paragraphs = []; };
   for (const raw of lines) {
     const line = raw.trim();
     const heading = line.match(SECTION_RE);
     if (heading) { flush(); sectionTitle = heading[1].trim(); section = sectionTitle.toLowerCase(); continue; }
     const speakerMatch = line.match(SPEAKER_RE);
-    if (speakerMatch) { flush(); speaker = speakerMatch[1]; continue; }
+    if (speakerMatch) { flush(); speaker = speakerMatch[1]; treatmentID = treatmentForSpeakerLabel(speakerMatch[2]); continue; }
     if (!speaker || !line || IGNORED_PREFIXES.some((prefix) => line.startsWith(prefix))) continue;
     paragraphs.push(line);
   }
@@ -286,9 +290,11 @@ function estimateUsageCost(usages) {
 }
 
 function settingsFor(options, scriptHash) {
-  // Music is an assembly choice recorded in the output manifest. Keeping it
-  // out of the segment settings lets a previously rendered voice sample be
-  // reused for a dry mix, a music mix, or a revised bed level.
+  // Music and local audio treatments are assembly choices recorded in the
+  // output manifest. Keeping them out of the segment settings lets a
+  // previously rendered voice sample be reused for a dry mix, a music mix,
+  // a revised bed level, or a revised local treatment. The exact treatment
+  // applied to each assembled segment remains provenance in that manifest.
   return { renderer: "openai-realtime", renderer_version: 12, model: options.model, voices: options.voices, audio: { format: "pcm_s16le", sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs }, music: null, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, pronunciation_guidance: PRONUNCIATION_GUIDANCE, script_sha256: scriptHash, max_words_per_segment: options.maxWords, continuity_context_characters: options.continuityCharacters, spacing_ms: options.spacing, style: STYLE };
 }
 
@@ -312,7 +318,7 @@ function establishSettings(workDir, settings) {
 }
 
 function partBase(workDir, segment) { return path.join(workDir, `${String(segment.index).padStart(3, "0")}-${segment.speaker.toLowerCase()}`); }
-function segmentInstruction(segment, context) { const guidance = pronunciationGuidance(segment.text); return `${STYLE[segment.speaker]}\nYou are the ${segment.speaker[0] + segment.speaker.slice(1).toLowerCase()} in a public educational private-pilot study podcast. Read only the line following the marker READ EXACTLY. Do not add a greeting, label, preface, explanation, or closing. Keep technical terminology exact. Vary stress and cadence naturally when recurring technical terms appear; do not turn them into catchphrases.${guidance ? `\n${guidance}` : ""}\n\n${context}\n\nREAD EXACTLY:`; }
+function segmentInstruction(segment, context) { const guidance = pronunciationGuidance(segment.text); const radioGuidance = segment.audioTreatment === "vhf-am" ? "\nThis is a short simulated VHF AM radio transmission. Deliver it briskly and efficiently, at a noticeably quicker pace than the teaching narration, while keeping every word intelligible. Do not add radio noise, static, or microphone effects yourself." : ""; return `${STYLE[segment.speaker]}${radioGuidance}\nYou are the ${segment.speaker[0] + segment.speaker.slice(1).toLowerCase()} in a public educational private-pilot study podcast. Read only the line following the marker READ EXACTLY. Do not add a greeting, label, preface, explanation, or closing. Keep technical terminology exact. Vary stress and cadence naturally when recurring technical terms appear; do not turn them into catchphrases.${guidance ? `\n${guidance}` : ""}\n\n${context}\n\nREAD EXACTLY:`; }
 function renderInputHash(segments, segment, options) {
   const position = segments.findIndex((candidate) => candidate.index === segment.index);
   const input = { model: options.model, voice: options.voices[segment.speaker.toLowerCase()], instructions: segmentInstruction(segment, contextFor(segments, position, options.continuityCharacters)), text: spokenText(segment.text) };
@@ -334,6 +340,22 @@ function assertCurrentRenderInput(record, segments, segment, options, workDir) {
   if (record.render_input_sha256 !== renderInputHash(segments, segment, options)) {
     throw new RenderError(`Rendered segment ${segment.index} does not match the current narration input. Run --render-only for the selected range before assembly.`);
   }
+}
+
+function applyAudioTreatmentPcm(pcm, treatmentID) {
+  const treatment = audioTreatment(treatmentID);
+  if (!treatment.filter) return pcm;
+  // Pass raw PCM through ffmpeg rather than a temporary WAV container. This
+  // avoids accepting format variations in an intermediate file and makes the
+  // treatment boundary a fixed-format, local transformation.
+  const completed = spawnSync("ffmpeg", [
+    "-v", "error", "-f", "s16le", "-ar", String(SAMPLE_RATE), "-ac", String(CHANNELS), "-i", "pipe:0",
+    "-af", treatment.filter, "-f", "s16le", "-ar", String(SAMPLE_RATE), "-ac", String(CHANNELS), "pipe:1",
+  ], { input: pcm, maxBuffer: pcm.length + 64 * 1024 });
+  if (completed.error) throw new RenderError(`Audio treatment '${treatment.id}' requires ffmpeg: ${completed.error.message}`);
+  if (completed.status !== 0) throw new RenderError(`Audio treatment '${treatment.id}' failed: ${(completed.stderr?.toString("utf8") || "unknown error").trim()}`);
+  if (completed.stdout.length !== pcm.length) throw new RenderError(`Audio treatment '${treatment.id}' changed the PCM length unexpectedly.`);
+  return completed.stdout;
 }
 
 function usageRecordFor(segment, sourceTextHash, inputHash, result) {
@@ -517,7 +539,8 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
     // The assembled program begins with intentional silence. Do not fade in
     // the first rendered phoneme after that silence: Realtime audio can begin
     // immediately, and a stitch fade is only needed where audio segments meet.
-    const pcm = fadeSegmentPcm(readOwnWav(wavPath), options.stitchFadeMs, { fadeIn: Boolean(previous), fadeOut: true });
+    const treatedPcm = applyAudioTreatmentPcm(readOwnWav(wavPath), segment.audioTreatment);
+    const pcm = fadeSegmentPcm(treatedPcm, options.stitchFadeMs, { fadeIn: Boolean(previous), fadeOut: true });
     const segmentStartFrame = masterFrames;
     chunks.push(pcm); masterFrames += pcm.length / 2;
     if (options.music && segment.section === "podcast introduction") {
@@ -528,7 +551,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
       if (!musicCues.outro) musicCues.outro = { startFrame: segmentStartFrame, endFrame: masterFrames };
       else musicCues.outro.endFrame = masterFrames;
     }
-    stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle, start_frame: segmentStartFrame, end_frame: masterFrames });
+    stitchBoundaries.push({ segment_index: segment.index, speaker: segment.speaker, audio_treatment: audioTreatmentManifestRecord(segment.audioTreatment), section: segment.section, section_title: segment.sectionTitle, start_frame: segmentStartFrame, end_frame: masterFrames });
     usage.push(usageRecord.response_usage); previous = segment;
   }
   const terminalMusicTail = terminalMusicTailMilliseconds(selected, options.music);
@@ -549,7 +572,7 @@ function assemble(segments, selected, options, workDir, audioDir, timestamp, exp
   } else publishedPath = writeWavOutput({ masterPath, wavPath, masterPcm, mixed: Boolean(options.music && Object.keys(musicPlan).length) });
   const frontMatter = selected[0].index === 1 && selected.some((segment) => [DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION].includes(segment.section)) ? "included" : "not_in_selected_range";
   const outputSha256 = sha256(fs.readFileSync(publishedPath));
-  const manifest = { renderer: "openai-realtime", renderer_version: 13, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, pronunciation_guidance: PRONUNCIATION_GUIDANCE, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), config: options.music.configPath || null, config_sha256: options.music.configSha256 || null, base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", audio_sha256: outputSha256, markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, first_segment_fade_in: false, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: outputSha256, quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
+  const manifest = { renderer: "openai-realtime", renderer_version: 14, generated_at_utc: new Date().toISOString(), episode_id: options.episodeId, script: options.scriptPath, script_sha256: sha256(fs.readFileSync(options.scriptPath)), model: options.model, voices: options.voices, pronunciation_transforms: PRONUNCIATION_TRANSFORMS, pronunciation_guidance: PRONUNCIATION_GUIDANCE, music_bed: options.music && Object.keys(musicPlan).length ? { source: options.music.path, source_sha256: sha256(fs.readFileSync(options.music.path)), config: options.music.configPath || null, config_sha256: options.music.configSha256 || null, base_gain_db: options.music.gainDb, voice_gain_db: options.music.voiceGainDb, level_transition_seconds: options.music.levelTransitionSeconds, cue_plan: musicPlan, voice_master_wav: voiceMasterPath } : null, chapters: options.format === "mp3" ? { format: "id3v2", source: "master-script section headings", validation: "ffprobe", audio_sha256: outputSha256, markers: chapters } : null, audio: { sample_rate_hz: SAMPLE_RATE, channels: CHANNELS, bit_depth: BITS_PER_SAMPLE, output_speed: "native_default_unset", stitch_fade_ms: options.stitchFadeMs, first_segment_fade_in: false, stitch_boundaries: stitchBoundaries, master_wav: masterPath, output: publishedPath, output_format: options.format, duration_seconds: duration, sha256: outputSha256, quality_report: qualityReportPath }, selected_segments: selected.map((segment) => ({ index: segment.index, speaker: segment.speaker, audio_treatment: audioTreatmentManifestRecord(segment.audioTreatment), section: segment.section, section_title: segment.sectionTitle })), is_preview: explicitRange, front_matter_validation: frontMatter, usage: estimateUsageCost(usage) };
   const audioQuality = analyzeRenderedAudio({ manifestPath, masterPath, outputPath: publishedPath, stitchBoundaries, reportPath: qualityReportPath });
   manifest.audio.quality = { result: audioQuality.result, report: qualityReportPath, stitch_warnings: audioQuality.master.stitches.warnings.length, clipped_samples: audioQuality.master.pcm.clipped_samples };
   // The render manifest is the candidate's final record. Do not expose an
@@ -600,4 +623,4 @@ async function main() {
 
 if (require.main === module) main().catch((error) => { console.error(`Render failed: ${error.message}`); process.exitCode = 1; });
 
-module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, acquireAssemblyReservation, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, establishSettings, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };
+module.exports = { DISCLAIMER_SECTION, LEGACY_DISCLAIMER_SECTION, REQUIRED_NOTICE, RenderError, acquireAssemblyReservation, applyAudioTreatmentPcm, assemble, assertNarrationInput, assertOutputsVacant, assertSourceRelevanceApproved, chapterFfmetadata, chapterMarkersFor, establishSettings, mixMusicBeds, musicCuePlan, musicVolumeExpression, parseScript, pauseBefore, pronunciationGuidance, renderInputHash, renderSegments, reusableSegment, segmentInstruction, settingsFor, spokenText, terminalMusicTailMilliseconds, usageRecordFor, validateFrontMatter, verifyMp3Chapters, writeMp3WithChapters, writeWavOutput };

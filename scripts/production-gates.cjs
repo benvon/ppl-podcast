@@ -8,7 +8,10 @@ const { deriveNarration } = require("./derive-narration.cjs");
 const { CONTRACT_KINDS, productionContractKind, preservedProductionContract } = require("./production-state-contract.cjs");
 const {
   sourceRelevanceResultValid,
+  SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION,
   deterministicValidationResultValid,
+  SOURCE_REVIEW_WHITESPACE_NORMALIZATION,
+  sourceReviewSemanticInputHashes,
   sourceValidationInputHashes,
   utcRfc3339Timestamp,
   validationCoverageErrors,
@@ -82,6 +85,8 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   expect(validation.validator === "scripts/validate-source-links.cjs", "link-validation.yaml must be produced by scripts/validate-source-links.cjs.");
   expect(validation.llm_requested === true, "link-validation.yaml must record a requested LLM review.");
   expect(typeof validation.llm_model === "string" && validation.llm_model.trim().length > 0, "link-validation.yaml must record the LLM review model.");
+  expect(validation.llm_review_passes === 2, "link-validation.yaml must record two independent LLM source-relevance passes.");
+  expect(validation.llm_materiality_policy === "safety-and-core-v1", "link-validation.yaml must record the safety-and-core materiality policy used for its LLM review.");
   expect(validation.claim_mapping?.valid === true, "link validation must pass the claim mapping.");
   expect(validation.show_notes_mapping?.valid === true, "link validation must pass the show-notes mapping.");
   expect(validation.master_script_mapping?.valid === true, "link validation must pass the master-script source mapping.");
@@ -91,7 +96,16 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   const sourceResultsByID = new Map((validation.results || []).map((result) => [result.source_id, result]));
   expect(validation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
   const currentHashes = sourceValidationInputHashes(episodePath);
-  expect(Object.entries(currentHashes).every(([name, digest]) => validation.input_sha256?.[name] === digest), "link-validation.yaml must be bound to the current sources, claims, and show-notes inputs, including the current script and manifest bytes.");
+  const otherInputsMatch = Object.entries(currentHashes)
+    .filter(([name]) => name !== "master_script" && name !== "show_notes")
+    .every(([name, digest]) => validation.input_sha256?.[name] === digest);
+  const exactScriptMatches = validation.input_sha256?.master_script === currentHashes.master_script;
+  const semanticScriptMatches = validation.input_normalization?.master_script === SOURCE_REVIEW_WHITESPACE_NORMALIZATION
+    && validation.semantic_input_sha256?.master_script === sourceReviewSemanticInputHashes(episodePath).master_script;
+  const exactShowNotesMatch = validation.input_sha256?.show_notes === currentHashes.show_notes;
+  const semanticShowNotesMatch = validation.input_normalization?.show_notes === SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION
+    && validation.semantic_input_sha256?.show_notes === sourceReviewSemanticInputHashes(episodePath).show_notes;
+  expect(otherInputsMatch && (exactScriptMatches || semanticScriptMatches) && (exactShowNotesMatch || semanticShowNotesMatch), "link-validation.yaml must be bound to the current sources, claims, show-notes manifest, and either the exact or recorded semantic identities for the script and show notes.");
   try { errors.push(...validationCoverageErrors(episodePath, validation)); }
   catch (error) { errors.push(`Could not verify source-review coverage: ${error.message}`); }
   expect(Array.isArray(validation.results) && validation.results.length > 0, "link validation must record source results.");

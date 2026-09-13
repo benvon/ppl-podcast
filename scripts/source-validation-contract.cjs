@@ -6,6 +6,75 @@ const path = require("path");
 const YAML = require("yaml");
 const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 
+const SOURCE_REVIEW_WHITESPACE_NORMALIZATION = "markdown-whitespace-v1";
+const SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION = "fact-check-verification-column-v1";
+
+// Source relevance is about the spoken, source-tagged lesson. Keep its
+// identity insensitive to line endings, incidental trailing whitespace, and
+// whitespace-only blank lines, while preserving Markdown hard breaks and all
+// visible structure. Exact file hashes remain in input_sha256 for provenance.
+function normalizeSourceReviewMarkdown(markdown) {
+  return String(markdown)
+    .replace(/\r\n?/g, "\n")
+    .split("\n")
+    .map((line) => {
+      if (/^[\t ]*$/.test(line)) return "";
+      // Two trailing spaces are a Markdown hard break, which can change how a
+      // listener-facing paragraph is derived. Do not normalize that away.
+      return / {2,}$/.test(line) ? line : line.replace(/[\t ]+$/g, "");
+    })
+    .join("\n");
+}
+
+// A formal review attests to the factual study material, not to the
+// presentation-only status cell that records when that review occurred. Keep
+// the verification cell out of the semantic identity while retaining every
+// source, locator, claim, and listener-facing link. A change anywhere else in
+// show notes requires a new review.
+function normalizeShowNotesSourceReviewMarkdown(markdown) {
+  let inFactCheckTable = false;
+  return String(markdown)
+    .replace(/\r\n?/g, "\n")
+    .split("\n")
+    .map((line) => {
+      if (/^##\s+Fact-check and source material\s*$/i.test(line)) {
+        inFactCheckTable = true;
+        return line;
+      }
+      if (/^##\s+/.test(line)) inFactCheckTable = false;
+      if (!inFactCheckTable || !/^\|/.test(line) || /^\|\s*:?-{3,}/.test(line)) return line;
+      const cells = line.split("|");
+      // Leading and trailing table delimiters produce two empty cells. The
+      // fact-check table has five meaningful columns, ending in Verified.
+      if (cells.length !== 7 || cells[1].trim().toLowerCase() === "topic") return line;
+      cells[5] = " <verification-status> ";
+      return cells.join("|");
+    })
+    .join("\n");
+}
+
+function claimAssessmentBlocksSourceRelease(assessment) {
+  if (assessment?.verdict === "supports") return assessment?.finding_materiality !== "none";
+  // Editorial notes are allowed only when the source partially supports the
+  // claim. A claim with no support, insufficient evidence, or an unknown
+  // non-support verdict must never become release-ready by labeling it
+  // editorial.
+  return assessment?.verdict !== "partially_supports" || assessment?.finding_materiality !== "editorial";
+}
+
+function locatorAssessmentSupportsSourceRelease(assessment) {
+  return assessment?.verdict === "supports" && assessment?.finding_materiality === "none";
+}
+
+function sourceReviewSemanticInputHashes(episodePath) {
+  const scriptPath = path.join(episodePath, "master-script.md");
+  const showNotesPath = path.join(episodePath, "show-notes.md");
+  return {
+    master_script: fs.existsSync(scriptPath) ? crypto.createHash("sha256").update(normalizeSourceReviewMarkdown(fs.readFileSync(scriptPath, "utf8"))).digest("hex") : null,
+    show_notes: fs.existsSync(showNotesPath) ? crypto.createHash("sha256").update(normalizeShowNotesSourceReviewMarkdown(fs.readFileSync(showNotesPath, "utf8"))).digest("hex") : null,
+  };
+}
+
 function sourceValidationInputHashes(episodePath) {
   const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
   return {
@@ -21,12 +90,12 @@ function sourceTagRecords(markdown) {
   const records = [];
   let section = null;
   let lastParagraph = null;
-  const lines = String(markdown).replace(/\r\n/g, "\n").split("\n");
+  const lines = normalizeSourceReviewMarkdown(markdown).split("\n");
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
     const heading = line.match(/^##\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/);
     if (heading) { section = heading[1]; lastParagraph = null; continue; }
-    if (/^\*\*[A-Z ]+:\*\*$/.test(line.trim())) { lastParagraph = null; continue; }
+    if (/^\*\*(?:INSTRUCTOR|LEARNER|ANNOUNCER)(?: \(RADIO\))?:\*\*$/.test(line.trim())) { lastParagraph = null; continue; }
     const tag = line.trim().match(/^\[Source:\s*sources\.yaml#([^\]]+)\]$/);
     if (tag) {
       records.push({ source_id: tag[1], section, line: index + 1, passage: lastParagraph });
@@ -49,12 +118,12 @@ function retrievalReviewUntaggedPassageErrors(markdown) {
     if (pendingPassage) errors.push(`Retrieval review spoken paragraph at line ${pendingPassage.line} has no source tag`);
     pendingPassage = null;
   };
-  const lines = String(markdown).replace(/\r\n/g, "\n").split("\n");
+  const lines = normalizeSourceReviewMarkdown(markdown).split("\n");
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
     const heading = line.match(/^##\s+(?:\[\d{2}:\d{2}\]\s+)?(.+?)\s*$/);
     if (heading) { flush(); section = heading[1]; speaker = null; continue; }
-    const speakerLabel = line.trim().match(/^\*\*([A-Z ]+):\*\*$/);
+    const speakerLabel = line.trim().match(/^\*\*(INSTRUCTOR|LEARNER|ANNOUNCER)(?: \(RADIO\))?:\*\*$/);
     if (speakerLabel) { flush(); speaker = speakerLabel[1].trim(); continue; }
     if (/^\[Source:\s*sources\.yaml#[^\]]+\]$/.test(line.trim())) { pendingPassage = null; continue; }
     // An explicitly labeled lesson method or inference is not an external factual
@@ -119,19 +188,29 @@ function sameStringSet(actual, expected) {
 
 function sourceRelevanceResultValid(result) {
   const expectedClaimIDs = Array.isArray(result?.linked_claim_ids) ? result.linked_claim_ids : [];
-  const assessments = result?.relevance?.assessment?.claim_assessments;
-  if (!Array.isArray(assessments)) return false;
-  const counts = new Map();
-  for (const assessment of assessments) counts.set(assessment?.claim_id, (counts.get(assessment?.claim_id) || 0) + 1);
-  const assessmentsMatchClaims = expectedClaimIDs.length === assessments.length
-    && expectedClaimIDs.every((claimID) => counts.get(claimID) === 1)
-    && assessments.every((assessment) => assessment?.verdict === "supports");
+  // Current reports retain two independent assessments. A report without this
+  // field is a preserved single-pass record and remains readable as such.
+  const reviews = Array.isArray(result?.relevance_reviews) ? result.relevance_reviews : [result?.relevance];
+  const requiredReviewCount = Array.isArray(result?.relevance_reviews) ? 2 : 1;
+  const reviewValid = (relevance) => {
+    const assessments = relevance?.assessment?.claim_assessments;
+    if (!Array.isArray(assessments)) return false;
+    const counts = new Map();
+    for (const assessment of assessments) counts.set(assessment?.claim_id, (counts.get(assessment?.claim_id) || 0) + 1);
+    return relevance?.status === "assessed"
+      // A locator is the evidence boundary. A wrong one cannot be softened
+      // into an editorial note because the report would then attest to the
+      // wrong passage or page.
+      && locatorAssessmentSupportsSourceRelease(relevance?.assessment?.locator_assessment)
+      && expectedClaimIDs.length === assessments.length
+      && expectedClaimIDs.every((claimID) => counts.get(claimID) === 1)
+      && assessments.every((assessment) => !claimAssessmentBlocksSourceRelease(assessment));
+  };
   return result?.citation_target?.valid === true
     && result?.link?.valid === true
     && (!result?.content_attestation || result.content_attestation.valid === true)
-    && result?.relevance?.status === "assessed"
-    && result.relevance?.assessment?.locator_assessment?.verdict === "supports"
-    && assessmentsMatchClaims
+    && reviews.length === requiredReviewCount
+    && reviews.every(reviewValid)
     && result?.claim_assessments?.valid === true;
 }
 
@@ -174,4 +253,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { deterministicValidationResultValid, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

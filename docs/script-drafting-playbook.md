@@ -89,7 +89,30 @@ When useful, acknowledge the boundary once in plain language: the lesson gives t
 
 ## Keep source review early and singular
 
-Build the source ledger, claim inventory, and scenario source map before drafting. Then complete the spoken draft, independent first-listen review, and the single `--require-llm` source-relevance review before human editorial approval. The review examines exact source-tagged spoken passages, claims, and fetched source excerpts; resolve contradictions, unsupported factual prose, locator errors, and material scope mismatches before the script reaches the editor.
+Build the source ledger, claim inventory, and scenario source map before drafting. Then complete the spoken draft, independent first-listen review, and the single `--require-llm` source-relevance review before human editorial approval. The review examines exact source-tagged spoken passages, claims, and fetched source excerpts; resolve contradictions, unsupported factual prose, locator errors, and material scope mismatches before the script reaches the editor. A finding is blocking only if it could teach an unsafe, wrong, or materially incomplete decision, rule, condition, or central lesson concept; exact legal wording that does not change the lesson is an editorial note for the human editor.
+
+### Draft source-bound prose to its actual contract
+
+Before the formal LLM review, the drafting agent must perform one source-contract self-audit. This is a drafting pass, not a new validation tool or release gate: it should catch predictable semantic mismatches before an external review is needed.
+
+For every source-tagged factual paragraph, confirm that the source supports the exact actor, action, scope, condition, and exception stated in that paragraph. Write the factual sentence from the source outward; then place a separate teaching-synthesis sentence after it if the scenario needs an operational connection.
+
+Avoid these high-churn constructions:
+
+- **Broadened nouns:** do not replace a source’s precise category with a larger one—for example, turn “overlying Class Echo” into “overlying controlled airspace.”
+- **Dropped conditions in a recap:** do not compress a conditional rule into a later memory sentence without carrying the condition with it—for example, combine Class Echo with Class Charlie and Delta without retaining the below-10,000-feet-MSL condition.
+- **Mixed authority in one paragraph:** do not use a chart depiction to establish a regulatory equipment obligation, or use a regulation to establish a chart symbol. State the chart fact, tag it, then state the regulatory consequence separately and tag that source.
+- **Exception laundering:** do not attach an exception named by one source to a rule supported by another source unless both are separately stated and tagged. A generic “except where…” opener is especially risky when the exception lives in another document or appendix.
+- **Generic aircraft language where the source is aircraft-specific:** preserve a limitation such as “for an airplane” or “other than a helicopter” when it changes who the rule applies to.
+- **Heading-only locators:** do not cite a whole chapter or a neighboring subsection when the passage relies on a named subheading, table row, appendix, or paragraph. Put that exact target in the source ledger before drafting.
+
+Use this pattern instead:
+
+1. State one atomic, source-supported fact with its condition.
+2. Tag that exact source immediately.
+3. State the scenario consequence as teaching synthesis, or introduce the next atomic fact with its own tag.
+
+The final Retrieval review is a fresh teaching pass, not a license to shorten earlier rules. Rebuild each regulatory conclusion with the same scope and conditions that made it true in the teaching section.
 
 
 ## Run an independent spoken-script review
@@ -114,7 +137,7 @@ Use this order for every new draft:
 1. Complete the source-led research foundation and draft package, including the source ledger, claim inventory, source-tagged master script, narration, show notes, metadata, and production log.
 2. Complete the independent spoken-script review.
 3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
-4. With explicit current-turn authorization, run source validation with `--require-llm`. It must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve every material finding and rerun until the report is clean.
+4. With explicit current-turn authorization, run source validation with `--require-llm`. It runs two independent assessments against the same frozen package inputs and must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve the union of every material finding and rerun until no material findings remain; retain non-material precision notes for the human editor without reopening the script automatically.
 5. Give that source-validated draft to the human editor.
 
 If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.
@@ -140,6 +163,18 @@ Avoid legalistic or adversarial phrasing such as “permission to fly.” Use th
 ## Use ACS references as teaching anchors
 
 Before saying that an ACS relationship matters, state the variables in the relationship and explain how they interact in the scenario at hand. Then say what the ACS reference helps a learner do: connect variables instead of treating one measurement, cue, or rule of thumb as the complete answer.
+
+## Use the radio treatment only for quoted radio traffic
+
+When a scenario includes a brief simulated radio transmission, make it a dedicated turn and mark the existing role with `(RADIO)`:
+
+```md
+**LEARNER (RADIO):**
+
+Valley Tower, Cessna One Two Three Alpha Bravo, ten miles west, inbound for landing.
+```
+
+`(RADIO)` keeps the Learner or Instructor voice identity but applies the renderer's restrained VHF AM treatment to that turn only. It is not a fourth speaker, a source tag, or spoken text. Use it only for an actual quoted transmission or received call—not for surrounding explanation—and keep the call in its own turn so the treatment has an unambiguous boundary. The effect intentionally uses band limiting and light level control without artificial static or distortion; human listening QA decides whether it remains clear and appropriate.
 
 ## Control scope without repetitive disclaimers
 

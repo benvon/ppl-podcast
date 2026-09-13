@@ -1,0 +1,107 @@
+id: core-16
+series: ppl-study-podcast
+title: Airspace, Equipment, and VFR Weather Minimums
+slug: airspace-equipment-vfr-weather-minimums
+track: core
+production_contract_version: 2
+status: source_relevance_review_complete
+version: 0.1.11
+published_at: null
+runtime_target_minutes: 33
+runtime_actual_seconds: null
+word_count: 5790
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - FAA-S-ACS-6C, PA.I.D.K1, R3-R5, S1-S2
+  - FAA-S-ACS-6C, PA.I.E.K1-K4, R1, S1-S3
+phak_references:
+  - PHAK Chapter 15, Airspace, Figures 15-1, 15-8, and 15-9
+aim_references:
+  - AIM 3-1-4, Basic VFR Weather Minimums
+  - AIM 3-2-1 through 3-2-6 and 3-3-1, Controlled and Class G Airspace
+  - AIM 3-4-1 through 3-4-9, Special Use Airspace
+  - AIM 3-5-3 and 3-5-7, TFR, SATR, and SFRA
+  - AIM 4-4-6, Special VFR Clearances
+  - AIM 4-1-20 and 4-5-7, Transponder and ADS-B operation
+  - AIM 7-1-14, Reporting of Cloud Heights
+  - Pilot/Controller Glossary, Flight Visibility and Ground Visibility
+advisory_circular_references: []
+cfr_references:
+  - 14 CFR 61.95, Student-pilot operations in Class B airspace
+  - 14 CFR 91.129 through 91.131, Class D, C, and B operations
+  - 14 CFR 91.155, Basic VFR weather minimums
+  - 14 CFR 91.157, Special VFR weather minimums
+  - 14 CFR 91.215, ATC transponder and altitude reporting equipment
+  - 14 CFR 91.225, ADS-B Out equipment and use
+learning_objectives:
+  - Identify the controlling airspace by combining lateral position, altitude,
+    floor, and ceiling.
+  - Distinguish no general VFR entry communication, established two-way radio
+    communication, and an explicit Class B clearance.
+  - Match pilot qualifications, radio, altitude-reporting transponder, and ADS-B
+    Out requirements to the complete planned route.
+  - Apply basic VFR visibility, cloud-clearance, and surface-area ceiling
+    requirements to changing airspace and weather.
+  - Explain the limited scope and conditions of a Special VFR clearance and
+    identify when the surrounding conditions make another plan safer.
+  - Distinguish the operating meaning of special use airspace, MTRs, TFRs,
+    SATRs, and SFRAs and use the appropriate current information for each.
+trouble_spots:
+  - Treating a flat chart boundary as the complete airspace picture without
+    checking floor, ceiling, and aircraft altitude.
+  - Assuming controlled airspace means every VFR airplane is controlled or
+    separated by ATC.
+  - Treating a callsign response or transponder code as an explicit Class B
+    clearance.
+  - Assuming that remaining below a Class B or Class C shelf avoids Mode C veil
+    or above-the-shelf equipment requirements.
+  - Memorizing VFR weather numbers without identifying class, day or night,
+    height above the surface, and MSL altitude.
+  - Treating a scattered cloud layer as a weather ceiling.
+  - Treating Special VFR as evidence that the weather beyond the surface area
+    supports continued VFR flight.
+  - Treating every special-use or other-airspace boundary as either a complete
+    prohibition or an ignorable chart marking.
+  - Treating MTRs, TFRs, SATRs, and SFRAs as additional types of special use
+    airspace.
+source_verification:
+  validation_contract: source-relevance-v1
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-12T22:09:30.125Z
+  link_validation: link-validation.yaml
+  relevance_review: complete
+  show_notes_manifest: show-notes-manifest.yaml
+review:
+  editorial_status: script_approved
+  editorial_script_sha256: 34399684933543173cdfc9c6489c8dbf7a4145b3c4fc5426dfe9d0e772501503
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - Render audio and complete human listening QA, including the front-matter
+    check.
+  - Review embedded chapter markers against the approved audio.
+  - Re-verify every public source and listener-facing link on publication day.
+  - Validate hosting metadata and stage the immutable audio object in the
+    hosting workflow.
+audio:
+  manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
+  status: not_rendered
+  chapter_markers: pending_render
+  publication_day_validation: pending
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: pending_script_review
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null
+production_state_revision: 74

@@ -236,7 +236,7 @@ Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive i
 
 **INSTRUCTOR:**
 
-First, notice where the two regulations overlap. For this domestic route, both the altitude-reporting transponder rule and the ADS-B Out rule apply in Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and within the stated 30-nautical-mile area around the airports listed in appendix D, section 1. Those shared route boundaries tell you when to check both equipment requirements rather than memorizing the same boundary twice.
+First, notice where the two regulations overlap. For this domestic route, both the altitude-reporting transponder rule and the ADS-B Out rule apply in Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and within the stated 30-nautical-mile area around the airports listed in appendix D, section 1. Those shared route boundaries tell you when the route requires an altitude-reporting transponder and ADS-B Out, rather than making you memorize the same boundary twice.
 
 **INSTRUCTOR:**
 

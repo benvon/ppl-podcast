@@ -161,3 +161,4 @@
 ## 2026-09-12 — first-listen transition refinement
 
 - Replaced the unexplained phrase “Start with the shared picture” with “First, notice where the two regulations overlap.” The opening now establishes the comparison before using it.
+- Named the two requirements in the same sentence: an altitude-reporting transponder and ADS-B Out.

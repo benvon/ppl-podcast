@@ -152,3 +152,8 @@
 
 - Updated the fact-check table's display-only verification cells to the completed formal-review date, 2026-09-12. The reviewed claims, source links, locators, show-notes manifest, and spoken script did not change.
 - The formal report now records the status-insensitive semantic identity for that table column while retaining its exact raw input hashes for provenance. Any substantive study-material change still invalidates the source-review evidence and requires a new review.
+
+## 2026-09-12 — equipment-requirements teaching revision
+
+- Version 0.1.12 consolidates the shared route boundaries for altitude-reporting transponder and ADS-B Out requirements before distinguishing their separate planning questions. This removes repeated numeric lists while preserving the regulatory conditions that matter to the scenario.
+- Regenerated `narration.md` and reset downstream review state. The revised factual spoken prose requires a new source-relevance review and renewed human editorial approval before rendering.

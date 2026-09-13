@@ -236,11 +236,11 @@ Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive i
 
 **INSTRUCTOR:**
 
-For the common domestic operations in this scenario, section 91.215 requires an altitude-reporting transponder in Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; within the 30-nautical-mile Mode C veil around airports listed in appendix D, section 1; and, in the 48 contiguous states and the District of Columbia, at or above 10,000 feet MSL, except in the airspace at and below 2,500 feet above the surface. If the airplane falls within one of the regulation’s stated exceptions, apply that exception to the specific route before accepting the plan.
+Start with the shared picture. For this domestic route, both the altitude-reporting transponder rule and the ADS-B Out rule apply in Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and within the stated 30-nautical-mile area around the airports listed in appendix D, section 1. That single map of the route tells you when to check both equipment requirements rather than memorizing the same boundary twice.
 
 **INSTRUCTOR:**
 
-Section 91.225 places ADS-B Out requirements in the same major areas for this route: Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and from the surface to 10,000 feet MSL inside the specified 30-nautical-mile areas. In the 48 contiguous states and the District of Columbia, it also requires ADS-B Out in Class Echo airspace at or above 10,000 feet MSL, excluding the airspace at and below 2,500 feet above the surface. The airplane’s equipment records and the regulation answer whether this installation and route comply.
+Then separate the two questions. Section 91.215 tells you when the route needs an altitude-reporting transponder. In the 48 contiguous states and the District of Columbia, it includes the general rule at and above 10,000 feet MSL, except in airspace at and below 2,500 feet above the surface. Section 91.225 tells you when the route needs ADS-B Out; it expressly includes Class Echo airspace at and above 10,000 feet MSL, with the same lower-altitude exclusion. The airplane’s equipment records and the two regulations together answer whether this installation fits this route.
 
 **LEARNER:**
 

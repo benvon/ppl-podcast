@@ -177,3 +177,9 @@
 - Version 0.1.14 reorganizes the full equipment section around the fictional route: identify the Mode C veil, define the required capabilities, solve that route segment, then generalize the overlapping and distinct regulatory triggers.
 - The scenario conclusion explicitly accounts for stated exceptions and authorized deviations, and treats altitude reporting and ADS-B Out as capabilities that may be provided by an integrated installation.
 - Regenerate the narration and renew source relevance before editorial approval or rendering.
+
+## 2026-09-12 — current v0.1.14 source relevance and editorial approval complete
+
+- Completed the authorized two-pass review with `gpt-5.6-terra` against the exact version 0.1.14 source ledger, claim inventory, source-tagged script, and show notes. The canonical report is `link-validation.yaml`, run `3e8363e6-2d40-4276-9cde-457d7bd73da9`.
+- All deterministic link, locator, claim, source-tag, and show-notes mapping checks passed. Both relevance passes found no material source-support issue under the `safety-and-core-v1` policy. One retained editorial note observes that the cited AIM Special VFR excerpt does not itself state the phrase “for an airport”; it does not change the safety decision or core lesson and does not require a script revision.
+- The human editor approved the current master-script fingerprint `f6bd5a451a4257f888c40c0e205ca271a19c316fa234369f6bd52081962969f7`. `narration.md` was verified as its current derivative. The package is ready for the reusable opening audio QA render; no audio has been rendered in this revision.

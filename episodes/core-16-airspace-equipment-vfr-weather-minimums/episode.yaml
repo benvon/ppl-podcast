@@ -4,7 +4,7 @@ title: Airspace, Equipment, and VFR Weather Minimums
 slug: airspace-equipment-vfr-weather-minimums
 track: core
 production_contract_version: 2
-status: editorial_review_pending
+status: source_relevance_review_complete
 version: 0.1.14
 published_at: null
 runtime_target_minutes: 33
@@ -72,23 +72,19 @@ trouble_spots:
     airspace.
 source_verification:
   validation_contract: source-relevance-v1
-  status: source_relevance_pending
-  verified_at_utc: null
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-13T01:17:44.554Z
   link_validation: link-validation.yaml
-  relevance_review: pending
+  relevance_review: complete
   show_notes_manifest: show-notes-manifest.yaml
 review:
-  editorial_status: reapproval_required
-  editorial_script_sha256: null
+  editorial_status: script_approved
+  editorial_script_sha256: f6bd5a451a4257f888c40c0e205ca271a19c316fa234369f6bd52081962969f7
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: f6bd5a451a4257f888c40c0e205ca271a19c316fa234369f6bd52081962969f7
 release_gates_remaining:
-  - Run source-link validation with LLM relevance review and resolve every
-    finding.
-  - Complete human editorial review and approve the current script.
   - Render audio and complete human listening QA, including the front-matter
     check.
   - Review embedded chapter markers against the approved audio.
@@ -108,4 +104,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 83
+production_state_revision: 88

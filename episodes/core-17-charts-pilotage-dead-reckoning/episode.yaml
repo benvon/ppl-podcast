@@ -1,0 +1,94 @@
+id: core-17
+series: ppl-study-podcast
+title: Charts, Pilotage, and Dead Reckoning
+slug: charts-pilotage-dead-reckoning
+track: core
+production_contract_version: 2
+status: draft
+version: 0.1.0
+published_at: null
+runtime_target_minutes: 40
+runtime_actual_seconds: null
+word_count: 5322
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - FAA-S-ACS-6C, PA.I.D.K1-K3, R3, R5, S1-S2
+  - FAA-S-ACS-6C, PA.I.E.K1-K3, S1-S3
+  - FAA-S-ACS-6C, PA.VI.A.K1-K7, R1-R3, S1-S7
+phak_references:
+  - "PHAK Chapter 16: Navigation, pp. 16-2 and 16-7 through 16-21"
+aim_references: []
+advisory_circular_references: []
+cfr_references: []
+learning_objectives:
+  - Build a useful route picture from a current sectional by locating terrain,
+    obstructions, airspace, and visually distinctive route features.
+  - Define and distinguish pilotage, dead reckoning, checkpoint, course,
+    heading, track, wind correction angle, variation, deviation, groundspeed,
+    and ETA.
+  - Select prominent checkpoints that can be corroborated by more than one
+    visible feature and use them to maintain route orientation.
+  - Convert a charted true course into a wind-corrected, magnetic, and compass
+    heading while preserving the purpose of each correction.
+  - Build a simple navigation log from distance, heading, groundspeed, and
+    estimated checkpoint times.
+  - Compare planned position and progress with observed landmarks and elapsed
+    time, then revise heading, groundspeed, or ETA only as the evidence
+    supports.
+trouble_spots:
+  - Treating a current sectional as a permanent or complete statement of present
+    conditions.
+  - Treating the Maximum Elevation Figure as a prescribed or automatically safe
+    altitude.
+  - Choosing small or ambiguous checkpoints and relying on a single feature for
+    position.
+  - Using course, heading, and track as interchangeable terms.
+  - Assuming a calculated wind correction guarantees the desired ground track.
+  - Diagnosing a late checkpoint as a wind error before confirming position and
+    timing.
+  - Allowing navigation calculations to displace aircraft control and the
+    outside traffic scan.
+source_verification:
+  validation_contract: source-relevance-v1
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-13T16:52:39.670Z
+  link_validation: link-validation.yaml
+  show_notes_manifest: show-notes-manifest.yaml
+  relevance_review: complete
+review:
+  editorial_status: not_started
+  editorial_script_sha256: null
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining:
+  - Run source-link validation with LLM relevance review and resolve every
+    material finding.
+  - Complete human editorial review and approve the current script.
+  - Render audio and complete human listening QA, including the front-matter
+    check.
+  - Review embedded chapter markers against the approved audio.
+  - Re-verify every public source and listener-facing link on publication day.
+  - Validate hosting metadata and stage the immutable audio object in the
+    hosting workflow.
+audio:
+  manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
+  status: not_rendered
+  chapter_markers: pending_render
+  publication_day_validation: pending
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: draft
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null
+production_state_revision: 6

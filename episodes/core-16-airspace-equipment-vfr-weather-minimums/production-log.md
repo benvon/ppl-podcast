@@ -16,7 +16,9 @@
 - Drafted `master-script.md` as source-tagged spoken prose and regenerated `narration.md` from it. The initial draft contains 4,708 spoken words, supporting approximately 31 minutes at 150 words per minute.
 - Ran the source validator in `--dry-run` mode: 25 sources, 26 claims, 88 master-script source tags, and 18 listener-facing links passed the package-shape and mapping checks without network or OpenAI requests.
 - Source caveat: the FAA Chart Users' Guide landing page says effective July 9, 2026, while its descriptive text also says the information is effective January 22, 2026. Formal source review should verify the cited PDF page and document identity.
-- Independent spoken-script review: completed. Required findings were resolved in version 0.1.1 before formal source relevance and human editorial review.
+## 2026-09-10 — independent spoken-script review completed
+
+- The independent spoken-script review was completed. Required findings were resolved in version 0.1.1 before formal source relevance and human editorial review.
 - Authorized LLM source-relevance review: pending; no unpublished Core 16 material was sent to OpenAI during this drafting subtask.
 - Human editorial review: pending.
 
@@ -183,3 +185,14 @@
 - Completed the authorized two-pass review with `gpt-5.6-terra` against the exact version 0.1.14 source ledger, claim inventory, source-tagged script, and show notes. The canonical report is `link-validation.yaml`, run `3e8363e6-2d40-4276-9cde-457d7bd73da9`.
 - All deterministic link, locator, claim, source-tag, and show-notes mapping checks passed. Both relevance passes found no material source-support issue under the `safety-and-core-v1` policy. One retained editorial note observes that the cited AIM Special VFR excerpt does not itself state the phrase “for an airport”; it does not change the safety decision or core lesson and does not require a script revision.
 - The human editor approved the current master-script fingerprint `f6bd5a451a4257f888c40c0e205ca271a19c316fa234369f6bd52081962969f7`. `narration.md` was verified as its current derivative. The package is ready for the reusable opening audio QA render; no audio has been rendered in this revision.
+
+## 2026-09-13 — full candidate audio accepted
+
+- Rendered the approved v0.1.14 narration with OpenAI Realtime `gpt-realtime-2.1`, reusing the accepted opening-preview segments. Candidate `core-16-20260913T121921Z.mp3` is 2,458.7 seconds long and has SHA-256 `e3a7873650122b3b83e9018b4b60b106abba394447c72e70c5b1e18b06cdb8de`.
+- Automated analysis passed MP3/WAV decoding, 24 kHz mono format, duration agreement, stitch-boundary analysis, clipping analysis, and ffprobe chapter verification. The final candidate includes the configured intro and outro music treatment and four locally VHF-treated radio-call segments.
+- Human script-aligned listening QA and manual review of the 13 embedded chapter markers are accepted. Publication-day public-link verification and sealed hosting preparation remain outstanding.
+
+## 2026-09-13 — publication-day link validation complete
+
+- Ran the deterministic publication-day source and listener-facing link validation. All 35 cited sources and 28 show-notes links resolved and matched their recorded validation targets. The canonical publication record is `publication-link-validation.yaml`, run `ce31fba8-8458-43e4-b302-ba9399ce2d21`.
+- The draft-package shape check also passed. A publication timestamp is still required before release preparation can synchronize hosting metadata and produce the sealed handoff.

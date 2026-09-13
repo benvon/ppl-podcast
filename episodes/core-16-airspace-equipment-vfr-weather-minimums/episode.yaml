@@ -4,11 +4,11 @@ title: Airspace, Equipment, and VFR Weather Minimums
 slug: airspace-equipment-vfr-weather-minimums
 track: core
 production_contract_version: 2
-status: source_relevance_review_complete
+status: audio_listening_qa_complete
 version: 0.1.14
 published_at: null
 runtime_target_minutes: 33
-runtime_actual_seconds: null
+runtime_actual_seconds: 2458.7
 word_count: 5892
 speakers:
   - instructor
@@ -85,17 +85,14 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - Render audio and complete human listening QA, including the front-matter
-    check.
-  - Review embedded chapter markers against the approved audio.
   - Re-verify every public source and listener-facing link on publication day.
   - Validate hosting metadata and stage the immutable audio object in the
     hosting workflow.
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: not_rendered
-  chapter_markers: pending_render
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
   publication_day_validation: pending
 hosting:
   metadata: hosting-metadata.yaml
@@ -104,4 +101,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 88
+production_state_revision: 89

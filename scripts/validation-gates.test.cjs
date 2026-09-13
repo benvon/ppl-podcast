@@ -1330,6 +1330,20 @@ test("citation-group relevance accepts an aggregate partial verdict when every m
   assert.equal(sourceRelevanceResultValid({ ...result, relevance: { ...result.relevance, assessment: { ...result.relevance.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } } }), false);
 });
 
+test("citation-group relevance rejects non-supporting overall verdicts despite supporting nested assessments", () => {
+  const supportingReview = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+  for (const verdict of ["does_not_support", "insufficient_evidence"]) {
+    const review = { ...supportingReview, assessment: { ...supportingReview.assessment, verdict } };
+    const result = {
+      linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+      relevance: review,
+      relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+      claim_assessments: { valid: true, review_count: 2 },
+    };
+    assert.equal(sourceRelevanceResultValid(result), false, verdict);
+  }
+});
+
 test("current relevance records require two supporting independent assessments", () => {
   const review = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
   const result = {

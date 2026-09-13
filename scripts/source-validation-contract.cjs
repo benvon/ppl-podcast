@@ -66,6 +66,15 @@ function locatorAssessmentSupportsSourceRelease(assessment) {
   return assessment?.verdict === "supports" && assessment?.finding_materiality === "none";
 }
 
+function overallAssessmentSupportsSourceRelease(assessment) {
+  // A citation group can cover a larger spoken passage than the claims mapped
+  // to this source, so an aggregate partial verdict remains meaningful when
+  // every mapped claim and the locator support release. A verdict that says
+  // the source does not support the group, or lacks sufficient evidence, is
+  // contradictory evidence and must fail closed.
+  return assessment?.verdict === "supports" || assessment?.verdict === "partially_supports";
+}
+
 function sourceReviewSemanticInputHashes(episodePath) {
   const scriptPath = path.join(episodePath, "master-script.md");
   const showNotesPath = path.join(episodePath, "show-notes.md");
@@ -198,6 +207,7 @@ function sourceRelevanceResultValid(result) {
     const counts = new Map();
     for (const assessment of assessments) counts.set(assessment?.claim_id, (counts.get(assessment?.claim_id) || 0) + 1);
     return relevance?.status === "assessed"
+      && overallAssessmentSupportsSourceRelease(relevance?.assessment)
       // A locator is the evidence boundary. A wrong one cannot be softened
       // into an editorial note because the report would then attest to the
       // wrong passage or page.

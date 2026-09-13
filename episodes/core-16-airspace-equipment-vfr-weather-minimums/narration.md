@@ -222,45 +222,51 @@ Match the equipment to the route.
 
 **INSTRUCTOR:**
 
-Before reaching Valley Tower, the planned route passes near Class Charlie airspace and under a Class Bravo shelf. The airplane is not entering either airspace, but that does not finish the equipment check. Equipment rules can follow the class, extend above it, or apply inside a separate area drawn around it.
+We have answered whether the airplane enters Class Charlie or Class Bravo airspace. Now make a second pass over the same fictional route for equipment. The route remains laterally outside the Class Charlie airspace and below the Class Bravo shelf, so those are still “not entering” answers. But the chart also shows the route crossing a solid magenta boundary around the primary Class Bravo airport. That boundary marks the Mode C veil, an equipment area separate from the Class Bravo shelves.
 
 **LEARNER:**
 
-Let’s define the equipment before we place it on the route.
+What equipment am I checking when the route crosses that boundary?
 
 **INSTRUCTOR:**
 
-A Mode C transponder reports the airplane’s pressure altitude when it is interrogated. It provides altitude reporting, not location data; ADS-B Out is the separate system that broadcasts the airplane’s position and other information.
+A Mode C transponder reports the airplane’s pressure altitude when it is interrogated. That is the altitude-reporting capability we are checking under section 91.215. The Mode C transponder provides altitude reporting, not the position broadcast provided by ADS-B Out.
 
-Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive information. Transmission from the airplane is ADS-B Out; receipt by the airplane is ADS-B In. Where section 91.225 requires ADS-B Out transmission, receiving ADS-B In is a different function and is not a substitute for that transmission.
-
-**INSTRUCTOR:**
-
-Section 91.215 is the rule for an altitude-reporting transponder. Section 91.225 is the rule for ADS-B Out. Those two requirements share several route boundaries: Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and within the stated 30-nautical-mile area around the airports listed in appendix D, section 1. That overlap tells you where the route needs both an altitude-reporting transponder and ADS-B Out, rather than making you memorize the same boundary twice.
-
-**INSTRUCTOR:**
-
-Then separate the two questions. Section 91.215 tells you when the route needs an altitude-reporting transponder. In the 48 contiguous states and the District of Columbia, it includes the general rule at and above 10,000 feet MSL, except in airspace at and below 2,500 feet above the surface. Section 91.225 tells you when the route needs ADS-B Out; it expressly includes Class Echo airspace at and above 10,000 feet MSL, with the same lower-altitude exclusion. The airplane’s equipment records and the two regulations together answer whether this installation fits this route.
+Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive information. Transmission from the airplane is ADS-B Out; receipt by the airplane is ADS-B In. If section 91.225 requires the airplane to transmit ADS-B Out, merely receiving ADS-B In does not satisfy that requirement.
 
 **LEARNER:**
 
-So the shelf and the veil are not the same boundary.
+So receiving ADS-B information in the cockpit does not tell me whether the airplane is transmitting ADS-B Out.
 
 **INSTRUCTOR:**
 
-Correct. The Class Bravo shelves define Class Bravo airspace. Section 91.215 describes the Mode C veil as the airspace within 30 nautical miles of an airport listed in appendix D, section 1, from the surface to 10,000 feet MSL.
+Correct. Confirm the installed capabilities and their operating status rather than inferring ADS-B Out from what appears on a display.
 
-The Chart Users’ Guide shows Mode C required airspace within 30 nautical miles of the primary airport for which Class Bravo airspace is designated as a solid magenta boundary.
+**INSTRUCTOR:**
 
-Whether that boundary places a particular route under a transponder or ADS-B Out requirement is a separate question answered by sections 91.215 and 91.225.
+Now place those capabilities onto this route. Section 91.215 describes the Mode C veil as the airspace within 30 nautical miles of an airport listed in appendix D, section 1, from the surface to 10,000 feet MSL. Section 91.225 applies an ADS-B Out requirement within the same stated 30-nautical-mile area. For the ordinary training-airplane scenario we are using, if the airplane and operation do not meet a stated regulatory exception and ATC has not authorized a deviation, the segment inside that area requires both Mode C transponder capability and ADS-B Out. Those functions may be part of one integrated installation; the route check is whether both required capabilities are available and operating.
 
 **LEARNER:**
 
-Then “I am not entering Class Bravo airspace” is only an airspace-entry answer. It is not an equipment answer.
+Then staying below the shelf answers whether I enter Class Bravo airspace. It does not remove the equipment requirements inside the veil.
 
 **INSTRUCTOR:**
 
-Exactly. Run the equipment check against the complete horizontal route and planned altitude. Then ask what happens if weather, traffic, or terrain produces a climb or reroute. A route that is legal only while the airplane holds a narrow altitude under a shelf leaves little room for an ordinary change.
+Exactly. The shelf and the veil answer different questions.
+
+That route example is part of a larger overlap. Sections 91.215 and 91.225 generally share several equipment locations: Class Alpha, Class Bravo, and Class Charlie airspace; the airspace above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and the stated 30-nautical-mile areas around the airports listed in appendix D, section 1. In those locations, the route normally requires both Mode C transponder capability and ADS-B Out unless a stated exception or authorization applies.
+
+But they remain two regulations, and their other triggers are not worded identically. In the 48 contiguous states and the District of Columbia, section 91.215 includes a general Mode C transponder requirement at and above 10,000 feet MSL, except in airspace at and below 2,500 feet above the surface. Section 91.225 expressly applies the corresponding ADS-B Out requirement in Class Echo airspace at and above 10,000 feet MSL, with the same lower-altitude exclusion.
+
+**LEARNER:**
+
+How do I keep the overlap from turning those into one fuzzy equipment rule?
+
+**INSTRUCTOR:**
+
+At each route segment and planned altitude, ask two separate questions. Does section 91.215 require Mode C transponder capability here? Does section 91.225 require ADS-B Out here? Use the chart to locate the boundaries, the regulations to identify the applicable requirements and exceptions, and the airplane’s records to confirm what is installed.
+
+Then repeat the check for a plausible climb or reroute. On our planned segment below the Class Bravo shelf but inside the veil, the equipment answer is both if no stated regulatory exception applies. If the route works only while the airplane holds one narrow altitude, it leaves little room for an ordinary change caused by weather, traffic, or terrain.
 
 ## [18:00] Turn weather minimums into a usable picture
 

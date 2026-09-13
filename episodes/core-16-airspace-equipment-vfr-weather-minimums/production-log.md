@@ -170,5 +170,10 @@
 
 ## 2026-09-12 — equipment-term introduction refinement
 
-- Version 0.1.13 introduces a Mode C transponder before the Mode C veil and distinguishes its altitude-reporting role from ADS-B Out’s location broadcast. It also names sections 91.215 and 91.225 before explaining their shared route boundaries.
+- Version 0.1.13 introduced a Mode C transponder before the Mode C veil and distinguished its altitude-reporting role from ADS-B Out’s location broadcast. It also named sections 91.215 and 91.225 before explaining their shared route boundaries.
+
+## 2026-09-12 — equipment-route teaching rewrite
+
+- Version 0.1.14 reorganizes the full equipment section around the fictional route: identify the Mode C veil, define the required capabilities, solve that route segment, then generalize the overlapping and distinct regulatory triggers.
+- The scenario conclusion explicitly accounts for stated exceptions and authorized deviations, and treats altitude reporting and ADS-B Out as capabilities that may be provided by an integrated installation.
 - Regenerate the narration and renew source relevance before editorial approval or rendering.

@@ -2,7 +2,7 @@
 
 ## Environment and external services
 
-- Run project-environment commands, especially OpenAI source-relevance validation, from the repository root with `direnv exec .`.
+- Run project-environment commands, especially OpenAI source-relevance validation, from the repository root with `direnv exec .`. Source retrieval and OpenAI calls require external network access; run them outside the sandbox rather than attempting an in-sandbox retry.
 - Before sending unpublished episode material to OpenAI for source review or audio rendering, obtain explicit current-turn authorization and record it in the package QA checklist and resulting report.
 - Keep credentials in the local environment. Never put an API key in a command argument, project file, generated artifact, or output.
 

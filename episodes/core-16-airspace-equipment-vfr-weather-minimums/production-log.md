@@ -194,7 +194,7 @@
 
 ## 2026-09-13 — publication-day link validation complete
 
-- Ran the deterministic publication-day source and listener-facing link validation. All 35 cited sources and 28 show-notes links resolved and matched their recorded validation targets. The canonical publication record is `publication-link-validation.yaml`, run `ce31fba8-8458-43e4-b302-ba9399ce2d21`.
+- Ran the deterministic publication-day source and listener-facing link validation. All 35 cited sources and 28 show-notes links resolved and matched their recorded validation targets. The canonical publication record is `publication-link-validation.yaml`, run `241e9e56-38af-4f1b-b3e2-1df70bfa78cf`.
 - The draft-package shape check also passed. A publication timestamp is still required before release preparation can synchronize hosting metadata and produce the sealed handoff.
 
 ## 2026-09-13 — release metadata verified

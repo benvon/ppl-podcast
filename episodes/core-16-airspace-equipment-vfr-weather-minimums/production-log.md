@@ -167,3 +167,8 @@
 
 - Completed the authorized two-pass source-relevance review with `gpt-5.6-terra` against the current source ledger, claim inventory, source-tagged script, and show notes. The canonical report is `link-validation.yaml`, run `7a874d58-a385-462f-960f-557ba0cf0ea1`.
 - All deterministic link, locator, claim, source-tag, and show-notes mapping checks passed. Both relevance passes found no material source-support issue. The package is ready for renewed human editorial review; no audio rendering is authorized by this record.
+
+## 2026-09-12 — equipment-term introduction refinement
+
+- Version 0.1.13 introduces a Mode C transponder before the Mode C veil and distinguishes its altitude-reporting role from ADS-B Out’s location broadcast. It also names sections 91.215 and 91.225 before explaining their shared route boundaries.
+- Regenerate the narration and renew source relevance before editorial approval or rendering.

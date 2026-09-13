@@ -1,6 +1,6 @@
 # Airspace, Equipment, and VFR Weather Minimums
 
-**Version:** 0.1.12 — draft
+**Version:** 0.1.13 — draft
 **Target runtime:** 30-35 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -290,9 +290,11 @@ Let’s define the equipment before we place it on the route.
 
 **INSTRUCTOR:**
 
-Mode C provides the transponder’s automatic altitude-reporting capability.
+A Mode C transponder reports the airplane’s pressure altitude when it is interrogated. It provides altitude reporting, not location data; ADS-B Out is the separate system that broadcasts the airplane’s position and other information.
 
 [Source: sources.yaml#aim-transponder-operation]
+
+[Source: sources.yaml#aim-adsb-services]
 
 Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive information. Transmission from the airplane is ADS-B Out; receipt by the airplane is ADS-B In. Where section 91.225 requires ADS-B Out transmission, receiving ADS-B In is a different function and is not a substitute for that transmission.
 
@@ -301,7 +303,7 @@ Automatic Dependent Surveillance-Broadcast, or ADS-B, can transmit and receive i
 
 **INSTRUCTOR:**
 
-First, notice where the two regulations overlap. For this domestic route, both the altitude-reporting transponder rule and the ADS-B Out rule apply in Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and within the stated 30-nautical-mile area around the airports listed in appendix D, section 1. Those shared route boundaries tell you when the route requires an altitude-reporting transponder and ADS-B Out, rather than making you memorize the same boundary twice.
+Section 91.215 is the rule for an altitude-reporting transponder. Section 91.225 is the rule for ADS-B Out. Those two requirements share several route boundaries: Class Alpha, Class Bravo, and Class Charlie airspace; above the lateral limits of Class Bravo and Class Charlie airspace up to 10,000 feet MSL; and within the stated 30-nautical-mile area around the airports listed in appendix D, section 1. That overlap tells you where the route needs both an altitude-reporting transponder and ADS-B Out, rather than making you memorize the same boundary twice.
 
 [Source: sources.yaml#ecfr-91-215-transponder]
 

@@ -157,3 +157,7 @@
 
 - Version 0.1.12 consolidates the shared route boundaries for altitude-reporting transponder and ADS-B Out requirements before distinguishing their separate planning questions. This removes repeated numeric lists while preserving the regulatory conditions that matter to the scenario.
 - Regenerated `narration.md` and reset downstream review state. The revised factual spoken prose requires a new source-relevance review and renewed human editorial approval before rendering.
+
+## 2026-09-12 — first-listen transition refinement
+
+- Replaced the unexplained phrase “Start with the shared picture” with “First, notice where the two regulations overlap.” The opening now establishes the comparison before using it.

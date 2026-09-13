@@ -4,9 +4,9 @@ title: Airspace, Equipment, and VFR Weather Minimums
 slug: airspace-equipment-vfr-weather-minimums
 track: core
 production_contract_version: 2
-status: audio_listening_qa_complete
+status: ready_for_hosting_pr
 version: 0.1.14
-published_at: null
+published_at: 2026-09-13T13:10:54Z
 runtime_target_minutes: 33
 runtime_actual_seconds: 2458.7
 word_count: 5892
@@ -84,21 +84,18 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - Re-verify every public source and listener-facing link on publication day.
-  - Validate hosting metadata and stage the immutable audio object in the
-    hosting workflow.
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
   status: candidate_rendered_listening_qa_approved
   chapter_markers: embedded_and_ffprobe_validated
-  publication_day_validation: pending
+  publication_day_validation: passed
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: pending_script_review
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 89
+production_state_revision: 90

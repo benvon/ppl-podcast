@@ -196,3 +196,7 @@
 
 - Ran the deterministic publication-day source and listener-facing link validation. All 35 cited sources and 28 show-notes links resolved and matched their recorded validation targets. The canonical publication record is `publication-link-validation.yaml`, run `ce31fba8-8458-43e4-b302-ba9399ce2d21`.
 - The draft-package shape check also passed. A publication timestamp is still required before release preparation can synchronize hosting metadata and produce the sealed handoff.
+
+## 2026-09-13 — release metadata verified
+
+- Verified the release-preparation output for publication timestamp `2026-09-13T13:10:54Z` before sealing: Core 16 title, version `0.1.14`, 40:59 duration, source provenance, and the empty hosting-side audio object all agree with the approved candidate and package records. The hosting workflow supplies the audio-object fields after sealed staging.

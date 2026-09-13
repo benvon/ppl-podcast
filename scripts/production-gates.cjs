@@ -8,6 +8,7 @@ const { deriveNarration } = require("./derive-narration.cjs");
 const { CONTRACT_KINDS, productionContractKind, preservedProductionContract } = require("./production-state-contract.cjs");
 const {
   sourceRelevanceResultValid,
+  SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION,
   deterministicValidationResultValid,
   SOURCE_REVIEW_WHITESPACE_NORMALIZATION,
   sourceReviewSemanticInputHashes,
@@ -95,13 +96,16 @@ function sourceReviewEvidenceErrors({ episodePath, episode }) {
   const sourceResultsByID = new Map((validation.results || []).map((result) => [result.source_id, result]));
   expect(validation.show_notes_results?.every((result) => sourceResultsByID.get(result.source_id)?.link?.valid === true), "every show-notes link must map to a validated episode research citation.");
   const currentHashes = sourceValidationInputHashes(episodePath);
-  const nonScriptInputsMatch = Object.entries(currentHashes)
-    .filter(([name]) => name !== "master_script")
+  const otherInputsMatch = Object.entries(currentHashes)
+    .filter(([name]) => name !== "master_script" && name !== "show_notes")
     .every(([name, digest]) => validation.input_sha256?.[name] === digest);
   const exactScriptMatches = validation.input_sha256?.master_script === currentHashes.master_script;
   const semanticScriptMatches = validation.input_normalization?.master_script === SOURCE_REVIEW_WHITESPACE_NORMALIZATION
     && validation.semantic_input_sha256?.master_script === sourceReviewSemanticInputHashes(episodePath).master_script;
-  expect(nonScriptInputsMatch && (exactScriptMatches || semanticScriptMatches), "link-validation.yaml must be bound to the current sources, claims, show notes, and either the exact script bytes or its recorded whitespace-normalized source-review identity.");
+  const exactShowNotesMatch = validation.input_sha256?.show_notes === currentHashes.show_notes;
+  const semanticShowNotesMatch = validation.input_normalization?.show_notes === SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION
+    && validation.semantic_input_sha256?.show_notes === sourceReviewSemanticInputHashes(episodePath).show_notes;
+  expect(otherInputsMatch && (exactScriptMatches || semanticScriptMatches) && (exactShowNotesMatch || semanticShowNotesMatch), "link-validation.yaml must be bound to the current sources, claims, show-notes manifest, and either the exact or recorded semantic identities for the script and show notes.");
   try { errors.push(...validationCoverageErrors(episodePath, validation)); }
   catch (error) { errors.push(`Could not verify source-review coverage: ${error.message}`); }
   expect(Array.isArray(validation.results) && validation.results.length > 0, "link validation must record source results.");

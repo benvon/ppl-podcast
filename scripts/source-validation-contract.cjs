@@ -7,6 +7,7 @@ const YAML = require("yaml");
 const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 
 const SOURCE_REVIEW_WHITESPACE_NORMALIZATION = "markdown-whitespace-v1";
+const SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION = "fact-check-verification-column-v1";
 
 // Source relevance is about the spoken, source-tagged lesson. Keep its
 // identity insensitive to line endings, incidental trailing whitespace, and
@@ -25,11 +26,52 @@ function normalizeSourceReviewMarkdown(markdown) {
     .join("\n");
 }
 
+// A formal review attests to the factual study material, not to the
+// presentation-only status cell that records when that review occurred. Keep
+// the verification cell out of the semantic identity while retaining every
+// source, locator, claim, and listener-facing link. A change anywhere else in
+// show notes requires a new review.
+function normalizeShowNotesSourceReviewMarkdown(markdown) {
+  let inFactCheckTable = false;
+  return String(markdown)
+    .replace(/\r\n?/g, "\n")
+    .split("\n")
+    .map((line) => {
+      if (/^##\s+Fact-check and source material\s*$/i.test(line)) {
+        inFactCheckTable = true;
+        return line;
+      }
+      if (/^##\s+/.test(line)) inFactCheckTable = false;
+      if (!inFactCheckTable || !/^\|/.test(line) || /^\|\s*:?-{3,}/.test(line)) return line;
+      const cells = line.split("|");
+      // Leading and trailing table delimiters produce two empty cells. The
+      // fact-check table has five meaningful columns, ending in Verified.
+      if (cells.length !== 7 || cells[1].trim().toLowerCase() === "topic") return line;
+      cells[5] = " <verification-status> ";
+      return cells.join("|");
+    })
+    .join("\n");
+}
+
+function claimAssessmentBlocksSourceRelease(assessment) {
+  if (assessment?.verdict === "supports") return assessment?.finding_materiality !== "none";
+  // Editorial notes are allowed only when the source partially supports the
+  // claim. A claim with no support, insufficient evidence, or an unknown
+  // non-support verdict must never become release-ready by labeling it
+  // editorial.
+  return assessment?.verdict !== "partially_supports" || assessment?.finding_materiality !== "editorial";
+}
+
+function locatorAssessmentSupportsSourceRelease(assessment) {
+  return assessment?.verdict === "supports" && assessment?.finding_materiality === "none";
+}
+
 function sourceReviewSemanticInputHashes(episodePath) {
   const scriptPath = path.join(episodePath, "master-script.md");
-  if (!fs.existsSync(scriptPath)) return { master_script: null };
+  const showNotesPath = path.join(episodePath, "show-notes.md");
   return {
-    master_script: crypto.createHash("sha256").update(normalizeSourceReviewMarkdown(fs.readFileSync(scriptPath, "utf8"))).digest("hex"),
+    master_script: fs.existsSync(scriptPath) ? crypto.createHash("sha256").update(normalizeSourceReviewMarkdown(fs.readFileSync(scriptPath, "utf8"))).digest("hex") : null,
+    show_notes: fs.existsSync(showNotesPath) ? crypto.createHash("sha256").update(normalizeShowNotesSourceReviewMarkdown(fs.readFileSync(showNotesPath, "utf8"))).digest("hex") : null,
   };
 }
 
@@ -150,7 +192,6 @@ function sourceRelevanceResultValid(result) {
   // field is a preserved single-pass record and remains readable as such.
   const reviews = Array.isArray(result?.relevance_reviews) ? result.relevance_reviews : [result?.relevance];
   const requiredReviewCount = Array.isArray(result?.relevance_reviews) ? 2 : 1;
-  const findingBlocksRelease = (assessment) => assessment?.verdict !== "supports" && assessment?.finding_materiality !== "editorial";
   const reviewValid = (relevance) => {
     const assessments = relevance?.assessment?.claim_assessments;
     if (!Array.isArray(assessments)) return false;
@@ -160,10 +201,10 @@ function sourceRelevanceResultValid(result) {
       // A locator is the evidence boundary. A wrong one cannot be softened
       // into an editorial note because the report would then attest to the
       // wrong passage or page.
-      && relevance?.assessment?.locator_assessment?.verdict === "supports"
+      && locatorAssessmentSupportsSourceRelease(relevance?.assessment?.locator_assessment)
       && expectedClaimIDs.length === assessments.length
       && expectedClaimIDs.every((claimID) => counts.get(claimID) === 1)
-      && assessments.every((assessment) => !findingBlocksRelease(assessment));
+      && assessments.every((assessment) => !claimAssessmentBlocksSourceRelease(assessment));
   };
   return result?.citation_target?.valid === true
     && result?.link?.valid === true
@@ -212,4 +253,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { SOURCE_REVIEW_WHITESPACE_NORMALIZATION, deterministicValidationResultValid, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

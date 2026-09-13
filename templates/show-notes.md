@@ -2,7 +2,6 @@
 
 **Episode:** {{EPISODE_DISPLAY_LABEL}}
 **Version:** 0.1.0
-**Source verification:** Pending
 
 ## In this episode
 

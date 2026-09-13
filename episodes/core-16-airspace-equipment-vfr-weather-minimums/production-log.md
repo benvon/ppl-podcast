@@ -147,3 +147,8 @@
 - Corrected the Class Echo source locator and matching study-link locator to name the exact current AIM heading: `AIM 3-2-6(b)(3), Arrival or Through Flight Entry Requirements`. The source statement itself and the spoken lesson did not change.
 - Completed the authorized two-pass source-relevance review with `gpt-5.6-terra` against the exact version 0.1.11 package. The canonical report is `link-validation.yaml`, run `d00b8bc1-c0cc-4542-8c87-ccacd07c514b`. All deterministic and material relevance checks passed under the `safety-and-core-v1` policy. Two retained observations are editorial-only: the AIM names the specific Special VFR surface-area classes while the regulation supplies the broader surface-area wording, and section 91.155 cross-references section 91.157 without naming it Special VFR.
 - An independent first-listen review of the current script found no material grammar, completeness, callback, call-forward, or listening-comprehension issue. The human editor approved the current script fingerprint after the clean review.
+
+## 2026-09-12 — source-review status display synchronized
+
+- Updated the fact-check table's display-only verification cells to the completed formal-review date, 2026-09-12. The reviewed claims, source links, locators, show-notes manifest, and spoken script did not change.
+- The formal report now records the status-insensitive semantic identity for that table column while retaining its exact raw input hashes for provenance. Any substantive study-material change still invalidates the source-review evidence and requires a new review.

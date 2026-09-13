@@ -15,8 +15,10 @@ input_sha256:
   show_notes_manifest: 89001be82485f6cd46d61fbc126465eb0b1705b3d056fbb45c1923ad6003fec8
 input_normalization:
   master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
 semantic_input_sha256:
   master_script: 34399684933543173cdfc9c6489c8dbf7a4145b3c4fc5426dfe9d0e772501503
+  show_notes: e92fe4046fa3cad123ae1efeade6c33a56229401cce7110b09ad84a559f870eb
 llm_requested: true
 llm_model: gpt-5.6-terra
 llm_review_passes: 2

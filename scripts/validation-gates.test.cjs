@@ -26,7 +26,7 @@ const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
-const { normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { MALFORMED_LOCK_RECOVERY_GRACE_MS, PACKAGE_OPERATION_COMMANDS, PACKAGE_OPERATION_IDS, PACKAGE_OPERATIONS, acquireEpisodePackageOperation, assertEpisodePackageOperation, releaseEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
 
 function source(id, supportsClaims) {
@@ -56,7 +56,7 @@ function writePassingSourceGate(episodePath, episode) {
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), "# Notes\n", "utf8");
   fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), "links: []\n", "utf8");
   fs.writeFileSync(path.join(episodePath, "qa-checklist.md"), "- [x] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
-  const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports" }] } };
+  const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: claim.id, verdict: "supports", finding_materiality: "none" }] } };
   const result = { source_id: sourceEntry.id, linked_claim_ids: [claim.id], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } };
   const sourceReviewRunID = crypto.randomUUID();
   fs.writeFileSync(path.join(episodePath, "link-validation.yaml"), YAML.stringify({
@@ -537,6 +537,7 @@ test("the show-notes template leaves the single production disclosure to hosting
   const template = fs.readFileSync(path.join(__dirname, "..", "templates", "show-notes.md"), "utf8");
   const checklist = fs.readFileSync(path.join(__dirname, "..", "templates", "qa-checklist.md"), "utf8");
   assert.doesNotMatch(template, /^## Production notice\b/im);
+  assert.doesNotMatch(template, /^\*\*Source verification:\*\*/im);
   assert.match(checklist, /show notes contain study links and synopsis only/i);
 });
 
@@ -590,7 +591,7 @@ test("pre-hosting validation requires consistent release records", () => {
   const inputSha256 = sourceValidationInputHashes(episodePath);
   const linkValidation = () => {
     const runID = crypto.randomUUID();
-    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } };
+    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
     return {
       schema_version: 1, validator: "scripts/validate-source-links.cjs", run_id: runID, checked_at_utc: "2026-08-24T13:32:00Z", llm_requested: true, llm_model: "test-model", llm_review_passes: 2, llm_materiality_policy: "safety-and-core-v1",
       authorization: { qa_id: "openai-source-review-authorization", attested_at_utc: "2026-08-24T13:32:00Z", run_id: runID }, input_sha256: inputSha256,
@@ -1303,15 +1304,34 @@ test("per-claim relevance retains an editorial precision note without blocking r
   assert.deepEqual(result.editorial_note_assessment_ids, ["claim-a"]);
 });
 
+test("per-claim relevance never treats missing source support as an editorial note", () => {
+  const result = validateClaimAssessments(
+    { status: "assessed", assessment: { verdict: "does_not_support", claim_assessments: [{ claim_id: "claim-a", verdict: "does_not_support", finding_materiality: "editorial" }] } },
+    ["claim-a"],
+  );
+  assert.equal(result.valid, false);
+  assert.deepEqual(result.material_unsupported_assessment_ids, ["claim-a"]);
+  assert.deepEqual(result.editorial_note_assessment_ids, []);
+});
+
+test("per-claim relevance rejects a materially flagged supporting assessment", () => {
+  const result = validateClaimAssessments(
+    { status: "assessed", assessment: { verdict: "supports", claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "material" }] } },
+    ["claim-a"],
+  );
+  assert.equal(result.valid, false);
+  assert.deepEqual(result.material_unsupported_assessment_ids, ["claim-a"]);
+});
+
 test("citation-group relevance accepts an aggregate partial verdict when every mapped claim and locator supports", () => {
-  const result = { linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } }, claim_assessments: { valid: true } };
+  const result = { linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance: { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } }, claim_assessments: { valid: true } };
   assert.equal(sourceRelevanceResultValid(result), true);
   assert.equal(sourceRelevanceResultValid({ ...result, claim_assessments: { valid: false } }), false);
   assert.equal(sourceRelevanceResultValid({ ...result, relevance: { ...result.relevance, assessment: { ...result.relevance.assessment, claim_assessments: [{ claim_id: "claim-a", verdict: "partially_supports" }] } } }), false);
 });
 
 test("current relevance records require two supporting independent assessments", () => {
-  const review = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } };
+  const review = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
   const result = {
     linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
     relevance: review,
@@ -1332,6 +1352,44 @@ test("current relevance records retain non-material precision notes without trea
     claim_assessments: { valid: true, review_count: 2 },
   };
   assert.equal(sourceRelevanceResultValid(result), true);
+});
+
+test("current relevance records reject editorially labeled missing source support", () => {
+  const review = { status: "assessed", assessment: { verdict: "does_not_support", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "does_not_support", finding_materiality: "editorial" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), false);
+});
+
+test("current relevance records reject internally inconsistent supporting assessments", () => {
+  const review = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "material" }] } };
+  const result = {
+    linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true },
+    relevance: review,
+    relevance_reviews: [{ pass: 1, ...review }, { pass: 2, ...review }],
+    claim_assessments: { valid: true, review_count: 2 },
+  };
+  assert.equal(sourceRelevanceResultValid(result), false);
+  const locatorConflict = { ...review, assessment: { ...review.assessment, locator_assessment: { verdict: "supports", finding_materiality: "material" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
+  assert.equal(sourceRelevanceResultValid({ ...result, relevance: locatorConflict, relevance_reviews: [{ pass: 1, ...locatorConflict }, { pass: 2, ...locatorConflict }] }), false);
+});
+
+test("show-notes source identity ignores only fact-check verification-status cells", () => {
+  const pending = [
+    "## Fact-check and source material",
+    "",
+    "| Topic | Source type | Authoritative source | Locator | Verified |",
+    "| --- | --- | --- | --- | --- |",
+    "| Class B entry | Regulation | [14 CFR 91.131](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.131) | 14 CFR 91.131(a)(1) | Pending formal review |",
+  ].join("\n");
+  const verified = pending.replace("Pending formal review", "2026-09-12");
+  const changedLocator = verified.replace("91.131(a)(1)", "91.131(b)");
+  assert.equal(normalizeShowNotesSourceReviewMarkdown(pending), normalizeShowNotesSourceReviewMarkdown(verified));
+  assert.notEqual(normalizeShowNotesSourceReviewMarkdown(verified), normalizeShowNotesSourceReviewMarkdown(changedLocator));
 });
 
 test("current relevance records never downgrade a locator problem to an editorial note", () => {
@@ -2206,7 +2264,7 @@ test("realtime renderer requires completed source-relevance review before render
   fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([]), "utf8");
   fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [ ] Source review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
   try {
-    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports" }] } };
+    const relevance = { status: "assessed", assessment: { verdict: "supports", locator_assessment: { verdict: "supports", finding_materiality: "none" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
     const passingResult = { source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true }, relevance, relevance_reviews: [{ pass: 1, ...relevance }, { pass: 2, ...relevance }], claim_assessments: { valid: true, review_count: 2 } };
     fs.writeFileSync(path.join(temporary, "link-validation.yaml"), validation([{ ...passingResult, link: { valid: false } }]), "utf8");
     assert.throws(() => assertSourceRelevanceApproved(scriptPath), /source- and claim-level relevance assessments/);

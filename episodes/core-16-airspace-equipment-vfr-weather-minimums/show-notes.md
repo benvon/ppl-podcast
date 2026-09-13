@@ -33,14 +33,14 @@ One fictional daytime cross-country turns airspace into a repeatable decision: l
 
 | Topic | Source type | Authoritative source | Locator | Verified |
 | --- | --- | --- | --- | --- |
-| Class B entry | Regulation | [14 CFR 91.131](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.131) | 14 CFR 91.131(a)(1) | Pending formal review |
-| Class C and Class D communication | Regulation | [14 CFR 91.130](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.130) and [14 CFR 91.129](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.129) | 14 CFR 91.130(c); 91.129(c) | Pending formal review |
-| Basic VFR weather | Regulation | [14 CFR 91.155](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.155) | 14 CFR 91.155(a)-(d) | Pending formal review |
-| Flight and ground visibility | FAA glossary and regulation | [Pilot/Controller Glossary visibility definitions](https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-v.html#VISIBILITY) and [14 CFR 91.155](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.155) | Visibility definitions; 14 CFR 91.155(d) airport surface-area rule | Pending formal review |
-| Special VFR | Regulation | [14 CFR 91.157](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.157) | 14 CFR 91.157(a)-(c) | Pending formal review |
-| Special VFR pilot request | FAA controller guidance | [FAA Order JO 7110.65](https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap7_section_5.html#7-5-1) | 7-5-1(a)(4) | Pending formal review |
-| Transponder and ADS-B Out | Regulation | [14 CFR 91.215](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.215) and [14 CFR 91.225](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.225) | 14 CFR 91.215(b); 91.225(a), (d)-(g) | Pending formal review |
-| Student-pilot Class B preparation | Regulation | [14 CFR 61.95](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-C/section-61.95) | 14 CFR 61.95(a)-(c), with 91.131(b) cross-reference | Pending formal review |
+| Class B entry | Regulation | [14 CFR 91.131](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.131) | 14 CFR 91.131(a)(1) | 2026-09-12 |
+| Class C and Class D communication | Regulation | [14 CFR 91.130](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.130) and [14 CFR 91.129](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.129) | 14 CFR 91.130(c); 91.129(c) | 2026-09-12 |
+| Basic VFR weather | Regulation | [14 CFR 91.155](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.155) | 14 CFR 91.155(a)-(d) | 2026-09-12 |
+| Flight and ground visibility | FAA glossary and regulation | [Pilot/Controller Glossary visibility definitions](https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-v.html#VISIBILITY) and [14 CFR 91.155](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.155) | Visibility definitions; 14 CFR 91.155(d) airport surface-area rule | 2026-09-12 |
+| Special VFR | Regulation | [14 CFR 91.157](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.157) | 14 CFR 91.157(a)-(c) | 2026-09-12 |
+| Special VFR pilot request | FAA controller guidance | [FAA Order JO 7110.65](https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap7_section_5.html#7-5-1) | 7-5-1(a)(4) | 2026-09-12 |
+| Transponder and ADS-B Out | Regulation | [14 CFR 91.215](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.215) and [14 CFR 91.225](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.225) | 14 CFR 91.215(b); 91.225(a), (d)-(g) | 2026-09-12 |
+| Student-pilot Class B preparation | Regulation | [14 CFR 61.95](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-C/section-61.95) | 14 CFR 61.95(a)-(c), with 91.131(b) cross-reference | 2026-09-12 |
 
 ## Correction status
 

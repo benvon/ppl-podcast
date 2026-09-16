@@ -63,8 +63,11 @@ function removePreparationRecovery(pathname) {
 function publicationTransactionState({ episodePath, journal }) {
   const currentEpisode = fs.readFileSync(path.join(episodePath, "episode.yaml"), "utf8");
   const currentHosting = fs.readFileSync(path.join(episodePath, "hosting-metadata.yaml"), "utf8");
-  const episodeState = currentEpisode === journal.original_episode ? "original" : currentEpisode === journal.target_episode ? "target" : null;
-  const hostingState = currentHosting === journal.original_hosting ? "original" : currentHosting === journal.target_hosting ? "target" : null;
+  // A rerun may leave one derived document byte-for-byte unchanged. Prefer a
+  // matching target over its identical original so the transaction can still
+  // attest that both files have the prepared values.
+  const episodeState = currentEpisode === journal.target_episode ? "target" : currentEpisode === journal.original_episode ? "original" : null;
+  const hostingState = currentHosting === journal.target_hosting ? "target" : currentHosting === journal.original_hosting ? "original" : null;
   if (!episodeState || !hostingState) {
     throw new PublicationPreparationError("Episode or hosting metadata changed after publication preparation was interrupted; refusing recovery that could overwrite newer work.");
   }
@@ -207,8 +210,6 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
     writeYamlAtomically(hostingYaml, preparedHosting);
     const validation = validatePreHosting({ episodePath: resolvedEpisode, cwd, packageLease });
     if (!validation.valid) throw new PublicationPreparationError(`Pre-hosting validation failed after release preparation:\n${validation.errors.join("\n")}`);
-    const handoff = createHostingHandoff({ episodePath: resolvedEpisode, outputDir, cwd, packageLease });
-    verifyHostingHandoff({ outputDir: handoff.outputDir });
     const transactionState = publicationTransactionState({ episodePath: resolvedEpisode, journal: {
       original_episode: originalEpisode,
       original_hosting: originalHosting,
@@ -216,8 +217,10 @@ function preparePublicationUnlocked({ episodePath, outputDir, publishedAt, cwd =
       target_hosting: preparedHosting,
     } });
     if (transactionState.episodeState !== "target" || transactionState.hostingState !== "target") {
-      throw new PublicationPreparationError("Package metadata changed during handoff preparation; refusing to accept a handoff that no longer matches the package.");
+      throw new PublicationPreparationError("Package metadata changed during release preparation; refusing to create a handoff that no longer matches the package.");
     }
+    const handoff = createHostingHandoff({ episodePath: resolvedEpisode, outputDir, cwd, packageLease });
+    verifyHostingHandoff({ outputDir: handoff.outputDir });
     removePreparationRecovery(recoveryPath);
     return handoff;
   } catch (error) {

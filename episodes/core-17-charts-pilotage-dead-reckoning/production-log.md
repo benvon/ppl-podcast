@@ -66,6 +66,14 @@
 - Revised only the flagged passages: identified the current planning sources that complement the sectional; restored wind and winds-aloft analysis to the altitude-selection explanation; clarified the boundary between chart depictions and operating requirements; replaced compressed slogan-style language about forecast calculations and correction sources; specified that actual crossing time is entered in the navigation log; described the workload and backup value of electronic and manual planning methods; and kept the in-flight progress example consistently inside the scenario.
 - Regenerated `narration.md`, synchronized package version metadata and the spoken-word count, and reset script-review and source-relevance state because factual spoken prose changed. The current script requires renewed two-pass source relevance and human approval before rendering.
 
+## 2026-09-16 — navigation-log workload guidance added
+
+- Reviewed PHAK Chapter 2, *Workload Management*, p. 2-24; PHAK Chapter 16, pp. 16-20–16-21; the Pilotage and Dead Reckoning risk elements in FAA-S-ACS-6C; and AC 90-48E, section 15.
+- Added the requested safety emphasis without presenting a new FAA procedure: prepare the navigation log and planned arithmetic before departure; leave clear space for actual and revised values; make brief airborne entries; keep aircraft control, situational awareness, collision avoidance, and the outside scan primary; and defer involved, nonurgent recalculation until workload permits.
+- Bumped the working version to 0.1.2, added reciprocal source and claim records for workload management and cockpit fixation, and added the two FAA references to the show notes.
+- Regenerated `narration.md`, updated the spoken-word count to 5,706, and reset the current script-review and source-relevance state through `episode:script-review --reset`.
+- The deterministic source check passed for 26 sources, 25 claims, 131 master-script source tags, and 26 show-notes links. Narration parity, the pending script fingerprint, and package version metadata also match the current script.
+
 ## 2026-09-16 — renewed formal source relevance complete
 
 - With the user's current-turn authorization, ran the two-pass `--require-llm` source-relevance review against the revised 0.1.2 package. Canonical report: `link-validation.yaml`, run `12072985-7af0-4d0b-b44a-07f8b63afbe0`.
@@ -85,13 +93,5 @@
 
 ## 2026-09-16 — publication-day link validation complete
 
-- Revalidated all 26 official source links and 26 listener-facing show-note links with `sources:validate --publication-check`. Canonical report: `publication-link-validation.yaml`, run `6cf5998a-4eeb-429c-8352-e8abb98c0822`.
+- Revalidated all 26 official source links and 26 listener-facing show-note links with `sources:validate --publication-check`. Canonical report: `publication-link-validation.yaml`, run `3bfcad80-9a08-40ed-8278-89816182ede5`.
 - Every target resolved and the publication-day report is valid. This deterministic check supplements, and does not replace, the clean formal two-pass source-relevance record.
-
-## 2026-09-16 — navigation-log workload guidance added
-
-- Reviewed PHAK Chapter 2, *Workload Management*, p. 2-24; PHAK Chapter 16, pp. 16-20–16-21; the Pilotage and Dead Reckoning risk elements in FAA-S-ACS-6C; and AC 90-48E, section 15.
-- Added the requested safety emphasis without presenting a new FAA procedure: prepare the navigation log and planned arithmetic before departure; leave clear space for actual and revised values; make brief airborne entries; keep aircraft control, situational awareness, collision avoidance, and the outside scan primary; and defer involved, nonurgent recalculation until workload permits.
-- Bumped the working version to 0.1.2, added reciprocal source and claim records for workload management and cockpit fixation, and added the two FAA references to the show notes.
-- Regenerated `narration.md`, updated the spoken-word count to 5,706, and reset the current script-review and source-relevance state through `episode:script-review --reset`.
-- The deterministic source check passed for 26 sources, 25 claims, 131 master-script source tags, and 26 show-notes links. Narration parity, the pending script fingerprint, and package version metadata also match the current script.

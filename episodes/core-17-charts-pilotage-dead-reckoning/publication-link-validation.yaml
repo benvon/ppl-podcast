@@ -1,8 +1,8 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
 validation_kind: publication_link_check
-run_id: 1105edb2-ae6e-483a-9f3b-570707064afb
-checked_at_utc: 2026-09-16T18:18:42.235Z
+run_id: 3bfcad80-9a08-40ed-8278-89816182ede5
+checked_at_utc: 2026-09-16T18:35:39.485Z
 sources_file: episodes/core-17-charts-pilotage-dead-reckoning/sources.yaml
 claims_file: episodes/core-17-charts-pilotage-dead-reckoning/claim-inventory.yaml
 show_notes_file: episodes/core-17-charts-pilotage-dead-reckoning/show-notes.md
@@ -11,7 +11,7 @@ input_sha256:
   sources: 28bd484e0168d77d9413fd1315d3ff308ea2049358df391cbf84e8762733bbd9
   claims: 1241a096aa9bca39e6a76bfbd3fcff18e0a3efbfcb6fe553ff2aee69f017d969
   master_script: 539663ff72b670d878cbe4d70f840172841d55e39042dae77d4191d07962d2eb
-  show_notes: 286de329d6a16435fa839ab35a86cd9aa845f1713cc4fac69d0ff159f36ae981
+  show_notes: 511f9f9d651b7f45526839a0d63c483720b9b5d0575f26c8b249d157801c9bde
   show_notes_manifest: 8728c3bae808bbba29eea68d89d38f5a00f9900cbbfffd376ffb5b36d7d68bef
 input_normalization:
   master_script: markdown-whitespace-v1
@@ -848,7 +848,7 @@ show_notes_results:
 results:
   - source_id: acs-cross-country-planning
     title: Private Pilot ACS, Cross-Country Flight Planning
-    checked_at_utc: 2026-09-16T18:18:32.851Z
+    checked_at_utc: 2026-09-16T18:34:25.952Z
     linked_claim_ids:
       - acs-cross-country-outcome
     missing_claim_ids: []
@@ -884,7 +884,7 @@ results:
       status: not_requested
   - source_id: acs-national-airspace-chart
     title: Private Pilot ACS, National Airspace System
-    checked_at_utc: 2026-09-16T18:18:32.884Z
+    checked_at_utc: 2026-09-16T18:34:25.967Z
     linked_claim_ids:
       - acs-chart-outcome
     missing_claim_ids: []
@@ -920,7 +920,7 @@ results:
       status: not_requested
   - source_id: acs-pilotage-dead-reckoning
     title: Private Pilot ACS, Pilotage and Dead Reckoning
-    checked_at_utc: 2026-09-16T18:18:34.413Z
+    checked_at_utc: 2026-09-16T18:34:26.551Z
     linked_claim_ids:
       - acs-navigation-outcome
     missing_claim_ids: []
@@ -956,7 +956,7 @@ results:
       status: not_requested
   - source_id: acs-pilotage-eta
     title: Private Pilot ACS, Pilotage and Dead Reckoning Continuation
-    checked_at_utc: 2026-09-16T18:18:34.419Z
+    checked_at_utc: 2026-09-16T18:34:26.555Z
     linked_claim_ids:
       - acs-navigation-eta
     missing_claim_ids: []
@@ -992,7 +992,7 @@ results:
       status: not_requested
   - source_id: chart-guide-current-edition
     title: FAA Aeronautical Chart Users' Guide, Keep Your Charts Current
-    checked_at_utc: 2026-09-16T18:18:32.884Z
+    checked_at_utc: 2026-09-16T18:34:25.967Z
     linked_claim_ids:
       - current-chart-cycle
     missing_claim_ids: []
@@ -1028,7 +1028,7 @@ results:
       status: not_requested
   - source_id: phak-sectional-overview
     title: Pilot's Handbook of Aeronautical Knowledge, Sectional Charts
-    checked_at_utc: 2026-09-16T18:18:34.442Z
+    checked_at_utc: 2026-09-16T18:34:26.580Z
     linked_claim_ids:
       - sectional-purpose-content
     missing_claim_ids: []
@@ -1064,7 +1064,7 @@ results:
       status: not_requested
   - source_id: chart-guide-terrain
     title: FAA Aeronautical Chart Users' Guide, Terrain Depiction
-    checked_at_utc: 2026-09-16T18:18:32.885Z
+    checked_at_utc: 2026-09-16T18:34:25.968Z
     linked_claim_ids:
       - terrain-picture
     missing_claim_ids: []
@@ -1100,7 +1100,7 @@ results:
       status: not_requested
   - source_id: chart-guide-obstacles
     title: FAA Aeronautical Chart Users' Guide, Obstruction Depiction
-    checked_at_utc: 2026-09-16T18:18:41.939Z
+    checked_at_utc: 2026-09-16T18:35:39.210Z
     linked_claim_ids:
       - obstacle-depiction
     missing_claim_ids: []
@@ -1136,7 +1136,7 @@ results:
       status: not_requested
   - source_id: chart-guide-mef
     title: FAA Aeronautical Chart Users' Guide, Maximum Elevation Figures
-    checked_at_utc: 2026-09-16T18:18:41.958Z
+    checked_at_utc: 2026-09-16T18:35:39.228Z
     linked_claim_ids:
       - mef-meaning-limitations
     missing_claim_ids: []
@@ -1173,7 +1173,7 @@ results:
   - source_id: chart-guide-mef-limitations
     title: FAA Aeronautical Chart Users' Guide, MEF Natural-Feature Method and
       Limitations
-    checked_at_utc: 2026-09-16T18:18:41.985Z
+    checked_at_utc: 2026-09-16T18:35:39.255Z
     linked_claim_ids:
       - mef-meaning-limitations
     missing_claim_ids: []
@@ -1209,7 +1209,7 @@ results:
       status: not_requested
   - source_id: chart-guide-terminal-airspace
     title: FAA Aeronautical Chart Users' Guide, Class B, C, and D Depiction
-    checked_at_utc: 2026-09-16T18:18:41.997Z
+    checked_at_utc: 2026-09-16T18:35:39.265Z
     linked_claim_ids:
       - terminal-airspace-depiction
     missing_claim_ids: []
@@ -1245,7 +1245,7 @@ results:
       status: not_requested
   - source_id: chart-guide-class-e
     title: FAA Aeronautical Chart Users' Guide, Class E Depiction
-    checked_at_utc: 2026-09-16T18:18:42.021Z
+    checked_at_utc: 2026-09-16T18:35:39.288Z
     linked_claim_ids:
       - class-e-depiction
     missing_claim_ids: []
@@ -1281,7 +1281,7 @@ results:
       status: not_requested
   - source_id: chart-guide-route-culture
     title: FAA Aeronautical Chart Users' Guide, Roads and Railroads
-    checked_at_utc: 2026-09-16T18:18:42.030Z
+    checked_at_utc: 2026-09-16T18:35:39.297Z
     linked_claim_ids:
       - charted-culture-features
     missing_claim_ids: []
@@ -1317,7 +1317,7 @@ results:
       status: not_requested
   - source_id: chart-guide-route-water
     title: FAA Aeronautical Chart Users' Guide, Lakes and Reservoirs
-    checked_at_utc: 2026-09-16T18:18:42.064Z
+    checked_at_utc: 2026-09-16T18:35:39.325Z
     linked_claim_ids:
       - charted-water-features
     missing_claim_ids: []
@@ -1353,7 +1353,7 @@ results:
       status: not_requested
   - source_id: phak-pilotage
     title: Pilot's Handbook of Aeronautical Knowledge, Pilotage
-    checked_at_utc: 2026-09-16T18:18:34.445Z
+    checked_at_utc: 2026-09-16T18:34:26.584Z
     linked_claim_ids:
       - pilotage-checkpoints
     missing_claim_ids: []
@@ -1389,7 +1389,7 @@ results:
       status: not_requested
   - source_id: phak-dead-reckoning
     title: Pilot's Handbook of Aeronautical Knowledge, Dead Reckoning
-    checked_at_utc: 2026-09-16T18:18:37.142Z
+    checked_at_utc: 2026-09-16T18:34:29.149Z
     linked_claim_ids:
       - dead-reckoning-integration
     missing_claim_ids: []
@@ -1425,7 +1425,7 @@ results:
       status: not_requested
   - source_id: phak-wind-track
     title: Pilot's Handbook of Aeronautical Knowledge, Effect of Wind
-    checked_at_utc: 2026-09-16T18:18:37.152Z
+    checked_at_utc: 2026-09-16T18:34:29.157Z
     linked_claim_ids:
       - wind-effects
     missing_claim_ids: []
@@ -1461,7 +1461,7 @@ results:
       status: not_requested
   - source_id: phak-navigation-terms
     title: Pilot's Handbook of Aeronautical Knowledge, Navigation Term Summary
-    checked_at_utc: 2026-09-16T18:18:37.172Z
+    checked_at_utc: 2026-09-16T18:34:29.175Z
     linked_claim_ids:
       - navigation-terms
     missing_claim_ids: []
@@ -1497,7 +1497,7 @@ results:
       status: not_requested
   - source_id: phak-variation-deviation
     title: Pilot's Handbook of Aeronautical Knowledge, Variation and Deviation
-    checked_at_utc: 2026-09-16T18:18:37.201Z
+    checked_at_utc: 2026-09-16T18:34:29.201Z
     linked_claim_ids:
       - magnetic-variation
     missing_claim_ids: []
@@ -1533,7 +1533,7 @@ results:
       status: not_requested
   - source_id: phak-deviation-card
     title: Pilot's Handbook of Aeronautical Knowledge, Compass Deviation Card
-    checked_at_utc: 2026-09-16T18:18:37.222Z
+    checked_at_utc: 2026-09-16T18:34:29.219Z
     linked_claim_ids:
       - compass-deviation-card
     missing_claim_ids: []
@@ -1569,7 +1569,7 @@ results:
       status: not_requested
   - source_id: phak-basic-calculations
     title: Pilot's Handbook of Aeronautical Knowledge, Time, Speed, and Distance
-    checked_at_utc: 2026-09-16T18:18:37.244Z
+    checked_at_utc: 2026-09-16T18:34:29.239Z
     linked_claim_ids:
       - time-speed-distance
     missing_claim_ids: []
@@ -1605,7 +1605,7 @@ results:
       status: not_requested
   - source_id: phak-course-planning
     title: Pilot's Handbook of Aeronautical Knowledge, Steps in Charting the Course
-    checked_at_utc: 2026-09-16T18:18:37.255Z
+    checked_at_utc: 2026-09-16T18:34:29.249Z
     linked_claim_ids:
       - route-workflow
     missing_claim_ids: []
@@ -1642,7 +1642,7 @@ results:
   - source_id: phak-course-computation
     title: Pilot's Handbook of Aeronautical Knowledge, Course and Flight-Log
       Computation
-    checked_at_utc: 2026-09-16T18:18:37.271Z
+    checked_at_utc: 2026-09-16T18:34:29.264Z
     linked_claim_ids:
       - planned-navigation-log
     missing_claim_ids: []
@@ -1678,7 +1678,7 @@ results:
       status: not_requested
   - source_id: phak-plan-versus-actual
     title: Pilot's Handbook of Aeronautical Knowledge, Adjusting the Plan in Flight
-    checked_at_utc: 2026-09-16T18:18:37.281Z
+    checked_at_utc: 2026-09-16T18:34:29.272Z
     linked_claim_ids:
       - compare-plan-actual
     missing_claim_ids: []
@@ -1714,7 +1714,7 @@ results:
       status: not_requested
   - source_id: phak-workload-management
     title: Pilot's Handbook of Aeronautical Knowledge, Workload Management
-    checked_at_utc: 2026-09-16T18:18:37.302Z
+    checked_at_utc: 2026-09-16T18:34:29.292Z
     linked_claim_ids:
       - navigation-workload-management
     missing_claim_ids: []
@@ -1750,7 +1750,7 @@ results:
       status: not_requested
   - source_id: ac-cockpit-fixation
     title: AC 90-48E, Maintaining Vigilance
-    checked_at_utc: 2026-09-16T18:18:37.314Z
+    checked_at_utc: 2026-09-16T18:34:29.301Z
     linked_claim_ids:
       - cockpit-fixation-scan
     missing_claim_ids: []

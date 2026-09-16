@@ -16,6 +16,8 @@ Do not compress several of these moves into one sentence. If an explanation says
 
 For a lesson that is heavy on theory, give the listener a short orienting map before the deep explanation begins. Name the major relationships in causal order without trying to teach them all in the overview. Develop each relationship in its own section with a concrete scenario and an explicit callback to the map, then use the retrieval review to rebuild the same chain from beginning to end. When a following episode applies the theory to practical hazards or decisions, name that connection so the listener knows where the model will be used.
 
+Use a scenario because it gives the listener a decision to make, not merely because it makes the draft more colorful. Keep one coherent operational question running through a major section or the full episode. Let each new fact change what the pilot notices, compares, plans, or decides. If a fact does not affect the scenario or an ACS outcome, move it to the show notes or remove it rather than interrupting the lesson with an inventory.
+
 ## Make mental pictures usable without a diagram
 
 When an explanation depends on a diagram:
@@ -139,6 +141,8 @@ Use this order for every new draft:
 3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
 4. With explicit current-turn authorization, run source validation with `--require-llm`. It runs two independent assessments against the same frozen package inputs and must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve the union of every material finding and rerun until no material findings remain; retain non-material precision notes for the human editor without reopening the script automatically.
 5. Give that source-validated draft to the human editor.
+
+Treat the two source assessments as one review batch. Resolve their union with a single contextual pass through each affected section, then rerun the review against the new frozen package. Do not serially rewrite for non-material precision notes or make isolated sentence substitutions that break the larger explanation.
 
 If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.
 

@@ -20,6 +20,8 @@ Keep production tooling in three layers:
 - **Commands:** a command validates inputs, calls fact functions, performs at most one external effect, and writes one clearly named result record. It reports failure without promoting a success result.
 - **Orchestration:** package preparation and handoff compose completed command outputs. They verify identities rather than reinterpreting prose or duplicating lower-level validation.
 
+Design the complete command path before adding a check: the normal result, missing or stale inputs, already-present equivalent output, and failure after each planned write or external effect. Validate every precondition that can be checked before an external effect; never create a handoff, stage an artifact, or promote a success-looking record and then discover a local condition that should have blocked it. Idempotency means a verified equivalent result may be reused; it does not mean accepting an ambiguous or partially verified result.
+
 `episode.yaml` is the sole mutable workflow-state record. Artifact manifests describe artifacts. The QA checklist records human work. Do not create another state file, lock type, waiver system, or lifecycle registry unless the existing boundary cannot express a concrete requirement.
 
 Use the existing package operation wrapper only for commands that already mutate current-contract package state. Do not add separate authorization locks, recovery protocols, or competing ownership systems. A normal local command may fail closed, leave its existing successful record untouched, and be rerun after the cause is corrected.
@@ -33,6 +35,7 @@ Use the existing package operation wrapper only for commands that already mutate
 - Resolve material source findings by revising the source-bound prose or source mapping. If the human editor deliberately accepts a non-material limitation, record the decision in `production-log.md`; do not create a generalized machine waiver mechanism.
 - Keep external authorization conversational and explicit for unpublished material. Record it in the normal QA checklist and report. Do not consume a checkbox or build a separate authorization state machine.
 - Preserve a failed command's error report. Do not clear or overwrite a prior clean report until a new clean run for the current inputs succeeds.
+- Make success claims match the exact scope of the work performed. A partial or shape-only command may report its own completed check, but never imply that omitted validation, staging, or publication work also passed.
 
 ## Change protocol
 
@@ -44,7 +47,7 @@ Before changing production tooling, write a short design note in the PR descript
 - how changed inputs make its output stale; and
 - the normal and failure behavior.
 
-Then add focused tests for the observable contract: valid input, missing or mismatched input, changed dependent input, and a failed external or write step when applicable. Test a real bad outcome, not a friendly status string. Keep tests at the facts or command boundary; do not add synthetic concurrency, crash-recovery, or authorization tests unless the command has a demonstrated concurrent or recovery requirement.
+Then add focused tests for the observable contract: valid input, missing or mismatched input, changed dependent input, and a failed external or write step when applicable. Exercise each relevant exit path, including an already-present equivalent output and a failure after a planned write when the command has one. Test a real bad outcome, not a friendly status string. Keep tests at the facts or command boundary; do not add synthetic concurrency, crash-recovery, or authorization tests unless the command has a demonstrated concurrent or recovery requirement.
 
 Before pushing a tooling change, run `npm run tooling:standards`, the relevant test suite, and one adversarial review. If the same class of finding appears twice, stop adding point fixes. Re-state the top-level goal and simplify or redesign the responsible layer before continuing.
 

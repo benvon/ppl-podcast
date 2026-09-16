@@ -1,0 +1,20 @@
+schema_version: 1
+publisher_release:
+  id: core-17
+  guid: pplstudyguide.com:core-17
+  title: Charts, Pilotage, and Dead Reckoning
+  description: A fictional daytime cross-country turns a current sectional, visual
+    checkpoints, wind-corrected headings, groundspeed, and ETA into one
+    practical navigation feedback loop.
+  published_at: 2026-09-16T18:22:07Z
+  duration: 00:37:34
+  season: 1
+  number: 17
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.2

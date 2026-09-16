@@ -19,7 +19,7 @@ const { analyzeRenderedAudio, analyzeStitchBoundaries, fadeSegmentPcm } = requir
 const { ChapterReviewError, createChapterReview, formatTimestamp, parseArgs: parseChapterReviewArgs, renderReviewHtml } = require("./create-chapter-review.cjs");
 const { DRAFT_PACKAGE_SHAPE, durationDisplay, episodeDisplayLabel, hasExactVisibleVersion, parseArgs: parsePreHostingArgs, pathWithin, validatePreHosting } = require("./validate-pre-hosting.cjs");
 const { HostingHandoffError, createHostingHandoff, parseArgs: parseHandoffArgs, sourcePackageFiles, verifyHostingHandoff } = require("./prepare-hosting-handoff.cjs");
-const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
+const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, publicationTransactionState, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { approveScriptReview, migratedAudioMix, parseArgs: parseScriptReviewArgs, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
@@ -515,6 +515,23 @@ test("publication preparation synchronizes derived release facts without staging
   assert.deepEqual(synchronized.hosting.publisher_release.audio, {});
   assert.throws(() => synchronizeReleaseMetadata({ episode, hosting, sourceValidation, publicationLinkValidation, publishedAt: "2026-09-10T13:00:08Z" }), PublicationPreparationError);
   assert.throws(() => synchronizeReleaseMetadata({ episode: { ...episode, production_contract_version: undefined }, hosting, sourceValidation, publicationLinkValidation, publishedAt: "2026-09-09T13:00:08Z" }), /preserved legacy package/);
+});
+
+test("publication transaction accepts an unchanged derived hosting record as prepared", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-unchanged-hosting-test-"));
+  try {
+    const originalEpisode = "id: core-test\nproduction_state_revision: 4\n";
+    const targetEpisode = "id: core-test\nproduction_state_revision: 5\n";
+    const hosting = "publisher_release:\n  published_at: 2026-09-16T18:22:07Z\n";
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), targetEpisode);
+    fs.writeFileSync(path.join(temporary, "hosting-metadata.yaml"), hosting);
+    assert.deepEqual(publicationTransactionState({ episodePath: temporary, journal: {
+      original_episode: originalEpisode,
+      target_episode: targetEpisode,
+      original_hosting: hosting,
+      target_hosting: hosting,
+    } }), { episodeState: "target", hostingState: "target" });
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
 });
 
 test("legacy publication preparation leaves package bytes untouched", () => {

@@ -1,0 +1,290 @@
+episode_id: core-17
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-cross-country-planning
+    title: Private Pilot ACS, Cross-Country Flight Planning
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+    locator: "FAA-S-ACS-6C, PA.I.D.K1-K3, R3, R5, and S1-S2, document p. 5 (PDF viewer p. 13)"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-S-ACS-6C, April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 13, 2026"
+    relevance: "Connects cross-country route planning to airspace, terrain, obstacles, course, distance, heading, groundspeed, ETA, environmental risk, ATC limitations, and current aeronautical publications."
+    supports_claims: [acs-cross-country-outcome]
+  - id: acs-national-airspace-chart
+    title: Private Pilot ACS, National Airspace System
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    locator: "FAA-S-ACS-6C, PA.I.E.K1-K3 and S1-S3, document p. 6 (PDF viewer p. 14)"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-S-ACS-6C, April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 13, 2026"
+    relevance: "Requires chart-symbol knowledge to support identification of airspace and its operating requirements."
+    supports_claims: [acs-chart-outcome]
+  - id: acs-pilotage-dead-reckoning
+    title: Private Pilot ACS, Pilotage and Dead Reckoning
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+    locator: "FAA-S-ACS-6C, PA.VI.A.K1-K7, R1-R3, and S1-S5, document p. 38 (PDF viewer p. 46)"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-S-ACS-6C, April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 13, 2026"
+    relevance: "Defines the knowledge, risk-management, and skill outcomes for pilotage, dead reckoning, topography, route and checkpoint selection, course plotting, planned calculations, corrections, and position verification."
+    supports_claims: [acs-navigation-outcome]
+  - id: acs-pilotage-eta
+    title: Private Pilot ACS, Pilotage and Dead Reckoning Continuation
+    publisher: FAA
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+    locator: "FAA-S-ACS-6C, PA.VI.A.S6-S7, document p. 39 (PDF viewer p. 47)"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-S-ACS-6C, April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 13, 2026"
+    relevance: "Continues the pilotage and dead-reckoning skill outcome with checkpoint ETA and destination-estimate performance."
+    supports_claims: [acs-navigation-eta]
+  - id: chart-guide-current-edition
+    title: FAA Aeronautical Chart Users' Guide, Keep Your Charts Current
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+    locator: "Aeronautical Chart Users' Guide, Keep Your Charts Current and Effective Date, PDF p. 6"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; downloaded from the FAA Aeronautical Information Services directory September 13, 2026"
+    relevance: "Directs pilots to use current chart editions, confirm effective dates, and check NOTAMs for essential changes between chart cycles."
+    supports_claims: [current-chart-cycle]
+  - id: phak-sectional-overview
+    title: Pilot's Handbook of Aeronautical Knowledge, Sectional Charts
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+    locator: "PHAK Chapter 16, Aeronautical Charts and Sectional Charts, p. 16-2"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Defines a sectional chart's VFR role, scale, major information categories, and use of the chart legend."
+    supports_claims: [sectional-purpose-content]
+  - id: chart-guide-terrain
+    title: FAA Aeronautical Chart Users' Guide, Terrain Depiction
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+    locator: "Aeronautical Chart Users' Guide, Land Features (Terrain) and Obstructions, items 1-2, PDF p. 10"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Explains contours, shaded relief, and the overall terrain-and-obstruction depiction system."
+    supports_claims: [terrain-picture]
+  - id: chart-guide-obstacles
+    title: FAA Aeronautical Chart Users' Guide, Obstruction Depiction
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+    locator: "Aeronautical Chart Users' Guide, Land Features (Terrain) and Obstructions, item 4, PDF p. 11"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Explains obstruction symbols, MSL top elevation, parenthetical AGL height, UC notation, group obstacles, and chart-data limitations."
+    supports_claims: [obstacle-depiction]
+  - id: chart-guide-mef
+    title: FAA Aeronautical Chart Users' Guide, Maximum Elevation Figures
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+    locator: "Aeronautical Chart Users' Guide, Maximum Elevation Figure, item 5 and man-made-obstacle method, PDF p. 12"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Defines the MEF as the highest elevation in a sectional quadrant, including terrain and vertical obstacles, rounded to the next hundred after specified error treatment."
+    supports_claims: [mef-meaning-limitations]
+  - id: chart-guide-mef-limitations
+    title: FAA Aeronautical Chart Users' Guide, MEF Natural-Feature Method and Limitations
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+    locator: "Aeronautical Chart Users' Guide, MEF Natural Terrain Feature or Natural Vertical Obstacle, PDF p. 13"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Explains the allowance used for natural features and warns that MEFs use the best available information but are not verified by field survey."
+    supports_claims: [mef-meaning-limitations]
+  - id: chart-guide-terminal-airspace
+    title: FAA Aeronautical Chart Users' Guide, Class B, C, and D Depiction
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+    locator: "Aeronautical Chart Users' Guide, VFR Terms and Symbols, Controlled Airspace, PDF p. 16"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Explains chart colors, boundaries, and sector altitude figures for Class B, C, and D airspace."
+    supports_claims: [terminal-airspace-depiction]
+  - id: chart-guide-class-e
+    title: FAA Aeronautical Chart Users' Guide, Class E Depiction
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+    locator: "Aeronautical Chart Users' Guide, VFR Terms and Symbols, Class E Airspace, PDF p. 17"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Explains dashed-magenta surface areas and vignette or annotation conventions for Class E floors."
+    supports_claims: [class-e-depiction]
+  - id: chart-guide-route-culture
+    title: FAA Aeronautical Chart Users' Guide, Roads and Railroads
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+    locator: "Aeronautical Chart Users' Guide, VFR Sectional and Terminal Area Charts, Culture, PDF p. 34"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Provides current sectional symbology for roads and railroads used as route features in the fictional scenario."
+    supports_claims: [charted-culture-features]
+  - id: chart-guide-route-water
+    title: FAA Aeronautical Chart Users' Guide, Lakes and Reservoirs
+    publisher: FAA
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+    locator: "Aeronautical Chart Users' Guide, VFR Sectional and Terminal Area Charts, Hydrography, PDF p. 37"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "Effective July 9, 2026; accessed September 13, 2026"
+    relevance: "Provides current sectional symbology for lakes, reservoirs, and shorelines used as visual route features."
+    supports_claims: [charted-water-features]
+  - id: phak-pilotage
+    title: Pilot's Handbook of Aeronautical Knowledge, Pilotage
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+    locator: "PHAK Chapter 16, Pilotage, p. 16-12"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Defines pilotage and explains prominent checkpoints, identification by multiple features, route brackets, and continued use of heading when a checkpoint is missed."
+    supports_claims: [pilotage-checkpoints]
+  - id: phak-dead-reckoning
+    title: Pilot's Handbook of Aeronautical Knowledge, Dead Reckoning
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+    locator: "PHAK Chapter 16, Dead Reckoning, p. 16-13"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Defines dead reckoning and explains how heading and groundspeed predictions are monitored and corrected through pilotage."
+    supports_claims: [dead-reckoning-integration]
+  - id: phak-wind-track
+    title: Pilot's Handbook of Aeronautical Knowledge, Effect of Wind
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+    locator: "PHAK Chapter 16, Effect of Wind, heading, track, drift, WCA, and groundspeed, p. 16-9"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Explains air-mass movement, groundspeed, heading, track, drift angle, and wind correction angle."
+    supports_claims: [wind-effects]
+  - id: phak-navigation-terms
+    title: Pilot's Handbook of Aeronautical Knowledge, Navigation Term Summary
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+    locator: "PHAK Chapter 16, Course, Heading, Track, Drift Angle, WCA, Airspeed, and GS summary, p. 16-10"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Gives the compact definitions that distinguish the desired ground path, nose direction, actual ground path, wind correction, airspeed, and groundspeed."
+    supports_claims: [navigation-terms]
+  - id: phak-variation-deviation
+    title: Pilot's Handbook of Aeronautical Knowledge, Variation and Deviation
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+    locator: "PHAK Chapter 16, Magnetic Variation and Magnetic Deviation, p. 16-7"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Explains charted variation, conversion from true to magnetic direction, and the aircraft-specific effect addressed through deviation."
+    supports_claims: [magnetic-variation]
+  - id: phak-deviation-card
+    title: Pilot's Handbook of Aeronautical Knowledge, Compass Deviation Card
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+    locator: "PHAK Chapter 16, Deviation and Figure 16-12, p. 16-8"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Defines deviation, explains that it varies by aircraft and heading, and shows use of the aircraft's deviation card to obtain compass heading."
+    supports_claims: [compass-deviation-card]
+  - id: phak-basic-calculations
+    title: Pilot's Handbook of Aeronautical Knowledge, Time, Speed, and Distance
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+    locator: "PHAK Chapter 16, Basic Calculations, time-distance-groundspeed formulas, p. 16-11"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Provides the time, distance, and groundspeed relationships used for planned and observed route progress."
+    supports_claims: [time-speed-distance]
+  - id: phak-course-planning
+    title: Pilot's Handbook of Aeronautical Knowledge, Steps in Charting the Course
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+    locator: "PHAK Chapter 16, Charting the Course and Steps in Charting the Course, p. 16-18"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Provides the source sequence for drawing the route, choosing checkpoints, and checking airspace, terrain, and obstructions."
+    supports_claims: [route-workflow]
+  - id: phak-course-computation
+    title: Pilot's Handbook of Aeronautical Knowledge, Course and Flight-Log Computation
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+    locator: "PHAK Chapter 16, Figure 16-26 and course-computation discussion, p. 16-20"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "Shows a visual flight log and the sequence from distance and true course through WCA, variation, deviation, compass heading, groundspeed, and checkpoint times."
+    supports_claims: [planned-navigation-log]
+  - id: phak-plan-versus-actual
+    title: Pilot's Handbook of Aeronautical Knowledge, Adjusting the Plan in Flight
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+    locator: "PHAK Chapter 16, post-calculation flight-log discussion, first paragraph, p. 16-21"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
+    relevance: "States that as the trip progresses, the pilot can note headings and time and adjust heading, groundspeed, and time."
+    supports_claims: [compare-plan-actual]
+  - id: phak-workload-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Workload Management
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+    locator: "PHAK Chapter 2, Obstacles to Maintaining Situational Awareness and Workload Management, p. 2-24"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 2; current FAA chapter PDF accessed September 16, 2026"
+    relevance: "Explains that distraction and overload can narrow attention and reduce situational awareness, and that workload should be managed by planning, prioritizing, sequencing, and preparing for high-workload periods while workload is low."
+    supports_claims: [navigation-workload-management]
+  - id: ac-cockpit-fixation
+    title: AC 90-48E, Maintaining Vigilance
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+    locator: "AC 90-48E, section 15, PDF p. 14"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-48E, October 20, 2022; current FAA document accessed September 16, 2026"
+    relevance: "Warns that cockpit technology can cause fixation on displays and draw a pilot's attention inside and away from the outside environment."
+    supports_claims: [cockpit-fixation-scan]

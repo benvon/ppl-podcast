@@ -1,0 +1,1786 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: publication_link_check
+run_id: 3bfcad80-9a08-40ed-8278-89816182ede5
+checked_at_utc: 2026-09-16T18:35:39.485Z
+sources_file: episodes/core-17-charts-pilotage-dead-reckoning/sources.yaml
+claims_file: episodes/core-17-charts-pilotage-dead-reckoning/claim-inventory.yaml
+show_notes_file: episodes/core-17-charts-pilotage-dead-reckoning/show-notes.md
+show_notes_manifest_file: episodes/core-17-charts-pilotage-dead-reckoning/show-notes-manifest.yaml
+input_sha256:
+  sources: 28bd484e0168d77d9413fd1315d3ff308ea2049358df391cbf84e8762733bbd9
+  claims: 1241a096aa9bca39e6a76bfbd3fcff18e0a3efbfcb6fe553ff2aee69f017d969
+  master_script: 539663ff72b670d878cbe4d70f840172841d55e39042dae77d4191d07962d2eb
+  show_notes: 511f9f9d651b7f45526839a0d63c483720b9b5d0575f26c8b249d157801c9bde
+  show_notes_manifest: 8728c3bae808bbba29eea68d89d38f5a00f9900cbbfffd376ffb5b36d7d68bef
+input_normalization:
+  master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: 539663ff72b670d878cbe4d70f840172841d55e39042dae77d4191d07962d2eb
+  show_notes: 1e6277ea1ddcd2f8bf887f151c1d1c27b8bf8b73b28c65f3773a31e164ea53b2
+llm_requested: false
+llm_model: null
+llm_review_passes: 0
+llm_materiality_policy: null
+authorization: null
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 131
+  claim_coverage_count: 25
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 26
+  manifest_link_count: 26
+show_notes_results:
+  - id: acs-cross-country-link
+    text: Private Pilot ACS Cross-Country Flight Planning task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+    source_id: acs-cross-country-planning
+    claim_ids:
+      - acs-cross-country-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-national-airspace-link
+    text: Private Pilot ACS National Airspace System task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    source_id: acs-national-airspace-chart
+    claim_ids:
+      - acs-chart-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-pilotage-link
+    text: Private Pilot ACS Pilotage and Dead Reckoning task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+    source_id: acs-pilotage-dead-reckoning
+    claim_ids:
+      - acs-navigation-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      errors: []
+      valid: true
+      pdf_page_number: 46
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1701
+      pdf_page_text_sha256: bcf2237b007e21bdbc94458fa6663529a58b6d86025fa21c7607e1cba94b90da
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-eta-link
+    text: Private Pilot ACS checkpoint and ETA standards
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+    source_id: acs-pilotage-eta
+    claim_ids:
+      - acs-navigation-eta
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-current-link
+    text: FAA Chart Users' Guide current-edition guidance
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+    source_id: chart-guide-current-edition
+    claim_ids:
+      - current-chart-cycle
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3442
+      pdf_page_text_sha256: c418282de6af8d457e5ec6bab413112a19743811939df2509ef65f522024638d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-sectional-link
+    text: PHAK sectional-chart overview
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+    source_id: phak-sectional-overview
+    claim_ids:
+      - sectional-purpose-content
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1886
+      pdf_page_text_sha256: 2b7cdd80e89f59acec65efd2d6b6be7532f694fb7d48c14ac3252bf165c1d5d8
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-terrain-link
+    text: FAA Chart Users' Guide terrain picture
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+    source_id: chart-guide-terrain
+    claim_ids:
+      - terrain-picture
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3192
+      pdf_page_text_sha256: 03f03f91ba642cb9313293af2ea093ef4955bb9f5c7e2300d760687b545d9f09
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-obstacles-link
+    text: FAA Chart Users' Guide obstruction symbols
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+    source_id: chart-guide-obstacles
+    claim_ids:
+      - obstacle-depiction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3603
+      pdf_page_text_sha256: 8583090159596979a70f4e1111ca1d24af2ff8ee0d697bbddfc89ee974d38a20
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-mef-link
+    text: FAA Chart Users' Guide Maximum Elevation Figure
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+    source_id: chart-guide-mef
+    claim_ids:
+      - mef-meaning-limitations
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1431
+      pdf_page_text_sha256: f93c783c04949c033dc84c1feb37161ee0f1aa1369b86335b263d997ba45c51b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-mef-limit-link
+    text: FAA Chart Users' Guide MEF limitations
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+    source_id: chart-guide-mef-limitations
+    claim_ids:
+      - mef-meaning-limitations
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1655
+      pdf_page_text_sha256: 001b22d269fbdfe7ac7f2c616985880490d2a5be1011f31a992d5af20b823f04
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-terminal-airspace-link
+    text: FAA Chart Users' Guide Class B, C, and D depiction
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+    source_id: chart-guide-terminal-airspace
+    claim_ids:
+      - terminal-airspace-depiction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2876
+      pdf_page_text_sha256: ae2bdbf6d57af8a907d627bc02b3c0188b2c6b4cdb00ff6ca4400317b59bc17a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-class-e-link
+    text: FAA Chart Users' Guide Class E depiction
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+    source_id: chart-guide-class-e
+    claim_ids:
+      - class-e-depiction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3275
+      pdf_page_text_sha256: ee009bab496f117e6cdfea9a93ea50567905e9ddae8f4b2726b28ab1a43cd2b7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-culture-link
+    text: FAA Chart Users' Guide road and railroad symbols
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+    source_id: chart-guide-route-culture
+    claim_ids:
+      - charted-culture-features
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      errors: []
+      valid: true
+      pdf_page_number: 34
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 827
+      pdf_page_text_sha256: 4fb44878898176de6f2ec3d40561026c666aadc0338f803a6b54bb3e20e14475
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-water-link
+    text: FAA Chart Users' Guide lake and reservoir symbols
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+    source_id: chart-guide-route-water
+    claim_ids:
+      - charted-water-features
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      errors: []
+      valid: true
+      pdf_page_number: 37
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 565
+      pdf_page_text_sha256: 421e252b60d55a42cad5752feecaa6507df2730b8a6392b46d1a5d18363cd9f3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-pilotage-link
+    text: PHAK pilotage and checkpoint selection
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+    source_id: phak-pilotage
+    claim_ids:
+      - pilotage-checkpoints
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5329
+      pdf_page_text_sha256: 0cc9f53d5021b44dc1cabec218317387e5af2ee28b43dc3fb9121f3fd6779ca5
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-dead-reckoning-link
+    text: PHAK dead-reckoning definition
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+    source_id: phak-dead-reckoning
+    claim_ids:
+      - dead-reckoning-integration
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2301
+      pdf_page_text_sha256: aee35af4ac6b87c57eda92e49b56bbfef00d4754da238932fa974834a29ab26e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-wind-link
+    text: PHAK wind, heading, track, and groundspeed picture
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+    source_id: phak-wind-track
+    claim_ids:
+      - wind-effects
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3683
+      pdf_page_text_sha256: b8b5a49e2d6fa85a3524fe4ebfe47c2422c85822143ea4e79db1bf1f7ddd446d
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-terms-link
+    text: PHAK navigation-term summary
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+    source_id: phak-navigation-terms
+    claim_ids:
+      - navigation-terms
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1217
+      pdf_page_text_sha256: e52a894c0beaba46379d3fdff8b37931bfcbdcc04ec20bf521c573360aeb65ef
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-variation-link
+    text: PHAK variation and magnetic-course conversion
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+    source_id: phak-variation-deviation
+    claim_ids:
+      - magnetic-variation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2943
+      pdf_page_text_sha256: 622f062e1995073fdf48d6ee5e9db7ba4c76ab65b17f26304a19e6f8aafd1bfc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-deviation-link
+    text: PHAK deviation-card explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+    source_id: phak-deviation-card
+    claim_ids:
+      - compass-deviation-card
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4532
+      pdf_page_text_sha256: 349f45e0cdce5536df5ff7e391821a21d06581b0c84ebbb53852c6265fc97764
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-calculation-link
+    text: PHAK time, distance, and groundspeed formulas
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+    source_id: phak-basic-calculations
+    claim_ids:
+      - time-speed-distance
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3512
+      pdf_page_text_sha256: b6405f77f112f4ca91fd889f45d0bf110e9ced4edc3ebd482e9c8e722b68f4da
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-route-link
+    text: PHAK route-charting sequence
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+    source_id: phak-course-planning
+    claim_ids:
+      - route-workflow
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5429
+      pdf_page_text_sha256: f83f97700a686ecb9b3cdd2980ea9e27ebc469d0c56b7703ba62df5d13799e6c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-log-link
+    text: PHAK visual flight log and course computation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+    source_id: phak-course-computation
+    claim_ids:
+      - planned-navigation-log
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2880
+      pdf_page_text_sha256: 60d70014156dc460f7df82e657b074d5191788377305c8cb8cf693a131ac66ea
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-adjustment-link
+    text: PHAK planned-versus-actual adjustment
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+    source_id: phak-plan-versus-actual
+    claim_ids:
+      - compare-plan-actual
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2334
+      pdf_page_text_sha256: faa7cbb8ade38510e2b20af37214e686f6bd357c3b9e29b91acbe3ab365135a8
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-workload-link
+    text: PHAK workload-management guidance
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+    source_id: phak-workload-management
+    claim_ids:
+      - navigation-workload-management
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ac-cockpit-fixation-link
+    text: FAA collision-avoidance guidance on cockpit fixation
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+    source_id: ac-cockpit-fixation
+    claim_ids:
+      - cockpit-fixation-scan
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: false
+      content_sha256: 8cb12c4ad6f976d004f9bab9b6ce40956c49ef4cf8db3ff06f44934e4402a4b4
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2891
+      pdf_page_text_sha256: 41fe750b29cf51b309492492e8e327e8d6e293bbf4d0a4fedb5ed389bb4ecd72
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-cross-country-planning
+    title: Private Pilot ACS, Cross-Country Flight Planning
+    checked_at_utc: 2026-09-16T18:34:25.952Z
+    linked_claim_ids:
+      - acs-cross-country-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-national-airspace-chart
+    title: Private Pilot ACS, National Airspace System
+    checked_at_utc: 2026-09-16T18:34:25.967Z
+    linked_claim_ids:
+      - acs-chart-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-pilotage-dead-reckoning
+    title: Private Pilot ACS, Pilotage and Dead Reckoning
+    checked_at_utc: 2026-09-16T18:34:26.551Z
+    linked_claim_ids:
+      - acs-navigation-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      errors: []
+      valid: true
+      pdf_page_number: 46
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1701
+      pdf_page_text_sha256: bcf2237b007e21bdbc94458fa6663529a58b6d86025fa21c7607e1cba94b90da
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-pilotage-eta
+    title: Private Pilot ACS, Pilotage and Dead Reckoning Continuation
+    checked_at_utc: 2026-09-16T18:34:26.555Z
+    linked_claim_ids:
+      - acs-navigation-eta
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-current-edition
+    title: FAA Aeronautical Chart Users' Guide, Keep Your Charts Current
+    checked_at_utc: 2026-09-16T18:34:25.967Z
+    linked_claim_ids:
+      - current-chart-cycle
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3442
+      pdf_page_text_sha256: c418282de6af8d457e5ec6bab413112a19743811939df2509ef65f522024638d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-sectional-overview
+    title: Pilot's Handbook of Aeronautical Knowledge, Sectional Charts
+    checked_at_utc: 2026-09-16T18:34:26.580Z
+    linked_claim_ids:
+      - sectional-purpose-content
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1886
+      pdf_page_text_sha256: 2b7cdd80e89f59acec65efd2d6b6be7532f694fb7d48c14ac3252bf165c1d5d8
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-terrain
+    title: FAA Aeronautical Chart Users' Guide, Terrain Depiction
+    checked_at_utc: 2026-09-16T18:34:25.968Z
+    linked_claim_ids:
+      - terrain-picture
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3192
+      pdf_page_text_sha256: 03f03f91ba642cb9313293af2ea093ef4955bb9f5c7e2300d760687b545d9f09
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-obstacles
+    title: FAA Aeronautical Chart Users' Guide, Obstruction Depiction
+    checked_at_utc: 2026-09-16T18:35:39.210Z
+    linked_claim_ids:
+      - obstacle-depiction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3603
+      pdf_page_text_sha256: 8583090159596979a70f4e1111ca1d24af2ff8ee0d697bbddfc89ee974d38a20
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-mef
+    title: FAA Aeronautical Chart Users' Guide, Maximum Elevation Figures
+    checked_at_utc: 2026-09-16T18:35:39.228Z
+    linked_claim_ids:
+      - mef-meaning-limitations
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1431
+      pdf_page_text_sha256: f93c783c04949c033dc84c1feb37161ee0f1aa1369b86335b263d997ba45c51b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-mef-limitations
+    title: FAA Aeronautical Chart Users' Guide, MEF Natural-Feature Method and
+      Limitations
+    checked_at_utc: 2026-09-16T18:35:39.255Z
+    linked_claim_ids:
+      - mef-meaning-limitations
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1655
+      pdf_page_text_sha256: 001b22d269fbdfe7ac7f2c616985880490d2a5be1011f31a992d5af20b823f04
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-terminal-airspace
+    title: FAA Aeronautical Chart Users' Guide, Class B, C, and D Depiction
+    checked_at_utc: 2026-09-16T18:35:39.265Z
+    linked_claim_ids:
+      - terminal-airspace-depiction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2876
+      pdf_page_text_sha256: ae2bdbf6d57af8a907d627bc02b3c0188b2c6b4cdb00ff6ca4400317b59bc17a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-class-e
+    title: FAA Aeronautical Chart Users' Guide, Class E Depiction
+    checked_at_utc: 2026-09-16T18:35:39.288Z
+    linked_claim_ids:
+      - class-e-depiction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3275
+      pdf_page_text_sha256: ee009bab496f117e6cdfea9a93ea50567905e9ddae8f4b2726b28ab1a43cd2b7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-route-culture
+    title: FAA Aeronautical Chart Users' Guide, Roads and Railroads
+    checked_at_utc: 2026-09-16T18:35:39.297Z
+    linked_claim_ids:
+      - charted-culture-features
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=34
+      errors: []
+      valid: true
+      pdf_page_number: 34
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 827
+      pdf_page_text_sha256: 4fb44878898176de6f2ec3d40561026c666aadc0338f803a6b54bb3e20e14475
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-guide-route-water
+    title: FAA Aeronautical Chart Users' Guide, Lakes and Reservoirs
+    checked_at_utc: 2026-09-16T18:35:39.325Z
+    linked_claim_ids:
+      - charted-water-features
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=37
+      errors: []
+      valid: true
+      pdf_page_number: 37
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 565
+      pdf_page_text_sha256: 421e252b60d55a42cad5752feecaa6507df2730b8a6392b46d1a5d18363cd9f3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-pilotage
+    title: Pilot's Handbook of Aeronautical Knowledge, Pilotage
+    checked_at_utc: 2026-09-16T18:34:26.584Z
+    linked_claim_ids:
+      - pilotage-checkpoints
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5329
+      pdf_page_text_sha256: 0cc9f53d5021b44dc1cabec218317387e5af2ee28b43dc3fb9121f3fd6779ca5
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-dead-reckoning
+    title: Pilot's Handbook of Aeronautical Knowledge, Dead Reckoning
+    checked_at_utc: 2026-09-16T18:34:29.149Z
+    linked_claim_ids:
+      - dead-reckoning-integration
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2301
+      pdf_page_text_sha256: aee35af4ac6b87c57eda92e49b56bbfef00d4754da238932fa974834a29ab26e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-wind-track
+    title: Pilot's Handbook of Aeronautical Knowledge, Effect of Wind
+    checked_at_utc: 2026-09-16T18:34:29.157Z
+    linked_claim_ids:
+      - wind-effects
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3683
+      pdf_page_text_sha256: b8b5a49e2d6fa85a3524fe4ebfe47c2422c85822143ea4e79db1bf1f7ddd446d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-navigation-terms
+    title: Pilot's Handbook of Aeronautical Knowledge, Navigation Term Summary
+    checked_at_utc: 2026-09-16T18:34:29.175Z
+    linked_claim_ids:
+      - navigation-terms
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1217
+      pdf_page_text_sha256: e52a894c0beaba46379d3fdff8b37931bfcbdcc04ec20bf521c573360aeb65ef
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-variation-deviation
+    title: Pilot's Handbook of Aeronautical Knowledge, Variation and Deviation
+    checked_at_utc: 2026-09-16T18:34:29.201Z
+    linked_claim_ids:
+      - magnetic-variation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2943
+      pdf_page_text_sha256: 622f062e1995073fdf48d6ee5e9db7ba4c76ab65b17f26304a19e6f8aafd1bfc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-deviation-card
+    title: Pilot's Handbook of Aeronautical Knowledge, Compass Deviation Card
+    checked_at_utc: 2026-09-16T18:34:29.219Z
+    linked_claim_ids:
+      - compass-deviation-card
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4532
+      pdf_page_text_sha256: 349f45e0cdce5536df5ff7e391821a21d06581b0c84ebbb53852c6265fc97764
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-basic-calculations
+    title: Pilot's Handbook of Aeronautical Knowledge, Time, Speed, and Distance
+    checked_at_utc: 2026-09-16T18:34:29.239Z
+    linked_claim_ids:
+      - time-speed-distance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3512
+      pdf_page_text_sha256: b6405f77f112f4ca91fd889f45d0bf110e9ced4edc3ebd482e9c8e722b68f4da
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-course-planning
+    title: Pilot's Handbook of Aeronautical Knowledge, Steps in Charting the Course
+    checked_at_utc: 2026-09-16T18:34:29.249Z
+    linked_claim_ids:
+      - route-workflow
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5429
+      pdf_page_text_sha256: f83f97700a686ecb9b3cdd2980ea9e27ebc469d0c56b7703ba62df5d13799e6c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-course-computation
+    title: Pilot's Handbook of Aeronautical Knowledge, Course and Flight-Log
+      Computation
+    checked_at_utc: 2026-09-16T18:34:29.264Z
+    linked_claim_ids:
+      - planned-navigation-log
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2880
+      pdf_page_text_sha256: 60d70014156dc460f7df82e657b074d5191788377305c8cb8cf693a131ac66ea
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-plan-versus-actual
+    title: Pilot's Handbook of Aeronautical Knowledge, Adjusting the Plan in Flight
+    checked_at_utc: 2026-09-16T18:34:29.272Z
+    linked_claim_ids:
+      - compare-plan-actual
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2334
+      pdf_page_text_sha256: faa7cbb8ade38510e2b20af37214e686f6bd357c3b9e29b91acbe3ab365135a8
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-workload-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Workload Management
+    checked_at_utc: 2026-09-16T18:34:29.292Z
+    linked_claim_ids:
+      - navigation-workload-management
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ac-cockpit-fixation
+    title: AC 90-48E, Maintaining Vigilance
+    checked_at_utc: 2026-09-16T18:34:29.301Z
+    linked_claim_ids:
+      - cockpit-fixation-scan
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: false
+      content_sha256: 8cb12c4ad6f976d004f9bab9b6ce40956c49ef4cf8db3ff06f44934e4402a4b4
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2891
+      pdf_page_text_sha256: 41fe750b29cf51b309492492e8e327e8d6e293bbf4d0a4fedb5ed389bb4ecd72
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

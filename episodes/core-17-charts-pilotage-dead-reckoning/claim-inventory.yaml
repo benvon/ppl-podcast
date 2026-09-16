@@ -1,0 +1,177 @@
+episode_id: core-17
+claims:
+  - id: acs-cross-country-outcome
+    claim: "The Private Pilot ACS Cross-Country Flight Planning task connects route and altitude selection with airspace, terrain, obstacles, wind, course, distance, heading, groundspeed, ETA, environmental risk, ATC limitations, and use of current aeronautical publications."
+    claim_type: FAA standard
+    sources: [acs-cross-country-planning]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Begin with the current chart, Read the route as a physical picture, Retrieval review]
+    status: draft
+  - id: acs-chart-outcome
+    claim: "The Private Pilot ACS National Airspace System task includes chart-symbol knowledge and applying charted information to identify airspace and its operating requirements."
+    claim_type: FAA standard
+    sources: [acs-national-airspace-chart]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Retrieval review]
+    status: draft
+  - id: acs-navigation-outcome
+    claim: "The Private Pilot ACS Pilotage and Dead Reckoning task includes pilotage, dead reckoning, topography, route and checkpoint selection, course plotting, planned-versus-actual correction, flight-log use, navigation by landmarks and precomputed headings, and position verification within three nautical miles of the planned route."
+    claim_type: FAA standard
+    sources: [acs-pilotage-dead-reckoning]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Compare the plan with actual progress, Retrieval review]
+    status: draft
+  - id: acs-navigation-eta
+    claim: "The ACS Pilotage and Dead Reckoning task requires arrival at en route checkpoints within five minutes of the initial or revised ETA and a destination estimate."
+    claim_type: FAA standard
+    sources: [acs-pilotage-eta]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Compare the plan with actual progress]
+    status: draft
+  - id: current-chart-cycle
+    claim: "Pilots should use current aeronautical chart editions, confirm their effective dates, and check NOTAMs for essential updates between chart cycles."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-current-edition]
+    risk: safety_critical
+    script_sections: [Begin with the current chart, Retrieval review]
+    status: draft
+  - id: sectional-purpose-content
+    claim: "A sectional is a common VFR aeronautical chart at a scale of 1 to 500,000 that depicts airport data, navigation aids, airspace, and topography, with a legend used to interpret its information."
+    claim_type: FAA handbook guidance
+    sources: [phak-sectional-overview]
+    risk: instructional
+    script_sections: [Begin with the current chart, Retrieval review]
+    status: draft
+  - id: terrain-picture
+    claim: "Sectionals portray terrain with contour lines, shaded relief, color tints, obstruction symbols, and Maximum Elevation Figures; contour spacing helps depict whether slopes are gentle or steep."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-terrain]
+    risk: safety_critical
+    script_sections: [Read the route as a physical picture, Retrieval review]
+    status: draft
+  - id: obstacle-depiction
+    claim: "A charted obstruction may show the elevation of its top in feet MSL and, when known and space permits, its AGL height in parentheses; UC marks a reported or under-construction obstacle whose position or elevation is unverified."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-obstacles]
+    risk: safety_critical
+    script_sections: [Read the route as a physical picture, Retrieval review]
+    status: draft
+  - id: mef-meaning-limitations
+    claim: "A Maximum Elevation Figure represents the highest elevation in a sectional quadrant, including terrain and vertical obstacles, with specified rounding and allowances; it is based on the best available source information and is not verified by field survey."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-mef, chart-guide-mef-limitations]
+    risk: safety_critical
+    script_sections: [Read the route as a physical picture, Retrieval review]
+    status: draft
+  - id: terminal-airspace-depiction
+    claim: "The Chart Users' Guide explains the boundary, color, and sector-altitude conventions used to depict Class B, Class C, and Class D airspace."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-terminal-airspace]
+    risk: safety_critical
+    script_sections: [Read the route as a physical picture, Retrieval review]
+    status: draft
+  - id: class-e-depiction
+    claim: "The Chart Users' Guide explains the dashed-magenta surface-area and vignette or annotation conventions used to depict Class E airspace floors."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-class-e]
+    risk: safety_critical
+    script_sections: [Read the route as a physical picture, Retrieval review]
+    status: draft
+  - id: charted-culture-features
+    claim: "Sectional symbology distinguishes roads and railroads that can be evaluated as visual route features."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-route-culture]
+    risk: instructional
+    script_sections: [Choose checkpoints that can survive first contact, Retrieval review]
+    status: draft
+  - id: charted-water-features
+    claim: "Sectional symbology distinguishes lakes, reservoirs, and shorelines that can be evaluated as visual route features."
+    claim_type: FAA chart guidance
+    sources: [chart-guide-route-water]
+    risk: instructional
+    script_sections: [Choose checkpoints that can survive first contact, Retrieval review]
+    status: draft
+  - id: pilotage-checkpoints
+    claim: "Pilotage is navigation by landmarks or checkpoints; the PHAK recommends prominent checkpoints identifiable by multiple features, useful route brackets, ample checkpoints, and avoiding complete reliance on one point."
+    claim_type: FAA handbook guidance
+    sources: [phak-pilotage]
+    risk: safety_critical
+    script_sections: [Choose checkpoints that can survive first contact, Compare the plan with actual progress, Retrieval review]
+    status: draft
+  - id: dead-reckoning-integration
+    claim: "Dead reckoning uses computations based on time, airspeed, distance, and direction, adjusted for wind, to predict heading and groundspeed; for ordinary cross-country flight it is generally used with pilotage, which monitors and corrects those predictions at checkpoints."
+    claim_type: FAA handbook guidance
+    sources: [phak-dead-reckoning]
+    risk: safety_critical
+    script_sections: [Build the dead-reckoning picture, Build the navigation log, Compare the plan with actual progress, Retrieval review]
+    status: draft
+  - id: wind-effects
+    claim: "Wind changes an airplane's progress over the ground and can move its track away from its heading; a wind correction angle offsets drift so that track can coincide with the desired course."
+    claim_type: FAA handbook guidance
+    sources: [phak-wind-track]
+    risk: safety_critical
+    script_sections: [Build the dead-reckoning picture, Compare the plan with actual progress, Retrieval review]
+    status: draft
+  - id: navigation-terms
+    claim: "Course is the intended path over the ground, heading is the direction the airplane's nose points, track is the actual path over the ground, wind correction angle adjusts course to establish heading, airspeed is progress through the air, and groundspeed is progress over the ground."
+    claim_type: FAA handbook guidance
+    sources: [phak-navigation-terms]
+    risk: instructional
+    script_sections: [Build the dead-reckoning picture, Retrieval review]
+    status: draft
+  - id: magnetic-variation
+    claim: "Variation is the angular difference between true north and magnetic north; sectional isogonic lines show variation for geographic locations so a true direction can be converted to a magnetic direction."
+    claim_type: FAA handbook guidance
+    sources: [phak-variation-deviation]
+    risk: safety_critical
+    script_sections: [Turn the course into a heading, Retrieval review]
+    status: draft
+  - id: compass-deviation-card
+    claim: "Deviation is an aircraft- and heading-specific compass deflection, and the aircraft's deviation card provides the correction used to convert magnetic heading to compass heading."
+    claim_type: FAA handbook guidance
+    sources: [phak-deviation-card]
+    risk: safety_critical
+    script_sections: [Turn the course into a heading, Retrieval review]
+    status: draft
+  - id: time-speed-distance
+    claim: "Time equals distance divided by groundspeed, distance equals groundspeed multiplied by time, and groundspeed equals distance divided by time."
+    claim_type: FAA handbook guidance
+    sources: [phak-basic-calculations]
+    risk: instructional
+    script_sections: [Build the navigation log, Compare the plan with actual progress, Retrieval review]
+    status: draft
+  - id: route-workflow
+    claim: "The PHAK course-charting sequence draws the route, chooses prominent checkpoints, checks nearby airspace, and studies terrain and obstructions."
+    claim_type: FAA handbook guidance
+    sources: [phak-course-planning]
+    risk: safety_critical
+    script_sections: [Read the route as a physical picture, Build the navigation log, Retrieval review]
+    status: draft
+  - id: planned-navigation-log
+    claim: "The PHAK visual-flight-log example proceeds from distance and true course through wind correction, true heading, variation, magnetic heading, deviation, compass heading, groundspeed, and estimated leg times."
+    claim_type: FAA handbook guidance
+    sources: [phak-course-computation]
+    risk: instructional
+    script_sections: [Build the navigation log, Retrieval review]
+    status: draft
+  - id: compare-plan-actual
+    claim: "As a trip progresses, a pilot can record headings and time and adjust heading, groundspeed, and time from observed results."
+    claim_type: FAA handbook guidance
+    sources: [phak-plan-versus-actual]
+    risk: safety_critical
+    script_sections: [Compare the plan with actual progress, Retrieval review]
+    status: draft
+  - id: navigation-workload-management
+    claim: "FAA workload guidance says pilots should plan, prioritize, and sequence tasks to avoid overload, prepare for high-workload periods while workload is low, and recognize that overload can narrow attention and reduce situational awareness."
+    claim_type: FAA handbook guidance
+    sources: [phak-workload-management]
+    risk: safety_critical
+    script_sections: [Build the navigation log, Compare the plan with actual progress]
+    status: draft
+  - id: cockpit-fixation-scan
+    claim: "FAA collision-avoidance guidance warns that cockpit technology can cause fixation on displays and draw a pilot's attention inside and away from the outside environment."
+    claim_type: FAA advisory guidance
+    sources: [ac-cockpit-fixation]
+    risk: safety_critical
+    script_sections: [Build the navigation log, Compare the plan with actual progress]
+    status: draft

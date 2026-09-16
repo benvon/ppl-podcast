@@ -177,6 +177,13 @@ audio.
   becomes `AY-tis`.
   For a homograph such as `envelope`, the text remains unchanged and the
   affected segment receives a silent noun-pronunciation instruction instead.
+  `PRONUNCIATION_TRANSFORMS` and `PRONUNCIATION_GUIDANCE` in
+  `scripts/render_episode_realtime.cjs` are the authoritative record. Add a
+  stable correction there with a focused renderer test; the renderer copies
+  both maps into `render-settings.json` and the candidate manifest. Do not
+  create an episode-specific pronunciation sidecar. If a needed correction
+  cannot be represented by a transform or silent guidance, propose a renderer
+  enhancement before rendering.
 - Use the versioned, Git-ignored render manifest for duration, checksums, response
   usage, usage-derived cost estimates, stitch positions, chapter markers, and
   the audio-quality report. It is not an invoice.

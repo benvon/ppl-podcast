@@ -4,12 +4,12 @@ title: Charts, Pilotage, and Dead Reckoning
 slug: charts-pilotage-dead-reckoning
 track: core
 production_contract_version: 2
-status: draft
-version: 0.1.0
-published_at: null
+status: ready_for_hosting_pr
+version: 0.1.2
+published_at: 2026-09-16T18:22:07Z
 runtime_target_minutes: 40
-runtime_actual_seconds: null
-word_count: 5322
+runtime_actual_seconds: 2253.77
+word_count: 5706
 speakers:
   - instructor
   - learner
@@ -22,9 +22,11 @@ acs_references:
   - FAA-S-ACS-6C, PA.I.E.K1-K3, S1-S3
   - FAA-S-ACS-6C, PA.VI.A.K1-K7, R1-R3, S1-S7
 phak_references:
+  - "PHAK Chapter 2: Aeronautical Decision-Making, p. 2-24"
   - "PHAK Chapter 16: Navigation, pp. 16-2 and 16-7 through 16-21"
 aim_references: []
-advisory_circular_references: []
+advisory_circular_references:
+  - "AC 90-48E: Pilots' Role in Collision Avoidance, section 15"
 cfr_references: []
 learning_objectives:
   - Build a useful route picture from a current sectional by locating terrain,
@@ -57,38 +59,29 @@ trouble_spots:
 source_verification:
   validation_contract: source-relevance-v1
   status: source_relevance_complete
-  verified_at_utc: 2026-09-13T16:52:39.670Z
+  verified_at_utc: 2026-09-16T12:21:36.484Z
   link_validation: link-validation.yaml
   show_notes_manifest: show-notes-manifest.yaml
   relevance_review: complete
 review:
-  editorial_status: not_started
-  editorial_script_sha256: null
+  editorial_status: script_approved
+  editorial_script_sha256: 539663ff72b670d878cbe4d70f840172841d55e39042dae77d4191d07962d2eb
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - Run source-link validation with LLM relevance review and resolve every
-    material finding.
-  - Complete human editorial review and approve the current script.
-  - Render audio and complete human listening QA, including the front-matter
-    check.
-  - Review embedded chapter markers against the approved audio.
-  - Re-verify every public source and listener-facing link on publication day.
-  - Validate hosting metadata and stage the immutable audio object in the
-    hosting workflow.
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: not_rendered
-  chapter_markers: pending_render
-  publication_day_validation: pending
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: draft
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 6
+production_state_revision: 12

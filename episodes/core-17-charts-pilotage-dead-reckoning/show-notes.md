@@ -1,7 +1,7 @@
 # Charts, Pilotage, and Dead Reckoning
 
 **Episode:** 17
-**Version:** 0.1.0
+**Version:** 0.1.2
 
 ## In this episode
 
@@ -33,6 +33,8 @@ A completely fictional daytime VFR cross-country turns a sectional into a usable
 - [PHAK route-charting sequence](https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18)
 - [PHAK visual flight log and course computation](https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20)
 - [PHAK planned-versus-actual adjustment](https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21)
+- [PHAK workload-management guidance](https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24)
+- [FAA collision-avoidance guidance on cockpit fixation](https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14)
 
 The Chart Users' Guide pages above include the labeled terrain, obstruction, MEF, airspace, culture, and hydrography examples discussed in the episode. The fictional Cedar Junction-to-Pine Lake route is not an FAA chart and must not be used for navigation.
 
@@ -50,6 +52,7 @@ The Chart Users' Guide pages above include the labeled terrain, obstruction, MEF
 | Dead reckoning and wind | FAA handbook | PHAK Chapter 16 | Effect of Wind and Dead Reckoning, pp. 16-9–16-13 | Formal review pending |
 | Variation and deviation | FAA handbook | PHAK Chapter 16 | Magnetic Variation and Deviation, pp. 16-7–16-8 | Formal review pending |
 | Time, speed, distance, course, and flight log | FAA handbook | PHAK Chapter 16 | Basic Calculations and Charting the Course, pp. 16-11 and 16-18–16-21 | Formal review pending |
+| Navigation workload and outside vigilance | FAA handbook and advisory guidance | PHAK Chapter 2 and AC 90-48E | Workload Management, p. 2-24; section 15, PDF p. 14 | Formal review pending |
 
 ## Correction status
 

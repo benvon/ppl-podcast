@@ -5,7 +5,7 @@ claims:
     claim_type: FAA standard
     sources: [acs-cross-country-planning]
     risk: safety_critical
-    script_sections: [What the ACS is asking you to connect, Retrieval review]
+    script_sections: [What the ACS is asking you to connect, Begin with the current chart, Read the route as a physical picture, Retrieval review]
     status: draft
   - id: acs-chart-outcome
     claim: "The Private Pilot ACS National Airspace System task includes chart-symbol knowledge and applying charted information to identify airspace and its operating requirements."
@@ -160,4 +160,18 @@ claims:
     sources: [phak-plan-versus-actual]
     risk: safety_critical
     script_sections: [Compare the plan with actual progress, Retrieval review]
+    status: draft
+  - id: navigation-workload-management
+    claim: "FAA workload guidance says pilots should plan, prioritize, and sequence tasks to avoid overload, prepare for high-workload periods while workload is low, and recognize that overload can narrow attention and reduce situational awareness."
+    claim_type: FAA handbook guidance
+    sources: [phak-workload-management]
+    risk: safety_critical
+    script_sections: [Build the navigation log, Compare the plan with actual progress]
+    status: draft
+  - id: cockpit-fixation-scan
+    claim: "FAA collision-avoidance guidance warns that cockpit technology can cause fixation on displays and draw a pilot's attention inside and away from the outside environment."
+    claim_type: FAA advisory guidance
+    sources: [ac-cockpit-fixation]
+    risk: safety_critical
+    script_sections: [Build the navigation log, Compare the plan with actual progress]
     status: draft

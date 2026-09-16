@@ -266,3 +266,25 @@ sources:
     revision: "FAA-H-8083-25C, Chapter 16; FAA chapter page updated July 10, 2023; October 20, 2025 addendum does not amend Chapter 16"
     relevance: "States that as the trip progresses, the pilot can note headings and time and adjust heading, groundspeed, and time."
     supports_claims: [compare-plan-actual]
+  - id: phak-workload-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Workload Management
+    publisher: FAA
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+    locator: "PHAK Chapter 2, Obstacles to Maintaining Situational Awareness and Workload Management, p. 2-24"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "FAA-H-8083-25C, Chapter 2; current FAA chapter PDF accessed September 16, 2026"
+    relevance: "Explains that distraction and overload can narrow attention and reduce situational awareness, and that workload should be managed by planning, prioritizing, sequencing, and preparing for high-workload periods while workload is low."
+    supports_claims: [navigation-workload-management]
+  - id: ac-cockpit-fixation
+    title: AC 90-48E, Maintaining Vigilance
+    publisher: FAA
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+    locator: "AC 90-48E, section 15, PDF p. 14"
+    source_type: pdf
+    link_status: null
+    verification_date: null
+    revision: "AC 90-48E, October 20, 2022; current FAA document accessed September 16, 2026"
+    relevance: "Warns that cockpit technology can cause fixation on displays and draw a pilot's attention inside and away from the outside environment."
+    supports_claims: [cockpit-fixation-scan]

@@ -1,32 +1,32 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
 validation_kind: formal_source_review
-run_id: 365d2fce-4c21-4c69-8531-b63b7fc81315
-checked_at_utc: 2026-09-13T16:52:39.670Z
+run_id: 12072985-7af0-4d0b-b44a-07f8b63afbe0
+checked_at_utc: 2026-09-16T12:21:36.484Z
 sources_file: episodes/core-17-charts-pilotage-dead-reckoning/sources.yaml
 claims_file: episodes/core-17-charts-pilotage-dead-reckoning/claim-inventory.yaml
 show_notes_file: episodes/core-17-charts-pilotage-dead-reckoning/show-notes.md
 show_notes_manifest_file: episodes/core-17-charts-pilotage-dead-reckoning/show-notes-manifest.yaml
 input_sha256:
-  sources: 27443b0adc571b4411935a5e5298c1abf35c379de98029bf2ec630452bddd027
-  claims: 283472b154ff6d78855e4834cb01bf39c1e80ceaffe19834dbb9fc2f793f422a
-  master_script: 36b7c8a39b68ccaba510e25e6fb8383f81b2f3e4a521e5ea5260708e67fa490e
-  show_notes: 5d39a927a733458ac789446ed7b3f03b74b34ddb60a781f17b815fd820cfb2a3
-  show_notes_manifest: b6ad0189548d293f7132e1d540cf5755b3f87f35ee55f2e6e7c914b0e77d30a7
+  sources: 28bd484e0168d77d9413fd1315d3ff308ea2049358df391cbf84e8762733bbd9
+  claims: 1241a096aa9bca39e6a76bfbd3fcff18e0a3efbfcb6fe553ff2aee69f017d969
+  master_script: 539663ff72b670d878cbe4d70f840172841d55e39042dae77d4191d07962d2eb
+  show_notes: 286de329d6a16435fa839ab35a86cd9aa845f1713cc4fac69d0ff159f36ae981
+  show_notes_manifest: 8728c3bae808bbba29eea68d89d38f5a00f9900cbbfffd376ffb5b36d7d68bef
 input_normalization:
   master_script: markdown-whitespace-v1
   show_notes: fact-check-verification-column-v1
 semantic_input_sha256:
-  master_script: 36b7c8a39b68ccaba510e25e6fb8383f81b2f3e4a521e5ea5260708e67fa490e
-  show_notes: a1623388f5872ae19527553103581d71c11878328613848c61be9636a2088016
+  master_script: 539663ff72b670d878cbe4d70f840172841d55e39042dae77d4191d07962d2eb
+  show_notes: 1e6277ea1ddcd2f8bf887f151c1d1c27b8bf8b73b28c65f3773a31e164ea53b2
 llm_requested: true
 llm_model: gpt-5.6-terra
 llm_review_passes: 2
 llm_materiality_policy: safety-and-core-v1
 authorization:
   qa_id: openai-source-review-authorization
-  attested_at_utc: 2026-09-13T16:50:39.770Z
-  run_id: 365d2fce-4c21-4c69-8531-b63b7fc81315
+  attested_at_utc: 2026-09-16T12:19:00.416Z
+  run_id: 12072985-7af0-4d0b-b44a-07f8b63afbe0
 claim_mapping:
   valid: true
   errors: []
@@ -34,13 +34,13 @@ master_script_mapping:
   valid: true
   status: configured
   errors: []
-  source_tag_count: 121
-  claim_coverage_count: 23
+  source_tag_count: 131
+  claim_coverage_count: 25
 show_notes_mapping:
   valid: true
   errors: []
-  markdown_link_count: 24
-  manifest_link_count: 24
+  markdown_link_count: 26
+  manifest_link_count: 26
 show_notes_results:
   - id: acs-cross-country-link
     text: Private Pilot ACS Cross-Country Flight Planning task
@@ -786,10 +786,72 @@ show_notes_results:
       pdf_page_text_sha256: faa7cbb8ade38510e2b20af37214e686f6bd357c3b9e29b91acbe3ab365135a8
       section_text_characters: 0
       section_text_sha256: null
+  - id: phak-workload-link
+    text: PHAK workload-management guidance
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+    source_id: phak-workload-management
+    claim_ids:
+      - navigation-workload-management
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a28 []
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ac-cockpit-fixation-link
+    text: FAA collision-avoidance guidance on cockpit fixation
+    url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+    source_id: ac-cockpit-fixation
+    claim_ids:
+      - cockpit-fixation-scan
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a30 []
+      title: null
+      truncated: false
+      content_sha256: 8cb12c4ad6f976d004f9bab9b6ce40956c49ef4cf8db3ff06f44934e4402a4b4
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2891
+      pdf_page_text_sha256: 41fe750b29cf51b309492492e8e327e8d6e293bbf4d0a4fedb5ed389bb4ecd72
+      section_text_characters: 0
+      section_text_sha256: null
 results:
   - source_id: acs-cross-country-planning
     title: Private Pilot ACS, Cross-Country Flight Planning
-    checked_at_utc: 2026-09-13T16:50:39.770Z
+    checked_at_utc: 2026-09-16T12:19:00.416Z
     linked_claim_ids:
       - acs-cross-country-outcome
     missing_claim_ids: []
@@ -826,69 +888,70 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page expressly lists route planning with airspace;
-            altitude selection accounting for terrain, obstacles, and wind;
-            calculations for course, distance, heading, groundspeed, and ETA;
-            environmental risk; ATC-service limitations; and application of
-            current aeronautical charts, Chart Supplements, NOTAMs, and other
-            flight publications.
+          rationale: The cited ACS page expressly covers route planning with airspace;
+            altitude selection for terrain, obstacles, and wind; calculations of
+            course, distance, heading, groundspeed, and ETA; environmental risk;
+            ATC-service limitations; and use of current charts, Chart
+            Supplements, NOTAMs, and other flight publications.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies the Cross-Country Flight Planning material on
-              the exact cited PDF page, and the listed knowledge,
-              risk-management, and skills items appear in the excerpt.
+            rationale: The excerpt is from the cited PDF page and contains the Cross-Country
+              Flight Planning task elements underlying the claim.
           claim_assessments:
             - claim_id: acs-cross-country-outcome
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt supports each listed Cross-Country Flight Planning
-                element, including route and altitude considerations, airspace,
+              rationale: PA.I.D.K1-K3, R3 and R5, and S1-S2 directly support the stated
+                connections among route and altitude planning, airspace,
                 terrain, obstacles, wind, navigation calculations, ETA,
-                environmental risk, ATC limitations, and current publications.
+                environmental risk, ATC limitations, and current aeronautical
+                publications.
         usage:
-          input_tokens: 1538
+          input_tokens: 1714
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1535
-          output_tokens: 395
+            cache_write_tokens: 1711
+            cached_tokens: 0
+          output_tokens: 296
           output_tokens_details:
-            reasoning_tokens: 179
-          total_tokens: 1933
+            reasoning_tokens: 80
+          total_tokens: 2010
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page directly lists route planning with airspace;
-            altitude selection considering terrain, obstacles, and wind;
-            calculations for course, distance, heading, groundspeed, and ETA;
+          rationale: The cited ACS page expressly covers route planning with airspace;
+            altitude selection accounting for terrain, obstacles, and wind;
+            calculations of course, distance, heading, groundspeed, and ETA;
             environmental risk; ATC-service limitations; and use of current
             charts, Chart Supplements, NOTAMs, and other flight publications.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The specified ACS elements PA.I.D.K1–K3, R3, R5, and S1–S2 appear on
-              cited PDF page 13 (document page 5) and support the claim.
+            rationale: The cited PDF page is the ACS page containing PA.I.D Cross-Country
+              Flight Planning knowledge, risk-management, and skills elements
+              that support the claim.
           claim_assessments:
             - claim_id: acs-cross-country-outcome
               verdict: supports
               finding_materiality: none
-              rationale: "The source explicitly supports all listed Cross-Country Flight
-                Planning connections: route and altitude planning; airspace,
-                terrain, obstacles, wind; course, distance, heading,
-                groundspeed, and ETA calculations; environmental risk; ATC
-                limitations; and current aeronautical publications."
+              rationale: The statement accurately consolidates the listed PA.I.D.K1-K3,
+                PA.I.D.R3/R5, and PA.I.D.S2 elements. Although ATC limitations
+                are separately enumerated under risk management rather than
+                route/altitude selection, the claim states that the task
+                connects these subjects and does not incorrectly assign ATC
+                limitations to a specific calculation or selection requirement.
         usage:
-          input_tokens: 1538
+          input_tokens: 1714
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1535
-          output_tokens: 332
+            cached_tokens: 1711
+          output_tokens: 240
           output_tokens_details:
-            reasoning_tokens: 98
-          total_tokens: 1870
+            reasoning_tokens: 0
+          total_tokens: 1954
     relevance: *a4
     claim_assessments:
       valid: true
@@ -910,7 +973,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-national-airspace-chart
     title: Private Pilot ACS, National Airspace System
-    checked_at_utc: 2026-09-13T16:50:39.788Z
+    checked_at_utc: 2026-09-16T12:19:00.445Z
     linked_claim_ids:
       - acs-chart-outcome
     missing_claim_ids: []
@@ -947,66 +1010,66 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt explicitly lists PA.I.E.K2, “Chart symbols,” and
-            PA.I.E.S2, requiring the applicant to correctly identify airspace
-            and operate according to associated communication and equipment
-            requirements. This supports the claim that the National Airspace
-            System task covers chart-symbol knowledge and use of charted
-            information to identify airspace and its operating requirements.
+          rationale: The cited ACS page explicitly lists National Airspace System
+            knowledge of chart symbols (PA.I.E.K2) and skills to identify
+            airspace and operate in accordance with its communication and
+            equipment requirements (PA.I.E.S2). This supports the stated lesson
+            connection.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains PA.I.E.K1 through K4 and S1 through S3,
-              including the chart-symbol and airspace-identification
-              requirements referenced by the claim.
+            rationale: The cited PDF page is ACS page 6 and contains PA.I.E.K1-K4 and
+              PA.I.E.S1-S3, including the relevant chart-symbol and
+              airspace-identification requirements.
           claim_assessments:
             - claim_id: acs-chart-outcome
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.E.K2 explicitly covers chart symbols; PA.I.E.S2 explicitly
-                covers identifying airspace and complying with associated
-                communication and equipment requirements.
+              rationale: PA.I.E.K2 requires understanding chart symbols, and PA.I.E.S2
+                requires correctly identifying airspace and operating according
+                to associated communication and equipment requirements.
         usage:
           input_tokens: 1339
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1336
-          output_tokens: 204
+            cache_write_tokens: 1336
+            cached_tokens: 0
+          output_tokens: 192
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1543
+          total_tokens: 1531
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page explicitly lists National Airspace System
-            knowledge of chart symbols (PA.I.E.K2) and skills to identify
-            airspace and operate according to its associated communication and
-            equipment requirements (PA.I.E.S2). This supports the listed claim.
+          rationale: The cited ACS page lists PA.I.E.K2, “Chart symbols,” and PA.I.E.S2,
+            requiring the applicant to correctly identify airspace and operate
+            according to associated communication and equipment requirements.
+            This supports the stated National Airspace System outcome.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page is the ACS National Airspace System task page and
-              contains PA.I.E.K1-K3 and PA.I.E.S1-S3, including the relevant
-              chart-symbol and airspace-requirements statements.
+            rationale: The cited PDF page is the ACS page containing Area of Operation I,
+              Task E, National Airspace System, including the relevant
+              chart-symbol and airspace-identification/operating-requirement
+              elements.
           claim_assessments:
             - claim_id: acs-chart-outcome
               verdict: supports
               finding_materiality: none
               rationale: PA.I.E.K2 explicitly covers chart symbols, and PA.I.E.S2 requires
-                correctly identifying airspace and operating in accordance with
-                associated communication and equipment requirements.
+                identifying airspace and operating in accordance with associated
+                communication and equipment requirements.
         usage:
           input_tokens: 1339
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1336
-          output_tokens: 197
+          output_tokens: 192
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1536
+          total_tokens: 1531
     relevance: *a5
     claim_assessments:
       valid: true
@@ -1028,7 +1091,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-pilotage-dead-reckoning
     title: Private Pilot ACS, Pilotage and Dead Reckoning
-    checked_at_utc: 2026-09-13T16:50:40.372Z
+    checked_at_utc: 2026-09-16T12:19:01.595Z
     linked_claim_ids:
       - acs-navigation-outcome
     missing_claim_ids: []
@@ -1065,71 +1128,71 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page explicitly lists the Pilotage and Dead Reckoning
-            task knowledge and skills covering pilotage and dead reckoning,
-            topography, selection of route and checkpoints, course plotting,
-            planned calculations versus actual results and required corrections,
-            flight-log use, navigation by landmarks and pre-computed headings,
-            and verification of position within three nautical miles of the
-            flight-planned route.
+          rationale: The cited ACS page expressly lists pilotage and dead reckoning,
+            topography, route and checkpoint selection, course plotting,
+            planned-versus-actual results and required corrections, flight-log
+            use, navigation using landmarks and precomputed
+            headings/groundspeeds/elapsed time, and verification of position
+            within three nautical miles of the flight-planned route.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and contains PA.VI.A.K1-K7,
-              R1-R3, and S1-S5 for the Pilotage and Dead Reckoning task.
+            rationale: The excerpt is from the identified ACS Task A on document page 38 /
+              PDF viewer page 46 and contains the cited knowledge and skill
+              elements.
           claim_assessments:
             - claim_id: acs-navigation-outcome
               verdict: supports
               finding_materiality: none
-              rationale: Each listed element is directly supported by the task’s knowledge and
-                skills items, including PA.VI.A.K1, K3-K5, K7, and S1-S5; S5
-                specifies verification within three nautical miles of the
-                flight-planned route.
+              rationale: Each listed element is supported by PA.VI.A.K1 through K7 and
+                PA.VI.A.S1 through S5 on the cited page, including the
+                three-nautical-mile position-verification standard.
         usage:
-          input_tokens: 1918
+          input_tokens: 1996
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1915
-          output_tokens: 343
+            cache_write_tokens: 1993
+            cached_tokens: 0
+          output_tokens: 279
           output_tokens_details:
-            reasoning_tokens: 105
-          total_tokens: 2261
+            reasoning_tokens: 67
+          total_tokens: 2275
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page identifies the Private Pilot Pilotage and Dead
-            Reckoning task and expressly includes pilotage and dead reckoning;
-            topography; route and checkpoint selection; course plotting; planned
-            calculations versus actual results and required corrections;
-            preparation and use of a flight log; navigation by
-            landmarks/checkpoints and pre-computed headings; and verification of
-            position within three nautical miles of the flight-planned route.
+          rationale: The cited ACS page directly lists the specified knowledge and skill
+            elements for Pilotage and Dead Reckoning, including pilotage, dead
+            reckoning, topography, route and checkpoint selection, course
+            plotting, planned-versus-actual results and corrections, flight-log
+            use, navigation using landmarks and precomputed headings, and
+            verifying position within three nautical miles of the flight-planned
+            route.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from FAA-S-ACS-6C document page 38/PDF viewer page 46
-              and contains the cited PA.VI.A knowledge, risk-management, and
-              skill elements.
+            rationale: The cited PDF page is the ACS page containing Area of Operation VI,
+              Task A, Pilotage and Dead Reckoning, and the referenced knowledge,
+              risk-management, and skill elements.
           claim_assessments:
             - claim_id: acs-navigation-outcome
               verdict: supports
               finding_materiality: none
-              rationale: "Each listed element is stated on the cited page: K1-K7 cover the
-                knowledge elements, S1-S3 cover the flight log and navigation
-                methods, and S5 specifies verification within three nautical
-                miles of the flight-planned route."
+              rationale: "All listed elements are expressly included on the cited page: K1-K7
+                cover the knowledge topics, S1-S3 cover flight-log use and
+                pilotage/dead-reckoning navigation using landmarks and
+                precomputed values, and S5 specifies verification within three
+                nautical miles of the flight-planned route."
         usage:
-          input_tokens: 1918
+          input_tokens: 1996
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1915
-          output_tokens: 300
+            cached_tokens: 1993
+          output_tokens: 400
           output_tokens_details:
-            reasoning_tokens: 63
-          total_tokens: 2218
+            reasoning_tokens: 157
+          total_tokens: 2396
     relevance: *a6
     claim_assessments:
       valid: true
@@ -1151,7 +1214,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-pilotage-eta
     title: Private Pilot ACS, Pilotage and Dead Reckoning Continuation
-    checked_at_utc: 2026-09-13T16:50:40.376Z
+    checked_at_utc: 2026-09-16T12:19:01.600Z
     linked_claim_ids:
       - acs-navigation-eta
     missing_claim_ids: []
@@ -1188,63 +1251,63 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: "The excerpt on cited PDF page 47 expressly states PA.VI.A.S6:
-            “Arrive at the en route checkpoints within five minutes of the
-            initial or revised estimated time of arrival (ETA) and provide a
-            destination estimate.” This fully supports the listed ACS-standard
-            claim."
+          rationale: "The cited PDF page states PA.VI.A.S6: “Arrive at the en route
+            checkpoints within five minutes of the initial or revised estimated
+            time of arrival (ETA) and provide a destination estimate,” which
+            directly supports the listed claim."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies FAA-S-ACS-6C, PA.VI.A.S6-S7, document page
-              39/PDF page 47. The supplied excerpt is from that exact page and
-              contains PA.VI.A.S6.
+            rationale: The locator identifies the exact ACS page containing PA.VI.A.S6.
           claim_assessments:
             - claim_id: acs-navigation-eta
               verdict: supports
               finding_materiality: none
-              rationale: PA.VI.A.S6 explicitly requires arriving at en route checkpoints
-                within five minutes of the initial or revised ETA and providing
-                a destination estimate.
+              rationale: The claim accurately restates PA.VI.A.S6, including both the
+                five-minute checkpoint-ETA standard and the requirement to
+                provide a destination estimate.
         usage:
           input_tokens: 1537
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1534
-          output_tokens: 201
+            cache_write_tokens: 1534
+            cached_tokens: 0
+          output_tokens: 219
           output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 1738
+            reasoning_tokens: 53
+          total_tokens: 1756
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt explicitly states in PA.VI.A.S6 that the applicant must
-            arrive at en route checkpoints within five minutes of the initial or
-            revised ETA and provide a destination estimate.
+          rationale: The cited ACS page expressly states in PA.VI.A.S6 that the applicant
+            must arrive at en route checkpoints within five minutes of the
+            initial or revised ETA and provide a destination estimate. The
+            source-tagged passages accurately describe that stated standard;
+            their additional explanatory discussion does not create a
+            contradiction or unsupported factual claim requiring a finding.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains PA.VI.A.S6 and the exact ETA/checkpoint
-              and destination-estimate standard.
+            rationale: The cited PDF page is the ACS page containing PA.VI.A.S6, the exact
+              standard cited.
           claim_assessments:
             - claim_id: acs-navigation-eta
               verdict: supports
               finding_materiality: none
-              rationale: "PA.VI.A.S6 directly supports both stated requirements: arrival at en
-                route checkpoints within five minutes of the initial or revised
-                ETA and provision of a destination estimate."
+              rationale: "PA.VI.A.S6 states: “Arrive at the en route checkpoints within five
+                minutes of the initial or revised estimated time of arrival
+                (ETA) and provide a destination estimate.”"
         usage:
           input_tokens: 1537
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1534
-          output_tokens: 162
+          output_tokens: 194
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1699
+          total_tokens: 1731
     relevance: *a7
     claim_assessments:
       valid: true
@@ -1266,7 +1329,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: chart-guide-current-edition
     title: FAA Aeronautical Chart Users' Guide, Keep Your Charts Current
-    checked_at_utc: 2026-09-13T16:50:39.788Z
+    checked_at_utc: 2026-09-16T12:19:00.445Z
     linked_claim_ids:
       - current-chart-cycle
     missing_claim_ids: []
@@ -1303,31 +1366,30 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page states that pilots should check effective dates on
-            each aeronautical chart and publication, always use current editions
-            and discard obsolete ones, and check NOTAMs for important updates
-            between chart and publication cycles essential for safe flight.
+          rationale: The cited PDF page expressly instructs pilots to check effective
+            dates on charts and publications, use current editions, and check
+            NOTAMs for important updates between chart and publication cycles.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 6 contains the “KEEP YOUR CHARTS CURRENT” section and
-              directly supports the cited chart-currency and NOTAM guidance.
+            rationale: The excerpt is from cited PDF page 6 and contains the “KEEP YOUR
+              CHARTS CURRENT” section that directly supports the claim.
           claim_assessments:
             - claim_id: current-chart-cycle
               verdict: supports
               finding_materiality: none
-              rationale: The source explicitly directs pilots to use current chart editions,
-                check effective dates, and check NOTAMs for important updates
-                between cycles.
+              rationale: The source states that pilots should check effective dates, always
+                use current editions, and check NOTAMs for important updates
+                between chart and publication cycles.
         usage:
-          input_tokens: 1690
+          input_tokens: 1760
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1687
-          output_tokens: 210
+            cache_write_tokens: 1757
+            cached_tokens: 0
+          output_tokens: 232
           output_tokens_details:
-            reasoning_tokens: 37
-          total_tokens: 1900
+            reasoning_tokens: 69
+          total_tokens: 1992
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
@@ -1335,31 +1397,31 @@ results:
           verdict: supports
           confidence: high
           rationale: The cited PDF page expressly says pilots should check effective dates
-            on each aeronautical chart and publication, always use current
-            editions, and check NOTAMs for important updates between chart and
-            publication cycles.
+            on each chart and publication, always use current editions, and
+            check NOTAMs for important updates between chart and publication
+            cycles essential for safe flight.
           locator_assessment:
             verdict: supports
             finding_materiality: none
             rationale: The cited locator is PDF page 6, and the supplied excerpt from that
-              exact page contains the relevant 'KEEP YOUR CHARTS CURRENT'
+              exact page contains the relevant 'Keep Your Charts Current'
               guidance.
           claim_assessments:
             - claim_id: current-chart-cycle
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt directly supports use of current chart editions, checking
-                chart/publication effective dates, and checking NOTAMs for
-                essential updates between publication cycles.
+              rationale: The claim accurately reflects the page's guidance to use current
+                chart editions, check effective dates, and check NOTAMs for
+                essential updates between chart/publication cycles.
         usage:
-          input_tokens: 1690
+          input_tokens: 1760
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1687
-          output_tokens: 168
+            cached_tokens: 1757
+          output_tokens: 237
           output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 1858
+            reasoning_tokens: 65
+          total_tokens: 1997
     relevance: *a8
     claim_assessments:
       valid: true
@@ -1381,7 +1443,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-sectional-overview
     title: Pilot's Handbook of Aeronautical Knowledge, Sectional Charts
-    checked_at_utc: 2026-09-13T16:50:40.401Z
+    checked_at_utc: 2026-09-16T12:19:01.627Z
     linked_claim_ids:
       - sectional-purpose-content
     missing_claim_ids: []
@@ -1418,66 +1480,65 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page expressly states that sectional charts are the
-            most common charts used by pilots, have a 1:500,000 scale, include
-            airport data, navigational aids, airspace, and topography, and can
-            be interpreted by referring to the chart legend.
+          rationale: The cited PDF page states that sectional charts are the most common
+            charts used by pilots, have a 1:500,000 scale, provide airport data,
+            navigational aids, airspace, and topography, and can be interpreted
+            by referring to the chart legend. It also identifies sectional
+            charts among the aeronautical charts used by VFR pilots.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited locator identifies PDF page 16-2, and the supplied excerpt
-              is from that exact page and contains the supporting
-              sectional-chart discussion.
+            rationale: The excerpt is from cited PDF page 2 and is page 16-2, which contains
+              the stated Sectional Charts information.
           claim_assessments:
             - claim_id: sectional-purpose-content
               verdict: supports
               finding_materiality: none
-              rationale: "The source supports every stated element: sectionals are common, are
-                VFR aeronautical charts, use a 1:500,000 scale, provide airport
-                data, navigational aids, airspace, and topography, and use the
-                chart legend to interpret chart information."
+              rationale: The page directly supports the sectional chart’s common use, VFR
+                context, 1:500,000 scale, listed content, and use of the legend
+                to interpret chart information.
         usage:
           input_tokens: 1364
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1361
-          output_tokens: 208
+            cache_write_tokens: 1361
+            cached_tokens: 0
+          output_tokens: 278
           output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 1572
+            reasoning_tokens: 73
+          total_tokens: 1642
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page expressly states that sectional charts are the
-            most common charts used by pilots, have a 1:500,000 scale, provide
-            airport data, navigational aids, airspace, and topography, and can
-            be interpreted by referring to the chart legend.
+          rationale: The cited PDF page identifies sectional charts as common VFR charts,
+            gives their 1:500,000 scale, lists airport data, navigational aids,
+            airspace, and topography among their information, and states that
+            the chart legend enables interpretation of most chart information.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies PDF page 16-2, and the supplied excerpt is
-              from that exact page and contains the relevant Sectional Charts
-              discussion.
+            rationale: The locator identifies PHAK Chapter 16, page 16-2, and the supplied
+              excerpt is from that exact page and contains the relevant
+              Sectional Charts discussion.
           claim_assessments:
             - claim_id: sectional-purpose-content
               verdict: supports
               finding_materiality: none
-              rationale: "The excerpt supports every material element: common use, VFR
-                context, 1:500,000 scale, depiction of airport data,
-                navigational aids, airspace, and topography, and use of the
-                legend to interpret chart information."
+              rationale: "The excerpt directly supports each stated element: sectionals are
+                common charts used by pilots, are VFR aeronautical charts, use a
+                1:500,000 scale, depict the listed categories of information,
+                and use a legend to interpret chart information."
         usage:
           input_tokens: 1364
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1361
-          output_tokens: 201
+          output_tokens: 247
           output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 1565
+            reasoning_tokens: 35
+          total_tokens: 1611
     relevance: *a9
     claim_assessments:
       valid: true
@@ -1499,7 +1560,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: chart-guide-terrain
     title: FAA Aeronautical Chart Users' Guide, Terrain Depiction
-    checked_at_utc: 2026-09-13T16:50:39.789Z
+    checked_at_utc: 2026-09-16T12:19:00.446Z
     linked_claim_ids:
       - terrain-picture
     missing_claim_ids: []
@@ -1536,68 +1597,66 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page explicitly states that Sectionals use contour
-            lines, shaded relief, color tints, obstruction symbols, and Maximum
-            Elevation Figures to depict terrain and obstructions. It also states
-            that widely spaced contours represent gentle slopes and closely
-            spaced contours represent steep slopes.
+          rationale: The cited PDF page expressly states that Sectionals use five
+            terrain/obstruction-depiction techniques—contour lines, shaded
+            relief, color tints, obstruction symbols, and Maximum Elevation
+            Figures—and that widely spaced contours represent gentle slopes
+            while closely spaced contours represent steep slopes.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited excerpt is from PDF page 10 and contains the Land Features
-              (Terrain) and Obstructions section, including the stated
-              terrain-depiction techniques and contour-spacing explanation.
+            rationale: The cited locator identifies PDF page 10, and the supplied excerpt
+              from that exact page contains the relevant Land Features (Terrain)
+              and Obstructions discussion, including items 1 and 2.
           claim_assessments:
             - claim_id: terrain-picture
               verdict: supports
               finding_materiality: none
-              rationale: The source directly supports all listed terrain-depiction methods and
-                the relationship between contour spacing and gentle versus steep
-                slopes.
+              rationale: The claim accurately reflects the excerpt's list of five techniques
+                and its explanation that contour-line spacing indicates gentle
+                versus steep slopes.
         usage:
           input_tokens: 1492
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1489
-          output_tokens: 180
+            cache_write_tokens: 1489
+            cached_tokens: 0
+          output_tokens: 186
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1672
+          total_tokens: 1678
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: "The cited PDF page expressly states that Sectionals use five
-            terrain/obstruction-depiction techniques: contour lines, shaded
+          rationale: The cited PDF page explicitly states that Sectionals use five
+            terrain/obstruction-depiction techniques—contour lines, shaded
             relief, color tints, obstruction symbols, and Maximum Elevation
-            Figures (MEF). It also states that contour-line pattern and spacing
-            provide a visual concept of terrain, with widely spaced contours
-            representing gentle slopes and closely spaced contours representing
-            steep slopes."
+            Figures—and that widely spaced contours indicate gentle slopes while
+            closely spaced contours indicate steep slopes.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited excerpt is from PDF page 10 and contains the relevant Land
-              Features (Terrain) and Obstructions discussion, including the five
-              techniques and item 1 on contour lines. Although item 2 begins on
-              this page as well, the claim does not rely on additional
-              shaded-relief detail.
+            rationale: The cited excerpt is from PDF page 10 and contains the Land Features
+              (Terrain) and Obstructions section, including numbered items 1 and
+              2, matching the locator.
           claim_assessments:
             - claim_id: terrain-picture
               verdict: supports
               finding_materiality: none
-              rationale: The source directly supports every stated element of the claim.
+              rationale: The source directly supports both the listed terrain-depiction
+                methods and the relationship between contour-line spacing and
+                slope steepness.
         usage:
           input_tokens: 1492
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1489
-          output_tokens: 211
+          output_tokens: 183
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1703
+          total_tokens: 1675
     relevance: *a10
     claim_assessments:
       valid: true
@@ -1619,7 +1678,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: chart-guide-obstacles
     title: FAA Aeronautical Chart Users' Guide, Obstruction Depiction
-    checked_at_utc: 2026-09-13T16:51:14.985Z
+    checked_at_utc: 2026-09-16T12:19:22.114Z
     linked_claim_ids:
       - obstacle-depiction
     missing_claim_ids: []
@@ -1656,70 +1715,67 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the stated obstruction-elevation
-            convention and the meaning of UC. It explains that obstacle-top
-            elevation is shown MSL, with AGL height in parentheses when known or
-            reliably determined, and that UC denotes an obstacle under
-            construction or reported but not verified as to position or
-            elevation.
+          rationale: The cited PDF page directly explains obstruction elevation/height
+            labeling and the meaning of UC, matching the listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from the cited PDF page and contains the
-              relevant obstruction-depiction guidance.
+            rationale: The locator identifies PDF page 11, and the supplied excerpt is from
+              that exact page and contains the relevant obstruction-depiction
+              guidance.
           claim_assessments:
             - claim_id: obstacle-depiction
               verdict: supports
               finding_materiality: none
-              rationale: The source supports MSL top elevation, parenthetical AGL height when
-                known or reliably determined, and UC for reported or
-                under-construction obstacles with unverified position or
-                elevation. The source also notes that AGL values may be omitted
-                in extremely congested areas and, for group-obstacle symbols,
-                may be shown if space is available; this does not conflict with
-                the claim's core teaching.
+              rationale: The excerpt states that obstacle top elevation is shown above MSL and
+                that AGL height is shown in parentheses when known or reliably
+                determined; it also explains that AGL values may be omitted in
+                extremely congested areas. It states that UC indicates an
+                obstacle under construction or reported but with position or
+                elevation not verified.
         usage:
-          input_tokens: 1769
+          input_tokens: 1768
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1766
-          output_tokens: 336
+            cache_write_tokens: 1765
+            cached_tokens: 0
+          output_tokens: 321
           output_tokens_details:
-            reasoning_tokens: 106
-          total_tokens: 2105
+            reasoning_tokens: 136
+          total_tokens: 2089
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page directly explains obstruction elevation labeling
-            and the UC designation as stated in the listed claim.
+          rationale: The cited page directly states that obstacle labels provide the top
+            elevation in MSL and, when known or reliably determined, the AGL
+            height in parentheses; it also states that UC denotes an obstacle
+            under construction or reported but not verified when its position or
+            elevation cannot be verified.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies item 4 on cited PDF page 11, and the excerpt
-              from that exact page contains the relevant obstruction-depiction
-              guidance.
+            rationale: The excerpt is from the cited PDF page and contains the
+              obstruction-depiction guidance identified by the locator.
           claim_assessments:
             - claim_id: obstacle-depiction
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt states that obstacle labels indicate top elevation MSL
-                and show AGL height in parentheses when known or reliably
-                determined; it also explains that AGL values may be omitted in
-                congested areas. It states that UC means an obstacle is under
-                construction or reported but its position or elevation has not
-                been verified.
+              rationale: "The excerpt supports both portions of the claim: MSL top elevation
+                with AGL height in parentheses when known, subject to
+                chart-space limitations, and UC for reported or
+                under-construction obstacles with unverified position or
+                elevation."
         usage:
-          input_tokens: 1769
+          input_tokens: 1768
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1766
-          output_tokens: 281
+            cached_tokens: 1765
+          output_tokens: 264
           output_tokens_details:
-            reasoning_tokens: 97
-          total_tokens: 2050
+            reasoning_tokens: 71
+          total_tokens: 2032
     relevance: *a11
     claim_assessments:
       valid: true
@@ -1741,7 +1797,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: chart-guide-mef
     title: FAA Aeronautical Chart Users' Guide, Maximum Elevation Figures
-    checked_at_utc: 2026-09-13T16:51:15.009Z
+    checked_at_utc: 2026-09-16T12:19:22.138Z
     linked_claim_ids:
       - mef-meaning-limitations
     missing_claim_ids: []
@@ -1778,75 +1834,71 @@ results:
         assessment:
           verdict: partially_supports
           confidence: high
-          rationale: The cited PDF page supports that an MEF is the highest elevation
-            within a sectional quadrant including terrain and vertical
-            obstacles, explains the 30-minute latitude/longitude quadrant
-            boundaries, and states that MEFs are rounded up to the next 100-foot
-            value with the last two digits omitted. It also describes
-            source-material error treatment for the man-made-obstacle method.
-            However, the excerpt does not state that MEFs are not verified by
-            field survey; it says FAA personnel use extreme care and calculate
-            values from existing elevation data shown on source material.
+          rationale: The cited page supports the MEF’s meaning, sectional-quadrant
+            boundaries, rounding, use of source-material error allowances, and
+            reliance on existing source elevation data. It does not state that
+            MEFs are not verified by field survey.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from cited PDF page 12 and contains item 5, including
-              the MEF definition and the man-made-obstacle calculation method
-              identified by the locator.
+            rationale: The locator identifies PDF page 12, and the supplied excerpt is from
+              that page and contains the relevant MEF definition and
+              man-made-obstacle calculation method.
           claim_assessments:
             - claim_id: mef-meaning-limitations
               verdict: partially_supports
               finding_materiality: editorial
-              rationale: The source supports the MEF meaning, sectional-quadrant scope,
-                inclusion of terrain and obstacles, rounding, and use of
-                source-material allowances. It does not support the added
-                statement that the figure is 'not verified by field survey.'
+              rationale: The excerpt supports that an MEF is the highest elevation in a
+                sectional quadrant including terrain and vertical obstacles, is
+                rounded up to the next 100 feet with the last two digits
+                omitted, and incorporates specified source-material error
+                treatment. It supports reliance on existing elevation data shown
+                on source material, but does not support the specific statement
+                that the figure is 'not verified by field survey.'
         usage:
           input_tokens: 1333
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1330
-          output_tokens: 438
+            cache_write_tokens: 1330
+            cached_tokens: 0
+          output_tokens: 344
           output_tokens_details:
-            reasoning_tokens: 169
-          total_tokens: 1771
+            reasoning_tokens: 109
+          total_tokens: 1677
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: partially_supports
           confidence: high
-          rationale: The excerpt supports that an MEF is the highest elevation within a
-            sectional quadrant, includes terrain and vertical obstacles, and is
-            rounded upward to the next hundred feet using specified
-            source-material error treatment for qualifying man-made obstacles.
-            It does not state that the information is the “best available”
-            source information or that MEFs are not verified by field survey.
+          rationale: The cited page supports that an MEF is the highest elevation within a
+            sectional quadrant including terrain and vertical obstacles, and
+            that it is rounded upward using specified source-error treatment. It
+            also says FAA personnel calculate it from existing elevation data
+            shown on source material. However, the excerpt does not state that
+            MEFs are not verified by field survey.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains item 5, defining MEFs and describing the
-              man-made-obstacle calculation method.
+            rationale: The locator correctly identifies PDF page 12, item 5, and the
+              man-made-obstacle calculation method contained in the supplied
+              excerpt.
           claim_assessments:
             - claim_id: mef-meaning-limitations
               verdict: partially_supports
               finding_materiality: editorial
-              rationale: The MEF definition, quadrant scope, inclusion of terrain and
-                obstacles, rounding, and source-error allowance are supported.
-                The statements that it is based on the “best available”
-                information and is not field-survey verified are not supported
-                by this excerpt; the excerpt instead says values are calculated
-                with extreme care from existing elevation data shown on source
-                material.
+              rationale: The meaning, quadrant scope, inclusion of terrain and obstacles,
+                rounding, allowances, and source-material basis are supported.
+                The specific statement that the MEF is “not verified by field
+                survey” is not supported by this page.
         usage:
           input_tokens: 1333
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1330
-          output_tokens: 389
+          output_tokens: 500
           output_tokens_details:
-            reasoning_tokens: 147
-          total_tokens: 1722
+            reasoning_tokens: 279
+          total_tokens: 1833
     relevance: *a12
     claim_assessments:
       valid: true
@@ -1873,7 +1925,7 @@ results:
   - source_id: chart-guide-mef-limitations
     title: FAA Aeronautical Chart Users' Guide, MEF Natural-Feature Method and
       Limitations
-    checked_at_utc: 2026-09-13T16:51:15.044Z
+    checked_at_utc: 2026-09-16T12:19:22.177Z
     linked_claim_ids:
       - mef-meaning-limitations
     missing_claim_ids: []
@@ -1910,83 +1962,82 @@ results:
         assessment:
           verdict: partially_supports
           confidence: high
-          rationale: The excerpt supports that, when a natural terrain feature or natural
-            vertical obstacle is the highest feature within a quadrangle, the
-            MEF calculation uses a source-error allowance, a 200-foot obstacle
-            allowance, and rounding up to the next hundred feet. It also
-            expressly states that MEFs are based on the best information
-            available to the Specialist and are not verified by field surveys.
-            However, the excerpt calls the area a “quadrangle,” not specifically
-            a “sectional quadrant,” and presents this calculation under the
-            stated natural-feature/natural-obstacle condition rather than as an
-            unqualified general definition for every MEF case.
+          rationale: "The excerpt supports the stated natural-feature MEF method: it
+            specifies a possible source-error allowance, a 200-foot allowance
+            for uncharted natural or manmade obstacles, rounding up to the next
+            100 feet, and states that MEFs use the best information available
+            but are not verified by field surveys. However, the cited page
+            expressly addresses the case where a natural terrain feature or
+            natural vertical obstacle is the highest feature; it does not
+            establish the claim as a general definition for every MEF scenario
+            or specifically establish the broader “sectional quadrant” wording."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page is page 13, and the supplied excerpt is from that
-              page and directly contains the relevant MEF method and
-              survey-verification limitation.
-          claim_assessments:
-            - claim_id: mef-meaning-limitations
-              verdict: partially_supports
-              finding_materiality: editorial
-              rationale: The source supports the allowances, upward rounding,
-                best-available-information basis, and lack of field-survey
-                verification. It does not explicitly identify the quadrangle as
-                a sectional quadrant, and its described method is expressly
-                conditioned on a natural terrain feature or natural vertical
-                obstacle being the highest feature.
-        usage:
-          input_tokens: 1292
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1289
-          output_tokens: 762
-          output_tokens_details:
-            reasoning_tokens: 470
-          total_tokens: 2054
-      - pass: 2
-        status: assessed
-        model: gpt-5.6-terra
-        assessment:
-          verdict: partially_supports
-          confidence: high
-          rationale: "The cited page supports the stated calculation features and
-            limitation for an MEF determined by a natural terrain feature or
-            natural vertical obstacle: source-error allowance, 200-foot obstacle
-            allowance, rounding upward, best available information, and no
-            field-survey verification. However, the claim states the meaning
-            generally as including terrain and vertical obstacles in a sectional
-            quadrant, while this excerpt specifically addresses the
-            natural-feature/natural-vertical-obstacle method within a
-            quadrangle. The broader formulation is not fully established by this
-            page alone."
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The excerpt is from cited PDF page 13 and contains the MEF
-              natural-feature method and field-survey limitation referenced by
-              the claim.
+            rationale: The cited PDF page is the supplied page 13 and contains the MEF
+              natural-terrain/natural-vertical-obstacle method and the stated
+              field-survey limitation.
           claim_assessments:
             - claim_id: mef-meaning-limitations
               verdict: partially_supports
               finding_materiality: editorial
               rationale: The source supports the allowances, rounding,
                 best-available-information basis, and lack of field-survey
-                verification. Its scope is limited to a highest natural terrain
-                feature or natural vertical obstacle within a quadrangle, so it
-                does not by itself fully support the claim's broader general
-                characterization of all terrain and vertical obstacles in a
-                sectional quadrant.
+                verification for an MEF driven by a natural terrain feature or
+                natural vertical obstacle. The statement generalizes that
+                conditional method into a universal MEF definition and adds
+                “sectional quadrant,” which is not stated in this excerpt.
+        usage:
+          input_tokens: 1292
+          input_tokens_details:
+            cache_write_tokens: 1289
+            cached_tokens: 0
+          output_tokens: 519
+          output_tokens_details:
+            reasoning_tokens: 230
+          total_tokens: 1811
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: partially_supports
+          confidence: high
+          rationale: The excerpt supports the stated allowance, rounding,
+            best-available-information, and no-field-survey portions for the
+            case where a natural terrain feature or natural vertical obstacle is
+            the highest feature in the quadrangle. It does not establish the
+            claim as a general definition of every MEF, nor does it use the term
+            “sectional quadrant.”
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 13, and the excerpt is the MEF
+              natural-terrain/natural-vertical-obstacle method and limitations
+              described by the locator.
+          claim_assessments:
+            - claim_id: mef-meaning-limitations
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: The source supports that, for a natural terrain feature or natural
+                vertical obstacle that is highest within the quadrangle, the MEF
+                incorporates a possible source-error allowance, a 200-foot
+                allowance for uncharted obstacles, and upward rounding to the
+                next hundred feet; it also supports that the figures use the
+                best available information and are not verified by field
+                surveys. The source is limited to that natural-feature method
+                and says “quadrangle,” so it does not fully support the broader,
+                general formulation that an MEF represents the highest elevation
+                in a “sectional quadrant” including terrain and vertical
+                obstacles without qualification.
         usage:
           input_tokens: 1292
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1289
-          output_tokens: 617
+          output_tokens: 504
           output_tokens_details:
-            reasoning_tokens: 342
-          total_tokens: 1909
+            reasoning_tokens: 202
+          total_tokens: 1796
     relevance: *a13
     claim_assessments:
       valid: true
@@ -2012,7 +2063,7 @@ results:
             - mef-meaning-limitations
   - source_id: chart-guide-terminal-airspace
     title: FAA Aeronautical Chart Users' Guide, Class B, C, and D Depiction
-    checked_at_utc: 2026-09-13T16:51:15.055Z
+    checked_at_utc: 2026-09-16T12:19:22.187Z
     linked_claim_ids:
       - terminal-airspace-depiction
     missing_claim_ids: []
@@ -2049,32 +2100,33 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt on cited PDF page 16 describes Class B, C, and D chart
-            depiction conventions, including color-coded altitude figures for
-            Class B and C, Class B radial/arc boundaries, and the blue dashed
-            Class D boundary. It supports the stated chart-guidance claim.
+          rationale: The cited PDF page describes Class B depiction in solid blue with
+            sector ceiling and floor altitudes, Class C depiction in solid
+            magenta with sector ceiling and floor altitudes, and Class D
+            depiction with a blue dashed line and ceiling information. This
+            supports the stated claim that the guide explains depiction
+            conventions for Class B, C, and D airspace.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited locator identifies PDF page 16, and the supplied excerpt is
-              from that exact page and contains the relevant controlled-airspace
-              depiction material.
+            rationale: The cited PDF page is the supplied page 16 excerpt and contains the
+              relevant Class B, Class C, and Class D depiction material.
           claim_assessments:
             - claim_id: terminal-airspace-depiction
               verdict: supports
               finding_materiality: none
-              rationale: "The source explains Class B, C, and D depiction conventions: Class B
-                and C color/sector altitude labeling, Class B boundary geometry
-                through radials and arcs, and the Class D blue dashed boundary."
+              rationale: The excerpt directly addresses the chart colors, boundary depiction,
+                and altitude-label conventions for Class B, Class C, and Class D
+                airspace.
         usage:
           input_tokens: 1513
           input_tokens_details:
             cache_write_tokens: 1510
             cached_tokens: 0
-          output_tokens: 319
+          output_tokens: 653
           output_tokens_details:
-            reasoning_tokens: 120
-          total_tokens: 1832
+            reasoning_tokens: 454
+          total_tokens: 2166
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
@@ -2082,32 +2134,34 @@ results:
           verdict: supports
           confidence: high
           rationale: The cited PDF page explains Class B, C, and D chart depictions,
-            including Class B solid-blue sector ceiling/floor figures and
-            boundary-defining radials/arcs, Class C solid-magenta sector
-            ceiling/floor figures, and the Class D blue dashed boundary. This
-            supports the listed claim about boundary, color, and sector-altitude
-            depiction conventions for those classes.
+            including color/boundary conventions and displayed altitude
+            information. It describes Class B as solid blue figures with ceiling
+            and floor altitudes by sector, Class C as solid magenta figures with
+            sector ceiling and floor altitudes, and Class D as a blue dashed
+            boundary with ceiling depiction conventions.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited excerpt was extracted from the specified PDF page 16 and
-              contains the relevant controlled-airspace depiction material.
+            rationale: The excerpt was extracted from the cited PDF page 16 and contains the
+              relevant Class B, Class C, and Class D depiction guidance.
           claim_assessments:
             - claim_id: terminal-airspace-depiction
               verdict: supports
               finding_materiality: none
-              rationale: Page 16 addresses the relevant Class B, C, and D depiction
-                conventions, including colors, boundaries, and displayed
-                altitude information.
+              rationale: "The source supports the stated Class B, C, and D
+                boundary/color/altitude-depiction concepts: Class B uses blue
+                sector figures and shown defining radials/arcs; Class C uses
+                magenta sector figures; and Class D is identified by a blue
+                dashed line and has stated ceiling-display conventions."
         usage:
           input_tokens: 1513
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1510
-          output_tokens: 325
+          output_tokens: 328
           output_tokens_details:
-            reasoning_tokens: 128
-          total_tokens: 1838
+            reasoning_tokens: 93
+          total_tokens: 1841
     relevance: *a14
     claim_assessments:
       valid: true
@@ -2129,7 +2183,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: chart-guide-class-e
     title: FAA Aeronautical Chart Users' Guide, Class E Depiction
-    checked_at_utc: 2026-09-13T16:51:15.085Z
+    checked_at_utc: 2026-09-16T12:19:22.216Z
     linked_claim_ids:
       - class-e-depiction
     missing_claim_ids: []
@@ -2166,61 +2220,61 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page explicitly explains Class E surface-area depiction
-            with a magenta dashed line and Class E floor/limit depiction using
-            magenta or blue vignette and annotated floor symbols/numbers.
+          rationale: The excerpt explicitly states that Class E surface airspace is shown
+            by a magenta dashed line and explains vignette and symbol/number
+            conventions used to show Class E floors and limits.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies the Class E Airspace material on PDF page 17,
-              and the supplied excerpt is from that exact page.
+            rationale: The cited locator is PDF page 17, and the supplied excerpt from that
+              exact page contains the relevant Class E depiction guidance.
           claim_assessments:
             - claim_id: class-e-depiction
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt states that Class E surface airspace is shown by a
-                magenta dashed line and describes vignette and annotation
-                conventions for Class E floors and limits.
+              rationale: The page explains the dashed-magenta convention for Class E surface
+                areas, magenta and blue vignettes for Class E floor depictions,
+                and symbol-and-number annotations for differing floors.
         usage:
           input_tokens: 1570
           input_tokens_details:
             cache_write_tokens: 1567
             cached_tokens: 0
-          output_tokens: 232
+          output_tokens: 239
           output_tokens_details:
-            reasoning_tokens: 64
-          total_tokens: 1802
+            reasoning_tokens: 67
+          total_tokens: 1809
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page expressly explains Class E surface airspace as a
-            magenta dashed line and explains magenta and blue vignette
-            conventions, floor annotations, and ceiling labels used to depict
-            Class E airspace limits and floors.
+          rationale: The excerpt explicitly states that Class E surface airspace is shown
+            with a magenta dashed line; 700-foot Class E floors are shown by
+            magenta vignette; other Class E floors abutting Class G use blue
+            vignette; and differing floors above 700 feet are annotated with a
+            symbol and number. This supports the listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies the Class E Airspace material on cited PDF
-              page 17, and the supplied excerpt is from that exact page.
+            rationale: The cited excerpt is from PDF page 17 and contains the Class E
+              Airspace depiction material described by the locator.
           claim_assessments:
             - claim_id: class-e-depiction
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt states that Class E surface airspace is depicted with a
-                magenta dashed line and describes vignette colors and
-                annotations for Class E floors and vertical limits.
+              rationale: The source directly supports the claim's dashed-magenta surface-area,
+                vignette, and floor-annotation conventions for Class E airspace.
         usage:
           input_tokens: 1570
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1567
-          output_tokens: 230
+          output_tokens: 189
           output_tokens_details:
-            reasoning_tokens: 54
-          total_tokens: 1800
+            reasoning_tokens: 0
+          total_tokens: 1759
     relevance: *a15
     claim_assessments:
       valid: true
@@ -2242,7 +2296,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: chart-guide-route-culture
     title: FAA Aeronautical Chart Users' Guide, Roads and Railroads
-    checked_at_utc: 2026-09-13T16:51:15.095Z
+    checked_at_utc: 2026-09-16T12:19:22.228Z
     linked_claim_ids:
       - charted-culture-features
     missing_claim_ids: []
@@ -2279,63 +2333,70 @@ results:
         assessment:
           verdict: partially_supports
           confidence: high
-          rationale: The cited page directly shows distinct Sectional/TAC culture
-            symbology for multiple road and railroad types. It supports that
-            these features are distinguished on the chart, but it does not
-            address evaluating them as visual route features for navigation.
+          rationale: The cited page directly shows distinct sectional/TAC symbology for
+            multiple road categories and railroad types. It does not state that
+            these features are suitable or usable as visual route features; that
+            is a pilotage application beyond the excerpt. The distinction itself
+            is supported, while the visual-route-use characterization is not
+            directly sourced here.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and contains the relevant
-              Roads and Railroads symbology.
+            rationale: The excerpt is from cited PDF page 34 and contains the relevant
+              CULTURE symbology for roads and railroads.
           claim_assessments:
             - claim_id: charted-culture-features
               verdict: partially_supports
               finding_materiality: editorial
-              rationale: The page supports the statement that sectional symbology
-                distinguishes roads and railroads. It does not expressly support
-                the added navigation-use characterization that they can be
-                evaluated as visual route features.
+              rationale: The page supports that sectional symbology distinguishes roads and
+                railroads. It does not expressly support the further
+                characterization that they can be evaluated as visual route
+                features, although that qualification does not alter the core
+                lesson or a safety decision.
         usage:
           input_tokens: 970
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 362
+          output_tokens: 346
           output_tokens_details:
-            reasoning_tokens: 179
-          total_tokens: 1332
+            reasoning_tokens: 131
+          total_tokens: 1316
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
-          verdict: supports
+          verdict: partially_supports
           confidence: high
-          rationale: The cited PDF page is a VFR sectional and terminal-area-chart
-            culture-symbology page that depicts and labels multiple road and
-            railroad categories. This supports the claim that sectional
-            symbology distinguishes roads and railroads for use as identifiable
-            visual route features.
+          rationale: The cited page directly shows distinct Sectional/TAC culture
+            symbology for multiple road and railroad types. It does not itself
+            address using or evaluating those depicted features as visual route
+            features; that is an operational/pilotage application beyond the
+            excerpt.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page is the page containing the road and railroad
-              symbology described by the claim.
+            rationale: The excerpt is from the cited PDF page and is specifically the VFR
+              Sectional and Terminal Area Chart culture-symbol page covering
+              roads and railroads.
           claim_assessments:
             - claim_id: charted-culture-features
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt explicitly lists distinct symbols for railroads and
-                roads, including track and road classifications.
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: The source supports that chart symbology distinguishes roads and
+                railroads. It does not explicitly support the added statement
+                that they can be evaluated as visual route features, although
+                that qualification does not alter the core teaching that these
+                features are depicted distinctly.
         usage:
           input_tokens: 970
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 258
+          output_tokens: 402
           output_tokens_details:
-            reasoning_tokens: 95
-          total_tokens: 1228
+            reasoning_tokens: 195
+          total_tokens: 1372
     relevance: *a16
     claim_assessments:
       valid: true
@@ -2354,12 +2415,14 @@ results:
           missing_assessment_ids: []
           unexpected_assessment_ids: []
           duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
+          unsupported_assessment_ids:
+            - charted-culture-features
           material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
+          editorial_note_assessment_ids:
+            - charted-culture-features
   - source_id: chart-guide-route-water
     title: FAA Aeronautical Chart Users' Guide, Lakes and Reservoirs
-    checked_at_utc: 2026-09-13T16:51:15.128Z
+    checked_at_utc: 2026-09-16T12:19:22.258Z
     linked_claim_ids:
       - charted-water-features
     missing_claim_ids: []
@@ -2394,68 +2457,71 @@ results:
         status: assessed
         model: gpt-5.6-terra
         assessment:
-          verdict: supports
+          verdict: partially_supports
           confidence: high
-          rationale: The cited PDF page is the Hydrography symbology page and
-            depicts/labels lakes, reservoirs, and multiple shoreline types. This
-            supports the claim that sectional-chart symbology distinguishes
-            these water-feature categories for use in evaluating visual route
-            features.
+          rationale: The cited PDF page is the Hydrography symbology page and supports
+            that sectional and terminal-area charts depict lakes, reservoirs,
+            and shoreline types. It does not itself address evaluating those
+            depictions as visual route features; that is an instructional
+            application beyond the excerpt.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited locator is PDF page 37, and the supplied excerpt is
-              explicitly from page 37 and addresses hydrography symbology,
-              including lakes, reservoirs, and shorelines.
+            rationale: The locator identifies the Chart Users’ Guide hydrography material,
+              and the supplied excerpt was extracted from the cited PDF page (p.
+              37).
           claim_assessments:
             - claim_id: charted-water-features
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt expressly covers lakes, reservoirs, and inland-water
-                shorelines with distinct chart symbols and labels.
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: The excerpt supports the distinction and depiction of lakes,
+                reservoirs, and natural/man-made shoreline symbology. It does
+                not state that these features can be evaluated as visual route
+                features, though that added application does not alter the
+                chart-symbol teaching.
         usage:
           input_tokens: 921
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 270
+          output_tokens: 339
           output_tokens_details:
-            reasoning_tokens: 91
-          total_tokens: 1191
+            reasoning_tokens: 127
+          total_tokens: 1260
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page is the Hydrography symbology page for VFR
-            Sectional and Terminal Area Charts and explicitly depicts and labels
-            lakes, reservoirs, and natural/man-made inland-water shorelines.
-            This supports the claim that sectional symbology distinguishes those
-            charted water features for visual evaluation as route features.
+          rationale: The cited PDF page is the Hydrography symbology page for Sectional
+            and Terminal Area Charts and explicitly depicts and labels lake,
+            reservoir, and shoreline symbology. This supports the claim that
+            sectional symbology distinguishes these water-feature categories for
+            chart interpretation.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies the FAA Chart Users’ Guide hydrography
-              material, and the supplied excerpt is from the cited PDF page 37.
+            rationale: The locator identifies the Hydrography material on cited PDF page 37,
+              which is the exact supplied excerpt.
           claim_assessments:
             - claim_id: charted-water-features
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt explicitly covers lakes, reservoirs, and shoreline
-                symbology on VFR Sectional and Terminal Area Charts. Evaluating
-                those depicted features as visual route features is consistent
-                with the claim and does not add an unsupported factual assertion
-                about the symbols.
+              rationale: The excerpt explicitly covers lakes, reservoirs, and several
+                shoreline types/symbol conventions. The statement's limited
+                point—that these distinct charted water features can be
+                evaluated as visual route features—is supported by their
+                depicted sectional symbology.
         usage:
           input_tokens: 921
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 209
+          output_tokens: 191
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1130
+          total_tokens: 1112
     relevance: *a17
     claim_assessments:
       valid: true
@@ -2465,9 +2531,11 @@ results:
           missing_assessment_ids: []
           unexpected_assessment_ids: []
           duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
+          unsupported_assessment_ids:
+            - charted-water-features
           material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
+          editorial_note_assessment_ids:
+            - charted-water-features
         - valid: true
           missing_assessment_ids: []
           unexpected_assessment_ids: []
@@ -2477,7 +2545,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-pilotage
     title: Pilot's Handbook of Aeronautical Knowledge, Pilotage
-    checked_at_utc: 2026-09-13T16:50:40.405Z
+    checked_at_utc: 2026-09-16T12:19:01.632Z
     linked_claim_ids:
       - pilotage-checkpoints
     missing_claim_ids: []
@@ -2514,68 +2582,67 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page explicitly defines pilotage as navigation by
-            reference to landmarks or checkpoints and recommends prominent
-            checkpoints common to the flight area, identification by other
-            features, useful route boundaries or brackets, ample checkpoints,
-            and never placing complete reliance on a single checkpoint.
+          rationale: The cited page explicitly defines pilotage as navigation by reference
+            to landmarks or checkpoints and recommends prominent checkpoints,
+            identification by other features, useful boundaries or brackets,
+            ample checkpoints, and never placing complete reliance on a single
+            checkpoint.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited locator is the exact PDF page containing the relevant
-              Pilotage discussion and the stated checkpoint guidance.
+            rationale: The excerpt was extracted from cited PDF page 12, and the relevant
+              Pilotage discussion appears on that page.
           claim_assessments:
             - claim_id: pilotage-checkpoints
               verdict: supports
               finding_materiality: none
-              rationale: "The excerpt directly supports every listed element: pilotage by
-                landmarks or checkpoints; prominent features; identification
-                using other features; brackets such as highways, rivers,
-                railroads, and mountains; ample checkpoints; and no complete
-                reliance on one checkpoint."
+              rationale: The claim accurately reflects the page's definition and
+                checkpoint-selection guidance, including prominent features,
+                corroborating features, route brackets, ample checkpoints, and
+                avoiding reliance on one checkpoint.
         usage:
           input_tokens: 2668
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2665
-          output_tokens: 255
+            cache_write_tokens: 2665
+            cached_tokens: 0
+          output_tokens: 211
           output_tokens_details:
-            reasoning_tokens: 65
-          total_tokens: 2923
+            reasoning_tokens: 39
+          total_tokens: 2879
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page explicitly defines pilotage as navigation by
+          rationale: The cited PHAK page expressly defines pilotage as navigation by
             reference to landmarks or checkpoints and recommends prominent,
             readily identifiable checkpoints; useful route boundaries or
-            brackets; ample checkpoints; and never placing complete reliance on
-            a single checkpoint.
+            brackets; ample checkpoints; and avoiding complete reliance on a
+            single checkpoint.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited locator is the exact extracted PDF page, and its Pilotage
-              section contains the material supporting the claim.
+            rationale: The cited PDF page is page 16-12, and the excerpt on that page
+              contains the Pilotage discussion supporting the claim.
           claim_assessments:
             - claim_id: pilotage-checkpoints
               verdict: supports
               finding_materiality: none
-              rationale: "The excerpt directly supports each stated element: pilotage by
-                landmarks/checkpoints, prominent features identifiable by other
-                features, route brackets such as
-                highways/rivers/railroads/mountains, ample checkpoints, and
-                avoiding complete reliance on any one checkpoint."
+              rationale: The excerpt directly supports every material element of the claim,
+                including navigation by landmarks/checkpoints, prominent and
+                corroborated features, brackets such as
+                highways/rivers/railroads/mountains, ample checkpoints, and not
+                relying completely on one checkpoint.
         usage:
           input_tokens: 2668
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 2665
-          output_tokens: 218
+          output_tokens: 294
           output_tokens_details:
-            reasoning_tokens: 32
-          total_tokens: 2886
+            reasoning_tokens: 104
+          total_tokens: 2962
     relevance: *a18
     claim_assessments:
       valid: true
@@ -2597,7 +2664,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-dead-reckoning
     title: Pilot's Handbook of Aeronautical Knowledge, Dead Reckoning
-    checked_at_utc: 2026-09-13T16:50:42.065Z
+    checked_at_utc: 2026-09-16T12:19:03.103Z
     linked_claim_ids:
       - dead-reckoning-integration
     missing_claim_ids: []
@@ -2634,35 +2701,35 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page expressly defines dead reckoning as computations
-            based on time, airspeed, distance, and direction; states that the
-            resulting products, adjusted for wind speed and velocity, are
-            heading and groundspeed; and explains that, except over water, it is
+          rationale: The cited PDF page defines dead reckoning as computations based on
+            time, airspeed, distance, and direction; states that the resulting
+            products are adjusted for wind speed and velocity to obtain heading
+            and groundspeed; and says that, except for flights over water, it is
             usually used with pilotage for cross-country flying, with calculated
-            heading and groundspeed constantly monitored and corrected using
-            observed checkpoints.
+            heading and groundspeed monitored and corrected through observed
+            checkpoints.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from cited PDF page 13 and contains the
-              statements needed to support the claim.
+            rationale: The excerpt is from cited PDF page 13 and contains the Dead Reckoning
+              section supporting the claim.
           claim_assessments:
             - claim_id: dead-reckoning-integration
               verdict: supports
               finding_materiality: none
-              rationale: The claim accurately reflects the page's definition, wind adjustment,
-                predicted heading and groundspeed, and usual integration with
-                pilotage and checkpoint-based monitoring/correction for
-                cross-country flight.
+              rationale: "The source explicitly supports each material element: the
+                computation inputs, wind adjustment, predicted heading and
+                groundspeed, and normal integration with pilotage to monitor and
+                correct calculations at checkpoints."
         usage:
-          input_tokens: 1855
+          input_tokens: 1922
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1852
-          output_tokens: 204
+            cache_write_tokens: 1919
+            cached_tokens: 0
+          output_tokens: 244
           output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 2059
+            reasoning_tokens: 38
+          total_tokens: 2166
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
@@ -2670,34 +2737,33 @@ results:
           verdict: supports
           confidence: high
           rationale: The cited PDF page expressly defines dead reckoning as computations
-            based on time, airspeed, distance, and direction; states that the
-            resulting heading and groundspeed are adjusted for wind speed and
-            velocity; and says that, except for flights over water, dead
-            reckoning is usually used with pilotage for cross-country flying,
-            with calculated heading and groundspeed constantly monitored and
-            corrected through observed checkpoints.
+            based on time, airspeed, distance, and direction; says wind
+            adjustment produces heading and groundspeed; and states that, except
+            for flights over water, it is usually used with pilotage for
+            cross-country flying, with calculated heading and groundspeed
+            monitored and corrected using observed checkpoints.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from cited PDF page 13 and contains the
-              relevant Dead Reckoning discussion supporting the claim.
+            rationale: The cited PDF page 16-13 contains the Dead Reckoning section and the
+              statements needed to support the claim.
           claim_assessments:
             - claim_id: dead-reckoning-integration
               verdict: supports
               finding_materiality: none
-              rationale: "The source directly supports every material element: the computation
-                inputs, wind-adjusted heading and groundspeed, and normal
-                cross-country integration with pilotage to monitor and correct
-                the calculations at checkpoints."
+              rationale: "The source directly supports each material element: the
+                computational inputs, wind-adjusted predicted heading and
+                groundspeed, and ordinary cross-country integration with
+                pilotage to monitor and correct predictions at checkpoints."
         usage:
-          input_tokens: 1855
+          input_tokens: 1922
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1852
-          output_tokens: 209
+            cached_tokens: 1919
+          output_tokens: 242
           output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 2064
+            reasoning_tokens: 40
+          total_tokens: 2164
     relevance: *a19
     claim_assessments:
       valid: true
@@ -2719,7 +2785,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-wind-track
     title: Pilot's Handbook of Aeronautical Knowledge, Effect of Wind
-    checked_at_utc: 2026-09-13T16:50:42.074Z
+    checked_at_utc: 2026-09-16T12:19:03.110Z
     linked_claim_ids:
       - wind-effects
     missing_claim_ids: []
@@ -2756,67 +2822,69 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly explains that wind changes progress over the
-            ground while not affecting airspeed, can cause track to differ from
-            heading through drift, and that a wind correction angle offsets
-            drift so track can coincide with the desired course.
+          rationale: The cited page explicitly explains that wind changes progress over
+            the ground while not affecting airspeed, can cause the aircraft’s
+            track to differ from its heading, and that a wind correction angle
+            is used to offset drift so the track coincides with the desired
+            course.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from cited PDF page 16-9, and that page
-              contains the relevant discussions of groundspeed, heading, track,
+            rationale: The cited PDF page is page 16-9, and the excerpt on that page
+              directly covers wind effects on groundspeed, heading, track,
               drift, and wind correction angle.
           claim_assessments:
             - claim_id: wind-effects
               verdict: supports
               finding_materiality: none
-              rationale: The source states that wind affects aircraft progress over the
-                ground, that crosswind can cause the track to drift right or
-                left relative to heading/course, and that applying a wind
-                correction angle can make the track coincide with the desired
+              rationale: The excerpt states that wind affects aircraft progress over the
+                ground, that crosswind can cause drift such that track differs
+                from heading, and that a pilot can apply a wind correction angle
+                to counteract drift and make track coincide with the desired
                 course.
         usage:
           input_tokens: 2007
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2004
-          output_tokens: 299
+            cache_write_tokens: 2004
+            cached_tokens: 0
+          output_tokens: 261
           output_tokens_details:
-            reasoning_tokens: 102
-          total_tokens: 2306
+            reasoning_tokens: 55
+          total_tokens: 2268
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explains that wind changes an aircraft’s progress over
-            the ground, can cause its track to differ from its heading, and that
-            a wind correction angle offsets drift so the track can coincide with
+          rationale: The cited PDF page directly explains that wind changes an aircraft’s
+            progress over the ground without changing its airspeed, that
+            crosswind can cause the track to differ from the heading, and that a
+            wind correction angle offsets drift so the track can coincide with
             the desired course.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from cited PDF page 16-9 and directly
-              contains the relevant discussion of groundspeed, heading, track,
-              drift, and wind correction angle.
+            rationale: The cited PDF page is page 16-9 and contains the stated Effect of
+              Wind discussion, including groundspeed, heading, track, drift
+              angle, and wind correction angle.
           claim_assessments:
             - claim_id: wind-effects
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt states that air motion affects progress over the ground;
-                that crosswind can make track differ from heading; and that
-                correcting for drift with WCA can make track coincide with the
-                desired course.
+              rationale: The excerpt states that wind affects progress over the ground; that
+                heading and actual ground track can differ because of wind
+                drift; and that applying a wind correction angle counteracts
+                drift so the track coincides with the desired course.
         usage:
           input_tokens: 2007
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 2004
-          output_tokens: 246
+          output_tokens: 284
           output_tokens_details:
-            reasoning_tokens: 60
-          total_tokens: 2253
+            reasoning_tokens: 81
+          total_tokens: 2291
     relevance: *a20
     claim_assessments:
       valid: true
@@ -2838,7 +2906,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-navigation-terms
     title: Pilot's Handbook of Aeronautical Knowledge, Navigation Term Summary
-    checked_at_utc: 2026-09-13T16:50:42.093Z
+    checked_at_utc: 2026-09-16T12:19:03.130Z
     linked_claim_ids:
       - navigation-terms
     missing_claim_ids: []
@@ -2875,64 +2943,65 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page directly defines course, heading, track,
-            wind-correction angle (WCA), airspeed, and groundspeed consistently
+          rationale: The cited PDF page directly defines course, heading, track, wind
+            correction angle (WCA), airspeed, and groundspeed (GS) consistently
             with the listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from cited PDF page 16-10 and contains the stated term
-              summary.
+            rationale: The excerpt is extracted from cited PDF page 16-10 and contains the
+              relevant navigation-term summary.
           claim_assessments:
             - claim_id: navigation-terms
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt states that course is the intended path over the ground;
-                heading is the direction the nose points; track is the actual
-                ground path; WCA is applied to course to establish a heading so
-                track coincides with course; airspeed is progress through the
-                air; and GS is progress over the ground.
+              rationale: The page states that course is the intended ground path; heading is
+                the direction the nose points; track is the actual ground path;
+                WCA is applied to course to establish a heading so track
+                coincides with course; airspeed is progress through the air; and
+                GS is progress over the ground.
         usage:
           input_tokens: 1331
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1328
-          output_tokens: 181
+            cache_write_tokens: 1328
+            cached_tokens: 0
+          output_tokens: 183
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1512
+          total_tokens: 1514
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page explicitly defines course, heading, track,
-            wind-correction angle, airspeed, and groundspeed in the same terms
-            as the listed claim.
+          rationale: The cited PDF page directly defines course, heading, track, wind
+            correction angle (WCA), airspeed, and groundspeed in terms
+            consistent with the listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from cited PDF page 16-10, which contains
-              the stated navigation-term summary.
+            rationale: The locator identifies PDF page 16-10, and the supplied excerpt from
+              that exact page contains the navigation-term summary used for the
+              claim.
           claim_assessments:
             - claim_id: navigation-terms
               verdict: supports
               finding_materiality: none
-              rationale: Page 16-10 states that course is the intended path over the ground;
-                heading is the direction the nose points; track is the actual
-                path over the ground; WCA is applied to the course to establish
-                a heading; airspeed is progress through the air; and GS is
-                progress over the ground.
+              rationale: The excerpt states that course is the intended path over the ground;
+                heading is the direction the aircraft nose points; track is the
+                actual path over the ground; WCA is the correction applied to
+                course to establish a heading; airspeed is progress through the
+                air; and GS is progress over the ground.
         usage:
           input_tokens: 1331
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1328
-          output_tokens: 254
+          output_tokens: 253
           output_tokens_details:
-            reasoning_tokens: 68
-          total_tokens: 1585
+            reasoning_tokens: 60
+          total_tokens: 1584
     relevance: *a21
     claim_assessments:
       valid: true
@@ -2954,7 +3023,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-variation-deviation
     title: Pilot's Handbook of Aeronautical Knowledge, Variation and Deviation
-    checked_at_utc: 2026-09-13T16:50:42.119Z
+    checked_at_utc: 2026-09-16T12:19:03.156Z
     linked_claim_ids:
       - magnetic-variation
     missing_claim_ids: []
@@ -2989,72 +3058,70 @@ results:
         status: assessed
         model: gpt-5.6-terra
         assessment:
-          verdict: partially_supports
+          verdict: supports
           confidence: high
-          rationale: The cited page supports that variation reflects the relationship
-            between true north and magnetic north and that variation from an
-            isogonic line on a chart is added or subtracted to convert a true
-            direction/course to a magnetic direction/course. However, the
-            excerpt refers generically to a “chart” and does not specifically
-            identify a sectional chart.
+          rationale: The cited PDF page explains that true directions referenced to true
+            north must be converted to magnetic directions referenced to
+            magnetic north, using variation indicated by isogonic lines on the
+            chart. It also illustrates variation as the directional difference
+            between magnetic north and true north.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from cited PDF page 16-7 and directly addresses
-              magnetic variation, isogonic lines, and conversion of true
-              direction to magnetic direction.
+            rationale: The excerpt is from the cited PDF page 16-7 and directly addresses
+              magnetic variation, isogonic lines, and true-to-magnetic
+              conversion.
           claim_assessments:
             - claim_id: magnetic-variation
-              verdict: partially_supports
-              finding_materiality: editorial
-              rationale: The excerpt supports the true-north/magnetic-north relationship and
-                use of isogonic-line variation to convert true to magnetic
-                direction. It does not specifically state that sectional
-                isogonic lines provide the variation; it states that the nearest
-                isogonic line on the chart provides it.
+              verdict: supports
+              finding_materiality: none
+              rationale: The page supports that variation reflects the difference between true
+                north and magnetic north and that chart isogonic lines provide
+                variation used to convert a true direction/course to a magnetic
+                direction/course.
         usage:
-          input_tokens: 1596
+          input_tokens: 1598
           input_tokens_details:
-            cache_write_tokens: 1593
+            cache_write_tokens: 1595
             cached_tokens: 0
-          output_tokens: 384
+          output_tokens: 307
           output_tokens_details:
-            reasoning_tokens: 151
-          total_tokens: 1980
+            reasoning_tokens: 118
+          total_tokens: 1905
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page explains that true directions referenced to true
-            north must be converted to magnetic directions, using the variation
-            indicated by the nearest isogonic line. It also describes variation
-            as the relationship between magnetic north and true north, including
-            an example where magnetic north is 9° east of true north.
+          rationale: The cited PDF page directly explains that true directions referenced
+            to true north must be converted to magnetic direction using the
+            variation indicated by the nearest isogonic line, and identifies
+            zero variation as the condition where magnetic north and true north
+            coincide.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from the cited PDF page 16-7 and directly
-              contains the discussion of magnetic variation, isogonic lines, and
-              true-to-magnetic conversion.
+            rationale: The cited PDF page is page 16-7 and contains the stated discussion of
+              magnetic variation, true versus magnetic direction, and isogonic
+              lines.
           claim_assessments:
             - claim_id: magnetic-variation
               verdict: supports
               finding_materiality: none
-              rationale: The source supports that variation is the angular
-                relationship/difference between true north and magnetic north
-                and that chart isogonic lines provide geographic variation used
-                to convert true direction to magnetic direction.
+              rationale: The excerpt supports that variation is the angular relationship
+                between true north and magnetic north, that isogonic lines
+                provide variation by geographic location, and that variation is
+                used to convert true direction to magnetic direction.
         usage:
-          input_tokens: 1596
+          input_tokens: 1598
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1593
-          output_tokens: 291
+            cached_tokens: 1595
+          output_tokens: 187
           output_tokens_details:
-            reasoning_tokens: 88
-          total_tokens: 1887
+            reasoning_tokens: 0
+          total_tokens: 1785
     relevance: *a22
     claim_assessments:
       valid: true
@@ -3064,11 +3131,9 @@ results:
           missing_assessment_ids: []
           unexpected_assessment_ids: []
           duplicate_assessment_ids: []
-          unsupported_assessment_ids:
-            - magnetic-variation
+          unsupported_assessment_ids: []
           material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids:
-            - magnetic-variation
+          editorial_note_assessment_ids: []
         - valid: true
           missing_assessment_ids: []
           unexpected_assessment_ids: []
@@ -3078,7 +3143,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-deviation-card
     title: Pilot's Handbook of Aeronautical Knowledge, Compass Deviation Card
-    checked_at_utc: 2026-09-13T16:50:42.139Z
+    checked_at_utc: 2026-09-16T12:19:03.177Z
     linked_claim_ids:
       - compass-deviation-card
     missing_claim_ids: []
@@ -3116,67 +3181,64 @@ results:
           verdict: supports
           confidence: high
           rationale: The excerpt states that deviation is compass deflection caused by
-            magnetic influences within the aircraft, that it differs for each
-            aircraft and may vary by heading, and that applying deviation
-            correction to magnetic heading produces compass heading. It also
-            describes the deviation card as showing the addition or subtraction
-            required to correct for deviation on various headings.
+            magnetic influences within the aircraft, differs for each aircraft,
+            and may vary by heading. It also states that a deviation card shows
+            the addition or subtraction required to correct deviation and that
+            magnetic heading corrected for deviation is compass heading.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page is page 16-8, and the excerpt from that page
-              contains Figure 16-12 and the accompanying discussion of compass
-              deviation cards and conversion from magnetic heading to compass
-              heading.
+            rationale: The cited PDF page is 16-8, and it contains Figure 16-12 and the
+              accompanying deviation discussion directly supporting the claim.
           claim_assessments:
             - claim_id: compass-deviation-card
               verdict: supports
               finding_materiality: none
-              rationale: The source directly supports all material elements of the claim.
+              rationale: The source directly supports the aircraft-specific and
+                heading-varying nature of deviation and the use of the deviation
+                card to correct magnetic heading to compass heading.
         usage:
-          input_tokens: 1900
+          input_tokens: 1902
           input_tokens_details:
-            cache_write_tokens: 1897
+            cache_write_tokens: 1899
             cached_tokens: 0
           output_tokens: 185
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 2085
+          total_tokens: 2087
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited PDF page defines deviation as compass-needle deflection
-            caused by magnetic influences within the aircraft, states that
-            deviation differs for each aircraft and may vary by heading, and
-            states that correcting magnetic heading for deviation yields compass
-            heading. It also describes the deviation card as showing the
-            addition or subtraction required to correct deviation on various
-            headings.
+          rationale: The cited PDF page contains Figure 16-12 and the accompanying
+            deviation discussion. It states that deviation is caused by magnetic
+            influences within the aircraft, differs by aircraft and may vary by
+            heading, and that correcting magnetic heading for deviation produces
+            compass heading. It also states that the deviation card shows the
+            correction required.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from cited PDF page 8 and contains Figure 16-12 and
-              the accompanying deviation discussion that supports the claim.
+            rationale: The cited PDF page is page 16-8 and contains both the deviation
+              discussion and Figure 16-12, Compass deviation card.
           claim_assessments:
             - claim_id: compass-deviation-card
               verdict: supports
               finding_materiality: none
-              rationale: "The excerpt directly supports all material elements: aircraft
-                magnetic influences cause compass deflection; deviation varies
-                by aircraft and can vary with heading; and the deviation-card
-                correction converts magnetic heading to compass heading."
+              rationale: The excerpt directly supports that deviation is aircraft-specific and
+                can vary with heading, and that the deviation-card correction is
+                applied to magnetic heading to obtain compass heading.
         usage:
-          input_tokens: 1900
+          input_tokens: 1902
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1897
-          output_tokens: 201
+            cached_tokens: 1899
+          output_tokens: 271
           output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 2101
+            reasoning_tokens: 78
+          total_tokens: 2173
     relevance: *a23
     claim_assessments:
       valid: true
@@ -3198,7 +3260,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-basic-calculations
     title: Pilot's Handbook of Aeronautical Knowledge, Time, Speed, and Distance
-    checked_at_utc: 2026-09-13T16:50:42.160Z
+    checked_at_utc: 2026-09-16T12:19:03.196Z
     linked_claim_ids:
       - time-speed-distance
     missing_claim_ids: []
@@ -3235,15 +3297,46 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: "The cited excerpt explicitly states all three relationships: T =
-            D/GS, D = GS × T, and GS = D/T. These support the listed claim and
-            the corresponding formula statements in the authored passages."
+          rationale: "The cited PDF page explicitly states all three relationships: T =
+            D/GS, D = GS × T, and GS = D/T."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page is 16-11, and the excerpt from that page contains
-              the “Basic Calculations” section with the time, distance, and
+            rationale: The cited PDF page is page 16-11 and contains the “Basic
+              Calculations” section with the stated time, distance, and
               groundspeed formulas.
+          claim_assessments:
+            - claim_id: time-speed-distance
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt directly supports that time equals distance divided by
+                groundspeed, distance equals groundspeed multiplied by time, and
+                groundspeed equals distance divided by time.
+        usage:
+          input_tokens: 2264
+          input_tokens_details:
+            cache_write_tokens: 2261
+            cached_tokens: 0
+          output_tokens: 209
+          output_tokens_details:
+            reasoning_tokens: 48
+          total_tokens: 2473
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The cited PDF page expressly states all three claimed
+            time-speed-distance relationships: T = D/GS, D = GS × T, and GS =
+            D/T. The worked numerical uses in the authored passages are
+            consistent with those relationships."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-11 and contains the Basic Calculations
+              section with the specified time, distance, and groundspeed
+              formulas.
           claim_assessments:
             - claim_id: time-speed-distance
               verdict: supports
@@ -3252,45 +3345,14 @@ results:
                 distance as groundspeed multiplied by time, and groundspeed as
                 distance divided by time.
         usage:
-          input_tokens: 2219
+          input_tokens: 2264
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 2216
-          output_tokens: 218
+            cached_tokens: 2261
+          output_tokens: 174
           output_tokens_details:
-            reasoning_tokens: 40
-          total_tokens: 2437
-      - pass: 2
-        status: assessed
-        model: gpt-5.6-terra
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: "The cited PDF page explicitly gives all three stated
-            time-speed-distance relationships: T = D/GS, D = GS × T, and GS =
-            D/T."
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The locator identifies PHAK Chapter 16, Basic Calculations, page
-              16-11, and the supplied excerpt from that exact page contains the
-              referenced formulas.
-          claim_assessments:
-            - claim_id: time-speed-distance
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt directly states that time is distance divided by
-                groundspeed, distance is groundspeed multiplied by time, and
-                groundspeed is distance divided by time.
-        usage:
-          input_tokens: 2219
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2216
-          output_tokens: 229
-          output_tokens_details:
-            reasoning_tokens: 62
-          total_tokens: 2448
+            reasoning_tokens: 0
+          total_tokens: 2438
     relevance: *a24
     claim_assessments:
       valid: true
@@ -3312,7 +3374,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-course-planning
     title: Pilot's Handbook of Aeronautical Knowledge, Steps in Charting the Course
-    checked_at_utc: 2026-09-13T16:50:42.169Z
+    checked_at_utc: 2026-09-16T12:19:03.210Z
     linked_claim_ids:
       - route-workflow
     missing_claim_ids: []
@@ -3349,62 +3411,65 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: "The cited PDF page explicitly presents this course-charting
-            sequence: draw the route, select appropriate easy-to-locate
-            checkpoints, check the route and adjacent areas for relevant
-            airspace and special operational requirements, and study terrain and
-            obstructions along the route."
+          rationale: "The cited PDF page explicitly presents the course-charting sequence:
+            draw the route, select easy-to-locate checkpoints, check the route
+            and adjacent areas for relevant airspace, and study terrain and
+            obstructions."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited locator is the exact PDF page containing the stated
-              course-charting steps.
+            rationale: The locator identifies PHAK Chapter 16, page 16-18, and the supplied
+              excerpt is from that exact page and contains the stated sequence.
           claim_assessments:
             - claim_id: route-workflow
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt directly supports each listed workflow element.
+              rationale: The excerpt directly instructs pilots to draw the course line, select
+                appropriate easy-to-locate checkpoints, check the course and
+                areas on either side for airspace concerns or special
+                requirements, and study terrain and obstructions along the
+                route.
         usage:
           input_tokens: 2033
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2030
-          output_tokens: 205
+            cache_write_tokens: 2030
+            cached_tokens: 0
+          output_tokens: 188
           output_tokens_details:
-            reasoning_tokens: 59
-          total_tokens: 2238
+            reasoning_tokens: 0
+          total_tokens: 2221
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: "The cited PDF page contains the described PHAK sequence: draw the
-            route, select easy-to-locate checkpoints, check the course and
+          rationale: "The cited page expressly presents this sequence: draw the route,
+            select appropriate easy-to-locate checkpoints, check the course and
             adjacent areas for relevant airspace, and study terrain and
             obstructions along the route."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies PHAK Chapter 16, page 16-18, and the supplied
-              excerpt is from that exact page and includes the relevant “Steps
-              in Charting the Course” material.
+            rationale: The cited PDF page is page 16-18 and contains the heading “Steps in
+              Charting the Course” and the specific workflow described by the
+              claim.
           claim_assessments:
             - claim_id: route-workflow
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt expressly directs pilots to draw the route, select
-                appropriate easy-to-locate checkpoints, check nearby airspace,
-                and study terrain and obstructions.
+              rationale: "The excerpt directly supports each listed step: route drawing,
+                prominent checkpoint selection, nearby/route airspace review,
+                and terrain-and-obstruction study."
         usage:
           input_tokens: 2033
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 2030
-          output_tokens: 233
+          output_tokens: 210
           output_tokens_details:
-            reasoning_tokens: 48
-          total_tokens: 2266
+            reasoning_tokens: 37
+          total_tokens: 2243
     relevance: *a25
     claim_assessments:
       valid: true
@@ -3427,7 +3492,7 @@ results:
   - source_id: phak-course-computation
     title: Pilot's Handbook of Aeronautical Knowledge, Course and Flight-Log
       Computation
-    checked_at_utc: 2026-09-13T16:50:42.185Z
+    checked_at_utc: 2026-09-16T12:19:03.223Z
     linked_claim_ids:
       - planned-navigation-log
     missing_claim_ids: []
@@ -3464,65 +3529,69 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly describes measuring total and checkpoint
-            distances and true course, then determining wind-correction angle,
-            true heading, variation, magnetic heading, deviation, compass
-            heading, groundspeed, total trip time, and time between checkpoints.
+          rationale: "The cited PDF page explicitly shows and describes the planning
+            sequence: measuring distance and true course; applying
+            wind-correction angle to obtain true heading; applying variation for
+            magnetic heading; applying deviation for compass heading;
+            determining groundspeed; and calculating total and checkpoint
+            times."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt was extracted from cited PDF page 20 and contains both
-              Figure 16-26 and the course-computation discussion identified by
-              the locator.
+            rationale: "The cited locator is exact: the supplied excerpt is from PDF page
+              16-20 and contains Figure 16-26 plus the associated
+              course-computation discussion."
           claim_assessments:
             - claim_id: planned-navigation-log
               verdict: supports
               finding_materiality: none
-              rationale: "The page gives this sequence directly: distance and TC; WCA; TH;
-                variation; MH; deviation; CH; GS; and total and checkpoint
-                times."
+              rationale: The page states TC ± WCA = TH ± V = MH ± D = CH and then explains the
+                example’s distance, TC, WCA, TH, variation, MH, deviation, CH,
+                GS, total trip time, and time between checkpoints.
         usage:
-          input_tokens: 2052
+          input_tokens: 2147
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2049
-          output_tokens: 230
+            cache_write_tokens: 2144
+            cached_tokens: 0
+          output_tokens: 258
           output_tokens_details:
-            reasoning_tokens: 50
-          total_tokens: 2282
+            reasoning_tokens: 52
+          total_tokens: 2405
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly describes measuring total and checkpoint
-            distances, measuring true course, applying wind-correction angle to
-            obtain true heading, applying variation to obtain magnetic heading,
-            applying deviation to obtain compass heading, determining
-            groundspeed, and then calculating total and checkpoint times.
+          rationale: The cited PDF page explicitly describes measuring total distance and
+            true course, applying wind correction angle to obtain true heading,
+            applying variation to obtain magnetic heading, applying deviation to
+            obtain compass heading, and then determining groundspeed, total trip
+            time, and time between checkpoints. Figure 16-26 also displays the
+            planning-sheet/log fields for these values.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is extracted from cited PDF page 16-20 and contains both
-              Figure 16-26 and the course-computation discussion stated in the
-              locator.
+            rationale: The excerpt is from cited PDF page 16-20 and contains Figure 16-26
+              plus the associated course-computation discussion identified by
+              the locator.
           claim_assessments:
             - claim_id: planned-navigation-log
               verdict: supports
               finding_materiality: none
-              rationale: "The page presents the stated planning sequence: distance and TC;
-                WCA; TH; variation; MH; deviation; CH; GS; and total and
-                between-checkpoint times."
+              rationale: The excerpt gives the sequence TC ± WCA = TH ± V = MH ± D = CH and
+                states that groundspeed, total trip time, and checkpoint times
+                are then determined. The figure presents the corresponding
+                visual flight-log planning fields.
         usage:
-          input_tokens: 2052
+          input_tokens: 2147
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 2049
-          output_tokens: 265
+            cached_tokens: 2144
+          output_tokens: 214
           output_tokens_details:
-            reasoning_tokens: 76
-          total_tokens: 2317
+            reasoning_tokens: 0
+          total_tokens: 2361
     relevance: *a26
     claim_assessments:
       valid: true
@@ -3544,7 +3613,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: phak-plan-versus-actual
     title: Pilot's Handbook of Aeronautical Knowledge, Adjusting the Plan in Flight
-    checked_at_utc: 2026-09-13T16:50:42.193Z
+    checked_at_utc: 2026-09-16T12:19:03.234Z
     linked_claim_ids:
       - compare-plan-actual
     missing_claim_ids: []
@@ -3581,59 +3650,298 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: "The cited excerpt states: “As the trip progresses, the pilot can
-            note headings and time and make adjustments in heading, GS, and
-            time,” which directly supports the listed claim."
+          rationale: "The cited PDF page expressly states: “As the trip progresses, the
+            pilot can note headings and time and make adjustments in heading,
+            GS, and time.” This directly supports the listed claim."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page is 16-21, and the stated sentence appears in the
-              first paragraph following the flight-log calculation discussion.
+            rationale: The cited PDF page is page 16-21 and contains the quoted
+              post-calculation flight-log discussion in its first paragraph.
           claim_assessments:
             - claim_id: compare-plan-actual
               verdict: supports
               finding_materiality: none
-              rationale: The source expressly says that during the trip the pilot can note
-                headings and time and adjust heading, groundspeed, and time.
+              rationale: The claim accurately restates the source’s guidance to note headings
+                and time during the trip and adjust heading, groundspeed, and
+                time.
         usage:
-          input_tokens: 1878
+          input_tokens: 2000
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1875
-          output_tokens: 222
+            cache_write_tokens: 1997
+            cached_tokens: 0
+          output_tokens: 161
           output_tokens_details:
-            reasoning_tokens: 62
-          total_tokens: 2100
+            reasoning_tokens: 0
+          total_tokens: 2161
       - pass: 2
         status: assessed
         model: gpt-5.6-terra
         assessment:
           verdict: supports
           confidence: high
-          rationale: "The excerpt states: “As the trip progresses, the pilot can note
-            headings and time and make adjustments in heading, GS, and time,”
-            which directly supports the listed claim."
+          rationale: "The cited excerpt directly states: “As the trip progresses, the
+            pilot can note headings and time and make adjustments in heading,
+            GS, and time.” This supports the listed claim."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page is page 16-21, and the quoted statement appears in
-              the post-calculation flight-log discussion in its first paragraph.
+            rationale: The cited PDF page is page 16-21, and the statement appears in the
+              post-calculation flight-log discussion in the first paragraph
+              following Figure 16-27.
           claim_assessments:
             - claim_id: compare-plan-actual
               verdict: supports
               finding_materiality: none
-              rationale: The source directly supports recording/noting headings and time and
-                adjusting heading, groundspeed, and time as the trip progresses.
+              rationale: The source explicitly supports recording headings and time during the
+                trip and adjusting heading, groundspeed, and time as the trip
+                progresses.
         usage:
-          input_tokens: 1878
+          input_tokens: 2000
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1875
-          output_tokens: 201
+            cached_tokens: 1997
+          output_tokens: 269
           output_tokens_details:
-            reasoning_tokens: 40
-          total_tokens: 2079
+            reasoning_tokens: 101
+          total_tokens: 2269
     relevance: *a27
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-workload-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Workload Management
+    checked_at_utc: 2026-09-16T12:19:03.255Z
+    linked_claim_ids:
+      - navigation-workload-management
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a28
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a29
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page expressly states that effective workload
+            management involves planning, prioritizing, and sequencing tasks to
+            avoid work overload; that pilots can prepare for high-workload
+            periods during low-workload periods; and that increasing workload
+            can cause fixation on one item, reduced awareness of inputs, and
+            increased error risk. The passage’s description of narrowed
+            attention and reduced situational awareness is supported by the same
+            page.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt was extracted from cited PDF page 24, and the stated
+              locator identifies the workload-management and
+              situational-awareness material appearing on that page.
+          claim_assessments:
+            - claim_id: navigation-workload-management
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports each listed element of the claim,
+                including planning/prioritizing/sequencing, preparation during
+                low-workload periods, and the attentional and
+                situational-awareness effects of overload.
+        usage:
+          input_tokens: 2048
+          input_tokens_details:
+            cache_write_tokens: 2045
+            cached_tokens: 0
+          output_tokens: 256
+          output_tokens_details:
+            reasoning_tokens: 35
+          total_tokens: 2304
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page explicitly states that effective workload
+            management involves planning, prioritizing, and sequencing tasks to
+            avoid overload; that pilots can prepare for high-workload periods
+            during low-workload periods; and that increasing workload can cause
+            fixation on one item and loss of awareness of other inputs, reducing
+            overall situational awareness.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 24 and contains the cited
+              workload-management discussion and its relevant conditions.
+          claim_assessments:
+            - claim_id: navigation-workload-management
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports all listed elements of the claim,
+                including task planning/prioritization/sequencing, advance
+                preparation during low-workload periods, and overload-related
+                narrowed attention and reduced situational awareness.
+        usage:
+          input_tokens: 2048
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2045
+          output_tokens: 241
+          output_tokens_details:
+            reasoning_tokens: 44
+          total_tokens: 2289
+    relevance: *a29
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ac-cockpit-fixation
+    title: AC 90-48E, Maintaining Vigilance
+    checked_at_utc: 2026-09-16T12:19:03.267Z
+    linked_claim_ids:
+      - cockpit-fixation-scan
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      final_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a30
+      title: null
+      truncated: false
+      content_sha256: 8cb12c4ad6f976d004f9bab9b6ce40956c49ef4cf8db3ff06f44934e4402a4b4
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      validation_url: https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-48E.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2891
+      pdf_page_text_sha256: 41fe750b29cf51b309492492e8e327e8d6e293bbf4d0a4fedb5ed389bb4ecd72
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a31
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited excerpt directly states that cockpit technology can cause
+            fixation on displays and draw a pilot’s attention inside the cockpit
+            and away from the outside environment.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 14 and contains section 15, “Maintaining
+              Vigilance,” including the quoted concept.
+          claim_assessments:
+            - claim_id: cockpit-fixation-scan
+              verdict: supports
+              finding_materiality: none
+              rationale: Section 15 expressly warns that aircraft systems can cause fixation
+                on displays and draw attention away from the outside
+                environment.
+        usage:
+          input_tokens: 1627
+          input_tokens_details:
+            cache_write_tokens: 1624
+            cached_tokens: 0
+          output_tokens: 150
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1777
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited excerpt on PDF page 14, section 15, expressly states that
+            new aircraft systems can cause fixation on displays and draw a
+            pilot’s attention inside the cockpit and away from the outside
+            environment.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies section 15 on cited PDF page 14, and the
+              quoted supporting language appears there.
+          claim_assessments:
+            - claim_id: cockpit-fixation-scan
+              verdict: supports
+              finding_materiality: none
+              rationale: Section 15 directly supports the claim that FAA collision-avoidance
+                guidance warns of display fixation drawing attention inside and
+                away from the outside environment.
+        usage:
+          input_tokens: 1627
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1624
+          output_tokens: 163
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1790
+    relevance: *a31
     claim_assessments:
       valid: true
       review_count: 2

@@ -1,6 +1,6 @@
 # Charts, Pilotage, and Dead Reckoning
 
-**Version:** 0.1.0 — draft
+**Version:** 0.1.2 — draft
 **Target runtime:** 30–45 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -59,7 +59,7 @@ Right. The useful question is broader: where do I intend to go, what will that r
 
 [Claim type: teaching synthesis]
 
-For one continuous example, imagine a completely fictional daytime VFR flight from Cedar Junction Airport to Pine Lake Airport. Neither airport nor any feature in this scenario represents a real place. The route is seventy-two nautical miles through rolling terrain. It passes near, but not through, a fictional Class Delta surface area, then beneath the edge of a fictional Class Charlie shelf. Along the way are a reservoir, a river and interstate crossing, a large town with a railroad junction, and a quarry near a second lake.
+For one continuous example, imagine a fictional daytime VFR flight from Cedar Junction Airport to Pine Lake Airport. The route is seventy-two nautical miles through rolling terrain. It passes near, but not through, a fictional Class Delta surface area, then beneath the edge of a fictional Class Charlie shelf. Along the way are a reservoir, a river and interstate crossing, a large town with a railroad junction, and a quarry near a second lake.
 
 [Claim type: teaching synthesis]
 
@@ -91,9 +91,10 @@ Because chart meaning and chart currency are different questions. The current FA
 [Source: sources.yaml#chart-guide-current-edition]
 [Claim type: FAA chart guidance]
 
-Start the Cedar Junction plan by confirming that the sectional edition is in effect for the flight date. Then check current NOTAM information and other current sources for changes that may not yet appear in the chart image. This does not make the sectional less useful. It establishes what the chart can answer and what must be checked elsewhere.
+Start the Cedar Junction plan by confirming that the sectional edition is in effect for the flight date. A current sectional is necessary, but it is not the entire flight-planning picture. Check current NOTAMs for changes that may not yet appear on the chart. Use a current weather briefing, including the winds aloft that affect the route and altitude choices. Check the Chart Supplement for current airport and facility information, and use the airplane's POH or AFM for the performance data that applies to the planned conditions. The sectional supplies the route picture; these other sources add the current conditions, facility information, and aircraft performance needed to turn that picture into a flight plan.
 
 [Source: sources.yaml#chart-guide-current-edition]
+[Source: sources.yaml#acs-cross-country-planning]
 [Claim type: FAA chart guidance and teaching synthesis]
 
 **LEARNER:**
@@ -120,11 +121,11 @@ Before drawing attention to small symbols, look at the broad shape of the route.
 [Source: sources.yaml#chart-guide-terrain]
 [Claim type: FAA chart guidance]
 
-On our fictional route, the western third crosses widely spaced contours and lighter terrain tint. Farther east, the contours close together and the shaded relief becomes more pronounced. Those invented details give us a planning question before they give us an answer: does the direct line enter terrain that deserves a closer look, and would another route offer a clearer outside picture or more options?
+On our fictional route, the western third crosses widely spaced contours and lighter terrain tint. Farther east, the contours close together and the shaded relief becomes more pronounced. Those details give us a planning question before they give us an answer: does the direct line enter terrain that deserves a closer look, and would another route offer a clearer outside picture or more options?
 
 [Claim type: teaching synthesis]
 
-The Cross-Country Flight Planning task expects altitude selection to account for terrain and obstacles, glide distance, VFR cruising altitudes, and wind. This episode will not choose an altitude for a real flight, because that decision also needs current weather, regulations, aircraft performance, and the actual route. Our chart pass is the earlier step: identify the terrain and obstacle facts that the eventual altitude decision must address.
+The Cross-Country Flight Planning task expects altitude selection to account for terrain and obstacles, glide distance, VFR cruising altitudes, and wind. Begin by identifying the terrain and obstacles that the route must clear and the altitudes that preserve useful glide options. Apply the VFR cruising-altitude rules, then compare the forecast winds aloft at the practical altitudes that remain. A more favorable wind can improve groundspeed and reduce time and fuel used, while a stronger headwind can do the opposite. The final choice brings the chart picture together with current weather, the airplane's expected performance, and the route itself.
 
 [Source: sources.yaml#acs-cross-country-planning]
 [Claim type: FAA standard and teaching synthesis]
@@ -140,7 +141,7 @@ First, read what the symbol actually says. The Chart Users’ Guide explains tha
 [Source: sources.yaml#chart-guide-obstacles]
 [Claim type: FAA chart guidance]
 
-Mean sea level, or MSL, gives an elevation relative to the common sea-level reference used for altitudes. Above ground level, or AGL, gives a height relative to the surface below that feature. If the fictional chart shows a tower top at two thousand seven hundred feet MSL with one thousand feet in parentheses, the obstacle rises one thousand feet above its local ground and reaches two thousand seven hundred feet on the MSL elevation scale. Those numbers answer different questions, so preserve their labels.
+Mean sea level, or MSL, gives an elevation relative to the common sea-level reference used for altitudes. Above ground level, or AGL, gives a height relative to the surface below that feature. If the chart shows a tower top at two thousand seven hundred feet MSL with one thousand feet in parentheses, the obstacle rises one thousand feet above its local ground and reaches two thousand seven hundred feet on the MSL elevation scale. Those numbers answer different questions, so preserve their labels.
 
 [Source: sources.yaml#chart-guide-obstacles]
 [Claim type: FAA chart guidance and teaching synthesis]
@@ -199,7 +200,7 @@ On the fictional Cedar Junction route, the planned line remains outside a dashed
 [Source: sources.yaml#chart-guide-terminal-airspace]
 [Claim type: FAA chart guidance and teaching synthesis]
 
-Do not let chart symbology establish a rule it does not state. The chart shows the boundary and altitude label. The applicable regulation and current FAA guidance establish communication, clearance, weather, equipment, or other operating requirements. That separation keeps a chart-reading claim from silently becoming a regulatory claim.
+Read each chart symbol or label for the information it actually provides. An airspace boundary and its altitude labels show where that airspace is located in three dimensions; they do not list every communication, clearance, weather, or equipment requirement that applies there. Use the chart to identify the airspace, then use the applicable regulation and current FAA guidance to determine its operating requirements.
 
 [Claim type: teaching synthesis]
 
@@ -243,7 +244,7 @@ For the fictional route, checkpoint one is the narrow eastern arm of a broad res
 
 [Claim type: teaching synthesis]
 
-Checkpoint two is eighteen nautical miles farther: an interstate crosses a river just west of a large bend. Checkpoint three is sixteen miles after that: a yellow-tinted town with two railroad lines meeting on its south side. Checkpoint four is fourteen miles later: a quarry west of a smaller lake. The remaining twelve miles lead to the fictional destination.
+Checkpoint two is eighteen nautical miles farther: an interstate crosses a river just west of a large bend. Checkpoint three is sixteen miles after that: a yellow-tinted town with two railroad lines meeting on its south side. Checkpoint four is fourteen miles later: a quarry west of a smaller lake. The remaining twelve miles lead to the destination.
 
 [Claim type: teaching synthesis]
 
@@ -321,7 +322,7 @@ Notice what each result answers. The true course says where the route line point
 [Source: sources.yaml#phak-navigation-terms]
 [Claim type: FAA handbook guidance and teaching synthesis]
 
-The calculation is a forecast, not a promise. Wind can differ from the forecast. The airplane may not produce the planned true airspeed. Climb and leveling can affect early timing. A checkpoint can be identified late, and the pilot can start the clock at the wrong moment. Pilotage supplies the observed position; dead reckoning supplies the predicted position. Their agreement builds confidence, and their disagreement prompts a check before a conclusion.
+Remember that these calculations are estimates built from forecast wind, expected aircraft performance, planned timing, and correctly identified checkpoints. Actual wind can differ from the forecast. The airplane may not produce the planned true airspeed. Climb and leveling can affect early timing, and a checkpoint can be identified late or timed from the wrong moment. Build the plan with room for those differences, then monitor what actually happens. Pilotage supplies the observed position; dead reckoning supplies the predicted position. Their agreement builds confidence, and their disagreement prompts a check before a conclusion.
 
 [Source: sources.yaml#phak-dead-reckoning]
 [Source: sources.yaml#phak-plan-versus-actual]
@@ -351,19 +352,19 @@ So variation belongs to the geographic location, while deviation belongs to this
 
 **INSTRUCTOR:**
 
-Exactly. Keep those sources visible in the language. Variation comes from the chart for the route. Deviation comes from the aircraft’s compass deviation card. They are not interchangeable corrections.
+Exactly. Remember the difference by connecting each correction to its source. Variation comes from the chart for the route. Deviation comes from the aircraft’s compass deviation card. They are not interchangeable corrections.
 
 [Source: sources.yaml#phak-variation-deviation]
 [Source: sources.yaml#phak-deviation-card]
 [Claim type: FAA handbook guidance]
 
-Return to the fictional numbers. We measured a true course of zero seven five. The forecast wind correction was eight degrees left, producing a true heading of zero six seven. The fictional isogonic line gives five degrees west variation. Applying that west variation produces a magnetic heading of zero seven two.
+Return to the numbers. We measured a true course of zero seven five. The forecast wind correction was eight degrees left, producing a true heading of zero six seven. The fictional isogonic line gives five degrees west variation. Applying that west variation produces a magnetic heading of zero seven two.
 
 [Source: sources.yaml#phak-variation-deviation]
 [Source: sources.yaml#phak-course-computation]
 [Claim type: FAA handbook guidance and teaching synthesis]
 
-The fictional airplane’s deviation card says that for a magnetic heading of zero seven two, steer a compass heading of zero seven four. That last number is the planned compass indication. The sequence did not change the destination. Each step translated the same intended ground path through a different reference or influence: wind, geographic magnetic variation, and aircraft-specific compass deviation.
+The airplane’s deviation card says that for a magnetic heading of zero seven two, steer a compass heading of zero seven four. That last number is the planned compass indication. The sequence did not change the destination. Each step translated the same intended ground path through a different reference or influence: wind, geographic magnetic variation, and aircraft-specific compass deviation.
 
 [Source: sources.yaml#phak-deviation-card]
 [Source: sources.yaml#phak-course-computation]
@@ -400,6 +401,12 @@ A navigation log is the compact record of that plan. For our lesson, each row ne
 [Source: sources.yaml#phak-course-computation]
 [Claim type: FAA handbook guidance and teaching synthesis]
 
+Prepare that log on the ground as a workload-management tool. Complete the planned arithmetic before departure, make the next checkpoint, heading, and expected time easy to find, and leave clear space for actual crossing times and revised values. The plan also needs margin for actual conditions to differ from the forecast without making an immediate cockpit calculation urgent. The PHAK describes effective workload management as planning, prioritizing, and sequencing tasks, including preparing for high-workload periods while workload is still low.
+
+[Source: sources.yaml#phak-workload-management]
+[Source: sources.yaml#phak-course-computation]
+[Claim type: FAA handbook guidance and teaching synthesis]
+
 **LEARNER:**
 
 How do the distance and groundspeed become time?
@@ -433,12 +440,21 @@ There are many numbers. How does the log keep them from becoming another head-do
 
 **INSTRUCTOR:**
 
-Keep the display purposeful. Before departure, identify the next checkpoint, the planned heading, and the expected elapsed time. In flight, record the actual crossing time with a short mark, then return attention outside. The ACS names collision hazards, distraction, task prioritization, loss of situational awareness, and disorientation as risks within this task. The log should reduce memory load, not compete with aircraft control and traffic avoidance.
+Keep the display purposeful. Before departure, identify the next checkpoint, the planned heading, and the expected elapsed time. In flight, write the actual crossing time in the navigation log's actual-time column with a brief entry, then return attention outside. The ACS names collision hazards, distraction, task prioritization, loss of situational awareness, and disorientation as risks within this task. The PHAK warns that work overload can narrow attention onto one item and reduce situational awareness, while FAA collision-avoidance guidance warns that fixation on cockpit displays can draw attention away from the outside environment. The log should reduce memory load, not compete with aircraft control and traffic avoidance.
 
 [Source: sources.yaml#acs-pilotage-dead-reckoning]
-[Claim type: FAA standard and teaching synthesis]
+[Source: sources.yaml#phak-workload-management]
+[Source: sources.yaml#ac-cockpit-fixation]
+[Claim type: FAA standard, FAA handbook guidance, FAA advisory guidance, and teaching synthesis]
 
-Electronic planning tools can perform the same arithmetic, but understanding the relationships still matters. A displayed ETA is meaningful only if you know which distance, groundspeed, route, and start time produced it. In this episode, the hand calculation exposes those inputs so a change in one value has an understandable consequence.
+That does not mean every useful update has to happen the moment a checkpoint passes. A quick time entry is different from rebuilding several calculations. If an update would require extended attention inside, keep aircraft control and collision avoidance primary and wait for a lower-workload opportunity. This is a workload-management application to practice with a CFI: prepare most of the information before flight, make short entries when workload permits, and perform more involved arithmetic only when it can be done without losing the outside traffic picture.
+
+[Source: sources.yaml#phak-workload-management]
+[Source: sources.yaml#ac-cockpit-fixation]
+[Source: sources.yaml#phak-plan-versus-actual]
+[Claim type: FAA handbook guidance, FAA advisory guidance, and teaching synthesis]
+
+Electronic planning tools reduce workload and risk by performing these calculations quickly and updating them when an input changes. Understanding the underlying relationships still matters. It helps you recognize how a change in route, distance, groundspeed, or departure time affects the ETA, and it helps you notice when an input or result does not make sense. The hand calculation makes those relationships visible and preserves a basic way to continue navigating with the chart and navigation log if a battery dies, a device overheats, or the electronic tool otherwise becomes unavailable.
 
 [Source: sources.yaml#phak-basic-calculations]
 [Source: sources.yaml#phak-dead-reckoning]
@@ -452,7 +468,7 @@ Compare the plan with actual progress.
 
 **INSTRUCTOR:**
 
-Now the fictional airplane is established after departure. The planned compass heading is zero seven four. The reservoir checkpoint should arrive at six minutes forty seconds. At eight minutes, the learner sees a reservoir off the right side and is tempted to mark checkpoint one.
+Now the airplane is established after departure. The planned compass heading is zero seven four. The reservoir checkpoint should arrive at six minutes forty seconds. At eight minutes, the learner sees a reservoir off the right side and is tempted to mark checkpoint one.
 
 [Claim type: teaching synthesis]
 
@@ -467,7 +483,7 @@ First confirm the checkpoint. Pilotage should not rest on one vague match. Does 
 [Source: sources.yaml#phak-pilotage]
 [Claim type: FAA handbook guidance and teaching synthesis]
 
-The relationships do match. The airplane passes the narrow arm at eight minutes. That gives us a known twelve-nautical-mile distance and an observed time of eight minutes. Groundspeed equals distance divided by time. Eight minutes is about zero point one three three hours, so twelve divided by that time is about ninety knots.
+Let's say the relationships do match. The airplane passes the narrow arm at eight minutes. That gives us a known twelve-nautical-mile distance and an observed time of eight minutes. Groundspeed equals distance divided by time. Eight minutes is about zero point one three three hours, so twelve divided by that time is about ninety knots.
 
 [Source: sources.yaml#phak-basic-calculations]
 [Claim type: FAA handbook guidance and teaching synthesis]
@@ -490,12 +506,14 @@ Next, compare lateral position with the course, not just time with the clock. Th
 [Source: sources.yaml#phak-plan-versus-actual]
 [Claim type: FAA handbook guidance and teaching synthesis]
 
-The practical response begins with priorities: maintain aircraft control, continue the traffic scan, establish a reliable position, and use a bounded correction rather than prolonged head-down calculation. The exact heading-change technique belongs in flight instruction with a CFI, where the learner can connect the chart picture, wind, compass behavior, and aircraft control in real time.
+The practical response begins with priorities: maintain aircraft control, continue the traffic scan, and establish a reliable position. Record the observed time and position briefly. If the arithmetic would demand extended attention inside, defer it until workload permits instead of trading away aircraft control or the outside scan for an immediate answer. The exact heading-change technique belongs in flight instruction with a CFI, where the learner can connect the chart picture, wind, compass behavior, workload, and aircraft control in real time.
 
 [Source: sources.yaml#acs-pilotage-dead-reckoning]
-[Claim type: FAA standard and teaching synthesis]
+[Source: sources.yaml#phak-workload-management]
+[Source: sources.yaml#ac-cockpit-fixation]
+[Claim type: FAA standard, FAA handbook guidance, FAA advisory guidance, and teaching synthesis]
 
-For the podcast scenario, assume the position is confirmed and the airplane is returned to the planned route under instructional supervision. The learner keeps the observed ninety-knot groundspeed as a provisional estimate, not a final conclusion, and uses checkpoint two to test whether the slower trend continues.
+For the next step in the scenario, the pilot has confirmed the airplane's position and returned to the planned route. The learner keeps the observed ninety-knot groundspeed as a provisional estimate, not a final conclusion, and uses checkpoint two to test whether the slower trend continues.
 
 [Claim type: teaching synthesis]
 

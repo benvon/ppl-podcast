@@ -32,6 +32,7 @@
 | Convert true course to compass heading | PHAK Ch. 16, Magnetic Variation and Deviation, pp. 16-7–16-8 | Use fictional values only: true course 075 degrees, wind correction 8 degrees left, 5 degrees west variation, and a deviation-card instruction to steer 074 for magnetic 072. |
 | Build the flight log | PHAK Ch. 16, Steps in Charting the Course and Figure 16-26, pp. 16-18 and 16-20 | Use five fictional legs totaling 72 nautical miles at a planned groundspeed of 108 knots, for about 40 minutes total. |
 | Compare actual position and progress with the plan | PHAK Ch. 16, p. 16-21; ACS PA.VI.A.K7 and S5-S6 | At the first checkpoint, eight minutes over 12 nautical miles implies about 90 knots groundspeed. Do not guess why; confirm position, carry the observed trend forward only when supported, and revise the estimate. |
+| Manage the navigation log without losing the outside picture | PHAK Ch. 2, Workload Management, p. 2-24; AC 90-48E, section 15, PDF p. 14 | Prepare the log and planned arithmetic before departure, leave clear places for actual and revised values, keep airborne entries brief, and defer involved recalculation until workload permits. Treat the exact cockpit rhythm as a CFI practice item rather than an FAA-prescribed procedure. |
 
 ## Scenario calculation audit
 
@@ -65,8 +66,8 @@
   - Correction: Delay can reflect wind, climb, timing, identification, tracking, or another mismatch. Confirm position and collect corroborating evidence before assigning a cause.
   - Source: Teaching synthesis from PHAK Ch. 16, pp. 16-12–16-13 and 16-21.
 - Misconception: Fixing navigation means spending more time head-down.
-  - Correction: The ACS explicitly treats distraction, task prioritization, loss of situational awareness, and collision hazard as risks. A concise log and well-chosen checkpoints support an outside visual scan.
-  - Source: FAA-S-ACS-6C, PA.VI.A.R1-R2, PDF viewer p. 46.
+  - Correction: The ACS explicitly treats distraction, task prioritization, loss of situational awareness, and collision hazard as risks. PHAK workload guidance calls for preparing anticipated work while workload is low, and AC 90-48E warns that fixation inside can draw attention away from the outside environment. A prepared log, brief entries, and deferred nonurgent arithmetic preserve the outside visual scan.
+  - Source: FAA-S-ACS-6C, PA.VI.A.R1-R2, PDF viewer p. 46; PHAK Ch. 2, p. 2-24; AC 90-48E, section 15.
 
 ## Editorial risks to avoid
 

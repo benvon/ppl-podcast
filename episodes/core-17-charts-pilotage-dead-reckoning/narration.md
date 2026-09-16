@@ -45,7 +45,7 @@ So this is not a chart-symbol quiz followed by a separate math quiz.
 
 Right. The useful question is broader: where do I intend to go, what will that route look like outside, what direction and time should produce it, and what evidence will tell me whether the airplane is where the plan predicts?
 
-For one continuous example, imagine a completely fictional daytime VFR flight from Cedar Junction Airport to Pine Lake Airport. Neither airport nor any feature in this scenario represents a real place. The route is seventy-two nautical miles through rolling terrain. It passes near, but not through, a fictional Class Delta surface area, then beneath the edge of a fictional Class Charlie shelf. Along the way are a reservoir, a river and interstate crossing, a large town with a railroad junction, and a quarry near a second lake.
+For one continuous example, imagine a fictional daytime VFR flight from Cedar Junction Airport to Pine Lake Airport. The route is seventy-two nautical miles through rolling terrain. It passes near, but not through, a fictional Class Delta surface area, then beneath the edge of a fictional Class Charlie shelf. Along the way are a reservoir, a river and interstate crossing, a large town with a railroad junction, and a quarry near a second lake.
 
 This episode will use those features to teach the navigation chain. Episode 16, *Airspace, Equipment, and VFR Weather Minimums*, covers the operating requirements that attach to charted airspace. Episode 18 will cover VOR, GPS, radar services, and other navigation systems. Episode 19 will integrate route, performance, fuel, and diversion planning. Here, we will stay with the visual route picture, time-and-direction predictions, and the comparison between predicted and observed progress.
 
@@ -67,7 +67,7 @@ If the symbols are standardized, why not open any sectional that covers the area
 
 Because chart meaning and chart currency are different questions. The current FAA Chart Users’ Guide tells pilots to check the effective dates on each chart and publication, use current editions, and check NOTAMs for important changes between chart cycles. A perfectly interpreted obsolete chart can still present an obsolete picture.
 
-Start the Cedar Junction plan by confirming that the sectional edition is in effect for the flight date. Then check current NOTAM information and other current sources for changes that may not yet appear in the chart image. This does not make the sectional less useful. It establishes what the chart can answer and what must be checked elsewhere.
+Start the Cedar Junction plan by confirming that the sectional edition is in effect for the flight date. A current sectional is necessary, but it is not the entire flight-planning picture. Check current NOTAMs for changes that may not yet appear on the chart. Use a current weather briefing, including the winds aloft that affect the route and altitude choices. Check the Chart Supplement for current airport and facility information, and use the airplane's POH or AFM for the performance data that applies to the planned conditions. The sectional supplies the route picture; these other sources add the current conditions, facility information, and aircraft performance needed to turn that picture into a flight plan.
 
 **LEARNER:**
 
@@ -87,9 +87,9 @@ Read the route as a physical picture.
 
 Before drawing attention to small symbols, look at the broad shape of the route. In the Chart Users’ Guide, the terrain system includes contour lines, shaded relief, color tints, obstruction symbols, and Maximum Elevation Figures. Contour lines join equal elevations. Their pattern and spacing provide a visual sense of terrain: widely spaced contours represent gentler slopes, while closely spaced contours represent steeper slopes.
 
-On our fictional route, the western third crosses widely spaced contours and lighter terrain tint. Farther east, the contours close together and the shaded relief becomes more pronounced. Those invented details give us a planning question before they give us an answer: does the direct line enter terrain that deserves a closer look, and would another route offer a clearer outside picture or more options?
+On our fictional route, the western third crosses widely spaced contours and lighter terrain tint. Farther east, the contours close together and the shaded relief becomes more pronounced. Those details give us a planning question before they give us an answer: does the direct line enter terrain that deserves a closer look, and would another route offer a clearer outside picture or more options?
 
-The Cross-Country Flight Planning task expects altitude selection to account for terrain and obstacles, glide distance, VFR cruising altitudes, and wind. This episode will not choose an altitude for a real flight, because that decision also needs current weather, regulations, aircraft performance, and the actual route. Our chart pass is the earlier step: identify the terrain and obstacle facts that the eventual altitude decision must address.
+The Cross-Country Flight Planning task expects altitude selection to account for terrain and obstacles, glide distance, VFR cruising altitudes, and wind. Begin by identifying the terrain and obstacles that the route must clear and the altitudes that preserve useful glide options. Apply the VFR cruising-altitude rules, then compare the forecast winds aloft at the practical altitudes that remain. A more favorable wind can improve groundspeed and reduce time and fuel used, while a stronger headwind can do the opposite. The final choice brings the chart picture together with current weather, the airplane's expected performance, and the route itself.
 
 **LEARNER:**
 
@@ -99,7 +99,7 @@ What should I do with an obstruction symbol near the line?
 
 First, read what the symbol actually says. The Chart Users’ Guide explains that a charted obstruction can show the elevation of its top above mean sea level, with the structure’s height above ground level in parentheses when that height is known and space permits. If the chart adds U C, the obstacle is under construction or has been reported, but its position or elevation has not been verified.
 
-Mean sea level, or MSL, gives an elevation relative to the common sea-level reference used for altitudes. Above ground level, or AGL, gives a height relative to the surface below that feature. If the fictional chart shows a tower top at two thousand seven hundred feet MSL with one thousand feet in parentheses, the obstacle rises one thousand feet above its local ground and reaches two thousand seven hundred feet on the MSL elevation scale. Those numbers answer different questions, so preserve their labels.
+Mean sea level, or MSL, gives an elevation relative to the common sea-level reference used for altitudes. Above ground level, or AGL, gives a height relative to the surface below that feature. If the chart shows a tower top at two thousand seven hundred feet MSL with one thousand feet in parentheses, the obstacle rises one thousand feet above its local ground and reaches two thousand seven hundred feet on the MSL elevation scale. Those numbers answer different questions, so preserve their labels.
 
 The obstacle symbol also does not promise that an uncharted feature cannot exist. The guide explains that obstruction and terrain source data can be incomplete or insufficiently accurate for publication, and that land and obstructions change. That is another reason current chart and NOTAM checks remain part of the picture.
 
@@ -129,7 +129,7 @@ Now trace the planned route line and inspect every boundary it approaches or cro
 
 On the fictional Cedar Junction route, the planned line remains outside a dashed blue Class Delta boundary. Later it passes under the outer edge of a magenta Class Charlie shelf. Those facts are invented for the scenario, but the reading method is real: locate the lateral boundary, read the associated floor and ceiling, compare the planned altitude with that vertical slice, and then apply the operating requirements from current authoritative sources.
 
-Do not let chart symbology establish a rule it does not state. The chart shows the boundary and altitude label. The applicable regulation and current FAA guidance establish communication, clearance, weather, equipment, or other operating requirements. That separation keeps a chart-reading claim from silently becoming a regulatory claim.
+Read each chart symbol or label for the information it actually provides. An airspace boundary and its altitude labels show where that airspace is located in three dimensions; they do not list every communication, clearance, weather, or equipment requirement that applies there. Use the chart to identify the airspace, then use the applicable regulation and current FAA guidance to determine its operating requirements.
 
 At the end of this first pass, the route is no longer a thin line on a colored page. It has a terrain profile, specific obstruction questions, quadrant elevation context, and three-dimensional airspace relationships. Only then do we choose the visual features that will help us stay oriented along it.
 
@@ -155,7 +155,7 @@ The Chart Users’ Guide provides the road, railroad, lake, reservoir, and shore
 
 For the fictional route, checkpoint one is the narrow eastern arm of a broad reservoir, twelve nautical miles from the departure point. The shoreline shape is the primary feature. A highway touching the north shore is the corroborating feature. The checkpoint is not merely “water,” and it is not merely “a road.” It is a relationship between two visible shapes.
 
-Checkpoint two is eighteen nautical miles farther: an interstate crosses a river just west of a large bend. Checkpoint three is sixteen miles after that: a yellow-tinted town with two railroad lines meeting on its south side. Checkpoint four is fourteen miles later: a quarry west of a smaller lake. The remaining twelve miles lead to the fictional destination.
+Checkpoint two is eighteen nautical miles farther: an interstate crosses a river just west of a large bend. Checkpoint three is sixteen miles after that: a yellow-tinted town with two railroad lines meeting on its south side. Checkpoint four is fourteen miles later: a quarry west of a smaller lake. The remaining twelve miles lead to the destination.
 
 **LEARNER:**
 
@@ -201,7 +201,7 @@ Yes. True airspeed is the airplane’s speed through the air used for this wind 
 
 Notice what each result answers. The true course says where the route line points relative to true north. The true heading says where the nose should point relative to true north after the forecast wind correction. The groundspeed predicts how quickly the airplane should move along the ground if the assumptions hold.
 
-The calculation is a forecast, not a promise. Wind can differ from the forecast. The airplane may not produce the planned true airspeed. Climb and leveling can affect early timing. A checkpoint can be identified late, and the pilot can start the clock at the wrong moment. Pilotage supplies the observed position; dead reckoning supplies the predicted position. Their agreement builds confidence, and their disagreement prompts a check before a conclusion.
+Remember that these calculations are estimates built from forecast wind, expected aircraft performance, planned timing, and correctly identified checkpoints. Actual wind can differ from the forecast. The airplane may not produce the planned true airspeed. Climb and leveling can affect early timing, and a checkpoint can be identified late or timed from the wrong moment. Build the plan with room for those differences, then monitor what actually happens. Pilotage supplies the observed position; dead reckoning supplies the predicted position. Their agreement builds confidence, and their disagreement prompts a check before a conclusion.
 
 ## [23:20] Turn the course into a heading
 
@@ -221,11 +221,11 @@ So variation belongs to the geographic location, while deviation belongs to this
 
 **INSTRUCTOR:**
 
-Exactly. Keep those sources visible in the language. Variation comes from the chart for the route. Deviation comes from the aircraft’s compass deviation card. They are not interchangeable corrections.
+Exactly. Remember the difference by connecting each correction to its source. Variation comes from the chart for the route. Deviation comes from the aircraft’s compass deviation card. They are not interchangeable corrections.
 
-Return to the fictional numbers. We measured a true course of zero seven five. The forecast wind correction was eight degrees left, producing a true heading of zero six seven. The fictional isogonic line gives five degrees west variation. Applying that west variation produces a magnetic heading of zero seven two.
+Return to the numbers. We measured a true course of zero seven five. The forecast wind correction was eight degrees left, producing a true heading of zero six seven. The fictional isogonic line gives five degrees west variation. Applying that west variation produces a magnetic heading of zero seven two.
 
-The fictional airplane’s deviation card says that for a magnetic heading of zero seven two, steer a compass heading of zero seven four. That last number is the planned compass indication. The sequence did not change the destination. Each step translated the same intended ground path through a different reference or influence: wind, geographic magnetic variation, and aircraft-specific compass deviation.
+The airplane’s deviation card says that for a magnetic heading of zero seven two, steer a compass heading of zero seven four. That last number is the planned compass indication. The sequence did not change the destination. Each step translated the same intended ground path through a different reference or influence: wind, geographic magnetic variation, and aircraft-specific compass deviation.
 
 **LEARNER:**
 
@@ -247,6 +247,8 @@ The PHAK’s course-charting sequence begins by drawing the route, choosing easy
 
 A navigation log is the compact record of that plan. For our lesson, each row needs the checkpoint, leg distance, cumulative distance, planned compass heading, planned groundspeed, leg time, and cumulative time. Actual time and revised estimates have their own spaces so the observed flight does not overwrite the original prediction.
 
+Prepare that log on the ground as a workload-management tool. Complete the planned arithmetic before departure, make the next checkpoint, heading, and expected time easy to find, and leave clear space for actual crossing times and revised values. The plan also needs margin for actual conditions to differ from the forecast without making an immediate cockpit calculation urgent. The PHAK describes effective workload management as planning, prioritizing, and sequencing tasks, including preparing for high-workload periods while workload is still low.
+
 **LEARNER:**
 
 How do the distance and groundspeed become time?
@@ -267,9 +269,11 @@ There are many numbers. How does the log keep them from becoming another head-do
 
 **INSTRUCTOR:**
 
-Keep the display purposeful. Before departure, identify the next checkpoint, the planned heading, and the expected elapsed time. In flight, record the actual crossing time with a short mark, then return attention outside. The ACS names collision hazards, distraction, task prioritization, loss of situational awareness, and disorientation as risks within this task. The log should reduce memory load, not compete with aircraft control and traffic avoidance.
+Keep the display purposeful. Before departure, identify the next checkpoint, the planned heading, and the expected elapsed time. In flight, write the actual crossing time in the navigation log's actual-time column with a brief entry, then return attention outside. The ACS names collision hazards, distraction, task prioritization, loss of situational awareness, and disorientation as risks within this task. The PHAK warns that work overload can narrow attention onto one item and reduce situational awareness, while FAA collision-avoidance guidance warns that fixation on cockpit displays can draw attention away from the outside environment. The log should reduce memory load, not compete with aircraft control and traffic avoidance.
 
-Electronic planning tools can perform the same arithmetic, but understanding the relationships still matters. A displayed ETA is meaningful only if you know which distance, groundspeed, route, and start time produced it. In this episode, the hand calculation exposes those inputs so a change in one value has an understandable consequence.
+That does not mean every useful update has to happen the moment a checkpoint passes. A quick time entry is different from rebuilding several calculations. If an update would require extended attention inside, keep aircraft control and collision avoidance primary and wait for a lower-workload opportunity. This is a workload-management application to practice with a CFI: prepare most of the information before flight, make short entries when workload permits, and perform more involved arithmetic only when it can be done without losing the outside traffic picture.
+
+Electronic planning tools reduce workload and risk by performing these calculations quickly and updating them when an input changes. Understanding the underlying relationships still matters. It helps you recognize how a change in route, distance, groundspeed, or departure time affects the ETA, and it helps you notice when an input or result does not make sense. The hand calculation makes those relationships visible and preserves a basic way to continue navigating with the chart and navigation log if a battery dies, a device overheats, or the electronic tool otherwise becomes unavailable.
 
 ## [30:10] Compare the plan with actual progress
 
@@ -279,7 +283,7 @@ Compare the plan with actual progress.
 
 **INSTRUCTOR:**
 
-Now the fictional airplane is established after departure. The planned compass heading is zero seven four. The reservoir checkpoint should arrive at six minutes forty seconds. At eight minutes, the learner sees a reservoir off the right side and is tempted to mark checkpoint one.
+Now the airplane is established after departure. The planned compass heading is zero seven four. The reservoir checkpoint should arrive at six minutes forty seconds. At eight minutes, the learner sees a reservoir off the right side and is tempted to mark checkpoint one.
 
 **LEARNER:**
 
@@ -289,7 +293,7 @@ We are one minute twenty seconds late. Should I immediately revise the groundspe
 
 First confirm the checkpoint. Pilotage should not rest on one vague match. Does the reservoir have the narrow eastern arm? Is the highway touching its north shore? Do the surrounding terrain and route brackets agree? If those relationships do not match, the water may be the wrong feature and the time comparison has no sound position reference.
 
-The relationships do match. The airplane passes the narrow arm at eight minutes. That gives us a known twelve-nautical-mile distance and an observed time of eight minutes. Groundspeed equals distance divided by time. Eight minutes is about zero point one three three hours, so twelve divided by that time is about ninety knots.
+Let's say the relationships do match. The airplane passes the narrow arm at eight minutes. That gives us a known twelve-nautical-mile distance and an observed time of eight minutes. Groundspeed equals distance divided by time. Eight minutes is about zero point one three three hours, so twelve divided by that time is about ninety knots.
 
 **LEARNER:**
 
@@ -301,9 +305,9 @@ Not yet. We have evidence that observed progress to a confirmed checkpoint was s
 
 Next, compare lateral position with the course, not just time with the clock. The reservoir lies slightly right of the planned line when the airplane reaches its narrow arm. The planned heading has remained zero seven four. That observation suggests the actual track has been right of the desired course. It does not tell us the exact correction by itself, but it tells us the forecast wind correction and the observed result are not matching.
 
-The practical response begins with priorities: maintain aircraft control, continue the traffic scan, establish a reliable position, and use a bounded correction rather than prolonged head-down calculation. The exact heading-change technique belongs in flight instruction with a CFI, where the learner can connect the chart picture, wind, compass behavior, and aircraft control in real time.
+The practical response begins with priorities: maintain aircraft control, continue the traffic scan, and establish a reliable position. Record the observed time and position briefly. If the arithmetic would demand extended attention inside, defer it until workload permits instead of trading away aircraft control or the outside scan for an immediate answer. The exact heading-change technique belongs in flight instruction with a CFI, where the learner can connect the chart picture, wind, compass behavior, workload, and aircraft control in real time.
 
-For the podcast scenario, assume the position is confirmed and the airplane is returned to the planned route under instructional supervision. The learner keeps the observed ninety-knot groundspeed as a provisional estimate, not a final conclusion, and uses checkpoint two to test whether the slower trend continues.
+For the next step in the scenario, the pilot has confirmed the airplane's position and returned to the planned route. The learner keeps the observed ninety-knot groundspeed as a provisional estimate, not a final conclusion, and uses checkpoint two to test whether the slower trend continues.
 
 Checkpoint two is eighteen nautical miles beyond the reservoir. At ninety knots, eighteen nautical miles should take twelve minutes. The distinctive river bend and interstate crossing arrive twelve minutes after checkpoint one, or twenty minutes after departure. Now two separate legs support the same approximate observed groundspeed.
 

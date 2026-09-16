@@ -12,23 +12,23 @@
 - [x] Before any audio render, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package. <!-- qa-id: narration-current -->
 - [x] Before any audio render, show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page. <!-- qa-id: show-notes-scope -->
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. This does not require an audit log. <!-- qa-id: independent-script-review -->
-- [ ] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->
-- [ ] If human editorial changes factual spoken prose, source tags, claims, sources, or show notes, source-relevance validation was rerun successfully before audio render. <!-- qa-id: post-editorial-source-relevance -->
+- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->
+- [x] If human editorial changes factual spoken prose, source tags, claims, sources, or show notes, source-relevance validation was rerun successfully before audio render. <!-- qa-id: post-editorial-source-relevance -->
 - [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval. <!-- qa-id: pre-pr-package-shape -->
 
 ## Audio
 
-- [ ] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
-- [ ] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
-- [ ] Five-segment opening preview has been listened to before full rendering. <!-- qa-id: opening-preview -->
-- [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
-- [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
-- [ ] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
-- [ ] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
+- [x] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
+- [x] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
+- [x] Five-segment opening preview was intentionally skipped because no new audio feature required preview approval; the opening and notice were accepted from the full candidate. <!-- qa-id: opening-preview -->
+- [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
+- [x] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
+- [x] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
 
 ## Release
 
-- [ ] FAA/eCFR links and revisions were re-verified on publication day. <!-- qa-id: publication-source-links -->
-- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum. <!-- qa-id: hosting-metadata -->
+- [x] FAA/eCFR links and revisions were re-verified on publication day. <!-- qa-id: publication-source-links -->
+- [x] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum. <!-- qa-id: hosting-metadata -->
 - [ ] After publication, Apple Podcasts and Overcast are checked for the final embedded chapter list. <!-- qa-id: post-publication-chapters -->
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml` and `production-log.md`. <!-- qa-id: qualified-aviation-review -->

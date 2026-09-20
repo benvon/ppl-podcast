@@ -1,0 +1,184 @@
+episode_id: core-18
+claims:
+  - id: acs-navigation-systems-outcome
+    type: faa_standard
+    statement: "ACS PA.VI.B requires knowledge and risk management for ground-based navigation, satellite-based navigation, radar assistance to VFR aircraft, transponder/ADS-B, system limitations, signal loss, automation, and distraction management."
+    sources: [acs-navigation-systems-task]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect]
+    status: draft
+  - id: vor-radial-and-line-of-sight
+    type: faa_guidance
+    statement: "A VOR projects magnetic radials outward from the station, and its VHF signal is subject to line-of-sight limits."
+    sources: [phak-vor-basics]
+    risk: safety_critical
+    script_sections: ["Before departure: prepare the picture and the receivers", "VOR and DME: build the navigation reference", Retrieval review]
+    status: draft
+  - id: vor-identification-and-signal-integrity
+    type: faa_guidance
+    statement: "A VOR is positively identified by its coded or recorded identification; removed coded identification and an alarm flag indicate it should not be used as a reliable navigation source."
+    sources: [phak-vor-integrity]
+    risk: safety_critical
+    script_sections: ["Before departure: prepare the picture and the receivers", "The complete Meadow Ridge–Harbor sequence", Retrieval review]
+    status: draft
+  - id: vor-course-indication
+    type: faa_guidance
+    statement: "A CDI or HSI relates the airplane to a selected VOR course and shows TO or FROM orientation; a navigation warning flag means no reliable signal is being received."
+    sources: [phak-vor-indicator]
+    risk: safety_critical
+    script_sections: ["VOR and DME: build the navigation reference", "The complete Meadow Ridge–Harbor sequence", Retrieval review]
+    status: draft
+  - id: dme-distance-and-limitation
+    type: faa_guidance
+    statement: "DME shows slant-range distance to a VOR/DME or VORTAC, so its reading is affected by altitude and is not simply a horizontal chart distance."
+    sources: [phak-dme]
+    risk: operational
+    script_sections: ["Before departure: prepare the picture and the receivers", "The complete Meadow Ridge–Harbor sequence", Retrieval review]
+    status: draft
+  - id: vor-station-passage
+    type: faa_guidance
+    statement: "When an airplane passes a VOR station, the CDI needle fluctuates and then settles while the TO indication changes to FROM."
+    sources: [phak-vor-station-passage]
+    risk: operational
+    script_sections: ["VOR and DME: build the navigation reference", "The complete Meadow Ridge–Harbor sequence"]
+    status: draft
+  - id: gps-integrity-awareness
+    type: faa_guidance
+    statement: "RAIM is a receiver integrity function that can alert when insufficient satellites are available for integrity monitoring or when it detects a potential position error; without RAIM capability, a pilot has no assurance of GPS position accuracy."
+    sources: [phak-gps-integrity]
+    risk: safety_critical
+    script_sections: ["GPS: a prepared position source", "The complete Meadow Ridge–Harbor sequence"]
+    status: draft
+  - id: gps-cross-check-and-current-data
+    type: faa_guidance
+    statement: "For VFR navigation, GPS should be integrated with other electronic navigation, pilotage, and dead reckoning rather than used as the only navigation system."
+    sources: [phak-gps-vfr-integration]
+    risk: safety_critical
+    script_sections: ["Before departure: prepare the picture and the receivers", "GPS: a prepared position source", "The complete Meadow Ridge–Harbor sequence"]
+    status: draft
+  - id: gps-database-limit
+    type: faa_guidance
+    statement: "An outdated GPS database can make a moving-map depiction unreliable for critical VFR navigation decisions, and named waypoints require verification against a current official source when the database is not current."
+    sources: [phak-gps-vfr-integration]
+    risk: safety_critical
+    script_sections: ["Before departure: prepare the picture and the receivers", "GPS: a prepared position source", "The complete Meadow Ridge–Harbor sequence"]
+    status: draft
+  - id: gps-preparation-and-lookout
+    type: faa_guidance
+    statement: "The PHAK directs VFR pilots to plan and enter user-defined waypoints before flight, minimize head-down time, and maintain lookout for traffic, terrain, and obstacles."
+    sources: [phak-gps-task-management]
+    risk: safety_critical
+    script_sections: ["Before departure: prepare the picture and the receivers"]
+    status: draft
+  - id: radar-traffic-service-limits
+    type: aim
+    statement: "Radar traffic information calls attention to observed targets that may warrant attention, but the service is workload- and coverage-dependent and does not relieve a pilot of see-and-avoid vigilance."
+    sources: [aim-radar-traffic-information]
+    risk: safety_critical
+    script_sections: ["Flight following and VFR radar services: establish the ATC relationship", "The complete Meadow Ridge–Harbor sequence", Retrieval review]
+    status: draft
+  - id: radar-vectors-advisory
+    type: aim
+    statement: "Radar assistance and vectors to VFR aircraft require communication, radar coverage, and radar identification; the navigation guidance is advisory and does not authorize a pilot to violate regulations or transfer responsibility for safely flying the aircraft."
+    sources: [aim-radar-assistance-vfr]
+    risk: safety_critical
+    script_sections: ["Flight following and VFR radar services: establish the ATC relationship", Retrieval review]
+    status: draft
+  - id: terminal-radar-service-scope
+    type: aim
+    statement: "Basic terminal radar service for VFR aircraft includes safety alerts, traffic advisories, limited vectoring on a workload-permitting basis, and sequencing where established; standard radar separation between VFR and IFR or between VFR aircraft is not provided under basic service."
+    sources: [aim-terminal-radar-vfr]
+    risk: safety_critical
+    script_sections: ["Flight following and VFR radar services: establish the ATC relationship"]
+    status: draft
+  - id: vfr-radar-beacon-code
+    type: faa_operational_procedure
+    statement: "For a VFR aircraft receiving radar advisories, FAA controller procedures call for a computer-assigned beacon code."
+    sources: [jo7110-vfr-advisory-code]
+    risk: operational
+    script_sections: ["Flight following and VFR radar services: establish the ATC relationship", "The complete Meadow Ridge–Harbor sequence", Retrieval review]
+    status: draft
+  - id: atc-specified-code-operation
+    type: faa_operational_procedure
+    statement: "Pilots adjust the transponder/ADS-B to reply on the Mode 3/A code specified by ATC with altitude reporting enabled, unless directed otherwise by ATC or subject to the stated altitude-reporting-equipment exception."
+    sources: [aim-transponder-code-operation]
+    risk: operational
+    script_sections: ["Flight following and VFR radar services: establish the ATC relationship", "The complete Meadow Ridge–Harbor sequence", Retrieval review]
+    status: draft
+  - id: radar-identification-code-change
+    type: faa_operational_procedure
+    statement: "A controller can establish beacon/ADS-B radar identification by requesting a specific discrete or nondiscrete code change and observing the target or code display change."
+    sources: [jo7110-radar-identification]
+    risk: operational
+    script_sections: ["Flight following and VFR radar services: establish the ATC relationship", "The complete Meadow Ridge–Harbor sequence", Retrieval review]
+    status: draft
+  - id: radar-identification-before-service
+    type: faa_operational_procedure
+    statement: "FAA controller procedures require controllers to establish and maintain radar identification before providing radar service, subject to specified controller-order exceptions."
+    sources: [jo7110-radar-service-prerequisite]
+    risk: operational
+    script_sections: ["Flight following and VFR radar services: establish the ATC relationship", "The complete Meadow Ridge–Harbor sequence"]
+    status: draft
+  - id: adsb-out-in-and-safety-value
+    type: aim
+    statement: "The Episode 16 callback distinguishes ADS-B Out, which transmits GNSS-derived aircraft position and related information, from ADS-B In, which receives broadcast information. ADS-B In can provide traffic and flight-information benefits, but an ADS-B traffic display is intended only to support visual acquisition and see-and-avoid responsibility."
+    sources: [aim-adsb-services]
+    risk: safety_critical
+    script_sections: ["ADS-B traffic information: make the traffic search more specific"]
+    status: draft
+  - id: tisb-traffic-awareness-and-limits
+    type: aim
+    statement: "TIS-B can provide an ADS-B-equipped airplane with a more complete advisory traffic picture when some nearby aircraft do not transmit ADS-B Out, but its availability depends on surveillance and broadcast coverage; it uplinks only transponder-equipped targets and is intended only to support visual acquisition, not collision avoidance."
+    sources: [aim-tisb]
+    risk: safety_critical
+    script_sections: ["ADS-B traffic information: make the traffic search more specific", "The complete Meadow Ridge–Harbor sequence"]
+    status: draft
+  - id: chart-vor-identifier
+    type: faa_guidance
+    statement: "The FAA Aeronautical Chart Users' Guide radio-aids key identifies VOR/VOR-DME and Morse Code notation."
+    sources: [chart-users-guide-vor-identification]
+    risk: operational
+    script_sections: ["Before departure: prepare the picture and the receivers", Retrieval review]
+    status: draft
+  - id: vor-mon-backup-role
+    type: faa_program
+    statement: "The VOR Minimum Operational Network is a conventional navigation backup for GPS outages that supports station-to-station navigation or access to a MON airport, with planned coverage beginning at 5,000 feet AGL."
+    sources: [faa-vor-mon]
+    risk: operational
+    script_sections: ["VOR and DME: build the navigation reference", Retrieval review]
+    status: draft
+  - id: nextgen-dme-role
+    type: faa_program
+    statement: "FAA ground-based-navigation planning identifies NextGen DME as support for DME/DME RNAV capability during a GPS outage and describes long-term DME, VOR, and TACAN sustainment."
+    sources: [faa-ground-based-navigation]
+    risk: informational
+    script_sections: ["VOR and DME: build the navigation reference", Retrieval review]
+    status: draft
+  - id: vor-mon-and-dme-dme-fallback-roles
+    type: aim
+    statement: "During a GNSS disruption, suitably equipped aircraft can use DME/DME RNAV to continue performance-based navigation, while the VOR MON provides conventional navigation for aircraft that cannot continue RNAV, including aircraft without DME/DME equipment."
+    sources: [aim-vor-mon-dme-dme]
+    risk: informational
+    script_sections: ["VOR and DME: build the navigation reference", Retrieval review]
+    status: draft
+  - id: nextgen-hpdme-resilience
+    type: faa_program
+    statement: "FAA describes scanning DME receivers as using multiple high-power DME facilities for DME/DME navigation that enables RNAV en-route instrument flight procedures, and says the NEXTGEN DME program sustains the high-power DMEs required for those procedures as a resilient GPS backup."
+    sources: [faa-nextgen-dme]
+    risk: informational
+    script_sections: ["VOR and DME: build the navigation reference", Retrieval review]
+    status: draft
+  - id: adsb-in-and-tisb-client-relationship
+    type: faa_program
+    statement: "ADS-B In provides traffic information to properly equipped aircraft; TIS-B is a client-based service for qualifying ADS-B Out/In aircraft that provides surveillance information about transponder-equipped aircraft within radar coverage, while ADS-B In-only receivers can receive proximate air-to-air ADS-B traffic."
+    sources: [faa-adsb-in-services]
+    risk: safety_critical
+    script_sections: ["ADS-B traffic information: make the traffic search more specific", Retrieval review]
+    status: draft
+  - id: sentry-product-documentation-scope
+    type: manufacturer_documentation
+    statement: "ForeFlight's Sentry Pilot's Guide documents the traffic-source indications and limitations for a Sentry receiver used with ForeFlight."
+    sources: [foreflight-sentry-pilot-guide]
+    risk: informational
+    script_sections: ["ADS-B traffic information: make the traffic search more specific"]
+    status: draft

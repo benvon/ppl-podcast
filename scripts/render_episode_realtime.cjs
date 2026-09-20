@@ -44,6 +44,7 @@ const LEGACY_DISCLAIMER_SECTION = "required production notice";
 const PRONUNCIATION_TRANSFORMS = Object.freeze({
   AI: "artificial intelligence",
   "Class A": "Class Alpha",
+  "TO/FROM": "to from",
   MOA: "moah",
   MOAs: "moahs",
   AIM: "aim",

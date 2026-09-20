@@ -63,6 +63,14 @@ not for a reader who can scan backward through a dense paragraph.
   lines, clever reversals, quips, snark, or a sentence constructed mainly to
   sound memorable. If a phrase sounds clever but does not clarify the next
   decision, remove it.
+- Teach capability and correct use affirmatively. State the pilot’s workflow:
+  set the input, verify that the source is usable and current, interpret the
+  indication, compare it with the planned picture, and then choose the next
+  action. Do not frame the explanation as a gotcha for an imagined careless
+  learner, or rely on contrast lines such as “this is not X” or “do not be
+  fooled by Y.” Reserve a direct limitation statement for the narrow factual
+  condition that a source requires; explain what the pilot does with that
+  condition immediately afterward.
 - Regulatory topics need the same causal chain as aerodynamic topics: start
   with the practical question, explain what evidence answers it, then name the
   rule or record that supplies that evidence. Do not turn a regulation into a

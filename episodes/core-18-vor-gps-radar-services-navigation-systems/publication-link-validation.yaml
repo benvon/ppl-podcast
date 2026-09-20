@@ -1,0 +1,1697 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: publication_link_check
+run_id: 83b9e8e5-0392-4e94-84f6-d1bf5ddf72ae
+checked_at_utc: 2026-09-20T20:25:38.921Z
+sources_file: episodes/core-18-vor-gps-radar-services-navigation-systems/sources.yaml
+claims_file: episodes/core-18-vor-gps-radar-services-navigation-systems/claim-inventory.yaml
+show_notes_file: episodes/core-18-vor-gps-radar-services-navigation-systems/show-notes.md
+show_notes_manifest_file: episodes/core-18-vor-gps-radar-services-navigation-systems/show-notes-manifest.yaml
+input_sha256:
+  sources: b20029907aad8928182303c43b86c5abad300c9f1962fd8cbd57132b86357831
+  claims: 4b57c88485866520d62511f61bf5e00e67af7174ee4c07c5002579bd5244171c
+  master_script: 86bfad03495de3b9aa16fcc3fce9984b8fc3798613ffe8199597058fda3f2d1b
+  show_notes: 990797b3200719a2c02b9d01eb4c1146a6e92812650cae917407ec5ed5aaf6ae
+  show_notes_manifest: 5b1698d456b4d04e1020ced25f0c746da0fda0555a46d718f46241394f82dbf2
+input_normalization:
+  master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: 86bfad03495de3b9aa16fcc3fce9984b8fc3798613ffe8199597058fda3f2d1b
+  show_notes: 06f0e73c26ef1a92f4d8e3a2c4a545c1395b25282b742823f5f91799209e2926
+llm_requested: false
+llm_model: null
+llm_review_passes: 0
+llm_materiality_policy: null
+authorization: null
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 84
+  claim_coverage_count: 26
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 25
+  manifest_link_count: 25
+show_notes_results:
+  - id: acs-navigation-systems-task
+    text: Private Pilot ACS Navigation Systems and Radar Services task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+    source_id: acs-navigation-systems-task
+    claim_ids:
+      - acs-navigation-systems-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-basics
+    text: PHAK VOR radial and line-of-sight picture
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+    source_id: phak-vor-basics
+    claim_ids:
+      - vor-radial-and-line-of-sight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 6cf0c9ab9b3b7e196cefd7b5e2e1e7571b01f64d5b42eb8ed99ca78cc6503fb0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-integrity
+    text: PHAK VOR identification and signal-integrity guidance
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+    source_id: phak-vor-integrity
+    claim_ids:
+      - vor-identification-and-signal-integrity
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4377
+      pdf_page_text_sha256: cd171b205c91a487ba86953f6c1600bc8636983fae56b0e80208604375534618
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-users-guide-vor-identification
+    text: FAA Chart Users' Guide VOR identifier and Morse-code chart symbology
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+    source_id: chart-users-guide-vor-identification
+    claim_ids:
+      - chart-vor-identifier
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a7 []
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 885
+      pdf_page_text_sha256: 6cbf24ce0da75cfb6cb9c410bed3f84e226ab7249a2f58a2758af11c475c258c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-indicator
+    text: PHAK CDI and HSI explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+    source_id: phak-vor-indicator
+    claim_ids:
+      - vor-course-indication
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3087
+      pdf_page_text_sha256: cee3b0d5590c62757741304c7d6547225015a955f721df85410050e2df0e140e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-dme
+    text: PHAK DME slant-range explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+    source_id: phak-dme
+    claim_ids:
+      - dme-distance-and-limitation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4620
+      pdf_page_text_sha256: 1689ef6bce959e762249646ee77b94eac28a66c52105b9b7ecff23234e835d8a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-station-passage
+    text: PHAK VOR station-passage explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+    source_id: phak-vor-station-passage
+    claim_ids:
+      - vor-station-passage
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4742
+      pdf_page_text_sha256: 3a4a67283d868a2a9623ca7e79f3c092607cc034a74f6d126a3c043b52bd288a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-vor-mon
+    text: FAA VOR Minimum Operational Network overview
+    url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+    source_id: faa-vor-mon
+    claim_ids:
+      - vor-mon-backup-role
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a8 []
+      title: Navigation Programs - Very High Frequency Omnidirectional Range Minimum
+        Operational Network (VOR MON) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 38489b13ddc563a2402f7d082f3173c0addec2a89a2d99c2067a38f2c6373935
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 9298
+      excerpt_sha256: 35cc3005259297057fdd6aed93c70bc2f0f6e5252aedfe89c792f5f2e3ff73e2
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-ground-based-navigation
+    text: "FAA Ground-Based Navigation: VOR MON and NextGen DME"
+    url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+    source_id: faa-ground-based-navigation
+    claim_ids:
+      - nextgen-dme-role
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a9 []
+      title: Navigation Programs - Ground-Based Navigation (GBN) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: b4bcf0282e84fa0b46538f899a9568ca019fcf383fec7d8535f6a41b2eaba513
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2138
+      excerpt_sha256: a2047b7f47860d933e43d9c995978aed57fd2ce42b7783655dab10d14551fe31
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-vor-mon-dme-dme
+    text: AIM VOR MON and DME/DME equipment roles during GNSS disruption
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+    source_id: aim-vor-mon-dme-dme
+    claim_ids:
+      - vor-mon-and-dme-dme-fallback-roles
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a10 []
+      title: Chapter 1. Air Navigation
+      truncated: false
+      content_sha256: 5ec52f41d806166f877531afe8e5dc5fa75368931ac034b22c20c7efdd52cac0
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 895a8c8db84757d58f0d7179964d09390144ab5ee8360ff24cd56c7f4307a6fd
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-nextgen-dme
+    text: FAA high-power DME and NextGen DME program overview
+    url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+    source_id: faa-nextgen-dme
+    claim_ids:
+      - nextgen-hpdme-resilience
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a11 []
+      title: GBN - Distance Measuring Equipment (DME) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: 66e739aa8006437d8a39f9cc8df13e26a20ba48b1c06548b69661d5de58af271
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2586
+      excerpt_sha256: 3d1b9ddec63be95445986ef63c18b6ceba963a2468eb14557a034d42f02eddf4
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-gps-integrity
+    text: PHAK GPS integrity and RAIM explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+    source_id: phak-gps-integrity
+    claim_ids:
+      - gps-integrity-awareness
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      errors: []
+      valid: true
+      pdf_page_number: 31
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3777
+      pdf_page_text_sha256: 42bcdc6ffcaeaa2912b83df7eea31495ca8b65918254702ef9a552e7d1b151df
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-gps-vfr-integration
+    text: PHAK VFR GPS cross-check and database-currentness guidance
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+    source_id: phak-gps-vfr-integration
+    claim_ids:
+      - gps-cross-check-and-current-data
+      - gps-database-limit
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      errors: []
+      valid: true
+      pdf_page_number: 32
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4332
+      pdf_page_text_sha256: d45157a3bc528c4f832323bba3a2d746a345188d30f95d495c957427dc24ec42
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-gps-task-management
+    text: PHAK VFR GPS preparation and lookout guidance
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+    source_id: phak-gps-task-management
+    claim_ids:
+      - gps-preparation-and-lookout
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      errors: []
+      valid: true
+      pdf_page_number: 33
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5214
+      pdf_page_text_sha256: 5c27e24d033eead54b12dd31f2d3048771ef38ea655509eea0342d245ede9d3c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-radar-traffic-information
+    text: AIM radar traffic information service
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+    source_id: aim-radar-traffic-information
+    claim_ids:
+      - radar-traffic-service-limits
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a2 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7c234c51ca62b5cf2001501bdf631d9b3e457d81181beec7205c965bc8b7ddac
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-radar-assistance-vfr
+    text: AIM radar assistance to VFR aircraft
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+    source_id: aim-radar-assistance-vfr
+    claim_ids:
+      - radar-vectors-advisory
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bb716d6714bb85e6456f1f9cada7b34542296673fb09cb5690fd958768dc2a0e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-terminal-radar-vfr
+    text: AIM terminal radar services for VFR aircraft
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+    source_id: aim-terminal-radar-vfr
+    claim_ids:
+      - terminal-radar-service-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8eb3a8c5cffc1399488690a24c254e2ca3ae0793a6c8b73a77e9835f554cc5d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-transponder-code-operation
+    text: AIM transponder code and altitude-reporting operation
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+    source_id: aim-transponder-code-operation
+    claim_ids:
+      - atc-specified-code-operation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: b3d60caa9ba2a05621ce3fd89bebb40fea9aa5361506e3a467744903960724c8
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: jo7110-vfr-advisory-code
+    text: FAA Order JO 7110.65BB VFR beacon-code assignments
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+    source_id: jo7110-vfr-advisory-code
+    claim_ids:
+      - vfr-radar-beacon-code
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a6 []
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 09fe03dda747fb97bae4d86777fc3ccfb869e8a6d39475ceed4b3ca9d69bbfba
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7aeb08c788815eebddda2cc3c8565659bcc4b5d5d1afa083d0b7f25589e71edf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: jo7110-radar-identification
+    text: FAA Order JO 7110.65BB radar identification methods
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+    source_id: jo7110-radar-identification
+    claim_ids:
+      - radar-identification-code-change
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a3 []
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: b477d6f61149132f09d18b9b8a099c2441a4ff5cc2c0ff1255be064acc742fc5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      errors: []
+      valid: true
+      excerpt_characters: 5929
+      excerpt_sha256: 5371cd2e31c0f5945513d24f519f2f0eb0ed7c55f0bb4d6b007ab362af56ac44
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: jo7110-radar-service-prerequisite
+    text: FAA Order JO 7110.65BB radar-service identification prerequisite
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+    source_id: jo7110-radar-service-prerequisite
+    claim_ids:
+      - radar-identification-before-service
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: b477d6f61149132f09d18b9b8a099c2441a4ff5cc2c0ff1255be064acc742fc5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      errors: []
+      valid: true
+      excerpt_characters: 9000
+      excerpt_sha256: da88d281cba13a094671c91142f3009b39250ac02d948555b4270cad4eebb664
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-adsb-services
+    text: AIM ADS-B services
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+    source_id: aim-adsb-services
+    claim_ids:
+      - adsb-out-in-and-safety-value
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a4 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 26ca0c551d373aef46487dc219ad406c8a0bced542bc33c183c16acfb801e52e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bc5d34c411fcfa569d45aabd36f30e2b222956a40cdededc0b16996964cc0253
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-adsb-in-services
+    text: FAA ADS-B In, TIS-B, and ADS-R service explanation
+    url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+    source_id: faa-adsb-in-services
+    claim_ids:
+      - adsb-in-and-tisb-client-relationship
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      final_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a12 []
+      title: Ins and Outs | Federal Aviation Administration
+      truncated: false
+      content_sha256: 0dfb0ce396395e0ec7f68f28b2ba5ff66a50e6f266c6320b135c59ea6d8aa489
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      validation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      errors: []
+      valid: true
+      excerpt_characters: 4709
+      excerpt_sha256: 59ace3266ccd2547201d4fe79439e3f306ece46b853281081b9b4160423b0eeb
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-tisb
+    text: AIM TIS-B traffic-information service
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+    source_id: aim-tisb
+    claim_ids:
+      - tisb-traffic-awareness-and-limits
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 26ca0c551d373aef46487dc219ad406c8a0bced542bc33c183c16acfb801e52e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      errors: []
+      valid: true
+      excerpt_characters: 8077
+      excerpt_sha256: 25236e5bfd73ad22a105a535b793a75c670ebfcef1b1de7a4709c271b48ab32e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: foreflight-sentry-pilot-guide
+    text: ForeFlight Sentry Pilot's Guide
+    url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+    source_id: foreflight-sentry-pilot-guide
+    claim_ids:
+      - sentry-product-documentation-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      final_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a13 []
+      title: null
+      truncated: true
+      content_sha256: 7fd29dbf62694c2d9271c3d3dfc32dd90a93cde1343724929d9e4856e74eedbd
+      hash_truncated: false
+      citation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      validation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      errors: []
+      valid: true
+      pdf_page_number: 63
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1077
+      pdf_page_text_sha256: 09c7409de04a48fc6938dd7f166fb94a004519f95392144aaa5bef90608dc40d
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-navigation-systems-task
+    title: Private Pilot for Airplane Category ACS
+    checked_at_utc: 2026-09-20T20:25:21.035Z
+    linked_claim_ids:
+      - acs-navigation-systems-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-vor-basics
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:21.070Z
+    linked_claim_ids:
+      - vor-radial-and-line-of-sight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 6cf0c9ab9b3b7e196cefd7b5e2e1e7571b01f64d5b42eb8ed99ca78cc6503fb0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-vor-integrity
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:21.934Z
+    linked_claim_ids:
+      - vor-identification-and-signal-integrity
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4377
+      pdf_page_text_sha256: cd171b205c91a487ba86953f6c1600bc8636983fae56b0e80208604375534618
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-vor-indicator
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:23.924Z
+    linked_claim_ids:
+      - vor-course-indication
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3087
+      pdf_page_text_sha256: cee3b0d5590c62757741304c7d6547225015a955f721df85410050e2df0e140e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-dme
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:23.946Z
+    linked_claim_ids:
+      - dme-distance-and-limitation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4620
+      pdf_page_text_sha256: 1689ef6bce959e762249646ee77b94eac28a66c52105b9b7ecff23234e835d8a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-vor-station-passage
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:23.967Z
+    linked_claim_ids:
+      - vor-station-passage
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4742
+      pdf_page_text_sha256: 3a4a67283d868a2a9623ca7e79f3c092607cc034a74f6d126a3c043b52bd288a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-gps-integrity
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:24.011Z
+    linked_claim_ids:
+      - gps-integrity-awareness
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      errors: []
+      valid: true
+      pdf_page_number: 31
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3777
+      pdf_page_text_sha256: 42bcdc6ffcaeaa2912b83df7eea31495ca8b65918254702ef9a552e7d1b151df
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-gps-vfr-integration
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:24.026Z
+    linked_claim_ids:
+      - gps-cross-check-and-current-data
+      - gps-database-limit
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      errors: []
+      valid: true
+      pdf_page_number: 32
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4332
+      pdf_page_text_sha256: d45157a3bc528c4f832323bba3a2d746a345188d30f95d495c957427dc24ec42
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-gps-task-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T20:25:24.043Z
+    linked_claim_ids:
+      - gps-preparation-and-lookout
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      errors: []
+      valid: true
+      pdf_page_number: 33
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5214
+      pdf_page_text_sha256: 5c27e24d033eead54b12dd31f2d3048771ef38ea655509eea0342d245ede9d3c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-radar-traffic-information
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T20:25:24.051Z
+    linked_claim_ids:
+      - radar-traffic-service-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7c234c51ca62b5cf2001501bdf631d9b3e457d81181beec7205c965bc8b7ddac
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-radar-assistance-vfr
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T20:25:24.059Z
+    linked_claim_ids:
+      - radar-vectors-advisory
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bb716d6714bb85e6456f1f9cada7b34542296673fb09cb5690fd958768dc2a0e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-terminal-radar-vfr
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T20:25:24.078Z
+    linked_claim_ids:
+      - terminal-radar-service-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8eb3a8c5cffc1399488690a24c254e2ca3ae0793a6c8b73a77e9835f554cc5d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-transponder-code-operation
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T20:25:24.078Z
+    linked_claim_ids:
+      - atc-specified-code-operation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7439addd5be9d4c3fd26cfe4b51feba0fa10ddc5a45f98e0ca6bdc4b5b45d682
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: b3d60caa9ba2a05621ce3fd89bebb40fea9aa5361506e3a467744903960724c8
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: jo7110-vfr-advisory-code
+    title: FAA Order JO 7110.65BB, Air Traffic Control
+    checked_at_utc: 2026-09-20T20:25:24.079Z
+    linked_claim_ids:
+      - vfr-radar-beacon-code
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a6
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 09fe03dda747fb97bae4d86777fc3ccfb869e8a6d39475ceed4b3ca9d69bbfba
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7aeb08c788815eebddda2cc3c8565659bcc4b5d5d1afa083d0b7f25589e71edf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: jo7110-radar-identification
+    title: FAA Order JO 7110.65BB, Air Traffic Control
+    checked_at_utc: 2026-09-20T20:25:24.079Z
+    linked_claim_ids:
+      - radar-identification-code-change
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: b477d6f61149132f09d18b9b8a099c2441a4ff5cc2c0ff1255be064acc742fc5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      errors: []
+      valid: true
+      excerpt_characters: 5929
+      excerpt_sha256: 5371cd2e31c0f5945513d24f519f2f0eb0ed7c55f0bb4d6b007ab362af56ac44
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: jo7110-radar-service-prerequisite
+    title: FAA Order JO 7110.65BB, Air Traffic Control
+    checked_at_utc: 2026-09-20T20:25:24.101Z
+    linked_claim_ids:
+      - radar-identification-before-service
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: b477d6f61149132f09d18b9b8a099c2441a4ff5cc2c0ff1255be064acc742fc5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      errors: []
+      valid: true
+      excerpt_characters: 9000
+      excerpt_sha256: da88d281cba13a094671c91142f3009b39250ac02d948555b4270cad4eebb664
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-adsb-services
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T20:25:24.101Z
+    linked_claim_ids:
+      - adsb-out-in-and-safety-value
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 26ca0c551d373aef46487dc219ad406c8a0bced542bc33c183c16acfb801e52e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bc5d34c411fcfa569d45aabd36f30e2b222956a40cdededc0b16996964cc0253
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-tisb
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T20:25:24.102Z
+    linked_claim_ids:
+      - tisb-traffic-awareness-and-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 26ca0c551d373aef46487dc219ad406c8a0bced542bc33c183c16acfb801e52e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      errors: []
+      valid: true
+      excerpt_characters: 8077
+      excerpt_sha256: 25236e5bfd73ad22a105a535b793a75c670ebfcef1b1de7a4709c271b48ab32e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: chart-users-guide-vor-identification
+    title: Aeronautical Chart Users' Guide
+    checked_at_utc: 2026-09-20T20:25:21.070Z
+    linked_claim_ids:
+      - chart-vor-identifier
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a7
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 885
+      pdf_page_text_sha256: 6cbf24ce0da75cfb6cb9c410bed3f84e226ab7249a2f58a2758af11c475c258c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-vor-mon
+    title: Navigation Programs — VOR Minimum Operational Network
+    checked_at_utc: 2026-09-20T20:25:24.169Z
+    linked_claim_ids:
+      - vor-mon-backup-role
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a8
+      title: Navigation Programs - Very High Frequency Omnidirectional Range Minimum
+        Operational Network (VOR MON) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 38489b13ddc563a2402f7d082f3173c0addec2a89a2d99c2067a38f2c6373935
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 9298
+      excerpt_sha256: 35cc3005259297057fdd6aed93c70bc2f0f6e5252aedfe89c792f5f2e3ff73e2
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-ground-based-navigation
+    title: Navigation Programs — Ground-Based Navigation
+    checked_at_utc: 2026-09-20T20:25:24.169Z
+    linked_claim_ids:
+      - nextgen-dme-role
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a9
+      title: Navigation Programs - Ground-Based Navigation (GBN) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: b4bcf0282e84fa0b46538f899a9568ca019fcf383fec7d8535f6a41b2eaba513
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2138
+      excerpt_sha256: a2047b7f47860d933e43d9c995978aed57fd2ce42b7783655dab10d14551fe31
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-vor-mon-dme-dme
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T20:25:24.190Z
+    linked_claim_ids:
+      - vor-mon-and-dme-dme-fallback-roles
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a10
+      title: Chapter 1. Air Navigation
+      truncated: false
+      content_sha256: 5ec52f41d806166f877531afe8e5dc5fa75368931ac034b22c20c7efdd52cac0
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 895a8c8db84757d58f0d7179964d09390144ab5ee8360ff24cd56c7f4307a6fd
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-nextgen-dme
+    title: Ground-Based Navigation — Distance Measuring Equipment
+    checked_at_utc: 2026-09-20T20:25:24.192Z
+    linked_claim_ids:
+      - nextgen-hpdme-resilience
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a11
+      title: GBN - Distance Measuring Equipment (DME) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: 66e739aa8006437d8a39f9cc8df13e26a20ba48b1c06548b69661d5de58af271
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2586
+      excerpt_sha256: 3d1b9ddec63be95445986ef63c18b6ceba963a2468eb14557a034d42f02eddf4
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-adsb-in-services
+    title: ADS-B Capabilities — Ins and Outs
+    checked_at_utc: 2026-09-20T20:25:24.230Z
+    linked_claim_ids:
+      - adsb-in-and-tisb-client-relationship
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      final_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a12
+      title: Ins and Outs | Federal Aviation Administration
+      truncated: false
+      content_sha256: 0dfb0ce396395e0ec7f68f28b2ba5ff66a50e6f266c6320b135c59ea6d8aa489
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      validation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      errors: []
+      valid: true
+      excerpt_characters: 4709
+      excerpt_sha256: 59ace3266ccd2547201d4fe79439e3f306ece46b853281081b9b4160423b0eeb
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: foreflight-sentry-pilot-guide
+    title: Sentry Pilot's Guide
+    checked_at_utc: 2026-09-20T20:25:21.071Z
+    linked_claim_ids:
+      - sentry-product-documentation-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      final_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a13
+      title: null
+      truncated: true
+      content_sha256: 7fd29dbf62694c2d9271c3d3dfc32dd90a93cde1343724929d9e4856e74eedbd
+      hash_truncated: false
+      citation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      validation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      errors: []
+      valid: true
+      pdf_page_number: 63
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1077
+      pdf_page_text_sha256: 09c7409de04a48fc6938dd7f166fb94a004519f95392144aaa5bef90608dc40d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

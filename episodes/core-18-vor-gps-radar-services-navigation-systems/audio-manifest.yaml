@@ -1,0 +1,97 @@
+episode_id: core-18
+current_candidate_render:
+  script_version: 0.2.5
+  rendered_at_utc: 2026-09-20T19:38:45.761Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 14
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: audio-artifacts/core-18-20260920T193437Z.mp3
+  lossless_master: audio-artifacts/core-18-20260920T193437Z.master.wav
+  voice_master: audio-artifacts/core-18-20260920T193437Z.voice.master.wav
+  render_manifest: audio-artifacts/core-18-20260920T193437Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-18-20260920T193437Z.audio-quality.json
+  chapter_review: audio-artifacts/core-18-20260920T193437Z.mp3.chapters.e3f7f6248b8def4719bee3e7f6ea4add17b6876439ec3f04783b1b779003bace.html
+  segment_work_dir: audio-artifacts/core-18-realtime-20260920T193437Z.segments
+  duration_seconds: 1894.43
+  duration_display: "31:34"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: e3f7f6248b8def4719bee3e7f6ea4add17b6876439ec3f04783b1b779003bace
+  music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade.
+  usage_estimate_usd: 2.663347
+  surgical_render:
+    source_work_dir: audio-artifacts/core-18-realtime-20260920T130851Z.segments
+    reused_segments: 55
+    api_rendered_segments: [43, 44, 45, 46, 47, 61]
+    api_usage_estimate_usd: 0.41406
+    reuse_contract: Reused segments have identical verified render-input hashes, including voice, instructions, continuity context, and spoken text.
+  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, all known stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Human script-aligned listening QA and manual chapter review remain pending.
+superseded_candidates:
+  - script_version: 0.2.3
+    rendered_at_utc: 2026-09-19T21:34:11.171Z
+    provider: openai-realtime
+    renderer: scripts/render_episode_realtime.cjs
+    renderer_version: 14
+    model: gpt-realtime-2.1
+    voices:
+      instructor: marin
+      learner: cedar
+      announcer: ballad
+    mp3: audio-artifacts/core-18-20260919T212649Z.mp3
+    lossless_master: audio-artifacts/core-18-20260919T212649Z.master.wav
+    voice_master: audio-artifacts/core-18-20260919T212649Z.voice.master.wav
+    render_manifest: audio-artifacts/core-18-20260919T212649Z.render-manifest.json
+    audio_quality_report: audio-artifacts/core-18-20260919T212649Z.audio-quality.json
+    chapter_review: audio-artifacts/core-18-20260919T212649Z.mp3.chapters.7f4e90f1ad0e6e591ef6d29dc6a46bda5d42c2d456d939a5e6e5cf5c92059f8b.html
+    segment_work_dir: audio-artifacts/core-18-realtime-20260919T212649Z.segments
+    duration_seconds: 1891.31
+    duration_display: 31:31
+    codec: mp3
+    sample_rate_hz: 24000
+    channels: 1
+    sha256: 7f4e90f1ad0e6e591ef6d29dc6a46bda5d42c2d456d939a5e6e5cf5c92059f8b
+    usage_estimate_usd: 2.654387
+    superseded_reason: "Renderer pronunciation correction: TO/FROM now renders as ‘to from’."
+  - script_version: 0.2.3
+    rendered_at_utc: 2026-09-20T13:16:41.466Z
+    provider: openai-realtime
+    renderer: scripts/render_episode_realtime.cjs
+    renderer_version: 14
+    model: gpt-realtime-2.1
+    voices:
+      instructor: marin
+      learner: cedar
+      announcer: ballad
+    mp3: audio-artifacts/core-18-20260920T130851Z.mp3
+    lossless_master: audio-artifacts/core-18-20260920T130851Z.master.wav
+    voice_master: audio-artifacts/core-18-20260920T130851Z.voice.master.wav
+    render_manifest: audio-artifacts/core-18-20260920T130851Z.render-manifest.json
+    audio_quality_report: audio-artifacts/core-18-20260920T130851Z.audio-quality.json
+    chapter_review: audio-artifacts/core-18-20260920T130851Z.mp3.chapters.a84c829b0267ba61e6ab3db768ec4248d89d56cada561a3eb57efe10f358516e.html
+    segment_work_dir: audio-artifacts/core-18-realtime-20260920T130851Z.segments
+    duration_seconds: 1856.71
+    duration_display: 30:57
+    codec: mp3
+    sample_rate_hz: 24000
+    channels: 1
+    sha256: a84c829b0267ba61e6ab3db768ec4248d89d56cada561a3eb57efe10f358516e
+    music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256
+      0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB
+      base and -30 dB under voice; 10-second intro lead, 5-second continuation,
+      0.5-second fade; 10-second outro continuation and 5-second fade.
+    usage_estimate_usd: 2.612675
+    validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono
+      format, duration agreement, all known stitch-boundary checks with no
+      discontinuity warnings, no clipped samples, and ffprobe-verified embedded
+      MP3 chapters. Human script-aligned listening QA and manual chapter review
+      remain pending.
+    superseded_reason: Corrected the radio-treatment boundary after the fictional
+      flight-following example.
+chapter_markers:
+  source: master-script.md section headings
+  audio_sha256: e3f7f6248b8def4719bee3e7f6ea4add17b6876439ec3f04783b1b779003bace
+  review_page: audio-artifacts/core-18-20260920T193437Z.mp3.chapters.e3f7f6248b8def4719bee3e7f6ea4add17b6876439ec3f04783b1b779003bace.html
+  required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast

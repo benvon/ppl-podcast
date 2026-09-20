@@ -1,0 +1,3765 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: formal_source_review
+run_id: 9af7c15e-720c-40ca-aed0-717e707eb6dc
+checked_at_utc: 2026-09-20T19:30:58.747Z
+sources_file: episodes/core-18-vor-gps-radar-services-navigation-systems/sources.yaml
+claims_file: episodes/core-18-vor-gps-radar-services-navigation-systems/claim-inventory.yaml
+show_notes_file: episodes/core-18-vor-gps-radar-services-navigation-systems/show-notes.md
+show_notes_manifest_file: episodes/core-18-vor-gps-radar-services-navigation-systems/show-notes-manifest.yaml
+input_sha256:
+  sources: b20029907aad8928182303c43b86c5abad300c9f1962fd8cbd57132b86357831
+  claims: 4b57c88485866520d62511f61bf5e00e67af7174ee4c07c5002579bd5244171c
+  master_script: 86bfad03495de3b9aa16fcc3fce9984b8fc3798613ffe8199597058fda3f2d1b
+  show_notes: cf8970af6d6d9ef4a4089aaf5a4d000231787285ea3a9f8ee49ad3bbf753ac8d
+  show_notes_manifest: 5b1698d456b4d04e1020ced25f0c746da0fda0555a46d718f46241394f82dbf2
+input_normalization:
+  master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: 86bfad03495de3b9aa16fcc3fce9984b8fc3798613ffe8199597058fda3f2d1b
+  show_notes: 06f0e73c26ef1a92f4d8e3a2c4a545c1395b25282b742823f5f91799209e2926
+llm_requested: true
+llm_model: gpt-5.6-terra
+llm_review_passes: 2
+llm_materiality_policy: safety-and-core-v1
+authorization:
+  qa_id: openai-source-review-authorization
+  attested_at_utc: 2026-09-20T19:29:14.529Z
+  run_id: 9af7c15e-720c-40ca-aed0-717e707eb6dc
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 84
+  claim_coverage_count: 26
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 25
+  manifest_link_count: 25
+show_notes_results:
+  - id: acs-navigation-systems-task
+    text: Private Pilot ACS Navigation Systems and Radar Services task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+    source_id: acs-navigation-systems-task
+    claim_ids:
+      - acs-navigation-systems-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-basics
+    text: PHAK VOR radial and line-of-sight picture
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+    source_id: phak-vor-basics
+    claim_ids:
+      - vor-radial-and-line-of-sight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 6cf0c9ab9b3b7e196cefd7b5e2e1e7571b01f64d5b42eb8ed99ca78cc6503fb0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-integrity
+    text: PHAK VOR identification and signal-integrity guidance
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+    source_id: phak-vor-integrity
+    claim_ids:
+      - vor-identification-and-signal-integrity
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4377
+      pdf_page_text_sha256: cd171b205c91a487ba86953f6c1600bc8636983fae56b0e80208604375534618
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: chart-users-guide-vor-identification
+    text: FAA Chart Users' Guide VOR identifier and Morse-code chart symbology
+    url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+    source_id: chart-users-guide-vor-identification
+    claim_ids:
+      - chart-vor-identifier
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a25 []
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 885
+      pdf_page_text_sha256: 6cbf24ce0da75cfb6cb9c410bed3f84e226ab7249a2f58a2758af11c475c258c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-indicator
+    text: PHAK CDI and HSI explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+    source_id: phak-vor-indicator
+    claim_ids:
+      - vor-course-indication
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3087
+      pdf_page_text_sha256: cee3b0d5590c62757741304c7d6547225015a955f721df85410050e2df0e140e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-dme
+    text: PHAK DME slant-range explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+    source_id: phak-dme
+    claim_ids:
+      - dme-distance-and-limitation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4620
+      pdf_page_text_sha256: 1689ef6bce959e762249646ee77b94eac28a66c52105b9b7ecff23234e835d8a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-vor-station-passage
+    text: PHAK VOR station-passage explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+    source_id: phak-vor-station-passage
+    claim_ids:
+      - vor-station-passage
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4742
+      pdf_page_text_sha256: 3a4a67283d868a2a9623ca7e79f3c092607cc034a74f6d126a3c043b52bd288a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-vor-mon
+    text: FAA VOR Minimum Operational Network overview
+    url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+    source_id: faa-vor-mon
+    claim_ids:
+      - vor-mon-backup-role
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a27 []
+      title: Navigation Programs - Very High Frequency Omnidirectional Range Minimum
+        Operational Network (VOR MON) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 671029de3bb48be844394918fb321915688ddeb6dc68b48d9fd69fa0736459cf
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 9298
+      excerpt_sha256: 35cc3005259297057fdd6aed93c70bc2f0f6e5252aedfe89c792f5f2e3ff73e2
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-ground-based-navigation
+    text: "FAA Ground-Based Navigation: VOR MON and NextGen DME"
+    url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+    source_id: faa-ground-based-navigation
+    claim_ids:
+      - nextgen-dme-role
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a29 []
+      title: Navigation Programs - Ground-Based Navigation (GBN) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: f723c68e03115691acdd624cd727dd1d6130f49ed2b09e63cb79cf8d4342480b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2138
+      excerpt_sha256: a2047b7f47860d933e43d9c995978aed57fd2ce42b7783655dab10d14551fe31
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-vor-mon-dme-dme
+    text: AIM VOR MON and DME/DME equipment roles during GNSS disruption
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+    source_id: aim-vor-mon-dme-dme
+    claim_ids:
+      - vor-mon-and-dme-dme-fallback-roles
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a31 []
+      title: Chapter 1. Air Navigation
+      truncated: false
+      content_sha256: b984fcad059fc156cd7e6ee21bae859d9da03521f5585ede6b40ffd5679dbe28
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 895a8c8db84757d58f0d7179964d09390144ab5ee8360ff24cd56c7f4307a6fd
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-nextgen-dme
+    text: FAA high-power DME and NextGen DME program overview
+    url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+    source_id: faa-nextgen-dme
+    claim_ids:
+      - nextgen-hpdme-resilience
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a33 []
+      title: GBN - Distance Measuring Equipment (DME) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: 954f3bf634aecb10bdd7e5e3d2ea989e5126b1d5201e45ed690945cd8533fbcd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2586
+      excerpt_sha256: 3d1b9ddec63be95445986ef63c18b6ceba963a2468eb14557a034d42f02eddf4
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-gps-integrity
+    text: PHAK GPS integrity and RAIM explanation
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+    source_id: phak-gps-integrity
+    claim_ids:
+      - gps-integrity-awareness
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      errors: []
+      valid: true
+      pdf_page_number: 31
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3777
+      pdf_page_text_sha256: 42bcdc6ffcaeaa2912b83df7eea31495ca8b65918254702ef9a552e7d1b151df
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-gps-vfr-integration
+    text: PHAK VFR GPS cross-check and database-currentness guidance
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+    source_id: phak-gps-vfr-integration
+    claim_ids:
+      - gps-cross-check-and-current-data
+      - gps-database-limit
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      errors: []
+      valid: true
+      pdf_page_number: 32
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4332
+      pdf_page_text_sha256: d45157a3bc528c4f832323bba3a2d746a345188d30f95d495c957427dc24ec42
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-gps-task-management
+    text: PHAK VFR GPS preparation and lookout guidance
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+    source_id: phak-gps-task-management
+    claim_ids:
+      - gps-preparation-and-lookout
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      errors: []
+      valid: true
+      pdf_page_number: 33
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5214
+      pdf_page_text_sha256: 5c27e24d033eead54b12dd31f2d3048771ef38ea655509eea0342d245ede9d3c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-radar-traffic-information
+    text: AIM radar traffic information service
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+    source_id: aim-radar-traffic-information
+    claim_ids:
+      - radar-traffic-service-limits
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a2 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7c234c51ca62b5cf2001501bdf631d9b3e457d81181beec7205c965bc8b7ddac
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-radar-assistance-vfr
+    text: AIM radar assistance to VFR aircraft
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+    source_id: aim-radar-assistance-vfr
+    claim_ids:
+      - radar-vectors-advisory
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bb716d6714bb85e6456f1f9cada7b34542296673fb09cb5690fd958768dc2a0e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-terminal-radar-vfr
+    text: AIM terminal radar services for VFR aircraft
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+    source_id: aim-terminal-radar-vfr
+    claim_ids:
+      - terminal-radar-service-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8eb3a8c5cffc1399488690a24c254e2ca3ae0793a6c8b73a77e9835f554cc5d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-transponder-code-operation
+    text: AIM transponder code and altitude-reporting operation
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+    source_id: aim-transponder-code-operation
+    claim_ids:
+      - atc-specified-code-operation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: b3d60caa9ba2a05621ce3fd89bebb40fea9aa5361506e3a467744903960724c8
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: jo7110-vfr-advisory-code
+    text: FAA Order JO 7110.65BB VFR beacon-code assignments
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+    source_id: jo7110-vfr-advisory-code
+    claim_ids:
+      - vfr-radar-beacon-code
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a19 []
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 10b5d422a6009da52bd4b0da2809745a91a3f9429f82a3d6776192eb17f015ef
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7aeb08c788815eebddda2cc3c8565659bcc4b5d5d1afa083d0b7f25589e71edf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: jo7110-radar-identification
+    text: FAA Order JO 7110.65BB radar identification methods
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+    source_id: jo7110-radar-identification
+    claim_ids:
+      - radar-identification-code-change
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a3 []
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 99b8fb69a3fa538dc186251b45c4886ae3a05cc4d3e955b8e15e70916b08c628
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      errors: []
+      valid: true
+      excerpt_characters: 5929
+      excerpt_sha256: 5371cd2e31c0f5945513d24f519f2f0eb0ed7c55f0bb4d6b007ab362af56ac44
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: jo7110-radar-service-prerequisite
+    text: FAA Order JO 7110.65BB radar-service identification prerequisite
+    url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+    source_id: jo7110-radar-service-prerequisite
+    claim_ids:
+      - radar-identification-before-service
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 99b8fb69a3fa538dc186251b45c4886ae3a05cc4d3e955b8e15e70916b08c628
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      errors: []
+      valid: true
+      excerpt_characters: 9000
+      excerpt_sha256: da88d281cba13a094671c91142f3009b39250ac02d948555b4270cad4eebb664
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-adsb-services
+    text: AIM ADS-B services
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+    source_id: aim-adsb-services
+    claim_ids:
+      - adsb-out-in-and-safety-value
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a4 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 192eb5681d40da3c65aca106781c4ddf01190b3c3fbf3effec33d06d4a3910b2
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bc5d34c411fcfa569d45aabd36f30e2b222956a40cdededc0b16996964cc0253
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-adsb-in-services
+    text: FAA ADS-B In, TIS-B, and ADS-R service explanation
+    url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+    source_id: faa-adsb-in-services
+    claim_ids:
+      - adsb-in-and-tisb-client-relationship
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      final_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a35 []
+      title: Ins and Outs | Federal Aviation Administration
+      truncated: false
+      content_sha256: 7c36930f1adf17cce9293bc475f44347386c85995c60b3110be49c99bc102a25
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      validation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      errors: []
+      valid: true
+      excerpt_characters: 4709
+      excerpt_sha256: 59ace3266ccd2547201d4fe79439e3f306ece46b853281081b9b4160423b0eeb
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-tisb
+    text: AIM TIS-B traffic-information service
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+    source_id: aim-tisb
+    claim_ids:
+      - tisb-traffic-awareness-and-limits
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 192eb5681d40da3c65aca106781c4ddf01190b3c3fbf3effec33d06d4a3910b2
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      errors: []
+      valid: true
+      excerpt_characters: 8077
+      excerpt_sha256: 25236e5bfd73ad22a105a535b793a75c670ebfcef1b1de7a4709c271b48ab32e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: foreflight-sentry-pilot-guide
+    text: ForeFlight Sentry Pilot's Guide
+    url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+    source_id: foreflight-sentry-pilot-guide
+    claim_ids:
+      - sentry-product-documentation-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      final_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a37 []
+      title: null
+      truncated: true
+      content_sha256: 7fd29dbf62694c2d9271c3d3dfc32dd90a93cde1343724929d9e4856e74eedbd
+      hash_truncated: false
+      citation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      validation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      errors: []
+      valid: true
+      pdf_page_number: 63
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1077
+      pdf_page_text_sha256: 09c7409de04a48fc6938dd7f166fb94a004519f95392144aaa5bef90608dc40d
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-navigation-systems-task
+    title: Private Pilot for Airplane Category ACS
+    checked_at_utc: 2026-09-20T19:29:14.530Z
+    linked_claim_ids:
+      - acs-navigation-systems-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a6
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page contains Task PA.VI.B, Navigation Systems and
+            Radar Services. Its Knowledge elements expressly cover ground-based
+            navigation, satellite-based navigation, radar assistance to VFR
+            aircraft, and transponder/ADS-B. Its Risk Management elements
+            expressly cover automated navigation/autoflight management,
+            distractions/task prioritization/loss of situational awareness or
+            disorientation, navigation-system limitations, and loss of a
+            navigation signal.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is printed page 39 and contains PA.VI.B,
+              Navigation Systems and Radar Services, including the cited
+              knowledge and risk-management elements.
+          claim_assessments:
+            - claim_id: acs-navigation-systems-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.VI.B.K1–K4 and PA.VI.B.R1–R4 directly support all listed subject
+                areas.
+        usage:
+          input_tokens: 1556
+          input_tokens_details:
+            cache_write_tokens: 1553
+            cached_tokens: 0
+          output_tokens: 271
+          output_tokens_details:
+            reasoning_tokens: 57
+          total_tokens: 1827
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page for Task PA.VI.B explicitly lists the stated
+            knowledge areas and risk-management elements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies PA.VI.B on PDF viewer page 47/printed page 39,
+              and the supplied excerpt is from that exact task and page.
+          claim_assessments:
+            - claim_id: acs-navigation-systems-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.VI.B.K1–K4 cover ground-based navigation, satellite-based
+                navigation, radar assistance to VFR aircraft, and
+                transponder/ADS-B. PA.VI.B.R1–R4 cover automation management,
+                distractions, navigation-system limitations, and
+                navigation-signal loss.
+        usage:
+          input_tokens: 1556
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1553
+          output_tokens: 249
+          output_tokens_details:
+            reasoning_tokens: 65
+          total_tokens: 1805
+    relevance: *a6
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-vor-basics
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:14.559Z
+    linked_claim_ids:
+      - vor-radial-and-line-of-sight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 6cf0c9ab9b3b7e196cefd7b5e2e1e7571b01f64d5b42eb8ed99ca78cc6503fb0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a7
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page defines a VOR radial as a magnetic-bearing line
+            extending outward from the VOR station and states that VOR VHF
+            transmissions are subject to line-of-sight restrictions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt was extracted from cited PDF page 16-22, and that page
+              contains the relevant VOR radial and line-of-sight statements.
+          claim_assessments:
+            - claim_id: vor-radial-and-line-of-sight
+              verdict: supports
+              finding_materiality: none
+              rationale: The source states that VOR courses/radials are referenced to magnetic
+                north and defines a radial as a line of magnetic bearing
+                extending outward from the station. It also states that, because
+                VOR equipment is VHF, its transmitted signals are subject to
+                line-of-sight restrictions.
+        usage:
+          input_tokens: 1910
+          input_tokens_details:
+            cache_write_tokens: 1907
+            cached_tokens: 0
+          output_tokens: 240
+          output_tokens_details:
+            reasoning_tokens: 39
+          total_tokens: 2150
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page explicitly states that a VOR projects
+            straight-line courses (radials) outward from the station, that
+            radials are magnetic bearings extending outward from the station,
+            and that VOR VHF signals are subject to line-of-sight restrictions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is PDF page 16-22, and the supplied excerpt from
+              that exact page contains the relevant VOR radial and line-of-sight
+              statements.
+          claim_assessments:
+            - claim_id: vor-radial-and-line-of-sight
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt defines a radial as a line of magnetic bearing extending
+                outward from the VOR station and states that VOR transmissions,
+                because they are VHF, are subject to line-of-sight restrictions.
+        usage:
+          input_tokens: 1910
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1907
+          output_tokens: 233
+          output_tokens_details:
+            reasoning_tokens: 32
+          total_tokens: 2143
+    relevance: *a7
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-vor-integrity
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:15.821Z
+    linked_claim_ids:
+      - vor-identification-and-signal-integrity
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4377
+      pdf_page_text_sha256: cd171b205c91a487ba86953f6c1600bc8636983fae56b0e80208604375534618
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a8
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The cited PDF page directly supports the claim: it states that VOR
+            stations can be positively identified by Morse code or a recorded
+            name followed by “VOR”; removal of the coded identification alerts
+            pilots that the station is out of service and should not be used for
+            navigation; and the alarm flag indicates signal strength inadequate
+            to operate the navigation equipment."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 16-23 and contains the VOR
+              identification, out-of-service coded-identification, and
+              alarm-flag material described by the locator.
+          claim_assessments:
+            - claim_id: vor-identification-and-signal-integrity
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly supports coded or recorded VOR identification,
+                states that removed coded identification indicates an
+                out-of-service station that should not be used for navigation,
+                and explains that an alarm flag indicates inadequate signal
+                strength to operate the navigation equipment.
+        usage:
+          input_tokens: 2072
+          input_tokens_details:
+            cache_write_tokens: 2069
+            cached_tokens: 0
+          output_tokens: 334
+          output_tokens_details:
+            reasoning_tokens: 108
+          total_tokens: 2406
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page states that a VOR can be positively identified by
+            Morse code or a recorded voice identification consisting of the
+            station name followed by “VOR.” It states that coded identification
+            is removed when a VOR is out of service and that this alerts pilots
+            not to use it for navigation. It also states that the receiver alarm
+            flag indicates inadequate signal strength to operate the navigation
+            equipment.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 23 and directly contains the
+              identification, removed-identification, and alarm-flag statements
+              needed for the claim.
+          claim_assessments:
+            - claim_id: vor-identification-and-signal-integrity
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports positive identification by coded or
+                recorded identification, removal of the coded identification as
+                an out-of-service warning not to use the station for navigation,
+                and the alarm flag as an indication of inadequate signal
+                strength for navigation equipment operation.
+        usage:
+          input_tokens: 2072
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2069
+          output_tokens: 323
+          output_tokens_details:
+            reasoning_tokens: 94
+          total_tokens: 2395
+    relevance: *a8
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-vor-indicator
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:17.392Z
+    linked_claim_ids:
+      - vor-course-indication
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3087
+      pdf_page_text_sha256: cee3b0d5590c62757741304c7d6547225015a955f721df85410050e2df0e140e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a9
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page explains that a VOR CDI indicates the aircraft’s
+            relationship to the selected radial/course and provides TO/FROM
+            information. It also explains that the HSI displays aircraft
+            position relative to the selected course and that its TO/FROM
+            indicator establishes whether the selected course leads toward or
+            away from the facility. The page states that a NAV warning flag
+            indicates no reliable signal is being received.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 16-24 and directly contains the
+              VOR indicator and HSI explanations relevant to the claim.
+          claim_assessments:
+            - claim_id: vor-course-indication
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt supports the selected-course relationship, TO/FROM
+                orientation, and the meaning of the NAV warning flag.
+        usage:
+          input_tokens: 1978
+          input_tokens_details:
+            cache_write_tokens: 1975
+            cached_tokens: 0
+          output_tokens: 306
+          output_tokens_details:
+            reasoning_tokens: 107
+          total_tokens: 2284
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page explains that the CDI/HSI course-deviation indication
+            shows the aircraft’s relationship to a selected course or radial,
+            describes TO/FROM orientation, and states that a NAV warning flag
+            indicates that no reliable signal is being received.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited PDF page 16-24 and directly contains
+              the relevant CDI, HSI, TO/FROM, and NAV warning-flag discussion.
+          claim_assessments:
+            - claim_id: vor-course-indication
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that the HSI indicates the aircraft’s location
+                relative to the chosen/selected course or radial, describes the
+                TO/FROM indicator’s toward/away direction sense, and states that
+                the NAV warning flag means no reliable signal is being received.
+                It also describes the conventional VOR/LOC CDI needle as
+                indicating deviation from the selected course.
+        usage:
+          input_tokens: 1978
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1975
+          output_tokens: 349
+          output_tokens_details:
+            reasoning_tokens: 126
+          total_tokens: 2327
+    relevance: *a9
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-dme
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:17.418Z
+    linked_claim_ids:
+      - dme-distance-and-limitation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4620
+      pdf_page_text_sha256: 1689ef6bce959e762249646ee77b94eac28a66c52105b9b7ecff23234e835d8a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a10
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page states that DME measures slant-range distance in NM
+            from an aircraft to a VOR/DME or VORTAC, and defines slant range as
+            the direct distance between the aircraft and facility that is
+            affected by aircraft altitude. This supports the claim that it is
+            not merely horizontal chart distance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page contains the beginning of the “Distance Measuring
+              Equipment (DME)” section and directly states the relevant
+              slant-range and altitude concepts.
+          claim_assessments:
+            - claim_id: dme-distance-and-limitation
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt explicitly says DME measures slant-range distance to a
+                VOR/DME or VORTAC and that this direct distance is affected by
+                aircraft altitude.
+        usage:
+          input_tokens: 2112
+          input_tokens_details:
+            cache_write_tokens: 2109
+            cached_tokens: 0
+          output_tokens: 250
+          output_tokens_details:
+            reasoning_tokens: 50
+          total_tokens: 2362
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that DME measures slant-range distance in NM from
+            a VOR/DME or VORTAC, defines slant range as the direct distance
+            between the aircraft and facility, and states that it is affected by
+            aircraft altitude.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-27, which contains the beginning of the
+              DME section and the statements supporting the claim.
+          claim_assessments:
+            - claim_id: dme-distance-and-limitation
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt's statements that DME
+                displays slant-range distance to or from a VORTAC and that this
+                direct aircraft-to-station distance is affected by altitude,
+                rather than being merely horizontal chart distance.
+        usage:
+          input_tokens: 2112
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2109
+          output_tokens: 253
+          output_tokens_details:
+            reasoning_tokens: 57
+          total_tokens: 2365
+    relevance: *a10
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-vor-station-passage
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:17.455Z
+    linked_claim_ids:
+      - vor-station-passage
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4742
+      pdf_page_text_sha256: 3a4a67283d868a2a9623ca7e79f3c092607cc034a74f6d126a3c043b52bd288a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a11
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page expressly states that as the VOR station is passed,
+            the course deviation needle fluctuates and then settles down while
+            the TO indication changes to FROM.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-26, and the quoted station-passage
+              statement appears in the supplied excerpt from that page.
+          claim_assessments:
+            - claim_id: vor-station-passage
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt directly supports the claim: “As the VOR station is
+                passed, the course deviation needle fluctuates, then settles
+                down, and the ‘TO’ indication changes to ‘FROM.’”"
+        usage:
+          input_tokens: 1827
+          input_tokens_details:
+            cache_write_tokens: 1824
+            cached_tokens: 0
+          output_tokens: 170
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1997
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited excerpt explicitly states that as the VOR station is
+            passed, the course deviation needle fluctuates, then settles down,
+            and the TO indication changes to FROM.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt was extracted from cited PDF page 26 and contains the
+              exact station-passage statement.
+          claim_assessments:
+            - claim_id: vor-station-passage
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately restates the excerpt's description of CDI
+                behavior and TO-to-FROM change at VOR station passage.
+        usage:
+          input_tokens: 1827
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1824
+          output_tokens: 148
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1975
+    relevance: *a11
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-gps-integrity
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:17.474Z
+    linked_claim_ids:
+      - gps-integrity-awareness
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31
+      errors: []
+      valid: true
+      pdf_page_number: 31
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3777
+      pdf_page_text_sha256: 42bcdc6ffcaeaa2912b83df7eea31495ca8b65918254702ef9a552e7d1b151df
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a12
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page directly explains RAIM as receiver autonomous
+            integrity monitoring, describes its two general alert conditions,
+            and states that without RAIM capability the pilot has no assurance
+            of GPS position accuracy.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: "The cited locator is correct: PDF page 16-31 contains the GPS and
+              RAIM discussion used by the claim."
+          claim_assessments:
+            - claim_id: gps-integrity-awareness
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that RAIM verifies signal integrity, that alerts
+                generally indicate either insufficient satellites for RAIM
+                monitoring or a detected potential error exceeding the limit for
+                the current flight phase, and that without RAIM capability the
+                pilot has no assurance of GPS position accuracy.
+        usage:
+          input_tokens: 1830
+          input_tokens_details:
+            cache_write_tokens: 1827
+            cached_tokens: 0
+          output_tokens: 262
+          output_tokens_details:
+            reasoning_tokens: 76
+          total_tokens: 2092
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page explicitly describes RAIM as a receiver
+            integrity-monitoring function, identifies alerts for insufficient
+            satellites and for a detected potential error exceeding the
+            applicable phase-of-flight limit, and states that without RAIM
+            capability the pilot has no assurance of GPS position accuracy.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt was extracted from cited PDF page 16-31, and the GPS/RAIM
+              discussion appears on that page.
+          claim_assessments:
+            - claim_id: gps-integrity-awareness
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports all material elements of the claim.
+        usage:
+          input_tokens: 1830
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1827
+          output_tokens: 230
+          output_tokens_details:
+            reasoning_tokens: 70
+          total_tokens: 2060
+    relevance: *a12
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-gps-vfr-integration
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:17.486Z
+    linked_claim_ids:
+      - gps-cross-check-and-current-data
+      - gps-database-limit
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32
+      errors: []
+      valid: true
+      pdf_page_number: 32
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4332
+      pdf_page_text_sha256: d45157a3bc528c4f832323bba3a2d746a345188d30f95d495c957427dc24ec42
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a13
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page contains the "VFR Use of GPS" discussion and
+            directly supports both listed guidance claims concerning integrated
+            navigation and database currency.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 16-32 and includes VFR GPS use,
+              database-currency limitations, and antenna-location limitations as
+              described by the locator.
+          claim_assessments:
+            - claim_id: gps-cross-check-and-current-data
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that VFR pilots should never rely solely on one
+                navigation system and that GPS must be integrated with other
+                electronic navigation, pilotage, and dead reckoning.
+            - claim_id: gps-database-limit
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that an outdated database can make moving-map
+                information erroneous for critical airspace/navigation
+                decisions, directs pilots to disregard the moving map for
+                critical decisions when the database is not current, and
+                requires verification of named waypoint locations against an
+                official current source when the database is not updated.
+        usage:
+          input_tokens: 2051
+          input_tokens_details:
+            cache_write_tokens: 2048
+            cached_tokens: 0
+          output_tokens: 293
+          output_tokens_details:
+            reasoning_tokens: 44
+          total_tokens: 2344
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page directly supports both listed VFR GPS guidance
+            claims, including integration with other navigation methods and
+            limitations associated with outdated databases.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies the VFR GPS discussion on PDF page
+              16-32, including database currency and antenna-location
+              limitations.
+          claim_assessments:
+            - claim_id: gps-cross-check-and-current-data
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that VFR pilots should never rely solely on one
+                navigation system and that GPS must be integrated with other
+                electronic navigation, pilotage, and dead reckoning.
+            - claim_id: gps-database-limit
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that an outdated database can make moving-map
+                information erroneous for critical airspace decisions and that,
+                without a current database, the pilot must verify a named
+                waypoint against an official current source.
+        usage:
+          input_tokens: 2051
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2048
+          output_tokens: 374
+          output_tokens_details:
+            reasoning_tokens: 151
+          total_tokens: 2425
+    relevance: *a13
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-gps-task-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-20T19:29:17.508Z
+    linked_claim_ids:
+      - gps-preparation-and-lookout
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33
+      errors: []
+      valid: true
+      pdf_page_number: 33
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5214
+      pdf_page_text_sha256: 5c27e24d033eead54b12dd31f2d3048771ef38ea655509eea0342d245ede9d3c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a14
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page expressly directs pilots to enter user-defined
+            waypoints before flight, minimize head-down time, and maintain a
+            sharp lookout for traffic, terrain, and obstacles.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-33 and contains the quoted GPS
+              VFR-operation guidance.
+          claim_assessments:
+            - claim_id: gps-preparation-and-lookout
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt states: “If navigating to user-defined waypoints, enter
+                them prior to flight, not on the fly,” and directs pilots to
+                “Minimize head-down time ... and maintain a sharp lookout for
+                traffic, terrain, and obstacles.”"
+        usage:
+          input_tokens: 1775
+          input_tokens_details:
+            cache_write_tokens: 1772
+            cached_tokens: 0
+          output_tokens: 174
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1949
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page directly states that user-defined waypoints should
+            be entered prior to flight, pilots should minimize head-down time,
+            and they should maintain a sharp lookout for traffic, terrain, and
+            obstacles.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is the exact PDF page containing the stated
+              GPS-preparation and lookout guidance.
+          claim_assessments:
+            - claim_id: gps-preparation-and-lookout
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt expressly directs pilots to enter user-defined waypoints
+                before flight rather than on the fly, minimize head-down time,
+                and maintain a sharp lookout for traffic, terrain, and
+                obstacles.
+        usage:
+          input_tokens: 1775
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1772
+          output_tokens: 168
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1943
+    relevance: *a14
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-radar-traffic-information
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T19:29:17.514Z
+    linked_claim_ids:
+      - radar-traffic-service-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7c234c51ca62b5cf2001501bdf631d9b3e457d81181beec7205c965bc8b7ddac
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a15
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that radar traffic information advises pilots of
+            observed targets that may be close enough to their position or
+            intended route to warrant attention; it also expressly says the
+            service does not relieve pilots of continual see-and-avoid
+            vigilance. It further identifies radar limitations, traffic volume,
+            controller workload, and frequency congestion as factors that can
+            prevent or discontinue the service.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, AIM 4-1-15, is the section in the excerpt that
+              contains the stated purpose, pilot responsibility, and service
+              limitations.
+          claim_assessments:
+            - claim_id: radar-traffic-service-limits
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the section's description of traffic
+                calls, discretionary and limitation-dependent availability, and
+                the continuing pilot responsibility to see and avoid other
+                aircraft.
+        usage:
+          input_tokens: 3380
+          input_tokens_details:
+            cache_write_tokens: 3377
+            cached_tokens: 0
+          output_tokens: 324
+          output_tokens_details:
+            reasoning_tokens: 117
+          total_tokens: 3704
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that radar traffic information alerts pilots to
+            observed radar targets that may warrant attention, that the service
+            does not relieve pilots of continual see-and-avoid vigilance, and
+            that radar limitations, traffic volume, controller workload, and
+            frequency congestion may prevent or discontinue the service.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies AIM paragraph 4-1-15, and the
+              excerpt contains the cited provisions.
+          claim_assessments:
+            - claim_id: radar-traffic-service-limits
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt's purpose, the pilot's
+                continuing see-and-avoid responsibility, and the service
+                limitations arising from radar limitations, traffic volume,
+                workload, and frequency congestion.
+        usage:
+          input_tokens: 3380
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3377
+          output_tokens: 258
+          output_tokens_details:
+            reasoning_tokens: 69
+          total_tokens: 3638
+    relevance: *a15
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-radar-assistance-vfr
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T19:29:17.523Z
+    linked_claim_ids:
+      - radar-vectors-advisory
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bb716d6714bb85e6456f1f9cada7b34542296673fb09cb5690fd958768dc2a0e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a16
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM passage states that VFR radar assistance/vectors
+            require communication with the facility, radar coverage, and radar
+            identification. It also states that radar navigational guidance is
+            advisory, does not authorize CFR violations, and does not transfer
+            responsibility for safely flying the aircraft from the pilot.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The relevant statements appear in AIM 4-1-17, within the cited
+              paragraph range.
+          claim_assessments:
+            - claim_id: radar-vectors-advisory
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt directly supports every material condition in the claim:
+                communication, radar coverage, radar identification, advisory
+                guidance, no authorization to violate regulations, and retained
+                pilot responsibility for safe operation."
+        usage:
+          input_tokens: 3320
+          input_tokens_details:
+            cache_write_tokens: 3317
+            cached_tokens: 0
+          output_tokens: 285
+          output_tokens_details:
+            reasoning_tokens: 98
+          total_tokens: 3605
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM section states that VFR radar assistance and vectors
+            are provided only when the aircraft can communicate with the
+            facility, is within radar coverage, and can be radar identified. It
+            also states that the guidance is advisory, does not authorize CFR
+            violations, and leaves safe operation of the aircraft with the
+            pilot.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Section 4-1-17, paragraphs a through e, is the relevant locator for
+              the stated conditions and pilot-responsibility limitations on VFR
+              radar assistance and vectors.
+          claim_assessments:
+            - claim_id: radar-vectors-advisory
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt directly supports every material condition in the claim:
+                communication, radar coverage, and radar identification are
+                required; vector guidance is advisory; it does not authorize
+                regulatory violations; and the pilot remains responsible for
+                safely flying the aircraft."
+        usage:
+          input_tokens: 3320
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3317
+          output_tokens: 321
+          output_tokens_details:
+            reasoning_tokens: 104
+          total_tokens: 3641
+    relevance: *a16
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-terminal-radar-vfr
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T19:29:17.642Z
+    linked_claim_ids:
+      - terminal-radar-service-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8eb3a8c5cffc1399488690a24c254e2ca3ae0793a6c8b73a77e9835f554cc5d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a17
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt in AIM 4-1-18 states that basic radar services for VFR
+            aircraft include safety alerts, traffic advisories, limited radar
+            vectoring on a workload-permitting basis, and sequencing where
+            procedures or a Letter of Agreement establish it. It also expressly
+            states that standard radar separation between VFR aircraft or
+            between VFR and IFR aircraft is not provided under the VFR
+            sequencing/basic-service context.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is AIM paragraph 4-1-18, and the supplied excerpt
+              is from that paragraph and directly contains the claimed
+              basic-service scope and separation limitation.
+          claim_assessments:
+            - claim_id: terminal-radar-service-scope
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the listed basic VFR radar services and
+                the excerpt's statement that standard radar separation between
+                VFR aircraft, or between VFR and IFR aircraft, is not provided
+                under basic service.
+        usage:
+          input_tokens: 3272
+          input_tokens_details:
+            cache_write_tokens: 3269
+            cached_tokens: 0
+          output_tokens: 272
+          output_tokens_details:
+            reasoning_tokens: 43
+          total_tokens: 3544
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly states that all commissioned terminal radar
+            facilities provide VFR basic radar services including safety alerts,
+            traffic advisories, limited radar vectoring on a workload-permitting
+            basis, and sequencing where local procedures and/or a Letter of
+            Agreement establish it. It also expressly states that standard radar
+            separation between VFR aircraft or between VFR and IFR aircraft is
+            not provided under basic service.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, AIM 4-1-18, is the section containing the stated
+              Basic Radar Service provisions for VFR aircraft.
+          claim_assessments:
+            - claim_id: terminal-radar-service-scope
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt's list of basic VFR radar
+                services and its explicit limitation that standard radar
+                separation between VFR aircraft, or between VFR and IFR
+                aircraft, is not provided.
+        usage:
+          input_tokens: 3272
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3269
+          output_tokens: 245
+          output_tokens_details:
+            reasoning_tokens: 29
+          total_tokens: 3517
+    relevance: *a17
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-transponder-code-operation
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T19:29:17.642Z
+    linked_claim_ids:
+      - atc-specified-code-operation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a2
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: db5c75d7f4b7c37285f98176974f0495d7f74de603c99e7c5b4bce4c2ab18b87
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: b3d60caa9ba2a05621ce3fd89bebb40fea9aa5361506e3a467744903960724c8
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a18
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly states that pilots should adjust the
+            transponder/ADS-B to reply on the Mode 3/A code specified by ATC
+            with altitude reporting enabled, unless otherwise directed by ATC or
+            unless the altitude-reporting equipment has not been tested and
+            calibrated as required by 14 CFR 91.217. This supports the listed
+            operational-procedure claim and the matching statements in the
+            authored passages.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator, AIM paragraph 4-1-20, directly contains the cited Mode
+              3/A code and altitude-reporting instruction.
+          claim_assessments:
+            - claim_id: atc-specified-code-operation
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports operation on the ATC-specified Mode 3/A
+                code with altitude reporting enabled, subject to ATC direction
+                and the stated equipment testing/calibration exception.
+        usage:
+          input_tokens: 3434
+          input_tokens_details:
+            cache_write_tokens: 3431
+            cached_tokens: 0
+          output_tokens: 214
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3648
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly states that pilots should adjust the
+            transponder/ADS-B to reply on the Mode 3/A code specified by ATC
+            with altitude reporting enabled, unless otherwise directed by ATC or
+            the equipment has not been tested and calibrated as required by 14
+            CFR 91.217.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, AIM paragraph 4-1-20, contains the stated
+              transponder/ADS-B code and altitude-reporting procedure.
+          claim_assessments:
+            - claim_id: atc-specified-code-operation
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt's instruction and its
+                stated exceptions.
+        usage:
+          input_tokens: 3434
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3431
+          output_tokens: 218
+          output_tokens_details:
+            reasoning_tokens: 44
+          total_tokens: 3652
+    relevance: *a18
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: jo7110-vfr-advisory-code
+    title: FAA Order JO 7110.65BB, Air Traffic Control
+    checked_at_utc: 2026-09-20T19:29:17.644Z
+    linked_claim_ids:
+      - vfr-radar-beacon-code
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a19
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 10b5d422a6009da52bd4b0da2809745a91a3f9429f82a3d6776192eb17f015ef
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7aeb08c788815eebddda2cc3c8565659bcc4b5d5d1afa083d0b7f25589e71edf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a20
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The excerpt states: “For VFR aircraft receiving radar advisories,
+            issue a computer-assigned beacon code,” which directly supports the
+            listed controller-procedure claim."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, JO 7110.65BB paragraph 5-2-7(a), corresponds to
+              the excerpt’s VFR code-assignment instruction.
+          claim_assessments:
+            - claim_id: vfr-radar-beacon-code
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately restates the excerpt’s instruction that
+                controllers issue a computer-assigned beacon code to VFR
+                aircraft receiving radar advisories.
+        usage:
+          input_tokens: 3635
+          input_tokens_details:
+            cache_write_tokens: 3632
+            cached_tokens: 0
+          output_tokens: 247
+          output_tokens_details:
+            reasoning_tokens: 80
+          total_tokens: 3882
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The cited excerpt in paragraph 5-2-7 expressly states: “For VFR
+            aircraft receiving radar advisories, issue a computer-assigned
+            beacon code.” This directly supports the listed claim."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies paragraph 5-2-7, and the claimed procedure
+              appears directly in that paragraph.
+          claim_assessments:
+            - claim_id: vfr-radar-beacon-code
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately restates the controller procedure specified in
+                the excerpt.
+        usage:
+          input_tokens: 3635
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3632
+          output_tokens: 147
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3782
+    relevance: *a20
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: jo7110-radar-identification
+    title: FAA Order JO 7110.65BB, Air Traffic Control
+    checked_at_utc: 2026-09-20T19:29:17.644Z
+    linked_claim_ids:
+      - radar-identification-code-change
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 99b8fb69a3fa538dc186251b45c4886ae3a05cc4d3e955b8e15e70916b08c628
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3
+      errors: []
+      valid: true
+      excerpt_characters: 5929
+      excerpt_sha256: 5371cd2e31c0f5945513d24f519f2f0eb0ed7c55f0bb4d6b007ab362af56ac44
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a21
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited paragraph expressly authorizes establishing beacon/ADS-B
+            identification by requesting a pilot change to a specific discrete
+            or nondiscrete code and observing the target or code display change.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, paragraph 5-3-3.a.2, corresponds to the
+              code-change identification method stated in the excerpt.
+          claim_assessments:
+            - claim_id: radar-identification-code-change
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt directly states that ATC may request a specific discrete
+                or nondiscrete code change and then observe the target or code
+                display change to identify the target.
+        usage:
+          input_tokens: 2245
+          input_tokens_details:
+            cache_write_tokens: 2242
+            cached_tokens: 0
+          output_tokens: 215
+          output_tokens_details:
+            reasoning_tokens: 46
+          total_tokens: 2460
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited section expressly permits beacon/ADS-B identification by
+            requesting the pilot change to a specific discrete or nondiscrete
+            code and observing the target or code-display change.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, 5-3-3 paragraph a.2, corresponds to the
+              code-change identification method stated in the excerpt.
+          claim_assessments:
+            - claim_id: radar-identification-code-change
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt directly states this identification method and its
+                required observation of the target or code display change.
+        usage:
+          input_tokens: 2245
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2242
+          output_tokens: 246
+          output_tokens_details:
+            reasoning_tokens: 92
+          total_tokens: 2491
+    relevance: *a21
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: jo7110-radar-service-prerequisite
+    title: FAA Order JO 7110.65BB, Air Traffic Control
+    checked_at_utc: 2026-09-20T19:29:17.719Z
+    linked_claim_ids:
+      - radar-identification-before-service
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 5. Radar
+      truncated: false
+      content_sha256: 99b8fb69a3fa538dc186251b45c4886ae3a05cc4d3e955b8e15e70916b08c628
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1
+      errors: []
+      valid: true
+      excerpt_characters: 9000
+      excerpt_sha256: da88d281cba13a094671c91142f3009b39250ac02d948555b4270cad4eebb664
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a22
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt’s paragraph 5-3-1 states that, before providing radar
+            service, controllers must establish and maintain radar
+            identification, with specified exceptions in other controller-order
+            paragraphs.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Locator 5-3-1, Application, directly contains the cited prerequisite
+              and its exception qualification.
+          claim_assessments:
+            - claim_id: radar-identification-before-service
+              verdict: supports
+              finding_materiality: none
+              rationale: Paragraph 5-3-1 explicitly requires establishment and maintenance of
+                radar identification before radar service, except as provided in
+                specified paragraphs.
+        usage:
+          input_tokens: 2883
+          input_tokens_details:
+            cache_write_tokens: 2880
+            cached_tokens: 0
+          output_tokens: 154
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3037
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited section, 5-3-1, expressly states that before providing
+            radar service, controllers must establish and maintain radar
+            identification, except as provided in specified exceptions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator is section 5-3-1, “Application,” and the excerpt contains
+              the stated prerequisite and its referenced exceptions.
+          claim_assessments:
+            - claim_id: radar-identification-before-service
+              verdict: supports
+              finding_materiality: none
+              rationale: "Section 5-3-1 directly supports the claim: radar identification must
+                be established and maintained before radar service is provided,
+                subject to listed controller-order exceptions."
+        usage:
+          input_tokens: 2883
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2880
+          output_tokens: 219
+          output_tokens_details:
+            reasoning_tokens: 52
+          total_tokens: 3102
+    relevance: *a22
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-adsb-services
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T19:29:17.719Z
+    linked_claim_ids:
+      - adsb-out-in-and-safety-value
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 192eb5681d40da3c65aca106781c4ddf01190b3c3fbf3effec33d06d4a3910b2
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: bc5d34c411fcfa569d45aabd36f30e2b222956a40cdededc0b16996964cc0253
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a23
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly defines ADS-B Out as transmission of aircraft
+            ADS-B information and ADS-B In as receipt of information; states
+            onboard avionics determine position using GNSS and transmit position
+            plus additional aircraft information; identifies TIS-B and FIS-B as
+            benefits of ADS-B In; and states that ADS-B traffic displays are
+            advisory aids for visual acquisition that do not relieve the pilot's
+            see-and-avoid responsibility.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited AIM section 4-5-7 contains the relevant ADS-B Out/In
+              definitions, ADS-B In service benefits, and the stated limitations
+              on ADS-B traffic-display use.
+          claim_assessments:
+            - claim_id: adsb-out-in-and-safety-value
+              verdict: supports
+              finding_materiality: none
+              rationale: "The source supports each material component: ADS-B Out transmits
+                GNSS-derived position and additional information; ADS-B In
+                receives information; ADS-B In provides TIS-B and FIS-B
+                benefits; and the traffic display is only an aid to visual
+                acquisition and does not replace see-and-avoid responsibility."
+        usage:
+          input_tokens: 3316
+          input_tokens_details:
+            cache_write_tokens: 3313
+            cached_tokens: 0
+          output_tokens: 252
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3568
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly distinguishes ADS-B Out as aircraft transmission
+            of ADS-B information, including GNSS-derived position and additional
+            aircraft information, from ADS-B In as receipt of information. It
+            states that ADS-B In-equipped operators receive TIS-B traffic and
+            FIS-B flight-information benefits, and that cockpit traffic displays
+            are advisory aids for visual acquisition only and do not relieve the
+            pilot of see-and-avoid responsibility.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited AIM section 4-5-7 contains the stated definitions, ADS-B In
+              service benefits, and the limitation that ADS-B traffic displays
+              support visual acquisition rather than replace see-and-avoid.
+          claim_assessments:
+            - claim_id: adsb-out-in-and-safety-value
+              verdict: supports
+              finding_materiality: none
+              rationale: "The source supports each material element: ADS-B Out transmits
+                GNSS-derived position and related aircraft information; ADS-B In
+                receives information; ADS-B In provides traffic and
+                flight-information service benefits; and the traffic display is
+                only for assisting visual acquisition and does not replace
+                see-and-avoid responsibility."
+        usage:
+          input_tokens: 3316
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3313
+          output_tokens: 253
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3569
+    relevance: *a23
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-tisb
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T19:29:17.770Z
+    linked_claim_ids:
+      - tisb-traffic-awareness-and-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a4
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 192eb5681d40da3c65aca106781c4ddf01190b3c3fbf3effec33d06d4a3910b2
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8
+      errors: []
+      valid: true
+      excerpt_characters: 8077
+      excerpt_sha256: 25236e5bfd73ad22a105a535b793a75c670ebfcef1b1de7a4709c271b48ab32e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a24
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM section directly states that TIS-B is an advisory-only
+            service intended to provide ADS-B-equipped aircraft a more complete
+            traffic picture where nearby aircraft may not have ADS-B Out. It
+            also states that service depends on adequate ground surveillance and
+            ADS-B broadcast coverage, that only transponder-equipped targets are
+            uplinked, and that TIS-B supports visual acquisition rather than
+            collision avoidance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies AIM paragraph 4-5-8, which contains
+              the cited TIS-B capabilities, requirements, and limitations.
+          claim_assessments:
+            - claim_id: tisb-traffic-awareness-and-limits
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt supports every material element: TIS-B can improve the
+                traffic picture for ADS-B-equipped aircraft when some nearby
+                aircraft lack ADS-B Out; availability depends on surveillance
+                and broadcast coverage; uplinked TIS-B traffic is limited to
+                transponder-equipped targets; and it is advisory information for
+                visual acquisition, not a collision-avoidance system."
+        usage:
+          input_tokens: 2723
+          input_tokens_details:
+            cache_write_tokens: 2720
+            cached_tokens: 0
+          output_tokens: 328
+          output_tokens_details:
+            reasoning_tokens: 78
+          total_tokens: 3051
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that TIS-B is intended to provide ADS-B-equipped
+            aircraft a more complete traffic picture when not all nearby
+            aircraft are equipped with ADS-B Out. It states service availability
+            depends on adequate ground-sensor surveillance and ADS-B
+            ground-station broadcast coverage, that only transponder-equipped
+            targets are uplinked, and that TIS-B is advisory-only and intended
+            to assist visual acquisition rather than serve as collision
+            avoidance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is the AIM section on TIS-B capabilities and
+              limitations, and the excerpt directly contains the conditions,
+              capabilities, and limitations stated in the claim.
+          claim_assessments:
+            - claim_id: tisb-traffic-awareness-and-limits
+              verdict: supports
+              finding_materiality: none
+              rationale: Each material element is directly supported by the excerpt.
+        usage:
+          input_tokens: 2723
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2720
+          output_tokens: 239
+          output_tokens_details:
+            reasoning_tokens: 36
+          total_tokens: 2962
+    relevance: *a24
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: chart-users-guide-vor-identification
+    title: Aeronautical Chart Users' Guide
+    checked_at_utc: 2026-09-20T19:29:14.559Z
+    linked_claim_ids:
+      - chart-vor-identifier
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      final_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a25
+      title: null
+      truncated: true
+      content_sha256: 6d1bde94d5aee0d2a61e1c65e3061b262965d9b576d91d1f74e6faf681609e56
+      hash_truncated: false
+      citation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      validation_url: https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 885
+      pdf_page_text_sha256: 6cbf24ce0da75cfb6cb9c410bed3f84e226ab7249a2f58a2758af11c475c258c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a26
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page is the FAA Chart Users’ Guide VFR symbology page
+            for radio aids to navigation and explicitly covers “VOR/VOR-DME
+            identifier and Morse Code.” This supports the listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies page 25, and the supplied excerpt is from that
+              exact page and contains the relevant VOR/VOR-DME and Morse Code
+              key topic.
+          claim_assessments:
+            - claim_id: chart-vor-identifier
+              verdict: supports
+              finding_materiality: none
+              rationale: The page heading/topic explicitly identifies the radio-aids key as
+                covering VOR/VOR-DME identifiers and Morse Code notation.
+        usage:
+          input_tokens: 1005
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 253
+          output_tokens_details:
+            reasoning_tokens: 79
+          total_tokens: 1258
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page is the FAA Chart Users’ Guide VFR symbology page
+            for radio aids to navigation and explicitly includes the heading
+            “VOR/VOR-DME identifier and Morse Code.” This directly supports the
+            listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 25, and the supplied excerpt from that
+              exact page contains the relevant VOR/VOR-DME identifier and Morse
+              Code material.
+          claim_assessments:
+            - claim_id: chart-vor-identifier
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt explicitly identifies the VOR/VOR-DME identifier and
+                Morse Code notation in the radio-aids key.
+        usage:
+          input_tokens: 1005
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 243
+          output_tokens_details:
+            reasoning_tokens: 68
+          total_tokens: 1248
+    relevance: *a26
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: faa-vor-mon
+    title: Navigation Programs — VOR Minimum Operational Network
+    checked_at_utc: 2026-09-20T19:29:17.771Z
+    linked_claim_ids:
+      - vor-mon-backup-role
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a27
+      title: Navigation Programs - Very High Frequency Omnidirectional Range Minimum
+        Operational Network (VOR MON) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 671029de3bb48be844394918fb321915688ddeb6dc68b48d9fd69fa0736459cf
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 9298
+      excerpt_sha256: 35cc3005259297057fdd6aed93c70bc2f0f6e5252aedfe89c792f5f2e3ff73e2
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a28
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly describes the VOR MON as a
+            conventional-navigation backup following GPS loss, enabling VOR
+            station-to-station navigation or travel to a MON airport. It also
+            states that the larger VOR service volumes provide signal starting
+            at 5,000 feet AGL.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator, “Concept of Operation and Development of the VOR MON,”
+              matches the excerpt’s Concept of Operation section, which contains
+              the cited operational details.
+          claim_assessments:
+            - claim_id: vor-mon-backup-role
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt supports each stated element: conventional backup during
+                GPS outages, station-to-station VOR navigation or proceeding to
+                a MON airport, and service-volume coverage beginning at 5,000
+                feet AGL."
+        usage:
+          input_tokens: 2896
+          input_tokens_details:
+            cache_write_tokens: 2893
+            cached_tokens: 0
+          output_tokens: 249
+          output_tokens_details:
+            reasoning_tokens: 49
+          total_tokens: 3145
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that the VOR MON provides conventional navigation
+            backup in the event of GPS loss, enables VOR station-to-station
+            navigation or travel to a MON airport, and implements service
+            volumes providing VOR signal beginning at 5,000 feet AGL.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, “Concept of Operation and Development of the VOR
+              MON,” directly contains the stated operational purpose,
+              MON-airport access, and 5,000-foot-AGL coverage information.
+          claim_assessments:
+            - claim_id: vor-mon-backup-role
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly describes the VOR MON as a conventional backup
+                for GPS outages, supporting station-to-station VOR navigation or
+                proceeding to a MON airport, with VOR signal starting at 5,000
+                feet AGL.
+        usage:
+          input_tokens: 2896
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2893
+          output_tokens: 285
+          output_tokens_details:
+            reasoning_tokens: 74
+          total_tokens: 3181
+    relevance: *a28
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: faa-ground-based-navigation
+    title: Navigation Programs — Ground-Based Navigation
+    checked_at_utc: 2026-09-20T19:29:17.832Z
+    linked_claim_ids:
+      - nextgen-dme-role
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a29
+      title: Navigation Programs - Ground-Based Navigation (GBN) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: f723c68e03115691acdd624cd727dd1d6130f49ed2b09e63cb79cf8d4342480b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2138
+      excerpt_sha256: a2047b7f47860d933e43d9c995978aed57fd2ce42b7783655dab10d14551fe31
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a30
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The source states that NextGen DME supports PBN through DME/DME RNAV
+            capability in the event of a GPS outage, and that the DME, VOR,
+            TACAN (DVT) program provides long-term sustainment for DME, VOR, and
+            TACAN systems.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the FAA Ground-Based Navigation program
+              overview covering NextGen DME and DVT sustainment, which matches
+              the cited source excerpt.
+          claim_assessments:
+            - claim_id: nextgen-dme-role
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt directly supports both elements: NextGen DME provides
+                DME/DME RNAV capability during a GPS outage, and the DVT program
+                provides long-term sustainment for DME, VOR, and TACAN systems."
+        usage:
+          input_tokens: 1280
+          input_tokens_details:
+            cache_write_tokens: 1277
+            cached_tokens: 0
+          output_tokens: 307
+          output_tokens_details:
+            reasoning_tokens: 99
+          total_tokens: 1587
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that NextGen DME supports PBN by providing DME/DME
+            RNAV capability during a GPS outage, and that the DME, VOR, TACAN
+            (DVT) program will provide long-term sustainment for DME, VOR, and
+            TACAN systems.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies the Ground-Based Navigation
+              overview covering VOR MON, NextGen DME, and DVT sustainment.
+          claim_assessments:
+            - claim_id: nextgen-dme-role
+              verdict: supports
+              finding_materiality: none
+              rationale: "The source directly supports both parts of the claim: GPS-outage
+                DME/DME RNAV capability under NextGen DME and long-term
+                sustainment of DME, VOR, and TACAN under the DVT program."
+        usage:
+          input_tokens: 1280
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1277
+          output_tokens: 309
+          output_tokens_details:
+            reasoning_tokens: 105
+          total_tokens: 1589
+    relevance: *a30
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-vor-mon-dme-dme
+    title: Aeronautical Information Manual
+    checked_at_utc: 2026-09-20T19:29:17.878Z
+    linked_claim_ids:
+      - vor-mon-and-dme-dme-fallback-roles
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a31
+      title: Chapter 1. Air Navigation
+      truncated: false
+      content_sha256: b984fcad059fc156cd7e6ee21bae859d9da03521f5585ede6b40ffd5679dbe28
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 895a8c8db84757d58f0d7179964d09390144ab5ee8360ff24cd56c7f4307a6fd
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a32
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that aircraft carrying DME/DME equipment can use
+            RNAV as a backup to continue flying PBN during a GNSS disruption. It
+            also states that the VOR MON is a reversionary
+            conventional-navigation service for aircraft unable to continue
+            RNAV, principally retaining service for IFR aircraft not equipped
+            with DME/DME avionics.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator identifies the VOR MON discussion addressing the
+              respective roles of DME/DME-equipped aircraft and aircraft without
+              DME/DME equipment during GNSS disruption.
+          claim_assessments:
+            - claim_id: vor-mon-and-dme-dme-fallback-roles
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt's distinction between
+                DME/DME RNAV as a backup for continuing PBN and the VOR MON as
+                conventional reversionary navigation for aircraft unable to
+                continue RNAV, including those without DME/DME equipment.
+        usage:
+          input_tokens: 3328
+          input_tokens_details:
+            cache_write_tokens: 3325
+            cached_tokens: 0
+          output_tokens: 341
+          output_tokens_details:
+            reasoning_tokens: 109
+          total_tokens: 3669
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that aircraft carrying DME/DME equipment can use
+            RNAV as a backup to continue flying PBN during a GNSS disruption. It
+            also states that the VOR MON is a reversionary service for aircraft
+            unable to continue RNAV, was retained principally for IFR aircraft
+            not equipped with DME/DME avionics, and provides conventional
+            navigation during GNSS disruption.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator identifies the VOR MON discussion in AIM paragraph
+              1-1-3, and the excerpt directly contains the DME/DME RNAV and VOR
+              MON fallback-role statements.
+          claim_assessments:
+            - claim_id: vor-mon-and-dme-dme-fallback-roles
+              verdict: supports
+              finding_materiality: none
+              rationale: "The source directly supports both roles: DME/DME-equipped aircraft
+                can use RNAV to continue PBN during GNSS disruption, while the
+                VOR MON supports aircraft unable to continue RNAV, including
+                those without DME/DME equipment."
+        usage:
+          input_tokens: 3328
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3325
+          output_tokens: 373
+          output_tokens_details:
+            reasoning_tokens: 130
+          total_tokens: 3701
+    relevance: *a32
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: faa-nextgen-dme
+    title: Ground-Based Navigation — Distance Measuring Equipment
+    checked_at_utc: 2026-09-20T19:29:17.929Z
+    linked_claim_ids:
+      - nextgen-hpdme-resilience
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      final_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a33
+      title: GBN - Distance Measuring Equipment (DME) | Federal Aviation
+        Administration
+      truncated: false
+      content_sha256: 954f3bf634aecb10bdd7e5e3d2ea989e5126b1d5201e45ed690945cd8533fbcd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      validation_url: https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content
+      errors: []
+      valid: true
+      excerpt_characters: 2586
+      excerpt_sha256: 3d1b9ddec63be95445986ef63c18b6ceba963a2468eb14557a034d42f02eddf4
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a34
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that scanning DME receivers use multiple
+            HPDMEs to determine range and location; that DME/DME navigation
+            enables RNAV en-route instrument flight procedures; and that the
+            NEXTGEN DME program sustains HPDMEs required for those procedures as
+            a resilient backup for GPS navigation.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies the High-Power DME, scanning
+              receiver, DME/DME navigation, and NEXTGEN DME program material
+              contained in the supplied webpage excerpt.
+          claim_assessments:
+            - claim_id: nextgen-hpdme-resilience
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt’s statements about multiple
+                high-power DME facilities, DME/DME RNAV en-route IFP capability,
+                and the NEXTGEN DME program’s GPS-resilient-backup role.
+        usage:
+          input_tokens: 1436
+          input_tokens_details:
+            cache_write_tokens: 1433
+            cached_tokens: 0
+          output_tokens: 212
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1648
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that scanning DME receivers use multiple
+            HPDMEs to determine range and location; that DME/DME navigation
+            enables RNAV en-route instrument flight procedures; and that the
+            NEXTGEN DME program sustains HPDMEs required for those procedures as
+            a resilient backup for GPS navigation.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: "The locator identifies topics expressly covered by the supplied FAA
+              webpage excerpt: high-power DME, scanning DME receivers, DME/DME
+              navigation, and the NEXTGEN DME program."
+          claim_assessments:
+            - claim_id: nextgen-hpdme-resilience
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately consolidates the excerpt's statements regarding
+                multiple HPDMEs, DME/DME navigation, RNAV en-route IFPs, and the
+                NEXTGEN program's role as a resilient GPS backup.
+        usage:
+          input_tokens: 1436
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1433
+          output_tokens: 213
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1649
+    relevance: *a34
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: faa-adsb-in-services
+    title: ADS-B Capabilities — Ins and Outs
+    checked_at_utc: 2026-09-20T19:29:17.995Z
+    linked_claim_ids:
+      - adsb-in-and-tisb-client-relationship
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      final_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a35
+      title: Ins and Outs | Federal Aviation Administration
+      truncated: false
+      content_sha256: 7c36930f1adf17cce9293bc475f44347386c85995c60b3110be49c99bc102a25
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      validation_url: https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb
+      errors: []
+      valid: true
+      excerpt_characters: 4709
+      excerpt_sha256: 59ace3266ccd2547201d4fe79439e3f306ece46b853281081b9b4160423b0eeb
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a36
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly supports the claim’s description of ADS-B In
+            traffic reception, TIS-B as a client-based service for qualifying
+            ADS-B Out/In aircraft, TIS-B targets requiring a transponder and
+            radar coverage, and ADS-B In-only receivers receiving proximate
+            air-to-air ADS-B traffic.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the ADS-B In/TIS-B material and the specific
+              FAA section addressing how ADS-B In traffic services are received.
+              The excerpt contains the cited concepts.
+          claim_assessments:
+            - claim_id: adsb-in-and-tisb-client-relationship
+              verdict: supports
+              finding_materiality: none
+              rationale: The FAA states that TIS-B is a client-based service providing ADS-B
+                Out/In-equipped aircraft surveillance information about
+                non-ADS-B-equipped aircraft; TIS-B targets must have a
+                transponder and be within radar coverage. It also states that
+                ADS-B In-only receivers can receive proximate traffic and that
+                the most reliable traffic received is direct air-to-air ADS-B.
+        usage:
+          input_tokens: 2103
+          input_tokens_details:
+            cache_write_tokens: 2100
+            cached_tokens: 0
+          output_tokens: 384
+          output_tokens_details:
+            reasoning_tokens: 141
+          total_tokens: 2487
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly supports the stated ADS-B In/TIS-B relationship,
+            including client-based TIS-B eligibility, target requirements, and
+            ADS-B In-only reception of proximate air-to-air traffic.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the FAA ADS-B In/TIS-B discussion and the
+              cited excerpt contains the relevant TIS-B client and ADS-B In-only
+              receiver information.
+          claim_assessments:
+            - claim_id: adsb-in-and-tisb-client-relationship
+              verdict: supports
+              finding_materiality: none
+              rationale: The FAA states that TIS-B is a client-based service providing ADS-B
+                Out/In-equipped aircraft surveillance information about aircraft
+                not ADS-B equipped; TIS-B targets must have a transponder and be
+                within radar coverage. It also states that ADS-B In-only
+                receivers can receive proximate traffic, with air-to-air ADS-B
+                being the most reliable traffic information received.
+        usage:
+          input_tokens: 2103
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2100
+          output_tokens: 355
+          output_tokens_details:
+            reasoning_tokens: 135
+          total_tokens: 2458
+    relevance: *a36
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: foreflight-sentry-pilot-guide
+    title: Sentry Pilot's Guide
+    checked_at_utc: 2026-09-20T19:29:14.560Z
+    linked_claim_ids:
+      - sentry-product-documentation-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      final_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a37
+      title: null
+      truncated: true
+      content_sha256: 7fd29dbf62694c2d9271c3d3dfc32dd90a93cde1343724929d9e4856e74eedbd
+      hash_truncated: false
+      citation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      validation_url: https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63
+      errors: []
+      valid: true
+      pdf_page_number: 63
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1077
+      pdf_page_text_sha256: 09c7409de04a48fc6938dd7f166fb94a004519f95392144aaa5bef90608dc40d
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a38
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page is page 63 and directly discusses ADS-B traffic
+            and TIS-B, including the source of TIS-B traffic and operational
+            limitations on which targets are included or excluded. This supports
+            using the Sentry Pilot’s Guide as equipment-specific documentation
+            for traffic-source information and limitations.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies “Traffic Information Service-Broadcast
+              (TIS-B), p. 63,” and the supplied excerpt is explicitly from
+              Sentry Pilot’s Guide page 63 under that heading.
+          claim_assessments:
+            - claim_id: sentry-product-documentation-scope
+              verdict: supports
+              finding_materiality: none
+              rationale: Page 63 of ForeFlight’s Sentry Pilot’s Guide documents TIS-B as an
+                ADS-B traffic component and specifies inclusion criteria and
+                exclusions, supporting the stated scope of traffic-source
+                indications and limitations for the Sentry/ForeFlight product
+                context.
+        usage:
+          input_tokens: 1160
+          input_tokens_details:
+            cache_write_tokens: 1157
+            cached_tokens: 0
+          output_tokens: 379
+          output_tokens_details:
+            reasoning_tokens: 158
+          total_tokens: 1539
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: partially_supports
+          confidence: high
+          rationale: The cited page documents TIS-B as an ADS-B traffic component and
+            gives specific TIS-B inclusion criteria and exclusions, supporting
+            that the Sentry guide addresses traffic-source limitations. It does
+            not document ForeFlight display indications or identify how a
+            traffic detail distinguishes direct ADS-B from TIS-B.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies page 63, whose heading and content
+              address Traffic Information Service-Broadcast (TIS-B).
+          claim_assessments:
+            - claim_id: sentry-product-documentation-scope
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: This page supports the guide's coverage of a traffic source (TIS-B)
+                and its operational limitations. However, the excerpt does not
+                establish that it documents traffic-source indications on a
+                ForeFlight display, nor does it expressly discuss use with
+                ForeFlight.
+        usage:
+          input_tokens: 1160
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1157
+          output_tokens: 367
+          output_tokens_details:
+            reasoning_tokens: 152
+          total_tokens: 1527
+    relevance: *a38
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids:
+            - sentry-product-documentation-scope
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids:
+            - sentry-product-documentation-scope

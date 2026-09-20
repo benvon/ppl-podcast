@@ -1,0 +1,153 @@
+episode_id: core-18
+schema_version: 1
+links:
+  - id: acs-navigation-systems-task
+    text: "Private Pilot ACS Navigation Systems and Radar Services task"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47"
+    locator: "PA.VI.B Navigation Systems and Radar Services, PDF viewer p. 47 (printed p. 39)"
+    source_id: acs-navigation-systems-task
+    claim_ids: [acs-navigation-systems-outcome]
+  - id: phak-vor-basics
+    text: "PHAK VOR radial and line-of-sight picture"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22"
+    locator: "Ground-Based Navigation and Very High Frequency Omnidirectional Range, p. 16-22"
+    source_id: phak-vor-basics
+    claim_ids: [vor-radial-and-line-of-sight]
+  - id: phak-vor-integrity
+    text: "PHAK VOR identification and signal-integrity guidance"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23"
+    locator: "VOR station identification and unreliable-signal flag, p. 16-23"
+    source_id: phak-vor-integrity
+    claim_ids: [vor-identification-and-signal-integrity]
+  - id: chart-users-guide-vor-identification
+    text: "FAA Chart Users' Guide VOR identifier and Morse-code chart symbology"
+    url: "https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25"
+    locator: "VFR Chart Symbology, Sectional and Terminal Area Charts, Radio Aids to Navigation, VOR/VOR-DME identifier and Morse Code, p. 25"
+    source_id: chart-users-guide-vor-identification
+    claim_ids: [chart-vor-identifier]
+  - id: phak-vor-indicator
+    text: "PHAK CDI and HSI explanation"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24"
+    locator: "Course Deviation Indicator and Horizontal Situation Indicator, p. 16-24"
+    source_id: phak-vor-indicator
+    claim_ids: [vor-course-indication]
+  - id: phak-dme
+    text: "PHAK DME slant-range explanation"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27"
+    locator: "Distance Measuring Equipment, pp. 16-27 through 16-28"
+    source_id: phak-dme
+    claim_ids: [dme-distance-and-limitation]
+  - id: phak-vor-station-passage
+    text: "PHAK VOR station-passage explanation"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26"
+    locator: "VOR station passage, p. 16-26"
+    source_id: phak-vor-station-passage
+    claim_ids: [vor-station-passage]
+  - id: faa-vor-mon
+    text: "FAA VOR Minimum Operational Network overview"
+    url: "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content"
+    locator: "Concept of Operation and Development of the VOR MON"
+    source_id: faa-vor-mon
+    claim_ids: [vor-mon-backup-role]
+  - id: faa-ground-based-navigation
+    text: "FAA Ground-Based Navigation: VOR MON and NextGen DME"
+    url: "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content"
+    locator: "Ground-Based Navigation program overview, VOR MON, NextGen DME, and DVT sustainment"
+    source_id: faa-ground-based-navigation
+    claim_ids: [nextgen-dme-role]
+  - id: aim-vor-mon-dme-dme
+    text: "AIM VOR MON and DME/DME equipment roles during GNSS disruption"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3"
+    locator: "1-1-3.f.1 VOR Minimum Operational Network, aircraft with and without DME/DME equipment"
+    source_id: aim-vor-mon-dme-dme
+    claim_ids: [vor-mon-and-dme-dme-fallback-roles]
+  - id: faa-nextgen-dme
+    text: "FAA high-power DME and NextGen DME program overview"
+    url: "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content"
+    locator: "High-Power DME, scanning DME receiver, DME/DME navigation, and NEXTGEN DME program"
+    source_id: faa-nextgen-dme
+    claim_ids: [nextgen-hpdme-resilience]
+  - id: phak-gps-integrity
+    text: "PHAK GPS integrity and RAIM explanation"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31"
+    locator: "Global Positioning System and RAIM, p. 16-31"
+    source_id: phak-gps-integrity
+    claim_ids: [gps-integrity-awareness]
+  - id: phak-gps-vfr-integration
+    text: "PHAK VFR GPS cross-check and database-currentness guidance"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32"
+    locator: "VFR Use of GPS, database currency, and antenna limitations, p. 16-32"
+    source_id: phak-gps-vfr-integration
+    claim_ids: [gps-cross-check-and-current-data, gps-database-limit]
+  - id: phak-gps-task-management
+    text: "PHAK VFR GPS preparation and lookout guidance"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33"
+    locator: "Tips for Using GPS for VFR Operations, p. 16-33"
+    source_id: phak-gps-task-management
+    claim_ids: [gps-preparation-and-lookout]
+  - id: aim-radar-traffic-information
+    text: "AIM radar traffic information service"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15"
+    locator: "4-1-15 Radar Traffic Information Service, Purpose and Provisions of the Service"
+    source_id: aim-radar-traffic-information
+    claim_ids: [radar-traffic-service-limits]
+  - id: aim-radar-assistance-vfr
+    text: "AIM radar assistance to VFR aircraft"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17"
+    locator: "4-1-17 Radar Assistance to VFR Aircraft, paragraphs a through e"
+    source_id: aim-radar-assistance-vfr
+    claim_ids: [radar-vectors-advisory]
+  - id: aim-terminal-radar-vfr
+    text: "AIM terminal radar services for VFR aircraft"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18"
+    locator: "4-1-18 Terminal Radar Services for VFR Aircraft, Basic Radar Service"
+    source_id: aim-terminal-radar-vfr
+    claim_ids: [terminal-radar-service-scope]
+  - id: aim-transponder-code-operation
+    text: "AIM transponder code and altitude-reporting operation"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20"
+    locator: "4-1-20 Transponder and ADS-B Out Operation, Automatic Altitude Reporting"
+    source_id: aim-transponder-code-operation
+    claim_ids: [atc-specified-code-operation]
+  - id: jo7110-vfr-advisory-code
+    text: "FAA Order JO 7110.65BB VFR beacon-code assignments"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7"
+    locator: "5-2-7 VFR Code Assignments, paragraph a"
+    source_id: jo7110-vfr-advisory-code
+    claim_ids: [vfr-radar-beacon-code]
+  - id: jo7110-radar-identification
+    text: "FAA Order JO 7110.65BB radar identification methods"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3"
+    locator: "5-3-3 Beacon/ADS-B Identification Methods, paragraph a.2"
+    source_id: jo7110-radar-identification
+    claim_ids: [radar-identification-code-change]
+  - id: jo7110-radar-service-prerequisite
+    text: "FAA Order JO 7110.65BB radar-service identification prerequisite"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1"
+    locator: "5-3-1 Application"
+    source_id: jo7110-radar-service-prerequisite
+    claim_ids: [radar-identification-before-service]
+  - id: aim-adsb-services
+    text: "AIM ADS-B services"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7"
+    locator: "4-5-7 Automatic Dependent Surveillance-Broadcast Services, introduction, capabilities, and limitations"
+    source_id: aim-adsb-services
+    claim_ids: [adsb-out-in-and-safety-value]
+  - id: faa-adsb-in-services
+    text: "FAA ADS-B In, TIS-B, and ADS-R service explanation"
+    url: "https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb"
+    locator: "ADS-B In; Traffic Information Service-Broadcast; How do I receive ADS-B In Traffic Services and what do I see today?"
+    source_id: faa-adsb-in-services
+    claim_ids: [adsb-in-and-tisb-client-relationship]
+  - id: aim-tisb
+    text: "AIM TIS-B traffic-information service"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8"
+    locator: "4-5-8 Traffic Information Service-Broadcast, capabilities and limitations"
+    source_id: aim-tisb
+    claim_ids: [tisb-traffic-awareness-and-limits]
+  - id: foreflight-sentry-pilot-guide
+    text: "ForeFlight Sentry Pilot's Guide"
+    url: "https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63"
+    locator: "Traffic Information Service-Broadcast (TIS-B), p. 63"
+    source_id: foreflight-sentry-pilot-guide
+    claim_ids: [sentry-product-documentation-scope]

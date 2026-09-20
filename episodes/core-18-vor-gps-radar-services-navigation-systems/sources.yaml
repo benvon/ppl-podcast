@@ -1,0 +1,279 @@
+episode_id: core-18
+verification_date: 2026-09-16
+verified_at_utc: null
+sources:
+  - id: acs-navigation-systems-task
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category ACS"
+    document_id: FAA-S-ACS-6C
+    locator: "PA.VI.B Navigation Systems and Radar Services, PDF viewer p. 47 (printed p. 39)"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47"
+    revision: "FAA-S-ACS-6C, November 2023; current FAA ACS publication checked 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-navigation-systems-outcome]
+  - id: phak-vor-basics
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Ground-Based Navigation and Very High Frequency Omnidirectional Range, p. 16-22"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=22"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vor-radial-and-line-of-sight]
+  - id: phak-vor-integrity
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "VOR station identification and unreliable-signal flag, p. 16-23"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=23"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vor-identification-and-signal-integrity]
+  - id: phak-vor-indicator
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Course Deviation Indicator and Horizontal Situation Indicator, p. 16-24"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=24"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vor-course-indication]
+  - id: phak-dme
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Distance Measuring Equipment, pp. 16-27 through 16-28"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=27"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [dme-distance-and-limitation]
+  - id: phak-vor-station-passage
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "VOR station passage, p. 16-26"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=26"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vor-station-passage]
+  - id: phak-gps-integrity
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Global Positioning System and RAIM, p. 16-31"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=31"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [gps-integrity-awareness]
+  - id: phak-gps-vfr-integration
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "VFR Use of GPS, database currency, and antenna limitations, p. 16-32"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=32"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [gps-cross-check-and-current-data, gps-database-limit]
+  - id: phak-gps-task-management
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Tips for Using GPS for VFR Operations, p. 16-33"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=33"
+    revision: "Chapter page last updated 2023-07-10; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [gps-preparation-and-lookout]
+  - id: aim-radar-traffic-information
+    authority: aim
+    title: "Aeronautical Information Manual"
+    document_id: AIM
+    locator: "4-1-15 Radar Traffic Information Service, Purpose and Provisions of the Service"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-15"
+    revision: "AIM Basic with Change 3, effective 2026-07-09; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [radar-traffic-service-limits]
+  - id: aim-radar-assistance-vfr
+    authority: aim
+    title: "Aeronautical Information Manual"
+    document_id: AIM
+    locator: "4-1-17 Radar Assistance to VFR Aircraft, paragraphs a through e"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-17"
+    revision: "AIM Basic with Change 3, effective 2026-07-09; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [radar-vectors-advisory]
+  - id: aim-terminal-radar-vfr
+    authority: aim
+    title: "Aeronautical Information Manual"
+    document_id: AIM
+    locator: "4-1-18 Terminal Radar Services for VFR Aircraft, Basic Radar Service"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-18"
+    revision: "AIM Basic with Change 3, effective 2026-07-09; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [terminal-radar-service-scope]
+  - id: aim-transponder-code-operation
+    authority: aim
+    title: "Aeronautical Information Manual"
+    document_id: AIM
+    locator: "4-1-20 Transponder and ADS-B Out Operation, Automatic Altitude Reporting"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_1.html#4-1-20"
+    revision: "AIM Basic with Change 3, effective 2026-07-09; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [atc-specified-code-operation]
+  - id: jo7110-vfr-advisory-code
+    authority: faa_order
+    title: "FAA Order JO 7110.65BB, Air Traffic Control"
+    document_id: JO-7110.65BB
+    locator: "5-2-7 VFR Code Assignments, paragraph a"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_2.html#5-2-7"
+    revision: "JO 7110.65BB Change 3, effective 2026-07-09; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vfr-radar-beacon-code]
+  - id: jo7110-radar-identification
+    authority: faa_order
+    title: "FAA Order JO 7110.65BB, Air Traffic Control"
+    document_id: JO-7110.65BB
+    locator: "5-3-3 Beacon/ADS-B Identification Methods, paragraph a.2"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-3"
+    revision: "JO 7110.65BB Change 3, effective 2026-07-09; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [radar-identification-code-change]
+  - id: jo7110-radar-service-prerequisite
+    authority: faa_order
+    title: "FAA Order JO 7110.65BB, Air Traffic Control"
+    document_id: JO-7110.65BB
+    locator: "5-3-1 Application"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/chap5_section_3.html#5-3-1"
+    revision: "JO 7110.65BB, effective 2026-09-10; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [radar-identification-before-service]
+  - id: aim-adsb-services
+    authority: aim
+    title: "Aeronautical Information Manual"
+    document_id: AIM
+    locator: "4-5-7 Automatic Dependent Surveillance-Broadcast (ADS-B) Services, Introduction, capabilities, and limitations"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-7"
+    revision: "AIM Basic with Change 3, effective 2026-07-09; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [adsb-out-in-and-safety-value]
+  - id: aim-tisb
+    authority: aim
+    title: "Aeronautical Information Manual"
+    document_id: AIM
+    locator: "4-5-8 Traffic Information Service-Broadcast, capabilities and limitations"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_5.html#4-5-8"
+    revision: "AIM Basic with Change 3, effective 2026-07-09; inspected 2026-09-16"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [tisb-traffic-awareness-and-limits]
+  - id: chart-users-guide-vor-identification
+    authority: faa_guidance
+    title: "Aeronautical Chart Users' Guide"
+    document_id: FAA-USRGD
+    locator: "VFR Chart Symbology, Sectional and Terminal Area Charts, Radio Aids to Navigation, VOR/VOR-DME identifier and Morse Code, p. 25"
+    url: "https://aeronav.faa.gov/user_guide/cug-complete_20260709.pdf#page=25"
+    revision: "Effective 2026-07-09; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [chart-vor-identifier]
+  - id: faa-vor-mon
+    authority: faa_program
+    title: "Navigation Programs — VOR Minimum Operational Network"
+    document_id: FAA-VOR-MON
+    locator: "Concept of Operation and Development of the VOR MON"
+    url: "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/vormon#main-content"
+    revision: "Last updated 2025-08-19; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vor-mon-backup-role]
+  - id: faa-ground-based-navigation
+    authority: faa_program
+    title: "Navigation Programs — Ground-Based Navigation"
+    document_id: FAA-GBN
+    locator: "Ground-Based Navigation program overview, VOR MON, NextGen DME, and DVT sustainment"
+    url: "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng#main-content"
+    revision: "Last updated 2024-06-04; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [nextgen-dme-role]
+  - id: aim-vor-mon-dme-dme
+    authority: aim
+    title: "Aeronautical Information Manual"
+    document_id: AIM
+    locator: "1-1-3.f.1 VOR Minimum Operational Network, aircraft with and without DME/DME equipment"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html#1-1-3"
+    revision: "AIM Basic with Change 3, effective 2026-07-09; inspected 2026-09-19"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vor-mon-and-dme-dme-fallback-roles]
+  - id: faa-nextgen-dme
+    authority: faa_program
+    title: "Ground-Based Navigation — Distance Measuring Equipment"
+    document_id: FAA-GBN-DME
+    locator: "High-Power DME, scanning DME receiver, DME/DME navigation, and NEXTGEN DME program"
+    url: "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gbng/lpdme#main-content"
+    revision: "Last updated 2025-07-23; inspected 2026-09-19"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [nextgen-hpdme-resilience]
+  - id: faa-adsb-in-services
+    authority: faa_program
+    title: "ADS-B Capabilities — Ins and Outs"
+    document_id: FAA-ADSB-INS-OUTS
+    locator: "ADS-B In; Traffic Information Service-Broadcast; How do I receive ADS-B In Traffic Services and what do I see today?"
+    url: "https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#tisb"
+    revision: "Last updated 2023-02-07; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [adsb-in-and-tisb-client-relationship]
+  - id: foreflight-sentry-pilot-guide
+    authority: manufacturer_documentation
+    title: "Sentry Pilot's Guide"
+    document_id: FORE-FLT-SENTRY-GUIDE-1.8
+    locator: "Traffic Information Service-Broadcast (TIS-B), p. 63"
+    url: "https://cloudfront.foreflight.com/docs/ff/1.8/Sentry%20Pilot%27s%20Guide.pdf#page=63"
+    revision: "Version 1.8; inspected 2026-09-18"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [sentry-product-documentation-scope]

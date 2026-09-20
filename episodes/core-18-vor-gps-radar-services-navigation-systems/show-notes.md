@@ -39,17 +39,17 @@ A daytime VFR trip prepares VOR, DME, GPS, ADS-B traffic information, and VFR ra
 
 | Topic | Source type | Authoritative source | Locator | Verified |
 | --- | --- | --- | --- | --- |
-| ACS lesson scope | FAA standard | FAA-S-ACS-6C navigation-systems task | PA.VI.B, PDF viewer p. 47 (printed p. 39) | Draft research checked 2026-09-16; formal review pending |
-| VOR geometry and reception | FAA handbook | PHAK Chapter 16 | Ground-Based Navigation and VOR, p. 16-22 | Draft research checked 2026-09-16; formal review pending |
-| VOR identification, indication, and station passage | FAA handbook | PHAK Chapter 16 | VOR identification, p. 16-23; CDI and HSI, p. 16-24; station passage, p. 16-26 | Draft research checked 2026-09-16; formal review pending |
-| DME geometry | FAA handbook | PHAK DME explanation | Distance Measuring Equipment, pp. 16-27–16-28 | Draft research checked 2026-09-16; formal review pending |
-| VOR chart identification | FAA chart guide | Aeronautical Chart Users' Guide | VFR chart symbology, radio aids to navigation | Draft research checked 2026-09-18; formal review pending |
-| VOR MON and NextGen DME | FAA operational guidance and navigation program | AIM, VOR MON, Ground-Based Navigation, and DME program pages | Conventional fallback for aircraft unable to continue RNAV, DME/DME equipage boundary, high-power DME architecture, and NextGen sustainment | Draft research checked 2026-09-19; formal review pending |
-| GPS integrity and VFR integration | FAA handbook | PHAK Chapter 16 | GPS and RAIM, VFR GPS use, and GPS preparation, pp. 16-31–16-33 | Draft research checked 2026-09-16; formal review pending |
-| Radar traffic and VFR assistance | FAA operational guidance and controller procedures | Aeronautical Information Manual and FAA Order JO 7110.65BB | AIM radar traffic information, VFR assistance, terminal radar service, and transponder operation; JO 7110.65BB VFR code assignment and radar identification | Draft research checked 2026-09-18; formal review pending |
-| ADS-B and TIS-B traffic awareness | FAA operational guidance | Aeronautical Information Manual | ADS-B services and TIS-B capability and limitations | Draft research checked 2026-09-16; formal review pending |
-| ADS-B In client relationship | FAA program guidance | ADS-B Capabilities: Ins and Outs | ADS-B In, TIS-B client conditions, ADS-R, and traffic reception | Draft research checked 2026-09-18; formal review pending |
-| Sentry equipment reference | Manufacturer documentation | ForeFlight Sentry Pilot's Guide | Traffic-source indications and limitations | Draft research checked 2026-09-18; formal review pending |
+| ACS lesson scope | FAA standard | FAA-S-ACS-6C navigation-systems task | PA.VI.B, PDF viewer p. 47 (printed p. 39) | Formal two-pass source review passed 2026-09-20 |
+| VOR geometry and reception | FAA handbook | PHAK Chapter 16 | Ground-Based Navigation and VOR, p. 16-22 | Formal two-pass source review passed 2026-09-20 |
+| VOR identification, indication, and station passage | FAA handbook | PHAK Chapter 16 | VOR identification, p. 16-23; CDI and HSI, p. 16-24; station passage, p. 16-26 | Formal two-pass source review passed 2026-09-20 |
+| DME geometry | FAA handbook | PHAK DME explanation | Distance Measuring Equipment, pp. 16-27–16-28 | Formal two-pass source review passed 2026-09-20 |
+| VOR chart identification | FAA chart guide | Aeronautical Chart Users' Guide | VFR chart symbology, radio aids to navigation | Formal two-pass source review passed 2026-09-20 |
+| VOR MON and NextGen DME | FAA operational guidance and navigation program | AIM, VOR MON, Ground-Based Navigation, and DME program pages | Conventional fallback for aircraft unable to continue RNAV, DME/DME equipage boundary, high-power DME architecture, and NextGen sustainment | Formal two-pass source review passed 2026-09-20 |
+| GPS integrity and VFR integration | FAA handbook | PHAK Chapter 16 | GPS and RAIM, VFR GPS use, and GPS preparation, pp. 16-31–16-33 | Formal two-pass source review passed 2026-09-20 |
+| Radar traffic and VFR assistance | FAA operational guidance and controller procedures | Aeronautical Information Manual and FAA Order JO 7110.65BB | AIM radar traffic information, VFR assistance, terminal radar service, and transponder operation; JO 7110.65BB VFR code assignment and radar identification | Formal two-pass source review passed 2026-09-20 |
+| ADS-B and TIS-B traffic awareness | FAA operational guidance | Aeronautical Information Manual | ADS-B services and TIS-B capability and limitations | Formal two-pass source review passed 2026-09-20 |
+| ADS-B In client relationship | FAA program guidance | ADS-B Capabilities: Ins and Outs | ADS-B In, TIS-B client conditions, ADS-R, and traffic reception | Formal two-pass source review passed 2026-09-20 |
+| Sentry equipment reference | Manufacturer documentation | ForeFlight Sentry Pilot's Guide | Traffic-source indications and limitations | Formal two-pass source review passed 2026-09-20 |
 
 ## Correction status
 

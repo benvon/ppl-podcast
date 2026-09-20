@@ -1,8 +1,8 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
 validation_kind: publication_link_check
-run_id: 84b830a6-21d7-4fad-8fc9-18cc4ed21939
-checked_at_utc: 2026-09-20T20:05:03.970Z
+run_id: 83b9e8e5-0392-4e94-84f6-d1bf5ddf72ae
+checked_at_utc: 2026-09-20T20:25:38.921Z
 sources_file: episodes/core-18-vor-gps-radar-services-navigation-systems/sources.yaml
 claims_file: episodes/core-18-vor-gps-radar-services-navigation-systems/claim-inventory.yaml
 show_notes_file: episodes/core-18-vor-gps-radar-services-navigation-systems/show-notes.md
@@ -11,7 +11,7 @@ input_sha256:
   sources: b20029907aad8928182303c43b86c5abad300c9f1962fd8cbd57132b86357831
   claims: 4b57c88485866520d62511f61bf5e00e67af7174ee4c07c5002579bd5244171c
   master_script: 86bfad03495de3b9aa16fcc3fce9984b8fc3798613ffe8199597058fda3f2d1b
-  show_notes: cf8970af6d6d9ef4a4089aaf5a4d000231787285ea3a9f8ee49ad3bbf753ac8d
+  show_notes: 990797b3200719a2c02b9d01eb4c1146a6e92812650cae917407ec5ed5aaf6ae
   show_notes_manifest: 5b1698d456b4d04e1020ced25f0c746da0fda0555a46d718f46241394f82dbf2
 input_normalization:
   master_script: markdown-whitespace-v1
@@ -807,7 +807,7 @@ show_notes_results:
 results:
   - source_id: acs-navigation-systems-task
     title: Private Pilot for Airplane Category ACS
-    checked_at_utc: 2026-09-20T20:04:49.554Z
+    checked_at_utc: 2026-09-20T20:25:21.035Z
     linked_claim_ids:
       - acs-navigation-systems-outcome
     missing_claim_ids: []
@@ -843,7 +843,7 @@ results:
       status: not_requested
   - source_id: phak-vor-basics
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:49.583Z
+    checked_at_utc: 2026-09-20T20:25:21.070Z
     linked_claim_ids:
       - vor-radial-and-line-of-sight
     missing_claim_ids: []
@@ -879,7 +879,7 @@ results:
       status: not_requested
   - source_id: phak-vor-integrity
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:50.450Z
+    checked_at_utc: 2026-09-20T20:25:21.934Z
     linked_claim_ids:
       - vor-identification-and-signal-integrity
     missing_claim_ids: []
@@ -915,7 +915,7 @@ results:
       status: not_requested
   - source_id: phak-vor-indicator
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:52.089Z
+    checked_at_utc: 2026-09-20T20:25:23.924Z
     linked_claim_ids:
       - vor-course-indication
     missing_claim_ids: []
@@ -951,7 +951,7 @@ results:
       status: not_requested
   - source_id: phak-dme
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:52.112Z
+    checked_at_utc: 2026-09-20T20:25:23.946Z
     linked_claim_ids:
       - dme-distance-and-limitation
     missing_claim_ids: []
@@ -987,7 +987,7 @@ results:
       status: not_requested
   - source_id: phak-vor-station-passage
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:52.136Z
+    checked_at_utc: 2026-09-20T20:25:23.967Z
     linked_claim_ids:
       - vor-station-passage
     missing_claim_ids: []
@@ -1023,7 +1023,7 @@ results:
       status: not_requested
   - source_id: phak-gps-integrity
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:52.169Z
+    checked_at_utc: 2026-09-20T20:25:24.011Z
     linked_claim_ids:
       - gps-integrity-awareness
     missing_claim_ids: []
@@ -1059,7 +1059,7 @@ results:
       status: not_requested
   - source_id: phak-gps-vfr-integration
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:52.185Z
+    checked_at_utc: 2026-09-20T20:25:24.026Z
     linked_claim_ids:
       - gps-cross-check-and-current-data
       - gps-database-limit
@@ -1096,7 +1096,7 @@ results:
       status: not_requested
   - source_id: phak-gps-task-management
     title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
-    checked_at_utc: 2026-09-20T20:04:52.204Z
+    checked_at_utc: 2026-09-20T20:25:24.043Z
     linked_claim_ids:
       - gps-preparation-and-lookout
     missing_claim_ids: []
@@ -1132,7 +1132,7 @@ results:
       status: not_requested
   - source_id: aim-radar-traffic-information
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-20T20:04:52.210Z
+    checked_at_utc: 2026-09-20T20:25:24.051Z
     linked_claim_ids:
       - radar-traffic-service-limits
     missing_claim_ids: []
@@ -1167,7 +1167,7 @@ results:
       status: not_requested
   - source_id: aim-radar-assistance-vfr
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-20T20:04:52.218Z
+    checked_at_utc: 2026-09-20T20:25:24.059Z
     linked_claim_ids:
       - radar-vectors-advisory
     missing_claim_ids: []
@@ -1202,7 +1202,7 @@ results:
       status: not_requested
   - source_id: aim-terminal-radar-vfr
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-20T20:04:52.266Z
+    checked_at_utc: 2026-09-20T20:25:24.078Z
     linked_claim_ids:
       - terminal-radar-service-scope
     missing_claim_ids: []
@@ -1237,7 +1237,7 @@ results:
       status: not_requested
   - source_id: aim-transponder-code-operation
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-20T20:04:52.266Z
+    checked_at_utc: 2026-09-20T20:25:24.078Z
     linked_claim_ids:
       - atc-specified-code-operation
     missing_claim_ids: []
@@ -1272,7 +1272,7 @@ results:
       status: not_requested
   - source_id: jo7110-vfr-advisory-code
     title: FAA Order JO 7110.65BB, Air Traffic Control
-    checked_at_utc: 2026-09-20T20:04:52.267Z
+    checked_at_utc: 2026-09-20T20:25:24.079Z
     linked_claim_ids:
       - vfr-radar-beacon-code
     missing_claim_ids: []
@@ -1307,7 +1307,7 @@ results:
       status: not_requested
   - source_id: jo7110-radar-identification
     title: FAA Order JO 7110.65BB, Air Traffic Control
-    checked_at_utc: 2026-09-20T20:04:52.267Z
+    checked_at_utc: 2026-09-20T20:25:24.079Z
     linked_claim_ids:
       - radar-identification-code-change
     missing_claim_ids: []
@@ -1342,7 +1342,7 @@ results:
       status: not_requested
   - source_id: jo7110-radar-service-prerequisite
     title: FAA Order JO 7110.65BB, Air Traffic Control
-    checked_at_utc: 2026-09-20T20:04:52.397Z
+    checked_at_utc: 2026-09-20T20:25:24.101Z
     linked_claim_ids:
       - radar-identification-before-service
     missing_claim_ids: []
@@ -1377,7 +1377,7 @@ results:
       status: not_requested
   - source_id: aim-adsb-services
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-20T20:04:52.478Z
+    checked_at_utc: 2026-09-20T20:25:24.101Z
     linked_claim_ids:
       - adsb-out-in-and-safety-value
     missing_claim_ids: []
@@ -1412,7 +1412,7 @@ results:
       status: not_requested
   - source_id: aim-tisb
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-20T20:04:52.479Z
+    checked_at_utc: 2026-09-20T20:25:24.102Z
     linked_claim_ids:
       - tisb-traffic-awareness-and-limits
     missing_claim_ids: []
@@ -1447,7 +1447,7 @@ results:
       status: not_requested
   - source_id: chart-users-guide-vor-identification
     title: Aeronautical Chart Users' Guide
-    checked_at_utc: 2026-09-20T20:04:49.583Z
+    checked_at_utc: 2026-09-20T20:25:21.070Z
     linked_claim_ids:
       - chart-vor-identifier
     missing_claim_ids: []
@@ -1483,7 +1483,7 @@ results:
       status: not_requested
   - source_id: faa-vor-mon
     title: Navigation Programs — VOR Minimum Operational Network
-    checked_at_utc: 2026-09-20T20:04:52.533Z
+    checked_at_utc: 2026-09-20T20:25:24.169Z
     linked_claim_ids:
       - vor-mon-backup-role
     missing_claim_ids: []
@@ -1519,7 +1519,7 @@ results:
       status: not_requested
   - source_id: faa-ground-based-navigation
     title: Navigation Programs — Ground-Based Navigation
-    checked_at_utc: 2026-09-20T20:04:52.533Z
+    checked_at_utc: 2026-09-20T20:25:24.169Z
     linked_claim_ids:
       - nextgen-dme-role
     missing_claim_ids: []
@@ -1555,7 +1555,7 @@ results:
       status: not_requested
   - source_id: aim-vor-mon-dme-dme
     title: Aeronautical Information Manual
-    checked_at_utc: 2026-09-20T20:04:52.581Z
+    checked_at_utc: 2026-09-20T20:25:24.190Z
     linked_claim_ids:
       - vor-mon-and-dme-dme-fallback-roles
     missing_claim_ids: []
@@ -1590,7 +1590,7 @@ results:
       status: not_requested
   - source_id: faa-nextgen-dme
     title: Ground-Based Navigation — Distance Measuring Equipment
-    checked_at_utc: 2026-09-20T20:04:52.638Z
+    checked_at_utc: 2026-09-20T20:25:24.192Z
     linked_claim_ids:
       - nextgen-hpdme-resilience
     missing_claim_ids: []
@@ -1626,7 +1626,7 @@ results:
       status: not_requested
   - source_id: faa-adsb-in-services
     title: ADS-B Capabilities — Ins and Outs
-    checked_at_utc: 2026-09-20T20:04:52.683Z
+    checked_at_utc: 2026-09-20T20:25:24.230Z
     linked_claim_ids:
       - adsb-in-and-tisb-client-relationship
     missing_claim_ids: []
@@ -1661,7 +1661,7 @@ results:
       status: not_requested
   - source_id: foreflight-sentry-pilot-guide
     title: Sentry Pilot's Guide
-    checked_at_utc: 2026-09-20T20:04:49.584Z
+    checked_at_utc: 2026-09-20T20:25:21.071Z
     linked_claim_ids:
       - sentry-product-documentation-scope
     missing_claim_ids: []

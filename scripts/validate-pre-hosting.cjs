@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { currentContractErrors, publicationLinkEvidenceErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { currentContractErrors, independentSpokenScriptReviewErrors, publicationLinkEvidenceErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { releaseIdentity } = require("./release-identity.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, productionContractKind, sameStringList } = require("./production-state-contract.cjs");
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
@@ -110,16 +110,6 @@ function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function markdownSections(markdown) {
-  return String(markdown).split(/(?=^##\s+)/m).filter((section) => /^##\s+/.test(section));
-}
-
-function reviewSentenceHas(sentence, statusPattern) {
-  return /\b(?:independent|non-drafting)\b/i.test(sentence)
-    && /\breview\b/i.test(sentence)
-    && statusPattern.test(sentence);
-}
-
 function hasExactVisibleVersion(markdown, version) {
   const visibleVersion = String(markdown).match(/^\*\*Version:\*\*\s*(.+?)\s*$/im)?.[1] || "";
   return new RegExp(`^${escapeRegExp(version)}(?:\\s+[—–-]\\s+.+)?$`).test(visibleVersion);
@@ -133,22 +123,6 @@ function episodeDisplayLabel(episode) {
   if (episode.track === "supplemental") return `Supplement ${displayNumber}`;
   if (episode.track === "rough-spots") return `Rough Spot ${displayNumber}`;
   return null;
-}
-
-function hasResolvedIndependentSpokenScriptReview(productionLog) {
-  return markdownSections(productionLog).some((section) => {
-    const [heading, ...bodyLines] = section.split("\n");
-    const body = bodyLines.join("\n");
-    const headingIdentifiesReview = /\b(?:independent|non-drafting)\b/i.test(heading)
-      && /\b(?:spoken-script|adversarial)\b/i.test(heading)
-      && /\breview\b/i.test(heading);
-    const incompleteStatus = /\b(?:pending|incomplete|unresolved|awaiting)\b|\bnot\s+(?:completed|resolved|accepted)\b/i;
-    const headingRecordsResolution = /\b(?:completed|resolved|accepted)\b/i.test(heading) && !incompleteStatus.test(heading);
-    const sentences = body.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
-    const resolutionRecorded = sentences.some((sentence) => reviewSentenceHas(sentence, /\b(?:completed|resolved|accepted)\b/i));
-    const stillPending = sentences.some((sentence) => reviewSentenceHas(sentence, incompleteStatus));
-    return headingIdentifiesReview && headingRecordsResolution && resolutionRecorded && !stillPending;
-  });
 }
 
 function usesConsolidatedProductionState(episode) {
@@ -173,7 +147,7 @@ function pendingAudioReleaseGateErrors(episode) {
   return errors;
 }
 
-function validateDraftPackageShape({ episodePath, episode, audioManifest, hosting, masterScript, narration, showNotes, productionLog, qaChecklist }) {
+function validateDraftPackageShape({ episodePath, episode, audioManifest, hosting, masterScript, narration, showNotes, qaChecklist }) {
   const errors = [];
   expect(errors, PACKAGE_SHAPE_COMPATIBLE_STATUSES.has(episode.status), "episode.yaml status must be a recognized package-shape state.");
   expect(errors, episode.review?.editorial_status === "script_approved", "episode.yaml must record script_approved before the episode PR.");
@@ -192,7 +166,7 @@ function validateDraftPackageShape({ episodePath, episode, audioManifest, hostin
   expect(errors, qaItemComplete(qaChecklist, "human-editorial", /- \[x\] Human editorial pass (?:completed|received the clean source-validation result;)/i), "qa-checklist.md must mark the human editorial pass complete.");
   expect(errors, qaItemComplete(qaChecklist, "source-relevance", /- \[x\] (?:Before any audio render, source-link validator was run with `--require-llm`|After the independent spoken-script review and its required revisions, but before human editorial review, the source-link validator was run with `--require-llm`)/i), "qa-checklist.md must mark the source-relevance gate complete.");
   expect(errors, qaItemComplete(qaChecklist, "independent-script-review", /- \[x\] Independent spoken-script review completed by a second agent that did not draft the lesson/i), "qa-checklist.md must mark the independent spoken-script review complete.");
-  expect(errors, hasResolvedIndependentSpokenScriptReview(productionLog), "production-log.md must record the independent spoken-script review and its resolution.");
+  errors.push(...independentSpokenScriptReviewErrors({ episodePath, episode }));
   errors.push(...sourceReviewEvidenceErrors({ episodePath, episode }));
   return { valid: errors.length === 0, kind: DRAFT_PACKAGE_SHAPE, final: false, errors };
 }
@@ -206,7 +180,7 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
   const episode = readYaml(episodeFile);
   errors.push(...currentContractErrors(episode));
   if (errors.length) return { valid: false, errors };
-  const files = ["audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "narration.md", "sources.yaml", "claim-inventory.yaml", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md", "research-packet.md", "production-log.md"];
+  const files = ["audio-manifest.yaml", "hosting-metadata.yaml", "master-script.md", "narration.md", "sources.yaml", "claim-inventory.yaml", "show-notes.md", "show-notes-manifest.yaml", "link-validation.yaml", "qa-checklist.md", "research-packet.md"];
   const paths = Object.fromEntries(files.map((fileName) => [fileName, requireFile(resolvedEpisode, fileName, errors)]));
   paths["episode.yaml"] = episodeFile;
   if (errors.length) return { valid: false, errors };
@@ -217,7 +191,6 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
   const narration = fs.readFileSync(paths["narration.md"], "utf8");
   const showNotes = fs.readFileSync(paths["show-notes.md"], "utf8");
   const researchPacket = fs.readFileSync(paths["research-packet.md"], "utf8");
-  const productionLog = fs.readFileSync(paths["production-log.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
   let mix = null;
   expect(errors, episode.audio?.mix_config === "audio-mix.yaml", "episode.yaml audio.mix_config must reference audio-mix.yaml.");
@@ -229,7 +202,7 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
     catch (error) { errors.push(error instanceof AudioMixConfigError ? error.message : `Could not load audio mix configuration: ${error.message}`); }
   }
   if (errors.length) return { valid: false, errors };
-  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, episode, audioManifest, hosting, masterScript, narration, showNotes, productionLog, qaChecklist });
+  if (packageOnly) return validateDraftPackageShape({ episodePath: resolvedEpisode, episode, audioManifest, hosting, masterScript, narration, showNotes, qaChecklist });
   const candidate = audioManifest.current_candidate_render || {};
   let releaseIdentityRecord;
   try { releaseIdentityRecord = releaseIdentity({ track: episode.track, id: episode.id, version: episode.version }); }
@@ -323,6 +296,7 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
     expect(errors, review.includes(`name="ppl-audio-sha256" content="${candidateSha256}"`), "chapter-review page must identify the approved MP3 checksum.");
   }
 
+  errors.push(...independentSpokenScriptReviewErrors({ episodePath: resolvedEpisode, episode }));
   errors.push(...sourceReviewEvidenceErrors({ episodePath: resolvedEpisode, episode }));
   errors.push(...publicationLinkEvidenceErrors({ episodePath: resolvedEpisode, episode }));
   try {
@@ -373,4 +347,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, episodeDisplayLabel, hasExactVisibleVersion, hasResolvedIndependentSpokenScriptReview, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };
+module.exports = { DRAFT_PACKAGE_SHAPE, PreHostingValidationError, consolidatedProductionStateErrors, durationDisplay, episodeDisplayLabel, hasExactVisibleVersion, parseArgs, pathWithin, pendingAudioReleaseGateErrors, qaItemComplete, sha256File, usesConsolidatedProductionState, validateDraftPackageShape, validatePreHosting };

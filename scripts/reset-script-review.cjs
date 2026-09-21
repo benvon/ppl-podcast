@@ -80,10 +80,10 @@ function markChecklistItemsUnchecked(checklist, qaIDs) {
 
 function resettableChecklistIDs(checklist, { preserveCurrentSourceReview = false } = {}) {
   // These records describe whether the current candidate cleared a gate. A
-  // script reset invalidates each of them. The independent draft review and
-  // any historical preflight record remain evidence of work already done;
-  // they are not assertions that the current script has passed later gates.
-  const preserved = new Set(["claim-source-preflight", "independent-script-review"]);
+  // script reset invalidates each of them. Historical research preflight work
+  // remains useful context, but every current script needs its own independent
+  // spoken-script review.
+  const preserved = new Set(["claim-source-preflight"]);
   if (preserveCurrentSourceReview) {
     for (const qaID of ["claim-inventory", "script-source-tags", "retrieval-source-tags", "source-classification", "source-locators", "openai-source-review-authorization", "source-relevance", "show-notes-scope", "post-editorial-source-relevance"]) preserved.add(qaID);
   }
@@ -161,13 +161,20 @@ function resetScriptReviewUnlocked({ episodePath, reason = "The master script ch
   // never alters an untouched historical package or its existing handoff.
   episode.production_contract_version = 2;
   episode.status = "editorial_review_pending";
+  episode.published_at = null;
   episode.runtime_actual_seconds = null;
   episode.release_gates_remaining = [...RELEASE_GATES_AFTER_SCRIPT_RESET];
   episode.audio = { ...(episode.audio || {}), status: "not_rendered", publication_day_validation: "pending", chapter_markers: "pending_render" };
   if (!preserveCurrentSourceReview) {
     episode.source_verification = { ...(episode.source_verification || {}), status: "source_relevance_pending", verified_at_utc: null, relevance_review: "pending" };
   }
-  episode.review = { ...(episode.review || {}), editorial_status: "reapproval_required", editorial_script_sha256: null, pending_script_sha256: scriptSha256 };
+  episode.review = {
+    ...(episode.review || {}),
+    independent_spoken_script_review: { status: "pending", script_sha256: null },
+    editorial_status: "reapproval_required",
+    editorial_script_sha256: null,
+    pending_script_sha256: scriptSha256,
+  };
 
   episode.hosting = { ...(episode.hosting || {}), handoff_status: "pending_script_review" };
   // A reset migrates a legacy package to the one-file production-state

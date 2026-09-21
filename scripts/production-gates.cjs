@@ -65,6 +65,16 @@ function currentContractErrors(episode) {
   return ["episode.yaml must use the supported production_contract_version 2."];
 }
 
+function independentSpokenScriptReviewErrors({ episodePath, episode }) {
+  const errors = [...currentContractErrors(episode)];
+  if (errors.length) return errors;
+  const masterScript = readTextFile(path.join(episodePath, "master-script.md"), "master-script.md", errors);
+  if (masterScript === null) return errors;
+  if (episode.review?.independent_spoken_script_review?.status !== "complete") errors.push("episode.yaml must record a complete independent spoken-script review.");
+  if (episode.review?.independent_spoken_script_review?.script_sha256 !== sha256Text(masterScript)) errors.push("independent spoken-script review must be bound to the current master-script.md bytes.");
+  return errors;
+}
+
 function sourceReviewEvidenceErrors({ episodePath, episode }) {
   const errors = [...currentContractErrors(episode)];
   if (errors.length) return errors;
@@ -169,6 +179,7 @@ function narrationDerivativeErrors({ episodePath }) {
 
 function renderPrerequisiteErrors({ episodePath, episode }) {
   return [
+    ...independentSpokenScriptReviewErrors({ episodePath, episode }),
     ...sourceReviewEvidenceErrors({ episodePath, episode }),
     ...editorialApprovalErrors({ episodePath, episode }),
     ...narrationDerivativeErrors({ episodePath }),
@@ -179,6 +190,7 @@ module.exports = {
   SOURCE_REVIEW_FILES,
   currentContractErrors,
   editorialApprovalErrors,
+  independentSpokenScriptReviewErrors,
   narrationDerivativeErrors,
   publicationLinkEvidenceErrors,
   renderPrerequisiteErrors,

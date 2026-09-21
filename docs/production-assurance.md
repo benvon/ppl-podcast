@@ -19,6 +19,7 @@ The system protects against normal production mistakes: wrong or stale files, mi
 - `master-script.md`, `narration.md`, the audio manifest, show notes, and handoff manifest describe specific content or artifacts. They do not restate workflow status.
 - The QA checklist records human work and explicit authorization to send unpublished material to OpenAI. It is not a second state machine.
 - A command writes one named report for its work. A failed run records a failure and does not promote a new success report.
+- `production-log.md` may explain decisions and editorial context, but it is never an audit input. Do not place an authoritative status, timestamp, run ID, hash, or report result there; point to the structured record that owns that fact instead.
 
 Use the existing package-operation helper only when a command already changes current-contract package state. Do not add separate locks, recovery records, authorization-consumption files, or waiver registries without a demonstrated production need and a documented decision to expand scope.
 
@@ -29,7 +30,7 @@ For each current-contract episode:
 1. Research from the ACS, the PHAK, the AFH when relevant, regulations, and FAA guidance. Build the source ledger, claim inventory, scenario source map, source-tagged script, narration, and show notes.
 2. Have an independent first-listen reviewer assess grammar, complete thoughts, callbacks, call-forwards, and whether the script works when heard rather than read. Resolve material findings.
 3. With explicit current-turn authorization, run the two-pass LLM source-relevance review on the exact source-tagged spoken passages, claims, and cited excerpts. The two assessments use the same frozen package inputs; retain the union of their findings before changing the script. Its purpose is to find contradictions, unsupported factual statements, locator errors, and material scope mismatches—not to request stylistic rewrites or chase harmless wording differences. A finding is material only when it could teach an unsafe, wrong, or materially incomplete decision, rule, condition, or central lesson concept. Exact-but-nonessential legal wording is an editorial note.
-4. Resolve the material findings as one contextual redraft, not a sequence of isolated sentence patches. Recheck the revised passage against the surrounding section, scenario, and later Retrieval review before rerunning the two-pass review. The report retains non-material editorial notes for the human editor, but they do not invalidate source review or require a rewrite. Record any human editorial decision about such a note in `production-log.md`; do not build a machine-readable waiver mechanism.
+4. Resolve the material findings as one contextual redraft, not a sequence of isolated sentence patches. Recheck the revised passage against the surrounding section, scenario, and later Retrieval review before rerunning the two-pass review. The report retains non-material editorial notes for the human editor, but they do not invalidate source review or require a rewrite. A production log may explain a human editorial decision about such a note, but the structured source-review report and `episode.yaml` remain the only audit records; do not build a machine-readable waiver mechanism.
 5. Obtain human editorial approval. If spoken factual prose, claims, sources, source tags, or show notes change, reset the script review state and repeat source relevance before rendering. Incidental script whitespace—line endings, whitespace-only blank lines, or trailing horizontal whitespace that is not a Markdown hard break—does not change the source-review identity. Exact script bytes still govern editorial approval and rendered artifacts.
 
 The LLM review occurs before human editorial approval and before rendering. A pull request should verify an internally consistent, reviewed package; it must not be the first place basic source support is discovered. Unless the user specifically requests an editorial review, episode PR review excludes the already-approved lesson prose and focuses on package consistency, artifact identity, and tooling.
@@ -58,6 +59,7 @@ The validator suite must check only the relationships that matter to the four pu
 | --- | --- |
 | Source mapping | Every current source, claim, and source-tagged factual passage is accounted for. |
 | Source relevance | The report is tied to current script, source, claim, and show-notes inputs. |
+| Independent spoken-script review | `episode.yaml` records completion and the current master-script hash; the QA checklist records the human attestation. |
 | Editorial approval | The approval fingerprint matches `master-script.md`. |
 | Derived narration | Narration matches the approved script. |
 | Candidate audio | Render, audio QA, and chapter review name the same MP3 hash. |

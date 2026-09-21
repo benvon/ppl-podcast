@@ -19,6 +19,4 @@
 
 ## Correction status
 
-Corrections and source updates are recorded in the episode production log
-before a revised version is published. Submit a source correction through the
-repository issue form or email [feedback@pplstudyguide.com](mailto:feedback@pplstudyguide.com). Do not send credentials, private documents, or personal flight information.
+Corrections and source updates are captured in a revised episode package before it is published. Submit a source correction through the repository issue form or email [feedback@pplstudyguide.com](mailto:feedback@pplstudyguide.com). Do not send credentials, private documents, or personal flight information.

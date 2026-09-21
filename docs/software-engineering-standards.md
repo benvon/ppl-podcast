@@ -24,6 +24,8 @@ Design the complete command path before adding a check: the normal result, missi
 
 `episode.yaml` is the sole mutable workflow-state record. Artifact manifests describe artifacts. The QA checklist records human work. Do not create another state file, lock type, waiver system, or lifecycle registry unless the existing boundary cannot express a concrete requirement.
 
+`production-log.md` is optional explanatory prose. A validator must never parse it to establish, deny, or reconcile audit state. Authoritative timestamps, hashes, run IDs, approvals, statuses, and validation outcomes belong only in the existing structured state or report that owns them.
+
 Use the existing package operation wrapper only for commands that already mutate current-contract package state. Do not add separate authorization locks, recovery protocols, or competing ownership systems. A normal local command may fail closed, leave its existing successful record untouched, and be rerun after the cause is corrected.
 
 ## Required behavior
@@ -32,7 +34,7 @@ Use the existing package operation wrapper only for commands that already mutate
 - Bind a report or approval to the current relevant bytes. A changed script invalidates script approval and source review; source review may use an explicitly documented semantic identity for incidental whitespace only, while editorial approval remains bound to exact script bytes. A changed audio file invalidates audio and chapter review; a changed handoff input invalidates the handoff.
 - Make narrow modes explicit. A shape check may say `draft package shape valid`; it must not claim release readiness or create a release seal.
 - Treat the LLM source review as a focused support check. It may block for contradiction, unsupported factual material, an incorrect locator, or a material scope mismatch. It must not create blocking findings for stylistic preferences, harmless wording alternatives, or non-material omissions.
-- Resolve material source findings by revising the source-bound prose or source mapping. If the human editor deliberately accepts a non-material limitation, record the decision in `production-log.md`; do not create a generalized machine waiver mechanism.
+- Resolve material source findings by revising the source-bound prose or source mapping. If the human editor deliberately accepts a non-material limitation, a production log may explain that decision, but it cannot establish or override audit state; do not create a generalized machine waiver mechanism.
 - Keep external authorization conversational and explicit for unpublished material. Record it in the normal QA checklist and report. Do not consume a checkbox or build a separate authorization state machine.
 - Preserve a failed command's error report. Do not clear or overwrite a prior clean report until a new clean run for the current inputs succeeds.
 - Make success claims match the exact scope of the work performed. A partial or shape-only command may report its own completed check, but never imply that omitted validation, staging, or publication work also passed.

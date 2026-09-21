@@ -16,6 +16,7 @@ const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, withEpisodePackage
 
 const SEAL_FILE = "source-release-seal.yaml";
 const HANDOFF_FILES = ["episode.yaml", "show-notes.md", "audio.mp3"];
+const NON_AUDIT_CONTEXT_FILES = new Set(["production-log.md", "research-packet.md"]);
 
 class HostingHandoffError extends Error {}
 
@@ -70,10 +71,12 @@ function sourcePackageFiles(episodePath) {
   // Locks, failed-attempt markers, and temporary files describe an active or
   // interrupted local operation. They are not source-package inputs and are
   // removed by normal cleanup, so including them would make a release seal
-  // attest to bytes that cannot exist once the handoff is complete.
+  // attest to bytes that cannot exist once the handoff is complete. The
+  // production log and research packet are explanatory prose, not audit
+  // inputs; their state claims cannot establish or change a release.
   const transient = (name) => name.startsWith(".") || name.endsWith(".in-progress") || name.endsWith(".failed") || name.includes(".tmp");
   return Object.fromEntries(listedFiles(episodePath, { exclude: [SEAL_FILE] })
-    .filter((name) => !transient(name))
+    .filter((name) => !transient(name) && !NON_AUDIT_CONTEXT_FILES.has(name))
     .map((name) => [name, sha256File(path.join(episodePath, name))]));
 }
 

@@ -8,6 +8,7 @@ const path = require("path");
 const YAML = require("yaml");
 const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
+const { independentSpokenScriptReviewErrors } = require("./production-gates.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
 const { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
@@ -1096,6 +1097,10 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
     process.exitCode = 1;
     return;
+  }
+  if (options.requireLlm) {
+    const reviewErrors = independentSpokenScriptReviewErrors({ episodePath, episode });
+    if (reviewErrors.length) throw new Error(`Source-relevance validation requires a completed independent spoken-script review: ${reviewErrors[0]}`);
   }
   const targetErrors = staticValidationTargetErrors(ledger, showNotesManifest);
   if (targetErrors.length) throw new Error(`Source validation cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);

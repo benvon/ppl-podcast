@@ -27,6 +27,9 @@ source_verification:
   link_validation: link-validation.yaml
   relevance_review: required_before_render
 review:
+  independent_spoken_script_review:
+    status: not_started
+    script_sha256: null # Set after the independent review is resolved against the current master script.
   editorial_status: not_started
   editorial_script_sha256: null # Set only after the current script passes editorial review.
   qualified_aviation_review: optional_and_welcome

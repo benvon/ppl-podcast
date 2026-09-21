@@ -136,7 +136,7 @@ The reviewing agent must check that:
 - each callback and call-forward within the episode points to an idea that has already been taught or is specifically introduced later; and
 - the lesson can be understood on a first listen, rather than relying on the listener to reread a dense sentence or infer an unstated connection.
 
-The reviewer should return findings tied to a section and passage, distinguishing required fixes from optional wording suggestions. The drafting agent or lead editor resolves the required findings before source-relevance validation. Record the review, material changes, and any consciously deferred suggestion in the episode `production-log.md`.
+The reviewer should return findings tied to a section and passage, distinguishing required fixes from optional wording suggestions. The drafting agent or lead editor resolves the required findings before source-relevance validation. Record independent-review completion and the final reviewed-script hash in `episode.yaml`; `production-log.md` may add explanatory context but is not audit evidence.
 
 ## Validate sources before human editorial review
 
@@ -146,7 +146,7 @@ Use this order for every new draft:
 
 1. Complete the source-led research foundation and draft package, including the source ledger, claim inventory, source-tagged master script, narration, show notes, metadata, and production log.
 2. Complete the independent spoken-script review.
-3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, metadata, and production log consistent.
+3. Redraft to resolve its required findings, then regenerate `narration.md` and keep the claims, source ledger, show notes, and metadata consistent. A production log may summarize the revision but does not carry audit state.
 4. With explicit current-turn authorization, run source validation with `--require-llm`. It runs two independent assessments against the same frozen package inputs and must validate the material claims, their locators, and the source-tagged spoken passages in `master-script.md`. Resolve the union of every material finding and rerun until no material findings remain; retain non-material precision notes for the human editor without reopening the script automatically.
 5. Give that source-validated draft to the human editor.
 
@@ -224,4 +224,4 @@ Read the draft aloud or listen to a short render and check each section for:
   without seeing it on the page, and has every clever-but-unclear phrase been
   removed?
 
-Log material refinements in the episode’s `production-log.md`, update the recorded word count, and rerun the script structure, source-mapping, and renderer checks after edits.
+Update the structured package records and word count, and rerun the script structure, source-mapping, and renderer checks after edits. The episode’s `production-log.md` may summarize material refinements for a human reader, but it must not be used to establish audit state.

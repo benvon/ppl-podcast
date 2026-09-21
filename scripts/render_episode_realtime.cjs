@@ -19,7 +19,7 @@ const { analyzeRenderedAudio, fadeSegmentPcm } = require("./audio-quality.cjs");
 const { audioTreatment, audioTreatmentManifestRecord, treatmentForSpeakerLabel } = require("./audio-treatment.cjs");
 const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { deriveNarration } = require("./derive-narration.cjs");
-const { editorialApprovalErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { editorialApprovalErrors, independentSpokenScriptReviewErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { PACKAGE_OPERATION_IDS, withEpisodePackageOperationAsync } = require("./episode-package-lifecycle.cjs");
 
 const SAMPLE_RATE = 24000;
@@ -117,6 +117,7 @@ function assertSourceRelevanceApproved(scriptPath) {
     throw new RenderError(`Could not read source-review records: ${error.message}`);
   }
   const errors = [
+    ...independentSpokenScriptReviewErrors({ episodePath: path.dirname(scriptPath), episode }),
     ...sourceReviewEvidenceErrors({ episodePath: path.dirname(scriptPath), episode }),
     ...editorialApprovalErrors({ episodePath: path.dirname(scriptPath), episode }),
   ];

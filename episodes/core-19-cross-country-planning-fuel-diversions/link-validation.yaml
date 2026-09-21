@@ -1,0 +1,3635 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: formal_source_review
+run_id: b88d6af2-1ed5-4fc0-8d43-ba6edfe463ab
+checked_at_utc: 2026-09-21T18:01:22.049Z
+sources_file: episodes/core-19-cross-country-planning-fuel-diversions/sources.yaml
+claims_file: episodes/core-19-cross-country-planning-fuel-diversions/claim-inventory.yaml
+show_notes_file: episodes/core-19-cross-country-planning-fuel-diversions/show-notes.md
+show_notes_manifest_file: episodes/core-19-cross-country-planning-fuel-diversions/show-notes-manifest.yaml
+input_sha256:
+  sources: 37485895e8f55a387d7f496b8b19dd59e07ecb6f02371622f31a1fa0764afd84
+  claims: 563bc9d5a4edd67bb5cb8a1722b030185735baa45389e836a6e56390d811f1ec
+  master_script: d7532d627c9bc7fca1f88059a7cde7a0f59b3da7a40371d7adb07beed46d429f
+  show_notes: 203eaaa4b56212963b87f13b6c77866fecd1974457be745f95929ed467e6f0ff
+  show_notes_manifest: d404515992df74eee4528e576be5daf6e3f1c185d60e1376f1ae0e1add656c87
+input_normalization:
+  master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: d7532d627c9bc7fca1f88059a7cde7a0f59b3da7a40371d7adb07beed46d429f
+  show_notes: 5ad5866258dd085e7eb4b8b70b091ab71645d31e443d354d7e1702e4859567ff
+llm_requested: true
+llm_model: gpt-5.6-terra
+llm_review_passes: 2
+llm_materiality_policy: safety-and-core-v1
+authorization:
+  qa_id: openai-source-review-authorization
+  attested_at_utc: 2026-09-21T17:59:54.080Z
+  run_id: b88d6af2-1ed5-4fc0-8d43-ba6edfe463ab
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 58
+  claim_coverage_count: 30
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 23
+  manifest_link_count: 23
+show_notes_results:
+  - id: acs-cross-country-link
+    text: Private Pilot ACS Cross-Country Flight Planning task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+    source_id: acs-cross-country-planning
+    claim_ids:
+      - acs-cross-country-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-performance-link
+    text: Private Pilot ACS Performance and Limitations task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    source_id: acs-performance-planning
+    claim_ids:
+      - acs-performance-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-performance-skill-link
+    text: Private Pilot ACS performance-chart skill
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    source_id: acs-performance-skill
+    claim_ids:
+      - acs-performance-chart-skill
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-diversion-link
+    text: Private Pilot ACS Diversion task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+    source_id: acs-diversion
+    claim_ids:
+      - acs-diversion-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      errors: []
+      valid: true
+      pdf_page_number: 48
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2157
+      pdf_page_text_sha256: d396463e99330c16037a4404f27e87961306cdbf39cfd43a309ff2529807b407
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ecfr-preflight-link
+    text: 14 CFR 91.103 preflight action
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+    source_id: ecfr-preflight-action
+    claim_ids:
+      - preflight-information-duty
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a10 []
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-09-17
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+  - id: ecfr-vfr-fuel-link
+    text: 14 CFR 91.151 VFR airplane fuel requirements
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+    source_id: ecfr-vfr-fuel
+    claim_ids:
+      - vfr-fuel-minimum
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a12 []
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-09-17
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+  - id: ecfr-vfr-plan-link
+    text: 14 CFR 91.153 VFR flight-plan information
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.153
+    source_id: ecfr-vfr-flight-plan
+    claim_ids:
+      - vfr-flight-plan-information
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a14 []
+      title: null
+      truncated: false
+      content_sha256: 219575e3e64b5a61132890004b95dd6ecd39b8f2527a58dbdb827f4785c1c82f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.153
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.153"
+        date: 2026-09-17
+        section_number: "91.153"
+      section_text_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      excerpt_characters: 1339
+      excerpt_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1339
+  - id: phak-navigation-intro-link
+    text: PHAK cross-country navigation introduction
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+    source_id: phak-navigation-introduction
+    claim_ids:
+      - navigation-planning-elements
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 853
+      pdf_page_text_sha256: 233f9c55621827eb48364d799bbf93e29f2de3e9a06dbe8440072d6f6c93c20f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-magnetic-course-link
+    text: PHAK true-course to magnetic-course conversion
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+    source_id: phak-magnetic-course
+    claim_ids:
+      - true-to-magnetic-course
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2943
+      pdf_page_text_sha256: 622f062e1995073fdf48d6ee5e9db7ba4c76ab65b17f26304a19e6f8aafd1bfc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-calculations-link
+    text: PHAK time, distance, groundspeed, and fuel calculations
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+    source_id: phak-time-distance-fuel
+    claim_ids:
+      - time-distance-groundspeed
+      - fuel-consumption-monitoring
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3512
+      pdf_page_text_sha256: b6405f77f112f4ca91fd889f45d0bf110e9ced4edc3ebd482e9c8e722b68f4da
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-planning-material-link
+    text: PHAK flight-planning materials and airport information
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+    source_id: phak-flight-planning-material
+    claim_ids:
+      - planning-material-and-airports
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3820
+      pdf_page_text_sha256: 19dcab8a4b34d763496839bdc38f0b65169bae5cfebfc730a0ebec7a4f8319a8
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-aircraft-fuel-link
+    text: PHAK aircraft data and route-charting sequence
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+    source_id: phak-aircraft-data-fuel-stops
+    claim_ids:
+      - aircraft-data-and-fuel-stops
+      - route-charting-sequence
+      - calculation-method-options
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5429
+      pdf_page_text_sha256: f83f97700a686ecb9b3cdd2980ea9e27ebc469d0c56b7703ba62df5d13799e6c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-flight-log-link
+    text: PHAK planning sheet and visual flight-log example
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+    source_id: phak-flight-log-calculation
+    claim_ids:
+      - flight-log-record-layout
+      - flight-log-heading-chain
+      - flight-log-computation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2880
+      pdf_page_text_sha256: 60d70014156dc460f7df82e657b074d5191788377305c8cb8cf693a131ac66ea
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-plan-update-link
+    text: PHAK in-flight plan adjustment
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+    source_id: phak-adjust-plan-in-flight
+    claim_ids:
+      - plan-versus-actual-update
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2334
+      pdf_page_text_sha256: faa7cbb8ade38510e2b20af37214e686f6bd357c3b9e29b91acbe3ab365135a8
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-performance-data-link
+    text: PHAK AFM/POH performance-data overview
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+    source_id: phak-performance-data
+    claim_ids:
+      - afm-poh-performance-data
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 744
+      pdf_page_text_sha256: 655877e4673a38e702fb389d13dd2659d33d28f52a4ab16c78afe74306e96838
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-climb-cruise-link
+    text: PHAK climb and cruise planning charts
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+    source_id: phak-climb-cruise-planning
+    claim_ids:
+      - climb-chart-outputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4122
+      pdf_page_text_sha256: c1098960581eef8f5d0d18fcec4c6570c33cdafc5fd6e73136ee5e68a2d4ab2f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cruise-performance-link
+    text: PHAK cruise and range performance example
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+    source_id: phak-cruise-performance
+    claim_ids:
+      - cruise-chart-outputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4764
+      pdf_page_text_sha256: ec33dd09a51a4e7c5ab0297cf7c80e320c01c1d95a1e9dd6a0f63780365ff516
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-fuel-check-link
+    text: PHAK fuel-quantity and selector checks
+    url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+    source_id: phak-fuel-quantity-check
+    claim_ids:
+      - preflight-fuel-quantity-check
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a26 []
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2832
+      pdf_page_text_sha256: 338cf38c06760ad35cc222dd0de2f195f0cd409ffb13c661b459b072a8d650c4
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-personal-minimums-options-link
+    text: PHAK personal-minimum decision references and alternatives
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+    source_id: phak-personal-minimums-options
+    claim_ids:
+      - personal-minimums-decision-reference
+      - risk-processing-alternatives
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5281
+      pdf_page_text_sha256: f75bccfe05622330314d83161ce7965d46d7f9bb5c58056ad0d55fab3340435f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-workload-link
+    text: PHAK situational-awareness and workload management
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+    source_id: phak-workload-management
+    claim_ids:
+      - workload-prioritization
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-safety-briefing-fuel-trends-link
+    text: FAA Safety Briefing fuel-trend and totalizer examples
+    url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+    source_id: faa-safety-briefing-fuel-trends
+    claim_ids:
+      - eta-weather-trend-checks
+      - fuel-totalizer-plan-comparison
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a30 []
+      title: null
+      truncated: true
+      content_sha256: fb0113e25c9deaebab0f6a1baf37b5d82187262b7c5f2292a56c946b31acdb1b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4644
+      pdf_page_text_sha256: 91852c58cff349bdfaad776cd2d9e81633ab980016c309dfe35c3064b811636c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-vfr-flight-plan-link
+    text: AIM VFR flight-plan guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+    source_id: aim-vfr-flight-plans
+    claim_ids:
+      - vfr-flight-plan-operation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a5 []
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 40a9097fa26d5672871d7149f5366794de3ad4351ba0a7338104144ed82d4368
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 3141bc819d85d77eb3bc7ead32c12625065a284e8966ecbda0d5a748a92b0186
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-close-vfr-plan-link
+    text: AIM closing VFR flight plans
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+    source_id: aim-close-vfr-flight-plan
+    claim_ids:
+      - vfr-flight-plan-close
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 40a9097fa26d5672871d7149f5366794de3ad4351ba0a7338104144ed82d4368
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      errors: []
+      valid: true
+      excerpt_characters: 9907
+      excerpt_sha256: eab756517936e62be4cbc57d51b04ea8f04d87431b57da6dda4585b652621a04
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-cross-country-planning
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T17:59:54.081Z
+    linked_claim_ids:
+      - acs-cross-country-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a6
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: partially_supports
+          confidence: high
+          rationale: The cited ACS page supports route planning, altitude selection, time
+            and fuel calculations, current charts/publications, risk analysis,
+            fuel planning, and recalculation of fuel reserves. It does not state
+            that PA.I.D includes “alternatives” as a planning element.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is printed page 5 (PDF page 13) and contains
+              PA.I.D.K1–K6, R1–R7, and S1–S5 for Cross-Country Flight Planning.
+          claim_assessments:
+            - claim_id: acs-cross-country-outcome
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: The claim accurately summarizes most listed PA.I.D knowledge,
+                risk-management, and skill elements, including route and
+                altitude selection, calculations, current publications, risk
+                analysis, fuel planning, and reserve recalculation.
+                “Alternatives” is not identified on the cited page as a PA.I.D
+                planning element.
+        usage:
+          input_tokens: 1376
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1373
+          output_tokens: 378
+          output_tokens_details:
+            reasoning_tokens: 141
+          total_tokens: 1754
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: partially_supports
+          confidence: high
+          rationale: The cited ACS page supports route and altitude planning,
+            calculations, current publications, risk analysis, fuel planning,
+            and recalculation of fuel reserves. It does not expressly identify
+            “alternatives” as an element of PA.I.D cross-country flight
+            planning.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is the printed page 5 ACS content for PA.I.D
+              Cross-Country Flight Planning and contains K1-K6, R1-R7, and
+              S1-S5.
+          claim_assessments:
+            - claim_id: acs-cross-country-outcome
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: The page supports the listed route and altitude selection, time and
+                fuel calculations, current publications, risk analysis, fuel
+                planning, and fuel-reserve recalculation elements.
+                “Alternatives” is not stated in the excerpt.
+        usage:
+          input_tokens: 1376
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1373
+          output_tokens: 409
+          output_tokens_details:
+            reasoning_tokens: 197
+          total_tokens: 1785
+    relevance: *a6
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids:
+            - acs-cross-country-outcome
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids:
+            - acs-cross-country-outcome
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids:
+            - acs-cross-country-outcome
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids:
+            - acs-cross-country-outcome
+  - source_id: acs-performance-planning
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T17:59:54.082Z
+    linked_claim_ids:
+      - acs-performance-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a7
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page explicitly lists PA.I.F.K1 (use of performance
+            charts, tables, and data), PA.I.F.K2 (factors affecting
+            performance), and PA.I.F.R3 (possible differences between calculated
+            and actual performance).
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PDF page 14 contains Area of Operation I, Task F, Performance and
+              Limitations, including PA.I.F.K1-K2 and R1-R3.
+          claim_assessments:
+            - claim_id: acs-performance-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately summarizes PA.I.F.K1, PA.I.F.K2, and PA.I.F.R3
+                on the cited page.
+        usage:
+          input_tokens: 1289
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1286
+          output_tokens: 179
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1468
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page explicitly lists PA.I.F.K1 on using charts,
+            tables, and data to determine performance; PA.I.F.K2 on factors
+            affecting performance; and PA.I.F.R3 on possible differences between
+            calculated and actual performance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PDF page 14 contains Task F, Performance and Limitations, including
+              PA.I.F.K1-K2 and R1-R3.
+          claim_assessments:
+            - claim_id: acs-performance-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately summarizes PA.I.F.K1, PA.I.F.K2, and PA.I.F.R3
+                on the cited page.
+        usage:
+          input_tokens: 1289
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1286
+          output_tokens: 173
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1462
+    relevance: *a7
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: acs-performance-skill
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T17:59:54.849Z
+    linked_claim_ids:
+      - acs-performance-chart-skill
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a8
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The excerpt explicitly states under Preflight Preparation Skills:
+            “PA.I.F.S2 Use the appropriate airplane performance charts, tables,
+            and data,” which matches the claim and authored passage."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page contains PA.I.F.S2 and the quoted
+              performance-chart skill statement.
+          claim_assessments:
+            - claim_id: acs-performance-chart-skill
+              verdict: supports
+              finding_materiality: none
+              rationale: "PA.I.F.S2 is quoted verbatim in the excerpt: “Use the appropriate
+                airplane performance charts, tables, and data.”"
+        usage:
+          input_tokens: 1180
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1177
+          output_tokens: 152
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1332
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The excerpt explicitly states: “PA.I.F.S2 Use the appropriate
+            airplane performance charts, tables, and data,” which directly
+            supports the listed claim and authored passage."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page contains PA.I.F.S2 under Area of Operation I,
+              Preflight Preparation, Performance and Limitations.
+          claim_assessments:
+            - claim_id: acs-performance-chart-skill
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reproduces the PA.I.F.S2 skill requirement
+                stated in the excerpt.
+        usage:
+          input_tokens: 1180
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1177
+          output_tokens: 148
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1328
+    relevance: *a8
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: acs-diversion
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T17:59:54.854Z
+    linked_claim_ids:
+      - acs-diversion-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      errors: []
+      valid: true
+      pdf_page_number: 48
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2157
+      pdf_page_text_sha256: d396463e99330c16037a4404f27e87961306cdbf39cfd43a309ff2529807b407
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a9
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page directly lists the stated PA.VI.C diversion
+            knowledge, risk-management, and skill elements, including
+            destination/route selection, estimates of heading, groundspeed,
+            arrival time, and fuel; weather updates; collision and distraction
+            risk; available resources; and prompt diversion.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is printed page 40 and contains PA.VI.C.K1-K2,
+              R1-R5, and S1-S6 for Diversion.
+          claim_assessments:
+            - claim_id: acs-diversion-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.VI.C.R1-R2 address collision hazards and distractions; R5
+                addresses available resources; and S1, S2, S4, and S6
+                respectively address destination/route selection, diversion
+                estimates, weather updates/interpretation, and prompt diversion.
+        usage:
+          input_tokens: 1437
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1434
+          output_tokens: 215
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1652
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page contains PA.VI.C diversion knowledge,
+            risk-management, and skill elements matching the claim, including
+            suitable destination and route selection, reasonable estimates of
+            heading/groundspeed/arrival time/fuel, weather updates, collision
+            and distraction risk, available resources, and prompt diversion.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PDF page 48 is printed page 40 and contains Task C, Diversion, with
+              PA.VI.C.K1-K2, R1-R5, and S1-S6.
+          claim_assessments:
+            - claim_id: acs-diversion-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: "The claim accurately consolidates the specified Diversion task
+                elements: S1, S2, S4, and S6; R1-R2; and R5."
+        usage:
+          input_tokens: 1437
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1434
+          output_tokens: 201
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1638
+    relevance: *a9
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-preflight-action
+    title: 14 CFR 91.103, Preflight action
+    checked_at_utc: 2026-09-21T17:59:54.082Z
+    linked_claim_ids:
+      - preflight-information-duty
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a10
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-09-17
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+    relevance_reviews:
+      - &a11
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited excerpt directly states the preflight-information duty and
+            the specified information required for IFR or flights not in the
+            vicinity of an airport, as well as runway-length and
+            takeoff/landing-performance information required for any flight.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies § 91.103(a)-(b), and the excerpt contains the
+              relevant text of the section and both cited paragraphs.
+          claim_assessments:
+            - claim_id: preflight-information-duty
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects § 91.103’s general requirement, the
+                weather/fuel/alternatives/ATC-delay items applicable to IFR
+                flights or flights not in the vicinity of an airport, and the
+                runway-length and performance-information requirements
+                applicable to any flight.
+        usage:
+          input_tokens: 1202
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1199
+          output_tokens: 194
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1396
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly establishes the stated preflight-information
+            duty and the applicable information requirements for IFR or flights
+            not in the vicinity of an airport, as well as runway-length and
+            takeoff/landing performance information for any flight.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies § 91.103(a)-(b), and the excerpt
+              contains both the general duty and the cited paragraph-specific
+              requirements.
+          claim_assessments:
+            - claim_id: preflight-information-duty
+              verdict: supports
+              finding_materiality: none
+              rationale: Section 91.103 requires each pilot in command, before beginning a
+                flight, to become familiar with all available information
+                concerning that flight. It expressly includes the listed
+                weather, fuel, alternatives, and ATC-delay items for IFR flights
+                or flights not in the vicinity of an airport, and runway lengths
+                plus applicable takeoff/landing-distance information for any
+                flight.
+        usage:
+          input_tokens: 1202
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1199
+          output_tokens: 213
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1415
+    relevance: *a11
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-vfr-fuel
+    title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
+    checked_at_utc: 2026-09-21T17:59:54.082Z
+    linked_claim_ids:
+      - vfr-fuel-minimum
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a12
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-09-17
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+    relevance_reviews:
+      - &a13
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt from 14 CFR 91.151(a) directly states the airplane VFR
+            fuel requirement described in the claim, including consideration of
+            wind and forecast weather, fuel to the first intended landing,
+            normal cruising speed, and 30-minute daytime or 45-minute nighttime
+            reserve.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies § 91.151(a), the subsection
+              governing airplane VFR fuel requirements.
+          claim_assessments:
+            - claim_id: vfr-fuel-minimum
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately restates § 91.151(a).
+        usage:
+          input_tokens: 1133
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1130
+          output_tokens: 161
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1294
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The excerpt directly states the airplane VFR fuel requirement
+            described in the claim: fuel sufficient, considering wind and
+            forecast weather, to reach the first point of intended landing plus
+            30 minutes by day or 45 minutes at night at normal cruising speed."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies § 91.151(a), which contains the
+              airplane VFR fuel requirement.
+          claim_assessments:
+            - claim_id: vfr-fuel-minimum
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects § 91.151(a), including applicability to
+                airplanes under VFR, consideration of wind and forecast weather,
+                the first intended landing point, normal cruising speed, and the
+                day/night reserve durations.
+        usage:
+          input_tokens: 1133
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1130
+          output_tokens: 185
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1318
+    relevance: *a13
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-vfr-flight-plan
+    title: "14 CFR 91.153, VFR flight plan: Information required"
+    checked_at_utc: 2026-09-21T17:59:54.082Z
+    linked_claim_ids:
+      - vfr-flight-plan-information
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a14
+      title: null
+      truncated: false
+      content_sha256: 219575e3e64b5a61132890004b95dd6ecd39b8f2527a58dbdb827f4785c1c82f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.153
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.153"
+        date: 2026-09-17
+        section_number: "91.153"
+      section_text_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      excerpt_characters: 1339
+      excerpt_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1339
+    relevance_reviews:
+      - &a15
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly lists the required VFR flight-plan information
+            summarized in the claim, including aircraft information, pilot
+            information, departure point and time, route, cruising altitude,
+            true airspeed, first intended landing, estimated elapsed time, fuel
+            in hours, and persons aboard. It also directly requires the pilot in
+            command to notify an FAA Flight Service Station or ATC facility when
+            an activated plan is canceled or the flight is completed.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Section 91.153(a)-(b) is the correct locator for both the
+              filing-information and activated-plan cancellation/completion
+              notification requirements.
+          claim_assessments:
+            - claim_id: vfr-flight-plan-information
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately summarizes § 91.153(a)(1)-(8) and § 91.153(b).
+        usage:
+          input_tokens: 1182
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1179
+          output_tokens: 206
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1388
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly lists the stated VFR flight-plan information
+            categories in § 91.153(a) and requires the pilot in command to
+            notify an FAA Flight Service Station or ATC facility upon canceling
+            or completing an activated flight plan under § 91.153(b).
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator, § 91.153(a)-(b), correctly covers both the required
+              filing information and the notification requirement after
+              cancellation or completion of an activated plan.
+          claim_assessments:
+            - claim_id: vfr-flight-plan-information
+              verdict: supports
+              finding_materiality: none
+              rationale: Section 91.153(a) requires aircraft identification/type, pilot
+                identity, departure point/time, route, cruising altitude, true
+                airspeed, first intended landing, estimated elapsed time, fuel
+                on board in hours, and persons aboard. Section 91.153(b)
+                requires the PIC to notify FAA Flight Service or ATC when an
+                activated plan is canceled or the flight is completed.
+        usage:
+          input_tokens: 1182
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1179
+          output_tokens: 235
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1417
+    relevance: *a15
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-navigation-introduction
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T17:59:54.881Z
+    linked_claim_ids:
+      - navigation-planning-elements
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 853
+      pdf_page_text_sha256: 233f9c55621827eb48364d799bbf93e29f2de3e9a06dbe8440072d6f6c93c20f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a16
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt explicitly describes VFR cross-country planning as
+            plotting the course, selecting checkpoints, measuring distances,
+            obtaining pertinent weather information, and computing flight time,
+            headings, and fuel requirements, while defining air navigation as
+            monitoring position as the flight progresses.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-1, which contains the Introduction and
+              the quoted planning elements.
+          claim_assessments:
+            - claim_id: navigation-planning-elements
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the planning elements and in-flight
+                position monitoring stated in the excerpt.
+        usage:
+          input_tokens: 920
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 157
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1077
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited excerpt explicitly describes VFR cross-country planning as
+            plotting the course, selecting checkpoints, measuring distances,
+            obtaining pertinent weather information, and computing flight time,
+            headings, and fuel requirements. It also defines air navigation as
+            piloting between geographic positions while monitoring position as
+            the flight progresses.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 1, labeled Chapter 16,
+              Introduction, page 16-1, matching the locator.
+          claim_assessments:
+            - claim_id: navigation-planning-elements
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately consolidates the planning elements and in-flight
+                position-monitoring language stated in the excerpt.
+        usage:
+          input_tokens: 920
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 174
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1094
+    relevance: *a16
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-magnetic-course
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T17:59:54.885Z
+    linked_claim_ids:
+      - true-to-magnetic-course
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2943
+      pdf_page_text_sha256: 622f062e1995073fdf48d6ee5e9db7ba4c76ab65b17f26304a19e6f8aafd1bfc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a17
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that the appropriate variation must be considered
+            and added or subtracted as appropriate, and that once applied, the
+            new course is called the magnetic course. This directly supports the
+            listed claim and both source-tagged passages.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is 16-7, and the excerpt on that page contains the
+              relevant Magnetic Variation discussion and definition of magnetic
+              course.
+          claim_assessments:
+            - claim_id: true-to-magnetic-course
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt explicitly says that applying the appropriate geographic
+                variation produces a new course called the magnetic course.
+        usage:
+          input_tokens: 1405
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1402
+          output_tokens: 164
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1569
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly states that after the appropriate variation is
+            applied to a true course, “this new course is called the magnetic
+            course.” Both authored passages accurately convey that relationship.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-7, and it contains the stated
+              discussion of applying variation and naming the result the
+              magnetic course.
+          claim_assessments:
+            - claim_id: true-to-magnetic-course
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt directly supports the claim: “Once applied, this new
+                course is called the magnetic course.”"
+        usage:
+          input_tokens: 1405
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1402
+          output_tokens: 154
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1559
+    relevance: *a17
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-time-distance-fuel
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T18:00:09.671Z
+    linked_claim_ids:
+      - time-distance-groundspeed
+      - fuel-consumption-monitoring
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3512
+      pdf_page_text_sha256: b6405f77f112f4ca91fd889f45d0bf110e9ced4edc3ebd482e9c8e722b68f4da
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a18
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page explicitly gives all three time, distance, and
+            groundspeed formulas and states that accurate preflight fuel
+            planning should be supported by monitoring past fuel consumption and
+            using specified fuel-management and mixture-adjustment procedures in
+            flight.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is the exact PDF page containing the Basic
+              Calculations and Fuel Consumption material used by both claims.
+          claim_assessments:
+            - claim_id: time-distance-groundspeed
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states T = D/GS, D = GS × T, and GS = D/T.
+            - claim_id: fuel-consumption-monitoring
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt says accurate preflight fuel-consumption planning is
+                required and that it should be supported by monitoring past fuel
+                consumption and using specified fuel-management and
+                mixture-adjustment procedures in flight.
+        usage:
+          input_tokens: 1824
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1821
+          output_tokens: 271
+          output_tokens_details:
+            reasoning_tokens: 50
+          total_tokens: 2095
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly provides the time, distance, and groundspeed
+            equations and states that accurate preflight fuel-consumption
+            planning should be supported by monitoring past fuel consumption and
+            by using specified fuel-management and mixture-adjustment procedures
+            in flight.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-11, and the excerpt on that page
+              contains both the basic time-distance-groundspeed formulas and the
+              fuel-consumption planning guidance.
+          claim_assessments:
+            - claim_id: time-distance-groundspeed
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt explicitly states T = D/GS, D = GS × T, and GS = D/T.
+            - claim_id: fuel-consumption-monitoring
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that sufficient fuel requires accurately computing
+                aircraft fuel consumption during preflight planning and that
+                planning should be supported by monitoring past fuel consumption
+                and using specified fuel-management and mixture-adjustment
+                procedures in flight.
+        usage:
+          input_tokens: 1824
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1821
+          output_tokens: 323
+          output_tokens_details:
+            reasoning_tokens: 84
+          total_tokens: 2147
+    relevance: *a18
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-flight-planning-material
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T18:00:09.710Z
+    linked_claim_ids:
+      - planning-material-and-airports
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3820
+      pdf_page_text_sha256: 19dcab8a4b34d763496839bdc38f0b65169bae5cfebfc730a0ebec7a4f8319a8
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a19
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page expressly addresses flight-planning material,
+            weather checking, and intended-airport research using NOTAMs and the
+            Chart Supplement U.S., including the listed categories of airport
+            information.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is PDF page 16-17, and the supplied excerpt from
+              that exact page contains the relevant Flight Planning, Weather
+              Check, and Use of Chart Supplement U.S. material.
+          claim_assessments:
+            - claim_id: planning-material-and-airports
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt calls for appropriate current sectional charts and
+                adjoining-chart coverage as needed, checking weather to assess
+                feasibility and route choice, and studying each intended airport
+                through NOTAMs and the Chart Supplement. It specifically lists
+                location, elevation, runway and lighting facilities, services,
+                fuel, frequencies, traffic information, remarks, and other
+                pertinent information.
+        usage:
+          input_tokens: 1643
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1640
+          output_tokens: 310
+          output_tokens_details:
+            reasoning_tokens: 94
+          total_tokens: 1953
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The cited PDF page directly supports the listed flight-planning
+            guidance: collecting appropriate current sectional charts and
+            adjoining charts as needed, checking weather early to assess
+            feasibility and route choice, and studying intended airports using
+            NOTAMs and the Chart Supplement U.S. It expressly lists location,
+            elevation, runway and lighting facilities, services, fuel,
+            frequencies, traffic information, remarks, and other pertinent
+            information."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is PDF page 16-17, and the supplied excerpt is from
+              that exact page. It contains the Flight Planning, Assembling
+              Necessary Material, Weather Check, and Use of Chart Supplement
+              U.S. sections relevant to the claim.
+          claim_assessments:
+            - claim_id: planning-material-and-airports
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt supports current route-chart material, weather review,
+                and intended-airport research through NOTAMs and the Chart
+                Supplement, including the cited categories of airport
+                information.
+        usage:
+          input_tokens: 1643
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1640
+          output_tokens: 333
+          output_tokens_details:
+            reasoning_tokens: 100
+          total_tokens: 1976
+    relevance: *a19
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-aircraft-data-fuel-stops
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T18:00:09.716Z
+    linked_claim_ids:
+      - aircraft-data-and-fuel-stops
+      - route-charting-sequence
+      - calculation-method-options
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5429
+      pdf_page_text_sha256: f83f97700a686ecb9b3cdd2980ea9e27ebc469d0c56b7703ba62df5d13799e6c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a20
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The cited PDF page directly supports all listed claims: it directs
+            use of FAA-approved AFM or permanent records for weight-and-balance
+            information, appropriate performance charts for takeoff and landing
+            distances, fuel-consumption charts compared with estimated flight
+            time to identify refueling points, a route-charting sequence
+            including route drawing, checkpoints, airspace, terrain,
+            obstructions, and altitude selection, and use of mathematical
+            formulas or manual/electronic flight computers."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is 16-18, and the excerpt from that exact page
+              contains the cited AFM/records, performance-distance,
+              fuel-consumption/refueling, and Charting the Course material.
+          claim_assessments:
+            - claim_id: aircraft-data-and-fuel-stops
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt directs use of the FAA-approved AFM or permanent aircraft
+                records for empty-weight and CG information, directs
+                determination and comparison of takeoff and landing distances
+                using appropriate charts, and directs comparing fuel-consumption
+                data with estimated flight time so refueling points can be
+                included in the plan.
+            - claim_id: route-charting-sequence
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt describes drawing the route, selecting easy-to-locate
+                recognizable checkpoints, checking airspace along and on either
+                side of the route, studying terrain and obstructions, and using
+                that review to select an appropriate altitude.
+            - claim_id: calculation-method-options
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that, where calculations are required, the pilot
+                may use a mathematical formula or a manual or electronic flight
+                computer.
+        usage:
+          input_tokens: 2051
+          input_tokens_details:
+            cache_write_tokens: 2048
+            cached_tokens: 0
+          output_tokens: 377
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 2428
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: partially_supports
+          confidence: high
+          rationale: The cited PDF page supports the flight-planning, route-charting, and
+            calculation-method claims. The only qualification is that the
+            excerpt specifically names the FAA-approved AFM or other permanent
+            aircraft records for weight-and-balance information; it does not
+            mention a POH.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt was extracted from cited PDF page 18 and contains the
+              referenced aircraft-data, performance, fuel-planning, and
+              course-charting material.
+          claim_assessments:
+            - claim_id: aircraft-data-and-fuel-stops
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: The page directs use of the FAA-approved AFM or other permanent
+                records for empty weight and CG, appropriate charts for takeoff
+                and landing distances, and fuel-consumption data compared with
+                estimated flight time to include refueling points. It does not
+                specifically state “POH.”
+            - claim_id: route-charting-sequence
+              verdict: supports
+              finding_materiality: none
+              rationale: The page describes drawing the route, selecting recognizable
+                checkpoints, checking airspace near the route, studying terrain
+                and obstructions, and selecting an appropriate altitude based on
+                that review.
+            - claim_id: calculation-method-options
+              verdict: supports
+              finding_materiality: none
+              rationale: The page states that, where calculations are required, the pilot may
+                use a mathematical formula or a manual or electronic flight
+                computer.
+        usage:
+          input_tokens: 2051
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2048
+          output_tokens: 469
+          output_tokens_details:
+            reasoning_tokens: 143
+          total_tokens: 2520
+    relevance: *a20
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids:
+            - aircraft-data-and-fuel-stops
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids:
+            - aircraft-data-and-fuel-stops
+  - source_id: phak-flight-log-calculation
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T18:00:09.734Z
+    linked_claim_ids:
+      - flight-log-record-layout
+      - flight-log-heading-chain
+      - flight-log-computation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2880
+      pdf_page_text_sha256: 60d70014156dc460f7df82e657b074d5191788377305c8cb8cf693a131ac66ea
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a21
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page contains Figure 16-26’s pilot planning sheet and
+            visual flight log, as well as the accompanying worked-example
+            discussion of heading conversion and groundspeed-based time and fuel
+            calculations.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator identifies Figure 16-26 and the associated course,
+              groundspeed, time, and fuel computation discussion on PDF page 20,
+              which is the supplied excerpt.
+          claim_assessments:
+            - claim_id: flight-log-record-layout
+              verdict: supports
+              finding_materiality: none
+              rationale: Figure 16-26 includes aircraft identification and planning entries,
+                route points, course and heading fields, wind, groundspeed,
+                point-to-point and cumulative distances, and actual/estimated
+                groundspeed and elapsed-time fields.
+            - claim_id: flight-log-heading-chain
+              verdict: supports
+              finding_materiality: none
+              rationale: The page explicitly gives the formula “TC ± WCA = TH ± V = MH ± D =
+                CH” and explains the worked sequence from true course through
+                wind-correction angle, variation, and deviation to compass
+                heading.
+            - claim_id: flight-log-computation
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that once groundspeed is determined, total trip
+                time, time between checkpoints, and fuel burned can be
+                determined.
+        usage:
+          input_tokens: 1762
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1759
+          output_tokens: 489
+          output_tokens_details:
+            reasoning_tokens: 184
+          total_tokens: 2251
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page contains Figure 16-26 and the accompanying worked
+            planning discussion. It supports the flight-log fields, the
+            TC/WCA/TH/variation/MH/deviation/CH sequence, and use of calculated
+            groundspeed for trip-time, checkpoint-time, and fuel computations.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies Figure 16-26 and the related
+              course, groundspeed, time, and fuel-computation discussion on
+              cited PDF page 20.
+          claim_assessments:
+            - claim_id: flight-log-record-layout
+              verdict: supports
+              finding_materiality: none
+              rationale: Figure 16-26 shows aircraft/planning information, route points,
+                course and heading fields, wind, groundspeed, point-to-point and
+                cumulative distances, and actual and estimated groundspeed and
+                elapsed-time fields.
+            - claim_id: flight-log-heading-chain
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt expressly gives the formula “TC ± WCA = TH ± V = MH ± D =
+                CH” and explains the sequential worked adjustments from true
+                course through compass heading.
+            - claim_id: flight-log-computation
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that, once groundspeed is determined, total trip
+                time, checkpoint times, and fuel burned can be determined.
+        usage:
+          input_tokens: 1762
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1759
+          output_tokens: 573
+          output_tokens_details:
+            reasoning_tokens: 264
+          total_tokens: 2335
+    relevance: *a21
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-adjust-plan-in-flight
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T18:00:09.742Z
+    linked_claim_ids:
+      - plan-versus-actual-update
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2334
+      pdf_page_text_sha256: faa7cbb8ade38510e2b20af37214e686f6bd357c3b9e29b91acbe3ab365135a8
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a22
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The excerpt states: “As the trip progresses, the pilot can note
+            headings and time and make adjustments in heading, GS, and time,”
+            which directly supports the listed claim."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is 16-21 and contains the post-calculation
+              flight-log discussion quoted in the locator.
+          claim_assessments:
+            - claim_id: plan-versus-actual-update
+              verdict: supports
+              finding_materiality: none
+              rationale: The source explicitly supports noting headings and time during the
+                trip and adjusting heading, groundspeed, and time. “Checkpoint
+                times” is consistent with the excerpt’s reference to the flight
+                log’s time between checkpoints.
+        usage:
+          input_tokens: 1383
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1380
+          output_tokens: 172
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1555
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: partially_supports
+          confidence: high
+          rationale: The excerpt states that, as the trip progresses, the pilot can note
+            headings and time and make adjustments to heading, groundspeed, and
+            time. It does not expressly say to record actual checkpoint times or
+            state that adjustments are made specifically from observed results,
+            although that is consistent with the described in-flight process.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 16-21, and the cited post-calculation
+              flight-log discussion appears on that page.
+          claim_assessments:
+            - claim_id: plan-versus-actual-update
+              verdict: partially_supports
+              finding_materiality: editorial
+              rationale: The source supports noting headings and time during the trip and
+                adjusting heading, groundspeed, and time. It does not explicitly
+                characterize the recorded times as actual checkpoint times or
+                explicitly say the revisions are based on observed results.
+        usage:
+          input_tokens: 1383
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1380
+          output_tokens: 298
+          output_tokens_details:
+            reasoning_tokens: 87
+          total_tokens: 1681
+    relevance: *a22
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids:
+            - plan-versus-actual-update
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids:
+            - plan-versus-actual-update
+  - source_id: phak-performance-data
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 11
+    checked_at_utc: 2026-09-21T18:00:09.768Z
+    linked_claim_ids:
+      - afm-poh-performance-data
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 744
+      pdf_page_text_sha256: 655877e4673a38e702fb389d13dd2659d33d28f52a4ab16c78afe74306e96838
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a23
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited excerpt on PDF page 11-1 directly states that the AFM/POH
+            performance or operational-information section contains operating
+            data pertaining to takeoff, climb, range, endurance, descent, and
+            landing.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies “Importance of Performance Data, p. 11-1,” and
+              the supplied excerpt is from that exact section and PDF page.
+          claim_assessments:
+            - claim_id: afm-poh-performance-data
+              verdict: supports
+              finding_materiality: none
+              rationale: The source explicitly lists takeoff, climb, range, endurance,
+                descent, and landing as the operating data contained in the
+                AFM/POH performance or operational-information section.
+        usage:
+          input_tokens: 879
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 180
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1059
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page is the "Importance of Performance Data" section on
+            page 11-1, and it directly states that the AFM/POH performance or
+            operational-information section contains operating data for takeoff,
+            climb, range, endurance, descent, and landing.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies the excerpted section and PDF page
+              containing the stated information.
+          claim_assessments:
+            - claim_id: afm-poh-performance-data
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt expressly lists takeoff, climb, range, endurance,
+                descent, and landing as the operating data in the AFM/POH
+                performance or operational-information section.
+        usage:
+          input_tokens: 879
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 177
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1056
+    relevance: *a23
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-climb-cruise-planning
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 11
+    checked_at_utc: 2026-09-21T18:00:09.782Z
+    linked_claim_ids:
+      - climb-chart-outputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4122
+      pdf_page_text_sha256: c1098960581eef8f5d0d18fcec4c6570c33cdafc5fd6e73136ee5e68a2d4ab2f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a24
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page contains the “Climb and Cruise Charts” section and
+            states that a fuel, time, and distance-to-climb chart gives fuel
+            used during climb, time to accomplish the climb, and ground distance
+            covered during the climb. It also directs use of departing-airport
+            and cruise-altitude information.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is page 11-21, and the supplied excerpt from that
+              exact page contains the relevant climb-chart discussion.
+          claim_assessments:
+            - claim_id: climb-chart-outputs
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt directly supports all three stated outputs—fuel used,
+                time, and ground distance during climb—and identifies
+                departing-airport and cruise-altitude information as inputs for
+                using the chart.
+        usage:
+          input_tokens: 1817
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1814
+          output_tokens: 238
+          output_tokens_details:
+            reasoning_tokens: 41
+          total_tokens: 2055
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly states that a fuel, time, and distance-to-climb
+            chart gives fuel used during climb, time to accomplish the climb,
+            and ground distance covered during the climb, and instructs use of
+            departing-airport and cruise-altitude information.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 11-21, and it contains the “Climb and
+              Cruise Charts” section and the cited statements.
+          claim_assessments:
+            - claim_id: climb-chart-outputs
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports all three listed chart outputs and ties
+                their calculation to departing-airport and cruise-altitude
+                information.
+        usage:
+          input_tokens: 1817
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1814
+          output_tokens: 173
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1990
+    relevance: *a24
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-cruise-performance
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 11
+    checked_at_utc: 2026-09-21T18:00:14.851Z
+    linked_claim_ids:
+      - cruise-chart-outputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4764
+      pdf_page_text_sha256: ec33dd09a51a4e7c5ab0297cf7c80e320c01c1d95a1e9dd6a0f63780365ff516
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a25
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that a cruise-and-range performance table is
+            designed to provide TAS, fuel consumption, endurance, and range at
+            specific cruise configurations, and Figure 11-27 identifies
+            conditions including altitude, RPM/power, gross weight, standard
+            conditions, zero wind, and lean mixture.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 11-24 and contains Figure 11-27 and the
+              accompanying explanation of cruise-and-range performance.
+          claim_assessments:
+            - claim_id: cruise-chart-outputs
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly says this table type gives TAS, fuel
+                consumption, endurance, and range at specific cruise
+                configurations; the figure supplies altitude, RPM/%BHP, and
+                stated operating conditions.
+        usage:
+          input_tokens: 2177
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2174
+          output_tokens: 193
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 2370
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly states that this type of cruise-and-range table
+            provides TAS, fuel consumption, endurance, and range at specific
+            cruise configurations, and Figure 11-27 presents those outputs by
+            altitude and RPM with stated conditions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 11-24 and contains Figure 11-27, its
+              stated conditions, and the explanatory text describing the table.
+          claim_assessments:
+            - claim_id: cruise-chart-outputs
+              verdict: supports
+              finding_materiality: none
+              rationale: The source explicitly identifies TAS, fuel consumption, endurance,
+                and range as outputs of a cruise-and-range table at specified
+                cruise configurations. The figure also specifies altitude,
+                RPM/power-related data, gross weight, standard conditions, zero
+                wind, mixture, and fuel capacity assumptions.
+        usage:
+          input_tokens: 2177
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2174
+          output_tokens: 201
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 2378
+    relevance: *a25
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-fuel-quantity-check
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 7
+    checked_at_utc: 2026-09-21T18:00:14.872Z
+    linked_claim_ids:
+      - preflight-fuel-quantity-check
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a26
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2832
+      pdf_page_text_sha256: 338cf38c06760ad35cc222dd0de2f195f0cd409ffb13c661b459b072a8d650c4
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a27
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page states that fuel-quantity indications should not be
+            relied upon alone and directs pilots to visually check each tank
+            during preflight and compare that check with the corresponding
+            indication. It also explains fuel-selector positions and states that
+            fuel placards show limitations on tank usage.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 26 and contains the relevant Fuel
+              Gauges and Fuel Selectors material.
+          claim_assessments:
+            - claim_id: preflight-fuel-quantity-check
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly directs a visual preflight check of each tank
+                followed by comparison with the fuel-quantity indication, and it
+                identifies fuel-selector usage limitations as shown by fuel
+                placards.
+        usage:
+          input_tokens: 1375
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1372
+          output_tokens: 303
+          output_tokens_details:
+            reasoning_tokens: 116
+          total_tokens: 1678
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt explicitly directs pilots to visually check fuel level in
+            each tank during preflight and compare it with the corresponding
+            fuel-quantity indication. It also explains that fuel-selector
+            limitations are shown by fuel placards and references AFM/POH
+            information for fuel-system operating parameters.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 7-26, and the excerpt from that page
+              contains the relevant Fuel Gauges and Fuel Selectors guidance.
+          claim_assessments:
+            - claim_id: preflight-fuel-quantity-check
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports comparing gauge indications with a
+                visual tank-level check. It supports following aircraft-specific
+                selector limitations through its discussion of fuel placards;
+                the source also identifies the AFM/POH as the location for
+                aircraft-specific normal fuel-pressure information.
+        usage:
+          input_tokens: 1375
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1372
+          output_tokens: 207
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1582
+    relevance: *a27
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-personal-minimums-options
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 2
+    checked_at_utc: 2026-09-21T18:00:14.880Z
+    linked_claim_ids:
+      - personal-minimums-decision-reference
+      - risk-processing-alternatives
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5281
+      pdf_page_text_sha256: f75bccfe05622330314d83161ce7965d46d7f9bb5c58056ad0d55fab3340435f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a28
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page expressly recommends using a personal minimums
+            checklist to make decisions in advance of a flight and states that
+            it provides a clear reference point for go/no-go and
+            continue/discontinue decisions. It also expressly recommends
+            developing a list of good alternatives during the processing phase.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 17 and contains both cited
+              recommendations.
+          claim_assessments:
+            - claim_id: personal-minimums-decision-reference
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt states: “Using personal minimums checklist to make some
+                decisions in advance of the flight” and that the resulting
+                checklist provides “a clear and concise reference point” for
+                “go/no-go or continue/discontinue decisions.”"
+            - claim_id: risk-processing-alternatives
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt expressly states: “Develop a list of good alternatives
+                during your processing phase.”"
+        usage:
+          input_tokens: 1897
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1894
+          output_tokens: 298
+          output_tokens_details:
+            reasoning_tokens: 67
+          total_tokens: 2195
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The cited PDF page contains both recommendations: use a personal
+            minimums checklist to make decisions in advance of a flight, with
+            the checklist serving as a reference point for go/no-go and
+            continue/discontinue decisions; and develop a list of good
+            alternatives during the processing phase."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the personal-minimums and alternatives bullets
+              on PDF page 2-17, where the cited statements appear.
+          claim_assessments:
+            - claim_id: personal-minimums-decision-reference
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt expressly recommends using a personal minimums checklist
+                to make some decisions in advance of the flight and states that,
+                once developed, it provides a clear and concise reference point
+                for go/no-go and continue/discontinue decisions.
+            - claim_id: risk-processing-alternatives
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt expressly says to develop a list of good alternatives
+                during the processing phase.
+        usage:
+          input_tokens: 1897
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1894
+          output_tokens: 341
+          output_tokens_details:
+            reasoning_tokens: 103
+          total_tokens: 2238
+    relevance: *a28
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-workload-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 2
+    checked_at_utc: 2026-09-21T18:00:21.757Z
+    linked_claim_ids:
+      - workload-prioritization
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a29
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: "The cited page directly supports the listed workload-management
+            claim: it states that effective workload management involves
+            planning, prioritizing, and sequencing tasks; that distraction,
+            fatigue, stress, and overload can cause fixation and reduce overall
+            situational awareness; and that preparation during lower-workload
+            periods can reduce workload later in the flight."
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 2-24 and contains both the
+              situational-awareness obstacles and workload-management sections
+              cited by the locator.
+          claim_assessments:
+            - claim_id: workload-prioritization
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly supports planning, prioritizing, and sequencing
+                tasks, identifies distraction and overload as causes of
+                narrowed/fixated attention and reduced situational awareness,
+                and recommends preparing for high-workload periods during times
+                of low workload.
+        usage:
+          input_tokens: 1720
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1717
+          output_tokens: 293
+          output_tokens_details:
+            reasoning_tokens: 83
+          total_tokens: 2013
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page directly states that effective workload management
+            involves planning, prioritizing, and sequencing tasks; that fatigue,
+            stress, overload, and distraction can cause fixation and reduce
+            overall situational awareness; and that preparing for future
+            high-workload periods during low-workload periods reduces workload
+            later.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is page 2-24, and the supplied excerpt is from that
+              exact page. It contains the relevant sections, “Obstacles to
+              Maintaining Situational Awareness” and “Workload Management.”
+          claim_assessments:
+            - claim_id: workload-prioritization
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt expressly supports each material component of the claim,
+                including planning, prioritizing, sequencing, attentional
+                narrowing from overload or distraction, reduced situational
+                awareness, and advance preparation during low-workload periods.
+        usage:
+          input_tokens: 1720
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1717
+          output_tokens: 213
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1933
+    relevance: *a29
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: faa-safety-briefing-fuel-trends
+    title: FAA Safety Briefing, July/August 2018
+    checked_at_utc: 2026-09-21T18:00:21.773Z
+    linked_claim_ids:
+      - eta-weather-trend-checks
+      - fuel-totalizer-plan-comparison
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a30
+      title: null
+      truncated: true
+      content_sha256: fb0113e25c9deaebab0f6a1baf37b5d82187262b7c5f2292a56c946b31acdb1b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4644
+      pdf_page_text_sha256: 91852c58cff349bdfaad776cd2d9e81633ab980016c309dfe35c3064b811636c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a31
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page directly discusses using timed, selected intervals
+            to check destination weather and compare ETA against original
+            planning, with successive ETA differences used to identify a
+            worsening trend. It also discusses a fuel totalizer in relation to
+            planned versus actual fuel-consumption assumptions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt was extracted from cited PDF page 24, which is printed
+              page 22 and contains both the ETA/weather trend-check example and
+              the fuel-totalizer discussion.
+          claim_assessments:
+            - claim_id: eta-weather-trend-checks
+              verdict: supports
+              finding_materiality: none
+              rationale: The source states that a timer may prompt checks of destination
+                weather and ETA against original planning at discrete intervals,
+                and explains that increasing delay from one check to the next
+                identifies a trend.
+            - claim_id: fuel-totalizer-plan-comparison
+              verdict: supports
+              finding_materiality: none
+              rationale: The source says a fuel totalizer can correct flight-planning
+                assumptions and contrasts a planned 10-gph consumption figure
+                with actual consumption below nine gph.
+        usage:
+          input_tokens: 1817
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1814
+          output_tokens: 249
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 2066
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page directly describes using timer-based selected
+            intervals to check destination weather and compare ETA against
+            original planning, with successive ETA increases identified as a
+            trend. It also discusses a fuel totalizer in relation to planned
+            versus actual fuel-consumption assumptions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 24, whose printed page is 22, and
+              it contains the stated fuel-management monitoring examples.
+          claim_assessments:
+            - claim_id: eta-weather-trend-checks
+              verdict: supports
+              finding_materiality: none
+              rationale: The source says to use timer-based procedures such as checking
+                destination weather every X minutes and checking ETA against
+                original planning every Y minutes; it then illustrates
+                recognizing a trend when the arrival-time difference grows from
+                10 to 15 minutes.
+            - claim_id: fuel-totalizer-plan-comparison
+              verdict: supports
+              finding_materiality: none
+              rationale: The source says a fuel totalizer lets the pilot know fuel onboard and
+                removes or corrects planning assumptions, specifically
+                contrasting a planned 10 gallons per hour with an actual burn
+                below nine gallons per hour.
+        usage:
+          input_tokens: 1817
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1814
+          output_tokens: 260
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 2077
+    relevance: *a31
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-vfr-flight-plans
+    title: Aeronautical Information Manual, Chapter 5
+    checked_at_utc: 2026-09-21T18:00:22.001Z
+    linked_claim_ids:
+      - vfr-flight-plan-operation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 40a9097fa26d5672871d7149f5366794de3ad4351ba0a7338104144ed82d4368
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 3141bc819d85d77eb3bc7ead32c12625065a284e8966ecbda0d5a748a92b0186
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a32
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: Paragraph 5-1-5 states that a VFR flight plan is not normally
+            required within the continental United States, strongly recommends
+            filing a VFR flight plan with Flight Service or an equivalent
+            service, explains that activating the plan ensures VFR
+            search-and-rescue services, and makes pilots responsible for
+            activation while stating towers do not automatically activate VFR
+            plans.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is Paragraph 5-1-5, which directly contains the
+              stated VFR flight-plan filing and activation guidance.
+          claim_assessments:
+            - claim_id: vfr-flight-plan-operation
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt supports each component: VFR flight plans are not
+                normally required in the continental U.S.; filing is strongly
+                recommended; activation ensures VFR search-and-rescue services;
+                and the pilot, not the control tower, is responsible for
+                activation."
+        usage:
+          input_tokens: 3393
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3390
+          output_tokens: 453
+          output_tokens_details:
+            reasoning_tokens: 233
+          total_tokens: 3846
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that VFR flight plans are not normally
+            required within the continental U.S.; strongly recommends filing
+            with Flight Service or an equivalent filing service; states that
+            activation ensures VFR search-and-rescue services; and assigns
+            activation responsibility to pilots while stating that control
+            towers do not automatically activate VFR flight plans.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is Paragraph 5-1-5, and the excerpt is from that
+              paragraph and directly addresses VFR flight-plan filing and
+              activation.
+          claim_assessments:
+            - claim_id: vfr-flight-plan-operation
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt supports all material elements: VFR flight plans are not
+                normally required in the continental U.S.; filing is strongly
+                recommended; activation ensures VFR search-and-rescue services;
+                pilots are responsible for activation; and towers do not
+                automatically activate the plans."
+        usage:
+          input_tokens: 3393
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3390
+          output_tokens: 535
+          output_tokens_details:
+            reasoning_tokens: 317
+          total_tokens: 3928
+    relevance: *a32
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-close-vfr-flight-plan
+    title: Aeronautical Information Manual, Chapter 5
+    checked_at_utc: 2026-09-21T18:00:22.092Z
+    linked_claim_ids:
+      - vfr-flight-plan-close
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 40a9097fa26d5672871d7149f5366794de3ad4351ba0a7338104144ed82d4368
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      errors: []
+      valid: true
+      excerpt_characters: 9907
+      excerpt_sha256: eab756517936e62be4cbc57d51b04ea8f04d87431b57da6dda4585b652621a04
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a33
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt in AIM paragraph 5-1-14 directly states that the pilot is
+            responsible for ensuring a VFR flight plan is canceled and that
+            control towers do not automatically close VFR or DVFR flight plans.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is paragraph 5-1-14, “Closing VFR/DVFR Flight
+              Plans,” which contains the cited statements.
+          claim_assessments:
+            - claim_id: vfr-flight-plan-close
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt explicitly supports both elements: pilot responsibility
+                for cancellation and the fact that control towers do not
+                automatically close VFR flight plans."
+        usage:
+          input_tokens: 2737
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2734
+          output_tokens: 169
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 2906
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt in AIM 5-1-14 expressly states that the pilot is
+            responsible for ensuring a VFR or DVFR flight plan is canceled and
+            that control towers do not automatically close VFR or DVFR flight
+            plans.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator is exactly paragraph 5-1-14, which contains both
+              cited points.
+          claim_assessments:
+            - claim_id: vfr-flight-plan-close
+              verdict: supports
+              finding_materiality: none
+              rationale: "The source directly supports both elements: pilot responsibility for
+                cancellation and the fact that control towers do not
+                automatically close VFR flight plans."
+        usage:
+          input_tokens: 2737
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2734
+          output_tokens: 162
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 2899
+    relevance: *a33
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []

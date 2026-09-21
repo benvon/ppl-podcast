@@ -1,0 +1,1659 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: publication_link_check
+run_id: f4e685d6-def0-4a30-9f1b-0b09d8984a88
+checked_at_utc: 2026-09-21T19:42:04.930Z
+sources_file: episodes/core-19-cross-country-planning-fuel-diversions/sources.yaml
+claims_file: episodes/core-19-cross-country-planning-fuel-diversions/claim-inventory.yaml
+show_notes_file: episodes/core-19-cross-country-planning-fuel-diversions/show-notes.md
+show_notes_manifest_file: episodes/core-19-cross-country-planning-fuel-diversions/show-notes-manifest.yaml
+input_sha256:
+  sources: 37485895e8f55a387d7f496b8b19dd59e07ecb6f02371622f31a1fa0764afd84
+  claims: 563bc9d5a4edd67bb5cb8a1722b030185735baa45389e836a6e56390d811f1ec
+  master_script: d7532d627c9bc7fca1f88059a7cde7a0f59b3da7a40371d7adb07beed46d429f
+  show_notes: 61e8e6f88259ef0c19de7458dcb695b3ebf947e5a08cc351c4a40022087f26f2
+  show_notes_manifest: d404515992df74eee4528e576be5daf6e3f1c185d60e1376f1ae0e1add656c87
+input_normalization:
+  master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: d7532d627c9bc7fca1f88059a7cde7a0f59b3da7a40371d7adb07beed46d429f
+  show_notes: 5ad5866258dd085e7eb4b8b70b091ab71645d31e443d354d7e1702e4859567ff
+llm_requested: false
+llm_model: null
+llm_review_passes: 0
+llm_materiality_policy: null
+authorization: null
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 58
+  claim_coverage_count: 30
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 23
+  manifest_link_count: 23
+show_notes_results:
+  - id: acs-cross-country-link
+    text: Private Pilot ACS Cross-Country Flight Planning task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+    source_id: acs-cross-country-planning
+    claim_ids:
+      - acs-cross-country-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-performance-link
+    text: Private Pilot ACS Performance and Limitations task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    source_id: acs-performance-planning
+    claim_ids:
+      - acs-performance-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-performance-skill-link
+    text: Private Pilot ACS performance-chart skill
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    source_id: acs-performance-skill
+    claim_ids:
+      - acs-performance-chart-skill
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: acs-diversion-link
+    text: Private Pilot ACS Diversion task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+    source_id: acs-diversion
+    claim_ids:
+      - acs-diversion-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      errors: []
+      valid: true
+      pdf_page_number: 48
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2157
+      pdf_page_text_sha256: d396463e99330c16037a4404f27e87961306cdbf39cfd43a309ff2529807b407
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ecfr-preflight-link
+    text: 14 CFR 91.103 preflight action
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+    source_id: ecfr-preflight-action
+    claim_ids:
+      - preflight-information-duty
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a6 []
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-09-17
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+  - id: ecfr-vfr-fuel-link
+    text: 14 CFR 91.151 VFR airplane fuel requirements
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+    source_id: ecfr-vfr-fuel
+    claim_ids:
+      - vfr-fuel-minimum
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a7 []
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-09-17
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+  - id: ecfr-vfr-plan-link
+    text: 14 CFR 91.153 VFR flight-plan information
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.153
+    source_id: ecfr-vfr-flight-plan
+    claim_ids:
+      - vfr-flight-plan-information
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a8 []
+      title: null
+      truncated: false
+      content_sha256: 219575e3e64b5a61132890004b95dd6ecd39b8f2527a58dbdb827f4785c1c82f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.153
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.153"
+        date: 2026-09-17
+        section_number: "91.153"
+      section_text_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      excerpt_characters: 1339
+      excerpt_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1339
+  - id: phak-navigation-intro-link
+    text: PHAK cross-country navigation introduction
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+    source_id: phak-navigation-introduction
+    claim_ids:
+      - navigation-planning-elements
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 853
+      pdf_page_text_sha256: 233f9c55621827eb48364d799bbf93e29f2de3e9a06dbe8440072d6f6c93c20f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-magnetic-course-link
+    text: PHAK true-course to magnetic-course conversion
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+    source_id: phak-magnetic-course
+    claim_ids:
+      - true-to-magnetic-course
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2943
+      pdf_page_text_sha256: 622f062e1995073fdf48d6ee5e9db7ba4c76ab65b17f26304a19e6f8aafd1bfc
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-calculations-link
+    text: PHAK time, distance, groundspeed, and fuel calculations
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+    source_id: phak-time-distance-fuel
+    claim_ids:
+      - time-distance-groundspeed
+      - fuel-consumption-monitoring
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3512
+      pdf_page_text_sha256: b6405f77f112f4ca91fd889f45d0bf110e9ced4edc3ebd482e9c8e722b68f4da
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-planning-material-link
+    text: PHAK flight-planning materials and airport information
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+    source_id: phak-flight-planning-material
+    claim_ids:
+      - planning-material-and-airports
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3820
+      pdf_page_text_sha256: 19dcab8a4b34d763496839bdc38f0b65169bae5cfebfc730a0ebec7a4f8319a8
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-aircraft-fuel-link
+    text: PHAK aircraft data and route-charting sequence
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+    source_id: phak-aircraft-data-fuel-stops
+    claim_ids:
+      - aircraft-data-and-fuel-stops
+      - route-charting-sequence
+      - calculation-method-options
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5429
+      pdf_page_text_sha256: f83f97700a686ecb9b3cdd2980ea9e27ebc469d0c56b7703ba62df5d13799e6c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-flight-log-link
+    text: PHAK planning sheet and visual flight-log example
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+    source_id: phak-flight-log-calculation
+    claim_ids:
+      - flight-log-record-layout
+      - flight-log-heading-chain
+      - flight-log-computation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2880
+      pdf_page_text_sha256: 60d70014156dc460f7df82e657b074d5191788377305c8cb8cf693a131ac66ea
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-plan-update-link
+    text: PHAK in-flight plan adjustment
+    url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+    source_id: phak-adjust-plan-in-flight
+    claim_ids:
+      - plan-versus-actual-update
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2334
+      pdf_page_text_sha256: faa7cbb8ade38510e2b20af37214e686f6bd357c3b9e29b91acbe3ab365135a8
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-performance-data-link
+    text: PHAK AFM/POH performance-data overview
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+    source_id: phak-performance-data
+    claim_ids:
+      - afm-poh-performance-data
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 744
+      pdf_page_text_sha256: 655877e4673a38e702fb389d13dd2659d33d28f52a4ab16c78afe74306e96838
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-climb-cruise-link
+    text: PHAK climb and cruise planning charts
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+    source_id: phak-climb-cruise-planning
+    claim_ids:
+      - climb-chart-outputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4122
+      pdf_page_text_sha256: c1098960581eef8f5d0d18fcec4c6570c33cdafc5fd6e73136ee5e68a2d4ab2f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-cruise-performance-link
+    text: PHAK cruise and range performance example
+    url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+    source_id: phak-cruise-performance
+    claim_ids:
+      - cruise-chart-outputs
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4764
+      pdf_page_text_sha256: ec33dd09a51a4e7c5ab0297cf7c80e320c01c1d95a1e9dd6a0f63780365ff516
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-fuel-check-link
+    text: PHAK fuel-quantity and selector checks
+    url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+    source_id: phak-fuel-quantity-check
+    claim_ids:
+      - preflight-fuel-quantity-check
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a9 []
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2832
+      pdf_page_text_sha256: 338cf38c06760ad35cc222dd0de2f195f0cd409ffb13c661b459b072a8d650c4
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-personal-minimums-options-link
+    text: PHAK personal-minimum decision references and alternatives
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+    source_id: phak-personal-minimums-options
+    claim_ids:
+      - personal-minimums-decision-reference
+      - risk-processing-alternatives
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5281
+      pdf_page_text_sha256: f75bccfe05622330314d83161ce7965d46d7f9bb5c58056ad0d55fab3340435f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-workload-link
+    text: PHAK situational-awareness and workload management
+    url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+    source_id: phak-workload-management
+    claim_ids:
+      - workload-prioritization
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-safety-briefing-fuel-trends-link
+    text: FAA Safety Briefing fuel-trend and totalizer examples
+    url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+    source_id: faa-safety-briefing-fuel-trends
+    claim_ids:
+      - eta-weather-trend-checks
+      - fuel-totalizer-plan-comparison
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a10 []
+      title: null
+      truncated: true
+      content_sha256: fb0113e25c9deaebab0f6a1baf37b5d82187262b7c5f2292a56c946b31acdb1b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4644
+      pdf_page_text_sha256: 91852c58cff349bdfaad776cd2d9e81633ab980016c309dfe35c3064b811636c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-vfr-flight-plan-link
+    text: AIM VFR flight-plan guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+    source_id: aim-vfr-flight-plans
+    claim_ids:
+      - vfr-flight-plan-operation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a5 []
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 4c7efdde1ca68256e0e44cefef3f4afbdcd16765da425ddf13bfa558c7b3914b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 3141bc819d85d77eb3bc7ead32c12625065a284e8966ecbda0d5a748a92b0186
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-close-vfr-plan-link
+    text: AIM closing VFR flight plans
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+    source_id: aim-close-vfr-flight-plan
+    claim_ids:
+      - vfr-flight-plan-close
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 4c7efdde1ca68256e0e44cefef3f4afbdcd16765da425ddf13bfa558c7b3914b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      errors: []
+      valid: true
+      excerpt_characters: 9907
+      excerpt_sha256: eab756517936e62be4cbc57d51b04ea8f04d87431b57da6dda4585b652621a04
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-cross-country-planning
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T19:41:58.846Z
+    linked_claim_ids:
+      - acs-cross-country-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-performance-planning
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T19:41:58.876Z
+    linked_claim_ids:
+      - acs-performance-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-performance-skill
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T19:41:59.844Z
+    linked_claim_ids:
+      - acs-performance-chart-skill
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-diversion
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-21T19:41:59.850Z
+    linked_claim_ids:
+      - acs-diversion-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      errors: []
+      valid: true
+      pdf_page_number: 48
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2157
+      pdf_page_text_sha256: d396463e99330c16037a4404f27e87961306cdbf39cfd43a309ff2529807b407
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-preflight-action
+    title: 14 CFR 91.103, Preflight action
+    checked_at_utc: 2026-09-21T19:41:58.876Z
+    linked_claim_ids:
+      - preflight-information-duty
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: 86393d0193a043ed6344200afd9ceac39b0edb57476dfd859ce24d1ff3e7d518
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.103
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.103"
+        date: 2026-09-17
+        section_number: "91.103"
+      section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      excerpt_characters: 1188
+      excerpt_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1188
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-vfr-fuel
+    title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
+    checked_at_utc: 2026-09-21T19:41:58.877Z
+    linked_claim_ids:
+      - vfr-fuel-minimum
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a7
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-09-17
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-vfr-flight-plan
+    title: "14 CFR 91.153, VFR flight plan: Information required"
+    checked_at_utc: 2026-09-21T19:41:58.877Z
+    linked_claim_ids:
+      - vfr-flight-plan-information
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a8
+      title: null
+      truncated: false
+      content_sha256: 219575e3e64b5a61132890004b95dd6ecd39b8f2527a58dbdb827f4785c1c82f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.153
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-17/title-14.xml?part=91&section=91.153
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-17
+        title_status_sha256: 238f922bc260ad84afcb7ad6d62668cb3bb74c963dbd9b279d0e159eef092423
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.153"
+        date: 2026-09-17
+        section_number: "91.153"
+      section_text_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      excerpt_characters: 1339
+      excerpt_sha256: 787da16cbca320007d1d4cd3344942876d80a720e43ff3b8e0c9d41e91ff8faf
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1339
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-navigation-introduction
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T19:41:59.879Z
+    linked_claim_ids:
+      - navigation-planning-elements
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 853
+      pdf_page_text_sha256: 233f9c55621827eb48364d799bbf93e29f2de3e9a06dbe8440072d6f6c93c20f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-magnetic-course
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T19:41:59.882Z
+    linked_claim_ids:
+      - true-to-magnetic-course
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2943
+      pdf_page_text_sha256: 622f062e1995073fdf48d6ee5e9db7ba4c76ab65b17f26304a19e6f8aafd1bfc
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-time-distance-fuel
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T19:42:01.867Z
+    linked_claim_ids:
+      - time-distance-groundspeed
+      - fuel-consumption-monitoring
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3512
+      pdf_page_text_sha256: b6405f77f112f4ca91fd889f45d0bf110e9ced4edc3ebd482e9c8e722b68f4da
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-flight-planning-material
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T19:42:01.905Z
+    linked_claim_ids:
+      - planning-material-and-airports
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3820
+      pdf_page_text_sha256: 19dcab8a4b34d763496839bdc38f0b65169bae5cfebfc730a0ebec7a4f8319a8
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-aircraft-data-fuel-stops
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T19:42:01.917Z
+    linked_claim_ids:
+      - aircraft-data-and-fuel-stops
+      - route-charting-sequence
+      - calculation-method-options
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18
+      errors: []
+      valid: true
+      pdf_page_number: 18
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5429
+      pdf_page_text_sha256: f83f97700a686ecb9b3cdd2980ea9e27ebc469d0c56b7703ba62df5d13799e6c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-flight-log-calculation
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T19:42:01.939Z
+    linked_claim_ids:
+      - flight-log-record-layout
+      - flight-log-heading-chain
+      - flight-log-computation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2880
+      pdf_page_text_sha256: 60d70014156dc460f7df82e657b074d5191788377305c8cb8cf693a131ac66ea
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-adjust-plan-in-flight
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 16
+    checked_at_utc: 2026-09-21T19:42:01.950Z
+    linked_claim_ids:
+      - plan-versus-actual-update
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: b05f3e52e64ce91d3a1e8bf6152d530b808f0f2ccb664a4ac4494ecbf7c530c1
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2334
+      pdf_page_text_sha256: faa7cbb8ade38510e2b20af37214e686f6bd357c3b9e29b91acbe3ab365135a8
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-performance-data
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 11
+    checked_at_utc: 2026-09-21T19:42:01.981Z
+    linked_claim_ids:
+      - afm-poh-performance-data
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 744
+      pdf_page_text_sha256: 655877e4673a38e702fb389d13dd2659d33d28f52a4ab16c78afe74306e96838
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-climb-cruise-planning
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 11
+    checked_at_utc: 2026-09-21T19:42:01.998Z
+    linked_claim_ids:
+      - climb-chart-outputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4122
+      pdf_page_text_sha256: c1098960581eef8f5d0d18fcec4c6570c33cdafc5fd6e73136ee5e68a2d4ab2f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-cruise-performance
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 11
+    checked_at_utc: 2026-09-21T19:42:02.411Z
+    linked_claim_ids:
+      - cruise-chart-outputs
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4b3c3ba37db7c27a95aaaeeabf5b44c65edf39472ab2c317d495df93c0c2f452
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4764
+      pdf_page_text_sha256: ec33dd09a51a4e7c5ab0297cf7c80e320c01c1d95a1e9dd6a0f63780365ff516
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-fuel-quantity-check
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 7
+    checked_at_utc: 2026-09-21T19:42:02.433Z
+    linked_claim_ids:
+      - preflight-fuel-quantity-check
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a9
+      title: null
+      truncated: true
+      content_sha256: a12f61c6ba3c6ccf1b1881d530925a957c0709668d00d9371c6b5aaa5f9c8759
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2832
+      pdf_page_text_sha256: 338cf38c06760ad35cc222dd0de2f195f0cd409ffb13c661b459b072a8d650c4
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-personal-minimums-options
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 2
+    checked_at_utc: 2026-09-21T19:42:02.445Z
+    linked_claim_ids:
+      - personal-minimums-decision-reference
+      - risk-processing-alternatives
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17
+      errors: []
+      valid: true
+      pdf_page_number: 17
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5281
+      pdf_page_text_sha256: f75bccfe05622330314d83161ce7965d46d7f9bb5c58056ad0d55fab3340435f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-workload-management
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 2
+    checked_at_utc: 2026-09-21T19:42:03.244Z
+    linked_claim_ids:
+      - workload-prioritization
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 3ba88fcb9d0d7fae81df25e4c4b23500d154b6acc83bfbf8c1d570a913a761cd
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4860
+      pdf_page_text_sha256: b4b9a6ba46173058df1127acafa5d3ab6226e0cb1aaf95749d916ebc6a444662
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-safety-briefing-fuel-trends
+    title: FAA Safety Briefing, July/August 2018
+    checked_at_utc: 2026-09-21T19:42:03.330Z
+    linked_claim_ids:
+      - eta-weather-trend-checks
+      - fuel-totalizer-plan-comparison
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a10
+      title: null
+      truncated: true
+      content_sha256: fb0113e25c9deaebab0f6a1baf37b5d82187262b7c5f2292a56c946b31acdb1b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4644
+      pdf_page_text_sha256: 91852c58cff349bdfaad776cd2d9e81633ab980016c309dfe35c3064b811636c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-vfr-flight-plans
+    title: Aeronautical Information Manual, Chapter 5
+    checked_at_utc: 2026-09-21T19:42:03.336Z
+    linked_claim_ids:
+      - vfr-flight-plan-operation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 4c7efdde1ca68256e0e44cefef3f4afbdcd16765da425ddf13bfa558c7b3914b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 3141bc819d85d77eb3bc7ead32c12625065a284e8966ecbda0d5a748a92b0186
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-close-vfr-flight-plan
+    title: Aeronautical Information Manual, Chapter 5
+    checked_at_utc: 2026-09-21T19:42:03.464Z
+    linked_claim_ids:
+      - vfr-flight-plan-close
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Chapter 5. Air Traffic Procedures
+      truncated: false
+      content_sha256: 4c7efdde1ca68256e0e44cefef3f4afbdcd16765da425ddf13bfa558c7b3914b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14
+      errors: []
+      valid: true
+      excerpt_characters: 9907
+      excerpt_sha256: eab756517936e62be4cbc57d51b04ea8f04d87431b57da6dda4585b652621a04
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

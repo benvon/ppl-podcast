@@ -1,0 +1,97 @@
+id: core-19
+series: ppl-study-podcast
+title: Cross-Country Planning, Fuel, and Diversions
+slug: cross-country-planning-fuel-diversions
+track: core
+production_contract_version: 2
+status: ready_for_hosting_pr
+version: 0.3.1
+published_at: 2026-09-21T19:42:38Z
+runtime_target_minutes: 45
+runtime_actual_seconds: 2435.02
+word_count: 5935
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - FAA-S-ACS-6C, PA.I.D.K1-K6, R1-R7, S1-S5
+  - FAA-S-ACS-6C, PA.I.F.K1-K2, R1-R3, S2
+  - FAA-S-ACS-6C, PA.VI.C.K1-K2, R1-R5, S1-S6
+phak_references:
+  - "PHAK Chapter 2: Aeronautical Decision-Making, p. 2-17"
+  - "PHAK Chapter 2: Aeronautical Decision-Making, p. 2-24"
+  - "PHAK Chapter 7: Aircraft Systems, p. 7-26"
+  - "PHAK Chapter 11: Aircraft Performance, pp. 11-1, 11-21, and 11-24"
+  - "PHAK Chapter 16: Navigation, pp. 16-1, 16-7, 16-11, and 16-17 through 16-21"
+aim_references:
+  - AIM 5-1-5, Flight Plan—VFR Flights
+  - AIM 5-1-14, Closing VFR/DVFR Flight Plans
+advisory_circular_references: []
+cfr_references:
+  - 14 CFR 91.103, Preflight action
+  - 14 CFR 91.151, Fuel requirements for flight in VFR conditions
+  - 14 CFR 91.153, VFR flight plan—Information required
+learning_objectives:
+  - Build a VFR cross-country plan from current route, weather, airport,
+    aircraft-performance, fuel, and alternative information.
+  - Complete a route-planning navigation log from verified chart, checkpoint,
+    altitude, wind, departure-time, and aircraft inputs through course, heading,
+    groundspeed, time, ETA, and planned fuel results.
+  - Separate climb, cruise, arrival, and reserve fuel and distinguish the VFR
+    regulatory departure minimum from a personal planning floor.
+  - Compare checkpoint time, observed groundspeed, fuel used, fuel indications,
+    and updated weather with the plan, then revise ETA and landing-fuel
+    estimates.
+  - Select and prepare a suitable alternative before departure and execute a
+    prompt, low-workload diversion when destination weather crosses a personal
+    decision trigger and the progress and fuel trends show the cost of delay.
+  - Explain the pilot's responsibility to file or simulate, activate, update,
+    and close a VFR flight plan as applicable.
+trouble_spots:
+  - Treating a direct route or EFB output as a complete plan without verifying
+    its source inputs, airplane data, and airport suitability.
+  - Copying navigation-log outputs without preserving the course, wind, heading,
+    groundspeed, time, ETA, and fuel relationships that produced them.
+  - Multiplying one cruise fuel-flow number by total trip time without separate
+    climb, arrival, and reserve treatment.
+  - Treating the regulatory VFR reserve as the desired landing quantity or as
+    fuel set aside for a planned diversion.
+  - Waiting for destination weather or fuel to become urgent before using an
+    alternative that was available earlier.
+  - Selecting the nearest airport instead of a suitable airport.
+  - Allowing diversion calculations or display programming to displace aircraft
+    control and the outside scan.
+  - Assuming ATC or a tower automatically activates or closes a VFR flight plan.
+source_verification:
+  validation_contract: source-relevance-v1
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-21T18:01:22.049Z
+  link_validation: link-validation.yaml
+  relevance_review: complete
+  show_notes_manifest: show-notes-manifest.yaml
+review:
+  editorial_status: script_approved
+  editorial_script_sha256: d7532d627c9bc7fca1f88059a7cde7a0f59b3da7a40371d7adb07beed46d429f
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining: []
+audio:
+  manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: ready_for_hosting_pr
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null
+production_state_revision: 14

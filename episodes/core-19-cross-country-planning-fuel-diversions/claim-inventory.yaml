@@ -1,0 +1,212 @@
+episode_id: core-19
+claims:
+  - id: acs-cross-country-outcome
+    type: faa_standard
+    statement: "ACS PA.I.D connects route and altitude selection, time and fuel calculations, alternatives, current publications, risk analysis, fuel planning, and recalculation of fuel reserves in a cross-country plan."
+    sources: [acs-cross-country-planning]
+    risk: safety_critical
+    script_sections: ["What the ACS is asking you to connect", "Compare actual progress with the plan"]
+    status: draft
+  - id: acs-performance-outcome
+    type: faa_standard
+    statement: "ACS PA.I.F covers the use of aircraft performance charts, tables, and data, the factors that affect the result, and the risk that calculated performance may differ from actual performance."
+    sources: [acs-performance-planning]
+    risk: safety_critical
+    script_sections: ["What the ACS is asking you to connect", "Turn the navigation log into trip fuel"]
+    status: draft
+  - id: acs-performance-chart-skill
+    type: faa_standard
+    statement: "ACS PA.I.F.S2 requires the applicant to use the appropriate airplane performance charts, tables, and data."
+    sources: [acs-performance-skill]
+    risk: safety_critical
+    script_sections: ["What the ACS is asking you to connect"]
+    status: draft
+  - id: acs-diversion-outcome
+    type: faa_standard
+    statement: "ACS PA.VI.C requires selecting a suitable diversion destination and route, reasonably estimating heading, groundspeed, arrival time, and fuel, updating weather, managing distraction and collision risk, using available resources, and promptly diverting toward the destination."
+    sources: [acs-diversion]
+    risk: safety_critical
+    script_sections: ["What the ACS is asking you to connect", "Choose and execute the diversion", "Retrieval review"]
+    status: draft
+  - id: preflight-information-duty
+    type: regulation
+    statement: "Before beginning a flight, the pilot in command must become familiar with all available information concerning it; for a flight not near an airport this includes weather, fuel requirements, alternatives if the flight cannot be completed, and known ATC-advised delays, while every flight requires the specified runway-length and performance information."
+    sources: [ecfr-preflight-action]
+    risk: safety_critical
+    script_sections: ["Build the preflight decision board", "Retrieval review"]
+    status: draft
+  - id: vfr-fuel-minimum
+    type: regulation
+    statement: "An airplane may not begin a VFR flight unless, considering wind and forecast weather, it has enough fuel to reach the first point of intended landing and then fly at normal cruising speed for at least 30 minutes by day or 45 minutes at night."
+    sources: [ecfr-vfr-fuel]
+    risk: safety_critical
+    script_sections: ["Give reserve a specific job", "Retrieval review"]
+    status: draft
+  - id: vfr-flight-plan-information
+    type: regulation
+    statement: "A filed VFR flight plan includes aircraft, pilot, departure, route, altitude, true-airspeed, destination, elapsed-time, fuel-endurance, and persons-aboard information, and the pilot in command must notify Flight Service or ATC when an activated plan is canceled or completed."
+    sources: [ecfr-vfr-flight-plan]
+    risk: operational
+    script_sections: ["File and activate the VFR flight plan", "Retrieval review"]
+    status: draft
+  - id: navigation-planning-elements
+    type: faa_guidance
+    statement: "The PHAK introduces VFR cross-country planning as plotting the route, selecting checkpoints, measuring distance, obtaining weather, and computing flight time, headings, and fuel while monitoring position during the flight."
+    sources: [phak-navigation-introduction]
+    risk: operational
+    script_sections: ["Build the preflight decision board"]
+    status: draft
+  - id: true-to-magnetic-course
+    type: faa_guidance
+    statement: "The PHAK calls the result of applying the appropriate charted variation to true course the magnetic course."
+    sources: [phak-magnetic-course]
+    risk: operational
+    script_sections: ["Complete the route-planning navigation log", "Retrieval review"]
+    status: draft
+  - id: time-distance-groundspeed
+    type: faa_guidance
+    statement: "Flight time equals distance divided by groundspeed, distance equals groundspeed multiplied by time, and groundspeed equals distance divided by time."
+    sources: [phak-time-distance-fuel]
+    risk: operational
+    script_sections: ["Complete the route-planning navigation log", "Turn the navigation log into trip fuel", "Compare actual progress with the plan", "Choose and execute the diversion", "Retrieval review"]
+    status: draft
+  - id: fuel-consumption-monitoring
+    type: faa_guidance
+    statement: "Accurate fuel planning uses the applicable fuel-consumption rate and is supported by monitoring past fuel consumption and following the airplane's specified fuel-management and mixture procedures in flight."
+    sources: [phak-time-distance-fuel]
+    risk: safety_critical
+    script_sections: ["Leave with an in-flight update plan"]
+    status: draft
+  - id: planning-material-and-airports
+    type: faa_guidance
+    statement: "PHAK flight planning calls for current route materials and weather and for studying intended airports using NOTAM and Chart Supplement information such as location, runway, lighting, services, fuel, frequencies, and remarks."
+    sources: [phak-flight-planning-material]
+    risk: safety_critical
+    script_sections: ["Build the preflight decision board", "Plan the alternative before it is needed"]
+    status: draft
+  - id: aircraft-data-and-fuel-stops
+    type: faa_guidance
+    statement: "The PHAK directs pilots to use the AFM/POH and appropriate performance charts for loading and takeoff and landing distances, and to compare fuel-consumption data with estimated flight time so refueling points can be included in the route plan."
+    sources: [phak-aircraft-data-fuel-stops]
+    risk: safety_critical
+    script_sections: ["Complete the route-planning navigation log"]
+    status: draft
+  - id: route-charting-sequence
+    type: faa_guidance
+    statement: "The PHAK suggested course-charting sequence draws the route, selects recognizable checkpoints, checks nearby airspace, terrain, and obstructions, and uses that review to select an appropriate altitude."
+    sources: [phak-aircraft-data-fuel-stops]
+    risk: safety_critical
+    script_sections: ["Complete the route-planning navigation log", "Retrieval review"]
+    status: draft
+  - id: calculation-method-options
+    type: faa_guidance
+    statement: "For required course calculations, the PHAK says a pilot may use a mathematical formula or a manual or electronic flight computer."
+    sources: [phak-aircraft-data-fuel-stops]
+    risk: operational
+    script_sections: ["Complete the route-planning navigation log"]
+    status: draft
+  - id: flight-log-record-layout
+    type: faa_guidance
+    statement: "The PHAK planning sheet and visual flight log record aircraft and planning assumptions, route points, course and heading values, wind, groundspeed, point-to-point and cumulative distance, and actual and estimated groundspeed and elapsed time."
+    sources: [phak-flight-log-calculation]
+    risk: operational
+    script_sections: ["Complete the route-planning navigation log", "Retrieval review"]
+    status: draft
+  - id: flight-log-heading-chain
+    type: faa_guidance
+    statement: "The PHAK planning formula adjusts true course by wind-correction angle for true heading, applies variation for magnetic heading, and applies aircraft deviation for compass heading."
+    sources: [phak-flight-log-calculation]
+    risk: operational
+    script_sections: ["Complete the route-planning navigation log", "Retrieval review"]
+    status: draft
+  - id: flight-log-computation
+    type: faa_guidance
+    statement: "The PHAK worked course-planning example uses calculated groundspeed to determine total trip time, time between checkpoints, and fuel burned."
+    sources: [phak-flight-log-calculation]
+    risk: operational
+    script_sections: ["Complete the route-planning navigation log"]
+    status: draft
+  - id: plan-versus-actual-update
+    type: faa_guidance
+    statement: "As a cross-country progresses, the PHAK recommends recording actual headings and checkpoint times and revising planned heading, groundspeed, and time from the observed results."
+    sources: [phak-adjust-plan-in-flight]
+    risk: safety_critical
+    script_sections: ["Complete the route-planning navigation log", "Leave with an in-flight update plan", "Retrieval review"]
+    status: draft
+  - id: afm-poh-performance-data
+    type: faa_guidance
+    statement: "The AFM/POH performance or operational-information section contains the airplane's takeoff, climb, range, endurance, descent, and landing data."
+    sources: [phak-performance-data]
+    risk: safety_critical
+    script_sections: ["Complete the route-planning navigation log", "Retrieval review"]
+    status: draft
+  - id: climb-chart-outputs
+    type: faa_guidance
+    statement: "Fuel, time, and distance-to-climb charts estimate the fuel used, elapsed time, and ground distance covered during climb for the applicable departure and cruise conditions."
+    sources: [phak-climb-cruise-planning]
+    risk: operational
+    script_sections: ["Complete the route-planning navigation log"]
+    status: draft
+  - id: cruise-chart-outputs
+    type: faa_guidance
+    statement: "A cruise-and-range performance table can provide true airspeed, fuel consumption, endurance, and range for specified altitude, power, configuration, and other stated conditions."
+    sources: [phak-cruise-performance]
+    risk: safety_critical
+    script_sections: ["Complete the route-planning navigation log"]
+    status: draft
+  - id: preflight-fuel-quantity-check
+    type: faa_guidance
+    statement: "The PHAK directs a pilot to compare fuel-quantity indications with a visual check of the tank level and to follow the airplane-specific fuel-selector and operating information."
+    sources: [phak-fuel-quantity-check]
+    risk: safety_critical
+    script_sections: ["Give reserve a specific job"]
+    status: draft
+  - id: personal-minimums-decision-reference
+    type: faa_guidance
+    statement: "The PHAK recommends using a personal-minimums checklist to make some decisions in advance and says the resulting checklist gives a clear reference point for go/no-go and continue/discontinue decisions."
+    sources: [phak-personal-minimums-options]
+    risk: safety_critical
+    script_sections: ["Plan the alternative before it is needed", "Retrieval review"]
+    status: draft
+  - id: risk-processing-alternatives
+    type: faa_guidance
+    statement: "The PHAK recommends developing a list of good alternatives during the risk-processing phase."
+    sources: [phak-personal-minimums-options]
+    risk: safety_critical
+    script_sections: ["Plan the alternative before it is needed", "Retrieval review"]
+    status: draft
+  - id: workload-prioritization
+    type: faa_guidance
+    statement: "Effective workload management plans, prioritizes, and sequences tasks; distraction and overload can narrow attention and reduce situational awareness, while preparation during low-workload periods reduces later workload."
+    sources: [phak-workload-management]
+    risk: safety_critical
+    script_sections: ["Plan the alternative before it is needed"]
+    status: draft
+  - id: eta-weather-trend-checks
+    type: faa_guidance
+    statement: "FAA Safety Briefing describes comparing destination weather and ETA with the original plan at selected intervals so a growing difference can be recognized as a trend."
+    sources: [faa-safety-briefing-fuel-trends]
+    risk: safety_critical
+    script_sections: ["Turn the navigation log into trip fuel"]
+    status: draft
+  - id: fuel-totalizer-plan-comparison
+    type: faa_guidance
+    statement: "FAA Safety Briefing discusses using a fuel totalizer to compare planned fuel consumption with actual consumption."
+    sources: [faa-safety-briefing-fuel-trends]
+    risk: safety_critical
+    script_sections: ["Turn the navigation log into trip fuel", "Retrieval review"]
+    status: draft
+  - id: vfr-flight-plan-operation
+    type: faa_guidance
+    statement: "The AIM says a VFR flight plan is not normally required within the continental United States, strongly recommends filing for search-and-rescue services, and places activation responsibility on the pilot rather than the control tower."
+    sources: [aim-vfr-flight-plans]
+    risk: operational
+    script_sections: ["File and activate the VFR flight plan", "Retrieval review"]
+    status: draft
+  - id: vfr-flight-plan-close
+    type: faa_guidance
+    statement: "The AIM makes the pilot responsible for ensuring that a VFR flight plan is canceled and explains that control towers do not automatically close it."
+    sources: [aim-close-vfr-flight-plan]
+    risk: operational
+    script_sections: ["Choose and execute the diversion", "Retrieval review"]
+    status: draft

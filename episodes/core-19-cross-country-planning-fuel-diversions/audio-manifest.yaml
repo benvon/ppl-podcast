@@ -1,0 +1,52 @@
+episode_id: "core-19"
+current_candidate_render:
+  script_version: 0.3.1
+  rendered_at_utc: 2026-09-21T18:52:58.716Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 14
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: audio-artifacts/core-19-20260921T181600Z.mp3
+  lossless_master: audio-artifacts/core-19-20260921T181600Z.master.wav
+  voice_master: audio-artifacts/core-19-20260921T181600Z.voice.master.wav
+  render_manifest: audio-artifacts/core-19-20260921T181600Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-19-20260921T181600Z.audio-quality.json
+  chapter_review: audio-artifacts/core-19-20260921T181600Z.mp3.chapters.8ae7b39c76633a8e005cf016eef88ac8463af95b64ef67df5a27d5eaab6e15ca.html
+  segment_work_dir: audio-artifacts/core-19-realtime-20260921T181600Z.segments
+  duration_seconds: 2435.02
+  duration_display: "40:35"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: 8ae7b39c76633a8e005cf016eef88ac8463af95b64ef67df5a27d5eaab6e15ca
+  front_matter_validation: The accepted opening preview reused unchanged the Opening, Disclaimer, podcast introduction, and first ACS teaching segments.
+  music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade.
+  usage_estimate_usd: 3.416914
+  validation: Automated audio-quality analysis passed WAV/MP3 decode, 24 kHz mono format, duration agreement, all known stitch-boundary checks with no discontinuity warnings, no clipped samples, and ffprobe-verified embedded MP3 chapters. Full script-aligned human listening QA and manual chapter review are approved.
+superseded_candidates: []
+opening_preview:
+  script_version: 0.3.1
+  rendered_at_utc: 2026-09-21T18:17:02.633Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 14
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: audio-artifacts/core-19-20260921T181600Z.preview-001-005.mp3
+  lossless_master: audio-artifacts/core-19-20260921T181600Z.preview-001-005.master.wav
+  render_manifest: audio-artifacts/core-19-20260921T181600Z.preview-001-005.render-manifest.json
+  audio_quality_report: audio-artifacts/core-19-20260921T181600Z.preview-001-005.audio-quality.json
+  segment_work_dir: audio-artifacts/core-19-realtime-20260921T181600Z.segments
+  duration_seconds: 167.17
+  duration_display: "2:47"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  included_segments: "1-5: Opening, Disclaimer, podcast introduction, and first ACS teaching segment"
+  front_matter_validation: The opening preview was accepted after the required Disclaimer, introduction, and music were heard. Renderer preflight confirms that the Opening is immediately followed by the Disclaimer segment.
+chapter_markers:
+  source: "master-script.md section headings"
+  audio_sha256: 8ae7b39c76633a8e005cf016eef88ac8463af95b64ef67df5a27d5eaab6e15ca
+  review_page: audio-artifacts/core-19-20260921T181600Z.mp3.chapters.8ae7b39c76633a8e005cf016eef88ac8463af95b64ef67df5a27d5eaab6e15ca.html
+  required_format: "Embedded MP3 ID3 chapters for Apple Podcasts and Overcast"

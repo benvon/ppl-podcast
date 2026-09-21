@@ -601,10 +601,10 @@ test("pre-hosting validation requires consistent release records", () => {
   fs.writeFileSync(renderPath, JSON.stringify(renderRecord()));
   const qualityRecord = (overrides = {}) => ({ result: "passed", manifest: renderPath, output: { path: audioPath, sha256, probe: { format: { duration: "2.000000" } } }, ...overrides });
   fs.writeFileSync(qualityPath, JSON.stringify(qualityRecord())); fs.writeFileSync(reviewPath, `<meta name="ppl-audio-sha256" content="${sha256}">`);
-  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", production_contract_version: 2, title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml", mix_config: "audio-mix.yaml", status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", chapter_markers: "embedded_and_ffprobe_validated" }, hosting: { metadata: "hosting-metadata.yaml", handoff_status: "ready_for_hosting_pr" }, public_notes: "show-notes.md", source_verification: { validation_contract: "source-relevance-v1", status: "source_relevance_complete", verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" }, review: { editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }));
+  fs.writeFileSync(path.join(episodePath, "episode.yaml"), YAML.stringify({ id: "core-01", track: "core", production_contract_version: 2, title: "Test", version: "0.1.0", status: "ready_for_hosting_pr", published_at: "2026-08-24T13:31:04Z", runtime_actual_seconds: 2, audio: { manifest: "audio-manifest.yaml", mix_config: "audio-mix.yaml", status: "candidate_rendered_listening_qa_approved", publication_day_validation: "passed", chapter_markers: "embedded_and_ffprobe_validated" }, hosting: { metadata: "hosting-metadata.yaml", handoff_status: "ready_for_hosting_pr" }, public_notes: "show-notes.md", source_verification: { validation_contract: "source-relevance-v1", status: "source_relevance_complete", verified_at_utc: "2026-08-24T13:32:00Z", link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml", relevance_review: "complete" }, review: { independent_spoken_script_review: { status: "complete", script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") }, editorial_status: "script_approved", editorial_script_sha256: crypto.createHash("sha256").update(masterScript).digest("hex") } }));
   fs.writeFileSync(path.join(episodePath, "audio-mix.yaml"), "schema_version: 1\nmusic:\n  enabled: false\n  disabled_reason: Historical fixture has no series music treatment.\n");
   fs.writeFileSync(path.join(episodePath, "audio-manifest.yaml"), YAML.stringify({ current_candidate_render: { script_version: "0.1.0", sha256, duration_seconds: 2, mp3: path.basename(audioPath), render_manifest: path.basename(renderPath), audio_quality_report: path.basename(qualityPath), chapter_review: path.basename(reviewPath), validation: "passed" }, chapter_markers: { audio_sha256: sha256 } }));
-  fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
+  fs.writeFileSync(path.join(episodePath, "hosting-metadata.yaml"), YAML.stringify({ publisher_release: { id: "core-01", title: "Test", description: "Listener-facing description.", published_at: "2026-08-24T13:31:04Z", duration: "00:00:02", number: 1, audio: {} }, provenance: { content_version: "0.1.0", show_notes: "show-notes.md", audio_manifest: "audio-manifest.yaml" } }));
   fs.writeFileSync(path.join(episodePath, "show-notes.md"), `[FAA reference](${sourceUrl})\n`); fs.writeFileSync(path.join(episodePath, "show-notes-manifest.yaml"), `links:\n  - id: note-a\n    text: FAA reference\n    url: ${sourceUrl}\n    locator: Paragraph 1-1-1, p. 1-1-1\n    source_id: source-a\n    claim_ids: [claim-a]\n`); fs.writeFileSync(path.join(episodePath, "research-packet.md"), "Research packet.\n"); fs.writeFileSync(path.join(episodePath, "production-log.md"), "Production log.\n");
   const inputSha256 = sourceValidationInputHashes(episodePath);
   const linkValidation = () => {
@@ -696,6 +696,29 @@ test("pre-hosting validation requires consistent release records", () => {
     const originalQaChecklist = fs.readFileSync(qaChecklistPath, "utf8");
     const originalResearchPacket = fs.readFileSync(researchPacketPath, "utf8");
     const originalProductionLog = fs.readFileSync(productionLogPath, "utf8");
+    const unpublishedMissingIndependentReview = {
+      ...episodeMetadata,
+      published_at: null,
+      review: { ...episodeMetadata.review, independent_spoken_script_review: { status: "pending", script_sha256: null } },
+    };
+    const unpublishedHosting = {
+      ...hostingMetadata,
+      publisher_release: { ...hostingMetadata.publisher_release, published_at: null },
+    };
+    const unpublishedEpisodeText = YAML.stringify(unpublishedMissingIndependentReview);
+    const unpublishedHostingText = YAML.stringify(unpublishedHosting);
+    const rejectedHandoffPath = path.join(temporary, "missing-independent-review-handoff");
+    fs.writeFileSync(episodeMetadataPath, unpublishedEpisodeText);
+    fs.writeFileSync(hostingMetadataPath, unpublishedHostingText);
+    assert.throws(
+      () => preparePublication({ episodePath, outputDir: rejectedHandoffPath, publishedAt: "2026-08-24T13:32:00Z", cwd: temporary }),
+      /episode\.yaml must record a complete independent spoken-script review/,
+    );
+    assert.equal(fs.readFileSync(episodeMetadataPath, "utf8"), unpublishedEpisodeText);
+    assert.equal(fs.readFileSync(hostingMetadataPath, "utf8"), unpublishedHostingText);
+    assert.equal(fs.existsSync(rejectedHandoffPath), false);
+    fs.writeFileSync(episodeMetadataPath, YAML.stringify(episodeMetadata));
+    fs.writeFileSync(hostingMetadataPath, YAML.stringify(hostingMetadata));
     const draftMasterScript = `# Test\n\n**Version:** 0.1.0\n\n**INSTRUCTOR:**\n\nA test lesson.\n`;
     const draftShowNotes = `# Test\n\n**Episode:** 1\n**Version:** 0.1.0\n\n[FAA reference](${sourceUrl})\n`;
     const draftLinkValidation = { ...linkValidation(), checked_at_utc: "2026-08-24T13:32:00.123Z" };

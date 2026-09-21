@@ -68,10 +68,6 @@ function currentContractErrors(episode) {
 function independentSpokenScriptReviewErrors({ episodePath, episode }) {
   const errors = [...currentContractErrors(episode)];
   if (errors.length) return errors;
-  // Published packages are preservation-only. A deliberate script-review reset
-  // clears published_at and starts a new candidate, which then must meet the
-  // current structured-review contract.
-  if (utcRfc3339Timestamp(episode.published_at)) return errors;
   const masterScript = readTextFile(path.join(episodePath, "master-script.md"), "master-script.md", errors);
   if (masterScript === null) return errors;
   if (episode.review?.independent_spoken_script_review?.status !== "complete") errors.push("episode.yaml must record a complete independent spoken-script review.");

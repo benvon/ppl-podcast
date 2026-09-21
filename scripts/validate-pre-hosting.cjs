@@ -296,6 +296,7 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
     expect(errors, review.includes(`name="ppl-audio-sha256" content="${candidateSha256}"`), "chapter-review page must identify the approved MP3 checksum.");
   }
 
+  errors.push(...independentSpokenScriptReviewErrors({ episodePath: resolvedEpisode, episode }));
   errors.push(...sourceReviewEvidenceErrors({ episodePath: resolvedEpisode, episode }));
   errors.push(...publicationLinkEvidenceErrors({ episodePath: resolvedEpisode, episode }));
   try {

@@ -1260,6 +1260,27 @@ test("formal source validation runs without a retired preflight record", () => {
   }
 });
 
+test("the --llm source-review mode requires independent review before sending material to OpenAI", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-llm-review-test-"));
+  const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml"); const reportPath = path.join(temporary, "link-validation.yaml");
+  try {
+    fs.writeFileSync(sourcesPath, "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1, p. 1-1-1\n    supports_claims: [claim-a]\n");
+    fs.writeFileSync(claimsPath, "claims:\n  - id: claim-a\n    claim: A test claim.\n    sources: [source-a]\n");
+    fs.writeFileSync(path.join(temporary, "episode.yaml"), "production_contract_version: 2\nsource_verification:\n  validation_contract: source-relevance-v1\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Notes\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n", "utf8");
+    fs.writeFileSync(path.join(temporary, "qa-checklist.md"), "- [x] Formal review authorization. <!-- qa-id: openai-source-review-authorization -->\n", "utf8");
+    const result = childProcess.spawnSync(process.execPath, [path.join(__dirname, "validate-source-links.cjs"), "--sources", sourcesPath, "--claims", claimsPath, "--output", reportPath, "--llm"], { encoding: "utf8", timeout: 2_000 });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /completed independent spoken-script review/);
+    assert.doesNotMatch(result.stderr, /OPENAI_API_KEY is required/);
+    assert.match(fs.readFileSync(path.join(temporary, "qa-checklist.md"), "utf8"), /- \[x\] Formal review authorization/);
+    assert.equal(fs.existsSync(validationFailurePath(reportPath)), true);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("source validation rejects alternate source and claim inputs", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-validator-canonical-inputs-"));
   const sourcesPath = path.join(temporary, "sources.yaml"); const claimsPath = path.join(temporary, "claim-inventory.yaml");

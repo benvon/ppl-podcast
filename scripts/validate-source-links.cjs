@@ -1098,7 +1098,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     process.exitCode = 1;
     return;
   }
-  if (options.requireLlm) {
+  if (options.llm) {
     const reviewErrors = independentSpokenScriptReviewErrors({ episodePath, episode });
     if (reviewErrors.length) throw new Error(`Source-relevance validation requires a completed independent spoken-script review: ${reviewErrors[0]}`);
   }

@@ -1,0 +1,260 @@
+episode_id: core-19
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-cross-country-planning
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: FAA-S-ACS-6C
+    locator: "PA.I.D.K1-K6, R1-R7, and S1-S5, Cross-Country Flight Planning, printed p. 5 (PDF viewer p. 13)"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13"
+    revision: "April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-cross-country-outcome]
+  - id: acs-performance-planning
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: FAA-S-ACS-6C
+    locator: "PA.I.F.K1-K2 and R1-R3, Performance and Limitations, printed p. 6 (PDF viewer p. 14)"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14"
+    revision: "April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-performance-outcome]
+  - id: acs-performance-skill
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: FAA-S-ACS-6C
+    locator: "PA.I.F.S2, Performance and Limitations, printed p. 7 (PDF viewer p. 15)"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15"
+    revision: "April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-performance-chart-skill]
+  - id: acs-diversion
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: FAA-S-ACS-6C
+    locator: "PA.VI.C.K1-K2, R1-R5, and S1-S6, Diversion, printed p. 40 (PDF viewer p. 48)"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48"
+    revision: "April 2024; effective May 31, 2024; confirmed current on the FAA ACS page September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-diversion-outcome]
+  - id: ecfr-preflight-action
+    authority: regulation
+    title: "14 CFR 91.103, Preflight action"
+    document_id: 14-CFR-91.103
+    locator: "Section 91.103(a)-(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.103"
+    ecfr_date: "2026-09-17"
+    revision: "eCFR current text; Title 14 displayed current through September 17, 2026 when researched September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [preflight-information-duty]
+  - id: ecfr-vfr-fuel
+    authority: regulation
+    title: "14 CFR 91.151, Fuel requirements for flight in VFR conditions"
+    document_id: 14-CFR-91.151
+    locator: "Section 91.151(a), airplane VFR fuel requirement"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151"
+    ecfr_date: "2026-09-17"
+    revision: "eCFR current text; Title 14 displayed current through September 17, 2026 when researched September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vfr-fuel-minimum]
+  - id: ecfr-vfr-flight-plan
+    authority: regulation
+    title: "14 CFR 91.153, VFR flight plan: Information required"
+    document_id: 14-CFR-91.153
+    locator: "Section 91.153(a)-(b)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.153"
+    ecfr_date: "2026-09-17"
+    revision: "eCFR current text; Title 14 displayed current through September 17, 2026 when researched September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vfr-flight-plan-information]
+  - id: phak-navigation-introduction
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Introduction, p. 16-1"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=1"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 16 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [navigation-planning-elements]
+  - id: phak-magnetic-course
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "True-direction conversion and Magnetic Variation, p. 16-7"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=7"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 16 PDF inspected September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [true-to-magnetic-course]
+  - id: phak-time-distance-fuel
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Basic Calculations and Fuel Consumption, p. 16-11"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=11"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 16 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [time-distance-groundspeed, fuel-consumption-monitoring]
+  - id: phak-flight-planning-material
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Flight Planning, Assembling Necessary Material, Weather Check, and Use of Chart Supplement U.S., p. 16-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=17"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 16 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [planning-material-and-airports]
+  - id: phak-aircraft-data-fuel-stops
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "FAA-approved AFM or permanent aircraft records, performance-distance checks, fuel-consumption charts, and Charting the Course, p. 16-18"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=18"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 16 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [aircraft-data-and-fuel-stops, route-charting-sequence, calculation-method-options]
+  - id: phak-flight-log-calculation
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Figure 16-26 and course, groundspeed, time, and fuel computation discussion, p. 16-20"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=20"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 16 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [flight-log-record-layout, flight-log-heading-chain, flight-log-computation]
+  - id: phak-adjust-plan-in-flight
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 16"
+    document_id: FAA-H-8083-25C
+    locator: "Post-calculation flight-log discussion, first paragraph, p. 16-21"
+    url: "https://www.faa.gov/sites/faa.gov/files/18_phak_ch16.pdf#page=21"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 16 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [plan-versus-actual-update]
+  - id: phak-performance-data
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11"
+    document_id: FAA-H-8083-25C
+    locator: "Importance of Performance Data, p. 11-1"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=1"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 11 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [afm-poh-performance-data]
+  - id: phak-climb-cruise-planning
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11"
+    document_id: FAA-H-8083-25C
+    locator: "Climb and Cruise Charts, p. 11-21"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=21"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 11 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [climb-chart-outputs]
+  - id: phak-cruise-performance
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 11"
+    document_id: FAA-H-8083-25C
+    locator: "Cruise and Range Performance and Figure 11-27, p. 11-24"
+    url: "https://www.faa.gov/sites/faa.gov/files/13_phak_ch11.pdf#page=24"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 11 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [cruise-chart-outputs]
+  - id: phak-fuel-quantity-check
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 7"
+    document_id: FAA-H-8083-25C
+    locator: "Fuel Gauges and Fuel Selectors, p. 7-26"
+    url: "https://www.faa.gov/sites/faa.gov/files/09_phak_ch7.pdf#page=26"
+    revision: "FAA-H-8083-25C, 2023; October 2025 addendum does not amend Chapter 7"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [preflight-fuel-quantity-check]
+  - id: phak-personal-minimums-options
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 2"
+    document_id: FAA-H-8083-25C
+    locator: "3P risk-management discussion, personal-minimums and alternatives bullets, p. 2-17"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=17"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 2 PDF inspected September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [personal-minimums-decision-reference, risk-processing-alternatives]
+  - id: phak-workload-management
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 2"
+    document_id: FAA-H-8083-25C
+    locator: "Obstacles to Maintaining Situational Awareness and Workload Management, p. 2-24"
+    url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf#page=24"
+    revision: "FAA-H-8083-25C, 2023; current FAA Chapter 2 PDF inspected September 20, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [workload-prioritization]
+  - id: faa-safety-briefing-fuel-trends
+    authority: faa_guidance
+    title: "FAA Safety Briefing, July/August 2018"
+    document_id: FAA-SAFETY-BRIEFING-JUL-AUG-2018
+    locator: "Fuel-management monitoring examples, printed p. 22 (PDF viewer p. 24)"
+    url: "https://www.faa.gov/sites/faa.gov/files/2022-01/JulAug2018.pdf#page=24"
+    revision: "July/August 2018 issue; archival FAA PDF inspected September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [eta-weather-trend-checks, fuel-totalizer-plan-comparison]
+  - id: aim-vfr-flight-plans
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Chapter 5"
+    document_id: AIM
+    locator: "Paragraph 5-1-5, Flight Plan—VFR Flights"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-5"
+    revision: "AIM Basic with Changes 1, 2, and 3; effective July 9, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vfr-flight-plan-operation]
+  - id: aim-close-vfr-flight-plan
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Chapter 5"
+    document_id: AIM
+    locator: "Paragraph 5-1-14, Closing VFR/DVFR Flight Plans"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap5_section_1.html#5-1-14"
+    revision: "AIM Basic with Changes 1, 2, and 3; effective July 9, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vfr-flight-plan-close]

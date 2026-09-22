@@ -23,3 +23,4 @@ This is optional explanatory context, not a production-state or audit record. Us
 - A second agent independently reviewed the revised spoken script with no required edits. The source-review record is intentionally pending again because the current script differs from the prior reviewed script.
 - The user then made a small editorial change. The resulting current script passed a new independent review and two-pass formal source evaluation; `link-validation.yaml` is the authoritative record of that run.
 - The user approved the revised script. `release:prehost --package-only` confirmed the draft-package shape; audio and publication QA remain pending.
+- The five-segment opening preview was assembled with passing automatic audio checks and approved in human listening QA. The opening turn, disclaimer, and introduction are accepted.

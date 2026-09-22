@@ -137,7 +137,9 @@ Recognize the changed pilot in flight.
 
 The later flight begins in good daytime visibility. Maya verifies the planned altitude of eight thousand five hundred feet, the landmarks, and the airport she can use along the way. She feels normal during the climb. Before we follow the later symptom, consider what the altitude check is for. As an airplane climbs, atmospheric pressure decreases. The proportion of oxygen in the air is still about twenty-one percent, but the pressure available to move oxygen into the body is lower. That is the altitude pathway to hypoxia: not enough oxygen reaches the body for normal function.
 
-For the checkride vocabulary, learn the four forms by the part of the oxygen path that has failed. Hypoxic hypoxia means too little oxygen is available to the body, which is the altitude form Maya is considering. Hypemic hypoxia means the blood cannot take up or transport enough oxygen; carbon monoxide poisoning is the common aviation example. Stagnant hypoxia means oxygen-rich blood is not reaching the tissues effectively. Histotoxic hypoxia means the body tissues cannot use the oxygen delivered to them. The names explain the cause; the pilot still responds to impaired performance before trying to diagnose the type in flight.
+For the checkride vocabulary, learn the four forms by the part of the oxygen path that has failed. The PHAK names hypoxic, hypemic, stagnant, and histotoxic hypoxia. Hypoxic hypoxia means too little oxygen is available to the body, which is the altitude form Maya is considering. Hypemic hypoxia means the blood cannot take up or transport enough oxygen; carbon monoxide poisoning is the common aviation example. Stagnant hypoxia means oxygen-rich blood is not reaching the tissues effectively.
+
+Histotoxic hypoxia means oxygen reaches the body cells, but the cells cannot use it effectively. The names explain the cause; the pilot still responds to impaired performance before trying to diagnose the type in flight.
 
 At greater exposure to altitude, hypoxia can degrade judgment, memory, alertness, coordination, and calculation. Headache, drowsiness, dizziness, or an unusual sense of well-being can appear. Gradual onset makes the effects hard for the affected pilot to notice. The lesson for Maya is to recognize the pattern early because the very tool she uses to judge it—her thinking—may be weakening.
 
@@ -281,7 +283,9 @@ Which hypoxia vocabulary helps separate the altitude discussion from the heater 
 
 **LEARNER:**
 
-Hypoxic hypoxia is the reduced oxygen availability associated with altitude. Hypemic hypoxia is impaired oxygen transport in the blood, which makes carbon monoxide a different concern from altitude alone. Stagnant hypoxia is inadequate circulation to the tissues, and histotoxic hypoxia is an inability of the tissues to use oxygen.
+Hypoxic hypoxia is the reduced oxygen availability associated with altitude. Hypemic hypoxia is impaired oxygen transport in the blood, which makes carbon monoxide a different concern from altitude alone. Stagnant hypoxia is inadequate circulation to the tissues.
+
+Histotoxic hypoxia is oxygen reaching cells that cannot use it effectively.
 
 **INSTRUCTOR:**
 

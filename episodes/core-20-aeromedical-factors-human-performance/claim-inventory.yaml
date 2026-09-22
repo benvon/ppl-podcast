@@ -112,10 +112,17 @@ claims:
     risk: safety_critical
     script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
     status: draft
-  - id: hypoxia-vocabulary
+  - id: hypoxia-vocabulary-pathways
     type: faa_guidance
-    statement: "The PHAK identifies four forms of hypoxia by cause: hypoxic, hypemic, stagnant, and histotoxic; it uses reduced oxygen availability, impaired blood transport, inadequate blood flow, and inability of tissues to use oxygen to distinguish them."
-    sources: [phak-hypoxia-types, phak-histotoxic-hypoxia]
+    statement: "The PHAK names hypoxic, hypemic, stagnant, and histotoxic hypoxia; it describes the first three respectively as insufficient available oxygen, impaired blood uptake or transport of oxygen, and inadequate movement of oxygen-rich blood to tissues."
+    sources: [phak-hypoxia-types]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: hypoxia-vocabulary-histotoxic
+    type: faa_guidance
+    statement: "The PHAK describes histotoxic hypoxia as oxygen reaching body cells that are unable to use it effectively."
+    sources: [phak-histotoxic-hypoxia]
     risk: safety_critical
     script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
     status: draft
@@ -156,7 +163,7 @@ claims:
     status: draft
   - id: landing-illusion
     type: faa_guidance
-    statement: "Some visual illusions can lead to landing errors."
+    statement: "The AIM identifies visual illusions leading to landing errors."
     sources: [aim-illusions]
     risk: operational
     script_sections: ["Use a trustworthy orientation picture"]

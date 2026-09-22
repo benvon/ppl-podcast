@@ -196,9 +196,13 @@ The later flight begins in good daytime visibility. Maya verifies the planned al
 
 [Source: sources.yaml#aim-altitude-hypoxia]
 
-For the checkride vocabulary, learn the four forms by the part of the oxygen path that has failed. Hypoxic hypoxia means too little oxygen is available to the body, which is the altitude form Maya is considering. Hypemic hypoxia means the blood cannot take up or transport enough oxygen; carbon monoxide poisoning is the common aviation example. Stagnant hypoxia means oxygen-rich blood is not reaching the tissues effectively. Histotoxic hypoxia means the body tissues cannot use the oxygen delivered to them. The names explain the cause; the pilot still responds to impaired performance before trying to diagnose the type in flight.
+For the checkride vocabulary, learn the four forms by the part of the oxygen path that has failed. The PHAK names hypoxic, hypemic, stagnant, and histotoxic hypoxia. Hypoxic hypoxia means too little oxygen is available to the body, which is the altitude form Maya is considering. Hypemic hypoxia means the blood cannot take up or transport enough oxygen; carbon monoxide poisoning is the common aviation example. Stagnant hypoxia means oxygen-rich blood is not reaching the tissues effectively.
 
 [Source: sources.yaml#phak-hypoxia-types]
+
+Histotoxic hypoxia means oxygen reaches the body cells, but the cells cannot use it effectively. The names explain the cause; the pilot still responds to impaired performance before trying to diagnose the type in flight.
+
+[Source: sources.yaml#phak-histotoxic-hypoxia]
 
 At greater exposure to altitude, hypoxia can degrade judgment, memory, alertness, coordination, and calculation. Headache, drowsiness, dizziness, or an unusual sense of well-being can appear. Gradual onset makes the effects hard for the affected pilot to notice. The lesson for Maya is to recognize the pattern early because the very tool she uses to judge it—her thinking—may be weakening.
 
@@ -417,13 +421,15 @@ While the heater is on, headache or drowsiness is enough for the AIM's carbon mo
 Which hypoxia vocabulary helps separate the altitude discussion from the heater discussion?
 
 [Source: sources.yaml#phak-hypoxia-types]
-[Source: sources.yaml#phak-histotoxic-hypoxia]
 
 **LEARNER:**
 
-Hypoxic hypoxia is the reduced oxygen availability associated with altitude. Hypemic hypoxia is impaired oxygen transport in the blood, which makes carbon monoxide a different concern from altitude alone. Stagnant hypoxia is inadequate circulation to the tissues, and histotoxic hypoxia is an inability of the tissues to use oxygen.
+Hypoxic hypoxia is the reduced oxygen availability associated with altitude. Hypemic hypoxia is impaired oxygen transport in the blood, which makes carbon monoxide a different concern from altitude alone. Stagnant hypoxia is inadequate circulation to the tissues.
 
 [Source: sources.yaml#phak-hypoxia-types]
+
+Histotoxic hypoxia is oxygen reaching cells that cannot use it effectively.
+
 [Source: sources.yaml#phak-histotoxic-hypoxia]
 
 **INSTRUCTOR:**

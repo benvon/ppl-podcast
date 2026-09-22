@@ -94,7 +94,7 @@ sources:
     authority: faa_guidance
     title: "Aeronautical Information Manual, Medical Facts for Pilots"
     document_id: AIM
-    locator: "AIM 8-1-4, Carbon Monoxide Poisoning in Flight, subparagraphs 1-3"
+    locator: "AIM 8-1-4, Carbon Monoxide Poisoning in Flight"
     url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4"
     revision: "FAA online AIM accessed September 21, 2026"
     relevance_excerpt: null
@@ -105,7 +105,7 @@ sources:
     authority: faa_guidance
     title: "Aeronautical Information Manual, Medical Facts for Pilots"
     document_id: AIM
-    locator: "AIM 8-1-5, Illusions in Flight, subparagraphs 1-3"
+    locator: "AIM 8-1-5, Illusions in Flight, including Illusions Leading to Landing Errors"
     url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5"
     revision: "FAA online AIM accessed September 21, 2026"
     relevance_excerpt: null
@@ -144,7 +144,7 @@ sources:
     relevance_excerpt: null
     verified_at_utc: null
     link_status: null
-    supports_claims: [hypoxia-vocabulary]
+    supports_claims: [hypoxia-vocabulary-pathways]
   - id: phak-histotoxic-hypoxia
     authority: faa_guidance
     title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical Factors"
@@ -155,7 +155,7 @@ sources:
     relevance_excerpt: null
     verified_at_utc: null
     link_status: null
-    supports_claims: [hypoxia-vocabulary]
+    supports_claims: [hypoxia-vocabulary-histotoxic]
   - id: ecfr-medical-deficiency
     authority: regulation
     title: "14 CFR 61.53, Prohibition on operations during medical deficiency"

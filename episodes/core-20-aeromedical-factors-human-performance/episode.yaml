@@ -4,7 +4,7 @@ title: Aeromedical Factors and Human Performance
 slug: aeromedical-factors-human-performance
 track: core
 production_contract_version: 2
-status: editorial_review_pending
+status: source_relevance_review_complete
 version: 0.1.5
 published_at: null
 runtime_target_minutes: 30
@@ -64,17 +64,13 @@ review:
   independent_spoken_script_review:
     status: complete
     script_sha256: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
-  editorial_status: reapproval_required
-  editorial_script_sha256: null
+  editorial_status: script_approved
+  editorial_script_sha256: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
 release_gates_remaining:
-  - Run source-link validation with LLM relevance review and resolve every
-    finding.
-  - Complete human editorial review and approve the current script.
   - Render audio and complete human listening QA, including the front-matter
     check.
   - Review embedded chapter markers against the approved audio.
@@ -94,4 +90,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 21
+production_state_revision: 22

@@ -35,6 +35,17 @@ sources:
     verified_at_utc: null
     link_status: null
     supports_claims: [medication-two-questions]
+  - id: faa-medication-library
+    authority: faa_guidance
+    title: "FAA Pharmaceuticals (Therapeutics), Medication Guidelines for Pilots"
+    document_id: null
+    locator: "Medication Guidelines for Pilots, Over-the-Counter Medications subsection"
+    url: "https://www.faa.gov/pilots/medical_certification/medications#content"
+    revision: "FAA web guidance, updated September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [medication-reference-library]
   - id: aim-altitude-hypoxia
     authority: faa_guidance
     title: "Aeronautical Information Manual, Medical Facts for Pilots"
@@ -123,6 +134,28 @@ sources:
     verified_at_utc: null
     link_status: null
     supports_claims: [dehydration-effects]
+  - id: phak-hypoxia-types
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical Factors"
+    document_id: FAA-H-8083-25C
+    locator: "Chapter 17, Hypoxia through Stagnant Hypoxia, printed p. 17-3 (PDF viewer p. 3)"
+    url: "https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3"
+    revision: "FAA-H-8083-25C; FAA chapter page checked September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [hypoxia-vocabulary]
+  - id: phak-histotoxic-hypoxia
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical Factors"
+    document_id: FAA-H-8083-25C
+    locator: "Chapter 17, Histotoxic Hypoxia, printed p. 17-4 (PDF viewer p. 4)"
+    url: "https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4"
+    revision: "FAA-H-8083-25C; FAA chapter page checked September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [hypoxia-vocabulary]
   - id: ecfr-medical-deficiency
     authority: regulation
     title: "14 CFR 61.53, Prohibition on operations during medical deficiency"

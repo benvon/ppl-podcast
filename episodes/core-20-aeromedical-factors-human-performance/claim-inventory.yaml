@@ -28,6 +28,13 @@ claims:
     risk: safety_critical
     script_sections: ["Make the pilot preflight specific", "Retrieval review"]
     status: draft
+  - id: medication-reference-library
+    type: faa_guidance
+    statement: "The FAA Pharmaceuticals page links current medication reference documents, including the OTC medication reference guide and reference table."
+    sources: [faa-medication-library]
+    risk: operational
+    script_sections: ["Make the pilot preflight specific"]
+    status: draft
   - id: medication-impairment
     type: faa_guidance
     statement: "Prescription and OTC medications, including antihistamines and motion-sickness remedies, can impair alertness, coordination, vision, judgment or other flight-critical functions."
@@ -102,6 +109,13 @@ claims:
     type: faa_guidance
     statement: "Altitude hypoxia can impair judgment, memory, alertness and coordination, and may cause headache, drowsiness or dizziness; effects may be hard to recognize."
     sources: [aim-altitude-hypoxia]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: hypoxia-vocabulary
+    type: faa_guidance
+    statement: "The PHAK identifies four forms of hypoxia by cause: hypoxic, hypemic, stagnant, and histotoxic; it uses reduced oxygen availability, impaired blood transport, inadequate blood flow, and inability of tissues to use oxygen to distinguish them."
+    sources: [phak-hypoxia-types, phak-histotoxic-hypoxia]
     risk: safety_critical
     script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
     status: draft

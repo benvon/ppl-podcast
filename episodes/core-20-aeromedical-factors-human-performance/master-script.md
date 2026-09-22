@@ -36,7 +36,7 @@ The Private Pilot Airman Certification Standards call this the Human Factors tas
 
 [Source: sources.yaml#acs-human-factors]
 
-Here is our operational question. Before starting a daytime VFR cross-country, and again if the pilot feels different in the air, what evidence says the pilot can still make the decisions this flight requires? We will follow one pilot, Maya. She has planned a flight with a friend to Harbor Field. The friend has an afternoon commitment, and Maya has already said they should arrive comfortably before it. A suitable airport partway along the route gives her an early landing option. The route, weather, aircraft, and fuel planning are complete; today's remaining uncertainty is Maya.
+Here is our operational question. Before starting a daytime VFR cross-country, and again if the pilot feels different in the air, what evidence says the pilot can still make the decisions this flight requires? We will follow one pilot, Maya. She has planned a flight with a friend to Harbor Field. The friend has an afternoon commitment, and Maya has already said they should arrive comfortably before it. Maya has planned a route that keeps several suitable airports practical: her departure airport behind her, airports near the route, and Harbor Field ahead. The route, weather, aircraft, and fuel planning are complete; today's remaining uncertainty is Maya.
 
 [Claim type: teaching synthesis]
 
@@ -50,7 +50,7 @@ She makes the pilot preflight as concrete as the airplane preflight. She names t
 
 [Claim type: teaching synthesis]
 
-Think about the actual work Maya has planned. She will read a weather update, manage the airplane and radio, find the next checkpoint, and decide whether the destination still fits the plan. She will descend and land while her friend expects to arrive on time. If a condition might weaken attention, judgment, or comfortable pressure equalization, it matters because one of those tasks will still have to be done. Listing symptoms is the start of the assessment; connecting each symptom to a task and a safer alternative finishes it.
+Think about the actual work Maya has planned. She will read a weather update, manage the airplane and radio, find the next checkpoint, and decide whether the destination still fits the plan. She will descend and land while her friend expects to arrive on time. A physical or mental condition that might weaken attention, judgment, or comfortable pressure equalization matters because all of those tasks will still have to be done. Listing symptoms is the start of the assessment; connecting each symptom to a task and a safer alternative finishes it.
 
 [Claim type: teaching synthesis]
 
@@ -62,7 +62,7 @@ Make the pilot preflight specific.
 
 **INSTRUCTOR:**
 
-On departure morning, Maya slept poorly. She has a congested nose and a mild headache. She is considering an over-the-counter cold medicine because she wants to keep the arrival time. The FAA's personal checklist gives her six prompts: illness, medication, stress, alcohol, fatigue, and emotion. Pilots often say them as “I'm safe.” The checklist starts a conversation with evidence; it does not produce a medical clearance by itself.
+On departure morning, Maya slept poorly. She has a congested nose and a mild headache. She is considering an over-the-counter cold medicine because she wants to keep the arrival time. The FAA's personal checklist gives her six prompts: illness, medication, stress, alcohol, fatigue, and emotion. Pilots often say them as “I'm safe.” The checklist organizes a real self-assessment for this flight; it does not settle the separate questions raised by illness, medication, or a change in medical status.
 
 [Source: sources.yaml#aim-personal-fitness]
 
@@ -80,13 +80,17 @@ The AIM says the safest rule is not to fly while ill and to ask an aviation medi
 
 [Source: sources.yaml#aim-personal-fitness]
 
-There is also a legal question for operations that require a medical certificate. Section sixty-one point fifty-three says a pilot cannot act as pilot in command or a required pilot crewmember when the pilot knows or has reason to know a medical condition would prevent meeting the medical-certificate requirements for that operation, or when medication or other treatment for a condition has that result. Maya does not need to settle a complex medical-certification question alone at the airport. She needs to recognize when the condition or treatment raises that question and get appropriate advice before acting as a required pilot.
+There is also a legal question for operations that require a medical certificate. Section sixty-one point fifty-three says a pilot cannot act as pilot in command or a required pilot crewmember when the pilot knows or has reason to know a medical condition would prevent meeting the medical-certificate requirements for that operation, or when medication or other treatment for a condition has that result. A short-lived cold does not require Maya to answer a complex medical-certification question at the airport. Her immediate decision is to wait until she is well and not relying on the medicine. A condition that persists, recurs, or changes her overall ability to meet the medical requirements deserves aviation medical guidance before she flies as PIC again.
 
 [Source: sources.yaml#ecfr-medical-deficiency]
 
 The FAA over-the-counter guide opens with pointed questions: is the pilot sick, is ear clearing already difficult on the ground, does the pilot feel well enough to fly only if medication works, and is the condition getting worse? It then asks whether a symptom-relief medication is needed, whether the untreated condition would permit safe flight, and whether another health condition or medication changes the answer. Maya can use those questions without turning the guide into a list of pills that are automatically acceptable.
 
 [Source: sources.yaml#faa-medication-guidance]
+
+The FAA medication guidance page also links the current OTC reference guide and reference table. It is a useful place to start when a pilot needs to examine a particular medicine, while keeping the underlying condition in the same decision.
+
+[Source: sources.yaml#faa-medication-library]
 
 Prescription and over-the-counter medicines can impair flight-critical functions. The AIM specifically discusses possible effects from antihistamines and medicines for motion sickness, among others. A familiar package, an over-the-counter label, or a friend saying it helped them does not establish how this pilot will perform on this flight.
 
@@ -106,7 +110,7 @@ So the question is not only whether she feels good at the departure airport. She
 
 **INSTRUCTOR:**
 
-Yes. Maya checks the condition she actually has, the medication she is considering, and the phase of flight that could make congestion more consequential. She cannot make the arrival promise the evidence that settles those questions. She calls her friend, delays today's trip, and contacts an aviation medical examiner about the specific illness and medication before choosing another departure day. That is this scenario's decision, not a universal waiting period for every cold or drug.
+Yes. Maya checks the condition she actually has, the medication she is considering, and the phase of flight that could make congestion more consequential. Her friend's appointment does not change any of those facts. She calls her friend, delays today's trip, and waits until the illness has resolved before choosing another departure day. If the condition persists, recurs, or changes her overall health situation, she will bring the larger question to an AME or other aviation medical professional. That is this scenario's decision, not a universal waiting period for every cold or drug.
 
 [Claim type: teaching synthesis]
 
@@ -122,11 +126,15 @@ On a later day, Maya has slept normally, her congestion has resolved, and she is
 
 [Source: sources.yaml#aim-personal-fitness]
 
-Stress can occupy a pilot's thinking and lower alertness. The AIM gives keeping to a schedule despite deteriorating conditions as an example of an unwarranted risk a distracted pilot may take. Maya says the arrival expectation aloud, then tells her friend they will land short or turn back if the pilot or flight demands change. That conversation removes some pressure from the in-flight choice.
+Stress can occupy a pilot's thinking and lower alertness. The AIM gives keeping to a schedule despite deteriorating conditions as an example of an unwarranted risk a distracted pilot may take. Maya says the arrival expectation aloud, then tells her friend they may depart late, stop somewhere other than Harbor, turn back, or cancel if the pilot or flight demands change. That conversation gives the passenger a realistic expectation before Maya has to make a decision in the air.
 
 [Source: sources.yaml#aim-personal-fitness]
 
 The arrival expectation is a human-factor input just as real as a weather forecast. Maya cannot remove the friend's appointment, but she can remove its authority over the flight. She gives her friend a realistic range instead of a guaranteed time. She calls the airport stop an expected option, not a failure. If the friend is disappointed, Maya will learn that on the ground while she has time to explain. In the air, the passenger already understands why changing the destination is an ordinary part of the plan.
+
+[Claim type: teaching synthesis]
+
+For a personal general-aviation trip, this conversation is part of preflight planning. Maya and her friend agree that the purpose of the trip does not create a promise to complete it. Before the propeller starts, Maya names the likely decision paths and tells her friend how she will communicate a change. That makes a diversion, return, or overnight stop an expected operational choice instead of a surprise that competes with the pilot's judgment.
 
 [Claim type: teaching synthesis]
 
@@ -148,7 +156,7 @@ No. First, the rule itself. Section ninety-one point seventeen bars a person fro
 
 [Source: sources.yaml#ecfr-alcohol-drugs]
 
-Alcohol impairs flying skill, and a hangover can impair a pilot for hours after the alcohol itself has been eliminated. The personal check asks about the actual state of the pilot as well as any applicable legal limit. Maya has had no alcohol before this flight; for another pilot, the absence of a legal prohibition would still leave the question of present performance.
+Alcohol impairs flying skill, and a hangover can impair a pilot for hours after the alcohol itself has been eliminated. The eight-hour and blood-alcohol rules answer only whether those listed prohibitions apply. The pilot still asks whether sleep, alertness, coordination, judgment, or symptoms are good enough for this flight. Maya has had no alcohol, so she can move on to the other checklist items; a pilot who drank the night before still needs to assess present performance after the rule's timing has passed.
 
 [Source: sources.yaml#aim-personal-fitness]
 
@@ -164,11 +172,15 @@ Maya will spend time in a warm cockpit and then remain seated for most of the ro
 
 [Claim type: teaching synthesis]
 
-For this flight, she sets a personal stop point: if alertness or symptoms worsen, she will use the suitable airport along the route while it remains easy to reach. She briefs her friend that arriving late is acceptable and identifies the airport on the chart. That conversation removes any need to renegotiate the schedule while Maya is flying. It makes the lower-demand option visible before a problem can narrow her attention.
+Maya does not build the route around one escape airport. She plans several suitable alternates and notes how their usefulness changes as the flight progresses. Early in the route, returning to the departure airport may be simple. Farther along, an airport near the route may be the shortest suitable landing. Near Harbor, continuing may be safer than backtracking. The plan gives her a changing set of practical options instead of a single out that might already be behind her when a symptom appears.
 
 [Claim type: teaching synthesis]
 
-Notice how specific the stop point is. Maya does not promise to “watch it” indefinitely. She names the change that would concern her, identifies a reachable airport, and accepts the cost of arriving late. If a symptom appears, the next question is no longer “Can I still finish the original trip?” The next question is “Can I safely reach the prepared stop now?” That narrower question uses less attention and asks for less optimism from a pilot whose performance may already be changing.
+Before departure, Maya identifies the airport she would use from each broad part of the route, then tells her friend that an alternate can become the destination for a break, weather, a mechanical concern, or a pilot concern. If a symptom appears, Maya first flies the airplane, then asks: which suitable airport can I reach with the least added time, workload, and risk from where I am now? If the closest planned alternate is behind her, she compares the turn-back with suitable airports ahead and the original destination using the same current position, fuel, weather, runway, and workload picture. She accepts the cost of arriving late before she leaves the ramp.
+
+[Claim type: teaching synthesis]
+
+Self-bargaining begins when the question changes from “What does this new evidence require?” to “What reason can I find to keep the original plan?” It can sound like “I only need twenty more minutes,” “the symptom will probably pass,” “I have already come this far,” or “I do not want to inconvenience my passenger.” Maya notices those sentences as cues to stop negotiating with herself. She names the symptom or exposure, compares the real options from her current position, and chooses the lower-demand option while she still has good airports available.
 
 [Claim type: teaching synthesis]
 
@@ -183,6 +195,10 @@ Recognize the changed pilot in flight.
 The later flight begins in good daytime visibility. Maya verifies the planned altitude of eight thousand five hundred feet, the landmarks, and the airport she can use along the way. She feels normal during the climb. Before we follow the later symptom, consider what the altitude check is for. As an airplane climbs, atmospheric pressure decreases. The proportion of oxygen in the air is still about twenty-one percent, but the pressure available to move oxygen into the body is lower. That is the altitude pathway to hypoxia: not enough oxygen reaches the body for normal function.
 
 [Source: sources.yaml#aim-altitude-hypoxia]
+
+For the checkride vocabulary, learn the four forms by the part of the oxygen path that has failed. Hypoxic hypoxia means too little oxygen is available to the body, which is the altitude form Maya is considering. Hypemic hypoxia means the blood cannot take up or transport enough oxygen; carbon monoxide poisoning is the common aviation example. Stagnant hypoxia means oxygen-rich blood is not reaching the tissues effectively. Histotoxic hypoxia means the body tissues cannot use the oxygen delivered to them. The names explain the cause; the pilot still responds to impaired performance before trying to diagnose the type in flight.
+
+[Source: sources.yaml#phak-hypoxia-types]
 
 At greater exposure to altitude, hypoxia can degrade judgment, memory, alertness, coordination, and calculation. Headache, drowsiness, dizziness, or an unusual sense of well-being can appear. Gradual onset makes the effects hard for the affected pilot to notice. The lesson for Maya is to recognize the pattern early because the very tool she uses to judge it—her thinking—may be weakening.
 
@@ -214,7 +230,7 @@ The AIM describes an appropriate oxygen system and a comfortable, safe cabin pre
 
 [Source: sources.yaml#aim-altitude-hypoxia]
 
-In the actual flight, Maya feels normal at the planned altitude and keeps the prepared airport in mind. Stress still matters: a pilot concentrating on an arrival promise may explain away a small error or symptom. Maya compares any change with her earlier self-check and stop point. If she has to bargain with her own threshold, she will choose the simpler option while she can.
+In the actual flight, Maya feels normal at the planned altitude and keeps the planned alternates in mind. Stress still matters: a pilot concentrating on an arrival promise may explain away a small error or symptom. Maya compares any change with her earlier self-check, the current route position, and the available airports. If she catches herself bargaining with the threshold she set before departure, she treats that as another cue to end the negotiation and choose the lower-demand option.
 
 [Source: sources.yaml#aim-personal-fitness]
 
@@ -238,9 +254,13 @@ The AIM says a pilot who smells exhaust, or develops headache, drowsiness, or di
 
 [Source: sources.yaml#aim-carbon-monoxide]
 
-The sequence is short because delay has a cost. A pilot who is growing drowsy cannot reliably run a long search for alternative explanations. Maya shuts off the heater and opens the vents while keeping control of the airplane. She does not wait for an exhaust smell: the AIM's headache and drowsiness cues during heater use are enough to act. She then uses the airport she selected on the ground. The original destination remains a navigation fact, but it no longer sets the decision.
+The sequence is short because delay has a cost. A pilot who is growing drowsy cannot reliably run a long search for alternative explanations. Maya shuts off the heater and opens the vents while keeping control of the airplane. She does not wait for an exhaust smell: the AIM's headache and drowsiness cues during heater use are enough to act.
 
 [Source: sources.yaml#aim-carbon-monoxide]
+
+Maya then selects the suitable airport from her planned options that best fits her current position, weather, fuel, runway, and workload. The original destination remains a navigation fact, but it no longer sets the decision.
+
+[Claim type: teaching synthesis]
 
 **LEARNER:**
 
@@ -248,7 +268,7 @@ Could she wait a few minutes to see if opening a vent fixes the headache before 
 
 **INSTRUCTOR:**
 
-Maya uses the reachable airport now. If the headache eases, that does not prove the cabin was safe or that she has recovered full judgment. She keeps flying the airplane and heads toward the prepared airport. If she is receiving air traffic service, she tells the controller about the possible carbon monoxide problem and intended landing. She follows the aircraft checklist and gives her friend a simple nonflying task only if it helps. She lands at the prepared airport and ends the flight.
+Maya ends the flight now by landing at the suitable airport that she can reach with the least added risk and workload from her current position. If the headache eases, that does not prove the cabin was safe or that she has recovered full judgment. If she is receiving air traffic service, she tells the controller about the possible carbon monoxide problem and intended landing. She follows the aircraft checklist and gives her friend a simple nonflying task only if it helps. She lands and ends the flight.
 
 [Claim type: teaching synthesis]
 
@@ -264,7 +284,7 @@ The ACS includes single-pilot resource management in aeronautical decision-makin
 
 [Source: sources.yaml#acs-human-factors]
 
-Maya's passenger did not diagnose the problem; the passenger noticed a change Maya might miss. Maya used that observation, the preselected airport, and air traffic service when available while retaining the flying decision. This is single-pilot resource management in the scenario. The simple plan reduced the amount Maya had to invent while feeling worse.
+Maya's passenger did not diagnose the problem; the passenger noticed a change Maya might miss. Maya used that observation, the planned alternate set, and air traffic service when available while retaining the flying decision. This is single-pilot resource management in the scenario. The simple plan reduced the amount Maya had to invent while feeling worse.
 
 [Claim type: teaching synthesis]
 
@@ -279,10 +299,6 @@ Use a trustworthy orientation picture.
 After Maya has landed and sought help, we can study another human-factors risk without adding it to her carbon monoxide diversion. A pilot's inner ear can report a feeling of motion that disagrees with the airplane's actual attitude. Motion forces and some visual scenes can create false sensations of movement or position. The AIM says reliable fixed points on the ground or flight instruments are the references that prevent spatial disorientation from those illusions.
 
 [Source: sources.yaml#aim-illusions]
-
-The pilot uses the chart and navigation references to determine geographic position, a separate question from attitude.
-
-[Claim type: teaching synthesis]
 
 **LEARNER:**
 
@@ -334,7 +350,7 @@ For motion sickness, cold exposure, nutrition, and visual illusions, Maya would 
 
 [Claim type: teaching synthesis]
 
-The point of carrying those additional ACS topics forward is not to memorize a warning label for every possible symptom. In a checkride scenario, begin with the exposure. Has the pilot been on a boat, in very cold weather, or awake through most of the night? Then say what change would be observable, how it could affect flying tasks, and what choice reduces the risk. When the source gives a specific condition or interval, preserve that condition. When it does not, do not invent a universal number. That method lets the learner connect human performance to a flight decision without pretending to diagnose a person from a script.
+The point of carrying those additional ACS topics forward is not to memorize a warning label for every possible symptom. In a checkride scenario, begin with the exposure. Has the pilot recently dived, spent time in very cold weather, gone without food or water, stayed awake through most of the night, or entered conditions that trigger motion sickness? Then say what change would be observable, how it could affect flying tasks, and what choice reduces the risk. When the source gives a specific condition or interval, preserve that condition. When it does not, do not invent a universal number. That method lets the learner connect human performance to a flight decision without pretending to diagnose a person from a script.
 
 [Claim type: teaching synthesis]
 
@@ -398,6 +414,20 @@ While the heater is on, headache or drowsiness is enough for the AIM's carbon mo
 
 **INSTRUCTOR:**
 
+Which hypoxia vocabulary helps separate the altitude discussion from the heater discussion?
+
+[Source: sources.yaml#phak-hypoxia-types]
+[Source: sources.yaml#phak-histotoxic-hypoxia]
+
+**LEARNER:**
+
+Hypoxic hypoxia is the reduced oxygen availability associated with altitude. Hypemic hypoxia is impaired oxygen transport in the blood, which makes carbon monoxide a different concern from altitude alone. Stagnant hypoxia is inadequate circulation to the tissues, and histotoxic hypoxia is an inability of the tissues to use oxygen.
+
+[Source: sources.yaml#phak-hypoxia-types]
+[Source: sources.yaml#phak-histotoxic-hypoxia]
+
+**INSTRUCTOR:**
+
 After this flight, what would help Maya assess an unusual feeling of motion on a future flight?
 
 [Source: sources.yaml#aim-illusions]
@@ -408,7 +438,7 @@ She uses a reliable outside reference or flight instruments for the airplane's a
 
 [Source: sources.yaml#aim-illusions]
 
-On the completed flight, she had identified the airport and told her passenger they might stop there, so the new symptom changed the destination while the choice was still easy.
+On the completed flight, she had identified several alternates and told her passenger that any one of them could become the destination, so the new symptom changed the destination while the choice was still easy.
 
 [Claim type: teaching synthesis]
 
@@ -419,6 +449,10 @@ That is the human-factors chain: assess the pilot before departure, compare the 
 [Claim type: teaching synthesis]
 
 ## [28:00] Outro
+
+**ANNOUNCER:**
+
+Before next time: assess the pilot as deliberately as the airplane, tell passengers in advance that a general-aviation trip may change, plan a route with several suitable alternates, and end the flight when a new symptom or exposure makes pilot performance uncertain.
 
 **ANNOUNCER:**
 

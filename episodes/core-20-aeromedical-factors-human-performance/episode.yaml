@@ -4,7 +4,7 @@ title: Aeromedical Factors and Human Performance
 slug: aeromedical-factors-human-performance
 track: core
 production_contract_version: 2
-status: draft
+status: editorial_review_pending
 version: 0.1.0
 published_at: null
 runtime_target_minutes: 30
@@ -39,6 +39,8 @@ learning_objectives:
     of impairment.
   - Connect hypoxia, ear and sinus block, hyperventilation, carbon monoxide
     exposure, fatigue, and stress to their causes, cues, and safer choices.
+  - Distinguish hypoxic, hypemic, stagnant, and histotoxic hypoxia by the part
+    of the oxygen path that is impaired.
   - Reassess the pilot during flight and use a prepared landing option when
     symptoms or performance change.
   - Distinguish a felt motion or weak visual scene from reliable orientation
@@ -53,21 +55,22 @@ trouble_spots:
     references are weak.
 source_verification:
   validation_contract: source-relevance-v1
-  status: source_relevance_complete
-  verified_at_utc: 2026-09-22T12:22:38.211Z
+  status: source_relevance_pending
+  verified_at_utc: null
   link_validation: link-validation.yaml
-  relevance_review: complete
+  relevance_review: pending
   show_notes_manifest: show-notes-manifest.yaml
 review:
   independent_spoken_script_review:
     status: complete
-    script_sha256: ca8feab5ff33da13e8acd04fa09b89b7a9b2f509d254b3468ddcc1bc4ce47728
-  editorial_status: not_started
+    script_sha256: 04c2b30639d4e406a8b9ac1883c9d56f8fe3244acbadba29e03a4b0518c80d72
+  editorial_status: reapproval_required
   editorial_script_sha256: null
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
+  pending_script_sha256: 04c2b30639d4e406a8b9ac1883c9d56f8fe3244acbadba29e03a4b0518c80d72
 release_gates_remaining:
   - Run source-link validation with LLM relevance review and resolve every
     finding.
@@ -87,8 +90,8 @@ audio:
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: draft
+  handoff_status: pending_script_review
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 2
+production_state_revision: 4

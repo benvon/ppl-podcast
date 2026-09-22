@@ -1,15 +1,17 @@
 schema_version: 1
 publisher_release:
-  id: "core-20"
-  guid: "pplstudyguide.com:core-20"
-  title: "Aeromedical Factors and Human Performance"
-  description: "Assess pilot fitness before departure, recognize aeromedical warning signs in flight, and choose an early landing when performance becomes uncertain."
-  published_at: null # RFC3339 UTC timestamp, set only when release is approved.
-  duration: null # HH:MM:SS, derived from approved audio.
+  id: core-20
+  guid: pplstudyguide.com:core-20
+  title: Aeromedical Factors and Human Performance
+  description: Assess pilot fitness before departure, recognize aeromedical
+    warning signs in flight, and choose an early landing when performance
+    becomes uncertain.
+  published_at: null
+  duration: null
   season: 1
   number: 20
   explicit: false
-  audio: {} # Filled by the hosting publisher after private staging.
+  audio: {}
 provenance:
   master_script: master-script.md
   show_notes: show-notes.md

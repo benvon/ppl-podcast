@@ -16,3 +16,9 @@ This is optional explanatory context, not a production-state or audit record. Us
 - Made passenger expectation-setting and a route with several suitable alternates central to the scenario. The carbon-monoxide response now directs Maya to end the flight at the suitable airport that minimizes added risk and workload from her current position.
 - Added the FAA medication guidance directory, the PHAK four-form hypoxia vocabulary, and an announcer summary. These factual and source changes reset the prior independent and source-relevance review evidence.
 - A second agent independently reread the revised spoken script and found no required edits. The renewed formal source review then passed both relevance assessments for the current 16-source, 26-claim package. The structured result, including the nonmaterial medication-reference editorial note, is recorded in `link-validation.yaml`; human editorial approval remains pending.
+
+## 2026-09-22 — repetition and revision update
+
+- Condensed adjacent source-tagged passages that repeated the same conclusion, while retaining the preflight, passenger-expectation, alternate-airport, hypoxia, carbon-monoxide, and visual-reference decision sequences. The package revision is 0.1.5 and the current spoken count is 3,960 words.
+- A second agent independently reviewed the revised spoken script with no required edits. The source-review record is intentionally pending again because the current script differs from the prior reviewed script.
+- The user then made a small editorial change. The resulting current script passed a new independent review and two-pass formal source evaluation; `link-validation.yaml` is the authoritative record of that run.

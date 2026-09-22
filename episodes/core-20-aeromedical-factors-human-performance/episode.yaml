@@ -5,11 +5,11 @@ slug: aeromedical-factors-human-performance
 track: core
 production_contract_version: 2
 status: editorial_review_pending
-version: 0.1.0
+version: 0.1.5
 published_at: null
 runtime_target_minutes: 30
 runtime_actual_seconds: null
-word_count: 4911
+word_count: 3946
 speakers:
   - instructor
   - learner
@@ -56,21 +56,21 @@ trouble_spots:
 source_verification:
   validation_contract: source-relevance-v1
   status: source_relevance_complete
-  verified_at_utc: 2026-09-22T15:37:01.276Z
+  verified_at_utc: 2026-09-22T15:58:55.370Z
   link_validation: link-validation.yaml
   relevance_review: complete
   show_notes_manifest: show-notes-manifest.yaml
 review:
   independent_spoken_script_review:
     status: complete
-    script_sha256: 1023b6fdf4cb8642caec86cd9bd74e59c99c5a05c9e9fd55e3629b0a004f4dd7
+    script_sha256: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
   editorial_status: reapproval_required
   editorial_script_sha256: null
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 1023b6fdf4cb8642caec86cd9bd74e59c99c5a05c9e9fd55e3629b0a004f4dd7
+  pending_script_sha256: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
 release_gates_remaining:
   - Run source-link validation with LLM relevance review and resolve every
     finding.
@@ -94,4 +94,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 13
+production_state_revision: 21

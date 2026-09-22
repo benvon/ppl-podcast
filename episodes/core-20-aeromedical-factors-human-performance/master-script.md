@@ -1,6 +1,6 @@
 # Aeromedical Factors and Human Performance
 
-**Version:** 0.1.0 — draft
+**Version:** 0.1.5 — draft
 **Target runtime:** 30–45 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -46,11 +46,7 @@ The airplane could be ready while Maya is not. How does she make that judgment w
 
 **INSTRUCTOR:**
 
-She makes the pilot preflight as concrete as the airplane preflight. She names the condition, asks how it could affect the task ahead, and compares the answer with the demands of this particular flight. The decision can be delay, change the trip, or go with a clear option to stop. We will see why a vague feeling of being “probably okay” is too little evidence for a specific concern.
-
-[Claim type: teaching synthesis]
-
-Think about the actual work Maya has planned. She will read a weather update, manage the airplane and radio, find the next checkpoint, and decide whether the destination still fits the plan. She will descend and land while her friend expects to arrive on time. A physical or mental condition that might weaken attention, judgment, or comfortable pressure equalization matters because all of those tasks will still have to be done. Listing symptoms is the start of the assessment; connecting each symptom to a task and a safer alternative finishes it.
+She asks how her condition could affect this flight's work: reading a weather update, managing the airplane and radio, finding a checkpoint, and landing while her friend expects to arrive on time. Then she chooses whether to delay, change the trip, or go with a clear option to stop. “Probably okay” does not answer how a symptom might affect those tasks.
 
 [Claim type: teaching synthesis]
 
@@ -84,11 +80,11 @@ There is also a legal question for operations that require a medical certificate
 
 [Source: sources.yaml#ecfr-medical-deficiency]
 
-The FAA over-the-counter guide opens with pointed questions: is the pilot sick, is ear clearing already difficult on the ground, does the pilot feel well enough to fly only if medication works, and is the condition getting worse? It then asks whether a symptom-relief medication is needed, whether the untreated condition would permit safe flight, and whether another health condition or medication changes the answer. Maya can use those questions without turning the guide into a list of pills that are automatically acceptable.
+The FAA over-the-counter guide gives Maya more precise prompts: can she clear her ears on the ground, does she feel fit only if the medicine works, and is the illness getting worse? Her answers make the morning's uncertainty concrete.
 
 [Source: sources.yaml#faa-medication-guidance]
 
-The FAA medication guidance page also links the current OTC reference guide and reference table. It is a useful place to start when a pilot needs to examine a particular medicine, while keeping the underlying condition in the same decision.
+For a particular medicine, the FAA medication guidance page links the current OTC reference guide and table.
 
 [Source: sources.yaml#faa-medication-library]
 
@@ -96,11 +92,7 @@ Prescription and over-the-counter medicines can impair flight-critical functions
 
 [Source: sources.yaml#aim-personal-fitness]
 
-Maya has another reason to examine the congestion before she climbs. During ascent and descent, air must move between the middle ear and the throat, and between the sinuses and the nasal passages, to equalize changing pressure. An upper-respiratory infection or nasal allergy can obstruct those paths. Ear or sinus block is especially troublesome on descent; it can cause severe pain and distract the pilot precisely when she needs to fly and land. The AIM recommends avoiding flight with an upper-respiratory infection or nasal allergic condition to prevent those blocks.
-
-[Source: sources.yaml#aim-ear-sinus]
-
-Picture the descent. Cabin pressure rises as the airplane descends. Maya's ear and sinus spaces must equalize with that changing pressure. If swollen passages block the connection, pressure differences grow. Ear pain, reduced hearing, or sharp pain around the sinuses may then appear at the same time Maya needs a traffic scan, a radio call, and a stable approach. The safer choice is made before departure: a congested pilot does not need to test whether the problem will become severe during the landing phase.
+During descent, cabin pressure rises. Air must move through passages connecting the middle ear and sinuses to the nose and throat so pressure can equalize. A cold or nasal allergy can obstruct those passages. The resulting ear or sinus block can cause severe pain and reduced hearing during the traffic scan, radio calls, and approach. The AIM recommends avoiding flight with an upper-respiratory infection or nasal allergic condition rather than testing whether those passages will clear on descent.
 
 [Source: sources.yaml#aim-ear-sinus]
 
@@ -126,15 +118,11 @@ On a later day, Maya has slept normally, her congestion has resolved, and she is
 
 [Source: sources.yaml#aim-personal-fitness]
 
-Stress can occupy a pilot's thinking and lower alertness. The AIM gives keeping to a schedule despite deteriorating conditions as an example of an unwarranted risk a distracted pilot may take. Maya says the arrival expectation aloud, then tells her friend they may depart late, stop somewhere other than Harbor, turn back, or cancel if the pilot or flight demands change. That conversation gives the passenger a realistic expectation before Maya has to make a decision in the air.
+Stress can occupy a pilot's thinking and lower alertness. The AIM gives keeping to a schedule despite deteriorating conditions as an example of an unwarranted risk. Maya names that pressure and tells her friend that they may depart late, stop elsewhere, turn back, or cancel if the flight demands change.
 
 [Source: sources.yaml#aim-personal-fitness]
 
-The arrival expectation is a human-factor input just as real as a weather forecast. Maya cannot remove the friend's appointment, but she can remove its authority over the flight. She gives her friend a realistic range instead of a guaranteed time. She calls the airport stop an expected option, not a failure. If the friend is disappointed, Maya will learn that on the ground while she has time to explain. In the air, the passenger already understands why changing the destination is an ordinary part of the plan.
-
-[Claim type: teaching synthesis]
-
-For a personal general-aviation trip, this conversation is part of preflight planning. Maya and her friend agree that the purpose of the trip does not create a promise to complete it. Before the propeller starts, Maya names the likely decision paths and tells her friend how she will communicate a change. That makes a diversion, return, or overnight stop an expected operational choice instead of a surprise that competes with the pilot's judgment.
+Her friend's appointment remains important to the friend, but it cannot govern the flight. They agree on the ground that an alternate landing or overnight stop is an expected option, and Maya will explain any change when it occurs. That removes a passenger surprise from the decision Maya may have to make in the air.
 
 [Claim type: teaching synthesis]
 
@@ -164,23 +152,23 @@ Emotion deserves its own check too. The AIM describes how a serious argument, lo
 
 [Source: sources.yaml#aim-personal-fitness]
 
-Maya also prepares food and water for the trip. Dehydration can show up as fatigue, headache, sleepiness, dizziness, or cramping, especially with heat and prolonged flying. Those symptoms overlap with other aeromedical problems. She eats and drinks before departure, brings water, and treats a later headache as information to investigate rather than proof of any single cause.
+Dehydration can cause fatigue, headache, sleepiness, dizziness, or cramping, especially with heat and prolonged flying. Maya eats and drinks before departure and brings water. A later headache will be a cue to assess, not proof of one cause.
 
 [Source: sources.yaml#phak-dehydration]
 
-Maya will spend time in a warm cockpit and then remain seated for most of the route. She can plan food, water, and a comfortable break just as she planned fuel and airports. If she deliberately drinks too little to avoid a stop, she may create an avoidable performance problem later. A landing for a break remains available; reaching Harbor Field without one has no value if she is less able to notice traffic, compare weather, or fly a steady arrival.
+She also plans a break. Skipping water to avoid a stop could create an avoidable problem with attention or comfort. A landing for food, water, and rest remains an ordinary option on this route.
 
 [Claim type: teaching synthesis]
 
-Maya does not build the route around one escape airport. She plans several suitable alternates and notes how their usefulness changes as the flight progresses. Early in the route, returning to the departure airport may be simple. Farther along, an airport near the route may be the shortest suitable landing. Near Harbor, continuing may be safer than backtracking. The plan gives her a changing set of practical options instead of a single out that might already be behind her when a symptom appears.
+Maya marks several suitable airports, knowing that the best option will change with her position. Early on, the departure airport may be simplest; farther along, an airport near the route or Harbor may require less time and workload. She briefs her friend that any of these can become the destination for a break, weather, an airplane concern, or a pilot concern.
 
 [Claim type: teaching synthesis]
 
-Before departure, Maya identifies the airport she would use from each broad part of the route, then tells her friend that an alternate can become the destination for a break, weather, a mechanical concern, or a pilot concern. If a symptom appears, Maya first flies the airplane, then asks: which suitable airport can I reach with the least added time, workload, and risk from where I am now? If the closest planned alternate is behind her, she compares the turn-back with suitable airports ahead and the original destination using the same current position, fuel, weather, runway, and workload picture. She accepts the cost of arriving late before she leaves the ramp.
+If a symptom appears, Maya first flies the airplane. Then she compares reachable airports using her current position, fuel, weather, runway options, and workload. She asks which suitable landing requires the least added risk now, whether that airport is behind, beside, or ahead of her.
 
 [Claim type: teaching synthesis]
 
-Self-bargaining begins when the question changes from “What does this new evidence require?” to “What reason can I find to keep the original plan?” It can sound like “I only need twenty more minutes,” “the symptom will probably pass,” “I have already come this far,” or “I do not want to inconvenience my passenger.” Maya notices those sentences as cues to stop negotiating with herself. She names the symptom or exposure, compares the real options from her current position, and chooses the lower-demand option while she still has good airports available.
+She also listens for bargaining: “The symptom will probably pass,” or “I have already come this far.” Those thoughts do not change her condition. She returns to the current evidence and the airports she can still reach.
 
 [Claim type: teaching synthesis]
 
@@ -234,7 +222,7 @@ The AIM describes an appropriate oxygen system and a comfortable, safe cabin pre
 
 [Source: sources.yaml#aim-altitude-hypoxia]
 
-In the actual flight, Maya feels normal at the planned altitude and keeps the planned alternates in mind. Stress still matters: a pilot concentrating on an arrival promise may explain away a small error or symptom. Maya compares any change with her earlier self-check, the current route position, and the available airports. If she catches herself bargaining with the threshold she set before departure, she treats that as another cue to end the negotiation and choose the lower-demand option.
+Back in the actual flight, Maya feels normal at the planned altitude. The AIM warns that stress can distract a pilot into taking a schedule-driven risk. Maya will compare any new symptom with her earlier self-check and the airports currently within reach, then use the simpler option if she catches herself bargaining with that evidence.
 
 [Source: sources.yaml#aim-personal-fitness]
 
@@ -254,15 +242,11 @@ Carbon monoxide in exhaust is colorless, odorless, and tasteless. If it enters t
 
 [Source: sources.yaml#aim-carbon-monoxide]
 
-The AIM says a pilot who smells exhaust, or develops headache, drowsiness, or dizziness while using the heater, should suspect carbon monoxide poisoning, immediately turn off the heater, and open air vents. If symptoms are severe or continue after landing, the AIM says to seek medical treatment. Maya does those immediate actions and stops treating the original destination as the goal.
+The AIM says a pilot who smells exhaust, or develops headache, drowsiness, or dizziness while using the heater, should suspect carbon monoxide poisoning, turn off the heater immediately, and open the vents. Maya acts on her symptoms without waiting for an exhaust smell and keeps control of the airplane.
 
 [Source: sources.yaml#aim-carbon-monoxide]
 
-The sequence is short because delay has a cost. A pilot who is growing drowsy cannot reliably run a long search for alternative explanations. Maya shuts off the heater and opens the vents while keeping control of the airplane. She does not wait for an exhaust smell: the AIM's headache and drowsiness cues during heater use are enough to act.
-
-[Source: sources.yaml#aim-carbon-monoxide]
-
-Maya then selects the suitable airport from her planned options that best fits her current position, weather, fuel, runway, and workload. The original destination remains a navigation fact, but it no longer sets the decision.
+Maya then selects the suitable airport from her planned options that best fits her current position, weather, fuel, runway, and workload.
 
 [Claim type: teaching synthesis]
 
@@ -314,19 +298,11 @@ No. A slow entry into a bank might not register in the motion-sensing part of th
 
 [Source: sources.yaml#aim-illusions]
 
-Some visual illusions affect approaches and landings.
+Some visual illusions affect approaches and landings. Seeing a runway alone may leave poor height or distance cues if the surrounding ground has few features. Before a night flight, a pilot can study the expected scene and identify reliable references for the approach rather than letting one bright target set the descent picture.
 
 [Source: sources.yaml#aim-illusions]
 
-A pilot may think of “seeing the runway” as a complete answer to the visual part of an approach. It is more useful to ask what surrounding references establish height, distance, and alignment. A visual scene with sparse ground features can support a mistaken impression even when a light or runway is visible. That is why this topic belongs in advance study: pilots can learn which scenes offer strong references and how to cross-check the airplane's actual path before an illusion becomes an approach correction.
-
-[Source: sources.yaml#aim-illusions]
-
-A later flight in darkness or poor visual contrast may give the eye less information than Maya had on today's daytime trip. The AIM explains that illumination and scanning technique affect how well pilots see other aircraft and cockpit detail, and that darkness makes small print, color, and unlit aircraft harder to detect.
-
-[Source: sources.yaml#aim-vision]
-
-Night vision adds a preparation question that daylight can hide. Bright light changes the eye's dark adaptation, and the AIM describes time and lighting conditions that help it recover. The pilot therefore plans cockpit lighting and allows time to adapt before relying on a dark outside scene. If a chart is hard to read or an object outside has poor contrast, the answer is to improve the reference and reduce workload, not to assume the eye will fill in missing detail. That is a different human-performance demand from Maya's bright daytime trip, but the same decision method applies: know the limits of the information source before asking it to carry a safety decision.
+A later flight in darkness or poor contrast gives the eye less information than Maya had today. The AIM explains that illumination and scanning affect traffic detection, while darkness makes small print, colors, and unlit aircraft harder to see. Bright light also disrupts dark adaptation. A pilot plans cockpit lighting, allows time for adaptation, and improves a hard-to-read reference instead of assuming the eye will fill in missing detail.
 
 [Source: sources.yaml#aim-vision]
 
@@ -350,11 +326,7 @@ Scuba is a useful preflight example because the exposure may have happened the p
 
 [Source: sources.yaml#aim-scuba]
 
-For motion sickness, cold exposure, nutrition, and visual illusions, Maya would make the same kind of bounded assessment. She would identify the actual exposure and symptoms, check the FAA guidance that applies, and change or end the flight if she could not preserve safe performance. These are prompts for study and preflight planning; this episode is not medical treatment advice for an individual pilot.
-
-[Claim type: teaching synthesis]
-
-The point of carrying those additional ACS topics forward is not to memorize a warning label for every possible symptom. In a checkride scenario, begin with the exposure. Has the pilot recently dived, spent time in very cold weather, gone without food or water, stayed awake through most of the night, or entered conditions that trigger motion sickness? Then say what change would be observable, how it could affect flying tasks, and what choice reduces the risk. When the source gives a specific condition or interval, preserve that condition. When it does not, do not invent a universal number. That method lets the learner connect human performance to a flight decision without pretending to diagnose a person from a script.
+For the other ACS topics, begin with the exposure: a recent dive, cold weather, missed food or water, lost sleep, or conditions that trigger motion sickness. Then identify the change the pilot could notice, the flying task it may affect, and the choice that reduces the demand. Use a source's exact conditions or interval when one applies; do not invent a universal number or diagnose a person from a script.
 
 [Claim type: teaching synthesis]
 

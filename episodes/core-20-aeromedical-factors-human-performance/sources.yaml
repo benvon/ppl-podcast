@@ -1,0 +1,149 @@
+episode_id: core-20
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-human-factors
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: FAA-S-ACS-6C
+    locator: "PA.I.H.K1-K4, R1-R4, S1-S2, Human Factors, printed p. 8 (PDF viewer p. 16)"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16"
+    revision: "April 2024; effective May 31, 2024; FAA ACS page checked September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [acs-human-factors-outcome]
+  - id: aim-personal-fitness
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-1, Fitness for Flight, subparagraphs 2-9"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [imsafe-check, illness-flight-risk, medication-impairment, alcohol-residual-impairment, fatigue-effects, stress-effects, emotion-effects]
+  - id: faa-medication-guidance
+    authority: faa_guidance
+    title: "FAA Over-the-Counter Medications Reference Guide"
+    document_id: null
+    locator: "Questions 1-2, underlying condition and medication assessment, PDF viewer p. 1"
+    url: "https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1"
+    revision: "Guide for Aviation Medical Examiners, updated August 28, 2024; accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [medication-two-questions]
+  - id: aim-altitude-hypoxia
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-2, Effects of Altitude, subparagraph 1 (hypoxia)"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [hypoxia-mechanism, hypoxia-effects, hypoxia-response]
+  - id: aim-ear-sinus
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-2, Effects of Altitude, subparagraphs 2-3 (ear and sinus block)"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ear-sinus-block]
+  - id: aim-scuba
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-2, Effects of Altitude, subparagraph 4 (decompression sickness after scuba diving)"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [scuba-altitude-risk]
+  - id: aim-hyperventilation
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-3, Hyperventilation in Flight, subparagraphs 1-3"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [hyperventilation-pattern]
+  - id: aim-carbon-monoxide
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-4, Carbon Monoxide Poisoning in Flight, subparagraphs 1-3"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [co-mechanism, co-response]
+  - id: aim-illusions
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-5, Illusions in Flight, subparagraphs 1-3"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [spatial-illusion, landing-illusion]
+  - id: aim-vision
+    authority: faa_guidance
+    title: "Aeronautical Information Manual, Medical Facts for Pilots"
+    document_id: AIM
+    locator: "AIM 8-1-6, Vision in Flight, subparagraphs 1-3"
+    url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6"
+    revision: "FAA online AIM accessed September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [vision-conditions]
+  - id: phak-dehydration
+    authority: faa_guidance
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical Factors"
+    document_id: FAA-H-8083-25C
+    locator: "Chapter 17, Dehydration and Heatstroke, printed p. 17-14 (PDF viewer p. 14)"
+    url: "https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14"
+    revision: "FAA-H-8083-25C; FAA chapter page checked September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [dehydration-effects]
+  - id: ecfr-medical-deficiency
+    authority: regulation
+    title: "14 CFR 61.53, Prohibition on operations during medical deficiency"
+    document_id: 14-CFR-61.53
+    locator: "Section 61.53(a)(1)-(2), operations that require a medical certificate"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.53"
+    ecfr_date: "2026-09-18"
+    revision: "eCFR Title 14 displayed current through September 18, 2026 when checked September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [medical-deficiency-rule]
+  - id: ecfr-alcohol-drugs
+    authority: regulation
+    title: "14 CFR 91.17, Alcohol or drugs"
+    document_id: 14-CFR-91.17
+    locator: "Section 91.17(a)(1)-(4), crewmember alcohol and drug prohibitions"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.17"
+    ecfr_date: "2026-09-18"
+    revision: "eCFR Title 14 displayed current through September 18, 2026 when checked September 21, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [alcohol-drug-rule]

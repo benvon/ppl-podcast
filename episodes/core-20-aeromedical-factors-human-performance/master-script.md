@@ -1,0 +1,425 @@
+# Aeromedical Factors and Human Performance
+
+**Version:** 0.1.0 — draft
+**Target runtime:** 30–45 minutes
+**Speakers:** Instructor, Learner, Announcer
+
+## [00:00] Opening
+
+**INSTRUCTOR:**
+
+A pilot can prepare the airplane and route carefully, then discover that the pilot is the part of the plan that needs to change. In this episode, a short night of sleep, a cold, and a promised arrival time affect one cross-country decision before takeoff. On a later flight, a headache and a cockpit heater change the decision again. We will connect the body's warning signs to the evidence a pilot can check and to the choice that preserves a safe landing option.
+
+## [00:30] Disclaimer
+
+**INSTRUCTOR:**
+
+This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+
+## [01:00] Podcast introduction
+
+**ANNOUNCER:**
+
+Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
+
+In this episode: decide whether the pilot is fit to start, recognize a change in flight, and choose an early landing when the pilot's condition becomes uncertain.
+
+## [01:30] What the ACS is asking you to connect
+
+**ANNOUNCER:**
+
+What the ACS is asking you to connect.
+
+**INSTRUCTOR:**
+
+The Private Pilot Airman Certification Standards call this the Human Factors task. It asks how a pilot recognizes the causes, symptoms, effects, and corrective actions for aeromedical and physiological problems. The risk elements include those problems, hazardous attitudes, distraction, task priority, loss of awareness, and confirmation or expectation bias. The skills include connecting the symptoms and effects of at least three listed conditions to their causes and corrective actions, then assessing personal fitness and minimums for a flight or scenario.
+
+[Source: sources.yaml#acs-human-factors]
+
+Here is our operational question. Before starting a daytime VFR cross-country, and again if the pilot feels different in the air, what evidence says the pilot can still make the decisions this flight requires? We will follow one pilot, Maya. She has planned a flight with a friend to Harbor Field. The friend has an afternoon commitment, and Maya has already said they should arrive comfortably before it. A suitable airport partway along the route gives her an early landing option. The route, weather, aircraft, and fuel planning are complete; today's remaining uncertainty is Maya.
+
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+The airplane could be ready while Maya is not. How does she make that judgment without waiting until she is obviously sick?
+
+**INSTRUCTOR:**
+
+She makes the pilot preflight as concrete as the airplane preflight. She names the condition, asks how it could affect the task ahead, and compares the answer with the demands of this particular flight. The decision can be delay, change the trip, or go with a clear option to stop. We will see why a vague feeling of being “probably okay” is too little evidence for a specific concern.
+
+[Claim type: teaching synthesis]
+
+Think about the actual work Maya has planned. She will read a weather update, manage the airplane and radio, find the next checkpoint, and decide whether the destination still fits the plan. She will descend and land while her friend expects to arrive on time. If a condition might weaken attention, judgment, or comfortable pressure equalization, it matters because one of those tasks will still have to be done. Listing symptoms is the start of the assessment; connecting each symptom to a task and a safer alternative finishes it.
+
+[Claim type: teaching synthesis]
+
+## [04:00] Make the pilot preflight specific
+
+**ANNOUNCER:**
+
+Make the pilot preflight specific.
+
+**INSTRUCTOR:**
+
+On departure morning, Maya slept poorly. She has a congested nose and a mild headache. She is considering an over-the-counter cold medicine because she wants to keep the arrival time. The FAA's personal checklist gives her six prompts: illness, medication, stress, alcohol, fatigue, and emotion. Pilots often say them as “I'm safe.” The checklist starts a conversation with evidence; it does not produce a medical clearance by itself.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+**LEARNER:**
+
+The cold is mild. If medicine removes the symptoms, could she simply depart after it works?
+
+**INSTRUCTOR:**
+
+First separate two questions. Is the underlying condition compatible with safe flight? What could the medicine do to the pilot's thinking, coordination, vision, or alertness? FAA medication guidance says either the condition or the treatment can compromise flight safety and advises consulting an aviation medical examiner for questions about a specific condition or medication. Maya cannot use relief of one symptom to answer both questions.
+
+[Source: sources.yaml#faa-medication-guidance]
+
+The AIM says the safest rule is not to fly while ill and to ask an aviation medical examiner for advice if that seems too stringent for a particular illness. That gives Maya a way to handle uncertainty before the flight instead of diagnosing herself while flying.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+There is also a legal question for operations that require a medical certificate. Section sixty-one point fifty-three says a pilot cannot act as pilot in command or a required pilot crewmember when the pilot knows or has reason to know a medical condition would prevent meeting the medical-certificate requirements for that operation, or when medication or other treatment for a condition has that result. Maya does not need to settle a complex medical-certification question alone at the airport. She needs to recognize when the condition or treatment raises that question and get appropriate advice before acting as a required pilot.
+
+[Source: sources.yaml#ecfr-medical-deficiency]
+
+The FAA over-the-counter guide opens with pointed questions: is the pilot sick, is ear clearing already difficult on the ground, does the pilot feel well enough to fly only if medication works, and is the condition getting worse? It then asks whether a symptom-relief medication is needed, whether the untreated condition would permit safe flight, and whether another health condition or medication changes the answer. Maya can use those questions without turning the guide into a list of pills that are automatically acceptable.
+
+[Source: sources.yaml#faa-medication-guidance]
+
+Prescription and over-the-counter medicines can impair flight-critical functions. The AIM specifically discusses possible effects from antihistamines and medicines for motion sickness, among others. A familiar package, an over-the-counter label, or a friend saying it helped them does not establish how this pilot will perform on this flight.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+Maya has another reason to examine the congestion before she climbs. During ascent and descent, air must move between the middle ear and the throat, and between the sinuses and the nasal passages, to equalize changing pressure. An upper-respiratory infection or nasal allergy can obstruct those paths. Ear or sinus block is especially troublesome on descent; it can cause severe pain and distract the pilot precisely when she needs to fly and land. The AIM recommends avoiding flight with an upper-respiratory infection or nasal allergic condition to prevent those blocks.
+
+[Source: sources.yaml#aim-ear-sinus]
+
+Picture the descent. Cabin pressure rises as the airplane descends. Maya's ear and sinus spaces must equalize with that changing pressure. If swollen passages block the connection, pressure differences grow. Ear pain, reduced hearing, or sharp pain around the sinuses may then appear at the same time Maya needs a traffic scan, a radio call, and a stable approach. The safer choice is made before departure: a congested pilot does not need to test whether the problem will become severe during the landing phase.
+
+[Source: sources.yaml#aim-ear-sinus]
+
+**LEARNER:**
+
+So the question is not only whether she feels good at the departure airport. She needs to picture the descent after the pressure has changed.
+
+**INSTRUCTOR:**
+
+Yes. Maya checks the condition she actually has, the medication she is considering, and the phase of flight that could make congestion more consequential. She cannot make the arrival promise the evidence that settles those questions. She calls her friend, delays today's trip, and contacts an aviation medical examiner about the specific illness and medication before choosing another departure day. That is this scenario's decision, not a universal waiting period for every cold or drug.
+
+[Claim type: teaching synthesis]
+
+## [08:00] Set a real departure decision
+
+**ANNOUNCER:**
+
+Set a real departure decision.
+
+**INSTRUCTOR:**
+
+On a later day, Maya has slept normally, her congestion has resolved, and she is not taking the cold medicine. She repeats the pilot check before looking at the clock. Fatigue can come from insufficient sleep, sustained mental work, or other strain; acute fatigue reduces coordination and alertness. When recovery between bouts of fatigue is inadequate, chronic fatigue can also impair judgment and make unwarranted risks more likely.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+Stress can occupy a pilot's thinking and lower alertness. The AIM gives keeping to a schedule despite deteriorating conditions as an example of an unwarranted risk a distracted pilot may take. Maya says the arrival expectation aloud, then tells her friend they will land short or turn back if the pilot or flight demands change. That conversation removes some pressure from the in-flight choice.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+The arrival expectation is a human-factor input just as real as a weather forecast. Maya cannot remove the friend's appointment, but she can remove its authority over the flight. She gives her friend a realistic range instead of a guaranteed time. She calls the airport stop an expected option, not a failure. If the friend is disappointed, Maya will learn that on the ground while she has time to explain. In the air, the passenger already understands why changing the destination is an ordinary part of the plan.
+
+[Claim type: teaching synthesis]
+
+The ACS asks applicants to manage confirmation and expectation bias.
+
+[Source: sources.yaml#acs-human-factors]
+
+Maya knows the route and expects a routine trip. If she later notices a symptom, the easiest story will be that she is merely warm or bored. Her practical defense is to identify a disconfirming cue in advance: new headache, drowsiness, or difficulty completing an ordinary cockpit task is evidence against the assumption that today's pilot is still at baseline. She will examine the cue even if the airplane seems to be flying normally.
+
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+The checklist also says alcohol. If the time since drinking meets a rule, does that finish the fitness check?
+
+**INSTRUCTOR:**
+
+No. First, the rule itself. Section ninety-one point seventeen bars a person from acting or attempting to act as a civil-aircraft crewmember within eight hours after any alcoholic drink, while under the influence of alcohol, while using a drug that affects the person's faculties contrary to safety, or with a blood or breath alcohol concentration of zero point zero four or greater. Each is a separate prohibition. The drug clause asks about impaired faculties, not whether a medicine was prescribed or bought over the counter.
+
+[Source: sources.yaml#ecfr-alcohol-drugs]
+
+Alcohol impairs flying skill, and a hangover can impair a pilot for hours after the alcohol itself has been eliminated. The personal check asks about the actual state of the pilot as well as any applicable legal limit. Maya has had no alcohol before this flight; for another pilot, the absence of a legal prohibition would still leave the question of present performance.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+Emotion deserves its own check too. The AIM describes how a serious argument, loss, or other upsetting event can reduce alertness and lead to unsafe risk taking. Maya has no such event today, but she makes the question specific: can she put her attention on the present flight, or does the same thought keep interrupting planning and checklists? If it keeps intruding, delay is a practical way to protect the flight task. A pilot need not wait for a dramatic breakdown to decide that attention is insufficient for today's operation.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+Maya also prepares food and water for the trip. Dehydration can show up as fatigue, headache, sleepiness, dizziness, or cramping, especially with heat and prolonged flying. Those symptoms overlap with other aeromedical problems. She eats and drinks before departure, brings water, and treats a later headache as information to investigate rather than proof of any single cause.
+
+[Source: sources.yaml#phak-dehydration]
+
+Maya will spend time in a warm cockpit and then remain seated for most of the route. She can plan food, water, and a comfortable break just as she planned fuel and airports. If she deliberately drinks too little to avoid a stop, she may create an avoidable performance problem later. A landing for a break remains available; reaching Harbor Field without one has no value if she is less able to notice traffic, compare weather, or fly a steady arrival.
+
+[Claim type: teaching synthesis]
+
+For this flight, she sets a personal stop point: if alertness or symptoms worsen, she will use the suitable airport along the route while it remains easy to reach. She briefs her friend that arriving late is acceptable and identifies the airport on the chart. That conversation removes any need to renegotiate the schedule while Maya is flying. It makes the lower-demand option visible before a problem can narrow her attention.
+
+[Claim type: teaching synthesis]
+
+Notice how specific the stop point is. Maya does not promise to “watch it” indefinitely. She names the change that would concern her, identifies a reachable airport, and accepts the cost of arriving late. If a symptom appears, the next question is no longer “Can I still finish the original trip?” The next question is “Can I safely reach the prepared stop now?” That narrower question uses less attention and asks for less optimism from a pilot whose performance may already be changing.
+
+[Claim type: teaching synthesis]
+
+## [12:00] Recognize the changed pilot in flight
+
+**ANNOUNCER:**
+
+Recognize the changed pilot in flight.
+
+**INSTRUCTOR:**
+
+The later flight begins in good daytime visibility. Maya verifies the planned altitude of eight thousand five hundred feet, the landmarks, and the airport she can use along the way. She feels normal during the climb. Before we follow the later symptom, consider what the altitude check is for. As an airplane climbs, atmospheric pressure decreases. The proportion of oxygen in the air is still about twenty-one percent, but the pressure available to move oxygen into the body is lower. That is the altitude pathway to hypoxia: not enough oxygen reaches the body for normal function.
+
+[Source: sources.yaml#aim-altitude-hypoxia]
+
+At greater exposure to altitude, hypoxia can degrade judgment, memory, alertness, coordination, and calculation. Headache, drowsiness, dizziness, or an unusual sense of well-being can appear. Gradual onset makes the effects hard for the affected pilot to notice. The lesson for Maya is to recognize the pattern early because the very tool she uses to judge it—her thinking—may be weakening.
+
+[Source: sources.yaml#aim-altitude-hypoxia]
+
+The AIM notes that a healthy pilot usually does not have other significant altitude-hypoxia effects below twelve thousand feet, while night vision can deteriorate at a cabin pressure altitude as low as five thousand feet. The exact exposure and the pilot's condition matter. Maya's planned eight-thousand-five-hundred-foot daytime segment is therefore a different risk picture from a prolonged climb much higher, but it is still useful to understand the mechanism before a different route or a later night flight asks more of her.
+
+[Source: sources.yaml#aim-altitude-hypoxia]
+
+An altitude check is a comparison, not a diagnostic test. It tells Maya one part of the exposure, while fatigue, medication, carbon monoxide, or another condition may also change performance or produce similar symptoms. If the pilot becomes unusually slow at a simple task, the response is to reduce flight demands and assess the available options. Waiting until the pilot can name a perfect cause would demand the very judgment that may be impaired.
+
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Suppose an unexpected radio change makes her anxious, and she notices rapid breathing and lightheadedness. Does that identify hypoxia?
+
+**INSTRUCTOR:**
+
+Stress can cause a pilot to overbreathe without noticing. Hyperventilation reduces carbon dioxide in the body and can cause lightheadedness, tingling, drowsiness, or a feeling of suffocation. Its early symptoms can resemble hypoxia, and the two conditions can occur together.
+
+[Source: sources.yaml#aim-hyperventilation]
+
+Symptoms alone are a poor basis for deciding that oxygen is unnecessary. In that hypothetical change, Maya would steady the flying task, check altitude and oxygen equipment if used, and choose a safer altitude or landing option rather than trying to prove one diagnosis while workload rises.
+
+[Claim type: teaching synthesis]
+
+The AIM describes an appropriate oxygen system and a comfortable, safe cabin pressure altitude as ways to prevent altitude hypoxia. The exact equipment operation and altitude choice belong to the airplane's approved information, the route, terrain, weather, and pilot training. In this scenario, the planned daytime altitude is modest, but Maya does not dismiss a new symptom solely because altitude hypoxia seems unlikely.
+
+[Source: sources.yaml#aim-altitude-hypoxia]
+
+In the actual flight, Maya feels normal at the planned altitude and keeps the prepared airport in mind. Stress still matters: a pilot concentrating on an arrival promise may explain away a small error or symptom. Maya compares any change with her earlier self-check and stop point. If she has to bargain with her own threshold, she will choose the simpler option while she can.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+## [16:00] The heater changes the decision
+
+**ANNOUNCER:**
+
+The heater changes the decision.
+
+**INSTRUCTOR:**
+
+In level flight, Maya uses the cabin heater. Some time later she notices a headache and a drowsy feeling. Her friend also says the cabin seems warm and that Maya is unusually quiet. The symptoms do not identify their cause. The heater, however, is a concrete exposure to examine before assuming this is ordinary fatigue or dehydration.
+
+[Claim type: teaching synthesis]
+
+Carbon monoxide in exhaust is colorless, odorless, and tasteless. If it enters the cabin, it reduces the blood's ability to carry oxygen and can produce hypoxia effects. A pilot may smell exhaust from a leak, but the carbon monoxide itself provides no smell to rely on.
+
+[Source: sources.yaml#aim-carbon-monoxide]
+
+The AIM says a pilot who smells exhaust, or develops headache, drowsiness, or dizziness while using the heater, should suspect carbon monoxide poisoning, immediately turn off the heater, and open air vents. If symptoms are severe or continue after landing, the AIM says to seek medical treatment. Maya does those immediate actions and stops treating the original destination as the goal.
+
+[Source: sources.yaml#aim-carbon-monoxide]
+
+The sequence is short because delay has a cost. A pilot who is growing drowsy cannot reliably run a long search for alternative explanations. Maya shuts off the heater and opens the vents while keeping control of the airplane. She does not wait for an exhaust smell: the AIM's headache and drowsiness cues during heater use are enough to act. She then uses the airport she selected on the ground. The original destination remains a navigation fact, but it no longer sets the decision.
+
+[Source: sources.yaml#aim-carbon-monoxide]
+
+**LEARNER:**
+
+Could she wait a few minutes to see if opening a vent fixes the headache before deciding to land?
+
+**INSTRUCTOR:**
+
+Maya uses the reachable airport now. If the headache eases, that does not prove the cabin was safe or that she has recovered full judgment. She keeps flying the airplane and heads toward the prepared airport. If she is receiving air traffic service, she tells the controller about the possible carbon monoxide problem and intended landing. She follows the aircraft checklist and gives her friend a simple nonflying task only if it helps. She lands at the prepared airport and ends the flight.
+
+[Claim type: teaching synthesis]
+
+If symptoms are severe or continue after landing, the AIM says to seek medical treatment.
+
+[Source: sources.yaml#aim-carbon-monoxide]
+
+In this scenario, Maya seeks medical advice about the suspected exposure and arranges for the airplane to be inspected before she flies it again.
+
+[Claim type: teaching synthesis]
+
+The ACS includes single-pilot resource management in aeronautical decision-making.
+
+[Source: sources.yaml#acs-human-factors]
+
+Maya's passenger did not diagnose the problem; the passenger noticed a change Maya might miss. Maya used that observation, the preselected airport, and air traffic service when available while retaining the flying decision. This is single-pilot resource management in the scenario. The simple plan reduced the amount Maya had to invent while feeling worse.
+
+[Claim type: teaching synthesis]
+
+## [20:00] Use a trustworthy orientation picture
+
+**ANNOUNCER:**
+
+Use a trustworthy orientation picture.
+
+**INSTRUCTOR:**
+
+After Maya has landed and sought help, we can study another human-factors risk without adding it to her carbon monoxide diversion. A pilot's inner ear can report a feeling of motion that disagrees with the airplane's actual attitude. Motion forces and some visual scenes can create false sensations of movement or position. The AIM says reliable fixed points on the ground or flight instruments are the references that prevent spatial disorientation from those illusions.
+
+[Source: sources.yaml#aim-illusions]
+
+The pilot uses the chart and navigation references to determine geographic position, a separate question from attitude.
+
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Would a pilot always know that a sensation was an illusion?
+
+**INSTRUCTOR:**
+
+No. A slow entry into a bank might not register in the motion-sensing part of the inner ear. An abrupt correction toward level flight can then feel like a bank the other way—the “leans.” If a pilot follows that feeling and rolls back, the airplane can return to the original bank. The reliable outside horizon or correctly interpreted instruments, rather than the felt direction of vertical, answers the attitude question.
+
+[Source: sources.yaml#aim-illusions]
+
+Some visual illusions affect approaches and landings.
+
+[Source: sources.yaml#aim-illusions]
+
+A pilot may think of “seeing the runway” as a complete answer to the visual part of an approach. It is more useful to ask what surrounding references establish height, distance, and alignment. A visual scene with sparse ground features can support a mistaken impression even when a light or runway is visible. That is why this topic belongs in advance study: pilots can learn which scenes offer strong references and how to cross-check the airplane's actual path before an illusion becomes an approach correction.
+
+[Source: sources.yaml#aim-illusions]
+
+A later flight in darkness or poor visual contrast may give the eye less information than Maya had on today's daytime trip. The AIM explains that illumination and scanning technique affect how well pilots see other aircraft and cockpit detail, and that darkness makes small print, color, and unlit aircraft harder to detect.
+
+[Source: sources.yaml#aim-vision]
+
+Night vision adds a preparation question that daylight can hide. Bright light changes the eye's dark adaptation, and the AIM describes time and lighting conditions that help it recover. The pilot therefore plans cockpit lighting and allows time to adapt before relying on a dark outside scene. If a chart is hard to read or an object outside has poor contrast, the answer is to improve the reference and reduce workload, not to assume the eye will fill in missing detail. That is a different human-performance demand from Maya's bright daytime trip, but the same decision method applies: know the limits of the information source before asking it to carry a safety decision.
+
+[Source: sources.yaml#aim-vision]
+
+Night-specific vision and illusion examples deserve deliberate study and practice with an instructor before a night operation. The central lesson is to compare a felt turn or apparent horizon with a reliable reference before letting the sensation drive a control input.
+
+[Claim type: teaching synthesis]
+
+## [23:00] Other human-factor questions to carry forward
+
+**ANNOUNCER:**
+
+Other human-factor questions to carry forward.
+
+**INSTRUCTOR:**
+
+The ACS names more than the conditions we have developed in Maya's flight. It also includes motion sickness, dehydration and nutrition, hypothermia, optical illusions, and dissolved nitrogen after scuba diving. The same practical question applies to each: what exposure creates the problem, what early change might the pilot notice, and what action removes the demand before performance worsens? The ACS skill asks for complete cause, effect, and corrective-action connections for at least three listed conditions, not a recital of names.
+
+[Source: sources.yaml#acs-human-factors]
+
+Scuba is a useful preflight example because the exposure may have happened the previous day. After a dive, excess dissolved nitrogen can form gas bubbles when the lower pressure at flight altitude allows it to come out of solution. The AIM provides specific recommended waiting times tied to the kind of dive and intended flight altitude. A pilot who has dived checks that guidance before planning the flight, rather than inventing a single wait time for every dive.
+
+[Source: sources.yaml#aim-scuba]
+
+For motion sickness, cold exposure, nutrition, and visual illusions, Maya would make the same kind of bounded assessment. She would identify the actual exposure and symptoms, check the FAA guidance that applies, and change or end the flight if she could not preserve safe performance. These are prompts for study and preflight planning; this episode is not medical treatment advice for an individual pilot.
+
+[Claim type: teaching synthesis]
+
+The point of carrying those additional ACS topics forward is not to memorize a warning label for every possible symptom. In a checkride scenario, begin with the exposure. Has the pilot been on a boat, in very cold weather, or awake through most of the night? Then say what change would be observable, how it could affect flying tasks, and what choice reduces the risk. When the source gives a specific condition or interval, preserve that condition. When it does not, do not invent a universal number. That method lets the learner connect human performance to a flight decision without pretending to diagnose a person from a script.
+
+[Claim type: teaching synthesis]
+
+## [25:00] Retrieval review
+
+**ANNOUNCER:**
+
+Retrieval review.
+
+**INSTRUCTOR:**
+
+Let us rebuild Maya's two decisions. On the first morning, what did her personal checklist require her to name before she considered the promised arrival time?
+
+[Source: sources.yaml#aim-personal-fitness]
+
+**LEARNER:**
+
+Illness, medication, stress, alcohol, fatigue, and emotion. Maya had poor sleep, congestion, a headache, and schedule pressure, so she had specific questions instead of a vague feeling that she was probably fine.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+**INSTRUCTOR:**
+
+Why did taking a cold medicine fail to settle the go decision?
+
+[Source: sources.yaml#faa-medication-guidance]
+
+**LEARNER:**
+
+The condition and the medicine are separate possible sources of impairment. The FAA tells pilots to consider both and to ask an aviation medical examiner about a specific condition or medication.
+
+[Source: sources.yaml#faa-medication-guidance]
+
+Congestion could make ear and sinus pressure equalization difficult on descent, when severe pain might compete with landing tasks.
+
+[Source: sources.yaml#aim-ear-sinus]
+
+**INSTRUCTOR:**
+
+On the later flight, what might a new headache and drowsiness mean after she uses the heater?
+
+[Source: sources.yaml#aim-carbon-monoxide]
+
+**LEARNER:**
+
+She cannot diagnose from those symptoms alone. Reduced pressure at altitude can reduce oxygen availability.
+
+[Source: sources.yaml#aim-altitude-hypoxia]
+
+Stress-related overbreathing can make a pilot lightheaded.
+
+[Source: sources.yaml#aim-hyperventilation]
+
+Fatigue and stress can weaken performance.
+
+[Source: sources.yaml#aim-personal-fitness]
+
+While the heater is on, headache or drowsiness is enough for the AIM's carbon monoxide response: suspect it, shut off the heater, and open the vents. Maya then uses her early landing option.
+
+[Source: sources.yaml#aim-carbon-monoxide]
+
+**INSTRUCTOR:**
+
+After this flight, what would help Maya assess an unusual feeling of motion on a future flight?
+
+[Source: sources.yaml#aim-illusions]
+
+**LEARNER:**
+
+She uses a reliable outside reference or flight instruments for the airplane's attitude. An inner-ear sensation or weak visual scene can be misleading.
+
+[Source: sources.yaml#aim-illusions]
+
+On the completed flight, she had identified the airport and told her passenger they might stop there, so the new symptom changed the destination while the choice was still easy.
+
+[Claim type: teaching synthesis]
+
+**INSTRUCTOR:**
+
+That is the human-factors chain: assess the pilot before departure, compare the in-flight pilot with that earlier picture, and lower the demand while good options remain. Maya's best decisions occur before she has proof of a diagnosis. She gives each warning sign an action that protects control of the airplane and preserves a landing.
+
+[Claim type: teaching synthesis]
+
+## [28:00] Outro
+
+**ANNOUNCER:**
+
+Thanks for listening to PPL Study Podcast. For show notes, source links, and more study material, visit pplstudyguide.com. Send feedback or source corrections to feedback@pplstudyguide.com. The episodes and the research behind them are available for review as an open-source work on GitHub. Until next time, study the sources and keep learning.

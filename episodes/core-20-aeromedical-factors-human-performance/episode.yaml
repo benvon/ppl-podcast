@@ -4,11 +4,11 @@ title: Aeromedical Factors and Human Performance
 slug: aeromedical-factors-human-performance
 track: core
 production_contract_version: 2
-status: source_relevance_review_complete
+status: ready_for_hosting_pr
 version: 0.1.5
-published_at: null
+published_at: 2026-09-22T17:04:36Z
 runtime_target_minutes: 30
-runtime_actual_seconds: null
+runtime_actual_seconds: 1551.19
 word_count: 3946
 speakers:
   - instructor
@@ -70,24 +70,18 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - Render audio and complete human listening QA, including the front-matter
-    check.
-  - Review embedded chapter markers against the approved audio.
-  - Re-verify every public source and listener-facing link on publication day.
-  - Validate hosting metadata and stage the immutable audio object in the
-    hosting workflow.
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: not_rendered
-  chapter_markers: pending_render
-  publication_day_validation: pending
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: pending_script_review
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 22
+production_state_revision: 24

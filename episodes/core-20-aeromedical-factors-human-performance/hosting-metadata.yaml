@@ -1,0 +1,20 @@
+schema_version: 1
+publisher_release:
+  id: core-20
+  guid: pplstudyguide.com:core-20
+  title: Aeromedical Factors and Human Performance
+  description: Assess pilot fitness before departure, recognize aeromedical
+    warning signs in flight, and choose an early landing when performance
+    becomes uncertain.
+  published_at: 2026-09-22T17:04:36Z
+  duration: 00:25:51
+  season: 1
+  number: 20
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.5

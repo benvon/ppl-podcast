@@ -1,0 +1,184 @@
+episode_id: core-20
+claims:
+  - id: acs-human-factors-outcome
+    type: faa_standard
+    statement: "ACS PA.I.H examines human-factor symptoms, causes, effects, corrective actions, fitness, decision-making and risk, and requires a cause/symptom/action connection for at least three listed conditions plus self-assessment."
+    sources: [acs-human-factors]
+    risk: safety_critical
+    script_sections: ["What the ACS is asking you to connect"]
+    status: draft
+  - id: imsafe-check
+    type: faa_guidance
+    statement: "The FAA personal checklist prompts a pilot to assess illness, medication, stress, alcohol, fatigue, and emotion before flight."
+    sources: [aim-personal-fitness]
+    risk: safety_critical
+    script_sections: ["Make the pilot preflight specific", "Retrieval review"]
+    status: draft
+  - id: illness-flight-risk
+    type: faa_guidance
+    statement: "The AIM recommends not flying while ill and seeking AME advice when considering a particular illness."
+    sources: [aim-personal-fitness]
+    risk: safety_critical
+    script_sections: ["Make the pilot preflight specific", "Retrieval review"]
+    status: draft
+  - id: medication-two-questions
+    type: faa_guidance
+    statement: "The FAA advises pilots to consider both the underlying medical condition and its medication because either can compromise flight safety, and to consult an AME for specific questions."
+    sources: [faa-medication-guidance]
+    risk: safety_critical
+    script_sections: ["Make the pilot preflight specific", "Retrieval review"]
+    status: draft
+  - id: medication-reference-library
+    type: faa_guidance
+    statement: "The FAA Pharmaceuticals page links current medication reference documents, including the OTC medication reference guide and reference table."
+    sources: [faa-medication-library]
+    risk: operational
+    script_sections: ["Make the pilot preflight specific"]
+    status: draft
+  - id: medication-impairment
+    type: faa_guidance
+    statement: "Prescription and OTC medications, including antihistamines and motion-sickness remedies, can impair alertness, coordination, vision, judgment or other flight-critical functions."
+    sources: [aim-personal-fitness]
+    risk: safety_critical
+    script_sections: ["Make the pilot preflight specific"]
+    status: draft
+  - id: medical-deficiency-rule
+    type: regulation
+    statement: "For an operation requiring a medical certificate, 14 CFR 61.53(a) bars acting as PIC or required pilot crewmember when the person knows or has reason to know a condition would prevent meeting the required medical-certificate standard, or treatment has that result."
+    sources: [ecfr-medical-deficiency]
+    risk: safety_critical
+    script_sections: ["Make the pilot preflight specific"]
+    status: draft
+  - id: ear-sinus-block
+    type: faa_guidance
+    statement: "Congestion from an upper-respiratory infection or allergy can impede middle-ear or sinus pressure equalization, especially during descent, causing painful ear or sinus block."
+    sources: [aim-ear-sinus]
+    risk: safety_critical
+    script_sections: ["Make the pilot preflight specific", "Retrieval review"]
+    status: draft
+  - id: alcohol-residual-impairment
+    type: faa_guidance
+    statement: "Alcohol can impair flying skill, and residual hangover effects can impair a pilot after alcohol has been eliminated."
+    sources: [aim-personal-fitness]
+    risk: safety_critical
+    script_sections: ["Set a real departure decision"]
+    status: draft
+  - id: alcohol-drug-rule
+    type: regulation
+    statement: "14 CFR 91.17(a) prohibits a civil-aircraft crewmember from acting or attempting to act within eight hours of alcohol consumption, while under alcohol's influence, while using a drug that impairs faculties contrary to safety, or with blood/breath alcohol concentration at least 0.04."
+    sources: [ecfr-alcohol-drugs]
+    risk: safety_critical
+    script_sections: ["Set a real departure decision"]
+    status: draft
+  - id: fatigue-effects
+    type: faa_guidance
+    statement: "Acute fatigue from insufficient sleep or prolonged strain reduces coordination and alertness; chronic fatigue can impair judgment and risk decisions."
+    sources: [aim-personal-fitness]
+    risk: safety_critical
+    script_sections: ["Set a real departure decision", "Retrieval review"]
+    status: draft
+  - id: stress-effects
+    type: faa_guidance
+    statement: "Everyday stress can distract a pilot, reduce alertness, and support unwarranted risks such as continuing to meet a schedule."
+    sources: [aim-personal-fitness]
+    risk: safety_critical
+    script_sections: ["Set a real departure decision", "Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: emotion-effects
+    type: faa_guidance
+    statement: "Serious emotional upset can reduce alertness and contribute to unsafe risk taking."
+    sources: [aim-personal-fitness]
+    risk: safety_critical
+    script_sections: ["Set a real departure decision"]
+    status: draft
+  - id: dehydration-effects
+    type: faa_guidance
+    statement: "Dehydration in hot flying conditions can produce fatigue, headache, dizziness and reduced performance."
+    sources: [phak-dehydration]
+    risk: operational
+    script_sections: ["Set a real departure decision"]
+    status: draft
+  - id: hypoxia-mechanism
+    type: faa_guidance
+    statement: "At altitude, reduced barometric pressure lowers available oxygen pressure even though atmospheric oxygen concentration remains about 21 percent."
+    sources: [aim-altitude-hypoxia]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: hypoxia-effects
+    type: faa_guidance
+    statement: "Altitude hypoxia can impair judgment, memory, alertness and coordination, and may cause headache, drowsiness or dizziness; effects may be hard to recognize."
+    sources: [aim-altitude-hypoxia]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: hypoxia-vocabulary-pathways
+    type: faa_guidance
+    statement: "The PHAK names hypoxic, hypemic, stagnant, and histotoxic hypoxia; it describes the first three respectively as insufficient available oxygen, impaired blood uptake or transport of oxygen, and inadequate movement of oxygen-rich blood to tissues."
+    sources: [phak-hypoxia-types]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: hypoxia-vocabulary-histotoxic
+    type: faa_guidance
+    statement: "The PHAK describes histotoxic hypoxia as oxygen reaching body cells that are unable to use it effectively."
+    sources: [phak-histotoxic-hypoxia]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: hypoxia-response
+    type: faa_guidance
+    statement: "The AIM identifies oxygen from an appropriate system and a safe cabin pressure altitude as means of preventing altitude hypoxia."
+    sources: [aim-altitude-hypoxia]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight"]
+    status: draft
+  - id: hyperventilation-pattern
+    type: faa_guidance
+    statement: "Stress-related overbreathing lowers carbon dioxide, can cause lightheadedness and tingling, and can resemble or coexist with hypoxia."
+    sources: [aim-hyperventilation]
+    risk: safety_critical
+    script_sections: ["Recognize the changed pilot in flight", "Retrieval review"]
+    status: draft
+  - id: co-mechanism
+    type: faa_guidance
+    statement: "Carbon monoxide in exhaust is colorless and odorless and reduces blood oxygen transport, producing hypoxia effects."
+    sources: [aim-carbon-monoxide]
+    risk: safety_critical
+    script_sections: ["The heater changes the decision", "Retrieval review"]
+    status: draft
+  - id: co-response
+    type: faa_guidance
+    statement: "During heater use, exhaust odor or headache, drowsiness, or dizziness warrants suspected CO, immediate heater shutdown and open air vents; persistent or severe symptoms after landing warrant medical treatment."
+    sources: [aim-carbon-monoxide]
+    risk: safety_critical
+    script_sections: ["The heater changes the decision", "Retrieval review"]
+    status: draft
+  - id: spatial-illusion
+    type: faa_guidance
+    statement: "Motion forces and some visual scenes can create false sensations of position or motion; reliable fixed outside references or flight instruments prevent spatial disorientation from these illusions."
+    sources: [aim-illusions]
+    risk: safety_critical
+    script_sections: ["Use a trustworthy orientation picture", "Retrieval review"]
+    status: draft
+  - id: landing-illusion
+    type: faa_guidance
+    statement: "The AIM identifies visual illusions leading to landing errors."
+    sources: [aim-illusions]
+    risk: operational
+    script_sections: ["Use a trustworthy orientation picture"]
+    status: draft
+  - id: vision-conditions
+    type: faa_guidance
+    statement: "Illumination and scanning technique affect visual detection in flight, and darkness reduces the ability to read cockpit detail and detect aircraft."
+    sources: [aim-vision]
+    risk: operational
+    script_sections: ["Use a trustworthy orientation picture"]
+    status: draft
+  - id: scuba-altitude-risk
+    type: faa_guidance
+    statement: "After scuba diving, excess dissolved nitrogen can produce decompression sickness when lower pressure at flight altitude lets gas emerge."
+    sources: [aim-scuba]
+    risk: safety_critical
+    script_sections: ["Other human-factor questions to carry forward"]
+    status: draft

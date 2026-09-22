@@ -1,0 +1,1195 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: publication_link_check
+run_id: 30b51c48-bf6d-42ee-94af-d0f96ae56a79
+checked_at_utc: 2026-09-22T17:02:53.583Z
+sources_file: episodes/core-20-aeromedical-factors-human-performance/sources.yaml
+claims_file: episodes/core-20-aeromedical-factors-human-performance/claim-inventory.yaml
+show_notes_file: episodes/core-20-aeromedical-factors-human-performance/show-notes.md
+show_notes_manifest_file: episodes/core-20-aeromedical-factors-human-performance/show-notes-manifest.yaml
+input_sha256:
+  sources: fa65f6d73d25a9c7c356b563668e400c6b6d17a3e7f065c97a6f538b7277a4ca
+  claims: 1ad6e79793ee2e5f768a5fb2e1e786343970c0e53e28f961fa77f64fde5ac22c
+  master_script: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
+  show_notes: e92adfac26d1e18774c4d435d4376b51a4d476709ba1b56e8860f9de70367dca
+  show_notes_manifest: 392a9a9978b2479bbc39da3f22374ef992f50e8b5d7590318540253b86150cbe
+input_normalization:
+  master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
+  show_notes: fd20bebd08e2c4f92a7baaf2fab8339969982a9e952ac242c001efc951e32bc1
+llm_requested: false
+llm_model: null
+llm_review_passes: 0
+llm_materiality_policy: null
+authorization: null
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 49
+  claim_coverage_count: 26
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 30
+  manifest_link_count: 17
+show_notes_results:
+  - id: acs-human-factors-link
+    text: Private Pilot ACS Human Factors task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+    source_id: acs-human-factors
+    claim_ids:
+      - acs-human-factors-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1941
+      pdf_page_text_sha256: bb2cf0b4dff74075a9d2bb4913be3a09fc2500e05d1ebb57b9133191621ff62e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-fitness-link
+    text: AIM fitness for flight and personal checklist
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+    source_id: aim-personal-fitness
+    claim_ids:
+      - imsafe-check
+      - illness-flight-risk
+      - medication-impairment
+      - alcohol-residual-impairment
+      - fatigue-effects
+      - stress-effects
+      - emotion-effects
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a1 []
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: e53664276ca12f6fc888e9db0c9853b00769b0bbc08b0a1cffc005e2dacc7a50
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-otc-link
+    text: FAA OTC medication questions for pilots
+    url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+    source_id: faa-medication-guidance
+    claim_ids:
+      - medication-two-questions
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      final_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: false
+      content_sha256: 9f7515990df26866b7aaf52300cfd748f6196715dc5c9b7c00b2f633453674cb
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      validation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1576
+      pdf_page_text_sha256: 2c4c802615aa44023eb5258d7e550097ed2b7881428648da249546f17180f93f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-medication-library-link
+    text: FAA medication guidance and reference materials
+    url: https://www.faa.gov/pilots/medical_certification/medications#content
+    source_id: faa-medication-library
+    claim_ids:
+      - medication-reference-library
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      final_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a5 []
+      title: Pharmaceuticals (Therapeutics) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 93c51e431102cdd157dea169edf3a25f4373ef73b1f00d4188b8d34e60453dec
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      validation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      errors: []
+      valid: true
+      excerpt_characters: 3369
+      excerpt_sha256: 06f31cf496a5e3a89dca24ed8f3288da804946a297ac20dd23110de8f84a045f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ecfr-medical-deficiency-link
+    text: 14 CFR 61.53 medical deficiency for operations requiring a medical
+      certificate
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.53
+    source_id: ecfr-medical-deficiency
+    claim_ids:
+      - medical-deficiency-rule
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a6 []
+      title: null
+      truncated: false
+      content_sha256: 8b26a036b18d7289e34700137a0b681ca7d37f6245dee51949cb6cdef7d6fabf
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.53
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.53"
+        date: 2026-09-18
+        section_number: "61.53"
+      section_text_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      excerpt_characters: 1762
+      excerpt_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1762
+  - id: ecfr-alcohol-drugs-link
+    text: 14 CFR 91.17 alcohol and drugs
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.17
+    source_id: ecfr-alcohol-drugs
+    claim_ids:
+      - alcohol-drug-rule
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a7 []
+      title: null
+      truncated: false
+      content_sha256: 3c142d0617f49f8f8210b3804d13a1fc8043c0e35f85b47fe94200be5804c35b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.17
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.17"
+        date: 2026-09-18
+        section_number: "91.17"
+      section_text_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      excerpt_characters: 2811
+      excerpt_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2811
+  - id: aim-hypoxia-link
+    text: AIM altitude, ear and sinus, and scuba guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+    source_id: aim-altitude-hypoxia
+    claim_ids:
+      - hypoxia-mechanism
+      - hypoxia-effects
+      - hypoxia-response
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-hypoxia-types-link
+    text: PHAK hypoxia types
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+    source_id: phak-hypoxia-types
+    claim_ids:
+      - hypoxia-vocabulary-pathways
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5032
+      pdf_page_text_sha256: a99bf4b80fe6525615d059775d719caff4a95b36a2e54976ce0bd458b60ce26c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-histotoxic-hypoxia-link
+    text: histotoxic hypoxia
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+    source_id: phak-histotoxic-hypoxia
+    claim_ids:
+      - hypoxia-vocabulary-histotoxic
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4553
+      pdf_page_text_sha256: da3f294c6b1a93b7185b91b416ae9353be9646c4c6b5f6468ae9fbeefd29b4c1
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-histotoxic-hypoxia-study-link
+    text: PHAK histotoxic hypoxia
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+    source_id: phak-histotoxic-hypoxia
+    claim_ids:
+      - hypoxia-vocabulary-histotoxic
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4553
+      pdf_page_text_sha256: da3f294c6b1a93b7185b91b416ae9353be9646c4c6b5f6468ae9fbeefd29b4c1
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-ear-sinus-link
+    text: AIM ear and sinus block details
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+    source_id: aim-ear-sinus
+    claim_ids:
+      - ear-sinus-block
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-scuba-link
+    text: AIM flight after scuba diving
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+    source_id: aim-scuba
+    claim_ids:
+      - scuba-altitude-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-hyperventilation-link
+    text: AIM hyperventilation in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+    source_id: aim-hyperventilation
+    claim_ids:
+      - hyperventilation-pattern
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dbe03cddeb0b2819046ae4025048eaf24cb0f4e7c05180c3467cef6387d14594
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-co-link
+    text: AIM carbon monoxide poisoning in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+    source_id: aim-carbon-monoxide
+    claim_ids:
+      - co-mechanism
+      - co-response
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dc78d6827dab9f3d74631c4c98cf61bfd3d1d8b4cdc1c639494fe1b59a342416
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-illusions-link
+    text: AIM illusions in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+    source_id: aim-illusions
+    claim_ids:
+      - spatial-illusion
+      - landing-illusion
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 771a489088e9a36ef418514adfa15102da33890addb5c887d7288198311e7b62
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-vision-link
+    text: AIM vision in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+    source_id: aim-vision
+    claim_ids:
+      - vision-conditions
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      errors: []
+      valid: true
+      excerpt_characters: 11399
+      excerpt_sha256: 1c72f39367c9fd5dffd317302e8750331d7ced34253537216830d9b22006edaa
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-dehydration-link
+    text: PHAK dehydration and heatstroke
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+    source_id: phak-dehydration
+    claim_ids:
+      - dehydration-effects
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4533
+      pdf_page_text_sha256: 0cf87bf1312b36ae1213d0b56d17d86efa5e428acdd7835e15bbe4c9b00ff317
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-human-factors
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-22T17:02:50.163Z
+    linked_claim_ids:
+      - acs-human-factors-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1941
+      pdf_page_text_sha256: bb2cf0b4dff74075a9d2bb4913be3a09fc2500e05d1ebb57b9133191621ff62e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-personal-fitness
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:50.198Z
+    linked_claim_ids:
+      - imsafe-check
+      - illness-flight-risk
+      - medication-impairment
+      - alcohol-residual-impairment
+      - fatigue-effects
+      - stress-effects
+      - emotion-effects
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: e53664276ca12f6fc888e9db0c9853b00769b0bbc08b0a1cffc005e2dacc7a50
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-medication-guidance
+    title: FAA Over-the-Counter Medications Reference Guide
+    checked_at_utc: 2026-09-22T17:02:51.459Z
+    linked_claim_ids:
+      - medication-two-questions
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      final_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: false
+      content_sha256: 9f7515990df26866b7aaf52300cfd748f6196715dc5c9b7c00b2f633453674cb
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      validation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1576
+      pdf_page_text_sha256: 2c4c802615aa44023eb5258d7e550097ed2b7881428648da249546f17180f93f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-medication-library
+    title: FAA Pharmaceuticals (Therapeutics), Medication Guidelines for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.487Z
+    linked_claim_ids:
+      - medication-reference-library
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      final_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a5
+      title: Pharmaceuticals (Therapeutics) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 93c51e431102cdd157dea169edf3a25f4373ef73b1f00d4188b8d34e60453dec
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      validation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      errors: []
+      valid: true
+      excerpt_characters: 3369
+      excerpt_sha256: 06f31cf496a5e3a89dca24ed8f3288da804946a297ac20dd23110de8f84a045f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-altitude-hypoxia
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.533Z
+    linked_claim_ids:
+      - hypoxia-mechanism
+      - hypoxia-effects
+      - hypoxia-response
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-ear-sinus
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.534Z
+    linked_claim_ids:
+      - ear-sinus-block
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-scuba
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.535Z
+    linked_claim_ids:
+      - scuba-altitude-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-hyperventilation
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.535Z
+    linked_claim_ids:
+      - hyperventilation-pattern
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dbe03cddeb0b2819046ae4025048eaf24cb0f4e7c05180c3467cef6387d14594
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-carbon-monoxide
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.536Z
+    linked_claim_ids:
+      - co-mechanism
+      - co-response
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dc78d6827dab9f3d74631c4c98cf61bfd3d1d8b4cdc1c639494fe1b59a342416
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-illusions
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.536Z
+    linked_claim_ids:
+      - spatial-illusion
+      - landing-illusion
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 771a489088e9a36ef418514adfa15102da33890addb5c887d7288198311e7b62
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-vision
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T17:02:51.536Z
+    linked_claim_ids:
+      - vision-conditions
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 526e40c5511d35cf12fca66d79de2d377de0829fd2444b2fbd13e151a783891e
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      errors: []
+      valid: true
+      excerpt_characters: 11399
+      excerpt_sha256: 1c72f39367c9fd5dffd317302e8750331d7ced34253537216830d9b22006edaa
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-dehydration
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-09-22T17:02:51.537Z
+    linked_claim_ids:
+      - dehydration-effects
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4533
+      pdf_page_text_sha256: 0cf87bf1312b36ae1213d0b56d17d86efa5e428acdd7835e15bbe4c9b00ff317
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-hypoxia-types
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-09-22T17:02:51.540Z
+    linked_claim_ids:
+      - hypoxia-vocabulary-pathways
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5032
+      pdf_page_text_sha256: a99bf4b80fe6525615d059775d719caff4a95b36a2e54976ce0bd458b60ce26c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-histotoxic-hypoxia
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-09-22T17:02:53.471Z
+    linked_claim_ids:
+      - hypoxia-vocabulary-histotoxic
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4553
+      pdf_page_text_sha256: da3f294c6b1a93b7185b91b416ae9353be9646c4c6b5f6468ae9fbeefd29b4c1
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-medical-deficiency
+    title: 14 CFR 61.53, Prohibition on operations during medical deficiency
+    checked_at_utc: 2026-09-22T17:02:50.199Z
+    linked_claim_ids:
+      - medical-deficiency-rule
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: 8b26a036b18d7289e34700137a0b681ca7d37f6245dee51949cb6cdef7d6fabf
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.53
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.53"
+        date: 2026-09-18
+        section_number: "61.53"
+      section_text_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      excerpt_characters: 1762
+      excerpt_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1762
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-alcohol-drugs
+    title: 14 CFR 91.17, Alcohol or drugs
+    checked_at_utc: 2026-09-22T17:02:50.199Z
+    linked_claim_ids:
+      - alcohol-drug-rule
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a7
+      title: null
+      truncated: false
+      content_sha256: 3c142d0617f49f8f8210b3804d13a1fc8043c0e35f85b47fe94200be5804c35b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.17
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.17"
+        date: 2026-09-18
+        section_number: "91.17"
+      section_text_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      excerpt_characters: 2811
+      excerpt_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2811
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

@@ -1,0 +1,2628 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: formal_source_review
+run_id: 5457f09a-3b8a-4505-b1d5-63535b7c24a8
+checked_at_utc: 2026-09-22T15:58:55.370Z
+sources_file: episodes/core-20-aeromedical-factors-human-performance/sources.yaml
+claims_file: episodes/core-20-aeromedical-factors-human-performance/claim-inventory.yaml
+show_notes_file: episodes/core-20-aeromedical-factors-human-performance/show-notes.md
+show_notes_manifest_file: episodes/core-20-aeromedical-factors-human-performance/show-notes-manifest.yaml
+input_sha256:
+  sources: fa65f6d73d25a9c7c356b563668e400c6b6d17a3e7f065c97a6f538b7277a4ca
+  claims: 1ad6e79793ee2e5f768a5fb2e1e786343970c0e53e28f961fa77f64fde5ac22c
+  master_script: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
+  show_notes: cba83244ca8137b7748f64d1fa37ca5d0cd4e448337797d09656fc2f780ba2ac
+  show_notes_manifest: 392a9a9978b2479bbc39da3f22374ef992f50e8b5d7590318540253b86150cbe
+input_normalization:
+  master_script: markdown-whitespace-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: e935266b3c5eb294162d3707c9cf98a70b618459a3f2d69a8c1e06c0a536a20d
+  show_notes: fd20bebd08e2c4f92a7baaf2fab8339969982a9e952ac242c001efc951e32bc1
+llm_requested: true
+llm_model: gpt-5.6-terra
+llm_review_passes: 2
+llm_materiality_policy: safety-and-core-v1
+authorization:
+  qa_id: openai-source-review-authorization
+  attested_at_utc: 2026-09-22T15:57:23.123Z
+  run_id: 5457f09a-3b8a-4505-b1d5-63535b7c24a8
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 49
+  claim_coverage_count: 26
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 30
+  manifest_link_count: 17
+show_notes_results:
+  - id: acs-human-factors-link
+    text: Private Pilot ACS Human Factors task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+    source_id: acs-human-factors
+    claim_ids:
+      - acs-human-factors-outcome
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1941
+      pdf_page_text_sha256: bb2cf0b4dff74075a9d2bb4913be3a09fc2500e05d1ebb57b9133191621ff62e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-fitness-link
+    text: AIM fitness for flight and personal checklist
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+    source_id: aim-personal-fitness
+    claim_ids:
+      - imsafe-check
+      - illness-flight-risk
+      - medication-impairment
+      - alcohol-residual-impairment
+      - fatigue-effects
+      - stress-effects
+      - emotion-effects
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a1 []
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: e53664276ca12f6fc888e9db0c9853b00769b0bbc08b0a1cffc005e2dacc7a50
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-otc-link
+    text: FAA OTC medication questions for pilots
+    url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+    source_id: faa-medication-guidance
+    claim_ids:
+      - medication-two-questions
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      final_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a6 []
+      title: null
+      truncated: false
+      content_sha256: 9f7515990df26866b7aaf52300cfd748f6196715dc5c9b7c00b2f633453674cb
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      validation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1576
+      pdf_page_text_sha256: 2c4c802615aa44023eb5258d7e550097ed2b7881428648da249546f17180f93f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: faa-medication-library-link
+    text: FAA medication guidance and reference materials
+    url: https://www.faa.gov/pilots/medical_certification/medications#content
+    source_id: faa-medication-library
+    claim_ids:
+      - medication-reference-library
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      final_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a8 []
+      title: Pharmaceuticals (Therapeutics) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 2145b5593668e002c936a0d2c4edaa016c4fdd02ae7ebaa7c35b6559c0abfccb
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      validation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      errors: []
+      valid: true
+      excerpt_characters: 3369
+      excerpt_sha256: 06f31cf496a5e3a89dca24ed8f3288da804946a297ac20dd23110de8f84a045f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ecfr-medical-deficiency-link
+    text: 14 CFR 61.53 medical deficiency for operations requiring a medical
+      certificate
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.53
+    source_id: ecfr-medical-deficiency
+    claim_ids:
+      - medical-deficiency-rule
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a20 []
+      title: null
+      truncated: false
+      content_sha256: 8b26a036b18d7289e34700137a0b681ca7d37f6245dee51949cb6cdef7d6fabf
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.53
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.53"
+        date: 2026-09-18
+        section_number: "61.53"
+      section_text_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      excerpt_characters: 1762
+      excerpt_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1762
+  - id: ecfr-alcohol-drugs-link
+    text: 14 CFR 91.17 alcohol and drugs
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.17
+    source_id: ecfr-alcohol-drugs
+    claim_ids:
+      - alcohol-drug-rule
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a22 []
+      title: null
+      truncated: false
+      content_sha256: 3c142d0617f49f8f8210b3804d13a1fc8043c0e35f85b47fe94200be5804c35b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.17
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.17"
+        date: 2026-09-18
+        section_number: "91.17"
+      section_text_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      excerpt_characters: 2811
+      excerpt_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2811
+  - id: aim-hypoxia-link
+    text: AIM altitude, ear and sinus, and scuba guidance
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+    source_id: aim-altitude-hypoxia
+    claim_ids:
+      - hypoxia-mechanism
+      - hypoxia-effects
+      - hypoxia-response
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-hypoxia-types-link
+    text: PHAK hypoxia types
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+    source_id: phak-hypoxia-types
+    claim_ids:
+      - hypoxia-vocabulary-pathways
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5032
+      pdf_page_text_sha256: a99bf4b80fe6525615d059775d719caff4a95b36a2e54976ce0bd458b60ce26c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-histotoxic-hypoxia-link
+    text: histotoxic hypoxia
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+    source_id: phak-histotoxic-hypoxia
+    claim_ids:
+      - hypoxia-vocabulary-histotoxic
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4553
+      pdf_page_text_sha256: da3f294c6b1a93b7185b91b416ae9353be9646c4c6b5f6468ae9fbeefd29b4c1
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-histotoxic-hypoxia-study-link
+    text: PHAK histotoxic hypoxia
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+    source_id: phak-histotoxic-hypoxia
+    claim_ids:
+      - hypoxia-vocabulary-histotoxic
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4553
+      pdf_page_text_sha256: da3f294c6b1a93b7185b91b416ae9353be9646c4c6b5f6468ae9fbeefd29b4c1
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-ear-sinus-link
+    text: AIM ear and sinus block details
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+    source_id: aim-ear-sinus
+    claim_ids:
+      - ear-sinus-block
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-scuba-link
+    text: AIM flight after scuba diving
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+    source_id: aim-scuba
+    claim_ids:
+      - scuba-altitude-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-hyperventilation-link
+    text: AIM hyperventilation in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+    source_id: aim-hyperventilation
+    claim_ids:
+      - hyperventilation-pattern
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dbe03cddeb0b2819046ae4025048eaf24cb0f4e7c05180c3467cef6387d14594
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-co-link
+    text: AIM carbon monoxide poisoning in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+    source_id: aim-carbon-monoxide
+    claim_ids:
+      - co-mechanism
+      - co-response
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dc78d6827dab9f3d74631c4c98cf61bfd3d1d8b4cdc1c639494fe1b59a342416
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-illusions-link
+    text: AIM illusions in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+    source_id: aim-illusions
+    claim_ids:
+      - spatial-illusion
+      - landing-illusion
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 771a489088e9a36ef418514adfa15102da33890addb5c887d7288198311e7b62
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: aim-vision-link
+    text: AIM vision in flight
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+    source_id: aim-vision
+    claim_ids:
+      - vision-conditions
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      errors: []
+      valid: true
+      excerpt_characters: 11399
+      excerpt_sha256: 1c72f39367c9fd5dffd317302e8750331d7ced34253537216830d9b22006edaa
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: phak-dehydration-link
+    text: PHAK dehydration and heatstroke
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+    source_id: phak-dehydration
+    claim_ids:
+      - dehydration-effects
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4533
+      pdf_page_text_sha256: 0cf87bf1312b36ae1213d0b56d17d86efa5e428acdd7835e15bbe4c9b00ff317
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-human-factors
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-22T15:57:23.123Z
+    linked_claim_ids:
+      - acs-human-factors-outcome
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1941
+      pdf_page_text_sha256: bb2cf0b4dff74075a9d2bb4913be3a09fc2500e05d1ebb57b9133191621ff62e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a4
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page identifies Task PA.I.H, Human Factors, and covers
+            aeromedical/physiological symptoms, recognition, causes, effects,
+            and corrective actions; alcohol/drugs; ADM including CRM or SRM;
+            risk management; and skills involving fitness for flight and
+            personal minimums. It specifically requires associating symptoms and
+            effects with causes and corrective actions for at least three listed
+            conditions, plus self-assessment.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies the Human Factors task and the cited
+              PDF page is the excerpted printed page 8 containing PA.I.H.K1-K4,
+              R1-R4, and S1-S2.
+          claim_assessments:
+            - claim_id: acs-human-factors-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt supports each stated element: human-factor knowledge and
+                risk management, ADM/SRM, fitness and personal-minimum
+                self-assessment, and the requirement to connect symptoms/effects
+                with causes and corrective actions for at least three listed
+                conditions."
+        usage:
+          input_tokens: 1418
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1415
+          output_tokens: 363
+          output_tokens_details:
+            reasoning_tokens: 117
+          total_tokens: 1781
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page is the Human Factors task and expressly covers
+            symptoms, recognition, causes, effects, and corrective actions; ADM;
+            risk associated with aeromedical issues and specified human-factor
+            hazards; and skills requiring association of symptoms/effects with
+            causes and corrective actions for at least three listed conditions,
+            plus self-assessment of fitness for flight and personal minimums.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies PA.I.H.K1-K4, R1-R4, and S1-S2 on
+              the cited PDF page, which contains the Human Factors task.
+          claim_assessments:
+            - claim_id: acs-human-factors-outcome
+              verdict: supports
+              finding_materiality: none
+              rationale: "The excerpt supports each stated component: K1 covers symptoms,
+                causes, effects, and corrective actions; K4 covers ADM; R1-R4
+                cover risk; S1 requires linking symptoms/effects to causes and
+                corrective actions for at least three conditions; and S2
+                requires fitness-for-flight and personal-minimums
+                self-assessment."
+        usage:
+          input_tokens: 1418
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1415
+          output_tokens: 341
+          output_tokens_details:
+            reasoning_tokens: 94
+          total_tokens: 1759
+    relevance: *a4
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-personal-fitness
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:23.124Z
+    linked_claim_ids:
+      - imsafe-check
+      - illness-flight-risk
+      - medication-impairment
+      - alcohol-residual-impairment
+      - fatigue-effects
+      - stress-effects
+      - emotion-effects
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-1
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: e53664276ca12f6fc888e9db0c9853b00769b0bbc08b0a1cffc005e2dacc7a50
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a5
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM excerpt directly supports all listed FAA-guidance
+            claims concerning the IMSAFE personal checklist and the effects of
+            illness, medication, alcohol, fatigue, stress, and emotion on pilot
+            performance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: AIM 8-1-1 contains the cited Fitness for Flight material, including
+              the relevant discussions of illness through the personal
+              checklist.
+          claim_assessments:
+            - claim_id: imsafe-check
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt's personal checklist lists illness, medication, stress,
+                alcohol, fatigue, and emotion.
+            - claim_id: illness-flight-risk
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that the safest rule is not to fly while suffering
+                from any illness and advises contacting an Aviation Medical
+                Examiner if that rule seems too stringent for a particular
+                illness.
+            - claim_id: medication-impairment
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt says prescribed and over-the-counter medications can
+                degrade performance and identifies antihistamines and agents to
+                control motion sickness among medications whose side effects may
+                impair critical functions including judgment, alertness,
+                coordination, and vision.
+            - claim_id: alcohol-residual-impairment
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states alcohol can impair flying skills and that, even
+                after the body completely destroys a moderate amount of alcohol,
+                hangover can severely impair a pilot for many hours.
+            - claim_id: fatigue-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states acute fatigue can result from lack of sleep and
+                prolonged physical or mental strain and can reduce coordination
+                and alertness; it also states chronic fatigue impairs judgment
+                and can lead to unwarranted risks.
+            - claim_id: stress-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states stress can distract and markedly decrease
+                alertness, interfere with judgment, and lead to unwarranted
+                risks such as flying into deteriorating weather to keep on
+                schedule.
+            - claim_id: emotion-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states emotionally upsetting events can decrease
+                alertness and may lead to risks bordering on self-destruction.
+        usage:
+          input_tokens: 3930
+          input_tokens_details:
+            cache_write_tokens: 3927
+            cached_tokens: 0
+          output_tokens: 597
+          output_tokens_details:
+            reasoning_tokens: 92
+          total_tokens: 4527
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly supports all listed FAA-guidance claims
+            concerning the personal checklist and the effects of illness,
+            medication, alcohol, fatigue, stress, and emotion on pilot
+            performance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited AIM 8-1-1 material contains the relevant Fitness for Flight
+              discussions, including illness, medication, alcohol, fatigue,
+              stress, emotion, and the personal checklist.
+          claim_assessments:
+            - claim_id: imsafe-check
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt lists the personal checklist categories as illness,
+                medication, stress, alcohol, fatigue, and emotion.
+            - claim_id: illness-flight-risk
+              verdict: supports
+              finding_materiality: none
+              rationale: It states that the safest rule is not to fly while suffering from any
+                illness and advises contacting an Aviation Medical Examiner if
+                that rule seems too stringent for a particular illness.
+            - claim_id: medication-impairment
+              verdict: supports
+              finding_materiality: none
+              rationale: It states that prescribed and over-the-counter medications can
+                degrade pilot performance and specifically identifies
+                antihistamines and agents for motion sickness among medications
+                whose effects or side effects may impair critical functions.
+            - claim_id: alcohol-residual-impairment
+              verdict: supports
+              finding_materiality: none
+              rationale: It states that alcohol can impair flying skills and that, even after
+                the body has completely destroyed a moderate amount of alcohol,
+                hangover can severely impair a pilot for many hours.
+            - claim_id: fatigue-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: It states that acute fatigue can result from lack of sleep and
+                prolonged physical or mental strain and can reduce coordination
+                and alertness; chronic fatigue impairs judgment and can lead to
+                unwarranted risks.
+            - claim_id: stress-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: It states that everyday stress can distract pilots, decrease
+                alertness, interfere with judgment, and lead to unwarranted
+                risks such as flying into deteriorating weather to remain on
+                schedule.
+            - claim_id: emotion-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: It states that emotionally upsetting events can decrease alertness
+                and may lead to risk taking that borders on self-destruction.
+        usage:
+          input_tokens: 3930
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3927
+          output_tokens: 724
+          output_tokens_details:
+            reasoning_tokens: 219
+          total_tokens: 4654
+    relevance: *a5
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: faa-medication-guidance
+    title: FAA Over-the-Counter Medications Reference Guide
+    checked_at_utc: 2026-09-22T15:57:23.219Z
+    linked_claim_ids:
+      - medication-two-questions
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      final_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: 9f7515990df26866b7aaf52300cfd748f6196715dc5c9b7c00b2f633453674cb
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      validation_url: https://www.faa.gov/pilots/medical_certification/media/OTCMedicationsforPilots.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1576
+      pdf_page_text_sha256: 2c4c802615aa44023eb5258d7e550097ed2b7881428648da249546f17180f93f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a7
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directs pilots first to assess whether an underlying
+            condition makes them unsafe to fly, then to consider
+            medication-related issues before operating. It instructs pilots to
+            discuss underlying conditions and whether medications may pose
+            problems with an AME or family physician.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator identifies Questions 1–2 on PDF page 1, and the
+              supplied excerpt is from that exact page and contains the relevant
+              underlying-condition and medication-assessment guidance.
+          claim_assessments:
+            - claim_id: medication-two-questions
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt supports considering both the underlying condition and
+                medication issues in determining fitness to fly, and it advises
+                discussion with an AME (also permitting a family physician)
+                regarding safety and medication concerns.
+        usage:
+          input_tokens: 1233
+          input_tokens_details:
+            cache_write_tokens: 1230
+            cached_tokens: 0
+          output_tokens: 398
+          output_tokens_details:
+            reasoning_tokens: 201
+          total_tokens: 1631
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page explicitly directs pilots to assess whether an
+            underlying condition makes them unsafe to fly and separately to
+            consider medication use, medication effects, and interactions with
+            underlying conditions or other medications. It also directs pilots
+            to discuss underlying conditions with an AME or family physician to
+            determine whether they are safe to fly.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page contains items 1 and 2 addressing the underlying
+              condition and medication assessment.
+          claim_assessments:
+            - claim_id: medication-two-questions
+              verdict: supports
+              finding_materiality: none
+              rationale: The guide supports assessing both the condition and
+                medication-related issues because either may affect safe flight,
+                and it advises discussion with an AME or family physician
+                regarding underlying conditions and medication-related concerns.
+        usage:
+          input_tokens: 1233
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1230
+          output_tokens: 285
+          output_tokens_details:
+            reasoning_tokens: 95
+          total_tokens: 1518
+    relevance: *a7
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: faa-medication-library
+    title: FAA Pharmaceuticals (Therapeutics), Medication Guidelines for Pilots
+    checked_at_utc: 2026-09-22T15:57:23.933Z
+    linked_claim_ids:
+      - medication-reference-library
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      final_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a8
+      title: Pharmaceuticals (Therapeutics) | Federal Aviation Administration
+      truncated: false
+      content_sha256: 2145b5593668e002c936a0d2c4edaa016c4fdd02ae7ebaa7c35b6559c0abfccb
+      hash_truncated: false
+      citation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      validation_url: https://www.faa.gov/pilots/medical_certification/medications#content
+      errors: []
+      valid: true
+      excerpt_characters: 3369
+      excerpt_sha256: 06f31cf496a5e3a89dca24ed8f3288da804946a297ac20dd23110de8f84a045f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a9
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt explicitly lists an “Over-the-Counter (OTC) Medications
+            Reference Guide” and states that it includes an “OTC Medications
+            Reference Table.” The authored passage accurately says the FAA
+            medication guidance page links the current OTC reference guide and
+            table.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the FAA Medication Guidelines for Pilots page
+              and its Over-the-Counter Medications subsection, where both
+              referenced resources appear.
+          claim_assessments:
+            - claim_id: medication-reference-library
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt directly supports that the FAA Pharmaceuticals page links
+                medication-reference documents including the OTC reference guide
+                and OTC reference table.
+        usage:
+          input_tokens: 1320
+          input_tokens_details:
+            cache_write_tokens: 1317
+            cached_tokens: 0
+          output_tokens: 173
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1493
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt’s Over-the-Counter Medications section explicitly links
+            the “Over-the-Counter (OTC) Medications Reference Guide” and states
+            that it includes an “OTC Medications Reference Table.” The authored
+            passage accurately describes those linked FAA resources.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the FAA Medication Guidelines for Pilots page
+              and its Over-the-Counter Medications subsection, where both the
+              OTC reference guide and reference table are described.
+          claim_assessments:
+            - claim_id: medication-reference-library
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly states that the page provides the OTC
+                Medications Reference Guide and that its topics include an OTC
+                Medications Reference Table.
+        usage:
+          input_tokens: 1320
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1317
+          output_tokens: 181
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1501
+    relevance: *a9
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-altitude-hypoxia
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:24.026Z
+    linked_claim_ids:
+      - hypoxia-mechanism
+      - hypoxia-effects
+      - hypoxia-response
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a10
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM excerpt directly addresses altitude hypoxia, its
+            mechanism, associated cognitive and physical effects, difficulty of
+            self-recognition, and prevention through supplemental oxygen and
+            safe cabin pressure altitude.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies AIM 8-1-2, Effects of Altitude, in
+              the hypoxia material contained in the excerpt.
+          claim_assessments:
+            - claim_id: hypoxia-mechanism
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that altitude hypoxia results from reduced
+                barometric pressure at altitude while atmospheric oxygen
+                concentration remains about 21 percent.
+            - claim_id: hypoxia-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that hypoxia can impair judgment, memory,
+                alertness, and coordination; cause headache, drowsiness, and
+                dizziness; and be difficult to recognize, particularly with
+                gradual onset.
+            - claim_id: hypoxia-response
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt identifies enriching inspired air with oxygen from an
+                appropriate oxygen system and maintaining a comfortable, safe
+                cabin pressure altitude as measures that prevent hypoxia.
+        usage:
+          input_tokens: 3538
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3535
+          output_tokens: 391
+          output_tokens_details:
+            reasoning_tokens: 117
+          total_tokens: 3929
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM hypoxia discussion directly supports all three listed
+            claims concerning the altitude-related mechanism, symptoms and
+            recognition difficulty, and prevention through supplemental oxygen
+            and safe cabin pressure altitude.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies AIM 8-1-2, Effects of Altitude,
+              hypoxia discussion, where the relevant statements appear.
+          claim_assessments:
+            - claim_id: hypoxia-mechanism
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that altitude hypoxia results from reduced
+                barometric pressure while atmospheric oxygen concentration
+                remains about 21 percent.
+            - claim_id: hypoxia-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt identifies impairment of judgment, memory, alertness, and
+                coordination; headache, drowsiness, and dizziness; and says
+                hypoxia effects are usually difficult to recognize, especially
+                when gradual.
+            - claim_id: hypoxia-response
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that hypoxia is prevented by enriching inspired
+                air with oxygen from an appropriate oxygen system and
+                maintaining a comfortable, safe cabin pressure altitude.
+        usage:
+          input_tokens: 3538
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3535
+          output_tokens: 366
+          output_tokens_details:
+            reasoning_tokens: 96
+          total_tokens: 3904
+    relevance: *a10
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-ear-sinus
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:24.026Z
+    linked_claim_ids:
+      - ear-sinus-block
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a11
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that upper-respiratory infections and
+            nasal allergic conditions can cause congestion that impedes
+            equalization in the middle ear and sinuses. It describes ear and
+            sinus block, including severe pain, and identifies descent as the
+            relevant phase for ear equalization and the most frequent phase for
+            sinus block.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited AIM section contains the Ear Block and Sinus Block guidance
+              supporting the claim.
+          claim_assessments:
+            - claim_id: ear-sinus-block
+              verdict: supports
+              finding_materiality: none
+              rationale: The source states that congestion from an upper-respiratory infection
+                or nasal allergic condition can make middle-ear and sinus
+                pressure equalization difficult or impossible. It describes ear
+                and sinus block and associated severe or excruciating pain; it
+                also states that sinus block occurs most frequently during
+                descent.
+        usage:
+          input_tokens: 3197
+          input_tokens_details:
+            cache_write_tokens: 3194
+            cached_tokens: 0
+          output_tokens: 351
+          output_tokens_details:
+            reasoning_tokens: 143
+          total_tokens: 3548
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that upper-respiratory infections and
+            nasal allergic conditions can cause congestion that makes middle-ear
+            and sinus pressure equalization difficult, that sinus block occurs
+            most frequently during descent, and that ear or sinus block can
+            cause severe or excruciating pain. It also identifies hearing loss
+            as an effect of ear block.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies AIM 8-1-2 and the ear-block and
+              sinus-block material contained in the excerpt.
+          claim_assessments:
+            - claim_id: ear-sinus-block
+              verdict: supports
+              finding_materiality: none
+              rationale: The source supports congestion from an upper-respiratory infection or
+                nasal allergy impeding ear or sinus equalization, with descent
+                particularly implicated, and resulting painful ear or sinus
+                block.
+        usage:
+          input_tokens: 3197
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3194
+          output_tokens: 391
+          output_tokens_details:
+            reasoning_tokens: 194
+          total_tokens: 3588
+    relevance: *a11
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-scuba
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:24.026Z
+    linked_claim_ids:
+      - scuba-altitude-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 7e5add6278ffe500e8bb033e0ff6876cacbe1027cb0a15691472601e56344ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a12
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt expressly states that excess nitrogen absorbed during
+            scuba diving can evolve as gas during exposure to reduced barometric
+            pressure at increased altitude, causing altitude decompression
+            sickness.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator correctly identifies AIM 8-1-2’s subsection,
+              “Decompression Sickness After Scuba Diving.”
+          claim_assessments:
+            - claim_id: scuba-altitude-risk
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the source’s explanation that absorbed
+                nitrogen may evolve into gas at lower pressure associated with
+                flight altitude and cause decompression sickness.
+        usage:
+          input_tokens: 3160
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3157
+          output_tokens: 158
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3318
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that, after scuba diving, excess nitrogen absorbed
+            during diving can evolve as nitrogen gas during exposure to reduced
+            barometric pressure at increased altitude, causing altitude
+            decompression sickness.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited AIM section contains the heading “Decompression Sickness
+              After Scuba Diving” and the relevant discussion of nitrogen,
+              reduced pressure at altitude, and recommended waiting times.
+          claim_assessments:
+            - claim_id: scuba-altitude-risk
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt’s statement that evolved
+                nitrogen gas can cause altitude decompression sickness at the
+                reduced barometric pressure associated with increased altitude.
+        usage:
+          input_tokens: 3160
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3157
+          output_tokens: 210
+          output_tokens_details:
+            reasoning_tokens: 37
+          total_tokens: 3370
+    relevance: *a12
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-hyperventilation
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:24.027Z
+    linked_claim_ids:
+      - hyperventilation-pattern
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-3
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dbe03cddeb0b2819046ae4025048eaf24cb0f4e7c05180c3467cef6387d14594
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a13
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that stressful situations can cause
+            subconscious hyperventilation; hyperventilation blows off excessive
+            carbon dioxide; symptoms include lightheadedness, tingling,
+            drowsiness, and suffocation; and early symptoms are similar to
+            hypoxia while both conditions may occur simultaneously.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, AIM 8-1-3 subparagraphs 1-3, matches the excerpted
+              Hyperventilation in Flight material supporting the claim.
+          claim_assessments:
+            - claim_id: hyperventilation-pattern
+              verdict: supports
+              finding_materiality: none
+              rationale: "The source supports every stated element: stress-related
+                overbreathing, reduced carbon dioxide, lightheadedness and
+                tingling, similarity to hypoxia, and possible simultaneous
+                occurrence with hypoxia."
+        usage:
+          input_tokens: 3065
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3062
+          output_tokens: 196
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3261
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that hyperventilation can occur
+            subconsciously in stressful flight situations, blows off excessive
+            carbon dioxide, can cause lightheadedness, tingling, drowsiness, and
+            suffocation sensations, and has early symptoms similar to hypoxia;
+            it also states that hyperventilation and hypoxia can occur
+            simultaneously.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, AIM 8-1-3, is the hyperventilation section and
+              directly contains the relevant statements.
+          claim_assessments:
+            - claim_id: hyperventilation-pattern
+              verdict: supports
+              finding_materiality: none
+              rationale: "Each material element is expressly supported: stress-related
+                subconscious overbreathing, carbon-dioxide reduction,
+                lightheadedness and tingling, similar early symptoms to hypoxia,
+                and possible simultaneous occurrence with hypoxia."
+        usage:
+          input_tokens: 3065
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3062
+          output_tokens: 201
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3266
+    relevance: *a13
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-carbon-monoxide
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:24.027Z
+    linked_claim_ids:
+      - co-mechanism
+      - co-response
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: dc78d6827dab9f3d74631c4c98cf61bfd3d1d8b4cdc1c639494fe1b59a342416
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a14
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM section directly supports both listed claims regarding
+            carbon monoxide characteristics, hypoxia effects, recognition, and
+            immediate response actions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies AIM 8-1-4, “Carbon Monoxide
+              Poisoning in Flight,” and the excerpt contains the cited material.
+          claim_assessments:
+            - claim_id: co-mechanism
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that carbon monoxide is colorless and odorless, is
+                contained in exhaust fumes, and significantly reduces the
+                blood's ability to carry oxygen, with hypoxia effects resulting.
+            - claim_id: co-response
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that a pilot who detects exhaust odor or
+                experiences headache, drowsiness, or dizziness while using the
+                heater should suspect carbon monoxide poisoning, immediately
+                shut off the heater and open air vents, and seek medical
+                treatment if symptoms are severe or continue after landing.
+        usage:
+          input_tokens: 3220
+          input_tokens_details:
+            cache_write_tokens: 3217
+            cached_tokens: 0
+          output_tokens: 320
+          output_tokens_details:
+            reasoning_tokens: 83
+          total_tokens: 3540
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM section directly supports both listed claims regarding
+            carbon monoxide characteristics, hypoxia effects, and the specified
+            response to suspected exposure while using a heater.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies AIM 8-1-4, “Carbon Monoxide Poisoning in
+              Flight,” and the supplied excerpt contains that exact section and
+              the relevant statements.
+          claim_assessments:
+            - claim_id: co-mechanism
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that carbon monoxide is colorless and odorless, is
+                contained in exhaust fumes, significantly reduces the blood's
+                ability to carry oxygen when breathed, and consequently causes
+                effects of hypoxia.
+            - claim_id: co-response
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that, while using the heater, a pilot detecting
+                exhaust odor or experiencing headache, drowsiness, or dizziness
+                should suspect carbon monoxide poisoning, immediately shut off
+                the heater and open air vents, and seek medical treatment if
+                symptoms are severe or continue after landing.
+        usage:
+          input_tokens: 3220
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3217
+          output_tokens: 313
+          output_tokens_details:
+            reasoning_tokens: 63
+          total_tokens: 3533
+    relevance: *a14
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-illusions
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:24.027Z
+    linked_claim_ids:
+      - spatial-illusion
+      - landing-illusion
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-5
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 771a489088e9a36ef418514adfa15102da33890addb5c887d7288198311e7b62
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a15
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that complex motions/forces and certain
+            visual scenes can create illusions of motion and position, and that
+            prevention of resulting spatial disorientation requires reliable
+            fixed ground references or flight instruments. It also expressly
+            includes a section titled “Illusions Leading to Landing Errors.”
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies AIM 8-1-5, “Illusions in Flight,”
+              including its discussion of illusions leading to landing errors.
+          claim_assessments:
+            - claim_id: spatial-illusion
+              verdict: supports
+              finding_materiality: none
+              rationale: The source states that complex motions and forces and certain visual
+                scenes can create illusions of motion and position, and that
+                spatial disorientation from these illusions can be prevented
+                only by visual reference to reliable, fixed ground points or
+                flight instruments.
+            - claim_id: landing-illusion
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly contains the heading “Illusions Leading to
+                Landing Errors” and discusses several such visual illusions.
+        usage:
+          input_tokens: 3282
+          input_tokens_details:
+            cache_write_tokens: 3279
+            cached_tokens: 0
+          output_tokens: 277
+          output_tokens_details:
+            reasoning_tokens: 34
+          total_tokens: 3559
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM section directly addresses both spatial-disorientation
+            illusions caused by motion forces and visual scenes and illusions
+            leading to landing errors.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: "The locator, AIM 8-1-5, is correct: the excerpt contains both
+              “Illusions Leading to Spatial Disorientation” and “Illusions
+              Leading to Landing Errors.”"
+          claim_assessments:
+            - claim_id: spatial-illusion
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that complex motions and forces and certain visual
+                scenes can create illusions of motion and position, and that
+                resulting spatial disorientation can be prevented only by visual
+                reference to reliable fixed ground points or flight instruments.
+            - claim_id: landing-illusion
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt has a dedicated section titled “Illusions Leading to
+                Landing Errors” and describes several visual, surface-feature,
+                and atmospheric illusions affecting approach and landing.
+        usage:
+          input_tokens: 3282
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3279
+          output_tokens: 265
+          output_tokens_details:
+            reasoning_tokens: 35
+          total_tokens: 3547
+    relevance: *a15
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-vision
+    title: Aeronautical Information Manual, Medical Facts for Pilots
+    checked_at_utc: 2026-09-22T15:57:24.028Z
+    linked_claim_ids:
+      - vision-conditions
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a1
+      title: Chapter 8. Medical Facts for Pilots
+      truncated: false
+      content_sha256: 1a352fee39b0c97c44af6d2bca3098c6620d08a3990b7ec9ccf59109eb7f8300
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap8_section_1.html#8-1-6
+      errors: []
+      valid: true
+      excerpt_characters: 11399
+      excerpt_sha256: 1c72f39367c9fd5dffd317302e8750331d7ced34253537216830d9b22006edaa
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a16
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that illumination level and sky-scanning
+            technique determine how effectively vision is used; under dim
+            illumination, small print and chart/instrument colors become
+            unreadable without adequate cockpit lighting, and other aircraft
+            must be much closer to be seen unless their navigation lights are
+            on.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited locator, AIM 8-1-6, Vision in Flight, subparagraphs 1-3,
+              contains the cited illumination, dark-adaptation, and scanning
+              information.
+          claim_assessments:
+            - claim_id: vision-conditions
+              verdict: supports
+              finding_materiality: none
+              rationale: The source supports that illumination and scanning technique affect
+                visual detection and that darkness/dim illumination degrades
+                reading cockpit detail and detecting aircraft, particularly
+                unlit aircraft.
+        usage:
+          input_tokens: 3011
+          input_tokens_details:
+            cache_write_tokens: 3008
+            cached_tokens: 0
+          output_tokens: 193
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3204
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM passage directly states that illumination level and
+            sky-scanning technique are major factors in effective vision; under
+            dim illumination, small print and colors become unreadable without
+            adequate cockpit lighting, and other aircraft must be closer to be
+            seen unless their navigation lights are on. It also states that
+            viewing a bright light can rapidly eliminate dark adaptation.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies AIM 8-1-6, including the relevant
+              material on illumination, dark adaptation, and scanning.
+          claim_assessments:
+            - claim_id: vision-conditions
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt supports that illumination and scanning technique affect
+                visual detection and that darkness/dim illumination makes
+                cockpit detail harder to read and makes unlit aircraft harder to
+                detect at distance.
+        usage:
+          input_tokens: 3011
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3008
+          output_tokens: 196
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 3207
+    relevance: *a16
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-dehydration
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-09-22T15:57:24.028Z
+    linked_claim_ids:
+      - dehydration-effects
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4533
+      pdf_page_text_sha256: 0cf87bf1312b36ae1213d0b56d17d86efa5e428acdd7835e15bbe4c9b00ff317
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a17
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page expressly identifies hot flight decks and flight lines
+            as causes of dehydration; lists headache, fatigue, sleepiness, and
+            dizziness as signs; states that fatigue makes top physical and
+            mental performance difficult or impossible; and says long periods
+            flying in hot summer temperatures increase susceptibility to
+            dehydration.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is page 17-14 and contains the "Dehydration and
+              Heatstroke" section supporting the claim.
+          claim_assessments:
+            - claim_id: dehydration-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: The source supports dehydration-related fatigue, headache, dizziness,
+                impaired physical and mental performance, and increased
+                susceptibility during prolonged flying in hot conditions.
+        usage:
+          input_tokens: 1630
+          input_tokens_details:
+            cache_write_tokens: 1627
+            cached_tokens: 0
+          output_tokens: 180
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1810
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that dehydration can be caused or worsened by hot
+            flight decks and long periods of flying in hot summer temperatures,
+            lists headache, fatigue, sleepiness, and dizziness as common signs,
+            and says fatigue makes top physical and mental performance difficult
+            or impossible.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is the provided excerpt and contains the
+              Dehydration and Heatstroke section supporting the claim.
+          claim_assessments:
+            - claim_id: dehydration-effects
+              verdict: supports
+              finding_materiality: none
+              rationale: The source expressly supports dehydration-related fatigue, headache,
+                dizziness, and impaired physical and mental performance,
+                including increased susceptibility during prolonged flying in
+                hot conditions.
+        usage:
+          input_tokens: 1630
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1627
+          output_tokens: 174
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1804
+    relevance: *a17
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-hypoxia-types
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-09-22T15:57:24.066Z
+    linked_claim_ids:
+      - hypoxia-vocabulary-pathways
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=3
+      errors: []
+      valid: true
+      pdf_page_number: 3
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5032
+      pdf_page_text_sha256: a99bf4b80fe6525615d059775d719caff4a95b36a2e54976ce0bd458b60ce26c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a18
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page names all four forms of hypoxia and describes hypoxic
+            hypoxia as insufficient oxygen available to the body, hypemic
+            hypoxia as blood being unable to take up and transport sufficient
+            oxygen, and stagnant hypoxia as oxygen-rich blood not moving to body
+            tissues.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is the page containing the hypoxia discussion and
+              the listed definitions.
+          claim_assessments:
+            - claim_id: hypoxia-vocabulary-pathways
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt expressly lists hypoxic, hypemic, stagnant, and
+                histotoxic hypoxia and supports the stated causal descriptions
+                for the first three.
+        usage:
+          input_tokens: 1875
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1872
+          output_tokens: 275
+          output_tokens_details:
+            reasoning_tokens: 101
+          total_tokens: 2150
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page explicitly lists hypoxic, hypemic, stagnant, and
+            histotoxic hypoxia and describes hypoxic hypoxia as insufficient
+            oxygen available to the body, hypemic hypoxia as blood being unable
+            to take up and transport sufficient oxygen, and stagnant hypoxia as
+            oxygen-rich blood not moving from the lungs to the tissues.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt was extracted from the specified PDF page and contains
+              the hypoxia overview and the relevant type definitions.
+          claim_assessments:
+            - claim_id: hypoxia-vocabulary-pathways
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the four listed forms and the source’s
+                stated causal descriptions for hypoxic, hypemic, and stagnant
+                hypoxia.
+        usage:
+          input_tokens: 1875
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1872
+          output_tokens: 243
+          output_tokens_details:
+            reasoning_tokens: 55
+          total_tokens: 2118
+    relevance: *a18
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-histotoxic-hypoxia
+    title: "Pilot's Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-09-22T15:57:26.013Z
+    linked_claim_ids:
+      - hypoxia-vocabulary-histotoxic
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4553
+      pdf_page_text_sha256: da3f294c6b1a93b7185b91b416ae9353be9646c4c6b5f6468ae9fbeefd29b4c1
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a19
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt explicitly defines histotoxic hypoxia as cells being
+            unable to effectively use oxygen, despite enough oxygen being
+            transported to the cells.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page contains the “Histotoxic Hypoxia” section and the
+              exact supporting definition.
+          claim_assessments:
+            - claim_id: hypoxia-vocabulary-histotoxic
+              verdict: supports
+              finding_materiality: none
+              rationale: The source states that enough oxygen is transported to cells, but the
+                cells are unable to make use of it, which supports the claim.
+        usage:
+          input_tokens: 1686
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1683
+          output_tokens: 146
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1832
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt explicitly defines histotoxic hypoxia as an inability of
+            cells to use oxygen effectively despite enough oxygen being
+            transported to the cells.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page contains the “Histotoxic Hypoxia” section and the
+              quoted definition.
+          claim_assessments:
+            - claim_id: hypoxia-vocabulary-histotoxic
+              verdict: supports
+              finding_materiality: none
+              rationale: "The claim accurately restates: “enough oxygen is being transported
+                to the cells ... but they are unable to make use of it.”"
+        usage:
+          input_tokens: 1686
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1683
+          output_tokens: 145
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1831
+    relevance: *a19
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-medical-deficiency
+    title: 14 CFR 61.53, Prohibition on operations during medical deficiency
+    checked_at_utc: 2026-09-22T15:57:23.125Z
+    linked_claim_ids:
+      - medical-deficiency-rule
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a20
+      title: null
+      truncated: false
+      content_sha256: 8b26a036b18d7289e34700137a0b681ca7d37f6245dee51949cb6cdef7d6fabf
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.53
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=61&section=61.53
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.53"
+        date: 2026-09-18
+        section_number: "61.53"
+      section_text_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      excerpt_characters: 1762
+      excerpt_sha256: ba911c0b20f5cbc772e3f811e9dc193d3e4ee0d4fe117f0bb7ab69a7ed4d8c70
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1762
+    relevance_reviews:
+      - &a21
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states that, for operations requiring a medical
+            certificate, a person holding a medical certificate may not act as
+            PIC or a required pilot flight crewmember when the person knows or
+            has reason to know of a medical condition that prevents meeting the
+            medical-certificate requirements necessary for the operation, or is
+            taking medication or receiving treatment with that result.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies § 61.53(a)(1)-(2), which contains
+              the cited rule for operations requiring a medical certificate.
+          claim_assessments:
+            - claim_id: medical-deficiency-rule
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately paraphrases § 61.53(a)(1)-(2), including both
+                the medical-condition and medication/treatment provisions and
+                their application to PIC and required pilot flight crewmembers.
+        usage:
+          input_tokens: 1301
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1298
+          output_tokens: 206
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1507
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited § 61.53(a)(1)-(2) directly states the claimed prohibition
+            for operations requiring a medical certificate, including both
+            known/reasonably known disqualifying medical conditions and
+            medication or other treatment that makes the person unable to meet
+            the applicable medical-certificate requirements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies § 61.53(a)(1)-(2), and the excerpt
+              contains those exact provisions.
+          claim_assessments:
+            - claim_id: medical-deficiency-rule
+              verdict: supports
+              finding_materiality: none
+              rationale: "The claim accurately reflects § 61.53(a): it applies to a person
+                holding a Part 67 medical certificate acting as PIC or a
+                required pilot flight crewmember, where the person knows or has
+                reason to know either a medical condition or
+                medication/treatment prevents meeting the medical-certificate
+                requirements necessary for the operation."
+        usage:
+          input_tokens: 1301
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1298
+          output_tokens: 214
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1515
+    relevance: *a21
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-alcohol-drugs
+    title: 14 CFR 91.17, Alcohol or drugs
+    checked_at_utc: 2026-09-22T15:57:23.125Z
+    linked_claim_ids:
+      - alcohol-drug-rule
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a22
+      title: null
+      truncated: false
+      content_sha256: 3c142d0617f49f8f8210b3804d13a1fc8043c0e35f85b47fe94200be5804c35b
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.17
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-18/title-14.xml?part=91&section=91.17
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-18
+        title_status_sha256: 8e3a5d862c691cc3510414093ef066a317f29533ecd39b0d2a77a7f8a8c492f5
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.17"
+        date: 2026-09-18
+        section_number: "91.17"
+      section_text_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      excerpt_characters: 2811
+      excerpt_sha256: e21829fe66ebb601e976ab7affdc2b518fa0b2c228a718122a73e5a9795ac22b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 2811
+    relevance_reviews:
+      - &a23
+        pass: 1
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states all four prohibitions in 14 CFR
+            91.17(a)(1)-(4), matching the listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator correctly identifies Section 91.17(a)(1)-(4), which
+              contains the cited crewmember alcohol and drug prohibitions.
+          claim_assessments:
+            - claim_id: alcohol-drug-rule
+              verdict: supports
+              finding_materiality: none
+              rationale: Section 91.17(a)(1)-(4) prohibits acting or attempting to act as a
+                civil-aircraft crewmember within 8 hours after consuming
+                alcohol, while under alcohol's influence, while using a drug
+                affecting faculties contrary to safety, or with an alcohol
+                concentration of 0.04 or greater.
+        usage:
+          input_tokens: 1484
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1481
+          output_tokens: 189
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1673
+      - pass: 2
+        status: assessed
+        model: gpt-5.6-terra
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states all four prohibitions in 14 CFR
+            91.17(a)(1)–(4), including the eight-hour alcohol interval, alcohol
+            influence, drugs affecting faculties contrary to safety, and alcohol
+            concentration of 0.04 or greater.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator accurately identifies § 91.17(a)(1)–(4), which contains
+              the cited prohibitions.
+          claim_assessments:
+            - claim_id: alcohol-drug-rule
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately summarizes § 91.17(a)(1)–(4).
+        usage:
+          input_tokens: 1484
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1481
+          output_tokens: 165
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1649
+    relevance: *a23
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []

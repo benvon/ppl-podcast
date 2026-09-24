@@ -1,0 +1,1313 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: publication_link_check
+run_id: b35bbe65-1d8d-4ecc-9455-8d7c2794f24b
+checked_at_utc: 2026-09-24T19:03:34.048Z
+sources_file: episodes/core-21-private-pilot-privileges-limitations-currency/sources.yaml
+claims_file: episodes/core-21-private-pilot-privileges-limitations-currency/claim-inventory.yaml
+show_notes_file: episodes/core-21-private-pilot-privileges-limitations-currency/show-notes.md
+show_notes_manifest_file: episodes/core-21-private-pilot-privileges-limitations-currency/show-notes-manifest.yaml
+input_sha256:
+  sources: 20745d779e949e36885112abd2d17b4aec785dc38153d6ce6188533e24597f4b
+  claims: 9f13baebe64a918fb62e9e2d3471b3f5febf7d88854b8421efeee720c16185a7
+  master_script: 58818bffd4c74ac86c4f9e4b21a7ca96ec3ad972bbc7ad8cfe69e071b4105e9f
+  show_notes: a2c8c3043acf03cd61737115fc085fae7baf645df4f9bd593cd1472d4fcf1b0a
+  show_notes_manifest: 41964603012b9cc8b6142542dee85622f60c8934ded09c52c4cf77eac0e44cdb
+input_normalization:
+  master_script: narration-and-source-tags-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: af0b9efe67d83fd8622aebc4b1f8c8ea8c26690d7f785de559983e831dec90e9
+  show_notes: 902d02585be08b45d9c33d7e387204ac0f4717d586ea1598fbaeaf3568af2b6a
+llm_requested: false
+llm_model: null
+llm_review_passes: 0
+llm_materiality_policy: null
+authorization: null
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 44
+  claim_coverage_count: 17
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 30
+  manifest_link_count: 15
+show_notes_results:
+  - id: acs-pilot-qualifications-link
+    text: Private Pilot ACS Pilot Qualifications task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    source_id: acs-pilot-qualifications
+    claim_ids:
+      - acs-pilot-outcome
+      - acs-proficiency-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ecfr-pilot-documents-link
+    text: 14 CFR 61.3 pilot certificate and photo ID
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.3
+    source_id: ecfr-pilot-documents
+    claim_ids:
+      - certificate-and-id
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a6 []
+      title: null
+      truncated: false
+      content_sha256: adef5d481a42dfc9b1aae536379590ca90b39cb05c3e8973a47a0ee03b9dcfec
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.3"
+        date: 2026-09-22
+        section_number: "61.3"
+      section_text_sha256: faefaea68541ef441bd60db64cfd9fd4bb1a0b3aabde56cc65b6f0c2290c6bc5
+      excerpt_characters: 12000
+      excerpt_sha256: f89cbf43c4e835fd84837b563879664f83cd77a7426ad8ce0d10c8e54dc724ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 18706
+  - id: ecfr-aircraft-ratings-link
+    text: 14 CFR 61.31 category, class, and type ratings
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.31
+    source_id: ecfr-aircraft-ratings
+    claim_ids:
+      - aircraft-rating
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: 486f0774a491ece76531dda011d9966eb67fcb181937b29396f46d18542d7d8a
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.31
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.31"
+        date: 2026-09-22
+        section_number: "61.31"
+      section_text_sha256: 8a298cfa3b45b12ffb5043bf9c3ef6472a5a4e4faafe1c8a970f334475a84a8f
+      excerpt_characters: 12000
+      excerpt_sha256: 2a08b387e8fe2e419e3d04b6e538b2f78f2511cd8ec193bdd9c915df6e1f0661
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15971
+  - id: ecfr-high-performance-link
+    text: 14 CFR 61.31 high-performance qualification
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.31
+    source_id: ecfr-high-performance
+    claim_ids:
+      - high-performance-endorsement
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 486f0774a491ece76531dda011d9966eb67fcb181937b29396f46d18542d7d8a
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.31
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.31"
+        date: 2026-09-22
+        section_number: "61.31"
+      section_text_sha256: 8a298cfa3b45b12ffb5043bf9c3ef6472a5a4e4faafe1c8a970f334475a84a8f
+      excerpt_characters: 12000
+      excerpt_sha256: 2a08b387e8fe2e419e3d04b6e538b2f78f2511cd8ec193bdd9c915df6e1f0661
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15971
+  - id: ecfr-medical-requirement-link
+    text: 14 CFR 61.23 private-pilot medical requirement
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.23
+    source_id: ecfr-medical-requirement
+    claim_ids:
+      - private-medical-basis
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a4 []
+      title: null
+      truncated: false
+      content_sha256: d8749481bd7eeb368976130df9da0298097157dd6f2eacdea2e7d2a021a6608e
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.23
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.23"
+        date: 2026-09-22
+        section_number: "61.23"
+      section_text_sha256: 2f2108c543e222fa9de94d023e48a1ddf097ce6e606c7fd9cffba9cba14ede77
+      excerpt_characters: 12000
+      excerpt_sha256: bc4ac0ae6f4a8f6597e2bd38637e723a40de83b717aa9e3748aa73cbf835dbe3
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15968
+  - id: faa-medical-duration-link
+    text: FAA third-class medical certificate validity
+    url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+    source_id: faa-medical-duration
+    claim_ids:
+      - medical-duration
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      final_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a7 []
+      title: Guide for Aviation Medical Examiners | Federal Aviation Administration
+      truncated: false
+      content_sha256: e1bb09671a72d8c5f7ff4f2975e549a3497b32c9c1bbafdeeedcfe2ee8b78c85
+      hash_truncated: false
+      citation_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      validation_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      errors: []
+      valid: true
+      excerpt_characters: 3418
+      excerpt_sha256: a01b01450dfb29cb19ffc9bb515f98088fb433e208d8543ae073082d91df0cff
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: ecfr-flight-review-link
+    text: 14 CFR 61.56 flight review
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.56
+    source_id: ecfr-flight-review
+    claim_ids:
+      - flight-review-recency
+      - flight-review-scope
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a8 []
+      title: null
+      truncated: false
+      content_sha256: 1b5c4b9d823d545d3093f0198748f51070f79f4a2a7842bc063be72ae0dbf3e3
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.56
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.56"
+        date: 2026-09-22
+        section_number: "61.56"
+      section_text_sha256: 5346326fa364ec22e1a08531882a81b179e970c5d29c72b653d5d7cf883ba6ec
+      excerpt_characters: 4344
+      excerpt_sha256: 5346326fa364ec22e1a08531882a81b179e970c5d29c72b653d5d7cf883ba6ec
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4344
+  - id: ecfr-passenger-day-link
+    text: 14 CFR 61.57 general passenger recency
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+    source_id: ecfr-passenger-day
+    claim_ids:
+      - passenger-day-recency
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a2 []
+      title: null
+      truncated: false
+      content_sha256: 3e4c1f2e91b13d99fb4f1f7c2f43f5f0792e8c7dbd4c92370c468ca184607230
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.57"
+        date: 2026-09-22
+        section_number: "61.57"
+      section_text_sha256: dd2d7fb120b8430d30ebe28b504de065c9584c5d4f4dd153ed31c8b7a3749e4e
+      excerpt_characters: 12000
+      excerpt_sha256: 162534a80208cd025e0712d524b8a7ca9cad7018878e6d242fecefef7e8ce0ad
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15352
+  - id: ecfr-passenger-night-link
+    text: 14 CFR 61.57 night passenger recency
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+    source_id: ecfr-passenger-night
+    claim_ids:
+      - passenger-night-recency
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: 3e4c1f2e91b13d99fb4f1f7c2f43f5f0792e8c7dbd4c92370c468ca184607230
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.57"
+        date: 2026-09-22
+        section_number: "61.57"
+      section_text_sha256: dd2d7fb120b8430d30ebe28b504de065c9584c5d4f4dd153ed31c8b7a3749e4e
+      excerpt_characters: 12000
+      excerpt_sha256: 162534a80208cd025e0712d524b8a7ca9cad7018878e6d242fecefef7e8ce0ad
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15352
+  - id: ecfr-logbook-evidence-link
+    text: 14 CFR 61.51 pilot logbook records
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.51
+    source_id: ecfr-logbook-evidence
+    claim_ids:
+      - record-recent-experience
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a9 []
+      title: null
+      truncated: false
+      content_sha256: 13f0e9bae4ed2537ebd43e697e36940831d487d8079ea92a5d88e9a49ee8d5a7
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.51
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.51"
+        date: 2026-09-22
+        section_number: "61.51"
+      section_text_sha256: 29514cdeea89754a978ca745da7653c5afd8908a50a60a8018624583ae591465
+      excerpt_characters: 12000
+      excerpt_sha256: d9e74bbcc97758c4c4f7883ca031da0eb191497c2c0ce499d4b5b848052e17f2
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 13674
+  - id: ecfr-private-compensation-link
+    text: 14 CFR 61.113 private-pilot compensation limit
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+    source_id: ecfr-private-compensation
+    claim_ids:
+      - private-compensation-limit
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a3 []
+      title: null
+      truncated: false
+      content_sha256: 6305521eb40cc698732f55b2007b7b5ca4c95ba34461fd35902241de8bde5d52
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.113"
+        date: 2026-09-22
+        section_number: "61.113"
+      section_text_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      excerpt_characters: 4129
+      excerpt_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4129
+  - id: ecfr-expense-sharing-link
+    text: 14 CFR 61.113 pro-rata expense sharing
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+    source_id: ecfr-expense-sharing
+    claim_ids:
+      - pro-rata-expenses
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 6305521eb40cc698732f55b2007b7b5ca4c95ba34461fd35902241de8bde5d52
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.113"
+        date: 2026-09-22
+        section_number: "61.113"
+      section_text_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      excerpt_characters: 4129
+      excerpt_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4129
+  - id: ecfr-basicmed-qualification-link
+    text: 14 CFR 61.23 BasicMed qualification
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.23
+    source_id: ecfr-basicmed-qualification
+    claim_ids:
+      - basicmed-qualification
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a4
+      title: null
+      truncated: false
+      content_sha256: d8749481bd7eeb368976130df9da0298097157dd6f2eacdea2e7d2a021a6608e
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.23
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.23"
+        date: 2026-09-22
+        section_number: "61.23"
+      section_text_sha256: 2f2108c543e222fa9de94d023e48a1ddf097ce6e606c7fd9cffba9cba14ede77
+      excerpt_characters: 12000
+      excerpt_sha256: bc4ac0ae6f4a8f6597e2bd38637e723a40de83b717aa9e3748aa73cbf835dbe3
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15968
+  - id: ecfr-basicmed-operation-link
+    text: 14 CFR 61.113 BasicMed operating limits
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+    source_id: ecfr-basicmed-operation
+    claim_ids:
+      - basicmed-operation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 6305521eb40cc698732f55b2007b7b5ca4c95ba34461fd35902241de8bde5d52
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.113"
+        date: 2026-09-22
+        section_number: "61.113"
+      section_text_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      excerpt_characters: 4129
+      excerpt_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4129
+  - id: faa-basicmed-overview-link
+    text: FAA BasicMed study overview
+    url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+    source_id: faa-basicmed-overview
+    claim_ids:
+      - basicmed-study-path
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      final_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a10 []
+      title: BasicMed | Federal Aviation Administration
+      truncated: false
+      content_sha256: 7a47d0eeb96d01da2b4c1c7198f6ea5fc7ec7cd873ba4eac92a32e99357f64fc
+      hash_truncated: false
+      citation_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      validation_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      errors: []
+      valid: true
+      excerpt_characters: 5175
+      excerpt_sha256: df3cf9ad8f5e04855a5205682b7b6c6c23845166bbff94e257ce3c19f0f2aa64
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-pilot-qualifications
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-24T19:03:22.936Z
+    linked_claim_ids:
+      - acs-pilot-outcome
+      - acs-proficiency-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-pilot-documents
+    title: 14 CFR 61.3, Requirement for certificates, ratings, privileges, and
+      authorizations
+    checked_at_utc: 2026-09-24T19:03:22.951Z
+    linked_claim_ids:
+      - certificate-and-id
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: adef5d481a42dfc9b1aae536379590ca90b39cb05c3e8973a47a0ee03b9dcfec
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.3
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.3"
+        date: 2026-09-22
+        section_number: "61.3"
+      section_text_sha256: faefaea68541ef441bd60db64cfd9fd4bb1a0b3aabde56cc65b6f0c2290c6bc5
+      excerpt_characters: 12000
+      excerpt_sha256: f89cbf43c4e835fd84837b563879664f83cd77a7426ad8ce0d10c8e54dc724ce
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 18706
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-aircraft-ratings
+    title: 14 CFR 61.31, Type rating and additional training requirements
+    checked_at_utc: 2026-09-24T19:03:22.951Z
+    linked_claim_ids:
+      - aircraft-rating
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 486f0774a491ece76531dda011d9966eb67fcb181937b29396f46d18542d7d8a
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.31
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.31"
+        date: 2026-09-22
+        section_number: "61.31"
+      section_text_sha256: 8a298cfa3b45b12ffb5043bf9c3ef6472a5a4e4faafe1c8a970f334475a84a8f
+      excerpt_characters: 12000
+      excerpt_sha256: 2a08b387e8fe2e419e3d04b6e538b2f78f2511cd8ec193bdd9c915df6e1f0661
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15971
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-high-performance
+    title: 14 CFR 61.31, Type rating and additional training requirements
+    checked_at_utc: 2026-09-24T19:03:22.951Z
+    linked_claim_ids:
+      - high-performance-endorsement
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 486f0774a491ece76531dda011d9966eb67fcb181937b29396f46d18542d7d8a
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.31
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.31
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.31"
+        date: 2026-09-22
+        section_number: "61.31"
+      section_text_sha256: 8a298cfa3b45b12ffb5043bf9c3ef6472a5a4e4faafe1c8a970f334475a84a8f
+      excerpt_characters: 12000
+      excerpt_sha256: 2a08b387e8fe2e419e3d04b6e538b2f78f2511cd8ec193bdd9c915df6e1f0661
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15971
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-medical-requirement
+    title: "14 CFR 61.23, Medical certificates: Requirement and duration"
+    checked_at_utc: 2026-09-24T19:03:22.951Z
+    linked_claim_ids:
+      - private-medical-basis
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a4
+      title: null
+      truncated: false
+      content_sha256: d8749481bd7eeb368976130df9da0298097157dd6f2eacdea2e7d2a021a6608e
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.23
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.23"
+        date: 2026-09-22
+        section_number: "61.23"
+      section_text_sha256: 2f2108c543e222fa9de94d023e48a1ddf097ce6e606c7fd9cffba9cba14ede77
+      excerpt_characters: 12000
+      excerpt_sha256: bc4ac0ae6f4a8f6597e2bd38637e723a40de83b717aa9e3748aa73cbf835dbe3
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15968
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-medical-duration
+    title: Guide for Aviation Medical Examiners, General Information - Validity of
+      Medical Certificates
+    checked_at_utc: 2026-09-24T19:03:24.021Z
+    linked_claim_ids:
+      - medical-duration
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      final_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a7
+      title: Guide for Aviation Medical Examiners | Federal Aviation Administration
+      truncated: false
+      content_sha256: e1bb09671a72d8c5f7ff4f2975e549a3497b32c9c1bbafdeeedcfe2ee8b78c85
+      hash_truncated: false
+      citation_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      validation_url: https://www.faa.gov/ame_guide/app_process/general/validity#content
+      errors: []
+      valid: true
+      excerpt_characters: 3418
+      excerpt_sha256: a01b01450dfb29cb19ffc9bb515f98088fb433e208d8543ae073082d91df0cff
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-flight-review
+    title: 14 CFR 61.56, Flight review
+    checked_at_utc: 2026-09-24T19:03:24.039Z
+    linked_claim_ids:
+      - flight-review-recency
+      - flight-review-scope
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a8
+      title: null
+      truncated: false
+      content_sha256: 1b5c4b9d823d545d3093f0198748f51070f79f4a2a7842bc063be72ae0dbf3e3
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.56
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.56
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.56"
+        date: 2026-09-22
+        section_number: "61.56"
+      section_text_sha256: 5346326fa364ec22e1a08531882a81b179e970c5d29c72b653d5d7cf883ba6ec
+      excerpt_characters: 4344
+      excerpt_sha256: 5346326fa364ec22e1a08531882a81b179e970c5d29c72b653d5d7cf883ba6ec
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4344
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-passenger-day
+    title: "14 CFR 61.57, Recent flight experience: Pilot in command"
+    checked_at_utc: 2026-09-24T19:03:24.039Z
+    linked_claim_ids:
+      - passenger-day-recency
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: 3e4c1f2e91b13d99fb4f1f7c2f43f5f0792e8c7dbd4c92370c468ca184607230
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.57"
+        date: 2026-09-22
+        section_number: "61.57"
+      section_text_sha256: dd2d7fb120b8430d30ebe28b504de065c9584c5d4f4dd153ed31c8b7a3749e4e
+      excerpt_characters: 12000
+      excerpt_sha256: 162534a80208cd025e0712d524b8a7ca9cad7018878e6d242fecefef7e8ce0ad
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15352
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-passenger-night
+    title: "14 CFR 61.57, Recent flight experience: Pilot in command"
+    checked_at_utc: 2026-09-24T19:03:24.151Z
+    linked_claim_ids:
+      - passenger-night-recency
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: 3e4c1f2e91b13d99fb4f1f7c2f43f5f0792e8c7dbd4c92370c468ca184607230
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.57
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.57"
+        date: 2026-09-22
+        section_number: "61.57"
+      section_text_sha256: dd2d7fb120b8430d30ebe28b504de065c9584c5d4f4dd153ed31c8b7a3749e4e
+      excerpt_characters: 12000
+      excerpt_sha256: 162534a80208cd025e0712d524b8a7ca9cad7018878e6d242fecefef7e8ce0ad
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15352
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-logbook-evidence
+    title: 14 CFR 61.51, Pilot logbooks
+    checked_at_utc: 2026-09-24T19:03:26.044Z
+    linked_claim_ids:
+      - record-recent-experience
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a9
+      title: null
+      truncated: false
+      content_sha256: 13f0e9bae4ed2537ebd43e697e36940831d487d8079ea92a5d88e9a49ee8d5a7
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.51
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.51
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.51"
+        date: 2026-09-22
+        section_number: "61.51"
+      section_text_sha256: 29514cdeea89754a978ca745da7653c5afd8908a50a60a8018624583ae591465
+      excerpt_characters: 12000
+      excerpt_sha256: d9e74bbcc97758c4c4f7883ca031da0eb191497c2c0ce499d4b5b848052e17f2
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 13674
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-private-compensation
+    title: 14 CFR 61.113, Private pilot privileges and limitations
+    checked_at_utc: 2026-09-24T19:03:27.045Z
+    linked_claim_ids:
+      - private-compensation-limit
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 6305521eb40cc698732f55b2007b7b5ca4c95ba34461fd35902241de8bde5d52
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.113"
+        date: 2026-09-22
+        section_number: "61.113"
+      section_text_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      excerpt_characters: 4129
+      excerpt_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4129
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-expense-sharing
+    title: 14 CFR 61.113, Private pilot privileges and limitations
+    checked_at_utc: 2026-09-24T19:03:29.050Z
+    linked_claim_ids:
+      - pro-rata-expenses
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 6305521eb40cc698732f55b2007b7b5ca4c95ba34461fd35902241de8bde5d52
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.113"
+        date: 2026-09-22
+        section_number: "61.113"
+      section_text_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      excerpt_characters: 4129
+      excerpt_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4129
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-basicmed-qualification
+    title: "14 CFR 61.23, Medical certificates: Requirement and duration"
+    checked_at_utc: 2026-09-24T19:03:31.048Z
+    linked_claim_ids:
+      - basicmed-qualification
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a4
+      title: null
+      truncated: false
+      content_sha256: d8749481bd7eeb368976130df9da0298097157dd6f2eacdea2e7d2a021a6608e
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.23
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.23
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.23"
+        date: 2026-09-22
+        section_number: "61.23"
+      section_text_sha256: 2f2108c543e222fa9de94d023e48a1ddf097ce6e606c7fd9cffba9cba14ede77
+      excerpt_characters: 12000
+      excerpt_sha256: bc4ac0ae6f4a8f6597e2bd38637e723a40de83b717aa9e3748aa73cbf835dbe3
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15968
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-basicmed-operation
+    title: 14 CFR 61.113, Private pilot privileges and limitations
+    checked_at_utc: 2026-09-24T19:03:31.049Z
+    linked_claim_ids:
+      - basicmed-operation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a3
+      title: null
+      truncated: false
+      content_sha256: 6305521eb40cc698732f55b2007b7b5ca4c95ba34461fd35902241de8bde5d52
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-E/section-61.113
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=61&section=61.113
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-22
+        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.113"
+        date: 2026-09-22
+        section_number: "61.113"
+      section_text_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      excerpt_characters: 4129
+      excerpt_sha256: 348479b2b0c08cc5321bf4dd3a83c781859ea8ff2e888b63cc78a6f4b6e1a037
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4129
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-basicmed-overview
+    title: FAA BasicMed overview
+    checked_at_utc: 2026-09-24T19:03:31.051Z
+    linked_claim_ids:
+      - basicmed-study-path
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      final_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a10
+      title: BasicMed | Federal Aviation Administration
+      truncated: false
+      content_sha256: 7a47d0eeb96d01da2b4c1c7198f6ea5fc7ec7cd873ba4eac92a32e99357f64fc
+      hash_truncated: false
+      citation_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      validation_url: https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#content
+      errors: []
+      valid: true
+      excerpt_characters: 5175
+      excerpt_sha256: df3cf9ad8f5e04855a5205682b7b6c6c23845166bbff94e257ce3c19f0f2aa64
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

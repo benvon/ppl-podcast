@@ -1,0 +1,45 @@
+episode_id: core-21
+current_candidate_render:
+  script_version: 0.1.3
+  rendered_at_utc: 2026-09-24T18:00:14.041Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 14
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: audio-artifacts/core-21-20260924T175550Z.mp3
+  lossless_master: audio-artifacts/core-21-20260924T175550Z.master.wav
+  voice_master: audio-artifacts/core-21-20260924T175550Z.voice.master.wav
+  render_manifest: audio-artifacts/core-21-20260924T175550Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-21-20260924T175550Z.audio-quality.json
+  chapter_review: audio-artifacts/core-21-20260924T175550Z.mp3.chapters.b395251036de265aa664a00b016450bfb76615d8b6d96f60d4863bd9c5de0fe3.html
+  segment_work_dir: audio-artifacts/core-21-realtime-20260924T174606Z.segments
+  duration_seconds: 1119.58
+  duration_display: "18:40"
+  codec: mp3
+  sample_rate_hz: 24000
+  channels: 1
+  sha256: b395251036de265aa664a00b016450bfb76615d8b6d96f60d4863bd9c5de0fe3
+  front_matter_validation: The accepted five-segment opening preview was reused unchanged in the full candidate.
+  music_bed: Source assets/music/jonasblakewood-synth-pop_60s-583368.mp3 (SHA-256 0010c77fc43ce6f580d5b8e46d1df18073722a363e13b838d4f3ba9d8d53f20f); -24 dB base and -30 dB under voice; 10-second intro lead, 5-second continuation, 0.5-second fade; 10-second outro continuation and 5-second fade.
+  usage_estimate_usd: 1.583654
+  validation: Automated audio-quality analysis and embedded chapter checks passed. The editor accepted full-episode listening QA and confirmed the chapter markers on 2026-09-24.
+superseded_candidates: []
+opening_preview:
+  script_version: 0.1.3
+  rendered_at_utc: 2026-09-24T17:47:13.674Z
+  provider: openai-realtime
+  renderer: scripts/render_episode_realtime.cjs
+  renderer_version: 14
+  model: gpt-realtime-2.1
+  voices: {instructor: marin, learner: cedar, announcer: ballad}
+  mp3: audio-artifacts/core-21-20260924T174606Z.preview-001-005.mp3
+  render_manifest: audio-artifacts/core-21-20260924T174606Z.preview-001-005.render-manifest.json
+  duration_seconds: 184.37
+  sha256: c57d4a4a907509cce1f117768b453859f68d586816cd80d90baf252320a162cc
+  validation: Accepted by the editor before the full candidate was rendered.
+chapter_markers:
+  source: master-script.md section headings
+  audio_sha256: b395251036de265aa664a00b016450bfb76615d8b6d96f60d4863bd9c5de0fe3
+  review_page: audio-artifacts/core-21-20260924T175550Z.mp3.chapters.b395251036de265aa664a00b016450bfb76615d8b6d96f60d4863bd9c5de0fe3.html
+  required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast

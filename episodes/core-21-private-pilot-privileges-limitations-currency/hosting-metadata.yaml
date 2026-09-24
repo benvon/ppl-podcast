@@ -1,0 +1,20 @@
+schema_version: 1
+publisher_release:
+  id: core-21
+  guid: pplstudyguide.com:core-21
+  title: Private-Pilot Privileges, Limitations, and Currency
+  description: Follow a private pilot's certificate, medical, aircraft,
+    flight-review, passenger-currency, and expense-sharing checks for a proposed
+    trip, then decide whether the pilot is proficient enough to make it.
+  published_at: 2026-09-24T18:54:35Z
+  duration: 00:18:40
+  season: 1
+  number: 21
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.3

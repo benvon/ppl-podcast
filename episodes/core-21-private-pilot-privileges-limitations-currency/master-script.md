@@ -1,0 +1,363 @@
+# Private-Pilot Privileges, Limitations, and Currency
+
+**Version:** 0.1.3 — draft
+**Target runtime:** 19–21 minutes
+**Speakers:** Instructor, Learner, Announcer
+
+## [00:00] Opening
+
+**INSTRUCTOR:**
+
+A private pilot has a certificate, a planned route, and a friend ready to go. But the pilot is offered a different airplane, the return could be after dark, and the friend wants to pay for the rental. Each detail changes a different part of the pilot-in-command decision. In this episode, we will follow those questions in the order a pilot can answer them before promising the flight.
+
+## [00:30] Disclaimer
+
+**INSTRUCTOR:**
+
+This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+
+## [01:00] Podcast introduction
+
+**ANNOUNCER:**
+
+Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
+
+In this episode: decide whether a private pilot may make a particular passenger flight, then decide whether that flight is a good match for the pilot's recent practice.
+
+## [01:30] What the ACS is asking you to connect
+
+**ANNOUNCER:**
+
+What the ACS is asking you to connect.
+
+**INSTRUCTOR:**
+
+Imagine an examiner asking whether a private pilot may take a friend on a VFR trip in a rented airplane. What would you check before answering? In the ACS Pilot Qualifications task, you connect the pilot's certificate, records, medical basis, documents, and private-pilot limits to that actual flight. You also consider BasicMed if the pilot uses it. Then you ask whether legal currency matches practical proficiency, especially in an unfamiliar airplane or with unfamiliar displays and avionics.
+[Source: sources.yaml#acs-pilot-qualifications]
+
+The practical question is specific: may this pilot carry this passenger in this airplane, at this time, with this payment arrangement? Then ask whether the pilot can manage the flight well today. Records answer much of the first question. Recent practice helps answer the second.
+
+Meet Elena. She holds a private pilot certificate with an airplane single-engine land rating. She and her friend Jonah both plan to attend a weekend gathering at a nearby airport, and Jonah asks whether Elena can fly them there. They plan to leave in daylight. The gathering might run late, so a return after dark is possible. Jonah offers to pay the airplane rental because Elena is doing the flying. The rental desk also has an airplane Elena has never flown. We will make each choice before the flight, while there is still time to change the plan.
+
+**LEARNER:**
+
+Where does Elena start? I could imagine checking the landings first, or the airplane, or what Jonah offered to pay.
+
+**INSTRUCTOR:**
+
+Start with Jonah's proposed trip and work outward. Which airplane will Elena use? Is she qualified and current for it and for carrying Jonah? Can they return at the proposed time, and how can they share costs? Once those answers are clear, she can judge whether she is ready for the flight itself.
+
+## [03:35] Check the pilot documents
+
+**ANNOUNCER:**
+
+Check the pilot documents.
+
+**INSTRUCTOR:**
+
+Elena begins with what she must have with her: an appropriate pilot certificate, or accepted temporary authority, and a photo ID. As a required pilot crewmember in this U.S. civil aircraft, she must have them in her physical possession or readily accessible in the airplane while exercising her privileges. She reads the ratings and limitations on her certificate rather than relying on memory.
+[Source: sources.yaml#ecfr-pilot-documents]
+
+**LEARNER:**
+
+Does the certificate tell her that she can fly any single-engine airplane she finds at the rental desk?
+
+**INSTRUCTOR:**
+
+It answers the category-and-class question for a matching airplane. Elena also checks whether the actual airplane requires a type rating or another qualification before she acts as pilot in command with Jonah aboard. The words “single-engine land” do not settle every airplane choice.
+[Source: sources.yaml#ecfr-aircraft-ratings]
+
+Now she looks at the airplane the desk has offered.
+
+## [04:35] Check the airplane before accepting it
+
+**ANNOUNCER:**
+
+Check the airplane before accepting it.
+
+**INSTRUCTOR:**
+
+The desk offers Elena a single-engine land airplane with an engine rated above two hundred horsepower. That makes it a high-performance airplane under the regulation. Elena has no high-performance training or endorsement. For her to act as its pilot in command, an instructor would need to provide and log the required ground and flight training, find her proficient, and give her the one-time logbook endorsement. The rule has specified prior-qualification alternatives, but none applies to Elena here. Her single-engine land rating alone is not enough.
+[Source: sources.yaml#ecfr-high-performance]
+
+**LEARNER:**
+
+Could she take Jonah if the rental desk says a checkout flight is optional?
+
+**INSTRUCTOR:**
+
+The desk's optional checkout policy is not evidence that Elena has the required endorsement. She can train for this airplane later. For Jonah's trip, she asks for the familiar trainer instead, settling the airplane choice before anyone boards.
+
+**LEARNER:**
+
+So her choice of airplane has already made the trip simpler.
+
+**INSTRUCTOR:**
+
+Yes. The choice also reduces workload. The ACS asks Elena to consider the risk of an unfamiliar airplane, flight display, or avionics even if she holds the right rating. She checks that the familiar trainer's panel and procedures match what she has practiced.
+[Source: sources.yaml#acs-pilot-qualifications]
+
+## [05:55] Check the medical basis
+
+**ANNOUNCER:**
+
+Check the medical basis.
+
+**INSTRUCTOR:**
+
+What medical basis will Elena use for this trip? An ordinary private-pilot flight calls for at least a third-class medical unless the pilot uses BasicMed under its conditions and flight limits. Elena has a third-class medical, so she checks that it is valid for this flight.
+[Source: sources.yaml#ecfr-medical-requirement]
+
+The FAA medical guidance gives her the date check: a third-class certificate lasts through its month of issue plus twenty-four calendar months if the pilot was forty or older on the examination date, or sixty calendar months if younger. Elena checks the examination date and her age on that date, rather than relying on a rough memory of when the certificate was issued.
+[Source: sources.yaml#faa-medical-duration]
+
+**LEARNER:**
+
+What if Elena had an expired FAA medical and planned to use BasicMed? Would the driver's license settle it?
+
+**INSTRUCTOR:**
+
+A driver's license alone would not settle it. Elena would need a U.S. driver's license and a prior FAA medical certificate after July fourteenth, two thousand six. She would also check the rule's listed medical eligibility conditions, an approved course within the preceding twenty-four calendar months, and a physician examination within the preceding forty-eight calendar months.
+[Source: sources.yaml#ecfr-basicmed-qualification]
+
+The FAA BasicMed page links the course, examination checklist, and physician information she would use to verify that path.
+[Source: sources.yaml#faa-basicmed-overview]
+
+She would then check that the airplane and trip fit BasicMed's limits on occupancy, weight, passengers, altitude, speed, and location, and have the required checklist and course certificate available in her logbook. The numerical limits and source links are in the show notes for that separate preflight check.
+[Source: sources.yaml#ecfr-basicmed-operation]
+
+Elena uses her current third-class medical today. She can put the BasicMed questions aside for this trip.
+
+A valid medical basis does not settle how the pilot feels today. We discussed the personal fitness decision in Episode 20, Aeromedical Factors and Human Performance. Here Elena confirms the credential that supports the proposed operation and continues to the experience records.
+
+## [08:00] Check the flight-review record
+
+**ANNOUNCER:**
+
+Check the flight-review record.
+
+**INSTRUCTOR:**
+
+Can Elena act as pilot in command this month? She finds her flight-review date and instructor logbook endorsement. Ordinarily the review must have been in an aircraft for which she is rated and completed since the beginning of the twenty-fourth calendar month before this flight month. The rule also allows specified alternatives, such as certain practical tests and proficiency-program phases. Elena checks the record for the path she actually used.
+[Source: sources.yaml#ecfr-flight-review]
+
+The review itself ordinarily includes at least one hour on the ground and one hour in flight. The instructor covers current general Part 91 operating and flight rules and chooses maneuvers and procedures needed for safe exercise of Elena's privileges. Her completed review and endorsement answer today's record question.
+[Source: sources.yaml#ecfr-flight-review]
+
+**LEARNER:**
+
+Her review was recent. Can she now take Jonah, even if she has not flown much since it?
+
+**INSTRUCTOR:**
+
+Her review answers the pilot-in-command review question. Carrying Jonah requires a separate look at her takeoffs and landings. A flight review might contain some, but its name alone does not establish them.
+
+## [09:10] Check passenger takeoff and landing experience
+
+**ANNOUNCER:**
+
+Check passenger takeoff and landing experience.
+
+**INSTRUCTOR:**
+
+Can Elena carry Jonah in the chosen airplane? For this non-tailwheel, single-pilot airplane, she needs three takeoffs and three landings in the preceding ninety days as the sole manipulator of the controls. They must match the airplane's category and class, and its type if a type rating is required. A tailwheel airplane would also require those landings to be full stops; Elena's is not tailwheel.
+[Source: sources.yaml#ecfr-passenger-day]
+
+Elena checks her logbook entries rather than guessing. Pilots must document experience used to meet recent-experience requirements. Her entries show three qualifying takeoffs and landings in the preceding ninety days as sole manipulator in an airplane single-engine land aircraft. One was on a solo flight. Jonah did not have to be aboard when she gained that experience.
+[Source: sources.yaml#ecfr-logbook-evidence]
+[Source: sources.yaml#ecfr-passenger-day]
+
+**LEARNER:**
+
+Then the daytime outbound leg looks possible. Why does the return need another check?
+
+**INSTRUCTOR:**
+
+Because the return may extend into a more specific passenger-currency window. Elena needs a planned landing time, not a vague promise to leave “around sunset.” Before departure she tells Jonah that, without the additional night passenger recency, their airplane must be back on the ground at home before sunset. That is Elena's chosen, conservative trip cutoff; the regulation's specific window starts later.
+
+## [10:35] Check the return time
+
+**ANNOUNCER:**
+
+Check the return time.
+
+**INSTRUCTOR:**
+
+What if the gathering runs late? The separate passenger rule applies from one hour after sunset until one hour before sunrise. To carry Jonah as pilot in command then, Elena would need three takeoffs and three full-stop landings in that same period during the preceding ninety days. She must have been the sole manipulator in the same category and class, and type if required. The exact clock window matters; simply remembering that she has flown “at night” is not enough.
+[Source: sources.yaml#ecfr-passenger-night]
+
+Her logbook does not show those three full-stop landings in the required period. Her general passenger recency cannot answer the late-return question. She and Jonah plan to land back home before sunset, with time for a delay. If the gathering runs late, they will stay overnight or find another way home. Elena can gain the needed night passenger recency before offering a future late return.
+
+**LEARNER:**
+
+That choice has to be made before the gathering, because a tired passenger might expect Elena to fly them home anyway.
+
+**INSTRUCTOR:**
+
+Exactly. Elena tells Jonah the limit before they depart. It becomes part of the trip plan, alongside the airport and time, rather than a surprise at the end of the day.
+
+## [12:00] Agree on the expenses before departure
+
+**ANNOUNCER:**
+
+Agree on the expenses before departure.
+
+**INSTRUCTOR:**
+
+Jonah offered to pay the full rental fee. Before Elena accepts, she asks what she would receive for flying him. The private-pilot rule generally bars acting as pilot in command of a flight carrying passengers or property for compensation or hire, or acting as pilot in command for compensation or hire, subject to its stated exceptions. Here both friends want to attend the gathering; Elena is not offering transportation to a paying customer.
+[Source: sources.yaml#ecfr-private-compensation]
+
+For this shared outing, Elena may share only the operating expenses named in the rule: fuel, oil, airport expenditures, and rental fees. She must pay at least her pro-rata share of their total. With two people, that means at least half. If rental is the only qualifying cost, Jonah cannot pay it all while Elena pays none.
+[Source: sources.yaml#ecfr-expense-sharing]
+
+**LEARNER:**
+
+Could they just call Jonah's payment a thank-you gift instead?
+
+**INSTRUCTOR:**
+
+Calling it a gift would not change what Elena receives. She tells Jonah they will total the qualifying expenses, including the rental, and she will pay at least half. They can settle the actual total after the flight. If the trip's purpose changes, she will review the current rule before agreeing. The show notes link the other authorized cases and their conditions.
+
+**LEARNER:**
+
+So she has now checked the airplane, medical basis, flight review, day passenger experience, possible late return, and Jonah's offer.
+
+**INSTRUCTOR:**
+
+Yes. Those answers let her shape a permitted plan: use the familiar airplane, land back home before sunset, and share only qualifying operating expenses while paying her own pro-rata portion. She now has to ask the question the paperwork cannot answer.
+
+## [13:50] Choose the flight you can manage
+
+**ANNOUNCER:**
+
+Choose the flight you can manage.
+
+**INSTRUCTOR:**
+
+One question remains: can Elena comfortably manage this trip? The ACS asks her to distinguish currency from proficiency and to consider an unfamiliar airplane, flight display, or avionics. Her dates and endorsements answer specific rules; they do not predict how familiar the arrival will feel.
+[Source: sources.yaml#acs-pilot-qualifications]
+
+Elena thinks through the actual work. She will navigate to an airport she has visited only once, keep a passenger oriented, respond to traffic and radio calls, and land before the agreed cutoff. In the familiar airplane, she has practiced the controls and basic panel flow recently. She still wants to rehearse the route and destination with her instructor, especially the arrival and a change of plan. If that review exposes a gap, she will make the trip later or go with the instructor. That is a practical proficiency choice, not a new federal recency rule.
+
+**LEARNER:**
+
+Would choosing the high-performance airplane after getting the endorsement solve that?
+
+**INSTRUCTOR:**
+
+The endorsement would answer the high-performance qualification. She would still need enough recent practice in that airplane and its avionics for this route with Jonah aboard. She could gain the endorsement through instruction, then use shorter flights to build comfort before adding a passenger and a return-time commitment.
+
+**LEARNER:**
+
+And if she chooses the familiar airplane, plans to land back home before sunset, and has the record of the recent landings, she could still say no if the trip feels beyond her current practice.
+
+**INSTRUCTOR:**
+
+Yes. She may also simplify the plan: a shorter destination, more daylight margin for the return, or an instructional flight first. The reason to check the rules early is to leave room for those options. A good decision is one Elena can explain before engine start, not one she has to defend after a passenger has been waiting.
+
+## [15:55] Retrieval review
+
+**ANNOUNCER:**
+
+Retrieval review.
+
+**INSTRUCTOR:**
+
+Let us rebuild Elena's answer to the ACS scenario. Where does she start?
+[Source: sources.yaml#acs-pilot-qualifications]
+
+**LEARNER:**
+
+With the proposed flight: her certificate and documents, the airplane, her medical basis and recent-experience records, the passenger timing, and the cost agreement. Then she asks whether her proficiency matches the airplane and trip. BasicMed matters if that is her medical path.
+[Source: sources.yaml#acs-pilot-qualifications]
+
+**INSTRUCTOR:**
+
+What does she check at the rental desk?
+[Source: sources.yaml#ecfr-pilot-documents]
+[Source: sources.yaml#ecfr-aircraft-ratings]
+
+**LEARNER:**
+
+Her appropriate pilot certificate or accepted temporary authority and photo ID must be in her possession or readily accessible in this U.S. civil aircraft. She reads her ratings and limitations.
+[Source: sources.yaml#ecfr-pilot-documents]
+
+She matches the airplane to the needed category, class, and type rating if required. The offered airplane exceeds two hundred horsepower, and Elena lacks the high-performance training and endorsement needed for her situation. She chooses the familiar trainer.
+[Source: sources.yaml#ecfr-aircraft-ratings]
+[Source: sources.yaml#ecfr-high-performance]
+
+**INSTRUCTOR:**
+
+Which medical basis does she use?
+[Source: sources.yaml#ecfr-medical-requirement]
+
+**LEARNER:**
+
+Her current third-class medical. She checks that it is valid for this private-pilot flight.
+[Source: sources.yaml#ecfr-medical-requirement]
+
+**INSTRUCTOR:**
+
+If she chose BasicMed instead, what two questions would she need to answer?
+[Source: sources.yaml#ecfr-basicmed-qualification]
+[Source: sources.yaml#ecfr-basicmed-operation]
+
+**LEARNER:**
+
+First, does she qualify? She would check her U.S. driver's license, prior FAA medical after July fourteenth, two thousand six, and listed medical eligibility conditions. The course must be within the preceding twenty-four calendar months and the physician examination within the preceding forty-eight calendar months.
+[Source: sources.yaml#ecfr-basicmed-qualification]
+
+Second, does this airplane and flight fit? She would compare occupancy, weight, passengers, altitude, speed, and location with the BasicMed limits, and have the required checklist and course certificate available in her logbook.
+[Source: sources.yaml#ecfr-basicmed-operation]
+
+**INSTRUCTOR:**
+
+What separate records let her act as pilot in command and carry Jonah?
+[Source: sources.yaml#ecfr-flight-review]
+[Source: sources.yaml#ecfr-passenger-day]
+
+**LEARNER:**
+
+Her flight-review endorsement shows a satisfactory review in an aircraft for which she is rated since the beginning of the twenty-fourth calendar month before this flight month. If she used a qualifying alternative, she checks that record.
+[Source: sources.yaml#ecfr-flight-review]
+
+For this non-tailwheel airplane, her logbook separately shows three takeoffs and landings in the preceding ninety days as sole manipulator, matching the airplane's category and class, and type if required.
+[Source: sources.yaml#ecfr-passenger-day]
+
+**INSTRUCTOR:**
+
+What changes if the gathering runs late?
+[Source: sources.yaml#ecfr-passenger-night]
+
+**LEARNER:**
+
+From one hour after sunset until one hour before sunrise, carrying Jonah would require three takeoffs and three full-stop landings in that same period during the preceding ninety days, as sole manipulator in the matching category, class, and type if required. Elena lacks those entries. She plans to land home before sunset, or stay overnight or use another way home.
+[Source: sources.yaml#ecfr-passenger-night]
+
+**INSTRUCTOR:**
+
+What does she tell Jonah about the rental?
+[Source: sources.yaml#ecfr-private-compensation]
+[Source: sources.yaml#ecfr-expense-sharing]
+
+**LEARNER:**
+
+His offer to cover it all does not fit the expense-sharing rule. The private-pilot compensation limit still governs the flight. For their shared outing, Elena pays at least half the total qualifying fuel, oil, airport, and rental expenses. They will split the actual eligible total.
+[Source: sources.yaml#ecfr-private-compensation]
+[Source: sources.yaml#ecfr-expense-sharing]
+
+**INSTRUCTOR:**
+
+And after the records check out?
+[Source: sources.yaml#acs-pilot-qualifications]
+
+**LEARNER:**
+
+She asks whether her practice supports this airplane, destination, and passenger workload today. She can rehearse the arrival with an instructor, simplify the trip, or defer it.
+[Source: sources.yaml#acs-pilot-qualifications]
+
+## [19:10] Outro
+
+**ANNOUNCER:**
+
+Thanks for listening to PPL Study Podcast. For show notes, source links, and more study material, visit pplstudyguide.com. Send feedback or source corrections to feedback@pplstudyguide.com. The episodes and the research behind them are available for review as an open-source work on GitHub. Until next time, study the sources and keep learning.

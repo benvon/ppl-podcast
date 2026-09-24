@@ -22,7 +22,7 @@ const { HostingHandoffError, createHostingHandoff, parseArgs: parseHandoffArgs, 
 const { PREPARATION_RECOVERY_FILE, PublicationPreparationError, preparePublication, publicationTransactionState, reconcileInterruptedPublication, synchronizeReleaseMetadata } = require("./prepare-publication.cjs");
 const { approveScriptReview, migratedAudioMix, parseArgs: parseScriptReviewArgs, resetScriptReview, sha256Text } = require("./reset-script-review.cjs");
 const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, RELEASE_GATES_AFTER_SCRIPT_RESET, productionContractKind, utcRfc3339Timestamp } = require("./production-state-contract.cjs");
-const { sourceReviewEvidenceErrors } = require("./production-gates.cjs");
+const { publicationLinkEvidenceErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 const { writeFileSetAtomically } = require("./file-transaction.cjs");
 const { requestRateLimiter } = require("./validation-runtime.cjs");
@@ -1117,6 +1117,45 @@ test("publication report coverage reads legacy show-notes entries as claim-backe
     const validation = validateMasterScriptSourceMappings(temporary, YAML.parse(fs.readFileSync(path.join(temporary, "sources.yaml"), "utf8")), YAML.parse(fs.readFileSync(path.join(temporary, "claim-inventory.yaml"), "utf8")));
     const report = { master_script_mapping: { valid: true, source_tag_count: validation.source_tag_count, claim_coverage_count: validation.claim_coverage_count }, results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"] }], show_notes_results: [{ id: "aim", url, source_id: "source-a", claim_ids: ["claim-a"] }] };
     assert.deepEqual(validationCoverageErrors(temporary, report), []);
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("publication link evidence accepts valid supplemental results without citation targets", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-publication-supplemental-gate-test-"));
+  try {
+    const sourceUrl = "https://example.org/source";
+    const supplementalUrl = "https://example.org/study";
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), YAML.stringify({ sources: [{ id: "source-a", url: sourceUrl, locator: "Test section", supports_claims: ["claim-a"] }] }));
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), YAML.stringify({ claims: [{ id: "claim-a", claim: "A source-backed fact.", sources: ["source-a"], script_sections: ["Lesson"] }] }));
+    fs.writeFileSync(path.join(temporary, "master-script.md"), "## Lesson\n\n**INSTRUCTOR:**\n\nA source-backed fact.\n\n[Source: sources.yaml#source-a]\n");
+    fs.writeFileSync(path.join(temporary, "show-notes.md"), "[Study guide](https://example.org/study)\n");
+    fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), YAML.stringify({ links: [{ id: "study-guide", kind: "supplemental", text: "Study guide", url: supplementalUrl }] }));
+    const episode = { production_contract_version: 2 };
+    const report = {
+      schema_version: 1,
+      validator: "scripts/validate-source-links.cjs",
+      validation_kind: "publication_link_check",
+      run_id: crypto.randomUUID(),
+      checked_at_utc: "2026-09-24T12:00:00Z",
+      llm_requested: false,
+      llm_model: null,
+      input_sha256: sourceValidationInputHashes(temporary),
+      claim_mapping: { valid: true },
+      show_notes_mapping: { valid: true },
+      master_script_mapping: { valid: true, source_tag_count: 1, claim_coverage_count: 1 },
+      results: [{ source_id: "source-a", linked_claim_ids: ["claim-a"], citation_target: { valid: true }, link: { valid: true } }],
+      show_notes_results: [{ id: "study-guide", kind: "supplemental", url: supplementalUrl, link: { valid: true } }],
+    };
+    const reportPath = path.join(temporary, "publication-link-validation.yaml");
+    fs.writeFileSync(reportPath, YAML.stringify(report));
+    assert.deepEqual(publicationLinkEvidenceErrors({ episodePath: temporary, episode }), []);
+    report.show_notes_results[0].link.valid = false;
+    fs.writeFileSync(reportPath, YAML.stringify(report));
+    assert.match(publicationLinkEvidenceErrors({ episodePath: temporary, episode }).join("\n"), /successful deterministic show-notes results/);
+    report.show_notes_results[0].link.valid = true;
+    report.results[0].citation_target.valid = false;
+    fs.writeFileSync(reportPath, YAML.stringify(report));
+    assert.match(publicationLinkEvidenceErrors({ episodePath: temporary, episode }).join("\n"), /successful deterministic source results/);
   } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
 });
 

@@ -241,6 +241,16 @@ function deterministicValidationResultValid(result) {
     && !result?.missing_claim_ids?.length;
 }
 
+function showNotesValidationResultValid(result) {
+  if ((result?.kind || "claim") === "supplemental") {
+    return result?.link?.valid === true
+      && (!result?.content_attestation || result.content_attestation.valid === true)
+      && !result?.missing_claim_ids?.length;
+  }
+  if (result?.kind && result.kind !== "claim") return false;
+  return deterministicValidationResultValid(result);
+}
+
 function validationCoverageErrors(episodePath, validation, { includeShowNotes = true } = {}) {
   const errors = [];
   const read = (name) => YAML.parse(fs.readFileSync(path.join(episodePath, name), "utf8"));
@@ -272,4 +282,4 @@ function validationCoverageErrors(episodePath, validation, { includeShowNotes = 
   return errors;
 }
 
-module.exports = { SOURCE_REVIEW_SCRIPT_NORMALIZATION, SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { SOURCE_REVIEW_SCRIPT_NORMALIZATION, SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, showNotesValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

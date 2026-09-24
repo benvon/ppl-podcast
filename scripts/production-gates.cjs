@@ -9,6 +9,7 @@ const { CONTRACT_KINDS, productionContractKind, preservedProductionContract } = 
 const {
   sourceRelevanceResultValid,
   deterministicValidationResultValid,
+  showNotesValidationResultValid,
   SOURCE_REVIEW_SCRIPT_NORMALIZATION,
   SOURCE_REVIEW_WHITESPACE_NORMALIZATION,
   normalizeSourceReviewMarkdown,
@@ -140,7 +141,7 @@ function publicationLinkEvidenceErrors({ episodePath, episode }) {
   expect(report.master_script_mapping?.valid === true, "publication-day link validation must pass the master-script source mapping.");
   expect(typeof report.run_id === "string" && /^[0-9a-f-]{36}$/i.test(report.run_id), "publication-link-validation.yaml must record its validation run ID.");
   expect(Array.isArray(report.results) && report.results.every(deterministicValidationResultValid), "publication-day link validation must retain successful deterministic source results.");
-  expect(Array.isArray(report.show_notes_results) && report.show_notes_results.every(deterministicValidationResultValid), "publication-day link validation must retain successful deterministic show-notes results.");
+  expect(Array.isArray(report.show_notes_results) && report.show_notes_results.every(showNotesValidationResultValid), "publication-day link validation must retain successful deterministic show-notes results.");
   const currentHashes = sourceValidationInputHashes(episodePath);
   expect(Object.entries(currentHashes).every(([name, digest]) => report.input_sha256?.[name] === digest), "publication-link-validation.yaml must be bound to the current sources, claims, and show-notes inputs, including the current script and manifest bytes.");
   try { errors.push(...validationCoverageErrors(episodePath, report)); }

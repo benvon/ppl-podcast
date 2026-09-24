@@ -10,7 +10,7 @@ const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { independentSpokenScriptReviewErrors } = require("./production-gates.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
-const { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_SCRIPT_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_SCRIPT_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, showNotesValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
 const {
   PACKAGE_OPERATION_IDS,
@@ -146,13 +146,17 @@ function sourceReviewFailureReport({ options, validationRun, authorizationForRun
   });
 }
 
-function staticValidationTargetErrors(ledger, showNotesManifest) {
+function staticValidationTargetErrors(ledger, showNotesManifest, { includeShowNotes = true } = {}) {
   const errors = [];
   const sourcesByID = new Map(ledger.sources.map((source) => [source.id, source]));
   for (const source of ledger.sources) {
     for (const error of [...citationTargetErrors(source), ...validationTargetErrors(source)]) errors.push(`Source ${source.id} has an invalid citation target: ${error}`);
   }
-  for (const note of showNotesManifest.links) {
+  for (const note of includeShowNotes ? showNotesManifest.links : []) {
+    if ((note.kind || "claim") === "supplemental") {
+      try { assertSafeUrl(note.url); } catch (error) { errors.push(`Supplemental show-notes link ${note.id} has an invalid URL: ${error.message}`); }
+      continue;
+    }
     const source = sourcesByID.get(note.source_id);
     if (!source) continue;
     const target = { ...source, url: note.url, locator: note.locator };
@@ -970,14 +974,29 @@ function markdownHttpsLinks(markdown) {
 }
 
 function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
-  const errors = []; const sourcesById = new Map(ledger.sources.map((source) => [source.id, source])); const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
+  const errors = [];
+  if (!Array.isArray(ledger?.sources) || !Array.isArray(claimInventory?.claims) || !Array.isArray(manifest?.links) || typeof markdown !== "string") {
+    return { valid: false, errors: ["sources, claims, show-notes manifest links, and Markdown must have valid shapes"], markdown_link_count: 0, manifest_link_count: 0 };
+  }
+  const sourcesById = new Map(ledger.sources.map((source) => [source.id, source])); const claimsById = new Map(claimInventory.claims.map((claim) => [claim.id, claim]));
   if (/^## Production notice\b/im.test(markdown)) errors.push("show notes must not duplicate the hosting production disclosure");
-  const links = markdownHttpsLinks(markdown); const manifestLinks = manifest.links || []; const ids = new Set(); const manifestByKey = new Map();
+  const httpLinks = [...markdown.matchAll(/http:\/\/[^\s<>"')]+/g)];
+  for (const link of httpLinks) errors.push(`show notes contain an HTTP link; HTTP links are not permitted: ${link[0]}`);
+  const links = markdownHttpsLinks(markdown); const manifestLinks = manifest.links; const ids = new Set(); const manifestByKey = new Map();
   for (const entry of manifestLinks) {
-    if (!entry.id || ids.has(entry.id)) errors.push(`show-notes manifest has duplicate or missing link id ${entry.id || "(missing)"}`); else ids.add(entry.id);
-    if (!entry.text || !entry.url || !entry.locator || !entry.source_id || !Array.isArray(entry.claim_ids) || !entry.claim_ids.length) { errors.push(`show-notes link ${entry.id || "(missing)"} must declare text, url, locator, source_id, and claim_ids`); continue; }
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) { errors.push("show-notes manifest entries must be mappings"); continue; }
+    if (typeof entry.id !== "string" || !entry.id.trim() || ids.has(entry.id)) errors.push(`show-notes manifest has duplicate or missing link id ${entry.id || "(missing)"}`); else ids.add(entry.id);
+    const kind = entry.kind || "claim";
+    if (!["claim", "supplemental"].includes(kind)) { errors.push(`show-notes link ${entry.id || "(missing)"} has unsupported kind ${kind}`); continue; }
+    if (typeof entry.text !== "string" || !entry.text.trim() || typeof entry.url !== "string" || !entry.url.trim()) { errors.push(`show-notes link ${entry.id || "(missing)"} must declare text and url`); continue; }
     const key = `${entry.text}\u0000${entry.url}`;
     if (manifestByKey.has(key)) errors.push(`show-notes manifest duplicates link ${entry.url}`); else manifestByKey.set(key, entry);
+    try { assertSafeUrl(entry.url); } catch (error) { errors.push(`show-notes link ${entry.id || "(missing)"}: ${error.message}`); }
+    if (kind === "supplemental") {
+      if (entry.source_id !== undefined || entry.claim_ids !== undefined || entry.locator !== undefined) errors.push(`supplemental show-notes link ${entry.id} must not declare source_id, claim_ids, or locator`);
+      continue;
+    }
+    if (typeof entry.locator !== "string" || !entry.locator.trim() || typeof entry.source_id !== "string" || !entry.source_id.trim() || !Array.isArray(entry.claim_ids) || !entry.claim_ids.length || entry.claim_ids.some((claimId) => typeof claimId !== "string" || !claimId.trim()) || new Set(entry.claim_ids).size !== entry.claim_ids.length) { errors.push(`show-notes link ${entry.id || "(missing)"} must declare locator, source_id, and unique claim_ids`); continue; }
     const source = sourcesById.get(entry.source_id);
     if (!source) { errors.push(`show-notes link ${entry.id} declares unknown source ${entry.source_id}`); continue; }
     try {
@@ -996,27 +1015,39 @@ function validateShowNotesMappings(ledger, claimInventory, manifest, markdown) {
     if (!manifestByKey.has(key)) errors.push(`show notes contain an undeclared HTTPS link ${key.split("\u0000")[1]}`);
   }
   for (const key of manifestByKey.keys()) if (!markdownKeys.has(key)) errors.push(`show-notes manifest declares a link not present in show-notes.md: ${key.split("\u0000")[1]}`);
-  return { valid: errors.length === 0, errors, markdown_link_count: links.length, manifest_link_count: manifestLinks.length };
+  return { valid: errors.length === 0, errors, markdown_link_count: links.length, http_link_count: httpLinks.length, manifest_link_count: manifestLinks.length };
 }
 
 async function validateShowNotesLinks(ledger, manifest, { fetchCache } = {}) {
   const sourcesById = new Map(ledger.sources.map((source) => [source.id, source])); const results = [];
   for (const entry of manifest.links) {
-    const source = sourcesById.get(entry.source_id); const noteSource = { ...source, url: entry.url, locator: entry.locator };
-    const result = { id: entry.id, text: entry.text, url: entry.url, source_id: entry.source_id, claim_ids: entry.claim_ids, citation_target: { valid: true, errors: [] } };
+    const kind = entry.kind || "claim";
+    const source = kind === "claim" ? sourcesById.get(entry.source_id) : null;
+    const noteSource = kind === "claim" ? { ...source, url: entry.url, locator: entry.locator } : { url: entry.url };
+    const result = { id: entry.id, kind, text: entry.text, url: entry.url, ...(kind === "claim" ? { source_id: entry.source_id, claim_ids: entry.claim_ids, citation_target: { valid: true, errors: [] } } : {}) };
     try {
-      result.citation_target.errors = citationTargetErrors(noteSource); result.citation_target.valid = result.citation_target.errors.length === 0;
-      if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
-      const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache });
-      applyVerificationEvidence(result, noteSource, verification);
+      if (kind === "claim") {
+        result.citation_target.errors = citationTargetErrors(noteSource); result.citation_target.valid = result.citation_target.errors.length === 0;
+        if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
+        const verification = await verifyProgrammaticFallback(noteSource, { includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache });
+        applyVerificationEvidence(result, noteSource, verification);
+      } else {
+        const url = assertSafeUrl(entry.url);
+        const response = await fetchSourceCached(url.toString(), { includeContentHash: true }, fetchCache);
+        const errors = linkResponseErrors(url.toString(), response);
+        result.link = { ...response, errors, valid: errors.length === 0 };
+        if (!result.link.valid) throw new Error(errors.join("; "));
+      }
     } catch (error) { result.link = { valid: false, error: error.message }; }
     results.push(result);
   }
   return results;
 }
 
-function loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath }) {
-  if (!fs.existsSync(showNotesPath) || !fs.lstatSync(showNotesPath).isFile() || !fs.existsSync(showNotesManifestPath) || !fs.lstatSync(showNotesManifestPath).isFile()) {
+function loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, requireShowNotes = true }) {
+  const hasShowNotes = fs.existsSync(showNotesPath) && fs.lstatSync(showNotesPath).isFile();
+  const hasShowNotesManifest = fs.existsSync(showNotesManifestPath) && fs.lstatSync(showNotesManifestPath).isFile();
+  if (requireShowNotes && (!hasShowNotes || !hasShowNotesManifest)) {
     throw new Error("current-contract source validation requires canonical show-notes.md and show-notes-manifest.yaml files");
   }
   for (const filePath of [sourcesPath, claimsPath]) {
@@ -1024,12 +1055,24 @@ function loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, s
       throw new Error("current-contract source validation requires canonical regular sources.yaml and claim-inventory.yaml files");
     }
   }
-  return {
+  const result = {
     ledger: loadYaml(sourcesPath, "sources"),
     claimInventory: loadYaml(claimsPath, "claims"),
-    showNotesManifest: loadYaml(showNotesManifestPath, "links"),
-    showNotesMarkdown: fs.readFileSync(showNotesPath, "utf8"),
+    showNotesManifest: { links: [] },
+    showNotesMarkdown: "",
+    showNotesInputErrors: [],
+    hasShowNotes,
+    hasShowNotesManifest,
   };
+  if (!hasShowNotes) result.showNotesInputErrors.push("show-notes.md is missing");
+  else result.showNotesMarkdown = fs.readFileSync(showNotesPath, "utf8");
+  if (!hasShowNotesManifest) result.showNotesInputErrors.push("show-notes-manifest.yaml is missing");
+  else {
+    try { result.showNotesManifest = loadYaml(showNotesManifestPath, "links"); }
+    catch (error) { result.showNotesInputErrors.push(error.message); }
+  }
+  if (requireShowNotes && result.showNotesInputErrors.length) throw new Error(result.showNotesInputErrors[0]);
+  return result;
 }
 
 async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, isCancelled, refreshCount, finalRefreshAttempt, fetchImpl = fetch }) {
@@ -1059,36 +1102,38 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   const episode = episodeDocument.toJS();
   requireCurrentProductionContract(episode, "Source validation");
   if (options.dryRun) {
-    const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
+    const { ledger, claimInventory, showNotesManifest, showNotesMarkdown, showNotesInputErrors } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, requireShowNotes: options.publicationCheck });
     const claimMapping = validateClaimMappings(ledger, claimInventory);
     const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
     const showNotesMapping = validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown);
-    if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
-      reportMappingErrors(claimMapping, showNotesMapping);
+    if (showNotesInputErrors.length) { showNotesMapping.valid = false; showNotesMapping.errors.push(...showNotesInputErrors); }
+    if (!claimMapping.valid || !masterScriptMapping.valid || (options.publicationCheck && !showNotesMapping.valid)) {
+      reportMappingErrors(claimMapping, options.publicationCheck ? showNotesMapping : { errors: [] });
       for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
       process.exitCode = 1;
       return;
     }
-    console.log(`Validated input shape, claim mappings, ${masterScriptMapping.source_tag_count} master-script source tags, and ${showNotesManifest.links.length} show-notes links for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims; no network or API requests made.`);
+    console.log(`Validated input shape, claim mappings, and ${masterScriptMapping.source_tag_count} master-script source tags for ${ledger.sources.length} sources and ${claimInventory.claims.length} claims${options.publicationCheck ? ` plus ${showNotesManifest.links.length} show-notes links` : ""}; no network or API requests made.`);
     return;
   }
-  const inputSha256 = sourceValidationInputHashes(episodePath);
-  const semanticInputSha256 = sourceReviewSemanticInputHashes(episodePath);
+  const inputSha256 = sourceValidationInputHashes(episodePath, { includeShowNotes: options.publicationCheck });
+  const semanticInputSha256 = sourceReviewSemanticInputHashes(episodePath, { includeShowNotes: options.publicationCheck });
   let validationRun;
     validationRun = markValidationInProgress(outputPath, inputSha256, { recoverStaleLock: options.recoverStaleLock });
     let authorization = null;
     return await runOwnedValidation(outputPath, validationRun, async () => {
   if (!options.publicationCheck) updateEpisodeSourceState(episodePath, "in_progress", null, lifecycleLease);
-  const { ledger, claimInventory, showNotesManifest, showNotesMarkdown } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath });
-  const showNotesFilePresent = true; const showNotesValidationConfigured = true;
+  const { ledger, claimInventory, showNotesManifest, showNotesMarkdown, showNotesInputErrors, hasShowNotes, hasShowNotesManifest } = loadCurrentValidationInputs({ sourcesPath, claimsPath, showNotesPath, showNotesManifestPath, requireShowNotes: options.publicationCheck });
+  const showNotesFilePresent = hasShowNotes; const showNotesValidationConfigured = hasShowNotesManifest;
   const claimsById = new Map(claimInventory.claims.filter((claim) => claim && typeof claim === "object" && !Array.isArray(claim)).map((claim) => [claim.id, claim]));
   const invalid = ledger.sources.filter((source) => !source || typeof source !== "object" || Array.isArray(source) || !source.id || !source.url || !Array.isArray(source.supports_claims));
   if (invalid.length) throw new Error("Each source must have id, url, and supports_claims.");
   const claimMapping = validateClaimMappings(ledger, claimInventory);
   const masterScriptMapping = validateMasterScriptSourceMappings(episodePath, ledger, claimInventory);
   const showNotesMapping = validateShowNotesMappings(ledger, claimInventory, showNotesManifest, showNotesMarkdown);
+  if (showNotesInputErrors.length) { showNotesMapping.valid = false; showNotesMapping.errors.push(...showNotesInputErrors); }
   progress.emit("run_started", { source_count: ledger.sources.length, show_notes_count: showNotesManifest.links.length, llm_requested: options.llm });
-  if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
+  if (!claimMapping.valid || !masterScriptMapping.valid || (options.publicationCheck && !showNotesMapping.valid)) {
     reportMappingErrors(claimMapping, showNotesMapping);
     for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
     const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_SCRIPT_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
@@ -1102,7 +1147,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     const reviewErrors = independentSpokenScriptReviewErrors({ episodePath, episode });
     if (reviewErrors.length) throw new Error(`Source-relevance validation requires a completed independent spoken-script review: ${reviewErrors[0]}`);
   }
-  const targetErrors = staticValidationTargetErrors(ledger, showNotesManifest);
+  const targetErrors = staticValidationTargetErrors(ledger, showNotesManifest, { includeShowNotes: options.publicationCheck });
   if (targetErrors.length) throw new Error(`Source validation cannot start with invalid citation targets:\n${targetErrors.join("\n")}`);
   const fetchCache = new Map();
   const refreshedEcfrSources = options.publicationCheck ? [] : await refreshEcfrManifestDates(sourcesPath, ledger, { fetchImpl, fetchCache, signal: cancellation.signal, ecfrRateLimiter, expectedSourcesSha256: inputSha256.sources });
@@ -1138,8 +1183,8 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   // authorization alongside the outbound review result.
   if (options.llm) authorization = consumeSourceReviewAuthorization(episodePath, validationRun.run_id);
   const results = new Array(ledger.sources.length);
-  const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
-  const showNotesResults = new Array(showNotesManifest?.links.length || 0);
+  const allJobs = ledger.sources.map((source, index) => ({ type: "source", source, index })).concat(options.publicationCheck && showNotesValidationConfigured ? showNotesManifest.links.map((note, index) => ({ type: "show_note", note, index })) : []);
+  const showNotesResults = new Array(options.publicationCheck ? (showNotesManifest?.links.length || 0) : 0);
   const origin = (job) => {
     try {
       const url = new URL(job.type === "source" ? job.source.url : job.note.url);
@@ -1150,13 +1195,23 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   await mapConcurrent(allJobs, options.httpConcurrency, async (job) => {
     if (cancellation.signal.aborted) throw new Error("cancelled");
     if (job.type === "show_note") {
-      const source = ledger.sources.find((candidate) => candidate.id === job.note.source_id); const noteSource = { ...source, url: job.note.url, locator: job.note.locator };
-      const result = { id: job.note.id, text: job.note.text, url: job.note.url, source_id: job.note.source_id, claim_ids: job.note.claim_ids, citation_target: { valid: true, errors: [] } };
+      const kind = job.note.kind || "claim";
+      const source = kind === "claim" ? ledger.sources.find((candidate) => candidate.id === job.note.source_id) : null;
+      const noteSource = kind === "claim" ? { ...source, url: job.note.url, locator: job.note.locator } : { url: job.note.url };
+      const result = { id: job.note.id, kind, text: job.note.text, url: job.note.url, ...(kind === "claim" ? { source_id: job.note.source_id, claim_ids: job.note.claim_ids, citation_target: { valid: true, errors: [] } } : {}) };
       try {
-        result.citation_target.errors = [...citationTargetErrors(noteSource), ...validationTargetErrors(noteSource)]; result.citation_target.valid = result.citation_target.errors.length === 0;
-        if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
-        const verification = await verifyProgrammaticFallback(noteSource, { fetchImpl, includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
-        applyVerificationEvidence(result, noteSource, verification);
+        if (kind === "claim") {
+          result.citation_target.errors = [...citationTargetErrors(noteSource), ...validationTargetErrors(noteSource)]; result.citation_target.valid = result.citation_target.errors.length === 0;
+          if (!result.citation_target.valid) throw new Error(`Deep-citation validation failed: ${result.citation_target.errors.join("; ")}`);
+          const verification = await verifyProgrammaticFallback(noteSource, { fetchImpl, includePdfPageText: Boolean(citedPdfPageNumber(noteSource.url)), fetchCache, signal: cancellation.signal, ecfrRateLimiter });
+          applyVerificationEvidence(result, noteSource, verification);
+        } else {
+          const url = assertSafeUrl(job.note.url);
+          const response = await fetchSourceCached(url.toString(), { fetchImpl, signal: cancellation.signal, includeContentHash: true }, fetchCache);
+          const errors = linkResponseErrors(url.toString(), response);
+          result.link = { ...response, errors, valid: errors.length === 0 };
+          if (!result.link.valid) throw new Error(errors.join("; "));
+        }
       } catch (error) { result.link = { valid: false, error: error.message }; }
       showNotesResults[job.index] = result; return result;
     }
@@ -1227,7 +1282,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
   const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_SCRIPT_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, llm_review_passes: options.llm ? LLM_REVIEW_PASS_COUNT : 0, llm_materiality_policy: options.llm ? LLM_MATERIALITY_POLICY : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
-  const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
+  const unresolved = !claimMapping.valid || !masterScriptMapping.valid || (options.publicationCheck && (!showNotesMapping.valid || showNotesResults.some((entry) => !showNotesValidationResultValid(entry)))) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
   const terminalOutcome = sourceValidationTerminalOutcome({ unresolved, requireLlm: options.requireLlm });
   const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, terminalOutcome, report.checked_at_utc, lifecycleLease); } });
   progress.emit("report_written", { valid: !unresolved });

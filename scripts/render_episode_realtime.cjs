@@ -21,6 +21,7 @@ const { AudioMixConfigError, loadAudioMixConfig } = require("./audio-mix-config.
 const { deriveNarration } = require("./derive-narration.cjs");
 const { editorialApprovalErrors, independentSpokenScriptReviewErrors, sourceReviewEvidenceErrors } = require("./production-gates.cjs");
 const { PACKAGE_OPERATION_IDS, withEpisodePackageOperationAsync } = require("./episode-package-lifecycle.cjs");
+const { validateShowNotesMappings } = require("./validate-source-links.cjs");
 
 const SAMPLE_RATE = 24000;
 const CHANNELS = 1;
@@ -108,13 +109,24 @@ function assertNarrationInput(scriptPath) {
 }
 
 function assertSourceRelevanceApproved(scriptPath) {
-  const episodePath = path.join(path.dirname(scriptPath), "episode.yaml");
+  const packagePath = path.dirname(scriptPath);
+  const episodePath = path.join(packagePath, "episode.yaml");
   if (!fs.existsSync(episodePath)) throw new RenderError("Render input must be stored in an episode package with episode.yaml so source-review status can be verified.");
   let episode;
   try {
     episode = YAML.parse(fs.readFileSync(episodePath, "utf8"));
   } catch (error) {
     throw new RenderError(`Could not read source-review records: ${error.message}`);
+  }
+  try {
+    const sources = YAML.parse(fs.readFileSync(path.join(packagePath, "sources.yaml"), "utf8"));
+    const claims = YAML.parse(fs.readFileSync(path.join(packagePath, "claim-inventory.yaml"), "utf8"));
+    const manifest = YAML.parse(fs.readFileSync(path.join(packagePath, "show-notes-manifest.yaml"), "utf8"));
+    const markdown = fs.readFileSync(path.join(packagePath, "show-notes.md"), "utf8");
+    const mapping = validateShowNotesMappings(sources, claims, manifest, markdown);
+    if (!mapping.valid) throw new Error(mapping.errors[0]);
+  } catch (error) {
+    throw new RenderError(`Render prerequisites are not satisfied: current show-notes mapping is invalid (${error.message}).`);
   }
   const errors = [
     ...independentSpokenScriptReviewErrors({ episodePath: path.dirname(scriptPath), episode }),

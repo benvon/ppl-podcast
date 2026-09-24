@@ -77,7 +77,7 @@ function overallAssessmentSupportsSourceRelease(assessment) {
   return assessment?.verdict === "supports" || assessment?.verdict === "partially_supports";
 }
 
-function sourceReviewSemanticInputHashes(episodePath) {
+function sourceReviewSemanticInputHashes(episodePath, { includeShowNotes = true } = {}) {
   const scriptPath = path.join(episodePath, "master-script.md");
   const showNotesPath = path.join(episodePath, "show-notes.md");
   const script = fs.existsSync(scriptPath) ? fs.readFileSync(scriptPath, "utf8") : null;
@@ -86,18 +86,18 @@ function sourceReviewSemanticInputHashes(episodePath) {
       narration: normalizeSourceReviewMarkdown(deriveNarration(script)),
       source_tags: sourceTagRecords(script).map(({ source_id, section, passage }) => ({ source_id, section, passage })),
     })).digest("hex"),
-    show_notes: fs.existsSync(showNotesPath) ? crypto.createHash("sha256").update(normalizeShowNotesSourceReviewMarkdown(fs.readFileSync(showNotesPath, "utf8"))).digest("hex") : null,
+    show_notes: includeShowNotes && fs.existsSync(showNotesPath) ? crypto.createHash("sha256").update(normalizeShowNotesSourceReviewMarkdown(fs.readFileSync(showNotesPath, "utf8"))).digest("hex") : null,
   };
 }
 
-function sourceValidationInputHashes(episodePath) {
+function sourceValidationInputHashes(episodePath, { includeShowNotes = true } = {}) {
   const digest = (file) => fs.existsSync(file) ? crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") : null;
   return {
     sources: digest(path.join(episodePath, "sources.yaml")),
     claims: digest(path.join(episodePath, "claim-inventory.yaml")),
     master_script: digest(path.join(episodePath, "master-script.md")),
-    show_notes: digest(path.join(episodePath, "show-notes.md")),
-    show_notes_manifest: digest(path.join(episodePath, "show-notes-manifest.yaml")),
+    show_notes: includeShowNotes ? digest(path.join(episodePath, "show-notes.md")) : null,
+    show_notes_manifest: includeShowNotes ? digest(path.join(episodePath, "show-notes-manifest.yaml")) : null,
   };
 }
 
@@ -241,6 +241,16 @@ function deterministicValidationResultValid(result) {
     && !result?.missing_claim_ids?.length;
 }
 
+function showNotesValidationResultValid(result) {
+  if ((result?.kind || "claim") === "supplemental") {
+    return result?.link?.valid === true
+      && (!result?.content_attestation || result.content_attestation.valid === true)
+      && !result?.missing_claim_ids?.length;
+  }
+  if (result?.kind && result.kind !== "claim") return false;
+  return deterministicValidationResultValid(result);
+}
+
 function validationCoverageErrors(episodePath, validation, { includeShowNotes = true } = {}) {
   const errors = [];
   const read = (name) => YAML.parse(fs.readFileSync(path.join(episodePath, name), "utf8"));
@@ -265,9 +275,11 @@ function validationCoverageErrors(episodePath, validation, { includeShowNotes = 
   if (!sameStringSet(showNotesResults.map((result) => result?.id), expectedLinks.map((link) => link.id))) errors.push("link-validation.yaml does not cover every current show-notes link exactly once.");
   for (const link of expectedLinks) {
     const result = showNotesResults.find((candidate) => candidate?.id === link.id);
-    if (result?.url !== link.url || result?.source_id !== link.source_id || !sameStringSet(result?.claim_ids, link.claim_ids || [])) errors.push(`link-validation.yaml does not preserve the current show-notes mapping for ${link.id}.`);
+    const kind = link.kind || "claim";
+    if ((result?.kind || "claim") !== kind || result?.url !== link.url) errors.push(`link-validation.yaml does not preserve the current show-notes mapping for ${link.id}.`);
+    if (kind === "claim" && (result?.source_id !== link.source_id || !sameStringSet(result?.claim_ids, link.claim_ids || []))) errors.push(`link-validation.yaml does not preserve the current show-notes claim mapping for ${link.id}.`);
   }
   return errors;
 }
 
-module.exports = { SOURCE_REVIEW_SCRIPT_NORMALIZATION, SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { SOURCE_REVIEW_SCRIPT_NORMALIZATION, SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, showNotesValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

@@ -12,6 +12,7 @@ const { CONTRACT_KINDS, RELEASE_GATES_AFTER_SCRIPT_APPROVAL, productionContractK
 const { verifyMp3Chapters } = require("./render_episode_realtime.cjs");
 const { AudioMixConfigError, audioMixMatchesManifest, loadAudioMixConfig } = require("./audio-mix-config.cjs");
 const { PACKAGE_OPERATION_IDS, assertEpisodePackageOperation, withEpisodePackageOperation } = require("./episode-package-lifecycle.cjs");
+const { validateShowNotesMappings } = require("./validate-source-links.cjs");
 
 const DRAFT_PACKAGE_SHAPE = "draft_package_shape";
 const PACKAGE_SHAPE_COMPATIBLE_STATUSES = new Set(["reviewed_draft", "source_relevance_review_complete", "audio_listening_qa_complete", "ready_for_hosting_pr"]);
@@ -190,6 +191,18 @@ function validatePreHostingUnlocked({ episodePath, cwd = process.cwd(), packageO
   const masterScript = fs.readFileSync(paths["master-script.md"], "utf8");
   const narration = fs.readFileSync(paths["narration.md"], "utf8");
   const showNotes = fs.readFileSync(paths["show-notes.md"], "utf8");
+  try {
+    const mapping = validateShowNotesMappings(
+      readYaml(paths["sources.yaml"]),
+      readYaml(paths["claim-inventory.yaml"]),
+      readYaml(paths["show-notes-manifest.yaml"]),
+      showNotes,
+    );
+    errors.push(...mapping.errors.map((error) => `Current show-notes mapping is invalid: ${error}.`));
+  } catch (error) {
+    errors.push(`Could not validate current show-notes mapping: ${error.message}`);
+  }
+  if (errors.length) return { valid: false, errors };
   const researchPacket = fs.readFileSync(paths["research-packet.md"], "utf8");
   const qaChecklist = fs.readFileSync(paths["qa-checklist.md"], "utf8");
   let mix = null;

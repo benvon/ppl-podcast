@@ -152,7 +152,9 @@ Use this order for every new draft:
 
 Treat the two source assessments as one review batch. Resolve their union with a single contextual pass through each affected section, then rerun the review against the new frozen package. Do not serially rewrite for non-material precision notes or make isolated sentence substitutions that break the larger explanation.
 
-If a human editorial revision changes a factual condition, definition, limitation, example, source tag, claim, source, or show-note assertion, repeat source-relevance validation before rendering. A clean report is bound to the script and package inputs it examined; it is not a reusable approval for later prose.
+For an agent-authored script revision, bump the patch number in the visible `master-script.md` version once for the coherent revision and keep `episode.yaml`, `show-notes.md`, and `hosting-metadata.yaml` on the same version. When the human editor changes the script, use the revision they set in `master-script.md` and sync the other records; do not silently overwrite their choice. Version changes alter the exact script identity for editorial approval, but do not require another source-relevance assessment when the narration and source tags are unchanged.
+
+If a human editorial revision changes spoken narration, a source tag, claim, or cited source, repeat source-relevance validation before rendering. A show-notes-only edit requires deterministic link and mapping validation, not another OpenAI review. A clean source report is bound to the tagged narration, claims, and cited sources it examined.
 
 ## Make the practical takeaway concrete
 
@@ -204,7 +206,7 @@ A Retrieval review is not a citation-free summary. It repeats instructional fact
 
 Keep each tagged passage source-pure. If adjacent sentences rely on different sources, split them into separate paragraphs and place each source tag after the sentence or paragraph it actually supports. Do not use one source tag to make a mixed-source paragraph appear fully covered.
 
-If a revision changes a factual condition, definition, limitation, or example in `master-script.md`, regenerate `narration.md` and run a fresh source-relevance review before any render. The validation report is bound to the master-script hash as well as the source ledger, claim inventory, and show notes; an older report is intentionally stale after any of those inputs changes.
+If a revision changes a factual condition, definition, limitation, or example in `master-script.md`, regenerate `narration.md` and run a fresh source-relevance review before any render. The source report is bound to the spoken narration, source tags, source ledger, and claim inventory. The publication-day deterministic report binds the show notes and link manifest.
 
 ## Run a listener pass before approval
 

@@ -75,7 +75,7 @@ function writePassingSourceGate(episodePath, episode) {
     show_notes_results: [],
     results: [result],
     input_sha256: sourceValidationInputHashes(episodePath),
-    input_normalization: { master_script: "markdown-whitespace-v1" },
+    input_normalization: { master_script: "narration-and-source-tags-v1" },
     semantic_input_sha256: sourceReviewSemanticInputHashes(episodePath),
   }), "utf8");
   episode.source_verification = { ...episode.source_verification, validation_contract: "source-relevance-v1", status: "source_relevance_complete", relevance_review: "complete", verified_at_utc: checkedAt, link_validation: "link-validation.yaml", show_notes_manifest: "show-notes-manifest.yaml" };
@@ -1475,6 +1475,44 @@ test("show-notes source identity ignores only fact-check verification-status cel
   assert.notEqual(normalizeShowNotesSourceReviewMarkdown(verified), normalizeShowNotesSourceReviewMarkdown(changedLocator));
 });
 
+test("source relevance remains current after show-notes-only edits", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-review-scope-"));
+  try {
+    const script = "# Test\n\n**Version:** 0.1.0\n\n**INSTRUCTOR:**\n\nThe lesson stays the same.\n";
+    fs.writeFileSync(path.join(temporary, "master-script.md"), script);
+    fs.writeFileSync(path.join(temporary, "sources.yaml"), "sources:\n  - id: source-a\n    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap1_section_1.html\n    locator: Paragraph 1-1-1\n    supports_claims: [claim-a]\n");
+    fs.writeFileSync(path.join(temporary, "claim-inventory.yaml"), "claims:\n  - id: claim-a\n    claim: The lesson stays the same.\n    sources: [source-a]\n");
+    const episode = { production_contract_version: 2, source_verification: {} };
+    writePassingSourceGate(temporary, episode);
+    assert.deepEqual(sourceReviewEvidenceErrors({ episodePath: temporary, episode }), []);
+    fs.writeFileSync(path.join(temporary, "show-notes.md"), "# Corrected public status\n");
+    fs.writeFileSync(path.join(temporary, "show-notes-manifest.yaml"), "links: []\n# Metadata-only update\n");
+    assert.deepEqual(sourceReviewEvidenceErrors({ episodePath: temporary, episode }), []);
+    fs.appendFileSync(path.join(temporary, "claim-inventory.yaml"), "# Changed claim input\n");
+    assert.match(sourceReviewEvidenceErrors({ episodePath: temporary, episode }).join("\n"), /current sources and claims/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
+test("source-review semantic identity tracks narration and source tags, not the version line", () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "ppl-source-review-narration-"));
+  try {
+    const scriptPath = path.join(temporary, "master-script.md");
+    const script = "# Test\n\n**Version:** 0.1.0\n\n## Check\n\n**INSTRUCTOR:**\n\nThe lesson stays the same.\n[Source: sources.yaml#source-a]\n";
+    fs.writeFileSync(scriptPath, script);
+    const original = sourceReviewSemanticInputHashes(temporary).master_script;
+    fs.writeFileSync(scriptPath, script.replace("0.1.0", "0.1.1"));
+    assert.equal(sourceReviewSemanticInputHashes(temporary).master_script, original);
+    fs.writeFileSync(scriptPath, script.replace("source-a", "source-b"));
+    assert.notEqual(sourceReviewSemanticInputHashes(temporary).master_script, original);
+    fs.writeFileSync(scriptPath, script.replace("stays the same", "has changed"));
+    assert.notEqual(sourceReviewSemanticInputHashes(temporary).master_script, original);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
+
 test("current relevance records never downgrade a locator problem to an editorial note", () => {
   const review = { status: "assessed", assessment: { verdict: "partially_supports", locator_assessment: { verdict: "partially_supports", finding_materiality: "editorial" }, claim_assessments: [{ claim_id: "claim-a", verdict: "supports", finding_materiality: "none" }] } };
   const result = {
@@ -1538,7 +1576,7 @@ test("source-relevance requests stop when the validation run is cancelled", asyn
   process.env.OPENAI_API_KEY = "test-key";
   const fetchImpl = (_url, { signal }) => new Promise((_, reject) => signal.addEventListener("abort", () => { observedAbort = true; reject(new DOMException("aborted", "AbortError")); }, { once: true }));
   try {
-    const pending = assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "Source text" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: { excerpt: "Current source text" }, fetchImpl, signal: controller.signal });
+    const pending = assessRelevance({ model: "gpt-6-sol", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "Source text" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: { excerpt: "Current source text" }, fetchImpl, signal: controller.signal });
     controller.abort();
     await assert.rejects(pending, /AbortError|aborted/);
     assert.equal(observedAbort, true);
@@ -1563,7 +1601,7 @@ test("source-relevance cancellation remains active while the response body is re
     return Promise.resolve(new Response(stream, { status: 200, headers: { "content-type": "application/json" } }));
   };
   try {
-    const pending = assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "Source text" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: { excerpt: "Current source text" }, fetchImpl, signal: controller.signal });
+    const pending = assessRelevance({ model: "gpt-6-sol", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "Source text" }, claims: [{ id: "claim-a", statement: "Claim", type: "guidance" }], fetched: { excerpt: "Current source text" }, fetchImpl, signal: controller.signal });
     controller.abort();
     await assert.rejects(pending, /AbortError|aborted/);
     assert.equal(observedAbort, true);
@@ -1581,7 +1619,7 @@ test("source relevance assesses freshly fetched text instead of a ledger excerpt
     return Promise.resolve(new Response(JSON.stringify({ output: [{ content: [{ type: "output_text", text: JSON.stringify(assessment) }] }] }), { status: 200, headers: { "content-type": "application/json" } }));
   };
   try {
-    await assessRelevance({ model: "gpt-5.6-terra", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "STALE LEDGER TEXT" }, claims: [{ id: "claim-a", claim: "Canonical claim text", claim_type: "guidance" }], authoredPassages: ["AUTHORED SCRIPT PASSAGE"], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
+    await assessRelevance({ model: "gpt-6-sol", source: { id: "source-a", title: "Test", locator: "Paragraph 1", relevance_excerpt: "STALE LEDGER TEXT" }, claims: [{ id: "claim-a", claim: "Canonical claim text", claim_type: "guidance" }], authoredPassages: ["AUTHORED SCRIPT PASSAGE"], fetched: { excerpt: "CURRENT FETCHED TEXT" }, fetchImpl });
     assert.match(request.input, /CURRENT FETCHED TEXT/);
     assert.doesNotMatch(request.input, /STALE LEDGER TEXT/);
     assert.match(request.input, /AUTHORED SCRIPT PASSAGE/);

@@ -1,6 +1,7 @@
 episode_id: "{{EPISODE_ID}}"
 # Declare every HTTPS link in show-notes.md. Link text and URL must match the
-# Markdown exactly. Each link must map to claims supported by its ledger source.
+# Markdown exactly. Claim-backed links map to supported claims. Supplemental
+# study links use kind: supplemental and omit locator, source_id, and claim_ids.
 links:
   - id: replace-with-stable-link-id
     text: "Specific source section"

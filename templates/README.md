@@ -25,7 +25,4 @@ use `#page=N` for PDFs; use a specific FAA HTML anchor or section endpoint; and
 use the exact eCFR section URL. A document or regulation landing page is only a
 research-discovery link, never an attribution.
 
-`show-notes-manifest.yaml` declares every HTTPS link in `show-notes.md`. It
-binds the exact displayed text and URL to a deep locator, a source-ledger entry,
-and the material claims that entry supports. The source validator checks this
-manifest alongside the claims inventory before release.
+The claim inventory, source ledger, and source-tagged master script own substantive facts. `show-notes.md` derives the public study guide from those claims and may also include supplemental study links. The manifest declares every HTTPS link in the notes. Claim-backed links bind displayed text and URL to a deep locator, source-ledger entry, and supported claims. Supplemental links declare `kind: supplemental`, text, and URL only. Deterministic mapping runs before rendering and package-only validation; publication-day validation checks the reachability of every link, including supplemental links.

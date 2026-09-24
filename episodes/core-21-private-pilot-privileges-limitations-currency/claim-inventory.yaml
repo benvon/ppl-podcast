@@ -1,0 +1,121 @@
+episode_id: "core-21"
+claims:
+  - id: acs-pilot-outcome
+    type: faa_standard
+    statement: "ACS PA.I.A asks applicants to understand certification and recent experience, private privileges, medical basis, required documents, and BasicMed, then apply PIC requirements in a VFR scenario."
+    sources: [acs-pilot-qualifications]
+    risk: safety_critical
+    script_sections: ["What the ACS is asking you to connect"]
+    status: draft
+  - id: acs-proficiency-risk
+    type: faa_standard
+    statement: "ACS PA.I.A.R1-R2 asks applicants to assess proficiency versus currency and risk from unfamiliar airplanes or flight displays and avionics."
+    sources: [acs-pilot-qualifications]
+    risk: safety_critical
+    script_sections: ["What the ACS is asking you to connect", "Choose the flight you can manage", "Retrieval review"]
+    status: draft
+  - id: certificate-and-id
+    type: regulation
+    statement: "For required flightcrew in a U.S. civil aircraft, 14 CFR 61.3(a) requires an appropriate pilot certificate or accepted temporary authority and photo identification in physical possession or readily accessible in the aircraft."
+    sources: [ecfr-pilot-documents]
+    risk: operational
+    script_sections: ["Check the pilot documents", "Retrieval review"]
+    status: draft
+  - id: aircraft-rating
+    type: regulation
+    statement: "A pilot carrying another person must hold the applicable category, class, and type rating if required, and PIC qualification is governed by 14 CFR 61.31(d)."
+    sources: [ecfr-aircraft-ratings]
+    risk: safety_critical
+    script_sections: ["Check the pilot documents", "Retrieval review"]
+    status: draft
+  - id: high-performance-endorsement
+    type: regulation
+    statement: "Except for specified prior-qualification alternatives, PIC of an airplane with an engine of more than 200 horsepower requires logged high-performance ground and flight training, proficiency, and a one-time instructor endorsement."
+    sources: [ecfr-high-performance]
+    risk: safety_critical
+    script_sections: ["Check the airplane before accepting it", "Retrieval review"]
+    status: draft
+  - id: private-medical-basis
+    type: regulation
+    statement: "Typical exercise of private-pilot privileges requires at least a third-class medical certificate unless the pilot operates under the conditions and limitations of 14 CFR 61.113(i)."
+    sources: [ecfr-medical-requirement]
+    risk: safety_critical
+    script_sections: ["Check the medical basis", "Retrieval review"]
+    status: draft
+  - id: medical-duration
+    type: regulation
+    statement: "A third-class medical certificate is valid for the remainder of its month of issue plus 24 calendar months if the pilot was age 40 or older on the examination date, or 60 calendar months if younger."
+    sources: [faa-medical-duration]
+    risk: operational
+    script_sections: ["Check the medical basis"]
+    status: draft
+  - id: flight-review-recency
+    type: regulation
+    statement: "Except for specified alternatives, PIC requires a satisfactory flight review in a rated aircraft and instructor logbook endorsement since the beginning of the 24th calendar month before the flight month."
+    sources: [ecfr-flight-review]
+    risk: safety_critical
+    script_sections: ["Check the flight-review record", "Retrieval review"]
+    status: draft
+  - id: flight-review-scope
+    type: regulation
+    statement: "A flight review ordinarily includes at least one hour each of flight and ground training, including current general Part 91 operating and flight rules and maneuvers or procedures chosen by the reviewer for safe exercise of privileges."
+    sources: [ecfr-flight-review]
+    risk: operational
+    script_sections: ["Check the flight-review record"]
+    status: draft
+  - id: passenger-day-recency
+    type: regulation
+    statement: "For Elena's chosen non-tailwheel single-pilot airplane, acting as PIC carrying Jonah requires three takeoffs and three landings within the preceding 90 days as sole manipulator in the same aircraft category, class, and type if required."
+    sources: [ecfr-passenger-day]
+    risk: safety_critical
+    script_sections: ["Check passenger takeoff and landing experience", "Retrieval review"]
+    status: draft
+  - id: passenger-night-recency
+    type: regulation
+    statement: "To act as PIC carrying persons from one hour after sunset to one hour before sunrise, a pilot needs three takeoffs and three full-stop landings as sole manipulator in that period within the preceding 90 days in the same category, class, and type if required."
+    sources: [ecfr-passenger-night]
+    risk: safety_critical
+    script_sections: ["Check the return time", "Retrieval review"]
+    status: draft
+  - id: record-recent-experience
+    type: regulation
+    statement: "14 CFR 61.51(a) requires documenting aeronautical experience used to meet recent flight experience requirements."
+    sources: [ecfr-logbook-evidence]
+    risk: operational
+    script_sections: ["Check passenger takeoff and landing experience"]
+    status: draft
+  - id: private-compensation-limit
+    type: regulation
+    statement: "Subject to stated exceptions, a private pilot may not act as PIC of an aircraft carrying passengers or property for compensation or hire, or act as PIC for compensation or hire."
+    sources: [ecfr-private-compensation]
+    risk: safety_critical
+    script_sections: ["Agree on the expenses before departure", "Retrieval review"]
+    status: draft
+  - id: pro-rata-expenses
+    type: regulation
+    statement: "On a flight with passengers, a private pilot may not pay less than a pro-rata share of operating expenses, and the eligible categories are fuel, oil, airport expenditures, and rental fees."
+    sources: [ecfr-expense-sharing]
+    risk: safety_critical
+    script_sections: ["Agree on the expenses before departure", "Retrieval review"]
+    status: draft
+  - id: basicmed-qualification
+    type: regulation
+    statement: "A private pilot using the driver's-license BasicMed path must have held an FAA medical certificate after July 14, 2006, meet the listed medical eligibility and driver's-license conditions in 14 CFR 61.23(c)(3), complete the specified medical course within 24 calendar months, and have the specified physician examination within 48 calendar months."
+    sources: [ecfr-basicmed-qualification]
+    risk: safety_critical
+    script_sections: ["Check the medical basis", "Retrieval review"]
+    status: draft
+  - id: basicmed-operation
+    type: regulation
+    statement: "Under 14 CFR 61.113(i), BasicMed sets aircraft occupancy and maximum-takeoff-weight limits and flight passenger, altitude, indicated-airspeed, and location limits, with required records available in the pilot's logbook."
+    sources: [ecfr-basicmed-operation]
+    risk: safety_critical
+    script_sections: ["Check the medical basis", "Retrieval review"]
+    status: draft
+  - id: basicmed-study-path
+    type: faa_guidance
+    statement: "The FAA BasicMed overview links the comprehensive medical examination checklist, physician examination, and education course information used to verify that alternate medical path."
+    sources: [faa-basicmed-overview]
+    risk: operational
+    script_sections: ["Check the medical basis"]
+    status: draft

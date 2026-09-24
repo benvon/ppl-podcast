@@ -1,0 +1,211 @@
+episode_id: "core-21"
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-pilot-qualifications
+    authority: faa_standard
+    title: "Private Pilot for Airplane Category Airman Certification Standards"
+    document_id: FAA-S-ACS-6C
+    locator: "PA.I.A.K1-K5, R1-R2, S1, Task A Pilot Qualifications, printed p. 2
+      (PDF viewer p. 10)"
+    url: "https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.p\
+      df#page=10"
+    revision: "April 2024; effective May 31, 2024; FAA ACS index checked September
+      23, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ acs-pilot-outcome, acs-proficiency-risk ]
+  - id: ecfr-pilot-documents
+    authority: regulation
+    title: "14 CFR 61.3, Requirement for certificates, ratings, privileges, and
+      authorizations"
+    document_id: 14-CFR-61.3
+    locator: "61.3(a)(1)-(2), certificate or temporary authority and photo
+      identification for U.S. civil aircraft"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.3"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ certificate-and-id ]
+  - id: ecfr-aircraft-ratings
+    authority: regulation
+    title: "14 CFR 61.31, Type rating and additional training requirements"
+    document_id: 14-CFR-61.31
+    locator: "61.31(c)-(d), category, class, and type rating limitations and PIC
+      requirements"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.31"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ aircraft-rating ]
+  - id: ecfr-high-performance
+    authority: regulation
+    title: "14 CFR 61.31, Type rating and additional training requirements"
+    document_id: 14-CFR-61.31
+    locator: "61.31(f)(1)-(2), high-performance airplane definition, training,
+      endorsement, and exceptions"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.31"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ high-performance-endorsement ]
+  - id: ecfr-medical-requirement
+    authority: regulation
+    title: "14 CFR 61.23, Medical certificates: Requirement and duration"
+    document_id: 14-CFR-61.23
+    locator: "61.23(a)(3), at least third-class medical for private-pilot privileges
+      subject to 61.113(i)"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.23"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ private-medical-basis ]
+  - id: faa-medical-duration
+    authority: faa_guidance
+    title: "Guide for Aviation Medical Examiners, General Information - Validity of
+      Medical Certificates"
+    document_id: null
+    locator: "General Information - Validity of Medical Certificates, item 3, Third
+      Class Medical Certificate"
+    url: "https://www.faa.gov/ame_guide/app_process/general/validity#content"
+    revision: "FAA page updated November 27, 2019; accessed September 23, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ medical-duration ]
+  - id: ecfr-flight-review
+    authority: regulation
+    title: "14 CFR 61.56, Flight review"
+    document_id: 14-CFR-61.56
+    locator: "61.56(a), (c)-(e), flight-review content, recency, endorsement, and
+      alternatives"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.56"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ flight-review-recency, flight-review-scope ]
+  - id: ecfr-passenger-day
+    authority: regulation
+    title: "14 CFR 61.57, Recent flight experience: Pilot in command"
+    document_id: 14-CFR-61.57
+    locator: "61.57(a)(1)(i)-(ii), (a)(2), general passenger recency including the
+      tailwheel full-stop condition"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.57"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ passenger-day-recency ]
+  - id: ecfr-passenger-night
+    authority: regulation
+    title: "14 CFR 61.57, Recent flight experience: Pilot in command"
+    document_id: 14-CFR-61.57
+    locator: "61.57(b)(1), night takeoff-and-full-stop-landing recency for carrying
+      persons"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.57"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ passenger-night-recency ]
+  - id: ecfr-logbook-evidence
+    authority: regulation
+    title: "14 CFR 61.51, Pilot logbooks"
+    document_id: 14-CFR-61.51
+    locator: "61.51(a)(1)-(2), (b), documentation of flight-review and
+      recent-experience records"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.51"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ record-recent-experience ]
+  - id: ecfr-private-compensation
+    authority: regulation
+    title: "14 CFR 61.113, Private pilot privileges and limitations"
+    document_id: 14-CFR-61.113
+    locator: "61.113(a), private-pilot compensation or hire limit and stated exceptions"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-E/section-61.113"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ private-compensation-limit ]
+  - id: ecfr-expense-sharing
+    authority: regulation
+    title: "14 CFR 61.113, Private pilot privileges and limitations"
+    document_id: 14-CFR-61.113
+    locator: "61.113(c), pilot pro-rata share and listed flight operating expenses"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-E/section-61.113"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ pro-rata-expenses ]
+  - id: ecfr-basicmed-qualification
+    authority: regulation
+    title: "14 CFR 61.23, Medical certificates: Requirement and duration"
+    document_id: 14-CFR-61.23
+    locator: "61.23(c)(3), U.S. driver's-license BasicMed qualification, course,
+      examination, and listed medical eligibility conditions"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-A/section-61.23"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ basicmed-qualification ]
+  - id: ecfr-basicmed-operation
+    authority: regulation
+    title: "14 CFR 61.113, Private pilot privileges and limitations"
+    document_id: 14-CFR-61.113
+    locator: "61.113(i)(1)-(3), BasicMed aircraft, passenger, flight, and logbook
+      conditions"
+    url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subp\
+      art-E/section-61.113"
+    ecfr_date: "2026-09-22"
+    revision: "eCFR Title 14 current through September 22, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ basicmed-operation ]
+  - id: faa-basicmed-overview
+    authority: faa_guidance
+    title: "FAA BasicMed overview"
+    document_id: null
+    locator: "When can I fly under BasicMed; What do I need to do; Aircraft
+      Requirements; Operating Requirements"
+    url: "https://www.faa.gov/licenses_certificates/airmen_certification/basic_med#\
+      content"
+    revision: "FAA page updated June 3, 2026; accessed September 23, 2026"
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ basicmed-study-path ]

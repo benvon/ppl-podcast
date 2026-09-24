@@ -4,9 +4,11 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
+const { deriveNarration } = require("./derive-narration.cjs");
 const { utcRfc3339Timestamp } = require("./production-state-contract.cjs");
 
 const SOURCE_REVIEW_WHITESPACE_NORMALIZATION = "markdown-whitespace-v1";
+const SOURCE_REVIEW_SCRIPT_NORMALIZATION = "narration-and-source-tags-v1";
 const SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION = "fact-check-verification-column-v1";
 
 // Source relevance is about the spoken, source-tagged lesson. Keep its
@@ -78,8 +80,12 @@ function overallAssessmentSupportsSourceRelease(assessment) {
 function sourceReviewSemanticInputHashes(episodePath) {
   const scriptPath = path.join(episodePath, "master-script.md");
   const showNotesPath = path.join(episodePath, "show-notes.md");
+  const script = fs.existsSync(scriptPath) ? fs.readFileSync(scriptPath, "utf8") : null;
   return {
-    master_script: fs.existsSync(scriptPath) ? crypto.createHash("sha256").update(normalizeSourceReviewMarkdown(fs.readFileSync(scriptPath, "utf8"))).digest("hex") : null,
+    master_script: script === null ? null : crypto.createHash("sha256").update(JSON.stringify({
+      narration: normalizeSourceReviewMarkdown(deriveNarration(script)),
+      source_tags: sourceTagRecords(script).map(({ source_id, section, passage }) => ({ source_id, section, passage })),
+    })).digest("hex"),
     show_notes: fs.existsSync(showNotesPath) ? crypto.createHash("sha256").update(normalizeShowNotesSourceReviewMarkdown(fs.readFileSync(showNotesPath, "utf8"))).digest("hex") : null,
   };
 }
@@ -235,7 +241,7 @@ function deterministicValidationResultValid(result) {
     && !result?.missing_claim_ids?.length;
 }
 
-function validationCoverageErrors(episodePath, validation) {
+function validationCoverageErrors(episodePath, validation, { includeShowNotes = true } = {}) {
   const errors = [];
   const read = (name) => YAML.parse(fs.readFileSync(path.join(episodePath, name), "utf8"));
   const sourceLedger = read("sources.yaml"); const claimInventory = read("claim-inventory.yaml");
@@ -251,6 +257,7 @@ function validationCoverageErrors(episodePath, validation) {
     if (!sameStringSet(result?.linked_claim_ids, source.supports_claims || [])) errors.push(`link-validation.yaml does not preserve the current claim mapping for source ${source.id}.`);
     for (const claimId of source.supports_claims || []) if (!claimsById.get(claimId)?.sources?.includes(source.id)) errors.push(`Current claim inventory is not reciprocal for source ${source.id}.`);
   }
+  if (!includeShowNotes) return errors;
   const manifestPath = path.join(episodePath, "show-notes-manifest.yaml");
   const manifest = fs.existsSync(manifestPath) ? read("show-notes-manifest.yaml") : null;
   const expectedLinks = Array.isArray(manifest?.links) ? manifest.links : [];
@@ -263,4 +270,4 @@ function validationCoverageErrors(episodePath, validation) {
   return errors;
 }
 
-module.exports = { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };
+module.exports = { SOURCE_REVIEW_SCRIPT_NORMALIZATION, SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, normalizeShowNotesSourceReviewMarkdown, normalizeSourceReviewMarkdown, retrievalReviewUntaggedPassageErrors, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceTagRecords, sourceValidationInputHashes, utcRfc3339Timestamp, validateMasterScriptSourceMappings, validationCoverageErrors };

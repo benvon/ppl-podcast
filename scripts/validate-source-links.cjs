@@ -10,7 +10,7 @@ const { exactEcfrTarget, extractEcfrSection } = require("./ecfr-section.cjs");
 const { requireCurrentProductionContract } = require("./production-state-contract.cjs");
 const { independentSpokenScriptReviewErrors } = require("./production-gates.cjs");
 const { boundedInteger, mapConcurrent, progressReporter, requestRateLimiter } = require("./validation-runtime.cjs");
-const { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_WHITESPACE_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
+const { SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION, SOURCE_REVIEW_SCRIPT_NORMALIZATION, claimAssessmentBlocksSourceRelease, deterministicValidationResultValid, sourceRelevanceResultValid, sourceReviewSemanticInputHashes, sourceValidationInputHashes, validateMasterScriptSourceMappings } = require("./source-validation-contract.cjs");
 const { failedValidationAttemptPath, validationFailurePath, validationInProgressPath, validationRecoveryPath } = require("./validation-records.cjs");
 const {
   PACKAGE_OPERATION_IDS,
@@ -24,7 +24,7 @@ const {
 } = require("./episode-package-lifecycle.cjs");
 const { consumeChecklistAuthorization } = require("./openai-review-authorization.cjs");
 
-const DEFAULT_MODEL = "gpt-5.6-terra";
+const DEFAULT_MODEL = "gpt-6-sol";
 const DEFAULT_HTTP_CONCURRENCY = 5;
 const MAX_REDIRECTS = 5;
 const MAX_FETCH_ATTEMPTS = 3;
@@ -1091,7 +1091,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
   if (!claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid) {
     reportMappingErrors(claimMapping, showNotesMapping);
     for (const error of masterScriptMapping.errors) console.error(`Master-script source mapping failed: ${error}`);
-    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_WHITESPACE_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
+    const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_SCRIPT_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, claim_mapping: claimMapping, master_script_mapping: masterScriptMapping, show_notes_mapping: showNotesMapping, results: [] };
     const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: false, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, "failed", null, lifecycleLease); } });
     progress.emit("report_written", { valid: false });
     console.log(`Validation failed; retained the canonical report and wrote this failed attempt: ${path.relative(process.cwd(), writtenPath)}`);
@@ -1114,7 +1114,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
         validation_kind: "formal_source_review",
         checked_at_utc: new Date().toISOString(),
         input_sha256: inputSha256,
-        input_normalization: { master_script: SOURCE_REVIEW_WHITESPACE_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION },
+        input_normalization: { master_script: SOURCE_REVIEW_SCRIPT_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION },
         semantic_input_sha256: semanticInputSha256,
         failure: {
           reason: "eCFR source dates changed repeatedly before validation could complete.",
@@ -1226,7 +1226,7 @@ async function validateOnce({ options, progress, ecfrRateLimiter, cancellation, 
     programmatic_link: publicLinkRecord(result.programmatic_link),
     attestation_link: publicLinkRecord(result.attestation_link),
   }));
-  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_WHITESPACE_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, llm_review_passes: options.llm ? LLM_REVIEW_PASS_COUNT : 0, llm_materiality_policy: options.llm ? LLM_MATERIALITY_POLICY : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
+  const report = { schema_version: 1, validator: "scripts/validate-source-links.cjs", validation_kind: options.publicationCheck ? "publication_link_check" : "formal_source_review", run_id: validationRun.run_id, checked_at_utc: new Date().toISOString(), sources_file: path.relative(process.cwd(), sourcesPath), claims_file: path.relative(process.cwd(), claimsPath), show_notes_file: showNotesFilePresent ? path.relative(process.cwd(), showNotesPath) : null, show_notes_manifest_file: showNotesValidationConfigured ? path.relative(process.cwd(), showNotesManifestPath) : null, input_sha256: inputSha256, input_normalization: { master_script: SOURCE_REVIEW_SCRIPT_NORMALIZATION, show_notes: SOURCE_REVIEW_SHOW_NOTES_NORMALIZATION }, semantic_input_sha256: semanticInputSha256, llm_requested: options.llm, llm_model: options.llm ? options.model : null, llm_review_passes: options.llm ? LLM_REVIEW_PASS_COUNT : 0, llm_materiality_policy: options.llm ? LLM_MATERIALITY_POLICY : null, authorization, claim_mapping: claimMapping, master_script_mapping: { ...masterScriptMapping, passages_by_source: undefined }, show_notes_mapping: showNotesMapping, show_notes_results: showNotesResults.map((result) => ({ ...result, link: publicLinkRecord(result.link), citation_link: publicLinkRecord(result.citation_link), programmatic_link: publicLinkRecord(result.programmatic_link), attestation_link: publicLinkRecord(result.attestation_link) })), results: reportResults };
   const unresolved = !claimMapping.valid || !masterScriptMapping.valid || !showNotesMapping.valid || showNotesResults.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid)) || results.some((entry) => !entry.citation_target.valid || !entry.link.valid || (entry.content_attestation && !entry.content_attestation.valid) || entry.missing_claim_ids.length || (options.requireLlm && !sourceRelevanceResultValid(entry)));
   const terminalOutcome = sourceValidationTerminalOutcome({ unresolved, requireLlm: options.requireLlm });
   const writtenPath = completeValidationReport(outputPath, report, validationRun, { promote: !unresolved, beforeRelease: () => { if (!options.publicationCheck) updateEpisodeSourceState(episodePath, terminalOutcome, report.checked_at_utc, lifecycleLease); } });

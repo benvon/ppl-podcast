@@ -1,0 +1,233 @@
+episode_id: core-22
+claims:
+- id: acs-airworthiness-records
+  type: faa_standard
+  statement: ACS PA.I.B.K1 includes location and expiration of required aircraft certificates and required inspections and airplane logbook documentation.
+  sources:
+  - acs-airworthiness-records
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  status: draft
+- id: acs-airworthiness
+  type: faa_standard
+  statement: ACS PA.I.B asks applicants to apply procedures for inoperative equipment, assess inoperative-equipment risk, and determine airplane airworthiness in a scenario.
+  sources:
+  - acs-airworthiness
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  status: draft
+- id: acs-cross-country
+  type: faa_standard
+  statement: ACS PA.I.D asks an applicant to explain route, altitude, performance, fuel, current publications, alternatives, and risk in a cross-country plan.
+  sources:
+  - acs-cross-country
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  status: draft
+- id: acs-passenger
+  type: faa_standard
+  statement: ACS PA.II.B.K1 includes passenger briefing requirements and required use of safety restraints.
+  sources:
+  - acs-passenger
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  status: draft
+- id: pic-authority
+  type: regulation
+  statement: The pilot in command is directly responsible for and final authority over operation of the aircraft under 14 CFR 91.3(a).
+  sources:
+  - ecfr-pic-authority
+  risk: safety_critical
+  script_sections:
+  - Decide who owns the flight decision
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: airworthy-condition
+  type: regulation
+  statement: A civil aircraft may not be operated unless airworthy, and the pilot in command determines safe-flight condition and discontinues flight if unairworthy mechanical, electrical, or structural conditions occur.
+  sources:
+  - ecfr-airworthy
+  risk: safety_critical
+  script_sections:
+  - Decide who owns the flight decision
+  - Retrieval review
+  status: draft
+- id: aircraft-certificates
+  type: regulation
+  statement: For a U.S.-registered civil airplane operating domestically, 14 CFR 91.203(a)-(b) requires an appropriate current airworthiness certificate and one of the accepted registration documents within the aircraft, and display of the airworthiness certificate at the cabin or cockpit entrance.
+  sources:
+  - ecfr-aircraft-certificates
+  risk: safety_critical
+  script_sections:
+  - Check the airplane's documents and limits
+  - Retrieval review
+  status: draft
+- id: approved-limitations
+  type: regulation
+  statement: Under 14 CFR 91.9(a)-(b), a civil aircraft must comply with applicable approved flight-manual limitations, markings, and placards; a U.S.-registered civil aircraft must have a current approved flight manual available when one is required, and when one is not required paragraph (b)(2) identifies a current approved manual, approved manual material, markings, and placards, or a combination thereof, as available material.
+  sources:
+  - ecfr-flight-manual
+  risk: safety_critical
+  script_sections:
+  - Check the airplane's documents and limits
+  - Retrieval review
+  status: draft
+- id: annual-inspection
+  type: regulation
+  statement: Unless a specified exception applies, operation requires an annual inspection within the preceding 12 calendar months and approval for return to service or the alternative certificate-issuance inspection in 91.409(a).
+  sources:
+  - ecfr-annual-inspection
+  risk: safety_critical
+  script_sections:
+  - Check the airplane's documents and limits
+  - Retrieval review
+  status: draft
+- id: maintenance-records
+  type: regulation
+  statement: The registered owner or operator retains inspection and maintenance records including current inspection status and status of applicable airworthiness directives.
+  sources:
+  - ecfr-maintenance-records
+  risk: safety_critical
+  script_sections:
+  - Check the airplane's documents and limits
+  - Retrieval review
+  status: draft
+- id: day-vfr-equipment
+  type: regulation
+  statement: For a powered civil aircraft with a standard U.S. airworthiness certificate, 91.205(a)-(b) requires operable listed instruments and equipment for day VFR, including airspeed, altitude, magnetic direction, applicable engine indications, and fuel quantity for each tank.
+  sources:
+  - ecfr-day-vfr-equipment
+  risk: safety_critical
+  script_sections:
+  - Resolve the failed display before choosing the airplane
+  status: draft
+- id: inop-mel-path
+  type: regulation
+  statement: 14 CFR 91.213(a) specifies conditions for taking off with inoperative equipment under an approved aircraft MEL and associated authorization, except for the separately permitted no-MEL route.
+  sources:
+  - ecfr-inop-mel
+  risk: safety_critical
+  script_sections:
+  - Resolve the failed display before choosing the airplane
+  - Retrieval review
+  status: draft
+- id: inop-no-mel-required
+  type: regulation
+  statement: Under 91.213(d)(1)-(2), the no-MEL option applies only to specified aircraft and operations and excludes items required by applicable VFR-day type-certification rules, aircraft equipment list or KOEL, Part 91 for the flight, or an AD.
+  sources:
+  - ecfr-inop-no-mel
+  risk: safety_critical
+  script_sections:
+  - Resolve the failed display before choosing the airplane
+  - Retrieval review
+  status: draft
+- id: inop-no-mel-disposition
+  type: regulation
+  statement: Under 91.213(d)(3)-(4), an inoperative item must receive the specified removal or deactivation and placarding treatment, and an appropriately rated person must determine that it creates no hazard.
+  sources:
+  - ecfr-inop-disposition
+  risk: safety_critical
+  script_sections:
+  - Resolve the failed display before choosing the airplane
+  - Retrieval review
+  status: draft
+- id: preflight-all-information
+  type: regulation
+  statement: Before any flight, the pilot in command must become familiar with all available information concerning that flight under 91.103.
+  sources:
+  - ecfr-preflight-action
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  status: draft
+- id: preflight-route-information
+  type: regulation
+  statement: For an IFR flight or a flight not in the vicinity of an airport, 91.103(a) requires weather, fuel, alternatives, and known ATC traffic delays as specified.
+  sources:
+  - ecfr-preflight-action
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: preflight-runway-performance
+  type: regulation
+  statement: For any flight, 91.103(b) requires runway lengths at intended airports and the specified aircraft-appropriate takeoff and landing distance information.
+  sources:
+  - ecfr-preflight-action
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Retrieval review
+  status: draft
+- id: vfr-airplane-fuel
+  type: regulation
+  statement: For airplane VFR flight, 91.151(a) requires fuel considering wind and forecast weather to reach the first point of intended landing plus 30 minutes by day or 45 minutes by night at normal cruise.
+  sources:
+  - ecfr-vfr-fuel
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: passenger-briefing
+  type: regulation
+  statement: Before takeoff in a U.S.-registered civil airplane, the PIC must ensure each person is briefed on fastening and unfastening the safety belt and any installed shoulder harness.
+  sources:
+  - ecfr-passenger-restraints
+  risk: safety_critical
+  script_sections: &id001
+  - Brief Jonah before the airplane moves
+  - Retrieval review
+  status: draft
+- id: passenger-restraint-use
+  type: regulation
+  statement: Before surface movement, takeoff, or landing in a U.S.-registered civil airplane, the PIC must notify occupants to fasten restraints, and an ordinary adult passenger must occupy an approved seat with belt and installed shoulder harness properly secured during those phases.
+  sources:
+  - ecfr-passenger-restraints
+  risk: safety_critical
+  script_sections: *id001
+  status: draft
+- id: safe-altitude-anywhere
+  type: regulation
+  statement: Except when necessary for takeoff or landing, 91.119(a) requires an altitude permitting an emergency landing after power-unit failure without undue hazard to persons or property on the surface.
+  sources:
+  - ecfr-minimum-altitude
+  risk: safety_critical
+  script_sections: &id002
+  - Choose an en route altitude for the place below
+  - Retrieval review
+  status: draft
+- id: safe-altitude-congested
+  type: regulation
+  statement: Except when necessary for takeoff or landing, 91.119(b) requires 1,000 feet above the highest obstacle within 2,000 horizontal feet over congested areas or open-air assemblies.
+  sources:
+  - ecfr-minimum-altitude
+  risk: safety_critical
+  script_sections: *id002
+  status: draft
+- id: safe-altitude-other
+  type: regulation
+  statement: Except when necessary for takeoff or landing, 91.119(c) requires 500 feet above the surface over other-than-congested areas, with a 500-foot separation rule near people, vessels, vehicles, or structures over open water or sparsely populated areas.
+  sources:
+  - ecfr-minimum-altitude
+  risk: safety_critical
+  script_sections: *id002
+  status: draft
+- id: vfr-cruising-altitude
+  type: regulation
+  statement: In level VFR cruising flight more than 3,000 feet above the surface and below 18,000 feet MSL, 91.159 sets odd-thousand-plus-500 MSL altitudes for magnetic courses 000-179 and even-thousand-plus-500 for 180-359, unless otherwise authorized by ATC and subject to stated turn and short-hold exceptions.
+  sources:
+  - ecfr-vfr-cruising-altitude
+  risk: safety_critical
+  script_sections:
+  - Choose an en route altitude for the place below
+  - Retrieval review
+  status: draft

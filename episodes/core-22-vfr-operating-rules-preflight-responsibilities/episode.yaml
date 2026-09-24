@@ -1,0 +1,103 @@
+id: core-22
+series: ppl-study-podcast
+title: VFR Operating Rules and Preflight Responsibilities
+slug: vfr-operating-rules-preflight-responsibilities
+track: core
+production_contract_version: 2
+status: editorial_review_pending
+version: 0.1.3
+published_at: null
+runtime_target_minutes: 32
+runtime_actual_seconds: null
+word_count: 4586
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - FAA-S-ACS-6C, PA.I.B.K1, K3, R1, S1-S3
+  - FAA-S-ACS-6C, PA.I.D.K1-K3, R1-R7, S1-S4
+  - FAA-S-ACS-6C, PA.II.B.K1
+phak_references: []
+aim_references: []
+advisory_circular_references: []
+cfr_references:
+  - 14 CFR 91.3(a), pilot-in-command responsibility and authority
+  - 14 CFR 91.7(a)-(b), airworthiness and PIC safe-flight determination
+  - 14 CFR 91.9(a)-(b), approved limitations and manual material
+  - 14 CFR 91.103(a)-(b), preflight action
+  - 14 CFR 91.107(a)(1)-(3), passenger restraints
+  - 14 CFR 91.119(a)-(c), minimum safe altitudes
+  - 14 CFR 91.151(a), airplane VFR fuel
+  - 14 CFR 91.159, VFR cruising altitude
+  - 14 CFR 91.203(a)-(b), aircraft certificates
+  - 14 CFR 91.205(a)-(b), day-VFR equipment
+  - 14 CFR 91.213(a), (d), inoperative equipment
+  - 14 CFR 91.409(a), annual inspection
+  - 14 CFR 91.417(a), maintenance records
+learning_objectives:
+  - Use aircraft certificates, approved limitations, inspection records, and
+    equipment requirements to decide whether to accept an airplane.
+  - Apply the appropriate 91.213 path to an inoperative installed item without
+    assuming a placard alone authorizes departure.
+  - Use current runway, performance, weather, and fuel information to revise a
+    daytime VFR flight before departure.
+  - Brief an adult passenger on restraint operation and use before surface
+    movement and takeoff.
+  - Choose an en route altitude with the minimum-safe-altitude and VFR
+    cruising-altitude rules, then use actual progress to make an early fuel-stop
+    decision.
+trouble_spots:
+  - An aircraft rental desk's release does not replace the PIC's safe-flight
+    determination.
+  - An item absent from the 91.205 day-VFR list may still be required by the
+    aircraft's approved documents, type certification, or an AD.
+  - A runway length is useful only when that runway is available at the intended
+    arrival time.
+  - The VFR fuel reserve is a departure minimum, not a goal for remaining fuel
+    at landing.
+  - Minimum-safe-altitude conditions change with the area below, while 91.159
+    applies only to specified level VFR cruise.
+source_verification:
+  validation_contract: source-relevance-v1
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-24T21:25:03.235Z
+  link_validation: link-validation.yaml
+  relevance_review: complete
+  show_notes_manifest: show-notes-manifest.yaml
+review:
+  independent_spoken_script_review:
+    status: complete
+    script_sha256: eb713876e0af47035342728e2d23e09280b31386a3aeeb494b6bb19be2fb1aa6
+  editorial_status: not_started
+  editorial_script_sha256: null
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+  pending_script_sha256: eb713876e0af47035342728e2d23e09280b31386a3aeeb494b6bb19be2fb1aa6
+release_gates_remaining:
+  - Complete human editorial review and approve the current script.
+  - Render audio and complete human listening QA, including the front-matter
+    check.
+  - Review embedded chapter markers against the approved audio.
+  - Re-verify every public source and listener-facing link on publication day.
+  - Validate hosting metadata and stage the immutable audio object in the
+    hosting workflow.
+audio:
+  manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
+  status: not_rendered
+  chapter_markers: pending_render
+  publication_day_validation: pending
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: pending_script_review
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null
+production_state_revision: 7

@@ -1,0 +1,21 @@
+schema_version: 1
+publisher_release:
+  id: core-22
+  guid: pplstudyguide.com:core-22
+  title: VFR Operating Rules and Preflight Responsibilities
+  description: Elena and Jonah prepare a daytime VFR flight. A failed display
+    changes the airplane, a runway closure changes the destination, and a
+    stronger headwind leads to an early fuel stop. The lesson connects Part 91
+    preflight and operating rules to those decisions.
+  published_at: null
+  duration: null
+  season: 1
+  number: null
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.3

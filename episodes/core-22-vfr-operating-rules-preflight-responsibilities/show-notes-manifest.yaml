@@ -1,0 +1,140 @@
+episode_id: core-22
+links:
+- id: source-link-01
+  text: PA.I.B.K1a-K1e — Private Pilot ACS
+  url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+  locator: PA.I.B.K1a-K1e, printed p. 2 (PDF p. 10)
+  source_id: acs-airworthiness-records
+  claim_ids:
+  - acs-airworthiness-records
+- id: source-link-02
+  text: PA.I.B.K3b-K4 — Private Pilot ACS
+  url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+  locator: PA.I.B.K3b-K4, R1, S1-S3, printed p. 3 (PDF p. 11)
+  source_id: acs-airworthiness
+  claim_ids:
+  - acs-airworthiness
+- id: source-link-03
+  text: PA.I.D.K1-K3 — Private Pilot ACS
+  url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+  locator: PA.I.D.K1-K3, R1-R7, S1-S4, printed p. 5 (PDF p. 13)
+  source_id: acs-cross-country
+  claim_ids:
+  - acs-cross-country
+- id: source-link-04
+  text: PA.II.B.K1 — Private Pilot ACS
+  url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+  locator: PA.II.B.K1, printed p. 12 (PDF p. 20)
+  source_id: acs-passenger
+  claim_ids:
+  - acs-passenger
+- id: source-link-05
+  text: 14 CFR § 91.3 — 91.3(a)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.3
+  locator: 91.3(a)
+  source_id: ecfr-pic-authority
+  claim_ids:
+  - pic-authority
+- id: source-link-06
+  text: 14 CFR § 91.7 — 91.7(a)-(b)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
+  locator: 91.7(a)-(b)
+  source_id: ecfr-airworthy
+  claim_ids:
+  - airworthy-condition
+- id: source-link-07
+  text: 14 CFR § 91.203 — 91.203(a)(1)-(2)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
+  locator: 91.203(a)(1)-(2), (b)
+  source_id: ecfr-aircraft-certificates
+  claim_ids:
+  - aircraft-certificates
+- id: source-link-08
+  text: 14 CFR § 91.9 — 91.9(a)-(b)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
+  locator: 91.9(a)-(b)
+  source_id: ecfr-flight-manual
+  claim_ids:
+  - approved-limitations
+- id: source-link-09
+  text: 14 CFR § 91.409 — 91.409(a)(1)-(2)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
+  locator: 91.409(a)(1)-(2), (c) exceptions
+  source_id: ecfr-annual-inspection
+  claim_ids:
+  - annual-inspection
+- id: source-link-10
+  text: 14 CFR § 91.417 — 91.417(a)(1)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
+  locator: 91.417(a)(1), (a)(2)(iv)-(v)
+  source_id: ecfr-maintenance-records
+  claim_ids:
+  - maintenance-records
+- id: source-link-11
+  text: 14 CFR § 91.205 — 91.205(a)-(b)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+  locator: 91.205(a)-(b), day-VFR equipment and applicability
+  source_id: ecfr-day-vfr-equipment
+  claim_ids:
+  - day-vfr-equipment
+- id: source-link-12
+  text: 14 CFR § 91.213 — 91.213(a)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+  locator: 91.213(a), (c), approved-MEL path and mandatory use
+  source_id: ecfr-inop-mel
+  claim_ids:
+  - inop-mel-path
+- id: source-link-13
+  text: 14 CFR § 91.213 — 91.213(d)(1)-(2)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+  locator: 91.213(d)(1)-(2), eligible aircraft and required-equipment exclusions
+  source_id: ecfr-inop-no-mel
+  claim_ids:
+  - inop-no-mel-required
+- id: source-link-14
+  text: 14 CFR § 91.213 — 91.213(d)(3)-(4)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+  locator: 91.213(d)(3)-(4), removal or deactivation, placard, hazard decision
+  source_id: ecfr-inop-disposition
+  claim_ids:
+  - inop-no-mel-disposition
+- id: source-link-15
+  text: 14 CFR § 91.103 — 91.103 introductory text
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFRe4c59b5f5506932/section-91.103
+  locator: 91.103 introductory text, (a), (b)(1)-(2)
+  source_id: ecfr-preflight-action
+  claim_ids:
+  - preflight-all-information
+  - preflight-route-information
+  - preflight-runway-performance
+- id: source-link-16
+  text: 14 CFR § 91.151 — 91.151(a)(1)-(2)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
+  locator: 91.151(a)(1)-(2), airplane day and night VFR fuel
+  source_id: ecfr-vfr-fuel
+  claim_ids:
+  - vfr-airplane-fuel
+- id: source-link-17
+  text: 14 CFR § 91.107 — 91.107(a)(1)-(3)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFRe4c59b5f5506932/section-91.107
+  locator: 91.107(a)(1)-(3), adult-passenger briefing, notice, and restraint
+  source_id: ecfr-passenger-restraints
+  claim_ids:
+  - passenger-briefing
+  - passenger-restraint-use
+- id: source-link-18
+  text: 14 CFR § 91.119 — 91.119 introductory text
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFRe4c59b5f5506932/section-91.119
+  locator: 91.119 introductory text, (a)-(c), airplane route
+  source_id: ecfr-minimum-altitude
+  claim_ids:
+  - safe-altitude-anywhere
+  - safe-altitude-congested
+  - safe-altitude-other
+- id: source-link-19
+  text: 14 CFR § 91.159 — 91.159 introductory text
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.159
+  locator: 91.159 introductory text, (a)(1)-(2)
+  source_id: ecfr-vfr-cruising-altitude
+  claim_ids:
+  - vfr-cruising-altitude

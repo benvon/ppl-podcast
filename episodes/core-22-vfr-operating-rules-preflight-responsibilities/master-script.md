@@ -1,6 +1,6 @@
 # VFR Operating Rules and Preflight Responsibilities
 
-**Version:** 0.1.3 — draft
+**Version:** 0.1.5 — draft
 **Target runtime:** 30–35 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -32,11 +32,10 @@ What the ACS is asking you to connect.
 
 **INSTRUCTOR:**
 
-The Airworthiness Requirements task asks a private-pilot applicant to understand where the airplane's certificates, inspections, and records establish its status.
-[Source: sources.yaml#acs-airworthiness-records]
-
-It also asks the applicant to determine whether the airplane is airworthy in a scenario and apply procedures for an inoperative item. The risk question is what to do when equipment is found inoperative before flight.
+The ACS Airworthiness Requirements task asks the applicant to decide whether an airplane is airworthy in a scenario and to address inoperative equipment found before flight.
 [Source: sources.yaml#acs-airworthiness]
+
+Episode 8, *Aircraft Documents, Airworthiness, Inspections, and Maintenance*, teaches the document, inspection, and equipment method in detail. We will use that method here only when Elena's airplane presents a real departure decision.
 
 The Cross-Country Flight Planning task asks the applicant to use current charts, airport information, notices, weather, aircraft performance, and fuel information to explain a plan and its risks.
 [Source: sources.yaml#acs-cross-country]
@@ -80,98 +79,36 @@ No. It means she recognizes that an unexplained failure is an unresolved departu
 Section ninety-one point seven says no person may operate a civil aircraft unless it is in an airworthy condition. It makes the pilot in command responsible for determining whether the aircraft is in condition for safe flight, and for discontinuing the flight if unairworthy mechanical, electrical, or structural conditions occur.
 [Source: sources.yaml#ecfr-airworthy]
 
-## [05:00] Check the airplane's documents and limits
+## [05:00] Change airplanes when a display fails
 
 **ANNOUNCER:**
 
-Check the airplane's documents and limits.
+Change airplanes when a display fails.
 
 **INSTRUCTOR:**
 
-At the airplane, Elena finds a current airworthiness certificate and an effective U.S. registration certificate. For this U.S.-registered civil airplane operating domestically, section ninety-one point two zero three requires an appropriate current airworthiness certificate and one of the accepted registration documents in the aircraft. Elena's airplane carries the effective U.S. registration certificate; the section also specifies other accepted registration documents for certain circumstances. The airworthiness certificate must be displayed so passengers or crew can read it at the cabin or cockpit entrance.
-[Source: sources.yaml#ecfr-aircraft-certificates]
-
-She then opens the approved airplane flight manual for this specific airplane and checks the operating limitations that apply to the planned flight. Section ninety-one point nine requires compliance with the approved flight manual's limitations, markings, and placards. For a U.S.-registered civil aircraft that is required to have an approved airplane flight manual, the current approved manual must be available in the aircraft. When that manual is not required, paragraph (b)(2) identifies a current approved airplane flight manual, approved manual material, markings, and placards, or a combination thereof, as available material.
-[Source: sources.yaml#ecfr-flight-manual]
+During the cockpit check, the installed moving-map display stays blank. Elena cannot tell from that observation alone whether this airplane is ready for her daytime VFR flight. Section ninety-one point seven puts the safe-flight determination on the pilot in command. She holds the departure while the operator checks the discrepancy against this airplane's approved information and maintenance status.
+[Source: sources.yaml#ecfr-airworthy]
 
 **LEARNER:**
 
-Would a familiar model's checklist answer those questions?
+If she can navigate with a paper chart, could she simply depart without the moving map?
 
 **INSTRUCTOR:**
 
-It can help her perform a check, but the limitations and equipment answer must come from the approved information for this airplane. Two airplanes that look alike can have different installed equipment and approved documents. Elena checks the actual registration and airplane records before she relies on the material in the cockpit.
+The chart may give her another way to navigate, but it does not resolve the installed item's status or the possibility of a wider electrical problem. Elena uses the Episode 8 method and asks the operator for an answer before she accepts this airplane.
 
-For a typical airplane under this inspection rule, section ninety-one point four zero nine requires an annual inspection within the preceding twelve calendar months, with approval for return to service.
-[Source: sources.yaml#ecfr-annual-inspection]
-
-The owner or operator keeps inspection and maintenance records, including current inspection status and applicable airworthiness-directive status, under section ninety-one point four one seven. Elena asks to see the relevant records rather than treating a rental calendar as proof of inspection status.
-[Source: sources.yaml#ecfr-maintenance-records]
-
-The aircraft's records also answer whether a required recurring action is due. Elena need not memorize every maintenance entry. She needs to know where the current status is recorded, who can clarify an uncertain entry, and when to stop until the answer is documented.
-
-Suppose the rental desk says the airplane was flown yesterday. That tells Elena someone used it; it does not tell her when the annual inspection was approved or whether a recurring airworthiness-directive action is current. She asks for the record that gives those dates and statuses. If the entry is unclear, she asks the operator or an appropriately qualified maintenance person to explain it. She then compares that answer with today's planned operation. This is a practical way to use the records without pretending she can perform a maintenance review from memory.
+The operator cannot establish the display's status in time for their planned departure. Elena chooses a familiar replacement airplane with a satisfactory cockpit check and documented status. She does not need to declare the first airplane permanently unairworthy to make that choice. She needs a usable airplane for this flight, and the first one still has an unanswered question.
 
 **LEARNER:**
 
-Why does she read the flight manual before checking the panel? Wouldn't a failed item announce itself when she turns it on?
+Does switching airplanes leave the route plan intact?
 
 **INSTRUCTOR:**
 
-The cockpit check tells her what works today. The approved limitations and airplane equipment information tell her what must work for the flight she intends. She needs both sides of that comparison. A working item can still be the wrong equipment for a planned operation, and a failed item can have a different consequence depending on the actual airplane and operation. Elena learns the boundary from this airplane's documents, then tests the airplane against it.
+The destination and route may look the same on a chart, but Elena's performance, loading, usable fuel, expected fuel burn, and navigation equipment now belong to the replacement airplane. She updates those parts of the plan before starting its engine. That change matters again when she finds that the destination runway she expected will be closed at arrival.
 
-## [08:20] Resolve the failed display before choosing the airplane
-
-**ANNOUNCER:**
-
-Resolve the failed display before choosing the airplane.
-
-**INSTRUCTOR:**
-
-During the cockpit check, the installed moving-map display stays blank. The airplane has other instruments, but Elena cannot decide from that observation alone whether this display is optional for the planned flight. The first practical question is what this airplane and this operation require.
-
-For a powered civil aircraft with a standard U.S. airworthiness certificate, section ninety-one point two zero five identifies instruments and equipment required for day VFR. Among them are an airspeed indicator, altimeter, magnetic direction indicator, applicable engine indications, and a fuel gauge for each tank. The full list and its conditions are in the rule. Elena checks the actual day-VFR list rather than using an acronym as a substitute.
-[Source: sources.yaml#ecfr-day-vfr-equipment]
-
-**LEARNER:**
-
-The moving map does not sound like one of those basic gauges. Could she label it inoperative and go?
-
-**INSTRUCTOR:**
-
-That conclusion is too early. First Elena asks whether this airplane operates under an approved minimum equipment list, or MEL. Section ninety-one point two one three sets the conditions for a flight with inoperative equipment under an approved MEL and its authorization. She cannot treat a generic list for the airplane model as that approval.
-[Source: sources.yaml#ecfr-inop-mel]
-
-If this flight is eligible to operate without an approved MEL, the rule provides a separate path. Elena checks the failed item against the applicable VFR-day type-certification requirements, this airplane's equipment list or kinds-of-operation equipment list for the planned flight, Part 91 requirements for this operation, and any airworthiness directive that requires the item to work. A required item cannot be waved away because the other instruments appear normal.
-[Source: sources.yaml#ecfr-inop-no-mel]
-
-The same no-MEL route also requires proper removal or deactivation and an inoperative placard, with maintenance records when maintenance is involved. An appropriately rated pilot or maintenance person must determine that the inoperative item creates no hazard to the aircraft. A sticker by itself does not establish all of those conditions.
-[Source: sources.yaml#ecfr-inop-disposition]
-
-That final hazard question matters even after an item passes the required-equipment checks. A dark moving map might be a simple display failure, or it might indicate an electrical problem that affects other equipment. Elena cannot infer which from the dark screen alone. She asks for a diagnosis appropriate to the airplane and does not switch off equipment or pull a circuit breaker merely to make the screen disappear. The no-MEL path calls for a real determination about the aircraft, not a label that makes an unresolved system question look settled.
-[Source: sources.yaml#ecfr-inop-disposition]
-
-**LEARNER:**
-
-What if someone says, “That display is only for convenience. Your paper chart still works”?
-
-**INSTRUCTOR:**
-
-A paper chart may give Elena another way to navigate. It does not answer whether the installed display is required by this airplane's equipment list, an airworthiness directive, or another rule for today's operation. She asks which document supports that statement. If the item is not required, the required removal or deactivation, placard, maintenance record when applicable, and hazard determination still have to be addressed before departure.
-[Source: sources.yaml#ecfr-inop-no-mel]
-[Source: sources.yaml#ecfr-inop-disposition]
-
-**LEARNER:**
-
-Elena does not have the equipment-list answer at the airplane. What does she do with Jonah waiting?
-
-**INSTRUCTOR:**
-
-She tells Jonah the departure is on hold and asks the operator to resolve the display status with the airplane's approved documents and maintenance records. The operator cannot establish the required disposition before their planned departure. Elena chooses a different, familiar airplane with a satisfactory cockpit check and current records. She repeats the aircraft-specific planning and checklist work for the airplane she will actually fly.
-
-This is a real change of plan. The route may be the same, but a different airplane can change loading, fuel, performance, and the equipment available to navigate. Elena does those comparisons before she starts the engine.
-
-## [12:30] Make the preflight information specific to this flight
+## [07:00] Make the preflight information specific to this flight
 
 **ANNOUNCER:**
 
@@ -192,8 +129,19 @@ What would force her to change an otherwise good plan?
 
 **INSTRUCTOR:**
 
-She checks current airport and notice information and learns that the destination's runway she planned to use will be closed during their expected arrival period. A runway length from last week's planning notes no longer answers the landing question for that runway. Elena looks at the remaining available runways and the alternate airports she prepared. She compares usable runway information with the approved takeoff and landing data or other reliable performance information appropriate to the airplane, as section ninety-one point one zero three requires.
+She checks current airport and notice information and learns that the destination's runway she planned to use will be closed during their revised arrival period. The original schedule would have put her there before the closure. Waiting for an answer about the blank display and switching airplanes moved their expected arrival later. A runway length from last week's planning notes no longer answers the landing question for that runway. Elena looks at the remaining available runways and the alternate airports she prepared. She compares usable runway information with the approved takeoff and landing data or other reliable performance information appropriate to the airplane, as section ninety-one point one zero three requires.
 [Source: sources.yaml#ecfr-preflight-action]
+
+**LEARNER:**
+
+If they had departed on time, the runway would have been open. Does that mean the earlier plan was fine and only the clock changed?
+
+**INSTRUCTOR:**
+
+The clock changed which airport information applies. Elena updates the departure and arrival estimates before using the notice. She also checks weather reports and forecasts for the new time window, including the route and the airport she may now use. A forecast that covered the original arrival cannot stand in for a different arrival period without being read against its valid time and expected conditions. Section ninety-one point one zero three calls for weather reports and forecasts for this trip because it is not just a flight in the vicinity of an airport.
+[Source: sources.yaml#ecfr-preflight-action]
+
+The new airplane and the later departure interact. Elena asks whether the revised airplane's loading and performance suit the available runway, whether the weather still supports the route, and whether the planned fuel still reaches a usable first landing point. She works through those questions together. A suitable airplane cannot compensate for a closed runway; an available runway cannot compensate for insufficient fuel or an unsuitable weather window.
 
 **LEARNER:**
 
@@ -231,7 +179,7 @@ Could she decide in the air to return to the original airport if the runway reop
 
 She can update her decision with current information, but her departure plan needs a workable landing point and fuel for that plan now. She will compare the actual flight with the new plan en route and use an available option early if conditions change.
 
-## [19:00] Brief Jonah before the airplane moves
+## [15:20] Brief Jonah before the airplane moves
 
 **ANNOUNCER:**
 
@@ -256,7 +204,10 @@ Because the required briefing includes how to fasten and unfasten it. Jonah can 
 Elena makes one more check before movement: can Jonah reach and release the buckle in this airplane without guessing? The harness in the replacement airplane may feel different from the first one. She waits for him to settle into the approved seat, checks that the belt and installed shoulder harness are secured, and gives the notification before taxi. If she needs to stop taxi for a passenger or loose-item problem, she has made that choice while still on the ground.
 [Source: sources.yaml#ecfr-passenger-restraints]
 
-## [21:10] Choose an en route altitude for the place below
+The same rule matters later in the story. When Elena decides to land for fuel, she tells Jonah to fasten his belt and installed shoulder harness for that landing. After refueling, before the airplane moves again, she gives the restraint notice for the next surface movement and departure. The requirement follows the phases of each flight, including the added stop; it was not completed once for the whole outing when Jonah first boarded.
+[Source: sources.yaml#ecfr-passenger-restraints]
+
+## [18:00] Choose an en route altitude for the place below
 
 **ANNOUNCER:**
 
@@ -292,9 +243,15 @@ On a planned segment, Elena's magnetic course is about zero nine zero degrees. S
 
 She selects it after checking the route's terrain and obstacles, airspace and cloud clearance, and the replacement airplane's performance. If any of those checks fails, she changes the segment or altitude rather than assuming the course-based number makes it suitable.
 
+The two height references need a deliberate comparison. Five thousand five hundred feet mean sea level is an altitude above the sea-level reference. The rule's three-thousand-foot trigger is height above the surface directly below the flight. If the surface on this fictional segment were one thousand eight hundred feet mean sea level, Elena would be three thousand seven hundred feet above it at her selected altitude, and the level-VFR-cruise rule would apply. If the surface later rose to two thousand eight hundred feet while she remained at five thousand five hundred, she would be only two thousand seven hundred feet above it; that particular cruising-altitude trigger would no longer apply there.
+[Source: sources.yaml#ecfr-vfr-cruising-altitude]
+
+That change in trigger does not erase the safe-altitude rule for the terrain and people below. Elena still checks whether the route, its obstacles, and the area near the town satisfy section ninety-one point one one nine. She also keeps the flight in suitable weather and airspace. The practical check is to compare altitude above mean sea level with the changing surface and obstacles, then apply each rule under its own condition.
+[Source: sources.yaml#ecfr-minimum-altitude]
+
 Episode 15, *Traffic Patterns, Nontowered Operations, and Right of Way*, develops visual scanning and right of way. Episode 16, *Airspace, Equipment, and VFR Weather Minimums*, covers the class-specific VFR conditions for this same route.
 
-## [25:30] Keep the plan open to new information
+## [23:50] Keep the plan open to new information
 
 **ANNOUNCER:**
 
@@ -320,10 +277,22 @@ Elena chooses the prepared fuel stop while she can still reach it comfortably. S
 
 The choice is visible in the flight: the planned checkpoint now leads to the fuel-stop airport instead of the direct line to the gathering. Elena can compare the remaining time and fuel to a closer runway she already studied. She would have had less room to decide if she waited for the original destination to draw near. At the fuel stop, she has time to check the next leg as a new preflight decision; Jonah's schedule no longer determines how much fuel margin they accept.
 
+**LEARNER:**
+
+After refueling, can they simply resume the original plan to the gathering?
+
+**INSTRUCTOR:**
+
+The next departure needs its own current answer. Section ninety-one point one zero three again asks Elena to become familiar with the available information for that flight, including the runway and performance information for airports she now intends to use and the weather, fuel, and alternatives that apply away from the airport vicinity. She checks the destination's runway availability at the new arrival time, not the time written before the fuel stop.
+[Source: sources.yaml#ecfr-preflight-action]
+
+She then plans enough fuel for the next first intended landing point and the applicable airplane VFR reserve. Section ninety-one point one five one calls for at least thirty more minutes at normal cruising speed during the day, and at least forty-five at night. Their delayed next leg may continue into night, so Elena plans at least forty-five minutes of reserve. Refueling changes fuel on board, but it does not make old weather or runway information current.
+[Source: sources.yaml#ecfr-vfr-fuel]
+
 The pilot-in-command responsibility from section ninety-one point three remains with Elena during that update. She can use radio assistance and available information, but she makes the operational choice for this airplane and its occupants.
 [Source: sources.yaml#ecfr-pic-authority]
 
-## [28:00] Retrieval review
+## [27:25] Retrieval review
 
 **ANNOUNCER:**
 
@@ -331,33 +300,13 @@ Retrieval review.
 
 **INSTRUCTOR:**
 
-Let's rebuild the flight in order. Elena reaches the first airplane and sees a blank installed display. What question comes before departure?
+Let's rebuild the flight in order. The moving-map display stays blank during Elena's cockpit check. What does she decide before using another airplane?
 [Source: sources.yaml#ecfr-airworthy]
 
 **LEARNER:**
 
-She must determine whether the aircraft is in condition for safe flight.
+She holds the departure while the operator checks the discrepancy against the airplane's approved information and records. When the status remains unresolved, she selects another airplane and updates its performance and fuel plan.
 [Source: sources.yaml#ecfr-airworthy]
-
-For the failed item, she checks the applicable approved-MEL route or the eligible no-MEL conditions, including required equipment, proper disposition, and the hazard decision. When the status remains unresolved, she chooses a different airplane.
-[Source: sources.yaml#ecfr-inop-mel]
-[Source: sources.yaml#ecfr-inop-no-mel]
-[Source: sources.yaml#ecfr-inop-disposition]
-
-**INSTRUCTOR:**
-
-What does the replacement airplane change?
-[Source: sources.yaml#ecfr-airworthy]
-
-**LEARNER:**
-
-Elena checks that airplane's current certificates and approved limitations.
-[Source: sources.yaml#ecfr-aircraft-certificates]
-[Source: sources.yaml#ecfr-flight-manual]
-
-She checks its inspection status, then revises the loading, performance, equipment, and fuel picture for the airplane she will actually fly.
-[Source: sources.yaml#ecfr-annual-inspection]
-[Source: sources.yaml#ecfr-maintenance-records]
 
 **INSTRUCTOR:**
 
@@ -410,7 +359,7 @@ At the checkpoint, groundspeed is slower and Elena's extra fuel margin is shrink
 She chooses the fuel stop she checked before departure, then turns toward it while the option is comfortable to reach. As pilot in command, Elena is directly responsible for and the final authority over the airplane's operation.
 [Source: sources.yaml#ecfr-pic-authority]
 
-## [31:00] Outro
+## [30:00] Outro
 
 **ANNOUNCER:**
 

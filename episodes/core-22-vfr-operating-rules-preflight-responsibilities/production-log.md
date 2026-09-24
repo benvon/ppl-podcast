@@ -31,3 +31,13 @@ This is optional explanatory context, not a production-state or audit record. Us
 - A separate agent completed the spoken-script review against version 0.1.3 and its current SHA, including the revised document passages and the full preflight-to-fuel-stop sequence.
 - The two-pass formal source review passed for all 19 sources. It retained nonblocking editorial precision notes about ACS alternatives wording and the specialized section 91.9 manual option for the human editor.
 - The draft remains unapproved by a human editor; audio and release work are pending later gates.
+
+## 2026-09-24 — Episode 8 editorial callback, version 0.1.4
+
+- On editorial direction, shortened the aircraft documents, inspections, and inoperative-equipment treatment to Elena's hold-and-switch decision under section 91.7 and an explicit listener-facing referral to Episode 8, *Aircraft Documents, Airworthiness, Inspections, and Maintenance*.
+- Developed the remaining Part 91 decisions in the same scenario: the aircraft switch changes arrival time and runway availability, the passenger restraint notice recurs at the fuel stop, and the chosen altitude is checked against height above the changing surface.
+- Removed unspoken aircraft-document and equipment claims and links from the current source ledger, claim inventory, and show notes. Regenerated narration and reset the prior spoken-script and formal source-review bindings. Both reviews are pending again before human editorial review; no audio or release work was performed.
+
+## 2026-09-24 — nighttime fuel-reserve correction, version 0.1.5
+
+- Corrected the fuel-stop departure passage to state the day and night periods in section 91.151 by time of operation. Because Elena's delayed leg may continue into night, she plans at least a 45-minute reserve. Regenerated narration and reset review bindings for the revised script.

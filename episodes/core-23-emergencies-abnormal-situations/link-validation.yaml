@@ -1,0 +1,1792 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: formal_source_review
+run_id: a5249de0-3e37-4075-a76b-14f3fa973a11
+checked_at_utc: 2026-09-28T21:08:03.053Z
+sources_file: episodes/core-23-emergencies-abnormal-situations/sources.yaml
+claims_file: episodes/core-23-emergencies-abnormal-situations/claim-inventory.yaml
+show_notes_file: episodes/core-23-emergencies-abnormal-situations/show-notes.md
+show_notes_manifest_file: episodes/core-23-emergencies-abnormal-situations/show-notes-manifest.yaml
+input_sha256:
+  sources: 8b5c4a33a9e8a421d4968153ac58941dfca38c31ad793f8c4c40bfe34444c06d
+  claims: 5166038349d0b30abe227760c91673f917d5146ff3e30e98a7158a35a290065f
+  master_script: e45f5b7de2a3e4de6ce785aa551f8224d564de48e67c9de0d7eb45647c6c8494
+  show_notes: null
+  show_notes_manifest: null
+input_normalization:
+  master_script: narration-and-source-tags-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: c0c00ad6e851a395a5eb07c7a7d982c553d398daf8bf9cc937f102d46354df8f
+  show_notes: null
+llm_requested: true
+llm_model: gpt-6-sol
+llm_review_passes: 2
+llm_materiality_policy: safety-and-core-v1
+authorization:
+  qa_id: openai-source-review-authorization
+  attested_at_utc: 2026-09-28T21:06:43.985Z
+  run_id: a5249de0-3e37-4075-a76b-14f3fa973a11
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 60
+  claim_coverage_count: 20
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 17
+  http_link_count: 0
+  manifest_link_count: 17
+show_notes_results: []
+results:
+  - source_id: acs-descent
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-28T21:06:43.986Z
+    linked_claim_ids:
+      - acs-descent
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=59
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=59
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=59
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=59
+      errors: []
+      valid: true
+      pdf_page_number: 59
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2258
+      pdf_page_text_sha256: 03076220a44d5a628e38d2c224217302a1c2a3ea3c51eda37504651138309fae
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a1
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed description of the
+            emergency-descent task.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PDF page 59 shows printed page 51 and Task A, Emergency Descent, with
+              the cited PA.IX.A knowledge, risk-management, and skill items.
+          claim_assessments:
+            - claim_id: acs-descent
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.IX.A.K1–K4, R1–R3, S6, and S7 address the stated triggers,
+                immediate actions, airspeed and aircraft limits, terrain and
+                collision risks, configuration, checklists, and radio calls as
+                appropriate.
+        usage:
+          input_tokens: 1433
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1430
+          output_tokens: 201
+          output_tokens_details:
+            reasoning_tokens: 29
+          total_tokens: 1634
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly lists the emergency-descent knowledge,
+            risk-management, and skill elements in the claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from PDF page 59, printed page 51, and contains
+              PA.IX.A.K1–K4, R1–R4, and S1–S8.
+          claim_assessments:
+            - claim_id: acs-descent
+              verdict: supports
+              finding_materiality: none
+              rationale: The listed elements cover situations requiring emergency descent,
+                immediate actions, airspeed and aircraft limitations, terrain
+                and collision hazards, configuration, checklists, and radio
+                calls as appropriate.
+        usage:
+          input_tokens: 1433
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1430
+          output_tokens: 192
+          output_tokens_details:
+            reasoning_tokens: 26
+          total_tokens: 1625
+    relevance: *a1
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: acs-landing
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-28T21:06:43.987Z
+    linked_claim_ids:
+      - acs-landing
+      - glide-airspeed
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      errors: []
+      valid: true
+      pdf_page_number: 60
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2325
+      pdf_page_text_sha256: dd6e527a8a487ee52acae12274473b154ef5503bb33c5d0f61e9e263ac962d54
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a3
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page lists the relevant knowledge, risk-management, and
+            skill elements for the simulated emergency approach and landing
+            task.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page and printed page contain PA.IX.B.K1–K6, R1–R6, and
+              S1–S6.
+          claim_assessments:
+            - claim_id: acs-landing
+              verdict: supports
+              finding_materiality: none
+              rationale: The page calls for selecting a suitable landing area and planning and
+                following a flightpath using the stated factors, maintaining
+                recommended best glide airspeed, and completing appropriate
+                checklists.
+            - claim_id: glide-airspeed
+              verdict: supports
+              finding_materiality: none
+              rationale: K2 covers best glide versus minimum sink and wind effects on glide
+                distance; S1 requires establishing and maintaining the
+                recommended best glide airspeed within ±10 knots.
+        usage:
+          input_tokens: 1647
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1644
+          output_tokens: 390
+          output_tokens_details:
+            reasoning_tokens: 174
+          total_tokens: 2037
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited PDF page contains the PA.IX.B knowledge, risk-management,
+            and skill elements relevant to both claims.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from printed page 52 (PDF page 60) and includes
+              PA.IX.B.K1–K6, R1–R6, and S1–S6.
+          claim_assessments:
+            - claim_id: acs-landing
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.IX.B.S1 and S3–S6 cover maintaining best glide, selecting a
+                suitable landing area, planning and following a flightpath using
+                the stated factors, and completing appropriate checklists. R5
+                addresses loss-of-control hazards.
+            - claim_id: glide-airspeed
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.IX.B.K2 addresses best glide versus minimum sink and wind effects
+                on glide distance; S1 requires maintaining the recommended best
+                glide airspeed within ±10 knots.
+        usage:
+          input_tokens: 1647
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1644
+          output_tokens: 658
+          output_tokens_details:
+            reasoning_tokens: 418
+          total_tokens: 2305
+    relevance: *a3
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: acs-systems
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-28T21:06:44.520Z
+    linked_claim_ids:
+      - acs-malfunctions
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      errors: []
+      valid: true
+      pdf_page_number: 61
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2098
+      pdf_page_text_sha256: fd397d856a3ab3433d3ae2cb29e285c386050081added3b5d5eb26762ae27273
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a4
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page covers the listed system malfunctions, checklist use,
+            startle response, and task prioritization.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is printed page 53 and contains PA.IX.C.K1–K5,
+              R1–R4, and S1–S2.
+          claim_assessments:
+            - claim_id: acs-malfunctions
+              verdict: supports
+              finding_materiality: none
+              rationale: The cited standards address power loss, electrical and
+                flight-instrument malfunctions, smoke or fire, inadvertent door
+                or window opening, checklist use, startle response, and task
+                prioritization.
+        usage:
+          input_tokens: 1409
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1406
+          output_tokens: 215
+          output_tokens_details:
+            reasoning_tokens: 49
+          total_tokens: 1624
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly lists the stated emergency-operations
+            knowledge and risk-management elements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the cited PDF page and the PA.IX.C elements
+              shown in the excerpt.
+          claim_assessments:
+            - claim_id: acs-malfunctions
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.IX.C.K1–K5 cover power loss, electrical and instrument
+                malfunctions, smoke or fire, and door or window opening; R1–R4
+                cover checklist use, task prioritization, and startle response.
+        usage:
+          input_tokens: 1409
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1406
+          output_tokens: 205
+          output_tokens_details:
+            reasoning_tokens: 51
+          total_tokens: 1614
+    relevance: *a4
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: acs-survival
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-28T21:06:44.525Z
+    linked_claim_ids:
+      - acs-equipment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      errors: []
+      valid: true
+      pdf_page_number: 62
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2182
+      pdf_page_text_sha256: 0df7a97159528b3fad7a0b22419b5d67e160d61a0066ce9efc079915470375c2
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a5
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page supports the listed claim and the relevant statements
+            in the authored passages.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator includes PDF page 62, which contains the cited PA.IX.D
+              equipment, risk-management, and skills items.
+          claim_assessments:
+            - claim_id: acs-equipment
+              verdict: supports
+              finding_materiality: none
+              rationale: The page covers fire extinguisher operations, survival gear for
+                different environments, passenger briefing on emergency and
+                survival gear, and ballistic parachute and emergency autoland
+                systems if equipped.
+        usage:
+          input_tokens: 1514
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1511
+          output_tokens: 381
+          output_tokens_details:
+            reasoning_tokens: 233
+          total_tokens: 1895
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ACS page covers fire extinguisher operations, survival gear
+            for operating environments, passenger briefings on emergency and
+            survival equipment, and equipped ballistic parachute and emergency
+            auto-land systems.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page 62 contains the relevant PA.IX.D knowledge,
+              risk-management, and skills elements.
+          claim_assessments:
+            - claim_id: acs-equipment
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.IX.D.K2–K5, R1–R3, and S1–S3 support the listed equipment,
+                briefing, and if-equipped system topics.
+        usage:
+          input_tokens: 1514
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1511
+          output_tokens: 245
+          output_tokens_details:
+            reasoning_tokens: 79
+          total_tokens: 1759
+    relevance: *a5
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: afh-types
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    checked_at_utc: 2026-09-28T21:06:44.549Z
+    linked_claim_ids:
+      - manufacturer-boundary
+      - landing-types
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a8 []
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4057
+      pdf_page_text_sha256: 34e39dd591f0f75e7f56d3041db18a6c292ad346273676b13264a71b8d7283e7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a6
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page supports both listed claims.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from Chapter 18, printed page 18-1, and contains the
+              cited introduction and emergency-landing definitions.
+          claim_assessments:
+            - claim_id: manufacturer-boundary
+              verdict: supports
+              finding_materiality: none
+              rationale: The page says its guidance is generic and that
+                manufacturer-recommended AFM/POH procedures take precedence if
+                they conflict.
+            - claim_id: landing-types
+              verdict: supports
+              finding_materiality: none
+              rationale: The page defines forced and precautionary landings, defines ditching
+                as a landing on water, and lists gradually developing engine
+                trouble as a possible reason for a precautionary landing.
+        usage:
+          input_tokens: 1883
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1880
+          output_tokens: 237
+          output_tokens_details:
+            reasoning_tokens: 51
+          total_tokens: 2120
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports both listed claims.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt identifies Chapter 18, printed page 18-1, and contains
+              the cited introduction and emergency-landing definitions.
+          claim_assessments:
+            - claim_id: manufacturer-boundary
+              verdict: supports
+              finding_materiality: none
+              rationale: The page calls its guidance generic and says manufacturer-recommended
+                procedures for the particular airplane take precedence if they
+                conflict.
+            - claim_id: landing-types
+              verdict: supports
+              finding_materiality: none
+              rationale: The page defines forced and precautionary landings, defines ditching
+                as a landing on water, and lists gradually developing engine
+                trouble as a possible reason for a precautionary landing.
+        usage:
+          input_tokens: 1883
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1880
+          output_tokens: 230
+          output_tokens_details:
+            reasoning_tokens: 46
+          total_tokens: 2113
+    relevance: *a6
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: afh-glide
+    title: Airplane Flying Handbook, Chapter 3, Basic Flight Maneuvers
+    checked_at_utc: 2026-09-28T21:06:44.552Z
+    linked_claim_ids:
+      - glide-concepts
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: 8dd948a4f8c99a304b9cfbc7746726bfda2109660d53bcb904b0b9383bd57e71
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 6183
+      pdf_page_text_sha256: 50d7eb391cdeb4ce09b2938bd1509513af6d1561878a3d195cb614e175d72095
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a7
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports all listed glide concepts.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from cited PDF page 23 and shows printed page 3-23 in
+              Chapter 3's discussion of glides.
+          claim_assessments:
+            - claim_id: glide-concepts
+              verdict: supports
+              finding_materiality: none
+              rationale: The page explains maximum glide distance at best glide, maximum time
+                aloft at minimum sink, the effect of wind on ground distance,
+                and the risk of landing short or stalling when trying to stretch
+                a glide below recommended best glide speed.
+        usage:
+          input_tokens: 2088
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2085
+          output_tokens: 193
+          output_tokens_details:
+            reasoning_tokens: 36
+          total_tokens: 2281
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page supports all listed glide concepts and the
+            source-tagged passages that express them.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from PDF page 23 and displays printed page 3-23 in
+              Chapter 3's glide discussion.
+          claim_assessments:
+            - claim_id: glide-concepts
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt distinguishes maximum glide distance from minimum sink
+                time, explains headwind and tailwind effects on ground distance,
+                and warns that stretching a glide below recommended best-glide
+                speed can cause a short landing or stall.
+        usage:
+          input_tokens: 2088
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2085
+          output_tokens: 196
+          output_tokens_details:
+            reasoning_tokens: 39
+          total_tokens: 2284
+    relevance: *a7
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: afh-landing
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    checked_at_utc: 2026-09-28T21:06:45.863Z
+    linked_claim_ids:
+      - landing-site
+      - control-priority
+      - flap-timing
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a8
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4585
+      pdf_page_text_sha256: 72bf34ef858a4ef5d55edcb87187af1d3f2cc2ee7fb0bc85b2483073e0e15be4
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a9
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports all three listed claims and is
+            correctly located.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from printed page 18-4 and contains the cited Terrain
+              Selection, Airplane Configuration, and Approach sections.
+          claim_assessments:
+            - claim_id: landing-site
+              verdict: supports
+              finding_materiality: none
+              rationale: The page lists route, height above ground, and excess airspeed as
+                factors in site choice, and wind, field dimensions and slope,
+                and obstacles as approach-planning factors.
+            - claim_id: control-priority
+              verdict: supports
+              finding_materiality: none
+              rationale: The page emphasizes control of attitude and sink rate at touchdown
+                and explicitly prioritizes positive airplane control over
+                configuration and checklist tasks during final approach.
+            - claim_id: flap-timing
+              verdict: supports
+              finding_materiality: none
+              rationale: The page says flaps lower stall speed, while their added drag reduces
+                glide distance, and warns that premature use may jeopardize the
+                plan.
+        usage:
+          input_tokens: 2088
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2085
+          output_tokens: 319
+          output_tokens_details:
+            reasoning_tokens: 74
+          total_tokens: 2407
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page supports all three listed claims and the corresponding
+            source-tagged statements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited PDF page and is marked printed page
+              18-4.
+          claim_assessments:
+            - claim_id: landing-site
+              verdict: supports
+              finding_materiality: none
+              rationale: The page lists route, height above ground, and excess airspeed for
+                site selection, and wind, field dimensions and slope, and
+                obstacles for approach planning.
+            - claim_id: control-priority
+              verdict: supports
+              finding_materiality: none
+              rationale: The page identifies touchdown attitude and sink-rate control as
+                critical and explicitly prioritizes positive airplane control
+                over configuration and checklist tasks on final approach.
+            - claim_id: flap-timing
+              verdict: supports
+              finding_materiality: none
+              rationale: The page says flaps lower stall speed, while their added drag reduces
+                gliding distance and premature use may jeopardize the plan.
+        usage:
+          input_tokens: 2088
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2085
+          output_tokens: 283
+          output_tokens_details:
+            reasoning_tokens: 49
+          total_tokens: 2371
+    relevance: *a9
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: afh-descent
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    checked_at_utc: 2026-09-28T21:06:45.892Z
+    linked_claim_ids:
+      - descent-purpose
+      - descent-limits
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a8
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3328
+      pdf_page_text_sha256: 03aeb73d95885cd6e5961ce642a8637318e440a24859404d72e05d5a377e6f40
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a10
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports both listed claims about the purpose
+            of an emergency descent and the applicable configuration, airspeed,
+            and recovery guidance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt from cited PDF page 8 contains the Emergency Descents
+              section identified by the locator.
+          claim_assessments:
+            - claim_id: descent-purpose
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt defines emergency descent as rapid descent to a lower
+                altitude or the ground for an emergency landing and names fire
+                and loss of pressurization as possible reasons.
+            - claim_id: descent-limits
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt calls for manufacturer-recommended configuration and
+                airspeeds, compliance with structural, gear, and flap speed
+                limits, and recovery begun high enough for safe level flight or
+                a precautionary landing.
+        usage:
+          input_tokens: 1547
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1544
+          output_tokens: 325
+          output_tokens_details:
+            reasoning_tokens: 113
+          total_tokens: 1872
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports both listed claims about the
+            purpose, causes, procedures, limits, and recovery of an emergency
+            descent.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited PDF page and contains the Emergency
+              Descents section.
+          claim_assessments:
+            - claim_id: descent-purpose
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt defines an emergency descent as rapid descent to a lower
+                altitude or the ground for an emergency landing and names fire
+                and loss of pressurization as possible causes.
+            - claim_id: descent-limits
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt calls for manufacturer-recommended configuration and
+                airspeeds, compliance with applicable structural, gear, and flap
+                speed limits, and recovery begun high enough for safe level
+                flight or a precautionary landing.
+        usage:
+          input_tokens: 1547
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1544
+          output_tokens: 309
+          output_tokens_details:
+            reasoning_tokens: 100
+          total_tokens: 1856
+    relevance: *a10
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: afh-electrical
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    checked_at_utc: 2026-09-28T21:06:45.910Z
+    linked_claim_ids:
+      - generator-failure
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a8
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2705
+      pdf_page_text_sha256: 21be9f7cc65c3e57168e95c7cd3872edb89897be24709ae49451f579a8e71e09
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a11
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed claim about limited
+            battery power after a generating-system failure, shedding
+            nonessential loads, and planning to land at the nearest suitable
+            airport.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from printed page 18-13 under Chapter 18, System
+              Malfunctions, Electrical System, as cited.
+          claim_assessments:
+            - claim_id: generator-failure
+              verdict: supports
+              finding_materiality: none
+              rationale: The page says a battery may be the remaining electrical source after
+                a generator or alternator goes offline, that available time
+                depends on load and battery condition, and that the pilot should
+                shed nonessential loads and plan to land at the nearest suitable
+                airport.
+        usage:
+          input_tokens: 1429
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1426
+          output_tokens: 216
+          output_tokens_details:
+            reasoning_tokens: 37
+          total_tokens: 1645
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PDF page 13 contains the Electrical System section on printed page
+              18-13.
+          claim_assessments:
+            - claim_id: generator-failure
+              verdict: supports
+              finding_materiality: none
+              rationale: The page explains that a failed single generating system may leave
+                limited battery power and directs the pilot to shed nonessential
+                loads immediately and plan to land at the nearest suitable
+                airport.
+        usage:
+          input_tokens: 1429
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1426
+          output_tokens: 156
+          output_tokens_details:
+            reasoning_tokens: 24
+          total_tokens: 1585
+    relevance: *a11
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: afh-engine
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    checked_at_utc: 2026-09-28T21:06:45.933Z
+    linked_claim_ids:
+      - engine-checklist
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=16
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a8
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=16
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1064
+      pdf_page_text_sha256: 3b200b271b18bce14c25820752247e0c753723418b9df2a2048ecb7217c121cb
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a12
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page explicitly says to follow the specific airplane’s
+            AFM/POH for abnormal engine instrument indications.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited PDF page and shows printed page 18-16
+              under “Abnormal Engine Instrument Indication.”
+          claim_assessments:
+            - claim_id: engine-checklist
+              verdict: supports
+              finding_materiality: none
+              rationale: The source directly supports the claim that pilots should use the
+                specific airplane’s AFM/POH for abnormal engine instrument
+                indications.
+        usage:
+          input_tokens: 962
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 188
+          output_tokens_details:
+            reasoning_tokens: 43
+          total_tokens: 1150
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page explicitly says to follow the specific airplane’s
+            AFM/POH for abnormal engine instrument indications.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt identifies the cited section and printed page 18-16 on
+              PDF page 16.
+          claim_assessments:
+            - claim_id: engine-checklist
+              verdict: supports
+              finding_materiality: none
+              rationale: The cited page directs pilots to the specific airplane’s AFM/POH for
+                abnormal engine instrument indications.
+        usage:
+          input_tokens: 962
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 183
+          output_tokens_details:
+            reasoning_tokens: 49
+          total_tokens: 1145
+    relevance: *a12
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-help
+    title: Aeronautical Information Manual, Emergency Condition—Request Assistance
+      Immediately
+    checked_at_utc: 2026-09-28T21:06:45.951Z
+    linked_claim_ids:
+      - early-help
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_1.html#6-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_1.html#6-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: []
+      title: Chapter 6. Emergency Procedures
+      truncated: false
+      content_sha256: 4acc232696e2fe6998eb5dc0340e8214e3a7bb6ec1eaceb035ba9dbd618d247d
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_1.html#6-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_1.html#6-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 1145
+      excerpt_sha256: 6709af1607fad2394eee5ba5f90d7d4eb25583cf7b0fd6c2e1a3b436f8edc4ed
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a13
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: AIM 6-1-2 directly advises pilots to request assistance when doubt
+            about position, fuel endurance, weather, or another condition could
+            adversely affect flight safety, rather than waiting for distress.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is identified as AIM 6-1-2, Emergency Condition—Request
+              Assistance Immediately, matching the cited locator.
+          claim_assessments:
+            - claim_id: early-help
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt states that such doubt is at least an urgency condition
+                and that the time to ask for help is before it develops into
+                distress.
+        usage:
+          input_tokens: 1029
+          input_tokens_details:
+            cache_write_tokens: 1026
+            cached_tokens: 0
+          output_tokens: 188
+          output_tokens_details:
+            reasoning_tokens: 26
+          total_tokens: 1217
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: AIM 6-1-2 directly urges pilots to request assistance when they
+            become doubtful about position, fuel endurance, weather, or another
+            condition that could adversely affect flight safety, rather than
+            waiting for distress.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The supplied excerpt is labeled AIM 6-1-2, “Emergency
+              Condition—Request Assistance Immediately,” matching the cited
+              locator.
+          claim_assessments:
+            - claim_id: early-help
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt says such doubt places an aircraft in at least an urgency
+                condition and that pilots should ask for help before it develops
+                into distress.
+        usage:
+          input_tokens: 1029
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1026
+          output_tokens: 192
+          output_tokens_details:
+            reasoning_tokens: 26
+          total_tokens: 1221
+    relevance: *a13
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-radio
+    title: Aeronautical Information Manual, Distress and Urgency Procedures
+    checked_at_utc: 2026-09-28T21:06:45.990Z
+    linked_claim_ids:
+      - radio-help
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-1
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-1
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a15 []
+      title: Chapter 6. Emergency Procedures
+      truncated: false
+      content_sha256: d7caa1a69ebd7903ff0dc3d90461dad37d885404903e12cd965a99103277bfbc
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-1
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-1
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f79c7aad3e207299a6194fcac4cf303fe1581e83bf0854a8dc4effee6dc40621
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a14
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly covers MAYDAY and PAN-PAN calls and lists the
+            claimed distress or urgency message elements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited sections contain the distress and urgency procedures and
+              message elements.
+          claim_assessments:
+            - claim_id: radio-help
+              verdict: supports
+              finding_materiality: none
+              rationale: AIM 6-3-1 describes MAYDAY and PAN-PAN; 6-3-2 lists aircraft
+                identification, nature of the difficulty, intentions, position,
+                altitude, fuel remaining in minutes, and people aboard.
+        usage:
+          input_tokens: 3340
+          input_tokens_details:
+            cache_write_tokens: 3337
+            cached_tokens: 0
+          output_tokens: 232
+          output_tokens_details:
+            reasoning_tokens: 81
+          total_tokens: 3572
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited AIM sections support the listed claim about distress and
+            urgency signals and message elements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: AIM 6-3-1 and 6-3-2(a)(3) are present in the supplied excerpt and
+              contain the cited guidance.
+          claim_assessments:
+            - claim_id: radio-help
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt identifies MAYDAY for distress and PAN-PAN for urgency,
+                and lists aircraft identification, the nature of the problem,
+                intentions, position, altitude, fuel remaining in minutes, and
+                people aboard among the message elements.
+        usage:
+          input_tokens: 3340
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3337
+          output_tokens: 183
+          output_tokens_details:
+            reasoning_tokens: 20
+          total_tokens: 3523
+    relevance: *a14
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-transponder
+    title: Aeronautical Information Manual, Obtaining Emergency Assistance
+    checked_at_utc: 2026-09-28T21:06:46.030Z
+    linked_claim_ids:
+      - transponder-help
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a15
+      title: Chapter 6. Emergency Procedures
+      truncated: false
+      content_sha256: d7caa1a69ebd7903ff0dc3d90461dad37d885404903e12cd965a99103277bfbc
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 241d06be732331826d429c6813d06dcf1c2e95569703e6205ed94c3f30ae10e6
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a16
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states the transponder actions described in the
+            claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: AIM 6-3-2(a)(2) is the transponder-action provision in the supplied
+              excerpt.
+          claim_assessments:
+            - claim_id: transponder-help
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt directs pilots to retain the assigned or VFR code and
+                Mode C while in radio contact with air traffic services unless
+                instructed otherwise, and to select 7700 and Mode C if unable to
+                immediately establish communications.
+        usage:
+          input_tokens: 3212
+          input_tokens_details:
+            cache_write_tokens: 3209
+            cached_tokens: 0
+          output_tokens: 186
+          output_tokens_details:
+            reasoning_tokens: 35
+          total_tokens: 3398
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly supports the listed transponder guidance.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: AIM 6-3-2 contains the cited transponder action.
+          claim_assessments:
+            - claim_id: transponder-help
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt says to continue the assigned or VFR code with Mode C
+                while in radio contact with an air traffic facility or other
+                agency providing air traffic services, unless instructed
+                otherwise; if unable to immediately establish communications, it
+                says to select 7700 and Mode C.
+        usage:
+          input_tokens: 3212
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3209
+          output_tokens: 213
+          output_tokens_details:
+            reasoning_tokens: 63
+          total_tokens: 3425
+    relevance: *a16
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: aim-elt
+    title: Aeronautical Information Manual, Emergency Locator Transmitter
+    checked_at_utc: 2026-09-28T21:06:46.030Z
+    linked_claim_ids:
+      - elt-use
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_2.html#6-2-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_2.html#6-2-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: []
+      title: Chapter 6. Emergency Procedures
+      truncated: false
+      content_sha256: 2f205f80d28222e96ee857a0a23a0a7251b5b8253a5b66fad679e8dba166069b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_2.html#6-2-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_2.html#6-2-4
+      errors: []
+      valid: true
+      excerpt_characters: 11205
+      excerpt_sha256: 774c72552b5670b8506ac79e456a156f03d25e4dc0dc89ad25aee12ea41e0d3d
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a17
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited ELT section directly supports the listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited AIM 6-2-4 excerpt contains the statements about crash-force
+              activation and knowing how to activate and verify an ELT.
+          claim_assessments:
+            - claim_id: elt-use
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt says armed ELTs are designed to activate under
+                crash-generated forces and that pilots and passengers should
+                know how to activate the ELT manually and verify it is
+                transmitting.
+        usage:
+          input_tokens: 3210
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3207
+          output_tokens: 482
+          output_tokens_details:
+            reasoning_tokens: 338
+          total_tokens: 3692
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt states that armed ELTs are designed to activate under
+            crash-generated forces and that pilots and passengers should know
+            how to activate the aircraft’s ELT and verify that it is
+            transmitting.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited AIM 6-2-4 General passage contains the statements relevant
+              to the claim.
+          claim_assessments:
+            - claim_id: elt-use
+              verdict: supports
+              finding_materiality: none
+              rationale: The claim accurately reflects the excerpt’s guidance on automatic
+                activation, manual activation, and verifying transmission.
+        usage:
+          input_tokens: 3210
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3207
+          output_tokens: 322
+          output_tokens_details:
+            reasoning_tokens: 176
+          total_tokens: 3532
+    relevance: *a17
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-authority
+    title: 14 CFR 91.3, Responsibility and authority of the pilot in command
+    checked_at_utc: 2026-09-28T21:06:43.987Z
+    linked_claim_ids:
+      - emergency-authority
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: 836bf20fc7e0c2a317f8ce6631696fada27a07962c2f281f0e55585a04120134
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.3"
+        date: 2026-09-24
+        section_number: "91.3"
+      section_text_sha256: e09a90c11619c6e134752ef4e4bf3348f47eecac041ac6612971d3093db38718
+      excerpt_characters: 749
+      excerpt_sha256: e09a90c11619c6e134752ef4e4bf3348f47eecac041ac6612971d3093db38718
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 749
+    relevance_reviews:
+      - &a18
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly supports the listed claim about PIC
+            responsibility, limited emergency deviation authority, and a written
+            report upon the Administrator's request.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: 14 CFR 91.3(a)–(c) matches the supplied excerpt and covers all parts
+              of the claim.
+          claim_assessments:
+            - claim_id: emergency-authority
+              verdict: supports
+              finding_materiality: none
+              rationale: Paragraphs (a), (b), and (c) respectively state the PIC's
+                responsibility and final authority, the limit on deviation in an
+                in-flight emergency requiring immediate action, and the
+                written-report requirement upon request.
+        usage:
+          input_tokens: 1053
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1050
+          output_tokens: 198
+          output_tokens_details:
+            reasoning_tokens: 32
+          total_tokens: 1251
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited section directly supports the listed claim about PIC
+            responsibility, the limits of emergency deviation authority, and a
+            written report upon the Administrator’s request.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is § 91.3(a)–(c), matching the cited locator.
+          claim_assessments:
+            - claim_id: emergency-authority
+              verdict: supports
+              finding_materiality: none
+              rationale: Paragraphs (a), (b), and (c) respectively establish final authority
+                and responsibility, limit deviations to what an in-flight
+                emergency requiring immediate action demands, and require a
+                written report if the Administrator requests one.
+        usage:
+          input_tokens: 1053
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1050
+          output_tokens: 200
+          output_tokens_details:
+            reasoning_tokens: 36
+          total_tokens: 1253
+    relevance: *a18
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []

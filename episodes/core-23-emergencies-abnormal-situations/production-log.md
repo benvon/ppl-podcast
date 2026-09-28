@@ -1,0 +1,25 @@
+# Emergencies and Abnormal Situations — production log
+
+This is explanatory context, not a production-state or audit record. Use `episode.yaml` and structured validation reports for authoritative state, timestamps, hashes, and approvals.
+
+## 2026-09-28 — initial source-led draft
+
+- Created the core-23 package from current templates on `feature/core-23-emergencies-abnormal-situations`.
+- Reviewed the master scripts for Episodes 20–22. Continued their calm Instructor/Learner dialogue, scenario-led decision sequence, short Announcer orientation, and retrieval review that rebuilds the causal chain.
+- Used FAA-S-ACS-6C Area IX tasks A–D as the outcome map. Checked Airplane Flying Handbook Chapters 3 and 18, AIM Chapter 6, and 14 CFR 91.3 against their precise source locators. The script keeps manufacturer procedures, speeds, and limits in the airplane's AFM/POH.
+- Drafted the Elena/Jonah rough-engine diversion as the spine. Power loss is an explicit hypothetical continuation; electrical failure and smoke are separate cases.
+- Created the source ledger, claim inventory, research packet, tagged master script, narration derivative, show notes, link manifest, and hosting synopsis.
+- The initial read-only mapping check covered 20 claims and 17 show-note links.
+
+## 2026-09-28 — version 0.1.1 spoken revision
+
+- Moved Elena's off-airport landing report to the point immediately after she chooses a field and path, before final approach and passenger/checklist work.
+- Made the Valley-versus-near-field choice audible through the observed tree line, remaining ground distance, descent, and headwind. The script states no universal glide range or airplane-specific speed.
+- Matched the AIM's exact contact condition for retaining a transponder code versus selecting 7700, separated the ACS smoke trigger from the AFH emergency-descent description, and clarified that an armed ELT is designed to activate under crash forces but may need manual activation or verification after stopping.
+- Synchronized the version in the script, episode record, show notes, and hosting metadata, then regenerated narration.
+- The independent first-listen review identified the radio-call placement and an implicit glide-range judgment. A follow-up check caught an early “full attention” transition; that wording was resolved in the same revision.
+
+## 2026-09-28 — source locator refinement
+
+- The two independent source assessments agreed that the emergency communication claims were supported. One or both flagged the AIM subparagraph labels for three citations. The source ledger, show notes, and link manifest now identify the AIM sections and actions as presented in the FAA source.
+- The spoken script and claim inventory were unchanged by this locator correction. The formal source-review result and current package state are recorded in `link-validation.yaml` and `episode.yaml`.

@@ -1,0 +1,142 @@
+episode_id: core-23
+claims:
+  - id: acs-descent
+    type: faa_standard
+    statement: ACS PA.IX.A addresses emergency-descent triggers, immediate actions, airspeed and aircraft limits, terrain and collision risk, configuration, checklists, and appropriate radio calls.
+    sources: [acs-descent]
+    risk: operational
+    script_sections: [What the ACS is asking you to connect, When smoke changes the descent decision, Retrieval review]
+    status: draft
+  - id: acs-landing
+    type: faa_standard
+    statement: ACS PA.IX.B requires a simulated emergency approach and landing plan considering altitude, wind, terrain, obstructions, and available glide distance while maintaining control and completing appropriate checklists.
+    sources: [acs-landing]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Choose a landing area within reach, Retrieval review]
+    status: draft
+  - id: glide-airspeed
+    type: faa_standard
+    statement: ACS PA.IX.B distinguishes best glide speed from minimum sink speed, includes wind effects on glide distance, and specifies the airplane's recommended best glide airspeed for the simulated task.
+    sources: [acs-landing]
+    risk: safety_critical
+    script_sections: [Keep the airplane flying after power loss, Retrieval review]
+    status: draft
+  - id: glide-concepts
+    type: faa_guidance
+    statement: AFH Chapter 3 explains that best glide maximizes distance per altitude lost, minimum sink maximizes time aloft, wind changes ground glide distance, and attempting to stretch a glide below recommended best glide risks landing short or stalling.
+    sources: [afh-glide]
+    risk: safety_critical
+    script_sections: [Keep the airplane flying after power loss, Retrieval review]
+    status: draft
+  - id: acs-malfunctions
+    type: faa_standard
+    statement: ACS PA.IX.C addresses airplane-specific power loss, electrical and instrument malfunctions, smoke or fire, door or window opening, checklist use, startle, and task priority.
+    sources: [acs-systems]
+    risk: operational
+    script_sections: [What the ACS is asking you to connect, Recognize rough running early, Compare an electrical failure, Retrieval review]
+    status: draft
+  - id: acs-equipment
+    type: faa_standard
+    statement: ACS PA.IX.D addresses fire extinguisher, environment-appropriate survival gear, passenger briefing, and ballistic parachute or emergency autoland if equipped.
+    sources: [acs-survival]
+    risk: operational
+    script_sections: [Prepare for the route before departure, Prepare to land and protect the occupants, Retrieval review]
+    status: draft
+  - id: manufacturer-boundary
+    type: faa_guidance
+    statement: AFH Chapter 18 is generic; manufacturer-recommended AFM/POH procedures for the particular airplane take precedence if there is a conflict.
+    sources: [afh-types]
+    risk: safety_critical
+    script_sections: [What the ACS is asking you to connect, Prepare for the route before departure, Recognize rough running early, Retrieval review]
+    status: draft
+  - id: landing-types
+    type: faa_guidance
+    statement: AFH Chapter 18 distinguishes forced, precautionary, and water landings and gives gradually developing engine trouble as a possible reason for precautionary landing.
+    sources: [afh-types]
+    risk: operational
+    script_sections: [Recognize rough running early, Retrieval review]
+    status: draft
+  - id: landing-site
+    type: faa_guidance
+    statement: AFH Chapter 18 says emergency landing site choice depends on route, height above ground, and excess airspeed; approach planning considers wind, field dimensions and slope, and obstacles.
+    sources: [afh-landing]
+    risk: safety_critical
+    script_sections: [Choose a landing area within reach, Retrieval review]
+    status: draft
+  - id: control-priority
+    type: faa_guidance
+    statement: AFH Chapter 18 gives positive airplane control and control of touchdown attitude and sink rate priority over configuration and checklist tasks during the final approach.
+    sources: [afh-landing]
+    risk: safety_critical
+    script_sections: [Choose a landing area within reach, Prepare to land and protect the occupants, Retrieval review]
+    status: draft
+  - id: flap-timing
+    type: faa_guidance
+    statement: AFH Chapter 18 says flaps lower stall speed but increase drag and reduce glide distance, so premature flap use can jeopardize an emergency landing plan.
+    sources: [afh-landing]
+    risk: safety_critical
+    script_sections: [Choose a landing area within reach]
+    status: draft
+  - id: descent-purpose
+    type: faa_guidance
+    statement: AFH Chapter 18 describes emergency descent as rapid descent to lower altitude or the ground for emergency landing, potentially prompted by fire or loss of pressurization.
+    sources: [afh-descent]
+    risk: safety_critical
+    script_sections: [When smoke changes the descent decision, Retrieval review]
+    status: draft
+  - id: descent-limits
+    type: faa_guidance
+    statement: AFH Chapter 18 says emergency descent should follow manufacturer configuration and airspeed guidance while respecting structural, gear, and flap limits and allowing a safe recovery or landing.
+    sources: [afh-descent]
+    risk: safety_critical
+    script_sections: [When smoke changes the descent decision, Retrieval review]
+    status: draft
+  - id: generator-failure
+    type: faa_guidance
+    statement: AFH Chapter 18 says loss of a single generator or alternator may leave limited battery power; shed nonessential electrical loads and plan to land at the nearest suitable airport.
+    sources: [afh-electrical]
+    risk: operational
+    script_sections: [Compare an electrical failure, Retrieval review]
+    status: draft
+  - id: engine-checklist
+    type: faa_guidance
+    statement: AFH Chapter 18 directs pilots with abnormal engine instrument indications to the specific airplane's AFM/POH.
+    sources: [afh-engine]
+    risk: operational
+    script_sections: [Recognize rough running early]
+    status: draft
+  - id: early-help
+    type: faa_guidance
+    statement: AIM 6-1-2 urges early assistance when doubt about fuel, position, weather, or another condition could adversely affect flight safety, before urgency becomes distress.
+    sources: [aim-help]
+    risk: safety_critical
+    script_sections: [Ask for help while there is time, Retrieval review]
+    status: draft
+  - id: radio-help
+    type: faa_guidance
+    statement: AIM 6-3-1 and 6-3-2 provide distress and urgency calls, including MAYDAY and PAN-PAN, and useful message elements such as identity, problem, intentions, position, altitude, fuel in minutes, and people aboard.
+    sources: [aim-radio]
+    risk: operational
+    script_sections: [Ask for help while there is time, Retrieval review]
+    status: draft
+  - id: transponder-help
+    type: faa_guidance
+    statement: AIM 6-3-2 says keep the assigned or VFR transponder code with Mode C while in radio contact with air traffic services unless directed otherwise; if unable to immediately establish contact, select 7700 and Mode C.
+    sources: [aim-transponder]
+    risk: operational
+    script_sections: [Ask for help while there is time]
+    status: draft
+  - id: elt-use
+    type: faa_guidance
+    statement: AIM 6-2-4 says an armed ELT is designed to activate under crash forces and pilots and passengers should know how to activate and verify the airplane's ELT if needed.
+    sources: [aim-elt]
+    risk: operational
+    script_sections: [Prepare for the route before departure, Prepare to land and protect the occupants, Retrieval review]
+    status: draft
+  - id: emergency-authority
+    type: regulation
+    statement: Under 14 CFR 91.3, the PIC is directly responsible for and final authority over the aircraft, may deviate from Part 91 only to the extent required by an in-flight emergency requiring immediate action, and must report a deviation if the Administrator requests it.
+    sources: [ecfr-authority]
+    risk: safety_critical
+    script_sections: [Ask for help while there is time, Retrieval review]
+    status: draft

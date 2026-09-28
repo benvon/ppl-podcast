@@ -100,7 +100,7 @@ function planSourceReviewChecklist(resolved, episode, updates, { preserveCurrent
     ? fs.readFileSync(checklistPath, "utf8")
     : fs.readFileSync(templatePath, "utf8").replaceAll("{{TITLE}}", episode.title || episode.id || "Episode");
   if (!checklist.includes("qa-id: openai-source-review-authorization")) {
-    checklist = `${checklist.trimEnd()}\n\n- [ ] Explicit current-turn authorization was received before source excerpts, claims, and tagged passages were sent to OpenAI for the \`--require-llm\` source-relevance review, and the report records that authorization with its run. <!-- qa-id: openai-source-review-authorization -->\n`;
+    checklist = `${checklist.trimEnd()}\n\n- [ ] The user authorized the OpenAI API source-relevance review for this episode in the current turn; the review may send its source excerpts, claims, and tagged passages, and the report records the authorization with its run. No prescribed approval wording is required. <!-- qa-id: openai-source-review-authorization -->\n`;
   }
   checklist = markChecklistItemsUnchecked(checklist, resettableChecklistIDs(checklist, { preserveCurrentSourceReview }));
   const original = fs.existsSync(checklistPath) ? fs.readFileSync(checklistPath, "utf8") : null;

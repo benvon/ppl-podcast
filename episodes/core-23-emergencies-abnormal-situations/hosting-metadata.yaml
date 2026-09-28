@@ -1,0 +1,20 @@
+schema_version: 1
+publisher_release:
+  id: core-23
+  guid: pplstudyguide.com:core-23
+  title: Emergencies and Abnormal Situations
+  description: A scenario-led study of early precautionary landing, power-loss
+    landing choices, emergency communication, and aircraft-specific emergency
+    procedures.
+  published_at: null
+  duration: null
+  season: 1
+  number: 23
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.1

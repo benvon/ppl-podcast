@@ -1,0 +1,124 @@
+episode_id: core-23
+links:
+  - id: source-link-01
+    text: Emergency descent ACS task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=59
+    locator: PA.IX.A.K1-K4, R1-R4, S1-S8, printed p. 51 (PDF p. 59)
+    source_id: acs-descent
+    claim_ids:
+      - acs-descent
+  - id: source-link-02
+    text: Emergency approach and landing ACS task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+    locator: PA.IX.B.K1-K6, R1-R6, S1-S6, printed p. 52 (PDF p. 60)
+    source_id: acs-landing
+    claim_ids:
+      - acs-landing
+      - glide-airspeed
+  - id: source-link-03
+    text: Systems and equipment malfunctions ACS task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+    locator: PA.IX.C.K1-K5, R1-R4, S1-S2, printed p. 53 (PDF p. 61)
+    source_id: acs-systems
+    claim_ids:
+      - acs-malfunctions
+  - id: source-link-04
+    text: Emergency equipment and survival ACS task
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+    locator: PA.IX.D.K1-K5, R1-R3, S1-S3, printed pp. 53-54 (PDF pp. 61-62)
+    source_id: acs-survival
+    claim_ids:
+      - acs-equipment
+  - id: source-link-05
+    text: Manufacturer procedure boundary and landing types
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    locator: Chapter 18, Introduction and Types of Emergency Landings, printed p.
+      18-1 (PDF p. 1)
+    source_id: afh-types
+    claim_ids:
+      - manufacturer-boundary
+      - landing-types
+  - id: source-link-06
+    text: Best glide and minimum sink
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23
+    locator: Chapter 3, Glides, best glide and minimum sink, printed p. 3-23 (PDF p. 23)
+    source_id: afh-glide
+    claim_ids:
+      - glide-concepts
+  - id: source-link-07
+    text: Selecting terrain and controlling an emergency approach
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4
+    locator: Chapter 18, Terrain Selection, Airplane Configuration, and Approach,
+      printed p. 18-4 (PDF p. 4)
+    source_id: afh-landing
+    claim_ids:
+      - landing-site
+      - control-priority
+      - flap-timing
+  - id: source-link-08
+    text: Emergency descent concepts and limits
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=8
+    locator: Chapter 18, Emergency Descents, printed p. 18-8 (PDF p. 8)
+    source_id: afh-descent
+    claim_ids:
+      - descent-purpose
+      - descent-limits
+  - id: source-link-09
+    text: Electrical system malfunction
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    locator: Chapter 18, System Malfunctions, Electrical System, printed p. 18-13
+      (PDF p. 13)
+    source_id: afh-electrical
+    claim_ids:
+      - generator-failure
+  - id: source-link-10
+    text: Abnormal engine indication
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=16
+    locator: Chapter 18, Abnormal Engine Instrument Indication, printed p. 18-16
+      (PDF p. 16)
+    source_id: afh-engine
+    claim_ids:
+      - engine-checklist
+  - id: source-link-11
+    text: Ask for emergency assistance early
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_1.html#6-1-2
+    locator: AIM 6-1-2, Emergency Condition—Request Assistance Immediately
+    source_id: aim-help
+    claim_ids:
+      - early-help
+  - id: source-link-12
+    text: Distress and urgency radio calls
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-1
+    locator: AIM 6-3-1, Distress and Urgency Communications; 6-3-2(a)(3), message elements
+    source_id: aim-radio
+    claim_ids:
+      - radio-help
+  - id: source-link-13
+    text: Emergency transponder use
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-2
+    locator: AIM 6-3-2(a)(2), transponder action
+    source_id: aim-transponder
+    claim_ids:
+      - transponder-help
+  - id: source-link-14
+    text: Emergency locator transmitter
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_2.html#6-2-4
+    locator: AIM 6-2-4, subparagraph 1(5)-(7)
+    source_id: aim-elt
+    claim_ids:
+      - elt-use
+  - id: source-link-15
+    text: PIC emergency authority
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.3
+    locator: 91.3(a)-(c)
+    source_id: ecfr-authority
+    claim_ids:
+      - emergency-authority
+  - id: study-glide
+    kind: supplemental
+    text: Airplane Flying Handbook guidance on gliding
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23
+  - id: study-landing
+    kind: supplemental
+    text: Airplane Flying Handbook emergency landing discussion
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4

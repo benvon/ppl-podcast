@@ -17,6 +17,7 @@ claims:
   risk: operational
   script_sections:
   - What the ACS is asking you to connect
+  - Retrieval review
   status: draft
 - id: acs-passenger
   type: faa_standard
@@ -26,6 +27,51 @@ claims:
   risk: operational
   script_sections:
   - What the ACS is asking you to connect
+  status: draft
+- id: acs-passenger-briefing-skill
+  type: faa_standard
+  statement: ACS PA.II.B.S2 asks the applicant to conduct an appropriate passenger briefing identifying the pilot in command and covering safety belts, shoulder harnesses, doors, passenger conduct, sterile aircraft, propeller blade avoidance, and emergency procedures.
+  sources:
+  - acs-passenger
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  - Brief Jonah before the airplane moves
+  - Retrieval review
+  status: draft
+- id: acs-weight-balance
+  type: faa_standard
+  statement: ACS PA.I.F.S1-S2 ask the applicant to compute weight and balance, correct out-of-CG loading, determine that weight and balance remain within limits during all phases of flight, and use appropriate airplane performance charts, tables, and data.
+  sources:
+  - acs-performance-loading
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  - Change airplanes when a display fails
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: loading-current-data
+  type: faa_guidance
+  statement: PHAK Chapter 10 says current airplane weight-and-balance information is needed for loading decisions and that the pilot controls loading and fuel management, which can change total weight and CG.
+  sources:
+  - phak-weight-balance-control
+  risk: operational
+  script_sections:
+  - Change airplanes when a display fails
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: loading-fuel-performance
+  type: faa_guidance
+  statement: PHAK Chapter 10 says excessive weight degrades takeoff, climb, and landing performance, while changing fuel load changes airplane weight and reducing fuel also reduces range.
+  sources:
+  - phak-weight-performance
+  risk: operational
+  script_sections:
+  - Change airplanes when a display fails
+  - Keep the plan open to new information
+  - Retrieval review
   status: draft
 - id: pic-authority
   type: regulation
@@ -96,7 +142,7 @@ claims:
   sources:
   - ecfr-passenger-restraints
   risk: safety_critical
-  script_sections: &id001
+  script_sections:
   - Brief Jonah before the airplane moves
   - Retrieval review
   status: draft
@@ -106,7 +152,9 @@ claims:
   sources:
   - ecfr-passenger-restraints
   risk: safety_critical
-  script_sections: *id001
+  script_sections:
+  - Brief Jonah before the airplane moves
+  - Retrieval review
   status: draft
 - id: safe-altitude-anywhere
   type: regulation
@@ -114,8 +162,8 @@ claims:
   sources:
   - ecfr-minimum-altitude
   risk: safety_critical
-  script_sections: &id002
-  - Choose an en route altitude for the place below
+  script_sections:
+  - Plan the route and cruising altitude
   - Retrieval review
   status: draft
 - id: safe-altitude-congested
@@ -124,7 +172,9 @@ claims:
   sources:
   - ecfr-minimum-altitude
   risk: safety_critical
-  script_sections: *id002
+  script_sections:
+  - Plan the route and cruising altitude
+  - Retrieval review
   status: draft
 - id: safe-altitude-other
   type: regulation
@@ -132,7 +182,9 @@ claims:
   sources:
   - ecfr-minimum-altitude
   risk: safety_critical
-  script_sections: *id002
+  script_sections:
+  - Plan the route and cruising altitude
+  - Retrieval review
   status: draft
 - id: vfr-cruising-altitude
   type: regulation
@@ -141,6 +193,27 @@ claims:
   - ecfr-vfr-cruising-altitude
   risk: safety_critical
   script_sections:
-  - Choose an en route altitude for the place below
+  - Plan the route and cruising altitude
+  - Retrieval review
+  status: draft
+- id: night-passenger-recent-experience
+  type: regulation
+  statement: For ordinary private-pilot passenger carriage from one hour after sunset to one hour before sunrise, 61.57(b)(1) requires within the preceding 90 days three takeoffs and three full-stop landings in that same window as sole manipulator in the same category, class, and type if a type rating is required, unless a specified exception applies.
+  sources:
+  - ecfr-passenger-night
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: night-vfr-equipment
+  type: regulation
+  statement: For a powered civil aircraft with a standard U.S. airworthiness certificate, 91.205(a) and (c) require the operable instruments and equipment specified for night VFR, or FAA-approved equivalents, including the day-VFR items and the additional night items, subject to the stated exceptions.
+  sources:
+  - ecfr-night-vfr-equipment
+  risk: safety_critical
+  script_sections:
+  - Keep the plan open to new information
   - Retrieval review
   status: draft

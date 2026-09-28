@@ -1,8 +1,16 @@
 episode_id: core-22
-current_candidate_render: null
+current_candidate_render:
+  script_version: 0.1.9
+  sha256: d39228604618be0856a4d0db23d60746e0fd5d64b7c5ae8413e5e05a07fe62f1
+  duration_seconds: 2016.75
+  mp3: audio-artifacts/core-22/core-22-20260928T130327Z.mp3
+  render_manifest: audio-artifacts/core-22/core-22-20260928T130327Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-22/core-22-20260928T130327Z.audio-quality.json
+  chapter_review: audio-artifacts/core-22/core-22-20260928T130327Z.mp3.chapters.d39228604618be0856a4d0db23d60746e0fd5d64b7c5ae8413e5e05a07fe62f1.html
+  validation: passed_automated_checks
 superseded_candidates: []
 chapter_markers:
   source: master-script.md section headings
-  audio_sha256: null
-  review_page: null
+  audio_sha256: d39228604618be0856a4d0db23d60746e0fd5d64b7c5ae8413e5e05a07fe62f1
+  review_page: audio-artifacts/core-22/core-22-20260928T130327Z.mp3.chapters.d39228604618be0856a4d0db23d60746e0fd5d64b7c5ae8413e5e05a07fe62f1.html
   required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast

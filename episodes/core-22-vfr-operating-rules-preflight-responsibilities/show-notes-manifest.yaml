@@ -15,12 +15,13 @@ links:
   claim_ids:
   - acs-cross-country
 - id: source-link-03
-  text: PA.II.B.K1 — Private Pilot ACS
+  text: PA.II.B.K1 and S2 — Private Pilot ACS
   url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
-  locator: PA.II.B.K1, printed p. 12 (PDF p. 20)
+  locator: PA.II.B.K1 and S2, printed p. 12 (PDF p. 20)
   source_id: acs-passenger
   claim_ids:
   - acs-passenger
+  - acs-passenger-briefing-skill
 - id: source-link-04
   text: 14 CFR § 91.3 — 91.3(a)
   url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.3
@@ -75,3 +76,38 @@ links:
   source_id: ecfr-vfr-cruising-altitude
   claim_ids:
   - vfr-cruising-altitude
+- id: source-link-11
+  text: 14 CFR § 61.57 — 61.57(b)(1)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+  locator: 61.57(b)(1)(i)-(ii), night passenger recent experience
+  source_id: ecfr-passenger-night
+  claim_ids:
+  - night-passenger-recent-experience
+- id: source-link-12
+  text: 14 CFR § 91.205 — 91.205(a), (c)
+  url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+  locator: 91.205(a), (c)(1)-(6), standard U.S.-certificated powered aircraft night VFR
+  source_id: ecfr-night-vfr-equipment
+  claim_ids:
+  - night-vfr-equipment
+- id: source-link-13
+  text: PA.I.F.S1-S2 — Private Pilot ACS
+  url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+  locator: PA.I.F.S1-S2, printed p. 7 (PDF p. 15)
+  source_id: acs-performance-loading
+  claim_ids:
+  - acs-weight-balance
+- id: source-link-14
+  text: PHAK Chapter 10 — Weight and Balance Control
+  url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+  locator: Chapter 10, Management of Weight and Balance Control, printed p. 10-4 (PDF p. 4)
+  source_id: phak-weight-balance-control
+  claim_ids:
+  - loading-current-data
+- id: source-link-15
+  text: PHAK Chapter 10 — Weight and Performance
+  url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+  locator: Chapter 10, Effects of Weight and Weight Changes, printed p. 10-2 (PDF p. 2)
+  source_id: phak-weight-performance
+  claim_ids:
+  - loading-fuel-performance

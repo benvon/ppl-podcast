@@ -1,23 +1,23 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
 validation_kind: formal_source_review
-run_id: ef62afd0-43a5-43c6-b8ab-5464b7407eff
-checked_at_utc: 2026-09-24T21:25:03.235Z
+run_id: 289bcff5-1cb5-4f3d-a975-fa5b84bca75d
+checked_at_utc: 2026-09-26T20:51:38.596Z
 sources_file: episodes/core-22-vfr-operating-rules-preflight-responsibilities/sources.yaml
 claims_file: episodes/core-22-vfr-operating-rules-preflight-responsibilities/claim-inventory.yaml
 show_notes_file: episodes/core-22-vfr-operating-rules-preflight-responsibilities/show-notes.md
 show_notes_manifest_file: episodes/core-22-vfr-operating-rules-preflight-responsibilities/show-notes-manifest.yaml
 input_sha256:
-  sources: 0f1663582ad7c58436477caee6e862891f6d3f8a7fd447bef6bcd321bb22d85b
-  claims: 08ae54f4d384ad8f3274f693f80e961479615b68f0cbb67d8a96a9a1c3c7c1fc
-  master_script: eb713876e0af47035342728e2d23e09280b31386a3aeeb494b6bb19be2fb1aa6
+  sources: 90b5395b27b752272c30bb604a9a7c5b6ca00dc76b7c61037ffcad96320e3822
+  claims: 6c71bcdfc14dbbbe6dc259deb6c07a33fbf06e237d406a81c81a75507fe34b44
+  master_script: bfbf5843fa0f7cee1f3805e3c7da49db3d047d917a0009e0590d8cab57742bfa
   show_notes: null
   show_notes_manifest: null
 input_normalization:
   master_script: narration-and-source-tags-v1
   show_notes: fact-check-verification-column-v1
 semantic_input_sha256:
-  master_script: 43b222285a5dd22f6b0d227337c1efd7b4bc3b4964d8dff378284cc9d446c05f
+  master_script: ae15f2aaeffe89865c963fe388bb82465bbd6693071d6567e7a3da4ffc12a003
   show_notes: null
 llm_requested: true
 llm_model: gpt-6-sol
@@ -25,8 +25,8 @@ llm_review_passes: 2
 llm_materiality_policy: safety-and-core-v1
 authorization:
   qa_id: openai-source-review-authorization
-  attested_at_utc: 2026-09-24T21:22:42.752Z
-  run_id: ef62afd0-43a5-43c6-b8ab-5464b7407eff
+  attested_at_utc: 2026-09-26T20:50:21.315Z
+  run_id: 289bcff5-1cb5-4f3d-a975-fa5b84bca75d
 claim_mapping:
   valid: true
   errors: []
@@ -34,125 +34,19 @@ master_script_mapping:
   valid: true
   status: configured
   errors: []
-  source_tag_count: 54
-  claim_coverage_count: 24
+  source_tag_count: 70
+  claim_coverage_count: 21
 show_notes_mapping:
   valid: true
   errors: []
-  markdown_link_count: 19
+  markdown_link_count: 15
   http_link_count: 0
-  manifest_link_count: 19
+  manifest_link_count: 15
 show_notes_results: []
 results:
-  - source_id: acs-airworthiness-records
-    title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-09-24T21:22:42.752Z
-    linked_claim_ids:
-      - acs-airworthiness-records
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
-      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
-      status: 200
-      retry_after: null
-      content_type: application/pdf
-      redirects: &a2 []
-      title: null
-      truncated: false
-      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
-      hash_truncated: false
-      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
-      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
-      errors: []
-      valid: true
-      pdf_page_number: 10
-      excerpt_characters: 0
-      excerpt_sha256: null
-      pdf_page_text_characters: 2295
-      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
-      section_text_characters: 0
-      section_text_sha256: null
-    relevance_reviews:
-      - &a1
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited page explicitly lists both topics under PA.I.B.K1.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: PDF page 10 contains PA.I.B.K1a–K1e on printed page 2.
-          claim_assessments:
-            - claim_id: acs-airworthiness-records
-              verdict: supports
-              finding_materiality: none
-              rationale: PA.I.B.K1a addresses the location and expiration dates of required
-                aircraft certificates; PA.I.B.K1b addresses required inspections
-                and airplane logbook documentation.
-        usage:
-          input_tokens: 1232
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1229
-          output_tokens: 185
-          output_tokens_details:
-            reasoning_tokens: 44
-          total_tokens: 1417
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited page lists both topics under PA.I.B.K1.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Printed page 2 contains PA.I.B.K1a–K1e.
-          claim_assessments:
-            - claim_id: acs-airworthiness-records
-              verdict: supports
-              finding_materiality: none
-              rationale: PA.I.B.K1a covers the location and expiration dates of required
-                aircraft certificates; PA.I.B.K1b covers required inspections
-                and airplane logbook documentation.
-        usage:
-          input_tokens: 1232
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1229
-          output_tokens: 160
-          output_tokens_details:
-            reasoning_tokens: 25
-          total_tokens: 1392
-    relevance: *a1
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
   - source_id: acs-airworthiness
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-09-24T21:22:42.753Z
+    checked_at_utc: 2026-09-26T20:50:21.315Z
     linked_claim_ids:
       - acs-airworthiness
     missing_claim_ids: []
@@ -165,7 +59,7 @@ results:
       status: 200
       retry_after: null
       content_type: application/pdf
-      redirects: *a2
+      redirects: &a2 []
       title: null
       truncated: false
       content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
@@ -182,67 +76,65 @@ results:
       section_text_characters: 0
       section_text_sha256: null
     relevance_reviews:
-      - &a3
+      - &a1
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists PA.I.B.R1 for risk associated with inoperative
-            equipment discovered prior to flight, PA.I.B.S2 for determining
-            airworthiness in an evaluator scenario, and PA.I.B.S3 for applying
-            procedures for inoperative equipment.
+          rationale: The cited page directly lists the airworthiness,
+            inoperative-equipment risk, and procedural skills described in the
+            claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited ACS elements appear on the specified PDF page and printed
-              page.
+            rationale: The cited ACS elements appear on printed page 3, PDF page 11.
           claim_assessments:
             - claim_id: acs-airworthiness
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.B.R1, S2, and S3 directly support the listed claim and the
-                corresponding authored passage.
+              rationale: PA.I.B.R1 addresses risk from inoperative equipment discovered before
+                flight; PA.I.B.S2 and S3 require determining airworthiness and
+                applying inoperative-equipment procedures in evaluator-given
+                scenarios.
         usage:
-          input_tokens: 1362
+          input_tokens: 1351
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1359
-          output_tokens: 193
+            cached_tokens: 1348
+          output_tokens: 175
           output_tokens_details:
-            reasoning_tokens: 35
-          total_tokens: 1555
+            reasoning_tokens: 24
+          total_tokens: 1526
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page contains the ACS risk-management and skills elements
-            described in the claim.
+          rationale: The cited page explicitly lists inoperative-equipment risk
+            management, determining airworthiness in a scenario, and applying
+            procedures for operating with inoperative equipment.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains PA.I.B.K3b–K4, R1, and S1–S3.
+            rationale: The cited task elements appear on PDF page 11, printed page 3.
           claim_assessments:
             - claim_id: acs-airworthiness
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.B.R1 addresses risk associated with equipment found inoperative
-                before flight; S2 requires determining airworthiness in a
-                scenario, and S3 requires applying procedures for operating with
-                inoperative equipment.
+              rationale: PA.I.B.R1, S2, and S3 directly support the listed claim.
         usage:
-          input_tokens: 1362
+          input_tokens: 1351
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1359
-          output_tokens: 197
+            cached_tokens: 1348
+          output_tokens: 175
           output_tokens_details:
-            reasoning_tokens: 45
-          total_tokens: 1559
-    relevance: *a3
+            reasoning_tokens: 40
+          total_tokens: 1526
+    relevance: *a1
     claim_assessments:
       valid: true
       review_count: 2
@@ -263,7 +155,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-cross-country
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-09-24T21:22:43.528Z
+    checked_at_utc: 2026-09-26T20:50:21.316Z
     linked_claim_ids:
       - acs-cross-country
     missing_claim_ids: []
@@ -293,69 +185,69 @@ results:
       section_text_characters: 0
       section_text_sha256: null
     relevance_reviews:
-      - &a4
+      - &a3
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: partially_supports
           confidence: high
-          rationale: The cited page supports the cross-country planning elements listed,
-            except for an explicit requirement to explain alternatives.
+          rationale: The cited ACS page supports most of the cross-country planning
+            elements in the claim, but it does not explicitly require an
+            applicant to explain alternatives.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 13 is printed page 5 and contains the cited PA.I.D
-              knowledge, risk-management, and skills items.
+            rationale: The cited PDF page contains PA.I.D.K1–K3, R1–R7, and S1–S4.
           claim_assessments:
             - claim_id: acs-cross-country
               verdict: partially_supports
               finding_materiality: editorial
-              rationale: PA.I.D covers route and altitude selection, performance calculations,
-                fuel, current publications, and explaining a cross-country plan
-                with risk analysis. The excerpt does not explicitly require the
-                applicant to explain alternatives.
+              rationale: The page addresses route and altitude planning, performance-related
+                calculations, fuel, current publications, and risk analysis. It
+                does not expressly list explaining alternatives as a
+                requirement.
         usage:
-          input_tokens: 1302
+          input_tokens: 1341
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1299
-          output_tokens: 285
+            cached_tokens: 1338
+          output_tokens: 308
           output_tokens_details:
-            reasoning_tokens: 122
-          total_tokens: 1587
+            reasoning_tokens: 142
+          total_tokens: 1649
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: partially_supports
           confidence: high
-          rationale: The cited page supports the cross-country planning and risk elements,
-            but does not explicitly require the applicant to explain
+          rationale: The cited page supports the cross-country planning elements listed,
+            except that it does not explicitly ask the applicant to explain
             alternatives.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains the specified PA.I.D knowledge,
-              risk-management, and skill items on printed page 5.
+            rationale: PDF page 13 is printed page 5 and contains the cited PA.I.D
+              knowledge, risk-management, and skill items.
           claim_assessments:
             - claim_id: acs-cross-country
               verdict: partially_supports
               finding_materiality: editorial
-              rationale: The excerpt covers route and altitude planning, performance-related
-                calculations, fuel, current publications, and risk analysis. It
-                does not explicitly list explaining alternatives as a task
-                requirement.
+              rationale: The page addresses route and altitude selection, performance and fuel
+                calculations, current publications, weather-based risk analysis,
+                and explanation of a cross-country plan. It does not explicitly
+                require the applicant to explain alternatives.
         usage:
-          input_tokens: 1302
+          input_tokens: 1341
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1299
-          output_tokens: 354
+            cached_tokens: 1338
+          output_tokens: 327
           output_tokens_details:
-            reasoning_tokens: 195
-          total_tokens: 1656
-    relevance: *a4
+            reasoning_tokens: 159
+          total_tokens: 1668
+    relevance: *a3
     claim_assessments:
       valid: true
       review_count: 2
@@ -380,9 +272,10 @@ results:
             - acs-cross-country
   - source_id: acs-passenger
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-09-24T21:22:43.534Z
+    checked_at_utc: 2026-09-26T20:50:22.060Z
     linked_claim_ids:
       - acs-passenger
+      - acs-passenger-briefing-skill
     missing_claim_ids: []
     citation_target:
       valid: true
@@ -410,6 +303,122 @@ results:
       section_text_characters: 0
       section_text_sha256: null
     relevance_reviews:
+      - &a4
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports both listed ACS claims.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from PDF page 20, shows printed page 12, and contains
+              PA.II.B.K1 and PA.II.B.S2.
+          claim_assessments:
+            - claim_id: acs-passenger
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.II.B.K1 specifies passenger briefing requirements, including
+                operation and required use of safety restraint systems.
+            - claim_id: acs-passenger-briefing-skill
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.II.B.S2 lists the stated elements of an appropriate passenger
+                briefing.
+        usage:
+          input_tokens: 1523
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1520
+          output_tokens: 241
+          output_tokens_details:
+            reasoning_tokens: 64
+          total_tokens: 1764
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly states both listed ACS requirements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PA.II.B.K1 and PA.II.B.S2 appear on the cited PDF page, identified as
+              printed page 12.
+          claim_assessments:
+            - claim_id: acs-passenger
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.II.B.K1 specifies passenger briefing requirements, including the
+                operation and required use of safety restraint systems.
+            - claim_id: acs-passenger-briefing-skill
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.II.B.S2 lists the stated passenger-briefing topics and
+                identification of the PIC.
+        usage:
+          input_tokens: 1523
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1520
+          output_tokens: 251
+          output_tokens_details:
+            reasoning_tokens: 73
+          total_tokens: 1774
+    relevance: *a4
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: acs-performance-loading
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-09-26T20:50:22.064Z
+    linked_claim_ids:
+      - acs-weight-balance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
       - &a5
         pass: 1
         status: assessed
@@ -417,58 +426,276 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page explicitly lists passenger briefing requirements
-            and the required use of safety restraint systems under PA.II.B.K1.
+          rationale: The cited page directly states both ACS skills in the listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PA.II.B.K1 appears on the cited printed page 12 (PDF page 20).
+            rationale: The excerpt is from PDF page 15, identifies printed page 7, and
+              contains PA.I.F.S1–S2.
           claim_assessments:
-            - claim_id: acs-passenger
+            - claim_id: acs-weight-balance
               verdict: supports
               finding_materiality: none
-              rationale: PA.II.B.K1 states that the knowledge item includes passenger briefing
-                requirements and the operation and required use of safety
-                restraint systems.
+              rationale: PA.I.F.S1 requires the stated weight-and-balance skills, and
+                PA.I.F.S2 requires use of appropriate airplane performance
+                charts, tables, and data.
         usage:
-          input_tokens: 1145
+          input_tokens: 1513
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1142
-          output_tokens: 171
+            cache_write_tokens: 1510
+            cached_tokens: 0
+          output_tokens: 179
           output_tokens_details:
-            reasoning_tokens: 27
-          total_tokens: 1316
+            reasoning_tokens: 34
+          total_tokens: 1692
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly lists passenger briefing requirements,
-            including the required use of safety restraint systems, under
-            PA.II.B.K1.
+          rationale: The cited page explicitly states both PA.I.F.S1 and PA.I.F.S2,
+            matching the listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PA.II.B.K1 appears on the cited PDF page, which is labeled printed
-              page 12.
+            rationale: Both cited skill identifiers appear on the specified PDF page, which
+              is printed page 7.
           claim_assessments:
-            - claim_id: acs-passenger
+            - claim_id: acs-weight-balance
               verdict: supports
               finding_materiality: none
-              rationale: PA.II.B.K1 explicitly includes passenger briefing requirements and
-                the required use of safety restraint systems.
+              rationale: PA.I.F.S1 covers computing weight and balance, correcting out-of-CG
+                loading errors, and checking limits during all phases of flight;
+                PA.I.F.S2 covers using appropriate airplane performance charts,
+                tables, and data.
         usage:
-          input_tokens: 1145
+          input_tokens: 1513
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1142
-          output_tokens: 172
+            cached_tokens: 1510
+          output_tokens: 207
           output_tokens_details:
-            reasoning_tokens: 33
-          total_tokens: 1317
+            reasoning_tokens: 48
+          total_tokens: 1720
     relevance: *a5
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-weight-balance-control
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 10
+    checked_at_utc: 2026-09-26T20:50:22.089Z
+    linked_claim_ids:
+      - loading-current-data
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a7 []
+      title: null
+      truncated: true
+      content_sha256: 98937bdab88302aa779a9e53d07c829e6ef0dbc358d4e2dd4455fd9a7b407c1b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5260
+      pdf_page_text_sha256: 0e5fd6332c3b83aaa35bde6293e01b291fc9c726514318f6a92643a7fb53682c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a6
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PDF page 4 is labeled printed page 10-4 and contains the relevant
+              weight-and-balance discussion.
+          claim_assessments:
+            - claim_id: loading-current-data
+              verdict: supports
+              finding_materiality: none
+              rationale: The page says up-to-date information is needed for pilots’
+                calculations and decisions, and that pilots control loading and
+                fuel management, which can change total weight and CG.
+        usage:
+          input_tokens: 2016
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2013
+          output_tokens: 179
+          output_tokens_details:
+            reasoning_tokens: 43
+          total_tokens: 2195
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited PDF page and is labeled printed page
+              10-4.
+          claim_assessments:
+            - claim_id: loading-current-data
+              verdict: supports
+              finding_materiality: none
+              rationale: The page says pilots need up-to-date weight-and-balance information
+                for calculations and decisions, and that loading and fuel
+                management can change both total weight and CG.
+        usage:
+          input_tokens: 2016
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2013
+          output_tokens: 177
+          output_tokens_details:
+            reasoning_tokens: 46
+          total_tokens: 2193
+    relevance: *a6
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: phak-weight-performance
+    title: Pilot's Handbook of Aeronautical Knowledge, Chapter 10
+    checked_at_utc: 2026-09-26T20:50:22.092Z
+    linked_claim_ids:
+      - loading-fuel-performance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      final_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a7
+      title: null
+      truncated: true
+      content_sha256: 98937bdab88302aa779a9e53d07c829e6ef0dbc358d4e2dd4455fd9a7b407c1b
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      validation_url: https://www.faa.gov/sites/faa.gov/files/12_phak_ch10.pdf#page=2
+      errors: []
+      valid: true
+      pdf_page_number: 2
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3823
+      pdf_page_text_sha256: 4360a85c316b938117b2d5f5a4210104734ea62078f0c984320cbd864017c0aa
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance_reviews:
+      - &a8
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited Chapter 10 page and contains the
+              relevant sections.
+          claim_assessments:
+            - claim_id: loading-fuel-performance
+              verdict: supports
+              finding_materiality: none
+              rationale: The page lists degraded takeoff, climb, and landing performance from
+                excessive weight. It also says changing fuel load changes
+                aircraft weight and that reducing fuel reduces range.
+        usage:
+          input_tokens: 1667
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1664
+          output_tokens: 170
+          output_tokens_details:
+            reasoning_tokens: 40
+          total_tokens: 1837
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed claim about excessive
+            weight, performance, fuel load, and range.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited Chapter 10 PDF page 2, printed page
+              10-2.
+          claim_assessments:
+            - claim_id: loading-fuel-performance
+              verdict: supports
+              finding_materiality: none
+              rationale: The page lists degraded takeoff, climb, and landing performance from
+                excessive weight and states that changing fuel load changes
+                weight while reducing fuel reduces range.
+        usage:
+          input_tokens: 1667
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1664
+          output_tokens: 177
+          output_tokens_details:
+            reasoning_tokens: 34
+          total_tokens: 1844
+    relevance: *a8
     claim_assessments:
       valid: true
       review_count: 2
@@ -489,7 +716,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: ecfr-pic-authority
     title: 14 CFR 91.3, Responsibility and authority of the pilot in command
-    checked_at_utc: 2026-09-24T21:22:42.753Z
+    checked_at_utc: 2026-09-26T20:50:21.316Z
     linked_claim_ids:
       - pic-authority
     missing_claim_ids: []
@@ -497,8 +724,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.3
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.3
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
       status: 200
       retry_after: null
       content_type: text/xml
@@ -510,18 +737,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.3
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.3
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.3
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.3
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.3"
-        date: 2026-09-22
+        date: 2026-09-24
         section_number: "91.3"
       section_text_sha256: e09a90c11619c6e134752ef4e4bf3348f47eecac041ac6612971d3093db38718
       excerpt_characters: 749
@@ -530,61 +757,63 @@ results:
       pdf_page_text_sha256: null
       section_text_characters: 749
     relevance_reviews:
-      - &a6
+      - &a9
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt directly states the listed pilot-in-command
+          rationale: Section 91.3(a) directly states the listed pilot-in-command
             responsibility and authority.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: Section 91.3(a) contains the cited rule.
+            rationale: The cited locator, 91.3(a), contains the relevant provision.
           claim_assessments:
             - claim_id: pic-authority
               verdict: supports
               finding_materiality: none
-              rationale: The claim accurately reflects the text of § 91.3(a).
+              rationale: The claim accurately reflects the language of 14 CFR 91.3(a).
         usage:
-          input_tokens: 1028
+          input_tokens: 1039
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1025
-          output_tokens: 143
+            cached_tokens: 1036
+          output_tokens: 150
           output_tokens_details:
-            reasoning_tokens: 32
-          total_tokens: 1171
+            reasoning_tokens: 29
+          total_tokens: 1189
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited subsection directly states the listed pilot-in-command
-            responsibility and authority.
+          rationale: Section 91.3(a) directly states the listed pilot-in-command
+            responsibility and authority, and the authored passages use it
+            consistently.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: 14 CFR 91.3(a) contains the cited rule.
+            rationale: The cited locator, 91.3(a), contains the provision supporting the
+              claim.
           claim_assessments:
             - claim_id: pic-authority
               verdict: supports
               finding_materiality: none
               rationale: The excerpt states that the pilot in command is directly responsible
-                for, and final authority as to, operation of the aircraft.
+                for, and the final authority as to, operation of the aircraft.
         usage:
-          input_tokens: 1028
+          input_tokens: 1039
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1025
-          output_tokens: 147
+            cached_tokens: 1036
+          output_tokens: 178
           output_tokens_details:
-            reasoning_tokens: 24
-          total_tokens: 1175
-    relevance: *a6
+            reasoning_tokens: 38
+          total_tokens: 1217
+    relevance: *a9
     claim_assessments:
       valid: true
       review_count: 2
@@ -605,7 +834,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: ecfr-airworthy
     title: 14 CFR 91.7, Civil aircraft airworthiness
-    checked_at_utc: 2026-09-24T21:22:42.753Z
+    checked_at_utc: 2026-09-26T20:50:21.316Z
     linked_claim_ids:
       - airworthy-condition
     missing_claim_ids: []
@@ -613,8 +842,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.7
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.7
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.7
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.7
       status: 200
       retry_after: null
       content_type: text/xml
@@ -626,18 +855,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.7
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.7
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.7
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.7
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.7
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.7"
-        date: 2026-09-22
+        date: 2026-09-24
         section_number: "91.7"
       section_text_sha256: 7e3fa7bb95992c72b3058ffc089000144b956a44bb73ca67550710f45847a473
       excerpt_characters: 486
@@ -646,379 +875,6 @@ results:
       pdf_page_text_sha256: null
       section_text_characters: 486
     relevance_reviews:
-      - &a7
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The excerpt directly supports the listed claim and the cited
-            passage's statements about airworthiness and the pilot in command's
-            responsibilities.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.7(a)–(b) contains the cited requirements.
-          claim_assessments:
-            - claim_id: airworthy-condition
-              verdict: supports
-              finding_materiality: none
-              rationale: "The claim accurately reflects both subsections: the prohibition on
-                operating an unairworthy civil aircraft and the pilot in
-                command's responsibility to determine safe-flight condition and
-                discontinue flight when specified unairworthy conditions occur."
-        usage:
-          input_tokens: 917
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 0
-          output_tokens: 188
-          output_tokens_details:
-            reasoning_tokens: 35
-          total_tokens: 1105
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited provision directly states the airworthiness requirement and
-            the pilot-in-command responsibilities in the claim.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.7(a)–(b) matches the supplied excerpt.
-          claim_assessments:
-            - claim_id: airworthy-condition
-              verdict: supports
-              finding_materiality: none
-              rationale: The claim accurately reflects both subsections of the cited
-                provision.
-        usage:
-          input_tokens: 917
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 0
-          output_tokens: 137
-          output_tokens_details:
-            reasoning_tokens: 18
-          total_tokens: 1054
-    relevance: *a7
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-  - source_id: ecfr-aircraft-certificates
-    title: "14 CFR 91.203, Civil aircraft: Certifications required"
-    checked_at_utc: 2026-09-24T21:22:42.753Z
-    linked_claim_ids:
-      - aircraft-certificates
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.203
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.203
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: 20432cb06ded64ad1aca8fbeb15329289aa1eee986b44b1c9821455d43007924
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.203
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.203
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.203
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.203"
-        date: 2026-09-22
-        section_number: "91.203"
-      section_text_sha256: 207c6813f8b80f1a14a0ce3ccbd4312cbe2fea45ca8623b3312705e64f2c9d1e
-      excerpt_characters: 2649
-      excerpt_sha256: 207c6813f8b80f1a14a0ce3ccbd4312cbe2fea45ca8623b3312705e64f2c9d1e
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 2649
-    relevance_reviews:
-      - &a8
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited section supports the listed certificate,
-            registration-document, and display requirements for the stated
-            operation.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.203(a)(1)–(2) and (b) contain the cited requirements.
-          claim_assessments:
-            - claim_id: aircraft-certificates
-              verdict: supports
-              finding_materiality: none
-              rationale: Paragraph (a) requires an appropriate current airworthiness
-                certificate and an accepted registration document within the
-                aircraft; paragraph (b) requires the airworthiness certificate
-                to be displayed at the cabin or cockpit entrance.
-        usage:
-          input_tokens: 1492
-          input_tokens_details:
-            cache_write_tokens: 1489
-            cached_tokens: 0
-          output_tokens: 217
-          output_tokens_details:
-            reasoning_tokens: 64
-          total_tokens: 1709
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited section supports the listed certificate,
-            registration-document, and display requirements for the described
-            airplane.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.203(a)(1)–(2) and (b) contains the cited requirements.
-          claim_assessments:
-            - claim_id: aircraft-certificates
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt requires an appropriate current airworthiness certificate
-                and an accepted registration document within the aircraft, and
-                requires the airworthiness certificate to be displayed at the
-                cabin or cockpit entrance so it is legible to passengers or
-                crew.
-        usage:
-          input_tokens: 1492
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1489
-          output_tokens: 195
-          output_tokens_details:
-            reasoning_tokens: 38
-          total_tokens: 1687
-    relevance: *a8
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-  - source_id: ecfr-flight-manual
-    title: 14 CFR 91.9, Civil aircraft flight manual, marking, and placard
-      requirements
-    checked_at_utc: 2026-09-24T21:22:43.562Z
-    linked_claim_ids:
-      - approved-limitations
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.9
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.9
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: 2c7dc879a743eafe5415ccf951333c82c04b6fde53e684cee42f9c33629527d2
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.9
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.9
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.9
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.9"
-        date: 2026-09-22
-        section_number: "91.9"
-      section_text_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
-      excerpt_characters: 1912
-      excerpt_sha256: 67ef131171e6a64598f32e1d5822c91693051e3e3592939ab8f68364fd8f5537
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 1912
-    relevance_reviews:
-      - &a9
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: partially_supports
-          confidence: high
-          rationale: The cited subsections support the central rule, but the statement
-            about a required flight manual omits an alternative expressly
-            allowed by paragraph (b)(1).
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.9(a)–(b) contains the cited operating-limitation and
-              available-material requirements.
-          claim_assessments:
-            - claim_id: approved-limitations
-              verdict: partially_supports
-              finding_materiality: editorial
-              rationale: Paragraph (b)(1) also permits the manual provided for in § 121.141(b)
-                when a flight manual is required. That qualification does not
-                change the private-pilot lesson’s core teaching.
-        usage:
-          input_tokens: 1327
-          input_tokens_details:
-            cache_write_tokens: 1324
-            cached_tokens: 0
-          output_tokens: 426
-          output_tokens_details:
-            reasoning_tokens: 252
-          total_tokens: 1753
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: partially_supports
-          confidence: high
-          rationale: The cited section supports the operating-limitations rule and the
-            paragraph (b)(2) alternatives. The statement about an aircraft for
-            which a flight manual is required omits the alternative manual
-            allowed by § 91.9(b)(1).
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.9(a)–(b) is the correct locator for the listed claim.
-          claim_assessments:
-            - claim_id: approved-limitations
-              verdict: partially_supports
-              finding_materiality: editorial
-              rationale: Paragraph (b)(1) permits either a current approved flight manual or
-                the manual provided for in § 121.141(b) to be available in the
-                aircraft. The claim states only the first option; the omission
-                does not change the private-pilot lesson's core teaching.
-        usage:
-          input_tokens: 1327
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1324
-          output_tokens: 415
-          output_tokens_details:
-            reasoning_tokens: 213
-          total_tokens: 1742
-    relevance: *a9
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids:
-            - approved-limitations
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids:
-            - approved-limitations
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids:
-            - approved-limitations
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids:
-            - approved-limitations
-  - source_id: ecfr-annual-inspection
-    title: 14 CFR 91.409, Inspections
-    checked_at_utc: 2026-09-24T21:22:43.564Z
-    linked_claim_ids:
-      - annual-inspection
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.409
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.409
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: e2791c4b16b76d810395f9e3b151391291d8d8eef0fbaffbd57769cea9c952df
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.409
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.409
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.409
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.409"
-        date: 2026-09-22
-        section_number: "91.409"
-      section_text_sha256: 99b37ecb85aa821fe3b6561ef97a7390adfb7aebd7f48213f82da1fb9c8769df
-      excerpt_characters: 9449
-      excerpt_sha256: 99b37ecb85aa821fe3b6561ef97a7390adfb7aebd7f48213f82da1fb9c8769df
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 9449
-    relevance_reviews:
       - &a10
         pass: 1
         status: assessed
@@ -1026,675 +882,58 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited section establishes the stated 12-calendar-month inspection
-            requirement, return-to-service approval, alternative
-            certificate-issuance inspection, and specified exceptions.
+          rationale: The excerpt directly states each part of the listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: Section 91.409(a)(1)–(2) and (c) contain the cited requirement,
-              alternative, and exceptions.
+            rationale: The cited locator, 91.7(a)–(b), matches the supplied excerpt.
           claim_assessments:
-            - claim_id: annual-inspection
+            - claim_id: airworthy-condition
               verdict: supports
               finding_materiality: none
-              rationale: The claim accurately reflects § 91.409(a), subject to the exceptions
-                in § 91.409(c).
+              rationale: Subsection (a) requires an airworthy condition for operation;
+                subsection (b) assigns the safe-flight determination to the
+                pilot in command and requires discontinuing flight when the
+                specified unairworthy conditions occur.
         usage:
-          input_tokens: 2701
+          input_tokens: 1005
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 2698
-          output_tokens: 272
+            cached_tokens: 0
+          output_tokens: 202
           output_tokens_details:
-            reasoning_tokens: 121
-          total_tokens: 2973
+            reasoning_tokens: 59
+          total_tokens: 1207
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited section supports the listed annual-inspection rule,
-            including its alternative inspection and specified exceptions.
+          rationale: The excerpt directly supports the listed airworthiness requirement
+            and the pilot-in-command responsibilities.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: Sections 91.409(a)(1)–(2) and (c) contain the cited requirement,
-              alternative, and exceptions.
+            rationale: The cited § 91.7(a)–(b) matches the supplied excerpt.
           claim_assessments:
-            - claim_id: annual-inspection
+            - claim_id: airworthy-condition
               verdict: supports
               finding_materiality: none
-              rationale: Section 91.409(a) requires an annual inspection and approval for
-                return to service within the preceding 12 calendar months, or an
-                inspection for issuance of an airworthiness certificate, subject
-                to paragraph (c).
+              rationale: Subsection (a) prohibits operating a civil aircraft unless it is
+                airworthy; subsection (b) assigns the safe-flight determination
+                to the pilot in command and requires discontinuing flight when
+                the specified unairworthy conditions occur.
         usage:
-          input_tokens: 2701
+          input_tokens: 1005
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 2698
-          output_tokens: 247
+            cached_tokens: 0
+          output_tokens: 169
           output_tokens_details:
-            reasoning_tokens: 87
-          total_tokens: 2948
+            reasoning_tokens: 19
+          total_tokens: 1174
     relevance: *a10
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-  - source_id: ecfr-maintenance-records
-    title: 14 CFR 91.417, Maintenance records
-    checked_at_utc: 2026-09-24T21:22:43.673Z
-    linked_claim_ids:
-      - maintenance-records
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.417
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.417
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: 94080b83312e7f122d10230a5ee595daaf52064c7bb2af48fec5b535e149d91b
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-E/section-91.417
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.417
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.417
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.417"
-        date: 2026-09-22
-        section_number: "91.417"
-      section_text_sha256: e557cc362082f15fe3db02422420d2a704a7102e752381f2d46523adfc6af993
-      excerpt_characters: 3415
-      excerpt_sha256: e557cc362082f15fe3db02422420d2a704a7102e752381f2d46523adfc6af993
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 3415
-    relevance_reviews:
-      - &a11
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited section requires owners or operators to keep maintenance
-            and inspection records, including current inspection status and the
-            status of applicable airworthiness directives.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The cited subsections contain the recordkeeping requirement and the
-              specified inspection and AD status records.
-          claim_assessments:
-            - claim_id: maintenance-records
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt expressly requires the registered owner or operator to
-                keep these records.
-        usage:
-          input_tokens: 1564
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1561
-          output_tokens: 234
-          output_tokens_details:
-            reasoning_tokens: 103
-          total_tokens: 1798
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: Section 91.417 requires the registered owner or operator to keep
-            maintenance and inspection records, including records of current
-            inspection status and applicable AD status.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The cited paragraphs contain the recordkeeping requirement and the
-              specified inspection-status and AD-status records.
-          claim_assessments:
-            - claim_id: maintenance-records
-              verdict: supports
-              finding_materiality: none
-              rationale: The claim matches the requirements stated in § 91.417(a)(1) and
-                (a)(2)(iv)–(v).
-        usage:
-          input_tokens: 1564
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1561
-          output_tokens: 215
-          output_tokens_details:
-            reasoning_tokens: 68
-          total_tokens: 1779
-    relevance: *a11
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-  - source_id: ecfr-day-vfr-equipment
-    title: "14 CFR 91.205, Powered civil aircraft with standard U.S. airworthiness
-      certificates: Instrument and equipment requirements"
-    checked_at_utc: 2026-09-24T21:22:44.676Z
-    linked_claim_ids:
-      - day-vfr-equipment
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.205
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.205
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: []
-      title: null
-      truncated: false
-      content_sha256: b7711166a41e9f8756434ec328a77ba6c655ccbb69497d1a25017ba122d882c5
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.205
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.205
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.205"
-        date: 2026-09-22
-        section_number: "91.205"
-      section_text_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
-      excerpt_characters: 8044
-      excerpt_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 8044
-    relevance_reviews:
-      - &a12
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: Section 91.205(a) establishes the applicability and operability
-            requirement, and paragraph (b) lists the stated day-VFR equipment.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The locator correctly identifies the applicable paragraphs,
-              91.205(a)–(b).
-          claim_assessments:
-            - claim_id: day-vfr-equipment
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt requires the listed equipment to be operable for the
-                specified aircraft and day-VFR operation. Paragraph (b) includes
-                an airspeed indicator, altimeter, magnetic direction indicator,
-                applicable engine instruments, and a fuel gauge indicating
-                quantity in each tank.
-        usage:
-          input_tokens: 2745
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2742
-          output_tokens: 214
-          output_tokens_details:
-            reasoning_tokens: 42
-          total_tokens: 2959
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: Section 91.205(a)-(b) establishes the day-VFR equipment requirement
-            for powered civil aircraft with standard U.S. airworthiness
-            certificates and lists the cited instruments and gauges.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The cited paragraphs contain the applicability rule and day-VFR
-              equipment list.
-          claim_assessments:
-            - claim_id: day-vfr-equipment
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt requires the specified equipment to be operable and lists
-                an airspeed indicator, altimeter, magnetic direction indicator,
-                applicable engine gauges, and a fuel gauge for each tank.
-        usage:
-          input_tokens: 2745
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2742
-          output_tokens: 412
-          output_tokens_details:
-            reasoning_tokens: 252
-          total_tokens: 3157
-    relevance: *a12
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-  - source_id: ecfr-inop-mel
-    title: 14 CFR 91.213, Inoperative instruments and equipment
-    checked_at_utc: 2026-09-24T21:22:48.677Z
-    linked_claim_ids:
-      - inop-mel-path
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: &a14 []
-      title: null
-      truncated: false
-      content_sha256: 4593d1ab135d481d639b185e0234cae6f08c465281165765f6b76402efc3ad6f
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.213"
-        date: 2026-09-22
-        section_number: "91.213"
-      section_text_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
-      excerpt_characters: 4728
-      excerpt_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 4728
-    relevance_reviews:
-      - &a13
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The excerpt directly supports the approved-MEL conditions in §
-            91.213(a) and the separate no-MEL route in § 91.213(d).
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The cited provisions address the approved-MEL path and mandatory use
-              for the operators specified in § 91.213(c).
-          claim_assessments:
-            - claim_id: inop-mel-path
-              verdict: supports
-              finding_materiality: none
-              rationale: Section 91.213(a) requires an approved MEL for the aircraft, an
-                authorization letter, and other conditions for takeoff with
-                inoperative equipment; paragraph (d) provides a separate
-                eligible no-MEL route.
-        usage:
-          input_tokens: 1828
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1825
-          output_tokens: 283
-          output_tokens_details:
-            reasoning_tokens: 108
-          total_tokens: 2111
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The excerpt states the approved-MEL and authorization conditions in §
-            91.213(a) and provides a separate no-MEL route in § 91.213(d).
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The cited locator identifies the approved-MEL conditions in paragraph
-              (a) and the mandatory-use provision in paragraph (c).
-          claim_assessments:
-            - claim_id: inop-mel-path
-              verdict: supports
-              finding_materiality: none
-              rationale: Paragraph (a) specifies conditions for taking off with inoperative
-                equipment under an approved aircraft MEL and authorization,
-                except as provided in paragraph (d), which sets out the no-MEL
-                route.
-        usage:
-          input_tokens: 1828
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1825
-          output_tokens: 252
-          output_tokens_details:
-            reasoning_tokens: 80
-          total_tokens: 2080
-    relevance: *a13
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-  - source_id: ecfr-inop-no-mel
-    title: 14 CFR 91.213, Inoperative instruments and equipment
-    checked_at_utc: 2026-09-24T21:22:48.682Z
-    linked_claim_ids:
-      - inop-no-mel-required
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: *a14
-      title: null
-      truncated: false
-      content_sha256: 4593d1ab135d481d639b185e0234cae6f08c465281165765f6b76402efc3ad6f
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.213"
-        date: 2026-09-22
-        section_number: "91.213"
-      section_text_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
-      excerpt_characters: 4728
-      excerpt_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 4728
-    relevance_reviews:
-      - &a15
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited subsection directly supports the listed claim, and the
-            relevant authored statements are consistent with it.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.213(d)(1) identifies eligible aircraft and operations;
-              (d)(2) lists the required-equipment exclusions.
-          claim_assessments:
-            - claim_id: inop-no-mel-required
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt limits the no-MEL option to the aircraft and operations
-                in (d)(1) and excludes items required by the sources listed in
-                (d)(2).
-        usage:
-          input_tokens: 1954
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1951
-          output_tokens: 207
-          output_tokens_details:
-            reasoning_tokens: 53
-          total_tokens: 2161
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited section directly supports the listed claim about
-            eligibility for the no-MEL path and its required-equipment
-            exclusions.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: § 91.213(d)(1)–(2) contains the specified aircraft eligibility
-              criteria and the listed exclusions.
-          claim_assessments:
-            - claim_id: inop-no-mel-required
-              verdict: supports
-              finding_materiality: none
-              rationale: Paragraph (d)(1) limits the no-MEL option to specified aircraft in
-                Part 91 operations, and paragraph (d)(2) excludes items required
-                by the applicable VFR-day type-certification rules, equipment
-                list or KOEL, Part 91 for the operation, or an airworthiness
-                directive.
-        usage:
-          input_tokens: 1954
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1951
-          output_tokens: 222
-          output_tokens_details:
-            reasoning_tokens: 39
-          total_tokens: 2176
-    relevance: *a15
-    claim_assessments:
-      valid: true
-      review_count: 2
-      reviews:
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-        - valid: true
-          missing_assessment_ids: []
-          unexpected_assessment_ids: []
-          duplicate_assessment_ids: []
-          unsupported_assessment_ids: []
-          material_unsupported_assessment_ids: []
-          editorial_note_assessment_ids: []
-  - source_id: ecfr-inop-disposition
-    title: 14 CFR 91.213, Inoperative instruments and equipment
-    checked_at_utc: 2026-09-24T21:22:49.673Z
-    linked_claim_ids:
-      - inop-no-mel-disposition
-    missing_claim_ids: []
-    citation_target:
-      valid: true
-      errors: []
-    link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      status: 200
-      retry_after: null
-      content_type: text/xml
-      redirects: *a14
-      title: null
-      truncated: false
-      content_sha256: 4593d1ab135d481d639b185e0234cae6f08c465281165765f6b76402efc3ad6f
-      hash_truncated: false
-      valid: true
-      errors: []
-      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.213
-      resolved_via: ecfr_exact_section_xml
-      ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
-        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
-      section_identity:
-        title: "14"
-        part: "91"
-        section: "91.213"
-        date: 2026-09-22
-        section_number: "91.213"
-      section_text_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
-      excerpt_characters: 4728
-      excerpt_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
-      pdf_page_text_characters: 0
-      pdf_page_text_sha256: null
-      section_text_characters: 4728
-    relevance_reviews:
-      - &a16
-        pass: 1
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The excerpt directly supports the listed claim in the context of the
-            no-MEL route described in the authored passages.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.213(d)(3)–(4) contains the removal or deactivation,
-              placarding, and no-hazard determination requirements.
-          claim_assessments:
-            - claim_id: inop-no-mel-disposition
-              verdict: supports
-              finding_materiality: none
-              rationale: The cited paragraphs require the specified treatment of the
-                inoperative item and a no-hazard determination by an
-                appropriately rated pilot or maintenance person.
-        usage:
-          input_tokens: 2021
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2018
-          output_tokens: 250
-          output_tokens_details:
-            reasoning_tokens: 95
-          total_tokens: 2271
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited section directly supports the listed no-MEL disposition and
-            hazard-determination claim.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: Section 91.213(d)(3)–(4) contains the specified removal or
-              deactivation, placarding, and hazard-determination requirements.
-          claim_assessments:
-            - claim_id: inop-no-mel-disposition
-              verdict: supports
-              finding_materiality: none
-              rationale: Paragraph (d)(3) specifies the removal or deactivation and placarding
-                treatments; paragraph (d)(4) requires a hazard determination by
-                an appropriately certificated and rated pilot or maintenance
-                person.
-        usage:
-          input_tokens: 2021
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2018
-          output_tokens: 273
-          output_tokens_details:
-            reasoning_tokens: 109
-          total_tokens: 2294
-    relevance: *a16
     claim_assessments:
       valid: true
       review_count: 2
@@ -1715,7 +954,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: ecfr-preflight-action
     title: 14 CFR 91.103, Preflight action
-    checked_at_utc: 2026-09-24T21:22:53.676Z
+    checked_at_utc: 2026-09-26T20:50:21.317Z
     linked_claim_ids:
       - preflight-all-information
       - preflight-route-information
@@ -1725,8 +964,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.103
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.103
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.103
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.103
       status: 200
       retry_after: null
       content_type: text/xml
@@ -1738,18 +977,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFRe4c59b5f5506932/section-91.103
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.103
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.103
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.103
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.103
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.103"
-        date: 2026-09-22
+        date: 2026-09-24
         section_number: "91.103"
       section_text_sha256: 47eac2bdd3053472be1c1d6a025194eff4ee97bc33b3402e8de24b9c7e8d4d0f
       excerpt_characters: 1188
@@ -1758,62 +997,58 @@ results:
       pdf_page_text_sha256: null
       section_text_characters: 1188
     relevance_reviews:
-      - &a17
+      - &a11
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt directly supports all three listed claims about the pilot
-            in command’s preflight duty, the additional information required for
-            IFR flights or flights away from the vicinity of an airport, and
-            runway-length and performance information required for any flight.
+          rationale: The excerpt directly supports all three listed regulatory claims.
           locator_assessment:
             verdict: supports
             finding_materiality: none
             rationale: The locator identifies the introductory text and paragraphs (a) and
-              (b)(1)–(2), which contain the cited requirements.
+              (b)(1)–(2) quoted in the excerpt.
           claim_assessments:
             - claim_id: preflight-all-information
               verdict: supports
               finding_materiality: none
-              rationale: The introductory text states that each pilot in command must become
+              rationale: The introductory text requires each pilot in command to become
                 familiar with all available information concerning the flight
                 before beginning it.
             - claim_id: preflight-route-information
               verdict: supports
               finding_materiality: none
-              rationale: Paragraph (a) specifies weather reports and forecasts, fuel
-                requirements, alternatives, and known ATC-advised traffic delays
-                for an IFR flight or a flight not in the vicinity of an airport.
+              rationale: Paragraph (a) specifies those items for an IFR flight or a flight not
+                in the vicinity of an airport.
             - claim_id: preflight-runway-performance
               verdict: supports
               finding_materiality: none
-              rationale: Paragraph (b) requires runway lengths at airports of intended use for
-                any flight and specifies takeoff and landing distance
-                information according to the aircraft category.
+              rationale: Paragraph (b) requires runway lengths at airports of intended use and
+                specifies the applicable takeoff and landing distance
+                information for any flight.
         usage:
-          input_tokens: 1435
+          input_tokens: 1646
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1432
-          output_tokens: 328
+            cached_tokens: 1643
+          output_tokens: 262
           output_tokens_details:
-            reasoning_tokens: 45
-          total_tokens: 1763
+            reasoning_tokens: 36
+          total_tokens: 1908
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited excerpt directly supports all three listed claims, and the
-            locator identifies the relevant introductory text and paragraphs.
+          rationale: The cited section directly supports all three listed preflight-action
+            claims.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator points to the introductory text and paragraphs (a) and
+            rationale: The locator identifies the introductory text and paragraphs (a) and
               (b)(1)–(2), which contain the cited requirements.
           claim_assessments:
             - claim_id: preflight-all-information
@@ -1825,7 +1060,7 @@ results:
             - claim_id: preflight-route-information
               verdict: supports
               finding_materiality: none
-              rationale: Paragraph (a) lists those items for an IFR flight or a flight not in
+              rationale: Paragraph (a) specifies these items for IFR flights or flights not in
                 the vicinity of an airport.
             - claim_id: preflight-runway-performance
               verdict: supports
@@ -1834,15 +1069,15 @@ results:
                 specifies the applicable takeoff and landing distance
                 information for any flight.
         usage:
-          input_tokens: 1435
+          input_tokens: 1646
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1432
-          output_tokens: 282
+            cached_tokens: 1643
+          output_tokens: 270
           output_tokens_details:
-            reasoning_tokens: 43
-          total_tokens: 1717
-    relevance: *a17
+            reasoning_tokens: 42
+          total_tokens: 1916
+    relevance: *a11
     claim_assessments:
       valid: true
       review_count: 2
@@ -1863,7 +1098,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: ecfr-vfr-fuel
     title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
-    checked_at_utc: 2026-09-24T21:22:54.679Z
+    checked_at_utc: 2026-09-26T20:50:22.230Z
     linked_claim_ids:
       - vfr-airplane-fuel
     missing_claim_ids: []
@@ -1871,8 +1106,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.151
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.151
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.151
       status: 200
       retry_after: null
       content_type: text/xml
@@ -1884,18 +1119,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.151
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.151
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.151"
-        date: 2026-09-22
+        date: 2026-09-24
         section_number: "91.151"
       section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
       excerpt_characters: 804
@@ -1904,68 +1139,67 @@ results:
       pdf_page_text_sha256: null
       section_text_characters: 804
     relevance_reviews:
-      - &a18
+      - &a12
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt directly states the airplane VFR fuel requirement
-            described in the claim.
+          rationale: The cited excerpt directly states the airplane VFR fuel requirement,
+            including wind and forecast weather, the first intended landing
+            point, and the day and night reserves at normal cruising speed.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: Section 91.151(a)(1)–(2) is the cited airplane day and night VFR fuel
-              provision.
+            rationale: Section 91.151(a)(1)–(2) is the correct locator for the cited
+              airplane day and night VFR fuel requirements.
           claim_assessments:
             - claim_id: vfr-airplane-fuel
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt requires fuel, considering wind and forecast weather, to
-                reach the first point of intended landing and then fly at normal
-                cruising speed for at least 30 minutes by day or 45 minutes at
-                night.
+              rationale: The claim accurately reflects the requirements stated in §
+                91.151(a)(1)–(2).
         usage:
-          input_tokens: 1120
+          input_tokens: 1256
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1117
-          output_tokens: 188
+            cached_tokens: 1253
+          output_tokens: 226
           output_tokens_details:
-            reasoning_tokens: 32
-          total_tokens: 1308
+            reasoning_tokens: 66
+          total_tokens: 1482
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt directly supports the stated airplane VFR fuel
-            requirement and its day and night reserves.
+          rationale: The cited section directly states the listed airplane VFR fuel
+            requirement.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: Section 91.151(a)(1)–(2), read with the introductory text of
-              paragraph (a), is the correct locator.
+            rationale: Section 91.151(a)(1)–(2) contains the cited day and night airplane
+              VFR fuel requirements.
           claim_assessments:
             - claim_id: vfr-airplane-fuel
               verdict: supports
               finding_materiality: none
               rationale: The excerpt requires fuel, considering wind and forecast weather, to
-                reach the first point of intended landing and then fly at normal
+                reach the first intended landing point and then fly at normal
                 cruising speed for at least 30 minutes by day or 45 minutes at
                 night.
         usage:
-          input_tokens: 1120
+          input_tokens: 1256
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1117
-          output_tokens: 224
+            cached_tokens: 1253
+          output_tokens: 196
           output_tokens_details:
-            reasoning_tokens: 62
-          total_tokens: 1344
-    relevance: *a18
+            reasoning_tokens: 43
+          total_tokens: 1452
+    relevance: *a12
     claim_assessments:
       valid: true
       review_count: 2
@@ -1987,7 +1221,7 @@ results:
   - source_id: ecfr-passenger-restraints
     title: 14 CFR 91.107, Use of safety belts, shoulder harnesses, and child
       restraint systems
-    checked_at_utc: 2026-09-24T21:22:54.679Z
+    checked_at_utc: 2026-09-26T20:50:23.111Z
     linked_claim_ids:
       - passenger-briefing
       - passenger-restraint-use
@@ -1996,8 +1230,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.107
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.107
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.107
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.107
       status: 200
       retry_after: null
       content_type: text/xml
@@ -2009,18 +1243,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFRe4c59b5f5506932/section-91.107
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.107
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.107
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.107
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.107
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.107"
-        date: 2026-09-22
+        date: 2026-09-24
         section_number: "91.107"
       section_text_sha256: f6ed7f9ee73c7d7b23f2b096a5b7cb76aca359fabc50fef7763384ea4e3a96dc
       excerpt_characters: 5335
@@ -2029,21 +1263,21 @@ results:
       pdf_page_text_sha256: null
       section_text_characters: 5335
     relevance_reviews:
-      - &a19
+      - &a13
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited section supports both the briefing and restraint
-            requirements for the described U.S.-registered civil airplane and
-            ordinary adult passenger.
+          rationale: Section 91.107(a)(1)–(3) supports the briefing, notification, and
+            ordinary adult-passenger restraint requirements described for the
+            private-pilot airplane scenario.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: Section 91.107(a)(1)–(3) contains the cited briefing, notification,
-              and restraint provisions.
+            rationale: The cited paragraphs contain the briefing, notification, and
+              restraint provisions.
           claim_assessments:
             - claim_id: passenger-briefing
               verdict: supports
@@ -2054,31 +1288,33 @@ results:
             - claim_id: passenger-restraint-use
               verdict: supports
               finding_materiality: none
-              rationale: Paragraphs (a)(2) and (a)(3) support the notification and properly
-                secured restraint requirements during surface movement, takeoff,
-                and landing in the described adult-passenger scenario.
+              rationale: Paragraphs (a)(2) and (a)(3) require notification to fasten
+                restraints before surface movement, takeoff, and landing, and
+                require an ordinary adult passenger to be properly secured in an
+                approved seat or berth during those phases.
         usage:
-          input_tokens: 2441
+          input_tokens: 2627
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 2438
-          output_tokens: 461
+            cached_tokens: 2624
+          output_tokens: 471
           output_tokens_details:
-            reasoning_tokens: 243
-          total_tokens: 2902
+            reasoning_tokens: 242
+          total_tokens: 3098
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited provisions support both listed claims for the stated
-            U.S.-registered civil-airplane, ordinary adult-passenger scenario.
+          rationale: The cited section supports both the briefing requirement and the
+            notice and restraint requirements for an ordinary adult passenger in
+            a U.S.-registered civil airplane.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: Section 91.107(a)(1)–(3) contains the briefing, notification, and
-              restraint requirements cited.
+            rationale: Section 91.107(a)(1)–(3) contains the cited briefing, notice, and
+              restraint provisions.
           claim_assessments:
             - claim_id: passenger-briefing
               verdict: supports
@@ -2089,19 +1325,19 @@ results:
             - claim_id: passenger-restraint-use
               verdict: supports
               finding_materiality: none
-              rationale: Paragraphs (a)(2) and (a)(3) support the notification and properly
-                secured restraint requirements during surface movement, takeoff,
-                and landing for the stated ordinary adult-passenger scenario.
+              rationale: Paragraphs (a)(2) and (a)(3) require notice to fasten restraints
+                before the listed phases and properly secured restraints during
+                those phases for an ordinary adult passenger.
         usage:
-          input_tokens: 2441
+          input_tokens: 2627
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 2438
-          output_tokens: 305
+            cached_tokens: 2624
+          output_tokens: 304
           output_tokens_details:
-            reasoning_tokens: 86
-          total_tokens: 2746
-    relevance: *a19
+            reasoning_tokens: 84
+          total_tokens: 2931
+    relevance: *a13
     claim_assessments:
       valid: true
       review_count: 2
@@ -2122,7 +1358,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: ecfr-minimum-altitude
     title: "14 CFR 91.119, Minimum safe altitudes: General"
-    checked_at_utc: 2026-09-24T21:22:54.679Z
+    checked_at_utc: 2026-09-26T20:50:23.124Z
     linked_claim_ids:
       - safe-altitude-anywhere
       - safe-altitude-congested
@@ -2132,8 +1368,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.119
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.119
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.119
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.119
       status: 200
       retry_after: null
       content_type: text/xml
@@ -2145,18 +1381,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFRe4c59b5f5506932/section-91.119
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.119
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.119
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.119
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.119
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.119"
-        date: 2026-09-22
+        date: 2026-09-24
         section_number: "91.119"
       section_text_sha256: 8e0f06150b9286c75911e98cec8a4dbfbf0dd85413af01b2dd9caa5db2b6a553
       excerpt_characters: 1538
@@ -2165,61 +1401,20 @@ results:
       pdf_page_text_sha256: null
       section_text_characters: 1538
     relevance_reviews:
-      - &a20
+      - &a14
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited section directly supports all three listed minimum-altitude
-            claims.
+          rationale: The excerpt directly supports all three listed minimum-altitude
+            claims, including the takeoff-or-landing exception.
           locator_assessment:
             verdict: supports
             finding_materiality: none
             rationale: The locator identifies the introductory text and paragraphs (a)–(c),
-              which contain the cited airplane altitude requirements.
-          claim_assessments:
-            - claim_id: safe-altitude-anywhere
-              verdict: supports
-              finding_materiality: none
-              rationale: The introductory takeoff-or-landing exception and paragraph (a) state
-                the claimed emergency-landing requirement.
-            - claim_id: safe-altitude-congested
-              verdict: supports
-              finding_materiality: none
-              rationale: Paragraph (b) states the claimed 1,000-foot obstacle clearance within
-                a 2,000-foot horizontal radius for congested areas and open-air
-                assemblies.
-            - claim_id: safe-altitude-other
-              verdict: supports
-              finding_materiality: none
-              rationale: Paragraph (c) states the 500-foot surface minimum and the specified
-                exception and separation requirement for open water or sparsely
-                populated areas.
-        usage:
-          input_tokens: 1681
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1678
-          output_tokens: 304
-          output_tokens_details:
-            reasoning_tokens: 66
-          total_tokens: 1985
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited excerpt directly supports all three listed
-            minimum-safe-altitude claims, including the takeoff-or-landing
-            exception.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The locator identifies § 91.119’s introductory text and paragraphs
-              (a)–(c), which contain the cited airplane rules.
+              which contain the cited rules.
           claim_assessments:
             - claim_id: safe-altitude-anywhere
               verdict: supports
@@ -2234,18 +1429,56 @@ results:
             - claim_id: safe-altitude-other
               verdict: supports
               finding_materiality: none
-              rationale: Paragraph (c) states the 500-foot surface minimum and the specified
-                separation rule over open water or sparsely populated areas.
+              rationale: Paragraph (c) states the claimed 500-foot surface minimum and the
+                separation condition for open water or sparsely populated areas.
         usage:
-          input_tokens: 1681
+          input_tokens: 1808
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1678
-          output_tokens: 270
+            cached_tokens: 1805
+          output_tokens: 297
           output_tokens_details:
-            reasoning_tokens: 38
-          total_tokens: 1951
-    relevance: *a20
+            reasoning_tokens: 73
+          total_tokens: 2105
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited section supports all three listed minimum-safe-altitude
+            claims for the airplane route.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the introductory text and paragraphs (a)–(c),
+              which contain the cited airplane requirements.
+          claim_assessments:
+            - claim_id: safe-altitude-anywhere
+              verdict: supports
+              finding_materiality: none
+              rationale: The introductory exception and paragraph (a) state this requirement.
+            - claim_id: safe-altitude-congested
+              verdict: supports
+              finding_materiality: none
+              rationale: Paragraph (b) states the 1,000-foot obstacle clearance and 2,000-foot
+                horizontal radius for congested areas and open-air assemblies.
+            - claim_id: safe-altitude-other
+              verdict: supports
+              finding_materiality: none
+              rationale: Paragraph (c) states the 500-foot surface minimum and the specified
+                separation rule over open water or sparsely populated areas; the
+                introductory takeoff-or-landing exception applies.
+        usage:
+          input_tokens: 1808
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 1805
+          output_tokens: 299
+          output_tokens_details:
+            reasoning_tokens: 61
+          total_tokens: 2107
+    relevance: *a14
     claim_assessments:
       valid: true
       review_count: 2
@@ -2266,7 +1499,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: ecfr-vfr-cruising-altitude
     title: 14 CFR 91.159, VFR cruising altitude or flight level
-    checked_at_utc: 2026-09-24T21:22:54.727Z
+    checked_at_utc: 2026-09-26T20:50:23.226Z
     linked_claim_ids:
       - vfr-cruising-altitude
     missing_claim_ids: []
@@ -2274,8 +1507,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.159
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.159
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.159
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.159
       status: 200
       retry_after: null
       content_type: text/xml
@@ -2287,18 +1520,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.159
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.159
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-22/title-14.xml?part=91&section=91.159
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.159
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.159
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-09-22
-        title_status_sha256: 4100d821e09b8545876e1aabe07b99bdcae0d3a7bab558b14c14e4b2cca68dec
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.159"
-        date: 2026-09-22
+        date: 2026-09-24
         section_number: "91.159"
       section_text_sha256: 8e3a8935ce902fcf2afcfd7a0739600f00fa019ffc1dba81054e8837be87b1d2
       excerpt_characters: 1023
@@ -2307,68 +1540,314 @@ results:
       pdf_page_text_sha256: null
       section_text_characters: 1023
     relevance_reviews:
-      - &a21
+      - &a15
         pass: 1
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt directly supports the listed cruising-altitude rule,
-            including its altitude thresholds, magnetic-course ranges, ATC
-            authorization, and turn and short-hold exceptions.
+          rationale: The excerpt directly supports the listed VFR cruising-altitude claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited introductory text and paragraphs (a)(1)–(2) contain the
-              provisions needed to support the claim.
+            rationale: The introductory text and paragraphs (a)(1)–(2) contain the cited
+              conditions, exceptions, and altitude assignments.
           claim_assessments:
             - claim_id: vfr-cruising-altitude
               verdict: supports
               finding_materiality: none
-              rationale: The claim accurately states the conditions, prescribed altitudes, and
-                exceptions in the excerpt.
+              rationale: The claim accurately states the altitude trigger, magnetic-course
+                ranges, prescribed altitudes, ATC authorization provision, and
+                turn and short-hold exceptions.
         usage:
-          input_tokens: 1298
+          input_tokens: 1439
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1295
-          output_tokens: 227
+            cached_tokens: 1436
+          output_tokens: 203
           output_tokens_details:
-            reasoning_tokens: 78
-          total_tokens: 1525
+            reasoning_tokens: 60
+          total_tokens: 1642
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited section supports the listed VFR cruising-altitude rule and
-            the corresponding statements in the authored passages.
+          rationale: The cited excerpt directly states the level-VFR-cruise threshold, the
+            below-18,000-feet MSL magnetic-course altitude assignments, ATC
+            authorization, and the turn and short-hold exceptions.
           locator_assessment:
             verdict: supports
             finding_materiality: none
             rationale: The introductory text and paragraphs (a)(1)–(2) contain the cited
-              conditions, exceptions, and magnetic-course altitude assignments.
+              rule and exceptions.
           claim_assessments:
             - claim_id: vfr-cruising-altitude
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt applies to level VFR cruising flight more than 3,000 feet
-                above the surface, provides the stated odd- and
-                even-thousand-plus-500 MSL altitudes by magnetic course below
-                18,000 feet MSL, and includes the ATC authorization and turn and
-                short-hold exceptions.
+              rationale: The claim accurately reflects the cited text.
         usage:
-          input_tokens: 1298
+          input_tokens: 1439
           input_tokens_details:
             cache_write_tokens: 0
-            cached_tokens: 1295
-          output_tokens: 246
+            cached_tokens: 1436
+          output_tokens: 203
           output_tokens_details:
-            reasoning_tokens: 60
-          total_tokens: 1544
-    relevance: *a21
+            reasoning_tokens: 56
+          total_tokens: 1642
+    relevance: *a15
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-passenger-night
+    title: "14 CFR 61.57, Recent flight experience: Pilot in command"
+    checked_at_utc: 2026-09-26T20:50:25.242Z
+    linked_claim_ids:
+      - night-passenger-recent-experience
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=61&section=61.57
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=61&section=61.57
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: 3e4c1f2e91b13d99fb4f1f7c2f43f5f0792e8c7dbd4c92370c468ca184607230
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=61&section=61.57
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=61&section=61.57
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.57"
+        date: 2026-09-24
+        section_number: "61.57"
+      section_text_sha256: dd2d7fb120b8430d30ebe28b504de065c9584c5d4f4dd153ed31c8b7a3749e4e
+      excerpt_characters: 12000
+      excerpt_sha256: 162534a80208cd025e0712d524b8a7ca9cad7018878e6d242fecefef7e8ce0ad
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15352
+    relevance_reviews:
+      - &a16
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited provision directly states the night passenger recency
+            requirements described in the claim, subject to the exceptions noted
+            in the claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Section 61.57(b)(1)(i)–(ii), together with the introductory text of
+              (b)(1), is the correct locator for these requirements.
+          claim_assessments:
+            - claim_id: night-passenger-recent-experience
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt requires three takeoffs and three full-stop landings
+                within the preceding 90 days during the specified night window,
+                as sole manipulator, in an aircraft of the required category,
+                class, and type where applicable. It also identifies exceptions.
+        usage:
+          input_tokens: 3503
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3500
+          output_tokens: 266
+          output_tokens_details:
+            reasoning_tokens: 82
+          total_tokens: 3769
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt directly states the night passenger recency requirements
+            and identifies exceptions.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Section 61.57(b)(1)(i)–(ii), read with the introductory text of
+              (b)(1), is the correct locator for the stated requirement.
+          claim_assessments:
+            - claim_id: night-passenger-recent-experience
+              verdict: supports
+              finding_materiality: none
+              rationale: Section 61.57(b)(1) specifies the 90-day period, three takeoffs and
+                three full-stop landings in the stated night window, sole
+                manipulation of the controls, and matching category, class, and
+                type when required. It expressly allows the exceptions in
+                paragraph (e).
+        usage:
+          input_tokens: 3503
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 3500
+          output_tokens: 235
+          output_tokens_details:
+            reasoning_tokens: 52
+          total_tokens: 3738
+    relevance: *a16
+    claim_assessments:
+      valid: true
+      review_count: 2
+      reviews:
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+        - valid: true
+          missing_assessment_ids: []
+          unexpected_assessment_ids: []
+          duplicate_assessment_ids: []
+          unsupported_assessment_ids: []
+          material_unsupported_assessment_ids: []
+          editorial_note_assessment_ids: []
+  - source_id: ecfr-night-vfr-equipment
+    title: "14 CFR 91.205, Powered civil aircraft with standard U.S. airworthiness
+      certificates: Instrument and equipment requirements"
+    checked_at_utc: 2026-09-26T20:50:27.240Z
+    linked_claim_ids:
+      - night-vfr-equipment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.205
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.205
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: b7711166a41e9f8756434ec328a77ba6c655ccbb69497d1a25017ba122d882c5
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.205
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-09-24/title-14.xml?part=91&section=91.205
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-09-24
+        title_status_sha256: b1b424a594ee076880c82aa487c67edd8c758c716b7479043f80f406199ed2a8
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.205"
+        date: 2026-09-24
+        section_number: "91.205"
+      section_text_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      excerpt_characters: 8044
+      excerpt_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 8044
+    relevance_reviews:
+      - &a17
+        pass: 1
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt supports the listed night-VFR equipment claim and its
+            application to the standard U.S.-certificated powered airplane in
+            the authored passages.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Section 91.205(a) and (c)(1)–(6) contain the cited applicability,
+              operability, and night-VFR equipment requirements.
+          claim_assessments:
+            - claim_id: night-vfr-equipment
+              verdict: supports
+              finding_materiality: none
+              rationale: Paragraph (a) requires the specified equipment or FAA-approved
+                equivalents to be operable, subject to its stated exceptions.
+                Paragraph (c) requires the day-VFR equipment plus the listed
+                night-VFR equipment.
+        usage:
+          input_tokens: 2806
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2803
+          output_tokens: 235
+          output_tokens_details:
+            reasoning_tokens: 59
+          total_tokens: 3041
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The excerpt supports the stated night-VFR equipment requirement and
+            its qualifications.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Sections 91.205(a) and (c)(1)–(6) are the relevant provisions in the
+              supplied excerpt.
+          claim_assessments:
+            - claim_id: night-vfr-equipment
+              verdict: supports
+              finding_materiality: none
+              rationale: Paragraph (a) requires the specified equipment to be operable or
+                FAA-approved equivalents, subject to stated exceptions.
+                Paragraph (c) requires the day-VFR equipment and additional
+                night-VFR equipment.
+        usage:
+          input_tokens: 2806
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 2803
+          output_tokens: 236
+          output_tokens_details:
+            reasoning_tokens: 83
+          total_tokens: 3042
+    relevance: *a17
     claim_assessments:
       valid: true
       review_count: 2

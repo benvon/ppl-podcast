@@ -4,12 +4,12 @@ title: VFR Operating Rules and Preflight Responsibilities
 slug: vfr-operating-rules-preflight-responsibilities
 track: core
 production_contract_version: 2
-status: editorial_review_pending
-version: 0.1.5
-published_at: null
-runtime_target_minutes: 30
-runtime_actual_seconds: null
-word_count: 4268
+status: ready_for_hosting_pr
+version: 0.1.9
+published_at: 2026-09-28T17:49:33Z
+runtime_target_minutes: 37
+runtime_actual_seconds: 2016.75
+word_count: 5279
 speakers:
   - instructor
   - learner
@@ -20,8 +20,10 @@ aircraft_scope: General ASEL education; aircraft-specific procedures and
 acs_references:
   - FAA-S-ACS-6C, PA.I.B.K3b-K4, R1, S1-S3
   - FAA-S-ACS-6C, PA.I.D.K1-K3, R1-R7, S1-S4
-  - FAA-S-ACS-6C, PA.II.B.K1
-phak_references: []
+  - FAA-S-ACS-6C, PA.II.B.K1, S2
+  - FAA-S-ACS-6C, PA.I.F.S1-S2
+phak_references:
+  - FAA-H-8083-25C, Chapter 10, Weight and Balance
 aim_references: []
 advisory_circular_references: []
 cfr_references:
@@ -32,64 +34,68 @@ cfr_references:
   - 14 CFR 91.119(a)-(c), minimum safe altitudes
   - 14 CFR 91.151(a), airplane VFR fuel
   - 14 CFR 91.159, VFR cruising altitude
+  - 14 CFR 61.57(b)(1), night passenger recent experience
+  - 14 CFR 91.205(a), (c), night VFR equipment for standard U.S.-certificated
+    powered aircraft
 learning_objectives:
   - Recognize an unresolved aircraft-condition question, hold departure, and
     choose a suitable replacement airplane when the discrepancy cannot be
     resolved in time.
   - Use current runway, performance, weather, and fuel information to revise a
     daytime VFR flight before departure.
-  - Brief an adult passenger on restraint operation and use before surface
-    movement and takeoff.
-  - Choose an en route altitude with the minimum-safe-altitude and VFR
-    cruising-altitude rules, then use actual progress to make an early fuel-stop
-    decision.
+  - Recheck the replacement airplane's weight and center of gravity for two
+    people, bags, and fuel, then repeat the check after refueling.
+  - Give an appropriate adult-passenger briefing for this airplane and flight,
+    including the restraint operation, notices, and use required by section
+    91.107.
+  - Plan an en route altitude before departure with the minimum-safe-altitude
+    and VFR cruising-altitude rules, then use actual progress to make an early
+    fuel-stop decision.
+  - Use the planned home-before-sunset cutoff to reject a delayed passenger leg
+    when night recency and replacement-airplane night suitability have not been
+    established.
 trouble_spots:
   - A rental desk's release does not replace the PIC's safe-flight determination.
   - A runway length is useful only when that runway is available at the intended
     arrival time.
+  - A fuel quantity that fits the tanks may put the loaded airplane outside
+    weight or center-of-gravity limits; reducing fuel also affects range.
   - The VFR fuel reserve is a departure minimum, not a goal for remaining fuel
     at landing.
   - Minimum-safe-altitude conditions change with the area below, while 91.159
     applies only to specified level VFR cruise.
+  - Extra night-VFR fuel cannot substitute for passenger recency or a
+    night-equipped airplane, and Elena’s chosen sunset cutoff is earlier than
+    the specific 61.57(b) window.
 source_verification:
   validation_contract: source-relevance-v1
-  status: source_relevance_pending
-  verified_at_utc: null
+  status: source_relevance_complete
+  verified_at_utc: 2026-09-26T20:51:38.596Z
   link_validation: link-validation.yaml
-  relevance_review: pending
+  relevance_review: complete
   show_notes_manifest: show-notes-manifest.yaml
 review:
   independent_spoken_script_review:
     status: complete
-    script_sha256: 8cda8dcc52585b2bb215aa82cef369cad1592ed1814ab127cadd29413c82f6de
-  editorial_status: not_started
-  editorial_script_sha256: null
+    script_sha256: bfbf5843fa0f7cee1f3805e3c7da49db3d047d917a0009e0590d8cab57742bfa
+  editorial_status: script_approved
+  editorial_script_sha256: bfbf5843fa0f7cee1f3805e3c7da49db3d047d917a0009e0590d8cab57742bfa
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 8cda8dcc52585b2bb215aa82cef369cad1592ed1814ab127cadd29413c82f6de
-release_gates_remaining:
-  - Run source-link validation with LLM relevance review and resolve every
-    finding.
-  - Complete human editorial review and approve the current script.
-  - Render audio and complete human listening QA, including the front-matter
-    check.
-  - Review embedded chapter markers against the approved audio.
-  - Re-verify every public source and listener-facing link on publication day.
-  - Validate hosting metadata and stage the immutable audio object in the
-    hosting workflow.
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: not_rendered
-  chapter_markers: pending_render
-  publication_day_validation: pending
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: pending_script_review
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 9
+production_state_revision: 29

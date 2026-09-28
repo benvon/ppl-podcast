@@ -1,0 +1,219 @@
+episode_id: core-22
+claims:
+- id: acs-airworthiness
+  type: faa_standard
+  statement: ACS PA.I.B asks applicants to apply procedures for inoperative equipment, assess inoperative-equipment risk, and determine airplane airworthiness in a scenario.
+  sources:
+  - acs-airworthiness
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  status: draft
+- id: acs-cross-country
+  type: faa_standard
+  statement: ACS PA.I.D asks an applicant to explain route, altitude, performance, fuel, current publications, alternatives, and risk in a cross-country plan.
+  sources:
+  - acs-cross-country
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  - Retrieval review
+  status: draft
+- id: acs-passenger
+  type: faa_standard
+  statement: ACS PA.II.B.K1 includes passenger briefing requirements and required use of safety restraints.
+  sources:
+  - acs-passenger
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  status: draft
+- id: acs-passenger-briefing-skill
+  type: faa_standard
+  statement: ACS PA.II.B.S2 asks the applicant to conduct an appropriate passenger briefing identifying the pilot in command and covering safety belts, shoulder harnesses, doors, passenger conduct, sterile aircraft, propeller blade avoidance, and emergency procedures.
+  sources:
+  - acs-passenger
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  - Brief Jonah before the airplane moves
+  - Retrieval review
+  status: draft
+- id: acs-weight-balance
+  type: faa_standard
+  statement: ACS PA.I.F.S1-S2 ask the applicant to compute weight and balance, correct out-of-CG loading, determine that weight and balance remain within limits during all phases of flight, and use appropriate airplane performance charts, tables, and data.
+  sources:
+  - acs-performance-loading
+  risk: operational
+  script_sections:
+  - What the ACS is asking you to connect
+  - Change airplanes when a display fails
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: loading-current-data
+  type: faa_guidance
+  statement: PHAK Chapter 10 says current airplane weight-and-balance information is needed for loading decisions and that the pilot controls loading and fuel management, which can change total weight and CG.
+  sources:
+  - phak-weight-balance-control
+  risk: operational
+  script_sections:
+  - Change airplanes when a display fails
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: loading-fuel-performance
+  type: faa_guidance
+  statement: PHAK Chapter 10 says excessive weight degrades takeoff, climb, and landing performance, while changing fuel load changes airplane weight and reducing fuel also reduces range.
+  sources:
+  - phak-weight-performance
+  risk: operational
+  script_sections:
+  - Change airplanes when a display fails
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: pic-authority
+  type: regulation
+  statement: The pilot in command is directly responsible for and final authority over operation of the aircraft under 14 CFR 91.3(a).
+  sources:
+  - ecfr-pic-authority
+  risk: safety_critical
+  script_sections:
+  - Decide who owns the flight decision
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: airworthy-condition
+  type: regulation
+  statement: A civil aircraft may not be operated unless airworthy, and the pilot in command determines safe-flight condition and discontinues flight if unairworthy mechanical, electrical, or structural conditions occur.
+  sources:
+  - ecfr-airworthy
+  risk: safety_critical
+  script_sections:
+  - Decide who owns the flight decision
+  - Change airplanes when a display fails
+  - Retrieval review
+  status: draft
+- id: preflight-all-information
+  type: regulation
+  statement: Before any flight, the pilot in command must become familiar with all available information concerning that flight under 91.103.
+  sources:
+  - ecfr-preflight-action
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  status: draft
+- id: preflight-route-information
+  type: regulation
+  statement: For an IFR flight or a flight not in the vicinity of an airport, 91.103(a) requires weather, fuel, alternatives, and known ATC traffic delays as specified.
+  sources:
+  - ecfr-preflight-action
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: preflight-runway-performance
+  type: regulation
+  statement: For any flight, 91.103(b) requires runway lengths at intended airports and the specified aircraft-appropriate takeoff and landing distance information.
+  sources:
+  - ecfr-preflight-action
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Retrieval review
+  status: draft
+- id: vfr-airplane-fuel
+  type: regulation
+  statement: For airplane VFR flight, 91.151(a) requires fuel considering wind and forecast weather to reach the first point of intended landing plus 30 minutes by day or 45 minutes by night at normal cruise.
+  sources:
+  - ecfr-vfr-fuel
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: passenger-briefing
+  type: regulation
+  statement: Before takeoff in a U.S.-registered civil airplane, the PIC must ensure each person is briefed on fastening and unfastening the safety belt and any installed shoulder harness.
+  sources:
+  - ecfr-passenger-restraints
+  risk: safety_critical
+  script_sections:
+  - Brief Jonah before the airplane moves
+  - Retrieval review
+  status: draft
+- id: passenger-restraint-use
+  type: regulation
+  statement: Before surface movement, takeoff, or landing in a U.S.-registered civil airplane, the PIC must notify occupants to fasten restraints, and an ordinary adult passenger must occupy an approved seat with belt and installed shoulder harness properly secured during those phases.
+  sources:
+  - ecfr-passenger-restraints
+  risk: safety_critical
+  script_sections:
+  - Brief Jonah before the airplane moves
+  - Retrieval review
+  status: draft
+- id: safe-altitude-anywhere
+  type: regulation
+  statement: Except when necessary for takeoff or landing, 91.119(a) requires an altitude permitting an emergency landing after power-unit failure without undue hazard to persons or property on the surface.
+  sources:
+  - ecfr-minimum-altitude
+  risk: safety_critical
+  script_sections:
+  - Plan the route and cruising altitude
+  - Retrieval review
+  status: draft
+- id: safe-altitude-congested
+  type: regulation
+  statement: Except when necessary for takeoff or landing, 91.119(b) requires 1,000 feet above the highest obstacle within 2,000 horizontal feet over congested areas or open-air assemblies.
+  sources:
+  - ecfr-minimum-altitude
+  risk: safety_critical
+  script_sections:
+  - Plan the route and cruising altitude
+  - Retrieval review
+  status: draft
+- id: safe-altitude-other
+  type: regulation
+  statement: Except when necessary for takeoff or landing, 91.119(c) requires 500 feet above the surface over other-than-congested areas, with a 500-foot separation rule near people, vessels, vehicles, or structures over open water or sparsely populated areas.
+  sources:
+  - ecfr-minimum-altitude
+  risk: safety_critical
+  script_sections:
+  - Plan the route and cruising altitude
+  - Retrieval review
+  status: draft
+- id: vfr-cruising-altitude
+  type: regulation
+  statement: In level VFR cruising flight more than 3,000 feet above the surface and below 18,000 feet MSL, 91.159 sets odd-thousand-plus-500 MSL altitudes for magnetic courses 000-179 and even-thousand-plus-500 for 180-359, unless otherwise authorized by ATC and subject to stated turn and short-hold exceptions.
+  sources:
+  - ecfr-vfr-cruising-altitude
+  risk: safety_critical
+  script_sections:
+  - Plan the route and cruising altitude
+  - Retrieval review
+  status: draft
+- id: night-passenger-recent-experience
+  type: regulation
+  statement: For ordinary private-pilot passenger carriage from one hour after sunset to one hour before sunrise, 61.57(b)(1) requires within the preceding 90 days three takeoffs and three full-stop landings in that same window as sole manipulator in the same category, class, and type if a type rating is required, unless a specified exception applies.
+  sources:
+  - ecfr-passenger-night
+  risk: safety_critical
+  script_sections:
+  - Make the preflight information specific to this flight
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft
+- id: night-vfr-equipment
+  type: regulation
+  statement: For a powered civil aircraft with a standard U.S. airworthiness certificate, 91.205(a) and (c) require the operable instruments and equipment specified for night VFR, or FAA-approved equivalents, including the day-VFR items and the additional night items, subject to the stated exceptions.
+  sources:
+  - ecfr-night-vfr-equipment
+  risk: safety_critical
+  script_sections:
+  - Keep the plan open to new information
+  - Retrieval review
+  status: draft

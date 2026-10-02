@@ -72,17 +72,16 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - Render audio and complete human listening QA, including the front-matter
-    check.
-  - Review embedded chapter markers against the approved audio.
+  - Complete human listening QA against the full candidate and approved script.
+  - Review embedded chapter markers against the candidate audio.
   - Re-verify every public source and listener-facing link on publication day.
   - Validate hosting metadata and stage the immutable audio object in the
     hosting workflow.
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: preview_listening_qa_approved
-  chapter_markers: pending_render
+  status: candidate_rendered_pending_listening_qa
+  chapter_markers: embedded_and_ffprobe_validated
   publication_day_validation: pending
 hosting:
   metadata: hosting-metadata.yaml

@@ -38,3 +38,8 @@ This is explanatory context, not a production-state or audit record. Use `episod
 ## 2026-10-02 — human preview acceptance
 
 - The user accepted the five-segment opening QA sample and confirmed that the disclaimer is present. Recorded the opening preview and notice attestations for the preview identified in `audio-manifest.yaml`. Full-candidate listening QA remains pending.
+
+## 2026-10-02 — full audio candidate
+
+- Used the accepted preview settings and reused its compatible opening voice segments. Rendered the remaining narration and assembled a fresh full candidate. The audio manifest identifies the candidate, authorization, automated quality report, and chapter review page.
+- Human listening and chapter review remain the next steps; their attestations are intentionally pending.

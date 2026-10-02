@@ -18,7 +18,7 @@
 
 ## Audio
 
-- [x] The user authorized the OpenAI API audio QA preview for core-23 in this turn. The preview render record records this authorization. <!-- qa-id: openai-audio-render-authorization -->
+- [x] The user authorized the OpenAI API opening preview and, subsequently, the full core-23 audio render in their respective turns. The audio manifest records each authorization. <!-- qa-id: openai-audio-render-authorization -->
 
 - [x] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
@@ -26,7 +26,7 @@
 - [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
 - [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
 - [ ] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
-- [ ] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
+- [x] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
 
 ## Release
 

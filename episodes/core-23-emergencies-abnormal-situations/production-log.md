@@ -34,3 +34,7 @@ This is explanatory context, not a production-state or audit record. Use `episod
 
 - The user authorized OpenAI API calls for the core-23 audio QA preview in this turn. Rendered segments 1–5 from the approved narration with the established Realtime voices and music mix. Artifact identity and authorization are recorded in `audio-manifest.yaml`.
 - The 174.820-second preview passed automated audio checks with zero clipped samples and zero stitch warnings. Human assessment of pronunciation, pacing, speech quality, and music balance remains pending. This preview includes Instructor and Announcer speech; the Learner voice has not yet been sampled.
+
+## 2026-10-02 — human preview acceptance
+
+- The user accepted the five-segment opening QA sample and confirmed that the disclaimer is present. Recorded the opening preview and notice attestations for the preview identified in `audio-manifest.yaml`. Full-candidate listening QA remains pending.

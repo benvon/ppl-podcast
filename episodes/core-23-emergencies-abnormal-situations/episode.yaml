@@ -81,7 +81,7 @@ release_gates_remaining:
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: preview_ready_for_listening_qa
+  status: preview_listening_qa_approved
   chapter_markers: pending_render
   publication_day_validation: pending
 hosting:

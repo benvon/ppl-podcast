@@ -18,6 +18,8 @@
 
 ## Audio
 
+- [x] The user authorized the OpenAI API audio QA preview for core-23 in this turn. The preview render record records this authorization. <!-- qa-id: openai-audio-render-authorization -->
+
 - [ ] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
 - [ ] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
 - [ ] Five-segment opening preview has been listened to before full rendering. <!-- qa-id: opening-preview -->

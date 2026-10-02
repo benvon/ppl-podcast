@@ -1,5 +1,20 @@
 episode_id: core-23
 current_candidate_render: null
+preview_render:
+  script_version: 0.1.2
+  master_script_sha256: 3a98eaafbe1bc21cb90550b9e2c3d372059fe4e7ee22330766e2fc8fb54106d3
+  selected_segments: [1, 2, 3, 4, 5]
+  sha256: 55fa99c893c032e2912c28850ff8619d267847704606a70de4508533ad9ff595
+  duration_seconds: 174.820
+  mp3: audio-artifacts/core-23/core-23-20261002T153013Z.preview-001-005.mp3
+  render_manifest: audio-artifacts/core-23/core-23-20261002T153013Z.preview-001-005.render-manifest.json
+  audio_quality_report: audio-artifacts/core-23/core-23-20261002T153013Z.preview-001-005.audio-quality.json
+  validation: passed_automated_checks
+  authorization:
+    authorized_by: user
+    received_on: 2026-10-02
+    scope: core-23 OpenAI API audio QA preview
+    qa_id: openai-audio-render-authorization
 superseded_candidates: []
 chapter_markers:
   source: master-script.md section headings

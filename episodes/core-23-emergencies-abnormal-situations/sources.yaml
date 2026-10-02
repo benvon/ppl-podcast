@@ -1,0 +1,176 @@
+episode_id: core-23
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-descent
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IX.A.K1-K4, R1-R4, S1-S8, printed p. 51 (PDF p. 59)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=59
+    revision: April 2024; effective May 31, 2024
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ acs-descent ]
+  - id: acs-landing
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IX.B.K1-K6, R1-R6, S1-S6, printed p. 52 (PDF p. 60)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+    revision: April 2024; effective May 31, 2024
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ acs-landing, glide-airspeed ]
+  - id: acs-systems
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IX.C.K1-K5, R1-R4, S1-S2, printed p. 53 (PDF p. 61)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+    revision: April 2024; effective May 31, 2024
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ acs-malfunctions ]
+  - id: acs-survival
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IX.D.K2-K5, R1-R3, S1-S3, printed p. 54 (PDF p. 62)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+    revision: April 2024; effective May 31, 2024
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ acs-equipment ]
+  - id: afh-types
+    authority: faa_guidance
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, Introduction and Types of Emergency Landings, printed p.
+      18-1 (PDF p. 1)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    revision: FAA-H-8083-3C, 2021
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ manufacturer-boundary, landing-types ]
+  - id: afh-glide
+    authority: faa_guidance
+    title: Airplane Flying Handbook, Chapter 3, Basic Flight Maneuvers
+    document_id: FAA-H-8083-3C
+    locator: Chapter 3, Glides, best glide and minimum sink, printed p. 3-23 (PDF p. 23)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23
+    revision: FAA-H-8083-3C, 2021
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ glide-concepts ]
+  - id: afh-landing
+    authority: faa_guidance
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, Terrain Selection, Airplane Configuration, and Approach,
+      printed p. 18-4 (PDF p. 4)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4
+    revision: FAA-H-8083-3C, 2021
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ landing-site, control-priority, flap-timing ]
+  - id: afh-descent
+    authority: faa_guidance
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, Emergency Descents, printed p. 18-8 (PDF p. 8)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=8
+    revision: FAA-H-8083-3C, 2021
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ descent-purpose, descent-limits ]
+  - id: afh-electrical
+    authority: faa_guidance
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, System Malfunctions, Electrical System, printed p. 18-13
+      (PDF p. 13)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    revision: FAA-H-8083-3C, 2021
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ generator-failure ]
+  - id: afh-engine
+    authority: faa_guidance
+    title: Airplane Flying Handbook, Chapter 18, Emergency Procedures
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, Abnormal Engine Instrument Indication, printed p. 18-16
+      (PDF p. 16)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=16
+    revision: FAA-H-8083-3C, 2021
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ engine-checklist ]
+  - id: aim-help
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Emergency Condition—Request Assistance
+      Immediately
+    document_id: AIM
+    locator: AIM 6-1-2, Emergency Condition—Request Assistance Immediately
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_1.html#6-1-2
+    revision: FAA online AIM, effective July 9, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ early-help ]
+  - id: aim-radio
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Distress and Urgency Procedures
+    document_id: AIM
+    locator: AIM 6-3-1, Distress and Urgency Communications; 6-3-2(a)(3), message
+      elements
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-1
+    revision: FAA online AIM, effective July 9, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ radio-help ]
+  - id: aim-transponder
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Obtaining Emergency Assistance
+    document_id: AIM
+    locator: AIM 6-3-2(a)(2), transponder action
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_3.html#6-3-2
+    revision: FAA online AIM, effective July 9, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ transponder-help ]
+  - id: aim-elt
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Emergency Locator Transmitter
+    document_id: AIM
+    locator: AIM 6-2-4, subparagraph 1(5)-(7)
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap6_section_2.html#6-2-4
+    revision: FAA online AIM, effective July 9, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ elt-use ]
+  - id: ecfr-authority
+    authority: regulation
+    title: 14 CFR 91.3, Responsibility and authority of the pilot in command
+    document_id: 14-CFR-91.3
+    locator: 91.3(a)-(c)
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-A/section-91.3
+    revision: eCFR Title 14 current through September 30, 2026
+    ecfr_date: '2026-09-30'
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims: [ emergency-authority ]

@@ -1,0 +1,88 @@
+id: core-23
+series: ppl-study-podcast
+title: Emergencies and Abnormal Situations
+slug: emergencies-abnormal-situations
+track: core
+production_contract_version: 2
+status: ready_for_hosting_pr
+version: 0.1.2
+published_at: 2026-10-02T16:50:51Z
+runtime_target_minutes: 27
+runtime_actual_seconds: 1419.86
+word_count: 3599
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - FAA-S-ACS-6C, PA.IX.A, Emergency Descent
+  - FAA-S-ACS-6C, PA.IX.B, Emergency Approach and Landing (ASEL)
+  - FAA-S-ACS-6C, PA.IX.C, Systems and Equipment Malfunctions
+  - FAA-S-ACS-6C, PA.IX.D, Emergency Equipment and Survival Gear
+phak_references: []
+aim_references:
+  - AIM 6-1-2, request emergency assistance
+  - AIM 6-2-4, emergency locator transmitter
+  - AIM 6-3-1 and 6-3-2, distress and urgency communications
+advisory_circular_references: []
+cfr_references:
+  - 14 CFR 91.3(a)-(c), pilot-in-command authority and emergency deviation
+learning_objectives:
+  - Recognize a developing abnormal engine indication and choose an early
+    precautionary landing while power remains.
+  - If power is lost, establish the airplane’s recommended best glide speed and
+    select a reachable landing area using altitude, wind, terrain, and
+    obstacles.
+  - Use a timely urgency or distress call and distinguish communication guidance
+    from bounded emergency authority under 14 CFR 91.3.
+  - Connect an electrical failure or smoke scenario to the airplane-specific
+    checklist, landing decision, and applicable airspeed or system limits.
+  - Locate installed emergency equipment, choose route-appropriate survival
+    gear, and brief the passenger before flight.
+trouble_spots:
+  - An unexplained improvement in an engine indication is not a reason by itself
+    to resume the planned cross-country.
+  - Pitching up to stretch a glide can reduce reach and risk a stall.
+  - A checklist, radio call, or passenger task must fit around maintaining
+    control and a reachable landing path.
+  - An electrical generation failure in a single-generator trainer may leave
+    only limited battery time.
+  - An emergency descent still respects the airplane’s configuration and
+    structural speed limits.
+  - The actual AFM or POH supplies aircraft-specific speeds, limits, and action
+    sequence.
+source_verification:
+  validation_contract: source-relevance-v1
+  status: source_relevance_complete
+  verified_at_utc: 2026-10-02T15:19:44.334Z
+  link_validation: link-validation.yaml
+  relevance_review: complete
+  show_notes_manifest: show-notes-manifest.yaml
+review:
+  independent_spoken_script_review:
+    status: complete
+    script_sha256: 3a98eaafbe1bc21cb90550b9e2c3d372059fe4e7ee22330766e2fc8fb54106d3
+  editorial_status: script_approved
+  editorial_script_sha256: 3a98eaafbe1bc21cb90550b9e2c3d372059fe4e7ee22330766e2fc8fb54106d3
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining: []
+audio:
+  manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: ready_for_hosting_pr
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null
+production_state_revision: 15

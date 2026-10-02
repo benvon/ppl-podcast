@@ -43,3 +43,7 @@ This is explanatory context, not a production-state or audit record. Use `episod
 
 - Used the accepted preview settings and reused its compatible opening voice segments. Rendered the remaining narration and assembled a fresh full candidate. The audio manifest identifies the candidate, authorization, automated quality report, and chapter review page.
 - Human listening and chapter review remain the next steps; their attestations are intentionally pending.
+
+## 2026-10-02 — human full-candidate QA acceptance
+
+- The user confirmed that full listening QA passes and the chapter markers are good. The completed QA attestations apply to the current candidate identified by the audio manifest; the remaining release work is listed in `episode.yaml`.

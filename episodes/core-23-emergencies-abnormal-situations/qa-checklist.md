@@ -23,9 +23,9 @@
 - [x] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
 - [x] Five-segment opening preview has been listened to before full rendering. <!-- qa-id: opening-preview -->
-- [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
-- [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
-- [ ] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
+- [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
+- [x] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
 - [x] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
 
 ## Release

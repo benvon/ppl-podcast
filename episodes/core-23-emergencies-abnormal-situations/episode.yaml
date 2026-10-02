@@ -4,11 +4,11 @@ title: Emergencies and Abnormal Situations
 slug: emergencies-abnormal-situations
 track: core
 production_contract_version: 2
-status: source_relevance_review_complete
+status: ready_for_hosting_pr
 version: 0.1.2
-published_at: null
+published_at: 2026-10-02T16:50:51Z
 runtime_target_minutes: 27
-runtime_actual_seconds: null
+runtime_actual_seconds: 1419.86
 word_count: 3599
 speakers:
   - instructor
@@ -71,21 +71,18 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - Re-verify every public source and listener-facing link on publication day.
-  - Validate hosting metadata and stage the immutable audio object in the
-    hosting workflow.
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
   status: candidate_rendered_listening_qa_approved
   chapter_markers: embedded_and_ffprobe_validated
-  publication_day_validation: pending
+  publication_day_validation: passed
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: pending_script_review
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 13
+production_state_revision: 14

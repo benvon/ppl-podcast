@@ -30,7 +30,7 @@
 
 ## Release
 
-- [ ] FAA/eCFR links and revisions were re-verified on publication day. <!-- qa-id: publication-source-links -->
-- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum. <!-- qa-id: hosting-metadata -->
+- [x] FAA/eCFR links and revisions were re-verified on publication day. <!-- qa-id: publication-source-links -->
+- [x] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum. <!-- qa-id: hosting-metadata -->
 - [ ] After publication, Apple Podcasts and Overcast are checked for the final embedded chapter list. <!-- qa-id: post-publication-chapters -->
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml`; `production-log.md` may add context. <!-- qa-id: qualified-aviation-review -->

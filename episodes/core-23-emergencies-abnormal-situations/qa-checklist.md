@@ -13,8 +13,8 @@
 - [x] Before any audio render, show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page. <!-- qa-id: show-notes-scope -->
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. `episode.yaml` records the completed review against the current master-script hash. <!-- qa-id: independent-script-review -->
 - [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->
-- [ ] If human editorial changes spoken narration, source tags, claims, or cited sources, source-relevance validation was rerun successfully before audio render. Show-notes-only edits received deterministic mapping and link validation. <!-- qa-id: post-editorial-source-relevance -->
-- [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval. <!-- qa-id: pre-pr-package-shape -->
+- [x] If human editorial changes spoken narration, source tags, claims, or cited sources, source-relevance validation was rerun successfully before audio render. Show-notes-only edits received deterministic mapping and link validation. <!-- qa-id: post-editorial-source-relevance -->
+- [x] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval. <!-- qa-id: pre-pr-package-shape -->
 
 ## Audio
 

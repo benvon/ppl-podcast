@@ -107,7 +107,7 @@ claims:
     status: draft
   - id: early-help
     type: faa_guidance
-    statement: AIM 6-1-2 urges early assistance when doubt about fuel, position, weather, or another condition could adversely affect flight safety, before urgency becomes distress.
+    statement: AIM 6-1-2 notes that pilots sometimes hesitate to report urgency conditions and urges immediate assistance when doubt about fuel, position, weather, or another condition could adversely affect flight safety, before urgency becomes distress.
     sources: [aim-help]
     risk: safety_critical
     script_sections: [Ask for help while there is time, Retrieval review]

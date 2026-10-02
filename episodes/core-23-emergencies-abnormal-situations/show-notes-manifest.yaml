@@ -25,7 +25,7 @@ links:
   - id: source-link-04
     text: Emergency equipment and survival ACS task
     url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
-    locator: PA.IX.D.K1-K5, R1-R3, S1-S3, printed pp. 53-54 (PDF pp. 61-62)
+    locator: PA.IX.D.K2-K5, R1-R3, S1-S3, printed p. 54 (PDF p. 62)
     source_id: acs-survival
     claim_ids:
       - acs-equipment

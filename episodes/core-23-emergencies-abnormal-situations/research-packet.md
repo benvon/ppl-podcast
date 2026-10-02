@@ -15,7 +15,7 @@
 | Emergency descent: recognize need; account for limits, terrain, collision, configuration and task priority | PA.IX.A.K1–K4, R1–R4, S1–S8, printed p. 51 / PDF p. 59 | Smoke branch: look for landing area and traffic, follow airplane procedure and limits, communicate when workload permits |
 | Simulated emergency approach and landing: best glide, terrain, wind, path and checklist | PA.IX.B.K1–K6, R1–R6, S1–S6, printed p. 52 / PDF p. 60 | Main branch: power lost; establish airplane-specific best glide; select attainable field; build and revise a path; preserve control through touchdown |
 | Systems and equipment malfunctions specific to airplane | PA.IX.C.K1–K5, R1–R4, S1–S2, printed p. 53 / PDF p. 61 | Rough engine and electrical branch: notice indication, determine immediate flight effect, use specific AFM/POH checklist, land sooner |
-| Emergency equipment and survival gear | PA.IX.D.K1–K5, R1–R3, S1–S3, printed pp. 53–54 / PDF pp. 61–62 | Preflight and landing: identify ELT, extinguisher, route-appropriate gear, and brief passenger; discuss parachute/autoland only as installed-aircraft questions |
+| Emergency equipment and survival gear | PA.IX.D.K2–K5, R1–R3, S1–S3, printed p. 54 / PDF p. 62 | Preflight and landing: identify ELT, extinguisher, route-appropriate gear, and brief passenger; discuss parachute/autoland only as installed-aircraft questions |
 
 ## Scenario source map
 
@@ -24,7 +24,7 @@
 | Which procedure applies? | AFH Ch. 18 p. 18-1 and ACS PA.IX | General FAA concepts frame the decision; the actual airplane's AFM/POH controls speeds, configuration and sequence. No fictional checklist steps are invented. |
 | When is an abnormal engine indication a landing decision? | AFH Ch. 18 pp. 18-1 and 18-16 | Gradually developing engine trouble can call for a precautionary landing while power and selection time remain; consult the airplane's abnormal indication procedure. |
 | What if power is lost? | ACS PA.IX.B; AFH Ch. 18 p. 18-4 | Establish recommended best glide; choose a reachable site with wind, terrain, obstacles and altitude in mind; protect the final approach and touchdown. |
-| How does the pilot ask for help? | AIM 6-1-2; 6-3-1–2; 14 CFR 91.3 | Request assistance at the urgency stage; communicate identity, situation, intentions and location; use MAYDAY when distress develops. Emergency authority is bounded by immediate need. |
+| How does the pilot ask for help? | AIM 6-1-2; 6-3-1–2; 14 CFR 91.3 | Request assistance at the urgency stage, even if reporting feels uncomfortable; communicate identity, situation, intentions and location; use MAYDAY when distress develops. Emergency authority is bounded by immediate need, and a written deviation report is required only if the Administrator requests it. |
 | What about transponder and ELT? | AIM 6-3-2 and 6-2-4 | Keep assigned/VFR code while talking to ATC unless told otherwise; 7700 if immediate contact cannot be established. Know how to activate and verify installed ELT if needed. |
 | Does an alternator failure mean the engine stopped? | AFH Ch. 18 p. 18-13 | On the typical single-generator trainer, stored battery power is finite; shed nonessential load, use the aircraft procedure and land at a suitable airport. Do not infer one model's power architecture for every airplane. |
 | When is rapid descent appropriate? | AFH Ch. 18 p. 18-8; ACS PA.IX.A | Fire or smoke can require prompt descent, while configuration, airspeed, terrain and other traffic still govern; manufacturer guidance sets execution. |

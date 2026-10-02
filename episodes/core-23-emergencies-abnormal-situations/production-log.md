@@ -23,3 +23,9 @@ This is explanatory context, not a production-state or audit record. Use `episod
 
 - The two independent source assessments agreed that the emergency communication claims were supported. One or both flagged the AIM subparagraph labels for three citations. The source ledger, show notes, and link manifest now identify the AIM sections and actions as presented in the FAA source.
 - The spoken script and claim inventory were unchanged by this locator correction. The formal source-review result and current package state are recorded in `link-validation.yaml` and `episode.yaml`.
+
+## 2026-10-02 — version 0.1.2 contextual revision
+
+- Preserved the human editor's 0.1.2 wording changes and revised the whole lesson's transitions, checklist workflow, passenger briefing, and aircraft-specific procedure boundary. No fictional speed or switch sequence was added.
+- Made the ACS's control and landing-site priorities explicit, and clarified the difference between immediate emergency assistance and the bounded deviation and requested-report provisions of 14 CFR 91.3.
+- Updated the AIM early-help claim to cover the source's warning about hesitating to report urgency conditions. This is a new spoken-script and claim revision; the earlier source-relevance and independent spoken-review records must be renewed for the current script before human editorial approval.

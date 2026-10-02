@@ -4,12 +4,12 @@ title: Emergencies and Abnormal Situations
 slug: emergencies-abnormal-situations
 track: core
 production_contract_version: 2
-status: draft
-version: 0.1.1
+status: editorial_review_pending
+version: 0.1.2
 published_at: null
 runtime_target_minutes: 27
 runtime_actual_seconds: null
-word_count: 3506
+word_count: 3599
 speakers:
   - instructor
   - learner
@@ -57,20 +57,21 @@ trouble_spots:
 source_verification:
   validation_contract: source-relevance-v1
   status: source_relevance_complete
-  verified_at_utc: 2026-09-28T21:08:03.053Z
+  verified_at_utc: 2026-10-02T15:19:44.334Z
   link_validation: link-validation.yaml
   relevance_review: complete
   show_notes_manifest: show-notes-manifest.yaml
 review:
   independent_spoken_script_review:
     status: complete
-    script_sha256: e45f5b7de2a3e4de6ce785aa551f8224d564de48e67c9de0d7eb45647c6c8494
-  editorial_status: not_started
+    script_sha256: 3a98eaafbe1bc21cb90550b9e2c3d372059fe4e7ee22330766e2fc8fb54106d3
+  editorial_status: reapproval_required
   editorial_script_sha256: null
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
+  pending_script_sha256: 3a98eaafbe1bc21cb90550b9e2c3d372059fe4e7ee22330766e2fc8fb54106d3
 release_gates_remaining:
   - Run source-link validation with LLM relevance review and resolve every
     finding.
@@ -90,8 +91,8 @@ audio:
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: draft
+  handoff_status: pending_script_review
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 4
+production_state_revision: 12

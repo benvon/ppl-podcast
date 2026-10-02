@@ -33,7 +33,7 @@ What the ACS is asking you to connect.
 
 The Private Pilot Airman Certification Standards group several decisions under Emergency Operations. The emergency descent task asks why the airplane might need to descend promptly and how the pilot manages airspeed, aircraft limits, terrain, other traffic, configuration, and the checklist.
 
-For a simulated emergency approach and landing in a single-engine airplane, the ACS connects the recommended best glide speed, available altitude, wind, terrain, obstacles, the landing site, and a flightpath the pilot can actually fly. It also asks the pilot to complete the appropriate checklist without losing the airplane or the chosen landing area.
+For a simulated emergency approach and landing in a single-engine airplane, the ACS connects the recommended best glide speed, available altitude, wind, terrain, obstacles, the landing site, and a flightpath the pilot can actually fly. It also asks the pilot to complete the appropriate checklist while maintaining airplane control and awareness of the chosen landing area.
 
 The systems task asks the applicant to understand malfunctions in the airplane used for the test: power loss, electrical and instrument problems, smoke or fire, and other installed-equipment failures. It includes startle, distraction, and checklist use because those can change the outcome even before the hardware problem is understood.
 
@@ -45,9 +45,9 @@ That sounds like several checklists. How do I know which one to start with?
 
 **INSTRUCTOR:**
 
-Start with what the airplane is doing now. Can you keep it under control? Does the problem leave time to land at an airport, or must you select a place within gliding reach? What help would make the next minute safer? The ACS gives the decisions. The airplane's approved flight manual or pilot's operating handbook supplies its actual procedures, speeds, configurations, and limits. The Airplane Flying Handbook says its emergency guidance is generic and that the manufacturer's procedure takes precedence if the two conflict.
+Start with what the airplane is doing now. Can you keep it under control? Does the problem leave time to land at an airport, or must you select a place within gliding reach? What help would make the next minute safer? The ACS gives the decisions. The Airplane Flying Handbook helps explain those decisions: for example, a developing engine problem may allow a planned precautionary landing, while a loss of power may require an immediate forced landing. Its emergency guidance is general. For the actual procedures, speeds, configurations, and limits, use the airplane's approved flight manual or pilot's operating handbook; the manufacturer's procedure takes precedence if the guidance conflicts.
 
-We will stay with that boundary. Elena's airplane is a fictional trainer. We will not assign it a best-glide number or pretend that a switch sequence fits every single-engine airplane.
+Elena flies a fictional trainer, so her decisions are an example to think through, while the specific speed and checklist actions come from the airplane you fly. Practice finding and using those with your instructor and your airplane's current AFM or POH.
 
 ## [04:00] Prepare for the route before departure
 
@@ -59,19 +59,19 @@ Prepare for the route before departure.
 
 Before this flight, Elena looks at the daytime route in terms of options. There are airports along it, but there are also stretches of farmland where reaching a runway might become impossible if the engine stopped. She notes suitable places and hazards without promising that a field seen on a chart will be usable from every altitude. That preparation makes her first in-flight question practical: where can this airplane land from its present position?
 
-She opens the current checklist for this airplane and locates the sections for abnormal engine operation, engine failure, fire, and electrical trouble. The Airplane Flying Handbook's general guidance cannot supply the make-and-model sequence; it tells her to know and follow the manufacturer-developed procedure.
+She opens the current checklist for this airplane and locates the sections for abnormal engine operation, engine failure, fire, and electrical trouble. The Airplane Flying Handbook tells pilots to know and follow the manufacturer-developed procedure for the specific airplane.
 
 **LEARNER:**
 
-Should Jonah learn the emergency checklist too?
+What should Jonah know before they depart?
 
 **INSTRUCTOR:**
 
-Jonah needs a useful passenger briefing, not a second pilot's job. Elena shows him the emergency equipment and explains what to do if she asks for help after landing. The ACS expects a passenger briefing on on-board emergency and survival gear and asks Elena to identify equipment appropriate to the route, such as water, clothing, and shelter.
+Elena shows him the emergency equipment and explains what to do if she asks for help after landing. The ACS expects a passenger briefing on on-board emergency and survival gear and asks Elena to identify equipment appropriate to the route, such as water, clothing, and shelter.
 
 The airplane has an emergency locator transmitter, or ELT. An armed ELT is designed to activate under crash forces, but Elena also learns how this installation can be activated and checked if manual action is needed. The AIM says pilots and passengers should know that operation. For Jonah, the useful instruction is where the control is and what Elena wants him to do if she cannot do it.
 
-They also locate the fire extinguisher and keep route-appropriate clothing and water where they can be reached after a landing. The exact equipment choice changes with the terrain, season, and distance from help. Elena's preflight goal is to know what is on board and how the occupants can use it, rather than assume the emergency gear will explain itself when the airplane has stopped.
+They also locate the fire extinguisher and keep route-appropriate clothing and water where they can be reached after a landing. The exact equipment choice changes with the terrain, season, and distance from help. Before takeoff, Elena makes sure both occupants know what is on board and how they could use it after a landing.
 
 ## [06:30] Recognize rough running early
 
@@ -81,11 +81,13 @@ Recognize rough running early.
 
 **INSTRUCTOR:**
 
-Now the airplane is level over farmland. Elena hears the engine running unevenly. The engine instruments show a change from the steady indications she saw earlier. The airplane still responds normally, and the nearby airport is ahead and off the route. She holds a stable flight path, checks where she is, and identifies that airport as an immediate landing option. She does not need to name the failed component before choosing a safer destination.
+Now the airplane is level over farmland. Elena hears the engine running unevenly. The engine instruments show a change from the steady indications she saw earlier. The airplane still responds normally, and the nearby airport is ahead and off the route. She holds a stable flight path, checks where she is, and identifies that airport as an immediate landing option while the cause remains uncertain.
 
 The ACS asks the applicant to determine an appropriate response to power loss for the airplane used in the test and to complete the appropriate checklist. Elena must connect the indication to this airplane before choosing an action.
 
-For an abnormal engine indication, the Airplane Flying Handbook directs the pilot to the specific airplane's AFM or POH. Elena uses that airplane's abnormal-engine checklist once the flight path and landing option are under control. If a checklist item changes the engine's behavior, she observes the result; she does not invent a generic repair step from a different model.
+For an abnormal engine indication, the Airplane Flying Handbook directs the pilot to the specific airplane's AFM or POH. Elena uses that airplane's abnormal-engine checklist once the flight path and landing option are under control.
+
+She observes how the engine responds to each applicable checklist action. Improvising additional troubleshooting would consume time and attention and might make the problem worse; landing safely while the engine still produces power remains her plan.
 
 **LEARNER:**
 
@@ -103,7 +105,7 @@ If the engine smooths out, could she resume the original trip?
 
 **INSTRUCTOR:**
 
-The rough running and changed indication remain unexplained. Elena can continue toward the selected airport and land while the airplane is still controllable. Once on the ground, she can get the right inspection or maintenance answer. A temporary improvement during one checklist step does not by itself establish that the original cross-country is a sound choice.
+The rough running and changed indication remain unexplained. Elena can continue toward the nearby airport and land while the airplane is still controllable. Once on the ground, she can get the right inspection or maintenance answer. A temporary improvement during one checklist step does not by itself establish that the original cross-country is a sound choice.
 
 ## [09:15] Ask for help while there is time
 
@@ -135,11 +137,15 @@ While Elena is in radio contact with an air traffic facility or another agency p
 
 **LEARNER:**
 
-If she declares an emergency, may she ignore the flight rules?
+If the emergency requires an immediate deviation from a flight rule, what authority does she have?
 
 **INSTRUCTOR:**
 
-Section ninety-one point three keeps Elena directly responsible for and final authority over the airplane. In an in-flight emergency requiring immediate action, it permits a deviation from a Part 91 rule only to the extent needed to meet that emergency. It also says that if the Administrator requests it, the pilot who used that authority must send a written report of the deviation. The declaration and the authority serve the immediate safety need; they are not a reason to expand the flight beyond it.
+Section ninety-one point three keeps Elena directly responsible for and final authority over the airplane. In an in-flight emergency requiring immediate action, it permits a deviation from a Part 91 rule only to the extent needed to meet that emergency. If the Administrator requests it, the pilot who used that authority must send a written report of the deviation.
+
+Her first job is to protect life and keep control of the airplane. The AIM notes that pilots sometimes hesitate to report an urgency condition and says to request assistance immediately when safety is in doubt.
+
+Fear of a possible FAA follow-up should not delay declaring an emergency or requesting help when she needs it. Elena protects life and controls the airplane now, then handles any requested deviation report after landing.
 
 ## [12:30] Keep the airplane flying after power loss
 
@@ -149,7 +155,7 @@ Keep the airplane flying after power loss.
 
 **INSTRUCTOR:**
 
-Now pause the main flight at the diversion and test a harder branch. Suppose the engine stops before Elena reaches Valley Airport. The runway is ahead beyond a line of trees; an open field lies on this side of the trees. Elena cannot assume the runway is within gliding range. Her immediate task is to keep the airplane flying at the recommended best glide airspeed for this airplane while she checks reachable terrain. The ACS asks for that airplane-specific speed, not one number for all trainers.
+Now pause the main flight at the diversion and test a harder scenario. Suppose the engine stops before Elena reaches Valley Airport. The runway is ahead beyond a line of trees; an open field lies on this side of the trees. Elena cannot assume the runway is within gliding range. Her immediate task is to keep the airplane flying at the recommended best glide airspeed for this airplane while she checks reachable terrain. The ACS asks for that airplane-specific speed, not one number for all trainers.
 
 **LEARNER:**
 
@@ -161,7 +167,7 @@ The ACS explicitly asks pilots to understand how best glide differs from minimum
 
 The Airplane Flying Handbook explains the difference: a slower airspeed is not automatically more distance. Best glide maximizes distance for the altitude lost, while minimum sink keeps the airplane aloft longer at a lower airspeed. Pulling back to stretch a glide can shorten the distance or lead to a stall. Elena uses her airplane's recommended best glide, then judges the ground path with the actual wind in view.
 
-She can attempt the airplane's engine-failure checklist when altitude and control permit. If it does not restore power, a reachable landing area remains the essential plan. The checklist is a resource for the problem, not a reason to stare inside while the airplane descends toward an obstacle.
+She follows the airplane's engine-failure checklist when altitude and control permit and observes whether power returns. The checklist may help resolve the problem, but she keeps scanning the chosen flight path instead of fixating on the page. Flying the airplane remains her first priority. If power does not return, she continues toward a reachable landing area.
 
 ## [15:00] Choose a landing area within reach
 
@@ -173,7 +179,7 @@ Choose a landing area within reach.
 
 Elena looks toward Valley and compares it with the land below and alongside her flight path. The Airplane Flying Handbook says landing-site choice depends on the route, height above the ground, and excess airspeed. It says the approach plan considers wind, field dimensions and slope, and obstacles. A broad-looking field is less useful if wires block the approach or if the airplane cannot reach it with a controlled path.
 
-The ACS asks her to select a suitable landing area using altitude, wind, terrain, obstructions, and available glide distance, then plan and follow a flightpath to it. The aim is not to name the nicest field in sight. It is to select one she can reach and enter without turning the last part of the descent into a rushed correction.
+The ACS asks her to select a suitable landing area using altitude, wind, terrain, obstructions, and available glide distance, then plan and follow a flightpath to it. She needs a site she can reach and enter without turning the last part of the descent into a rushed correction.
 
 **LEARNER:**
 
@@ -207,7 +213,7 @@ During the final approach, the Airplane Flying Handbook gives positive control o
 
 If they stop away from the airport, Jonah knows where the emergency gear and ELT control are. An armed ELT is designed to activate if subjected to crash forces. Once stopped, Elena or Jonah can check whether it is transmitting and use this installation's manual activation procedure if needed.
 
-The story stops before touchdown. A real forced landing depends on the particular airplane, site, wind, and training. The lesson's study outcome is the chain Elena can explain: preserve controlled flight, choose terrain within reach, use the airplane's checklist when time permits, tell others what is happening, and keep flying the chosen approach.
+Our lesson scenario stops just before touchdown. A real forced landing depends on the particular airplane, site, wind, and training. The lesson's study outcome is the chain Elena can explain: preserve controlled flight, choose terrain within reach, use the airplane's checklist when time permits, tell others what is happening, and keep flying the chosen approach.
 
 ## [20:00] Compare an electrical failure
 
@@ -221,13 +227,13 @@ Return to the moment when Elena first noticed a problem, and change only the ind
 
 **LEARNER:**
 
-So the engine is fine. Could she finish the trip if she turns off a few lights?
+The engine is still running. What changes if the battery is now the only electrical source?
 
 **INSTRUCTOR:**
 
 She has not established how long the remaining electrical power will last or which equipment this airplane depends on for the arrival. The ACS asks about electrical and display malfunctions for the actual airplane, and about using its checklist while preserving orientation and task priority. Elena follows this airplane's charging-system procedure, identifies the equipment she needs, and chooses a suitable airport while the radio and other useful systems still work.
 
-This case is different from an engine stoppage. It does not call for a glide to a field solely because a charging warning appeared. It does call for an early landing plan instead of spending the battery while hoping the indication goes away.
+With the engine still running, Elena may be able to reach an airport under power. She makes that landing plan early, while the battery may still support useful equipment, and follows the airplane's procedure for managing the electrical load.
 
 ## [22:00] When smoke changes the descent decision
 
@@ -241,7 +247,7 @@ Now a separate examiner-style case: at altitude in another airplane, a pilot not
 
 The Airplane Flying Handbook describes an emergency descent as rapid descent to a lower altitude or the ground for an emergency landing. Fire, loss of pressurization, or another immediate problem may demand it.
 
-The ACS asks the applicant to connect the reason for descent with immediate actions, airspeed and aircraft limits, terrain, collision hazards, configuration, the checklist, and an appropriate radio call. The pilot looks for traffic and a landing area while retaining orientation. An emergency descent is a controlled maneuver toward a usable outcome, not simply pointing the nose down.
+The ACS asks the applicant to connect the reason for descent with immediate actions, airspeed and aircraft limits, terrain, collision hazards, configuration, the checklist, and an appropriate radio call. The pilot looks for traffic and a landing area while retaining orientation. A controlled descent leaves the pilot able to level off or reach a usable landing option.
 
 **LEARNER:**
 
@@ -249,9 +255,9 @@ If smoke is the reason, should the pilot descend at the fastest speed the airpla
 
 **INSTRUCTOR:**
 
-The Airplane Flying Handbook says to use the manufacturer's emergency descent configuration and airspeeds, respect structural, gear, and flap speed limits, and begin recovery high enough for a safe level-off or precautionary landing. The exact response to smoke or fire also depends on the airplane's emergency procedure. In this branch, the pilot has to get lower without creating an overspeed or losing the landing option.
+The Airplane Flying Handbook says to use the manufacturer's emergency descent configuration and airspeeds, respect structural, gear, and flap speed limits, and begin recovery high enough for a safe level-off or precautionary landing. The exact response to smoke or fire also depends on the airplane's emergency procedure. In this scenario, the pilot has to get lower without creating an overspeed or losing the landing option.
 
-We do not combine this smoke case with Elena's engine failure. The point is to test the same decision order under a different time limit: control the airplane, identify where it can go, apply its procedure, and communicate when possible.
+The smoke case puts more pressure on time. The pilot still has to control the airplane, identify where it can go, apply its procedure, and communicate when possible.
 
 ## [24:00] Retrieval review
 
@@ -273,7 +279,7 @@ What information governs her checklist response?
 
 **LEARNER:**
 
-The emergency guidance in the Airplane Flying Handbook is general. The manufacturer procedure in this airplane's AFM or POH supplies the actual speed, configuration, and sequence if there is a conflict.
+The Airplane Flying Handbook helps explain the decision, such as when a developing problem permits a precautionary landing. The manufacturer procedure in this airplane's AFM or POH supplies the actual speed, configuration, and sequence and takes precedence if guidance conflicts.
 
 **INSTRUCTOR:**
 
@@ -312,6 +318,8 @@ What is the limit of emergency authority?
 **LEARNER:**
 
 Section ninety-one point three keeps Elena responsible for the airplane. In an in-flight emergency requiring immediate action, she may deviate from Part 91 only as far as that emergency requires. If the Administrator requests a written report of a deviation under that authority, she must send it.
+
+The AIM says to request assistance immediately and recognizes that pilots may hesitate to report an urgency condition. Elena asks for help while she can still use it, despite fear of a possible FAA follow-up.
 
 **INSTRUCTOR:**
 

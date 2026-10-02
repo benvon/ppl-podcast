@@ -1,7 +1,7 @@
 # Emergencies and Abnormal Situations
 
 **Episode:** 23
-**Version:** 0.1.1
+**Version:** 0.1.2
 
 ## In this episode
 
@@ -24,7 +24,7 @@ The spoken lesson uses a fictional daytime VFR flight in a single-engine trainer
 | Emergency descent ACS task | FAA standard | [Emergency descent ACS task](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=59) | PA.IX.A.K1-K4, R1-R4, S1-S8, printed p. 51 (PDF p. 59) |
 | Emergency approach and landing ACS task | FAA standard | [Emergency approach and landing ACS task](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60) | PA.IX.B.K1-K6, R1-R6, S1-S6, printed p. 52 (PDF p. 60) |
 | Systems and equipment malfunctions ACS task | FAA standard | [Systems and equipment malfunctions ACS task](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61) | PA.IX.C.K1-K5, R1-R4, S1-S2, printed p. 53 (PDF p. 61) |
-| Emergency equipment and survival ACS task | FAA standard | [Emergency equipment and survival ACS task](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62) | PA.IX.D.K1-K5, R1-R3, S1-S3, printed pp. 53-54 (PDF pp. 61-62) |
+| Emergency equipment and survival ACS task | FAA standard | [Emergency equipment and survival ACS task](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62) | PA.IX.D.K2-K5, R1-R3, S1-S3, printed p. 54 (PDF p. 62) |
 | Manufacturer procedure boundary and landing types | FAA guidance | [Manufacturer procedure boundary and landing types](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1) | Chapter 18, Introduction and Types of Emergency Landings, printed p. 18-1 (PDF p. 1) |
 | Best glide and minimum sink | FAA guidance | [Best glide and minimum sink](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/04_afh_ch3.pdf#page=23) | Chapter 3, Glides, best glide and minimum sink, printed p. 3-23 (PDF p. 23) |
 | Selecting terrain and controlling an emergency approach | FAA guidance | [Selecting terrain and controlling an emergency approach](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=4) | Chapter 18, Terrain Selection, Airplane Configuration, and Approach, printed p. 18-4 (PDF p. 4) |

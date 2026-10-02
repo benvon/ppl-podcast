@@ -1,0 +1,537 @@
+# Night Operations
+
+**Version:** 0.1.1 — draft
+**Target runtime:** 30–40 minutes
+**Speakers:** Instructor, Learner, Announcer
+
+## [00:00] Opening
+
+**INSTRUCTOR:**
+
+Elena and Jonah want to fly a familiar route after sunset. In daylight, Elena can recognize fields, roads, and the ground beneath the approach. Tonight, she will have fewer of those references. We will prepare the pilot, airplane, route, and airport before departure, then follow the flight toward a lighted runway surrounded by dark terrain. The question throughout is what evidence Elena needs before she continues, descends, or chooses another landing option.
+
+## [00:30] Disclaimer
+
+**INSTRUCTOR:**
+
+This podcast uses AI-assisted production. The voices in this episode are AI-generated, not human speakers. Each episode's factual content is reviewed against cited source material before audio production, but it is not reviewed by a certificated flight instructor. This podcast is not flight or maneuver instruction. Always use current FAA information, applicable regulations, and your aircraft's approved documents.
+
+## [01:00] Podcast introduction
+
+**ANNOUNCER:**
+
+Welcome to PPL Study Podcast, a study companion for U.S. private-pilot airplane learners, grounded in FAA handbooks and standards. Come along as we talk through the Pilot’s Handbook of Aeronautical Knowledge and the Airman Certification Standards.
+
+In this episode: prepare for night flight, keep the outside scene connected to reliable references, and recognize when an approach needs to change.
+
+## [01:30] What the ACS is asking you to connect
+
+**ANNOUNCER:**
+
+What the ACS is asking you to connect.
+
+**INSTRUCTOR:**
+
+The Private Pilot Airman Certification Standards call this task Night Operations. It connects the physiology of vision with lighting, personal and airplane equipment, navigation, chart reading, taxiing, traffic position lights, and visual illusions. Its risk elements include collisions, disorientation, runway incursions, weather, inoperative equipment, and the difference between night currency and proficiency.
+[Source: sources.yaml#acs-night]
+
+Our operational question is whether Elena has enough reliable information to manage the next part of this flight. We will begin on the ground, while she can choose a different departure time. Then we will carry the same preparation into taxi, climb, navigation, and approach. The airport names, weather developments, and decisions are fictional teaching examples.
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+They have flown the route before. What needs to change for tonight?
+
+**INSTRUCTOR:**
+
+The airplane responds to the same control inputs, but the pilot has fewer outside references. The Airplane Flying Handbook explains that night operations add limitations involving vision, equipment, and emergency situations. Familiarity with a daytime route helps Elena prepare, while tonight's pilot readiness, weather, lighting, and landing options still need their own review.
+[Source: sources.yaml#afh-night-introduction]
+
+Elena is a private pilot flying a fictional single-engine land trainer with a standard U.S. airworthiness certificate. She plans a personal VFR trip with Jonah from Meadow Ridge to Harbor Field. Pine Valley is a prepared alternative before the final part of the route. Harbor has a runway with pilot-controlled lights and a four-light precision approach path indicator, or PAPI. We will explain how those help before Elena needs them.
+[Claim type: teaching synthesis]
+
+For airplane-specific speeds, electrical-system behavior, limitations, and checklist actions, Elena uses the current AFM or POH for the airplane she will fly. The Airplane Flying Handbook's emergency guidance is general; the manufacturer's recommendations take precedence if they conflict with that guidance.
+[Source: sources.yaml#afh-manufacturer]
+
+## [04:00] Decide whether the pilot is ready
+
+**ANNOUNCER:**
+
+Decide whether the pilot is ready.
+
+**INSTRUCTOR:**
+
+Elena begins with the expected departure and arrival times. Three different time questions matter. When must the position lights be on? When is the flight within the regulatory definition of night? When does carrying Jonah require the specified recent night takeoffs and landings? Keeping those questions separate prevents one answer from being used for all three.
+[Claim type: teaching synthesis]
+
+For our flight outside Alaska, section ninety-one point two zero nine requires lighted position lights from sunset to sunrise. Position lights are the steady lights that help another pilot recognize an aircraft's orientation. The same section has a separate Alaska condition, linked in the show notes.
+[Source: sources.yaml#ecfr-lights]
+[Source: sources.yaml#afh-position-lights]
+
+Section one point one defines night as the time from the end of evening civil twilight to the beginning of morning civil twilight, as published in the Air Almanac and converted to local time. Evening civil twilight continues for a time after sunset. Elena checks the published times for the place and date of the flight instead of adding a fixed number of minutes.
+[Source: sources.yaml#afh-night-introduction]
+
+For the ordinary personal flight we are considering, section sixty-one point five seven sets another window. To act as pilot in command of an aircraft carrying persons from one hour after sunset to one hour before sunrise, Elena needs at least three takeoffs and three landings to a full stop within the preceding ninety days, made during that same one-hour-after to one-hour-before window. She must have been the sole manipulator of the flight controls, in the same category, class, and type if a type rating is required. The regulation also contains specific exceptions and simulator provisions; those are linked for further study.
+[Source: sources.yaml#ecfr-currency]
+
+**LEARNER:**
+
+If sunset were six thirty, would landings at six forty satisfy that recent-experience requirement?
+
+**INSTRUCTOR:**
+
+No. In that hypothetical evening, the specified window would begin at seven thirty. A landing ten minutes after sunset would occur before the window used for this requirement. Jonah's flight must be planned with its whole expected duration in mind, including a delay that could carry it into the later window.
+[Source: sources.yaml#ecfr-currency]
+
+Elena has the required recent takeoffs and full-stop landings. Now she asks a different question: when did she last practice a night cross-country, read charts under dim lighting, or land at an airport surrounded by darkness? The ACS explicitly treats currency versus proficiency as a risk-management subject.
+[Source: sources.yaml#acs-night]
+
+**LEARNER:**
+
+So a qualifying landing record leaves some preparation questions unanswered.
+
+**INSTRUCTOR:**
+
+Yes. The Airplane Flying Handbook calls for pilots to be current and proficient and to receive training in night-flight risks. Elena's recent flight with her instructor included night navigation, instrument cross-checks, and arrivals at the airports on this route. If that experience were missing, she could prepare with her instructor first or make this trip in daylight.
+[Source: sources.yaml#afh-night-summary]
+
+She also considers her physical readiness. The PHAK explains that fatigue during night flight slows responses and can cause a pilot to fixate on one part of a situation. In our scenario, Elena is rested and has no illness or impairment to resolve. If she were exhausted after a long workday, moving the departure to daylight would not by itself fix the fatigue; she would need rest before flying.
+[Source: sources.yaml#phak-fatigue]
+
+## [07:30] Prepare eyes and cockpit for darkness
+
+**ANNOUNCER:**
+
+Prepare eyes and cockpit for darkness.
+
+**INSTRUCTOR:**
+
+Before walking out to the airplane, Elena reduces unnecessary bright-light exposure. Imagine leaving a bright room and stepping into a dark yard. At first, objects are difficult to distinguish. As the eyes adapt, more of the scene becomes visible. The PHAK says the rods can take approximately thirty minutes to fully adapt to darkness, and a bright light can severely compromise that adaptation.
+[Source: sources.yaml#phak-adaptation]
+
+**LEARNER:**
+
+What are the rods doing differently from the rest of the eye?
+
+**INSTRUCTOR:**
+
+At the back of the eye, the retina contains light-sensitive cells called rods and cones. Cones work well for fine detail and color in bright light. They are concentrated near the center of the visual field. Rods are much more sensitive in dim light and provide much of our peripheral night vision, but they do not discern color. The very center has few rods, so directly staring at a dim object can make it harder to detect.
+[Source: sources.yaml#phak-vision]
+
+The PHAK calls that low-light central limitation the night blind spot. Looking about five to ten degrees away from a dim object places its image where rods can detect it more effectively.
+[Source: sources.yaml#phak-night-scan]
+
+The pilot continues moving the gaze between nearby viewing points rather than staring at one spot. The PHAK's night-scanning guidance limits each stop to about two or three seconds.
+[Source: sources.yaml#phak-scan-stops]
+
+Elena can apply that to a faint light ahead: look slightly above or beside it, let the surrounding scene register, then shift to another viewing point. She still shares attention between the outside scan and the instruments. Practice with her instructor helps make that movement deliberate without letting the panel or one distant light occupy all her attention.
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Does she make every cockpit light red?
+
+**INSTRUCTOR:**
+
+She needs lighting that preserves outside vision while allowing reliable reading. The Airplane Flying Handbook warns that red lighting distorts chart colors and says dim white lighting should be available for map and instrument reading.
+[Source: sources.yaml#afh-lighting-vision]
+
+The PHAK similarly recommends low cockpit illumination and a dim white flashlight for maps, charts, and checklists, kept out of anyone's eyes. Elena checks that she can read the chart, distinguish its colors, find a checklist, and interpret each instrument at the chosen brightness.
+[Source: sources.yaml#phak-cockpit-lighting]
+
+She dims the electronic chart display too. If the screen reflects in the windscreen, she adjusts it before taxiing. Her reliable flashlight and spare batteries are within reach; the Airplane Flying Handbook recommends that preparation and organizing equipment before taxi.
+[Source: sources.yaml#afh-personal-equipment]
+
+**LEARNER:**
+
+Would choosing a higher altitude always improve the night plan?
+
+**INSTRUCTOR:**
+
+Altitude can help a route plan, but the pilot's physiology remains part of the choice. The PHAK explains that reduced oxygen can degrade rod sensitivity and night vision, with measurable decline above four thousand feet pressure altitude without supplemental oxygen. It also identifies fatigue as a compounding factor. That is physiological guidance, not a new regulatory oxygen threshold.
+[Source: sources.yaml#phak-oxygen]
+
+Elena chooses altitude using terrain, obstacles, weather, airplane performance, and her own capability together. She does not lower a necessary terrain margin to solve a vision concern. If the route cannot be flown with appropriate margins and preparation, she changes the route, timing, or flight plan before departure.
+[Claim type: teaching synthesis]
+
+## [11:00] Verify the airplane and its lights
+
+**ANNOUNCER:**
+
+Verify the airplane and its lights.
+
+**INSTRUCTOR:**
+
+Elena now asks what must work for this airplane and operation. For the powered civil trainer with a standard U.S. airworthiness certificate in our scenario, section ninety-one point two zero five adds equipment for night VFR to the daytime VFR equipment. Its night list includes approved position lights, the specified approved anticollision light system, an adequate electrical-energy source for installed electrical and radio equipment, and one spare set of fuses or three spares of each kind required, accessible in flight. If the aircraft is operated for hire, it also requires one electric landing light.
+[Source: sources.yaml#ecfr-equipment]
+
+**LEARNER:**
+
+This is a personal flight. How does Elena decide about a failed landing light?
+
+**INSTRUCTOR:**
+
+The for-hire condition in that particular requirement matters, but it cannot settle the airplane's entire equipment decision. Elena must determine which requirements and approved airplane information apply to the actual installation. The ACS asks the applicant to identify and mitigate risks from inoperative equipment during night operations.
+[Source: sources.yaml#acs-night]
+
+In our scenario, Elena requires a working landing light as part of her own night plan and will delay this trip if it fails the preflight check.
+[Claim type: teaching synthesis]
+
+She checks the airplane's lights and personal equipment before flight. The Airplane Flying Handbook says to verify light operation during preflight and inspect the ramp with a flashlight, because chocks, holes, and other obstacles are harder to see at night. That gives her a chance to resolve a discrepancy while she is still parked.
+[Source: sources.yaml#afh-preflight]
+
+Using the lights is another question. Section ninety-one point two zero nine says an aircraft equipped with an anticollision light system must operate with those lights lighted, but the pilot in command may turn them off when operating conditions make that action in the interest of safety. That safety provision applies to anticollision lights. It does not remove our sunset-to-sunrise position-light requirement.
+[Source: sources.yaml#ecfr-lights]
+
+Elena learns which switches control each light and how the electrical system supports them. If a system fails in flight, she will use this airplane's checklist and reassess the arrival. A flashlight can help her read an instrument; it does not establish that every other electrical system remains available.
+[Claim type: teaching synthesis]
+
+## [14:00] Build a route with a usable alternative
+
+**ANNOUNCER:**
+
+Build a route with a usable alternative.
+
+**INSTRUCTOR:**
+
+The daytime direct route crosses a large dark lake before Harbor. Elena chooses a longer route over land that passes nearer Pine Valley. The Airplane Flying Handbook identifies two concerns with a night water crossing: an engine failure may require ditching, and limited lighting can make the horizon difficult to identify. She weighs those concerns before choosing the route.
+[Source: sources.yaml#afh-navigation]
+
+For this scenario, she marks terrain, obstacles, a suitable planned altitude, recognizable lighted checkpoints, and airports she could use. She prepares the navigation equipment on the ground and verifies the stored route against the current chart. The Airplane Flying Handbook recommends loading necessary GPS waypoints before flight, checking the database for accuracy, and using radio navigation and communication resources to support night navigation.
+[Source: sources.yaml#afh-preflight]
+
+**LEARNER:**
+
+What makes Pine Valley a usable alternative tonight?
+
+**INSTRUCTOR:**
+
+Elena checks its runway, lighting, weather, and arrival information for the time she might reach it. She does the same for Harbor. The Airplane Flying Handbook recommends checking the availability and status of destination lighting through charts, the Chart Supplement, and pertinent NOTAMs. A facility shown in a publication still needs its current status checked.
+[Source: sources.yaml#afh-airport-status]
+
+For Harbor, Elena records the lighting frequency, runway served, activation method, and operating details from the Chart Supplement. The AIM identifies that publication as the source of pilot-controlled lighting types, runways, frequencies, and nonstandard instructions.
+[Source: sources.yaml#aim-pcl]
+
+She verifies the PAPI's status and any published limitations. She also studies the airport layout and surrounding terrain so she can identify the intended runway, remain clear of obstacles, and explain a go-around before starting the approach.
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Where does the weather decision enter?
+
+**INSTRUCTOR:**
+
+Before takeoff. The Airplane Flying Handbook calls for a thorough review of reports and forecasts, with particular attention to wind and the temperature-dew-point spread. A narrow spread may indicate the possibility of fog. At night, wind effects can also be harder to recognize from the outside scene.
+[Source: sources.yaml#afh-weather]
+
+In our teaching forecast, Harbor is expected to remain suitable around arrival, but later fog is possible. Pine Valley is expected to remain clearly visual. Elena selects an earlier departure and a decision point before the final leg. If updated Harbor weather or the outside scene no longer supports her planned arrival margins, she will land at Pine Valley while it remains suitable. If the preflight evidence already fails those margins, she will postpone departure.
+[Claim type: teaching synthesis]
+
+For this VFR airplane flight at night, section ninety-one point one five one requires enough fuel, considering wind and forecast weather, to reach the first point of intended landing and then fly at normal cruising speed for at least forty-five minutes. Elena computes that requirement for the actual route and airplane.
+[Source: sources.yaml#ecfr-fuel]
+
+She also allows fuel for the longer route, a possible go-around, and use of Pine Valley. Those are planning choices for this scenario, not a claim that forty-five minutes automatically provides enough margin for every night trip. She wants the alternative to remain practical when she needs it.
+[Claim type: teaching synthesis]
+
+## [18:00] Know what the airport lights will tell you
+
+**ANNOUNCER:**
+
+Know what the airport lights will tell you.
+
+**INSTRUCTOR:**
+
+Before leaving the ground, Elena rehearses the Harbor arrival using its verified airport information. The first job is to locate the airport. Alternating white and green beacon flashes identify a lighted land airport. A military airport uses two quick white flashes between the green flashes. That pattern helps identify the kind of facility; Elena still compares its location with the route and chart.
+[Source: sources.yaml#aim-beacons]
+
+Next, she identifies the runway itself. The AIM says runway edge lights outline the runway. They are white, with yellow forming a caution zone on instrument runways over the last two thousand feet or half the runway length, whichever is less. Lights at the runway end show green outward toward an arriving airplane and red toward an airplane on the runway.
+[Source: sources.yaml#aim-runway-lights]
+
+Taxiway edge lights are blue. Where taxiway centerline lights are installed, they are steady green. Elena connects each color with its location and pattern rather than selecting a surface from color alone. At Harbor, she expects the runway's two parallel rows in the orientation shown in the airport information.
+[Source: sources.yaml#aim-taxi-lights]
+
+**LEARNER:**
+
+Does the same frequency always handle radio calls and pilot-controlled lighting?
+
+**INSTRUCTOR:**
+
+No. Many airports use the common traffic advisory frequency, or CTAF, for lighting, but the AIM says other frequencies may be used. The Chart Supplement supplies the actual activation frequency and describes systems with different specifications. Elena has verified Harbor's system before departure.
+[Source: sources.yaml#aim-pcl]
+
+For an FAA-approved system, seven microphone clicks within five seconds select the highest available intensity. Five or three clicks can select lower settings where the system provides them. The AIM recommends initially using seven clicks, then adjusting if needed. Some lights may be independently controlled, and lower settings can turn certain runway end identifier lights off. Elena follows the published description for Harbor and verifies the response outside.
+[Source: sources.yaml#aim-pcl]
+
+The standard lighting period runs for fifteen minutes from the most recent activation, subject to the AIM's specified exception for certain runway end identifier lights. The AIM advises activating the system as directed when overflying the intended airport or just before the final approach segment, even when the lights are already on. That renews the period when the airplane is close enough to activate the receiver.
+[Source: sources.yaml#aim-pcl]
+
+**LEARNER:**
+
+And the PAPI answers a different question from the runway lights?
+
+**INSTRUCTOR:**
+
+Yes. The runway lights help Elena identify and align with the runway. The precision approach path indicator supplies a visual indication of height relative to its approach path. Picture Harbor's four PAPI lights in one row beside the runway. In the standard four-light picture, two white and two red indicate the path; more white indicates above it, and more red indicates below it. The show notes link the labeled FAA PAPI figure so you can inspect those combinations.
+[Source: sources.yaml#faa-papi-colors]
+
+The AIM says to begin descent using the PAPI only after visually aligning with the runway. Its visual path typically provides safe obstruction clearance within ten degrees on either side of the extended runway centerline and out to three point four nautical miles from the threshold. Local limitations can reduce that area or offset the PAPI, and are published in the Chart Supplement or NOTAMs. Seeing its lights farther away does not extend that protection.
+[Source: sources.yaml#aim-papi]
+
+Elena has now prepared a sequence she can use in flight: confirm the airport's position, activate and identify the correct runway lighting, remain on the planned arrival path, then use the PAPI within its verified limits while cross-checking altitude and airspeed. If the expected lights or references are missing, she will preserve altitude and another landing option while resolving the problem.
+[Claim type: teaching synthesis]
+
+## [22:30] Taxi and climb with fewer outside references
+
+**ANNOUNCER:**
+
+Taxi and climb with fewer outside references.
+
+**INSTRUCTOR:**
+
+Elena and Jonah are now at Meadow Ridge. She has checked the weather and lighting status again, the airplane is ready, and her cockpit materials are organized. Before starting, she carefully scans the propeller area. The Airplane Flying Handbook says a beacon helps alert people but does not replace that methodical check.
+[Source: sources.yaml#afh-taxi]
+
+She taxis slowly and compares her position with the airport diagram, signs, markings, and instrument indications. The handbook says those references should reinforce the expected taxi route and departure runway. If conflicting information or doubt exists, the pilot should not proceed with taxi or takeoff.
+[Source: sources.yaml#afh-taxi]
+
+**LEARNER:**
+
+Suppose the lights look familiar but she cannot place the next intersection.
+
+**INSTRUCTOR:**
+
+She stops in a safe position and resolves where she is before continuing. On a controlled airport, that may include asking ground control for help. In this scenario, she has time and space to check the diagram while stopped instead of making another turn to see whether it feels familiar.
+[Claim type: teaching synthesis]
+
+At the runway, she verifies its identity and direction. In the climb, the outside view becomes darker than the lighted pavement she has just left. The Airplane Flying Handbook calls for greater use of instruments during night takeoff and climb, with checks of airspeed, attitude, and heading and confirmation of a positive climb. Elena has practiced that transition with her instructor and uses this airplane's speeds and checklist.
+[Source: sources.yaml#afh-climb-preparation]
+[Source: sources.yaml#afh-climb]
+
+A separate illusion can occur during rapid acceleration: it may create a sensation of excessive nose-up attitude. The PHAK calls that the somatogravic illusion. A pilot who responds by pushing the nose down can place the airplane in danger. Elena checks the flight instruments instead of changing attitude merely to match that sensation.
+[Source: sources.yaml#phak-acceleration]
+
+## [25:00] Compare the flight with the prepared route
+
+**ANNOUNCER:**
+
+Compare the flight with the prepared route.
+
+**INSTRUCTOR:**
+
+In cruise, Elena compares the charted checkpoints and electronic navigation with the lights outside. The Airplane Flying Handbook says night cross-country pilots should continuously monitor position, time estimates, and fuel used, and use available navigation aids. She keeps checking whether the route, remaining fuel, and prepared alternative still fit the flight.
+[Source: sources.yaml#afh-progress]
+
+**LEARNER:**
+
+Can distant lights always provide a horizon?
+
+**INSTRUCTOR:**
+
+No. The PHAK explains that stars, city lights, and shoreline lights can create a false horizon when the natural horizon is unclear. It also describes autokinesis: a stationary light may appear to move when stared at against a dark background. Continuing a visual scan helps prevent that fixation. Elena checks her attitude against reliable instruments when the apparent outside horizon is uncertain.
+[Source: sources.yaml#phak-night-illusions]
+[Source: sources.yaml#phak-disorientation]
+
+She also watches for traffic. Aircraft position lights are arranged with red on the aircraft's left wingtip, green on its right, and white at the tail. Picture another airplane heading toward Elena: its left wing lies on her right, so its red light appears on her right and its green light on her left. That combination can indicate approaching traffic. The colors describe that other aircraft's orientation; Elena continues assessing its position and separation rather than treating one color as a complete traffic answer.
+[Source: sources.yaml#afh-position-lights]
+
+At the prepared decision point, she checks Harbor's updated weather. In our main scenario, Harbor remains within the arrival margins she selected, and Pine Valley remains a suitable alternative. She continues toward Harbor with both choices still available.
+[Claim type: teaching synthesis]
+
+Now consider a different result at that same decision point. Suppose lights toward Harbor fade and develop halos. The Airplane Flying Handbook says clouds and visibility restrictions are difficult to see at night; disappearing ground lights can signal restricted visibility, and halos around lights can indicate ground fog. Looking down through a layer can also make visibility seem better than the horizontal view through it during a landing approach.
+[Source: sources.yaml#afh-navigation]
+
+**LEARNER:**
+
+If she can still see some ground lights, would descending give her a better look?
+
+**INSTRUCTOR:**
+
+Her plan already identifies terrain clearance and a suitable alternative. In this variation, she uses the changed evidence to turn toward Pine Valley while still clear of cloud and terrain, rather than descend to investigate Harbor. The PHAK advises early action toward better weather when night conditions prevent maintaining the planned altitude. Elena verifies Pine Valley's current conditions and arrival information as she makes that change.
+[Source: sources.yaml#phak-night-route]
+
+Return to the main flight, where the updated weather continues to support Harbor. That permits us to examine the approach without adding fog to the arrival.
+[Claim type: teaching synthesis]
+
+## [29:00] Use the prepared arrival over dark terrain
+
+**ANNOUNCER:**
+
+Use the prepared arrival over dark terrain.
+
+**INSTRUCTOR:**
+
+Elena confirms Harbor's location against her prepared route and activates its lights on the verified frequency. The expected two runway-edge rows appear in the expected orientation. A line of road lights nearby could resemble a runway, so she checks the whole airport layout before selecting the intended surface. The PHAK specifically warns that road lights and even lights on moving trains can be mistaken for runway or approach lights.
+[Source: sources.yaml#phak-landing-illusions]
+
+She completes the before-landing preparation with time to spare. The Airplane Flying Handbook advises identifying the runway threshold and edge lights, maintaining the airport lights in sight through the approach, and depending more on the altimeter and airspeed indicator because distance, height, and speed are harder to judge at night.
+[Source: sources.yaml#afh-approach]
+
+**LEARNER:**
+
+The runway is clearly visible. What could still make the descent difficult?
+
+**INSTRUCTOR:**
+
+The runway lights are surrounded by dark fields. Without intervening ground features, Elena has fewer cues for judging height and distance. The PHAK explains that featureless terrain can create an impression of being higher than the airplane actually is, encouraging a lower approach.
+[Source: sources.yaml#phak-featureless]
+
+The Airplane Flying Handbook calls the arrival over unlighted terrain or water a black-hole approach and warns that it can end short of the runway. It recommends using available guidance and flight instruments to support orientation and a normal approach.
+[Source: sources.yaml#afh-black-hole]
+
+A narrow runway can also seem farther below than a pilot expects from experience with a wider runway. The PHAK says a narrower-than-usual runway can create the illusion of excessive height, particularly where runway length-to-width relationships are comparable. An upsloping runway or upsloping terrain can produce a similar impression. Elena studied Harbor's dimensions, slope, and surrounding terrain before departure so those expectations can be checked against actual references.
+[Source: sources.yaml#phak-runway-illusions]
+
+**LEARNER:**
+
+How does she check whether that impression is changing her approach?
+
+**INSTRUCTOR:**
+
+Once visually aligned with the intended runway and within the verified PAPI coverage, she compares its indication with her established approach. In our scenario, the four-light PAPI shows three red and one white: below its path. That tells her she is already below the PAPI's approach path, even though the dark surroundings make her feel too high. Descending farther to satisfy that impression would take her farther below the indicated path.
+[Source: sources.yaml#faa-papi-colors]
+
+She also cross-checks altitude and airspeed. The Airplane Flying Handbook recommends available visual slope guidance and frequent reference to the altimeter to prevent landing errors.
+[Source: sources.yaml#afh-landing-prevention]
+
+If position relative to the runway or altitude is in doubt, the handbook says to execute a go-around.
+[Source: sources.yaml#afh-black-hole]
+
+For this teaching arrival, Elena finds that restoring a stable approach would require more correction than she is prepared to make. She goes around using the airplane's procedure and the terrain-aware path she studied before departure. Once the climb is established and workload permits, she can decide whether another approach is appropriate or Pine Valley provides the better landing option. She has preserved that choice in her route and fuel plan.
+[Claim type: teaching synthesis]
+
+The go-around returns her to a phase with fewer outside references, so she again uses the instrument cross-check she prepared for departure. Repeating an approach without resolving the uncertainty would leave the same problem waiting on the next final.
+[Claim type: teaching synthesis]
+
+## [33:00] Protect a landing option if equipment fails
+
+**ANNOUNCER:**
+
+Protect a landing option if equipment fails.
+
+**INSTRUCTOR:**
+
+Before closing the flight, consider how the preparation helps with a different problem. Suppose the trainer's single alternator fails during cruise. The Airplane Flying Handbook says that loss of a single generating source may leave limited battery power; shed nonessential electrical loads and plan to land at the nearest suitable airport. Elena uses the charging-system checklist for this airplane and identifies what she needs for the arrival while it is still available.
+[Source: sources.yaml#afh-electrical]
+
+**LEARNER:**
+
+At night, what makes the landing option more urgent?
+
+**INSTRUCTOR:**
+
+Her plan uses cockpit lighting, navigation equipment, radio communication, and airport lighting activation. She checks which of those depend on this airplane's remaining electrical power. Her flashlight is already accessible. Pine Valley's prepared runway, lighting, and weather information lets her consider a landing without first assembling an entirely new plan in darkness.
+[Claim type: teaching synthesis]
+
+Now consider a complete engine failure instead. The Airplane Flying Handbook's night guidance begins with positive control and establishing best glide configuration and airspeed. It includes attempting the appropriate cause check, announcing the emergency, and staying on the existing frequency when already in radio contact unless instructed otherwise. Elena uses the particular airplane's emergency checklist while protecting controlled flight and a reachable landing area.
+[Source: sources.yaml#afh-night-emergency]
+
+**LEARNER:**
+
+Would she simply choose the darkest area below?
+
+**INSTRUCTOR:**
+
+The handbook's recommendation to turn toward an unlighted area is conditional: the nearby terrain must be known and suitable for a forced landing. Darkness by itself gives Elena neither of those facts. A dark area could be water, trees, or uneven terrain. The route study improves her knowledge, but the actual choice still depends on what she can reach and what she knows about it from the present position.
+[Source: sources.yaml#afh-night-emergency]
+
+Episode 23, *Emergencies and Abnormal Situations*, developed the connection among control, best glide, reachable terrain, checklist use, and asking for help. At night, fewer visible landing-site details make the preparation more valuable. Elena cannot guarantee an off-airport landing site from a chart; she can choose a route that preserves better options and practice the airplane-specific response with her instructor.
+[Claim type: teaching synthesis]
+
+## [36:00] Retrieval review
+
+**ANNOUNCER:**
+
+Retrieval review.
+
+**INSTRUCTOR:**
+
+Elena is planning to carry Jonah after dark. What are the three timing questions she checks?
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+For this flight outside Alaska, the position lights must be lighted from sunset to sunrise.
+[Source: sources.yaml#ecfr-lights]
+
+The regulatory definition of night runs from the end of evening civil twilight to the beginning of morning civil twilight, using the published Air Almanac times converted to local time.
+[Source: sources.yaml#afh-night-introduction]
+
+For the ordinary personal flight we discussed, acting as pilot in command while carrying persons between one hour after sunset and one hour before sunrise requires three takeoffs and three full-stop landings in the preceding ninety days, performed in that same time window. Elena must have been sole manipulator of the controls in the same category, class, and type if a type rating is required. The full regulation provides the specific exceptions and simulator provisions.
+[Source: sources.yaml#ecfr-currency]
+
+**INSTRUCTOR:**
+
+What does she check after establishing that recent experience?
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Whether she is proficient for this night flight. The ACS treats currency versus proficiency as a risk, and the Airplane Flying Handbook calls for night training, currency, and proficiency. Her ability to navigate, manage the cockpit, use instruments, and handle the arrival must fit the flight she is planning.
+[Source: sources.yaml#acs-night]
+[Source: sources.yaml#afh-night-summary]
+
+**INSTRUCTOR:**
+
+How does the eye's low-light response change her preparation and scan?
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Rods help detect dim objects, while cones provide detail and color in bright light. The center has few rods, creating the night blind spot. She looks slightly off center to detect a dim object and continues shifting her gaze rather than staring.
+[Source: sources.yaml#phak-vision]
+[Source: sources.yaml#phak-night-scan]
+
+The rods can take about thirty minutes to adapt fully, and bright light can compromise that adaptation. She allows time and controls unnecessary bright exposure. She keeps cockpit lighting low enough to support outside vision while retaining readable instruments and dim white light for chart reading.
+[Source: sources.yaml#phak-adaptation]
+[Source: sources.yaml#phak-cockpit-lighting]
+
+**INSTRUCTOR:**
+
+What did she prepare for Harbor before takeoff?
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+The lighting's availability and current status, using airport publications and NOTAMs. For pilot-controlled lighting, the Chart Supplement gives the actual frequency and system instructions; the frequency need not be the CTAF. She verifies that the expected lights respond and renews the standard activation period as directed near the arrival.
+[Source: sources.yaml#afh-airport-status]
+[Source: sources.yaml#aim-pcl]
+
+**INSTRUCTOR:**
+
+The runway is lighted, but the surrounding terrain is dark. What checks support the approach?
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Featureless terrain can make the airplane seem too high and encourage a low approach. She cross-checks altitude and uses available visual approach guidance. If runway position or altitude is in doubt, the Airplane Flying Handbook says to go around.
+[Source: sources.yaml#phak-featureless]
+[Source: sources.yaml#afh-black-hole]
+[Source: sources.yaml#afh-landing-prevention]
+
+She begins descent using the PAPI only after visually aligning with the runway. Its usual obstruction-clearance area extends ten degrees either side of the extended runway centerline and three point four nautical miles from the threshold, with published local limits or offsets checked. Seeing it farther away does not expand that area.
+[Source: sources.yaml#aim-papi]
+
+**INSTRUCTOR:**
+
+What changes the decision if lights fade on the route or an emergency removes a landing option?
+[Claim type: teaching synthesis]
+
+**LEARNER:**
+
+Fading ground lights or halos can signal reduced visibility or fog at night. Elena uses the prepared better-weather alternative early instead of descending toward uncertain terrain to investigate.
+[Source: sources.yaml#afh-navigation]
+[Source: sources.yaml#phak-night-route]
+
+With engine failure, positive control and best glide come first. The handbook's unlighted-area guidance applies when the terrain is known and suitable; darkness alone does not identify a landing site.
+[Source: sources.yaml#afh-night-emergency]
+
+**INSTRUCTOR:**
+
+Elena's route gives each of those questions a place in the sequence: prepare on the ground, compare the flight with the plan, verify the airport, and use a go-around or alternative when the evidence no longer supports continuing. That is the decision chain to explain and practice with your instructor.
+[Claim type: teaching synthesis]
+
+## [40:00] Outro
+
+**ANNOUNCER:**
+
+Thanks for listening to PPL Study Podcast. For show notes, source links, and more study material, visit pplstudyguide.com. Send feedback or source corrections to feedback@pplstudyguide.com. The episodes and the research behind them are available for review as an open-source work on GitHub. Until next time, study the sources and keep learning.

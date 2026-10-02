@@ -1,0 +1,335 @@
+episode_id: core-24
+links:
+  - id: visual-papi
+    kind: supplemental
+    text: PAPI visual aid — PHAK Figure 14-30, printed page 14-17
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14.pdf#page=17
+  - id: visual-night-blind-spot
+    kind: supplemental
+    text: Night blind spot — PHAK Figure 17-17, printed page 17-22
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+  - id: study-acs-night
+    text: ACS Night Operations knowledge and risk outcomes
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+    locator: PA.XI.A.K1-K8 and R1-R7, Night Operations, printed p. 63 (PDF p. 71)
+    source_id: acs-night
+    claim_ids:
+      - acs-night-knowledge
+      - acs-night-risk
+  - id: study-afh-night-introduction
+    text: "Night flying: visual changes and civil twilight"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+    locator: Chapter 11, Introduction, first paragraph and paragraph explicitly quoting 14 CFR 1.1 Night definition, printed p. 11-1 (PDF p. 1)
+    source_id: afh-night-introduction
+    claim_ids:
+      - night-visual-limitations
+      - civil-twilight-context
+      - night-definition
+  - id: study-afh-manufacturer
+    text: Emergency guidance and airplane-specific procedures
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    locator: Chapter 18, Introduction, printed p. 18-1 (PDF p. 1)
+    source_id: afh-manufacturer
+    claim_ids:
+      - manufacturer-procedures
+  - id: study-ecfr-lights
+    text: Position-light timing and anticollision-light use
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.209
+    locator: 91.209(a)(1), Alaska parenthetical, and (b)
+    source_id: ecfr-lights
+    claim_ids:
+      - position-light-time
+      - anticollision-use
+  - id: study-ecfr-night
+    text: Night definition — current 14 CFR 1.1
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-A/part-1/section-1.1
+    kind: supplemental
+  - id: study-ecfr-currency
+    text: Recent experience for carrying persons in the specified night window
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+    locator: 61.57(b)(1)(i)-(ii), with (b)(2) and (e) acknowledgment
+    source_id: ecfr-currency
+    claim_ids:
+      - night-recent-experience
+  - id: study-afh-night-summary
+    text: Night training, currency and proficiency
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+    locator: Chapter 11, Chapter Summary, printed p. 11-14 (PDF p. 14)
+    source_id: afh-night-summary
+    claim_ids:
+      - night-proficiency
+  - id: study-phak-fatigue
+    text: Fatigue and fixation during night flight
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+    locator: Chapter 17, Self-Imposed Stress—Exhaustion, printed p. 17-25 (PDF p. 25)
+    source_id: phak-fatigue
+    claim_ids:
+      - night-fatigue
+  - id: study-phak-adaptation
+    text: Dark adaptation
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+    locator: Chapter 17, Dark Adaptation, printed p. 17-23 (PDF p. 23)
+    source_id: phak-adaptation
+    claim_ids:
+      - dark-adaptation
+  - id: study-phak-vision
+    text: Rods, cones and the human eye
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+    locator: Chapter 17, Human eye and Vision Types, printed p. 17-20 (PDF p. 20)
+    source_id: phak-vision
+    claim_ids:
+      - rod-cone-functions
+  - id: study-phak-night-scan
+    text: Night blind spot and off-center viewing
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+    locator: Chapter 17, Night Vision—Night Blind Spot; Scanning Techniques, printed p. 17-22 (PDF p. 22)
+    source_id: phak-night-scan
+    claim_ids:
+      - night-blind-spot
+  - id: study-phak-scan-stops
+    text: Night scanning and viewing duration
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+    locator: Chapter 17, Scanning Techniques and Figure 17-18, printed p. 17-23 (PDF p. 23)
+    source_id: phak-scan-stops
+    claim_ids:
+      - night-scan-stops
+  - id: study-afh-lighting-vision
+    text: Red chart-lighting limitations
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+    locator: Chapter 11, Factors Affecting Vision—red lighting and dim white light, printed p. 11-4 (PDF p. 4)
+    source_id: afh-lighting-vision
+    claim_ids:
+      - red-chart-colors
+  - id: study-phak-cockpit-lighting
+    text: Readable cockpit and chart lighting
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+    locator: Chapter 17, Night Vision Protection—Flightdeck Lighting, printed p. 17-24 (PDF p. 24)
+    source_id: phak-cockpit-lighting
+    claim_ids:
+      - cockpit-lighting
+  - id: study-afh-personal-equipment
+    text: Flashlight, batteries and cockpit organization
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+    locator: Chapter 11, Pilot Equipment, printed p. 11-5 (PDF p. 5)
+    source_id: afh-personal-equipment
+    claim_ids:
+      - night-personal-equipment
+  - id: study-phak-oxygen
+    text: Oxygen, altitude and night vision
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+    locator: Chapter 17, Night Vision Protection—Oxygen Supply, printed p. 17-24 (PDF p. 24)
+    source_id: phak-oxygen
+    claim_ids:
+      - oxygen-night-vision
+  - id: study-ecfr-equipment
+    text: Night VFR equipment for the stated aircraft scope
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+    locator: 91.205(a), (c)(1)-(6)
+    source_id: ecfr-equipment
+    claim_ids:
+      - night-equipment
+  - id: study-afh-preflight
+    text: Navigation setup and night preflight checks
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    locator: Chapter 11, Preparation and Preflight—charts/GPS, equipment and light checks, ramp inspection, printed p. 11-8 (PDF p. 8)
+    source_id: afh-preflight
+    claim_ids:
+      - night-nav-setup
+      - night-preflight-inspection
+  - id: study-afh-navigation
+    text: Water crossings and reduced-visibility cues
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+    locator: Chapter 11, Orientation and Navigation, printed p. 11-9 (PDF p. 9)
+    source_id: afh-navigation
+    claim_ids:
+      - night-water-crossing
+      - night-weather-cues
+  - id: study-afh-airport-status
+    text: Verify destination lighting status
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+    locator: Chapter 11, Airport and Navigation Lighting Aids—destination availability/status, printed p. 11-6 (PDF p. 6)
+    source_id: afh-airport-status
+    claim_ids:
+      - lighting-status
+  - id: study-afh-weather
+    text: Night preflight weather considerations
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+    locator: Chapter 11, Preparation and Preflight—weather review, printed p. 11-7 (PDF p. 7)
+    source_id: afh-weather
+    claim_ids:
+      - night-weather-planning
+  - id: study-ecfr-fuel
+    text: Night airplane VFR fuel requirement
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+    locator: 91.151(a)(2)
+    source_id: ecfr-fuel
+    claim_ids:
+      - night-fuel
+  - id: study-aim-beacons
+    text: Airport beacon identification
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+    locator: AIM 2-1-9, Airport/Heliport Beacons, color-combinations paragraph (White and Green—Lighted land airport) and Military airport beacons paragraph
+    source_id: aim-beacons
+    claim_ids:
+      - beacon-patterns
+  - id: study-aim-runway-lights
+    text: Runway edge, threshold and end lights
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+    locator: AIM 2-1-4(a)-(c), Runway Edge Light Systems
+    source_id: aim-runway-lights
+    claim_ids:
+      - runway-edge-pattern
+      - threshold-end-colors
+  - id: study-aim-taxi-lights
+    text: Taxiway light colors
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+    locator: AIM 2-1-10(a)-(b), Taxiway Edge and Centerline Lights
+    source_id: aim-taxi-lights
+    claim_ids:
+      - taxi-light-colors
+  - id: study-aim-pcl
+    text: Pilot-controlled lighting frequency, clicks and duration
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+    locator: AIM 2-1-8(a)-(e), Pilot Control of Airport Lighting, including TBL 2-1-3
+    source_id: aim-pcl
+    claim_ids:
+      - pcl-frequency
+      - pcl-activation
+      - pcl-duration
+  - id: study-aim-papi
+    text: PAPI alignment and obstruction-clearance limits
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    locator: AIM 2-1-2(b), Precision Approach Path Indicator
+    source_id: aim-papi
+    claim_ids:
+      - papi-coverage
+  - id: study-faa-papi-colors
+    text: PAPI color indications in FAA lighting criteria
+    url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+    locator: Figure 5-2, PAPI Visual Cues, printed p. 5-3 (PDF p. 43)
+    source_id: faa-papi-colors
+    claim_ids:
+      - papi-color-interpretation
+  - id: study-afh-taxi
+    text: Propeller-area checks and night taxi position
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    locator: Chapter 11, Starting, Taxiing, and Run-up, printed p. 11-8 (PDF p. 8)
+    source_id: afh-taxi
+    claim_ids:
+      - night-propeller-clear
+      - night-taxi-verification
+  - id: study-afh-climb
+    text: Confirm and maintain the night climb
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+    locator: Chapter 11, Takeoff and Climb, printed p. 11-9 (PDF p. 9)
+    source_id: afh-climb
+    claim_ids:
+      - night-climb-crosscheck
+  - id: study-phak-acceleration
+    text: Somatogravic acceleration illusion
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+    locator: Chapter 17, Vestibular Illusions—Somatogravic Illusion, printed p. 17-7 (PDF p. 7)
+    source_id: phak-acceleration
+    claim_ids:
+      - somatogravic-illusion
+  - id: study-afh-progress
+    text: Monitor night cross-country progress
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+    locator: Chapter 11, Training for Night Flight—cross-country monitoring, printed p. 11-7 (PDF p. 7)
+    source_id: afh-progress
+    claim_ids:
+      - night-flight-progress
+  - id: study-phak-night-illusions
+    text: Autokinesis and false horizon
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+    locator: Chapter 17, Night Vision Illusions—Autokinesis and False Horizon, printed p. 17-26 (PDF p. 26)
+    source_id: phak-night-illusions
+    claim_ids:
+      - autokinesis
+      - false-horizon
+  - id: study-phak-disorientation
+    text: Reliable references and instrument proficiency
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    locator: Chapter 17, Prevention of Spatial Disorientation, items 5-8, printed p. 17-10 (PDF p. 10)
+    source_id: phak-disorientation
+    claim_ids:
+      - reliable-instruments
+  - id: study-afh-position-lights
+    text: Aircraft position lights and traffic direction
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+    locator: Chapter 11, Airplane Equipment and Lighting—position light arrangement and traffic direction, printed p. 11-6 (PDF p. 6)
+    source_id: afh-position-lights
+    claim_ids:
+      - position-light-orientation
+  - id: study-phak-night-route
+    text: Night route knowledge and early weather alternative
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+    locator: Chapter 17, Night Landing Illusions—route knowledge and early alternate decision, printed p. 17-27 (PDF p. 27)
+    source_id: phak-night-route
+    claim_ids:
+      - night-route-alternative
+  - id: study-phak-landing-illusions
+    text: Road lights and runway identification
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+    locator: Chapter 17, Night Landing Illusions—ground lights and runway identification, printed p. 17-27 (PDF p. 27)
+    source_id: phak-landing-illusions
+    claim_ids:
+      - misidentified-runway
+  - id: study-afh-approach
+    text: Night approach identification and instrument cross-check
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+    locator: Chapter 11, Approaches and Landings, printed p. 11-10 (PDF p. 10)
+    source_id: afh-approach
+    claim_ids:
+      - night-approach-crosscheck
+  - id: study-phak-featureless
+    text: Featureless terrain and a low-approach illusion
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    locator: Chapter 17, Optical Illusions—Featureless Terrain Illusion, printed p. 17-10 (PDF p. 10)
+    source_id: phak-featureless
+    claim_ids:
+      - featureless-approach
+  - id: study-afh-black-hole
+    text: Black-hole approach and go-around decision
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+    locator: Chapter 11, Featureless Terrain Illusion, printed p. 11-5 (PDF p. 5)
+    source_id: afh-black-hole
+    claim_ids:
+      - black-hole-guidance
+  - id: study-phak-runway-illusions
+    text: Runway width and slope illusions
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    locator: Chapter 17, Optical Illusions—Runway Width Illusion; Runway and Terrain Slopes Illusion, printed p. 17-10 (PDF p. 10)
+    source_id: phak-runway-illusions
+    claim_ids:
+      - runway-width-illusion
+      - upslope-illusion
+  - id: study-afh-landing-prevention
+    text: Prevent landing errors from illusions
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+    locator: Chapter 11, How to Prevent Landing Errors Due to Optical Illusions, items 1-5, printed p. 11-13 (PDF p. 13)
+    source_id: afh-landing-prevention
+    claim_ids:
+      - landing-illusion-prevention
+  - id: study-afh-electrical
+    text: Single generating-system failure
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    locator: Chapter 18, System Malfunctions—Electrical System, printed p. 18-13 (PDF p. 13)
+    source_id: afh-electrical
+    claim_ids:
+      - single-generator-failure
+  - id: study-afh-night-emergency
+    text: Night engine failure and known suitable terrain
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+    locator: Chapter 11, Night Emergencies, printed p. 11-13 (PDF p. 13)
+    source_id: afh-night-emergency
+    claim_ids:
+      - night-engine-failure
+      - unlighted-terrain-condition
+  - id: study-afh-climb-preparation
+    text: Instrument use during night takeoff
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    locator: Chapter 11, Takeoff and Climb—limited outside references and instrument checks, printed p. 11-8 (PDF p. 8)
+    source_id: afh-climb-preparation
+    claim_ids:
+      - night-climb-instrument-use

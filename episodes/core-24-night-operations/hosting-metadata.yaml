@@ -1,0 +1,20 @@
+schema_version: 1
+publisher_release:
+  id: core-24
+  guid: pplstudyguide.com:core-24
+  title: Night Operations
+  description: "Follow a familiar route after dark: prepare night vision, pilot
+    and aircraft readiness, weather, terrain, fuel and airport lighting, then
+    use reliable references for navigation and a dark-terrain approach."
+  published_at: null
+  duration: null
+  season: 1
+  number: 24
+  explicit: false
+  audio: {}
+provenance:
+  master_script: master-script.md
+  show_notes: show-notes.md
+  audio_manifest: audio-manifest.yaml
+  source_validation: link-validation.yaml
+  content_version: 0.1.1

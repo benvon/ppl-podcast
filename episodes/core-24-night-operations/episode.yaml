@@ -4,7 +4,7 @@ title: Night Operations
 slug: night-operations
 track: core
 production_contract_version: 2
-status: editorial_review_pending
+status: source_relevance_review_complete
 version: 0.1.3
 published_at: null
 runtime_target_minutes: 40
@@ -74,15 +74,13 @@ review:
   independent_spoken_script_review:
     status: complete
     script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
-  editorial_status: pending
-  editorial_script_sha256: null
+  editorial_status: script_approved
+  editorial_script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
 release_gates_remaining:
-  - Complete human editorial review and approve the current script.
   - Render audio and complete human listening QA, including the front-matter
     check.
   - Review embedded chapter markers against the approved audio.
@@ -102,4 +100,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 28
+production_state_revision: 29

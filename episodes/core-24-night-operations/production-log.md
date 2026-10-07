@@ -51,3 +51,7 @@ Independent review cleared the revised VASI paragraph and neighboring transition
 ## Renewed human editorial handoff
 
 The final two-pass source review reports no material source-support findings; current evidence and authorization are recorded in the structured report and episode state. Retained nonmaterial editorial notes remain available to the human editor. The named VASI glossary entry resolves the locator ambiguity. Independent prose review is bound to the current script, narration is current, and all version records identify 0.1.3. Human editorial approval remains pending; no audio was rendered.
+
+## October 7, 2026 — human editorial approval
+
+The user approved the revised version 0.1.3 script. The established approval helper verified current source-review evidence and bound editorial approval to the current master script in `episode.yaml`. Audio rendering and subsequent listening, chapter, and release gates remain pending.

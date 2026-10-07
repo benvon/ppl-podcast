@@ -55,3 +55,7 @@ The final two-pass source review reports no material source-support findings; cu
 ## October 7, 2026 — human editorial approval
 
 The user approved the revised version 0.1.3 script. The established approval helper verified current source-review evidence and bound editorial approval to the current master script in `episode.yaml`. Audio rendering and subsequent listening, chapter, and release gates remain pending.
+
+## October 7, 2026 — authorized audio QA previews
+
+The user authorized OpenAI API audio rendering. Rendered an opening preview and an approach-lighting pronunciation sample from the approved narration with the established Realtime voices and music mix. Both passed automated checks with zero clipped samples and zero stitch warnings. Artifact identities and authorization are recorded in the audio manifest. Human review of voice quality, pacing, music balance, the spoken notice, and PAPI/VASI pronunciation remains pending before full production. Compatible voice segments remain available for reuse. No full candidate or release was produced.

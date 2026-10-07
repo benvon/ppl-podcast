@@ -5,11 +5,11 @@ slug: night-operations
 track: core
 production_contract_version: 2
 status: editorial_review_pending
-version: 0.1.1
+version: 0.1.3
 published_at: null
-runtime_target_minutes: 35
+runtime_target_minutes: 40
 runtime_actual_seconds: null
-word_count: 5170
+word_count: 5887
 speakers:
   - instructor
   - learner
@@ -23,11 +23,12 @@ phak_references:
   - FAA-H-8083-25C, Chapter 17, vision, fatigue, illusions and night planning
   - FAA-H-8083-25C, Chapter 14, Figure 14-30, PAPI visual aid
 aim_references:
-  - AIM 2-1-2(b), PAPI
+  - AIM 2-1-2(a)-(d), VASI, PAPI, tri-color and pulsating slope indicators
   - AIM 2-1-4, runway edge lights
   - AIM 2-1-8, pilot-controlled lighting
   - AIM 2-1-9, beacons
   - AIM 2-1-10, taxiway lighting
+  - AIM 4-3-24, aircraft lights
 advisory_circular_references: []
 cfr_references:
   - 14 CFR 1.1, Night
@@ -35,6 +36,7 @@ cfr_references:
   - 14 CFR 91.205(a),(c), equipment
   - 14 CFR 91.209(a),(b), lights
   - 14 CFR 91.151(a)(2), night airplane VFR fuel
+  - 14 CFR 91.213(d), inoperative equipment
 learning_objectives:
   - Distinguish position-light timing, the civil-twilight night definition,
     night recent experience, and proficiency for the actual planned flight.
@@ -44,8 +46,9 @@ learning_objectives:
     and a prepared suitable alternative.
   - Verify pilot-controlled lighting and use airport light patterns to identify
     the intended runway while managing taxi and traffic risks.
-  - Interpret PAPI indications within verified coverage; cross-check altitude
-    and airspeed and go around when runway position or altitude is uncertain.
+  - Interpret PAPI and two-bar VASI indications within verified coverage;
+    identify other slope systems before using them, cross-check altitude and
+    airspeed, and go around when runway position or altitude is uncertain.
   - Connect night weather cues and electrical/engine failures to early landing
     decisions and airplane-specific checklists.
 trouble_spots:
@@ -63,21 +66,21 @@ trouble_spots:
 source_verification:
   validation_contract: source-relevance-v1
   status: source_relevance_complete
-  verified_at_utc: 2026-10-02T18:47:38.157Z
+  verified_at_utc: 2026-10-07T18:21:53.353Z
   link_validation: link-validation.yaml
   relevance_review: complete
   show_notes_manifest: show-notes-manifest.yaml
 review:
   independent_spoken_script_review:
     status: complete
-    script_sha256: 452dd1cf4466a31d0c791f31b4d29a65988fd806dce4f2c66440ab151cfdfb91
+    script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
   editorial_status: pending
   editorial_script_sha256: null
   qualified_aviation_review: optional_and_welcome
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-  pending_script_sha256: 452dd1cf4466a31d0c791f31b4d29a65988fd806dce4f2c66440ab151cfdfb91
+  pending_script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
 release_gates_remaining:
   - Complete human editorial review and approve the current script.
   - Render audio and complete human listening QA, including the front-matter
@@ -99,4 +102,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 13
+production_state_revision: 28

@@ -29,3 +29,25 @@ This is explanatory context, not a production-state or audit record. Use `episod
 
 - The current source-review evidence is recorded in `link-validation.yaml` and `episode.yaml`. Notes display the completed review accurately. Earlier failed attempts are preserved by the existing validator. Independent review remains bound to the current script; narration remains mechanically derived.
 - Human editorial approval is pending. Audio, listening and chapter QA, publication-day checks, and hosting remain later gates.
+
+## October 7, 2026 — human editorial feedback, coherent revision 0.1.2
+
+Replaced the vague landing-light response with a practical 91.205/91.213(d) determination and an explicit personal minimum: if all applicable requirements allow the personal night flight, Elena still delays or reschedules until the landing light works. Moved steady position-light identity and flashing anticollision-light purpose before regulatory decisions. Replaced the flashlight comparison with a usable parked-cockpit failure rehearsal. Added planned two-bar VASI use and brief tri-color/pulsating indications; scope remains the actual Harbor/Pine Valley decisions. Built beacon and propeller-area scanning around people moving on the ramp.
+
+A different agent reviewed first-listen continuity, earned learner questions and section transitions. Its two required findings (neutral altitude question; exact Episode 8 title) were resolved. The reviewer confirmed the final source-only VASI tag addition; the completed independent review binding is recorded in `episode.yaml`. Synchronized version 0.1.2 in all four records, reset downstream review with the established helper, and mechanically derived narration. Current source review is pending. The user explicitly authorized renewed two-pass OpenAI source relevance in this turn; authorization is recorded in QA for the parent-run validator. Human editorial approval, rendering, listening QA and publication remain pending.
+
+## Pronunciation-map change design
+
+- Goal: make the requested approach-indicator names sound natural in future renders. The renderer’s existing pronunciation maps are the authoritative input; recorded render settings and manifests retain their map values. Added PAPI → pappy and VASI → vassy without changing the written lesson for pronunciation.
+- The change performs no external call. The existing transformed-text render identity makes changed pronunciations invalidate incompatible reusable voice segments; normal word boundaries preserve longer tokens. Existing failure behavior and assembly identity checks remain in effect.
+- Focused pronunciation tests and the full validation/render suite were run, along with tooling standards. Independent adversarial review checked substitution boundaries, settings/manifest recording, and reuse identity. Actual voice pronunciation awaits authorized audio rendering and human listening QA.
+
+## October 7, 2026 — contextual source revision 0.1.3
+
+The union of two formal assessments required correction of the current aircraft-light AIM anchor and two VASI evidence mappings. Corrected Use of Aircraft Lights to 4-3-24, assigned VASI physical bar placement/on-path colors to JO 6850.2C p. E-1, and added current FAA Pilot/Controller Glossary AIRPORT LIGHTING VASI entry for the explicit high/on/low indications. Revised the VASI paragraph once to name near/far threshold locations and colors without unsupported visual stacking, while retaining both-white high, both-red low and the AIM coverage/local-limit conditions. Synchronized 0.1.3 across all four version records; renewed independent and formal review remain required before human editorial handoff.
+
+Independent review cleared the revised VASI paragraph and neighboring transitions with no material findings, with the exact reviewed-script binding recorded in `episode.yaml`. Narration matches its mechanical derivative; renderer structure and deterministic source/notes mappings pass. Current-turn renewed API authorization remains recorded in QA; formal review will be rerun by the parent agent.
+
+## Renewed human editorial handoff
+
+The final two-pass source review reports no material source-support findings; current evidence and authorization are recorded in the structured report and episode state. Retained nonmaterial editorial notes remain available to the human editor. The named VASI glossary entry resolves the locator ambiguity. Independent prose review is bound to the current script, narration is current, and all version records identify 0.1.3. Human editorial approval remains pending; no audio was rendered.

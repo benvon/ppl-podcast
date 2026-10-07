@@ -1,7 +1,7 @@
 # Night Operations
 
-**Version:** 0.1.1 — draft
-**Target runtime:** 30–40 minutes
+**Version:** 0.1.3 — draft
+**Target runtime:** 35–45 minutes
 **Speakers:** Instructor, Learner, Announcer
 
 ## [00:00] Opening
@@ -61,12 +61,29 @@ Decide whether the pilot is ready.
 
 **INSTRUCTOR:**
 
-Elena begins with the expected departure and arrival times. Three different time questions matter. When must the position lights be on? When is the flight within the regulatory definition of night? When does carrying Jonah require the specified recent night takeoffs and landings? Keeping those questions separate prevents one answer from being used for all three.
+Elena begins by identifying the airplane's lights. Position lights are steady: red on the airplane's left wingtip, green on its right, and white at the tail. Those locations help another pilot recognize the airplane's orientation.
+[Source: sources.yaml#afh-position-lights]
+
+Anticollision lights draw attention to the airplane. The AIM describes systems using rotating beacons, strobe lights, or both, in red or white. On this trainer, Elena recognizes the flashing red beacon and the white strobes and finds their separate controls before deciding how to use them.
+[Source: sources.yaml#aim-aircraft-lights]
+
+**LEARNER:**
+
+The steady lights help us understand which way the airplane is facing. The flashing lights help us notice it. When must Elena use each?
+
+**INSTRUCTOR:**
+
+She starts with the expected departure and arrival times. Three different time questions matter. When must the position lights be on? When is the flight within the regulatory definition of night? When does carrying Jonah require the specified recent night takeoffs and landings? Keeping those questions separate prevents one answer from being used for all three.
 [Claim type: teaching synthesis]
 
-For our flight outside Alaska, section ninety-one point two zero nine requires lighted position lights from sunset to sunrise. Position lights are the steady lights that help another pilot recognize an aircraft's orientation. The same section has a separate Alaska condition, linked in the show notes.
+For our flight outside Alaska, section ninety-one point two zero nine requires lighted position lights from sunset to sunrise. The same section has a separate Alaska condition, linked in the show notes.
 [Source: sources.yaml#ecfr-lights]
-[Source: sources.yaml#afh-position-lights]
+
+For an aircraft equipped with an anticollision light system, that section requires operation with those lights lighted. It allows the pilot in command to turn them off when operating conditions make doing so in the interest of safety. That provision concerns anticollision lights; our sunset-to-sunrise position-light requirement still applies.
+[Source: sources.yaml#ecfr-lights]
+
+The AIM gives a practical reason for that distinction: strobes can impair other pilots' or ground personnel's vision, and their reflections from clouds can be hazardous in flight. Elena checks the surroundings when selecting them.
+[Source: sources.yaml#aim-aircraft-lights]
 
 Section one point one defines night as the time from the end of evening civil twilight to the beginning of morning civil twilight, as published in the Air Almanac and converted to local time. Evening civil twilight continues for a time after sunset. Elena checks the published times for the place and date of the flight instead of adding a fixed number of minutes.
 [Source: sources.yaml#afh-night-introduction]
@@ -144,7 +161,7 @@ She dims the electronic chart display too. If the screen reflects in the windscr
 
 **LEARNER:**
 
-Would choosing a higher altitude always improve the night plan?
+How does the altitude she chooses for the route affect her night vision?
 
 **INSTRUCTOR:**
 
@@ -171,19 +188,30 @@ This is a personal flight. How does Elena decide about a failed landing light?
 
 **INSTRUCTOR:**
 
-The for-hire condition in that particular requirement matters, but it cannot settle the airplane's entire equipment decision. Elena must determine which requirements and approved airplane information apply to the actual installation. The ACS asks the applicant to identify and mitigate risks from inoperative equipment during night operations.
-[Source: sources.yaml#acs-night]
+Section ninety-one point two zero five makes its landing-light requirement conditional on operating for hire. Elena's personal flight falls outside that particular condition.
+[Source: sources.yaml#ecfr-equipment]
 
-In our scenario, Elena requires a working landing light as part of her own night plan and will delay this trip if it fails the preflight check.
+She then uses the inoperative-equipment method from Episode 8, Aircraft Documents, Airworthiness, Inspections, and Maintenance. Our scenario assumes a small, nonturbine-powered trainer operating without an approved minimum equipment list, within the scope of section ninety-one point two one three, paragraph d. She checks whether the failed light is required by the airplane's VFR-day type-certification requirements, its equipment list or kinds of operations equipment list for this flight, an applicable operating rule, or an airworthiness directive. If it is required by any of those, this paragraph does not permit departure with it inoperative.
+[Source: sources.yaml#ecfr-inoperative]
+
+If it is not required, the discrepancy still needs the prescribed removal or deactivation, placarding, and any required maintenance records. Deactivation involving maintenance must be accomplished and recorded under part forty-three. An appropriately certificated and rated pilot or maintenance person must also determine that the inoperative equipment presents no hazard to the aircraft. Elena works through those steps with the operator and maintenance personnel before considering departure.
+[Source: sources.yaml#ecfr-inoperative]
+
+**LEARNER:**
+
+If those checks all permit the flight, does Elena go tonight?
+
+**INSTRUCTOR:**
+
+She could be legally permitted to make this personal night flight without the landing light if all applicable requirements are met. But Elena has set a stricter personal minimum: an operational landing light for this night trip. She wants that illumination available during taxi and landing. She delays or reschedules until the light works. A personal minimum can add a margin above the legal requirements; it cannot authorize a flight that fails them.
+[Source: sources.yaml#ecfr-equipment]
+[Source: sources.yaml#ecfr-inoperative]
 [Claim type: teaching synthesis]
 
 She checks the airplane's lights and personal equipment before flight. The Airplane Flying Handbook says to verify light operation during preflight and inspect the ramp with a flashlight, because chocks, holes, and other obstacles are harder to see at night. That gives her a chance to resolve a discrepancy while she is still parked.
 [Source: sources.yaml#afh-preflight]
 
-Using the lights is another question. Section ninety-one point two zero nine says an aircraft equipped with an anticollision light system must operate with those lights lighted, but the pilot in command may turn them off when operating conditions make that action in the interest of safety. That safety provision applies to anticollision lights. It does not remove our sunset-to-sunrise position-light requirement.
-[Source: sources.yaml#ecfr-lights]
-
-Elena learns which switches control each light and how the electrical system supports them. If a system fails in flight, she will use this airplane's checklist and reassess the arrival. A flashlight can help her read an instrument; it does not establish that every other electrical system remains available.
+Elena also rehearses a cockpit-lighting failure while parked. She reaches for the checked flashlight, finds the instruments and checklist she would need, and adjusts the beam so she can read them without shining it into Jonah's eyes. She identifies the airplane's electrical-failure checklist and the instruments, radio, and navigation equipment that depend on electrical power. That preparation will help her assess what remains usable if a warning appears in flight.
 [Claim type: teaching synthesis]
 
 ## [14:00] Build a route with a usable alternative
@@ -212,7 +240,7 @@ Elena checks its runway, lighting, weather, and arrival information for the time
 For Harbor, Elena records the lighting frequency, runway served, activation method, and operating details from the Chart Supplement. The AIM identifies that publication as the source of pilot-controlled lighting types, runways, frequencies, and nonstandard instructions.
 [Source: sources.yaml#aim-pcl]
 
-She verifies the PAPI's status and any published limitations. She also studies the airport layout and surrounding terrain so she can identify the intended runway, remain clear of obstacles, and explain a go-around before starting the approach.
+She verifies Harbor's PAPI status and published limitations, and confirms that Pine Valley's planned runway has an operating two-bar visual approach slope indicator, or VASI. She also studies the airport layout and surrounding terrain so she can identify the intended runway, remain clear of obstacles, and explain a go-around before starting the approach.
 [Claim type: teaching synthesis]
 
 **LEARNER:**
@@ -277,6 +305,36 @@ Yes. The runway lights help Elena identify and align with the runway. The precis
 The AIM says to begin descent using the PAPI only after visually aligning with the runway. Its visual path typically provides safe obstruction clearance within ten degrees on either side of the extended runway centerline and out to three point four nautical miles from the threshold. Local limitations can reduce that area or offset the PAPI, and are published in the Chart Supplement or NOTAMs. Seeing its lights farther away does not extend that protection.
 [Source: sources.yaml#aim-papi]
 
+**LEARNER:**
+
+Pine Valley has a VASI. What should Elena expect if she lands there instead?
+
+**INSTRUCTOR:**
+
+She has confirmed a two-bar system. The near bar is closer to the runway threshold, and the far bar is farther down the runway. On the visual glide path, the near bar appears white and the far bar red. Both bars white indicate above the path; both red indicate below it. Elena compares that indication with the expected altitude, airspeed, and descent before deciding whether she can continue a stable approach.
+[Source: sources.yaml#faa-vasi-colors]
+[Source: sources.yaml#pcg-vasi-indications]
+[Claim type: teaching synthesis]
+
+The AIM says to start descent using the VASI only after visual alignment with the runway. Its visual path provides safe obstruction clearance within ten degrees on either side of the extended runway centerline and to four nautical miles from the threshold. Local limits can reduce that area or offset the system; Elena checks the Chart Supplement and NOTAMs for them when preparing Pine Valley.
+[Source: sources.yaml#aim-vasi]
+
+**LEARNER:**
+
+Could another airport use a different kind of slope indicator?
+
+**INSTRUCTOR:**
+
+Yes. The AIM also describes single-light tri-color and pulsating systems. A tri-color indicator shows green on the path, amber above, and red below. During a descent from green to red, a dark amber transition can appear. Because that is different from the above-path amber indication, Elena would study the identified system before using it.
+[Source: sources.yaml#aim-tricolor]
+
+A pulsating system can show steady white or alternating red and white on the path. Steady red means slightly below; pulsating red means farther below. Pulsating white means above. With either single-light system, the AIM cautions pilots to locate and identify the actual signal carefully because another light could be mistaken for it. Elena verifies which system serves the intended runway and learns its published indications before departure.
+[Source: sources.yaml#aim-pulsating]
+[Source: sources.yaml#aim-tricolor]
+
+For tonight, her preparation remains focused on Harbor's PAPI and Pine Valley's two-bar VASI. Each gives her a known indication to compare with the approach she planned.
+[Claim type: teaching synthesis]
+
 Elena has now prepared a sequence she can use in flight: confirm the airport's position, activate and identify the correct runway lighting, remain on the planned arrival path, then use the PAPI within its verified limits while cross-checking altitude and airspeed. If the expected lights or references are missing, she will preserve altitude and another landing option while resolving the problem.
 [Claim type: teaching synthesis]
 
@@ -288,8 +346,12 @@ Taxi and climb with fewer outside references.
 
 **INSTRUCTOR:**
 
-Elena and Jonah are now at Meadow Ridge. She has checked the weather and lighting status again, the airplane is ready, and her cockpit materials are organized. Before starting, she carefully scans the propeller area. The Airplane Flying Handbook says a beacon helps alert people but does not replace that methodical check.
+With the route and both arrivals prepared, Elena and Jonah walk onto Meadow Ridge's ramp. People are moving between parked airplanes. Before boarding, Elena uses her flashlight to inspect the surrounding ramp for chocks, holes, and other obstacles, as the Airplane Flying Handbook recommends.
+[Source: sources.yaml#afh-preflight]
+
+Once seated, she arranges the materials she will need and follows the airplane's starting checklist. Before engaging the starter, she turns on its red beacon to warn nearby people to stay clear of the propeller. She also carefully scans the area around the airplane, checking that people have moved clear. The handbook calls for that methodical scan when clearing the propeller area at night. If someone remains near the propeller or she cannot establish that the area is clear, she waits before starting.
 [Source: sources.yaml#afh-taxi]
+[Claim type: teaching synthesis]
 
 She taxis slowly and compares her position with the airport diagram, signs, markings, and instrument indications. The handbook says those references should reinforce the expected taxi route and departure runway. If conflicting information or doubt exists, the pilot should not proceed with taxi or takeoff.
 [Source: sources.yaml#afh-taxi]
@@ -331,7 +393,7 @@ No. The PHAK explains that stars, city lights, and shoreline lights can create a
 [Source: sources.yaml#phak-night-illusions]
 [Source: sources.yaml#phak-disorientation]
 
-She also watches for traffic. Aircraft position lights are arranged with red on the aircraft's left wingtip, green on its right, and white at the tail. Picture another airplane heading toward Elena: its left wing lies on her right, so its red light appears on her right and its green light on her left. That combination can indicate approaching traffic. The colors describe that other aircraft's orientation; Elena continues assessing its position and separation rather than treating one color as a complete traffic answer.
+She also watches for traffic, using the position-light arrangement she checked on the ground. Picture another airplane heading toward Elena: its left wing lies on her right, so its red light appears on her right and its green light on her left. That combination can indicate approaching traffic. The colors describe that other aircraft's orientation; Elena continues assessing its position and separation rather than treating one color as a complete traffic answer.
 [Source: sources.yaml#afh-position-lights]
 
 At the prepared decision point, she checks Harbor's updated weather. In our main scenario, Harbor remains within the arrival margins she selected, and Pine Valley remains a suitable alternative. She continues toward Harbor with both choices still available.

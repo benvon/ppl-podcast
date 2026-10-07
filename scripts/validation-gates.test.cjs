@@ -2870,6 +2870,14 @@ test("realtime renderer preserves untreated familiar initialisms while applying 
   assert.match(segmentInstruction({ speaker: "INSTRUCTOR", audioTreatment: "vhf-am", text: "Valley Tower, Cessna One Two Three." }, "No adjacent dialogue."), /noticeably quicker pace/);
 });
 
+test("approach-light pronunciation uses connected words without changing longer tokens", () => {
+  assert.equal(spokenText("Use the PAPI, then compare the VASI."), "Use the pappy, then compare the vassy.");
+  assert.equal(spokenText("PAPI-like and VASI-equipped installations differ from PAPIs and VASIs."), "pappy-like and vassy-equipped installations differ from PAPIs and VASIs.");
+  const settings = settingsFor({ model: "gpt-realtime-2.1", voices: {}, stitchFadeMs: 8 }, "test-script-hash");
+  assert.equal(settings.pronunciation_transforms.PAPI, "pappy");
+  assert.equal(settings.pronunciation_transforms.VASI, "vassy");
+});
+
 test("MP3 chapters use the rendered section boundaries and preserve readable headings", () => {
   const chapters = chapterMarkersFor([
     { section: "opening", section_title: "Opening", start_frame: 6_000 },

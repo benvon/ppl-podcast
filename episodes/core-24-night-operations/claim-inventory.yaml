@@ -2,45 +2,57 @@ episode_id: core-24
 claims:
   - id: acs-night-knowledge
     type: faa_standard
-    statement: ACS PA.XI.A.K1-K8 connects night vision, lighting identification and control, aircraft and personal equipment, orientation/navigation/chart reading, taxiing, traffic position lights, and visual illusions.
+    statement: ACS PA.XI.A.K1-K8 connects night vision, lighting identification and
+      control, aircraft and personal equipment, orientation/navigation/chart
+      reading, taxiing, traffic position lights, and visual illusions.
     sources:
       - acs-night
     risk: operational
-    script_sections: &a1
+    script_sections:
       - What the ACS is asking you to connect
       - Decide whether the pilot is ready
-      - Verify the airplane and its lights
       - Retrieval review
     status: draft
   - id: acs-night-risk
     type: faa_standard
-    statement: ACS PA.XI.A.R1-R7 addresses collisions, distraction/disorientation, illusions and adaptation, runway incursions, currency versus proficiency, night weather, and inoperative equipment.
+    statement: ACS PA.XI.A.R1-R7 addresses collisions, distraction/disorientation,
+      illusions and adaptation, runway incursions, currency versus proficiency,
+      night weather, and inoperative equipment.
     sources:
       - acs-night
     risk: operational
-    script_sections: *a1
+    script_sections:
+      - What the ACS is asking you to connect
+      - Decide whether the pilot is ready
+      - Retrieval review
     status: draft
   - id: night-visual-limitations
     type: faa_guidance
-    statement: Night operation changes pilot visual limitations, equipment and emergency considerations while the airplane responds to the same pilot control inputs.
+    statement: Night operation changes pilot visual limitations, equipment and
+      emergency considerations while the airplane responds to the same pilot
+      control inputs.
     sources:
       - afh-night-introduction
     risk: operational
-    script_sections: &a2
+    script_sections: &a1
       - What the ACS is asking you to connect
       - Decide whether the pilot is ready
     status: draft
   - id: civil-twilight-context
     type: faa_guidance
-    statement: Evening civil twilight begins at sunset and ends when the geometric center of the sun is six degrees below the horizon; twilight is location/date dependent.
+    statement: Evening civil twilight begins at sunset and ends when the geometric
+      center of the sun is six degrees below the horizon; twilight is
+      location/date dependent.
     sources:
       - afh-night-introduction
     risk: operational
-    script_sections: *a2
+    script_sections: *a1
     status: draft
   - id: manufacturer-procedures
     type: faa_guidance
-    statement: AFH emergency guidance is generic and manufacturer AFM/POH recommendations for the actual airplane take precedence when they conflict.
+    statement: AFH emergency guidance is generic and manufacturer AFM/POH
+      recommendations for the actual airplane take precedence when they
+      conflict.
     sources:
       - afh-manufacturer
     risk: safety_critical
@@ -49,26 +61,32 @@ claims:
     status: draft
   - id: position-light-time
     type: regulation
-    statement: Outside the separate Alaska condition, aircraft operation requires lighted position lights from sunset to sunrise.
+    statement: Outside the separate Alaska condition, aircraft operation requires
+      lighted position lights from sunset to sunrise.
     sources:
       - ecfr-lights
     risk: safety_critical
-    script_sections: &a3
+    script_sections:
       - Decide whether the pilot is ready
-      - Verify the airplane and its lights
       - Retrieval review
     status: draft
   - id: anticollision-use
     type: regulation
-    statement: An aircraft equipped with an anticollision light system must use it, but the PIC may turn it off when operating conditions make that action in the interest of safety.
+    statement: An aircraft equipped with an anticollision light system must use it,
+      but the PIC may turn it off when operating conditions make that action in
+      the interest of safety.
     sources:
       - ecfr-lights
     risk: safety_critical
-    script_sections: *a3
+    script_sections:
+      - Decide whether the pilot is ready
+      - Retrieval review
     status: draft
   - id: night-definition
     type: regulation
-    statement: Night means the time between the end of evening civil twilight and the beginning of morning civil twilight, as published in the Air Almanac and converted to local time.
+    statement: Night means the time between the end of evening civil twilight and
+      the beginning of morning civil twilight, as published in the Air Almanac
+      and converted to local time.
     sources:
       - afh-night-introduction
     risk: operational
@@ -78,7 +96,12 @@ claims:
     status: draft
   - id: night-recent-experience
     type: regulation
-    statement: For the ordinary personal-flight case, acting as PIC of an aircraft carrying persons from one hour after sunset to one hour before sunrise requires at least three takeoffs and three full-stop landings within the preceding 90 days during that same window, as sole manipulator in the same category, class, and type if required; specific exceptions and simulator provisions are in 61.57.
+    statement: For the ordinary personal-flight case, acting as PIC of an aircraft
+      carrying persons from one hour after sunset to one hour before sunrise
+      requires at least three takeoffs and three full-stop landings within the
+      preceding 90 days during that same window, as sole manipulator in the same
+      category, class, and type if required; specific exceptions and simulator
+      provisions are in 61.57.
     sources:
       - ecfr-currency
     risk: safety_critical
@@ -88,7 +111,9 @@ claims:
     status: draft
   - id: night-proficiency
     type: faa_guidance
-    statement: AFH calls for night pilots to be certificated, current and proficient, receive training, and understand how night risks differ from daylight.
+    statement: AFH calls for night pilots to be certificated, current and
+      proficient, receive training, and understand how night risks differ from
+      daylight.
     sources:
       - afh-night-summary
     risk: operational
@@ -98,7 +123,8 @@ claims:
     status: draft
   - id: night-fatigue
     type: faa_guidance
-    statement: Fatigue during night flight reduces alertness and response speed and can encourage fixation instead of considering the whole situation.
+    statement: Fatigue during night flight reduces alertness and response speed and
+      can encourage fixation instead of considering the whole situation.
     sources:
       - phak-fatigue
     risk: operational
@@ -107,7 +133,8 @@ claims:
     status: draft
   - id: dark-adaptation
     type: faa_guidance
-    statement: Rods can take approximately 30 minutes to fully adapt to darkness; bright light can compromise night adaptation.
+    statement: Rods can take approximately 30 minutes to fully adapt to darkness;
+      bright light can compromise night adaptation.
     sources:
       - phak-adaptation
     risk: operational
@@ -117,7 +144,9 @@ claims:
     status: draft
   - id: rod-cone-functions
     type: faa_guidance
-    statement: Cones support detail and color in good illumination; rods are more sensitive in dim light, provide much peripheral night vision, and do not discern color.
+    statement: Cones support detail and color in good illumination; rods are more
+      sensitive in dim light, provide much peripheral night vision, and do not
+      discern color.
     sources:
       - phak-vision
     risk: operational
@@ -127,7 +156,9 @@ claims:
     status: draft
   - id: night-blind-spot
     type: faa_guidance
-    statement: The concentration of cones near the fovea and relative scarcity of rods creates a night blind spot; looking five to ten degrees off center helps detect dim objects.
+    statement: The concentration of cones near the fovea and relative scarcity of
+      rods creates a night blind spot; looking five to ten degrees off center
+      helps detect dim objects.
     sources:
       - phak-night-scan
     risk: operational
@@ -137,7 +168,8 @@ claims:
     status: draft
   - id: night-scan-stops
     type: faa_guidance
-    statement: PHAK night scan guidance uses shifting viewing points and limits each stop to two or three seconds to avoid image fading.
+    statement: PHAK night scan guidance uses shifting viewing points and limits each
+      stop to two or three seconds to avoid image fading.
     sources:
       - phak-scan-stops
     risk: operational
@@ -146,7 +178,8 @@ claims:
     status: draft
   - id: red-chart-colors
     type: faa_guidance
-    statement: Red cockpit lighting distorts aeronautical chart colors; dim white light should be available for map and instrument reading.
+    statement: Red cockpit lighting distorts aeronautical chart colors; dim white
+      light should be available for map and instrument reading.
     sources:
       - afh-lighting-vision
     risk: operational
@@ -155,7 +188,9 @@ claims:
     status: draft
   - id: cockpit-lighting
     type: faa_guidance
-    statement: Keep cockpit lighting low while permitting needed reading, and use dim white light for maps, charts and checklists without shining into occupants’ eyes.
+    statement: Keep cockpit lighting low while permitting needed reading, and use
+      dim white light for maps, charts and checklists without shining into
+      occupants’ eyes.
     sources:
       - phak-cockpit-lighting
     risk: operational
@@ -165,7 +200,9 @@ claims:
     status: draft
   - id: night-personal-equipment
     type: faa_guidance
-    statement: A reliable flashlight, spare batteries, accessible flight data/checklists, cockpit organization and EFB brightness management support night preparation.
+    statement: A reliable flashlight, spare batteries, accessible flight
+      data/checklists, cockpit organization and EFB brightness management
+      support night preparation.
     sources:
       - afh-personal-equipment
     risk: operational
@@ -174,7 +211,9 @@ claims:
     status: draft
   - id: oxygen-night-vision
     type: faa_guidance
-    statement: Without supplemental oxygen, night vision measurably declines above 4,000 feet pressure altitude; hypoxia reduces rod sensitivity and fatigue compounds the problem.
+    statement: Without supplemental oxygen, night vision measurably declines above
+      4,000 feet pressure altitude; hypoxia reduces rod sensitivity and fatigue
+      compounds the problem.
     sources:
       - phak-oxygen
     risk: operational
@@ -183,7 +222,11 @@ claims:
     status: draft
   - id: night-equipment
     type: regulation
-    statement: For the scenario’s powered civil airplane with a standard U.S. airworthiness certificate, night VFR requires daytime VFR equipment plus approved position lights, the specified anticollision system, adequate electrical energy, accessible specified spare fuses, and an electric landing light if operated for hire.
+    statement: For the scenario’s powered civil airplane with a standard U.S.
+      airworthiness certificate, night VFR requires daytime VFR equipment plus
+      approved position lights, the specified anticollision system, adequate
+      electrical energy, accessible specified spare fuses, and an electric
+      landing light if operated for hire.
     sources:
       - ecfr-equipment
     risk: safety_critical
@@ -192,44 +235,53 @@ claims:
     status: draft
   - id: night-nav-setup
     type: faa_guidance
-    statement: Prepare night route charts and necessary GPS waypoints before flight, check the database for accuracy, and use navigation/communication aids.
+    statement: Prepare night route charts and necessary GPS waypoints before flight,
+      check the database for accuracy, and use navigation/communication aids.
     sources:
       - afh-preflight
     risk: operational
-    script_sections: &a4
+    script_sections:
       - Verify the airplane and its lights
       - Build a route with a usable alternative
     status: draft
   - id: night-preflight-inspection
     type: faa_guidance
-    statement: Check personal equipment and airplane light operation before flight, and inspect the ramp for obstacles with a flashlight.
+    statement: Check personal equipment and airplane light operation before flight,
+      and inspect the ramp for obstacles with a flashlight.
     sources:
       - afh-preflight
     risk: operational
-    script_sections: *a4
+    script_sections:
+      - Verify the airplane and its lights
+      - Build a route with a usable alternative
+      - Taxi and climb with fewer outside references
     status: draft
   - id: night-water-crossing
     type: faa_guidance
-    statement: At night, a single-engine water crossing creates possible ditching exposure and limited lighting can obscure the water/horizon boundary.
+    statement: At night, a single-engine water crossing creates possible ditching
+      exposure and limited lighting can obscure the water/horizon boundary.
     sources:
       - afh-navigation
     risk: operational
-    script_sections: &a5
+    script_sections: &a2
       - Build a route with a usable alternative
       - Compare the flight with the prepared route
       - Retrieval review
     status: draft
   - id: night-weather-cues
     type: faa_guidance
-    statement: Clouds and visibility restrictions can be difficult to see at night; disappearing ground lights and halos can signal restriction/fog, and looking down through a layer can overstate horizontal approach visibility.
+    statement: Clouds and visibility restrictions can be difficult to see at night;
+      disappearing ground lights and halos can signal restriction/fog, and
+      looking down through a layer can overstate horizontal approach visibility.
     sources:
       - afh-navigation
     risk: safety_critical
-    script_sections: *a5
+    script_sections: *a2
     status: draft
   - id: lighting-status
     type: faa_guidance
-    statement: Check destination lighting availability using charts and Chart Supplements and its status through pertinent NOTAMs before a night flight.
+    statement: Check destination lighting availability using charts and Chart
+      Supplements and its status through pertinent NOTAMs before a night flight.
     sources:
       - afh-airport-status
     risk: operational
@@ -239,7 +291,9 @@ claims:
     status: draft
   - id: night-weather-planning
     type: faa_guidance
-    statement: Night preparation includes reports and forecasts, attention to wind, and temperature/dew-point spread; a narrow spread may indicate possible fog.
+    statement: Night preparation includes reports and forecasts, attention to wind,
+      and temperature/dew-point spread; a narrow spread may indicate possible
+      fog.
     sources:
       - afh-weather
     risk: operational
@@ -248,7 +302,9 @@ claims:
     status: draft
   - id: night-fuel
     type: regulation
-    statement: Before beginning an airplane VFR flight at night, considering wind and forecast weather, fuel must suffice to reach the first intended landing and then fly at normal cruising speed for at least 45 minutes.
+    statement: Before beginning an airplane VFR flight at night, considering wind
+      and forecast weather, fuel must suffice to reach the first intended
+      landing and then fly at normal cruising speed for at least 45 minutes.
     sources:
       - ecfr-fuel
     risk: safety_critical
@@ -257,7 +313,8 @@ claims:
     status: draft
   - id: beacon-patterns
     type: faa_guidance
-    statement: White and green beacon flashes identify a lighted land airport; military airports have two quick white flashes between green flashes.
+    statement: White and green beacon flashes identify a lighted land airport;
+      military airports have two quick white flashes between green flashes.
     sources:
       - aim-beacons
     risk: operational
@@ -266,24 +323,28 @@ claims:
     status: draft
   - id: runway-edge-pattern
     type: faa_guidance
-    statement: Runway edge lights outline runways; they are white except yellow on instrument runways over the last 2,000 feet or half the runway, whichever is less.
+    statement: Runway edge lights outline runways; they are white except yellow on
+      instrument runways over the last 2,000 feet or half the runway, whichever
+      is less.
     sources:
       - aim-runway-lights
     risk: operational
-    script_sections: &a6
+    script_sections: &a3
       - Know what the airport lights will tell you
     status: draft
   - id: threshold-end-colors
     type: faa_guidance
-    statement: Runway-end lights emit green outward to arriving aircraft and red toward the runway for departing aircraft.
+    statement: Runway-end lights emit green outward to arriving aircraft and red
+      toward the runway for departing aircraft.
     sources:
       - aim-runway-lights
     risk: operational
-    script_sections: *a6
+    script_sections: *a3
     status: draft
   - id: taxi-light-colors
     type: faa_guidance
-    statement: Taxiway edge lights are blue and installed taxiway centerline lights are steady green.
+    statement: Taxiway edge lights are blue and installed taxiway centerline lights
+      are steady green.
     sources:
       - aim-taxi-lights
     risk: operational
@@ -292,34 +353,43 @@ claims:
     status: draft
   - id: pcl-frequency
     type: faa_guidance
-    statement: The Chart Supplement identifies the lighting runway, frequency and system instructions; CTAF is often used but another frequency or nonstandard system may apply.
+    statement: The Chart Supplement identifies the lighting runway, frequency and
+      system instructions; CTAF is often used but another frequency or
+      nonstandard system may apply.
     sources:
       - aim-pcl
     risk: operational
-    script_sections: &a7
+    script_sections: &a4
       - Build a route with a usable alternative
       - Know what the airport lights will tell you
       - Retrieval review
     status: draft
   - id: pcl-activation
     type: faa_guidance
-    statement: For FAA approved systems, seven microphone clicks within five seconds selects highest available intensity; five/three can lower intensity where provided, and some REIL may turn off.
+    statement: For FAA approved systems, seven microphone clicks within five seconds
+      selects highest available intensity; five/three can lower intensity where
+      provided, and some REIL may turn off.
     sources:
       - aim-pcl
     risk: operational
-    script_sections: *a7
+    script_sections: *a4
     status: draft
   - id: pcl-duration
     type: faa_guidance
-    statement: Standard radio-controlled lighting runs 15 minutes from latest activation, with stated REIL exceptions; reactivation as directed near arrival renews the period when within receiver range.
+    statement: Standard radio-controlled lighting runs 15 minutes from latest
+      activation, with stated REIL exceptions; reactivation as directed near
+      arrival renews the period when within receiver range.
     sources:
       - aim-pcl
     risk: operational
-    script_sections: *a7
+    script_sections: *a4
     status: draft
   - id: papi-coverage
     type: faa_guidance
-    statement: Begin descent using PAPI only after visual runway alignment; its visual path typically provides obstruction clearance within plus/minus 10 degrees of extended centerline to 3.4 NM, subject to published local reductions/offsets.
+    statement: Begin descent using PAPI only after visual runway alignment; its
+      visual path typically provides obstruction clearance within plus/minus 10
+      degrees of extended centerline to 3.4 NM, subject to published local
+      reductions/offsets.
     sources:
       - aim-papi
     risk: safety_critical
@@ -329,7 +399,9 @@ claims:
     status: draft
   - id: papi-color-interpretation
     type: faa_guidance
-    statement: In a four-light PAPI, two white/two red indicate on approach slope; increasing white indicates above, and increasing red indicates below; one white/three red indicates slightly below.
+    statement: In a four-light PAPI, two white/two red indicate on approach slope;
+      increasing white indicates above, and increasing red indicates below; one
+      white/three red indicates slightly below.
     sources:
       - faa-papi-colors
     risk: safety_critical
@@ -339,24 +411,29 @@ claims:
     status: draft
   - id: night-propeller-clear
     type: faa_guidance
-    statement: A beacon may alert nearby persons but the pilot still methodically checks the propeller area before start.
+    statement: A beacon may alert nearby persons but the pilot still methodically
+      checks the propeller area before start.
     sources:
       - afh-taxi
     risk: operational
-    script_sections: &a8
+    script_sections: &a5
       - Taxi and climb with fewer outside references
     status: draft
   - id: night-taxi-verification
     type: faa_guidance
-    statement: Taxi slowly and compare position, diagram, signs, markings and instruments with expected taxi route/runway; do not proceed if conflicting information or doubt remains.
+    statement: Taxi slowly and compare position, diagram, signs, markings and
+      instruments with expected taxi route/runway; do not proceed if conflicting
+      information or doubt remains.
     sources:
       - afh-taxi
     risk: safety_critical
-    script_sections: *a8
+    script_sections: *a5
     status: draft
   - id: night-climb-crosscheck
     type: faa_guidance
-    statement: AFH night takeoff/climb guidance calls for instrument checks confirming positive climb and use of attitude/heading to maintain the climb with reduced visual references.
+    statement: AFH night takeoff/climb guidance calls for instrument checks
+      confirming positive climb and use of attitude/heading to maintain the
+      climb with reduced visual references.
     sources:
       - afh-climb
     risk: safety_critical
@@ -365,7 +442,9 @@ claims:
     status: draft
   - id: somatogravic-illusion
     type: faa_guidance
-    statement: Rapid acceleration with poor visual references can create apparent nose-up attitude; responding by pushing the nose down can produce a dangerous nose-low attitude.
+    statement: Rapid acceleration with poor visual references can create apparent
+      nose-up attitude; responding by pushing the nose down can produce a
+      dangerous nose-low attitude.
     sources:
       - phak-acceleration
     risk: safety_critical
@@ -374,7 +453,8 @@ claims:
     status: draft
   - id: night-flight-progress
     type: faa_guidance
-    statement: Night cross-country pilots continuously monitor position, time estimates and fuel consumed and use available navigation aids.
+    statement: Night cross-country pilots continuously monitor position, time
+      estimates and fuel consumed and use available navigation aids.
     sources:
       - afh-progress
     risk: operational
@@ -383,24 +463,27 @@ claims:
     status: draft
   - id: autokinesis
     type: faa_guidance
-    statement: Staring at a stationary light against darkness can create apparent movement; continued visual scanning helps prevent it.
+    statement: Staring at a stationary light against darkness can create apparent
+      movement; continued visual scanning helps prevent it.
     sources:
       - phak-night-illusions
     risk: operational
-    script_sections: &a9
+    script_sections: &a6
       - Compare the flight with the prepared route
     status: draft
   - id: false-horizon
     type: faa_guidance
-    statement: Stars, city lights and shoreline lights can create a false horizon when the natural horizon is obscured.
+    statement: Stars, city lights and shoreline lights can create a false horizon
+      when the natural horizon is obscured.
     sources:
       - phak-night-illusions
     risk: operational
-    script_sections: *a9
+    script_sections: *a6
     status: draft
   - id: reliable-instruments
     type: faa_guidance
-    statement: Reliable fixed ground references or proficient use of flight instruments support orientation when sensory impressions are unreliable.
+    statement: Reliable fixed ground references or proficient use of flight
+      instruments support orientation when sensory impressions are unreliable.
     sources:
       - phak-disorientation
     risk: safety_critical
@@ -409,7 +492,9 @@ claims:
     status: draft
   - id: position-light-orientation
     type: faa_guidance
-    statement: Red is on the aircraft’s left wingtip, green on its right and white on its tail; observing red on the viewer’s right and green on the left can indicate approaching traffic.
+    statement: Red is on the aircraft’s left wingtip, green on its right and white
+      on its tail; observing red on the viewer’s right and green on the left can
+      indicate approaching traffic.
     sources:
       - afh-position-lights
     risk: operational
@@ -419,7 +504,9 @@ claims:
     status: draft
   - id: night-route-alternative
     type: faa_guidance
-    statement: PHAK advises route/terrain knowledge and early action toward an alternate with better weather if weather prevents maintaining planned night altitude.
+    statement: PHAK advises route/terrain knowledge and early action toward an
+      alternate with better weather if weather prevents maintaining planned
+      night altitude.
     sources:
       - phak-night-route
     risk: safety_critical
@@ -429,7 +516,8 @@ claims:
     status: draft
   - id: misidentified-runway
     type: faa_guidance
-    statement: Road or moving-train lights can resemble runway or approach lights; night arrival requires correct identification.
+    statement: Road or moving-train lights can resemble runway or approach lights;
+      night arrival requires correct identification.
     sources:
       - phak-landing-illusions
     risk: safety_critical
@@ -438,7 +526,9 @@ claims:
     status: draft
   - id: night-approach-crosscheck
     type: faa_guidance
-    statement: Identify runway threshold and edge lights, retain airport lights in sight, allow before-landing time, and cross-check altimeter/airspeed because night distance/height/speed judgment is impaired.
+    statement: Identify runway threshold and edge lights, retain airport lights in
+      sight, allow before-landing time, and cross-check altimeter/airspeed
+      because night distance/height/speed judgment is impaired.
     sources:
       - afh-approach
     risk: safety_critical
@@ -447,7 +537,8 @@ claims:
     status: draft
   - id: featureless-approach
     type: faa_guidance
-    statement: Featureless terrain or dark/water approach surroundings can create apparent excessive height and encourage a lower approach.
+    statement: Featureless terrain or dark/water approach surroundings can create
+      apparent excessive height and encourage a lower approach.
     sources:
       - phak-featureless
     risk: safety_critical
@@ -457,7 +548,10 @@ claims:
     status: draft
   - id: black-hole-guidance
     type: faa_guidance
-    statement: Night approach over unlighted terrain or water with runway lights as the only light can impair orientation and result in landing short; use available guidance/instruments and go around if runway position or altitude is in doubt.
+    statement: Night approach over unlighted terrain or water with runway lights as
+      the only light can impair orientation and result in landing short; use
+      available guidance/instruments and go around if runway position or
+      altitude is in doubt.
     sources:
       - afh-black-hole
     risk: safety_critical
@@ -467,24 +561,29 @@ claims:
     status: draft
   - id: runway-width-illusion
     type: faa_guidance
-    statement: A narrower-than-usual runway, especially with comparable length-to-width relationships, can create apparent excessive height and lead to a low approach.
+    statement: A narrower-than-usual runway, especially with comparable
+      length-to-width relationships, can create apparent excessive height and
+      lead to a low approach.
     sources:
       - phak-runway-illusions
     risk: operational
-    script_sections: &a10
+    script_sections: &a7
       - Use the prepared arrival over dark terrain
     status: draft
   - id: upslope-illusion
     type: faa_guidance
-    statement: Upsloping runway or approach terrain can create apparent excessive height and encourage a low approach.
+    statement: Upsloping runway or approach terrain can create apparent excessive
+      height and encourage a low approach.
     sources:
       - phak-runway-illusions
     risk: operational
-    script_sections: *a10
+    script_sections: *a7
     status: draft
   - id: landing-illusion-prevention
     type: faa_guidance
-    statement: Anticipate night illusions, study airport slope/terrain/lighting, frequently check altimeter, and use available visual slope guidance to prevent landing errors.
+    statement: Anticipate night illusions, study airport slope/terrain/lighting,
+      frequently check altimeter, and use available visual slope guidance to
+      prevent landing errors.
     sources:
       - afh-landing-prevention
     risk: safety_critical
@@ -494,7 +593,9 @@ claims:
     status: draft
   - id: single-generator-failure
     type: faa_guidance
-    statement: Loss of a single alternator/generator may leave limited battery power; shed nonessential loads and plan to land at nearest suitable airport.
+    statement: Loss of a single alternator/generator may leave limited battery
+      power; shed nonessential loads and plan to land at nearest suitable
+      airport.
     sources:
       - afh-electrical
     risk: safety_critical
@@ -503,28 +604,135 @@ claims:
     status: draft
   - id: night-engine-failure
     type: faa_guidance
-    statement: Night engine-failure guidance begins with positive control and best glide, includes cause checks and emergency communication, and retaining existing frequency unless instructed to change.
+    statement: Night engine-failure guidance begins with positive control and best
+      glide, includes cause checks and emergency communication, and retaining
+      existing frequency unless instructed to change.
     sources:
       - afh-night-emergency
     risk: safety_critical
-    script_sections: &a11
+    script_sections: &a8
       - Protect a landing option if equipment fails
       - Retrieval review
     status: draft
   - id: unlighted-terrain-condition
     type: faa_guidance
-    statement: AFH guidance to select nearby unlighted terrain requires that terrain to be known and suitable for a forced landing; darkness alone does not establish suitability.
+    statement: AFH guidance to select nearby unlighted terrain requires that terrain
+      to be known and suitable for a forced landing; darkness alone does not
+      establish suitability.
     sources:
       - afh-night-emergency
     risk: safety_critical
-    script_sections: *a11
+    script_sections: *a8
     status: draft
   - id: night-climb-instrument-use
     type: faa_guidance
-    statement: Limited outside references at night require greater use of instruments for control, especially takeoff/climb, with frequent checks of airspeed, attitude and heading.
+    statement: Limited outside references at night require greater use of
+      instruments for control, especially takeoff/climb, with frequent checks of
+      airspeed, attitude and heading.
     sources:
       - afh-climb-preparation
     risk: safety_critical
     script_sections:
       - Taxi and climb with fewer outside references
+    status: draft
+  - id: anticollision-identification
+    type: faa_guidance
+    statement: Anticollision systems can use rotating beacons and/or strobes, red or
+      white; the fictional trainer uses a red beacon and white strobes.
+    sources:
+      - aim-aircraft-lights
+    risk: operational
+    script_sections:
+      - Decide whether the pilot is ready
+    status: draft
+  - id: strobe-vision-hazards
+    type: faa_guidance
+    statement: Strobes can adversely affect pilots or ground personnel, and adverse
+      reflection from clouds supports turning supplementary strobes off in
+      flight.
+    sources:
+      - aim-aircraft-lights
+    risk: operational
+    script_sections:
+      - Decide whether the pilot is ready
+    status: draft
+  - id: inoperative-scope-required
+    type: regulation
+    statement: In the 91.213(d) aircraft/operation scope, without an approved MEL,
+      inoperative equipment cannot be required by VFR-day type certification,
+      the equipment list or KOEL for the operation, 91.205 or another Part91
+      operation rule, or an AD.
+    sources:
+      - ecfr-inoperative
+    risk: safety_critical
+    script_sections:
+      - Verify the airplane and its lights
+    status: draft
+  - id: inoperative-disposition-hazard
+    type: regulation
+    statement: Eligible inoperative equipment requires prescribed removal/control
+      placarding/43.9 records or deactivation/Inoperative placarding
+      (maintenance accomplished/recorded under Part43 if involved), plus a
+      no-hazard determination by an appropriately certificated/rated pilot or
+      maintenance person.
+    sources:
+      - ecfr-inoperative
+    risk: safety_critical
+    script_sections:
+      - Verify the airplane and its lights
+    status: draft
+  - id: vasi-arrangement
+    type: faa_guidance
+    statement: In a two-bar VASI, the downwind/near bar is nearest the runway
+      threshold and the upwind/far bar is farther from it; on the proper path
+      the near bar appears white and the far bar red.
+    sources:
+      - faa-vasi-colors
+    risk: operational
+    script_sections:
+      - Know what the airport lights will tell you
+    status: draft
+  - id: vasi-color-interpretation
+    type: faa_guidance
+    statement: VASI red/white indicates on path, white/white above path, and red/red
+      below path.
+    sources:
+      - pcg-vasi-indications
+    risk: operational
+    script_sections:
+      - Know what the airport lights will tell you
+    status: draft
+  - id: vasi-coverage
+    type: faa_guidance
+    statement: Begin VASI descent only when visually aligned; obstruction-clearance
+      coverage is ±10 degrees of extended centerline to4NM from threshold and
+      may be reduced or offset by local limitations published in Chart
+      Supplement/NOTAMs.
+    sources:
+      - aim-vasi
+    risk: operational
+    script_sections:
+      - Know what the airport lights will tell you
+    status: draft
+  - id: tricolor-indications
+    type: faa_guidance
+    statement: Tri-color shows green on, amber above, red below; descending green to
+      red can produce dark amber transition. Carefully identify the single-light
+      signal to avoid confusion with other lights.
+    sources:
+      - aim-tricolor
+    risk: operational
+    script_sections:
+      - Know what the airport lights will tell you
+    status: draft
+  - id: pulsating-indications
+    type: faa_guidance
+    statement: Pulsating systems show steady white or alternating red/white on path,
+      steady red slightly below, pulsating red farther below, and pulsating
+      white above; carefully identify the single-light signal.
+    sources:
+      - aim-pulsating
+    risk: operational
+    script_sections:
+      - Know what the airport lights will tell you
     status: draft

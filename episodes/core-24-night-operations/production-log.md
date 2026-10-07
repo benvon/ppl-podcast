@@ -59,3 +59,7 @@ The user approved the revised version 0.1.3 script. The established approval hel
 ## October 7, 2026 — authorized audio QA previews
 
 The user authorized OpenAI API audio rendering. Rendered an opening preview and an approach-lighting pronunciation sample from the approved narration with the established Realtime voices and music mix. Both passed automated checks with zero clipped samples and zero stitch warnings. Artifact identities and authorization are recorded in the audio manifest. Human review of voice quality, pacing, music balance, the spoken notice, and PAPI/VASI pronunciation remains pending before full production. Compatible voice segments remain available for reuse. No full candidate or release was produced.
+
+## October 7, 2026 — accepted previews and authorized full candidate
+
+The user accepted audio QA and confirmed hearing the disclaimer notices, then authorized the full OpenAI API render. Reused compatible preview voice segments and rendered the remaining approved narration. The fresh full candidate is 37:59, within the planned 35–45 minutes, with zero clipped samples and stitch warnings. All 15 embedded chapters passed ffprobe validation; the chapter review page is bound to this MP3. Updated actual runtime, hosting duration, candidate identity, QA attestations, and remaining gates. Normalized the show-notes episode label to the package contract. Full-candidate human listening and manual chapter review remain pending, along with publication-day and hosting gates.

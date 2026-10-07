@@ -1,6 +1,6 @@
 # Night Operations
 
-**Episode:** Episode 24
+**Episode:** 24
 **Version:** 0.1.3
 
 ## In this episode

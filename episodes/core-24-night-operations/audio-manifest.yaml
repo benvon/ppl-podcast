@@ -1,10 +1,24 @@
 episode_id: core-24
-current_candidate_render: null
+current_candidate_render:
+  script_version: 0.1.3
+  master_script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
+  sha256: 0fa42a3f4364c5872f642e249810634191bc1f98ea9a0e83e362d295ca330d95
+  duration_seconds: 2278.93
+  mp3: audio-artifacts/core-24/core-24-20261007T184500Z.mp3
+  render_manifest: audio-artifacts/core-24/core-24-20261007T184500Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-24/core-24-20261007T184500Z.audio-quality.json
+  chapter_review: audio-artifacts/core-24/core-24-20261007T184500Z.mp3.chapters.0fa42a3f4364c5872f642e249810634191bc1f98ea9a0e83e362d295ca330d95.html
+  validation: passed_automated_checks
+  authorization:
+    authorized_by: user
+    received_on: 2026-10-07
+    scope: core-24 full OpenAI API audio render
+    qa_id: openai-audio-render-authorization
 superseded_candidates: []
 chapter_markers:
   source: master-script.md section headings
-  audio_sha256: null
-  review_page: null
+  audio_sha256: 0fa42a3f4364c5872f642e249810634191bc1f98ea9a0e83e362d295ca330d95
+  review_page: audio-artifacts/core-24/core-24-20261007T184500Z.mp3.chapters.0fa42a3f4364c5872f642e249810634191bc1f98ea9a0e83e362d295ca330d95.html
   required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast
 preview_render:
   script_version: 0.1.3

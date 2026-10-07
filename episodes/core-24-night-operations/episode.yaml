@@ -8,7 +8,7 @@ status: source_relevance_review_complete
 version: 0.1.3
 published_at: null
 runtime_target_minutes: 40
-runtime_actual_seconds: null
+runtime_actual_seconds: 2278.93
 word_count: 5887
 speakers:
   - instructor
@@ -81,8 +81,8 @@ review:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
 release_gates_remaining:
-  - Render audio and complete human listening QA, including the front-matter
-    check.
+  - Complete human listening QA of the full candidate, including the
+    front-matter check.
   - Review embedded chapter markers against the approved audio.
   - Re-verify every public source and listener-facing link on publication day.
   - Validate hosting metadata and stage the immutable audio object in the
@@ -90,15 +90,16 @@ release_gates_remaining:
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: preview_rendered
-  chapter_markers: pending_render
+  status: candidate_rendered_listening_qa_pending
+  chapter_markers: embedded_and_ffprobe_validated
   publication_day_validation: pending
   listening_qa: pending_human_review
+  preview_listening_qa: accepted
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: pending_script_review
+  handoff_status: pending_audio_qa
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 30
+production_state_revision: 32

@@ -1,0 +1,300 @@
+episode_id: core-25
+links:
+  - id: notes-acs-concept
+    text: Integrated certification standard
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+    locator: Introduction, Airman Certification Standards Concept, printed p. 1 (PDF
+      p. 9)
+    source_id: acs-concept
+    claim_ids:
+      - claim-concept
+  - id: notes-acs-scenarios
+    text: Scenario-based evaluation
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+    locator: Appendix 1, Evaluator Responsibilities, plan-of-action paragraph,
+      printed p. 68 (PDF p. 76)
+    source_id: acs-scenarios
+    claim_ids:
+      - claim-scenarios
+  - id: notes-acs-test-conversation
+    text: The conversation continues in flight
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+    locator: Appendix 1, Use of the ACS During a Practical Test,
+      application/correlation paragraph and ground-portion paragraph, printed p.
+      67 (PDF p. 75)
+    source_id: acs-test-conversation
+    claim_ids:
+      - claim-test-conversation
+  - id: notes-acs-cross-country
+    text: Cross-country planning and fuel
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+    locator: PA.I.D.K1-K5, R1-R7, S1-S5, Cross-Country Flight Planning, printed p. 5
+      (PDF p. 13)
+    source_id: acs-cross-country
+    claim_ids:
+      - claim-cross-country
+  - id: notes-acs-human-factors
+    text: Fitness, bias, and personal minimums
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+    locator: PA.I.H.K1g-K1i, K4, R1-R4, S2, Human Factors, printed p. 8 (PDF p. 16)
+    source_id: acs-human-factors
+    claim_ids:
+      - claim-human-factors
+  - id: notes-acs-pilot
+    text: Pilot qualifications and proficiency
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    locator: PA.I.A.K1-K5, R1-R2, S1, Pilot Qualifications, printed p. 2 (PDF p. 10)
+    source_id: acs-pilot
+    claim_ids:
+      - claim-pilot
+  - id: notes-acs-test-sampling
+    text: Knowledge-test deficiencies and test sampling
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+    locator: Appendix 1, Use of the ACS During a Practical Test,
+      required-minimum-elements list and AKTR note, printed p. 66 (PDF p. 74)
+    source_id: acs-test-sampling
+    claim_ids:
+      - claim-test-sampling
+  - id: notes-acs-airworthiness-records
+    text: Airworthiness records and equipment
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    locator: PA.I.B.K1a-K1e and K3-K3a, Airworthiness Requirements, printed p. 2
+      (PDF p. 10)
+    source_id: acs-airworthiness-records
+    claim_ids:
+      - claim-airworthiness-records
+  - id: notes-acs-preflight
+    text: Physical preflight assessment
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+    locator: PA.II.A.K3a-K3d, S1-S4, Preflight Assessment, printed p. 11 (PDF p. 19)
+    source_id: acs-preflight
+    claim_ids:
+      - claim-preflight
+  - id: notes-acs-airworthiness-decision
+    text: Inoperative-equipment decisions
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    locator: PA.I.B.K3b-K4, R1, S1-S3, Airworthiness Requirements, printed p. 3 (PDF
+      p. 11)
+    source_id: acs-airworthiness-decision
+    claim_ids:
+      - claim-airworthiness-decision
+  - id: notes-acs-weather-decision
+    text: Weather decisions and limitations
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+    locator: PA.I.C.R1a-R1c, R2a-R2c, S1-S3, Weather Information, printed p. 4 (PDF
+      p. 12)
+    source_id: acs-weather-decision
+    claim_ids:
+      - claim-weather-decision
+  - id: notes-acs-weather-products
+    text: Weather products for the proposed flight
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    locator: PA.I.C.K1 and K2a-K2g, Weather Information, printed p. 3 (PDF p. 11)
+    source_id: acs-weather-products
+    claim_ids:
+      - claim-weather-products
+  - id: notes-acs-airspace
+    text: Airspace and applicable requirements
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    locator: PA.I.E.K1-K3, S1-S3, National Airspace System, printed p. 6 (PDF p. 14)
+    source_id: acs-airspace
+    claim_ids:
+      - claim-airspace
+  - id: notes-acs-loading
+    text: Loading through every flight phase
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    locator: PA.I.F.S1-S2, Performance and Limitations, printed p. 7 (PDF p. 15)
+    source_id: acs-loading
+    claim_ids:
+      - claim-loading
+  - id: notes-acs-performance
+    text: Performance inputs and actual results
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    locator: PA.I.F.K1-K3, R1-R3, Performance and Limitations, printed p. 6 (PDF p. 14)
+    source_id: acs-performance
+    claim_ids:
+      - claim-performance
+  - id: notes-acs-takeoff-risk
+    text: Takeoff runway and changing wind
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+    locator: PA.IV.A.K1-K3, R1-R3, Normal Takeoff and Climb, printed p. 18 (PDF p. 26)
+    source_id: acs-takeoff-risk
+    claim_ids:
+      - claim-takeoff-risk
+  - id: notes-acs-diversion
+    text: A suitable and timely diversion
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+    locator: PA.VI.C.K1-K2, R1-R5, S1-S6, Diversion, printed p. 40 (PDF p. 48)
+    source_id: acs-diversion
+    claim_ids:
+      - claim-diversion
+  - id: notes-acs-flight-deck
+    text: Cockpit and passenger preparation
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+    locator: PA.II.B.K1-K4, R1-R3, S1-S4, Flight Deck Management, printed p. 12 (PDF
+      p. 20)
+    source_id: acs-flight-deck
+    claim_ids:
+      - claim-flight-deck
+  - id: notes-acs-emergency-equipment
+    text: Emergency-equipment passenger briefing
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+    locator: PA.IX.D.S1-S2, Emergency Equipment and Survival Gear, printed p. 54
+      (PDF p. 62)
+    source_id: acs-emergency-equipment
+    claim_ids:
+      - claim-emergency-equipment
+  - id: notes-acs-controls
+    text: Positive control exchange
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+    locator: Appendix 2, Positive Exchange of Flight Controls, printed p. 75 (PDF p. 83)
+    source_id: acs-controls
+    claim_ids:
+      - claim-controls
+  - id: notes-acs-taxi
+    text: Taxi changes and orientation
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+    locator: PA.II.D.K1-K6, R1-R4, S1-S8, Taxiing (ASEL, AMEL), printed p. 13 (PDF
+      p. 21)
+    source_id: acs-taxi
+    claim_ids:
+      - claim-taxi
+  - id: notes-acs-progress
+    text: Planned versus actual progress
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+    locator: PA.VI.A.K4-K7, R1-R3, S1-S5, Pilotage and Dead Reckoning, printed p. 38
+      (PDF p. 46)
+    source_id: acs-progress
+    claim_ids:
+      - claim-progress
+  - id: notes-acs-navigation-systems
+    text: Navigation resources and equipment limitations
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+    locator: PA.VI.B.K1-K4, R1-R5, S1-S6, Navigation Systems and Radar Services,
+      printed p. 39 (PDF p. 47)
+    source_id: acs-navigation-systems
+    claim_ids:
+      - claim-navigation-systems
+  - id: notes-acs-lost
+    text: Position uncertainty and assistance
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+    locator: PA.VI.D.R4, S1-S5, Lost Procedures, printed p. 41 (PDF p. 49)
+    source_id: acs-lost
+    claim_ids:
+      - claim-lost
+  - id: notes-acs-systems-malfunction
+    text: Aircraft-specific failure response
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+    locator: PA.IX.C.K1-K5, R1-R4, S1-S2, Systems and Equipment Malfunctions,
+      printed p. 53 (PDF p. 61)
+    source_id: acs-systems-malfunction
+    claim_ids:
+      - claim-systems-malfunction
+  - id: notes-acs-systems
+    text: Know the systems in the test airplane
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    locator: PA.I.G.K1e-K1h, K2, R1-R3, S1-S2, Operation of Systems, printed p. 7
+      (PDF p. 15)
+    source_id: acs-systems
+    claim_ids:
+      - claim-systems
+  - id: notes-acs-emergency-landing
+    text: Best glide and a reachable landing site
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+    locator: PA.IX.B.K1-K6, R1-R6, S1-S6, Emergency Approach and Landing (Simulated)
+      (ASEL, ASES), printed p. 52 (PDF p. 60)
+    source_id: acs-emergency-landing
+    claim_ids:
+      - claim-emergency-landing
+  - id: notes-acs-landing-risk
+    text: Landing runway and approach risk
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+    locator: PA.IV.B.K1-K3, R1-R2d, Normal Approach and Landing, printed p. 19 (PDF
+      p. 27)
+    source_id: acs-landing-risk
+    claim_ids:
+      - claim-landing-risk
+  - id: notes-acs-landing-skill
+    text: Stable approach and timely go-around
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+    locator: PA.IV.B.R2e-R6, S1-S12, Normal Approach and Landing, printed p. 20 (PDF
+      p. 28)
+    source_id: acs-landing-skill
+    claim_ids:
+      - claim-landing-skill
+  - id: notes-acs-stalls
+    text: Connect stall knowledge to flight skill
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+    locator: PA.VII.B.K1-K4, R1-R8, S7-S11, Power-Off Stalls, printed p. 43 (PDF p. 51)
+    source_id: acs-stalls
+    claim_ids:
+      - claim-stalls
+  - id: notes-acs-go-around
+    text: Manage the go-around as a flight phase
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+    locator: PA.IV.N.K1-K3, R1-R9, S1-S9, Go-Around/Rejected Landing, printed p. 35
+      (PDF p. 43)
+    source_id: acs-go-around
+    claim_ids:
+      - claim-go-around
+  - id: notes-acs-postflight
+    text: Postflight, discrepancies, and passenger safety
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+    locator: PA.XII.A.K1-K2, R1-R4, S2-S5, After Landing, Parking, and Securing
+      (ASEL, AMEL), printed p. 64 (PDF p. 72)
+    source_id: acs-postflight
+    claim_ids:
+      - claim-postflight
+  - id: notes-acs-instructor
+    text: Prepare all applicable tasks
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+    locator: Appendix 1, Instructor Responsibilities, printed p. 67; applicable
+      tasks elsewhere in the ACS (PDF p. 75)
+    source_id: acs-instructor
+    claim_ids:
+      - claim-instructor
+  - id: notes-acs-outcomes
+    text: Performance standards and test interruption
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+    locator: Appendix 1, Unsatisfactory Performance and Letter of Discontinuance,
+      printed p. 69 (PDF p. 77)
+    source_id: acs-outcomes
+    claim_ids:
+      - claim-outcomes
+  - id: notes-acs-test-safety
+    text: Safety and checklists throughout the test
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+    locator: Appendix 2, General and Use of Checklists, printed p. 75 (PDF p. 83)
+    source_id: acs-test-safety
+    claim_ids:
+      - claim-test-safety
+  - id: notes-afh-angle-of-attack
+    text: Angle of attack and loaded turns
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+    locator: Chapter 5, Angle of Attack, printed p. 5-9 (PDF p. 9)
+    source_id: afh-angle-of-attack
+    claim_ids:
+      - claim-angle-of-attack
+  - id: notes-afh-electrical
+    text: Single generating-source failure
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    locator: Chapter 18, System Malfunctions, Electrical System, printed p. 18-13
+      (PDF p. 13)
+    source_id: afh-electrical
+    claim_ids:
+      - claim-electrical
+  - id: notes-afh-manufacturer
+    text: Manufacturer emergency procedures
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    locator: Chapter 18, Introduction, manufacturer-procedure precedence paragraph,
+      printed p. 18-1 (PDF p. 1)
+    source_id: afh-manufacturer
+    claim_ids:
+      - claim-manufacturer
+  - id: notes-ecfr-vfr-fuel
+    text: Airplane VFR fuel requirement
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
+    locator: 91.151(a)(1)-(2), airplane day/night VFR fuel
+    source_id: ecfr-vfr-fuel
+    claim_ids:
+      - claim-vfr-fuel

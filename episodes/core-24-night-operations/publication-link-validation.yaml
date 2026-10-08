@@ -1,8 +1,8 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
 validation_kind: publication_link_check
-run_id: 7552226f-76fb-4fa1-bb6b-f3561adaad02
-checked_at_utc: 2026-10-08T14:55:31.764Z
+run_id: 90ff23e2-67f5-46fb-9926-c714b4b8dc18
+checked_at_utc: 2026-10-08T15:03:26.030Z
 sources_file: episodes/core-24-night-operations/sources.yaml
 claims_file: episodes/core-24-night-operations/claim-inventory.yaml
 show_notes_file: episodes/core-24-night-operations/show-notes.md
@@ -11,14 +11,14 @@ input_sha256:
   sources: 4b4c2c194db1017611f2bc5e6b5ca7ebbacdc74bf300ae40fff2ec9321b30f48
   claims: c9d3eb3ebc80ea6f75b01fd057b7295fb311bdff6d62a5024e4f231babbc5a79
   master_script: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
-  show_notes: 3aed759a2cbe8e6d25c9f3904764f308fe0f1504af5db33eade8a0639dc877b5
+  show_notes: d2edb9eadb0e728f69ee4011afd46e9510ce4fbd58b06cbfaa6db9b1b1bb8a0f
   show_notes_manifest: 3c8b3d8bccda1747ed3da0976a26475e64a1ad285d123da3b1922672d625d0c3
 input_normalization:
   master_script: narration-and-source-tags-v1
   show_notes: fact-check-verification-column-v1
 semantic_input_sha256:
   master_script: e7ed7f6aeee290e729fcde24715a6e0f50dc0690215c49fb9a85f9c1e4fc40e3
-  show_notes: 32f2b58516731533c73f855838cfebbb1b8f25f2e885963203b72a6596b487cf
+  show_notes: 17ba86dc0b0a36958b7fa1d0f98fa3add0a7d49dccc92eadba60518c662e0365
 llm_requested: false
 llm_model: null
 llm_review_passes: 0
@@ -850,7 +850,7 @@ show_notes_results:
       redirects: &a3 []
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
@@ -882,7 +882,7 @@ show_notes_results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
@@ -913,7 +913,7 @@ show_notes_results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
@@ -946,7 +946,7 @@ show_notes_results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
@@ -977,7 +977,7 @@ show_notes_results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -1589,7 +1589,7 @@ show_notes_results:
       redirects: &a11 []
       title: Chapter 4. Air Traffic Control
       truncated: false
-      content_sha256: 7fc07d82be15fd470d0c2a8209e6a448a0c99af4fc41818b12cb892b0fdff5e4
+      content_sha256: 3423faaedee78f4eb0b5ba1500768ca56df278084f4ed79aa54486d8bf68d6ef
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
@@ -1664,7 +1664,7 @@ show_notes_results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -1727,7 +1727,7 @@ show_notes_results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -1758,7 +1758,7 @@ show_notes_results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -1789,7 +1789,7 @@ show_notes_results:
       redirects: &a13 []
       title: A - Pilot/Controller Glossary
       truncated: false
-      content_sha256: 3d457a62e637c635e96b18eef6a14c21bd509d0f08d0a8c974ad2c4cd77d5860
+      content_sha256: e83b168575c05313fd3ecee4dcd77e1207115919a9552f2a4dee0a08b68fb312
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
@@ -1804,7 +1804,7 @@ show_notes_results:
 results:
   - source_id: acs-night
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T14:55:12.928Z
+    checked_at_utc: 2026-10-08T15:03:04.986Z
     linked_claim_ids:
       - acs-night-knowledge
       - acs-night-risk
@@ -1841,7 +1841,7 @@ results:
       status: not_requested
   - source_id: afh-night-introduction
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:12.944Z
+    checked_at_utc: 2026-10-08T15:03:05.013Z
     linked_claim_ids:
       - night-visual-limitations
       - civil-twilight-context
@@ -1879,7 +1879,7 @@ results:
       status: not_requested
   - source_id: afh-manufacturer
     title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
-    checked_at_utc: 2026-10-08T14:55:14.085Z
+    checked_at_utc: 2026-10-08T15:03:06.007Z
     linked_claim_ids:
       - manufacturer-procedures
     missing_claim_ids: []
@@ -1915,7 +1915,7 @@ results:
       status: not_requested
   - source_id: ecfr-lights
     title: 14 CFR 91.209, Aircraft lights
-    checked_at_utc: 2026-10-08T14:55:12.945Z
+    checked_at_utc: 2026-10-08T15:03:05.014Z
     linked_claim_ids:
       - position-light-time
       - anticollision-use
@@ -1963,7 +1963,7 @@ results:
       status: not_requested
   - source_id: ecfr-currency
     title: "14 CFR 61.57, Recent flight experience: Pilot in command"
-    checked_at_utc: 2026-10-08T14:55:12.945Z
+    checked_at_utc: 2026-10-08T15:03:05.014Z
     linked_claim_ids:
       - night-recent-experience
     missing_claim_ids: []
@@ -2010,7 +2010,7 @@ results:
       status: not_requested
   - source_id: afh-night-summary
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:15.158Z
+    checked_at_utc: 2026-10-08T15:03:08.050Z
     linked_claim_ids:
       - night-proficiency
     missing_claim_ids: []
@@ -2047,7 +2047,7 @@ results:
   - source_id: phak-fatigue
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:15.177Z
+    checked_at_utc: 2026-10-08T15:03:08.069Z
     linked_claim_ids:
       - night-fatigue
     missing_claim_ids: []
@@ -2084,7 +2084,7 @@ results:
   - source_id: phak-adaptation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:21.769Z
+    checked_at_utc: 2026-10-08T15:03:14.966Z
     linked_claim_ids:
       - dark-adaptation
     missing_claim_ids: []
@@ -2121,7 +2121,7 @@ results:
   - source_id: phak-vision
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:27.573Z
+    checked_at_utc: 2026-10-08T15:03:22.345Z
     linked_claim_ids:
       - rod-cone-functions
     missing_claim_ids: []
@@ -2158,7 +2158,7 @@ results:
   - source_id: phak-night-scan
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:27.616Z
+    checked_at_utc: 2026-10-08T15:03:22.389Z
     linked_claim_ids:
       - night-blind-spot
     missing_claim_ids: []
@@ -2195,7 +2195,7 @@ results:
   - source_id: phak-scan-stops
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:27.684Z
+    checked_at_utc: 2026-10-08T15:03:22.460Z
     linked_claim_ids:
       - night-scan-stops
     missing_claim_ids: []
@@ -2231,7 +2231,7 @@ results:
       status: not_requested
   - source_id: afh-lighting-vision
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.706Z
+    checked_at_utc: 2026-10-08T15:03:22.481Z
     linked_claim_ids:
       - red-chart-colors
     missing_claim_ids: []
@@ -2268,7 +2268,7 @@ results:
   - source_id: phak-cockpit-lighting
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:27.733Z
+    checked_at_utc: 2026-10-08T15:03:22.505Z
     linked_claim_ids:
       - cockpit-lighting
     missing_claim_ids: []
@@ -2304,7 +2304,7 @@ results:
       status: not_requested
   - source_id: afh-personal-equipment
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.745Z
+    checked_at_utc: 2026-10-08T15:03:22.517Z
     linked_claim_ids:
       - night-personal-equipment
     missing_claim_ids: []
@@ -2341,7 +2341,7 @@ results:
   - source_id: phak-oxygen
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:27.768Z
+    checked_at_utc: 2026-10-08T15:03:22.538Z
     linked_claim_ids:
       - oxygen-night-vision
     missing_claim_ids: []
@@ -2378,7 +2378,7 @@ results:
   - source_id: ecfr-equipment
     title: "14 CFR 91.205, Powered civil aircraft with standard U.S. airworthiness
       certificates: Instrument and equipment requirements"
-    checked_at_utc: 2026-10-08T14:55:12.945Z
+    checked_at_utc: 2026-10-08T15:03:05.014Z
     linked_claim_ids:
       - night-equipment
     missing_claim_ids: []
@@ -2425,7 +2425,7 @@ results:
       status: not_requested
   - source_id: afh-preflight
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.782Z
+    checked_at_utc: 2026-10-08T15:03:22.551Z
     linked_claim_ids:
       - night-nav-setup
       - night-preflight-inspection
@@ -2462,7 +2462,7 @@ results:
       status: not_requested
   - source_id: afh-navigation
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.802Z
+    checked_at_utc: 2026-10-08T15:03:22.570Z
     linked_claim_ids:
       - night-water-crossing
       - night-weather-cues
@@ -2499,7 +2499,7 @@ results:
       status: not_requested
   - source_id: afh-airport-status
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.821Z
+    checked_at_utc: 2026-10-08T15:03:22.589Z
     linked_claim_ids:
       - lighting-status
     missing_claim_ids: []
@@ -2535,7 +2535,7 @@ results:
       status: not_requested
   - source_id: afh-weather
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.843Z
+    checked_at_utc: 2026-10-08T15:03:22.610Z
     linked_claim_ids:
       - night-weather-planning
     missing_claim_ids: []
@@ -2571,7 +2571,7 @@ results:
       status: not_requested
   - source_id: ecfr-fuel
     title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
-    checked_at_utc: 2026-10-08T14:55:14.103Z
+    checked_at_utc: 2026-10-08T15:03:06.062Z
     linked_claim_ids:
       - night-fuel
     missing_claim_ids: []
@@ -2618,7 +2618,7 @@ results:
       status: not_requested
   - source_id: aim-beacons
     title: Aeronautical Information Manual, Airport Lighting Aids
-    checked_at_utc: 2026-10-08T14:55:27.859Z
+    checked_at_utc: 2026-10-08T15:03:22.618Z
     linked_claim_ids:
       - beacon-patterns
     missing_claim_ids: []
@@ -2634,7 +2634,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
@@ -2653,7 +2653,7 @@ results:
       status: not_requested
   - source_id: aim-runway-lights
     title: Aeronautical Information Manual, Airport Lighting Aids
-    checked_at_utc: 2026-10-08T14:55:27.864Z
+    checked_at_utc: 2026-10-08T15:03:22.633Z
     linked_claim_ids:
       - runway-edge-pattern
       - threshold-end-colors
@@ -2670,7 +2670,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
@@ -2689,7 +2689,7 @@ results:
       status: not_requested
   - source_id: aim-taxi-lights
     title: Aeronautical Information Manual, Airport Lighting Aids
-    checked_at_utc: 2026-10-08T14:55:27.933Z
+    checked_at_utc: 2026-10-08T15:03:22.994Z
     linked_claim_ids:
       - taxi-light-colors
     missing_claim_ids: []
@@ -2705,7 +2705,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
@@ -2724,7 +2724,7 @@ results:
       status: not_requested
   - source_id: aim-pcl
     title: Aeronautical Information Manual, Airport Lighting Aids
-    checked_at_utc: 2026-10-08T14:55:27.933Z
+    checked_at_utc: 2026-10-08T15:03:22.994Z
     linked_claim_ids:
       - pcl-frequency
       - pcl-activation
@@ -2742,7 +2742,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
@@ -2761,7 +2761,7 @@ results:
       status: not_requested
   - source_id: aim-papi
     title: Aeronautical Information Manual, Airport Lighting Aids
-    checked_at_utc: 2026-10-08T14:55:27.933Z
+    checked_at_utc: 2026-10-08T15:03:22.996Z
     linked_claim_ids:
       - papi-coverage
     missing_claim_ids: []
@@ -2777,7 +2777,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -2796,7 +2796,7 @@ results:
       status: not_requested
   - source_id: faa-papi-colors
     title: Visual Guidance Lighting Systems
-    checked_at_utc: 2026-10-08T14:55:27.933Z
+    checked_at_utc: 2026-10-08T15:03:22.996Z
     linked_claim_ids:
       - papi-color-interpretation
     missing_claim_ids: []
@@ -2832,7 +2832,7 @@ results:
       status: not_requested
   - source_id: afh-taxi
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.934Z
+    checked_at_utc: 2026-10-08T15:03:22.997Z
     linked_claim_ids:
       - night-propeller-clear
       - night-taxi-verification
@@ -2869,7 +2869,7 @@ results:
       status: not_requested
   - source_id: afh-climb
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.953Z
+    checked_at_utc: 2026-10-08T15:03:23.026Z
     linked_claim_ids:
       - night-climb-crosscheck
     missing_claim_ids: []
@@ -2906,7 +2906,7 @@ results:
   - source_id: phak-acceleration
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:27.969Z
+    checked_at_utc: 2026-10-08T15:03:23.048Z
     linked_claim_ids:
       - somatogravic-illusion
     missing_claim_ids: []
@@ -2942,7 +2942,7 @@ results:
       status: not_requested
   - source_id: afh-progress
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:27.995Z
+    checked_at_utc: 2026-10-08T15:03:23.076Z
     linked_claim_ids:
       - night-flight-progress
     missing_claim_ids: []
@@ -2979,7 +2979,7 @@ results:
   - source_id: phak-night-illusions
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:28.018Z
+    checked_at_utc: 2026-10-08T15:03:23.099Z
     linked_claim_ids:
       - autokinesis
       - false-horizon
@@ -3017,7 +3017,7 @@ results:
   - source_id: phak-disorientation
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:28.711Z
+    checked_at_utc: 2026-10-08T15:03:23.812Z
     linked_claim_ids:
       - reliable-instruments
     missing_claim_ids: []
@@ -3053,7 +3053,7 @@ results:
       status: not_requested
   - source_id: afh-position-lights
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:28.726Z
+    checked_at_utc: 2026-10-08T15:03:23.828Z
     linked_claim_ids:
       - position-light-orientation
     missing_claim_ids: []
@@ -3090,7 +3090,7 @@ results:
   - source_id: phak-night-route
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:28.755Z
+    checked_at_utc: 2026-10-08T15:03:23.852Z
     linked_claim_ids:
       - night-route-alternative
     missing_claim_ids: []
@@ -3127,7 +3127,7 @@ results:
   - source_id: phak-landing-illusions
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:28.769Z
+    checked_at_utc: 2026-10-08T15:03:23.865Z
     linked_claim_ids:
       - misidentified-runway
     missing_claim_ids: []
@@ -3163,7 +3163,7 @@ results:
       status: not_requested
   - source_id: afh-approach
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:28.781Z
+    checked_at_utc: 2026-10-08T15:03:23.876Z
     linked_claim_ids:
       - night-approach-crosscheck
     missing_claim_ids: []
@@ -3200,7 +3200,7 @@ results:
   - source_id: phak-featureless
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:28.799Z
+    checked_at_utc: 2026-10-08T15:03:23.893Z
     linked_claim_ids:
       - featureless-approach
     missing_claim_ids: []
@@ -3236,7 +3236,7 @@ results:
       status: not_requested
   - source_id: afh-black-hole
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:28.812Z
+    checked_at_utc: 2026-10-08T15:03:23.904Z
     linked_claim_ids:
       - black-hole-guidance
     missing_claim_ids: []
@@ -3273,7 +3273,7 @@ results:
   - source_id: phak-runway-illusions
     title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
       Factors"
-    checked_at_utc: 2026-10-08T14:55:28.830Z
+    checked_at_utc: 2026-10-08T15:03:23.921Z
     linked_claim_ids:
       - runway-width-illusion
       - upslope-illusion
@@ -3310,7 +3310,7 @@ results:
       status: not_requested
   - source_id: afh-landing-prevention
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:28.842Z
+    checked_at_utc: 2026-10-08T15:03:23.932Z
     linked_claim_ids:
       - landing-illusion-prevention
     missing_claim_ids: []
@@ -3346,7 +3346,7 @@ results:
       status: not_requested
   - source_id: afh-electrical
     title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
-    checked_at_utc: 2026-10-08T14:55:28.860Z
+    checked_at_utc: 2026-10-08T15:03:23.949Z
     linked_claim_ids:
       - single-generator-failure
     missing_claim_ids: []
@@ -3382,7 +3382,7 @@ results:
       status: not_requested
   - source_id: afh-night-emergency
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:28.882Z
+    checked_at_utc: 2026-10-08T15:03:23.969Z
     linked_claim_ids:
       - night-engine-failure
       - unlighted-terrain-condition
@@ -3419,7 +3419,7 @@ results:
       status: not_requested
   - source_id: afh-climb-preparation
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
-    checked_at_utc: 2026-10-08T14:55:28.899Z
+    checked_at_utc: 2026-10-08T15:03:23.985Z
     linked_claim_ids:
       - night-climb-instrument-use
     missing_claim_ids: []
@@ -3455,7 +3455,7 @@ results:
       status: not_requested
   - source_id: aim-aircraft-lights
     title: Aircraft position and anticollision light use
-    checked_at_utc: 2026-10-08T14:55:28.915Z
+    checked_at_utc: 2026-10-08T15:03:24.000Z
     linked_claim_ids:
       - anticollision-identification
       - strobe-vision-hazards
@@ -3472,7 +3472,7 @@ results:
       redirects: *a11
       title: Chapter 4. Air Traffic Control
       truncated: false
-      content_sha256: 7fc07d82be15fd470d0c2a8209e6a448a0c99af4fc41818b12cb892b0fdff5e4
+      content_sha256: 3423faaedee78f4eb0b5ba1500768ca56df278084f4ed79aa54486d8bf68d6ef
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
@@ -3491,7 +3491,7 @@ results:
       status: not_requested
   - source_id: ecfr-inoperative
     title: Inoperative equipment without an approved MEL
-    checked_at_utc: 2026-10-08T14:55:15.110Z
+    checked_at_utc: 2026-10-08T15:03:07.067Z
     linked_claim_ids:
       - inoperative-scope-required
       - inoperative-disposition-hazard
@@ -3539,7 +3539,7 @@ results:
       status: not_requested
   - source_id: aim-vasi
     title: Two-bar VASI arrangement and clearance limits
-    checked_at_utc: 2026-10-08T14:55:29.116Z
+    checked_at_utc: 2026-10-08T15:03:24.092Z
     linked_claim_ids:
       - vasi-coverage
     missing_claim_ids: []
@@ -3555,7 +3555,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -3574,7 +3574,7 @@ results:
       status: not_requested
   - source_id: faa-vasi-colors
     title: Two-bar VASI color indications in FAA lighting criteria
-    checked_at_utc: 2026-10-08T14:55:29.116Z
+    checked_at_utc: 2026-10-08T15:03:24.093Z
     linked_claim_ids:
       - vasi-arrangement
     missing_claim_ids: []
@@ -3610,7 +3610,7 @@ results:
       status: not_requested
   - source_id: aim-tricolor
     title: Tri-color slope indications and identification caution
-    checked_at_utc: 2026-10-08T14:55:30.183Z
+    checked_at_utc: 2026-10-08T15:03:24.531Z
     linked_claim_ids:
       - tricolor-indications
     missing_claim_ids: []
@@ -3626,7 +3626,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -3645,7 +3645,7 @@ results:
       status: not_requested
   - source_id: aim-pulsating
     title: Pulsating slope indications and identification caution
-    checked_at_utc: 2026-10-08T14:55:30.184Z
+    checked_at_utc: 2026-10-08T15:03:24.532Z
     linked_claim_ids:
       - pulsating-indications
     missing_claim_ids: []
@@ -3661,7 +3661,7 @@ results:
       redirects: *a3
       title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
       truncated: false
-      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      content_sha256: 881f78f032e3594cfad92290d5b61f1609d05777a1f35fd667b64210ab514545
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
@@ -3680,7 +3680,7 @@ results:
       status: not_requested
   - source_id: pcg-vasi-indications
     title: VASI on-path, high and low indications
-    checked_at_utc: 2026-10-08T14:55:30.185Z
+    checked_at_utc: 2026-10-08T15:03:24.532Z
     linked_claim_ids:
       - vasi-color-interpretation
     missing_claim_ids: []
@@ -3696,7 +3696,7 @@ results:
       redirects: *a13
       title: A - Pilot/Controller Glossary
       truncated: false
-      content_sha256: 3d457a62e637c635e96b18eef6a14c21bd509d0f08d0a8c974ad2c4cd77d5860
+      content_sha256: e83b168575c05313fd3ecee4dcd77e1207115919a9552f2a4dee0a08b68fb312
       hash_truncated: false
       citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
       validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING

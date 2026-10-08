@@ -42,8 +42,8 @@ links:
       - position-light-time
       - anticollision-use
   - id: study-ecfr-night
-    text: Night definition — current 14 CFR 1.1
-    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-A/part-1/section-1.1
+    text: Night definition — 14 CFR 1.1, October 6 eCFR edition (XML)
+    url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=1&section=1.1
     kind: supplemental
   - id: study-ecfr-currency
     text: Recent experience for carrying persons in the specified night window

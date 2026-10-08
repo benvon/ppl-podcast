@@ -1,0 +1,3715 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: publication_link_check
+run_id: 7552226f-76fb-4fa1-bb6b-f3561adaad02
+checked_at_utc: 2026-10-08T14:55:31.764Z
+sources_file: episodes/core-24-night-operations/sources.yaml
+claims_file: episodes/core-24-night-operations/claim-inventory.yaml
+show_notes_file: episodes/core-24-night-operations/show-notes.md
+show_notes_manifest_file: episodes/core-24-night-operations/show-notes-manifest.yaml
+input_sha256:
+  sources: 4b4c2c194db1017611f2bc5e6b5ca7ebbacdc74bf300ae40fff2ec9321b30f48
+  claims: c9d3eb3ebc80ea6f75b01fd057b7295fb311bdff6d62a5024e4f231babbc5a79
+  master_script: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
+  show_notes: 3aed759a2cbe8e6d25c9f3904764f308fe0f1504af5db33eade8a0639dc877b5
+  show_notes_manifest: 3c8b3d8bccda1747ed3da0976a26475e64a1ad285d123da3b1922672d625d0c3
+input_normalization:
+  master_script: narration-and-source-tags-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: e7ed7f6aeee290e729fcde24715a6e0f50dc0690215c49fb9a85f9c1e4fc40e3
+  show_notes: 32f2b58516731533c73f855838cfebbb1b8f25f2e885963203b72a6596b487cf
+llm_requested: false
+llm_model: null
+llm_review_passes: 0
+llm_materiality_policy: null
+authorization: null
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 90
+  claim_coverage_count: 66
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 54
+  http_link_count: 0
+  manifest_link_count: 54
+show_notes_results:
+  - id: visual-papi
+    kind: supplemental
+    text: PAPI visual aid — PHAK Figure 14-30, printed page 14-17
+    url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14.pdf#page=17
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14.pdf#page=17
+      final_url: https://www.faa.gov/sites/faa.gov/files/16_phak_ch14.pdf#page=17
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: true
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: visual-night-blind-spot
+    kind: supplemental
+    text: Night blind spot — PHAK Figure 17-17, printed page 17-22
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: []
+      title: null
+      truncated: true
+      content_sha256: null
+      hash_truncated: true
+      errors: []
+      valid: true
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-acs-night
+    kind: claim
+    text: ACS Night Operations knowledge and risk outcomes
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+    source_id: acs-night
+    claim_ids:
+      - acs-night-knowledge
+      - acs-night-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a6 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      errors: []
+      valid: true
+      pdf_page_number: 71
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1673
+      pdf_page_text_sha256: 1edca9bc84a44a1967924e92802d8e2a63651871176243ad442b1f9305745ed4
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-night-introduction
+    kind: claim
+    text: "Night flying: visual changes and civil twilight"
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+    source_id: afh-night-introduction
+    claim_ids:
+      - night-visual-limitations
+      - civil-twilight-context
+      - night-definition
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4347
+      pdf_page_text_sha256: b72081800e003d312c73002039304e5279cba84b74eac51901c58bd4483fc61e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-manufacturer
+    kind: claim
+    text: Emergency guidance and airplane-specific procedures
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    source_id: afh-manufacturer
+    claim_ids:
+      - manufacturer-procedures
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a4 []
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4057
+      pdf_page_text_sha256: 34e39dd591f0f75e7f56d3041db18a6c292ad346273676b13264a71b8d7283e7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-ecfr-lights
+    kind: claim
+    text: Position-light timing and anticollision-light use
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.209
+    source_id: ecfr-lights
+    claim_ids:
+      - position-light-time
+      - anticollision-use
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a7 []
+      title: null
+      truncated: false
+      content_sha256: e4c4ddb113edc060c6f7449c376424e43b6fd937e75171a3ace6427fcc64fcb6
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.209
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.209"
+        date: 2026-10-06
+        section_number: "91.209"
+      section_text_sha256: 9a1e3d1dc8718e611eba61115a9af5855c9a29957ea0dc65d2a591b56f273d0f
+      excerpt_characters: 1189
+      excerpt_sha256: 9a1e3d1dc8718e611eba61115a9af5855c9a29957ea0dc65d2a591b56f273d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1189
+  - id: study-ecfr-night
+    kind: supplemental
+    text: Night definition — 14 CFR 1.1, October 6 eCFR edition (XML)
+    url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=1&section=1.1
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=1&section=1.1
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=1&section=1.1
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: []
+      title: null
+      truncated: false
+      content_sha256: 8118570e6328cdecb2a9294fe5f83e17529dc2a5a648109a4dbf620946948104
+      hash_truncated: false
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 6a0228039a93ae7538e7caad6b2a8f940d6f0ece73a53e4861df25c89c9c2189
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-ecfr-currency
+    kind: claim
+    text: Recent experience for carrying persons in the specified night window
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+    source_id: ecfr-currency
+    claim_ids:
+      - night-recent-experience
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a8 []
+      title: null
+      truncated: false
+      content_sha256: 3e4c1f2e91b13d99fb4f1f7c2f43f5f0792e8c7dbd4c92370c468ca184607230
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.57"
+        date: 2026-10-06
+        section_number: "61.57"
+      section_text_sha256: dd2d7fb120b8430d30ebe28b504de065c9584c5d4f4dd153ed31c8b7a3749e4e
+      excerpt_characters: 12000
+      excerpt_sha256: 162534a80208cd025e0712d524b8a7ca9cad7018878e6d242fecefef7e8ce0ad
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15352
+  - id: study-afh-night-summary
+    kind: claim
+    text: Night training, currency and proficiency
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+    source_id: afh-night-summary
+    claim_ids:
+      - night-proficiency
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1001
+      pdf_page_text_sha256: c834568c8397e5ca5816c1da0334925b48dde0e1ef22e0b8f56c73630a84d883
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-fatigue
+    kind: claim
+    text: Fatigue and fixation during night flight
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+    source_id: phak-fatigue
+    claim_ids:
+      - night-fatigue
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4517
+      pdf_page_text_sha256: 6c771ee7f3116b8ceeb53678a393ac3c2106b5eee97ca26e10e92d60476147e3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-adaptation
+    kind: claim
+    text: Dark adaptation
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+    source_id: phak-adaptation
+    claim_ids:
+      - dark-adaptation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2614
+      pdf_page_text_sha256: f5b34676b5d5f3614248204d3679ac4a193256c360b0caceea2871ac99a1232c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-vision
+    kind: claim
+    text: Rods, cones and the human eye
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+    source_id: phak-vision
+    claim_ids:
+      - rod-cone-functions
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2765
+      pdf_page_text_sha256: e020e4ab740ce2eb1edacaf5bd1a1e4466ac5f97e5ab4ed8ae734f41d61c1cbb
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-night-scan
+    kind: claim
+    text: Night blind spot and off-center viewing
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+    source_id: phak-night-scan
+    claim_ids:
+      - night-blind-spot
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3280
+      pdf_page_text_sha256: 2b9829e8a3f281093a0bb5f3bf2060acc81174479e9f7e2e71817dafcab815d1
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-scan-stops
+    kind: claim
+    text: Night scanning and viewing duration
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+    source_id: phak-scan-stops
+    claim_ids:
+      - night-scan-stops
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2614
+      pdf_page_text_sha256: f5b34676b5d5f3614248204d3679ac4a193256c360b0caceea2871ac99a1232c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-lighting-vision
+    kind: claim
+    text: Red chart-lighting limitations
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+    source_id: afh-lighting-vision
+    claim_ids:
+      - red-chart-colors
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3885
+      pdf_page_text_sha256: 66ab20b3ba19e8bfa5b15e0f0c66910c80215523458793d7f799a279db0e774c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-cockpit-lighting
+    kind: claim
+    text: Readable cockpit and chart lighting
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+    source_id: phak-cockpit-lighting
+    claim_ids:
+      - cockpit-lighting
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3368
+      pdf_page_text_sha256: b34723f3fd42cf53d7932e02fc741baa710b3aea0334709bc501d746f33d8d79
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-personal-equipment
+    kind: claim
+    text: Flashlight, batteries and cockpit organization
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+    source_id: afh-personal-equipment
+    claim_ids:
+      - night-personal-equipment
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4726
+      pdf_page_text_sha256: 0299e07c1fdc451c3f87c8c8eb53d1364d0d92bd4cfb986975ea3501d2c6dc42
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-oxygen
+    kind: claim
+    text: Oxygen, altitude and night vision
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+    source_id: phak-oxygen
+    claim_ids:
+      - oxygen-night-vision
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3368
+      pdf_page_text_sha256: b34723f3fd42cf53d7932e02fc741baa710b3aea0334709bc501d746f33d8d79
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-ecfr-equipment
+    kind: claim
+    text: Night VFR equipment for the stated aircraft scope
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+    source_id: ecfr-equipment
+    claim_ids:
+      - night-equipment
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a9 []
+      title: null
+      truncated: false
+      content_sha256: b7711166a41e9f8756434ec328a77ba6c655ccbb69497d1a25017ba122d882c5
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.205"
+        date: 2026-10-06
+        section_number: "91.205"
+      section_text_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      excerpt_characters: 8044
+      excerpt_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 8044
+  - id: study-afh-preflight
+    kind: claim
+    text: Navigation setup and night preflight checks
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    source_id: afh-preflight
+    claim_ids:
+      - night-nav-setup
+      - night-preflight-inspection
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5693
+      pdf_page_text_sha256: 295cfd94be4b6c496ddfeb7ca3fe2b057932aaaaf87da37583e2705435ae1870
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-navigation
+    kind: claim
+    text: Water crossings and reduced-visibility cues
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+    source_id: afh-navigation
+    claim_ids:
+      - night-water-crossing
+      - night-weather-cues
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3155
+      pdf_page_text_sha256: aee6153603ab0bf9049aea2161a927bba62f03652c1842f28b2f5703ec3c4968
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-airport-status
+    kind: claim
+    text: Verify destination lighting status
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+    source_id: afh-airport-status
+    claim_ids:
+      - lighting-status
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3223
+      pdf_page_text_sha256: d2c9428b6f7f1966ec74e04cf6659316e0efcb2462acd67025b3a27b85acfa5a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-weather
+    kind: claim
+    text: Night preflight weather considerations
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+    source_id: afh-weather
+    claim_ids:
+      - night-weather-planning
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4969
+      pdf_page_text_sha256: a4411cdc314a4fdeee49e6785e04e063b883e253bd2ad74874b28c8281818a8b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-ecfr-fuel
+    kind: claim
+    text: Night airplane VFR fuel requirement
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+    source_id: ecfr-fuel
+    claim_ids:
+      - night-fuel
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a10 []
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-10-06
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+  - id: study-aim-beacons
+    kind: claim
+    text: Airport beacon identification
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+    source_id: aim-beacons
+    claim_ids:
+      - beacon-patterns
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a3 []
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 5019
+      excerpt_sha256: 75571f74c9849183f15bd1f58f3944e311bc5fca7c4eefd355b0d7fc0a8f7ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-aim-runway-lights
+    kind: claim
+    text: Runway edge, threshold and end lights
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+    source_id: aim-runway-lights
+    claim_ids:
+      - runway-edge-pattern
+      - threshold-end-colors
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 41c5af47829e03e72fc10429c294719a5cfb3e1022f7ad767aecf95d927a2390
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-aim-taxi-lights
+    kind: claim
+    text: Taxiway light colors
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+    source_id: aim-taxi-lights
+    claim_ids:
+      - taxi-light-colors
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      errors: []
+      valid: true
+      excerpt_characters: 2963
+      excerpt_sha256: 84514e839e261e6f0618cb4c6201e386a9771f57172c6da54f99516d2ead7601
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-aim-pcl
+    kind: claim
+    text: Pilot-controlled lighting frequency, clicks and duration
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+    source_id: aim-pcl
+    claim_ids:
+      - pcl-frequency
+      - pcl-activation
+      - pcl-duration
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      errors: []
+      valid: true
+      excerpt_characters: 10030
+      excerpt_sha256: e75fb65a9c26a816d7a67a253c5201e12cc12e7de51d2c159ff1e08f233aac17
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-aim-papi
+    kind: claim
+    text: PAPI alignment and obstruction-clearance limits
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    source_id: aim-papi
+    claim_ids:
+      - papi-coverage
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-faa-papi-colors
+    kind: claim
+    text: PAPI color indications in FAA lighting criteria
+    url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+    source_id: faa-papi-colors
+    claim_ids:
+      - papi-color-interpretation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      final_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a5 []
+      title: null
+      truncated: true
+      content_sha256: 2161710494426ded9cecfbe548638f6bfd0cc2b9d52add82284fd8362230ed21
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      validation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      errors: []
+      valid: true
+      pdf_page_number: 43
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 799
+      pdf_page_text_sha256: 87d6479fb75305ba2c3a2f6983ea12d6b8b100c80cb3caf5759994422cb0cede
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-taxi
+    kind: claim
+    text: Propeller-area checks and night taxi position
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    source_id: afh-taxi
+    claim_ids:
+      - night-propeller-clear
+      - night-taxi-verification
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5693
+      pdf_page_text_sha256: 295cfd94be4b6c496ddfeb7ca3fe2b057932aaaaf87da37583e2705435ae1870
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-climb
+    kind: claim
+    text: Confirm and maintain the night climb
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+    source_id: afh-climb
+    claim_ids:
+      - night-climb-crosscheck
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3155
+      pdf_page_text_sha256: aee6153603ab0bf9049aea2161a927bba62f03652c1842f28b2f5703ec3c4968
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-acceleration
+    kind: claim
+    text: Somatogravic acceleration illusion
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+    source_id: phak-acceleration
+    claim_ids:
+      - somatogravic-illusion
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3449
+      pdf_page_text_sha256: b9d583493612a47fe125825b51e33cc8b939d4eec829a0d1d713cb4c869566b9
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-progress
+    kind: claim
+    text: Monitor night cross-country progress
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+    source_id: afh-progress
+    claim_ids:
+      - night-flight-progress
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4969
+      pdf_page_text_sha256: a4411cdc314a4fdeee49e6785e04e063b883e253bd2ad74874b28c8281818a8b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-night-illusions
+    kind: claim
+    text: Autokinesis and false horizon
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+    source_id: phak-night-illusions
+    claim_ids:
+      - autokinesis
+      - false-horizon
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3435
+      pdf_page_text_sha256: 0adaac9c7d0ae546a387dfe5af5698dde3078b614ef602681bccb8d7f9dfa5f0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-disorientation
+    kind: claim
+    text: Reliable references and instrument proficiency
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    source_id: phak-disorientation
+    claim_ids:
+      - reliable-instruments
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4650
+      pdf_page_text_sha256: 87e2d54cf1d33369d1e9a4c58a19b88b8ae469a89b686c680c050c8a57b77756
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-position-lights
+    kind: claim
+    text: Aircraft position lights and traffic direction
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+    source_id: afh-position-lights
+    claim_ids:
+      - position-light-orientation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3223
+      pdf_page_text_sha256: d2c9428b6f7f1966ec74e04cf6659316e0efcb2462acd67025b3a27b85acfa5a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-night-route
+    kind: claim
+    text: Night route knowledge and early weather alternative
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+    source_id: phak-night-route
+    claim_ids:
+      - night-route-alternative
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3581
+      pdf_page_text_sha256: f04aa7c22e889931ed3f86e78dcb28d2394879e0355c28cea7cae135747a74b3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-landing-illusions
+    kind: claim
+    text: Road lights and runway identification
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+    source_id: phak-landing-illusions
+    claim_ids:
+      - misidentified-runway
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3581
+      pdf_page_text_sha256: f04aa7c22e889931ed3f86e78dcb28d2394879e0355c28cea7cae135747a74b3
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-approach
+    kind: claim
+    text: Night approach identification and instrument cross-check
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+    source_id: afh-approach
+    claim_ids:
+      - night-approach-crosscheck
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2642
+      pdf_page_text_sha256: 2be111e393f44ef2b1c73ba6d74576f2f2280ab276edaee374f1a1d172846657
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-featureless
+    kind: claim
+    text: Featureless terrain and a low-approach illusion
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    source_id: phak-featureless
+    claim_ids:
+      - featureless-approach
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4650
+      pdf_page_text_sha256: 87e2d54cf1d33369d1e9a4c58a19b88b8ae469a89b686c680c050c8a57b77756
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-black-hole
+    kind: claim
+    text: Black-hole approach and go-around decision
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+    source_id: afh-black-hole
+    claim_ids:
+      - black-hole-guidance
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4726
+      pdf_page_text_sha256: 0299e07c1fdc451c3f87c8c8eb53d1364d0d92bd4cfb986975ea3501d2c6dc42
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-phak-runway-illusions
+    kind: claim
+    text: Runway width and slope illusions
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    source_id: phak-runway-illusions
+    claim_ids:
+      - runway-width-illusion
+      - upslope-illusion
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4650
+      pdf_page_text_sha256: 87e2d54cf1d33369d1e9a4c58a19b88b8ae469a89b686c680c050c8a57b77756
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-landing-prevention
+    kind: claim
+    text: Prevent landing errors from illusions
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+    source_id: afh-landing-prevention
+    claim_ids:
+      - landing-illusion-prevention
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3045
+      pdf_page_text_sha256: d43981898712e76d5381ecb222cfd9f4af6e6ca570e89e0636a16ab0f722e29f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-electrical
+    kind: claim
+    text: Single generating-system failure
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    source_id: afh-electrical
+    claim_ids:
+      - single-generator-failure
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2705
+      pdf_page_text_sha256: 21be9f7cc65c3e57168e95c7cd3872edb89897be24709ae49451f579a8e71e09
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-night-emergency
+    kind: claim
+    text: Night engine failure and known suitable terrain
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+    source_id: afh-night-emergency
+    claim_ids:
+      - night-engine-failure
+      - unlighted-terrain-condition
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3045
+      pdf_page_text_sha256: d43981898712e76d5381ecb222cfd9f4af6e6ca570e89e0636a16ab0f722e29f
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-afh-climb-preparation
+    kind: claim
+    text: Instrument use during night takeoff
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    source_id: afh-climb-preparation
+    claim_ids:
+      - night-climb-instrument-use
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5693
+      pdf_page_text_sha256: 295cfd94be4b6c496ddfeb7ca3fe2b057932aaaaf87da37583e2705435ae1870
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-aim-aircraft-lights
+    kind: claim
+    text: Aircraft position and anticollision light use
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+    source_id: aim-aircraft-lights
+    claim_ids:
+      - anticollision-identification
+      - strobe-vision-hazards
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a11 []
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7fc07d82be15fd470d0c2a8209e6a448a0c99af4fc41818b12cb892b0fdff5e4
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      errors: []
+      valid: true
+      excerpt_characters: 7285
+      excerpt_sha256: 123410b0595e634e6973392b202cf3454ed5ba499576131583a0ab61d70cc48b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-ecfr-inoperative
+    kind: claim
+    text: Inoperative equipment without an approved MEL
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+    source_id: ecfr-inoperative
+    claim_ids:
+      - inoperative-scope-required
+      - inoperative-disposition-hazard
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a12 []
+      title: null
+      truncated: false
+      content_sha256: 4593d1ab135d481d639b185e0234cae6f08c465281165765f6b76402efc3ad6f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.213"
+        date: 2026-10-06
+        section_number: "91.213"
+      section_text_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      excerpt_characters: 4728
+      excerpt_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4728
+  - id: study-aim-vasi
+    kind: claim
+    text: Two-bar VASI arrangement and clearance limits
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    source_id: aim-vasi
+    claim_ids:
+      - vasi-coverage
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-faa-vasi-colors
+    kind: claim
+    text: Two-bar VASI color indications in FAA lighting criteria
+    url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+    source_id: faa-vasi-colors
+    claim_ids:
+      - vasi-arrangement
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      final_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: 2161710494426ded9cecfbe548638f6bfd0cc2b9d52add82284fd8362230ed21
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      validation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      errors: []
+      valid: true
+      pdf_page_number: 67
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2918
+      pdf_page_text_sha256: ca2eccb0c1636df4d5a908e98073a44569b418b5974a1a0c2cb224b59f0b37bd
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-aim-tricolor
+    kind: claim
+    text: Tri-color slope indications and identification caution
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    source_id: aim-tricolor
+    claim_ids:
+      - tricolor-indications
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-aim-pulsating
+    kind: claim
+    text: Pulsating slope indications and identification caution
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    source_id: aim-pulsating
+    claim_ids:
+      - pulsating-indications
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: study-pcg-vasi-indications
+    kind: claim
+    text: VASI on-path, high and low indications
+    url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+    source_id: pcg-vasi-indications
+    claim_ids:
+      - vasi-color-interpretation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: &a13 []
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: 3d457a62e637c635e96b18eef6a14c21bd509d0f08d0a8c974ad2c4cd77d5860
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      errors: []
+      valid: true
+      excerpt_characters: 11228
+      excerpt_sha256: 21f1a14598d64eec5358b7e10a9928ce9a23781aa79f66780fe9014e2f051670
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+results:
+  - source_id: acs-night
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-08T14:55:12.928Z
+    linked_claim_ids:
+      - acs-night-knowledge
+      - acs-night-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a6
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+      errors: []
+      valid: true
+      pdf_page_number: 71
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1673
+      pdf_page_text_sha256: 1edca9bc84a44a1967924e92802d8e2a63651871176243ad442b1f9305745ed4
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-night-introduction
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:12.944Z
+    linked_claim_ids:
+      - night-visual-limitations
+      - civil-twilight-context
+      - night-definition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4347
+      pdf_page_text_sha256: b72081800e003d312c73002039304e5279cba84b74eac51901c58bd4483fc61e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-manufacturer
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    checked_at_utc: 2026-10-08T14:55:14.085Z
+    linked_claim_ids:
+      - manufacturer-procedures
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4057
+      pdf_page_text_sha256: 34e39dd591f0f75e7f56d3041db18a6c292ad346273676b13264a71b8d7283e7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-lights
+    title: 14 CFR 91.209, Aircraft lights
+    checked_at_utc: 2026-10-08T14:55:12.945Z
+    linked_claim_ids:
+      - position-light-time
+      - anticollision-use
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a7
+      title: null
+      truncated: false
+      content_sha256: e4c4ddb113edc060c6f7449c376424e43b6fd937e75171a3ace6427fcc64fcb6
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.209
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.209
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.209"
+        date: 2026-10-06
+        section_number: "91.209"
+      section_text_sha256: 9a1e3d1dc8718e611eba61115a9af5855c9a29957ea0dc65d2a591b56f273d0f
+      excerpt_characters: 1189
+      excerpt_sha256: 9a1e3d1dc8718e611eba61115a9af5855c9a29957ea0dc65d2a591b56f273d0f
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 1189
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-currency
+    title: "14 CFR 61.57, Recent flight experience: Pilot in command"
+    checked_at_utc: 2026-10-08T14:55:12.945Z
+    linked_claim_ids:
+      - night-recent-experience
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a8
+      title: null
+      truncated: false
+      content_sha256: 3e4c1f2e91b13d99fb4f1f7c2f43f5f0792e8c7dbd4c92370c468ca184607230
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=61&section=61.57
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "61"
+        section: "61.57"
+        date: 2026-10-06
+        section_number: "61.57"
+      section_text_sha256: dd2d7fb120b8430d30ebe28b504de065c9584c5d4f4dd153ed31c8b7a3749e4e
+      excerpt_characters: 12000
+      excerpt_sha256: 162534a80208cd025e0712d524b8a7ca9cad7018878e6d242fecefef7e8ce0ad
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 15352
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-night-summary
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:15.158Z
+    linked_claim_ids:
+      - night-proficiency
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1001
+      pdf_page_text_sha256: c834568c8397e5ca5816c1da0334925b48dde0e1ef22e0b8f56c73630a84d883
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-fatigue
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:15.177Z
+    linked_claim_ids:
+      - night-fatigue
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+      errors: []
+      valid: true
+      pdf_page_number: 25
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4517
+      pdf_page_text_sha256: 6c771ee7f3116b8ceeb53678a393ac3c2106b5eee97ca26e10e92d60476147e3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-adaptation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:21.769Z
+    linked_claim_ids:
+      - dark-adaptation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2614
+      pdf_page_text_sha256: f5b34676b5d5f3614248204d3679ac4a193256c360b0caceea2871ac99a1232c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-vision
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:27.573Z
+    linked_claim_ids:
+      - rod-cone-functions
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2765
+      pdf_page_text_sha256: e020e4ab740ce2eb1edacaf5bd1a1e4466ac5f97e5ab4ed8ae734f41d61c1cbb
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-night-scan
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:27.616Z
+    linked_claim_ids:
+      - night-blind-spot
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+      errors: []
+      valid: true
+      pdf_page_number: 22
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3280
+      pdf_page_text_sha256: 2b9829e8a3f281093a0bb5f3bf2060acc81174479e9f7e2e71817dafcab815d1
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-scan-stops
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:27.684Z
+    linked_claim_ids:
+      - night-scan-stops
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+      errors: []
+      valid: true
+      pdf_page_number: 23
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2614
+      pdf_page_text_sha256: f5b34676b5d5f3614248204d3679ac4a193256c360b0caceea2871ac99a1232c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-lighting-vision
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.706Z
+    linked_claim_ids:
+      - red-chart-colors
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+      errors: []
+      valid: true
+      pdf_page_number: 4
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3885
+      pdf_page_text_sha256: 66ab20b3ba19e8bfa5b15e0f0c66910c80215523458793d7f799a279db0e774c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-cockpit-lighting
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:27.733Z
+    linked_claim_ids:
+      - cockpit-lighting
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3368
+      pdf_page_text_sha256: b34723f3fd42cf53d7932e02fc741baa710b3aea0334709bc501d746f33d8d79
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-personal-equipment
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.745Z
+    linked_claim_ids:
+      - night-personal-equipment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4726
+      pdf_page_text_sha256: 0299e07c1fdc451c3f87c8c8eb53d1364d0d92bd4cfb986975ea3501d2c6dc42
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-oxygen
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:27.768Z
+    linked_claim_ids:
+      - oxygen-night-vision
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+      errors: []
+      valid: true
+      pdf_page_number: 24
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3368
+      pdf_page_text_sha256: b34723f3fd42cf53d7932e02fc741baa710b3aea0334709bc501d746f33d8d79
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-equipment
+    title: "14 CFR 91.205, Powered civil aircraft with standard U.S. airworthiness
+      certificates: Instrument and equipment requirements"
+    checked_at_utc: 2026-10-08T14:55:12.945Z
+    linked_claim_ids:
+      - night-equipment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a9
+      title: null
+      truncated: false
+      content_sha256: b7711166a41e9f8756434ec328a77ba6c655ccbb69497d1a25017ba122d882c5
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.205
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.205"
+        date: 2026-10-06
+        section_number: "91.205"
+      section_text_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      excerpt_characters: 8044
+      excerpt_sha256: 07a4491631a841fd33bee22fed58b7e3ae8c75d3c0b32d18e2415cc2954b676e
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 8044
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-preflight
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.782Z
+    linked_claim_ids:
+      - night-nav-setup
+      - night-preflight-inspection
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5693
+      pdf_page_text_sha256: 295cfd94be4b6c496ddfeb7ca3fe2b057932aaaaf87da37583e2705435ae1870
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-navigation
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.802Z
+    linked_claim_ids:
+      - night-water-crossing
+      - night-weather-cues
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3155
+      pdf_page_text_sha256: aee6153603ab0bf9049aea2161a927bba62f03652c1842f28b2f5703ec3c4968
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-airport-status
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.821Z
+    linked_claim_ids:
+      - lighting-status
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3223
+      pdf_page_text_sha256: d2c9428b6f7f1966ec74e04cf6659316e0efcb2462acd67025b3a27b85acfa5a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-weather
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.843Z
+    linked_claim_ids:
+      - night-weather-planning
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4969
+      pdf_page_text_sha256: a4411cdc314a4fdeee49e6785e04e063b883e253bd2ad74874b28c8281818a8b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-fuel
+    title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
+    checked_at_utc: 2026-10-08T14:55:14.103Z
+    linked_claim_ids:
+      - night-fuel
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a10
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-10-06
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-beacons
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    checked_at_utc: 2026-10-08T14:55:27.859Z
+    linked_claim_ids:
+      - beacon-patterns
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+      errors: []
+      valid: true
+      excerpt_characters: 5019
+      excerpt_sha256: 75571f74c9849183f15bd1f58f3944e311bc5fca7c4eefd355b0d7fc0a8f7ab9
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-runway-lights
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    checked_at_utc: 2026-10-08T14:55:27.864Z
+    linked_claim_ids:
+      - runway-edge-pattern
+      - threshold-end-colors
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: 41c5af47829e03e72fc10429c294719a5cfb3e1022f7ad767aecf95d927a2390
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-taxi-lights
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    checked_at_utc: 2026-10-08T14:55:27.933Z
+    linked_claim_ids:
+      - taxi-light-colors
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+      errors: []
+      valid: true
+      excerpt_characters: 2963
+      excerpt_sha256: 84514e839e261e6f0618cb4c6201e386a9771f57172c6da54f99516d2ead7601
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-pcl
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    checked_at_utc: 2026-10-08T14:55:27.933Z
+    linked_claim_ids:
+      - pcl-frequency
+      - pcl-activation
+      - pcl-duration
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+      errors: []
+      valid: true
+      excerpt_characters: 10030
+      excerpt_sha256: e75fb65a9c26a816d7a67a253c5201e12cc12e7de51d2c159ff1e08f233aac17
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-papi
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    checked_at_utc: 2026-10-08T14:55:27.933Z
+    linked_claim_ids:
+      - papi-coverage
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-papi-colors
+    title: Visual Guidance Lighting Systems
+    checked_at_utc: 2026-10-08T14:55:27.933Z
+    linked_claim_ids:
+      - papi-color-interpretation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      final_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: 2161710494426ded9cecfbe548638f6bfd0cc2b9d52add82284fd8362230ed21
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      validation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+      errors: []
+      valid: true
+      pdf_page_number: 43
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 799
+      pdf_page_text_sha256: 87d6479fb75305ba2c3a2f6983ea12d6b8b100c80cb3caf5759994422cb0cede
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-taxi
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.934Z
+    linked_claim_ids:
+      - night-propeller-clear
+      - night-taxi-verification
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5693
+      pdf_page_text_sha256: 295cfd94be4b6c496ddfeb7ca3fe2b057932aaaaf87da37583e2705435ae1870
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-climb
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.953Z
+    linked_claim_ids:
+      - night-climb-crosscheck
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3155
+      pdf_page_text_sha256: aee6153603ab0bf9049aea2161a927bba62f03652c1842f28b2f5703ec3c4968
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-acceleration
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:27.969Z
+    linked_claim_ids:
+      - somatogravic-illusion
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3449
+      pdf_page_text_sha256: b9d583493612a47fe125825b51e33cc8b939d4eec829a0d1d713cb4c869566b9
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-progress
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:27.995Z
+    linked_claim_ids:
+      - night-flight-progress
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+      errors: []
+      valid: true
+      pdf_page_number: 7
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4969
+      pdf_page_text_sha256: a4411cdc314a4fdeee49e6785e04e063b883e253bd2ad74874b28c8281818a8b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-night-illusions
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:28.018Z
+    linked_claim_ids:
+      - autokinesis
+      - false-horizon
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3435
+      pdf_page_text_sha256: 0adaac9c7d0ae546a387dfe5af5698dde3078b614ef602681bccb8d7f9dfa5f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-disorientation
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:28.711Z
+    linked_claim_ids:
+      - reliable-instruments
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4650
+      pdf_page_text_sha256: 87e2d54cf1d33369d1e9a4c58a19b88b8ae469a89b686c680c050c8a57b77756
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-position-lights
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:28.726Z
+    linked_claim_ids:
+      - position-light-orientation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+      errors: []
+      valid: true
+      pdf_page_number: 6
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3223
+      pdf_page_text_sha256: d2c9428b6f7f1966ec74e04cf6659316e0efcb2462acd67025b3a27b85acfa5a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-night-route
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:28.755Z
+    linked_claim_ids:
+      - night-route-alternative
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3581
+      pdf_page_text_sha256: f04aa7c22e889931ed3f86e78dcb28d2394879e0355c28cea7cae135747a74b3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-landing-illusions
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:28.769Z
+    linked_claim_ids:
+      - misidentified-runway
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3581
+      pdf_page_text_sha256: f04aa7c22e889931ed3f86e78dcb28d2394879e0355c28cea7cae135747a74b3
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-approach
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:28.781Z
+    linked_claim_ids:
+      - night-approach-crosscheck
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2642
+      pdf_page_text_sha256: 2be111e393f44ef2b1c73ba6d74576f2f2280ab276edaee374f1a1d172846657
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-featureless
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:28.799Z
+    linked_claim_ids:
+      - featureless-approach
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4650
+      pdf_page_text_sha256: 87e2d54cf1d33369d1e9a4c58a19b88b8ae469a89b686c680c050c8a57b77756
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-black-hole
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:28.812Z
+    linked_claim_ids:
+      - black-hole-guidance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+      errors: []
+      valid: true
+      pdf_page_number: 5
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4726
+      pdf_page_text_sha256: 0299e07c1fdc451c3f87c8c8eb53d1364d0d92bd4cfb986975ea3501d2c6dc42
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: phak-runway-illusions
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    checked_at_utc: 2026-10-08T14:55:28.830Z
+    linked_claim_ids:
+      - runway-width-illusion
+      - upslope-illusion
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      final_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: f58e38a614095ac39d025d648c3749768b3517de1e7ffc77ddffad5389dbc5f5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      validation_url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4650
+      pdf_page_text_sha256: 87e2d54cf1d33369d1e9a4c58a19b88b8ae469a89b686c680c050c8a57b77756
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-landing-prevention
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:28.842Z
+    linked_claim_ids:
+      - landing-illusion-prevention
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3045
+      pdf_page_text_sha256: d43981898712e76d5381ecb222cfd9f4af6e6ca570e89e0636a16ab0f722e29f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-electrical
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    checked_at_utc: 2026-10-08T14:55:28.860Z
+    linked_claim_ids:
+      - single-generator-failure
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a4
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2705
+      pdf_page_text_sha256: 21be9f7cc65c3e57168e95c7cd3872edb89897be24709ae49451f579a8e71e09
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-night-emergency
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:28.882Z
+    linked_claim_ids:
+      - night-engine-failure
+      - unlighted-terrain-condition
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3045
+      pdf_page_text_sha256: d43981898712e76d5381ecb222cfd9f4af6e6ca570e89e0636a16ab0f722e29f
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-climb-preparation
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    checked_at_utc: 2026-10-08T14:55:28.899Z
+    linked_claim_ids:
+      - night-climb-instrument-use
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: true
+      content_sha256: 1edfca294fae67632dc445340a9d46fdde7fb62b00d38b6dd547d4411443b2c5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+      errors: []
+      valid: true
+      pdf_page_number: 8
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 5693
+      pdf_page_text_sha256: 295cfd94be4b6c496ddfeb7ca3fe2b057932aaaaf87da37583e2705435ae1870
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-aircraft-lights
+    title: Aircraft position and anticollision light use
+    checked_at_utc: 2026-10-08T14:55:28.915Z
+    linked_claim_ids:
+      - anticollision-identification
+      - strobe-vision-hazards
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a11
+      title: Chapter 4. Air Traffic Control
+      truncated: false
+      content_sha256: 7fc07d82be15fd470d0c2a8209e6a448a0c99af4fc41818b12cb892b0fdff5e4
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+      errors: []
+      valid: true
+      excerpt_characters: 7285
+      excerpt_sha256: 123410b0595e634e6973392b202cf3454ed5ba499576131583a0ab61d70cc48b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-inoperative
+    title: Inoperative equipment without an approved MEL
+    checked_at_utc: 2026-10-08T14:55:15.110Z
+    linked_claim_ids:
+      - inoperative-scope-required
+      - inoperative-disposition-hazard
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a12
+      title: null
+      truncated: false
+      content_sha256: 4593d1ab135d481d639b185e0234cae6f08c465281165765f6b76402efc3ad6f
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.213
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-06
+        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.213"
+        date: 2026-10-06
+        section_number: "91.213"
+      section_text_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      excerpt_characters: 4728
+      excerpt_sha256: 3bdfddc89747374f7ec5a60b4d9fdc379a6aa1c10de0e496b1d537ea316eba56
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 4728
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-vasi
+    title: Two-bar VASI arrangement and clearance limits
+    checked_at_utc: 2026-10-08T14:55:29.116Z
+    linked_claim_ids:
+      - vasi-coverage
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: faa-vasi-colors
+    title: Two-bar VASI color indications in FAA lighting criteria
+    checked_at_utc: 2026-10-08T14:55:29.116Z
+    linked_claim_ids:
+      - vasi-arrangement
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      final_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a5
+      title: null
+      truncated: true
+      content_sha256: 2161710494426ded9cecfbe548638f6bfd0cc2b9d52add82284fd8362230ed21
+      hash_truncated: false
+      citation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      validation_url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+      errors: []
+      valid: true
+      pdf_page_number: 67
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2918
+      pdf_page_text_sha256: ca2eccb0c1636df4d5a908e98073a44569b418b5974a1a0c2cb224b59f0b37bd
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-tricolor
+    title: Tri-color slope indications and identification caution
+    checked_at_utc: 2026-10-08T14:55:30.183Z
+    linked_claim_ids:
+      - tricolor-indications
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: aim-pulsating
+    title: Pulsating slope indications and identification caution
+    checked_at_utc: 2026-10-08T14:55:30.184Z
+    linked_claim_ids:
+      - pulsating-indications
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a3
+      title: Chapter 2. Aeronautical Lighting and Other Airport Visual Aids
+      truncated: false
+      content_sha256: 341f8f2dbede97af06e6ab8be264600cc9f733aa7143585650546f7fa45a9b2a
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+      errors: []
+      valid: true
+      excerpt_characters: 12000
+      excerpt_sha256: f8f5311ec0979c8c5c874fc296ad2686eb170df1dd962ccc3ad16fcbaeafab0a
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: pcg-vasi-indications
+    title: VASI on-path, high and low indications
+    checked_at_utc: 2026-10-08T14:55:30.185Z
+    linked_claim_ids:
+      - vasi-color-interpretation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      final_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      status: 200
+      retry_after: null
+      content_type: text/html
+      redirects: *a13
+      title: A - Pilot/Controller Glossary
+      truncated: false
+      content_sha256: 3d457a62e637c635e96b18eef6a14c21bd509d0f08d0a8c974ad2c4cd77d5860
+      hash_truncated: false
+      citation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      validation_url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+      errors: []
+      valid: true
+      excerpt_characters: 11228
+      excerpt_sha256: 21f1a14598d64eec5358b7e10a9928ce9a23781aa79f66780fe9014e2f051670
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

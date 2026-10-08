@@ -4,9 +4,9 @@ title: Night Operations
 slug: night-operations
 track: core
 production_contract_version: 2
-status: source_relevance_review_complete
+status: ready_for_hosting_pr
 version: 0.1.3
-published_at: null
+published_at: 2026-10-08T14:56:00Z
 runtime_target_minutes: 40
 runtime_actual_seconds: 2278.93
 word_count: 5887
@@ -66,7 +66,7 @@ trouble_spots:
 source_verification:
   validation_contract: source-relevance-v1
   status: source_relevance_complete
-  verified_at_utc: 2026-10-07T18:21:53.353Z
+  verified_at_utc: 2026-10-08T14:55:01.383Z
   link_validation: link-validation.yaml
   relevance_review: complete
   show_notes_manifest: show-notes-manifest.yaml
@@ -80,26 +80,20 @@ review:
   public_corrections_channel:
     issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
     email: feedback@pplstudyguide.com
-release_gates_remaining:
-  - Complete human listening QA of the full candidate, including the
-    front-matter check.
-  - Review embedded chapter markers against the approved audio.
-  - Re-verify every public source and listener-facing link on publication day.
-  - Validate hosting metadata and stage the immutable audio object in the
-    hosting workflow.
+release_gates_remaining: []
 audio:
   manifest: audio-manifest.yaml
   mix_config: audio-mix.yaml
-  status: candidate_rendered_listening_qa_pending
+  status: candidate_rendered_listening_qa_approved
   chapter_markers: embedded_and_ffprobe_validated
-  publication_day_validation: pending
-  listening_qa: pending_human_review
+  publication_day_validation: passed
+  listening_qa: accepted
   preview_listening_qa: accepted
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
-  handoff_status: pending_audio_qa
+  handoff_status: ready_for_hosting_pr
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 32
+production_state_revision: 38

@@ -49,27 +49,27 @@ sources:
     document_id: 14-CFR-91.209
     locator: 91.209(a)(1), Alaska parenthetical, and (b)
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.209
-    revision: eCFR Title 14 current through October 5, 2026
+    revision: eCFR Title 14 current through October 6, 2026
     relevance_excerpt: null
     verified_at_utc: null
     link_status: null
     supports_claims:
       - position-light-time
       - anticollision-use
-    ecfr_date: 2026-10-05
+    ecfr_date: 2026-10-06
   - id: ecfr-currency
     authority: regulation
     title: "14 CFR 61.57, Recent flight experience: Pilot in command"
     document_id: 14-CFR-61.57
     locator: 61.57(b)(1)(i)-(ii), with (b)(2) and (e) acknowledgment
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
-    revision: eCFR Title 14 current through October 5, 2026
+    revision: eCFR Title 14 current through October 6, 2026
     relevance_excerpt: null
     verified_at_utc: null
     link_status: null
     supports_claims:
       - night-recent-experience
-    ecfr_date: 2026-10-05
+    ecfr_date: 2026-10-06
   - id: afh-night-summary
     authority: faa_guidance
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
@@ -209,13 +209,13 @@ sources:
     document_id: 14-CFR-91.205
     locator: 91.205(a), (c)(1)-(6)
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
-    revision: eCFR Title 14 current through October 5, 2026
+    revision: eCFR Title 14 current through October 6, 2026
     relevance_excerpt: null
     verified_at_utc: null
     link_status: null
     supports_claims:
       - night-equipment
-    ecfr_date: 2026-10-05
+    ecfr_date: 2026-10-06
   - id: afh-preflight
     authority: faa_guidance
     title: "Airplane Flying Handbook, Chapter 11: Night Operations"
@@ -275,13 +275,13 @@ sources:
     document_id: 14-CFR-91.151
     locator: 91.151(a)(2)
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
-    revision: eCFR Title 14 current through October 5, 2026
+    revision: eCFR Title 14 current through October 6, 2026
     relevance_excerpt: null
     verified_at_utc: null
     link_status: null
     supports_claims:
       - night-fuel
-    ecfr_date: 2026-10-05
+    ecfr_date: 2026-10-06
   - id: aim-beacons
     authority: faa_guidance
     title: Aeronautical Information Manual, Airport Lighting Aids
@@ -606,15 +606,14 @@ sources:
     locator: 91.213(d)(1)-(4), scope, required-equipment checks,
       removal/deactivation/placarding/records, and hazard determination
     url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
-    revision: eCFR Title 14 displayed current through October 5, 2026; accessed
-      October 7, 2026
+    revision: eCFR Title 14 current through October 6, 2026
     relevance_excerpt: null
     verified_at_utc: null
     link_status: null
     supports_claims:
       - inoperative-scope-required
       - inoperative-disposition-hazard
-    ecfr_date: 2026-10-05
+    ecfr_date: 2026-10-06
   - id: aim-vasi
     authority: faa_guidance
     title: Two-bar VASI arrangement and clearance limits

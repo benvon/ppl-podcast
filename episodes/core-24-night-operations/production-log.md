@@ -63,3 +63,7 @@ The user authorized OpenAI API audio rendering. Rendered an opening preview and 
 ## October 7, 2026 — accepted previews and authorized full candidate
 
 The user accepted audio QA and confirmed hearing the disclaimer notices, then authorized the full OpenAI API render. Reused compatible preview voice segments and rendered the remaining approved narration. The fresh full candidate is 37:59, within the planned 35–45 minutes, with zero clipped samples and stitch warnings. All 15 embedded chapters passed ffprobe validation; the chapter review page is bound to this MP3. Updated actual runtime, hosting duration, candidate identity, QA attestations, and remaining gates. Normalized the show-notes episode label to the package contract. Full-candidate human listening and manual chapter review remain pending, along with publication-day and hosting gates.
+
+## October 8, 2026 — publication preparation
+
+The user accepted full listening QA and the chapter markers, and requested publication. The current source report records renewed review after the eCFR edition refresh; the cited section texts were unchanged. Corrected stale public notes and used an explicitly dated official XML link for supplemental legal reading. Publication-day evidence and the sealed handoff are recorded by their existing reports. Human attestations and metadata are synchronized in the package. The date-only review inefficiency is tracked separately in issue #38.

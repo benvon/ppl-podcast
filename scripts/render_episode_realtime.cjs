@@ -54,6 +54,8 @@ const PRONUNCIATION_TRANSFORMS = Object.freeze({
   AWOS: "AY-wahs",
   ATIS: "AY-tis",
   CTAF: "seetaff",
+  PAPI: "pappy",
+  VASI: "vassy",
   METAR: "MEE-tar",
   METARs: "MEE-tars",
   TAF: "taf",

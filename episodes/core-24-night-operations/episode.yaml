@@ -1,0 +1,99 @@
+id: core-24
+series: ppl-study-podcast
+title: Night Operations
+slug: night-operations
+track: core
+production_contract_version: 2
+status: ready_for_hosting_pr
+version: 0.1.3
+published_at: 2026-10-08T14:56:00Z
+runtime_target_minutes: 40
+runtime_actual_seconds: 2278.93
+word_count: 5887
+speakers:
+  - instructor
+  - learner
+  - announcer
+audience: U.S. private-pilot airplane learners
+aircraft_scope: General ASEL education; aircraft-specific procedures and
+  limitations are excluded unless clearly labeled.
+acs_references:
+  - FAA-S-ACS-6C, PA.XI.A.K1-K8 and R1-R7, Night Operations
+phak_references:
+  - FAA-H-8083-25C, Chapter 17, vision, fatigue, illusions and night planning
+  - FAA-H-8083-25C, Chapter 14, Figure 14-30, PAPI visual aid
+aim_references:
+  - AIM 2-1-2(a)-(d), VASI, PAPI, tri-color and pulsating slope indicators
+  - AIM 2-1-4, runway edge lights
+  - AIM 2-1-8, pilot-controlled lighting
+  - AIM 2-1-9, beacons
+  - AIM 2-1-10, taxiway lighting
+  - AIM 4-3-24, aircraft lights
+advisory_circular_references: []
+cfr_references:
+  - 14 CFR 1.1, Night
+  - 14 CFR 61.57(b), night recent experience
+  - 14 CFR 91.205(a),(c), equipment
+  - 14 CFR 91.209(a),(b), lights
+  - 14 CFR 91.151(a)(2), night airplane VFR fuel
+  - 14 CFR 91.213(d), inoperative equipment
+learning_objectives:
+  - Distinguish position-light timing, the civil-twilight night definition,
+    night recent experience, and proficiency for the actual planned flight.
+  - Explain dark adaptation and off-center scanning, and prepare readable
+    cockpit lighting and accessible personal equipment.
+  - Build a night route using terrain, weather, current lighting status, fuel
+    and a prepared suitable alternative.
+  - Verify pilot-controlled lighting and use airport light patterns to identify
+    the intended runway while managing taxi and traffic risks.
+  - Interpret PAPI and two-bar VASI indications within verified coverage;
+    identify other slope systems before using them, cross-check altitude and
+    airspeed, and go around when runway position or altitude is uncertain.
+  - Connect night weather cues and electrical/engine failures to early landing
+    decisions and airplane-specific checklists.
+trouble_spots:
+  - Three timing windows answer different questions; qualifying night currency
+    does not establish trip proficiency.
+  - Red light can distort chart colors; dim white light and controlled screen
+    brightness support readable information.
+  - PAPI visibility is not its obstruction-clearance coverage, which may have
+    local limitations.
+  - Night VFR outside references can be inadequate even when some lights remain
+    visible.
+  - Darkness does not establish terrain suitable for forced landing.
+  - A landing-light rule for for-hire flight does not settle all aircraft
+    equipment requirements.
+source_verification:
+  validation_contract: source-relevance-v1
+  status: source_relevance_complete
+  verified_at_utc: 2026-10-08T14:55:01.383Z
+  link_validation: link-validation.yaml
+  relevance_review: complete
+  show_notes_manifest: show-notes-manifest.yaml
+review:
+  independent_spoken_script_review:
+    status: complete
+    script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
+  editorial_status: script_approved
+  editorial_script_sha256: ad4e139d98d35a13b2ebdf7484f0698ddd394a0de1b5610495fd2a4c1bb8bdbc
+  qualified_aviation_review: optional_and_welcome
+  public_corrections_channel:
+    issue_template: .github/ISSUE_TEMPLATE/source-correction.yml
+    email: feedback@pplstudyguide.com
+release_gates_remaining: []
+audio:
+  manifest: audio-manifest.yaml
+  mix_config: audio-mix.yaml
+  status: candidate_rendered_listening_qa_approved
+  chapter_markers: embedded_and_ffprobe_validated
+  publication_day_validation: passed
+  listening_qa: accepted
+  preview_listening_qa: accepted
+hosting:
+  metadata: hosting-metadata.yaml
+  handoff_seal: source-release-seal.yaml
+  handoff_status: ready_for_hosting_pr
+public_notes: show-notes.md
+qa: qa-checklist.md
+supersedes: null
+production_state_revision: 38

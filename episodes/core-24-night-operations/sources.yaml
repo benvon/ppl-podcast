@@ -1,0 +1,678 @@
+episode_id: core-24
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-night
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.XI.A.K1-K8 and R1-R7, Night Operations, printed p. 63 (PDF p. 71)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=71
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - acs-night-knowledge
+      - acs-night-risk
+  - id: afh-night-introduction
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Introduction, first paragraph and paragraph explicitly
+      quoting 14 CFR 1.1 Night definition, printed p. 11-1 (PDF p. 1)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=1
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-visual-limitations
+      - civil-twilight-context
+      - night-definition
+  - id: afh-manufacturer
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, Introduction, printed p. 18-1 (PDF p. 1)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - manufacturer-procedures
+  - id: ecfr-lights
+    authority: regulation
+    title: 14 CFR 91.209, Aircraft lights
+    document_id: 14-CFR-91.209
+    locator: 91.209(a)(1), Alaska parenthetical, and (b)
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.209
+    revision: eCFR Title 14 current through October 6, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - position-light-time
+      - anticollision-use
+    ecfr_date: 2026-10-06
+  - id: ecfr-currency
+    authority: regulation
+    title: "14 CFR 61.57, Recent flight experience: Pilot in command"
+    document_id: 14-CFR-61.57
+    locator: 61.57(b)(1)(i)-(ii), with (b)(2) and (e) acknowledgment
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-A/section-61.57
+    revision: eCFR Title 14 current through October 6, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-recent-experience
+    ecfr_date: 2026-10-06
+  - id: afh-night-summary
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Chapter Summary, printed p. 11-14 (PDF p. 14)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=14
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-proficiency
+  - id: phak-fatigue
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Self-Imposed Stress—Exhaustion, printed p. 17-25 (PDF p. 25)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=25
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-fatigue
+  - id: phak-adaptation
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Dark Adaptation, printed p. 17-23 (PDF p. 23)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - dark-adaptation
+  - id: phak-vision
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Human eye and Vision Types, printed p. 17-20 (PDF p. 20)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=20
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - rod-cone-functions
+  - id: phak-night-scan
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Night Vision—Night Blind Spot; Scanning Techniques, printed
+      p. 17-22 (PDF p. 22)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=22
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-blind-spot
+  - id: phak-scan-stops
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Scanning Techniques and Figure 17-18, printed p. 17-23 (PDF
+      p. 23)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=23
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-scan-stops
+  - id: afh-lighting-vision
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Factors Affecting Vision—red lighting and dim white light,
+      printed p. 11-4 (PDF p. 4)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=4
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - red-chart-colors
+  - id: phak-cockpit-lighting
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Night Vision Protection—Flightdeck Lighting, printed p.
+      17-24 (PDF p. 24)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - cockpit-lighting
+  - id: afh-personal-equipment
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Pilot Equipment, printed p. 11-5 (PDF p. 5)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-personal-equipment
+  - id: phak-oxygen
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Night Vision Protection—Oxygen Supply, printed p. 17-24
+      (PDF p. 24)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=24
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - oxygen-night-vision
+  - id: ecfr-equipment
+    authority: regulation
+    title: "14 CFR 91.205, Powered civil aircraft with standard U.S. airworthiness
+      certificates: Instrument and equipment requirements"
+    document_id: 14-CFR-91.205
+    locator: 91.205(a), (c)(1)-(6)
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.205
+    revision: eCFR Title 14 current through October 6, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-equipment
+    ecfr_date: 2026-10-06
+  - id: afh-preflight
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Preparation and Preflight—charts/GPS, equipment and light
+      checks, ramp inspection, printed p. 11-8 (PDF p. 8)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-nav-setup
+      - night-preflight-inspection
+  - id: afh-navigation
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Orientation and Navigation, printed p. 11-9 (PDF p. 9)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-water-crossing
+      - night-weather-cues
+  - id: afh-airport-status
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Airport and Navigation Lighting Aids—destination
+      availability/status, printed p. 11-6 (PDF p. 6)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - lighting-status
+  - id: afh-weather
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Preparation and Preflight—weather review, printed p. 11-7
+      (PDF p. 7)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-weather-planning
+  - id: ecfr-fuel
+    authority: regulation
+    title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
+    document_id: 14-CFR-91.151
+    locator: 91.151(a)(2)
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/section-91.151
+    revision: eCFR Title 14 current through October 6, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-fuel
+    ecfr_date: 2026-10-06
+  - id: aim-beacons
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    document_id: AIM
+    locator: AIM 2-1-9, Airport/Heliport Beacons, color-combinations paragraph
+      (White and Green—Lighted land airport) and Military airport beacons
+      paragraph
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-9
+    revision: FAA online AIM accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - beacon-patterns
+  - id: aim-runway-lights
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    document_id: AIM
+    locator: AIM 2-1-4(a)-(c), Runway Edge Light Systems
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-4
+    revision: FAA online AIM accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - runway-edge-pattern
+      - threshold-end-colors
+  - id: aim-taxi-lights
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    document_id: AIM
+    locator: AIM 2-1-10(a)-(b), Taxiway Edge and Centerline Lights
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-10
+    revision: FAA online AIM accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - taxi-light-colors
+  - id: aim-pcl
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    document_id: AIM
+    locator: AIM 2-1-8(a)-(e), Pilot Control of Airport Lighting, including TBL 2-1-3
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-8
+    revision: FAA online AIM accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - pcl-frequency
+      - pcl-activation
+      - pcl-duration
+  - id: aim-papi
+    authority: faa_guidance
+    title: Aeronautical Information Manual, Airport Lighting Aids
+    document_id: AIM
+    locator: AIM 2-1-2(b), Precision Approach Path Indicator
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    revision: FAA online AIM accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - papi-coverage
+  - id: faa-papi-colors
+    authority: faa_guidance
+    title: Visual Guidance Lighting Systems
+    document_id: FAA Order JO 6850.2C
+    locator: Figure 5-2, PAPI Visual Cues, printed p. 5-3 (PDF p. 43)
+    url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=43
+    revision: Effective August 30, 2022; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - papi-color-interpretation
+  - id: afh-taxi
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Starting, Taxiing, and Run-up, printed p. 11-8 (PDF p. 8)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-propeller-clear
+      - night-taxi-verification
+  - id: afh-climb
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Takeoff and Climb, printed p. 11-9 (PDF p. 9)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=9
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-climb-crosscheck
+  - id: phak-acceleration
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Vestibular Illusions—Somatogravic Illusion, printed p. 17-7
+      (PDF p. 7)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=7
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - somatogravic-illusion
+  - id: afh-progress
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Training for Night Flight—cross-country monitoring, printed
+      p. 11-7 (PDF p. 7)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=7
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-flight-progress
+  - id: phak-night-illusions
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Night Vision Illusions—Autokinesis and False Horizon,
+      printed p. 17-26 (PDF p. 26)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=26
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - autokinesis
+      - false-horizon
+  - id: phak-disorientation
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Prevention of Spatial Disorientation, items 5-8, printed p.
+      17-10 (PDF p. 10)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - reliable-instruments
+  - id: afh-position-lights
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Airplane Equipment and Lighting—position light arrangement
+      and traffic direction, printed p. 11-6 (PDF p. 6)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=6
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - position-light-orientation
+  - id: phak-night-route
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Night Landing Illusions—route knowledge and early alternate
+      decision, printed p. 17-27 (PDF p. 27)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-route-alternative
+  - id: phak-landing-illusions
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Night Landing Illusions—ground lights and runway
+      identification, printed p. 17-27 (PDF p. 27)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=27
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - misidentified-runway
+  - id: afh-approach
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Approaches and Landings, printed p. 11-10 (PDF p. 10)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=10
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-approach-crosscheck
+  - id: phak-featureless
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Optical Illusions—Featureless Terrain Illusion, printed p.
+      17-10 (PDF p. 10)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - featureless-approach
+  - id: afh-black-hole
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Featureless Terrain Illusion, printed p. 11-5 (PDF p. 5)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=5
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - black-hole-guidance
+  - id: phak-runway-illusions
+    authority: faa_guidance
+    title: "Pilot’s Handbook of Aeronautical Knowledge, Chapter 17: Aeromedical
+      Factors"
+    document_id: FAA-H-8083-25C
+    locator: Chapter 17, Optical Illusions—Runway Width Illusion; Runway and Terrain
+      Slopes Illusion, printed p. 17-10 (PDF p. 10)
+    url: https://www.faa.gov/sites/faa.gov/files/19_phak_ch17.pdf#page=10
+    revision: FAA-H-8083-25C, 2023; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - runway-width-illusion
+      - upslope-illusion
+  - id: afh-landing-prevention
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, How to Prevent Landing Errors Due to Optical Illusions,
+      items 1-5, printed p. 11-13 (PDF p. 13)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - landing-illusion-prevention
+  - id: afh-electrical
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, System Malfunctions—Electrical System, printed p. 18-13
+      (PDF p. 13)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - single-generator-failure
+  - id: afh-night-emergency
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Night Emergencies, printed p. 11-13 (PDF p. 13)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=13
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-engine-failure
+      - unlighted-terrain-condition
+  - id: afh-climb-preparation
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 11: Night Operations"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 11, Takeoff and Climb—limited outside references and instrument
+      checks, printed p. 11-8 (PDF p. 8)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/12_afh_ch11.pdf#page=8
+    revision: FAA-H-8083-3C, 2021; accessed October 2, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - night-climb-instrument-use
+  - id: aim-aircraft-lights
+    authority: faa_guidance
+    title: Aircraft position and anticollision light use
+    document_id: AIM
+    locator: AIM 4-3-24(a)-(b), Use of Aircraft Lights
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap4_section_3.html#4-3-24
+    revision: Current FAA AIM HTML; accessed October 7, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - anticollision-identification
+      - strobe-vision-hazards
+  - id: ecfr-inoperative
+    authority: regulation
+    title: Inoperative equipment without an approved MEL
+    document_id: 14-CFR-91.213
+    locator: 91.213(d)(1)-(4), scope, required-equipment checks,
+      removal/deactivation/placarding/records, and hazard determination
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.213
+    revision: eCFR Title 14 current through October 6, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - inoperative-scope-required
+      - inoperative-disposition-hazard
+    ecfr_date: 2026-10-06
+  - id: aim-vasi
+    authority: faa_guidance
+    title: Two-bar VASI arrangement and clearance limits
+    document_id: AIM
+    locator: AIM 2-1-2(a)(1),(3)-(5), near/far bars, beam colors, alignment, local
+      limitations and Figure 2-1-2
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    revision: Current FAA AIM HTML; accessed October 7, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - vasi-coverage
+  - id: faa-vasi-colors
+    authority: faa_guidance
+    title: Two-bar VASI color indications in FAA lighting criteria
+    document_id: FAA Order JO 6850.2C
+    locator: Appendix E, Section 1, paragraph 1 and 1(a), printed p. E-1 (PDF p. 67)
+    url: https://www.faa.gov/documentLibrary/media/Order/FAA_Order_6850.2C.pdf#page=67
+    revision: Effective August 30, 2022; accessed October 7, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - vasi-arrangement
+  - id: aim-tricolor
+    authority: faa_guidance
+    title: Tri-color slope indications and identification caution
+    document_id: AIM
+    locator: AIM 2-1-2(c) and Notes 1-2, tri-color indications, dark-amber
+      transition and signal identification
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    revision: Current FAA AIM HTML; accessed October 7, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - tricolor-indications
+  - id: aim-pulsating
+    authority: faa_guidance
+    title: Pulsating slope indications and identification caution
+    document_id: AIM
+    locator: AIM 2-1-2(d) and PVASI identification note accompanying Figure 2-1-7
+    url: https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_1.html#2-1-2
+    revision: Current FAA AIM HTML; accessed October 7, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - pulsating-indications
+  - id: pcg-vasi-indications
+    authority: faa_guidance
+    title: VASI on-path, high and low indications
+    document_id: FAA Pilot/Controller Glossary
+    locator: AIRPORT LIGHTING, Visual Approach Slope Indicator (VASI) entry
+    url: https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary-a.html#AIRPORT_LIGHTING
+    revision: Current FAA Pilot/Controller Glossary HTML; accessed October 7, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - vasi-color-interpretation

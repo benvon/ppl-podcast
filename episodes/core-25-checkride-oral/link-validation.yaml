@@ -1,23 +1,23 @@
 schema_version: 1
 validator: scripts/validate-source-links.cjs
 validation_kind: formal_source_review
-run_id: f45890b8-4ab4-4bef-9987-a8b10b9437fe
-checked_at_utc: 2026-10-08T15:59:54.670Z
+run_id: dee600d6-555f-46a2-9907-fd967f4ea5d3
+checked_at_utc: 2026-10-14T18:39:38.804Z
 sources_file: episodes/core-25-checkride-oral/sources.yaml
 claims_file: episodes/core-25-checkride-oral/claim-inventory.yaml
 show_notes_file: episodes/core-25-checkride-oral/show-notes.md
 show_notes_manifest_file: episodes/core-25-checkride-oral/show-notes-manifest.yaml
 input_sha256:
-  sources: a8bff87698ce915a3fb256024e5f3602c9c12bb6534e2c072e8257638f38b492
+  sources: c7fa392f6ab2965ff428a6a6a746ffabf9b5d09854327dd3f2bdff2cc9b1c80e
   claims: eaf32d7434e8088f4179bb8449ae16fbf1360e2652bad0a6d0c04eeb766aa87f
-  master_script: 011d4a6804e3721812ba612b7acca687471eb2f057bee03711a299c4b757b0da
+  master_script: 472aae9eac5d00732f0109cb6278490a8b0c322e4456e426fac868ad3599e6a7
   show_notes: null
   show_notes_manifest: null
 input_normalization:
   master_script: narration-and-source-tags-v1
   show_notes: fact-check-verification-column-v1
 semantic_input_sha256:
-  master_script: 7b4b92c8c419fe64746a02db5b09d1e5f6ad5719a45fe718fdd44dd228de98a5
+  master_script: 8f3ce317bc3b8af08f9c528613133ac15f989a3b52985108f7b525807ff957c0
   show_notes: null
 llm_requested: true
 llm_model: gpt-6-sol
@@ -25,8 +25,8 @@ llm_review_passes: 2
 llm_materiality_policy: safety-and-core-v1
 authorization:
   qa_id: openai-source-review-authorization
-  attested_at_utc: 2026-10-08T15:57:02.064Z
-  run_id: f45890b8-4ab4-4bef-9987-a8b10b9437fe
+  attested_at_utc: 2026-10-14T18:36:56.106Z
+  run_id: dee600d6-555f-46a2-9907-fd967f4ea5d3
 claim_mapping:
   valid: true
   errors: []
@@ -46,7 +46,7 @@ show_notes_results: []
 results:
   - source_id: acs-concept
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.065Z
+    checked_at_utc: 2026-10-14T18:36:56.107Z
     linked_claim_ids:
       - claim-concept
     missing_claim_ids: []
@@ -89,55 +89,54 @@ results:
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited Introduction section on printed page 1
-              (PDF page 9).
+            rationale: The excerpt identifies the Introduction, Airman Certification
+              Standards Concept, on printed page 1 and PDF page 9.
           claim_assessments:
             - claim_id: claim-concept
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt expressly links the integration of aeronautical
-                knowledge, risk management, and flight proficiency standards
-                with the certification goal of acting as pilot in command.
+              rationale: The excerpt explicitly connects integrated aeronautical knowledge,
+                risk management, and flight proficiency standards with the
+                certification goal of acting as pilot in command.
         usage:
           input_tokens: 923
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 189
+          output_tokens: 178
           output_tokens_details:
-            reasoning_tokens: 37
-          total_tokens: 1112
+            reasoning_tokens: 25
+          total_tokens: 1101
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page states that the ACS integrates knowledge, risk
-            management, and skill to demonstrate proficiency consistent with
-            acting as pilot in command.
+          rationale: The excerpt states that the ACS integrates knowledge, risk
+            management, and skill as part of demonstrating proficiency
+            consistent with acting as pilot in command.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt identifies the Introduction, Airman Certification
-              Standards Concept, on printed page 1 and is supplied as PDF page
-              9.
+            rationale: The cited introduction, section title, and printed page match the
+              excerpt from PDF page 9.
           claim_assessments:
             - claim_id: claim-concept
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt directly connects integrated knowledge, risk management,
-                and flight proficiency standards with the applicant’s ability to
-                act as pilot in command.
+              rationale: The excerpt explicitly links integrated aeronautical knowledge, risk
+                management, and flight proficiency standards to the
+                certification goal of acting as pilot in command.
         usage:
           input_tokens: 923
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 174
+          output_tokens: 175
           output_tokens_details:
-            reasoning_tokens: 24
-          total_tokens: 1097
+            reasoning_tokens: 29
+          total_tokens: 1098
     relevance: *a1
     claim_assessments:
       valid: true
@@ -159,7 +158,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-scenarios
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.066Z
+    checked_at_utc: 2026-10-14T18:36:56.108Z
     linked_claim_ids:
       - claim-scenarios
     missing_claim_ids: []
@@ -197,19 +196,52 @@ results:
           verdict: supports
           confidence: high
           rationale: The cited page directly supports the listed claim about the
-            evaluator’s plan of action, scenario coverage, simulated problems
-            and emergencies, and discretion to modify or suspend and resume a
-            scenario.
+            evaluator’s plan of action, scenarios, simulated emergencies, and
+            discretion to modify or suspend and resume a scenario.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited Appendix 1 plan-of-action paragraph on
-              printed page 68 (PDF page 76).
+            rationale: The excerpt is from PDF page 76, printed page 68, in Appendix 1’s
+              evaluator-responsibilities discussion of the plan of action.
           claim_assessments:
             - claim_id: claim-scenarios
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt states each element of the claim.
+              rationale: The excerpt states that the plan of action must include required
+                Areas of Operation and Tasks and scenarios evaluating as many as
+                possible. It also says the evaluator introduces problems and
+                simulates emergencies, and may modify the plan or suspend and
+                later resume a scenario.
+        usage:
+          input_tokens: 1776
+          input_tokens_details:
+            cache_write_tokens: 1773
+            cached_tokens: 0
+          output_tokens: 226
+          output_tokens_details:
+            reasoning_tokens: 42
+          total_tokens: 2002
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed claim and the relevant
+            statements in the authored passages.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the cited plan-of-action paragraph on printed
+              page 68 (PDF page 76).
+          claim_assessments:
+            - claim_id: claim-scenarios
+              verdict: supports
+              finding_materiality: none
+              rationale: The page requires a plan of action covering all required Areas of
+                Operation and Tasks, scenarios evaluating as many as possible,
+                the introduction of problems and simulated emergencies, and
+                permits modifying or suspending and resuming a scenario.
         usage:
           input_tokens: 1776
           input_tokens_details:
@@ -217,38 +249,8 @@ results:
             cached_tokens: 1773
           output_tokens: 216
           output_tokens_details:
-            reasoning_tokens: 74
+            reasoning_tokens: 61
           total_tokens: 1992
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited page directly supports the listed claim about the
-            evaluator’s plan of action and use of scenarios.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The excerpt is from the cited Appendix 1 page and contains the
-              plan-of-action paragraph.
-          claim_assessments:
-            - claim_id: claim-scenarios
-              verdict: supports
-              finding_materiality: none
-              rationale: The page requires a plan of action covering required areas and tasks,
-                scenarios assessing as many as possible, introduction of
-                problems and simulated emergencies, and permits modifying or
-                suspending and resuming a scenario.
-        usage:
-          input_tokens: 1776
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1773
-          output_tokens: 206
-          output_tokens_details:
-            reasoning_tokens: 56
-          total_tokens: 1982
     relevance: *a3
     claim_assessments:
       valid: true
@@ -270,7 +272,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-test-conversation
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.698Z
+    checked_at_utc: 2026-10-14T18:36:57.852Z
     linked_claim_ids:
       - claim-test-conversation
     missing_claim_ids: []
@@ -307,31 +309,30 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the listed claim and the
-            corresponding statements in the authored passages.
+          rationale: The cited page directly supports the listed claim and the relevant
+            statements in the authored passages.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 75, printed page 67, and contains both
-              the application-and-correlation guidance and the ground-portion
-              paragraph.
+            rationale: The cited PDF page contains both the application-and-correlation
+              guidance and the ground-portion and oral-questioning requirements.
           claim_assessments:
             - claim_id: claim-test-conversation
               verdict: supports
               finding_materiality: none
               rationale: The excerpt says evaluators should test application and correlation
-                to the greatest extent practicable, the applicant must pass the
-                ground portion before beginning flight, and oral questioning
-                continues throughout the practical test.
+                to the greatest extent practicable, applicants must pass the
+                ground portion before flight, and oral questioning continues
+                throughout the practical test.
         usage:
           input_tokens: 1592
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1589
-          output_tokens: 187
+            cache_write_tokens: 1589
+            cached_tokens: 0
+          output_tokens: 307
           output_tokens_details:
-            reasoning_tokens: 30
-          total_tokens: 1779
+            reasoning_tokens: 159
+          total_tokens: 1899
       - pass: 2
         status: assessed
         model: gpt-6-sol
@@ -343,26 +344,25 @@ results:
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page, shows printed page 67, and
-              contains the application/correlation and ground-portion paragraphs
-              identified by the locator.
+            rationale: The specified PDF page is printed page 67 and contains both the
+              application-and-correlation and ground-portion paragraphs.
           claim_assessments:
             - claim_id: claim-test-conversation
               verdict: supports
               finding_materiality: none
               rationale: The excerpt says evaluators should test application and correlation
                 to the greatest extent practicable, applicants must pass the
-                ground portion before beginning flight, and oral questioning
-                continues throughout the practical test.
+                ground portion before flight, and oral questioning continues
+                throughout the practical test.
         usage:
           input_tokens: 1592
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1589
-          output_tokens: 276
+          output_tokens: 321
           output_tokens_details:
-            reasoning_tokens: 119
-          total_tokens: 1868
+            reasoning_tokens: 173
+          total_tokens: 1913
     relevance: *a4
     claim_assessments:
       valid: true
@@ -384,7 +384,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-cross-country
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.707Z
+    checked_at_utc: 2026-10-14T18:36:57.862Z
     linked_claim_ids:
       - claim-cross-country
     missing_claim_ids: []
@@ -421,62 +421,62 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page supports the listed cross-country planning,
-            calculation, publication, and risk-management requirements.
+          rationale: The cited page supports the listed cross-country planning
+            requirements and risk areas.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains the identified Cross-Country Flight
-              Planning knowledge, risk-management, and skills elements.
+            rationale: PDF page 13 contains the cited PA.I.D knowledge, risk-management, and
+              skills items on printed page 5.
           claim_assessments:
             - claim_id: claim-cross-country
               verdict: supports
               finding_materiality: none
-              rationale: The page specifies a plan and real-time weather risk analysis to the
-                first fuel stop, use of current charts and publications and
-                closure NOTAMs, navigation and fuel calculations, and the listed
-                risk areas. Its navigation and communication systems, ATC
-                services, and EFB elements support the reference to resources.
+              rationale: The page specifies a plan explained to the first fuel stop with
+                real-time weather risk analysis; current charts, publications,
+                and closure notices; navigation and fuel planning; and the
+                listed risk areas, including ATC-service limitations and EFB use
+                where applicable.
         usage:
           input_tokens: 1455
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1452
-          output_tokens: 341
+            cache_write_tokens: 1452
+            cached_tokens: 0
+          output_tokens: 344
           output_tokens_details:
-            reasoning_tokens: 169
-          total_tokens: 1796
+            reasoning_tokens: 184
+          total_tokens: 1799
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page supports the listed cross-country planning,
-            calculation, publication, and risk-management requirements.
+          rationale: The cited page lists the cross-country planning knowledge,
+            risk-management areas, and skills described in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains the identified Cross-Country Flight
-              Planning knowledge, risk-management, and skills items.
+            rationale: The cited PDF page contains the specified PA.I.D knowledge,
+              risk-management, and skill items.
           claim_assessments:
             - claim_id: claim-cross-country
               verdict: supports
               finding_materiality: none
-              rationale: The page requires a plan through the first fuel stop with real-time
-                weather risk analysis, use of current publications and closure
-                notices, navigation and fuel calculations, and assessment of the
-                listed risk areas. ATC-service limitations and EFB use account
-                for the claim's reference to resources.
+              rationale: PA.I.D.S1 requires explaining a plan to the first fuel stop with
+                real-time weather risk analysis; S2 covers current publications
+                and closure notices; K3 and S3–S4 cover navigation and fuel
+                planning. R1–R7 cover the listed risk areas, including
+                ATC-service limitations and EFB use where applicable.
         usage:
           input_tokens: 1455
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1452
-          output_tokens: 411
+          output_tokens: 304
           output_tokens_details:
-            reasoning_tokens: 244
-          total_tokens: 1866
+            reasoning_tokens: 125
+          total_tokens: 1759
     relevance: *a5
     claim_assessments:
       valid: true
@@ -498,7 +498,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-human-factors
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.725Z
+    checked_at_utc: 2026-10-14T18:36:57.883Z
     linked_claim_ids:
       - claim-human-factors
     missing_claim_ids: []
@@ -535,18 +535,48 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page covers every listed Human Factors topic and the
-            authored passages accurately reflect the cited requirements.
+          rationale: The cited Human Factors page explicitly includes every element in the
+            listed claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited Human Factors task on printed page 8
-              (PDF page 16), and the listed task codes appear on that page.
+            rationale: The excerpt identifies Task H, Human Factors, on printed page 8, and
+              the cited PDF page is the supplied excerpt page.
           claim_assessments:
             - claim_id: claim-human-factors
               verdict: supports
               finding_materiality: none
-              rationale: The page lists stress, fatigue, ADM with CRM or SRM, hazardous
+              rationale: The page lists stress, fatigue, hazardous attitudes, confirmation and
+                expectation bias, distractions, CRM or SRM, and self-assessment
+                of fitness for flight and personal minimums.
+        usage:
+          input_tokens: 1267
+          input_tokens_details:
+            cache_write_tokens: 1264
+            cached_tokens: 0
+          output_tokens: 181
+          output_tokens_details:
+            reasoning_tokens: 33
+          total_tokens: 1448
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited Human Factors page explicitly covers every listed element
+            of the claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The locator identifies the Human Factors task on printed page 8,
+              supplied as PDF page 16, and its cited knowledge, risk-management,
+              and skill items.
+          claim_assessments:
+            - claim_id: claim-human-factors
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt lists stress, fatigue, ADM with CRM or SRM, hazardous
                 attitudes, distractions, confirmation and expectation bias, and
                 self-assessment of fitness for flight and personal minimums.
         usage:
@@ -554,41 +584,10 @@ results:
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1264
-          output_tokens: 189
+          output_tokens: 183
           output_tokens_details:
-            reasoning_tokens: 29
-          total_tokens: 1456
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited Human Factors task lists every element in the claim, and
-            the source-tagged passages accurately describe the listed bias and
-            self-assessment requirements.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The supplied excerpt is printed page 8 (PDF page 16) and contains the
-              cited Human Factors knowledge, risk-management, and skill items.
-          claim_assessments:
-            - claim_id: claim-human-factors
-              verdict: supports
-              finding_materiality: none
-              rationale: K1g–K1h cover stress and fatigue; K4 covers CRM or SRM; R2–R4 cover
-                hazardous attitudes, distractions, and confirmation and
-                expectation bias; S2 covers fitness-for-flight and
-                personal-minimums self-assessment.
-        usage:
-          input_tokens: 1267
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1264
-          output_tokens: 226
-          output_tokens_details:
-            reasoning_tokens: 43
-          total_tokens: 1493
+            reasoning_tokens: 27
+          total_tokens: 1450
     relevance: *a6
     claim_assessments:
       valid: true
@@ -610,7 +609,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-pilot
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.742Z
+    checked_at_utc: 2026-10-14T18:36:57.898Z
     linked_claim_ids:
       - claim-pilot
     missing_claim_ids: []
@@ -647,64 +646,64 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page’s Pilot Qualifications task lists each topic in the
-            claim, including applying PIC requirements in a VFR scenario.
+          rationale: The cited page lists each Pilot Qualifications topic in the claim and
+            the corresponding VFR PIC scenario skill. The assessed statements in
+            the authored passages align with those listed elements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies Task A, Pilot Qualifications, on the supplied
-              PDF page and its listed knowledge, risk-management, and skill
-              elements.
+            rationale: PDF page 10 shows printed page 2, Task A, Pilot Qualifications, with
+              the cited K1–K5, R1–R2, and S1 elements.
           claim_assessments:
             - claim_id: claim-pilot
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.A.K1–K5 cover certification, recent experience, recordkeeping,
-                privileges, medical certificates and BasicMed, and required
-                documents; R1–R2 address proficiency versus currency and
-                unfamiliar aircraft or avionics; S1 addresses applying PIC
-                requirements in a VFR scenario.
+              rationale: The task lists certification, recent flight experience,
+                recordkeeping, privileges and limitations, medical certificates
+                and BasicMed, required documents, proficiency versus currency,
+                unfamiliar aircraft or avionics, and applying PIC requirements
+                in a VFR scenario.
         usage:
           input_tokens: 1301
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1298
-          output_tokens: 209
+            cache_write_tokens: 1298
+            cached_tokens: 0
+          output_tokens: 227
           output_tokens_details:
-            reasoning_tokens: 30
-          total_tokens: 1510
+            reasoning_tokens: 41
+          total_tokens: 1528
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page’s Pilot Qualifications task lists each topic in the
-            claim.
+          rationale: The cited page contains the Pilot Qualifications task and supports
+            the listed claim and its use in the authored passages.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies Task A, Pilot Qualifications, on the supplied
-              PDF page, including the cited knowledge, risk-management, and
-              skill elements.
+            rationale: PDF page 10 is printed page 2 and contains Task A, Pilot
+              Qualifications, with the cited knowledge, risk-management, and
+              skill codes.
           claim_assessments:
             - claim_id: claim-pilot
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.A.K1–K5 cover certification, recent experience, recordkeeping,
-                privileges, medical certificates and BasicMed, and required
-                documents. PA.I.A.R1–R2 cover proficiency versus currency and
-                unfamiliar aircraft or avionics; PA.I.A.S1 covers applying PIC
-                requirements in a VFR scenario.
+              rationale: The task lists certification, recent experience, recordkeeping,
+                privileges and limitations, medical certificates and BasicMed,
+                required documents, proficiency versus currency, unfamiliar
+                aircraft or avionics, and applying PIC requirements in a VFR
+                scenario.
         usage:
           input_tokens: 1301
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1298
-          output_tokens: 205
+          output_tokens: 230
           output_tokens_details:
-            reasoning_tokens: 29
-          total_tokens: 1506
+            reasoning_tokens: 64
+          total_tokens: 1531
     relevance: *a7
     claim_assessments:
       valid: true
@@ -726,7 +725,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-test-sampling
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.755Z
+    checked_at_utc: 2026-10-14T18:36:57.908Z
     linked_claim_ids:
       - claim-test-sampling
     missing_claim_ids: []
@@ -763,61 +762,59 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly states the required minimum elements for
-            each applicable Task and the evaluator’s discretion to sample
-            elements as needed to ensure mastery.
+          rationale: The cited page states the required minimum elements for each
+            applicable Task and gives the evaluator discretion to sample as
+            needed to ensure mastery.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from Appendix 1, printed page 66 (PDF page 74), and
-              contains the identified list and AKTR note.
+            rationale: The cited PDF page contains the specified Appendix 1 section,
+              required-minimum-elements list, and AKTR note.
           claim_assessments:
             - claim_id: claim-test-sampling
               verdict: supports
               finding_materiality: none
-              rationale: The claim accurately reflects the page’s required-minimum-elements
-                list and its statement that evaluators may sample as needed to
-                ensure mastery.
+              rationale: The claim accurately reflects the page’s minimum-element list and its
+                statement that evaluators may sample as needed to ensure
+                mastery.
         usage:
           input_tokens: 1485
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1482
-          output_tokens: 193
+            cache_write_tokens: 1482
+            cached_tokens: 0
+          output_tokens: 181
           output_tokens_details:
-            reasoning_tokens: 39
-          total_tokens: 1678
+            reasoning_tokens: 36
+          total_tokens: 1666
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page states the required minimum elements for each
-            applicable Task and gives evaluators discretion to sample as needed
-            to ensure mastery.
+          rationale: The cited page directly states the required minimum elements for each
+            applicable Task and permits the evaluator to sample as needed to
+            establish mastery.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited Appendix 1 section on printed page 66
-              (PDF page 74) and contains the required-minimum-elements list.
+            rationale: The excerpt is from the cited PDF page and contains the specified
+              Appendix 1 list and AKTR note.
           claim_assessments:
             - claim_id: claim-test-sampling
               verdict: supports
               finding_materiality: none
-              rationale: The page lists knowledge-test deficiencies as applicable, at least
-                one knowledge element, at least one risk management element, and
-                all skill elements unless otherwise noted. It also permits
-                evaluators to sample as needed to ensure mastery.
+              rationale: The required-minimum list matches the claim, and the preceding
+                paragraph supports evaluator sampling to ensure mastery.
         usage:
           input_tokens: 1485
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1482
-          output_tokens: 207
+          output_tokens: 170
           output_tokens_details:
-            reasoning_tokens: 36
-          total_tokens: 1692
+            reasoning_tokens: 31
+          total_tokens: 1655
     relevance: *a8
     claim_assessments:
       valid: true
@@ -839,7 +836,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-airworthiness-records
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.768Z
+    checked_at_utc: 2026-10-14T18:36:57.919Z
     linked_claim_ids:
       - claim-airworthiness-records
     missing_claim_ids: []
@@ -876,60 +873,60 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists each topic in the claim under Task B,
-            Airworthiness Requirements.
+          rationale: The cited page lists the stated topics under Task B, Airworthiness
+            Requirements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 10 contains the cited Task B items PA.I.B.K1a–K1e and
-              K3–K3a.
+            rationale: The cited Task B identifiers and printed page match the supplied PDF
+              page 10 excerpt.
           claim_assessments:
             - claim_id: claim-airworthiness-records
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt covers airplane certificates, inspections and logbook
-                documentation, Airworthiness Directives, owner/operator and PIC
-                responsibilities, and day and night VFR equipment, including
+              rationale: The excerpt covers airplane certificates, required inspections and
+                logbook documentation, Airworthiness Directives, owner/operator
+                and PIC responsibilities, and day/night VFR equipment including
                 inoperative equipment.
         usage:
           input_tokens: 1279
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1276
-          output_tokens: 179
+          output_tokens: 175
           output_tokens_details:
-            reasoning_tokens: 24
-          total_tokens: 1458
+            reasoning_tokens: 34
+          total_tokens: 1454
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists each topic in the claim under Task B,
+          rationale: The cited page lists each subject in the claim under Task B,
             Airworthiness Requirements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 10, printed page 2, and contains
-              PA.I.B.K1a–K1e and K3–K3a.
+            rationale: The cited task, knowledge codes, printed page, and PDF page match the
+              excerpt.
           claim_assessments:
             - claim_id: claim-airworthiness-records
               verdict: supports
               finding_materiality: none
-              rationale: The page lists airplane certificates, required inspections and
+              rationale: The excerpt covers airplane certificates, required inspections and
                 logbook documentation, Airworthiness Directives, owner/operator
                 and PIC responsibilities, and day/night VFR equipment including
-                flying with inoperative equipment.
+                inoperative equipment.
         usage:
           input_tokens: 1279
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1276
-          output_tokens: 207
+            cache_write_tokens: 1276
+            cached_tokens: 0
+          output_tokens: 184
           output_tokens_details:
-            reasoning_tokens: 45
-          total_tokens: 1486
+            reasoning_tokens: 41
+          total_tokens: 1463
     relevance: *a9
     claim_assessments:
       valid: true
@@ -951,7 +948,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-preflight
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.779Z
+    checked_at_utc: 2026-10-14T18:36:57.928Z
     linked_claim_ids:
       - claim-preflight
     missing_claim_ids: []
@@ -988,13 +985,43 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page’s Preflight Assessment skills directly state the four
-            requirements in the listed claim.
+          rationale: The cited page directly lists the four Preflight Assessment skills
+            stated in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and contains Task A,
-              PA.II.A.K3a–K3d, and PA.II.A.S1–S4.
+            rationale: The excerpt is from PDF page 19, printed page 11, and contains Task
+              A, Preflight Assessment, including PA.II.A.S1–S4.
+          claim_assessments:
+            - claim_id: claim-preflight
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.II.A.S1–S4 specify inspection with an appropriate checklist,
+                verification of safe-flight condition and type-design
+                conformity, self-assessment, and continued assessment of the
+                environment for safe flight.
+        usage:
+          input_tokens: 1231
+          input_tokens_details:
+            cache_write_tokens: 1228
+            cached_tokens: 0
+          output_tokens: 214
+          output_tokens_details:
+            reasoning_tokens: 52
+          total_tokens: 1445
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page lists all four Preflight Assessment skills stated in
+            the claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: PDF page 19 is printed page 11 and contains Task A, Preflight
+              Assessment, including PA.II.A.K3a–K3d and S1–S4.
           claim_assessments:
             - claim_id: claim-preflight
               verdict: supports
@@ -1007,40 +1034,10 @@ results:
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1228
-          output_tokens: 219
+          output_tokens: 211
           output_tokens_details:
-            reasoning_tokens: 60
-          total_tokens: 1450
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited Preflight Assessment skills directly state all four
-            elements of the listed claim.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The cited PDF page contains the Preflight Assessment task and the
-              specified K3a–K3d and S1–S4 elements.
-          claim_assessments:
-            - claim_id: claim-preflight
-              verdict: supports
-              finding_materiality: none
-              rationale: S1 requires inspection with an appropriate checklist; S2 requires
-                verifying safe-flight condition and type-design conformity; S3
-                requires self-assessment; and S4 requires continued
-                environmental assessment.
-        usage:
-          input_tokens: 1231
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1228
-          output_tokens: 210
-          output_tokens_details:
-            reasoning_tokens: 58
-          total_tokens: 1441
+            reasoning_tokens: 54
+          total_tokens: 1442
     relevance: *a10
     claim_assessments:
       valid: true
@@ -1062,7 +1059,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-airworthiness-decision
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.792Z
+    checked_at_utc: 2026-10-14T18:36:57.940Z
     linked_claim_ids:
       - claim-airworthiness-decision
     missing_claim_ids: []
@@ -1100,61 +1097,59 @@ results:
           verdict: supports
           confidence: high
           rationale: The cited page lists MEL, KOEL, and discrepancy records or placards
-            under Airworthiness Requirements, and its skill elements require an
-            airworthiness determination and appropriate inoperative-equipment
-            procedures in an evaluator-provided scenario.
+            under Airworthiness Requirements, and its skill elements require
+            determining airworthiness and applying appropriate procedures for
+            inoperative equipment in an evaluator-provided scenario.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains the identified Airworthiness Requirements
-              elements PA.I.B.K3b–K4, R1, and S1–S3.
+            rationale: The cited ACS elements appear on printed page 3, PDF page 11.
           claim_assessments:
             - claim_id: claim-airworthiness-decision
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.B.K3b–d list the MEL, KOEL, and discrepancy records or placards;
-                PA.I.B.S2–S3 specify determining airworthiness and applying
-                appropriate inoperative-equipment procedures in the evaluator's
-                scenario.
+              rationale: PA.I.B.K3b–K3d list the equipment and discrepancy items; PA.I.B.S2–S3
+                state the scenario-based airworthiness and inoperative-equipment
+                skills.
         usage:
           input_tokens: 1435
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1432
-          output_tokens: 241
+            cache_write_tokens: 1432
+            cached_tokens: 0
+          output_tokens: 242
           output_tokens_details:
-            reasoning_tokens: 45
-          total_tokens: 1676
+            reasoning_tokens: 71
+          total_tokens: 1677
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the MEL, KOEL, discrepancy records or placards,
-            and the scenario-based airworthiness and inoperative-equipment
-            skills described in the claim.
+          rationale: The cited page lists MEL, KOEL, discrepancy records or placards, and
+            the skills of determining airworthiness and applying appropriate
+            inoperative-equipment procedures in an evaluator-provided scenario.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page and element identifiers match the excerpt.
+            rationale: The cited identifiers and printed page appear in the supplied excerpt
+              from PDF page 11.
           claim_assessments:
             - claim_id: claim-airworthiness-decision
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.B.K3b–K3d list the MEL, KOEL, and discrepancy records or
-                placards; PA.I.B.S2–S3 require determining airworthiness and
-                applying appropriate inoperative-equipment procedures in an
-                evaluator-given scenario.
+              rationale: PA.I.B.K3b–K3d cover the listed equipment and records or placards;
+                PA.I.B.S2–S3 cover the scenario-based airworthiness
+                determination and procedures.
         usage:
           input_tokens: 1435
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1432
-          output_tokens: 198
+          output_tokens: 220
           output_tokens_details:
-            reasoning_tokens: 29
-          total_tokens: 1633
+            reasoning_tokens: 54
+          total_tokens: 1655
     relevance: *a11
     claim_assessments:
       valid: true
@@ -1176,7 +1171,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-weather-decision
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.800Z
+    checked_at_utc: 2026-10-14T18:36:57.947Z
     linked_claim_ids:
       - claim-weather-decision
     missing_claim_ids: []
@@ -1213,60 +1208,63 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the listed Weather Information
-            claim.
+          rationale: The cited page directly lists the Weather Information risk-management
+            and skills elements stated in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited Weather Information risk-management and skills items appear
-              on PDF page 12, printed page 4.
+            rationale: The cited Weather Information elements appear on PDF page 12, printed
+              page 4.
           claim_assessments:
             - claim_id: claim-weather-decision
               verdict: supports
               finding_materiality: none
-              rationale: The page calls for an adequate weather briefing and a go/no-go
-                decision, and lists personal weather minimums, prudent
-                diversion, and limitations of weather reports, forecasts, and
-                inflight resources.
+              rationale: PA.I.C.S1 and S3 require an adequate weather briefing and correlating
+                weather information for a go/no-go decision. PA.I.C.R1 and R2
+                include personal weather minimums, prudent diversion, and
+                limitations of reports, forecasts, and inflight weather
+                resources.
         usage:
           input_tokens: 1364
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1361
-          output_tokens: 170
+            cache_write_tokens: 1361
+            cached_tokens: 0
+          output_tokens: 183
           output_tokens_details:
-            reasoning_tokens: 27
-          total_tokens: 1534
+            reasoning_tokens: 20
+          total_tokens: 1547
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly lists all elements in the claim under
-            Weather Information risk management and skills.
+          rationale: The cited Weather Information standards directly address the listed
+            briefing, weather-decision, personal-minimums, diversion, and
+            weather-resource requirements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited Weather Information entries appear on the specified PDF
-              page and printed page.
+            rationale: The excerpt is from printed page 4 (PDF page 12) and contains the
+              cited PA.I.C.R1a–R1c, R2a–R2c, and S1–S3 standards.
           claim_assessments:
             - claim_id: claim-weather-decision
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt requires an adequate weather briefing and a correlated
-                go/no-go decision, and lists personal weather minimums, prudent
-                diversion, and the limitations of weather reports, forecasts,
-                and in-flight resources.
+              rationale: S1 requires an adequate weather briefing; S3 requires correlating
+                weather information for a go/no-go decision; R1 covers personal
+                weather minimums and prudent diversion; and R2 covers
+                limitations of reports, forecasts, and inflight weather
+                resources.
         usage:
           input_tokens: 1364
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1361
-          output_tokens: 192
+          output_tokens: 238
           output_tokens_details:
-            reasoning_tokens: 47
-          total_tokens: 1556
+            reasoning_tokens: 44
+          total_tokens: 1602
     relevance: *a12
     claim_assessments:
       valid: true
@@ -1288,7 +1286,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-weather-products
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.817Z
+    checked_at_utc: 2026-10-14T18:36:57.958Z
     linked_claim_ids:
       - claim-weather-products
     missing_claim_ids: []
@@ -1325,59 +1323,61 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the stated weather products under preflight
-            planning for departure, en route, and arrival phases.
+          rationale: The cited page lists these weather products under preflight planning
+            for departure, en route, and arrival phases of flight.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The Weather Information task and PA.I.C.K1–K2g appear on the cited
-              PDF page.
+            rationale: The locator points to PA.I.C.K1 and K2a–K2g on the supplied PDF page
+              11.
           claim_assessments:
             - claim_id: claim-weather-products
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.C.K2 lists airport and pilot observations, terminal and
-                graphical forecasts, wind and temperature aloft forecasts, and
-                inflight aviation weather advisories for the stated flight
-                phases.
+              rationale: PA.I.C.K2a–K2g lists airport observations, pilot reports, terminal
+                and graphical forecasts, winds aloft, and inflight aviation
+                weather advisories for departure, en route, and arrival
+                planning.
         usage:
           input_tokens: 1381
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1378
-          output_tokens: 193
+            cache_write_tokens: 1378
+            cached_tokens: 0
+          output_tokens: 206
           output_tokens_details:
-            reasoning_tokens: 42
-          total_tokens: 1574
+            reasoning_tokens: 43
+          total_tokens: 1587
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the weather products in the claim under
-            PA.I.C.K2 and frames them as resources for departure, en route, and
-            arrival preflight planning.
+          rationale: The cited page lists the named weather products under Task C, Weather
+            Information, as resources for departure, en route, and arrival
+            flight planning.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains printed page 3 and PA.I.C.K1 through K2g.
+            rationale: The cited PDF page contains printed page 3 and the referenced
+              PA.I.C.K1 and K2a–K2g entries.
           claim_assessments:
             - claim_id: claim-weather-products
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.C.K2 lists airport observations, pilot reports, terminal and
-                graphical forecasts, winds aloft, and inflight aviation weather
-                advisories for departure, en route, and arrival planning.
+              rationale: PA.I.C.K2 and its sub-elements list airport observations, pilot
+                reports, terminal and graphical forecasts, wind and temperature
+                aloft forecasts, and aviation weather advisories for preflight
+                planning across departure, en route, and arrival phases.
         usage:
           input_tokens: 1381
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1378
-          output_tokens: 198
+          output_tokens: 245
           output_tokens_details:
-            reasoning_tokens: 35
-          total_tokens: 1579
+            reasoning_tokens: 71
+          total_tokens: 1626
     relevance: *a13
     claim_assessments:
       valid: true
@@ -1399,7 +1399,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-airspace
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.826Z
+    checked_at_utc: 2026-10-14T18:36:57.966Z
     linked_claim_ids:
       - claim-airspace
     missing_claim_ids: []
@@ -1436,62 +1436,59 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the relevant National Airspace System knowledge
-            and skills, including VFR weather minimums, airspace communication
-            and equipment requirements, and requirements for SUA, TFR, SATR, and
-            SFRA operations.
+          rationale: The cited page lists basic VFR weather minimums, airspace-specific
+            communication and equipment requirements, and requirements for
+            special-use airspace, TFRs, and other applicable airspace rules.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited task codes and printed page match the supplied excerpt from
-              PDF page 14.
+            rationale: The cited task elements appear on printed page 6, the supplied PDF
+              page 14.
           claim_assessments:
             - claim_id: claim-airspace
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.E.S1–S3 support the stated requirements, including identifying
-                and complying with VFR weather minimums, operating under
-                applicable communication and equipment requirements, and
-                identifying other applicable airspace restrictions.
+              rationale: PA.I.E.S1–S3 directly address VFR weather minimums, communication and
+                equipment requirements, and identifying and complying with
+                applicable airspace restrictions.
         usage:
           input_tokens: 1240
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1237
-          output_tokens: 223
+            cache_write_tokens: 1237
+            cached_tokens: 0
+          output_tokens: 217
           output_tokens_details:
-            reasoning_tokens: 50
-          total_tokens: 1463
+            reasoning_tokens: 58
+          total_tokens: 1457
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists basic VFR weather minimums, communication and
-            equipment requirements, and requirements for special-use airspace,
-            TFRs, and other applicable airspace rules.
+          rationale: The cited page supports the listed airspace-task requirements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 14 is printed page 6 and contains PA.I.E.K1–K3 and
-              PA.I.E.S1–S3.
+            rationale: The excerpt is from the cited PDF page and contains the specified
+              PA.I.E.K1–K3 and S1–S3 elements.
           claim_assessments:
             - claim_id: claim-airspace
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.E.S1–S3 support compliance with VFR weather minimums,
-                class-specific communication and equipment requirements, and
-                applicable airspace restrictions.
+              rationale: S1 covers basic VFR weather minimums and requirements for flying in
+                particular airspace classes; S2 covers communication and
+                equipment requirements; K3 and S3 cover other airspace areas and
+                restrictions.
         usage:
           input_tokens: 1240
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1237
-          output_tokens: 213
+          output_tokens: 204
           output_tokens_details:
-            reasoning_tokens: 47
-          total_tokens: 1453
+            reasoning_tokens: 53
+          total_tokens: 1444
     relevance: *a14
     claim_assessments:
       valid: true
@@ -1513,7 +1510,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-loading
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.838Z
+    checked_at_utc: 2026-10-14T18:36:57.975Z
     linked_claim_ids:
       - claim-loading
     missing_claim_ids: []
@@ -1550,60 +1547,58 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly states both listed skills in PA.I.F.S1–S2.
+          rationale: "The cited page directly states both listed skills: computing and
+            correcting weight and balance throughout the flight, and using
+            appropriate airplane performance data."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains PA.I.F.S1 and PA.I.F.S2 under Performance
-              and Limitations.
+            rationale: PA.I.F.S1–S2 appear on printed page 7, identified as PDF page 15.
           claim_assessments:
             - claim_id: claim-loading
               verdict: supports
               finding_materiality: none
               rationale: PA.I.F.S1 requires computing weight and balance, correcting out-of-CG
-                loading errors, and determining whether weight and balance
-                remain within limits during all phases of flight. PA.I.F.S2
-                requires using appropriate airplane performance charts, tables,
-                and data.
+                loading errors, and determining whether limits are met during
+                all phases of flight. PA.I.F.S2 requires using appropriate
+                airplane performance charts, tables, and data.
         usage:
           input_tokens: 1337
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1334
-          output_tokens: 180
+            cache_write_tokens: 1334
+            cached_tokens: 0
+          output_tokens: 200
           output_tokens_details:
-            reasoning_tokens: 18
-          total_tokens: 1517
+            reasoning_tokens: 33
+          total_tokens: 1537
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page directly states both listed skills.
+          rationale: "The cited page directly states both listed skills: computing weight
+            and balance, correcting out-of-CG loading, checking limits during
+            all phases of flight, and using appropriate airplane performance
+            data."
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from printed page 7 (PDF page 15) and contains
-              PA.I.F.S1–S2.
+            rationale: PA.I.F.S1–S2 appear on the cited PDF page, printed page 7.
           claim_assessments:
             - claim_id: claim-loading
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.F.S1 requires computing weight and balance, correcting out-of-CG
-                loading, and determining whether weight and balance remain
-                within limits during all phases of flight. PA.I.F.S2 requires
-                using the appropriate airplane performance charts, tables, and
-                data.
+              rationale: The claim accurately reflects PA.I.F.S1 and PA.I.F.S2.
         usage:
           input_tokens: 1337
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1334
-          output_tokens: 203
+          output_tokens: 175
           output_tokens_details:
-            reasoning_tokens: 46
-          total_tokens: 1540
+            reasoning_tokens: 32
+          total_tokens: 1512
     relevance: *a15
     claim_assessments:
       valid: true
@@ -1625,7 +1620,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-performance
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.845Z
+    checked_at_utc: 2026-10-14T18:36:57.983Z
     linked_claim_ids:
       - claim-performance
     missing_claim_ids: []
@@ -1662,60 +1657,59 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the stated performance factors, use of
-            performance charts and data, airplane limitations, and differences
-            between calculated and actual performance.
+          rationale: The cited page lists the stated performance factors, use of charts
+            and data, airplane limitations, and differences between calculated
+            and actual performance.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 14 contains Task F, Performance and Limitations, including
-              PA.I.F.K1–K3 and R1–R3.
+            rationale: The Performance and Limitations task and cited knowledge and
+              risk-management elements appear on PDF page 14.
           claim_assessments:
             - claim_id: claim-performance
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.F.K1–K2 list charts and the stated performance factors;
-                PA.I.F.R2–R3 address limitations and differences between
-                calculated and actual performance.
+              rationale: PA.I.F.K1–K2 and PA.I.F.R2–R3 cover the listed topics.
         usage:
           input_tokens: 1244
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1241
-          output_tokens: 196
+            cache_write_tokens: 1241
+            cached_tokens: 0
+          output_tokens: 213
           output_tokens_details:
-            reasoning_tokens: 35
-          total_tokens: 1440
+            reasoning_tokens: 74
+          total_tokens: 1457
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists performance charts and data, the stated
-            performance factors, airplane limitations, and differences between
+          rationale: The cited page lists each performance factor and risk area in the
+            claim, including use of performance charts and differences between
             calculated and actual performance.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and contains PA.I.F.K1–K3 and
-              PA.I.F.R1–R3 under Performance and Limitations.
+            rationale: PDF page 14 contains printed page 6 and the cited PA.I.F.K1–K3 and
+              R1–R3 provisions.
           claim_assessments:
             - claim_id: claim-performance
               verdict: supports
               finding_materiality: none
-              rationale: PA.I.F.K1–K2 cover charts and the listed performance factors;
-                PA.I.F.R2–R3 cover limitations and differences between
-                calculated and actual performance.
+              rationale: The Performance and Limitations task covers charts, atmospheric
+                conditions, pilot technique, airplane configuration, airport
+                environment, loading, airplane limitations, and differences
+                between calculated and actual performance.
         usage:
           input_tokens: 1244
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1241
-          output_tokens: 229
+          output_tokens: 217
           output_tokens_details:
-            reasoning_tokens: 66
-          total_tokens: 1473
+            reasoning_tokens: 57
+          total_tokens: 1461
     relevance: *a16
     claim_assessments:
       valid: true
@@ -1737,7 +1731,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-takeoff-risk
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.858Z
+    checked_at_utc: 2026-10-14T18:36:57.992Z
     linked_claim_ids:
       - claim-takeoff-risk
     missing_claim_ids: []
@@ -1774,61 +1768,61 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the stated runway-selection factors and takeoff
-            risks under the normal-takeoff task.
+          rationale: The cited Normal Takeoff and Climb task explicitly covers runway
+            selection based on aircraft performance and limitations, available
+            distance, and wind, and lists tailwind, takeoff surface or
+            condition, rejected takeoff, and potential engine failure as risks.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 26, shows printed page 18, and contains
-              Task A, Normal Takeoff and Climb, including PA.IV.A.K1–K3 and
-              R1–R3.
+            rationale: The excerpt is from the stated task on printed page 18 (PDF page 26)
+              and includes the cited knowledge and risk-management elements.
           claim_assessments:
             - claim_id: claim-takeoff-risk
               verdict: supports
               finding_materiality: none
-              rationale: PA.IV.A.R1 lists aircraft performance and limitations, available
-                distance, and wind for runway or takeoff-path selection. R2
-                lists tailwind and takeoff surface/condition; R3 lists rejected
-                takeoff and potential engine failure during takeoff or climb.
+              rationale: PA.IV.A.R1–R3 explicitly cover every risk-management element listed
+                in the claim.
         usage:
           input_tokens: 1279
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1276
-          output_tokens: 228
+            cache_write_tokens: 1276
+            cached_tokens: 0
+          output_tokens: 207
           output_tokens_details:
-            reasoning_tokens: 36
-          total_tokens: 1507
+            reasoning_tokens: 37
+          total_tokens: 1486
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page lists the claimed normal-takeoff runway-selection
-            factors and risks.
+          rationale: The cited ACS page directly lists the runway-selection factors and
+            takeoff risks in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 26 contains printed page 18, Task A, Normal Takeoff and
-              Climb, including PA.IV.A.K1–K3 and R1–R3.
+            rationale: The locator identifies the Normal Takeoff and Climb task on the
+              supplied PDF page, including the cited knowledge and
+              risk-management elements.
           claim_assessments:
             - claim_id: claim-takeoff-risk
               verdict: supports
               finding_materiality: none
-              rationale: PA.IV.A.R1 lists aircraft performance and limitations, available
-                distance, and wind for runway or takeoff-path selection. R2
-                lists tailwind and takeoff surface/condition; R3 lists rejected
-                takeoff and potential engine failure during takeoff or climb.
+              rationale: PA.IV.A.R1 covers aircraft performance and limitations, available
+                distance, and wind; R2 covers tailwind and takeoff
+                surface/condition; and R3 covers rejected takeoff and potential
+                engine failure.
         usage:
           input_tokens: 1279
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1276
-          output_tokens: 210
+          output_tokens: 203
           output_tokens_details:
-            reasoning_tokens: 29
-          total_tokens: 1489
+            reasoning_tokens: 43
+          total_tokens: 1482
     relevance: *a17
     claim_assessments:
       valid: true
@@ -1850,7 +1844,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-diversion
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.865Z
+    checked_at_utc: 2026-10-14T18:36:57.999Z
     linked_claim_ids:
       - claim-diversion
     missing_claim_ids: []
@@ -1887,61 +1881,61 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page lists each component of the diversion task
-            described in the claim.
+          rationale: The cited ACS diversion task supports the listed elements of the
+            claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 48 contains the diversion task on printed page 40, including
-              PA.VI.C.K1–K2, R1–R5, and S1–S6.
+            rationale: The excerpt is from PDF page 48, printed page 40, and contains the
+              cited diversion knowledge, risk-management, and skill items.
           claim_assessments:
             - claim_id: claim-diversion
               verdict: supports
               finding_materiality: none
-              rationale: The listed skills require selecting a suitable destination and route,
-                estimating heading, groundspeed, arrival time, and fuel,
-                maintaining altitude and heading, updating weather, and promptly
-                diverting. The risk-management elements include using available
-                resources.
+              rationale: The diversion task specifies selecting a destination and route;
+                estimating heading, groundspeed, arrival time, and fuel;
+                updating weather; using available resources; maintaining
+                altitude and heading; and promptly diverting.
         usage:
           input_tokens: 1442
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1439
-          output_tokens: 238
+            cache_write_tokens: 1439
+            cached_tokens: 0
+          output_tokens: 220
           output_tokens_details:
-            reasoning_tokens: 67
-          total_tokens: 1680
+            reasoning_tokens: 68
+          total_tokens: 1662
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the diversion knowledge, risk-management, and
-            skills elements described in the claim.
+          rationale: The cited Diversion task on PDF page 48 supports all listed elements
+            of the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 48, shows printed page 40, and contains
-              the cited diversion elements PA.VI.C.K1–K2, R1–R5, and S1–S6.
+            rationale: The excerpt is printed page 40 and contains PA.VI.C.K1–K2, R1–R5, and
+              S1–S6 under Diversion.
           claim_assessments:
             - claim_id: claim-diversion
               verdict: supports
               finding_materiality: none
-              rationale: The diversion task calls for selecting a suitable destination and
-                route; estimating heading, groundspeed, arrival time, and fuel;
-                updating weather; using available resources; maintaining the
-                selected altitude and heading; and promptly diverting.
+              rationale: The Diversion skills cover selecting a destination and route,
+                estimating heading, groundspeed, arrival time and fuel,
+                maintaining altitude and heading, updating weather, and promptly
+                diverting; its risk-management items include using available
+                resources.
         usage:
           input_tokens: 1442
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1439
-          output_tokens: 243
+          output_tokens: 217
           output_tokens_details:
-            reasoning_tokens: 65
-          total_tokens: 1685
+            reasoning_tokens: 48
+          total_tokens: 1659
     relevance: *a18
     claim_assessments:
       valid: true
@@ -1963,7 +1957,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-flight-deck
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.876Z
+    checked_at_utc: 2026-10-14T18:36:58.010Z
     linked_claim_ids:
       - claim-flight-deck
     missing_claim_ids: []
@@ -2000,8 +1994,8 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the Flight Deck Management knowledge,
-            risk-management, and skills elements described in the claim.
+          rationale: The cited page supports the listed Flight Deck Management topics and
+            passenger-briefing elements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
@@ -2011,47 +2005,45 @@ results:
             - claim_id: claim-flight-deck
               verdict: supports
               finding_materiality: none
-              rationale: The listed elements cover navigation data, checklists, securing
-                items, automation, passenger distractions, and each specified
-                passenger-briefing topic.
+              rationale: The listed knowledge, risk-management, and skill elements cover each
+                topic and briefing item in the claim.
         usage:
           input_tokens: 1348
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1345
-          output_tokens: 218
+            cache_write_tokens: 1345
+            cached_tokens: 0
+          output_tokens: 209
           output_tokens_details:
-            reasoning_tokens: 64
-          total_tokens: 1566
+            reasoning_tokens: 66
+          total_tokens: 1557
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the Flight Deck Management knowledge,
-            risk-management, and skill elements named in the claim.
+          rationale: The cited page lists each Flight Deck Management topic in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains PA.II.B.K1–K4, R1–R3, and S1–S4 on
-              printed page 12.
+            rationale: The cited PDF page contains the specified Flight Deck Management
+              knowledge, risk management, and skills entries.
           claim_assessments:
             - claim_id: claim-flight-deck
               verdict: supports
               finding_materiality: none
-              rationale: The listed elements cover securing items, current navigation data,
-                automation, checklists, passenger distractions, and the
-                specified passenger-briefing topics.
+              rationale: The entries cover securing items, current navigation data,
+                automation, checklists, passenger distractions, and every listed
+                passenger-briefing element.
         usage:
           input_tokens: 1348
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1345
-          output_tokens: 198
+          output_tokens: 158
           output_tokens_details:
-            reasoning_tokens: 43
-          total_tokens: 1546
+            reasoning_tokens: 26
+          total_tokens: 1506
     relevance: *a19
     claim_assessments:
       valid: true
@@ -2073,7 +2065,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-emergency-equipment
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.884Z
+    checked_at_utc: 2026-10-14T18:36:58.018Z
     linked_claim_ids:
       - claim-emergency-equipment
     missing_claim_ids: []
@@ -2110,36 +2102,36 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page directly lists both skills stated in the claim,
-            and the authored passage is consistent with briefing a passenger on
-            emergency equipment.
+          rationale: The cited ACS page lists both identifying appropriate equipment and
+            personal gear and briefing passengers on proper use of on-board
+            emergency equipment and survival gear.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PA.IX.D.S1–S2 appear on the cited PDF page 62, printed page 54.
+            rationale: PA.IX.D.S1–S2 appear on the cited PDF page, printed page 54.
           claim_assessments:
             - claim_id: claim-emergency-equipment
               verdict: supports
               finding_materiality: none
-              rationale: S1 requires identifying appropriate equipment and personal gear; S2
-                requires briefing passengers on proper use of on-board emergency
-                equipment and survival gear.
+              rationale: The claim accurately reflects PA.IX.D.S1 and PA.IX.D.S2.
         usage:
           input_tokens: 1251
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1248
-          output_tokens: 240
+            cache_write_tokens: 1248
+            cached_tokens: 0
+          output_tokens: 202
           output_tokens_details:
-            reasoning_tokens: 89
-          total_tokens: 1491
+            reasoning_tokens: 62
+          total_tokens: 1453
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page directly lists both skills in PA.IX.D.S1–S2.
+          rationale: The cited page lists both identifying appropriate equipment and
+            personal gear (PA.IX.D.S1) and briefing passengers on the proper use
+            of on-board emergency equipment and survival gear (PA.IX.D.S2).
           locator_assessment:
             verdict: supports
             finding_materiality: none
@@ -2149,18 +2141,16 @@ results:
             - claim_id: claim-emergency-equipment
               verdict: supports
               finding_materiality: none
-              rationale: S1 requires identifying appropriate equipment and personal gear; S2
-                requires briefing passengers on proper use of on-board emergency
-                equipment and survival gear.
+              rationale: The claim accurately reflects the two cited skills.
         usage:
           input_tokens: 1251
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1248
-          output_tokens: 188
+          output_tokens: 203
           output_tokens_details:
-            reasoning_tokens: 47
-          total_tokens: 1439
+            reasoning_tokens: 56
+          total_tokens: 1454
     relevance: *a20
     claim_assessments:
       valid: true
@@ -2182,7 +2172,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-controls
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.895Z
+    checked_at_utc: 2026-10-14T18:36:58.027Z
     linked_claim_ids:
       - claim-controls
     missing_claim_ids: []
@@ -2224,51 +2214,51 @@ results:
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 83, shows printed page 75, and contains
-              the Positive Exchange of Flight Controls section in Appendix 2.
+            rationale: PDF page 83 contains Appendix 2’s “Positive Exchange of Flight
+              Controls” section on printed page 75.
           claim_assessments:
             - claim_id: claim-controls
               verdict: supports
               finding_materiality: none
-              rationale: The ACS recommends a preflight briefing, the stated three-step verbal
-                exchange, and visual verification of the transfer of control.
+              rationale: The excerpt recommends a preflight briefing, the stated three-step
+                verbal exchange, and visual verification of who has control.
         usage:
           input_tokens: 1410
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1407
-          output_tokens: 173
+            cache_write_tokens: 1407
+            cached_tokens: 0
+          output_tokens: 157
           output_tokens_details:
-            reasoning_tokens: 34
-          total_tokens: 1583
+            reasoning_tokens: 25
+          total_tokens: 1567
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the listed claim and the relevant
-            authored passage.
+          rationale: The cited page directly supports the listed claim and the
+            source-tagged passage.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 83, marked printed page 75, under
+            rationale: PDF page 83 is printed page 75 and contains the Appendix 2 section
               “Positive Exchange of Flight Controls.”
           claim_assessments:
             - claim_id: claim-controls
               verdict: supports
               finding_materiality: none
-              rationale: The ACS recommends a preflight briefing, the stated three-step verbal
-                exchange, and visual verification of the exchange.
+              rationale: The excerpt recommends a preflight briefing, the stated three-step
+                verbal exchange, and visual confirmation of who has control.
         usage:
           input_tokens: 1410
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1407
-          output_tokens: 167
+          output_tokens: 170
           output_tokens_details:
-            reasoning_tokens: 36
-          total_tokens: 1577
+            reasoning_tokens: 37
+          total_tokens: 1580
     relevance: *a21
     claim_assessments:
       valid: true
@@ -2290,7 +2280,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-taxi
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.904Z
+    checked_at_utc: 2026-10-14T18:36:58.035Z
     linked_claim_ids:
       - claim-taxi
     missing_claim_ids: []
@@ -2327,44 +2317,12 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS taxi task covers the listed knowledge, risk-management,
-            and skill elements.
+          rationale: The cited ACS taxiing task covers the listed knowledge,
+            risk-management, and skill elements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The supplied excerpt is the Taxiing task on printed page 13, PDF page
-              21, at the cited ACS elements.
-          claim_assessments:
-            - claim_id: claim-taxi
-              verdict: supports
-              finding_materiality: none
-              rationale: The excerpt explicitly addresses airport information and diagrams,
-                clearances, signs and markings, hold lines, route or runway
-                changes, confirmation or expectation bias, distractions, and
-                compliance with ATC instructions and markings.
-        usage:
-          input_tokens: 1297
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1294
-          output_tokens: 213
-          output_tokens_details:
-            reasoning_tokens: 59
-          total_tokens: 1510
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited taxiing task covers each listed topic, and the authored
-            passage accurately relates several of them to the task.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The excerpt is from the cited Taxiing task on printed page 13 (PDF
-              page 21) and contains the identified knowledge, risk-management,
-              and skill elements.
+            rationale: The cited PDF page and task identifiers match the supplied excerpt.
           claim_assessments:
             - claim_id: claim-taxi
               verdict: supports
@@ -2372,16 +2330,46 @@ results:
               rationale: The excerpt addresses airport information and diagrams, taxi
                 clearances, signs and markings, hold lines, route or runway
                 changes, expectation bias, distractions, and compliance with
-                clearances and markings.
+                instructions and markings.
+        usage:
+          input_tokens: 1297
+          input_tokens_details:
+            cache_write_tokens: 1294
+            cached_tokens: 0
+          output_tokens: 191
+          output_tokens_details:
+            reasoning_tokens: 53
+          total_tokens: 1488
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited taxiing task covers all listed topics.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt is from the stated Taxiing task on printed page 13 (PDF
+              page 21) and contains the cited knowledge, risk-management, and
+              skill elements.
+          claim_assessments:
+            - claim_id: claim-taxi
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt addresses current airport information and diagrams,
+                clearances, signs, hold lines, route or runway changes,
+                expectation bias, distractions, and compliance with instructions
+                and markings.
         usage:
           input_tokens: 1297
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1294
-          output_tokens: 240
+          output_tokens: 227
           output_tokens_details:
-            reasoning_tokens: 75
-          total_tokens: 1537
+            reasoning_tokens: 78
+          total_tokens: 1524
     relevance: *a22
     claim_assessments:
       valid: true
@@ -2403,7 +2391,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-progress
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.910Z
+    checked_at_utc: 2026-10-14T18:36:58.041Z
     linked_claim_ids:
       - claim-progress
     missing_claim_ids: []
@@ -2440,61 +2428,60 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page covers the listed pilotage and dead-reckoning
-            knowledge, risks, and skills, including comparing planned
-            calculations with actual results and making corrections.
+          rationale: The cited ACS page lists each of the claimed knowledge,
+            risk-management, and skill elements for pilotage and dead reckoning.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies the Pilotage and Dead Reckoning task and the
-              cited K4–K7, R1–R3, and S1–S5 elements on PDF page 46.
+            rationale: The cited task, standards, and printed page appear in the supplied
+              PDF page 46 excerpt.
           claim_assessments:
             - claim_id: claim-progress
               verdict: supports
               finding_materiality: none
-              rationale: The cited elements address headings, checkpoints,
-                time/speed/distance, power selection, planned-versus-actual
-                corrections, flight logs, navigation, and unplanned
-                fuel/power-consumption risk.
+              rationale: The excerpt covers time/speed/distance, headings and checkpoints,
+                power-setting selection, planned-versus-actual corrections,
+                flight logs, navigation skills, and unplanned
+                fuel/power-consumption risk when applicable.
         usage:
           input_tokens: 1205
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1202
-          output_tokens: 263
+            cache_write_tokens: 1202
+            cached_tokens: 0
+          output_tokens: 242
           output_tokens_details:
-            reasoning_tokens: 82
-          total_tokens: 1468
+            reasoning_tokens: 85
+          total_tokens: 1447
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page lists the knowledge, risk-management, and skill
-            elements summarized in the claim.
+          rationale: The cited page lists each element in the claim under Pilotage and
+            Dead Reckoning knowledge, risk management, or skills.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited task, elements, printed page, and PDF page match the
-              excerpt.
+            rationale: The excerpt is from the cited PDF page and contains the specified
+              Task A standards.
           claim_assessments:
             - claim_id: claim-progress
               verdict: supports
               finding_materiality: none
-              rationale: The page covers time, speed, and distance; headings and checkpoints;
-                power-setting selection; planned-versus-actual corrections;
-                flight logs and navigation; and unplanned fuel/power-consumption
-                risk, if applicable.
+              rationale: The page covers headings, checkpoints, time/speed/distance estimates,
+                power-setting selection, planned-versus-actual corrections,
+                flight logs, navigation skills, and unplanned
+                fuel/power-consumption risk.
         usage:
           input_tokens: 1205
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1202
-          output_tokens: 261
+          output_tokens: 200
           output_tokens_details:
-            reasoning_tokens: 112
-          total_tokens: 1466
+            reasoning_tokens: 48
+          total_tokens: 1405
     relevance: *a23
     claim_assessments:
       valid: true
@@ -2516,7 +2503,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-navigation-systems
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.920Z
+    checked_at_utc: 2026-10-14T18:36:58.052Z
     linked_claim_ids:
       - claim-navigation-systems
     missing_claim_ids: []
@@ -2553,19 +2540,50 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists all the claimed knowledge, risk-management, and
-            skill areas under Task B, Navigation Systems and Radar Services.
+          rationale: The cited page lists the claimed knowledge, risk-management, and
+            skill elements under Task B, Navigation Systems and Radar Services.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 47, shows printed page 39, and contains
-              PA.VI.B.K1–K4, R1–R5, and S1–S6.
+            rationale: The cited task, element ranges, and printed page match the supplied
+              PDF page.
           claim_assessments:
             - claim_id: claim-navigation-systems
               verdict: supports
               finding_materiality: none
-              rationale: The task explicitly covers navigation-system limitations, signal
-                loss, EFB use, automation and distraction, position
+              rationale: The page explicitly covers navigation-system limitations, loss of
+                signal, EFB use, automation and distraction, position
+                determination, response to signal loss or interference, and
+                communication procedures when using radar services.
+        usage:
+          input_tokens: 1308
+          input_tokens_details:
+            cache_write_tokens: 1305
+            cached_tokens: 0
+          output_tokens: 206
+          output_tokens_details:
+            reasoning_tokens: 55
+          total_tokens: 1514
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page lists all the navigation-systems knowledge,
+            risk-management, and skills elements in the claim.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt identifies Task B, Navigation Systems and Radar Services,
+              on printed page 39 (PDF page 47), and contains the cited PA.VI.B
+              elements.
+          claim_assessments:
+            - claim_id: claim-navigation-systems
+              verdict: supports
+              finding_materiality: none
+              rationale: PA.VI.B.R1–R5 cover automation, distraction, system limitations,
+                signal loss, and EFB use; PA.VI.B.S2, S5, and S6 cover position
                 determination, response to signal loss or interference, and
                 radar-service communications.
         usage:
@@ -2573,40 +2591,10 @@ results:
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1305
-          output_tokens: 201
+          output_tokens: 212
           output_tokens_details:
-            reasoning_tokens: 29
-          total_tokens: 1509
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited page lists all the topics in the claim under Navigation
-            Systems and Radar Services.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The task and cited K1–K4, R1–R5, and S1–S6 items appear on the
-              specified PDF page, which is labeled printed page 39.
-          claim_assessments:
-            - claim_id: claim-navigation-systems
-              verdict: supports
-              finding_materiality: none
-              rationale: R1–R5 cover automation, distraction, system limitations, signal loss,
-                and EFB use; S2, S5, and S6 cover position determination,
-                response to signal loss or interference, and radar-service
-                communications.
-        usage:
-          input_tokens: 1308
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1305
-          output_tokens: 254
-          output_tokens_details:
-            reasoning_tokens: 80
-          total_tokens: 1562
+            reasoning_tokens: 31
+          total_tokens: 1520
     relevance: *a24
     claim_assessments:
       valid: true
@@ -2628,7 +2616,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-lost
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.926Z
+    checked_at_utc: 2026-10-14T18:36:58.057Z
     linked_claim_ids:
       - claim-lost
     missing_claim_ids: []
@@ -2665,60 +2653,57 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists each element in the claim under PA.VI.D.R4 and
-            PA.VI.D.S1–S5.
+          rationale: The excerpt supports the listed Lost Procedures claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and contains the specified
-              standards and printed page number.
+            rationale: The cited page contains PA.VI.D.R4 and PA.VI.D.S1–S5 under Lost
+              Procedures.
           claim_assessments:
             - claim_id: claim-lost
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt covers determining position, identifying landmarks, using
-                navigation systems or contacting ATC, selecting an appropriate
-                course of action, and when to seek assistance or declare an
-                emergency as a situation deteriorates.
+              rationale: R4 addresses seeking assistance or declaring an emergency as a
+                situation deteriorates; S1, S3, S4, and S5 cover the remaining
+                listed elements.
         usage:
           input_tokens: 851
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 242
+          output_tokens: 173
           output_tokens_details:
-            reasoning_tokens: 86
-          total_tokens: 1093
+            reasoning_tokens: 35
+          total_tokens: 1024
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists each element in the claim under PA.VI.D.R4 and
-            PA.VI.D.S1–S5.
+          rationale: The cited page contains PA.VI.D.R4 and S1–S5, which cover the listed
+            Lost Procedures elements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page shows printed page 41 and the specified PA.VI.D.R4
-              and PA.VI.D.S1–S5 entries.
+            rationale: The excerpt from PDF page 49 shows printed page 41 and the cited task
+              codes.
           claim_assessments:
             - claim_id: claim-lost
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt covers determining position, identifying landmarks, using
-                navigation systems or contacting ATC, selecting an appropriate
-                course of action, and when to seek assistance or declare an
-                emergency as a situation deteriorates.
+              rationale: S1, S3, S4, and S5 cover position, landmarks, navigation or ATC
+                assistance, and course of action; R4 covers seeking assistance
+                or declaring an emergency as a situation deteriorates.
         usage:
           input_tokens: 851
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 242
+          output_tokens: 256
           output_tokens_details:
-            reasoning_tokens: 74
-          total_tokens: 1093
+            reasoning_tokens: 98
+          total_tokens: 1107
     relevance: *a25
     claim_assessments:
       valid: true
@@ -2740,7 +2725,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-systems-malfunction
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.937Z
+    checked_at_utc: 2026-10-14T18:36:58.076Z
     linked_claim_ids:
       - claim-systems-malfunction
     missing_claim_ids: []
@@ -2777,60 +2762,60 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the malfunction knowledge areas, risk-management
-            elements, and skills described in the claim.
+          rationale: The cited ACS page lists the specified malfunction knowledge,
+            risk-management, and skills elements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 61 contains the cited PA.IX.C.K1–K5, R1–R4, and S1–S2
-              elements on printed page 53.
+            rationale: The excerpt is from printed page 53 (PDF page 61) and contains
+              PA.IX.C.K1–K5, R1–R4, and S1–S2.
           claim_assessments:
             - claim_id: claim-systems-malfunction
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt covers power loss and aircraft-specific electrical,
-                display, and other malfunctions; checklist usage, distraction
-                and startle; and determining appropriate action and completing
-                checklists.
+              rationale: The listed elements cover power loss, aircraft-specific electrical
+                and display malfunctions and other systems, checklist usage,
+                distractions and startle response, appropriate action, and
+                checklist completion.
         usage:
           input_tokens: 1288
           input_tokens_details:
             cache_write_tokens: 1285
             cached_tokens: 0
-          output_tokens: 263
+          output_tokens: 204
           output_tokens_details:
-            reasoning_tokens: 99
-          total_tokens: 1551
+            reasoning_tokens: 40
+          total_tokens: 1492
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page lists the stated malfunction knowledge areas,
-            risk-management topics, and skills.
+          rationale: The cited ACS page lists the specified malfunction knowledge areas,
+            risk-management elements, and skills.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited task codes and printed page match the supplied PDF page.
+            rationale: The excerpt is from PDF page 61, identifies printed page 53, and
+              contains PA.IX.C.K1–K5, R1–R4, and S1–S2.
           claim_assessments:
             - claim_id: claim-systems-malfunction
               verdict: supports
               finding_materiality: none
-              rationale: K1–K5 cover powerplant-related power loss and aircraft-specific
-                system and equipment malfunctions, including electrical and
-                display malfunctions. R1–R4 cover checklist usage, distraction,
-                and startle response; S1–S2 cover appropriate action and
-                checklist completion.
+              rationale: The page covers power loss and aircraft-specific electrical, display,
+                and other malfunctions; checklist usage, distraction, and
+                startle; and determining appropriate action and completing
+                checklists.
         usage:
           input_tokens: 1288
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1285
-          output_tokens: 257
+          output_tokens: 225
           output_tokens_details:
-            reasoning_tokens: 97
-          total_tokens: 1545
+            reasoning_tokens: 58
+          total_tokens: 1513
     relevance: *a26
     claim_assessments:
       valid: true
@@ -2852,7 +2837,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-systems
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.940Z
+    checked_at_utc: 2026-10-14T18:36:58.080Z
     linked_claim_ids:
       - claim-systems
     missing_claim_ids: []
@@ -2889,60 +2874,59 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page covers the listed airplane systems, system
-            abnormalities and failures, risk management, appropriate operation
-            of systems, and checklists.
+          rationale: The cited page directly covers airplane systems, system abnormalities
+            and failures, risk management, system operation, and checklists.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The locator identifies Task G, Operation of Systems, and the cited
-              elements on PDF page 15.
+            rationale: The cited task and elements appear on PDF page 15, printed page 7.
           claim_assessments:
             - claim_id: claim-systems
               verdict: supports
               finding_materiality: none
-              rationale: K1 addresses airplane systems; K2 addresses abnormal indications and
-                management procedures; R1–R2 address failure detection and
-                management; and S1–S2 address system operation and checklists.
+              rationale: Task G identifies airplane systems, indications and procedures for
+                abnormalities or failures, detection and management of failures,
+                appropriate operation of systems, and completion of checklists.
         usage:
           input_tokens: 1241
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1238
-          output_tokens: 190
+            cache_write_tokens: 1238
+            cached_tokens: 0
+          output_tokens: 186
           output_tokens_details:
-            reasoning_tokens: 32
-          total_tokens: 1431
+            reasoning_tokens: 43
+          total_tokens: 1427
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page supports the listed description of the Operation
-            of Systems task.
+          rationale: The cited page’s Operation of Systems task addresses airplane
+            systems, system abnormalities or failures, risk management,
+            operation of systems, and appropriate checklists.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 15 contains Task G, Operation of Systems, including the
-              cited knowledge, risk-management, and skill elements.
+            rationale: The specified task and elements appear on PDF page 15, printed page
+              7.
           claim_assessments:
             - claim_id: claim-systems
               verdict: supports
               finding_materiality: none
-              rationale: The task addresses systems on the airplane provided for the flight
-                test, indications and procedures for abnormalities or failures,
-                failure detection and management, appropriate system operation,
-                and checklists.
+              rationale: The page lists airplane systems (K1), indications and procedures for
+                abnormalities or failures (K2), detection and management of
+                failures (R1–R2), operation of systems (S1), and appropriate
+                checklists (S2).
         usage:
           input_tokens: 1241
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1238
-          output_tokens: 176
+          output_tokens: 204
           output_tokens_details:
-            reasoning_tokens: 31
-          total_tokens: 1417
+            reasoning_tokens: 39
+          total_tokens: 1445
     relevance: *a27
     claim_assessments:
       valid: true
@@ -2964,7 +2948,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-emergency-landing
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.953Z
+    checked_at_utc: 2026-10-14T18:36:58.099Z
     linked_claim_ids:
       - claim-emergency-landing
     missing_claim_ids: []
@@ -3001,61 +2985,61 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the simulated emergency-approach-and-landing
+          rationale: The cited page lists the simulated emergency approach and landing
             skills described in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 60 is printed page 52 and contains PA.IX.B.K1–K6, R1–R6, and
-              S1–S6.
+            rationale: PDF page 60 contains printed page 52 and the cited PA.IX.B knowledge,
+              risk-management, and skills items.
           claim_assessments:
             - claim_id: claim-emergency-landing
               verdict: supports
               finding_materiality: none
-              rationale: PA.IX.B.S1–S6 require recommended best glide, POH/AFM-based
-                configuration, selection of a suitable landing area, planning
-                and following a path to it, landing preparation, and appropriate
-                checklists. The cited risk and skill items cover altitude, wind,
-                terrain, obstructions, and glide distance.
+              rationale: PA.IX.B.S1–S6 cover recommended best glide, POH/AFM-based
+                configuration, selection of a suitable landing area, a planned
+                flightpath, landing preparation, and appropriate checklists. The
+                site and path considerations are stated in S3–S4.
         usage:
           input_tokens: 1373
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1370
-          output_tokens: 268
+            cache_write_tokens: 1370
+            cached_tokens: 0
+          output_tokens: 228
           output_tokens_details:
-            reasoning_tokens: 76
-          total_tokens: 1641
+            reasoning_tokens: 57
+          total_tokens: 1601
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page supports the listed simulated emergency-landing
-            requirements.
+          rationale: The cited page lists the simulated emergency approach and landing
+            skills described in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
             rationale: PDF page 60 contains printed page 52 and the cited PA.IX.B knowledge,
-              risk-management, and skill items.
+              risk-management, and skills items.
           claim_assessments:
             - claim_id: claim-emergency-landing
               verdict: supports
               finding_materiality: none
-              rationale: Items PA.IX.B.S1–S6 cover best glide, configuration, landing-area
-                selection, flightpath planning, landing preparation, and
-                checklists; the cited risk-management items address altitude,
-                wind, terrain, obstructions, and gliding distance.
+              rationale: PA.IX.B.S1–S6 require recommended best glide airspeed, configuration,
+                selection of a suitable landing area, a planned flightpath,
+                landing preparation, and appropriate checklists. The cited risk
+                and skill items address altitude, wind, terrain, obstructions,
+                and available glide distance.
         usage:
           input_tokens: 1373
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1370
-          output_tokens: 218
+          output_tokens: 230
           output_tokens_details:
-            reasoning_tokens: 55
-          total_tokens: 1591
+            reasoning_tokens: 56
+          total_tokens: 1603
     relevance: *a28
     claim_assessments:
       valid: true
@@ -3077,7 +3061,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-landing-risk
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.957Z
+    checked_at_utc: 2026-10-14T18:36:58.104Z
     linked_claim_ids:
       - claim-landing-risk
     missing_claim_ids: []
@@ -3114,28 +3098,29 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists stabilized approach and wind-related knowledge
-            alongside runway, approach-path, and touchdown-area selection based
-            on pilot capability, aircraft performance and limitations, available
+          rationale: The cited page directly links stabilized approaches and wind effects
+            with runway, approach-path, and touchdown-area selection based on
+            pilot capability, aircraft performance and limitations, available
             distance, and wind.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and contains the specified
-              Normal Approach and Landing knowledge and risk-management items.
+            rationale: PDF page 27 contains the cited Normal Approach and Landing knowledge
+              and risk-management elements.
           claim_assessments:
             - claim_id: claim-landing-risk
               verdict: supports
               finding_materiality: none
-              rationale: PA.IV.B.K1–K3 and PA.IV.B.R1 directly support the stated connection.
+              rationale: PA.IV.B.K1–K2 cover stabilized approaches and wind effects;
+                PA.IV.B.R1 lists the stated landing-selection factors.
         usage:
           input_tokens: 1357
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1354
+            cache_write_tokens: 1354
+            cached_tokens: 0
           output_tokens: 192
           output_tokens_details:
-            reasoning_tokens: 39
+            reasoning_tokens: 37
           total_tokens: 1549
       - pass: 2
         status: assessed
@@ -3143,31 +3128,30 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly covers stabilized approaches, wind effects,
-            and selection of the runway, approach path, and touchdown area based
-            on pilot capability, aircraft performance and limitations, available
+          rationale: The cited page lists stabilized approaches, wind effects, and
+            selection of the runway, approach path, and touchdown area based on
+            pilot capability, aircraft performance and limitations, available
             distance, and wind.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 27 contains the cited Normal Approach and Landing task and
-              the specified K1–K3 and R1–R2d elements.
+            rationale: The locator identifies the Normal Approach and Landing knowledge and
+              risk-management items on the supplied PDF page.
           claim_assessments:
             - claim_id: claim-landing-risk
               verdict: supports
               finding_materiality: none
-              rationale: K1 addresses stabilized approaches, K2 addresses wind effects, and R1
-                states the listed considerations for runway, approach path, and
-                touchdown-area selection.
+              rationale: PA.IV.B.K1–K2 and PA.IV.B.R1 directly support the listed concepts and
+                selection factors.
         usage:
           input_tokens: 1357
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1354
-          output_tokens: 200
+          output_tokens: 206
           output_tokens_details:
-            reasoning_tokens: 29
-          total_tokens: 1557
+            reasoning_tokens: 51
+          total_tokens: 1563
     relevance: *a29
     claim_assessments:
       valid: true
@@ -3189,7 +3173,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-landing-skill
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.970Z
+    checked_at_utc: 2026-10-14T18:36:58.121Z
     linked_claim_ids:
       - claim-landing-skill
     missing_claim_ids: []
@@ -3226,59 +3210,60 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page supports the listed normal-landing skills and the
-            authored passage.
+          rationale: The cited page directly supports the listed normal-landing skills and
+            the authored passage.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains the specified normal-approach-and-landing
-              risk and skill elements.
+            rationale: The cited PDF page contains the identified normal approach and
+              landing risk-management and skills items.
           claim_assessments:
             - claim_id: claim-landing-skill
               verdict: supports
               finding_materiality: none
-              rationale: S4 addresses scanning for traffic and obstructions, S6–S7 address
-                configuration, airspeed, and a stabilized approach, and S11
-                requires a timely go-around when tolerances cannot be met or
-                another condition makes the approach or landing unsafe.
+              rationale: Skills S4, S6, S7, and S11 cover scanning for traffic and
+                obstructions, configuration and airspeed, a stabilized approach,
+                and a timely go-around when tolerances cannot be met or landing
+                may be unsafe.
         usage:
           input_tokens: 1383
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1380
-          output_tokens: 191
+            cache_write_tokens: 1380
+            cached_tokens: 0
+          output_tokens: 203
           output_tokens_details:
-            reasoning_tokens: 33
-          total_tokens: 1574
+            reasoning_tokens: 49
+          total_tokens: 1586
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page lists the stated normal-approach-and-landing skills.
+          rationale: The cited page supports the listed normal-landing skills and the
+            authored passage.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and contains the specified
-              PA.IV.B risk and skill items.
+            rationale: The cited task, item range, and printed page match the supplied PDF
+              page excerpt.
           claim_assessments:
             - claim_id: claim-landing-skill
               verdict: supports
               finding_materiality: none
-              rationale: PA.IV.B.S4 covers scanning for traffic and obstructions; S6–S7 cover
-                configuration, airspeed, and a stabilized approach; and S11
-                requires a timely go-around when tolerances cannot be met or
-                another condition may make the approach or landing unsafe.
+              rationale: PA.IV.B.S4 addresses scanning for traffic and obstructions; S6–S7
+                address configuration, airspeed, and a stabilized approach; and
+                S11 requires a timely go-around when tolerances cannot be met or
+                another condition makes the approach or landing unsafe.
         usage:
           input_tokens: 1383
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1380
-          output_tokens: 199
+          output_tokens: 207
           output_tokens_details:
-            reasoning_tokens: 34
-          total_tokens: 1582
+            reasoning_tokens: 47
+          total_tokens: 1590
     relevance: *a30
     claim_assessments:
       valid: true
@@ -3300,7 +3285,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-stalls
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.974Z
+    checked_at_utc: 2026-10-14T18:36:58.125Z
     linked_claim_ids:
       - claim-stalls
     missing_claim_ids: []
@@ -3337,6 +3322,35 @@ results:
         assessment:
           verdict: supports
           confidence: high
+          rationale: The cited page supports the listed claim and the source-tagged
+            passage's relevant statements.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The cited PDF page is printed page 43 and contains the specified
+              Power-Off Stalls knowledge, risk-management, and skills elements.
+          claim_assessments:
+            - claim_id: claim-stalls
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt lists the aerodynamic factors, stall recognition and
+                prevention, inadvertent stall/spin risks, and recovery in
+                accordance with POH or AFM procedures.
+        usage:
+          input_tokens: 1425
+          input_tokens_details:
+            cache_write_tokens: 1422
+            cached_tokens: 0
+          output_tokens: 216
+          output_tokens_details:
+            reasoning_tokens: 70
+          total_tokens: 1641
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
           rationale: The cited ACS page supports the listed claim and the relevant
             statements in the authored passage.
           locator_assessment:
@@ -3349,47 +3363,17 @@ results:
               verdict: supports
               finding_materiality: none
               rationale: The cited elements cover the listed aerodynamic factors, stall
-                recognition and prevention, inadvertent stall and spin risk, and
-                recovery under POH or AFM procedures.
+                recognition and prevention, inadvertent stall/spin risks, and
+                recovery under POH/AFM procedures.
         usage:
           input_tokens: 1425
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1422
-          output_tokens: 253
+          output_tokens: 215
           output_tokens_details:
-            reasoning_tokens: 101
-          total_tokens: 1678
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited page covers the listed power-off-stall knowledge,
-            risk-management, and recovery skills, and supports the claim and
-            authored passage.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The supplied excerpt is from PDF page 51, shows printed page 43, and
-              contains the cited PA.VII.B elements.
-          claim_assessments:
-            - claim_id: claim-stalls
-              verdict: supports
-              finding_materiality: none
-              rationale: The page addresses the stated aerodynamic factors, stall recognition
-                and prevention, stall and spin risks, and recovery according to
-                POH/AFM procedures.
-        usage:
-          input_tokens: 1425
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1422
-          output_tokens: 235
-          output_tokens_details:
-            reasoning_tokens: 81
-          total_tokens: 1660
+            reasoning_tokens: 63
+          total_tokens: 1640
     relevance: *a31
     claim_assessments:
       valid: true
@@ -3411,7 +3395,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-go-around
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.990Z
+    checked_at_utc: 2026-10-14T18:36:58.140Z
     linked_claim_ids:
       - claim-go-around
     missing_claim_ids: []
@@ -3448,28 +3432,30 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page covers all elements of the listed go-around claim.
+          rationale: The cited ACS page covers the listed go-around elements, including
+            timely decision-making, power and climb pitch, airspeed,
+            configuration, directional and wind-drift control, collision
+            avoidance, checklists, and radio calls.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited Go-Around/Rejected Landing task on
-              printed page 35 (PDF page 43) and contains the listed knowledge,
-              risk-management, and skill items.
+            rationale: The locator identifies the go-around/rejected landing task and its
+              knowledge, risk-management, and skill elements on the supplied
+              page.
           claim_assessments:
             - claim_id: claim-go-around
               verdict: supports
               finding_materiality: none
-              rationale: The task addresses timely decisions, power and climb pitch, airspeed,
-                configuration, directional and wind-drift control, conflicting
-                traffic, checklists, and radio calls.
+              rationale: The task elements on the cited page support every listed component of
+                the claim.
         usage:
           input_tokens: 1220
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1217
+            cache_write_tokens: 1217
+            cached_tokens: 0
           output_tokens: 196
           output_tokens_details:
-            reasoning_tokens: 40
+            reasoning_tokens: 41
           total_tokens: 1416
       - pass: 2
         status: assessed
@@ -3477,20 +3463,20 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited ACS page directly covers every listed element of the
-            go-around task.
+          rationale: The cited ACS page directly covers the listed go-around knowledge,
+            risks, and skills, including the elements in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 43, printed page 35, and contains the
-              cited PA.IV.N go-around knowledge, risk-management, and skill
-              items.
+            rationale: The excerpt is from the cited PDF page and identifies the
+              Go-Around/Rejected Landing task at printed page 35, with the cited
+              K, R, and S elements.
           claim_assessments:
             - claim_id: claim-go-around
               verdict: supports
               finding_materiality: none
-              rationale: The cited items address timely recognition and decision-making,
-                power, climb pitch and airspeed, configuration, directional and
+              rationale: The cited elements address timely decision-making, power application,
+                climb pitch and airspeed, configuration, directional and
                 wind-drift control, conflicting traffic, checklists, and radio
                 calls.
         usage:
@@ -3498,10 +3484,10 @@ results:
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1217
-          output_tokens: 208
+          output_tokens: 222
           output_tokens_details:
-            reasoning_tokens: 51
-          total_tokens: 1428
+            reasoning_tokens: 55
+          total_tokens: 1442
     relevance: *a32
     claim_assessments:
       valid: true
@@ -3523,7 +3509,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-postflight
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:02.994Z
+    checked_at_utc: 2026-10-14T18:36:58.144Z
     linked_claim_ids:
       - claim-postflight
     missing_claim_ids: []
@@ -3560,29 +3546,29 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page supports the listed postflight elements, including
-            shutdown and securing, passenger safety on the ramp, checklists,
-            inspection, and documenting discrepancies and servicing
-            requirements.
+          rationale: The cited ACS page lists each postflight element in the claim.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited PDF page contains Task A and the relevant knowledge,
-              risk-management, and skills items.
+            rationale: The cited PDF page contains Task A and the referenced knowledge,
+              risk-management, and skill elements.
           claim_assessments:
             - claim_id: claim-postflight
               verdict: supports
               finding_materiality: none
-              rationale: The listed elements appear in PA.XII.A.K1–K2, R4, and S3–S5.
+              rationale: K1 covers shutdown and securing; R4 covers passenger safety on the
+                ramp; S3–S5 cover checklists, inspection, documenting
+                discrepancies and servicing requirements, and securing the
+                airplane.
         usage:
           input_tokens: 1246
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1243
-          output_tokens: 236
+            cache_write_tokens: 1243
+            cached_tokens: 0
+          output_tokens: 205
           output_tokens_details:
-            reasoning_tokens: 87
-          total_tokens: 1482
+            reasoning_tokens: 63
+          total_tokens: 1451
       - pass: 2
         status: assessed
         model: gpt-6-sol
@@ -3590,17 +3576,18 @@ results:
           verdict: supports
           confidence: high
           rationale: The cited ACS page covers the listed postflight knowledge,
-            risk-management, and skill elements.
+            risk-management, and skills elements.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 72 contains the cited Task A elements on printed page 64.
+            rationale: The cited PDF page contains Task A and the specified PA.XII.A
+              elements.
           claim_assessments:
             - claim_id: claim-postflight
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt lists shutdown and securing, passenger safety on the
-                ramp, checklist completion, postflight inspection, documenting
+              rationale: K1 covers shutdown and securing; R4 covers passenger safety on the
+                ramp; S3–S5 cover checklists, inspection, documentation of
                 discrepancies and servicing requirements, and securing the
                 airplane.
         usage:
@@ -3608,10 +3595,10 @@ results:
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1243
-          output_tokens: 196
+          output_tokens: 190
           output_tokens_details:
-            reasoning_tokens: 59
-          total_tokens: 1442
+            reasoning_tokens: 45
+          total_tokens: 1436
     relevance: *a33
     claim_assessments:
       valid: true
@@ -3633,7 +3620,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-instructor
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:03.009Z
+    checked_at_utc: 2026-10-14T18:36:58.154Z
     linked_claim_ids:
       - claim-instructor
     missing_claim_ids: []
@@ -3670,65 +3657,65 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page supports the instructor-responsibility claim and the
-            passage’s point that a representative conversation does not cover
+          rationale: The cited page states the instructor’s responsibility for all
+            appropriate knowledge, risk management, and skill elements and
+            recommends using the ACS and its references. It supports the
+            passage’s point that a representative conversation does not replace
             full preparation.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 75 is printed page 67 and contains Appendix 1’s “Instructor
-              Responsibilities” section.
+            rationale: PDF page 75 contains printed page 67 and the cited Instructor
+              Responsibilities section.
           claim_assessments:
             - claim_id: claim-instructor
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt says the instructor trains and qualifies the applicant in
-                knowledge, risk management, and skill elements for all
-                appropriate Tasks and should use the ACS and its references in
-                preparation. It supports the distinction between representative
-                discussion and full preparation.
+              rationale: The Instructor Responsibilities paragraph supports preparation across
+                all appropriate Tasks using the ACS and its references; the
+                limitation on a representative conversation follows from that
+                scope.
         usage:
           input_tokens: 1597
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1594
-          output_tokens: 229
+            cache_write_tokens: 1594
+            cached_tokens: 0
+          output_tokens: 263
           output_tokens_details:
-            reasoning_tokens: 66
-          total_tokens: 1826
+            reasoning_tokens: 103
+          total_tokens: 1860
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page states that the instructor trains and qualifies
-            applicants in knowledge, risk management, and skill elements for all
-            appropriate Tasks and should use the ACS and its references to
-            prepare them. This supports the passage’s point that a
-            representative conversation does not replace full preparation.
+          rationale: The cited page states the instructor’s responsibilities for all
+            appropriate Tasks and recommends using the ACS and its references to
+            prepare applicants. This supports the listed claim and its point
+            that a representative conversation is not full preparation.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: PDF page 75 is printed page 67 and contains the Appendix 1
-              “Instructor Responsibilities” section.
+            rationale: PDF page 75 contains printed page 67, Appendix 1, and the Instructor
+              Responsibilities section.
           claim_assessments:
             - claim_id: claim-instructor
               verdict: supports
               finding_materiality: none
-              rationale: The cited Instructor Responsibilities paragraph supports the
-                instructor-preparation statement; its coverage of all
-                appropriate Tasks supports the distinction between sampled
-                discussion and full preparation.
+              rationale: The excerpt assigns the instructor responsibility for training and
+                qualifying applicants in knowledge, risk management, and skill
+                elements in all appropriate Tasks, and says the instructor
+                should use the ACS and its references when preparing applicants.
         usage:
           input_tokens: 1597
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1594
-          output_tokens: 223
+          output_tokens: 243
           output_tokens_details:
-            reasoning_tokens: 50
-          total_tokens: 1820
+            reasoning_tokens: 70
+          total_tokens: 1840
     relevance: *a34
     claim_assessments:
       valid: true
@@ -3750,7 +3737,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-outcomes
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:03.018Z
+    checked_at_utc: 2026-10-14T18:36:58.161Z
     linked_claim_ids:
       - claim-outcomes
     missing_claim_ids: []
@@ -3787,67 +3774,65 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the listed claim about
-            unsatisfactory-performance grounds, a Notice of Disapproval after a
-            failed Task, and a Letter of Discontinuance for interruptions
-            unrelated to unsatisfactory performance.
+          rationale: The cited page directly supports the listed claim and the relevant
+            statements in the authored passages.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from printed page 69 (PDF page 77) of Appendix 1 and
-              contains both cited sections.
+            rationale: The excerpt is from PDF page 77, printed page 69, in Appendix 1 under
+              the specified subsections.
           claim_assessments:
             - claim_id: claim-outcomes
               verdict: supports
               finding_materiality: none
-              rationale: The page lists consistently exceeding tolerances, failing to take
-                prompt corrective action, and failing to exercise risk
-                management as typical grounds. It says a failed Task leads to a
-                Notice of Disapproval, while a discontinuance for reasons such
-                as equipment failure, weather, or illness requires a Letter of
-                Discontinuance listing completed Areas of Operation and the
-                remaining time to receive credit.
+              rationale: The page lists the stated grounds for unsatisfactory performance,
+                says a failed Task results in a Notice of Disapproval, and
+                requires a Letter of Discontinuance for a test stopped for other
+                reasons, including the completed areas and remaining time for
+                credit.
         usage:
           input_tokens: 1603
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1600
-          output_tokens: 267
+            cache_write_tokens: 1600
+            cached_tokens: 0
+          output_tokens: 219
           output_tokens_details:
-            reasoning_tokens: 59
-          total_tokens: 1870
+            reasoning_tokens: 57
+          total_tokens: 1822
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the listed claim and the relevant
-            statements in the authored passages.
+          rationale: The cited page directly supports the listed claim about
+            unsatisfactory performance, a Notice of Disapproval, and a Letter of
+            Discontinuance for interruptions unrelated to unsatisfactory
+            performance.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from Appendix 1, printed page 69, at the cited PDF
-              page 77, and contains the specified sections.
+            rationale: The excerpt is from PDF page 77, printed page 69, in Appendix 1 under
+              the cited headings.
           claim_assessments:
             - claim_id: claim-outcomes
               verdict: supports
               finding_materiality: none
-              rationale: The page lists those typical grounds for unsatisfactory performance,
-                states that a failed Task results in a Notice of Disapproval,
-                and requires a Letter of Discontinuance for a test discontinued
-                for reasons other than unsatisfactory performance. The letter
-                records successfully completed Areas of Operation and the
-                remaining time to receive credit.
+              rationale: The page lists the stated examples of unsatisfactory performance,
+                says a failed Task leads to a Notice of Disapproval, and
+                requires a Letter of Discontinuance for interruptions such as
+                weather, equipment failure, or illness. The letter lists
+                completed Areas of Operation and the remaining time to receive
+                credit.
         usage:
           input_tokens: 1603
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1600
-          output_tokens: 221
+          output_tokens: 232
           output_tokens_details:
             reasoning_tokens: 45
-          total_tokens: 1824
+          total_tokens: 1835
     relevance: *a35
     claim_assessments:
       valid: true
@@ -3869,7 +3854,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: acs-test-safety
     title: Private Pilot for Airplane Category Airman Certification Standards
-    checked_at_utc: 2026-10-08T15:57:03.028Z
+    checked_at_utc: 2026-10-14T18:36:58.168Z
     linked_claim_ids:
       - claim-test-safety
     missing_claim_ids: []
@@ -3906,13 +3891,43 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the listed safety, simulation,
-            scanning, collision-avoidance, and checklist-use points.
+          rationale: The cited page supports the listed safety, simulation, scanning,
+            collision-avoidance, and checklist-use points.
           locator_assessment:
             verdict: supports
             finding_materiality: none
             rationale: The excerpt is from Appendix 2, printed page 75, at the cited PDF
               page.
+          claim_assessments:
+            - claim_id: claim-test-safety
+              verdict: supports
+              finding_materiality: none
+              rationale: The page states that safety of flight is paramount, unsafe maneuver
+                portions are simulated, visual scanning and collision avoidance
+                are assessed throughout the test, and checklist use is evaluated
+                according to the task and safety conditions.
+        usage:
+          input_tokens: 1431
+          input_tokens_details:
+            cache_write_tokens: 1428
+            cached_tokens: 0
+          output_tokens: 206
+          output_tokens_details:
+            reasoning_tokens: 52
+          total_tokens: 1637
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited page directly supports the listed safety, simulation,
+            scanning, and checklist-use points.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: The excerpt identifies Appendix 2, printed page 75, and was extracted
+              from the cited PDF page 83.
           claim_assessments:
             - claim_id: claim-test-safety
               verdict: supports
@@ -3927,41 +3942,10 @@ results:
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1428
-          output_tokens: 223
+          output_tokens: 234
           output_tokens_details:
-            reasoning_tokens: 61
-          total_tokens: 1654
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The cited page supports the listed safety, simulation, scanning,
-            collision-avoidance, and checklist-use points.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The excerpt is from Appendix 2, printed page 75, PDF page 83, and
-              contains the cited sections.
-          claim_assessments:
-            - claim_id: claim-test-safety
-              verdict: supports
-              finding_materiality: none
-              rationale: The page makes safety of flight the prime consideration, directs
-                simulation when a maneuver aspect would jeopardize safety,
-                requires assessment of scanning and collision avoidance
-                throughout the test, and addresses checklist use when reading
-                one would be unsafe or impractical.
-        usage:
-          input_tokens: 1431
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1428
-          output_tokens: 223
-          output_tokens_details:
-            reasoning_tokens: 58
-          total_tokens: 1654
+            reasoning_tokens: 73
+          total_tokens: 1665
     relevance: *a36
     claim_assessments:
       valid: true
@@ -3983,7 +3967,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: afh-angle-of-attack
     title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control"
-    checked_at_utc: 2026-10-08T15:57:03.039Z
+    checked_at_utc: 2026-10-14T18:36:58.178Z
     linked_claim_ids:
       - claim-angle-of-attack
     missing_claim_ids: []
@@ -4020,64 +4004,61 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the stall, load-factor, and
-            turning-flight relationships in the claim.
+          rationale: The cited page supports the stated stall and turning-flight
+            relationship.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page and identifies printed page
-              5-9 and the Angle of Attack section.
+            rationale: The excerpt is from the cited Chapter 5 section and identifies
+              printed page 5-9.
           claim_assessments:
             - claim_id: claim-angle-of-attack
               verdict: supports
               finding_materiality: none
-              rationale: The page says a stall results from exceeding critical angle of
-                attack, not simply reaching a fixed airspeed. Its coordinated,
-                level 60° turn example explains that the increased lift
-                requirement raises angle of attack and load factor, producing a
-                stall speed above the 1G value.
+              rationale: The page states that exceeding critical angle of attack causes a
+                stall, and explains that a coordinated level turn increases the
+                lift required, load factor, and stall speed. It also cautions
+                that a one-G stalling speed is not constant across conditions.
         usage:
           input_tokens: 2024
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 2021
-          output_tokens: 230
+            cache_write_tokens: 2021
+            cached_tokens: 0
+          output_tokens: 236
           output_tokens_details:
-            reasoning_tokens: 59
-          total_tokens: 2254
+            reasoning_tokens: 82
+          total_tokens: 2260
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page supports the claim that stalls result from exceeding
-            critical angle of attack and that increased load factor in a
-            coordinated level turn raises stall speed, making a remembered 1G
-            stall speed insufficient to establish safety in a harder-pulled
-            turn.
+          rationale: The cited page directly supports the claim about critical angle of
+            attack, increased load factor and stall speed in a coordinated level
+            turn, and the limits of relying on a one-G stall speed.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the cited PDF page 9 and identifies printed page
-              5-9 under “Angle of Attack.”
+            rationale: The supplied excerpt is from the cited PDF page and includes the
+              Angle of Attack section.
           claim_assessments:
             - claim_id: claim-angle-of-attack
               verdict: supports
               finding_materiality: none
-              rationale: The page states that a stall results from exceeding critical angle of
-                attack, explains the increased lift and angle of attack needed
-                in a coordinated level turn, and gives a 2G turn example with a
-                stall speed 41 percent above the 1G value.
+              rationale: The excerpt says stalls result from exceeding critical angle of
+                attack and explains that a coordinated, level 60° turn requires
+                increased angle of attack, produces a 2G load factor, and raises
+                stall speed above its one-G value.
         usage:
           input_tokens: 2024
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 2021
-          output_tokens: 269
+          output_tokens: 235
           output_tokens_details:
-            reasoning_tokens: 70
-          total_tokens: 2293
+            reasoning_tokens: 61
+          total_tokens: 2259
     relevance: *a37
     claim_assessments:
       valid: true
@@ -4099,7 +4080,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: afh-electrical
     title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
-    checked_at_utc: 2026-10-08T15:57:03.042Z
+    checked_at_utc: 2026-10-14T18:36:58.180Z
     linked_claim_ids:
       - claim-electrical
     missing_claim_ids: []
@@ -4141,59 +4122,57 @@ results:
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from PDF page 13, shows printed page 18-13, and
-              contains the Electrical System discussion identified by the
-              locator.
+            rationale: The excerpt is from the cited PDF page and shows printed page 18-13
+              under “System Malfunctions—Electrical System.”
           claim_assessments:
             - claim_id: claim-electrical
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt says a typical light airplane may rely on its battery
-                after a generating-system failure, that available battery power
-                depends on condition and load, and that the pilot should
-                immediately shed nonessential loads and plan to land at the
-                nearest suitable airport.
+              rationale: The excerpt states that a typical light airplane may rely on its
+                battery after a generating-system failure, that battery
+                endurance depends on condition and electrical load, and that the
+                pilot should immediately shed nonessential loads and plan to
+                land at the nearest suitable airport.
         usage:
           input_tokens: 1426
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1423
-          output_tokens: 203
+            cache_write_tokens: 1423
+            cached_tokens: 0
+          output_tokens: 199
           output_tokens_details:
-            reasoning_tokens: 38
-          total_tokens: 1629
+            reasoning_tokens: 35
+          total_tokens: 1625
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page directly supports the listed guidance about battery
-            dependence after generating-system failure, variable endurance, load
-            shedding, and planning to land at the nearest suitable airport.
+          rationale: The cited page directly supports the listed claim and the relevant
+            statements in the authored passages.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The excerpt is from the Electrical System section on printed page
-              18-13, matching the cited PDF page and locator.
+            rationale: The excerpt is from PDF page 13 and shows printed page 18-13 under
+              “System Malfunctions—Electrical System,” as cited.
           claim_assessments:
             - claim_id: claim-electrical
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt states that a typical light airplane relies on its
-                battery when its generator or alternator goes offline, that
-                battery endurance depends on condition and load, and that the
-                pilot should immediately shed nonessential loads and plan to
-                land at the nearest suitable airport.
+              rationale: The excerpt says a typical light airplane relies on its battery after
+                the generator or alternator goes offline, explains that
+                endurance depends on battery condition and electrical load, and
+                directs the pilot to shed nonessential loads and plan to land at
+                the nearest suitable airport.
         usage:
           input_tokens: 1426
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1423
-          output_tokens: 236
+          output_tokens: 202
           output_tokens_details:
-            reasoning_tokens: 58
-          total_tokens: 1662
+            reasoning_tokens: 35
+          total_tokens: 1628
     relevance: *a38
     claim_assessments:
       valid: true
@@ -4215,7 +4194,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: afh-manufacturer
     title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
-    checked_at_utc: 2026-10-08T15:57:03.659Z
+    checked_at_utc: 2026-10-14T18:36:59.176Z
     linked_claim_ids:
       - claim-manufacturer
     missing_claim_ids: []
@@ -4252,58 +4231,60 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page explicitly states that its emergency guidelines are
+          rationale: The cited page directly states that its emergency guidelines are
             generic and that manufacturer-recommended AFM/POH procedures take
             precedence if they conflict.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The cited paragraph appears in the Introduction on printed page 18-1.
+            rationale: The locator identifies the introduction’s manufacturer-procedure
+              precedence paragraph on the cited PDF page.
           claim_assessments:
             - claim_id: claim-manufacturer
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt directly states both the generic nature of the guidance
-                and the precedence of manufacturer recommendations in the
-                approved AFM/POH.
+              rationale: The excerpt explicitly supports both the generic-guidance
+                qualification and the precedence of manufacturer recommendations
+                in the approved AFM/POH when guidance conflicts.
         usage:
           input_tokens: 1557
           input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 1554
-          output_tokens: 200
+            cache_write_tokens: 1554
+            cached_tokens: 0
+          output_tokens: 217
           output_tokens_details:
-            reasoning_tokens: 59
-          total_tokens: 1757
+            reasoning_tokens: 72
+          total_tokens: 1774
       - pass: 2
         status: assessed
         model: gpt-6-sol
         assessment:
           verdict: supports
           confidence: high
-          rationale: The cited page states that its emergency guidelines are generic and
-            that manufacturer-recommended procedures in the approved AFM/POH
-            take precedence if they conflict.
+          rationale: The cited page explicitly says the chapter’s emergency guidelines are
+            generic and that manufacturer-recommended procedures in the approved
+            AFM/POH take precedence when they conflict.
           locator_assessment:
             verdict: supports
             finding_materiality: none
-            rationale: The manufacturer-procedure precedence paragraph appears in the
-              introduction on the cited PDF page.
+            rationale: The cited paragraph appears in the Introduction on printed page 18-1,
+              the supplied PDF page 1.
           claim_assessments:
             - claim_id: claim-manufacturer
               verdict: supports
               finding_materiality: none
-              rationale: The excerpt directly supports the stated precedence of manufacturer
-                recommendations over conflicting general handbook guidance.
+              rationale: The excerpt directly states both the generic scope of the guidelines
+                and the precedence of manufacturer-recommended procedures when
+                there is a conflict.
         usage:
           input_tokens: 1557
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 1554
-          output_tokens: 224
+          output_tokens: 187
           output_tokens_details:
-            reasoning_tokens: 90
-          total_tokens: 1781
+            reasoning_tokens: 36
+          total_tokens: 1744
     relevance: *a40
     claim_assessments:
       valid: true
@@ -4325,7 +4306,7 @@ results:
           editorial_note_assessment_ids: []
   - source_id: ecfr-vfr-fuel
     title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
-    checked_at_utc: 2026-10-08T15:57:02.066Z
+    checked_at_utc: 2026-10-14T18:36:56.108Z
     linked_claim_ids:
       - claim-vfr-fuel
     missing_claim_ids: []
@@ -4333,8 +4314,8 @@ results:
       valid: true
       errors: []
     link:
-      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
-      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-09/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-09/title-14.xml?part=91&section=91.151
       status: 200
       retry_after: null
       content_type: text/xml
@@ -4346,18 +4327,18 @@ results:
       valid: true
       errors: []
       citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
-      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
-      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-06/title-14.xml?part=91&section=91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-09/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-09/title-14.xml?part=91&section=91.151
       resolved_via: ecfr_exact_section_xml
       ecfr_title_status:
-        up_to_date_as_of: 2026-10-06
-        title_status_sha256: 81541dd50efdb194617b961b5ebc95d4515af5fdd533775a0d6ddbcd4655d7af
+        up_to_date_as_of: 2026-10-09
+        title_status_sha256: 764c4761eac1fa6c03b838388498d2dc639cde3a8ece8d1f104e85db7f91e057
         title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
       section_identity:
         title: "14"
         part: "91"
         section: "91.151"
-        date: 2026-10-06
+        date: 2026-10-09
         section_number: "91.151"
       section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
       excerpt_characters: 804
@@ -4373,8 +4354,38 @@ results:
         assessment:
           verdict: supports
           confidence: high
-          rationale: The excerpt directly states the airplane VFR fuel requirements
+          rationale: The excerpt directly states the airplane VFR fuel requirement
             described in the claim and authored passages.
+          locator_assessment:
+            verdict: supports
+            finding_materiality: none
+            rationale: Section 91.151(a)(1)–(2) identifies the cited airplane day and night
+              VFR fuel provisions.
+          claim_assessments:
+            - claim_id: claim-vfr-fuel
+              verdict: supports
+              finding_materiality: none
+              rationale: The excerpt requires fuel, considering wind and forecast weather, to
+                reach the first intended landing point and then fly at normal
+                cruising speed for at least 30 minutes by day or 45 minutes at
+                night.
+        usage:
+          input_tokens: 1010
+          input_tokens_details:
+            cache_write_tokens: 0
+            cached_tokens: 0
+          output_tokens: 155
+          output_tokens_details:
+            reasoning_tokens: 0
+          total_tokens: 1165
+      - pass: 2
+        status: assessed
+        model: gpt-6-sol
+        assessment:
+          verdict: supports
+          confidence: high
+          rationale: The cited excerpt directly supports the stated airplane VFR fuel
+            requirement and both authored passages.
           locator_assessment:
             verdict: supports
             finding_materiality: none
@@ -4384,49 +4395,19 @@ results:
             - claim_id: claim-vfr-fuel
               verdict: supports
               finding_materiality: none
-              rationale: The claim accurately states the required fuel to the first intended
-                landing point plus 30 minutes by day or 45 minutes at night at
-                normal cruising speed, considering wind and forecast weather.
+              rationale: The excerpt requires fuel, considering wind and forecast weather, to
+                reach the first intended landing point and then fly at normal
+                cruising speed for at least 30 minutes by day or 45 minutes at
+                night.
         usage:
           input_tokens: 1010
           input_tokens_details:
             cache_write_tokens: 0
             cached_tokens: 0
-          output_tokens: 151
+          output_tokens: 154
           output_tokens_details:
             reasoning_tokens: 0
-          total_tokens: 1161
-      - pass: 2
-        status: assessed
-        model: gpt-6-sol
-        assessment:
-          verdict: supports
-          confidence: high
-          rationale: The excerpt from 14 CFR 91.151(a)(1)–(2) directly states the cited
-            airplane VFR fuel requirements, including consideration of wind and
-            forecast weather, the first intended landing point, and the day and
-            night reserves.
-          locator_assessment:
-            verdict: supports
-            finding_materiality: none
-            rationale: The locator identifies the subsection containing the airplane day and
-              night VFR fuel requirements.
-          claim_assessments:
-            - claim_id: claim-vfr-fuel
-              verdict: supports
-              finding_materiality: none
-              rationale: The claim accurately reflects the excerpt’s preflight fuel
-                requirement and its 30-minute daytime and 45-minute nighttime
-                reserves at normal cruising speed.
-        usage:
-          input_tokens: 1010
-          input_tokens_details:
-            cache_write_tokens: 0
-            cached_tokens: 0
-          output_tokens: 165
-          output_tokens_details:
-            reasoning_tokens: 0
-          total_tokens: 1175
+          total_tokens: 1164
     relevance: *a41
     claim_assessments:
       valid: true

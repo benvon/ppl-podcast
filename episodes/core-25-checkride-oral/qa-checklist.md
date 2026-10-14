@@ -12,8 +12,8 @@
 - [x] Before any audio render, `narration.md` is the current derivative of `master-script.md`, and show-notes episode/version/source-verification metadata agrees with the package. <!-- qa-id: narration-current -->
 - [x] Before any audio render, show notes contain study links and synopsis only; the single public production disclosure belongs to the hosting page. <!-- qa-id: show-notes-scope -->
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. `episode.yaml` records the completed review against the current master-script hash. <!-- qa-id: independent-script-review -->
-- [ ] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->
-- [ ] If human editorial changes spoken narration, source tags, claims, or cited sources, source-relevance validation was rerun successfully before audio render. Show-notes-only edits received deterministic mapping and link validation. <!-- qa-id: post-editorial-source-relevance -->
+- [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->
+- [x] If human editorial changes spoken narration, source tags, claims, or cited sources, source-relevance validation was rerun successfully before audio render. Show-notes-only edits received deterministic mapping and link validation. <!-- qa-id: post-editorial-source-relevance -->
 - [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval. <!-- qa-id: pre-pr-package-shape -->
 
 ## Audio
@@ -36,3 +36,7 @@
 ## Current request scope
 
 The user explicitly authorized the OpenAI API source-relevance review for Core-25 in the October 8, 2026 request: “You are authorized to call the OpenAI API for the source relevance review.” This covers the episode source excerpts, claims, and tagged spoken passages. Audio rendering is outside this request. The requested stopping point is readiness for human editorial review.
+
+## Human editorial decision
+
+The user approved the revised master script (version 0.1.3). The renewed source review applies to this revision; the approval command binds the human decision to the current script. The user has separately authorized the renewed OpenAI source-relevance review for this revision.

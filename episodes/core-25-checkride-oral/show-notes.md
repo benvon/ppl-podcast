@@ -1,7 +1,7 @@
 # The Checkride Oral: Connecting Knowledge, Risk, and Skill
 
 **Episode:** 25 (Core)
-**Version:** 0.1.1
+**Version:** 0.1.3
 
 ## In this episode
 
@@ -64,4 +64,4 @@ The chapter times in the draft script are planning estimates. Audio duration and
 
 ## Correction status
 
-Independent spoken-script review and the two-pass source-relevance review are complete. This initial study draft is ready for human editorial review; audio has not been rendered. Corrections and source updates are captured in a revised episode package before publication. Submit a source correction through the repository issue form or email [feedback@pplstudyguide.com](mailto:feedback@pplstudyguide.com). Do not send credentials, private documents, or personal flight information.
+The human editor approved this revision, and the independent spoken-script review and renewed two-pass source-relevance review are complete. Audio has not been rendered. Corrections and source updates are captured in a revised episode package before publication. Submit a source correction through the repository issue form or email [feedback@pplstudyguide.com](mailto:feedback@pplstudyguide.com). Do not send credentials, private documents, or personal flight information.

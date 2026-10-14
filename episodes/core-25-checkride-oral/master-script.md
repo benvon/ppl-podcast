@@ -1,6 +1,6 @@
 # The Checkride Oral: Connecting Knowledge, Risk, and Skill
 
-**Version:** 0.1.1 — draft
+**Version:** 0.1.3 — draft
 **Target runtime:** 45–60 minutes
 **Speakers:** Instructor, Learner, Announcer
 
@@ -57,7 +57,7 @@ Does the oral end when we leave the table?
 The ground portion must be passed before the flight portion begins, and oral questioning continues throughout the practical test. The ACS asks evaluators to assess application and correlation of information to the greatest extent practicable, using rote questions when they fit the material.
 [Source: sources.yaml#acs-test-conversation]
 
-For our rehearsal, I will ask examiner-style questions and you will answer as Elena, the pilot in our scenario. We can stop to teach a connection when it needs work. An actual practical test is an evaluation; this practice conversation is a learning exercise. Our selection of questions illustrates a method of preparing, rather than predicting your examiner's questions or covering every required task.
+For our rehearsal, I will ask examiner-style questions and you will answer as Elena, the pilot in our scenario. We can stop to teach a connection when it needs work. Our selection of questions illustrates a method of preparing, rather than predicting your examiner's questions or covering every required task.
 [Claim type: teaching synthesis]
 
 **LEARNER:**
@@ -409,7 +409,7 @@ Let us use simple fictional numbers. After accounting for the planned start, tax
 
 **LEARNER:**
 
-That cruise leg uses twelve gallons, leaving twelve at Harbor in this simplified example. At eight gallons per hour, twelve gallons represents ninety minutes of normal-cruise fuel. I would still verify every phase and input in the real airplane's complete plan. These numbers are our classroom example, not a performance statement for a particular trainer.
+That cruise leg uses twelve gallons, leaving twelve at Harbor in this simplified example. At eight gallons per hour, twelve gallons represents ninety minutes of normal-cruise fuel. I would still verify every phase and input in the real airplane's complete plan.
 [Claim type: aircraft example]
 
 **INSTRUCTOR:**
@@ -464,7 +464,7 @@ I would also show him the relevant emergency equipment and explain its use.
 
 **INSTRUCTOR:**
 
-Before an actual test flight, what should you and the examiner establish about control of the airplane?
+Before an actual practical exam flight, what should you and the examiner establish about control of the airplane?
 
 **LEARNER:**
 

@@ -80,6 +80,7 @@ audio:
   status: not_rendered
   chapter_markers: pending_render
   publication_day_validation: pending
+  preview_listening_qa: pending_human_review
 hosting:
   metadata: hosting-metadata.yaml
   handoff_seal: source-release-seal.yaml
@@ -87,4 +88,4 @@ hosting:
 public_notes: show-notes.md
 qa: qa-checklist.md
 supersedes: null
-production_state_revision: 15
+production_state_revision: 16

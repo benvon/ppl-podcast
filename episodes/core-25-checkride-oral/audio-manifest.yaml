@@ -6,3 +6,24 @@ chapter_markers:
   audio_sha256: null
   review_page: null
   required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast
+preview_render:
+  script_version: 0.1.3
+  master_script_sha256: 472aae9eac5d00732f0109cb6278490a8b0c322e4456e426fac868ad3599e6a7
+  selected_segments:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  sha256: bbf5308c6715714ba20c29e4d1cf0310e24d6a91a60043d211add89a51942a71
+  duration_seconds: 113.67
+  mp3: audio-artifacts/core-25/core-25-20261014T184636Z.preview-001-005.mp3
+  render_manifest: audio-artifacts/core-25/core-25-20261014T184636Z.preview-001-005.render-manifest.json
+  audio_quality_report: audio-artifacts/core-25/core-25-20261014T184636Z.preview-001-005.audio-quality.json
+  validation: passed_automated_checks
+  authorization:
+    authorized_by: user
+    received_on: 2026-10-14
+    scope: Core-25 opening preview OpenAI API audio rendering, first five approved
+      narration segments and adjacent context
+    qa_id: openai-audio-render-authorization

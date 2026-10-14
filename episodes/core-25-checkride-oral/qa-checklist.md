@@ -40,3 +40,7 @@ The user explicitly authorized the OpenAI API source-relevance review for Core-2
 ## Human editorial decision
 
 The user approved the revised master script (version 0.1.3). The renewed source review applies to this revision; the approval command binds the human decision to the current script. The user has separately authorized the renewed OpenAI source-relevance review for this revision.
+
+## Opening-preview audio authorization
+
+- [x] The user authorized OpenAI API audio rendering of Core-25’s opening preview in the current turn. Scope: the first five segments of the approved version 0.1.3 narration, including adjacent-dialogue context used by the renderer. Listening acceptance remains pending. <!-- qa-id: openai-audio-render-authorization -->

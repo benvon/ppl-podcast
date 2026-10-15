@@ -1,10 +1,43 @@
 episode_id: core-25
-current_candidate_render: null
+current_candidate_render:
+  script_version: 0.1.3
+  master_script_sha256: 472aae9eac5d00732f0109cb6278490a8b0c322e4456e426fac868ad3599e6a7
+  sha256: 01902238e0aecbfd147eeebad93c4ff146b33e67f98581af49f37eac342b87b4
+  duration_seconds: 2483.76
+  mp3: audio-artifacts/core-25/core-25-20261015T122121Z.mp3
+  render_manifest: audio-artifacts/core-25/core-25-20261015T122121Z.render-manifest.json
+  audio_quality_report: audio-artifacts/core-25/core-25-20261015T122121Z.audio-quality.json
+  chapter_review: audio-artifacts/core-25/core-25-20261015T122121Z.mp3.chapters.01902238e0aecbfd147eeebad93c4ff146b33e67f98581af49f37eac342b87b4.html
+  validation: passed_automated_checks
+  authorization:
+    authorized_by: user
+    received_on: 2026-10-15
+    scope: Full Core-25 audio rendering with accepted opening reuse
+    qa_id: openai-full-audio-render-authorization
+  accepted_opening_reuse:
+    selected_segments:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    preview_audio_sha256: bbf5308c6715714ba20c29e4d1cf0310e24d6a91a60043d211add89a51942a71
+    segment_files_sha256:
+      001-instructor.usage.json: 1c258fedce92387d82c94fb6d2d3d662fbfe6df6844233fbd7fbcd0c93b60048
+      001-instructor.wav: 400a593302dcd1ca0e8ff54e6945db3e294fc64952242ec2e557c290fabb2148
+      002-instructor.usage.json: 7e2236b7b040d7917b51e65bfc1050b1b85ccf7649a02d1595c2d24b07bbe01f
+      002-instructor.wav: fab1183fc552cf2ea67fb45f2b0679e8dcf465f368e306cd31e90d334fa44a1f
+      003-announcer.usage.json: 38681a36480178c165899788770b99b0fb742956e8582c4a5c7d55dc2e2425bc
+      003-announcer.wav: dfb41d3464b233a56df78baf4be4fbd34f93f76735689a6edaf919999f324c2b
+      004-announcer.usage.json: 6ffc7fe564a796bae76fb7525638f2126154beadd278863884fa6f2c4c6c5fd8
+      004-announcer.wav: 7db96b3ab47fdd40015fd62bae002ad7beedd31b7b9dc4c506d4e306af8ea786
+      005-learner.usage.json: 3a759b6cc061dfb66a91192b302b98d2eff30d32065b20241bd297c876823c43
+      005-learner.wav: 5c61af194e553e7c46456cdac02698deeb4e2614da90e141dcea5e0688e5c4b2
 superseded_candidates: []
 chapter_markers:
   source: master-script.md section headings
-  audio_sha256: null
-  review_page: null
+  audio_sha256: 01902238e0aecbfd147eeebad93c4ff146b33e67f98581af49f37eac342b87b4
+  review_page: audio-artifacts/core-25/core-25-20261015T122121Z.mp3.chapters.01902238e0aecbfd147eeebad93c4ff146b33e67f98581af49f37eac342b87b4.html
   required_format: Embedded MP3 ID3 chapters for Apple Podcasts and Overcast
 preview_render:
   script_version: 0.1.3

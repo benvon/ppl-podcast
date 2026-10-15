@@ -18,13 +18,13 @@
 
 ## Audio
 
-- [ ] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
-- [ ] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
-- [ ] Five-segment opening preview has been listened to before full rendering. <!-- qa-id: opening-preview -->
+- [x] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
+- [x] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
+- [x] Five-segment opening preview has been listened to before full rendering. <!-- qa-id: opening-preview -->
 - [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
 - [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
 - [ ] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
-- [ ] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
+- [x] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
 
 ## Release
 
@@ -44,3 +44,7 @@ The user approved the revised master script (version 0.1.3). The renewed source 
 ## Opening-preview audio authorization
 
 - [x] The user authorized OpenAI API audio rendering of Core-25’s opening preview in the current turn. Scope: the first five segments of the approved version 0.1.3 narration, including adjacent-dialogue context used by the renderer. Listening acceptance remains pending. <!-- qa-id: openai-audio-render-authorization -->
+
+## Full-render authorization
+
+- [x] The user accepted the opening preview and authorized OpenAI API audio rendering for the remaining Core-25 narration in the current turn. The full assembly reuses the accepted first five segments. <!-- qa-id: openai-full-audio-render-authorization -->

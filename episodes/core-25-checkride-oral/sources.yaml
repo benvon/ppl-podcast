@@ -1,0 +1,533 @@
+episode_id: core-25
+verification_date: null
+verified_at_utc: null
+sources:
+  - id: acs-concept
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Introduction, Airman Certification Standards Concept, printed p. 1 (PDF
+      p. 9)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-concept
+  - id: acs-scenarios
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Appendix 1, Evaluator Responsibilities, plan-of-action paragraph,
+      printed p. 68 (PDF p. 76)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-scenarios
+  - id: acs-test-conversation
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Appendix 1, Use of the ACS During a Practical Test,
+      application/correlation paragraph and ground-portion paragraph, printed p.
+      67 (PDF p. 75)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-test-conversation
+  - id: acs-cross-country
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.D.K1-K5, R1-R7, S1-S5, Cross-Country Flight Planning, printed p. 5
+      (PDF p. 13)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-cross-country
+  - id: acs-human-factors
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.H.K1g-K1i, K4, R1-R4, S2, Human Factors, printed p. 8 (PDF p. 16)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-human-factors
+  - id: acs-pilot
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.A.K1-K5, R1-R2, S1, Pilot Qualifications, printed p. 2 (PDF p. 10)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-pilot
+  - id: acs-test-sampling
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Appendix 1, Use of the ACS During a Practical Test,
+      required-minimum-elements list and AKTR note, printed p. 66 (PDF p. 74)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-test-sampling
+  - id: acs-airworthiness-records
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.B.K1a-K1e and K3-K3a, Airworthiness Requirements, printed p. 2
+      (PDF p. 10)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-airworthiness-records
+  - id: acs-preflight
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.II.A.K3a-K3d, S1-S4, Preflight Assessment, printed p. 11 (PDF p. 19)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-preflight
+  - id: acs-airworthiness-decision
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.B.K3b-K4, R1, S1-S3, Airworthiness Requirements, printed p. 3 (PDF
+      p. 11)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-airworthiness-decision
+  - id: acs-weather-decision
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.C.R1a-R1c, R2a-R2c, S1-S3, Weather Information, printed p. 4 (PDF
+      p. 12)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-weather-decision
+  - id: acs-weather-products
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.C.K1 and K2a-K2g, Weather Information, printed p. 3 (PDF p. 11)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-weather-products
+  - id: acs-airspace
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.E.K1-K3, S1-S3, National Airspace System, printed p. 6 (PDF p. 14)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-airspace
+  - id: acs-loading
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.F.S1-S2, Performance and Limitations, printed p. 7 (PDF p. 15)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-loading
+  - id: acs-performance
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.F.K1-K3, R1-R3, Performance and Limitations, printed p. 6 (PDF p. 14)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-performance
+  - id: acs-takeoff-risk
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IV.A.K1-K3, R1-R3, Normal Takeoff and Climb, printed p. 18 (PDF p. 26)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-takeoff-risk
+  - id: acs-diversion
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.VI.C.K1-K2, R1-R5, S1-S6, Diversion, printed p. 40 (PDF p. 48)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-diversion
+  - id: acs-flight-deck
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.II.B.K1-K4, R1-R3, S1-S4, Flight Deck Management, printed p. 12 (PDF
+      p. 20)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-flight-deck
+  - id: acs-emergency-equipment
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IX.D.S1-S2, Emergency Equipment and Survival Gear, printed p. 54
+      (PDF p. 62)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-emergency-equipment
+  - id: acs-controls
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Appendix 2, Positive Exchange of Flight Controls, printed p. 75 (PDF p. 83)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-controls
+  - id: acs-taxi
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.II.D.K1-K6, R1-R4, S1-S8, Taxiing (ASEL, AMEL), printed p. 13 (PDF
+      p. 21)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-taxi
+  - id: acs-progress
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.VI.A.K4-K7, R1-R3, S1-S5, Pilotage and Dead Reckoning, printed p. 38
+      (PDF p. 46)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-progress
+  - id: acs-navigation-systems
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.VI.B.K1-K4, R1-R5, S1-S6, Navigation Systems and Radar Services,
+      printed p. 39 (PDF p. 47)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-navigation-systems
+  - id: acs-lost
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.VI.D.R4, S1-S5, Lost Procedures, printed p. 41 (PDF p. 49)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-lost
+  - id: acs-systems-malfunction
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IX.C.K1-K5, R1-R4, S1-S2, Systems and Equipment Malfunctions,
+      printed p. 53 (PDF p. 61)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-systems-malfunction
+  - id: acs-systems
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.I.G.K1e-K1h, K2, R1-R3, S1-S2, Operation of Systems, printed p. 7
+      (PDF p. 15)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-systems
+  - id: acs-emergency-landing
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IX.B.K1-K6, R1-R6, S1-S6, Emergency Approach and Landing (Simulated)
+      (ASEL, ASES), printed p. 52 (PDF p. 60)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-emergency-landing
+  - id: acs-landing-risk
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IV.B.K1-K3, R1-R2d, Normal Approach and Landing, printed p. 19 (PDF
+      p. 27)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-landing-risk
+  - id: acs-landing-skill
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IV.B.R2e-R6, S1-S12, Normal Approach and Landing, printed p. 20 (PDF
+      p. 28)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-landing-skill
+  - id: acs-stalls
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.VII.B.K1-K4, R1-R8, S7-S11, Power-Off Stalls, printed p. 43 (PDF p. 51)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-stalls
+  - id: acs-go-around
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.IV.N.K1-K3, R1-R9, S1-S9, Go-Around/Rejected Landing, printed p. 35
+      (PDF p. 43)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-go-around
+  - id: acs-postflight
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: PA.XII.A.K1-K2, R1-R4, S2-S5, After Landing, Parking, and Securing
+      (ASEL, AMEL), printed p. 64 (PDF p. 72)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-postflight
+  - id: acs-instructor
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Appendix 1, Instructor Responsibilities, printed p. 67; applicable
+      tasks elsewhere in the ACS (PDF p. 75)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-instructor
+  - id: acs-outcomes
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Appendix 1, Unsatisfactory Performance and Letter of Discontinuance,
+      printed p. 69 (PDF p. 77)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-outcomes
+  - id: acs-test-safety
+    authority: faa_standard
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    document_id: FAA-S-ACS-6C
+    locator: Appendix 2, General and Use of Checklists, printed p. 75 (PDF p. 83)
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+    revision: April 2024; effective May 31, 2024; current FAA ACS listing checked
+      October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-test-safety
+  - id: afh-angle-of-attack
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 5, Angle of Attack, printed p. 5-9 (PDF p. 9)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+    revision: FAA-H-8083-3C, 2021; accessed October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-angle-of-attack
+  - id: afh-electrical
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, System Malfunctions, Electrical System, printed p. 18-13
+      (PDF p. 13)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    revision: FAA-H-8083-3C, 2021; accessed October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-electrical
+  - id: afh-manufacturer
+    authority: faa_guidance
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    document_id: FAA-H-8083-3C
+    locator: Chapter 18, Introduction, manufacturer-procedure precedence paragraph,
+      printed p. 18-1 (PDF p. 1)
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    revision: FAA-H-8083-3C, 2021; accessed October 8, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-manufacturer
+  - id: ecfr-vfr-fuel
+    authority: regulation
+    title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
+    document_id: 14-CFR-91.151
+    locator: 91.151(a)(1)-(2), airplane day/night VFR fuel
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
+    revision: eCFR Title 14 current through October 13, 2026
+    relevance_excerpt: null
+    verified_at_utc: null
+    link_status: null
+    supports_claims:
+      - claim-vfr-fuel
+    ecfr_date: 2026-10-13

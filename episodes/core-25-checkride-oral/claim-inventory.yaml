@@ -1,0 +1,467 @@
+episode_id: core-25
+claims:
+  - id: claim-concept
+    type: faa_standard
+    statement: The ACS integrates aeronautical knowledge, risk management, and
+      flight proficiency to demonstrate readiness to act as pilot in command.
+    sources:
+      - acs-concept
+    risk: safety_critical
+    script_sections:
+      - What the ACS is asking you to connect
+      - Retrieval review
+    status: draft
+  - id: claim-scenarios
+    type: faa_standard
+    statement: The evaluator develops a plan of action covering required areas and
+      tasks, incorporates scenarios evaluating as many as possible, introduces
+      problems and simulated emergencies, and may modify or suspend and resume a
+      scenario.
+    sources:
+      - acs-scenarios
+    risk: safety_critical
+    script_sections:
+      - What the ACS is asking you to connect
+      - Retrieval review
+    status: draft
+  - id: claim-test-conversation
+    type: faa_standard
+    statement: Evaluators should assess application and correlation to the greatest
+      extent practicable; the ground portion must be passed before flight and
+      oral questioning continues throughout the practical test.
+    sources:
+      - acs-test-conversation
+    risk: safety_critical
+    script_sections:
+      - What the ACS is asking you to connect
+      - Retrieval review
+    status: draft
+  - id: claim-cross-country
+    type: faa_standard
+    statement: The cross-country task requires explaining a plan to the first fuel
+      stop with real-time weather risk analysis, current publications and
+      closure information, navigation and fuel calculations, and consideration
+      of pilot, airplane, environment, external pressure, resources, and fuel
+      risk.
+    sources:
+      - acs-cross-country
+    risk: safety_critical
+    script_sections:
+      - Explain the proposed flight before defending it
+      - Give the fuel plan a usable alternative
+    status: draft
+  - id: claim-human-factors
+    type: faa_standard
+    statement: Human Factors includes fatigue, stress, hazardous attitudes,
+      confirmation and expectation bias, distraction, resource management, and
+      self-assessment of fitness and personal minimums.
+    sources:
+      - acs-human-factors
+    risk: safety_critical
+    script_sections:
+      - Explain the proposed flight before defending it
+      - Connect the pilot's records with today's readiness
+      - Retrieval review
+    status: draft
+  - id: claim-pilot
+    type: faa_standard
+    statement: Pilot Qualifications covers certification, recent experience,
+      records, privileges, medical basis, required documents, currency versus
+      proficiency, unfamiliar equipment, and applying PIC requirements in a VFR
+      scenario.
+    sources:
+      - acs-pilot
+    risk: safety_critical
+    script_sections:
+      - Connect the pilot's records with today's readiness
+      - Retrieval review
+    status: draft
+  - id: claim-test-sampling
+    type: faa_standard
+    statement: Required minimum elements for each applicable task include
+      knowledge-test deficiencies as applicable, at least one knowledge element,
+      at least one risk-management element, and all skill elements unless
+      otherwise noted; the evaluator may sample further to establish mastery.
+    sources:
+      - acs-test-sampling
+    risk: safety_critical
+    script_sections:
+      - Connect the pilot's records with today's readiness
+    status: draft
+  - id: claim-airworthiness-records
+    type: faa_standard
+    statement: Airworthiness Requirements includes airplane certificates, inspection
+      records, airworthiness directives, owner/operator and PIC
+      responsibilities, and day/night equipment including inoperative equipment.
+    sources:
+      - acs-airworthiness-records
+    risk: safety_critical
+    script_sections:
+      - Make the airplane decision from evidence
+    status: draft
+  - id: claim-preflight
+    type: faa_standard
+    statement: Preflight Assessment requires inspection with an appropriate
+      checklist, verification of safe-flight condition and type-design
+      conformity, pilot self-assessment, and continued environmental assessment.
+    sources:
+      - acs-preflight
+    risk: safety_critical
+    script_sections:
+      - Make the airplane decision from evidence
+    status: draft
+  - id: claim-airworthiness-decision
+    type: faa_standard
+    statement: Airworthiness Requirements includes MEL/KOEL and discrepancy records
+      or placards, and requires determining airworthiness and applying
+      appropriate inoperative-equipment procedures in a scenario.
+    sources:
+      - acs-airworthiness-decision
+    risk: safety_critical
+    script_sections:
+      - Make the airplane decision from evidence
+      - Retrieval review
+    status: draft
+  - id: claim-weather-decision
+    type: faa_standard
+    statement: Weather Information requires an adequate briefing and correlating
+      weather into a go/no-go decision, and includes personal minimums, prudent
+      diversion, and limitations of reports, forecasts, and in-flight resources.
+    sources:
+      - acs-weather-decision
+    risk: safety_critical
+    script_sections:
+      - Turn the weather briefing into a decision
+      - Retrieval review
+    status: draft
+  - id: claim-weather-products
+    type: faa_standard
+    statement: Weather Information includes observation and pilot reports, terminal
+      and graphical forecasts, winds aloft, and aviation weather advisories for
+      departure, en route, and arrival planning.
+    sources:
+      - acs-weather-products
+    risk: safety_critical
+    script_sections:
+      - Turn the weather briefing into a decision
+    status: draft
+  - id: claim-airspace
+    type: faa_standard
+    statement: The airspace task requires identifying and complying with basic VFR
+      weather minimums and the communication and equipment requirements for the
+      class, and recognizing other applicable airspace restrictions.
+    sources:
+      - acs-airspace
+    risk: safety_critical
+    script_sections:
+      - Turn the weather briefing into a decision
+    status: draft
+  - id: claim-loading
+    type: faa_standard
+    statement: The applicant computes weight and balance, corrects out-of-CG
+      loading, determines that weight and balance remain within limits
+      throughout the flight, and uses appropriate airplane performance data.
+    sources:
+      - acs-loading
+    risk: safety_critical
+    script_sections:
+      - Recalculate when the load changes
+      - Retrieval review
+    status: draft
+  - id: claim-performance
+    type: faa_standard
+    statement: Performance and Limitations includes appropriate charts, atmospheric
+      conditions, technique, configuration, airport environment, loading,
+      limitations, and differences between calculated and actual performance.
+    sources:
+      - acs-performance
+    risk: safety_critical
+    script_sections:
+      - Recalculate when the load changes
+      - Retrieval review
+    status: draft
+  - id: claim-takeoff-risk
+    type: faa_standard
+    statement: The normal-takeoff task includes runway selection using aircraft
+      performance and limitations, available distance, and wind, with risks
+      including tailwind, surface conditions, rejected takeoff, and engine
+      failure.
+    sources:
+      - acs-takeoff-risk
+    risk: safety_critical
+    script_sections:
+      - Recalculate when the load changes
+    status: draft
+  - id: claim-diversion
+    type: faa_standard
+    statement: Diversion requires selecting a suitable destination and route,
+      estimating heading, groundspeed, arrival time and fuel, updating weather,
+      using resources, maintaining control, and promptly diverting.
+    sources:
+      - acs-diversion
+    risk: safety_critical
+    script_sections:
+      - Give the fuel plan a usable alternative
+      - Make the diversion while it is useful
+      - Retrieval review
+    status: draft
+  - id: claim-flight-deck
+    type: faa_standard
+    statement: Flight Deck Management covers securing items, navigation data,
+      automation, checklists, distraction, and a briefing covering PIC identity,
+      restraints, doors, conduct, sterile aircraft, propeller avoidance, and
+      emergencies.
+    sources:
+      - acs-flight-deck
+    risk: safety_critical
+    script_sections:
+      - Prepare the cockpit before adding workload
+    status: draft
+  - id: claim-emergency-equipment
+    type: faa_standard
+    statement: Emergency Equipment and Survival Gear requires identifying
+      appropriate equipment and personal gear and briefing passengers on proper
+      use of on-board emergency and survival equipment.
+    sources:
+      - acs-emergency-equipment
+    risk: safety_critical
+    script_sections:
+      - Prepare the cockpit before adding workload
+    status: draft
+  - id: claim-controls
+    type: faa_standard
+    statement: The ACS recommends a preflight briefing and three-step positive
+      flight-control exchange with verbal acknowledgement and visual
+      verification of who has control.
+    sources:
+      - acs-controls
+    risk: safety_critical
+    script_sections:
+      - Prepare the cockpit before adding workload
+    status: draft
+  - id: claim-taxi
+    type: faa_standard
+    statement: Taxiing includes current airport information, diagrams, clearances,
+      signs, hold lines, route or runway changes, expectation bias, distraction,
+      and compliance with instructions and markings.
+    sources:
+      - acs-taxi
+    risk: safety_critical
+    script_sections:
+      - Prepare the cockpit before adding workload
+    status: draft
+  - id: claim-progress
+    type: faa_standard
+    statement: Pilotage and dead reckoning includes time/speed/distance, headings
+      and checkpoints, power selection, planned-versus-actual corrections,
+      flight logs, navigation, and fuel/power-consumption risk.
+    sources:
+      - acs-progress
+    risk: safety_critical
+    script_sections:
+      - Compare the airborne flight with the plan
+    status: draft
+  - id: claim-navigation-systems
+    type: faa_standard
+    statement: Navigation Systems and Radar Services includes system limitations,
+      loss of signal, EFB use, automation and distraction, position
+      determination, signal-loss response, and radar communications.
+    sources:
+      - acs-navigation-systems
+    risk: safety_critical
+    script_sections:
+      - Compare the airborne flight with the plan
+    status: draft
+  - id: claim-lost
+    type: faa_standard
+    statement: Lost Procedures includes determining position, identifying landmarks,
+      navigation or ATC assistance, choosing an appropriate course, and
+      recognizing when deterioration requires assistance or an emergency
+      declaration.
+    sources:
+      - acs-lost
+    risk: safety_critical
+    script_sections:
+      - Compare the airborne flight with the plan
+    status: draft
+  - id: claim-systems-malfunction
+    type: faa_standard
+    statement: The malfunction task covers airplane-specific power, electrical,
+      display, and other failures, checklist usage, distraction and startle,
+      appropriate action and checklist completion.
+    sources:
+      - acs-systems-malfunction
+    risk: safety_critical
+    script_sections:
+      - Explain what a system failure changes
+    status: draft
+  - id: claim-systems
+    type: faa_standard
+    statement: Operation of Systems covers actual airplane systems, abnormal
+      indications and management procedures, failure detection and management,
+      appropriate operation, and checklists.
+    sources:
+      - acs-systems
+    risk: safety_critical
+    script_sections:
+      - Explain what a system failure changes
+    status: draft
+  - id: claim-emergency-landing
+    type: faa_standard
+    statement: The simulated emergency-landing task requires recommended best glide,
+      appropriate configuration, a reachable suitable site and path considering
+      altitude, wind, terrain and obstacles, landing preparation, and the
+      appropriate checklist.
+    sources:
+      - acs-emergency-landing
+    risk: safety_critical
+    script_sections:
+      - Explain what a system failure changes
+      - Retrieval review
+    status: draft
+  - id: claim-landing-risk
+    type: faa_standard
+    statement: Normal Approach and Landing connects stabilized approach and wind
+      with runway, path and touchdown selection using pilot capability,
+      performance and limitations, distance, and wind.
+    sources:
+      - acs-landing-risk
+    risk: safety_critical
+    script_sections:
+      - Connect the approach with the wing's limits
+    status: draft
+  - id: claim-landing-skill
+    type: faa_standard
+    statement: The normal-landing skills include scanning for traffic and obstacles,
+      appropriate configuration and airspeed, maintaining a stable approach, and
+      timely go-around if tolerances cannot be met or another condition makes
+      landing unsafe.
+    sources:
+      - acs-landing-skill
+    risk: safety_critical
+    script_sections:
+      - Connect the approach with the wing's limits
+    status: draft
+  - id: claim-stalls
+    type: faa_standard
+    statement: Power-Off Stalls connects angle of attack, speed, load, power, weight
+      and CG, attitude and yaw with recognition, prevention, stall/spin risk,
+      and POH/AFM recovery skills.
+    sources:
+      - acs-stalls
+    risk: safety_critical
+    script_sections:
+      - Connect the approach with the wing's limits
+    status: draft
+  - id: claim-go-around
+    type: faa_standard
+    statement: The go-around task covers timely recognition, power, pitch and
+      airspeed, configuration, directional and wind control, traffic avoidance,
+      and checklist and communication.
+    sources:
+      - acs-go-around
+    risk: safety_critical
+    script_sections:
+      - Connect the approach with the wing's limits
+    status: draft
+  - id: claim-postflight
+    type: faa_standard
+    statement: Postflight includes shutdown/securing, passenger ramp safety,
+      checklist completion, inspection, documenting discrepancies and servicing
+      requirements, and securing the airplane.
+    sources:
+      - acs-postflight
+    risk: safety_critical
+    script_sections:
+      - Finish the flight and use the debrief
+    status: draft
+  - id: claim-instructor
+    type: faa_standard
+    statement: The instructor trains and qualifies the applicant in knowledge, risk
+      management and skills for all appropriate tasks using the ACS and its
+      references; this representative conversation does not replace full
+      preparation.
+    sources:
+      - acs-instructor
+    risk: safety_critical
+    script_sections:
+      - Finish the flight and use the debrief
+    status: draft
+  - id: claim-outcomes
+    type: faa_standard
+    statement: Unsatisfactory grounds include consistently exceeding tolerances,
+      failure of prompt correction or risk management; an unsatisfactory task
+      yields disapproval, whereas interruption for other reasons such as
+      weather, equipment or illness results in a Letter of Discontinuance
+      documenting completed areas and credit time.
+    sources:
+      - acs-outcomes
+    risk: safety_critical
+    script_sections:
+      - Finish the flight and use the debrief
+      - Retrieval review
+    status: draft
+  - id: claim-test-safety
+    type: faa_standard
+    statement: Safety of flight is the prime consideration; unsafe portions are
+      simulated, scanning and collision avoidance are assessed throughout, and
+      appropriate checklist use is evaluated with attention to safe task
+      priority.
+    sources:
+      - acs-test-safety
+    risk: safety_critical
+    script_sections:
+      - Finish the flight and use the debrief
+      - Retrieval review
+    status: draft
+  - id: claim-angle-of-attack
+    type: faa_guidance
+    statement: A stall results from exceeding critical angle of attack; in a
+      coordinated level turn, increased bank requires more lift, increasing load
+      factor and stall speed, so a remembered one-G stall speed cannot establish
+      a harder-pulled turn is safe.
+    sources:
+      - afh-angle-of-attack
+    risk: safety_critical
+    script_sections:
+      - Connect the approach with the wing's limits
+      - Retrieval review
+    status: draft
+  - id: claim-electrical
+    type: faa_guidance
+    statement: After failure of its single generating source, a typical light
+      airplane may depend on a battery with endurance affected by condition and
+      load; shed nonessential electrical loads and plan to land at the nearest
+      suitable airport.
+    sources:
+      - afh-electrical
+    risk: safety_critical
+    script_sections:
+      - Explain what a system failure changes
+      - Retrieval review
+    status: draft
+  - id: claim-manufacturer
+    type: faa_guidance
+    statement: The handbook emergency guidelines are generic; manufacturer
+      recommendations in the approved AFM/POH take precedence when general
+      handbook guidance conflicts with them.
+    sources:
+      - afh-manufacturer
+    risk: safety_critical
+    script_sections:
+      - Explain what a system failure changes
+      - Retrieval review
+    status: draft
+  - id: claim-vfr-fuel
+    type: regulation
+    statement: Before beginning an airplane VFR flight, considering wind and
+      forecast weather, enough fuel is required to reach the first intended
+      landing point and then fly at normal cruising speed at least 30 minutes by
+      day or 45 minutes at night.
+    sources:
+      - ecfr-vfr-fuel
+    risk: safety_critical
+    script_sections:
+      - Give the fuel plan a usable alternative
+      - Retrieval review
+    status: draft

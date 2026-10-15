@@ -1,0 +1,12 @@
+schema_version: 1
+music:
+  enabled: true
+  source: ../../assets/music/jonasblakewood-synth-pop_60s-583368.mp3
+  base_gain_db: -24
+  voice_gain_db: -30
+  level_transition_seconds: 0.15
+  intro_lead_seconds: 10
+  intro_tail_seconds: 5
+  intro_fade_seconds: 0.5
+  outro_tail_seconds: 10
+  outro_fade_seconds: 5

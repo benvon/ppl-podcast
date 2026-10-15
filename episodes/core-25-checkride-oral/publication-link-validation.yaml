@@ -1,0 +1,2717 @@
+schema_version: 1
+validator: scripts/validate-source-links.cjs
+validation_kind: publication_link_check
+run_id: 5daea99d-90a0-421f-8820-6b3749380f01
+checked_at_utc: 2026-10-15T21:21:47.990Z
+sources_file: episodes/core-25-checkride-oral/sources.yaml
+claims_file: episodes/core-25-checkride-oral/claim-inventory.yaml
+show_notes_file: episodes/core-25-checkride-oral/show-notes.md
+show_notes_manifest_file: episodes/core-25-checkride-oral/show-notes-manifest.yaml
+input_sha256:
+  sources: f0dba8697a02e4cb177669242a0974b34d0bdb132b9e1d4a5717f9f842c5a483
+  claims: eaf32d7434e8088f4179bb8449ae16fbf1360e2652bad0a6d0c04eeb766aa87f
+  master_script: 472aae9eac5d00732f0109cb6278490a8b0c322e4456e426fac868ad3599e6a7
+  show_notes: 12ad365ee06ac242182f2cc97c360adbd6573799560f0d274439a66781be7a27
+  show_notes_manifest: bbbdb3237cdeceffacaa777eb11f71d0f30f82b42e050f321be2a7f2155be307
+input_normalization:
+  master_script: narration-and-source-tags-v1
+  show_notes: fact-check-verification-column-v1
+semantic_input_sha256:
+  master_script: 8f3ce317bc3b8af08f9c528613133ac15f989a3b52985108f7b525807ff957c0
+  show_notes: a0cc06e468ac06ac950ca98bbc4cd00963f258739e66a1e33a84fa046d32218a
+llm_requested: false
+llm_model: null
+llm_review_passes: 0
+llm_materiality_policy: null
+authorization: null
+claim_mapping:
+  valid: true
+  errors: []
+master_script_mapping:
+  valid: true
+  status: configured
+  errors: []
+  source_tag_count: 72
+  claim_coverage_count: 39
+show_notes_mapping:
+  valid: true
+  errors: []
+  markdown_link_count: 39
+  http_link_count: 0
+  manifest_link_count: 39
+show_notes_results:
+  - id: notes-acs-concept
+    kind: claim
+    text: Integrated certification standard
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+    source_id: acs-concept
+    claim_ids:
+      - claim-concept
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a1 []
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1005
+      pdf_page_text_sha256: e3c59bd4df529478a7d18b0db8ca08a48e14d19d3a3df30734f4877a4f26a789
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-scenarios
+    kind: claim
+    text: Scenario-based evaluation
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+    source_id: acs-scenarios
+    claim_ids:
+      - claim-scenarios
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      errors: []
+      valid: true
+      pdf_page_number: 76
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4874
+      pdf_page_text_sha256: 365c638134712b10a39c5f389cbfb76c73c667622e7a92ead751af86391ad8f7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-test-conversation
+    kind: claim
+    text: The conversation continues in flight
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+    source_id: acs-test-conversation
+    claim_ids:
+      - claim-test-conversation
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      errors: []
+      valid: true
+      pdf_page_number: 75
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4532
+      pdf_page_text_sha256: 54d629f0e7a389ff4429e290938b3aac977cc81f7f65a15ca7b94bec2762141a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-cross-country
+    kind: claim
+    text: Cross-country planning and fuel
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+    source_id: acs-cross-country
+    claim_ids:
+      - claim-cross-country
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-human-factors
+    kind: claim
+    text: Fitness, bias, and personal minimums
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+    source_id: acs-human-factors
+    claim_ids:
+      - claim-human-factors
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1941
+      pdf_page_text_sha256: bb2cf0b4dff74075a9d2bb4913be3a09fc2500e05d1ebb57b9133191621ff62e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-pilot
+    kind: claim
+    text: Pilot qualifications and proficiency
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    source_id: acs-pilot
+    claim_ids:
+      - claim-pilot
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-test-sampling
+    kind: claim
+    text: Knowledge-test deficiencies and test sampling
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+    source_id: acs-test-sampling
+    claim_ids:
+      - claim-test-sampling
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      errors: []
+      valid: true
+      pdf_page_number: 74
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3532
+      pdf_page_text_sha256: 28c04259c5118d1460b855169c3f913052aa01300cc728df334e1a1334f04c7e
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-airworthiness-records
+    kind: claim
+    text: Airworthiness records and equipment
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+    source_id: acs-airworthiness-records
+    claim_ids:
+      - claim-airworthiness-records
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-preflight
+    kind: claim
+    text: Physical preflight assessment
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+    source_id: acs-preflight
+    claim_ids:
+      - claim-preflight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      errors: []
+      valid: true
+      pdf_page_number: 19
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1887
+      pdf_page_text_sha256: 6905e50e8ad4397065ead08d94df1874ce3246974f8ad32a35deff6b95f97924
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-airworthiness-decision
+    kind: claim
+    text: Inoperative-equipment decisions
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    source_id: acs-airworthiness-decision
+    claim_ids:
+      - claim-airworthiness-decision
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-weather-decision
+    kind: claim
+    text: Weather decisions and limitations
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+    source_id: acs-weather-decision
+    claim_ids:
+      - claim-weather-decision
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2020
+      pdf_page_text_sha256: 8ed2fbd6b81fe01ff90767ef3562f706e3aba8138dde57a9baf4d4c92cc4fbaa
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-weather-products
+    kind: claim
+    text: Weather products for the proposed flight
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+    source_id: acs-weather-products
+    claim_ids:
+      - claim-weather-products
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-airspace
+    kind: claim
+    text: Airspace and applicable requirements
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    source_id: acs-airspace
+    claim_ids:
+      - claim-airspace
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-loading
+    kind: claim
+    text: Loading through every flight phase
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    source_id: acs-loading
+    claim_ids:
+      - claim-loading
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-performance
+    kind: claim
+    text: Performance inputs and actual results
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+    source_id: acs-performance
+    claim_ids:
+      - claim-performance
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-takeoff-risk
+    kind: claim
+    text: Takeoff runway and changing wind
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+    source_id: acs-takeoff-risk
+    claim_ids:
+      - claim-takeoff-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1978
+      pdf_page_text_sha256: f7e53aa03fb52af628139be6a784fedc6afbd9791cf7d3e954f40ec8818540df
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-diversion
+    kind: claim
+    text: A suitable and timely diversion
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+    source_id: acs-diversion
+    claim_ids:
+      - claim-diversion
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      errors: []
+      valid: true
+      pdf_page_number: 48
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2157
+      pdf_page_text_sha256: d396463e99330c16037a4404f27e87961306cdbf39cfd43a309ff2529807b407
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-flight-deck
+    kind: claim
+    text: Cockpit and passenger preparation
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+    source_id: acs-flight-deck
+    claim_ids:
+      - claim-flight-deck
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1983
+      pdf_page_text_sha256: 3393c79cb32d1cce013ebfe2d97c9d4332161550f82ae38a7781f50517c08773
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-emergency-equipment
+    kind: claim
+    text: Emergency-equipment passenger briefing
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+    source_id: acs-emergency-equipment
+    claim_ids:
+      - claim-emergency-equipment
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      errors: []
+      valid: true
+      pdf_page_number: 62
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2182
+      pdf_page_text_sha256: 0df7a97159528b3fad7a0b22419b5d67e160d61a0066ce9efc079915470375c2
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-controls
+    kind: claim
+    text: Positive control exchange
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+    source_id: acs-controls
+    claim_ids:
+      - claim-controls
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      errors: []
+      valid: true
+      pdf_page_number: 83
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 29d96cb034ffdc3f1805b555372ea751354dae2e79ce03dd2417774b7ad3b395
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-taxi
+    kind: claim
+    text: Taxi changes and orientation
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+    source_id: acs-taxi
+    claim_ids:
+      - claim-taxi
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2215
+      pdf_page_text_sha256: 23420aaa8099efd55c2a27596d148cc2e1b9fe2b7907184e0ab574ad5e1512ff
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-progress
+    kind: claim
+    text: Planned versus actual progress
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+    source_id: acs-progress
+    claim_ids:
+      - claim-progress
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      errors: []
+      valid: true
+      pdf_page_number: 46
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1701
+      pdf_page_text_sha256: bcf2237b007e21bdbc94458fa6663529a58b6d86025fa21c7607e1cba94b90da
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-navigation-systems
+    kind: claim
+    text: Navigation resources and equipment limitations
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+    source_id: acs-navigation-systems
+    claim_ids:
+      - claim-navigation-systems
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-lost
+    kind: claim
+    text: Position uncertainty and assistance
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+    source_id: acs-lost
+    claim_ids:
+      - claim-lost
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      errors: []
+      valid: true
+      pdf_page_number: 49
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 531
+      pdf_page_text_sha256: 1658b49d860c8c2cba7220508bf5dd148ca5cb9bcd5bd8f25e34f78901334391
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-systems-malfunction
+    kind: claim
+    text: Aircraft-specific failure response
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+    source_id: acs-systems-malfunction
+    claim_ids:
+      - claim-systems-malfunction
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      errors: []
+      valid: true
+      pdf_page_number: 61
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2098
+      pdf_page_text_sha256: fd397d856a3ab3433d3ae2cb29e285c386050081added3b5d5eb26762ae27273
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-systems
+    kind: claim
+    text: Know the systems in the test airplane
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+    source_id: acs-systems
+    claim_ids:
+      - claim-systems
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-emergency-landing
+    kind: claim
+    text: Best glide and a reachable landing site
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+    source_id: acs-emergency-landing
+    claim_ids:
+      - claim-emergency-landing
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      errors: []
+      valid: true
+      pdf_page_number: 60
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2325
+      pdf_page_text_sha256: dd6e527a8a487ee52acae12274473b154ef5503bb33c5d0f61e9e263ac962d54
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-landing-risk
+    kind: claim
+    text: Landing runway and approach risk
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+    source_id: acs-landing-risk
+    claim_ids:
+      - claim-landing-risk
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2446
+      pdf_page_text_sha256: 3f0ab424cf8d75664baea24f8d9f0b6ad2fb843b847108ba48aeadfb15f5cde9
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-landing-skill
+    kind: claim
+    text: Stable approach and timely go-around
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+    source_id: acs-landing-skill
+    claim_ids:
+      - claim-landing-skill
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      errors: []
+      valid: true
+      pdf_page_number: 28
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2636
+      pdf_page_text_sha256: 3baf6783154ace97f0f011be0567a8d1ca6d773a495651edc73665641f31ab07
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-stalls
+    kind: claim
+    text: Connect stall knowledge to flight skill
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+    source_id: acs-stalls
+    claim_ids:
+      - claim-stalls
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      errors: []
+      valid: true
+      pdf_page_number: 51
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2781
+      pdf_page_text_sha256: dbab59b2a660062882c2ef59ea0f7e901031d4df6fc7c5465bb767d8e2987647
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-go-around
+    kind: claim
+    text: Manage the go-around as a flight phase
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+    source_id: acs-go-around
+    claim_ids:
+      - claim-go-around
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      errors: []
+      valid: true
+      pdf_page_number: 43
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1858
+      pdf_page_text_sha256: d2d7f9e1051ae0a828f8540bc56ca9eca6c96b5dd6b82d156ffbdbaed517955c
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-postflight
+    kind: claim
+    text: Postflight, discrepancies, and passenger safety
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+    source_id: acs-postflight
+    claim_ids:
+      - claim-postflight
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      errors: []
+      valid: true
+      pdf_page_number: 72
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1950
+      pdf_page_text_sha256: 06914e8a801e9e8ce4bc29801754fdddfbb6106c42283dab5cc2a586f35c17e7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-instructor
+    kind: claim
+    text: Prepare all applicable tasks
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+    source_id: acs-instructor
+    claim_ids:
+      - claim-instructor
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      errors: []
+      valid: true
+      pdf_page_number: 75
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4532
+      pdf_page_text_sha256: 54d629f0e7a389ff4429e290938b3aac977cc81f7f65a15ca7b94bec2762141a
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-outcomes
+    kind: claim
+    text: Performance standards and test interruption
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+    source_id: acs-outcomes
+    claim_ids:
+      - claim-outcomes
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      errors: []
+      valid: true
+      pdf_page_number: 77
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3582
+      pdf_page_text_sha256: e821d57f4a83e29955d2a0030c55b99859e5525bc579d2c7249348881a56a3d8
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-acs-test-safety
+    kind: claim
+    text: Safety and checklists throughout the test
+    url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+    source_id: acs-test-safety
+    claim_ids:
+      - claim-test-safety
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      errors: []
+      valid: true
+      pdf_page_number: 83
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 29d96cb034ffdc3f1805b555372ea751354dae2e79ce03dd2417774b7ad3b395
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-afh-angle-of-attack
+    kind: claim
+    text: Angle of attack and loaded turns
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+    source_id: afh-angle-of-attack
+    claim_ids:
+      - claim-angle-of-attack
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a3 []
+      title: null
+      truncated: true
+      content_sha256: 4e8b1c1f7e439568fb90bf2ec8b2c43b81b10832ee51abe04c22d1d06d08f950
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4872
+      pdf_page_text_sha256: 577fa851061632bc7c70331c620bf6e06fb7ea8a7d2ffdc376231eaaac249289
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-afh-electrical
+    kind: claim
+    text: Single generating-source failure
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+    source_id: afh-electrical
+    claim_ids:
+      - claim-electrical
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: &a2 []
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2705
+      pdf_page_text_sha256: 21be9f7cc65c3e57168e95c7cd3872edb89897be24709ae49451f579a8e71e09
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-afh-manufacturer
+    kind: claim
+    text: Manufacturer emergency procedures
+    url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+    source_id: afh-manufacturer
+    claim_ids:
+      - claim-manufacturer
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4057
+      pdf_page_text_sha256: 34e39dd591f0f75e7f56d3041db18a6c292ad346273676b13264a71b8d7283e7
+      section_text_characters: 0
+      section_text_sha256: null
+  - id: notes-ecfr-vfr-fuel
+    kind: claim
+    text: Airplane VFR fuel requirement
+    url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
+    source_id: ecfr-vfr-fuel
+    claim_ids:
+      - claim-vfr-fuel
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: &a4 []
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-13
+        title_status_sha256: 14c8c4e939c3187bcc3fcaa00f10a4378c983a84bb9c42065dd0d0e3d7393d77
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-10-13
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+results:
+  - source_id: acs-concept
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:40.895Z
+    linked_claim_ids:
+      - claim-concept
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1005
+      pdf_page_text_sha256: e3c59bd4df529478a7d18b0db8ca08a48e14d19d3a3df30734f4877a4f26a789
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-scenarios
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:40.929Z
+    linked_claim_ids:
+      - claim-scenarios
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=76
+      errors: []
+      valid: true
+      pdf_page_number: 76
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4874
+      pdf_page_text_sha256: 365c638134712b10a39c5f389cbfb76c73c667622e7a92ead751af86391ad8f7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-test-conversation
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.781Z
+    linked_claim_ids:
+      - claim-test-conversation
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      errors: []
+      valid: true
+      pdf_page_number: 75
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4532
+      pdf_page_text_sha256: 54d629f0e7a389ff4429e290938b3aac977cc81f7f65a15ca7b94bec2762141a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-cross-country
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.791Z
+    linked_claim_ids:
+      - claim-cross-country
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2353
+      pdf_page_text_sha256: f5e6e03b26ca21d098b13c2cd68f83ff13427e317d255a7119dc44a3dccb3856
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-human-factors
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.808Z
+    linked_claim_ids:
+      - claim-human-factors
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=16
+      errors: []
+      valid: true
+      pdf_page_number: 16
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1941
+      pdf_page_text_sha256: bb2cf0b4dff74075a9d2bb4913be3a09fc2500e05d1ebb57b9133191621ff62e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-pilot
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.821Z
+    linked_claim_ids:
+      - claim-pilot
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-test-sampling
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.832Z
+    linked_claim_ids:
+      - claim-test-sampling
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=74
+      errors: []
+      valid: true
+      pdf_page_number: 74
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3532
+      pdf_page_text_sha256: 28c04259c5118d1460b855169c3f913052aa01300cc728df334e1a1334f04c7e
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-airworthiness-records
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.845Z
+    linked_claim_ids:
+      - claim-airworthiness-records
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=10
+      errors: []
+      valid: true
+      pdf_page_number: 10
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2295
+      pdf_page_text_sha256: b9d9c49d44441351d700857b0d81b1d1d06fe54e3128731e9c63d18e581c49d7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-preflight
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.854Z
+    linked_claim_ids:
+      - claim-preflight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=19
+      errors: []
+      valid: true
+      pdf_page_number: 19
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1887
+      pdf_page_text_sha256: 6905e50e8ad4397065ead08d94df1874ce3246974f8ad32a35deff6b95f97924
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-airworthiness-decision
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.866Z
+    linked_claim_ids:
+      - claim-airworthiness-decision
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-weather-decision
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.873Z
+    linked_claim_ids:
+      - claim-weather-decision
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=12
+      errors: []
+      valid: true
+      pdf_page_number: 12
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2020
+      pdf_page_text_sha256: 8ed2fbd6b81fe01ff90767ef3562f706e3aba8138dde57a9baf4d4c92cc4fbaa
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-weather-products
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.885Z
+    linked_claim_ids:
+      - claim-weather-products
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=11
+      errors: []
+      valid: true
+      pdf_page_number: 11
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2606
+      pdf_page_text_sha256: a8e73171de881e68a77d4bae4acdb1d0ed78a8b6a8e88cc8a45a5455ecf67d7b
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-airspace
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.893Z
+    linked_claim_ids:
+      - claim-airspace
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-loading
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.905Z
+    linked_claim_ids:
+      - claim-loading
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-performance
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.913Z
+    linked_claim_ids:
+      - claim-performance
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=14
+      errors: []
+      valid: true
+      pdf_page_number: 14
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2086
+      pdf_page_text_sha256: d325dc6c73a08b6f4aa21fd9cd40ca0b5c37bc830ce68b7ed44974bb12cb94c0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-takeoff-risk
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.926Z
+    linked_claim_ids:
+      - claim-takeoff-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=26
+      errors: []
+      valid: true
+      pdf_page_number: 26
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1978
+      pdf_page_text_sha256: f7e53aa03fb52af628139be6a784fedc6afbd9791cf7d3e954f40ec8818540df
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-diversion
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.935Z
+    linked_claim_ids:
+      - claim-diversion
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=48
+      errors: []
+      valid: true
+      pdf_page_number: 48
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2157
+      pdf_page_text_sha256: d396463e99330c16037a4404f27e87961306cdbf39cfd43a309ff2529807b407
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-flight-deck
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.946Z
+    linked_claim_ids:
+      - claim-flight-deck
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=20
+      errors: []
+      valid: true
+      pdf_page_number: 20
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1983
+      pdf_page_text_sha256: 3393c79cb32d1cce013ebfe2d97c9d4332161550f82ae38a7781f50517c08773
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-emergency-equipment
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.954Z
+    linked_claim_ids:
+      - claim-emergency-equipment
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=62
+      errors: []
+      valid: true
+      pdf_page_number: 62
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2182
+      pdf_page_text_sha256: 0df7a97159528b3fad7a0b22419b5d67e160d61a0066ce9efc079915470375c2
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-controls
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.965Z
+    linked_claim_ids:
+      - claim-controls
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      errors: []
+      valid: true
+      pdf_page_number: 83
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 29d96cb034ffdc3f1805b555372ea751354dae2e79ce03dd2417774b7ad3b395
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-taxi
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.973Z
+    linked_claim_ids:
+      - claim-taxi
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=21
+      errors: []
+      valid: true
+      pdf_page_number: 21
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2215
+      pdf_page_text_sha256: 23420aaa8099efd55c2a27596d148cc2e1b9fe2b7907184e0ab574ad5e1512ff
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-progress
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.980Z
+    linked_claim_ids:
+      - claim-progress
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=46
+      errors: []
+      valid: true
+      pdf_page_number: 46
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1701
+      pdf_page_text_sha256: bcf2237b007e21bdbc94458fa6663529a58b6d86025fa21c7607e1cba94b90da
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-navigation-systems
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:41.996Z
+    linked_claim_ids:
+      - claim-navigation-systems
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=47
+      errors: []
+      valid: true
+      pdf_page_number: 47
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2454
+      pdf_page_text_sha256: 283f0fd28ae0bbb951245bb7d2d4b774e74b955dd62c0ebf1dfe836a301e8a39
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-lost
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.003Z
+    linked_claim_ids:
+      - claim-lost
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=49
+      errors: []
+      valid: true
+      pdf_page_number: 49
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 531
+      pdf_page_text_sha256: 1658b49d860c8c2cba7220508bf5dd148ca5cb9bcd5bd8f25e34f78901334391
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-systems-malfunction
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.014Z
+    linked_claim_ids:
+      - claim-systems-malfunction
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=61
+      errors: []
+      valid: true
+      pdf_page_number: 61
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2098
+      pdf_page_text_sha256: fd397d856a3ab3433d3ae2cb29e285c386050081added3b5d5eb26762ae27273
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-systems
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.020Z
+    linked_claim_ids:
+      - claim-systems
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=15
+      errors: []
+      valid: true
+      pdf_page_number: 15
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1853
+      pdf_page_text_sha256: 6fdc23c82d1a83656076f37fa21bab915ee70ae44eaeb733bd547c050c6df4f0
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-emergency-landing
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.033Z
+    linked_claim_ids:
+      - claim-emergency-landing
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=60
+      errors: []
+      valid: true
+      pdf_page_number: 60
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2325
+      pdf_page_text_sha256: dd6e527a8a487ee52acae12274473b154ef5503bb33c5d0f61e9e263ac962d54
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-landing-risk
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.038Z
+    linked_claim_ids:
+      - claim-landing-risk
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=27
+      errors: []
+      valid: true
+      pdf_page_number: 27
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2446
+      pdf_page_text_sha256: 3f0ab424cf8d75664baea24f8d9f0b6ad2fb843b847108ba48aeadfb15f5cde9
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-landing-skill
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.051Z
+    linked_claim_ids:
+      - claim-landing-skill
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=28
+      errors: []
+      valid: true
+      pdf_page_number: 28
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2636
+      pdf_page_text_sha256: 3baf6783154ace97f0f011be0567a8d1ca6d773a495651edc73665641f31ab07
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-stalls
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.057Z
+    linked_claim_ids:
+      - claim-stalls
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=51
+      errors: []
+      valid: true
+      pdf_page_number: 51
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2781
+      pdf_page_text_sha256: dbab59b2a660062882c2ef59ea0f7e901031d4df6fc7c5465bb767d8e2987647
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-go-around
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.067Z
+    linked_claim_ids:
+      - claim-go-around
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=43
+      errors: []
+      valid: true
+      pdf_page_number: 43
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1858
+      pdf_page_text_sha256: d2d7f9e1051ae0a828f8540bc56ca9eca6c96b5dd6b82d156ffbdbaed517955c
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-postflight
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.073Z
+    linked_claim_ids:
+      - claim-postflight
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=72
+      errors: []
+      valid: true
+      pdf_page_number: 72
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 1950
+      pdf_page_text_sha256: 06914e8a801e9e8ce4bc29801754fdddfbb6106c42283dab5cc2a586f35c17e7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-instructor
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.083Z
+    linked_claim_ids:
+      - claim-instructor
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=75
+      errors: []
+      valid: true
+      pdf_page_number: 75
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4532
+      pdf_page_text_sha256: 54d629f0e7a389ff4429e290938b3aac977cc81f7f65a15ca7b94bec2762141a
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-outcomes
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.091Z
+    linked_claim_ids:
+      - claim-outcomes
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=77
+      errors: []
+      valid: true
+      pdf_page_number: 77
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3582
+      pdf_page_text_sha256: e821d57f4a83e29955d2a0030c55b99859e5525bc579d2c7249348881a56a3d8
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: acs-test-safety
+    title: Private Pilot for Airplane Category Airman Certification Standards
+    checked_at_utc: 2026-10-15T21:21:42.098Z
+    linked_claim_ids:
+      - claim-test-safety
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      final_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a1
+      title: null
+      truncated: false
+      content_sha256: 46ed6625723b0b7f37b3274cdb5170519f88baf28aec1f925286ef24909ea824
+      hash_truncated: false
+      citation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      validation_url: https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf#page=83
+      errors: []
+      valid: true
+      pdf_page_number: 83
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 3787
+      pdf_page_text_sha256: 29d96cb034ffdc3f1805b555372ea751354dae2e79ce03dd2417774b7ad3b395
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-angle-of-attack
+    title: "Airplane Flying Handbook, Chapter 5: Maintaining Aircraft Control"
+    checked_at_utc: 2026-10-15T21:21:42.108Z
+    linked_claim_ids:
+      - claim-angle-of-attack
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a3
+      title: null
+      truncated: true
+      content_sha256: 4e8b1c1f7e439568fb90bf2ec8b2c43b81b10832ee51abe04c22d1d06d08f950
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/06_afh_ch5.pdf#page=9
+      errors: []
+      valid: true
+      pdf_page_number: 9
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4872
+      pdf_page_text_sha256: 577fa851061632bc7c70331c620bf6e06fb7ea8a7d2ffdc376231eaaac249289
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-electrical
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    checked_at_utc: 2026-10-15T21:21:42.112Z
+    linked_claim_ids:
+      - claim-electrical
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=13
+      errors: []
+      valid: true
+      pdf_page_number: 13
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 2705
+      pdf_page_text_sha256: 21be9f7cc65c3e57168e95c7cd3872edb89897be24709ae49451f579a8e71e09
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: afh-manufacturer
+    title: "Airplane Flying Handbook, Chapter 18: Emergency Procedures"
+    checked_at_utc: 2026-10-15T21:21:44.180Z
+    linked_claim_ids:
+      - claim-manufacturer
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      final_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      status: 200
+      retry_after: null
+      content_type: application/pdf
+      redirects: *a2
+      title: null
+      truncated: true
+      content_sha256: 0fac959a0b0ebd1109cdee797eb83eaaf77a76f2f92660056cbef30e3cde03a5
+      hash_truncated: false
+      citation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      validation_url: https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/airplane_handbook/19_afh_ch18.pdf#page=1
+      errors: []
+      valid: true
+      pdf_page_number: 1
+      excerpt_characters: 0
+      excerpt_sha256: null
+      pdf_page_text_characters: 4057
+      pdf_page_text_sha256: 34e39dd591f0f75e7f56d3041db18a6c292ad346273676b13264a71b8d7283e7
+      section_text_characters: 0
+      section_text_sha256: null
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested
+  - source_id: ecfr-vfr-fuel
+    title: 14 CFR 91.151, Fuel requirements for flight in VFR conditions
+    checked_at_utc: 2026-10-15T21:21:40.929Z
+    linked_claim_ids:
+      - claim-vfr-fuel
+    missing_claim_ids: []
+    citation_target:
+      valid: true
+      errors: []
+    link:
+      requested_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      final_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      status: 200
+      retry_after: null
+      content_type: text/xml
+      redirects: *a4
+      title: null
+      truncated: false
+      content_sha256: 485b6cd6ac357c9fe74992349767049eacc802375effcb1cb7594e1c13eb7373
+      hash_truncated: false
+      valid: true
+      errors: []
+      citation_url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-B/subject-group-ECFR4d5279ba676bedc/section-91.151
+      validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      effective_validation_url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-13/title-14.xml?part=91&section=91.151
+      resolved_via: ecfr_exact_section_xml
+      ecfr_title_status:
+        up_to_date_as_of: 2026-10-13
+        title_status_sha256: 14c8c4e939c3187bcc3fcaa00f10a4378c983a84bb9c42065dd0d0e3d7393d77
+        title_status_url: https://www.ecfr.gov/api/versioner/v1/titles.json
+      section_identity:
+        title: "14"
+        part: "91"
+        section: "91.151"
+        date: 2026-10-13
+        section_number: "91.151"
+      section_text_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      excerpt_characters: 804
+      excerpt_sha256: ac9c4a560ec2f76296c012f2344fa86a4c5631cb14623ebcce00e18d829ea05b
+      pdf_page_text_characters: 0
+      pdf_page_text_sha256: null
+      section_text_characters: 804
+    relevance:
+      status: not_requested
+    claim_assessments:
+      valid: null
+      status: not_requested

@@ -14,22 +14,22 @@
 - [x] Independent spoken-script review completed by a second agent that did not draft the lesson. Grammar, complete thoughts, internal callbacks and call-forwards, and first-listen comprehension were checked; findings were reported and resolved or accepted. `episode.yaml` records the completed review against the current master-script hash. <!-- qa-id: independent-script-review -->
 - [x] Human editorial pass received the clean source-validation result; unresolved technical questions were removed or resolved. <!-- qa-id: human-editorial -->
 - [x] If human editorial changes spoken narration, source tags, claims, or cited sources, source-relevance validation was rerun successfully before audio render. Show-notes-only edits received deterministic mapping and link validation. <!-- qa-id: post-editorial-source-relevance -->
-- [ ] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval. <!-- qa-id: pre-pr-package-shape -->
+- [x] Before opening an episode PR, `npm run release:prehost -- --episode <episode-directory> --package-only` reports a consistent package shape. This is not final pre-hosting, release, or hosting approval. <!-- qa-id: pre-pr-package-shape -->
 
 ## Audio
 
 - [x] Opening is 10-45 seconds and the required notice follows immediately. <!-- qa-id: opening-notice-order -->
 - [x] Notice is clearly heard as “artificial intelligence-assisted production.” <!-- qa-id: notice-audible -->
 - [x] Five-segment opening preview has been listened to before full rendering. <!-- qa-id: opening-preview -->
-- [ ] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
-- [ ] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
-- [ ] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
+- [x] Full candidate has been listened to against the master script, with numbers, units, acronyms, and warnings checked. <!-- qa-id: audio-listening -->
+- [x] No clipped, corrupt, repeated, mispronounced, or awkwardly joined audio remains. <!-- qa-id: audio-integrity -->
+- [x] The final MP3 chapter list starts at `00:00`; its titles are useful, listener-facing section labels; and each marker begins before the corresponding material. <!-- qa-id: chapters-manual -->
 - [x] The render manifest records a passing `ffprobe` chapter validation for the final MP3. <!-- qa-id: chapters-ffprobe -->
 
 ## Release
 
-- [ ] FAA/eCFR links and revisions were re-verified on publication day. <!-- qa-id: publication-source-links -->
-- [ ] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum. <!-- qa-id: hosting-metadata -->
+- [x] FAA/eCFR links and revisions were re-verified on publication day. <!-- qa-id: publication-source-links -->
+- [x] Hosting metadata agrees with the current script, show notes, runtime, and audio checksum. <!-- qa-id: hosting-metadata -->
 - [ ] After publication, Apple Podcasts and Overcast are checked for the final embedded chapter list. <!-- qa-id: post-publication-chapters -->
 - [ ] Qualified aviation review, if obtained, is recorded in `episode.yaml`; `production-log.md` may add context. <!-- qa-id: qualified-aviation-review -->
 
@@ -48,3 +48,5 @@ The user approved the revised master script (version 0.1.3). The renewed source 
 ## Full-render authorization
 
 - [x] The user accepted the opening preview and authorized OpenAI API audio rendering for the remaining Core-25 narration in the current turn. The full assembly reuses the accepted first five segments. <!-- qa-id: openai-full-audio-render-authorization -->
+
+The user authorized a renewed Core-25 OpenAI source-relevance review for the publication-day eCFR snapshot. The normal source-review report records that authorization and the refreshed evidence.

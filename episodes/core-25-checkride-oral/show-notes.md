@@ -16,7 +16,7 @@ Use the deep links below with your instructor and the current information for yo
 
 Suggested practice: change the departure time, loading, wind, destination weather, or available equipment one item at a time. Identify the new evidence needed, recalculate what changes, then choose the next action. Keep flight control, position, terrain, traffic, and weather in view while using cockpit resources.
 
-The chapter times in the draft script are planning estimates. Audio duration and embedded chapters will be established after human editorial approval and audio QA.
+The episode runs 41 minutes 24 seconds. Its 18 embedded chapters have been reviewed against the accepted audio.
 
 ## Fact-check and source material
 
@@ -64,4 +64,4 @@ The chapter times in the draft script are planning estimates. Audio duration and
 
 ## Correction status
 
-The human editor approved this revision, and the independent spoken-script review and renewed two-pass source-relevance review are complete. The full audio candidate has been rendered; human listening and manual chapter QA remain pending. Corrections and source updates are captured in a revised episode package before publication. Submit a source correction through the repository issue form or email [feedback@pplstudyguide.com](mailto:feedback@pplstudyguide.com). Do not send credentials, private documents, or personal flight information.
+The human editor approved this revision, and the independent spoken-script review and renewed two-pass source-relevance review are complete. The full audio and embedded chapters have passed human review. Corrections and source updates are captured in a revised episode package before publication. Submit a source correction through the repository issue form or email [feedback@pplstudyguide.com](mailto:feedback@pplstudyguide.com). Do not send credentials, private documents, or personal flight information.
